@@ -659,10 +659,12 @@ app.get('/api/people', async (req, res) => {
              p.wikipedia_url, p.photo_url,
              ARRAY_AGG(DISTINCT o.occupation) FILTER (WHERE o.occupation IS NOT NULL) AS occupations,
              ARRAY_AGG(DISTINCT ce.property_id) FILTER (WHERE ce.property_id IS NOT NULL) AS property_ids,
-             ARRAY_AGG(DISTINCT ce.census_year) FILTER (WHERE ce.census_year IS NOT NULL) AS census_years
+             ARRAY_AGG(DISTINCT ce.census_year) FILTER (WHERE ce.census_year IS NOT NULL) AS census_years,
+             ARRAY_AGG(DISTINCT COALESCE(pd.data->>'name', pd.data->>'address', 'Property ' || ce.property_id)) FILTER (WHERE ce.property_id IS NOT NULL) AS property_names
       FROM people p
       LEFT JOIN occupations o ON o.person_id = p.id
       LEFT JOIN census_entries ce ON ce.person_id = p.id
+      LEFT JOIN property_data pd ON pd.id = ce.property_id
     `;
     const params = [];
     const wheres = [];
@@ -693,9 +695,10 @@ app.get('/api/person/:id', async (req, res) => {
     const [pRes, occRes, censusRes, relRes, placesRes, bibRes] = await Promise.all([
       db.query('SELECT * FROM people WHERE id=$1', [id]),
       db.query('SELECT * FROM occupations WHERE person_id=$1 ORDER BY from_year', [id]),
-      db.query(`SELECT ce.*, sp.name as property_name
+      db.query(`SELECT ce.*,
+                  COALESCE(pd.data->>'name', pd.data->>'address', 'Property ' || ce.property_id) as property_name
                 FROM census_entries ce
-                LEFT JOIN (SELECT id, address FROM (VALUES ${Array.from({length:400},(_, i)=>`(${i+1},'Property ${i+1}')`).join(',')}) AS prop(id,address)) sp ON sp.id=ce.property_id
+                LEFT JOIN property_data pd ON pd.id = ce.property_id
                 WHERE ce.person_id=$1 ORDER BY ce.census_year`, [id]),
       db.query(`SELECT pr.*,
                 pa.id as pid, pa.first_name as a_first, pa.last_name as a_last, pa.known_as as a_known,

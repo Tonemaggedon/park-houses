@@ -351,7 +351,7 @@ function renderGrid(list) {
         </div>
       </div>
       ${occs.length ? `<div class="occ-pills">${occHtml}</div>` : ''}
-      ${propIds.length ? `<div class="card-props">📍 ${propIds.map(id=>`Property ${id}`).join(' · ')}</div>` : ''}
+      ${(p.property_names||propIds).length ? `<div class="card-props">📍 ${(p.property_names||propIds.map(id=>`Property ${id}`)).join(' · ')}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -459,7 +459,7 @@ function renderProfile(p) {
         ${entries.map(ce => `<div class="census-row">
           <span class="census-role">${ce.relationship||'—'}</span>
           <span class="census-occ">${ce.occupation_at_census||'—'}${ce.age_at_census ? ` (aged ${ce.age_at_census})` : ''}</span>
-          ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">Property ${ce.property_id} ↗</a>` : ''}
+          ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ''}
         </div>`).join('')}
       </div>`).join('');
     html.push(`<div class="pane-section"><h3>Census Records</h3>${rows}</div>`);
