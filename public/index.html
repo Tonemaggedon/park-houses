@@ -242,18 +242,21 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     font-size: 0.82rem; font-family: monospace;
     display: none; z-index: 9999;
-    min-width: 380px; text-align: center;
+    min-width: 420px; text-align: center;
   }
   #dragInfo.visible { display: block; }
-  #dragInfo .addr { font-size: 0.88rem; font-family: Georgia, serif; color: #f0d090; margin-bottom: 6px; }
-  #dragInfo .coords { color: #90d090; margin-bottom: 10px; letter-spacing: 0.04em; }
-  #dragInfo .btns { display: flex; gap: 8px; justify-content: center; }
+  #dragInfo .addr { font-size: 0.88rem; font-family: Georgia, serif; color: #f0d090; margin-bottom: 4px; }
+  #dragInfo .coords { color: #90d090; margin-bottom: 6px; letter-spacing: 0.04em; }
+  #dragInfo .pending-count { font-size: 0.75rem; color: #f0c040; margin-bottom: 8px; }
+  #dragInfo .btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   #dragInfo .btns button {
     padding: 6px 16px; border: none; border-radius: 4px;
     cursor: pointer; font-size: 0.8rem;
   }
-  #dragInfo .save-btn { background: #4a7c5a; color: white; }
-  #dragInfo .save-btn:hover { background: #5a8c6a; }
+  #dragInfo .queue-btn { background: #4a7c5a; color: white; }
+  #dragInfo .queue-btn:hover { background: #5a8c6a; }
+  #dragInfo .saveall-btn { background: #c07820; color: white; font-weight: bold; }
+  #dragInfo .saveall-btn:hover { background: #d08830; }
   #dragInfo .revert-btn { background: #555; color: #ccc; }
   #dragInfo .revert-btn:hover { background: #666; }
   #dragInfo .cancel-btn { background: #333; color: #aaa; }
@@ -288,10 +291,12 @@
 <div id="dragInfo">
   <div class="addr" id="dragAddr">—</div>
   <div class="coords" id="dragCoords">lat: — lng: —</div>
+  <div class="pending-count" id="pendingCount"></div>
   <div class="btns">
-    <button class="save-btn" onclick="saveDragPosition()">✓ Save position</button>
-    <button class="revert-btn" onclick="revertPosition()" id="revertBtn" style="display:none">↺ Revert to auto</button>
-    <button class="cancel-btn" onclick="cancelDrag()">✕ Cancel</button>
+    <button class="queue-btn" onclick="queueDragPosition()" title="Queue this move and continue (Enter)">&#10003; Queue move</button>
+    <button class="saveall-btn" onclick="saveAllPending()" id="saveAllBtn" style="display:none">&#128190; Save all (0)</button>
+    <button class="revert-btn" onclick="revertPosition()" id="revertBtn" style="display:none">&#8634; Revert to auto</button>
+    <button class="cancel-btn" onclick="cancelDrag()">&#10005; Cancel</button>
   </div>
 </div>
 
@@ -1080,42 +1085,89 @@ async function adminLogout() {
   location.reload();
 }
 
-// Called when admin drags a marker
+// pendingMoves: {propId → {lat, lng, marker, origLat, origLng, label}}
+let pendingMoves = {};
+
+function updateDragUI() {
+  const count = Object.keys(pendingMoves).length;
+  const saveBtn = document.getElementById('saveAllBtn');
+  const countEl = document.getElementById('pendingCount');
+  if (count > 0) {
+    saveBtn.style.display = '';
+    saveBtn.textContent = `\u{1F4BE} Save all (${count})`;
+    countEl.textContent = `${count} move${count>1?'s':''} queued — drag more or Save All`;
+  } else {
+    saveBtn.style.display = 'none';
+    countEl.textContent = '';
+  }
+}
+
+// Called when admin starts dragging a marker
 function onMarkerDrag(propId, marker) {
   const ll = marker.getLatLng();
   const p = props.find(x => x.id === propId);
-  dragState = { propId, marker, origLat: p._lat, origLng: p._lng };
+  const label = p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street);
+  dragState = { propId, marker, origLat: p._lat, origLng: p._lng, label };
 
-  document.getElementById('dragAddr').textContent = p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street);
+  document.getElementById('dragAddr').textContent = label;
   document.getElementById('dragCoords').textContent = `lat: ${ll.lat.toFixed(7)}  lng: ${ll.lng.toFixed(7)}`;
   document.getElementById('revertBtn').style.display = manualCoords[propId] ? '' : 'none';
   document.getElementById('dragInfo').classList.add('visible');
+  updateDragUI();
 }
 
 function onMarkerDragMove(propId, marker) {
   const ll = marker.getLatLng();
   document.getElementById('dragCoords').textContent = `lat: ${ll.lat.toFixed(7)}  lng: ${ll.lng.toFixed(7)}`;
-  dragState = dragState || {};
+  if (!dragState) dragState = {};
   dragState.propId = propId;
   dragState.marker = marker;
 }
 
-async function saveDragPosition() {
+// Queue this move and stay in drag mode for more moves
+function queueDragPosition() {
   if (!dragState) return;
   const ll = dragState.marker.getLatLng();
-  const res = await fetch(`/api/coords/${dragState.propId}`, {
+  pendingMoves[dragState.propId] = {
+    lat: ll.lat, lng: ll.lng,
+    marker: dragState.marker,
+    origLat: dragState.origLat, origLng: dragState.origLng,
+    label: dragState.label
+  };
+  // Update prop's display position so next drag starts from new spot
+  const p = props.find(x => x.id === dragState.propId);
+  if (p) { p._lat = ll.lat; p._lng = ll.lng; }
+  showToast(`Queued: ${dragState.label}`);
+  dragState = null;
+  document.getElementById('dragInfo').classList.remove('visible');
+  updateDragUI();
+  // Show the panel again briefly with the count
+  if (Object.keys(pendingMoves).length > 0) {
+    document.getElementById('dragInfo').classList.add('visible');
+    document.getElementById('dragAddr').textContent = 'Ready for next move';
+    document.getElementById('dragCoords').textContent = 'Drag another marker, or Save All';
+    document.getElementById('revertBtn').style.display = 'none';
+  }
+}
+
+// Save all queued moves to the server in one request
+async function saveAllPending() {
+  const entries = Object.entries(pendingMoves).map(([id, v]) => ({ id: parseInt(id), lat: v.lat, lng: v.lng }));
+  if (entries.length === 0) { hideDragInfo(); return; }
+  const res = await fetch('/api/coords-bulk', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ lat: ll.lat, lng: ll.lng })
+    body: JSON.stringify({ entries })
   });
   if (res.ok) {
-    manualCoords[dragState.propId] = { lat: ll.lat, lng: ll.lng };
+    entries.forEach(({ id, lat, lng }) => {
+      manualCoords[id] = { lat, lng };
+      const p = props.find(x => x.id === id);
+      if (p) { p.lat = lat; p.lng = lng; p._lat = lat; p._lng = lng; }
+    });
     updatePlacedCount();
-    // Update prop's internal position
-    const p = props.find(x => x.id === dragState.propId);
-    if (p) { p.lat = ll.lat; p.lng = ll.lng; }
-    showToast(`Saved: ${document.getElementById('dragAddr').textContent}`);
-    // Rebuild marker to show blue ring
+    showToast(`Saved ${entries.length} position${entries.length>1?'s':''}!`);
+    pendingMoves = {};
     buildMarkers(
       document.getElementById('searchBox').value,
       document.getElementById('typeFilter').value,
@@ -1132,6 +1184,7 @@ async function revertPosition() {
   const res = await fetch(`/api/coords/${dragState.propId}`, { method: 'DELETE' });
   if (res.ok) {
     delete manualCoords[dragState.propId];
+    delete pendingMoves[dragState.propId];
     updatePlacedCount();
     showToast('Reverted to auto-geocoded position');
     buildMarkers(
@@ -1144,18 +1197,35 @@ async function revertPosition() {
 }
 
 function cancelDrag() {
-  // Snap marker back to its last saved/auto position
   if (dragState) {
     const p = props.find(x => x.id === dragState.propId);
-    if (p && dragState.marker) dragState.marker.setLatLng([p.lat, p.lng]);
+    if (p && dragState.marker) dragState.marker.setLatLng([dragState.origLat, dragState.origLng]);
   }
-  hideDragInfo();
+  dragState = null;
+  if (Object.keys(pendingMoves).length > 0) {
+    updateDragUI();
+    document.getElementById('dragAddr').textContent = 'Move cancelled';
+    document.getElementById('dragCoords').textContent = `${Object.keys(pendingMoves).length} move(s) still queued`;
+    document.getElementById('revertBtn').style.display = 'none';
+  } else {
+    hideDragInfo();
+  }
 }
 
 function hideDragInfo() {
   dragState = null;
   document.getElementById('dragInfo').classList.remove('visible');
 }
+
+// Enter key saves queued moves; Escape cancels current drag
+document.addEventListener('keydown', e => {
+  if (!isAdmin || !dragMode) return;
+  if (e.key === 'Enter') {
+    if (dragState) queueDragPosition();
+    else if (Object.keys(pendingMoves).length > 0) saveAllPending();
+  }
+  if (e.key === 'Escape') cancelDrag();
+});
 
 function showToast(msg) {
   // Reuse existing toast if present, else create one
