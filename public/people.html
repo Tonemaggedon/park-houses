@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People — Nottingham Park Houses</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; background: #f5f0e8; color: #2c2416; min-height: 100vh; }
+
+  header {
+    background: #1a3a2a; color: #e8dfc8;
+    padding: 0 20px; height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35); position: sticky; top: 0; z-index: 100;
+  }
+  header h1 { font-size: 1.2rem; font-weight: normal; }
+  header h1 span { font-size: 0.75rem; display: block; color: #90b090; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  nav { display: flex; gap: 6px; align-items: center; }
+  nav a {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+    color: #e8dfc8; padding: 5px 13px; border-radius: 4px;
+    cursor: pointer; font-size: 0.8rem; text-decoration: none; transition: background 0.2s;
+  }
+  nav a:hover { background: rgba(255,255,255,0.2); }
+  nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
+
+  .toolbar {
+    background: #2c4a38; padding: 14px 24px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .toolbar h2 { color: #e8dfc8; font-size: 1rem; font-weight: normal; margin-right: 8px; }
+  .toolbar input, .toolbar select {
+    padding: 7px 12px; border-radius: 4px; border: none;
+    font-size: 0.85rem; font-family: Georgia, serif;
+    background: rgba(255,255,255,0.92);
+  }
+  .toolbar input { width: 240px; }
+  .toolbar .info { color: #90c090; font-size: 0.78rem; margin-left: auto; }
+
+  .main { max-width: 1200px; margin: 0 auto; padding: 28px 20px; }
+
+  /* ── Person grid ── */
+  .person-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .person-card {
+    background: white; border: 1px solid #d8d0b8; border-radius: 8px;
+    padding: 16px; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+    position: relative;
+  }
+  .person-card:hover { border-color: #8a6a2a; box-shadow: 0 3px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
+  .person-card .card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .person-avatar {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: #4a7c5a; color: white; font-size: 1.1rem; font-weight: bold;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .person-card .card-name { font-size: 0.95rem; font-weight: bold; color: #1a3a2a; line-height: 1.3; }
+  .person-card .card-dates { font-size: 0.76rem; color: #8a7a5a; margin-top: 2px; }
+  .occ-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .occ-pill {
+    background: #e8f0e0; color: #2a5a2a; padding: 2px 8px;
+    border-radius: 10px; font-size: 0.72rem;
+  }
+  .occ-pill.servant { background: #f0ece0; color: #6a5a2a; }
+  .person-card .card-props { font-size: 0.74rem; color: #8a7a5a; }
+  .person-card .wiki-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: #edf4f8; border: 1px solid #b0c8d8; border-radius: 3px;
+    padding: 2px 6px; font-size: 0.68rem; color: #2a6090; text-decoration: none;
+  }
+  .person-card .wiki-badge:hover { background: #d8ecf8; }
+
+  /* ── Person detail overlay ── */
+  #personOverlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4); z-index: 500;
+    overflow-y: auto;
+  }
+  #personOverlay.visible { display: block; }
+  #personPane {
+    background: #faf8f2; min-height: 100vh;
+    max-width: 780px; margin: 0 auto;
+    border-left: 1px solid #d0c090; border-right: 1px solid #d0c090;
+    position: relative;
+  }
+  .pane-head {
+    background: #1a3a2a; color: #e8dfc8;
+    padding: 16px 24px; display: flex; align-items: flex-start; gap: 16px;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .pane-head-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: #4a7c5a; color: white; font-size: 1.3rem; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+  }
+  .pane-head-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .pane-head-text { flex: 1; }
+  .pane-head h2 { font-size: 1.15rem; font-weight: normal; line-height: 1.3; }
+  .pane-head .pane-dates { font-size: 0.8rem; color: #90b890; margin-top: 3px; }
+  .pane-head .close-btn { background: none; border: none; color: #90b890; font-size: 1.4rem; cursor: pointer; padding: 0; line-height: 1; flex-shrink: 0; }
+  .pane-head .close-btn:hover { color: white; }
+
+  .pane-body { padding: 24px; }
+  .pane-section { margin-bottom: 24px; }
+  .pane-section h3 {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #8a6a2a; border-bottom: 1px solid #e8d8a0; padding-bottom: 4px; margin-bottom: 12px;
+  }
+  .bio-text { font-size: 0.88rem; line-height: 1.75; color: #2a2a2a; }
+  .bio-text p { margin-bottom: 10px; }
+  .bio-text p:last-child { margin-bottom: 0; }
+
+  .detail-grid { display: grid; grid-template-columns: 130px 1fr; gap: 5px 12px; font-size: 0.83rem; }
+  .detail-grid .lbl { color: #8a7a5a; }
+  .detail-grid .val { color: #1a1a1a; }
+
+  /* Occupation timeline */
+  .occ-timeline { }
+  .occ-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 8px 0; border-bottom: 1px solid #f0e8d0;
+  }
+  .occ-item:last-child { border-bottom: none; }
+  .occ-years { font-size: 0.75rem; color: #8a7a5a; min-width: 90px; flex-shrink: 0; padding-top: 2px; }
+  .occ-title { font-size: 0.85rem; font-weight: bold; color: #1a3a2a; }
+  .occ-employer { font-size: 0.78rem; color: #6a5a3a; margin-top: 2px; }
+  .occ-notes { font-size: 0.76rem; color: #8a7a5a; margin-top: 2px; font-style: italic; }
+
+  /* Census entries */
+  .census-group { margin-bottom: 16px; }
+  .census-year-badge {
+    display: inline-block; background: #1a3a2a; color: #e8dfc8;
+    padding: 3px 10px; border-radius: 3px; font-size: 0.75rem;
+    margin-bottom: 8px; font-family: Arial, sans-serif;
+  }
+  .census-row {
+    display: flex; gap: 8px; align-items: baseline;
+    font-size: 0.83rem; padding: 5px 0; border-bottom: 1px solid #f0e8d0;
+  }
+  .census-row:last-child { border-bottom: none; }
+  .census-role { color: #8a7a5a; min-width: 80px; font-size: 0.78rem; }
+  .census-occ { flex: 1; }
+  .census-prop {
+    background: #e8f0e0; color: #1a4a2a; padding: 2px 8px;
+    border-radius: 10px; font-size: 0.72rem; cursor: pointer;
+    text-decoration: none; white-space: nowrap;
+  }
+  .census-prop:hover { background: #d0e8c0; }
+
+  /* Relationships */
+  .rel-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rel-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid #d0c090; border-radius: 20px;
+    padding: 5px 12px 5px 6px; cursor: pointer; transition: border-color 0.15s;
+  }
+  .rel-chip:hover { border-color: #8a6a2a; }
+  .rel-avatar {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #4a7c5a; color: white; font-size: 0.7rem;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .rel-name { font-size: 0.8rem; color: #1a3a2a; }
+  .rel-type { font-size: 0.7rem; color: #8a7a5a; }
+
+  /* Places */
+  .place-item {
+    background: white; border: 1px solid #d8d0b8; border-radius: 6px;
+    padding: 12px 14px; margin-bottom: 8px;
+  }
+  .place-item h4 { font-size: 0.88rem; color: #1a3a2a; margin-bottom: 4px; }
+  .place-item .place-conn { font-size: 0.76rem; color: #8a6a2a; font-style: italic; margin-bottom: 4px; }
+  .place-item .place-loc { font-size: 0.78rem; color: #8a7a5a; }
+  .place-item a { font-size: 0.76rem; color: #4a7c5a; text-decoration: none; }
+  .place-item a:hover { text-decoration: underline; }
+
+  /* Bibliography */
+  .bib-item {
+    padding: 8px 0; border-bottom: 1px solid #f0e8d0; font-size: 0.83rem;
+  }
+  .bib-item:last-child { border-bottom: none; }
+  .bib-title { font-style: italic; color: #1a1a1a; }
+  .bib-year { color: #8a7a5a; font-size: 0.76rem; margin-top: 2px; }
+  .bib-notes { color: #6a5a3a; font-size: 0.76rem; margin-top: 2px; }
+  .bib-item a { color: #4a7c5a; font-size: 0.76rem; }
+
+  .loading { text-align: center; padding: 48px; color: #8a7a5a; font-size: 0.9rem; }
+  .empty { text-align: center; padding: 48px; color: #8a7a5a; font-size: 0.9rem; }
+
+  .section-empty { font-size: 0.82rem; color: #9a8a6a; font-style: italic; }
+
+  .wiki-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #edf4f8; border: 1px solid #b0c8d8;
+    color: #2a6090; padding: 4px 10px; border-radius: 4px;
+    font-size: 0.78rem; text-decoration: none; margin-top: 8px;
+  }
+  .wiki-link:hover { background: #d8ecf8; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
+  <nav>
+    <a href="/">🗺 Map</a>
+    <a href="/people" class="active">👤 People</a>
+    <a href="/dashboard">📊 Dashboard</a>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <h2>People of The Park</h2>
+  <input type="text" id="searchBox" placeholder="Search by name…" oninput="applyFilters()">
+  <select id="occFilter" onchange="applyFilters()">
+    <option value="">All occupations</option>
+  </select>
+  <select id="propFilter" onchange="applyFilters()">
+    <option value="">All properties</option>
+  </select>
+  <span class="info" id="countInfo"></span>
+</div>
+
+<div class="main">
+  <div id="loading" class="loading">Loading people…</div>
+  <div id="grid" class="person-grid" style="display:none"></div>
+  <div id="empty" class="empty" style="display:none">No people match your search.</div>
+</div>
+
+<!-- Person detail overlay -->
+<div id="personOverlay" onclick="if(event.target===this)closeProfile()">
+  <div id="personPane">
+    <div class="pane-head" id="paneHead">
+      <div class="pane-head-avatar" id="paneAvatar"></div>
+      <div class="pane-head-text">
+        <h2 id="paneName"></h2>
+        <div class="pane-dates" id="paneDates"></div>
+      </div>
+      <button class="close-btn" onclick="closeProfile()">✕</button>
+    </div>
+    <div class="pane-body" id="paneBody"></div>
+  </div>
+</div>
+
+<script>
+let allPeople = [];
+let currentPersonId = null;
+
+// ── Utilities ────────────────────────────────────────────────────────────────
+function initials(p) {
+  const f = (p.first_name||'?')[0].toUpperCase();
+  const l = (p.last_name||'')[0]?.toUpperCase() || '';
+  return f + l;
+}
+function displayName(p) {
+  let n = `${p.first_name || ''} ${p.last_name || ''}`.trim();
+  if (p.known_as && p.known_as !== n) n = `${n}`;
+  return n;
+}
+function lifespan(p) {
+  const b = p.born_year || (p.born_date ? p.born_date : null);
+  const d = p.died_year || (p.died_date ? p.died_date : null);
+  if (!b && !d) return '';
+  return `${b || '?'} – ${d || 'present'}`;
+}
+const servantOccupations = new Set(['domestic servant','general domestic servant','housemaid','kitchenmaid','nursemaid','cook','nurse','butler','footman','lady\'s maid','parlour maid','scullery maid','gardener','helper and gardener','valet']);
+function isServant(occ) { return servantOccupations.has((occ||'').toLowerCase()); }
+
+// ── Load people ──────────────────────────────────────────────────────────────
+async function loadPeople() {
+  try {
+    const [peopleRes, occRes] = await Promise.all([
+      fetch('/api/people'),
+      fetch('/api/occupations')
+    ]);
+    allPeople = await peopleRes.json();
+    const occs = await occRes.json();
+
+    // Populate occupation filter
+    const occSel = document.getElementById('occFilter');
+    occs.forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o.occupation;
+      opt.textContent = `${o.occupation.charAt(0).toUpperCase() + o.occupation.slice(1)} (${o.count})`;
+      occSel.appendChild(opt);
+    });
+
+    // Populate property filter
+    const propSel = document.getElementById('propFilter');
+    const propIds = [...new Set(allPeople.flatMap(p => p.property_ids || []).filter(Boolean))].sort((a,b)=>a-b);
+    propIds.forEach(id => {
+      const opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = `Property ${id}`;
+      propSel.appendChild(opt);
+    });
+
+    // Check URL for ?person=id
+    const params = new URLSearchParams(location.search);
+    if (params.get('person')) openProfile(parseInt(params.get('person')));
+
+    renderGrid(allPeople);
+  } catch(e) {
+    document.getElementById('loading').textContent = 'Error loading people: ' + e.message;
+  }
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchBox').value.toLowerCase();
+  const occ = document.getElementById('occFilter').value.toLowerCase();
+  const prop = parseInt(document.getElementById('propFilter').value) || null;
+  let list = allPeople;
+  if (q) list = list.filter(p => displayName(p).toLowerCase().includes(q) || (p.known_as||'').toLowerCase().includes(q));
+  if (occ) list = list.filter(p => (p.occupations||[]).some(o => o.toLowerCase().includes(occ)));
+  if (prop) list = list.filter(p => (p.property_ids||[]).includes(prop));
+  renderGrid(list);
+}
+
+function renderGrid(list) {
+  document.getElementById('loading').style.display = 'none';
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  document.getElementById('countInfo').textContent = `${list.length} ${list.length === 1 ? 'person' : 'people'}`;
+  if (!list.length) { grid.style.display = 'none'; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  grid.style.display = 'grid';
+  grid.innerHTML = list.map(p => {
+    const occs = (p.occupations || []).slice(0, 4);
+    const propIds = p.property_ids || [];
+    const wikiHtml = p.wikipedia_url ? `<a class="wiki-badge" href="${p.wikipedia_url}" target="_blank" onclick="event.stopPropagation()">Wikipedia ↗</a>` : '';
+    const occHtml = occs.map(o => `<span class="occ-pill${isServant(o) ? ' servant' : ''}">${o}</span>`).join('');
+    const avatar = p.photo_url
+      ? `<img src="${p.photo_url}" alt="">`
+      : initials(p);
+    return `<div class="person-card" onclick="openProfile(${p.id})">
+      ${wikiHtml}
+      <div class="card-top">
+        <div class="person-avatar">${avatar}</div>
+        <div>
+          <div class="card-name">${displayName(p)}</div>
+          ${p.known_as ? `<div class="card-dates" style="font-style:italic">${p.known_as}</div>` : ''}
+          <div class="card-dates">${lifespan(p)}</div>
+        </div>
+      </div>
+      ${occs.length ? `<div class="occ-pills">${occHtml}</div>` : ''}
+      ${propIds.length ? `<div class="card-props">📍 ${propIds.map(id=>`Property ${id}`).join(' · ')}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── Person profile ───────────────────────────────────────────────────────────
+async function openProfile(id) {
+  currentPersonId = id;
+  document.getElementById('personOverlay').classList.add('visible');
+  document.getElementById('paneBody').innerHTML = '<div class="loading">Loading…</div>';
+  document.getElementById('paneName').textContent = '…';
+  document.getElementById('paneDates').textContent = '';
+  document.getElementById('paneAvatar').innerHTML = '';
+  document.getElementById('personOverlay').scrollTop = 0;
+
+  // Update URL
+  const url = new URL(location.href);
+  url.searchParams.set('person', id);
+  history.pushState({}, '', url);
+
+  try {
+    const p = await fetch(`/api/person/${id}`).then(r => r.json());
+    renderProfile(p);
+  } catch(e) {
+    document.getElementById('paneBody').innerHTML = `<div class="loading">Error: ${e.message}</div>`;
+  }
+}
+
+function closeProfile() {
+  document.getElementById('personOverlay').classList.remove('visible');
+  currentPersonId = null;
+  const url = new URL(location.href);
+  url.searchParams.delete('person');
+  history.pushState({}, '', url);
+}
+
+function renderProfile(p) {
+  // Header
+  document.getElementById('paneName').textContent = p.known_as || displayName(p);
+  if (p.known_as && p.known_as !== displayName(p)) {
+    document.getElementById('paneName').textContent = displayName(p);
+    // subtitle handled below
+  }
+  const dates = [];
+  if (p.born_date || p.born_year) dates.push(`b. ${p.born_date || p.born_year}${p.born_place ? ', '+p.born_place : ''}`);
+  if (p.died_date || p.died_year) dates.push(`d. ${p.died_date || p.died_year}${p.died_place ? ', '+p.died_place : ''}`);
+  document.getElementById('paneDates').textContent = dates.join('  ·  ');
+
+  const avatar = document.getElementById('paneAvatar');
+  if (p.photo_url) {
+    avatar.innerHTML = `<img src="${p.photo_url}" alt="">`;
+  } else {
+    avatar.textContent = initials(p);
+  }
+
+  // Body
+  const html = [];
+
+  // Known as / title
+  if (p.known_as) {
+    html.push(`<div class="pane-section">
+      <div class="detail-grid">
+        <span class="lbl">Also known as</span><span class="val">${p.known_as}</span>
+        ${p.born_place ? `<span class="lbl">Born</span><span class="val">${p.born_date||p.born_year||''}${p.born_place ? ' — '+p.born_place : ''}</span>` : ''}
+      </div>
+    </div>`);
+  }
+
+  if (p.wikipedia_url) {
+    html.push(`<div style="margin-bottom:16px"><a class="wiki-link" href="${p.wikipedia_url}" target="_blank">📖 Wikipedia article ↗</a></div>`);
+  }
+
+  // Bio
+  if (p.bio) {
+    const paras = p.bio.split('\n\n').map(t => `<p>${t.trim()}</p>`).join('');
+    html.push(`<div class="pane-section">
+      <h3>Story</h3>
+      <div class="bio-text">${paras}</div>
+    </div>`);
+  }
+
+  // Occupations
+  html.push(`<div class="pane-section">
+    <h3>Occupations &amp; Roles</h3>
+    ${(p.occupations||[]).length ? `<div class="occ-timeline">${p.occupations.map(o => `
+      <div class="occ-item">
+        <div class="occ-years">${o.from_year||''}${o.from_year && o.to_year ? '–' : ''}${o.to_year&&o.to_year!==o.from_year ? o.to_year : ''}</div>
+        <div>
+          <div class="occ-title">${o.occupation}</div>
+          ${o.employer ? `<div class="occ-employer">${o.employer}</div>` : ''}
+          ${o.notes ? `<div class="occ-notes">${o.notes}</div>` : ''}
+        </div>
+      </div>`).join('')}</div>` : `<p class="section-empty">No occupation records.</p>`}
+  </div>`);
+
+  // Census entries
+  if ((p.census_entries||[]).length) {
+    const byYear = {};
+    p.census_entries.forEach(ce => {
+      if (!byYear[ce.census_year]) byYear[ce.census_year] = [];
+      byYear[ce.census_year].push(ce);
+    });
+    const rows = Object.entries(byYear).sort(([a],[b])=>a-b).map(([yr,entries]) => `
+      <div class="census-group">
+        <div class="census-year-badge">${yr}</div>
+        ${entries.map(ce => `<div class="census-row">
+          <span class="census-role">${ce.relationship||'—'}</span>
+          <span class="census-occ">${ce.occupation_at_census||'—'}${ce.age_at_census ? ` (aged ${ce.age_at_census})` : ''}</span>
+          ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">Property ${ce.property_id} ↗</a>` : ''}
+        </div>`).join('')}
+      </div>`).join('');
+    html.push(`<div class="pane-section"><h3>Census Records</h3>${rows}</div>`);
+  }
+
+  // Related people
+  if ((p.relationships||[]).length) {
+    const chips = p.relationships.map(rel => {
+      const other = rel.person_a_id === p.id
+        ? { id: rel.bid, first: rel.b_first, last: rel.b_last, known: rel.b_known }
+        : { id: rel.pid, first: rel.a_first, last: rel.a_last, known: rel.a_known };
+      const relLabel = humaniseRelType(rel.relationship, rel.person_a_id === p.id);
+      const otherName = `${other.first||''} ${other.last||''}`.trim();
+      return `<div class="rel-chip" onclick="openProfile(${other.id})">
+        <div class="rel-avatar">${(other.first||'?')[0].toUpperCase()}</div>
+        <div>
+          <div class="rel-name">${otherName}</div>
+          <div class="rel-type">${relLabel}</div>
+        </div>
+      </div>`;
+    }).join('');
+    html.push(`<div class="pane-section"><h3>Related People</h3><div class="rel-list">${chips}</div></div>`);
+  }
+
+  // Significant places
+  if ((p.places||[]).length) {
+    const placeHtml = p.places.map(pl => `
+      <div class="place-item">
+        <h4>${pl.name}</h4>
+        ${pl.connection ? `<div class="place-conn">${pl.connection}</div>` : ''}
+        ${pl.location ? `<div class="place-loc">📍 ${pl.location}</div>` : ''}
+        ${pl.description ? `<div style="font-size:0.8rem;color:#4a4a4a;margin-top:6px;line-height:1.6">${pl.description}</div>` : ''}
+        ${pl.wikipedia_url ? `<a href="${pl.wikipedia_url}" target="_blank">Wikipedia ↗</a>` : ''}
+      </div>`).join('');
+    html.push(`<div class="pane-section"><h3>Significant Places</h3>${placeHtml}</div>`);
+  }
+
+  // Bibliography
+  if ((p.bibliography||[]).length) {
+    const bibHtml = p.bibliography.map(b => `
+      <div class="bib-item">
+        <div class="bib-title">${b.title}</div>
+        <div class="bib-year">${[b.year, b.publisher].filter(Boolean).join(' · ')}</div>
+        ${b.notes ? `<div class="bib-notes">${b.notes}</div>` : ''}
+        ${b.url ? `<a href="${b.url}" target="_blank">View online ↗</a>` : ''}
+      </div>`).join('');
+    html.push(`<div class="pane-section"><h3>Bibliography</h3>${bibHtml}</div>`);
+  }
+
+  document.getElementById('paneBody').innerHTML = html.join('');
+}
+
+function humaniseRelType(type, isA) {
+  const map = {
+    'spouse_of': 'Spouse',
+    'parent_of': isA ? 'Parent' : 'Child',
+    'child_of': isA ? 'Child' : 'Parent',
+    'sibling_of': 'Sibling',
+    'employer_of': isA ? 'Employer' : 'Employee',
+    'employee_of': isA ? 'Employee' : 'Employer',
+  };
+  return map[type] || type;
+}
+
+// keyboard
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
+
+loadPeople();
+</script>
+</body>
+</html>

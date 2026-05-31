@@ -271,6 +271,7 @@
   <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
   <nav>
     <button onclick="focusSearch()">🔍 Search</button>
+    <a href="/people" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;cursor:pointer;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">👤 People</a>
     <button class="primary" onclick="addDataClick()">+ Add Data</button>
     <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">&#9881; Admin</button>
     <div id="userNavArea" style="display:flex;align-items:center;gap:8px">
@@ -337,6 +338,7 @@
       <button class="tab active" onclick="tab('data',this)">Data Sheet</button>
       <button class="tab" onclick="tab('history',this)">History</button>
       <button class="tab" onclick="tab('photos',this)">Photos</button>
+      <button class="tab" onclick="tab('people',this)">People <span class="badge" id="peopleBadge" style="display:none">0</span></button>
       <button class="tab" onclick="tab('subs',this)">Submissions <span class="badge" id="subBadge">0</span></button>
     </div>
     <div class="panel-body" id="panelBody"></div>
@@ -931,6 +933,13 @@ function openProp(id) {
   const subCount = ((propOverrides[p.id] || {}).submissions || subs[p.id] || []).length;
   document.getElementById('subBadge').textContent = subCount;
   document.getElementById('panelAddDataBtn').style.display = currentUser ? '' : 'none';
+  // Reset people badge until tab is opened
+  const pb = document.getElementById('peopleBadge');
+  if (pb) pb.style.display = 'none';
+  // Pre-check people count async
+  fetch(`/api/people?property=${p.id}`).then(r=>r.json()).then(ppl => {
+    if (pb && ppl.length) { pb.textContent = ppl.length; pb.style.display = ''; }
+  }).catch(()=>{});
   document.getElementById('panel').classList.add('open');
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===0));
   curTab = 'data';
@@ -1020,6 +1029,10 @@ function renderPanel() {
       photoHtml += '<p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6;margin-top:10px">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>';
     }
     body.innerHTML = photoHtml;
+  }
+  else if (curTab === 'people') {
+    renderPeopleTab(p.id, body);
+    return; // async render handles it
   }
   else if (curTab === 'subs') {
     const allSubs = (propOverrides[p.id] || {}).submissions || ss;
@@ -1152,6 +1165,97 @@ async function submitSub() {
   } else {
     toast(data.error || 'Submission failed');
   }
+}
+
+// ── PEOPLE TAB ───────────────────────────────────────────────────────────────
+let peopleCache = {};  // propId → people array
+
+async function renderPeopleTab(propId, body) {
+  body.innerHTML = '<div style="padding:24px;text-align:center;color:#8a7a5a;font-size:0.85rem">Loading people…</div>';
+  try {
+    if (!peopleCache[propId]) {
+      const res = await fetch(`/api/people?property=${propId}`);
+      peopleCache[propId] = await res.json();
+    }
+    const people = peopleCache[propId];
+    const badge = document.getElementById('peopleBadge');
+    if (badge) {
+      const headCount = people.filter(p => (p.census_years||[]).length > 0).length;
+      if (headCount > 0) { badge.textContent = headCount; badge.style.display = ''; }
+    }
+    if (!people.length) {
+      body.innerHTML = '<div style="padding:20px;font-size:0.83rem;color:#8a7a5a">No people records yet for this property.<br><br>People are added when census data or biographical records are attached to a property.</div>';
+      return;
+    }
+
+    // Group by census year
+    const byYear = {};
+    const noCensus = [];
+    people.forEach(p => {
+      const years = p.census_years || [];
+      if (years.length === 0) { noCensus.push(p); return; }
+      years.forEach(yr => {
+        if (!byYear[yr]) byYear[yr] = [];
+        byYear[yr].push(p);
+      });
+    });
+
+    let html = '';
+
+    // Fetch census entry details for relationship/occupation
+    const censusByYear = {};
+    for (const yr of Object.keys(byYear).sort()) {
+      try {
+        const r = await fetch(`/api/census/${yr}?property=${propId}`);
+        const entries = await r.json();
+        censusByYear[yr] = entries;
+      } catch(e) { censusByYear[yr] = []; }
+    }
+
+    for (const yr of Object.keys(byYear).sort()) {
+      const entries = censusByYear[yr] || [];
+      html += `<div style="margin-bottom:18px">
+        <div style="background:#1a3a2a;color:#e8dfc8;padding:4px 10px;border-radius:3px;font-size:0.72rem;display:inline-block;margin-bottom:8px;font-family:Arial,sans-serif">${yr} Census</div>`;
+      entries.forEach(ce => {
+        const isServant = ['servant','cook','housemaid','kitchenmaid','nursemaid','nurse','gardener','general domestic'].includes((ce.relationship||'').toLowerCase());
+        html += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${ce.person_id})">
+          <div style="width:30px;height:30px;border-radius:50%;background:${isServant?'#8a6a2a':'#4a7c5a'};color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(ce.first_name||'?')[0].toUpperCase()}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:0.85rem;color:#1a1a1a">${ce.first_name||''} ${ce.last_name||''}</div>
+            <div style="font-size:0.74rem;color:#8a7a5a">${ce.relationship||''}${ce.occupation_at_census ? ' · '+ce.occupation_at_census : ''}${ce.age_at_census ? ' · aged '+ce.age_at_census : ''}</div>
+          </div>
+          <div style="font-size:0.7rem;color:#4a7c5a">View →</div>
+        </div>`;
+      });
+      html += '</div>';
+    }
+
+    if (noCensus.length) {
+      html += `<div style="margin-bottom:18px"><div style="font-size:0.72rem;color:#8a7a5a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Other Residents</div>`;
+      noCensus.forEach(p => {
+        html += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${p.id})">
+          <div style="width:30px;height:30px;border-radius:50%;background:#6a5a3a;color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(p.first_name||'?')[0].toUpperCase()}</div>
+          <div style="flex:1"><div style="font-size:0.85rem;color:#1a1a1a">${p.first_name||''} ${p.last_name||''}</div>
+          ${p.known_as ? `<div style="font-size:0.74rem;color:#8a7a5a;font-style:italic">${p.known_as}</div>` : ''}
+          </div><div style="font-size:0.7rem;color:#4a7c5a">View →</div>
+        </div>`;
+      });
+      html += '</div>';
+    }
+
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e8d8a0">
+      <a href="/people?property=${propId}" style="font-size:0.8rem;color:#4a7c5a;text-decoration:none">View all people for this property ↗</a>
+    </div>`;
+    body.innerHTML = html;
+  } catch(e) {
+    body.innerHTML = `<div style="padding:20px;font-size:0.83rem;color:#c04040">Error loading people: ${e.message}</div>`;
+  }
+}
+
+// Open a person's profile in a floating overlay within the map page
+function openPersonInOverlay(personId) {
+  // Navigate to people page with the person pre-selected
+  window.open(`/people?person=${personId}`, '_blank');
 }
 
 // ── SEARCH & FILTER ──────────────────────────────────────────────────────────

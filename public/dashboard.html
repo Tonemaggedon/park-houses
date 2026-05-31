@@ -211,7 +211,11 @@
     <h1>🏛 Park Houses — Admin Dashboard</h1>
     <div class="subtitle">The Park Estate, Nottingham</div>
   </div>
-  <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="/" style="background:var(--border);border:none;color:var(--text);padding:8px 14px;border-radius:6px;font-size:0.8rem;text-decoration:none">🗺 Map</a>
+    <a href="/people" style="background:var(--border);border:none;color:var(--text);padding:8px 14px;border-radius:6px;font-size:0.8rem;text-decoration:none">👤 People</a>
+    <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  </div>
 </header>
 
 <main>

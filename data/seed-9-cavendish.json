@@ -1,0 +1,476 @@
+{
+  "people": [
+    {
+      "first_name": "Thomas",
+      "last_name": "Bayley",
+      "known_as": null,
+      "born_date": "3 June 1846",
+      "born_year": 1846,
+      "born_place": "Lenton, Nottingham",
+      "died_date": "11 March 1906",
+      "died_year": 1906,
+      "died_place": null,
+      "bio": "Thomas Bayley inherited a substantial business empire from his father (also Thomas Bayley), including the Old Lenton Tannery and Leatherworks, Digby Colliery Co. Ltd. (mines at Eastwood and Gedling), and Manners Colliery Co. Ltd. (mines at Ilkeston and Newthorpe). By the 1891 census he described himself as a colliery and land owner, reflecting the growing importance of coal in the family wealth.\n\nHe was politically active throughout his life, representing Lenton on Nottingham Town Council and later Newthorpe on the newly created Nottinghamshire County Council. He served as Magistrate, Alderman, and Sheriff of Nottingham. His parliamentary career saw him elected as the Liberal Member of Parliament for Chesterfield in 1892, holding the seat until he stood down at the 1906 general election — the year of his death. He was known as an active promoter of non-sectarian education and a vocal opponent of slavery.\n\nTogether with Annie, he purchased Langar Hall, which has remained in the family's descendants ever since.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Thomas_Bayley_(politician)",
+      "occupations": [
+        { "occupation": "Leather merchant", "from_year": 1870, "to_year": 1890, "employer": "Old Lenton Tannery and Leatherworks" },
+        { "occupation": "Colliery owner", "from_year": 1870, "to_year": 1906, "employer": "Digby Colliery Co. Ltd. / Manners Colliery Co. Ltd." },
+        { "occupation": "Land owner", "from_year": 1870, "to_year": 1906 },
+        { "occupation": "Magistrate", "from_year": null, "to_year": null },
+        { "occupation": "Alderman", "from_year": null, "to_year": null },
+        { "occupation": "Sheriff of Nottingham", "from_year": null, "to_year": null },
+        { "occupation": "Member of Parliament", "from_year": 1892, "to_year": 1906, "notes": "Liberal MP for Chesterfield" },
+        { "occupation": "Town Councillor", "from_year": null, "to_year": null, "notes": "Lenton ward, Nottingham Town Council" },
+        { "occupation": "County Councillor", "from_year": null, "to_year": null, "notes": "Newthorpe, Nottinghamshire County Council" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 34, "occupation_at_census": "Leather merchant", "source": "1881 Census" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 45, "occupation_at_census": "Colliery and land owner", "source": "1891 Census" }
+      ],
+      "relationships": [
+        { "name": "Annie Bayley", "type": "spouse_of" },
+        { "name": "Harold Bayley", "type": "parent_of" },
+        { "name": "Henry Dennis Readett-Bayley", "type": "parent_of" },
+        { "name": "Muriel Katherine Bayley", "type": "parent_of" },
+        { "name": "Hester Theodora Bayley", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Bayley",
+      "known_as": "Annie Mary Bradley Bayley (née Farmer)",
+      "born_date": "24 February 1850",
+      "born_year": 1850,
+      "born_place": "Nottingham",
+      "died_date": "23 August 1904",
+      "died_year": 1904,
+      "died_place": null,
+      "bio": "Annie was the daughter of celebrated Nottingham composer and conductor Henry Farmer. By the 1891 census she is listed as a member of the school board — a significant public role for a woman of the era, reflecting the progressive values she and Thomas shared. She predeceased her husband by nearly two years.\n\nA brass memorial tablet in Holy Trinity Church, Lenton was dedicated to her memory, bearing the inscription: \"Man at her side grew nobler, girls purer, as through the whole town the children were gladder that pulled at her gown.\"\n\nA stained glass window in the west wall of St Andrew's Church, Langar was installed by her son Henry Dennis Readett-Bayley in 1916 in memory of both Thomas and Annie.",
+      "wikipedia_url": null,
+      "occupations": [
+        { "occupation": "Member of School Board", "from_year": null, "to_year": 1904, "employer": "Nottingham School Board" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 31, "occupation_at_census": null, "source": "1881 Census" },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 41, "occupation_at_census": "Member of School Board", "source": "1891 Census" }
+      ],
+      "relationships": [
+        { "name": "Thomas Bayley", "type": "spouse_of" },
+        { "name": "Henry Farmer", "type": "child_of" },
+        { "name": "Harold Bayley", "type": "parent_of" },
+        { "name": "Henry Dennis Readett-Bayley", "type": "parent_of" },
+        { "name": "Muriel Katherine Bayley", "type": "parent_of" },
+        { "name": "Hester Theodora Bayley", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Henry",
+      "last_name": "Farmer",
+      "known_as": null,
+      "born_date": "13 May 1819",
+      "born_year": 1819,
+      "born_place": "Nottingham",
+      "died_date": "25 June 1891",
+      "died_year": 1891,
+      "died_place": "Nottingham",
+      "bio": "Henry Farmer was a prominent figure in Victorian Nottingham's musical life. Self-taught, he studied harmony under Sir Henry Bishop and was organist at High Pavement Chapel, Nottingham from 1839 to 1879 — a forty-year tenure. He conducted the Nottingham Harmonic Society from 1866 to 1880.\n\nA notable moment in his career came in 1846 when he played violin in the orchestra at the premiere of Mendelssohn's Elijah at the Birmingham Triennial Music Festival. His compositions included a Mass in B flat (sketched 1843, published 1847) and various choral and instrumental works. He also served as Captain in the Robin Hood Battalion from 1860 to 1878.\n\nHis daughter Annie married Thomas Bayley, MP for Chesterfield.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Henry_Farmer",
+      "occupations": [
+        { "occupation": "Organist", "from_year": 1839, "to_year": 1879, "employer": "High Pavement Chapel, Nottingham" },
+        { "occupation": "Conductor", "from_year": 1866, "to_year": 1880, "employer": "Nottingham Harmonic Society" },
+        { "occupation": "Composer", "from_year": null, "to_year": null },
+        { "occupation": "Violinist", "from_year": null, "to_year": null },
+        { "occupation": "Army officer", "from_year": 1860, "to_year": 1878, "employer": "Robin Hood Battalion", "notes": "Captain" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Annie Bayley", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Harold",
+      "last_name": "Bayley",
+      "known_as": null,
+      "born_date": null,
+      "born_year": 1877,
+      "born_place": null,
+      "died_date": null,
+      "died_year": null,
+      "died_place": null,
+      "bio": "Harold was the eldest child of Thomas and Annie Bayley, born at Peveril House, 9 Cavendish Crescent North. He became one of the most prolific and unconventional scholars of his generation — a deeply original thinker whose work spanned folklore, symbolism, Baconian theory, and esoteric traditions.\n\nHis magnum opus, The Lost Language of Symbolism (1912, 2 vols.), remains in print and is considered a foundational text in the study of emblems, watermarks, and mythological symbolism. He drew on medieval mystic sects, ancient cultures, and fairy tales across the world to decode the hidden meanings behind familiar symbols.\n\nHe was also an ardent Baconian — believing Francis Bacon to be the true author of Shakespeare's plays — and wrote extensively on the Rosicrucian tradition. No Wikipedia article currently exists for Harold Bayley, though his books are widely held in academic libraries and available via the Internet Archive.",
+      "wikipedia_url": null,
+      "occupations": [
+        { "occupation": "Author", "from_year": 1902, "to_year": null },
+        { "occupation": "Journalist", "from_year": null, "to_year": null },
+        { "occupation": "Folklorist", "from_year": null, "to_year": null }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 4, "occupation_at_census": null, "source": "1881 Census" }
+      ],
+      "relationships": [
+        { "name": "Thomas Bayley", "type": "child_of" },
+        { "name": "Annie Bayley", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Henry Dennis",
+      "last_name": "Readett-Bayley",
+      "known_as": "Sir Henry Dennis Readett-Bayley, KBE, DL",
+      "born_date": "8 December 1878",
+      "born_year": 1878,
+      "born_place": null,
+      "died_date": null,
+      "died_year": 1940,
+      "died_place": null,
+      "bio": "Dennis inherited his father's industrial empire and managed it for over 25 years, serving as Managing Director of Digby Colliery Ltd. and Director of Manners Colliery Co. Ltd. He was educated at Uppingham School, the Royal Agricultural College Cirencester, and the University of St Andrews.\n\nHis most celebrated achievement was during the First World War, when he established the Dennis Bayley Fund for the Transport of the Wounded, which raised an extraordinary £700,000 for motor ambulances, hospital boats, and other medical equipment. He was knighted for this work in 1918.\n\nHis public honours included: Knight of Grace of the Order of St John of Jerusalem; High Sheriff of Yorkshire (1920–21); Deputy-Lieutenant of the East Riding of Yorkshire; Deputy-Lieutenant of Nottinghamshire; Officer of the Legion of Honour; Croix de Guerre. He was also a member of the Institute of Mining Engineers and held numerous positions in the coal industry nationally, including Chairman of the Erewash & Leen Valley Coal Owners' Association.\n\nIt was Dennis who commissioned the stained glass window at St Andrew's Church, Langar in 1916, in memory of his parents Thomas and Annie.",
+      "wikipedia_url": null,
+      "occupations": [
+        { "occupation": "Colliery owner", "from_year": 1906, "to_year": 1940, "employer": "Digby Colliery Ltd." },
+        { "occupation": "Mining engineer", "from_year": null, "to_year": null },
+        { "occupation": "Ironmaster", "from_year": null, "to_year": null },
+        { "occupation": "Leather manufacturer", "from_year": null, "to_year": null },
+        { "occupation": "Land owner", "from_year": null, "to_year": null },
+        { "occupation": "Magistrate", "from_year": null, "to_year": null },
+        { "occupation": "High Sheriff", "from_year": 1920, "to_year": 1921, "notes": "High Sheriff of Yorkshire" },
+        { "occupation": "Deputy-Lieutenant", "from_year": null, "to_year": null, "notes": "East Riding of Yorkshire and Nottinghamshire" },
+        { "occupation": "Army officer", "from_year": 1914, "to_year": 1918, "notes": "Lieutenant Colonel; established the Dennis Bayley Fund for the Transport of the Wounded" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 2, "occupation_at_census": null, "source": "1881 Census", "notes": "Listed as 'Dennis' in census" }
+      ],
+      "relationships": [
+        { "name": "Thomas Bayley", "type": "child_of" },
+        { "name": "Annie Bayley", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Muriel Katherine",
+      "last_name": "Bayley",
+      "known_as": null,
+      "born_date": "13 September 1880",
+      "born_year": 1880,
+      "born_place": "Peveril House, 9 Cavendish Crescent North, Nottingham",
+      "died_date": null,
+      "died_year": 1933,
+      "died_place": "Langar Hall, Nottinghamshire",
+      "bio": "Muriel was born at Peveril House and spent much of her later life at Langar Hall, where she died in 1933. Her marriage to Percy Lambe Huskinson on 31 July 1899 linked two prominent Nottinghamshire families. Through her sons, the Bayley connection to Langar Hall continued into the mid-twentieth century.",
+      "wikipedia_url": null,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": null, "source": "1891 Census" }
+      ],
+      "relationships": [
+        { "name": "Thomas Bayley", "type": "child_of" },
+        { "name": "Annie Bayley", "type": "child_of" },
+        { "name": "Geoffrey Huskinson", "type": "parent_of" },
+        { "name": "Thomas Leonard Huskinson", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Geoffrey",
+      "last_name": "Huskinson",
+      "known_as": "Geoffrey Neville Bayley Huskinson",
+      "born_date": "1 February 1900",
+      "born_year": 1900,
+      "born_place": null,
+      "died_date": "17 June 1982",
+      "died_year": 1982,
+      "died_place": "Hinton-Waldrist",
+      "bio": "Geoffrey was a man of considerable sporting distinction as well as business prominence. Educated at Oundle School and Oxford University, he was a Director of Digby Colliery Ltd., maintaining the family's industrial interests into the next generation.\n\nHe played rugby union for England and was a first-class cricketer for Nottinghamshire, serving as President of Nottinghamshire County Cricket Club in 1959 and 1960.\n\nBy 1937 Langar Hall had passed to Geoffrey, and it was his daughter Imogen Skirving (1937–2016) who later transformed the Hall into the celebrated boutique hotel and restaurant it remains today.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Geoffrey_Huskinson_(cricketer)",
+      "occupations": [
+        { "occupation": "Colliery director", "from_year": null, "to_year": null, "employer": "Digby Colliery Ltd." },
+        { "occupation": "Cricketer", "from_year": 1922, "to_year": 1922, "employer": "Nottinghamshire CCC" },
+        { "occupation": "Rugby player", "from_year": null, "to_year": null, "notes": "England international" },
+        { "occupation": "Cricket club president", "from_year": 1959, "to_year": 1960, "employer": "Nottinghamshire County Cricket Club" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Muriel Katherine Bayley", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Thomas Leonard",
+      "last_name": "Huskinson",
+      "known_as": "Thomas Leonard Bousfield Huskinson",
+      "born_date": null,
+      "born_year": 1905,
+      "born_place": "Peveril House, 9 Cavendish Crescent North, Nottingham",
+      "died_date": null,
+      "died_year": 1974,
+      "died_place": null,
+      "bio": "Born at Peveril House, 9 Cavendish Crescent North. Son of Muriel Katherine Bayley and Percy Lambe Huskinson.",
+      "wikipedia_url": null,
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Muriel Katherine Bayley", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Hester Theodora",
+      "last_name": "Bayley",
+      "known_as": null,
+      "born_date": null,
+      "born_year": 1887,
+      "born_place": null,
+      "died_date": null,
+      "died_year": null,
+      "died_place": null,
+      "bio": "Youngest daughter of Thomas and Annie Bayley, recorded in the 1891 census at 9 Cavendish Crescent North aged 4. No further biographical detail is currently recorded.",
+      "wikipedia_url": null,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 4, "occupation_at_census": null, "source": "1891 Census" }
+      ],
+      "relationships": [
+        { "name": "Thomas Bayley", "type": "child_of" },
+        { "name": "Annie Bayley", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Veston Fulford Marriott",
+      "last_name": "Weston-Webb",
+      "known_as": "W. F. M. Weston-Webb",
+      "born_date": null,
+      "born_year": 1851,
+      "born_place": "Southernhay, Exeter",
+      "died_date": null,
+      "died_year": null,
+      "died_place": null,
+      "bio": "Veston Fulford Marriott Weston-Webb was the third son of Charles Knighton Webb MD (1808–1862) of Southernhay, Exeter, and Lucy Elizabeth, daughter of Commander Charles Knighton. He was educated at Eastman's Royal Naval School, Southsea.\n\nIn partnership with C. A. Holland, he established Holland & Webb, yarn manufacturers based at Weekday Cross, Nottingham. By 1927 the company had become one of the most important yarn houses in the country, specialising in cotton yarns for Levers' laces, lace curtains, plain nets, and hosiery — central products of the Nottingham textile industry.\n\nHe held the lease on Peveril House (9 Cavendish Crescent North) from at least 1911. A Notice of Assignment transferring the lease to John Dobson is dated 8 March 1917.\n\nHe was married three times: to Emily Cowell (d.1893) in 1876; to Agnes Josephine Littlewood (d.1922) in 1897; and to Mabel Winifred Hodges in 1923.\n\nHe published The Autobiography of a British Yarn Merchant in 1929 (Grant Richards & Humphrey Toulmin).",
+      "wikipedia_url": null,
+      "occupations": [
+        { "occupation": "Yarn merchant", "from_year": null, "to_year": null },
+        { "occupation": "Industrialist", "from_year": null, "to_year": null, "employer": "Holland & Webb Ltd." },
+        { "occupation": "Author", "from_year": 1929, "to_year": 1929 }
+      ],
+      "census_entries": [],
+      "relationships": []
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Finch",
+      "known_as": null,
+      "born_date": null,
+      "born_year": 1841,
+      "born_place": null,
+      "died_date": null,
+      "died_year": null,
+      "died_place": null,
+      "bio": "Maria Finch was recorded as a nurse at 9 Cavendish Crescent North in the 1881 census, aged 40.",
+      "wikipedia_url": null,
+      "occupations": [{ "occupation": "Nurse", "from_year": 1881, "to_year": 1881 }],
+      "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 40, "occupation_at_census": "Nurse", "source": "1881 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Dinah",
+      "last_name": "Swaine",
+      "born_year": 1847,
+      "bio": "Recorded as a servant at 9 Cavendish Crescent North in the 1881 census, aged 34.",
+      "occupations": [{ "occupation": "Domestic servant", "from_year": 1881, "to_year": 1881 }],
+      "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 34, "occupation_at_census": "Servant", "source": "1881 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Louisa",
+      "last_name": "Raven",
+      "born_year": 1857,
+      "bio": "Recorded as cook at 9 Cavendish Crescent North in the 1881 census, aged 24.",
+      "occupations": [{ "occupation": "Cook", "from_year": 1881, "to_year": 1881 }],
+      "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Cook", "source": "1881 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Spalding",
+      "born_year": 1859,
+      "bio": "Recorded as housemaid at 9 Cavendish Crescent North in the 1881 census, aged 22.",
+      "occupations": [{ "occupation": "Housemaid", "from_year": 1881, "to_year": 1881 }],
+      "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid", "source": "1881 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Misthil",
+      "born_year": 1862,
+      "bio": "Recorded as nursemaid at 9 Cavendish Crescent North in the 1881 census, aged 19.",
+      "occupations": [{ "occupation": "Nursemaid", "from_year": 1881, "to_year": 1881 }],
+      "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Nursemaid", "source": "1881 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Whysall",
+      "born_year": 1863,
+      "bio": "Recorded as general domestic servant at 9 Cavendish Crescent North in the 1891 census, aged 28.",
+      "occupations": [{ "occupation": "General domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "General domestic", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Hannah",
+      "last_name": "Murden",
+      "born_year": 1865,
+      "bio": "Recorded as general domestic servant at 9 Cavendish Crescent North in the 1891 census, aged 26.",
+      "occupations": [{ "occupation": "General domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General domestic", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Watson",
+      "born_year": 1860,
+      "bio": "Recorded as general domestic servant at 9 Cavendish Crescent North in the 1891 census, aged 31.",
+      "occupations": [{ "occupation": "General domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "General domestic", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Francis",
+      "last_name": "Johnson",
+      "born_year": 1863,
+      "bio": "Recorded as general domestic servant at 9 Cavendish Crescent North in the 1891 census, aged 28.",
+      "occupations": [{ "occupation": "General domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "General domestic", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Stevenson",
+      "born_year": 1855,
+      "bio": "Recorded as cook at 9 Cavendish Crescent North in the 1891 census, aged 36.",
+      "occupations": [{ "occupation": "Cook", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 36, "occupation_at_census": "Cook", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Emma Annie",
+      "last_name": "Simpson",
+      "born_year": 1867,
+      "bio": "Recorded as housemaid at 9 Cavendish Crescent North in the 1891 census, aged 24.",
+      "occupations": [{ "occupation": "Housemaid", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Housemaid", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Evelyn Annie",
+      "last_name": "Dannicliffe",
+      "born_year": 1870,
+      "bio": "Recorded as kitchenmaid at 9 Cavendish Crescent North in the 1891 census, aged 21.",
+      "occupations": [{ "occupation": "Kitchenmaid", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Kitchenmaid", "source": "1891 Census" }],
+      "relationships": []
+    },
+    {
+      "first_name": "Harold Herbert",
+      "last_name": "Shipmore",
+      "born_year": 1874,
+      "bio": "Recorded as helper and gardener at 9 Cavendish Crescent North in the 1891 census, aged 17.",
+      "occupations": [{ "occupation": "Gardener", "from_year": 1891, "to_year": 1891 }],
+      "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Helper and gardener", "source": "1891 Census" }],
+      "relationships": []
+    }
+  ],
+  "places": [
+    {
+      "name": "Langar Hall",
+      "location": "Langar, Nottinghamshire",
+      "place_type": "country house",
+      "description": "A Grade II listed Georgian house set next to St Andrew's Church in the village of Langar. Purchased by Annie Bayley and remained in the Bayley-Huskinson family for generations. Geoffrey Huskinson's daughter Imogen Skirving transformed it into a celebrated boutique hotel. The Bayley family descendants owned Langar Hall for well over a century.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Langar_Hall",
+      "lat": 52.8908,
+      "lng": -0.9448,
+      "property_connection": "Bayley family owned",
+      "person_connections": [
+        { "person": "Thomas Bayley", "connection": "Owner" },
+        { "person": "Annie Bayley", "connection": "Owner (purchased)" },
+        { "person": "Muriel Katherine Bayley", "connection": "Died here 1933" },
+        { "person": "Geoffrey Huskinson", "connection": "Inherited 1937" }
+      ]
+    },
+    {
+      "name": "St Andrew's Church, Langar",
+      "location": "Langar, Nottinghamshire",
+      "place_type": "church",
+      "description": "Medieval parish church next to Langar Hall. Contains a stained glass window in the west wall, commissioned by Sir Henry Dennis Readett-Bayley in 1916 in memory of his parents Thomas and Annie Bayley. The central panel depicts the Crucifixion.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/St_Andrew%27s_Church,_Langar",
+      "lat": 52.8908,
+      "lng": -0.9448,
+      "property_connection": "Bayley memorial window",
+      "person_connections": [
+        { "person": "Thomas Bayley", "connection": "Memorial stained glass window (west wall)" },
+        { "person": "Annie Bayley", "connection": "Memorial stained glass window (west wall)" },
+        { "person": "Henry Dennis Readett-Bayley", "connection": "Commissioned the memorial window in 1916" }
+      ]
+    },
+    {
+      "name": "Holy Trinity Church, Lenton",
+      "location": "Lenton, Nottingham",
+      "place_type": "church",
+      "description": "Parish church in Lenton, Nottingham. Contains a brass memorial tablet dedicated to Annie Mary Bradley Bayley (née Farmer), bearing the inscription: \"Man at her side grew nobler, girls purer, as through the whole town the children were gladder that pulled at her gown.\"",
+      "wikipedia_url": null,
+      "lat": 52.9481,
+      "lng": -1.1709,
+      "property_connection": "Annie Bayley memorial",
+      "person_connections": [
+        { "person": "Annie Bayley", "connection": "Brass memorial tablet" }
+      ]
+    },
+    {
+      "name": "Digby Colliery (Gedling Colliery)",
+      "location": "Gedling, Nottinghamshire",
+      "place_type": "colliery",
+      "description": "Coal mine sunk 1899–1902, three miles east of Nottingham. Operated by the Digby Colliery Co. Ltd. under the Bayley family. Became known as the 'Pit of Nations' for its diverse international workforce. Peak production in 1958 at 1,100,000 tons. Nationalised 1947, closed 1991.",
+      "wikipedia_url": null,
+      "lat": 52.9717,
+      "lng": -1.0842,
+      "property_connection": "Bayley family business",
+      "person_connections": [
+        { "person": "Thomas Bayley", "connection": "Owner / founder" },
+        { "person": "Henry Dennis Readett-Bayley", "connection": "Managing director for 25+ years" },
+        { "person": "Geoffrey Huskinson", "connection": "Director" }
+      ]
+    },
+    {
+      "name": "Old Lenton Tannery and Leatherworks",
+      "location": "Lenton, Nottingham",
+      "place_type": "industrial",
+      "description": "The founding business of the Bayley family fortune, inherited by Thomas Bayley from his father. The 1881 census records Thomas as a 'leather merchant'; by 1891 coal had surpassed leather as the primary description of his business.",
+      "wikipedia_url": null,
+      "lat": null,
+      "lng": null,
+      "property_connection": "Bayley family business",
+      "person_connections": [
+        { "person": "Thomas Bayley", "connection": "Owner (inherited)" },
+        { "person": "Henry Dennis Readett-Bayley", "connection": "Inherited" }
+      ]
+    },
+    {
+      "name": "High Pavement Chapel, Nottingham",
+      "location": "High Pavement, Nottingham",
+      "place_type": "chapel",
+      "description": "Unitarian chapel in central Nottingham. Henry Farmer served as organist here from 1839 to 1879, a forty-year tenure.",
+      "wikipedia_url": null,
+      "lat": 52.9506,
+      "lng": -1.1480,
+      "property_connection": null,
+      "person_connections": [
+        { "person": "Henry Farmer", "connection": "Organist 1839–1879" }
+      ]
+    }
+  ],
+  "bibliography": [
+    { "author_name": "Harold Bayley", "title": "The Tragedy of Sir Francis Bacon: An Appeal for Further Investigation and Research", "year": 1902, "notes": "Baconian authorship theory" },
+    { "author_name": "Harold Bayley", "title": "Notes on Watermarks", "year": 1905 },
+    { "author_name": "Harold Bayley", "title": "Shakespeare Symphony: An Introduction to the Ethics of Elizabethan Drama", "year": 1906 },
+    { "author_name": "Harold Bayley", "title": "New Light on the Renaissance", "year": 1909 },
+    { "author_name": "Harold Bayley", "title": "The Lost Language of Symbolism (2 vols.)", "year": 1912, "notes": "Major work. Remains in print. Foundational text in emblems, watermarks and mythological symbolism.", "url": "https://archive.org/details/lostlanguageofsy01bayl" },
+    { "author_name": "Harold Bayley", "title": "The Undiscovered Country", "year": 1918 },
+    { "author_name": "Harold Bayley", "title": "Archaic England: An Essay in Deciphering Prehistory from Megalithic Monuments", "year": 1919, "url": "https://archive.org/details/archaicenglandes00bayl" },
+    { "author_name": "Harold Bayley", "title": "Some Mysteries and Treasures of the Rosicrucian Order", "year": null },
+    { "author_name": "Harold Bayley", "title": "The Hidden Symbols of the Rosicrucians", "year": null },
+    { "author_name": "Veston Fulford Marriott Weston-Webb", "title": "The Autobiography of a British Yarn Merchant", "year": 1929, "publisher": "Grant Richards & Humphrey Toulmin", "notes": "First-hand account of a career in the Nottinghamshire textile trade" }
+  ]
+}
