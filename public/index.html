@@ -185,11 +185,9 @@
 </header>
 
 <div class="toolbar">
-  <input id="searchBox" type="text" placeholder="House name, street, architect, style…" oninput="filterMarkers(this.value)">
+  <input id="searchBox" type="text" placeholder="Search by house name, street, number…" oninput="filterMarkers(this.value)">
   <select id="typeFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
-    <option value="">All periods</option>
-    <option value="Victorian">Victorian</option>
-    <option value="Edwardian">Edwardian</option>
+    <option value="">All streets</option>
   </select>
   <select id="listedFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
     <option value="">All listings</option>
@@ -224,80 +222,345 @@
 
 <script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
-// Geocoded coordinates from Nominatim / OpenStreetMap (WGS84)
 const props = [
-  { id:101, name:"Lenton House",      street:"North Road",          no:"1",  lat:52.9534763, lng:-1.1659461, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1860", style:"Italianate Villa",  floors:3,
-    desc:"A substantial Italianate villa by T.C. Hine retaining original round-headed windows and stuccoed facades with decorative cornicing and bracketed eaves.",
-    residents:[{y:"1862–1884",n:"Josiah Fletcher, lace manufacturer"},{y:"1885–1901",n:"Rev. Charles Whitmore"},{y:"1902–1914",n:"Dr. Arthur Hallam"}] },
-  { id:102, name:"The Cedars",        street:"Cavendish Crescent N",no:"14", lat:52.9533504, lng:-1.1642358, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1874", style:"Gothic Revival",    floors:3,
-    desc:"A striking polychrome Gothic Revival house attributed to Watson Fothergill with red and blue engineering brick, steeply pitched roof and decorative bargeboards.",
-    residents:[{y:"1875–1898",n:"William Birkin, hosiery manufacturer"},{y:"1899–1918",n:"Miss Eleanor Birkin"}] },
-  { id:103, name:"Belmont",           street:"The Ropewalk",        no:"22", lat:52.9546084, lng:-1.1605067, type:"Edwardian", listed:false, arch:"Unknown",                built:"1905", style:"Arts & Crafts",     floors:2,
-    desc:"Arts and Crafts house of red brick with tile-hung upper storey, prominent chimney stacks, tapered porch columns and leaded casement windows.",
-    residents:[{y:"1906–1912",n:"Alderman George Hopkinson, JP"},{y:"1913–1918",n:"Mrs. Sophia Hopkinson"}] },
-  { id:104, name:"Park House",        street:"Park Drive",          no:"3",  lat:52.9498039, lng:-1.1602952, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1855", style:"Gothic",            floors:3,
-    desc:"One of the earliest houses on the Estate by T.C. Hine, 1855. Pointed arched windows, Gothic label mouldings and picturesque asymmetry. Surviving coach house to rear.",
-    residents:[{y:"1855–1872",n:"William Wylde, estate developer"},{y:"1873–1895",n:"Thomas Adams, lace manufacturer"},{y:"1896–1917",n:"Colonel H.P. Rolleston"}] },
-  { id:105, name:"Sherwood",          street:"Castle Boulevard",    no:"48", lat:52.9468213, lng:-1.1681576, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1908", style:"Free Classical",    floors:2,
-    desc:"Free classical house with red brick and stone dressings by A.N. Bromley. Venetian window, stone quoins and original wrought-iron entrance gates survive.",
-    residents:[{y:"1909–1918",n:"Herbert Jardine, solicitor"}] },
-  { id:106, name:"The Elms",          street:"Lenton Road",         no:"7",  lat:52.9500247, lng:-1.1574813, type:"Victorian", listed:false, arch:"Unknown",                built:"1868", style:"Italianate",        floors:3,
-    desc:"Late Italianate villa with rendered facades and bracketed eaves cornice. Takes its name from the elm avenue lost to Dutch elm disease in the 1970s. Conservatory c.1885.",
-    residents:[{y:"1869–1885",n:"Thomas Birkin, manufacturer"},{y:"1886–1907",n:"Rev. Henry Cartwright"},{y:"1908–1918",n:"The Misses Cartwright"}] },
-  { id:107, name:"Oakwood",           street:"North Road",          no:"8",  lat:52.9535141, lng:-1.1662756, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1880", style:"Queen Anne",        floors:2,
-    desc:"Queen Anne house with Dutch gable and terracotta panels attributed to Watson Fothergill. Red brick with buff terracotta dressings. Original decorative tilework survives in the hall.",
-    residents:[{y:"1881–1900",n:"Samuel Morley Jr., hosiery manufacturer"},{y:"1901–1918",n:"Dr. James Whitworth"}] },
-  { id:108, name:"Cavendish Lodge",   street:"Cavendish Crescent S",no:"5",  lat:52.9495121, lng:-1.1618486, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1912", style:"Arts & Crafts",     floors:2,
-    desc:"Late Arts and Crafts house by Percy Howitt (later City Architect) with roughcast render and half-timbered gables. Garden by the owner, an amateur horticulturalist.",
-    residents:[{y:"1913–1918",n:"Robert Parsons, banker"}] },
-  { id:109, name:"Mapperley",         street:"The Ropewalk",        no:"41", lat:52.9541789, lng:-1.1593476, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1858", style:"Italianate",        floors:3,
-    desc:"Large Italianate villa by T.C. Hine with projecting bay windows, Corinthian pilasters to the entrance porch and a separately listed stable block.",
-    residents:[{y:"1858–1880",n:"Edwin Patchitt, solicitor"},{y:"1881–1910",n:"Colonel James Moore"},{y:"1911–1918",n:"Arthur Moore"}] },
-  { id:110, name:"Vine Cottage",      street:"Park Drive",          no:"11", lat:52.9501051, lng:-1.1613501, type:"Victorian", listed:false, arch:"Unknown",                built:"1872", style:"Gothic",            floors:2,
-    desc:"Gothic cottage with pointed gables and label-moulded windows, a substantial family residence despite its name. The original vine was reportedly planted in 1872.",
-    residents:[{y:"1872–1890",n:"George Parsons, lace factor"},{y:"1891–1918",n:"Mrs. Harriet Parsons"}] },
-  { id:111, name:"The Mount",         street:"Castle Boulevard",    no:"32", lat:52.9482079, lng:-1.1561203, type:"Victorian", listed:false, arch:"Unknown",                built:"1865", style:"Italianate",        floors:3,
-    desc:"Mid-Victorian Italianate house on an elevated site with views over the Trent valley. Paired round-headed windows and dentilled cornice. Converted to flats 1950s, returned to single occupancy.",
-    residents:[{y:"1865–1888",n:"Charles Leavers, lace manufacturer"},{y:"1889–1914",n:"Sir Frederick Mapperley, JP"}] },
-  { id:112, name:"Fern Hill",         street:"Lenton Road",         no:"19", lat:52.9490463, lng:-1.1606350, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1903", style:"Baroque Revival",   floors:2,
-    desc:"Unusual Baroque Revival house by A.N. Bromley with segmental pediments, keystoned windows and a curved bay entrance front. Earlier scheme with cupola was rejected by the estate surveyor.",
-    residents:[{y:"1904–1918",n:"Frederick Cope, alderman"}] },
-  { id:113, name:"The Hollies",       street:"Cavendish Crescent N",no:"8",  lat:52.9532379, lng:-1.1659720, type:"Victorian", listed:false, arch:"T.C. Hine",              built:"1869", style:"Italianate",        floors:3,
-    desc:"A well-preserved Italianate villa by T.C. Hine with original sash windows and a cast-iron entrance canopy. The walled kitchen garden to the north survives in modified form.",
-    residents:[{y:"1870–1892",n:"John Boot, pharmaceutical manufacturer"},{y:"1893–1918",n:"Alfred Boot"}] },
-  { id:114, name:"Willow Bank",       street:"North Road",          no:"15", lat:52.9534763, lng:-1.1659461, type:"Victorian", listed:false, arch:"Unknown",                built:"1876", style:"Gothic Revival",    floors:2,
-    desc:"A compact Gothic Revival house with polychrome brickwork and plate-tracery window to the stair. The garden retains a Victorian fernery.",
-    residents:[{y:"1877–1905",n:"Samuel Watts, stockbroker"},{y:"1906–1918",n:"Mrs. Clara Watts"}] },
-  { id:115, name:"Raleigh House",     street:"Park Drive",          no:"20", lat:52.9501051, lng:-1.1613501, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1910", style:"Free Classical",    floors:2,
-    desc:"Free classical house by Percy Howitt with a projecting Ionic porch and hipped roof. One of Howitt's last domestic commissions before his major civic work.",
-    residents:[{y:"1911–1918",n:"Frank Raleigh, engineer"}] },
+  { id:1, name:"", street:"Albury Square", no:"1 and 2", address:"1 and 2 Albury Square / 3 and 5 North Road", lat:52.9533371, lng:-1.165329, listed:false, residents:[] },
+  { id:2, name:"", street:"Barrack Lane", no:"1", address:"1 Barrack lane", lat:52.9536034, lng:-1.1682133, listed:false, residents:[] },
+  { id:3, name:"", street:"Barrack Lane", no:"2", address:"2 Barrack Lane", lat:52.9536752, lng:-1.1681692, listed:false, residents:[] },
+  { id:4, name:"", street:"Barrack Lane", no:"4", address:"4 Barrack Lane", lat:52.9535884, lng:-1.1674484, listed:false, residents:[] },
+  { id:5, name:"", street:"Barrack Lane", no:"6", address:"6 Barrack Lane", lat:52.953773, lng:-1.1675421, listed:false, residents:[] },
+  { id:6, name:"", street:"Barrack Lane", no:"8", address:"8 Barrack Lane", lat:52.9541025, lng:-1.1675923, listed:false, residents:[] },
+  { id:7, name:"", street:"Barrack Lane", no:"10", address:"10 Barrack Lane", lat:52.9535604, lng:-1.1682784, listed:false, residents:[] },
+  { id:8, name:"", street:"Barrack Lane", no:"12", address:"12 Barrack Lane", lat:52.9540809, lng:-1.1679208, listed:false, residents:[] },
+  { id:9, name:"", street:"Barrack Lane", no:"14", address:"14 Barrack Lane", lat:52.9540397, lng:-1.1674777, listed:false, residents:[] },
+  { id:10, name:"", street:"Barrack Lane", no:"16", address:"16 Barrack Lane", lat:52.9541182, lng:-1.1677954, listed:false, residents:[] },
+  { id:11, name:"", street:"Barrack Lane", no:"18", address:"18 Barrack Lane", lat:52.9540164, lng:-1.1682484, listed:false, residents:[] },
+  { id:12, name:"", street:"Barrack Lane", no:"20", address:"20 Barrack Lane", lat:52.9534995, lng:-1.1678068, listed:false, residents:[] },
+  { id:13, name:"", street:"Barrack Lane", no:"22", address:"22 Barrack Lane", lat:52.953838, lng:-1.1678576, listed:false, residents:[] },
+  { id:14, name:"", street:"Barrack Lane", no:"24", address:"24 Barrack Lane", lat:52.9541169, lng:-1.1679492, listed:false, residents:[] },
+  { id:15, name:"", street:"Barrack Lane", no:"26", address:"26 Barrack Lane", lat:52.9541259, lng:-1.1679748, listed:false, residents:[] },
+  { id:16, name:"", street:"Barrack Lane", no:"28", address:"28 Barrack Lane", lat:52.9534832, lng:-1.1674714, listed:false, residents:[] },
+  { id:17, name:"", street:"Barrack Lane", no:"30", address:"30 Barrack Lane", lat:52.9538015, lng:-1.1682894, listed:false, residents:[] },
+  { id:18, name:"", street:"Castle Grove", no:"4", address:"4 Castle Grove", lat:52.9498944, lng:-1.1567863, listed:false, residents:[] },
+  { id:19, name:"", street:"Castle Grove", no:"5", address:"5 Castle Grove", lat:52.9496854, lng:-1.1561187, listed:false, residents:[] },
+  { id:20, name:"", street:"Castle Grove", no:"7", address:"7 Castle Grove", lat:52.9494645, lng:-1.1563832, listed:false, residents:[] },
+  { id:21, name:"", street:"Cavendish Crescent North", no:"1", address:"1 Cavendish Crescent North", lat:52.9529567, lng:-1.1662778, listed:false, residents:[] },
+  { id:22, name:"", street:"Cavendish Crescent North", no:"3", address:"3 Cavendish Crescent North", lat:52.953185, lng:-1.1658524, listed:false, residents:[] },
+  { id:23, name:"", street:"Cavendish Crescent North", no:"5", address:"5 Cavendish Crescent North", lat:52.9529933, lng:-1.1664931, listed:false, residents:[] },
+  { id:24, name:"", street:"Cavendish Crescent North", no:"7", address:"7 Cavendish Crescent North", lat:52.9529862, lng:-1.1659224, listed:false, residents:[] },
+  { id:25, name:"", street:"Cavendish Crescent North", no:"9", address:"9 Cavendish Crescent North", lat:52.9532705, lng:-1.1664583, listed:false, residents:[] },
+  { id:26, name:"", street:"Cavendish Crescent North", no:"10", address:"10 Cavendish Crescent North", lat:52.9533889, lng:-1.1663546, listed:false, residents:[] },
+  { id:27, name:"", street:"Cavendish Crescent North", no:"11", address:"11 Cavendish Crescent North", lat:52.9531857, lng:-1.1662821, listed:false, residents:[] },
+  { id:28, name:"", street:"Cavendish Crescent North", no:"12", address:"12 Cavendish Crescent North", lat:52.9529787, lng:-1.1661892, listed:false, residents:[] },
+  { id:29, name:"", street:"Park House: 14 Cavendish Cresecent North", no:"", address:"Park House: 14 Cavendish Cresecent North", lat:52.9535755, lng:-1.1657927, listed:false, residents:[] },
+  { id:30, name:"", street:"Cavendish Crescent North", no:"15", address:"15 Cavendish Crescent North", lat:52.9533807, lng:-1.1663186, listed:false, residents:[] },
+  { id:31, name:"", street:"Cavendish Crescent North", no:"16a", address:"16 and 16a Cavendish Crescent North", lat:52.9531679, lng:-1.165724, listed:false, residents:[] },
+  { id:32, name:"", street:"Cavendish Crescent North", no:"17", address:"17 Cavendish Crescent North", lat:52.953579, lng:-1.1663495, listed:false, residents:[] },
+  { id:33, name:"", street:"Cavendish Crescent North", no:"18a", address:"18 and 18a Cavendish Crescent North", lat:52.9534245, lng:-1.1664322, listed:false, residents:[] },
+  { id:34, name:"", street:"Cavendish Crescent North", no:"19", address:"19 Cavendish Crescent North", lat:52.9531581, lng:-1.1656001, listed:false, residents:[] },
+  { id:35, name:"", street:"Cavendish Crescent North", no:"20", address:"20 Cavendish Crescent North", lat:52.9532866, lng:-1.166061, listed:false, residents:[] },
+  { id:36, name:"", street:"Cavendish Crescent North", no:"22 and 24", address:"22 and 24 Cavendish Crescent North", lat:52.9531433, lng:-1.1665068, listed:false, residents:[] },
+  { id:37, name:"Haddon House :", street:"Cavendish Crescent North", no:"", address:"Haddon House : Cavendish Crescent North", lat:52.9534619, lng:-1.1658768, listed:false, residents:[] },
+  { id:38, name:"", street:"Cavendish Crescent South", no:"1", address:"1 Cavendish Crescent South", lat:52.9487076, lng:-1.1640458, listed:false, residents:[] },
+  { id:39, name:"", street:"Cavendish Crescent South", no:"3", address:"3 Cavendish Crescent South", lat:52.9492806, lng:-1.1639705, listed:false, residents:[] },
+  { id:41, name:"", street:"Cavendish Crescent South", no:"7", address:"7 Cavendish Crescent South", lat:52.9488479, lng:-1.1632849, listed:false, residents:[] },
+  { id:42, name:"", street:"Cavendish Crescent South", no:"9", address:"9 Cavendish Crescent South", lat:52.9493312, lng:-1.1638138, listed:false, residents:[] },
+  { id:43, name:"", street:"Cavendish Crescent South", no:"11", address:"11 Cavendish Crescent South", lat:52.9493002, lng:-1.1637579, listed:false, residents:[] },
+  { id:44, name:"", street:"Cavendish Crescent South", no:"15", address:"15 Cavendish Crescent South", lat:52.9487616, lng:-1.1634776, listed:false, residents:[] },
+  { id:45, name:"", street:"Cavendish Crescent South", no:"17", address:"17 Cavendish Crescent South", lat:52.9486845, lng:-1.164071, listed:false, residents:[] },
+  { id:46, name:"", street:"Cavendish Crescent South", no:"19", address:"19 Cavendish Crescent South", lat:52.949267, lng:-1.1635751, listed:false, residents:[] },
+  { id:47, name:"", street:"Cavendish Crescent South", no:"21", address:"21 Cavendish Crescent South", lat:52.9491689, lng:-1.1639769, listed:false, residents:[] },
+  { id:48, name:"", street:"Cavendish Crescent South", no:"23", address:"23 Cavendish Crescent South", lat:52.9489684, lng:-1.1638275, listed:false, residents:[] },
+  { id:49, name:"", street:"Cavendish Crescent South", no:"25", address:"25 Cavendish Crescent South", lat:52.9487334, lng:-1.1642027, listed:false, residents:[] },
+  { id:50, name:"", street:"Cavendish Road East", no:"23", address:"23 Cavendish Road East", lat:52.9512865, lng:-1.1621796, listed:false, residents:[] },
+  { id:52, name:"", street:"Cavendish Road East", no:"27", address:"Bishop’s House: 27 Cavendish Road East", lat:52.9511906, lng:-1.1626619, listed:false, residents:[] },
+  { id:53, name:"", street:"Cavendish Road East", no:"29", address:"29 Cavendish Road East", lat:52.9512172, lng:-1.1624572, listed:false, residents:[] },
+  { id:54, name:"", street:"Cavendish Road East", no:"31", address:"31 Cavendish Road East", lat:52.9516112, lng:-1.1620805, listed:false, residents:[] },
+  { id:55, name:"", street:"Cavendish Road East", no:"33", address:"33 Cavendish Road East", lat:52.9512875, lng:-1.1627939, listed:false, residents:[] },
+  { id:56, name:"Cavendish House:", street:"Cavendish Road East", no:"", address:"Cavendish House: Cavendish Road East", lat:52.9516224, lng:-1.161764, listed:false, residents:[] },
+  { id:57, name:"Elmhurst:", street:"Cavendish Road East", no:"", address:"Elmhurst: Cavendish Road East", lat:52.95185, lng:-1.1621342, listed:false, residents:[] },
+  { id:58, name:"Overdale:", street:"Cavendish Road East", no:"", address:"Overdale: Cavendish Road East", lat:52.9515724, lng:-1.1625455, listed:false, residents:[] },
+  { id:59, name:"", street:"Clare Valley", no:"1", address:"1 Clare Valley", lat:52.951216, lng:-1.1599666, listed:false, residents:[] },
+  { id:60, name:"", street:"Clare Valley", no:"2", address:"2 Clare Valley", lat:52.9512575, lng:-1.1599715, listed:false, residents:[] },
+  { id:61, name:"", street:"Clare Valley", no:"3", address:"3 Clare Valley", lat:52.9511934, lng:-1.1596978, listed:false, residents:[] },
+  { id:63, name:"", street:"Clare Valley", no:"5", address:"5 Clare Valley", lat:52.9514936, lng:-1.1601931, listed:false, residents:[] },
+  { id:64, name:"Grove House:", street:"Clare Valley", no:"", address:"Grove House: Clare Valley", lat:52.951457, lng:-1.160114, listed:false, residents:[] },
+  { id:65, name:"Ribble Lodge:", street:"Clare Valley", no:"", address:"Ribble Lodge: Clare Valley", lat:52.9512607, lng:-1.1601623, listed:false, residents:[] },
+  { id:66, name:"Springdale:", street:"Clare Valley", no:"", address:"Springdale: Clare Valley", lat:52.951293, lng:-1.1604482, listed:false, residents:[] },
+  { id:67, name:"The Spinney:", street:"Clare Valley", no:"", address:"The Spinney: Clare Valley", lat:52.9518649, lng:-1.1606012, listed:false, residents:[] },
+  { id:68, name:"", street:"Clifton Terrace", no:"1", address:"1 Clifton Terrace", lat:52.9483573, lng:-1.1606563, listed:false, residents:[] },
+  { id:69, name:"", street:"Clifton Terrace", no:"3", address:"3 Clifton Terrace", lat:52.9482653, lng:-1.1608808, listed:false, residents:[] },
+  { id:70, name:"", street:"Clifton Terrace", no:"4", address:"4 Clifton Terrace", lat:52.948365, lng:-1.1607058, listed:false, residents:[] },
+  { id:71, name:"", street:"Clinton Terrace", no:"1", address:"1 Clinton Terrace (127 Derby Road)", lat:52.9549681, lng:-1.1646335, listed:false, residents:[] },
+  { id:72, name:"", street:"Clinton Terrace", no:"2", address:"2 Clinton Terrace (129 Derby Road)", lat:52.9551278, lng:-1.1643107, listed:false, residents:[] },
+  { id:73, name:"", street:"Clinton Terrace", no:"3", address:"3 Clinton Terrace (131 Derby Road)", lat:52.955155, lng:-1.1643561, listed:false, residents:[] },
+  { id:74, name:"", street:"Clinton Terrace", no:"4", address:"4 Clinton Terrace (133 Derby Road)", lat:52.9548407, lng:-1.1644763, listed:false, residents:[] },
+  { id:75, name:"", street:"Clinton Terrace", no:"5", address:"5 Clinton Terrace (135 Derby Road)", lat:52.9548734, lng:-1.1645292, listed:false, residents:[] },
+  { id:76, name:"", street:"Clinton Terrace", no:"6", address:"6 Clinton Terrace (137 Derby Road)", lat:52.9553727, lng:-1.1648514, listed:false, residents:[] },
+  { id:77, name:"", street:"Clinton Terrace", no:"7", address:"7 Clinton Terrace (139 Derby Road)", lat:52.9548425, lng:-1.1641383, listed:false, residents:[] },
+  { id:78, name:"", street:"Clumber Crescent South", no:"3", address:"3 Clumber Crescent South", lat:52.949374, lng:-1.1635772, listed:false, residents:[] },
+  { id:79, name:"", street:"Clumber Crescent South", no:"5", address:"5 Clumber Crescent South", lat:52.9498734, lng:-1.1635525, listed:false, residents:[] },
+  { id:80, name:"", street:"Clumber Crescent South", no:"7", address:"7 Clumber Crescent South", lat:52.9497143, lng:-1.164114, listed:false, residents:[] },
+  { id:81, name:"Adam House:", street:"Clumber Road East", no:"", address:"Adam House: Clumber Road East", lat:52.9515337, lng:-1.1637924, listed:false, residents:[] },
+  { id:82, name:"Edale House :", street:"Clumber Road East", no:"", address:"Edale House : Clumber Road East", lat:52.9515194, lng:-1.1635077, listed:false, residents:[] },
+  { id:83, name:"Jelenice:", street:"Clumber Road East", no:"", address:"Jelenice: Clumber Road East", lat:52.95119, lng:-1.1637848, listed:false, residents:[] },
+  { id:84, name:"Penryhn House :", street:"Clumber Road East", no:"", address:"Penryhn House : Clumber Road East", lat:52.9510808, lng:-1.1629773, listed:false, residents:[] },
+  { id:85, name:"Westwood:", street:"Clumber Road East", no:"", address:"Westwood: Clumber Road East", lat:52.9512756, lng:-1.1633845, listed:false, residents:[] },
+  { id:86, name:"Holly Lodge :", street:"Clumber Road West", no:"", address:"Holly Lodge : Clumber Road West", lat:52.9510905, lng:-1.1662478, listed:false, residents:[] },
+  { id:87, name:"Linden House:", street:"Clumber Road West", no:"", address:"Linden House: Clumber Road West", lat:52.9509669, lng:-1.1659328, listed:false, residents:[] },
+  { id:89, name:"", street:"Derby Road", no:"119", address:"119 Derby Road", lat:52.954536, lng:-1.1556396, listed:false, residents:[] },
+  { id:90, name:"", street:"Derby Road", no:"121", address:"121 Derby Road", lat:52.9546973, lng:-1.1555337, listed:false, residents:[] },
+  { id:91, name:"", street:"Derby Road", no:"123", address:"123 Derby Road", lat:52.9544607, lng:-1.1560955, listed:false, residents:[] },
+  { id:92, name:"", street:"Derby Road", no:"125", address:"125 Derby Road", lat:52.9544437, lng:-1.1553147, listed:false, residents:[] },
+  { id:93, name:"", street:"Derby Road", no:"159 - 161", address:"159 - 161 Derby Road", lat:52.9546035, lng:-1.1561588, listed:false, residents:[] },
+  { id:94, name:"", street:"Derby Road", no:"171", address:"171 Derby Road", lat:52.9540948, lng:-1.1553596, listed:false, residents:[] },
+  { id:95, name:"", street:"Derby Road", no:"173", address:"173 Derby Road", lat:52.954581, lng:-1.1558259, listed:false, residents:[] },
+  { id:96, name:"Rocky Mount :", street:"Derby Road", no:"", address:"Rocky Mount : Derby Road", lat:52.9542701, lng:-1.1560572, listed:false, residents:[] },
+  { id:97, name:"", street:"Derby Terrace", no:"1", address:"Derby House (1 Derby Terrace)", lat:52.9547046, lng:-1.1661561, listed:false, residents:[] },
+  { id:98, name:"", street:"Derby Road", no:"159", address:"159 Derby Road (2 Derby Terrace)", lat:52.9545149, lng:-1.1558171, listed:false, residents:[] },
+  { id:99, name:"", street:"Derby Road", no:"157", address:"157 Derby Road (3 Derby Terrace)", lat:52.9543433, lng:-1.1554808, listed:false, residents:[] },
+  { id:100, name:"", street:"Derby Road", no:"155", address:"155 Derby Road (4 Derby Terrace)", lat:52.9542767, lng:-1.1557578, listed:false, residents:[] },
+  { id:101, name:"", street:"Derby Road", no:"153", address:"153 Derby Road (5 Derby Terrace)", lat:52.9542854, lng:-1.1559624, listed:false, residents:[] },
+  { id:102, name:"", street:"Derby Road", no:"151", address:"151 Derby Road (6 Derby Terrace)", lat:52.9541773, lng:-1.1555798, listed:false, residents:[] },
+  { id:103, name:"", street:"Derby Road", no:"149", address:"149 Derby Road (7 Derby Terrace)", lat:52.954501, lng:-1.1550934, listed:false, residents:[] },
+  { id:104, name:"", street:"Derby Road", no:"147", address:"147 Derby Road (8 Derby Terrace)", lat:52.9543601, lng:-1.1558241, listed:false, residents:[] },
+  { id:105, name:"", street:"Derby Road", no:"145", address:"145 Derby Road (9 Derby Terrace)", lat:52.9547083, lng:-1.1556839, listed:false, residents:[] },
+  { id:106, name:"", street:"Duke William Mount", no:"1", address:"1 Duke William Mount", lat:52.9511772, lng:-1.1647807, listed:false, residents:[] },
+  { id:107, name:"", street:"Duke William Mount", no:"2", address:"2 Duke William Mount", lat:52.9510233, lng:-1.1644488, listed:false, residents:[] },
+  { id:108, name:"", street:"Duke William Mount", no:"3", address:"3 Duke William Mount", lat:52.9514563, lng:-1.1642408, listed:false, residents:[] },
+  { id:109, name:"", street:"Fish Pond Drive", no:"4", address:"4 Fish Pond Drive", lat:52.9497878, lng:-1.1607871, listed:false, residents:[] },
+  { id:110, name:"", street:"Fish Pond Drive", no:"6", address:"6 Fish Pond Drive", lat:52.9497301, lng:-1.1604964, listed:false, residents:[] },
+  { id:111, name:"", street:"Hamilton Drive", no:"1", address:"1 Hamilton Drive", lat:52.948611, lng:-1.157704, listed:false, residents:[] },
+  { id:113, name:"", street:"Hamilton Drive", no:"1b", address:"1b Hamilton Drive", lat:52.9489164, lng:-1.1571652, listed:false, residents:[] },
+  { id:114, name:"", street:"Hamilton Drive", no:"1c", address:"1c Hamilton Drive", lat:52.9487103, lng:-1.1578527, listed:false, residents:[] },
+  { id:115, name:"", street:"Hamilton Drive", no:"2", address:"2 Hamilton Drive", lat:52.9490773, lng:-1.1576217, listed:false, residents:[] },
+  { id:116, name:"", street:"Hamilton Drive", no:"3", address:"3 Hamilton Drive", lat:52.9485895, lng:-1.1572237, listed:false, residents:[] },
+  { id:117, name:"", street:"Hamilton Drive", no:"4", address:"4 Hamilton Drive", lat:52.9485598, lng:-1.1574456, listed:false, residents:[] },
+  { id:118, name:"", street:"Hamilton Drive", no:"5", address:"5 Hamilton Drive", lat:52.9486879, lng:-1.1576618, listed:false, residents:[] },
+  { id:119, name:"", street:"Hamilton Drive", no:"6", address:"6 Hamilton Drive", lat:52.9488543, lng:-1.1569842, listed:false, residents:[] },
+  { id:121, name:"", street:"Hamilton Drive", no:"8", address:"8 Hamilton Drive", lat:52.9483996, lng:-1.1570085, listed:false, residents:[] },
+  { id:122, name:"", street:"Hamilton Drive", no:"9", address:"9 Hamilton Drive", lat:52.9488018, lng:-1.1575632, listed:false, residents:[] },
+  { id:123, name:"", street:"Hamilton Drive", no:"10", address:"10 Hamilton Drive", lat:52.9484169, lng:-1.1571505, listed:false, residents:[] },
+  { id:124, name:"", street:"Hamilton Drive", no:"11", address:"11 Hamilton Drive", lat:52.9487049, lng:-1.1576784, listed:false, residents:[] },
+  { id:125, name:"", street:"Hamilton Drive", no:"24", address:"24 Hamilton Drive", lat:52.9489775, lng:-1.1579824, listed:false, residents:[] },
+  { id:126, name:"Weston Lodge:", street:"Hardwick Road", no:"", address:"Weston Lodge: Hardwick Road", lat:52.948725, lng:-1.1659445, listed:false, residents:[] },
+  { id:127, name:"", street:"Holles Crescent", no:"1", address:"1 Holles Crescent", lat:52.9501929, lng:-1.1609315, listed:false, residents:[] },
+  { id:128, name:"", street:"Holles Crescent", no:"3", address:"3 Holles Crescent", lat:52.9501744, lng:-1.1609121, listed:false, residents:[] },
+  { id:129, name:"", street:"Holles Crescent", no:"5", address:"5 Holles Crescent", lat:52.9501972, lng:-1.1609411, listed:false, residents:[] },
+  { id:130, name:"", street:"Hope Drive", no:"2", address:"2 Hope Drive", lat:52.9485554, lng:-1.1568317, listed:false, residents:[] },
+  { id:131, name:"", street:"Hope Drive", no:"4", address:"4 Hope Drive", lat:52.9486777, lng:-1.1568335, listed:false, residents:[] },
+  { id:132, name:"", street:"Hope Drive", no:"6", address:"6 Hope Drive", lat:52.9487227, lng:-1.1558954, listed:false, residents:[] },
+  { id:133, name:"", street:"Hope Drive", no:"8", address:"8 Hope Drive", lat:52.9486374, lng:-1.15623, listed:false, residents:[] },
+  { id:134, name:"", street:"Hope Drive", no:"10", address:"The Mews: 10 Hope Drive", lat:52.9482643, lng:-1.1562871, listed:false, residents:[] },
+  { id:135, name:"", street:"Hope Drive", no:"12", address:"12 Hope Drive", lat:52.9484205, lng:-1.1558398, listed:false, residents:[] },
+  { id:136, name:"", street:"Hope Drive", no:"14", address:"14 Hope Drive", lat:52.948244, lng:-1.1563377, listed:false, residents:[] },
+  { id:137, name:"", street:"Hope Drive", no:"16", address:"16 Hope Drive", lat:52.9488238, lng:-1.1558447, listed:false, residents:[] },
+  { id:138, name:"", street:"Hope Drive", no:"18", address:"18 Hope Drive", lat:52.9484841, lng:-1.1566721, listed:false, residents:[] },
+  { id:139, name:"", street:"Hope Drive", no:"20", address:"20 Hope Drive", lat:52.9483663, lng:-1.1564046, listed:false, residents:[] },
+  { id:140, name:"", street:"Hope Drive", no:"22", address:"22 Hope Drive", lat:52.9487298, lng:-1.1562473, listed:false, residents:[] },
+  { id:141, name:"", street:"Hope Drive", no:"24", address:"24 Hope Drive", lat:52.9486217, lng:-1.1565898, listed:false, residents:[] },
+  { id:142, name:"", street:"Hope Drive", no:"26", address:"26 Hope Drive", lat:52.9485872, lng:-1.1567764, listed:false, residents:[] },
+  { id:143, name:"", street:"Huntingdon Drive", no:"1", address:"1 Huntingdon Drive", lat:52.9506686, lng:-1.1587661, listed:false, residents:[] },
+  { id:144, name:"", street:"Huntingdon Drive", no:"2", address:"2 Huntingdon Drive", lat:52.9508734, lng:-1.1593594, listed:false, residents:[] },
+  { id:145, name:"", street:"Huntingdon Drive", no:"3", address:"3 Huntingdon Drive", lat:52.9510163, lng:-1.1586399, listed:false, residents:[] },
+  { id:146, name:"", street:"Huntingdon Drive", no:"4", address:"4 Huntingdon Drive", lat:52.9511327, lng:-1.1588212, listed:false, residents:[] },
+  { id:147, name:"", street:"Huntingdon Drive", no:"5", address:"5 Huntingdon Drive", lat:52.9510435, lng:-1.1593884, listed:false, residents:[] },
+  { id:148, name:"", street:"Huntingdon Drive", no:"6", address:"6 Huntingdon Drive", lat:52.9512173, lng:-1.1584471, listed:false, residents:[] },
+  { id:149, name:"", street:"Huntingdon Drive", no:"7", address:"7 Huntingdon Drive", lat:52.9511606, lng:-1.1586642, listed:false, residents:[] },
+  { id:150, name:"", street:"Huntingdon Drive", no:"8", address:"8 Huntingdon Drive", lat:52.9509708, lng:-1.1591263, listed:false, residents:[] },
+  { id:151, name:"", street:"Huntingdon Drive", no:"9", address:"9 Huntingdon Drive", lat:52.9511165, lng:-1.1588626, listed:false, residents:[] },
+  { id:152, name:"", street:"Huntingdon Drive", no:"10", address:"10 Huntingdon Drive", lat:52.9511219, lng:-1.1585017, listed:false, residents:[] },
+  { id:153, name:"", street:"Kenilworth Road", no:"1", address:"1 Kenilworth Road", lat:52.9492381, lng:-1.1588049, listed:false, residents:[] },
+  { id:154, name:"", street:"Kenilworth Road", no:"2", address:"2 Kenilworth Road", lat:52.9493946, lng:-1.158483, listed:false, residents:[] },
+  { id:155, name:"", street:"Kenilworth Road", no:"3", address:"3 Kenilworth Road", lat:52.9491874, lng:-1.1588984, listed:false, residents:[] },
+  { id:156, name:"", street:"Kenilworth Road", no:"5", address:"The Chestnuts:  5 Kenilworth Road", lat:52.9495069, lng:-1.1585945, listed:false, residents:[] },
+  { id:157, name:"", street:"Lenton Avenue", no:"1", address:"1 Lenton Avenue", lat:52.9495887, lng:-1.1665682, listed:false, residents:[] },
+  { id:158, name:"", street:"Lenton Avenue", no:"3", address:"3 Lenton Avenue", lat:52.9494492, lng:-1.1668577, listed:false, residents:[] },
+  { id:159, name:"", street:"Lenton Avenue", no:"5", address:"5 Lenton Avenue", lat:52.9496497, lng:-1.1665825, listed:false, residents:[] },
+  { id:160, name:"", street:"Lenton Avenue", no:"7", address:"7 Lenton Avenue", lat:52.9492474, lng:-1.1665095, listed:false, residents:[] },
+  { id:161, name:"", street:"Lenton Avenue", no:"9", address:"9 Lenton Avenue", lat:52.9497355, lng:-1.166602, listed:false, residents:[] },
+  { id:162, name:"", street:"Lenton Avenue", no:"11", address:"11 Lenton Avenue", lat:52.949319, lng:-1.1670819, listed:false, residents:[] },
+  { id:163, name:"", street:"Lenton Avenue", no:"13", address:"13 Lenton Avenue", lat:52.949288, lng:-1.1665387, listed:false, residents:[] },
+  { id:164, name:"", street:"Lenton Avenue", no:"15", address:"15 Lenton Avenue", lat:52.9494001, lng:-1.1675016, listed:false, residents:[] },
+  { id:165, name:"", street:"Lenton Avenue", no:"17", address:"17 Lenton Avenue", lat:52.9491402, lng:-1.1666501, listed:false, residents:[] },
+  { id:167, name:"", street:"Lenton Avenue", no:"21", address:"21 Lenton Avenue", lat:52.9493395, lng:-1.1675709, listed:false, residents:[] },
+  { id:168, name:"", street:"Lenton Avenue", no:"23", address:"23 Lenton Avenue", lat:52.9493047, lng:-1.1667926, listed:false, residents:[] },
+  { id:169, name:"", street:"Lenton Avenue", no:"25", address:"25 Lenton Avenue", lat:52.9495976, lng:-1.1664912, listed:false, residents:[] },
+  { id:170, name:"", street:"Lenton Avenue", no:"27", address:"27 Lenton Avenue", lat:52.9491083, lng:-1.1666139, listed:false, residents:[] },
+  { id:171, name:"", street:"Lenton Avenue", no:"29", address:"29 Lenton Avenue", lat:52.9496008, lng:-1.1669824, listed:false, residents:[] },
+  { id:172, name:"", street:"Lenton Avenue", no:"31", address:"31 Lenton Avenue", lat:52.9496604, lng:-1.1670452, listed:false, residents:[] },
+  { id:173, name:"", street:"Lenton Avenue", no:"33", address:"33 Lenton Avenue", lat:52.9494102, lng:-1.166485, listed:false, residents:[] },
+  { id:174, name:"", street:"Castle Grove", no:"6a", address:"1 Lenton Road (6 and 6a Castle Grove)", lat:52.9495806, lng:-1.1567371, listed:false, residents:[] },
+  { id:175, name:"", street:"Lenton Road", no:"2", address:"2 Lenton Road", lat:52.9471837, lng:-1.1651223, listed:false, residents:[] },
+  { id:176, name:"", street:"Lenton Road", no:"3", address:"Castle Rising: 3 Lenton Road", lat:52.9474556, lng:-1.1654213, listed:false, residents:[] },
+  { id:177, name:"", street:"Lenton Road", no:"4", address:"4 Lenton Road", lat:52.9475795, lng:-1.1653802, listed:false, residents:[] },
+  { id:178, name:"", street:"Lenton Road", no:"5", address:"Castle Bank: 5 Lenton Road", lat:52.9473799, lng:-1.1648766, listed:false, residents:[] },
+  { id:179, name:"", street:"Lenton Road", no:"6", address:"6 Lenton Road", lat:52.9476392, lng:-1.1654772, listed:false, residents:[] },
+  { id:180, name:"", street:"Lenton Road", no:"7", address:"7 Lenton Road", lat:52.9474043, lng:-1.1655039, listed:false, residents:[] },
+  { id:181, name:"", street:"Lenton Road", no:"7a", address:"7a Lenton Road", lat:52.9477397, lng:-1.1655753, listed:false, residents:[] },
+  { id:182, name:"", street:"Lenton Road", no:"8", address:"8 Lenton Road", lat:52.947053, lng:-1.1649436, listed:false, residents:[] },
+  { id:183, name:"", street:"Lenton Road", no:"9", address:"9 Lenton Road", lat:52.9477271, lng:-1.1650676, listed:false, residents:[] },
+  { id:184, name:"", street:"Lenton Road", no:"11", address:"11 Lenton Road", lat:52.9471904, lng:-1.1649563, listed:false, residents:[] },
+  { id:185, name:"", street:"Lenton Road", no:"13", address:"13 Lenton Road", lat:52.9475108, lng:-1.1656406, listed:false, residents:[] },
+  { id:186, name:"", street:"Lenton Road", no:"13a", address:"13a Lenton Road", lat:52.9470524, lng:-1.1656938, listed:false, residents:[] },
+  { id:187, name:"", street:"Lenton Road", no:"15", address:"15 Lenton Road", lat:52.9477074, lng:-1.1650776, listed:false, residents:[] },
+  { id:188, name:"", street:"Lenton Road", no:"17", address:"17 Lenton Road", lat:52.9471585, lng:-1.1653156, listed:false, residents:[] },
+  { id:189, name:"", street:"Lenton Road", no:"19", address:"19 Lenton Road", lat:52.9474319, lng:-1.1653652, listed:false, residents:[] },
+  { id:190, name:"", street:"Lenton Road", no:"21", address:"Ravine House: 21 Lenton Road", lat:52.9471447, lng:-1.165515, listed:false, residents:[] },
+  { id:192, name:"", street:"Lenton Road", no:"25", address:"25 Lenton Road", lat:52.9473127, lng:-1.1655286, listed:false, residents:[] },
+  { id:193, name:"", street:"Lenton Road", no:"27", address:"Lenton House: 27 Lenton Road", lat:52.9474926, lng:-1.1655137, listed:false, residents:[] },
+  { id:194, name:"", street:"Lenton Road", no:"29", address:"29 Lenton Road", lat:52.9476049, lng:-1.1658432, listed:false, residents:[] },
+  { id:195, name:"", street:"Lenton Road", no:"31", address:"31 Lenton Road", lat:52.9477361, lng:-1.1656078, listed:false, residents:[] },
+  { id:196, name:"Cliff House:", street:"Lenton Road", no:"", address:"Cliff House: Lenton Road (32, 33, 33a, 33b)", lat:52.9476667, lng:-1.1655738, listed:false, residents:[] },
+  { id:197, name:"", street:"Lenton Road", no:"37", address:"Rock House: 37 Lenton Road.", lat:52.9473588, lng:-1.1652271, listed:false, residents:[] },
+  { id:198, name:"", street:"Lenton Road", no:"43", address:"43 Lenton Road", lat:52.9472761, lng:-1.165017, listed:false, residents:[] },
+  { id:199, name:"", street:"Lenton Road", no:"45", address:"45 Lenton Road", lat:52.9473619, lng:-1.1649395, listed:false, residents:[] },
+  { id:200, name:"", street:"Lenton Road", no:"47", address:"47 Lenton Road", lat:52.9476181, lng:-1.1653032, listed:false, residents:[] },
+  { id:201, name:"Gladstone House :", street:"Lincoln Circus", no:"", address:"Gladstone House : Lincoln Circus", lat:52.9516217, lng:-1.1648839, listed:false, residents:[] },
+  { id:202, name:"", street:"Stowe House: 6 Maxtoke Road", no:"", address:"Stowe House: 6 Maxtoke Road", lat:52.9493155, lng:-1.1632796, listed:false, residents:[] },
+  { id:203, name:"", street:"Newcastle Circus", no:"2", address:"2 Newcastle Circus", lat:52.9504107, lng:-1.164587, listed:false, residents:[] },
+  { id:204, name:"", street:"Newcastle Circus", no:"7", address:"Mevell House : 7 Newcastle Circus", lat:52.9503212, lng:-1.1641257, listed:false, residents:[] },
+  { id:205, name:"Burton House :", street:"Newcastle Circus", no:"", address:"Burton House : Newcastle Circus", lat:52.9508115, lng:-1.1642779, listed:false, residents:[] },
+  { id:206, name:"Castlethorpe:", street:"Newcastle Circus", no:"", address:"Castlethorpe: Newcastle Circus", lat:52.9503608, lng:-1.1638388, listed:false, residents:[] },
+  { id:207, name:"Newcastle Court :", street:"Newcastle Circus", no:"", address:"Newcastle Court : Newcastle Circus", lat:52.9507131, lng:-1.1646425, listed:false, residents:[] },
+  { id:208, name:"", street:"Newcastle Drive", no:"1", address:"1 Newcastle Drive", lat:52.9536761, lng:-1.1660998, listed:false, residents:[] },
+  { id:210, name:"", street:"Newcastle Drive", no:"5", address:"5 Newcastle Drive", lat:52.9542638, lng:-1.1658798, listed:false, residents:[] },
+  { id:211, name:"", street:"Newcastle Drive", no:"7", address:"7 Newcastle Drive", lat:52.9540257, lng:-1.1655668, listed:false, residents:[] },
+  { id:212, name:"", street:"Newcastle Drive", no:"9", address:"9 Newcastle Drive", lat:52.9539912, lng:-1.1663313, listed:false, residents:[] },
+  { id:213, name:"", street:"Newcastle Drive", no:"11", address:"11 Newcastle Drive", lat:52.9538529, lng:-1.166332, listed:false, residents:[] },
+  { id:214, name:"", street:"Newcastle Drive", no:"13", address:"13 Newcastle Drive", lat:52.9537925, lng:-1.1657226, listed:false, residents:[] },
+  { id:215, name:"", street:"Newcastle Drive", no:"15", address:"15 Newcastle Drive", lat:52.9540817, lng:-1.1655418, listed:false, residents:[] },
+  { id:216, name:"", street:"Newcastle Drive", no:"17", address:"17 Newcastle Drive", lat:52.9538324, lng:-1.1654637, listed:false, residents:[] },
+  { id:217, name:"", street:"Newcastle Drive", no:"19", address:"19 Newcastle Drive", lat:52.9541903, lng:-1.1654043, listed:false, residents:[] },
+  { id:218, name:"", street:"Newcastle Drive", no:"21", address:"21 Newcastle Drive", lat:52.953994, lng:-1.1663272, listed:false, residents:[] },
+  { id:219, name:"", street:"Newcastle Drive", no:"23", address:"23 Newcastle Drive", lat:52.9538567, lng:-1.1658953, listed:false, residents:[] },
+  { id:220, name:"", street:"Newcastle Drive", no:"25", address:"25 Newcastle Drive", lat:52.954094, lng:-1.1655214, listed:false, residents:[] },
+  { id:221, name:"", street:"Newcastle Drive", no:"27", address:"27 Newcastle Drive", lat:52.9536793, lng:-1.1659456, listed:false, residents:[] },
+  { id:222, name:"", street:"Newcastle Drive", no:"29", address:"29 Newcastle Drive", lat:52.9537416, lng:-1.1658283, listed:false, residents:[] },
+  { id:223, name:"", street:"Newcastle Drive", no:"31", address:"31 Newcastle Drive", lat:52.954247, lng:-1.1658139, listed:false, residents:[] },
+  { id:224, name:"", street:"Newcastle Drive", no:"33", address:"33 Newcastle Drive", lat:52.953963, lng:-1.1661845, listed:false, residents:[] },
+  { id:226, name:"", street:"Newcastle Drive", no:"37", address:"37 Newcastle Drive", lat:52.9543025, lng:-1.1656532, listed:false, residents:[] },
+  { id:227, name:"", street:"Newcastle Drive", no:"39", address:"39 Newcastle Drive", lat:52.9538354, lng:-1.1656254, listed:false, residents:[] },
+  { id:228, name:"", street:"North Road", no:"2", address:"2 North Road", lat:52.953301, lng:-1.1656959, listed:false, residents:[] },
+  { id:229, name:"", street:"North Road", no:"6", address:"Yorke House: 6 North Road", lat:52.953185, lng:-1.1658675, listed:false, residents:[] },
+  { id:230, name:"", street:"North Road", no:"7", address:"7 North Road", lat:52.953806, lng:-1.1657981, listed:false, residents:[] },
+  { id:231, name:"", street:"North Road", no:"8", address:"8 North Road", lat:52.9538056, lng:-1.1660818, listed:false, residents:[] },
+  { id:232, name:"", street:"Park Drive", no:"1", address:"1 Park Drive", lat:52.9498113, lng:-1.1613496, listed:false, residents:[] },
+  { id:234, name:"", street:"Park Drive", no:"3", address:"3 Park Drive", lat:52.95038, lng:-1.1610644, listed:false, residents:[] },
+  { id:235, name:"", street:"Park Drive", no:"4", address:"4 Park Drive", lat:52.9500506, lng:-1.1610889, listed:false, residents:[] },
+  { id:236, name:"", street:"Park Drive", no:"6", address:"6 Park Drive", lat:52.9501543, lng:-1.1613637, listed:false, residents:[] },
+  { id:237, name:"", street:"Park Drive", no:"9", address:"9 Park Drive", lat:52.9503097, lng:-1.1608421, listed:false, residents:[] },
+  { id:238, name:"Ashley House :", street:"Park Drive", no:"", address:"Ashley House : Park Drive", lat:52.9501977, lng:-1.1616115, listed:false, residents:[] },
+  { id:239, name:"Clumber House:", street:"Park Drive", no:"", address:"Clumber House: Park Drive", lat:52.9504123, lng:-1.1608192, listed:false, residents:[] },
+  { id:240, name:"", street:"Park Ravine", no:"2", address:"2 Park Ravine", lat:52.9483307, lng:-1.1604687, listed:false, residents:[] },
+  { id:241, name:"", street:"Park Terrace", no:"1", address:"1 Park Terrace", lat:52.9522869, lng:-1.1587099, listed:false, residents:[] },
+  { id:242, name:"", street:"Park Terrace", no:"2", address:"2 Park Terrace", lat:52.9526342, lng:-1.1588593, listed:false, residents:[] },
+  { id:243, name:"", street:"Park Terrace", no:"3", address:"3 Park Terrace", lat:52.952194, lng:-1.1586683, listed:false, residents:[] },
+  { id:244, name:"", street:"Park Terrace", no:"4", address:"4 Park Terrace", lat:52.9525993, lng:-1.1583685, listed:false, residents:[] },
+  { id:245, name:"", street:"Park Terrace", no:"5", address:"5 Park Terrace", lat:52.9521307, lng:-1.1581969, listed:false, residents:[] },
+  { id:246, name:"", street:"Park Terrace", no:"6", address:"6 Park Terrace", lat:52.952593, lng:-1.1582663, listed:false, residents:[] },
+  { id:248, name:"", street:"Park Terrace", no:"8", address:"8 Park Terrace", lat:52.9526405, lng:-1.158418, listed:false, residents:[] },
+  { id:249, name:"", street:"Park Terrace", no:"9", address:"9 Park Terrace", lat:52.9526414, lng:-1.1591496, listed:false, residents:[] },
+  { id:250, name:"", street:"Park Terrace", no:"10", address:"10 Park Terrace", lat:52.9524758, lng:-1.1582818, listed:false, residents:[] },
+  { id:251, name:"", street:"Park Terrace", no:"11", address:"11 Park Terrace", lat:52.9521509, lng:-1.1582852, listed:false, residents:[] },
+  { id:252, name:"", street:"Park Terrace", no:"12", address:"12 Park Terrace", lat:52.9521598, lng:-1.1582463, listed:false, residents:[] },
+  { id:253, name:"", street:"Park Terrace", no:"14", address:"14 Park Terrace", lat:52.9523489, lng:-1.1589755, listed:false, residents:[] },
+  { id:254, name:"", street:"Park Terrace", no:"15", address:"15 Park Terrace", lat:52.9525254, lng:-1.1587691, listed:false, residents:[] },
+  { id:255, name:"", street:"Park Terrace", no:"16", address:"16 Park Terrace", lat:52.9521526, lng:-1.159165, listed:false, residents:[] },
+  { id:256, name:"", street:"Park Terrace", no:"17", address:"17 Park Terrace", lat:52.9523413, lng:-1.1581769, listed:false, residents:[] },
+  { id:257, name:"", street:"Park Terrace", no:"20", address:"18, 19, 20 Park Terrace", lat:52.9527837, lng:-1.1585278, listed:false, residents:[] },
+  { id:258, name:"", street:"Park Valley", no:"1", address:"1 Park Valley", lat:52.9504291, lng:-1.1565319, listed:false, residents:[] },
+  { id:259, name:"", street:"Park Valley", no:"3", address:"3 Park Valley", lat:52.9509856, lng:-1.1567757, listed:false, residents:[] },
+  { id:260, name:"", street:"Park Valley", no:"4", address:"4 Park Valley", lat:52.9505742, lng:-1.1572207, listed:false, residents:[] },
+  { id:261, name:"", street:"Park Valley", no:"5", address:"5 Park Valley", lat:52.9503436, lng:-1.1568144, listed:false, residents:[] },
+  { id:262, name:"", street:"Park Valley", no:"6", address:"6 Park Valley", lat:52.9503837, lng:-1.1568965, listed:false, residents:[] },
+  { id:263, name:"", street:"Park Valley", no:"7", address:"7 Park Valley", lat:52.950556, lng:-1.1572463, listed:false, residents:[] },
+  { id:264, name:"", street:"Park Valley", no:"8", address:"8 Park Valley", lat:52.9504768, lng:-1.1569292, listed:false, residents:[] },
+  { id:265, name:"", street:"Park Valley", no:"9", address:"9 Park Valley", lat:52.9508113, lng:-1.156705, listed:false, residents:[] },
+  { id:266, name:"", street:"Park Valley", no:"10", address:"10 Park Valley", lat:52.9508871, lng:-1.1566402, listed:false, residents:[] },
+  { id:267, name:"", street:"Park Valley", no:"11", address:"11 Park Valley", lat:52.950731, lng:-1.1565373, listed:false, residents:[] },
+  { id:268, name:"", street:"Park Valley", no:"15", address:"15 Park Valley", lat:52.9505118, lng:-1.1573562, listed:false, residents:[] },
+  { id:269, name:"", street:"Park Valley", no:"17", address:"17 Park Valley", lat:52.9507805, lng:-1.15667, listed:false, residents:[] },
+  { id:270, name:"", street:"Park Valley", no:"19", address:"19 Park Valley", lat:52.9507191, lng:-1.156516, listed:false, residents:[] },
+  { id:271, name:"", street:"Park Valley", no:"21", address:"21 Park Valley", lat:52.9509685, lng:-1.1573983, listed:false, residents:[] },
+  { id:272, name:"", street:"Park Valley", no:"23", address:"23 Park Valley", lat:52.9506799, lng:-1.1565168, listed:false, residents:[] },
+  { id:273, name:"", street:"Park Valley", no:"25", address:"25 Park Valley", lat:52.9506011, lng:-1.1567031, listed:false, residents:[] },
+  { id:274, name:"", street:"Pelham Crescent", no:"1", address:"1 Pelham Crescent", lat:52.952915, lng:-1.1672891, listed:false, residents:[] },
+  { id:275, name:"", street:"Pelham Crescent", no:"3", address:"3 Pelham Crescent", lat:52.9530031, lng:-1.1681028, listed:false, residents:[] },
+  { id:276, name:"", street:"Pelham Crescent", no:"5", address:"5 Pelham Crescent", lat:52.9532754, lng:-1.1675854, listed:false, residents:[] },
+  { id:277, name:"", street:"Pelham Crescent", no:"7", address:"7 Pelham Crescent", lat:52.9532366, lng:-1.1673732, listed:false, residents:[] },
+  { id:278, name:"", street:"Pelham Crescent", no:"9", address:"9 Pelham Crescent", lat:52.9529892, lng:-1.167276, listed:false, residents:[] },
+  { id:279, name:"", street:"Pelham Crescent", no:"10", address:"10 Pelham Crescent", lat:52.9532761, lng:-1.1677387, listed:false, residents:[] },
+  { id:281, name:"", street:"Pelham Crescent", no:"12", address:"12 Pelham Crescent", lat:52.9531777, lng:-1.1677114, listed:false, residents:[] },
+  { id:282, name:"", street:"Pelham Crescent", no:"13", address:"13 Pelham Crescent", lat:52.9534809, lng:-1.1681342, listed:false, residents:[] },
+  { id:283, name:"", street:"Pelham Crescent", no:"14", address:"14 Pelham Crescent", lat:52.9530918, lng:-1.1675252, listed:false, residents:[] },
+  { id:284, name:"", street:"Pelham Crescent", no:"15", address:"15 Pelham Crescent", lat:52.9531194, lng:-1.1674402, listed:false, residents:[] },
+  { id:285, name:"", street:"Pelham Crescent", no:"16", address:"16 Pelham Crescent", lat:52.9532054, lng:-1.1679708, listed:false, residents:[] },
+  { id:286, name:"", street:"Pelham Crescent", no:"17", address:"17 Pelham Crescent", lat:52.9531024, lng:-1.167933, listed:false, residents:[] },
+  { id:287, name:"", street:"Pelham Crescent", no:"18", address:"18 Pelham Crescent", lat:52.9529714, lng:-1.1677809, listed:false, residents:[] },
+  { id:288, name:"", street:"Pelham Crescent", no:"19", address:"19 Pelham Crescent", lat:52.9532997, lng:-1.1675335, listed:false, residents:[] },
+  { id:289, name:"", street:"Peveril Drive", no:"1", address:"1 Peveril Drive", lat:52.9490561, lng:-1.1567169, listed:false, residents:[] },
+  { id:290, name:"", street:"Peveril Drive", no:"2", address:"2 Peveril Drive", lat:52.9490995, lng:-1.1570459, listed:false, residents:[] },
+  { id:291, name:"", street:"Peveril Drive", no:"3", address:"3 Peveril Drive", lat:52.949184, lng:-1.1572794, listed:false, residents:[] },
+  { id:292, name:"", street:"Peveril Drive", no:"6", address:"6 Peveril Drive", lat:52.9492862, lng:-1.1571332, listed:false, residents:[] },
+  { id:294, name:"", street:"Peveril Drive", no:"8", address:"8 Peveril Drive", lat:52.9493323, lng:-1.1570563, listed:false, residents:[] },
+  { id:295, name:"", street:"Peveril Drive", no:"10", address:"10 Peveril Drive", lat:52.9490201, lng:-1.1568279, listed:false, residents:[] },
+  { id:296, name:"", street:"Peveril Drive", no:"11", address:"11 Peveril Drive", lat:52.9494812, lng:-1.1564209, listed:false, residents:[] },
+  { id:297, name:"", street:"Peveril Drive", no:"12", address:"12 Peveril Drive", lat:52.9494328, lng:-1.1569873, listed:false, residents:[] },
+  { id:298, name:"Ferndene:", street:"Hamilton Drive", no:"", address:"Ferndene: Hamilton Drive", lat:52.9485086, lng:-1.1571961, listed:false, residents:[] },
+  { id:299, name:"Parkdale:", street:"Peveril Drive", no:"", address:"Parkdale: Peveril Drive", lat:52.9492713, lng:-1.1563502, listed:false, residents:[] },
+  { id:300, name:"Peveril House:", street:"Peveril Drive", no:"", address:"Peveril House: Peveril Drive", lat:52.9492815, lng:-1.1573704, listed:false, residents:[] },
+  { id:301, name:"", street:"South Road", no:"1", address:"1 South Road", lat:52.9496126, lng:-1.1629582, listed:false, residents:[] },
+  { id:302, name:"", street:"South Road", no:"3", address:"3 South Road", lat:52.9496105, lng:-1.1633428, listed:false, residents:[] },
+  { id:303, name:"", street:"South Road", no:"4", address:"4 South Road", lat:52.9493465, lng:-1.1627264, listed:false, residents:[] },
+  { id:304, name:"", street:"South Road", no:"5", address:"5 South Road", lat:52.9491415, lng:-1.1634932, listed:false, residents:[] },
+  { id:305, name:"", street:"South Road", no:"6", address:"6 South Road", lat:52.9495141, lng:-1.1635028, listed:false, residents:[] },
+  { id:306, name:"", street:"Tattershall Drive", no:"1", address:"1 Tattershall Drive", lat:52.950181, lng:-1.1598984, listed:false, residents:[] },
+  { id:307, name:"", street:"Tattershall Drive", no:"2", address:"2 Tattershall Drive", lat:52.9506622, lng:-1.1602433, listed:false, residents:[] },
+  { id:308, name:"", street:"Tattershall Drive", no:"3", address:"3 Tattershall Drive", lat:52.9504707, lng:-1.1600359, listed:false, residents:[] },
+  { id:309, name:"", street:"Tattershall Drive", no:"4", address:"4 Tattershall Drive", lat:52.9508058, lng:-1.1602602, listed:false, residents:[] },
+  { id:310, name:"", street:"Tattershall Drive", no:"5", address:"5 Tattershall Drive", lat:52.9507478, lng:-1.1598632, listed:false, residents:[] },
+  { id:311, name:"Carnoustie Lodge:", street:"Tattershall Drive", no:"", address:"Carnoustie Lodge: Tattershall Drive", lat:52.9502567, lng:-1.1594366, listed:false, residents:[] },
+  { id:312, name:"Ellington House:", street:"Tattershall Drive", no:"", address:"Ellington House: Tattershall Drive", lat:52.9505703, lng:-1.1599753, listed:false, residents:[] },
+  { id:313, name:"", street:"The Ropewalk", no:"2", address:"2 The Ropewalk", lat:52.9544178, lng:-1.1591518, listed:false, residents:[] },
+  { id:314, name:"", street:"The Ropewalk", no:"4", address:"4 The Ropewalk", lat:52.9541608, lng:-1.1594793, listed:false, residents:[] },
+  { id:315, name:"", street:"The Ropewalk", no:"6", address:"6 The Ropewalk", lat:52.9541123, lng:-1.1590344, listed:false, residents:[] },
+  { id:316, name:"", street:"The Ropewalk", no:"8", address:"8 The Ropewalk", lat:52.9542526, lng:-1.1599093, listed:false, residents:[] },
+  { id:317, name:"", street:"The Ropewalk", no:"10", address:"10 The Ropewalk", lat:52.9541245, lng:-1.1600576, listed:false, residents:[] },
+  { id:318, name:"", street:"The Ropewalk", no:"12", address:"12 The Ropewalk", lat:52.9542373, lng:-1.1598415, listed:false, residents:[] },
+  { id:319, name:"", street:"The Ropewalk", no:"14", address:"14 The Ropewalk", lat:52.9545655, lng:-1.1592598, listed:false, residents:[] },
+  { id:320, name:"", street:"The Ropewalk", no:"16", address:"16 The Ropewalk", lat:52.9544901, lng:-1.1598142, listed:false, residents:[] },
+  { id:321, name:"", street:"The Ropewalk", no:"18", address:"18 The Ropewalk", lat:52.9540184, lng:-1.1591573, listed:false, residents:[] },
+  { id:322, name:"", street:"The Ropewalk", no:"20", address:"20 The Ropewalk", lat:52.9543657, lng:-1.1600119, listed:false, residents:[] },
+  { id:323, name:"", street:"The Ropewalk", no:"22", address:"22 The Ropewalk", lat:52.9542797, lng:-1.1600135, listed:false, residents:[] },
+  { id:324, name:"", street:"The Ropewalk", no:"24", address:"24 The Ropewalk", lat:52.9540354, lng:-1.1600594, listed:false, residents:[] },
+  { id:325, name:"", street:"The Ropewalk", no:"26", address:"26 The Ropewalk", lat:52.954217, lng:-1.1599351, listed:false, residents:[] },
+  { id:326, name:"", street:"The Ropewalk", no:"28", address:"28 The Ropewalk", lat:52.954473, lng:-1.1596779, listed:false, residents:[] },
+  { id:327, name:"", street:"The Ropewalk", no:"30", address:"30 The Ropewalk", lat:52.9545154, lng:-1.1595217, listed:false, residents:[] },
+  { id:328, name:"", street:"The Ropewalk", no:"32", address:"32 The Ropewalk", lat:52.9541835, lng:-1.1598468, listed:false, residents:[] },
+  { id:329, name:"", street:"The Ropewalk", no:"32a", address:"32a The Ropewalk", lat:52.9544573, lng:-1.1600832, listed:false, residents:[] },
+  { id:330, name:"", street:"The Ropewalk", no:"34", address:"34 The Ropewalk", lat:52.9543919, lng:-1.1596538, listed:false, residents:[] },
+  { id:331, name:"", street:"The Ropewalk", no:"36a", address:"36 and 36a The Ropewalk", lat:52.9546018, lng:-1.1597749, listed:false, residents:[] },
+  { id:332, name:"", street:"The Ropewalk", no:"38", address:"38 The Ropewalk", lat:52.9542717, lng:-1.1600032, listed:false, residents:[] },
+  { id:333, name:"", street:"The Ropewalk", no:"40", address:"40 The Ropewalk", lat:52.9539839, lng:-1.159381, listed:false, residents:[] },
+  { id:334, name:"", street:"The Ropewalk", no:"42", address:"42 The Ropewalk", lat:52.9545723, lng:-1.1591869, listed:false, residents:[] },
+  { id:335, name:"", street:"The Ropewalk", no:"44", address:"44 The Ropewalk", lat:52.9541882, lng:-1.1593233, listed:false, residents:[] },
+  { id:336, name:"", street:"The Ropewalk", no:"48", address:"48 The Ropewalk", lat:52.9539818, lng:-1.1592854, listed:false, residents:[] },
+  { id:337, name:"", street:"The Ropewalk", no:"52", address:"52 The Ropewalk", lat:52.9545785, lng:-1.1591348, listed:false, residents:[] },
+  { id:338, name:"", street:"The Ropewalk", no:"54", address:"54 The Ropewalk", lat:52.9541572, lng:-1.1591605, listed:false, residents:[] },
+  { id:339, name:"", street:"The Ropewalk", no:"56", address:"56 The Ropewalk", lat:52.9543802, lng:-1.1595464, listed:false, residents:[] },
+  { id:340, name:"", street:"Western Terrace", no:"1", address:"1 Western Terrace", lat:52.9544621, lng:-1.1658208, listed:false, residents:[] },
+  { id:341, name:"", street:"Western Terrace", no:"2", address:"2 Western Terrace", lat:52.9543445, lng:-1.1661719, listed:false, residents:[] },
+  { id:342, name:"", street:"Western Terrace", no:"3", address:"3 Western Terrace", lat:52.9546882, lng:-1.1658673, listed:false, residents:[] },
+  { id:343, name:"", street:"Western Terrace", no:"4", address:"4 Western Terrace", lat:52.9547255, lng:-1.1664853, listed:false, residents:[] },
+  { id:344, name:"", street:"Western Terrace", no:"5", address:"5 Western Terrace", lat:52.9546677, lng:-1.1666332, listed:false, residents:[] },
+  { id:345, name:"", street:"Western Terrace", no:"6", address:"6 Western Terrace", lat:52.9547075, lng:-1.1659344, listed:false, residents:[] },
+  { id:346, name:"", street:"Western Terrace", no:"7", address:"7 Western Terrace", lat:52.9543253, lng:-1.1661254, listed:false, residents:[] },
+  { id:347, name:"", street:"Western Terrace", no:"8", address:"8 Western Terrace", lat:52.9546243, lng:-1.1659669, listed:false, residents:[] },
+  { id:348, name:"", street:"Western Terrace", no:"9", address:"9 Western Terrace", lat:52.9544277, lng:-1.1658478, listed:false, residents:[] },
+  { id:350, name:"", street:"Western Terrace", no:"11", address:"11 Western Terrace", lat:52.9543413, lng:-1.1662522, listed:false, residents:[] }
 ];
 
-const subs = {
-  101:[
-    {u:"J. Armstrong",d:"March 2019",t:"Oral History",tx:"My grandmother was housemaid here 1908–1914. She described the servants' quarters in the basement and the bell system. The family kept a motor car from about 1910, one of the first on the estate."},
-    {u:"P. Hallam",d:"July 2021",t:"Family History",tx:"I am the great-great-nephew of Dr. Arthur Hallam. Family papers at Nottinghamshire Archives reference alterations to the library and planting of the cedar on the west lawn c.1905."},
-    {u:"D. Chambers",d:"Jan 2023",t:"Photograph",tx:"[Photograph submitted: exterior view c.1910 from family album — copy on file with the Trust]"},
-  ],
-  102:[{u:"F. Birkin",d:"June 2020",t:"Family History",tx:"William Birkin commissioned the house following expansion of his hosiery business. Contemporary trade directories confirm he employed over 400 workers at his Basford factory."}],
-  104:[
-    {u:"M. Rolleston",d:"Sep 2018",t:"Oral History",tx:"Colonel Rolleston was my great-grandfather, returned from India in 1896. He made significant alterations to the garden and added the summerhouse visible in the 1908 OS map."},
-    {u:"Local History Group",d:"Feb 2022",t:"Documentary",tx:"Rate books at Nottinghamshire Archives confirm Thomas Adams as occupier from Michaelmas 1873. He was Sheriff of Nottingham 1881–82."},
-  ],
-  105:[{u:"A. Jardine",d:"April 2021",t:"Family History",tx:"Herbert Jardine was my great-grandfather, a partner at Jardine & Croft, solicitors. He moved here in 1909 from Mapperley Park. The family occupied the house until 1952."}],
-  107:[{u:"Nottingham Civic Society",d:"March 2020",t:"Documentary",tx:"Planning applications in the City Archive reference a proposed conservatory in 1888 not executed. The hall tilework is consistent with work by Craven Dunnill & Co. of Jackfield, c.1880."}],
-  108:[
-    {u:"T. Parsons",d:"Nov 2019",t:"Oral History",tx:"The garden was laid out by Robert Parsons, an enthusiastic amateur horticulturalist who corresponded with the head gardener at Chatsworth."},
-    {u:"Park Archives",d:"June 2023",t:"Documentary",tx:"Percy Howitt's original drawings survive in the RIBA Drawings Collection and show a more elaborate scheme — the half-timbered gable was simplified at the client's request."},
-  ],
-  109:[
-    {u:"C. Moore",d:"Jan 2018",t:"Family History",tx:"Colonel James Moore purchased the house in 1881 after the Afghan Wars. He named the principal guest bedroom 'Kandahar' and served on City Council 1885–1901."},
-    {u:"P. Henderson",d:"Aug 2020",t:"Oral History",tx:"The stable block was converted to a garage c.1908 when Arthur Moore purchased one of the early motor cars — reportedly a 14hp Daimler."},
-    {u:"R. Eastwood",d:"March 2021",t:"Documentary",tx:"The Nottingham Journal of 14 June 1880 reports the house-warming given by Edwin Patchitt, describing 'handsome reception rooms' and a garden 'laid out to designs of Mr. Milner'."},
-    {u:"Local History Group",d:"Jan 2024",t:"Photograph",tx:"[Photograph submitted: garden party c.1895, showing south elevation and conservatory]"},
-  ],
-  111:[{u:"F. Mapperley",d:"Oct 2022",t:"Family History",tx:"Sir Frederick Mapperley (1845–1921) was my great-great-grandfather, partner in Mapperley & Sons lace firm, baronetcy 1905. House sold 1919 when he moved to his Lincolnshire estate."}],
-};
+const subs = {}; // Submissions are stored server-side; this will be populated via API in the full build
 
 // ── MAP SETUP ────────────────────────────────────────────────────────────────
 const map = L.map('map', {
@@ -365,22 +628,22 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
   markers = {};
   let count = 0;
   props.forEach(p => {
-    const txt = (p.name + p.street + p.arch + p.style + p.no).toLowerCase();
+    const txt = ((p.name || '') + ' ' + (p.street || '') + ' ' + (p.no || '') + ' ' + (p.address || '')).toLowerCase();
     if (filter && !txt.includes(filter.toLowerCase())) return;
-    if (typeF && p.type !== typeF) return;
+    if (typeF && p.street !== typeF) return;
     if (listedF === 'listed' && !p.listed) return;
     count++;
     const m = L.marker([p.lat, p.lng], { icon: makeIcon(p, activeId === p.id) })
       .bindPopup(`
-        <div class="popup-title">${p.name}</div>
-        <div class="popup-sub">${p.no} ${p.street} · ${p.style} · ${p.built}</div>
+        <div class="popup-title">${p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street)}</div>
+        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}</div>
         <button class="popup-btn" onclick="openProp(${p.id})">View Record →</button>
       `, { maxWidth: 220 })
       .addTo(map);
     m.on('click', () => openProp(p.id));
     markers[p.id] = m;
   });
-  document.getElementById('countInfo').textContent = `${count} properties shown · click a marker to view its record`;
+  document.getElementById('countInfo').textContent = `${count} of ${props.length} properties shown · click a marker to view its record`;
 }
 
 // ── PANEL ────────────────────────────────────────────────────────────────────
@@ -396,8 +659,8 @@ function openProp(id) {
     document.getElementById('typeFilter').value,
     document.getElementById('listedFilter').value
   );
-  document.getElementById('pTitle').textContent = p.name;
-  document.getElementById('pSub').textContent = `${p.no} ${p.street} · Property ${p.id}`;
+  document.getElementById('pTitle').textContent = p.name || p.address || (p.no + ' ' + p.street);
+  document.getElementById('pSub').textContent = `${p.no ? p.no + ' ' : ''}${p.street} · Property ${p.id}`;
   document.getElementById('subBadge').textContent = (subs[p.id] || []).length;
   document.getElementById('panel').classList.add('open');
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===0));
@@ -431,24 +694,22 @@ function renderPanel() {
   if (curTab === 'data') {
     body.innerHTML = `
       <div class="section"><h3>Property Details</h3>
-        <div class="row"><span class="lbl">Address</span><span class="val">${p.no} ${p.street}</span></div>
-        <div class="row"><span class="lbl">Built</span><span class="val">c. ${p.built}</span></div>
-        <div class="row"><span class="lbl">Style</span><span class="val">${p.style}</span></div>
-        <div class="row"><span class="lbl">Period</span><span class="val">${p.type}</span></div>
-        <div class="row"><span class="lbl">Storeys</span><span class="val">${p.floors}</span></div>
-        <div class="row"><span class="lbl">Architect</span><span class="val">${p.arch}</span></div>
-        <div class="row"><span class="lbl">Listing</span><span class="val">${p.listed ? '<span class="chip listed">★ Listed Building</span>' : 'Not listed'}</span></div>
+        <div class="row"><span class="lbl">Address</span><span class="val">${p.no ? p.no + ' ' : ''}${p.street}</span></div>
+        ${p.name ? `<div class="row"><span class="lbl">House Name</span><span class="val">${p.name}</span></div>` : ''}
+        <div class="row"><span class="lbl">Original Site ID</span><span class="val">${p.id}</span></div>
+        <div class="row"><span class="lbl">Listing</span><span class="val">${p.listed ? '<span class="chip listed">★ Listed Building</span>' : 'Not recorded'}</span></div>
       </div>
-      <div class="section"><h3>Architectural Description</h3><div class="desc">${p.desc}</div></div>
+      <div class="section"><h3>About This Property</h3>
+        <div class="desc">This property is part of The Park Estate, Nottingham — one of the finest collections of pre-1918 residential architecture in the East Midlands. Historical information about this house can be added via the <strong>Submissions</strong> tab. Records submitted here are moderated before publication.</div>
+      </div>
       <div class="section"><h3>Known Residents (pre-1918)</h3>
-        ${p.residents.map(r=>`<div class="row"><span class="lbl">${r.y}</span><span class="val">${r.n}</span></div>`).join('')}
+        ${(p.residents || []).length ? p.residents.map(r=>`<div class="row"><span class="lbl">${r.y}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet. Contributions welcome.</div>'}
       </div>`;
   }
   else if (curTab === 'history') {
     body.innerHTML = `
       <div class="section"><h3>Development History</h3>
-        <div class="desc">${p.name} was constructed c.${p.built} in the ${p.style} style. ${p.arch !== 'Unknown' ? `Designed by <strong>${p.arch}</strong>, one of the principal architects working on the Estate.` : 'The architect has not been identified.'}
-        The property forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s.</div>
+        <div class="desc">${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards. The Estate is notable for its variety of architectural styles and the exceptional survival rate of its original Victorian and Edwardian housing stock.</div>
       </div>
       <div class="section"><h3>The Park Estate</h3>
         <div class="desc">The Park was developed as a high-status residential suburb from c.1850, following the Newcastle Trustees' decision to release the land for building. Notable for its picturesque layout, variety of architectural styles, and the exceptional survival rate of its original housing stock — approximately 350 pre-1918 properties remain.</div>
@@ -531,8 +792,14 @@ function toast(msg) {
 }
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
+// Populate street filter
+(function() {
+  const streets = [...new Set(props.map(p => p.street).filter(Boolean))].sort();
+  const sel = document.getElementById('typeFilter');
+  streets.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
+})();
+
 buildMarkers();
-setTimeout(() => openProp(101), 800);
 </script>
 </body>
 </html>
