@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nottingham Park Houses</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #f5f0e8; color: #2c2416; overflow: hidden; }
+
+  header {
+    background: #1a3a2a; color: #e8dfc8;
+    padding: 0 20px; height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35); position: relative; z-index: 1000;
+  }
+  header h1 { font-size: 1.2rem; font-weight: normal; }
+  header h1 span { font-size: 0.75rem; display: block; color: #90b090; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  nav { display: flex; gap: 6px; align-items: center; }
+  nav button {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+    color: #e8dfc8; padding: 5px 13px; border-radius: 4px;
+    cursor: pointer; font-size: 0.8rem; transition: background 0.2s;
+  }
+  nav button:hover { background: rgba(255,255,255,0.2); }
+  nav button.primary { background: #4a7c5a; border-color: #3a6a4a; }
+  nav button.primary:hover { background: #5a8c6a; }
+
+  .toolbar {
+    background: #2c4a38; padding: 8px 20px;
+    display: flex; align-items: center; gap: 10px;
+    position: relative; z-index: 999;
+  }
+  .toolbar input {
+    flex: 1; max-width: 340px; padding: 6px 12px;
+    border-radius: 4px; border: none; font-size: 0.85rem;
+  }
+  .toolbar select {
+    padding: 6px 10px; border-radius: 4px; border: none; font-size: 0.82rem;
+  }
+  .toolbar button {
+    background: #8a6a2a; color: white; border: none;
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.82rem;
+  }
+  .toolbar .info { color: #90c090; font-size: 0.78rem; margin-left: auto; }
+
+  .layout { display: flex; height: calc(100vh - 100px); }
+
+  #map { flex: 1; }
+
+  /* Leaflet overrides */
+  .leaflet-container { font-family: Arial, sans-serif; }
+  .property-icon { cursor: pointer; }
+
+  /* Custom marker */
+  .park-marker {
+    background: #8a6a2a; color: white;
+    border: 2px solid #4a3a10; border-radius: 4px;
+    font-size: 10px; font-weight: bold; font-family: Arial, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    transition: transform 0.1s;
+    white-space: nowrap; padding: 2px 5px;
+  }
+  .park-marker.has-subs { background: #4a7c5a; border-color: #2a5a3a; }
+  .park-marker.listed::after { content: '★'; position: absolute; top:-7px; right:-4px; font-size:10px; color:#f0c040; }
+  .park-marker.active { background: #d4380d !important; border-color: #8b1a00 !important; transform: scale(1.2); z-index: 1000 !important; }
+  .park-marker:hover { transform: scale(1.15); }
+
+  /* Detail panel */
+  .panel {
+    width: 400px; background: white; border-left: 1px solid #d8d0b8;
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: translateX(100%); transition: transform 0.28s ease;
+  }
+  .panel.open { transform: translateX(0); }
+
+  .panel-head {
+    background: #1a3a2a; color: #e8dfc8;
+    padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .panel-head h2 { font-size: 1.05rem; font-weight: normal; }
+  .panel-head .sub { font-size: 0.76rem; color: #90b890; margin-top: 3px; }
+  .panel-head button { background: none; border: none; color: #90b890; font-size: 1.3rem; cursor: pointer; padding: 0 2px; }
+  .panel-head button:hover { color: white; }
+
+  .tabs { display: flex; background: #f4f0e8; border-bottom: 2px solid #e0d8c0; }
+  .tab {
+    flex: 1; padding: 9px 4px; font-size: 0.76rem; text-align: center;
+    cursor: pointer; border: none; background: none; color: #6a5a3a;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+  }
+  .tab:hover { background: #ece8dc; }
+  .tab.active { color: #1a3a2a; border-bottom-color: #1a3a2a; font-weight: bold; background: white; }
+
+  .panel-body { flex: 1; overflow-y: auto; padding: 14px 18px; }
+
+  .section { margin-bottom: 16px; }
+  .section h3 {
+    font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: #8a6a2a; border-bottom: 1px solid #e8d8a0; padding-bottom: 3px; margin-bottom: 8px;
+  }
+  .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 0.82rem; }
+  .lbl { color: #7a6a4a; min-width: 110px; font-size: 0.78rem; }
+  .val { color: #1a1a1a; flex: 1; }
+  .desc {
+    font-size: 0.83rem; line-height: 1.65; color: #2a2a2a;
+    background: #faf6ee; padding: 10px 12px; border-radius: 4px;
+    border-left: 3px solid #8a6a2a;
+  }
+  .chip {
+    display: inline-block; background: #e8f0e0; color: #2a5a2a;
+    padding: 2px 8px; border-radius: 10px; font-size: 0.74rem; margin: 2px;
+  }
+  .chip.listed { background: #fff3cd; color: #6a4a00; }
+
+  .sub-card { border: 1px solid #e8dfc8; border-radius: 5px; padding: 10px 12px; margin-bottom: 10px; background: #faf8f2; }
+  .sub-meta { font-size: 0.74rem; color: #8a7a5a; margin-bottom: 5px; }
+  .sub-meta strong { color: #4a3a18; }
+  .sub-text { font-size: 0.82rem; line-height: 1.6; }
+
+  .add-btn {
+    display: block; width: 100%; padding: 9px;
+    background: #1a3a2a; color: #e8dfc8; border: none;
+    border-radius: 4px; cursor: pointer; font-size: 0.84rem; margin-top: 4px;
+  }
+  .add-btn:hover { background: #2a5040; }
+  .form-wrap { display: none; margin-top: 12px; }
+  .form-wrap.on { display: block; }
+  .form-wrap select, .form-wrap input, .form-wrap textarea {
+    width: 100%; padding: 7px 10px; border: 1px solid #c8b888;
+    border-radius: 4px; font-size: 0.82rem; margin-bottom: 7px;
+    font-family: Georgia, serif; background: #faf8f2;
+  }
+  .form-wrap textarea { height: 90px; resize: vertical; }
+  .form-wrap .btns { display: flex; gap: 8px; }
+  .form-wrap .submit { background: #8a6a2a; color: white; border: none; padding: 7px 16px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+  .form-wrap .cancel { background: none; border: 1px solid #c8b888; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; color: #6a5a3a; }
+
+  .photo-ph {
+    background: linear-gradient(135deg,#ece8dc,#dcd8cc);
+    border: 1px dashed #b0a080; border-radius: 4px; height: 160px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #8a7a5a; font-size: 0.8rem; gap: 6px; margin-bottom: 12px;
+  }
+
+  /* Map legend */
+  .map-legend {
+    background: white; padding: 10px 13px; border-radius: 6px;
+    border: 1px solid #c8b888; font-size: 0.75rem; color: #4a3a20;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .map-legend h4 { margin-bottom: 5px; font-size: 0.78rem; }
+  .leg { display: flex; align-items: center; gap: 7px; margin-bottom: 3px; }
+  .legdot { width: 11px; height: 11px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.3); }
+
+  .toast {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #1a3a2a; color: #e8dfc8; padding: 10px 18px;
+    border-radius: 5px; font-size: 0.83rem; z-index: 9999;
+    opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .badge { background: #c49a3a; color: white; border-radius: 10px; padding: 1px 6px; font-size: 0.7rem; margin-left: 3px; }
+
+  /* Leaflet popup override */
+  .leaflet-popup-content-wrapper { border-radius: 6px; font-family: Georgia, serif; font-size: 0.82rem; }
+  .leaflet-popup-content { margin: 8px 12px; }
+  .popup-title { font-weight: bold; color: #1a3a2a; margin-bottom: 3px; }
+  .popup-sub { font-size: 0.75rem; color: #6a5a3a; margin-bottom: 6px; }
+  .popup-btn { background: #1a3a2a; color: white; border: none; padding: 5px 12px; border-radius: 3px; cursor: pointer; font-size: 0.78rem; width: 100%; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
+  <nav>
+    <button onclick="focusSearch()">🔍 Search</button>
+    <button class="primary" onclick="addDataClick()">+ Add Data</button>
+    <button onclick="toast('Sign in / Register — authentication would open here.')">Sign In</button>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <input id="searchBox" type="text" placeholder="House name, street, architect, style…" oninput="filterMarkers(this.value)">
+  <select id="typeFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
+    <option value="">All periods</option>
+    <option value="Victorian">Victorian</option>
+    <option value="Edwardian">Edwardian</option>
+  </select>
+  <select id="listedFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
+    <option value="">All listings</option>
+    <option value="listed">Listed buildings only</option>
+  </select>
+  <button onclick="resetFilters()">Reset</button>
+  <span class="info" id="countInfo">350 properties · click a marker to view its record</span>
+</div>
+
+<div class="layout">
+  <div id="map"></div>
+
+  <div class="panel" id="panel">
+    <div class="panel-head">
+      <div>
+        <h2 id="pTitle">—</h2>
+        <div class="sub" id="pSub">The Park Estate, Nottingham</div>
+      </div>
+      <button onclick="closePanel()">✕</button>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="tab('data',this)">Data Sheet</button>
+      <button class="tab" onclick="tab('history',this)">History</button>
+      <button class="tab" onclick="tab('photos',this)">Photos</button>
+      <button class="tab" onclick="tab('subs',this)">Submissions <span class="badge" id="subBadge">0</span></button>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"></div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────────
+// Real approximate coordinates for streets on The Park Estate, Nottingham
+// (WGS84 lat/lng)
+const props = [
+  { id:101, name:"Lenton House",      street:"North Road",          no:"1",  lat:52.9508, lng:-1.1632, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1860", style:"Italianate Villa",  floors:3,
+    desc:"A substantial Italianate villa by T.C. Hine retaining original round-headed windows and stuccoed facades with decorative cornicing and bracketed eaves.",
+    residents:[{y:"1862–1884",n:"Josiah Fletcher, lace manufacturer"},{y:"1885–1901",n:"Rev. Charles Whitmore"},{y:"1902–1914",n:"Dr. Arthur Hallam"}] },
+  { id:102, name:"The Cedars",        street:"Cavendish Crescent N",no:"14", lat:52.9520, lng:-1.1598, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1874", style:"Gothic Revival",    floors:3,
+    desc:"A striking polychrome Gothic Revival house attributed to Watson Fothergill with red and blue engineering brick, steeply pitched roof and decorative bargeboards.",
+    residents:[{y:"1875–1898",n:"William Birkin, hosiery manufacturer"},{y:"1899–1918",n:"Miss Eleanor Birkin"}] },
+  { id:103, name:"Belmont",           street:"The Ropewalk",        no:"22", lat:52.9530, lng:-1.1618, type:"Edwardian", listed:false, arch:"Unknown",                built:"1905", style:"Arts & Crafts",     floors:2,
+    desc:"Arts and Crafts house of red brick with tile-hung upper storey, prominent chimney stacks, tapered porch columns and leaded casement windows.",
+    residents:[{y:"1906–1912",n:"Alderman George Hopkinson, JP"},{y:"1913–1918",n:"Mrs. Sophia Hopkinson"}] },
+  { id:104, name:"Park House",        street:"Park Drive",          no:"3",  lat:52.9495, lng:-1.1648, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1855", style:"Gothic",            floors:3,
+    desc:"One of the earliest houses on the Estate by T.C. Hine, 1855. Pointed arched windows, Gothic label mouldings and picturesque asymmetry. Surviving coach house to rear.",
+    residents:[{y:"1855–1872",n:"William Wylde, estate developer"},{y:"1873–1895",n:"Thomas Adams, lace manufacturer"},{y:"1896–1917",n:"Colonel H.P. Rolleston"}] },
+  { id:105, name:"Sherwood",          street:"Castle Boulevard",    no:"48", lat:52.9488, lng:-1.1565, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1908", style:"Free Classical",    floors:2,
+    desc:"Free classical house with red brick and stone dressings by A.N. Bromley. Venetian window, stone quoins and original wrought-iron entrance gates survive.",
+    residents:[{y:"1909–1918",n:"Herbert Jardine, solicitor"}] },
+  { id:106, name:"The Elms",          street:"Lenton Road",         no:"7",  lat:52.9475, lng:-1.1615, type:"Victorian", listed:false, arch:"Unknown",                built:"1868", style:"Italianate",        floors:3,
+    desc:"Late Italianate villa with rendered facades and bracketed eaves cornice. Takes its name from the elm avenue lost to Dutch elm disease in the 1970s. Conservatory c.1885.",
+    residents:[{y:"1869–1885",n:"Thomas Birkin, manufacturer"},{y:"1886–1907",n:"Rev. Henry Cartwright"},{y:"1908–1918",n:"The Misses Cartwright"}] },
+  { id:107, name:"Oakwood",           street:"North Road",          no:"8",  lat:52.9512, lng:-1.1624, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1880", style:"Queen Anne",        floors:2,
+    desc:"Queen Anne house with Dutch gable and terracotta panels attributed to Watson Fothergill. Red brick with buff terracotta dressings. Original decorative tilework survives in the hall.",
+    residents:[{y:"1881–1900",n:"Samuel Morley Jr., hosiery manufacturer"},{y:"1901–1918",n:"Dr. James Whitworth"}] },
+  { id:108, name:"Cavendish Lodge",   street:"Cavendish Crescent S",no:"5",  lat:52.9498, lng:-1.1592, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1912", style:"Arts & Crafts",     floors:2,
+    desc:"Late Arts and Crafts house by Percy Howitt (later City Architect) with roughcast render and half-timbered gables. Garden by the owner, an amateur horticulturalist.",
+    residents:[{y:"1913–1918",n:"Robert Parsons, banker"}] },
+  { id:109, name:"Mapperley",         street:"The Ropewalk",        no:"41", lat:52.9535, lng:-1.1606, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1858", style:"Italianate",        floors:3,
+    desc:"Large Italianate villa by T.C. Hine with projecting bay windows, Corinthian pilasters to the entrance porch and a separately listed stable block.",
+    residents:[{y:"1858–1880",n:"Edwin Patchitt, solicitor"},{y:"1881–1910",n:"Colonel James Moore"},{y:"1911–1918",n:"Arthur Moore"}] },
+  { id:110, name:"Vine Cottage",      street:"Park Drive",          no:"11", lat:52.9487, lng:-1.1641, type:"Victorian", listed:false, arch:"Unknown",                built:"1872", style:"Gothic",            floors:2,
+    desc:"Gothic cottage with pointed gables and label-moulded windows, a substantial family residence despite its name. The original vine was reportedly planted in 1872.",
+    residents:[{y:"1872–1890",n:"George Parsons, lace factor"},{y:"1891–1918",n:"Mrs. Harriet Parsons"}] },
+  { id:111, name:"The Mount",         street:"Castle Boulevard",    no:"32", lat:52.9493, lng:-1.1571, type:"Victorian", listed:false, arch:"Unknown",                built:"1865", style:"Italianate",        floors:3,
+    desc:"Mid-Victorian Italianate house on an elevated site with views over the Trent valley. Paired round-headed windows and dentilled cornice. Converted to flats 1950s, returned to single occupancy.",
+    residents:[{y:"1865–1888",n:"Charles Leavers, lace manufacturer"},{y:"1889–1914",n:"Sir Frederick Mapperley, JP"}] },
+  { id:112, name:"Fern Hill",         street:"Lenton Road",         no:"19", lat:52.9470, lng:-1.1608, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1903", style:"Baroque Revival",   floors:2,
+    desc:"Unusual Baroque Revival house by A.N. Bromley with segmental pediments, keystoned windows and a curved bay entrance front. Earlier scheme with cupola was rejected by the estate surveyor.",
+    residents:[{y:"1904–1918",n:"Frederick Cope, alderman"}] },
+  { id:113, name:"The Hollies",       street:"Cavendish Crescent N",no:"8",  lat:52.9517, lng:-1.1605, type:"Victorian", listed:false, arch:"T.C. Hine",              built:"1869", style:"Italianate",        floors:3,
+    desc:"A well-preserved Italianate villa by T.C. Hine with original sash windows and a cast-iron entrance canopy. The walled kitchen garden to the north survives in modified form.",
+    residents:[{y:"1870–1892",n:"John Boot, pharmaceutical manufacturer"},{y:"1893–1918",n:"Alfred Boot"}] },
+  { id:114, name:"Willow Bank",       street:"North Road",          no:"15", lat:52.9515, lng:-1.1629, type:"Victorian", listed:false, arch:"Unknown",                built:"1876", style:"Gothic Revival",    floors:2,
+    desc:"A compact Gothic Revival house with polychrome brickwork and plate-tracery window to the stair. The garden retains a Victorian fernery.",
+    residents:[{y:"1877–1905",n:"Samuel Watts, stockbroker"},{y:"1906–1918",n:"Mrs. Clara Watts"}] },
+  { id:115, name:"Raleigh House",     street:"Park Drive",          no:"20", lat:52.9501, lng:-1.1645, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1910", style:"Free Classical",    floors:2,
+    desc:"Free classical house by Percy Howitt with a projecting Ionic porch and hipped roof. One of Howitt's last domestic commissions before his major civic work.",
+    residents:[{y:"1911–1918",n:"Frank Raleigh, engineer"}] },
+];
+
+const subs = {
+  101:[
+    {u:"J. Armstrong",d:"March 2019",t:"Oral History",tx:"My grandmother was housemaid here 1908–1914. She described the servants' quarters in the basement and the bell system. The family kept a motor car from about 1910, one of the first on the estate."},
+    {u:"P. Hallam",d:"July 2021",t:"Family History",tx:"I am the great-great-nephew of Dr. Arthur Hallam. Family papers at Nottinghamshire Archives reference alterations to the library and planting of the cedar on the west lawn c.1905."},
+    {u:"D. Chambers",d:"Jan 2023",t:"Photograph",tx:"[Photograph submitted: exterior view c.1910 from family album — copy on file with the Trust]"},
+  ],
+  102:[{u:"F. Birkin",d:"June 2020",t:"Family History",tx:"William Birkin commissioned the house following expansion of his hosiery business. Contemporary trade directories confirm he employed over 400 workers at his Basford factory."}],
+  104:[
+    {u:"M. Rolleston",d:"Sep 2018",t:"Oral History",tx:"Colonel Rolleston was my great-grandfather, returned from India in 1896. He made significant alterations to the garden and added the summerhouse visible in the 1908 OS map."},
+    {u:"Local History Group",d:"Feb 2022",t:"Documentary",tx:"Rate books at Nottinghamshire Archives confirm Thomas Adams as occupier from Michaelmas 1873. He was Sheriff of Nottingham 1881–82."},
+  ],
+  105:[{u:"A. Jardine",d:"April 2021",t:"Family History",tx:"Herbert Jardine was my great-grandfather, a partner at Jardine & Croft, solicitors. He moved here in 1909 from Mapperley Park. The family occupied the house until 1952."}],
+  107:[{u:"Nottingham Civic Society",d:"March 2020",t:"Documentary",tx:"Planning applications in the City Archive reference a proposed conservatory in 1888 not executed. The hall tilework is consistent with work by Craven Dunnill & Co. of Jackfield, c.1880."}],
+  108:[
+    {u:"T. Parsons",d:"Nov 2019",t:"Oral History",tx:"The garden was laid out by Robert Parsons, an enthusiastic amateur horticulturalist who corresponded with the head gardener at Chatsworth."},
+    {u:"Park Archives",d:"June 2023",t:"Documentary",tx:"Percy Howitt's original drawings survive in the RIBA Drawings Collection and show a more elaborate scheme — the half-timbered gable was simplified at the client's request."},
+  ],
+  109:[
+    {u:"C. Moore",d:"Jan 2018",t:"Family History",tx:"Colonel James Moore purchased the house in 1881 after the Afghan Wars. He named the principal guest bedroom 'Kandahar' and served on City Council 1885–1901."},
+    {u:"P. Henderson",d:"Aug 2020",t:"Oral History",tx:"The stable block was converted to a garage c.1908 when Arthur Moore purchased one of the early motor cars — reportedly a 14hp Daimler."},
+    {u:"R. Eastwood",d:"March 2021",t:"Documentary",tx:"The Nottingham Journal of 14 June 1880 reports the house-warming given by Edwin Patchitt, describing 'handsome reception rooms' and a garden 'laid out to designs of Mr. Milner'."},
+    {u:"Local History Group",d:"Jan 2024",t:"Photograph",tx:"[Photograph submitted: garden party c.1895, showing south elevation and conservatory]"},
+  ],
+  111:[{u:"F. Mapperley",d:"Oct 2022",t:"Family History",tx:"Sir Frederick Mapperley (1845–1921) was my great-great-grandfather, partner in Mapperley & Sons lace firm, baronetcy 1905. House sold 1919 when he moved to his Lincolnshire estate."}],
+};
+
+// ── MAP SETUP ────────────────────────────────────────────────────────────────
+const map = L.map('map', {
+  center: [52.9503, -1.1612],
+  zoom: 16,
+  zoomControl: true,
+});
+
+// OpenStreetMap tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | The Park Conservation Trust',
+  maxZoom: 19,
+}).addTo(map);
+
+// Add a subtle historical overlay hint
+const legend = L.control({ position: 'bottomleft' });
+legend.onAdd = () => {
+  const d = L.DomUtil.create('div', 'map-legend');
+  d.innerHTML = `<h4>Map Key</h4>
+    <div class="leg"><div class="legdot" style="background:#8a6a2a"></div>Property record</div>
+    <div class="leg"><div class="legdot" style="background:#4a7c5a"></div>Has submissions</div>
+    <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
+    <div class="leg"><span style="color:#f0c040;font-size:11px">★</span> &nbsp;Listed building</div>`;
+  return d;
+};
+legend.addTo(map);
+
+// ── MARKERS ──────────────────────────────────────────────────────────────────
+let markers = {};
+let activeId = null;
+
+function makeIcon(p, isActive) {
+  const hasSubs = (subs[p.id] || []).length > 0;
+  let cls = 'park-marker';
+  if (hasSubs) cls += ' has-subs';
+  if (p.listed) cls += ' listed';
+  if (isActive) cls += ' active';
+  const bg = isActive ? '#d4380d' : hasSubs ? '#4a7c5a' : '#8a6a2a';
+  const border = isActive ? '#8b1a00' : hasSubs ? '#2a5a3a' : '#4a3a10';
+  return L.divIcon({
+    className: '',
+    html: `<div class="${cls}" style="background:${bg};border:2px solid ${border};position:relative;border-radius:4px;padding:2px 5px;font-size:10px;font-weight:bold;font-family:Arial;color:white;box-shadow:0 2px 5px rgba(0,0,0,0.4);white-space:nowrap;${isActive?'transform:scale(1.2)':''}">
+      ${p.id}${p.listed?'<span style="position:absolute;top:-8px;right:-3px;font-size:10px;color:#f0c040">★</span>':''}
+    </div>`,
+    iconAnchor: [18, 10],
+    iconSize: [36, 20],
+    popupAnchor: [0, -14],
+  });
+}
+
+function buildMarkers(filter = '', typeF = '', listedF = '') {
+  // Remove old
+  Object.values(markers).forEach(m => map.removeLayer(m));
+  markers = {};
+  let count = 0;
+  props.forEach(p => {
+    const txt = (p.name + p.street + p.arch + p.style + p.no).toLowerCase();
+    if (filter && !txt.includes(filter.toLowerCase())) return;
+    if (typeF && p.type !== typeF) return;
+    if (listedF === 'listed' && !p.listed) return;
+    count++;
+    const m = L.marker([p.lat, p.lng], { icon: makeIcon(p, activeId === p.id) })
+      .bindPopup(`
+        <div class="popup-title">${p.name}</div>
+        <div class="popup-sub">${p.no} ${p.street} · ${p.style} · ${p.built}</div>
+        <button class="popup-btn" onclick="openProp(${p.id})">View Record →</button>
+      `, { maxWidth: 220 })
+      .addTo(map);
+    m.on('click', () => openProp(p.id));
+    markers[p.id] = m;
+  });
+  document.getElementById('countInfo').textContent = `${count} properties shown · click a marker to view its record`;
+}
+
+// ── PANEL ────────────────────────────────────────────────────────────────────
+let curProp = null, curTab = 'data';
+
+function openProp(id) {
+  const p = props.find(x => x.id === id);
+  if (!p) return;
+  curProp = p;
+  activeId = id;
+  buildMarkers(
+    document.getElementById('searchBox').value,
+    document.getElementById('typeFilter').value,
+    document.getElementById('listedFilter').value
+  );
+  document.getElementById('pTitle').textContent = p.name;
+  document.getElementById('pSub').textContent = `${p.no} ${p.street} · Property ${p.id}`;
+  document.getElementById('subBadge').textContent = (subs[p.id] || []).length;
+  document.getElementById('panel').classList.add('open');
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===0));
+  curTab = 'data';
+  renderPanel();
+}
+
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  activeId = null;
+  curProp = null;
+  buildMarkers(
+    document.getElementById('searchBox').value,
+    document.getElementById('typeFilter').value,
+    document.getElementById('listedFilter').value
+  );
+}
+
+function tab(name, btn) {
+  curTab = name;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderPanel();
+}
+
+function renderPanel() {
+  const p = curProp; if (!p) return;
+  const body = document.getElementById('panelBody');
+  const ss = subs[p.id] || [];
+
+  if (curTab === 'data') {
+    body.innerHTML = `
+      <div class="section"><h3>Property Details</h3>
+        <div class="row"><span class="lbl">Address</span><span class="val">${p.no} ${p.street}</span></div>
+        <div class="row"><span class="lbl">Built</span><span class="val">c. ${p.built}</span></div>
+        <div class="row"><span class="lbl">Style</span><span class="val">${p.style}</span></div>
+        <div class="row"><span class="lbl">Period</span><span class="val">${p.type}</span></div>
+        <div class="row"><span class="lbl">Storeys</span><span class="val">${p.floors}</span></div>
+        <div class="row"><span class="lbl">Architect</span><span class="val">${p.arch}</span></div>
+        <div class="row"><span class="lbl">Listing</span><span class="val">${p.listed ? '<span class="chip listed">★ Listed Building</span>' : 'Not listed'}</span></div>
+      </div>
+      <div class="section"><h3>Architectural Description</h3><div class="desc">${p.desc}</div></div>
+      <div class="section"><h3>Known Residents (pre-1918)</h3>
+        ${p.residents.map(r=>`<div class="row"><span class="lbl">${r.y}</span><span class="val">${r.n}</span></div>`).join('')}
+      </div>`;
+  }
+  else if (curTab === 'history') {
+    body.innerHTML = `
+      <div class="section"><h3>Development History</h3>
+        <div class="desc">${p.name} was constructed c.${p.built} in the ${p.style} style. ${p.arch !== 'Unknown' ? `Designed by <strong>${p.arch}</strong>, one of the principal architects working on the Estate.` : 'The architect has not been identified.'}
+        The property forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s.</div>
+      </div>
+      <div class="section"><h3>The Park Estate</h3>
+        <div class="desc">The Park was developed as a high-status residential suburb from c.1850, following the Newcastle Trustees' decision to release the land for building. Notable for its picturesque layout, variety of architectural styles, and the exceptional survival rate of its original housing stock — approximately 350 pre-1918 properties remain.</div>
+      </div>`;
+  }
+  else if (curTab === 'photos') {
+    body.innerHTML = `
+      <div class="photo-ph">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21,15 16,10 5,21"/>
+        </svg>
+        No photographs on record yet
+      </div>
+      <p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6">Photographs, illustrations, maps, and plans can be contributed via the <strong>Submissions</strong> tab. Include an approximate date and source where known. All submissions are reviewed before publication.</p>`;
+  }
+  else if (curTab === 'subs') {
+    const cards = ss.map(s => `
+      <div class="sub-card">
+        <div class="sub-meta"><strong>${s.u}</strong> · ${s.t} · ${s.d}</div>
+        <div class="sub-text">${s.tx}</div>
+      </div>`).join('');
+    body.innerHTML = (ss.length ? cards : `<p style="font-size:0.82rem;color:#6a5a3a;margin-bottom:14px">No submissions yet. Do you know this property's history?</p>`) + `
+      <button class="add-btn" id="addBtn" onclick="toggleForm()">+ Add Historical Information</button>
+      <div class="form-wrap" id="addForm">
+        <p style="font-size:0.78rem;color:#6a5a3a;margin-bottom:8px">Share family history, oral accounts, photographs, or documentary evidence.</p>
+        <select id="fType"><option>Family History</option><option>Oral History</option><option>Photograph</option><option>Documentary</option><option>Other</option></select>
+        <input id="fName" type="text" placeholder="Your name">
+        <textarea id="fText" placeholder="Describe what you know about this property…"></textarea>
+        <div class="btns">
+          <button class="submit" onclick="submitSub()">Submit</button>
+          <button class="cancel" onclick="toggleForm()">Cancel</button>
+        </div>
+      </div>`;
+  }
+}
+
+function toggleForm() {
+  const f = document.getElementById('addForm');
+  const b = document.getElementById('addBtn');
+  const on = f.classList.toggle('on');
+  b.textContent = on ? '− Cancel adding' : '+ Add Historical Information';
+}
+
+function submitSub() {
+  const tx = document.getElementById('fText').value.trim();
+  if (!tx) { toast('Please enter some information before submitting.'); return; }
+  const nm = document.getElementById('fName').value.trim() || 'Anonymous';
+  const tp = document.getElementById('fType').value;
+  if (!subs[curProp.id]) subs[curProp.id] = [];
+  subs[curProp.id].push({ u:nm, d:'Just now', t:tp, tx });
+  document.getElementById('subBadge').textContent = subs[curProp.id].length;
+  toast('Thank you — your submission has been received and will be reviewed.');
+  curTab = 'subs';
+  renderPanel();
+}
+
+// ── SEARCH & FILTER ──────────────────────────────────────────────────────────
+function filterMarkers(val) {
+  buildMarkers(val, document.getElementById('typeFilter').value, document.getElementById('listedFilter').value);
+}
+function resetFilters() {
+  document.getElementById('searchBox').value = '';
+  document.getElementById('typeFilter').value = '';
+  document.getElementById('listedFilter').value = '';
+  buildMarkers('', '', '');
+}
+function focusSearch() { document.getElementById('searchBox').focus(); }
+function addDataClick() {
+  if (!curProp) { toast('Click a property on the map first, then use the Submissions tab.'); return; }
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===3));
+  curTab = 'subs'; renderPanel();
+}
+
+// ── TOAST ────────────────────────────────────────────────────────────────────
+function toast(msg) {
+  const el = document.getElementById('toastEl');
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+buildMarkers();
+setTimeout(() => openProp(101), 800);
+</script>
+</body>
+</html>
