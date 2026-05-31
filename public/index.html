@@ -224,52 +224,51 @@
 
 <script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
-// Real approximate coordinates for streets on The Park Estate, Nottingham
-// (WGS84 lat/lng)
+// Geocoded coordinates from Nominatim / OpenStreetMap (WGS84)
 const props = [
-  { id:101, name:"Lenton House",      street:"North Road",          no:"1",  lat:52.9508, lng:-1.1632, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1860", style:"Italianate Villa",  floors:3,
+  { id:101, name:"Lenton House",      street:"North Road",          no:"1",  lat:52.9534763, lng:-1.1659461, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1860", style:"Italianate Villa",  floors:3,
     desc:"A substantial Italianate villa by T.C. Hine retaining original round-headed windows and stuccoed facades with decorative cornicing and bracketed eaves.",
     residents:[{y:"1862–1884",n:"Josiah Fletcher, lace manufacturer"},{y:"1885–1901",n:"Rev. Charles Whitmore"},{y:"1902–1914",n:"Dr. Arthur Hallam"}] },
-  { id:102, name:"The Cedars",        street:"Cavendish Crescent N",no:"14", lat:52.9520, lng:-1.1598, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1874", style:"Gothic Revival",    floors:3,
+  { id:102, name:"The Cedars",        street:"Cavendish Crescent N",no:"14", lat:52.9533504, lng:-1.1642358, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1874", style:"Gothic Revival",    floors:3,
     desc:"A striking polychrome Gothic Revival house attributed to Watson Fothergill with red and blue engineering brick, steeply pitched roof and decorative bargeboards.",
     residents:[{y:"1875–1898",n:"William Birkin, hosiery manufacturer"},{y:"1899–1918",n:"Miss Eleanor Birkin"}] },
-  { id:103, name:"Belmont",           street:"The Ropewalk",        no:"22", lat:52.9530, lng:-1.1618, type:"Edwardian", listed:false, arch:"Unknown",                built:"1905", style:"Arts & Crafts",     floors:2,
+  { id:103, name:"Belmont",           street:"The Ropewalk",        no:"22", lat:52.9546084, lng:-1.1605067, type:"Edwardian", listed:false, arch:"Unknown",                built:"1905", style:"Arts & Crafts",     floors:2,
     desc:"Arts and Crafts house of red brick with tile-hung upper storey, prominent chimney stacks, tapered porch columns and leaded casement windows.",
     residents:[{y:"1906–1912",n:"Alderman George Hopkinson, JP"},{y:"1913–1918",n:"Mrs. Sophia Hopkinson"}] },
-  { id:104, name:"Park House",        street:"Park Drive",          no:"3",  lat:52.9495, lng:-1.1648, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1855", style:"Gothic",            floors:3,
+  { id:104, name:"Park House",        street:"Park Drive",          no:"3",  lat:52.9498039, lng:-1.1602952, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1855", style:"Gothic",            floors:3,
     desc:"One of the earliest houses on the Estate by T.C. Hine, 1855. Pointed arched windows, Gothic label mouldings and picturesque asymmetry. Surviving coach house to rear.",
     residents:[{y:"1855–1872",n:"William Wylde, estate developer"},{y:"1873–1895",n:"Thomas Adams, lace manufacturer"},{y:"1896–1917",n:"Colonel H.P. Rolleston"}] },
-  { id:105, name:"Sherwood",          street:"Castle Boulevard",    no:"48", lat:52.9488, lng:-1.1565, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1908", style:"Free Classical",    floors:2,
+  { id:105, name:"Sherwood",          street:"Castle Boulevard",    no:"48", lat:52.9468213, lng:-1.1681576, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1908", style:"Free Classical",    floors:2,
     desc:"Free classical house with red brick and stone dressings by A.N. Bromley. Venetian window, stone quoins and original wrought-iron entrance gates survive.",
     residents:[{y:"1909–1918",n:"Herbert Jardine, solicitor"}] },
-  { id:106, name:"The Elms",          street:"Lenton Road",         no:"7",  lat:52.9475, lng:-1.1615, type:"Victorian", listed:false, arch:"Unknown",                built:"1868", style:"Italianate",        floors:3,
+  { id:106, name:"The Elms",          street:"Lenton Road",         no:"7",  lat:52.9500247, lng:-1.1574813, type:"Victorian", listed:false, arch:"Unknown",                built:"1868", style:"Italianate",        floors:3,
     desc:"Late Italianate villa with rendered facades and bracketed eaves cornice. Takes its name from the elm avenue lost to Dutch elm disease in the 1970s. Conservatory c.1885.",
     residents:[{y:"1869–1885",n:"Thomas Birkin, manufacturer"},{y:"1886–1907",n:"Rev. Henry Cartwright"},{y:"1908–1918",n:"The Misses Cartwright"}] },
-  { id:107, name:"Oakwood",           street:"North Road",          no:"8",  lat:52.9512, lng:-1.1624, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1880", style:"Queen Anne",        floors:2,
+  { id:107, name:"Oakwood",           street:"North Road",          no:"8",  lat:52.9535141, lng:-1.1662756, type:"Victorian", listed:false, arch:"Watson Fothergill",       built:"1880", style:"Queen Anne",        floors:2,
     desc:"Queen Anne house with Dutch gable and terracotta panels attributed to Watson Fothergill. Red brick with buff terracotta dressings. Original decorative tilework survives in the hall.",
     residents:[{y:"1881–1900",n:"Samuel Morley Jr., hosiery manufacturer"},{y:"1901–1918",n:"Dr. James Whitworth"}] },
-  { id:108, name:"Cavendish Lodge",   street:"Cavendish Crescent S",no:"5",  lat:52.9498, lng:-1.1592, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1912", style:"Arts & Crafts",     floors:2,
+  { id:108, name:"Cavendish Lodge",   street:"Cavendish Crescent S",no:"5",  lat:52.9495121, lng:-1.1618486, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1912", style:"Arts & Crafts",     floors:2,
     desc:"Late Arts and Crafts house by Percy Howitt (later City Architect) with roughcast render and half-timbered gables. Garden by the owner, an amateur horticulturalist.",
     residents:[{y:"1913–1918",n:"Robert Parsons, banker"}] },
-  { id:109, name:"Mapperley",         street:"The Ropewalk",        no:"41", lat:52.9535, lng:-1.1606, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1858", style:"Italianate",        floors:3,
+  { id:109, name:"Mapperley",         street:"The Ropewalk",        no:"41", lat:52.9541789, lng:-1.1593476, type:"Victorian", listed:true,  arch:"T.C. Hine",              built:"1858", style:"Italianate",        floors:3,
     desc:"Large Italianate villa by T.C. Hine with projecting bay windows, Corinthian pilasters to the entrance porch and a separately listed stable block.",
     residents:[{y:"1858–1880",n:"Edwin Patchitt, solicitor"},{y:"1881–1910",n:"Colonel James Moore"},{y:"1911–1918",n:"Arthur Moore"}] },
-  { id:110, name:"Vine Cottage",      street:"Park Drive",          no:"11", lat:52.9487, lng:-1.1641, type:"Victorian", listed:false, arch:"Unknown",                built:"1872", style:"Gothic",            floors:2,
+  { id:110, name:"Vine Cottage",      street:"Park Drive",          no:"11", lat:52.9501051, lng:-1.1613501, type:"Victorian", listed:false, arch:"Unknown",                built:"1872", style:"Gothic",            floors:2,
     desc:"Gothic cottage with pointed gables and label-moulded windows, a substantial family residence despite its name. The original vine was reportedly planted in 1872.",
     residents:[{y:"1872–1890",n:"George Parsons, lace factor"},{y:"1891–1918",n:"Mrs. Harriet Parsons"}] },
-  { id:111, name:"The Mount",         street:"Castle Boulevard",    no:"32", lat:52.9493, lng:-1.1571, type:"Victorian", listed:false, arch:"Unknown",                built:"1865", style:"Italianate",        floors:3,
+  { id:111, name:"The Mount",         street:"Castle Boulevard",    no:"32", lat:52.9482079, lng:-1.1561203, type:"Victorian", listed:false, arch:"Unknown",                built:"1865", style:"Italianate",        floors:3,
     desc:"Mid-Victorian Italianate house on an elevated site with views over the Trent valley. Paired round-headed windows and dentilled cornice. Converted to flats 1950s, returned to single occupancy.",
     residents:[{y:"1865–1888",n:"Charles Leavers, lace manufacturer"},{y:"1889–1914",n:"Sir Frederick Mapperley, JP"}] },
-  { id:112, name:"Fern Hill",         street:"Lenton Road",         no:"19", lat:52.9470, lng:-1.1608, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1903", style:"Baroque Revival",   floors:2,
+  { id:112, name:"Fern Hill",         street:"Lenton Road",         no:"19", lat:52.9490463, lng:-1.1606350, type:"Edwardian", listed:false, arch:"Albert Nelson Bromley",  built:"1903", style:"Baroque Revival",   floors:2,
     desc:"Unusual Baroque Revival house by A.N. Bromley with segmental pediments, keystoned windows and a curved bay entrance front. Earlier scheme with cupola was rejected by the estate surveyor.",
     residents:[{y:"1904–1918",n:"Frederick Cope, alderman"}] },
-  { id:113, name:"The Hollies",       street:"Cavendish Crescent N",no:"8",  lat:52.9517, lng:-1.1605, type:"Victorian", listed:false, arch:"T.C. Hine",              built:"1869", style:"Italianate",        floors:3,
+  { id:113, name:"The Hollies",       street:"Cavendish Crescent N",no:"8",  lat:52.9532379, lng:-1.1659720, type:"Victorian", listed:false, arch:"T.C. Hine",              built:"1869", style:"Italianate",        floors:3,
     desc:"A well-preserved Italianate villa by T.C. Hine with original sash windows and a cast-iron entrance canopy. The walled kitchen garden to the north survives in modified form.",
     residents:[{y:"1870–1892",n:"John Boot, pharmaceutical manufacturer"},{y:"1893–1918",n:"Alfred Boot"}] },
-  { id:114, name:"Willow Bank",       street:"North Road",          no:"15", lat:52.9515, lng:-1.1629, type:"Victorian", listed:false, arch:"Unknown",                built:"1876", style:"Gothic Revival",    floors:2,
+  { id:114, name:"Willow Bank",       street:"North Road",          no:"15", lat:52.9534763, lng:-1.1659461, type:"Victorian", listed:false, arch:"Unknown",                built:"1876", style:"Gothic Revival",    floors:2,
     desc:"A compact Gothic Revival house with polychrome brickwork and plate-tracery window to the stair. The garden retains a Victorian fernery.",
     residents:[{y:"1877–1905",n:"Samuel Watts, stockbroker"},{y:"1906–1918",n:"Mrs. Clara Watts"}] },
-  { id:115, name:"Raleigh House",     street:"Park Drive",          no:"20", lat:52.9501, lng:-1.1645, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1910", style:"Free Classical",    floors:2,
+  { id:115, name:"Raleigh House",     street:"Park Drive",          no:"20", lat:52.9501051, lng:-1.1613501, type:"Edwardian", listed:false, arch:"Percy Howitt",           built:"1910", style:"Free Classical",    floors:2,
     desc:"Free classical house by Percy Howitt with a projecting Ionic porch and hipped roof. One of Howitt's last domestic commissions before his major civic work.",
     residents:[{y:"1911–1918",n:"Frank Raleigh, engineer"}] },
 ];
@@ -321,7 +320,7 @@ legend.onAdd = () => {
     <div class="leg"><div class="legdot" style="background:#8a6a2a"></div>Property record</div>
     <div class="leg"><div class="legdot" style="background:#4a7c5a"></div>Has submissions</div>
     <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
-    <div class="leg"><span style="color:#f0c040;font-size:11px">★</span> &nbsp;Listed building</div>`;
+    <div class="leg"><div class="legdot" style="background:#8a6a2a;display:flex;align-items:center;justify-content:center;font-size:8px;color:#f0c040;line-height:1">★</div>Listed building</div>`;
   return d;
 };
 legend.addTo(map);
@@ -332,20 +331,31 @@ let activeId = null;
 
 function makeIcon(p, isActive) {
   const hasSubs = (subs[p.id] || []).length > 0;
-  let cls = 'park-marker';
-  if (hasSubs) cls += ' has-subs';
-  if (p.listed) cls += ' listed';
-  if (isActive) cls += ' active';
-  const bg = isActive ? '#d4380d' : hasSubs ? '#4a7c5a' : '#8a6a2a';
+  const showStar = p.listed; // star if listed (all listed have a record)
+  const bg     = isActive ? '#d4380d' : hasSubs ? '#4a7c5a' : '#8a6a2a';
   const border = isActive ? '#8b1a00' : hasSubs ? '#2a5a3a' : '#4a3a10';
+  const size   = isActive ? 18 : 14;
+  const star   = showStar
+    ? `<span style="font-size:${isActive?9:7}px;color:#f0c040;line-height:1;display:block;text-align:center;margin-top:${isActive?1:0}px">★</span>`
+    : '';
   return L.divIcon({
     className: '',
-    html: `<div class="${cls}" style="background:${bg};border:2px solid ${border};position:relative;border-radius:4px;padding:2px 5px;font-size:10px;font-weight:bold;font-family:Arial;color:white;box-shadow:0 2px 5px rgba(0,0,0,0.4);white-space:nowrap;${isActive?'transform:scale(1.2)':''}">
-      ${p.id}${p.listed?'<span style="position:absolute;top:-8px;right:-3px;font-size:10px;color:#f0c040">★</span>':''}
-    </div>`,
-    iconAnchor: [18, 10],
-    iconSize: [36, 20],
-    popupAnchor: [0, -14],
+    html: `<div style="
+      background:${bg};
+      border:2px solid ${border};
+      border-radius:3px;
+      width:${size}px;
+      height:${size}px;
+      box-shadow:0 2px 4px rgba(0,0,0,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      ${isActive ? 'transform:scale(1.25);' : ''}
+      cursor:pointer;
+    ">${star}</div>`,
+    iconAnchor: [size/2, size/2],
+    iconSize: [size, size],
+    popupAnchor: [0, -(size/2 + 4)],
   });
 }
 
