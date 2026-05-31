@@ -954,17 +954,18 @@ app.post('/api/seed/property/:propId/people', requireAdmin, async (req, res) => 
         }
       }
 
-      // Upsert census entries for this property
+      // Upsert census entries — use ce.property_id if provided, otherwise fall back to the seed's propId
       for (const ce of (p.census_entries || [])) {
+        const cePropId = ce.property_id || propId;
         const eCe = await client.query(
           `SELECT id FROM census_entries WHERE person_id=$1 AND property_id=$2 AND census_year=$3 LIMIT 1`,
-          [personId, propId, ce.census_year]
+          [personId, cePropId, ce.census_year]
         );
         if (!eCe.rows[0]) {
           await client.query(
             `INSERT INTO census_entries (person_id,property_id,census_year,relationship,age_at_census,occupation_at_census,source)
              VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-            [personId, propId, ce.census_year, ce.relationship||null, ce.age_at_census||null, ce.occupation_at_census||null, ce.source||null]
+            [personId, cePropId, ce.census_year, ce.relationship||null, ce.age_at_census||null, ce.occupation_at_census||null, ce.source||null]
           );
         }
       }

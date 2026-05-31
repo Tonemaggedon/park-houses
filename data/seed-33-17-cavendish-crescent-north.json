@@ -1,0 +1,579 @@
+{
+  "people": [
+    {
+      "first_name": "Richard",
+      "last_name": "Allen",
+      "bio": "Richard Allen was a founder member of the Robin Hoods and served as Provincial Grand Secretary of the Freemasons for 21 years. He ran the business Richard Allen and Son, and was a pioneer of photography in Nottingham \u2014 the company purchased a Beck Achromatic Stereoscope c.1860 and produced a series of 21 Photographic Views of Nottingham. Their portrait Portret van Helena van Waldeck-Pyrmont met baby (c.1883\u201384) is held in the Rijksmuseum, Amsterdam. Richard also published Allen's Railway Time Table and Allen's Illustrated First Book, or Reading Made Easy for Children.",
+      "occupations": [
+        {
+          "occupation": "Publisher",
+          "notes": "Allen's Railway Time Table; Allen's Illustrated First Book"
+        },
+        {
+          "occupation": "Photographer",
+          "notes": "21 Photographic Views of Nottingham; Beck Achromatic Stereoscope c.1860"
+        },
+        {
+          "occupation": "Freemason",
+          "notes": "Provincial Grand Secretary for 21 years"
+        }
+      ],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Mary Ann Deacon",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edward Henry Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Sarah Elizabeth Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Mary Adelaide Allen",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Ann",
+      "last_name": "Deacon",
+      "known_as": "Mary Ann Deacon",
+      "born_year": 1811,
+      "born_place": "Boston, Lincolnshire",
+      "died_year": 1900,
+      "died_place": "Nottingham",
+      "bio": "Mary Ann Deacon married Richard Allen in Basford in 1838. After Richard's death, their daughter Sarah Elizabeth continued to live at Albert Villa.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Richard Allen",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edward Henry Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Sarah Elizabeth Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Mary Adelaide Allen",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Sarah Elizabeth",
+      "last_name": "Allen",
+      "born_year": 1837,
+      "born_place": "Nottingham",
+      "bio": "Sarah Elizabeth Allen continued to live at Albert Villa after the death of her parents Richard and Mary Ann Allen.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Richard Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Ann Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edward Henry",
+      "last_name": "Allen",
+      "born_year": 1839,
+      "born_place": "Nottingham",
+      "died_date": "26 October 1875",
+      "died_year": 1875,
+      "died_place": "Basford, Nottingham",
+      "bio": "Edward Henry Allen worked with his father in Richard Allen and Son. He married Margaret King Furley in Oxford in 1866, and by 1871 the family were living on Hollis Terrace [Holles Crescent?] in The Park. Edward died aged 36 in 1875. There is an Allen Window on the west side of the south transept of St Mary's Church, Nottingham, with a dedication reading: \"To the glory of God and in memory of Edward Henry only son of Richard and Mary Ann Allen died Oct 26th 1875 aged 36\". Edward Henry Allen is buried in Rock Municipal Cemetery, Nottingham.",
+      "occupations": [
+        {
+          "occupation": "Publisher",
+          "employer": "Richard Allen and Son"
+        }
+      ],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Richard Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Ann Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Margaret King Allen",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Herbert Edward Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Percy King Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Florence Margaret Allen",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Margaret King",
+      "last_name": "Allen",
+      "known_as": "Margaret King Furley",
+      "born_year": 1840,
+      "born_place": "Oxford",
+      "bio": "Margaret King Furley married Edward Henry Allen in Oxford in 1866. After Edward's death in 1875 she was left to raise their children. She lived at 3 Park Drive in 1881 and 1891, before moving to 'Pendower', 17 Cavendish Crescent North, where she remained in 1901 and 1911.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "property_id": 234,
+          "census_year": 1881,
+          "relationship": "Head of household"
+        },
+        {
+          "property_id": 234,
+          "census_year": 1891,
+          "relationship": "Head of household"
+        },
+        {
+          "property_id": 33,
+          "census_year": 1901,
+          "relationship": "Head of household"
+        },
+        {
+          "property_id": 33,
+          "census_year": 1911,
+          "relationship": "Head of household"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Edward Henry Allen",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Herbert Edward Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Percy King Allen",
+          "type": "parent_of"
+        },
+        {
+          "name": "Florence Margaret Allen",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Adelaide",
+      "last_name": "Allen",
+      "born_year": 1841,
+      "died_year": 1901,
+      "bio": "Mary Adelaide Allen was a daughter of Richard and Mary Ann Allen.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Richard Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Ann Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Herbert Edward",
+      "last_name": "Allen",
+      "born_year": 1867,
+      "born_place": "Basford, Nottingham",
+      "bio": "Herbert Edward Allen was the eldest son of Edward Henry and Margaret Allen. In 1881 he and his brother Percy were at Boarding School in Hoveringham. Herbert became a civil engineer. He married Ethel Maude Goddard in Nottingham in 1897 and they moved to Cardiff. They had at least three children: Hildred Herbert Allen, Kenneth Heygate Herbert Allen, and Evelyn Maude Allen. Both sons attended Rossall School, Fleetwood. Kenneth became a Lieutenant-Colonel in the Royal Artillery in 1948.",
+      "occupations": [
+        {
+          "occupation": "Civil engineer"
+        }
+      ],
+      "census_entries": [
+        {
+          "property_id": 234,
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 14,
+          "occupation_at_census": "Scholar \u2014 at Boarding School, Hoveringham"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Edward Henry Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Margaret King Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Ethel Maude Goddard",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Percy King Allen",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Florence Margaret Allen",
+          "type": "sibling_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Ethel Maude",
+      "last_name": "Goddard",
+      "known_as": "Ethel Maude Goddard",
+      "born_year": 1872,
+      "bio": "Ethel Maude Goddard married Herbert Edward Allen in Nottingham in 1897. They moved to Cardiff and had at least three children.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Edward Allen",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Hildred Herbert",
+      "last_name": "Allen",
+      "born_year": 1898,
+      "died_year": 1976,
+      "died_place": "Tonbridge",
+      "bio": "Hildred Herbert Allen was the eldest child of Herbert Edward and Ethel Maude Allen.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Edward Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Ethel Maude Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Kenneth Heygate Herbert",
+      "last_name": "Allen",
+      "born_year": 1900,
+      "died_year": 1986,
+      "died_place": "Worthing",
+      "bio": "Kenneth Heygate Herbert Allen attended Rossall School, Fleetwood. He became a Lieutenant-Colonel in the Royal Artillery in 1948.",
+      "occupations": [
+        {
+          "occupation": "Lieutenant-Colonel, Royal Artillery",
+          "from_year": 1948
+        }
+      ],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Edward Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Ethel Maude Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Evelyn Maude",
+      "last_name": "Allen",
+      "born_year": 1904,
+      "bio": "Evelyn Maude Allen was the daughter of Herbert Edward and Ethel Maude Allen.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Edward Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Ethel Maude Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Percy King",
+      "last_name": "Allen",
+      "born_year": 1868,
+      "born_place": "Basford, Nottingham",
+      "died_year": 1944,
+      "died_place": "Tonbridge",
+      "bio": "Percy King Allen was the second son of Edward Henry and Margaret Allen. In 1881 he and his brother Herbert were at Boarding School in Hoveringham. Percy trained as an architect. In 1889 he produced a series of architectural drawings of Wollaton Hall, for which he was awarded a RIBA Silver Medal. The drawings were reprinted in The Builder on 13th April 1889.\n\nBy 1901 Percy was living in Chester, and by 1911 he was working as an architect in Tunbridge Wells. In 1903 and 1906 he served as Honorary Treasurer of the Nile Mission Press, an organisation dedicated to the printing of evangelical literature in Egypt, which published the quarterly paper Blessed be Egypt.\n\nPercy married Elfreda Jane Hanbury in Richmond, Surrey in 1898. They had a daughter, Meryl Hanbury Allen.",
+      "occupations": [
+        {
+          "occupation": "Architect",
+          "from_year": 1889,
+          "notes": "RIBA Silver Medal 1889 for Wollaton Hall drawings"
+        },
+        {
+          "occupation": "Honorary Treasurer, Nile Mission Press",
+          "from_year": 1903,
+          "to_year": 1906
+        }
+      ],
+      "census_entries": [
+        {
+          "property_id": 234,
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 13,
+          "occupation_at_census": "Scholar \u2014 at Boarding School, Hoveringham"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Edward Henry Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Margaret King Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Elfreda Jane Hanbury",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Herbert Edward Allen",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Florence Margaret Allen",
+          "type": "sibling_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Elfreda Jane",
+      "last_name": "Hanbury",
+      "known_as": "Elfreda Jane Hanbury",
+      "born_year": 1870,
+      "born_place": "Stoke Newington",
+      "died_year": 1939,
+      "died_place": "Tonbridge",
+      "bio": "Elfreda Jane Hanbury married Percy King Allen in Richmond, Surrey in 1898. They had one daughter, Meryl Hanbury Allen.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Percy King Allen",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Meryl Hanbury",
+      "last_name": "Allen",
+      "born_year": 1902,
+      "died_year": 1986,
+      "died_place": "Haywards Heath",
+      "bio": "Meryl Hanbury Allen was the daughter of Percy King Allen and Elfreda Jane Hanbury.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Percy King Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Elfreda Jane Allen",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Florence Margaret",
+      "last_name": "Allen",
+      "born_year": 1871,
+      "born_place": "Basford, Nottingham",
+      "bio": "Florence Margaret Allen was the youngest child of Edward Henry and Margaret Allen. She continued to live with her mother at 3 Park Drive and later at 'Pendower', 17 Cavendish Crescent North, until at least 1911.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "property_id": 234,
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 10
+        },
+        {
+          "property_id": 234,
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 20
+        },
+        {
+          "property_id": 33,
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 30
+        },
+        {
+          "property_id": 33,
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 40
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Edward Henry Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Margaret King Allen",
+          "type": "child_of"
+        },
+        {
+          "name": "Herbert Edward Allen",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Percy King Allen",
+          "type": "sibling_of"
+        }
+      ]
+    }
+  ],
+  "significant_places": [
+    {
+      "name": "St Mary's Church, Nottingham",
+      "location": "High Pavement, Nottingham",
+      "place_type": "Church",
+      "description": "There is an Allen Window on the west side of the south transept dedicated to the memory of Edward Henry Allen, only son of Richard and Mary Ann Allen, who died 26 October 1875 aged 36.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/St_Mary%27s_Church,_Nottingham",
+      "lat": 52.951,
+      "lng": -1.1462,
+      "person_connections": [
+        {
+          "person": "Edward Henry Allen",
+          "connection": "Allen memorial window on west side of south transept"
+        }
+      ]
+    },
+    {
+      "name": "Rock Cemetery, Nottingham",
+      "location": "Mansfield Road, Nottingham",
+      "place_type": "Cemetery",
+      "description": "Municipal cemetery where Edward Henry Allen is buried.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Rock_Cemetery,_Nottingham",
+      "lat": 52.972,
+      "lng": -1.159,
+      "person_connections": [
+        {
+          "person": "Edward Henry Allen",
+          "connection": "Buried here"
+        }
+      ]
+    },
+    {
+      "name": "Wollaton Hall",
+      "location": "Wollaton, Nottingham",
+      "place_type": "Historic house",
+      "description": "Elizabethan country house now serving as Nottingham Natural History Museum. Percy King Allen produced a series of architectural drawings of Wollaton Hall in 1889, for which he was awarded a RIBA Silver Medal. The drawings were published in The Builder, 13th April 1889.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Wollaton_Hall",
+      "lat": 52.9471,
+      "lng": -1.2101,
+      "person_connections": [
+        {
+          "person": "Percy King Allen",
+          "connection": "Produced RIBA Silver Medal-winning architectural drawings in 1889, published in The Builder"
+        }
+      ]
+    },
+    {
+      "name": "Rijksmuseum",
+      "location": "Amsterdam, Netherlands",
+      "place_type": "Museum",
+      "description": "The Rijksmuseum holds the Allen family's portrait Portret van Helena van Waldeck-Pyrmont met baby (c.1883\u201384), produced using the Beck Achromatic Stereoscope purchased by Richard Allen around 1860.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Rijksmuseum",
+      "lat": 52.36,
+      "lng": 4.8852,
+      "person_connections": [
+        {
+          "person": "Richard Allen",
+          "connection": "Portrait photograph in the collection: Portret van Helena van Waldeck-Pyrmont met baby, c.1883\u201384"
+        }
+      ]
+    }
+  ],
+  "bibliography": [
+    {
+      "author_name": "Richard Allen",
+      "title": "Allen's Railway Time Table",
+      "notes": "Published by Richard Allen",
+      "property_id": 33
+    },
+    {
+      "author_name": "Richard Allen",
+      "title": "Allen's Illustrated First Book, or Reading Made Easy for Children",
+      "notes": "Published by Richard Allen",
+      "property_id": 33
+    },
+    {
+      "author_name": "Richard Allen",
+      "title": "21 Photographic Views of Nottingham",
+      "notes": "Produced using a Beck Achromatic Stereoscope, c.1860",
+      "property_id": 33
+    },
+    {
+      "author_name": "Percy King Allen",
+      "title": "Wollaton Hall: Section and Ground Plan",
+      "year": 1889,
+      "publisher": "The Builder, 13 April 1889",
+      "notes": "RIBA Silver Medal 1889",
+      "property_id": 33
+    },
+    {
+      "author_name": "Percy King Allen",
+      "title": "Wollaton Hall: The Front Entrance and Details of the Capitals and Principal Mouldings",
+      "year": 1889,
+      "publisher": "The Builder, 13 April 1889",
+      "notes": "RIBA Silver Medal 1889",
+      "property_id": 33
+    },
+    {
+      "author_name": "Percy King Allen",
+      "title": "Wollaton Hall: North and South Elevation",
+      "year": 1889,
+      "publisher": "The Builder, 13 April 1889",
+      "notes": "RIBA Silver Medal 1889",
+      "property_id": 33
+    },
+    {
+      "author_name": "Percy King Allen",
+      "title": "Wollaton Hall: The Garden Entrance",
+      "year": 1889,
+      "publisher": "The Builder, 13 April 1889",
+      "notes": "RIBA Silver Medal 1889",
+      "property_id": 33
+    }
+  ]
+}
