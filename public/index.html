@@ -172,7 +172,51 @@
   .popup-sub { font-size: 0.75rem; color: #6a5a3a; margin-bottom: 6px; }
   .popup-btn { background: #1a3a2a; color: white; border: none; padding: 5px 12px; border-radius: 3px; cursor: pointer; font-size: 0.78rem; width: 100%; }
 
-  /* ── Admin ── */
+  /* ── Admin edit UI ── */
+  .edit-btn {
+    float: right; background: none; border: 1px solid #c8b888;
+    color: #8a6a2a; padding: 2px 8px; border-radius: 3px;
+    font-size: 0.7rem; cursor: pointer; font-family: Georgia, serif;
+    margin-top: -2px;
+  }
+  .edit-btn:hover { background: #f0e8d0; }
+  .edit-form {
+    background: #faf8f2; border: 1px solid #d0c090;
+    border-radius: 5px; padding: 12px 14px; margin-top: 8px;
+  }
+  .edit-form label { display: block; font-size: 0.74rem; color: #6a5a3a; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; margin-top: 10px; }
+  .edit-form label:first-child { margin-top: 0; }
+  .edit-form input, .edit-form textarea, .edit-form select {
+    width: 100%; padding: 7px 10px; border: 1px solid #c8b888;
+    border-radius: 4px; font-size: 0.82rem; font-family: Georgia, serif;
+    background: white; box-sizing: border-box;
+  }
+  .edit-form textarea { resize: vertical; min-height: 100px; }
+  .edit-form .ef-btns { display: flex; gap: 8px; margin-top: 10px; }
+  .edit-form .ef-save { background: #1a3a2a; color: #e8dfc8; border: none; padding: 7px 18px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+  .edit-form .ef-save:hover { background: #2a5040; }
+  .edit-form .ef-cancel { background: none; border: 1px solid #c8b888; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; color: #6a5a3a; }
+  .edit-form .ef-delete { background: none; border: 1px solid #e09090; color: #8a2020; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; margin-left: auto; }
+  .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .photo-item { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; background: #e8e0d0; }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-item .ph-del { position: absolute; top: 3px; right: 3px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer; display: none; }
+  .photo-item:hover .ph-del { display: block; }
+  .photo-item .ph-cap { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); color: white; font-size: 0.68rem; padding: 3px 5px; }
+  .photo-upload-zone {
+    border: 2px dashed #c8b888; border-radius: 5px; padding: 16px;
+    text-align: center; color: #8a7a5a; font-size: 0.8rem; cursor: pointer;
+    margin-bottom: 8px; transition: background 0.2s;
+  }
+  .photo-upload-zone:hover, .photo-upload-zone.drag-over { background: #f0e8d0; }
+  .fetch-orig-btn { width: 100%; background: #4a6a5a; color: white; border: none; padding: 7px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; margin-bottom: 6px; }
+  .fetch-orig-btn:hover { background: #3a5a4a; }
+  .resident-list .res-row { display: flex; gap: 6px; align-items: center; margin-bottom: 4px; }
+  .resident-list .res-row input { flex: 1; }
+  .resident-list .res-del { background: none; border: none; color: #c07070; cursor: pointer; font-size: 1rem; padding: 0 4px; }
+  .add-res-btn { background: none; border: 1px dashed #8a6a2a; color: #8a6a2a; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; width: 100%; margin-top: 4px; }
+
+  /* ── Admin bar ── */
   .admin-bar {
     background: #2a1a0a; color: #f0d090;
     padding: 6px 20px; font-size: 0.78rem;
@@ -778,41 +822,80 @@ function renderPanel() {
   const body = document.getElementById('panelBody');
   const ss = subs[p.id] || [];
 
+  const ov = propOverrides[p.id] || {};  // server-saved overrides for this property
+
   if (curTab === 'data') {
+    const displayDesc = ov.desc || p.desc || '';
+    const displayBuilt = ov.built || p.built;
+    const displayListed = (ov.listed !== undefined) ? ov.listed : p.listed;
+    const displayGrade = ov.listedGrade || p.listedGrade || 'II';
+    const displayResidents = ov.residents || p.residents || [];
     body.innerHTML = `
-      <div class="section"><h3>Property Details</h3>
+      <div class="section">
+        <h3>Property Details ${isAdmin ? `<button class="edit-btn" onclick="editDetails()">✏ Edit</button>` : ''}</h3>
         <div class="row"><span class="lbl">Address</span><span class="val">${p.no ? p.no + ' ' : ''}${p.street}</span></div>
         ${p.name ? `<div class="row"><span class="lbl">House Name</span><span class="val">${p.name}</span></div>` : ''}
-        ${p.built ? `<div class="row"><span class="lbl">Date</span><span class="val">c.${p.built}</span></div>` : ''}
-        <div class="row"><span class="lbl">Listing</span><span class="val">${p.listed ? `<span class="chip listed">★ Grade ${p.listedGrade || 'II'} Listed</span>` : 'Not listed'}</span></div>
+        ${displayBuilt ? `<div class="row"><span class="lbl">Date</span><span class="val">c.${displayBuilt}</span></div>` : ''}
+        <div class="row"><span class="lbl">Listing</span><span class="val">${displayListed ? `<span class="chip listed">★ Grade ${displayGrade} Listed</span>` : 'Not listed'}</span></div>
+        ${ov.architect ? `<div class="row"><span class="lbl">Architect</span><span class="val">${ov.architect}</span></div>` : ''}
+        ${ov.style ? `<div class="row"><span class="lbl">Style</span><span class="val">${ov.style}</span></div>` : ''}
+        <div id="detailsForm"></div>
       </div>
-      <div class="section"><h3>Architectural Description</h3>
-        <div class="desc">${p.desc ? p.desc : 'No description recorded. This property is part of The Park Estate, Nottingham — one of the finest collections of pre-1918 residential architecture in the East Midlands.'}</div>
-        ${p.desc ? `<div style="margin-top:8px;font-size:0.72rem;color:#999">Source: The Park Conservation Trust</div>` : ''}
+      <div class="section">
+        <h3>Architectural Description ${isAdmin ? `<button class="edit-btn" onclick="editDesc()">✏ Edit</button>` : ''}</h3>
+        <div class="desc" id="descText">${displayDesc || '<span style="color:#999;font-style:italic">No description recorded.</span>'}</div>
+        ${displayDesc && !ov.desc ? `<div style="margin-top:8px;font-size:0.72rem;color:#999">Source: The Park Conservation Trust</div>` : ''}
+        ${ov.desc ? `<div style="margin-top:8px;font-size:0.72rem;color:#5a8a5a">✓ Custom description saved</div>` : ''}
+        <div id="descForm"></div>
       </div>
-      <div class="section"><h3>Known Residents (pre-1918)</h3>
-        ${(p.residents || []).length ? p.residents.map(r=>`<div class="row"><span class="lbl">${r.y}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet. Contributions welcome.</div>'}
+      <div class="section">
+        <h3>Known Residents (pre-1918) ${isAdmin ? `<button class="edit-btn" onclick="editResidents()">✏ Edit</button>` : ''}</h3>
+        <div id="residentsList">${displayResidents.length ? displayResidents.map(r=>`<div class="row"><span class="lbl">${r.y||'—'}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet.</div>'}</div>
+        <div id="residentsForm"></div>
       </div>`;
   }
   else if (curTab === 'history') {
+    const displayHistory = ov.history || ov.desc || p.desc || '';
+    const displayNotes = ov.notes || '';
     body.innerHTML = `
-      <div class="section"><h3>Development History</h3>
-        <div class="desc">${p.desc ? p.desc : `${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards.`}</div>
+      <div class="section">
+        <h3>Development History ${isAdmin ? `<button class="edit-btn" onclick="editHistory()">✏ Edit</button>` : ''}</h3>
+        <div class="desc">${displayHistory || `${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards.`}</div>
+        <div id="historyForm"></div>
       </div>
+      ${displayNotes ? `<div class="section"><h3>Additional Notes</h3><div class="desc">${displayNotes}</div></div>` : ''}
       <div class="section"><h3>The Park Estate</h3>
         <div class="desc">The Park was developed as a high-status residential suburb from c.1850, following the Newcastle Trustees' decision to release the land for building. Notable for its picturesque layout, variety of architectural styles, and the exceptional survival rate of its original housing stock — approximately 350 pre-1918 properties remain.</div>
       </div>`;
   }
   else if (curTab === 'photos') {
-    body.innerHTML = `
+    const photos = ov.photos || [];
+    const photoGrid = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
+      <div class="photo-item">
+        <img src="${ph.url}" alt="${ph.caption||''}">
+        ${ph.caption ? `<div class="ph-cap">${ph.caption}</div>` : ''}
+        ${isAdmin ? `<button class="ph-del" onclick="deletePhoto('${ph.url}')">✕</button>` : ''}
+      </div>`).join('')}</div>` : `
       <div class="photo-ph">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
           <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
           <polyline points="21,15 16,10 5,21"/>
         </svg>
         No photographs on record yet
+      </div>`;
+    const adminPhotoTools = isAdmin ? `
+      <button class="fetch-orig-btn" onclick="fetchOriginalPhoto()">⟳ Try fetching photo from original site</button>
+      <div class="photo-upload-zone" id="uploadZone" onclick="document.getElementById('photoFileInput').click()"
+           ondragover="event.preventDefault();this.classList.add('drag-over')"
+           ondragleave="this.classList.remove('drag-over')"
+           ondrop="handlePhotoDrop(event)">
+        Click or drag &amp; drop to upload a photo
       </div>
-      <p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6">Photographs, illustrations, maps, and plans can be contributed via the <strong>Submissions</strong> tab. Include an approximate date and source where known. All submissions are reviewed before publication.</p>`;
+      <input type="file" id="photoFileInput" accept="image/*" style="display:none" onchange="handlePhotoFile(this.files[0])">
+      <input type="text" id="photoUrlInput" placeholder="Or paste an image URL…" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;margin-bottom:8px;font-family:Georgia,serif;box-sizing:border-box">
+      <button onclick="addPhotoFromUrl()" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:7px;border-radius:4px;cursor:pointer;font-size:0.8rem">Add URL photo</button>` : `
+      <p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>`;
+    body.innerHTML = photoGrid + adminPhotoTools;
   }
   else if (curTab === 'subs') {
     const cards = ss.map(s => `
@@ -900,6 +983,9 @@ async function initAdmin() {
     const coordsRes = await fetch('/api/coords');
     manualCoords = await coordsRes.json();
     updatePlacedCount();
+
+    // Load property data overrides
+    await loadPropOverrides();
 
     // Rebuild markers now that we have overrides + know we're admin
     buildMarkers(
@@ -1029,6 +1115,231 @@ function showToast(msg) {
   t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 2500);
 }
 
+// ── PROPERTY OVERRIDES ───────────────────────────────────────────────────────
+let propOverrides = {};  // loaded from /api/properties on init
+
+async function loadPropOverrides() {
+  try {
+    const res = await fetch('/api/properties');
+    propOverrides = await res.json();
+  } catch(e) { propOverrides = {}; }
+}
+
+async function savePropOverride(fields) {
+  const id = curProp.id;
+  const res = await fetch(`/api/property/${id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(fields)
+  });
+  if (res.ok) {
+    const data = await res.json();
+    propOverrides[id] = data.data;
+    showToast('Saved ✓');
+    renderPanel();
+  } else {
+    showToast('Save failed — are you still logged in?');
+  }
+}
+
+// Edit description
+function editDesc() {
+  const el = document.getElementById('descForm');
+  if (!el) return;
+  const ov = propOverrides[curProp.id] || {};
+  const current = ov.desc || curProp.desc || '';
+  el.innerHTML = `
+    <div class="edit-form">
+      <label>Architectural Description</label>
+      <textarea id="ef_desc" style="min-height:180px">${current}</textarea>
+      <div class="ef-btns">
+        <button class="ef-save" onclick="saveDesc()">Save</button>
+        <button class="ef-cancel" onclick="document.getElementById('descForm').innerHTML=''">Cancel</button>
+        ${ov.desc ? `<button class="ef-delete" onclick="clearDescOverride()">Reset to scraped</button>` : ''}
+      </div>
+    </div>`;
+}
+async function saveDesc() {
+  const val = document.getElementById('ef_desc').value.trim();
+  await savePropOverride({ desc: val });
+}
+async function clearDescOverride() {
+  await savePropOverride({ desc: '' });
+}
+
+// Edit details (built, architect, style, listed)
+function editDetails() {
+  const el = document.getElementById('detailsForm');
+  if (!el) return;
+  const ov = propOverrides[curProp.id] || {};
+  el.innerHTML = `
+    <div class="edit-form">
+      <label>Date Built (year, e.g. 1895)</label>
+      <input id="ef_built" type="number" min="1800" max="1918" value="${ov.built || curProp.built || ''}">
+      <label>Architect</label>
+      <input id="ef_arch" type="text" value="${ov.architect || ''}">
+      <label>Style</label>
+      <input id="ef_style" type="text" value="${ov.style || ''}">
+      <label>Listed Grade</label>
+      <select id="ef_grade">
+        <option value="">Not listed</option>
+        <option value="II" ${(ov.listedGrade||curProp.listedGrade)==='II'?'selected':''}>Grade II</option>
+        <option value="II*" ${(ov.listedGrade||curProp.listedGrade)==='II*'?'selected':''}>Grade II*</option>
+        <option value="I" ${(ov.listedGrade||curProp.listedGrade)==='I'?'selected':''}>Grade I</option>
+      </select>
+      <div class="ef-btns">
+        <button class="ef-save" onclick="saveDetails()">Save</button>
+        <button class="ef-cancel" onclick="document.getElementById('detailsForm').innerHTML=''">Cancel</button>
+      </div>
+    </div>`;
+}
+async function saveDetails() {
+  const grade = document.getElementById('ef_grade').value;
+  await savePropOverride({
+    built: parseInt(document.getElementById('ef_built').value) || null,
+    architect: document.getElementById('ef_arch').value.trim(),
+    style: document.getElementById('ef_style').value.trim(),
+    listed: !!grade,
+    listedGrade: grade
+  });
+}
+
+// Edit history text
+function editHistory() {
+  const el = document.getElementById('historyForm');
+  if (!el) return;
+  const ov = propOverrides[curProp.id] || {};
+  el.innerHTML = `
+    <div class="edit-form">
+      <label>Development History</label>
+      <textarea id="ef_hist" style="min-height:180px">${ov.history || ''}</textarea>
+      <label>Additional Notes</label>
+      <textarea id="ef_notes">${ov.notes || ''}</textarea>
+      <div class="ef-btns">
+        <button class="ef-save" onclick="saveHistory()">Save</button>
+        <button class="ef-cancel" onclick="document.getElementById('historyForm').innerHTML=''">Cancel</button>
+      </div>
+    </div>`;
+}
+async function saveHistory() {
+  await savePropOverride({
+    history: document.getElementById('ef_hist').value.trim(),
+    notes: document.getElementById('ef_notes').value.trim()
+  });
+}
+
+// Edit residents
+function editResidents() {
+  const el = document.getElementById('residentsForm');
+  if (!el) return;
+  const ov = propOverrides[curProp.id] || {};
+  const residents = ov.residents || curProp.residents || [];
+  const rows = residents.map((r,i) => `
+    <div class="res-row">
+      <input id="res_y_${i}" type="text" placeholder="Year" value="${r.y||''}" style="width:70px;flex:none">
+      <input id="res_n_${i}" type="text" placeholder="Name / Household" value="${r.n||''}">
+      <button class="res-del" onclick="this.closest('.res-row').remove()">✕</button>
+    </div>`).join('');
+  el.innerHTML = `
+    <div class="edit-form">
+      <label>Known Residents</label>
+      <div class="resident-list" id="resList">${rows}</div>
+      <button class="add-res-btn" onclick="addResidentRow()">+ Add resident</button>
+      <div class="ef-btns" style="margin-top:10px">
+        <button class="ef-save" onclick="saveResidents()">Save</button>
+        <button class="ef-cancel" onclick="document.getElementById('residentsForm').innerHTML=''">Cancel</button>
+      </div>
+    </div>`;
+}
+function addResidentRow() {
+  const list = document.getElementById('resList');
+  const i = list.children.length;
+  const div = document.createElement('div');
+  div.className = 'res-row';
+  div.innerHTML = `<input id="res_y_${i}" type="text" placeholder="Year" style="width:70px;flex:none"><input id="res_n_${i}" type="text" placeholder="Name / Household"><button class="res-del" onclick="this.closest('.res-row').remove()">✕</button>`;
+  list.appendChild(div);
+}
+async function saveResidents() {
+  const rows = document.querySelectorAll('#resList .res-row');
+  const residents = [];
+  rows.forEach((row, i) => {
+    const y = row.querySelector('[id^="res_y_"]')?.value.trim();
+    const n = row.querySelector('[id^="res_n_"]')?.value.trim();
+    if (n) residents.push({ y, n });
+  });
+  await savePropOverride({ residents });
+}
+
+// Photos
+async function fetchOriginalPhoto() {
+  const ov = propOverrides[curProp.id] || {};
+  // Try thumbnail and full size from original site
+  for (const v of ['T', 'B']) {
+    const res = await fetch(`/api/property/${curProp.id}/fetch-photo`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pageId: curProp.id + 4, variant: v }) // pageId = id + 4 (scraped offset)
+    });
+    const data = await res.json();
+    if (data.ok) {
+      propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
+      showToast(`Photo fetched ✓`);
+      renderPanel();
+      return;
+    }
+  }
+  showToast('No photo found on original site for this property');
+}
+
+async function handlePhotoFile(file) {
+  if (!file) return;
+  showToast('Uploading…');
+  const buf = await file.arrayBuffer();
+  const res = await fetch(`/api/property/${curProp.id}/photo`, {
+    method: 'POST',
+    headers: { 'Content-Type': file.type, 'X-Filename': file.name },
+    body: buf
+  });
+  const data = await res.json();
+  if (data.ok) {
+    propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
+    showToast('Photo uploaded ✓');
+    renderPanel();
+  } else {
+    showToast('Upload failed');
+  }
+}
+
+function handlePhotoDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) handlePhotoFile(file);
+}
+
+async function addPhotoFromUrl() {
+  const url = document.getElementById('photoUrlInput').value.trim();
+  if (!url) return;
+  const ov = propOverrides[curProp.id] || {};
+  const photos = ov.photos || [];
+  photos.push({ url, caption: '', addedAt: new Date().toISOString() });
+  await savePropOverride({ photos });
+}
+
+async function deletePhoto(url) {
+  if (!confirm('Delete this photo?')) return;
+  const res = await fetch(`/api/property/${curProp.id}/photo`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ url })
+  });
+  if (res.ok) {
+    propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
+    showToast('Photo deleted');
+    renderPanel();
+  }
+}
+
 // ── INIT ─────────────────────────────────────────────────────────────────────
 // Populate street filter
 (function() {
@@ -1037,7 +1348,7 @@ function showToast(msg) {
   streets.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
 })();
 
-buildMarkers();
+loadPropOverrides().then(() => buildMarkers());
 initAdmin(); // Check if admin is logged in, load overrides
 </script>
 </body>
