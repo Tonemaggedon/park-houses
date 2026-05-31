@@ -128,6 +128,13 @@ app.get('/api/coords/export', requireAdmin, (req, res) => {
   res.send(fs.readFileSync(COORDS_FILE));
 });
 
+// ── All properties (base data, no overrides) ──────────────────────────────────
+const ALL_PROPS_FILE = path.join(__dirname, 'data', 'all_props.json');
+app.get('/api/all-props', (req, res) => {
+  try { res.json(JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'))); }
+  catch(e) { res.json([]); }
+});
+
 // ── Property overrides API ────────────────────────────────────────────────────
 // Public: get all overrides (map merges these over scraped defaults)
 app.get('/api/properties', (req, res) => {

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Park Houses — Admin Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e8eaf0;
+    --muted: #8b8fa8;
+    --accent: #4f8ef7;
+    --green: #3ecf8e;
+    --amber: #f5a623;
+    --red: #e05252;
+    --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+
+  header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+  header .subtitle { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .refresh-btn {
+    background: var(--border);
+    border: none;
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .refresh-btn:hover { background: #3a3d4a; }
+
+  main { padding: 32px; max-width: 1100px; margin: 0 auto; }
+
+  /* ── Top stat row ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .stat-card.active { border-color: var(--accent); background: #1e2235; }
+  .stat-card.total { cursor: default; }
+  .stat-card.total:hover { transform: none; border-color: var(--border); }
+  .stat-card .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .stat-card .number {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-card .sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .stat-card .bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    border-radius: 0 0 0 10px;
+    transition: width 0.5s ease;
+  }
+
+  /* ── Progress summary ── */
+  .progress-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .progress-section h2 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .progress-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .progress-row:last-child { margin-bottom: 0; }
+  .progress-row .plabel { font-size: 13px; color: var(--text); }
+  .progress-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+  .progress-row .pct { font-size: 12px; color: var(--muted); text-align: right; }
+
+  /* ── Detail panel ── */
+  .detail-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+  }
+  .detail-panel.visible { display: block; }
+  .detail-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .detail-header h2 { font-size: 15px; font-weight: 600; }
+  .detail-header .count-badge {
+    background: var(--border);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .search-bar {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .search-bar input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+  }
+  .search-bar input:focus { border-color: var(--accent); }
+
+  .prop-list {
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .prop-item {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.1s;
+  }
+  .prop-item:last-child { border-bottom: none; }
+  .prop-item:hover { background: rgba(79,142,247,0.05); }
+  .prop-item .pid { font-size: 11px; color: var(--muted); font-family: monospace; }
+  .prop-item .pname { font-size: 13px; }
+  .prop-item .paddress { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .prop-item .open-link {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.1s, color 0.1s;
+    white-space: nowrap;
+  }
+  .prop-item .open-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  .empty-state {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .loading { padding: 32px; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🏛 Park Houses — Admin Dashboard</h1>
+    <div class="subtitle">The Park Estate, Nottingham</div>
+  </div>
+  <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+</header>
+
+<main>
+  <div id="loading" class="loading">Loading property data…</div>
+
+  <div id="content" style="display:none">
+    <div class="stat-row">
+      <div class="stat-card total">
+        <div class="label">Total Properties</div>
+        <div class="number" id="stat-total">—</div>
+        <div class="sub" id="stat-target">of 350 target</div>
+      </div>
+      <div class="stat-card" onclick="showList('desc')" id="card-desc">
+        <div class="label">Missing Description</div>
+        <div class="number" id="stat-desc">—</div>
+        <div class="sub">no data entered</div>
+        <div class="bar" id="bar-desc" style="background:var(--amber)"></div>
+      </div>
+      <div class="stat-card" onclick="showList('history')" id="card-history">
+        <div class="label">Missing History</div>
+        <div class="number" id="stat-history">—</div>
+        <div class="sub">no history text</div>
+        <div class="bar" id="bar-history" style="background:var(--purple)"></div>
+      </div>
+      <div class="stat-card" onclick="showList('photos')" id="card-photos">
+        <div class="label">Missing Photos</div>
+        <div class="number" id="stat-photos">—</div>
+        <div class="sub">no images uploaded</div>
+        <div class="bar" id="bar-photos" style="background:var(--accent)"></div>
+      </div>
+      <div class="stat-card" onclick="showList('submissions')" id="card-submissions">
+        <div class="label">Missing Submissions</div>
+        <div class="number" id="stat-submissions">—</div>
+        <div class="sub">no public submissions</div>
+        <div class="bar" id="bar-submissions" style="background:var(--green)"></div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <h2>Completion Progress</h2>
+      <div class="progress-row">
+        <div class="plabel">Descriptions</div>
+        <div class="progress-track"><div class="progress-fill" id="prog-desc" style="background:var(--amber)"></div></div>
+        <div class="pct" id="pct-desc">0%</div>
+      </div>
+      <div class="progress-row">
+        <div class="plabel">History</div>
+        <div class="progress-track"><div class="progress-fill" id="prog-history" style="background:var(--purple)"></div></div>
+        <div class="pct" id="pct-history">0%</div>
+      </div>
+      <div class="progress-row">
+        <div class="plabel">Photos</div>
+        <div class="progress-track"><div class="progress-fill" id="prog-photos" style="background:var(--accent)"></div></div>
+        <div class="pct" id="pct-photos">0%</div>
+      </div>
+      <div class="progress-row">
+        <div class="plabel">Submissions</div>
+        <div class="progress-track"><div class="progress-fill" id="prog-submissions" style="background:var(--green)"></div></div>
+        <div class="pct" id="pct-submissions">0%</div>
+      </div>
+    </div>
+
+    <div class="detail-panel" id="detail-panel">
+      <div class="detail-header">
+        <h2 id="detail-title">Properties</h2>
+        <span class="count-badge" id="detail-count">0</span>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by name or address…" oninput="filterList()">
+      </div>
+      <div class="prop-list" id="prop-list"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+let allProps = [];
+let overrides = {};
+let activeFilter = null;
+let filteredProps = [];
+
+const TOTAL_TARGET = 350;
+
+async function loadData() {
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('content').style.display = 'none';
+
+  try {
+    const [propsRes, overridesRes] = await Promise.all([
+      fetch('/api/all-props'),
+      fetch('/api/properties')
+    ]);
+    allProps = await propsRes.json();
+    overrides = await overridesRes.json();
+    renderStats();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    // Re-render active list if open
+    if (activeFilter) showList(activeFilter);
+  } catch(e) {
+    document.getElementById('loading').textContent = 'Error loading data: ' + e.message;
+  }
+}
+
+function renderStats() {
+  const total = allProps.length;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-target').textContent = `of ${TOTAL_TARGET} target (${TOTAL_TARGET - total} missing)`;
+
+  const missing = {
+    desc: allProps.filter(p => !hasDesc(p)).length,
+    history: allProps.filter(p => !hasHistory(p)).length,
+    photos: allProps.filter(p => !hasPhotos(p)).length,
+    submissions: allProps.filter(p => !hasSubmissions(p)).length,
+  };
+
+  for (const [key, count] of Object.entries(missing)) {
+    document.getElementById(`stat-${key}`).textContent = count;
+    const have = total - count;
+    const pct = total > 0 ? Math.round((have / total) * 100) : 0;
+    document.getElementById(`prog-${key}`).style.width = pct + '%';
+    document.getElementById(`pct-${key}`).textContent = pct + '%';
+    // Bar width on card = proportion missing
+    const missingPct = total > 0 ? Math.round((count / total) * 100) : 0;
+    document.getElementById(`bar-${key}`).style.width = missingPct + '%';
+  }
+}
+
+function hasDesc(p) {
+  const ov = overrides[p.id];
+  return ov && ov.desc && ov.desc.trim().length > 0;
+}
+function hasHistory(p) {
+  const ov = overrides[p.id];
+  return ov && ov.history && ov.history.trim().length > 0;
+}
+function hasPhotos(p) {
+  const ov = overrides[p.id];
+  return ov && ov.photos && ov.photos.length > 0;
+}
+function hasSubmissions(p) {
+  const ov = overrides[p.id];
+  return ov && ov.submissions && ov.submissions.length > 0;
+}
+
+function showList(filter) {
+  // Toggle off if clicking same card
+  if (activeFilter === filter) {
+    activeFilter = null;
+    document.getElementById('detail-panel').classList.remove('visible');
+    document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
+    return;
+  }
+  activeFilter = filter;
+  document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
+  document.getElementById(`card-${filter}`).classList.add('active');
+
+  const titles = {
+    desc: 'Properties missing description',
+    history: 'Properties missing history',
+    photos: 'Properties missing photos',
+    submissions: 'Properties missing submissions',
+  };
+  document.getElementById('detail-title').textContent = titles[filter];
+
+  const checks = { desc: hasDesc, history: hasHistory, photos: hasPhotos, submissions: hasSubmissions };
+  filteredProps = allProps.filter(p => !checks[filter](p));
+
+  document.getElementById('detail-panel').classList.add('visible');
+  document.getElementById('search-input').value = '';
+  renderList(filteredProps);
+}
+
+function filterList() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  if (!q) { renderList(filteredProps); return; }
+  const shown = filteredProps.filter(p =>
+    (p.name || '').toLowerCase().includes(q) ||
+    (p.address || '').toLowerCase().includes(q) ||
+    (p.street || '').toLowerCase().includes(q) ||
+    String(p.id).includes(q)
+  );
+  renderList(shown);
+}
+
+function renderList(list) {
+  document.getElementById('detail-count').textContent = list.length + ' properties';
+  const el = document.getElementById('prop-list');
+  if (list.length === 0) {
+    el.innerHTML = '<div class="empty-state">✓ All properties have this data filled in</div>';
+    return;
+  }
+  el.innerHTML = list.map(p => {
+    const display = p.name || `${p.no} ${p.street}`.trim() || p.address;
+    const addr = p.address || `${p.no} ${p.street}`.trim();
+    return `<div class="prop-item">
+      <div class="pid">#${p.id}</div>
+      <div>
+        <div class="pname">${display}</div>
+        <div class="paddress">${addr !== display ? addr : ''}</div>
+      </div>
+      <a class="open-link" href="/?id=${p.id}" target="_blank">Open on map ↗</a>
+    </div>`;
+  }).join('');
+}
+
+loadData();
+</script>
+</body>
+</html>
