@@ -331,6 +331,74 @@
 
 <div class="toast" id="toastEl"></div>
 
+<!-- ── Admin edit modal (always in DOM, shown/hidden) ── -->
+<div id="editOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:2000" onclick="if(event.target===this)closeEdit()">
+  <div id="editPane" style="position:absolute;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:#faf8f2;border-left:2px solid #c8b888;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:14px 18px;border-bottom:1px solid #d0c090;display:flex;align-items:center;justify-content:space-between;background:#f5f0e8">
+      <strong id="editTitle" style="font-family:Georgia,serif;font-size:0.95rem;color:#1a3a2a"></strong>
+      <button onclick="closeEdit()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#6a5a3a;line-height:1">✕</button>
+    </div>
+    <div id="editBody" style="flex:1;overflow-y:auto;padding:18px">
+
+      <!-- DESC form -->
+      <div id="ef_desc_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Architectural Description</label>
+        <textarea id="ef_desc" style="width:100%;min-height:200px;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;resize:vertical;box-sizing:border-box"></textarea>
+      </div>
+
+      <!-- DETAILS form -->
+      <div id="ef_details_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Date Built (year)</label>
+        <input id="ef_built" type="number" min="1800" max="1920" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:10px">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Architect</label>
+        <input id="ef_arch" type="text" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:10px">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Style</label>
+        <input id="ef_style" type="text" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:10px">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Listed Grade</label>
+        <select id="ef_grade" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box">
+          <option value="">Not listed</option>
+          <option value="II">Grade II</option>
+          <option value="II*">Grade II*</option>
+          <option value="I">Grade I</option>
+        </select>
+      </div>
+
+      <!-- HISTORY form -->
+      <div id="ef_history_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Development History</label>
+        <textarea id="ef_hist" style="width:100%;min-height:200px;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;resize:vertical;box-sizing:border-box"></textarea>
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;margin-top:12px">Additional Notes</label>
+        <textarea id="ef_notes" style="width:100%;min-height:100px;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;resize:vertical;box-sizing:border-box"></textarea>
+      </div>
+
+      <!-- RESIDENTS form -->
+      <div id="ef_residents_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Known Residents</label>
+        <div id="ef_resList"></div>
+        <button id="ef_addRes" style="background:none;border:1px dashed #8a6a2a;color:#8a6a2a;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:0.8rem;width:100%;margin-top:6px">+ Add resident</button>
+      </div>
+
+      <!-- PHOTO tools -->
+      <div id="ef_photo_wrap">
+        <div id="ef_photoGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+        <button id="ef_fetchBtn" style="width:100%;background:#4a6a5a;color:white;border:none;padding:8px;border-radius:4px;cursor:pointer;font-size:0.82rem;margin-bottom:8px">&#8635; Try fetching photo from original site</button>
+        <div id="ef_uploadZone" style="border:2px dashed #c8b888;border-radius:5px;padding:18px;text-align:center;color:#8a7a5a;font-size:0.82rem;cursor:pointer;margin-bottom:8px">Click or drag &amp; drop to upload a photo</div>
+        <input type="text" id="ef_photoUrl" placeholder="Or paste an image URL…" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:6px">
+        <button id="ef_addUrlBtn" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:8px;border-radius:4px;cursor:pointer;font-size:0.82rem">Add URL photo</button>
+      </div>
+
+    </div>
+    <div id="editFooter" style="padding:12px 18px;border-top:1px solid #d0c090;display:flex;gap:8px;background:#f5f0e8">
+      <button id="ef_saveBtn" style="background:#1a3a2a;color:#e8dfc8;border:none;padding:8px 22px;border-radius:4px;cursor:pointer;font-size:0.85rem;font-family:Georgia,serif">Save</button>
+      <button onclick="closeEdit()" style="background:none;border:1px solid #c8b888;color:#6a5a3a;padding:8px 14px;border-radius:4px;cursor:pointer;font-size:0.85rem;font-family:Georgia,serif">Cancel</button>
+      <button id="ef_clearBtn" style="display:none;background:none;border:1px solid #e09090;color:#8a2020;padding:8px 14px;border-radius:4px;cursor:pointer;font-size:0.85rem;font-family:Georgia,serif;margin-left:auto">Reset to scraped</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden file input for photo upload -->
+<input type="file" id="globalPhotoInput" accept="image/*" style="display:none">
+
 <script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
 const props = [
@@ -832,26 +900,23 @@ function renderPanel() {
     const displayResidents = ov.residents || p.residents || [];
     body.innerHTML = `
       <div class="section">
-        <h3>Property Details ${isAdmin ? `<button class="edit-btn" onclick="editDetails()">✏ Edit</button>` : ''}</h3>
+        <h3>Property Details ${isAdmin ? '<button class="edit-btn" data-edit="details">Edit</button>' : ''}</h3>
         <div class="row"><span class="lbl">Address</span><span class="val">${p.no ? p.no + ' ' : ''}${p.street}</span></div>
         ${p.name ? `<div class="row"><span class="lbl">House Name</span><span class="val">${p.name}</span></div>` : ''}
         ${displayBuilt ? `<div class="row"><span class="lbl">Date</span><span class="val">c.${displayBuilt}</span></div>` : ''}
-        <div class="row"><span class="lbl">Listing</span><span class="val">${displayListed ? `<span class="chip listed">★ Grade ${displayGrade} Listed</span>` : 'Not listed'}</span></div>
+        <div class="row"><span class="lbl">Listing</span><span class="val">${displayListed ? `<span class="chip listed">&#9733; Grade ${displayGrade} Listed</span>` : 'Not listed'}</span></div>
         ${ov.architect ? `<div class="row"><span class="lbl">Architect</span><span class="val">${ov.architect}</span></div>` : ''}
         ${ov.style ? `<div class="row"><span class="lbl">Style</span><span class="val">${ov.style}</span></div>` : ''}
-        <div id="detailsForm"></div>
       </div>
       <div class="section">
-        <h3>Architectural Description ${isAdmin ? `<button class="edit-btn" onclick="editDesc()">✏ Edit</button>` : ''}</h3>
-        <div class="desc" id="descText">${displayDesc || '<span style="color:#999;font-style:italic">No description recorded.</span>'}</div>
-        ${displayDesc && !ov.desc ? `<div style="margin-top:8px;font-size:0.72rem;color:#999">Source: The Park Conservation Trust</div>` : ''}
-        ${ov.desc ? `<div style="margin-top:8px;font-size:0.72rem;color:#5a8a5a">✓ Custom description saved</div>` : ''}
-        <div id="descForm"></div>
+        <h3>Architectural Description ${isAdmin ? '<button class="edit-btn" data-edit="desc">Edit</button>' : ''}</h3>
+        <div class="desc">${displayDesc || '<span style="color:#999;font-style:italic">No description recorded.</span>'}</div>
+        ${displayDesc && !ov.desc ? '<div style="margin-top:8px;font-size:0.72rem;color:#999">Source: The Park Conservation Trust</div>' : ''}
+        ${ov.desc ? '<div style="margin-top:8px;font-size:0.72rem;color:#5a8a5a">&#10003; Custom description saved</div>' : ''}
       </div>
       <div class="section">
-        <h3>Known Residents (pre-1918) ${isAdmin ? `<button class="edit-btn" onclick="editResidents()">✏ Edit</button>` : ''}</h3>
-        <div id="residentsList">${displayResidents.length ? displayResidents.map(r=>`<div class="row"><span class="lbl">${r.y||'—'}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet.</div>'}</div>
-        <div id="residentsForm"></div>
+        <h3>Known Residents (pre-1918) ${isAdmin ? '<button class="edit-btn" data-edit="residents">Edit</button>' : ''}</h3>
+        ${displayResidents.length ? displayResidents.map(r=>`<div class="row"><span class="lbl">${r.y||'—'}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet.</div>'}
       </div>`;
   }
   else if (curTab === 'history') {
@@ -859,9 +924,8 @@ function renderPanel() {
     const displayNotes = ov.notes || '';
     body.innerHTML = `
       <div class="section">
-        <h3>Development History ${isAdmin ? `<button class="edit-btn" onclick="editHistory()">✏ Edit</button>` : ''}</h3>
+        <h3>Development History ${isAdmin ? '<button class="edit-btn" data-edit="history">Edit</button>' : ''}</h3>
         <div class="desc">${displayHistory || `${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards.`}</div>
-        <div id="historyForm"></div>
       </div>
       ${displayNotes ? `<div class="section"><h3>Additional Notes</h3><div class="desc">${displayNotes}</div></div>` : ''}
       <div class="section"><h3>The Park Estate</h3>
@@ -870,11 +934,11 @@ function renderPanel() {
   }
   else if (curTab === 'photos') {
     const photos = ov.photos || [];
-    const photoGrid = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
+    let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
       <div class="photo-item">
-        <img src="${ph.url}" alt="${ph.caption||''}">
+        <img src="${ph.url}" alt="">
         ${ph.caption ? `<div class="ph-cap">${ph.caption}</div>` : ''}
-        ${isAdmin ? `<button class="ph-del" onclick="deletePhoto('${ph.url}')">✕</button>` : ''}
+        ${isAdmin ? `<button class="ph-del" data-photo-url="${encodeURIComponent(ph.url)}">&#10005;</button>` : ''}
       </div>`).join('')}</div>` : `
       <div class="photo-ph">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
@@ -883,19 +947,12 @@ function renderPanel() {
         </svg>
         No photographs on record yet
       </div>`;
-    const adminPhotoTools = isAdmin ? `
-      <button class="fetch-orig-btn" onclick="fetchOriginalPhoto()">⟳ Try fetching photo from original site</button>
-      <div class="photo-upload-zone" id="uploadZone" onclick="document.getElementById('photoFileInput').click()"
-           ondragover="event.preventDefault();this.classList.add('drag-over')"
-           ondragleave="this.classList.remove('drag-over')"
-           ondrop="handlePhotoDrop(event)">
-        Click or drag &amp; drop to upload a photo
-      </div>
-      <input type="file" id="photoFileInput" accept="image/*" style="display:none" onchange="handlePhotoFile(this.files[0])">
-      <input type="text" id="photoUrlInput" placeholder="Or paste an image URL…" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;margin-bottom:8px;font-family:Georgia,serif;box-sizing:border-box">
-      <button onclick="addPhotoFromUrl()" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:7px;border-radius:4px;cursor:pointer;font-size:0.8rem">Add URL photo</button>` : `
-      <p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>`;
-    body.innerHTML = photoGrid + adminPhotoTools;
+    if (isAdmin) {
+      photoHtml += '<button class="edit-btn" data-edit="photos" style="display:block;width:100%;margin-top:10px;padding:8px">+ Manage Photos</button>';
+    } else {
+      photoHtml += '<p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6;margin-top:10px">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>';
+    }
+    body.innerHTML = photoHtml;
   }
   else if (curTab === 'subs') {
     const cards = ss.map(s => `
@@ -1115,6 +1172,15 @@ function showToast(msg) {
   t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 2500);
 }
 
+// ── PANEL CLICK DELEGATION ────────────────────────────────────────────────────
+// Use data-edit attributes so no onclick handlers are injected into innerHTML
+document.getElementById('panelBody').addEventListener('click', function(e) {
+  const editBtn = e.target.closest('[data-edit]');
+  if (editBtn) { openEdit(editBtn.dataset.edit); return; }
+  const delBtn = e.target.closest('[data-photo-url]');
+  if (delBtn) { deletePhoto(decodeURIComponent(delBtn.dataset.photoUrl)); }
+});
+
 // ── PROPERTY OVERRIDES ───────────────────────────────────────────────────────
 let propOverrides = {};  // loaded from /api/properties on init
 
@@ -1142,148 +1208,158 @@ async function savePropOverride(fields) {
   }
 }
 
-// Edit description
-function editDesc() {
-  const el = document.getElementById('descForm');
-  if (!el) return;
+// ── EDIT MODAL ────────────────────────────────────────────────────────────────
+let curEditType = null;
+
+function openEdit(type) {
+  if (!curProp) return;
+  curEditType = type;
   const ov = propOverrides[curProp.id] || {};
-  const current = ov.desc || curProp.desc || '';
-  el.innerHTML = `
-    <div class="edit-form">
-      <label>Architectural Description</label>
-      <textarea id="ef_desc" style="min-height:180px">${current}</textarea>
-      <div class="ef-btns">
-        <button class="ef-save" onclick="saveDesc()">Save</button>
-        <button class="ef-cancel" onclick="document.getElementById('descForm').innerHTML=''">Cancel</button>
-        ${ov.desc ? `<button class="ef-delete" onclick="clearDescOverride()">Reset to scraped</button>` : ''}
-      </div>
-    </div>`;
-}
-async function saveDesc() {
-  const val = document.getElementById('ef_desc').value.trim();
-  await savePropOverride({ desc: val });
-}
-async function clearDescOverride() {
-  await savePropOverride({ desc: '' });
+
+  // Hide all form sections, show only the relevant one
+  ['desc','details','history','residents','photos'].forEach(t => {
+    document.getElementById('ef_' + t + '_wrap').style.display = t === type ? 'block' : 'none';
+  });
+
+  // Populate fields using .value = ... (never innerHTML for user data)
+  if (type === 'desc') {
+    document.getElementById('editTitle').textContent = 'Edit Description';
+    document.getElementById('ef_desc').value = ov.desc || curProp.desc || '';
+    const clearBtn = document.getElementById('ef_clearBtn');
+    clearBtn.style.display = ov.desc ? 'inline-block' : 'none';
+    clearBtn.onclick = async () => { await savePropOverride({ desc: '' }); closeEdit(); };
+  } else if (type === 'details') {
+    document.getElementById('editTitle').textContent = 'Edit Details';
+    document.getElementById('ef_built').value = ov.built || curProp.built || '';
+    document.getElementById('ef_arch').value = ov.architect || '';
+    document.getElementById('ef_style').value = ov.style || '';
+    const grade = ov.listedGrade || curProp.listedGrade || '';
+    document.getElementById('ef_grade').value = grade;
+    document.getElementById('ef_clearBtn').style.display = 'none';
+  } else if (type === 'history') {
+    document.getElementById('editTitle').textContent = 'Edit History';
+    document.getElementById('ef_hist').value = ov.history || '';
+    document.getElementById('ef_notes').value = ov.notes || '';
+    document.getElementById('ef_clearBtn').style.display = 'none';
+  } else if (type === 'residents') {
+    document.getElementById('editTitle').textContent = 'Edit Residents';
+    const residents = ov.residents || curProp.residents || [];
+    const list = document.getElementById('ef_resList');
+    list.innerHTML = '';
+    residents.forEach(r => addResidentRowWith(r.y || '', r.n || ''));
+    document.getElementById('ef_clearBtn').style.display = 'none';
+  } else if (type === 'photos') {
+    document.getElementById('editTitle').textContent = 'Manage Photos';
+    renderPhotoGrid();
+    document.getElementById('ef_clearBtn').style.display = 'none';
+    document.getElementById('ef_saveBtn').style.display = 'none'; // photos save inline
+    // Wire up photo tools
+    document.getElementById('ef_fetchBtn').onclick = fetchOriginalPhoto;
+    document.getElementById('ef_uploadZone').onclick = () => document.getElementById('globalPhotoInput').click();
+    document.getElementById('ef_uploadZone').ondragover = e => { e.preventDefault(); document.getElementById('ef_uploadZone').style.background='#f0e8d0'; };
+    document.getElementById('ef_uploadZone').ondragleave = () => { document.getElementById('ef_uploadZone').style.background=''; };
+    document.getElementById('ef_uploadZone').ondrop = e => { e.preventDefault(); document.getElementById('ef_uploadZone').style.background=''; handlePhotoFile(e.dataTransfer.files[0]); };
+    document.getElementById('ef_addUrlBtn').onclick = addPhotoFromUrl;
+    document.getElementById('globalPhotoInput').onchange = e => handlePhotoFile(e.target.files[0]);
+    document.getElementById('ef_saveBtn').style.display = 'none';
+    document.getElementById('editOverlay').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('ef_saveBtn').style.display = 'inline-block';
+  document.getElementById('editOverlay').style.display = 'block';
 }
 
-// Edit details (built, architect, style, listed)
-function editDetails() {
-  const el = document.getElementById('detailsForm');
-  if (!el) return;
-  const ov = propOverrides[curProp.id] || {};
-  el.innerHTML = `
-    <div class="edit-form">
-      <label>Date Built (year, e.g. 1895)</label>
-      <input id="ef_built" type="number" min="1800" max="1918" value="${ov.built || curProp.built || ''}">
-      <label>Architect</label>
-      <input id="ef_arch" type="text" value="${ov.architect || ''}">
-      <label>Style</label>
-      <input id="ef_style" type="text" value="${ov.style || ''}">
-      <label>Listed Grade</label>
-      <select id="ef_grade">
-        <option value="">Not listed</option>
-        <option value="II" ${(ov.listedGrade||curProp.listedGrade)==='II'?'selected':''}>Grade II</option>
-        <option value="II*" ${(ov.listedGrade||curProp.listedGrade)==='II*'?'selected':''}>Grade II*</option>
-        <option value="I" ${(ov.listedGrade||curProp.listedGrade)==='I'?'selected':''}>Grade I</option>
-      </select>
-      <div class="ef-btns">
-        <button class="ef-save" onclick="saveDetails()">Save</button>
-        <button class="ef-cancel" onclick="document.getElementById('detailsForm').innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
-}
-async function saveDetails() {
-  const grade = document.getElementById('ef_grade').value;
-  await savePropOverride({
-    built: parseInt(document.getElementById('ef_built').value) || null,
-    architect: document.getElementById('ef_arch').value.trim(),
-    style: document.getElementById('ef_style').value.trim(),
-    listed: !!grade,
-    listedGrade: grade
-  });
+function closeEdit() {
+  document.getElementById('editOverlay').style.display = 'none';
+  curEditType = null;
 }
 
-// Edit history text
-function editHistory() {
-  const el = document.getElementById('historyForm');
-  if (!el) return;
-  const ov = propOverrides[curProp.id] || {};
-  el.innerHTML = `
-    <div class="edit-form">
-      <label>Development History</label>
-      <textarea id="ef_hist" style="min-height:180px">${ov.history || ''}</textarea>
-      <label>Additional Notes</label>
-      <textarea id="ef_notes">${ov.notes || ''}</textarea>
-      <div class="ef-btns">
-        <button class="ef-save" onclick="saveHistory()">Save</button>
-        <button class="ef-cancel" onclick="document.getElementById('historyForm').innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
-}
-async function saveHistory() {
-  await savePropOverride({
-    history: document.getElementById('ef_hist').value.trim(),
-    notes: document.getElementById('ef_notes').value.trim()
-  });
-}
+document.getElementById('ef_saveBtn').addEventListener('click', async () => {
+  if (!curProp || !curEditType) return;
+  if (curEditType === 'desc') {
+    await savePropOverride({ desc: document.getElementById('ef_desc').value.trim() });
+  } else if (curEditType === 'details') {
+    const grade = document.getElementById('ef_grade').value;
+    await savePropOverride({
+      built: parseInt(document.getElementById('ef_built').value) || null,
+      architect: document.getElementById('ef_arch').value.trim(),
+      style: document.getElementById('ef_style').value.trim(),
+      listed: !!grade,
+      listedGrade: grade
+    });
+  } else if (curEditType === 'history') {
+    await savePropOverride({
+      history: document.getElementById('ef_hist').value.trim(),
+      notes: document.getElementById('ef_notes').value.trim()
+    });
+  } else if (curEditType === 'residents') {
+    const residents = [];
+    document.querySelectorAll('#ef_resList .ef-res-row').forEach(row => {
+      const y = row.querySelector('.ef-res-y').value.trim();
+      const n = row.querySelector('.ef-res-n').value.trim();
+      if (n) residents.push({ y, n });
+    });
+    await savePropOverride({ residents });
+  }
+  closeEdit();
+});
 
-// Edit residents
-function editResidents() {
-  const el = document.getElementById('residentsForm');
-  if (!el) return;
-  const ov = propOverrides[curProp.id] || {};
-  const residents = ov.residents || curProp.residents || [];
-  const rows = residents.map((r,i) => `
-    <div class="res-row">
-      <input id="res_y_${i}" type="text" placeholder="Year" value="${r.y||''}" style="width:70px;flex:none">
-      <input id="res_n_${i}" type="text" placeholder="Name / Household" value="${r.n||''}">
-      <button class="res-del" onclick="this.closest('.res-row').remove()">✕</button>
-    </div>`).join('');
-  el.innerHTML = `
-    <div class="edit-form">
-      <label>Known Residents</label>
-      <div class="resident-list" id="resList">${rows}</div>
-      <button class="add-res-btn" onclick="addResidentRow()">+ Add resident</button>
-      <div class="ef-btns" style="margin-top:10px">
-        <button class="ef-save" onclick="saveResidents()">Save</button>
-        <button class="ef-cancel" onclick="document.getElementById('residentsForm').innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
-}
-function addResidentRow() {
-  const list = document.getElementById('resList');
-  const i = list.children.length;
-  const div = document.createElement('div');
-  div.className = 'res-row';
-  div.innerHTML = `<input id="res_y_${i}" type="text" placeholder="Year" style="width:70px;flex:none"><input id="res_n_${i}" type="text" placeholder="Name / Household"><button class="res-del" onclick="this.closest('.res-row').remove()">✕</button>`;
-  list.appendChild(div);
-}
-async function saveResidents() {
-  const rows = document.querySelectorAll('#resList .res-row');
-  const residents = [];
-  rows.forEach((row, i) => {
-    const y = row.querySelector('[id^="res_y_"]')?.value.trim();
-    const n = row.querySelector('[id^="res_n_"]')?.value.trim();
-    if (n) residents.push({ y, n });
-  });
-  await savePropOverride({ residents });
+document.getElementById('ef_addRes').addEventListener('click', () => addResidentRowWith('', ''));
+
+function addResidentRowWith(y, n) {
+  const list = document.getElementById('ef_resList');
+  const row = document.createElement('div');
+  row.className = 'ef-res-row';
+  row.style.cssText = 'display:flex;gap:6px;align-items:center;margin-bottom:6px';
+  const yInp = document.createElement('input');
+  yInp.className = 'ef-res-y';
+  yInp.type = 'text'; yInp.placeholder = 'Year'; yInp.value = y;
+  yInp.style.cssText = 'width:70px;flex:none;padding:6px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif';
+  const nInp = document.createElement('input');
+  nInp.className = 'ef-res-n';
+  nInp.type = 'text'; nInp.placeholder = 'Name / Household'; nInp.value = n;
+  nInp.style.cssText = 'flex:1;padding:6px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif';
+  const del = document.createElement('button');
+  del.textContent = '✕'; del.style.cssText = 'background:none;border:none;color:#c07070;cursor:pointer;font-size:1rem;padding:0 4px';
+  del.onclick = () => row.remove();
+  row.appendChild(yInp); row.appendChild(nInp); row.appendChild(del);
+  list.appendChild(row);
 }
 
 // Photos
-async function fetchOriginalPhoto() {
+function renderPhotoGrid() {
   const ov = propOverrides[curProp.id] || {};
-  // Try thumbnail and full size from original site
+  const photos = ov.photos || [];
+  const grid = document.getElementById('ef_photoGrid');
+  grid.innerHTML = '';
+  photos.forEach(ph => {
+    const item = document.createElement('div');
+    item.style.cssText = 'position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:#e8e0d0';
+    const img = document.createElement('img');
+    img.src = ph.url; img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
+    const del = document.createElement('button');
+    del.textContent = '✕ Delete';
+    del.style.cssText = 'position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.65);color:white;border:none;border-radius:3px;padding:3px 8px;font-size:0.7rem;cursor:pointer';
+    del.onclick = () => deletePhoto(ph.url);
+    item.appendChild(img); item.appendChild(del);
+    grid.appendChild(item);
+  });
+}
+
+async function fetchOriginalPhoto() {
+  showToast('Fetching from original site…');
   for (const v of ['T', 'B']) {
     const res = await fetch(`/api/property/${curProp.id}/fetch-photo`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pageId: curProp.id + 4, variant: v }) // pageId = id + 4 (scraped offset)
+      body: JSON.stringify({ pageId: curProp.id + 4, variant: v })
     });
     const data = await res.json();
     if (data.ok) {
       propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
-      showToast(`Photo fetched ✓`);
+      showToast('Photo fetched ✓');
+      renderPhotoGrid();
       renderPanel();
       return;
     }
@@ -1304,26 +1380,24 @@ async function handlePhotoFile(file) {
   if (data.ok) {
     propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
     showToast('Photo uploaded ✓');
+    renderPhotoGrid();
     renderPanel();
   } else {
     showToast('Upload failed');
   }
-}
-
-function handlePhotoDrop(e) {
-  e.preventDefault();
-  document.getElementById('uploadZone').classList.remove('drag-over');
-  const file = e.dataTransfer.files[0];
-  if (file) handlePhotoFile(file);
+  document.getElementById('globalPhotoInput').value = '';
 }
 
 async function addPhotoFromUrl() {
-  const url = document.getElementById('photoUrlInput').value.trim();
+  const url = document.getElementById('ef_photoUrl').value.trim();
   if (!url) return;
   const ov = propOverrides[curProp.id] || {};
-  const photos = ov.photos || [];
-  photos.push({ url, caption: '', addedAt: new Date().toISOString() });
+  const photos = [...(ov.photos || []), { url, caption: '', addedAt: new Date().toISOString() }];
   await savePropOverride({ photos });
+  document.getElementById('ef_photoUrl').value = '';
+  propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
+  renderPhotoGrid();
+  renderPanel();
 }
 
 async function deletePhoto(url) {
@@ -1336,9 +1410,11 @@ async function deletePhoto(url) {
   if (res.ok) {
     propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
     showToast('Photo deleted');
+    if (document.getElementById('editOverlay').style.display !== 'none') renderPhotoGrid();
     renderPanel();
   }
 }
+
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
 // Populate street filter
