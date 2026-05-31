@@ -171,6 +171,51 @@
   .popup-title { font-weight: bold; color: #1a3a2a; margin-bottom: 3px; }
   .popup-sub { font-size: 0.75rem; color: #6a5a3a; margin-bottom: 6px; }
   .popup-btn { background: #1a3a2a; color: white; border: none; padding: 5px 12px; border-radius: 3px; cursor: pointer; font-size: 0.78rem; width: 100%; }
+
+  /* ── Admin ── */
+  .admin-bar {
+    background: #2a1a0a; color: #f0d090;
+    padding: 6px 20px; font-size: 0.78rem;
+    display: none; align-items: center; gap: 12px;
+    position: relative; z-index: 998;
+  }
+  .admin-bar.visible { display: flex; }
+  .admin-bar strong { color: #f0c040; }
+  .admin-bar button {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,200,0,0.3);
+    color: #f0d090; padding: 3px 10px; border-radius: 3px;
+    cursor: pointer; font-size: 0.76rem;
+  }
+  .admin-bar button:hover { background: rgba(255,255,255,0.25); }
+  .admin-bar button.active { background: #c0780a; border-color: #a06000; color: white; }
+  .admin-bar .spacer { flex: 1; }
+
+  /* Floating drag info panel */
+  #dragInfo {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: #1a1a1a; color: white;
+    padding: 12px 20px; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    font-size: 0.82rem; font-family: monospace;
+    display: none; z-index: 9999;
+    min-width: 380px; text-align: center;
+  }
+  #dragInfo.visible { display: block; }
+  #dragInfo .addr { font-size: 0.88rem; font-family: Georgia, serif; color: #f0d090; margin-bottom: 6px; }
+  #dragInfo .coords { color: #90d090; margin-bottom: 10px; letter-spacing: 0.04em; }
+  #dragInfo .btns { display: flex; gap: 8px; justify-content: center; }
+  #dragInfo .btns button {
+    padding: 6px 16px; border: none; border-radius: 4px;
+    cursor: pointer; font-size: 0.8rem;
+  }
+  #dragInfo .save-btn { background: #4a7c5a; color: white; }
+  #dragInfo .save-btn:hover { background: #5a8c6a; }
+  #dragInfo .revert-btn { background: #555; color: #ccc; }
+  #dragInfo .revert-btn:hover { background: #666; }
+  #dragInfo .cancel-btn { background: #333; color: #aaa; }
+
+  /* Manually placed marker gets a blue ring */
+  .marker-manual div { outline: 2px solid #2090ff !important; outline-offset: 1px; }
 </style>
 </head>
 <body>
@@ -180,9 +225,31 @@
   <nav>
     <button onclick="focusSearch()">🔍 Search</button>
     <button class="primary" onclick="addDataClick()">+ Add Data</button>
-    <button onclick="toast('Sign in / Register — authentication would open here.')">Sign In</button>
+    <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">⚙ Admin</button>
+    <button id="signInBtn" onclick="toast('Sign in / Register — authentication would open here.')">Sign In</button>
   </nav>
 </header>
+
+<!-- Admin toolbar (only visible when logged in) -->
+<div class="admin-bar" id="adminBar">
+  <strong>⚙ Admin mode</strong>
+  <button id="dragToggleBtn" onclick="toggleDragMode()" class="active">🖱 Drag to place: ON</button>
+  <span id="placedCount" style="color:#aaa">0 manually placed</span>
+  <span class="spacer"></span>
+  <a href="/api/coords/export" style="color:#f0d090;font-size:0.76rem;text-decoration:none;border:1px solid rgba(255,200,0,0.3);padding:3px 10px;border-radius:3px;">↓ Export coords</a>
+  <button onclick="adminLogout()" style="color:#f09090;border-color:rgba(255,100,100,0.3)">Sign out</button>
+</div>
+
+<!-- Floating drag info panel -->
+<div id="dragInfo">
+  <div class="addr" id="dragAddr">—</div>
+  <div class="coords" id="dragCoords">lat: — lng: —</div>
+  <div class="btns">
+    <button class="save-btn" onclick="saveDragPosition()">✓ Save position</button>
+    <button class="revert-btn" onclick="revertPosition()" id="revertBtn" style="display:none">↺ Revert to auto</button>
+    <button class="cancel-btn" onclick="cancelDrag()">✕ Cancel</button>
+  </div>
+</div>
 
 <div class="toolbar">
   <input id="searchBox" type="text" placeholder="Search by house name, street, number…" oninput="filterMarkers(this.value)">
@@ -592,15 +659,17 @@ legend.addTo(map);
 let markers = {};
 let activeId = null;
 
-function makeIcon(p, isActive) {
+function makeIcon(p, isActive, isManual) {
   const hasSubs = (subs[p.id] || []).length > 0;
-  const showStar = p.listed; // star if listed (all listed have a record)
+  const showStar = p.listed;
   const bg     = isActive ? '#d4380d' : hasSubs ? '#4a7c5a' : '#8a6a2a';
   const border = isActive ? '#8b1a00' : hasSubs ? '#2a5a3a' : '#4a3a10';
   const size   = isActive ? 18 : 14;
   const star   = showStar
     ? `<span style="font-size:${isActive?9:7}px;color:#f0c040;line-height:1;display:block;text-align:center;margin-top:${isActive?1:0}px">★</span>`
     : '';
+  // Blue outline ring for manually placed markers
+  const manualStyle = isManual ? 'outline:2px solid #2090ff;outline-offset:1px;' : '';
   return L.divIcon({
     className: '',
     html: `<div style="
@@ -614,6 +683,7 @@ function makeIcon(p, isActive) {
       align-items:center;
       justify-content:center;
       ${isActive ? 'transform:scale(1.25);' : ''}
+      ${manualStyle}
       cursor:pointer;
     ">${star}</div>`,
     iconAnchor: [size/2, size/2],
@@ -632,15 +702,32 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     if (filter && !txt.includes(filter.toLowerCase())) return;
     if (typeF && p.street !== typeF) return;
     if (listedF === 'listed' && !p.listed) return;
+
+    // Apply manual coord override if present
+    const override = manualCoords && manualCoords[p.id];
+    const lat = override ? override.lat : p.lat;
+    const lng = override ? override.lng : p.lng;
+    p._lat = lat; p._lng = lng; // cache for drag cancel
+
     count++;
-    const m = L.marker([p.lat, p.lng], { icon: makeIcon(p, activeId === p.id) })
+    const isManual = !!override;
+    const icon = makeIcon(p, activeId === p.id, isManual);
+    const canDrag = isAdmin && dragMode;
+
+    const m = L.marker([lat, lng], { icon, draggable: canDrag })
       .bindPopup(`
         <div class="popup-title">${p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street)}</div>
-        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}</div>
+        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}${isManual ? ' <span style="color:#2090ff;font-size:0.7rem">● placed</span>' : ''}</div>
         <button class="popup-btn" onclick="openProp(${p.id})">View Record →</button>
       `, { maxWidth: 220 })
       .addTo(map);
-    m.on('click', () => openProp(p.id));
+
+    if (canDrag) {
+      m.on('dragstart', () => onMarkerDrag(p.id, m));
+      m.on('drag',      () => onMarkerDragMove(p.id, m));
+    } else {
+      m.on('click', () => openProp(p.id));
+    }
     markers[p.id] = m;
   });
   document.getElementById('countInfo').textContent = `${count} of ${props.length} properties shown · click a marker to view its record`;
@@ -791,6 +878,156 @@ function toast(msg) {
   setTimeout(() => el.classList.remove('show'), 3000);
 }
 
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
+let isAdmin = false;
+let dragMode = true;
+let manualCoords = {};      // {id: {lat,lng}} — loaded from server
+let dragState = null;       // {propId, marker, origLat, origLng}
+
+async function initAdmin() {
+  try {
+    const res = await fetch('/api/me');
+    const me = await res.json();
+    if (!me.isAdmin) return;
+
+    isAdmin = true;
+    document.getElementById('adminBar').classList.add('visible');
+    document.getElementById('adminNavBtn').style.display = '';
+    document.getElementById('signInBtn').style.display = 'none';
+
+    // Load saved overrides
+    const coordsRes = await fetch('/api/coords');
+    manualCoords = await coordsRes.json();
+    updatePlacedCount();
+
+    // Rebuild markers now that we have overrides + know we're admin
+    buildMarkers(
+      document.getElementById('searchBox').value,
+      document.getElementById('typeFilter').value,
+      document.getElementById('listedFilter').value
+    );
+  } catch(e) { /* not admin, ignore */ }
+}
+
+function handleAdminNavClick() {
+  document.getElementById('adminBar').scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleDragMode() {
+  dragMode = !dragMode;
+  const btn = document.getElementById('dragToggleBtn');
+  btn.textContent = `🖱 Drag to place: ${dragMode ? 'ON' : 'OFF'}`;
+  btn.classList.toggle('active', dragMode);
+  // Rebuild to apply/remove draggable
+  buildMarkers(
+    document.getElementById('searchBox').value,
+    document.getElementById('typeFilter').value,
+    document.getElementById('listedFilter').value
+  );
+}
+
+function updatePlacedCount() {
+  const n = Object.keys(manualCoords).length;
+  document.getElementById('placedCount').textContent = `${n} manually placed`;
+}
+
+async function adminLogout() {
+  await fetch('/api/logout', { method: 'POST' });
+  location.reload();
+}
+
+// Called when admin drags a marker
+function onMarkerDrag(propId, marker) {
+  const ll = marker.getLatLng();
+  const p = props.find(x => x.id === propId);
+  dragState = { propId, marker, origLat: p._lat, origLng: p._lng };
+
+  document.getElementById('dragAddr').textContent = p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street);
+  document.getElementById('dragCoords').textContent = `lat: ${ll.lat.toFixed(7)}  lng: ${ll.lng.toFixed(7)}`;
+  document.getElementById('revertBtn').style.display = manualCoords[propId] ? '' : 'none';
+  document.getElementById('dragInfo').classList.add('visible');
+}
+
+function onMarkerDragMove(propId, marker) {
+  const ll = marker.getLatLng();
+  document.getElementById('dragCoords').textContent = `lat: ${ll.lat.toFixed(7)}  lng: ${ll.lng.toFixed(7)}`;
+  dragState = dragState || {};
+  dragState.propId = propId;
+  dragState.marker = marker;
+}
+
+async function saveDragPosition() {
+  if (!dragState) return;
+  const ll = dragState.marker.getLatLng();
+  const res = await fetch(`/api/coords/${dragState.propId}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ lat: ll.lat, lng: ll.lng })
+  });
+  if (res.ok) {
+    manualCoords[dragState.propId] = { lat: ll.lat, lng: ll.lng };
+    updatePlacedCount();
+    // Update prop's internal position
+    const p = props.find(x => x.id === dragState.propId);
+    if (p) { p.lat = ll.lat; p.lng = ll.lng; }
+    showToast(`Saved: ${document.getElementById('dragAddr').textContent}`);
+    // Rebuild marker to show blue ring
+    buildMarkers(
+      document.getElementById('searchBox').value,
+      document.getElementById('typeFilter').value,
+      document.getElementById('listedFilter').value
+    );
+  } else {
+    showToast('Save failed — are you still logged in?');
+  }
+  hideDragInfo();
+}
+
+async function revertPosition() {
+  if (!dragState) return;
+  const res = await fetch(`/api/coords/${dragState.propId}`, { method: 'DELETE' });
+  if (res.ok) {
+    delete manualCoords[dragState.propId];
+    updatePlacedCount();
+    showToast('Reverted to auto-geocoded position');
+    buildMarkers(
+      document.getElementById('searchBox').value,
+      document.getElementById('typeFilter').value,
+      document.getElementById('listedFilter').value
+    );
+  }
+  hideDragInfo();
+}
+
+function cancelDrag() {
+  // Snap marker back to its last saved/auto position
+  if (dragState) {
+    const p = props.find(x => x.id === dragState.propId);
+    if (p && dragState.marker) dragState.marker.setLatLng([p.lat, p.lng]);
+  }
+  hideDragInfo();
+}
+
+function hideDragInfo() {
+  dragState = null;
+  document.getElementById('dragInfo').classList.remove('visible');
+}
+
+function showToast(msg) {
+  // Reuse existing toast if present, else create one
+  let t = document.getElementById('adminToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'adminToast';
+    t.style.cssText = 'position:fixed;top:80px;right:20px;background:#1a3a2a;color:#e8dfc8;padding:10px 18px;border-radius:6px;font-size:0.82rem;z-index:9999;box-shadow:0 3px 12px rgba(0,0,0,0.4);transition:opacity 0.3s';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+
 // ── INIT ─────────────────────────────────────────────────────────────────────
 // Populate street filter
 (function() {
@@ -800,6 +1037,7 @@ function toast(msg) {
 })();
 
 buildMarkers();
+initAdmin(); // Check if admin is logged in, load overrides
 </script>
 </body>
 </html>
