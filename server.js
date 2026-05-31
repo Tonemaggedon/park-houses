@@ -107,6 +107,22 @@ app.get('/api/coords/export', requireAdmin, (req, res) => {
   res.send(fs.readFileSync(COORDS_FILE));
 });
 
+// ── Scrape proxy (admin only) ─────────────────────────────────────────────────
+// Lets the browser scraper fetch original site pages through Node (avoids CORS/extension blocks)
+app.get('/api/scrape-proxy', requireAdmin, (req, res) => {
+  const http = require('http');
+  const id = parseInt(req.query.id, 10);
+  if (!id || id < 1 || id > 500) return res.status(400).json({ error: 'invalid id' });
+  const url = `http://www.nottinghamparkhouses.co.uk/propertypagedetail.asp?pageId=${id}&infoId=${id}&linkid=${id}&id=101&pageName=The+Park+Houses`;
+  http.get(url, { timeout: 15000 }, (upstream) => {
+    let html = '';
+    upstream.setEncoding('utf8');
+    upstream.on('data', chunk => html += chunk);
+    upstream.on('end', () => res.send(html));
+  }).on('error', e => res.status(502).json({ error: e.message }))
+    .on('timeout', () => res.status(504).json({ error: 'timeout' }));
+});
+
 // ── Static ────────────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {
