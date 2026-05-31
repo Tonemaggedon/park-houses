@@ -479,6 +479,18 @@ app.get('/api/coords/export', requireAdmin, async (req, res) => {
 
 // ── All properties (base data, no overrides) ──────────────────────────────────
 const ALL_PROPS_FILE = path.join(__dirname, 'data', 'all_props.json');
+
+// Build a fast id→display-name lookup from the static props file
+let propNameMap = {};
+try {
+  const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+  allProps.forEach(p => {
+    propNameMap[p.id] = p.name || ((p.no ? p.no + ' ' : '') + (p.street || '')).trim() || `Property ${p.id}`;
+  });
+} catch(e) { /* file may not exist in some envs */ }
+
+function propName(id) { return propNameMap[id] || `Property ${id}`; }
+
 app.get('/api/all-props', (req, res) => {
   try { res.json(JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'))); }
   catch(e) { res.json([]); }
@@ -659,12 +671,10 @@ app.get('/api/people', async (req, res) => {
              p.wikipedia_url, p.photo_url,
              ARRAY_AGG(DISTINCT o.occupation) FILTER (WHERE o.occupation IS NOT NULL) AS occupations,
              ARRAY_AGG(DISTINCT ce.property_id) FILTER (WHERE ce.property_id IS NOT NULL) AS property_ids,
-             ARRAY_AGG(DISTINCT ce.census_year) FILTER (WHERE ce.census_year IS NOT NULL) AS census_years,
-             ARRAY_AGG(DISTINCT COALESCE(pd.data->>'name', pd.data->>'address', 'Property ' || ce.property_id)) FILTER (WHERE ce.property_id IS NOT NULL) AS property_names
+             ARRAY_AGG(DISTINCT ce.census_year) FILTER (WHERE ce.census_year IS NOT NULL) AS census_years
       FROM people p
       LEFT JOIN occupations o ON o.person_id = p.id
       LEFT JOIN census_entries ce ON ce.person_id = p.id
-      LEFT JOIN property_data pd ON pd.id = ce.property_id
     `;
     const params = [];
     const wheres = [];
@@ -683,7 +693,11 @@ app.get('/api/people', async (req, res) => {
     if (wheres.length) query += ' WHERE ' + wheres.join(' AND ');
     query += ' GROUP BY p.id ORDER BY p.last_name, p.first_name';
     const r = await db.query(query, params);
-    res.json(r.rows);
+    const rows = r.rows.map(row => ({
+      ...row,
+      property_names: (row.property_ids || []).map(id => propName(id))
+    }));
+    res.json(rows);
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -695,11 +709,7 @@ app.get('/api/person/:id', async (req, res) => {
     const [pRes, occRes, censusRes, relRes, placesRes, bibRes] = await Promise.all([
       db.query('SELECT * FROM people WHERE id=$1', [id]),
       db.query('SELECT * FROM occupations WHERE person_id=$1 ORDER BY from_year', [id]),
-      db.query(`SELECT ce.*,
-                  COALESCE(pd.data->>'name', pd.data->>'address', 'Property ' || ce.property_id) as property_name
-                FROM census_entries ce
-                LEFT JOIN property_data pd ON pd.id = ce.property_id
-                WHERE ce.person_id=$1 ORDER BY ce.census_year`, [id]),
+      db.query(`SELECT ce.* FROM census_entries ce WHERE ce.person_id=$1 ORDER BY ce.census_year`, [id]),
       db.query(`SELECT pr.*,
                 pa.id as pid, pa.first_name as a_first, pa.last_name as a_last, pa.known_as as a_known,
                 pb.id as bid, pb.first_name as b_first, pb.last_name as b_last, pb.known_as as b_known
@@ -715,7 +725,9 @@ app.get('/api/person/:id', async (req, res) => {
     if (!pRes.rows[0]) return res.status(404).json({ error: 'Person not found' });
     const person = pRes.rows[0];
     person.occupations = occRes.rows;
-    person.census_entries = censusRes.rows;
+    person.census_entries = censusRes.rows.map(ce => ({
+      ...ce, property_name: propName(ce.property_id)
+    }));
     person.relationships = relRes.rows;
     person.places = placesRes.rows;
     person.bibliography = bibRes.rows;
