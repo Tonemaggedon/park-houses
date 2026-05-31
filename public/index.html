@@ -272,8 +272,14 @@
   <nav>
     <button onclick="focusSearch()">🔍 Search</button>
     <button class="primary" onclick="addDataClick()">+ Add Data</button>
-    <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">⚙ Admin</button>
-    <button id="signInBtn" onclick="toast('Sign in / Register — authentication would open here.')">Sign In</button>
+    <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">&#9881; Admin</button>
+    <div id="userNavArea" style="display:flex;align-items:center;gap:8px">
+      <button id="signInBtn" onclick="openAuthModal('login')">Sign In</button>
+      <div id="userChip" style="display:none;align-items:center;gap:7px;cursor:pointer" onclick="openUserMenu()">
+        <div id="userAvatar" style="width:28px;height:28px;border-radius:50%;background:#4a7c5a;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:white;font-weight:bold;overflow:hidden;flex-shrink:0"></div>
+        <span id="userName" style="font-size:0.8rem;color:#e8dfc8;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -318,9 +324,12 @@
 
   <div class="panel" id="panel">
     <div class="panel-head">
-      <div>
-        <h2 id="pTitle">—</h2>
-        <div class="sub" id="pSub">The Park Estate, Nottingham</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <h2 id="pTitle" style="margin:0">—</h2>
+          <button id="panelAddDataBtn" onclick="openAddData()" style="display:none;background:#1a3a2a;color:#e8dfc8;border:none;padding:3px 10px;border-radius:4px;font-size:0.72rem;cursor:pointer;white-space:nowrap;font-family:Georgia,serif">+ Add Data</button>
+        </div>
+        <div class="sub" id="pSub"></div>
       </div>
       <button onclick="closePanel()">✕</button>
     </div>
@@ -403,6 +412,60 @@
 
 <!-- Hidden file input for photo upload -->
 <input type="file" id="globalPhotoInput" accept="image/*" style="display:none">
+
+<!-- ── Auth modal ── -->
+<div id="authOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:3000;align-items:center;justify-content:center" onclick="if(event.target===this)closeAuthModal()">
+  <div style="background:#faf8f2;border-radius:8px;border:1px solid #d0c090;width:360px;max-width:calc(100vw - 32px);box-shadow:0 8px 32px rgba(0,0,0,0.2);font-family:Georgia,serif">
+    <div style="padding:18px 20px;border-bottom:1px solid #e0d8c0;display:flex;align-items:center;justify-content:space-between;background:#1a3a2a;border-radius:8px 8px 0 0">
+      <strong id="authTitle" style="color:#e8dfc8;font-size:1rem">Sign In</strong>
+      <button onclick="closeAuthModal()" style="background:none;border:none;color:#90b890;font-size:1.2rem;cursor:pointer;line-height:1;padding:0 2px">✕</button>
+    </div>
+    <div style="padding:20px">
+      <input type="hidden" id="authMode" value="login">
+      <div id="authError" style="color:#c04040;font-size:0.82rem;margin-bottom:10px;min-height:18px"></div>
+
+      <!-- Login fields -->
+      <div id="authLoginFields">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Email</label>
+        <input id="authEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="your@email.com">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Password</label>
+        <input id="authPassword" type="password" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:16px;box-sizing:border-box" placeholder="Password">
+      </div>
+
+      <!-- Register fields -->
+      <div id="authRegisterFields" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+          <div>
+            <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">First Name</label>
+            <input id="authFirstName" type="text" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;box-sizing:border-box" placeholder="Jane">
+          </div>
+          <div>
+            <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Last Name</label>
+            <input id="authLastName" type="text" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;box-sizing:border-box" placeholder="Smith">
+          </div>
+        </div>
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Email</label>
+        <input id="authRegEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="your@email.com">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Password (6+ characters)</label>
+        <input id="authRegPassword" type="password" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="Choose a password">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Profile Photo <span style="text-transform:none;letter-spacing:0;color:#9a8a6a">(optional)</span></label>
+        <div id="regPhotoPreview" style="display:none;margin-bottom:8px">
+          <img id="regPhotoImg" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #c8b888">
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border:1px dashed #c8b888;border-radius:4px;margin-bottom:16px">
+          <span style="font-size:0.82rem;color:#6a5a3a">📷 Choose photo</span>
+          <input id="authProfilePhoto" type="file" accept="image/*" style="display:none" onchange="previewRegPhoto(this)">
+        </label>
+      </div>
+
+      <button id="authSubmitBtn" onclick="handleAuthSubmit()" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:10px;border-radius:4px;cursor:pointer;font-size:0.9rem;font-family:Georgia,serif;margin-bottom:12px">Sign In</button>
+      <div style="text-align:center;font-size:0.8rem;color:#8a7a5a">
+        <span id="authSwitchRegister">Don't have an account? <a href="#" onclick="switchAuthMode('register');return false" style="color:#4a7c5a">Create one</a></span>
+        <span id="authSwitchLogin" style="display:none">Already have an account? <a href="#" onclick="switchAuthMode('login');return false" style="color:#4a7c5a">Sign in</a></span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
@@ -865,7 +928,9 @@ function openProp(id) {
   );
   document.getElementById('pTitle').textContent = p.name || p.address || (p.no + ' ' + p.street);
   document.getElementById('pSub').textContent = `${p.no ? p.no + ' ' : ''}${p.street} · Property ${p.id}`;
-  document.getElementById('subBadge').textContent = (subs[p.id] || []).length;
+  const subCount = ((propOverrides[p.id] || {}).submissions || subs[p.id] || []).length;
+  document.getElementById('subBadge').textContent = subCount;
+  document.getElementById('panelAddDataBtn').style.display = currentUser ? '' : 'none';
   document.getElementById('panel').classList.add('open');
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===0));
   curTab = 'data';
@@ -932,10 +997,7 @@ function renderPanel() {
         <h3>Development History ${isAdmin ? '<button class="edit-btn" data-edit="history">Edit</button>' : ''}</h3>
         <div class="desc">${displayHistory || `${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards.`}</div>
       </div>
-      ${displayNotes ? `<div class="section"><h3>Additional Notes</h3><div class="desc">${displayNotes}</div></div>` : ''}
-      <div class="section"><h3>The Park Estate</h3>
-        <div class="desc">The Park was developed as a high-status residential suburb from c.1850, following the Newcastle Trustees' decision to release the land for building. Notable for its picturesque layout, variety of architectural styles, and the exceptional survival rate of its original housing stock — approximately 350 pre-1918 properties remain.</div>
-      </div>`;
+      ${displayNotes ? `<div class="section"><h3>Additional Notes</h3><div class="desc">${displayNotes}</div></div>` : ''}`;
   }
   else if (curTab === 'photos') {
     const photos = ov.photos || [];
@@ -960,44 +1022,136 @@ function renderPanel() {
     body.innerHTML = photoHtml;
   }
   else if (curTab === 'subs') {
-    const cards = ss.map(s => `
-      <div class="sub-card">
-        <div class="sub-meta"><strong>${s.u}</strong> · ${s.t} · ${s.d}</div>
-        <div class="sub-text">${s.tx}</div>
-      </div>`).join('');
-    body.innerHTML = (ss.length ? cards : `<p style="font-size:0.82rem;color:#6a5a3a;margin-bottom:14px">No submissions yet. Do you know this property's history?</p>`) + `
+    const allSubs = (propOverrides[p.id] || {}).submissions || ss;
+    const cards = allSubs.map(s => {
+      const avatar = s.profilePhoto
+        ? `<img src="${s.profilePhoto}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0">`
+        : `<div style="width:28px;height:28px;border-radius:50%;background:#4a7c5a;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:white;font-weight:bold;flex-shrink:0">${(s.firstName||s.u||'?')[0].toUpperCase()}</div>`;
+      const name = s.firstName ? `${s.firstName} ${s.lastName||''}`.trim() : (s.u || 'Anonymous');
+      const ts = s.submittedAt ? new Date(s.submittedAt).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : (s.d || '');
+      return `<div class="sub-card">
+        <div class="sub-meta" style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          ${avatar}
+          <div><strong>${name}</strong><br><span style="font-weight:normal">${s.type||s.t||''} · ${ts}</span></div>
+        </div>
+        ${s.text||s.tx ? `<div class="sub-text">${s.text||s.tx}</div>` : ''}
+        ${s.photoUrl ? `<img src="${s.photoUrl}" style="width:100%;border-radius:4px;margin-top:8px;object-fit:cover;max-height:200px">` : ''}
+      </div>`;
+    }).join('');
+    const loginPrompt = `<div style="border:1px solid #d8c890;border-radius:6px;padding:14px 16px;background:#faf8f2;text-align:center;margin-top:8px">
+      <p style="font-size:0.84rem;color:#4a3a18;margin-bottom:10px">Sign in to share what you know about this property.</p>
+      <button onclick="openAuthModal('login')" style="background:#1a3a2a;color:#e8dfc8;border:none;padding:7px 18px;border-radius:4px;cursor:pointer;font-size:0.83rem;font-family:Georgia,serif">Sign In</button>
+      <span style="margin:0 8px;color:#8a7a5a;font-size:0.82rem">or</span>
+      <button onclick="openAuthModal('register')" style="background:none;border:1px solid #8a6a2a;color:#6a4a10;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:0.83rem;font-family:Georgia,serif">Create Account</button>
+    </div>`;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const addForm = currentUser ? `
       <button class="add-btn" id="addBtn" onclick="toggleForm()">+ Add Historical Information</button>
       <div class="form-wrap" id="addForm">
         <p style="font-size:0.78rem;color:#6a5a3a;margin-bottom:8px">Share family history, oral accounts, photographs, or documentary evidence.</p>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:8px;background:#f0ece0;border-radius:4px">
+          ${currentUser.profilePhoto ? `<img src="${currentUser.profilePhoto}" style="width:28px;height:28px;border-radius:50%;object-fit:cover">` : `<div style="width:28px;height:28px;border-radius:50%;background:#4a7c5a;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:white;font-weight:bold">${currentUser.firstName[0].toUpperCase()}</div>`}
+          <span style="font-size:0.82rem;color:#4a3a18">Submitting as <strong>${currentUser.firstName} ${currentUser.lastName}</strong></span>
+        </div>
         <select id="fType"><option>Family History</option><option>Oral History</option><option>Photograph</option><option>Documentary</option><option>Other</option></select>
-        <input id="fName" type="text" placeholder="Your name">
         <textarea id="fText" placeholder="Describe what you know about this property…"></textarea>
+        <div id="subPhotoPreview" style="display:none;margin-bottom:8px">
+          <img id="subPhotoImg" style="width:100%;border-radius:4px;max-height:180px;object-fit:cover">
+          <button onclick="clearSubPhoto()" style="background:none;border:none;color:#c07070;cursor:pointer;font-size:0.78rem;margin-top:4px">✕ Remove photo</button>
+        </div>
+        <div id="subDropZone" style="border:2px dashed #c8b888;border-radius:5px;padding:14px;text-align:center;color:#8a7a5a;font-size:0.8rem;cursor:pointer;margin-bottom:8px">
+          ${isMobile ? '📷 Tap to take a photo or choose from library' : '📎 Drag a photo here, or click to browse'}
+        </div>
+        <input type="file" id="subPhotoInput" accept="image/*"${isMobile ? ' capture="environment"' : ''} style="display:none">
         <div class="btns">
           <button class="submit" onclick="submitSub()">Submit</button>
           <button class="cancel" onclick="toggleForm()">Cancel</button>
         </div>
-      </div>`;
+      </div>` : loginPrompt;
+    body.innerHTML = (allSubs.length ? cards : `<p style="font-size:0.82rem;color:#6a5a3a;margin-bottom:14px">No submissions yet. Do you know this property's history?</p>`) + addForm;
+    if (currentUser) {
+      // Wire up photo drop zone
+      const dz = document.getElementById('subDropZone');
+      const inp = document.getElementById('subPhotoInput');
+      if (dz && inp) {
+        dz.onclick = () => inp.click();
+        dz.ondragover = e => { e.preventDefault(); dz.style.background='#f0e8d0'; };
+        dz.ondragleave = () => { dz.style.background=''; };
+        dz.ondrop = e => { e.preventDefault(); dz.style.background=''; handleSubPhotoFile(e.dataTransfer.files[0]); };
+        inp.onchange = e => handleSubPhotoFile(e.target.files[0]);
+      }
+    }
   }
 }
 
 function toggleForm() {
   const f = document.getElementById('addForm');
   const b = document.getElementById('addBtn');
+  if (!f) return;
   const on = f.classList.toggle('on');
-  b.textContent = on ? '− Cancel adding' : '+ Add Historical Information';
+  b.textContent = on ? '− Cancel' : '+ Add Historical Information';
 }
 
-function submitSub() {
+let subPhotoUrl = null;
+
+function handleSubPhotoFile(file) {
+  if (!file) return;
+  const preview = document.getElementById('subPhotoPreview');
+  const img = document.getElementById('subPhotoImg');
+  const reader = new FileReader();
+  reader.onload = e => { img.src = e.target.result; preview.style.display='block'; };
+  reader.readAsDataURL(file);
+  // Store file for upload on submit
+  window._subPhotoFile = file;
+}
+
+function clearSubPhoto() {
+  window._subPhotoFile = null;
+  const preview = document.getElementById('subPhotoPreview');
+  if (preview) { preview.style.display='none'; document.getElementById('subPhotoImg').src=''; }
+  const inp = document.getElementById('subPhotoInput');
+  if (inp) inp.value = '';
+}
+
+async function submitSub() {
+  if (!currentUser) { openAuthModal('login'); return; }
   const tx = document.getElementById('fText').value.trim();
-  if (!tx) { toast('Please enter some information before submitting.'); return; }
-  const nm = document.getElementById('fName').value.trim() || 'Anonymous';
   const tp = document.getElementById('fType').value;
-  if (!subs[curProp.id]) subs[curProp.id] = [];
-  subs[curProp.id].push({ u:nm, d:'Just now', t:tp, tx });
-  document.getElementById('subBadge').textContent = subs[curProp.id].length;
-  toast('Thank you — your submission has been received and will be reviewed.');
-  curTab = 'subs';
-  renderPanel();
+  if (!tx && !window._subPhotoFile) { toast('Please enter some information or attach a photo.'); return; }
+
+  let photoUrl = null;
+  if (window._subPhotoFile) {
+    toast('Uploading photo…');
+    const buf = await window._subPhotoFile.arrayBuffer();
+    const res = await fetch(`/api/property/${curProp.id}/submission-photo`, {
+      method: 'POST',
+      headers: { 'Content-Type': window._subPhotoFile.type, 'X-Filename': window._subPhotoFile.name },
+      body: buf
+    });
+    const d = await res.json();
+    if (d.url) photoUrl = d.url;
+  }
+
+  const res = await fetch(`/api/property/${curProp.id}/submission`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: tp, text: tx, photoUrl })
+  });
+  const data = await res.json();
+  if (data.ok) {
+    // Update local overrides
+    if (!propOverrides[curProp.id]) propOverrides[curProp.id] = {};
+    if (!propOverrides[curProp.id].submissions) propOverrides[curProp.id].submissions = [];
+    propOverrides[curProp.id].submissions.push(data.submission);
+    window._subPhotoFile = null;
+    const count = propOverrides[curProp.id].submissions.length;
+    document.getElementById('subBadge').textContent = count;
+    toast('Thank you — your submission has been received.');
+    curTab = 'subs';
+    renderPanel();
+  } else {
+    toast(data.error || 'Submission failed');
+  }
 }
 
 // ── SEARCH & FILTER ──────────────────────────────────────────────────────────
@@ -1013,8 +1167,17 @@ function resetFilters() {
 function focusSearch() { document.getElementById('searchBox').focus(); }
 function addDataClick() {
   if (!curProp) { toast('Click a property on the map first, then use the Submissions tab.'); return; }
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===3));
-  curTab = 'subs'; renderPanel();
+  openAddData();
+}
+
+function previewRegPhoto(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('regPhotoImg').src = e.target.result;
+    document.getElementById('regPhotoPreview').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
 }
 
 // ── TOAST ────────────────────────────────────────────────────────────────────
@@ -1022,6 +1185,158 @@ function toast(msg) {
   const el = document.getElementById('toastEl');
   el.textContent = msg; el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ── USER AUTH STATE ───────────────────────────────────────────────────────────
+let currentUser = null;
+
+function updateUserUI() {
+  const signInBtn = document.getElementById('signInBtn');
+  const userChip = document.getElementById('userChip');
+  const userAvatar = document.getElementById('userAvatar');
+  const userNameEl = document.getElementById('userName');
+
+  if (currentUser) {
+    signInBtn.style.display = 'none';
+    userChip.style.display = 'flex';
+    userNameEl.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+    if (currentUser.profilePhoto) {
+      userAvatar.innerHTML = `<img src="${currentUser.profilePhoto}" style="width:100%;height:100%;object-fit:cover">`;
+    } else {
+      userAvatar.innerHTML = currentUser.firstName[0].toUpperCase();
+    }
+  } else {
+    signInBtn.style.display = '';
+    userChip.style.display = 'none';
+  }
+  // Update Add Data button visibility if panel is open
+  const addBtn = document.getElementById('panelAddDataBtn');
+  if (addBtn) addBtn.style.display = currentUser ? '' : 'none';
+}
+
+function openAuthModal(mode) {
+  document.getElementById('authOverlay').style.display = 'flex';
+  switchAuthMode(mode || 'login');
+}
+function closeAuthModal() {
+  document.getElementById('authOverlay').style.display = 'none';
+  document.getElementById('authError').textContent = '';
+}
+function switchAuthMode(mode) {
+  document.getElementById('authMode').value = mode;
+  document.getElementById('authLoginFields').style.display = mode === 'login' ? 'block' : 'none';
+  document.getElementById('authRegisterFields').style.display = mode === 'register' ? 'block' : 'none';
+  document.getElementById('authTitle').textContent = mode === 'login' ? 'Sign In' : 'Create Account';
+  document.getElementById('authSubmitBtn').textContent = mode === 'login' ? 'Sign In' : 'Create Account';
+  document.getElementById('authError').textContent = '';
+  document.getElementById('authSwitchLogin').style.display = mode === 'register' ? 'inline' : 'none';
+  document.getElementById('authSwitchRegister').style.display = mode === 'login' ? 'inline' : 'none';
+}
+
+async function handleAuthSubmit() {
+  const mode = document.getElementById('authMode').value;
+  const errEl = document.getElementById('authError');
+  errEl.textContent = '';
+
+  if (mode === 'login') {
+    const email = document.getElementById('authEmail').value.trim();
+    const pw = document.getElementById('authPassword').value;
+    if (!email || !pw) { errEl.textContent = 'Please enter email and password.'; return; }
+    const res = await fetch('/api/user/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pw })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      currentUser = data.user;
+      updateUserUI();
+      closeAuthModal();
+      if (curProp) renderPanel(); // refresh subs tab
+    } else { errEl.textContent = data.error || 'Sign in failed.'; }
+  } else {
+    const firstName = document.getElementById('authFirstName').value.trim();
+    const lastName = document.getElementById('authLastName').value.trim();
+    const email = document.getElementById('authRegEmail').value.trim();
+    const pw = document.getElementById('authRegPassword').value;
+    if (!firstName || !lastName || !email || !pw) { errEl.textContent = 'Please fill in all fields.'; return; }
+    const res = await fetch('/api/user/register', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pw, firstName, lastName })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      currentUser = data.user;
+      updateUserUI();
+      // Upload profile photo if provided
+      const photoFile = document.getElementById('authProfilePhoto').files[0];
+      if (photoFile) {
+        const buf = await photoFile.arrayBuffer();
+        const pRes = await fetch('/api/user/photo', {
+          method: 'POST',
+          headers: { 'Content-Type': photoFile.type, 'X-Filename': photoFile.name },
+          body: buf
+        });
+        const pData = await pRes.json();
+        if (pData.url) { currentUser.profilePhoto = pData.url; updateUserUI(); }
+      }
+      closeAuthModal();
+      if (curProp) renderPanel();
+    } else { errEl.textContent = data.error || 'Registration failed.'; }
+  }
+}
+
+function openUserMenu() {
+  // Simple dropdown: sign out + view profile
+  const existing = document.getElementById('userMenuDrop');
+  if (existing) { existing.remove(); return; }
+  const chip = document.getElementById('userChip');
+  const rect = chip.getBoundingClientRect();
+  const menu = document.createElement('div');
+  menu.id = 'userMenuDrop';
+  menu.style.cssText = `position:fixed;top:${rect.bottom+4}px;right:${window.innerWidth-rect.right}px;background:#fff;border:1px solid #d0c090;border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,0.15);z-index:3000;min-width:160px;font-family:Georgia,serif;overflow:hidden`;
+  menu.innerHTML = `
+    <div style="padding:12px 16px;border-bottom:1px solid #e8dfc8;font-size:0.82rem;color:#4a3a18">
+      <strong>${currentUser.firstName} ${currentUser.lastName}</strong><br>
+      <span style="font-size:0.75rem;color:#8a7a5a">${currentUser.email||''}</span>
+    </div>
+    <button onclick="uploadNewProfilePhoto()" style="display:block;width:100%;text-align:left;padding:10px 16px;border:none;background:none;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif;color:#2c2416">📷 Change photo</button>
+    <button onclick="userLogout()" style="display:block;width:100%;text-align:left;padding:10px 16px;border:none;background:none;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif;color:#8a2020">Sign out</button>`;
+  document.body.appendChild(menu);
+  setTimeout(() => document.addEventListener('click', function rm(e) {
+    if (!menu.contains(e.target)) { menu.remove(); document.removeEventListener('click', rm); }
+  }), 10);
+}
+
+function uploadNewProfilePhoto() {
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = 'image/*';
+  inp.onchange = async () => {
+    const file = inp.files[0]; if (!file) return;
+    const buf = await file.arrayBuffer();
+    const res = await fetch('/api/user/photo', {
+      method: 'POST',
+      headers: { 'Content-Type': file.type, 'X-Filename': file.name },
+      body: buf
+    });
+    const data = await res.json();
+    if (data.url) { currentUser.profilePhoto = data.url; updateUserUI(); toast('Profile photo updated'); }
+  };
+  inp.click();
+  document.getElementById('userMenuDrop')?.remove();
+}
+
+async function userLogout() {
+  await fetch('/api/user/logout', { method: 'POST' });
+  currentUser = null;
+  updateUserUI();
+  if (curProp) renderPanel();
+  document.getElementById('userMenuDrop')?.remove();
+}
+
+function openAddData() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===3));
+  curTab = 'subs'; renderPanel();
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────────────────────
@@ -1034,6 +1349,13 @@ async function initAdmin() {
   try {
     const res = await fetch('/api/me');
     const me = await res.json();
+
+    // Handle logged-in user
+    if (me.user) {
+      currentUser = me.user;
+      updateUserUI();
+    }
+
     if (!me.isAdmin) return;
 
     isAdmin = true;

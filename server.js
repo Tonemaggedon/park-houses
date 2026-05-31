@@ -2,6 +2,7 @@ const express  = require('express');
 const session  = require('express-session');
 const path     = require('path');
 const fs       = require('fs');
+const bcrypt   = require('bcrypt');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -12,13 +13,17 @@ const ADMIN_PASS     = process.env.ADMIN_PASS     || 'parkhouses2024';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'ph-secret-change-in-prod';
 const COORDS_FILE    = path.join(__dirname, 'data', 'coords_overrides.json');
 const PROPS_FILE     = path.join(__dirname, 'data', 'property_overrides.json');
+const USERS_FILE     = path.join(__dirname, 'data', 'users.json');
 const PHOTOS_DIR     = path.join(__dirname, 'data', 'photos');
+const PROFILE_DIR    = path.join(__dirname, 'data', 'photos', 'profiles');
 
 // Ensure data dir + files exist (used as fallback when no DB)
 if (!fs.existsSync(path.join(__dirname, 'data'))) fs.mkdirSync(path.join(__dirname, 'data'));
 if (!fs.existsSync(PHOTOS_DIR)) fs.mkdirSync(PHOTOS_DIR);
+if (!fs.existsSync(PROFILE_DIR)) fs.mkdirSync(PROFILE_DIR);
 if (!fs.existsSync(COORDS_FILE)) fs.writeFileSync(COORDS_FILE, JSON.stringify({}));
 if (!fs.existsSync(PROPS_FILE))  fs.writeFileSync(PROPS_FILE, JSON.stringify({}));
+if (!fs.existsSync(USERS_FILE))  fs.writeFileSync(USERS_FILE, JSON.stringify({}));
 
 // ── Database (PostgreSQL when DATABASE_URL set, JSON files otherwise) ─────────
 let db = null;  // pg Pool, or null for file mode
@@ -44,6 +49,15 @@ async function dbInit() {
         data JSONB NOT NULL DEFAULT '{}',
         updated_by TEXT,
         updated_at TIMESTAMPTZ DEFAULT NOW()
+      );
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        email TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
+        profile_photo TEXT,
+        created_at TIMESTAMPTZ DEFAULT NOW()
       );
     `);
     console.log('PostgreSQL connected and tables ready');
@@ -169,6 +183,60 @@ function autoCommit(msg) {
   } catch(e) { }
 }
 
+// ── User storage (DB-backed or JSON-file fallback) ────────────────────────────
+function loadUsersFile() {
+  try { return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')); } catch(e) { return {}; }
+}
+function saveUsersFile(data) { fs.writeFileSync(USERS_FILE, JSON.stringify(data, null, 2)); }
+
+async function findUserByEmail(email) {
+  if (db) {
+    const r = await db.query('SELECT * FROM users WHERE email=$1', [email.toLowerCase()]);
+    return r.rows[0] || null;
+  }
+  const all = loadUsersFile();
+  return Object.values(all).find(u => u.email === email.toLowerCase()) || null;
+}
+
+async function findUserById(id) {
+  if (db) {
+    const r = await db.query('SELECT id,email,first_name,last_name,profile_photo,created_at FROM users WHERE id=$1', [id]);
+    return r.rows[0] || null;
+  }
+  const all = loadUsersFile();
+  return all[id] || null;
+}
+
+async function createUser(email, passwordHash, firstName, lastName) {
+  if (db) {
+    const r = await db.query(
+      `INSERT INTO users (email,password_hash,first_name,last_name) VALUES ($1,$2,$3,$4) RETURNING id,email,first_name,last_name,created_at`,
+      [email.toLowerCase(), passwordHash, firstName, lastName]
+    );
+    return r.rows[0];
+  }
+  const all = loadUsersFile();
+  const id = Date.now();
+  all[id] = { id, email: email.toLowerCase(), password_hash: passwordHash, first_name: firstName, last_name: lastName, profile_photo: null, created_at: new Date().toISOString() };
+  saveUsersFile(all);
+  return all[id];
+}
+
+async function updateUserPhoto(id, photoUrl) {
+  if (db) {
+    await db.query('UPDATE users SET profile_photo=$1 WHERE id=$2', [photoUrl, id]);
+    return;
+  }
+  const all = loadUsersFile();
+  if (all[id]) { all[id].profile_photo = photoUrl; saveUsersFile(all); }
+}
+
+// Public user info (no password hash)
+function publicUser(u) {
+  if (!u) return null;
+  return { id: u.id, email: u.email, firstName: u.first_name, lastName: u.last_name, profilePhoto: u.profile_photo, createdAt: u.created_at };
+}
+
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -200,13 +268,78 @@ app.post('/api/logout', (req, res) => {
   req.session.destroy(() => res.json({ ok: true }));
 });
 
-app.get('/api/me', (req, res) => {
+app.get('/api/me', async (req, res) => {
+  const resp = { isAdmin: false, user: null };
   if (req.session && req.session.isAdmin) {
-    res.json({ isAdmin: true, username: req.session.username });
-  } else {
-    res.json({ isAdmin: false });
+    resp.isAdmin = true;
+    resp.username = req.session.username;
   }
+  if (req.session && req.session.userId) {
+    try {
+      const u = await findUserById(req.session.userId);
+      resp.user = publicUser(u);
+    } catch(e) {}
+  }
+  res.json(resp);
 });
+
+// ── User auth routes ──────────────────────────────────────────────────────────
+app.post('/api/user/register', async (req, res) => {
+  const { email, password, firstName, lastName } = req.body;
+  if (!email || !password || !firstName || !lastName)
+    return res.status(400).json({ error: 'email, password, firstName, lastName required' });
+  if (password.length < 6)
+    return res.status(400).json({ error: 'Password must be at least 6 characters' });
+  try {
+    const existing = await findUserByEmail(email);
+    if (existing) return res.status(409).json({ error: 'An account with this email already exists' });
+    const hash = await bcrypt.hash(password, 10);
+    const user = await createUser(email, hash, firstName.trim(), lastName.trim());
+    req.session.userId = user.id;
+    res.json({ ok: true, user: publicUser(user) });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/user/login', async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res.status(400).json({ error: 'email and password required' });
+  try {
+    const user = await findUserByEmail(email);
+    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+    const ok = await bcrypt.compare(password, user.password_hash);
+    if (!ok) return res.status(401).json({ error: 'Invalid email or password' });
+    req.session.userId = user.id;
+    res.json({ ok: true, user: publicUser(user) });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/user/logout', (req, res) => {
+  req.session.userId = null;
+  res.json({ ok: true });
+});
+
+// Upload/replace profile photo
+app.post('/api/user/photo', async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ error: 'Not logged in' });
+  const chunks = [];
+  req.on('data', c => chunks.push(c));
+  req.on('end', async () => {
+    try {
+      const buf = Buffer.concat(chunks);
+      if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
+      const ext = (req.headers['x-filename'] || 'photo.jpg').split('.').pop().replace(/[^a-z]/gi,'').toLowerCase() || 'jpg';
+      const filename = `profile_${req.session.userId}_${Date.now()}.${ext}`;
+      fs.writeFileSync(path.join(PROFILE_DIR, filename), buf);
+      const url = `/data/photos/profiles/${filename}`;
+      await updateUserPhoto(req.session.userId, url);
+      res.json({ ok: true, url });
+    } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+  req.on('error', e => res.status(500).json({ error: e.message }));
+});
+
+app.use('/data/photos/profiles', express.static(PROFILE_DIR));
 
 // ── Coords API ────────────────────────────────────────────────────────────────
 app.get('/api/coords', async (req, res) => {
@@ -370,6 +503,56 @@ app.get('/api/scrape-proxy', requireAdmin, (req, res) => {
     upstream.on('end', () => res.send(html));
   }).on('error', e => res.status(502).json({ error: e.message }))
     .on('timeout', () => res.status(504).json({ error: 'timeout' }));
+});
+
+// ── Submissions API ───────────────────────────────────────────────────────────
+// POST /api/property/:id/submission  — requires user login
+app.post('/api/property/:id/submission', async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ error: 'Must be logged in to submit' });
+  const propId = parseInt(req.params.id, 10);
+  if (!propId) return res.status(400).json({ error: 'invalid id' });
+  try {
+    const user = await findUserById(req.session.userId);
+    if (!user) return res.status(401).json({ error: 'User not found' });
+    const { type, text, photoUrl } = req.body;
+    if (!text && !photoUrl) return res.status(400).json({ error: 'text or photoUrl required' });
+
+    const current = await loadProp(propId);
+    const submissions = current.submissions || [];
+    const entry = {
+      id: Date.now(),
+      userId: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      profilePhoto: user.profile_photo || null,
+      type: type || 'Other',
+      text: text || '',
+      photoUrl: photoUrl || null,
+      submittedAt: new Date().toISOString()
+    };
+    submissions.push(entry);
+    await saveProp(propId, { ...current, submissions }, 'user:' + user.id);
+    res.json({ ok: true, submission: entry });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Upload photo for a submission (returns URL, caller includes in submission)
+app.post('/api/property/:id/submission-photo', async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ error: 'Must be logged in' });
+  const propId = parseInt(req.params.id, 10);
+  const chunks = [];
+  req.on('data', c => chunks.push(c));
+  req.on('end', () => {
+    try {
+      const buf = Buffer.concat(chunks);
+      if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
+      const cd = req.headers['x-filename'] || `sub_${Date.now()}.jpg`;
+      const filename = `${propId}_sub_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi,'_')}`;
+      fs.writeFileSync(path.join(PHOTOS_DIR, filename), buf);
+      res.json({ ok: true, url: `/data/photos/${filename}` });
+    } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+  req.on('error', e => res.status(500).json({ error: e.message }));
 });
 
 // ── Static ────────────────────────────────────────────────────────────────────
