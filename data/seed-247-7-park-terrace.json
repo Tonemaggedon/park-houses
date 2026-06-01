@@ -1,0 +1,86 @@
+{
+  "people": [
+    {
+      "first_name": "Frederic Rainford",
+      "last_name": "Ensor",
+      "known_as": "Frederick Rainford Ensor",
+      "born_date": "21 June 1807",
+      "born_year": 1807,
+      "born_place": "Camden Town, London",
+      "died_date": "13 December 1892",
+      "died_year": 1892,
+      "died_place": "Nottingham",
+      "bio": "Frederic(k) Rainford Ensor (b. London, 21 June 1807; d. Nottingham, 13 December 1892?) was the son of James and Elizabeth (née Rainford) Ensor. He was educated at Merchant Taylors' School. Ensor was a lace manufacturer who was granted a number of patents related to lace making, particularly the production of Valenciennes lace. On 25 September 1855 a patent for 'improvements in bobbin-net or twist-lace machines' was granted. A machine for making Valenciennes lace was patented in 1865, described as 'producing from a single complement of threads all the pillars of the ground of three threads; also perfect cloth work, the tabby weaving being clear; the carriages swing in the same grooves; that is, one thread up and one thread down, alternately. It is a perfect, simple, and economic mode of producing by machinery Valenciennes lace.' An 1867 patent related to 'improvements in the manufacture of lace in twist lace machines' and a further patent for 'improvements in the manufacture of the fabric known as Ensor net or lace' was granted in 1870.\n\nSome of Ensor's patents appear to have been contentious. Ensor warned rival lace manufacturers Messrs. Dunnicliff and Smith, and Messrs. Jacoby and Co., that they were infringing his patents. Dunnicliff and Smith and Smith and Jacoby, however, had the patent rights to a machine for the production of Valenciennes lace invented in 1863 by John S Butler and pre-dating Ensor's invention.",
+      "occupations": [
+        { "occupation": "Lace manufacturer and inventor" },
+        { "occupation": "Ground Rent and Fundholder" }
+      ],
+      "census_entries": [
+        { "census_year": 1861, "relationship": "Head", "age_at_census": 53, "occupation_at_census": "Ground rent and fundholder" },
+        { "census_year": 1871, "relationship": "Head", "age_at_census": 63 },
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 73, "occupation_at_census": "Retired lace manufacturer; holding public funds" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 83, "occupation_at_census": "Living on own means" }
+      ],
+      "relationships": [
+        { "name": "Thomasine Ensor", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Thomasine",
+      "last_name": "Ensor",
+      "born_year": 1819,
+      "born_place": "Finchley, Middlesex",
+      "bio": "Thomasine Ensor was the wife of Frederic Rainford Ensor. She remained at 7 Park Terrace as a widow after his death in 1892, living on her own means until at least 1901.",
+      "occupations": [{ "occupation": "Living on own means" }],
+      "census_entries": [
+        { "census_year": 1861, "relationship": "Wife", "age_at_census": 42 },
+        { "census_year": 1871, "relationship": "Wife", "age_at_census": 52 },
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 62, "occupation_at_census": "Holding public funds" },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 72, "occupation_at_census": "Living on own means" },
+        { "census_year": 1901, "relationship": "Head (widow)", "age_at_census": 82, "occupation_at_census": "Living on means" }
+      ],
+      "relationships": [
+        { "name": "Frederic Rainford Ensor", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "John Tom",
+      "last_name": "McCraith",
+      "born_year": 1847,
+      "born_place": "Leicester",
+      "died_year": 1919,
+      "died_place": "Nottingham",
+      "bio": "John Tom McCraith (b. Leicester, 1847; d. Nottingham, 1919) was the son of William and Sarah McCraith of 15 Park Valley. He worked as a commission agent and yarn agent, and by 1911 had moved to 7 Park Terrace as a retired yarn merchant.",
+      "occupations": [{ "occupation": "Retired yarn merchant" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Retired yarn merchant" }
+      ],
+      "relationships": []
+    },
+    { "first_name": "Hannah", "last_name": "Bailey", "born_year": 1836, "born_place": "Westborough, Lincolnshire", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1861, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Ellen", "last_name": "Freeman", "born_year": 1839, "born_place": "Mansfield, Nottinghamshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1861, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Anne", "last_name": "Davies", "born_year": 1850, "born_place": "Nottinghamshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 21 }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Tilson", "born_year": 1842, "born_place": "Youlgrave, Derbyshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 39, "occupation_at_census": "General servant domestic" }], "relationships": [] },
+    { "first_name": "Isabella", "last_name": "Shipman", "born_year": 1860, "born_place": "Kneeton, Nottinghamshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "General servant domestic" }], "relationships": [] },
+    { "first_name": "Arabella", "last_name": "Osborne", "born_year": 1863, "born_place": "C Thorpes, Lincolnshire", "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 38, "occupation_at_census": "Nurse" }], "relationships": [] },
+    { "first_name": "Kate", "last_name": "Grange", "born_year": 1881, "born_place": "Brall Bridge, Lincolnshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid domestic" }], "relationships": [] },
+    { "first_name": "Clara", "last_name": "Walters", "born_year": 1881, "born_place": "Chesterfield, Derbyshire", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Cook domestic" }], "relationships": [] },
+    { "first_name": "Elizabeth", "last_name": "McCraith", "born_year": 1866, "born_place": "Newark, Nottinghamshire", "occupations": [{ "occupation": "Housekeeper" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 45, "occupation_at_census": "Housekeeper domestic" }], "relationships": [] },
+    { "first_name": "Annie", "last_name": "Dawson", "born_year": 1883, "born_place": "Marlpool, Derbyshire", "occupations": [{ "occupation": "Maid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "Maid domestic" }], "relationships": [] }
+  ],
+  "significant_places": [
+    {
+      "name": "Merchant Taylors' School",
+      "location": "London",
+      "place_type": "School",
+      "description": "Merchant Taylors' School is one of the leading independent schools in London. Frederic Rainford Ensor of 7 Park Terrace was educated here.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Merchant_Taylors%27_School,_Northwood",
+      "lat": 51.6078,
+      "lng": -0.4235,
+      "person_connections": [
+        { "person": "Frederic Rainford Ensor", "connection": "Educated at Merchant Taylors' School" }
+      ]
+    }
+  ],
+  "bibliography": []
+}

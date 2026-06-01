@@ -1,0 +1,120 @@
+{
+  "people": [
+    {
+      "first_name": "Edward",
+      "last_name": "Goldschmidt",
+      "born_year": 1828,
+      "born_place": "Germany",
+      "bio": "Edward Goldschmidt (b. 1828, Germany) was a German-born merchant who settled in Nottingham and became a naturalised British subject. He was an Alderman and Merchant, and later a Magistrate, and a silk merchant. He lived at 13 Pelham Crescent with his wife Marie and their children.",
+      "occupations": [
+        { "occupation": "Alderman Merchant" },
+        { "occupation": "Magistrate" },
+        { "occupation": "Silk merchant" }
+      ],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Head", "age_at_census": 43 },
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 53, "occupation_at_census": "Alderman Merchant" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Merchant and Magistrate" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 73, "occupation_at_census": "Silk merchant" }
+      ],
+      "relationships": [
+        { "name": "Marie Goldschmidt", "type": "spouse_of" },
+        { "name": "Theresa C Goldschmidt", "type": "parent_of" },
+        { "name": "Julia Augusta Goldschmidt", "type": "parent_of" },
+        { "name": "Anna Marguerite Goldschmidt", "type": "parent_of" },
+        { "name": "Alice A Goldschmidt", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Marie",
+      "last_name": "Goldschmidt",
+      "born_year": 1841,
+      "born_place": "Germany",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Wife", "age_at_census": 30 },
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 40 },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 48 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 60 }
+      ],
+      "relationships": [
+        { "name": "Edward Goldschmidt", "type": "spouse_of" },
+        { "name": "Theresa C Goldschmidt", "type": "parent_of" },
+        { "name": "Julia Augusta Goldschmidt", "type": "parent_of" },
+        { "name": "Anna Marguerite Goldschmidt", "type": "parent_of" },
+        { "name": "Alice A Goldschmidt", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Theresa C",
+      "last_name": "Goldschmidt",
+      "born_year": 1867,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Daughter", "age_at_census": 4 },
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 14 }
+      ],
+      "relationships": [
+        { "name": "Edward Goldschmidt", "type": "child_of" },
+        { "name": "Marie Goldschmidt", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Julia Augusta",
+      "last_name": "Goldschmidt",
+      "born_year": 1870,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Daughter", "age_at_census": 1 },
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 11 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 21 }
+      ],
+      "relationships": [
+        { "name": "Edward Goldschmidt", "type": "child_of" },
+        { "name": "Marie Goldschmidt", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Anna Marguerite",
+      "last_name": "Goldschmidt",
+      "born_year": 1873,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 8 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 18 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 28 }
+      ],
+      "relationships": [
+        { "name": "Edward Goldschmidt", "type": "child_of" },
+        { "name": "Marie Goldschmidt", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Alice A",
+      "last_name": "Goldschmidt",
+      "born_year": 1878,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 3 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 13 }
+      ],
+      "relationships": [
+        { "name": "Edward Goldschmidt", "type": "child_of" },
+        { "name": "Marie Goldschmidt", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Sarah Ann", "last_name": "Cousins", "born_year": 1847, "born_place": "Lincolnshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 24 }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Large", "born_year": 1859, "born_place": "Ketton, Rutlandshire", "occupations": [{ "occupation": "Domestic housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
+    { "first_name": "Eliza", "last_name": "Jaques", "born_year": 1851, "born_place": "Swaffham, Norfolk", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "Domestic cook" }], "relationships": [] },
+    { "first_name": "Annie Eliz", "last_name": "Palmer", "born_year": 1869, "born_place": "Spalding, Lincolnshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "General servant" }], "relationships": [] },
+    { "first_name": "Lilian Ada", "last_name": "Fletcher", "born_year": 1868, "born_place": "Annesley-Woodhouse, Nottinghamshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "General servant" }], "relationships": [] },
+    { "first_name": "Pattie", "last_name": "Russell", "born_year": 1874, "born_place": "Cambridge", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "General servant (domestic)" }], "relationships": [] },
+    { "first_name": "Ethel", "last_name": "Crozier", "born_year": 1883, "born_place": "Oxford", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "General servant (domestic)" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

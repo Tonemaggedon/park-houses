@@ -1,0 +1,145 @@
+{
+  "people": [
+    {
+      "first_name": "Hermann",
+      "last_name": "Flersheim",
+      "born_year": 1828,
+      "born_place": "Frankfurt am Main, Germany",
+      "bio": "Hermann Flersheim (b. 1828, Frankfurt am Main) was a German-born lace manufacturer who settled in Nottingham and became a naturalised British subject. He lived at 5 Pelham Crescent with his wife Kathinka and their family.",
+      "occupations": [
+        { "occupation": "Lace manufacturer" },
+        { "occupation": "Lace merchant" }
+      ],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Head", "age_at_census": 43 },
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 53, "occupation_at_census": "Lace manufacturer" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Lace manufacturer" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 73, "occupation_at_census": "Lace merchant" }
+      ],
+      "relationships": [
+        { "name": "Kathinka Flersheim", "type": "spouse_of" },
+        { "name": "Annie Flersheim", "type": "parent_of" },
+        { "name": "Fretchen Flersheim", "type": "parent_of" },
+        { "name": "Margaret Flersheim", "type": "parent_of" },
+        { "name": "Albert Flersheim", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Kathinka",
+      "last_name": "Flersheim",
+      "known_as": "Katherine Elizabeth Flersheim",
+      "born_year": 1832,
+      "born_place": "Leipzig / Saxony, Germany",
+      "bio": "Katherine Elizabeth Flersheim (b. c. 1832, Germany; Germany Resident by 1911) was the wife of Hermann Flersheim. After Hermann's death she remained at 5 Pelham Crescent as a widow until at least 1911.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Wife", "age_at_census": 34 },
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 48 },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 60 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 66 },
+        { "census_year": 1911, "relationship": "Head (widow)", "age_at_census": 79 }
+      ],
+      "relationships": [
+        { "name": "Hermann Flersheim", "type": "spouse_of" },
+        { "name": "Annie Flersheim", "type": "parent_of" },
+        { "name": "Fretchen Flersheim", "type": "parent_of" },
+        { "name": "Margaret Flersheim", "type": "parent_of" },
+        { "name": "Albert Flersheim", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Flersheim",
+      "born_year": 1865,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Daughter", "age_at_census": 6 }
+      ],
+      "relationships": [
+        { "name": "Hermann Flersheim", "type": "child_of" },
+        { "name": "Kathinka Flersheim", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Albert",
+      "last_name": "Flersheim",
+      "born_year": 1855,
+      "born_place": "Saxony, Germany",
+      "bio": "Albert Flersheim was the son of Hermann and Kathinka Flersheim, born in Saxony before the family moved to Nottingham. He followed his father into the lace manufacturing business.",
+      "occupations": [{ "occupation": "Lace manufacturer" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 36, "occupation_at_census": "Lace manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Hermann Flersheim", "type": "child_of" },
+        { "name": "Kathinka Flersheim", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Fretchen",
+      "last_name": "Flersheim",
+      "born_year": 1872,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 9 }
+      ],
+      "relationships": [
+        { "name": "Hermann Flersheim", "type": "child_of" },
+        { "name": "Kathinka Flersheim", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Margaret",
+      "last_name": "Flersheim",
+      "born_year": 1873,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 18 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 28 }
+      ],
+      "relationships": [
+        { "name": "Hermann Flersheim", "type": "child_of" },
+        { "name": "Kathinka Flersheim", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Wilhelm",
+      "last_name": "Schwal",
+      "born_year": 1854,
+      "born_place": "Germany",
+      "bio": "Wilhelm Schwal was a nephew of Hermann Flersheim, listed as a visitor at 5 Pelham Crescent in 1871.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Nephew", "age_at_census": 17 }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Gertrude",
+      "last_name": "Oberlein",
+      "born_year": 1875,
+      "born_place": "Saxony, Germany",
+      "bio": "Gertrude Oberlein was a visitor from Saxony at 5 Pelham Crescent in 1891, likely a family connection of the Flersheims.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Visitor", "age_at_census": 16 }
+      ],
+      "relationships": []
+    },
+    { "first_name": "Motina", "last_name": "Cannon", "born_year": 1852, "born_place": "Shropshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 19 }], "relationships": [] },
+    { "first_name": "Sarah", "last_name": "Creswell", "born_year": 1849, "born_place": "Derbyshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 22 }], "relationships": [] },
+    { "first_name": "Louisa", "last_name": "Smedley", "born_year": 1855, "born_place": "Mansfield, Nottinghamshire", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Domestic cook" }], "relationships": [] },
+    { "first_name": "Ann", "last_name": "Williams", "born_year": 1860, "born_place": "Broughton, Nottinghamshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
+    { "first_name": "Peggy", "last_name": "Squires", "born_year": 1862, "born_place": "Cropwell Bishop, Nottinghamshire", "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Domestic nurse" }], "relationships": [] },
+    { "first_name": "Emma", "last_name": "Ward", "born_year": 1868, "born_place": "Greasdale, Lincolnshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "General servant" }], "relationships": [] },
+    { "first_name": "Annie", "last_name": "North", "born_year": 1858, "born_place": "Kneesal, Nottinghamshire", "occupations": [{ "occupation": "General servant" }, { "occupation": "Cook" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 33, "occupation_at_census": "General servant" }, { "census_year": 1911, "relationship": "Servant", "age_at_census": 53, "occupation_at_census": "Cook domestic" }], "relationships": [] },
+    { "first_name": "Emma", "last_name": "Wood", "born_year": 1869, "born_place": "Great Hale, Lincolnshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 32, "occupation_at_census": "General servant domestic" }], "relationships": [] },
+    { "first_name": "Charlotte", "last_name": "Durrant", "born_year": 1878, "born_place": "Rousham, Lincolnshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "General servant domestic" }], "relationships": [] },
+    { "first_name": "Annie", "last_name": "Slater", "born_year": 1886, "born_place": "Tyebridge, Derbyshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Housemaid domestic" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

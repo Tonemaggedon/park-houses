@@ -1,0 +1,101 @@
+{
+  "people": [
+    {
+      "first_name": "Ann",
+      "last_name": "Mallet",
+      "born_year": 1811,
+      "born_place": "Arnold, Nottinghamshire",
+      "bio": "Ann Mallet (b. c. 1811, Arnold, Nottinghamshire) was the widow of Henry Mallet (b. c. 1806; d. between 1871 and 1881). She lived at 6 Park Terrace, living on funds derived from property and later on her own means. She remained at the address through at least 1891.",
+      "occupations": [{ "occupation": "Funds derived from property" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head (widow)", "age_at_census": 70, "occupation_at_census": "Funds derived from property" },
+        { "census_year": 1891, "relationship": "Head (widow)", "age_at_census": 80, "occupation_at_census": "Living on own means" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "William Henry",
+      "last_name": "Foster",
+      "born_year": 1865,
+      "born_place": "Nottingham",
+      "bio": "William Henry Foster (b. c. 1865, Nottingham) was a furniture manufacturer, the son of Mary and William Foster Jr, and grandson of William Foster who was an upholsterer, Alderman and Lord Mayor of Nottingham 1872–73, who established the family firm in 1845. William Henry lived at 6 Park Terrace with his wife Pearlie (from Wellington, New Zealand) and their daughters.",
+      "occupations": [{ "occupation": "Furniture manufacturer" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 35, "occupation_at_census": "Furniture manufacturer" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 46, "occupation_at_census": "Furniture manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Pearlie Foster", "type": "spouse_of" },
+        { "name": "Kathleen Ashforth Foster", "type": "parent_of" },
+        { "name": "Sheila Mary Foster", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Pearlie",
+      "last_name": "Foster",
+      "born_year": 1871,
+      "born_place": "Wellington, New Zealand",
+      "bio": "Pearlie Foster (b. 1871, Wellington, New Zealand) was the wife of William Henry Foster. She was listed as married 17 years in the 1911 census.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 30 },
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 40 }
+      ],
+      "relationships": [
+        { "name": "William Henry Foster", "type": "spouse_of" },
+        { "name": "Kathleen Ashforth Foster", "type": "parent_of" },
+        { "name": "Sheila Mary Foster", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Kathleen Ashforth",
+      "last_name": "Foster",
+      "born_year": 1901,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 0 },
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 10 }
+      ],
+      "relationships": [
+        { "name": "William Henry Foster", "type": "child_of" },
+        { "name": "Pearlie Foster", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Sheila Mary",
+      "last_name": "Foster",
+      "born_year": 1911,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 0 }
+      ],
+      "relationships": [
+        { "name": "William Henry Foster", "type": "child_of" },
+        { "name": "Pearlie Foster", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Kate E",
+      "last_name": "Reid",
+      "born_year": 1867,
+      "born_place": "New Zealand",
+      "bio": "Kate E Reid was the sister-in-law of William Henry Foster, visiting from New Zealand in 1901.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Sister-in-law", "age_at_census": 34 }
+      ],
+      "relationships": []
+    },
+    { "first_name": "Hannah", "last_name": "Sharratt", "born_year": 1862, "born_place": "Newbold Moor, Derbyshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Domestic housemaid" }, { "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Housemaid domestic servant" }], "relationships": [] },
+    { "first_name": "Maud", "last_name": "Allen", "born_year": 1878, "born_place": "Sheffield", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Cook domestic" }], "relationships": [] },
+    { "first_name": "Emily", "last_name": "Whitelocks", "born_year": 1881, "born_place": "Watnall, Nottinghamshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "House maid domestic" }], "relationships": [] },
+    { "first_name": "Agnes", "last_name": "Cope", "born_year": 1878, "born_place": "Newton Regis, Warwickshire", "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Nurse domestic" }], "relationships": [] },
+    { "first_name": "Ethel", "last_name": "Gale", "born_year": 1887, "born_place": "Hemmington", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Domestic servant" }], "relationships": [] },
+    { "first_name": "Kate", "last_name": "Forman", "born_year": 1867, "born_place": "Nottingham", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 44, "occupation_at_census": "Domestic servant" }], "relationships": [] },
+    { "first_name": "Agnes", "last_name": "Smith", "born_year": 1871, "born_place": "Calais, France", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 40, "occupation_at_census": "Domestic servant" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

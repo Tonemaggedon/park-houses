@@ -1,0 +1,133 @@
+{
+  "people": [
+    {
+      "first_name": "William",
+      "last_name": "McCraith",
+      "born_year": 1825,
+      "born_place": "Scotland",
+      "died_year": 1884,
+      "died_place": "Nottingham",
+      "bio": "William McCraith (b. c. 1825, Scotland; d. Nottingham, 1884) was a yarn agent who lived at 15 Park Valley. He married Sarah York (b. c. 1819; d. Nottingham, 1897) in Leicester in 1847. They had at least two sons: John Tom McCraith and James W McCraith.",
+      "occupations": [{ "occupation": "Yarn agent" }],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Head", "age_at_census": 46 },
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 56, "occupation_at_census": "Yarn agent" }
+      ],
+      "relationships": [
+        { "name": "Sarah McCraith", "type": "spouse_of" },
+        { "name": "John Tom McCraith", "type": "parent_of" },
+        { "name": "James W McCraith", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "McCraith",
+      "known_as": "Sarah York McCraith",
+      "born_year": 1819,
+      "born_place": "Melton Mowbray, Leicestershire",
+      "died_year": 1897,
+      "died_place": "Nottingham",
+      "bio": "Sarah York (b. c. 1819, Melton Mowbray, Leicestershire; d. Nottingham, 1897) married William McCraith in Leicester in 1847. She remained at 15 Park Valley after William's death in 1884, living on her own means until her death in 1897.",
+      "occupations": [{ "occupation": "Living on own means" }],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Wife", "age_at_census": 51 },
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 62 },
+        { "census_year": 1891, "relationship": "Head (widow)", "age_at_census": 73, "occupation_at_census": "Living on own means" }
+      ],
+      "relationships": [
+        { "name": "William McCraith", "type": "spouse_of" },
+        { "name": "John Tom McCraith", "type": "parent_of" },
+        { "name": "James W McCraith", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "John Tom",
+      "last_name": "McCraith",
+      "born_year": 1847,
+      "born_place": "Leicester",
+      "died_year": 1919,
+      "died_place": "Nottingham",
+      "bio": "John Tom McCraith (b. Leicester, 1847; d. Nottingham, 1919) was the son of William and Sarah McCraith. He worked as a commission agent and later a yarn agent. He remained at 15 Park Valley through 1901, and by 1911 had moved to 7 Park Terrace, where he was listed as a retired yarn merchant.",
+      "occupations": [
+        { "occupation": "Commission agent" },
+        { "occupation": "Yarn agent" }
+      ],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Son", "age_at_census": 23 },
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 33, "occupation_at_census": "Commission agent" },
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 43, "occupation_at_census": "Commission agent" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 52, "occupation_at_census": "Yarn agent" }
+      ],
+      "relationships": [
+        { "name": "William McCraith", "type": "child_of" },
+        { "name": "Sarah McCraith", "type": "child_of" },
+        { "name": "James W McCraith", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "James W",
+      "last_name": "McCraith",
+      "born_year": 1853,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Son", "age_at_census": 18 }
+      ],
+      "relationships": [
+        { "name": "William McCraith", "type": "child_of" },
+        { "name": "Sarah McCraith", "type": "child_of" },
+        { "name": "John Tom McCraith", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Elizabeth",
+      "last_name": "York",
+      "born_year": 1785,
+      "born_place": "Rutland",
+      "bio": "Elizabeth York was the mother-in-law of William McCraith, living at 15 Park Valley in 1871 aged 86.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1871, "relationship": "Mother-in-law", "age_at_census": 86 }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "John Holland",
+      "last_name": "Walker",
+      "born_year": 1874,
+      "born_place": "Leeds, Yorkshire",
+      "bio": "John Holland Walker was a department manager from Leeds who lived at 15 Park Valley in 1911 with his wife Lucy Mabel.",
+      "occupations": [{ "occupation": "Department manager" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 37, "occupation_at_census": "Department manager" }
+      ],
+      "relationships": [
+        { "name": "Lucy Mabel Walker", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Lucy Mabel",
+      "last_name": "Walker",
+      "born_year": 1877,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 34 }
+      ],
+      "relationships": [
+        { "name": "John Holland Walker", "type": "spouse_of" }
+      ]
+    },
+    { "first_name": "Mary Ann", "last_name": "Hall", "born_year": 1845, "born_place": "Nottinghamshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 26 }], "relationships": [] },
+    { "first_name": "Sarah", "last_name": "Barnes", "born_year": 1856, "born_place": "Nottinghamshire", "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1871, "relationship": "Servant", "age_at_census": 15 }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Musson", "born_year": 1856, "born_place": "Corby, Lincolnshire", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Domestic servant" }], "relationships": [] },
+    { "first_name": "Sarah", "last_name": "Ranby", "born_year": 1870, "born_place": "Grantham, Lincolnshire", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Cook domestic servant" }], "relationships": [] },
+    { "first_name": "Elizabeth", "last_name": "Cumberland", "born_year": 1876, "born_place": "Ruddington, Nottinghamshire", "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 15, "occupation_at_census": "Housemaid domestic servant" }], "relationships": [] },
+    { "first_name": "Emma", "last_name": "Marrion", "born_year": 1861, "born_place": "Lincolnshire", "occupations": [{ "occupation": "Housekeeper" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 40, "occupation_at_census": "House keeper domestic" }], "relationships": [] },
+    { "first_name": "Nelly", "last_name": "Hands", "born_year": 1877, "born_place": "Lincolnshire", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Cook keeper domestic" }], "relationships": [] },
+    { "first_name": "Ann", "last_name": "Gilding", "born_year": 1874, "born_place": "Nottingham", "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 37, "occupation_at_census": "Cook domestic service" }], "relationships": [] },
+    { "first_name": "Grace Emily", "last_name": "Green", "born_year": 1880, "born_place": "Falstead, Essex", "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "House parlourmaid domestic service" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}
