@@ -1,0 +1,80 @@
+{
+  "people": [
+    {
+      "first_name": "John",
+      "last_name": "Renals",
+      "bio": "John Renals was an Alderman, Justice of the Peace, Sheriff of Nottingham (1875–76) and Mayor of Nottingham (1889–90). He was the twin brother of Sir Joseph Renals, 1st Baronet. The brothers initially made their fortune in the bleaching business. John took the counterpart lease on 29 Cavendish Road East (Gartree House) on 24th March 1884. His sister Maria Renals married solicitor Parker Woodward and lived at 23 and then 25 Cavendish Road East.",
+      "occupations": [
+        { "occupation": "Alderman, City of Nottingham" },
+        { "occupation": "Justice of the Peace" },
+        { "occupation": "Sheriff of Nottingham", "from_year": 1875, "to_year": 1876 },
+        { "occupation": "Mayor of Nottingham", "from_year": 1889, "to_year": 1890 },
+        { "occupation": "Bleacher" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Joseph Renals", "type": "sibling_of" },
+        { "name": "Maria Woodward", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Joseph",
+      "last_name": "Renals",
+      "known_as": "Sir Joseph Renals, 1st Baronet",
+      "died_date": "1 November 1907",
+      "died_year": 1907,
+      "bio": "Sir Joseph Renals, 1st Baronet (d. 1 November 1907) was a highly successful City of London trader and public figure. He was the twin brother of John Renals of Nottingham. The brothers initially made their fortune in the bleaching business.\n\nSir Joseph became a Director of numerous companies including Brewers' and General Fire Insurance and Guarantee Co., Northern Assets Corporation, Northern Debenture Corporation, Pahang Exploration and Development Company, Economic Gold Extraction Company, British Commercial Corporation, Baltimore Breweries Company, and Byers Patents. He was active in Freemasonry as a Senior Deacon in the Aldersgate Lodge, and a member of the Reform Club, the Devonshire Club, the City Liberal Club, and the Aldersgate Club.\n\nHe joined the Corporation of London as a Common Councillor for Aldersgate ward in 1885. From 1888 until his death in 1907 he was an Alderman. He was Sheriff of London in 1892 and Lord Mayor of London in 1894–95. He was made a Baronet in 1895.",
+      "occupations": [
+        { "occupation": "Bleacher" },
+        { "occupation": "City trader and company director" },
+        { "occupation": "Common Councillor, City of London", "from_year": 1885, "to_year": 1888 },
+        { "occupation": "Alderman, City of London", "from_year": 1888, "to_year": 1907 },
+        { "occupation": "Sheriff of London", "from_year": 1892, "to_year": 1892 },
+        { "occupation": "Lord Mayor of London", "from_year": 1894, "to_year": 1895 }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "John Renals", "type": "sibling_of" },
+        { "name": "Maria Woodward", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "William Henry",
+      "last_name": "Raven",
+      "bio": "William Henry Raven was an engineer who joined Raleigh Cycles as Works Manager in 1907 and eventually became Works Director, retiring in 1944 (although he worked elsewhere between 1922 and 1929). Working alongside Sir Harold Bowden (son of founder Sir Frank Bowden), Raven was largely responsible for the firm's modernisation and the massive expansion of its manufacturing capacity during the 1920s and 1930s. He was awarded an O.B.E. in 1942.\n\nA 1931 patent application lists him as residing at 45 Lenton Road. He filed a number of cycling-related patents including: 3rd October 1931, 'improvements in and relating to variable speed gear hubs for bicycles and the like', with Sturmey-Archer Gears Ltd; and 21st September 1932, 'improvements relating to cycle gear cases', with Raleigh Cycle Co. Ltd.\n\nRaven took the assignment of 29 Cavendish Road East from H.V. Turner on 6th December 1932 and remained there until he assigned the property to H.L. Bamkin on 17th August 1948.",
+      "occupations": [
+        { "occupation": "Works Manager, Raleigh Cycles", "from_year": 1907, "to_year": 1922 },
+        { "occupation": "Works Director, Raleigh Cycles", "from_year": 1929, "to_year": 1944, "notes": "O.B.E. 1942" }
+      ],
+      "census_entries": [],
+      "relationships": []
+    }
+  ],
+  "significant_places": [
+    {
+      "name": "Raleigh Cycles, Nottingham",
+      "location": "Nottingham",
+      "place_type": "Factory / company",
+      "description": "Raleigh Cycles was founded by Frank Bowden and became one of the world's leading bicycle manufacturers. William Henry Raven of 29 Cavendish Road East served as Works Manager (from 1907) and Works Director, overseeing massive expansion of manufacturing capacity in the 1920s and 1930s.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Raleigh_Bicycle_Company",
+      "lat": 52.9548,
+      "lng": -1.1581,
+      "person_connections": [
+        { "person": "William Henry Raven", "connection": "Works Manager 1907, Works Director, retired 1944; O.B.E. 1942 for services to the firm" }
+      ]
+    },
+    {
+      "name": "Mansion House, London",
+      "location": "City of London",
+      "place_type": "Official residence",
+      "description": "The official residence of the Lord Mayor of London. Sir Joseph Renals served as Lord Mayor of London in 1894–95.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mansion_House,_London",
+      "lat": 51.5122,
+      "lng": -0.0941,
+      "person_connections": [
+        { "person": "Joseph Renals", "connection": "Lord Mayor of London 1894–95; made Baronet 1895" }
+      ]
+    }
+  ],
+  "bibliography": []
+}

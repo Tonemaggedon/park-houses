@@ -1,0 +1,236 @@
+{
+  "people": [
+    {
+      "first_name": "Parker",
+      "last_name": "Woodward",
+      "born_date": "8 June 1855",
+      "born_year": 1855,
+      "born_place": "Nottingham",
+      "died_date": "10 May 1931",
+      "died_year": 1931,
+      "bio": "Parker Woodward was a solicitor, born in Nottingham on 8 June 1855, the son of John George Woodward (b.1829) and Mary Woodward (b.1825). John George was a partner in the local timber merchants Woodward Clark & Co. of Castle Road Wharf — his partner William Clark(e) and his son William Froggatt Clark were also Park residents. Parker had at least 3 younger siblings: Walter (b.1857), Frank (b.1859), and Mabel Mary (b.1860). Frank lived for many years in Redcliffe on Cavendish Road East.\n\nParker married Maria Renals, sister of John Renals (Alderman and Mayor of Nottingham) and Sir Joseph Renals (Lord Mayor of London 1894–95). Their son Cyril Renals Woodward was named after the Renals family. Parker lived at 25 Cavendish Road East from at least 1891 until his death in 1931, practising as a solicitor throughout.",
+      "occupations": [
+        { "occupation": "Solicitor" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 36, "occupation_at_census": "Solicitor" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 46, "occupation_at_census": "Solicitor" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 56, "occupation_at_census": "Solicitor" }
+      ],
+      "relationships": [
+        { "name": "Maria Woodward", "type": "spouse_of" },
+        { "name": "Alan John Woodward", "type": "parent_of" },
+        { "name": "Noel Parker Woodward", "type": "parent_of" },
+        { "name": "Eva Violet Woodward", "type": "parent_of" },
+        { "name": "Wilfred Owen Woodward", "type": "parent_of" },
+        { "name": "Cyril Renals Woodward", "type": "parent_of" },
+        { "name": "John Renals", "type": "employer_of" }
+      ]
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Woodward",
+      "known_as": "Maria Renals",
+      "born_year": 1856,
+      "born_place": "Nottingham",
+      "bio": "Maria Renals was the sister of John Renals (Alderman and Mayor of Nottingham) and Sir Joseph Renals, 1st Baronet (Lord Mayor of London 1894–95). She married solicitor Parker Woodward and they lived first at 23 and then at 25 Cavendish Road East. Their son Cyril Renals Woodward was named in honour of her family.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 35 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 45 },
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 55 }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "spouse_of" },
+        { "name": "John Renals", "type": "sibling_of" },
+        { "name": "Joseph Renals", "type": "sibling_of" },
+        { "name": "Cyril Renals Woodward", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Alan John",
+      "last_name": "Woodward",
+      "born_year": 1882,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 9, "occupation_at_census": "Scholar" }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "child_of" },
+        { "name": "Maria Woodward", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Noel Parker",
+      "last_name": "Woodward",
+      "born_year": 1883,
+      "born_place": "Nottingham",
+      "bio": "Noel Parker Woodward, son of Parker Woodward. By 1901 he was working as a Mechanical Engineer.",
+      "occupations": [{ "occupation": "Mechanical engineer", "from_year": 1901 }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 8, "occupation_at_census": "Scholar" },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 18, "occupation_at_census": "Mechanical Engineer" }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "child_of" },
+        { "name": "Maria Woodward", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Eva Violet",
+      "last_name": "Woodward",
+      "born_year": 1884,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 7, "occupation_at_census": "Scholar" },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 17 }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "child_of" },
+        { "name": "Maria Woodward", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Wilfred Owen",
+      "last_name": "Woodward",
+      "born_year": 1887,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 4 },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 14 }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "child_of" },
+        { "name": "Maria Woodward", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Cyril Renals",
+      "last_name": "Woodward",
+      "born_year": 1895,
+      "born_place": "Nottingham",
+      "bio": "Cyril Renals Woodward, son of Parker Woodward and Maria Renals, was named in honour of his mother's family (the Renals). He was training as a law student in 1911.",
+      "occupations": [{ "occupation": "Law student", "from_year": 1911 }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 6 },
+        { "census_year": 1911, "relationship": "Son", "age_at_census": 16, "occupation_at_census": "Law student" }
+      ],
+      "relationships": [
+        { "name": "Parker Woodward", "type": "child_of" },
+        { "name": "Maria Woodward", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Eleanor G",
+      "last_name": "Bevan",
+      "born_year": 1870,
+      "occupations": [{ "occupation": "Governess" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Boarder", "age_at_census": 21, "occupation_at_census": "Governess" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Elizabeth",
+      "last_name": "Waddington",
+      "born_year": 1868,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Charlotte",
+      "last_name": "Howard",
+      "born_year": 1870,
+      "occupations": [{ "occupation": "Domestic servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Domestic servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "M A",
+      "last_name": "Brumby",
+      "born_year": 1863,
+      "born_place": "Lincolnshire",
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 38, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Morley",
+      "born_year": 1878,
+      "born_place": "Sawley, Derbyshire",
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Hannah",
+      "last_name": "Sheppherd",
+      "born_year": 1884,
+      "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Kitchenmaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Kitchenmaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Ellen",
+      "last_name": "Portens",
+      "born_year": 1875,
+      "born_place": "Ruddington",
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 36, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Lambert",
+      "born_year": 1880,
+      "born_place": "Bulwell",
+      "occupations": [{ "occupation": "Parlour maid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "Parlour maid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Agnes",
+      "last_name": "Brown",
+      "born_year": 1888,
+      "born_place": "St Helens, Lancashire",
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice Martha",
+      "last_name": "Porter",
+      "born_year": 1893,
+      "born_place": "Lambley",
+      "occupations": [{ "occupation": "Kitchenmaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Kitchenmaid" }
+      ],
+      "relationships": []
+    }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

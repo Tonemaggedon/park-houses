@@ -1,0 +1,250 @@
+{
+  "people": [
+    {
+      "first_name": "James",
+      "last_name": "Cloak",
+      "born_year": 1816,
+      "born_place": "Nottingham",
+      "bio": "James Cloak was a grocer employing 8 men in 1881, who had retired by 1891. He lived at 23 Cavendish Crescent South (Holroyd/Holyrood House) with his wife Eliza and their children.",
+      "occupations": [
+        { "occupation": "Grocer", "notes": "Employing 8 men (1881); retired by 1891" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 65, "occupation_at_census": "Grocer employing 8 men" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 75, "occupation_at_census": "Retired Grocer" }
+      ],
+      "relationships": [
+        { "name": "Eliza Cloak", "type": "spouse_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "parent_of" },
+        { "name": "Henry Cloak", "type": "parent_of" },
+        { "name": "Emma Cloak", "type": "parent_of" },
+        { "name": "Helen Cloak", "type": "parent_of" },
+        { "name": "Louisa Cloak", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Eliza",
+      "last_name": "Cloak",
+      "born_year": 1818,
+      "born_place": "Nottingham",
+      "bio": "Eliza Cloak was the wife of James Cloak. She lived at 23 Cavendish Crescent South.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 63 },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 73 }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "spouse_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "parent_of" },
+        { "name": "Henry Cloak", "type": "parent_of" },
+        { "name": "Emma Cloak", "type": "parent_of" },
+        { "name": "Helen Cloak", "type": "parent_of" },
+        { "name": "Louisa Cloak", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Elizabeth Ann",
+      "last_name": "Cloak",
+      "born_year": 1844,
+      "born_place": "Nottingham",
+      "bio": "Elizabeth Ann Cloak, eldest daughter of James and Eliza Cloak, took over as head of household at 23 Cavendish Crescent South after her parents' deaths, living there on her own means from 1901.",
+      "occupations": [
+        { "occupation": "Living on own means" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 37 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 47 },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 57, "occupation_at_census": "Living on own means" },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 67, "occupation_at_census": "Private means" }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "child_of" },
+        { "name": "Eliza Cloak", "type": "child_of" },
+        { "name": "Henry Cloak", "type": "sibling_of" },
+        { "name": "Emma Cloak", "type": "sibling_of" },
+        { "name": "Helen Cloak", "type": "sibling_of" },
+        { "name": "Louisa Cloak", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Henry",
+      "last_name": "Cloak",
+      "born_year": 1846,
+      "born_place": "Nottingham",
+      "bio": "Henry Cloak, son of James and Eliza Cloak. He worked as a Grocer's Clerk in 1881 and was listed as a Retired Grocer by 1901. He became head of household at 23 Cavendish Crescent South by 1911.",
+      "occupations": [
+        { "occupation": "Grocer's clerk", "to_year": 1881 },
+        { "occupation": "Grocer (retired)", "from_year": 1891 }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 35, "occupation_at_census": "Grocers Clerk" },
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 45, "occupation_at_census": "Retired Grocer" },
+        { "census_year": 1901, "relationship": "Brother", "age_at_census": 55, "occupation_at_census": "Grocer (Retired)" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 65, "occupation_at_census": "Retired Grocer" }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "child_of" },
+        { "name": "Eliza Cloak", "type": "child_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "sibling_of" },
+        { "name": "Emma Cloak", "type": "sibling_of" },
+        { "name": "Helen Cloak", "type": "sibling_of" },
+        { "name": "Louisa Cloak", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Cloak",
+      "born_year": 1854,
+      "born_place": "Nottingham",
+      "bio": "Emma Cloak, daughter of James and Eliza Cloak, remained at 23 Cavendish Crescent South throughout her life.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 27 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 37 },
+        { "census_year": 1901, "relationship": "Sister", "age_at_census": 47 },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 57, "occupation_at_census": "Private means" }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "child_of" },
+        { "name": "Eliza Cloak", "type": "child_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "sibling_of" },
+        { "name": "Henry Cloak", "type": "sibling_of" },
+        { "name": "Helen Cloak", "type": "sibling_of" },
+        { "name": "Louisa Cloak", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Helen",
+      "last_name": "Cloak",
+      "born_year": 1856,
+      "born_place": "Nottingham",
+      "bio": "Helen Cloak, daughter of James and Eliza Cloak, remained at 23 Cavendish Crescent South.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 35 },
+        { "census_year": 1901, "relationship": "Sister", "age_at_census": 45 },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 55, "occupation_at_census": "Private means" }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "child_of" },
+        { "name": "Eliza Cloak", "type": "child_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "sibling_of" },
+        { "name": "Henry Cloak", "type": "sibling_of" },
+        { "name": "Emma Cloak", "type": "sibling_of" },
+        { "name": "Louisa Cloak", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Louisa",
+      "last_name": "Cloak",
+      "born_year": 1860,
+      "born_place": "Nottingham",
+      "bio": "Louisa Cloak, youngest daughter of James and Eliza Cloak, remained at 23 Cavendish Crescent South.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 21 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 31 },
+        { "census_year": 1901, "relationship": "Sister", "age_at_census": 41 },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 51, "occupation_at_census": "Private means" }
+      ],
+      "relationships": [
+        { "name": "James Cloak", "type": "child_of" },
+        { "name": "Eliza Cloak", "type": "child_of" },
+        { "name": "Elizabeth Ann Cloak", "type": "sibling_of" },
+        { "name": "Henry Cloak", "type": "sibling_of" },
+        { "name": "Emma Cloak", "type": "sibling_of" },
+        { "name": "Helen Cloak", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Elizabeth A",
+      "last_name": "Bull",
+      "born_year": 1859,
+      "born_place": "Bosworth, Cambridgeshire",
+      "occupations": [{ "occupation": "Domestic servant" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Domestic Servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Newsome",
+      "born_year": 1865,
+      "born_place": "Newbold, Derbyshire",
+      "occupations": [{ "occupation": "Domestic servant" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Domestic Servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Harriett",
+      "last_name": "Reeves",
+      "born_year": 1869,
+      "born_place": "Annesley-Woodhouse, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "General Servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Henrietta",
+      "last_name": "Lawton",
+      "born_year": 1874,
+      "born_place": "Stonebroom, Derbyshire",
+      "occupations": [{ "occupation": "General servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "General Servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Thirza J",
+      "last_name": "Lee",
+      "born_year": 1874,
+      "born_place": "Kirkby, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Housemaid (Dom)" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Makin",
+      "born_year": 1875,
+      "born_place": "Derby",
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Cook (Dom)" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Clara",
+      "last_name": "Stone",
+      "born_year": 1884,
+      "born_place": "Newhaven, Sussex",
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Cook Domestic" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Clara Ella",
+      "last_name": "Warman",
+      "born_year": 1885,
+      "born_place": "Bampton, Oxfordshire",
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Housemaid Domestic" }
+      ],
+      "relationships": []
+    }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

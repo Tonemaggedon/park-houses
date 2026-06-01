@@ -1,0 +1,188 @@
+{
+  "people": [
+    {
+      "first_name": "Robert Henry",
+      "last_name": "Speed",
+      "born_year": 1823,
+      "born_place": "Nottingham",
+      "died_date": "13 February 1914",
+      "died_year": 1914,
+      "died_place": "Nottingham",
+      "bio": "Robert Henry Speed was a Solicitor and Notary Public with a business address at 13 St Peter's-Gate, Nottingham from at least 1876 until his death in 1914. He lived at 27 Cavendish Road East (The Bishop's House) with his wife Emma (seventh daughter of Joseph Morris of Chilwell). They had at least three children: Walter Hamlyn Speed, Edwin Arney Speed, and Cybil Speed. Robert continued practising as a solicitor and public notary into his late eighties.",
+      "occupations": [
+        { "occupation": "Solicitor and Notary Public", "notes": "Business address: 13 St Peter's-Gate, Nottingham, from at least 1876–1914" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 68, "occupation_at_census": "Solicitor" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 78, "occupation_at_census": "Solicitor" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 88, "occupation_at_census": "Solicitor and public notary" }
+      ],
+      "relationships": [
+        { "name": "Emma Speed", "type": "spouse_of" },
+        { "name": "Walter Hamlyn Speed", "type": "parent_of" },
+        { "name": "Edwin Arney Speed", "type": "parent_of" },
+        { "name": "Cybil Speed", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Speed",
+      "died_year": 1916,
+      "bio": "Emma Speed was the seventh daughter of Joseph Morris of Chilwell. She married Robert Henry Speed and lived with him at 27 Cavendish Road East until her death in 1916.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 49 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 59 },
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 69 }
+      ],
+      "relationships": [
+        { "name": "Robert Henry Speed", "type": "spouse_of" },
+        { "name": "Walter Hamlyn Speed", "type": "parent_of" },
+        { "name": "Edwin Arney Speed", "type": "parent_of" },
+        { "name": "Cybil Speed", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Walter Hamlyn",
+      "last_name": "Speed",
+      "born_year": 1864,
+      "bio": "Walter Hamlyn Speed attended Rugby School from 1878 to 1881, then matriculated into the University of London in 1881. He became a solicitor in London in 1885, with his professional address at 18 Sackville Street, London in 1910 and 1917, and earlier at 1 Clement's Inn, Strand and 160 Dashwood House, New Bond Street.\n\nIn 1897 a Walter Hamlyn Speed, solicitor of 1 Clement's Inn, was refused discharge from bankruptcy on the grounds that his assets were insufficient and that he had contributed to his bankruptcy by rash and hazardous speculation, unjustifiable extravagance, and culpable neglect of his business affairs. He had died by 1926. He possibly married Charlotte Mary Speed.",
+      "occupations": [
+        { "occupation": "Solicitor", "from_year": 1885, "notes": "London; 1 Clement's Inn, then 18 Sackville Street" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 27, "occupation_at_census": "Solicitor" }
+      ],
+      "relationships": [
+        { "name": "Robert Henry Speed", "type": "child_of" },
+        { "name": "Emma Speed", "type": "child_of" },
+        { "name": "Edwin Arney Speed", "type": "sibling_of" },
+        { "name": "Cybil Speed", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Edwin Arney",
+      "last_name": "Speed",
+      "known_as": "Sir Edwin Arney Speed",
+      "born_year": 1869,
+      "died_year": 1941,
+      "bio": "Sir Edwin Arney Speed (1869–1941) was a barrister and colonial administrator in West Africa. He attended Rugby School until 1887, then went up to Trinity College, Cambridge, graduating with a B.A. in Classics (first class) in 1890 and taking his M.A. and LL.B. in 1893.",
+      "occupations": [
+        { "occupation": "Barrister" },
+        { "occupation": "Colonial administrator", "notes": "West Africa" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Robert Henry Speed", "type": "child_of" },
+        { "name": "Emma Speed", "type": "child_of" },
+        { "name": "Walter Hamlyn Speed", "type": "sibling_of" },
+        { "name": "Cybil Speed", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Cybil",
+      "last_name": "Speed",
+      "born_year": 1874,
+      "bio": "Cybil Speed, daughter of Robert Henry and Emma Speed, remained at 27 Cavendish Road East throughout the census years.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 27 },
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 37 }
+      ],
+      "relationships": [
+        { "name": "Robert Henry Speed", "type": "child_of" },
+        { "name": "Emma Speed", "type": "child_of" },
+        { "name": "Walter Hamlyn Speed", "type": "sibling_of" },
+        { "name": "Edwin Arney Speed", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Lievesley",
+      "born_year": 1866,
+      "occupations": [{ "occupation": "Servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 25 }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Eliza",
+      "last_name": "Mould",
+      "born_year": 1872,
+      "occupations": [{ "occupation": "Servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 19 }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Walker",
+      "born_year": 1871,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice M",
+      "last_name": "Sadler",
+      "born_year": 1879,
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Rose Emily",
+      "last_name": "Eddowes",
+      "born_year": 1882,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Oakley",
+      "born_year": 1889,
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    }
+  ],
+  "significant_places": [
+    {
+      "name": "Rugby School",
+      "location": "Rugby, Warwickshire",
+      "place_type": "School",
+      "description": "Rugby School is a leading independent school. Walter Hamlyn Speed attended 1878–1881 and Sir Edwin Arney Speed attended until 1887.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Rugby_School",
+      "lat": 52.3713,
+      "lng": -1.2590,
+      "person_connections": [
+        { "person": "Walter Hamlyn Speed", "connection": "Attended 1878–1881" },
+        { "person": "Edwin Arney Speed", "connection": "Attended until 1887" }
+      ]
+    },
+    {
+      "name": "Trinity College, Cambridge",
+      "location": "Cambridge",
+      "place_type": "University college",
+      "description": "Trinity College, University of Cambridge. Sir Edwin Arney Speed studied here, graduating B.A. Classics (first class) 1890, M.A. and LL.B. 1893.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Trinity_College,_Cambridge",
+      "lat": 52.2155,
+      "lng": 0.1217,
+      "person_connections": [
+        { "person": "Edwin Arney Speed", "connection": "B.A. Classics (first class) 1890; M.A. and LL.B. 1893" }
+      ]
+    }
+  ],
+  "bibliography": []
+}

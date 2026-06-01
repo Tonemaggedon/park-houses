@@ -184,18 +184,55 @@
       "last_name": "Allen",
       "born_year": 1841,
       "died_year": 1901,
-      "bio": "Mary Adelaide Allen was a daughter of Richard and Mary Ann Allen.",
+      "bio": "Mary Adelaide Allen was the third child of Richard and Mary Ann Allen. She married Albert Cleaver (also known as Alfred Cleaver; b.c.1834; d.27 August 1909), son of Joseph Cleaver, in 1874. Albert was a prominent figure in the Nottingham lace industry — Alfred Cleaver and Co. carried on business as lace dressers, lace dyers, bleachers and finishers in Lenton. Mary and Albert lived at Ashley House, Park Drive until their deaths. They had at least one child: Beatrice Mary Cleaver (b.c.1877).",
       "occupations": [],
       "census_entries": [],
       "relationships": [
-        {
-          "name": "Richard Allen",
-          "type": "child_of"
-        },
-        {
-          "name": "Mary Ann Allen",
-          "type": "child_of"
-        }
+        { "name": "Richard Allen", "type": "child_of" },
+        { "name": "Mary Ann Deacon", "type": "child_of" },
+        { "name": "Albert Cleaver", "type": "spouse_of" },
+        { "name": "Beatrice Mary Cleaver", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Albert",
+      "last_name": "Cleaver",
+      "known_as": "Alfred Cleaver",
+      "born_year": 1834,
+      "died_date": "27 August 1909",
+      "died_year": 1909,
+      "bio": "Albert Cleaver (also known as Alfred Cleaver) was a son of Joseph Cleaver and a prominent figure in the Nottingham lace industry. Alfred Cleaver and Co. carried on business as lace dressers, lace dyers, bleachers and finishers in Lenton. He married Mary Adelaide Allen in 1874 and they lived at Ashley House, Park Drive. His brother Francis Frederick Cleaver lived at 25 Cavendish Crescent South.",
+      "occupations": [
+        { "occupation": "Lace dresser and bleacher", "employer": "Alfred Cleaver and Co., Lenton" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Mary Adelaide Allen", "type": "spouse_of" },
+        { "name": "Beatrice Mary Cleaver", "type": "parent_of" },
+        { "name": "Francis Frederick Cleaver", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Beatrice Mary",
+      "last_name": "Cleaver",
+      "born_year": 1877,
+      "bio": "Beatrice Mary Cleaver was the daughter of Albert Cleaver and Mary Adelaide Allen. She married Charles Richard Lamb in 1902 but was widowed by 1911. She subsequently continued to live at Ashley House, Park Drive.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Albert Cleaver", "type": "child_of" },
+        { "name": "Mary Adelaide Allen", "type": "child_of" },
+        { "name": "Charles Richard Lamb", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Charles Richard",
+      "last_name": "Lamb",
+      "bio": "Charles Richard Lamb married Beatrice Mary Cleaver in 1902. He had died by 1911.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Beatrice Mary Cleaver", "type": "spouse_of" }
       ]
     },
     {

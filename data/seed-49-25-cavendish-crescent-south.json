@@ -1,0 +1,398 @@
+{
+  "people": [
+    {
+      "first_name": "Francis Frederick",
+      "last_name": "Cleaver",
+      "born_year": 1832,
+      "died_year": 1900,
+      "bio": "Francis Frederick Cleaver was the son of Joseph Cleaver (b.1798) and Sarah Cleaver (b.c.1801). His siblings included Emma (b.c.1828), Alfred/Albert (b.c.1834), Frederick (b.c.1836), and Arthur (b.c.1841). Francis was a lace dresser and bleacher employing 80 people in 1881. He lived at 25 Cavendish Crescent South with his wife Emma and their children. His brother Albert Cleaver was also prominent in the Nottingham lace industry and married Mary Adelaide Allen (daughter of Richard Allen).",
+      "occupations": [
+        { "occupation": "Lace dresser and bleacher", "notes": "Employing 80 people (1881)" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 49, "occupation_at_census": "Lace dresser and bleacher employing 80 people" }
+      ],
+      "relationships": [
+        { "name": "Emma Cleaver", "type": "spouse_of" },
+        { "name": "Francis F Cleaver Jr", "type": "parent_of" },
+        { "name": "Henry C Cleaver", "type": "parent_of" },
+        { "name": "Mary F Cleaver", "type": "parent_of" },
+        { "name": "Kate F Cleaver", "type": "parent_of" },
+        { "name": "Alice M Cleaver", "type": "parent_of" },
+        { "name": "Grace A Cleaver", "type": "parent_of" },
+        { "name": "Albert Cleaver", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Cleaver",
+      "born_year": 1832,
+      "bio": "Emma Cleaver was the wife of Francis Frederick Cleaver.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 49 }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Francis F",
+      "last_name": "Cleaver Jr",
+      "born_year": 1859,
+      "bio": "Francis F Cleaver Jr, son of Francis Frederick and Emma Cleaver. He followed his father into the lace trade.",
+      "occupations": [{ "occupation": "Lace dresser" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 22, "occupation_at_census": "Lace dresser" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Henry C",
+      "last_name": "Cleaver",
+      "born_year": 1861,
+      "bio": "Henry C Cleaver, son of Francis Frederick and Emma Cleaver. He followed his father into the lace trade.",
+      "occupations": [{ "occupation": "Lace dresser" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 20, "occupation_at_census": "Lace dresser" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Mary F",
+      "last_name": "Cleaver",
+      "born_year": 1863,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 18, "occupation_at_census": "Scholar" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Kate F",
+      "last_name": "Cleaver",
+      "born_year": 1865,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 16, "occupation_at_census": "Scholar" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Alice M",
+      "last_name": "Cleaver",
+      "born_year": 1866,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 15, "occupation_at_census": "Scholar" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Grace A",
+      "last_name": "Cleaver",
+      "born_year": 1871,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": "Scholar" }
+      ],
+      "relationships": [
+        { "name": "Francis Frederick Cleaver", "type": "child_of" },
+        { "name": "Emma Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ann M",
+      "last_name": "Bourne",
+      "born_year": 1859,
+      "occupations": [{ "occupation": "Domestic servant" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Domestic servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Bradley",
+      "born_year": 1857,
+      "occupations": [{ "occupation": "Domestic servant" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Domestic servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Zebedee",
+      "last_name": "Jessop",
+      "born_year": 1828,
+      "bio": "Zebedee Jessop was a draper who lived at 25 Cavendish Crescent South from at least 1891. He was still there in 1901, aged 73.",
+      "occupations": [{ "occupation": "Draper" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Draper" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 73, "occupation_at_census": "Draper" }
+      ],
+      "relationships": [
+        { "name": "Margaret Jessop", "type": "spouse_of" },
+        { "name": "Ada Jessop", "type": "parent_of" },
+        { "name": "Alice Jessop", "type": "parent_of" },
+        { "name": "Percy O Jessop", "type": "parent_of" },
+        { "name": "Rosie Jessop", "type": "parent_of" },
+        { "name": "Effie Jessop", "type": "parent_of" },
+        { "name": "Florence Jessop", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Margaret",
+      "last_name": "Jessop",
+      "born_year": 1831,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 60 }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Ada",
+      "last_name": "Jessop",
+      "born_year": 1857,
+      "bio": "Ada Jessop, daughter of Zebedee Jessop. She remained at 25 Cavendish Crescent South through all census years and lived on her own means.",
+      "occupations": [{ "occupation": "Living on own means" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 34 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 44 },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 54 }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" },
+        { "name": "Percy O Jessop", "type": "sibling_of" },
+        { "name": "Florence Jessop", "type": "sibling_of" },
+        { "name": "Effie Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Jessop",
+      "born_year": 1866,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 25 }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Percy O",
+      "last_name": "Jessop",
+      "born_year": 1868,
+      "bio": "Percy O Jessop followed his father as a draper. He appeared at 25 Cavendish Crescent South in 1891 as a draper's clerk and in 1901 as a draper.",
+      "occupations": [{ "occupation": "Draper" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 23, "occupation_at_census": "Draper's clerk" },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 33, "occupation_at_census": "Draper" }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" },
+        { "name": "Ada Jessop", "type": "sibling_of" },
+        { "name": "Florence Jessop", "type": "sibling_of" },
+        { "name": "Effie Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Rosie",
+      "last_name": "Jessop",
+      "born_year": 1870,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 21 }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Effie",
+      "last_name": "Jessop",
+      "born_year": 1872,
+      "bio": "Effie Jessop (Effie Grace Jessop by 1911) was a daughter of Zebedee Jessop. By 1911 she was a teacher of wood carving.",
+      "occupations": [{ "occupation": "Teacher of wood carving", "from_year": 1911 }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 19 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 29 },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 39, "occupation_at_census": "Teacher of wood carving" }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" },
+        { "name": "Ada Jessop", "type": "sibling_of" },
+        { "name": "Florence Jessop", "type": "sibling_of" },
+        { "name": "Percy O Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Jessop",
+      "born_year": 1863,
+      "bio": "Florence Margaret Jessop was a daughter of Zebedee Jessop. She was a wood carver in 1901 and an instructress in wood carving by 1911.",
+      "occupations": [
+        { "occupation": "Wood carver", "from_year": 1901 },
+        { "occupation": "Instructress in wood carving", "from_year": 1911 }
+      ],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 38, "occupation_at_census": "Wood carver" },
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 47, "occupation_at_census": "Instructress in wood carving" }
+      ],
+      "relationships": [
+        { "name": "Zebedee Jessop", "type": "child_of" },
+        { "name": "Margaret Jessop", "type": "child_of" },
+        { "name": "Ada Jessop", "type": "sibling_of" },
+        { "name": "Percy O Jessop", "type": "sibling_of" },
+        { "name": "Effie Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "William James",
+      "last_name": "Jessop",
+      "born_year": 1848,
+      "bio": "William James Jessop was a draper who took over as head of household at 25 Cavendish Crescent South by 1911, when his siblings — Ada, Florence, Rose Grude, and Effie — were living there with him.",
+      "occupations": [{ "occupation": "Draper" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Draper" }
+      ],
+      "relationships": [
+        { "name": "Ada Jessop", "type": "sibling_of" },
+        { "name": "Florence Jessop", "type": "sibling_of" },
+        { "name": "Effie Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Rose Grude",
+      "last_name": "Jessop",
+      "born_year": 1869,
+      "bio": "Rose Grude Jessop was a hospital nurse by 1911.",
+      "occupations": [{ "occupation": "Hospital nurse", "from_year": 1911 }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Sister", "age_at_census": 42, "occupation_at_census": "Hospital nurse" }
+      ],
+      "relationships": [
+        { "name": "Ada Jessop", "type": "sibling_of" },
+        { "name": "Florence Jessop", "type": "sibling_of" },
+        { "name": "Effie Jessop", "type": "sibling_of" },
+        { "name": "William James Jessop", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Elizabeth",
+      "last_name": "Tomlinson",
+      "born_year": 1861,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Lindley",
+      "born_year": 1870,
+      "occupations": [{ "occupation": "Parlourmaid" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Parlourmaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Sarah Jane",
+      "last_name": "Hagues",
+      "born_year": 1871,
+      "occupations": [{ "occupation": "General servant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "General servant" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Lina",
+      "last_name": "Bourne",
+      "born_year": 1877,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Veall",
+      "born_year": 1876,
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Nellie",
+      "last_name": "Perrin",
+      "born_year": 1886,
+      "occupations": [{ "occupation": "Under housemaid" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Servant", "age_at_census": 15, "occupation_at_census": "Under housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Hannah",
+      "last_name": "Slack",
+      "born_year": 1886,
+      "occupations": [{ "occupation": "Cook" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Cook" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Catherine Charlotte",
+      "last_name": "Slack",
+      "born_year": 1892,
+      "occupations": [{ "occupation": "Housemaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Housemaid" }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Mann",
+      "born_year": 1881,
+      "occupations": [{ "occupation": "Parlourmaid" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "Parlourmaid" }
+      ],
+      "relationships": []
+    }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}
