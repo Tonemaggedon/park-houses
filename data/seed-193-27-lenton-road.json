@@ -1,0 +1,152 @@
+{
+  "people": [
+    {
+      "first_name": "Samuel Waite",
+      "last_name": "Johnson",
+      "born_date": "14 October 1831",
+      "born_year": 1831,
+      "born_place": "Bramley, Yorkshire",
+      "died_date": "14 January 1912",
+      "died_year": 1912,
+      "died_place": "Nottingham",
+      "bio": "Samuel Waite Johnson (b. 14 October 1831, Bramley, Yorkshire; d. 14 January 1912, Nottingham) was one of the foremost locomotive designers of the steam age. He served as Locomotive Superintendent and Chief Mechanical Engineer of the Midland Railway Company. His most celebrated designs include the Midland Single (the 'Spinner'), a series of elegant single-driver express locomotives with 7-foot driving wheels that became icons of Victorian railway engineering. He lived at 27 Lenton Road (Lenton House by 1911) throughout the census period, and was listed as Chief Mechanical Engineer of the Midland Railway Company in 1901.",
+      "occupations": [
+        { "occupation": "Chief Mechanical Engineer", "employer": "Midland Railway Company" },
+        { "occupation": "Civil and mechanical engineer" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 49, "occupation_at_census": "Civil and mechanical engineer" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 59, "occupation_at_census": "Coal and mechanical engineer" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 69, "occupation_at_census": "Chief mechanical engineer, Midland Railway Co." },
+        { "census_year": 1911, "relationship": "Head (widower)", "age_at_census": 79, "occupation_at_census": "Retired" }
+      ],
+      "relationships": [
+        { "name": "Emily Johnson", "type": "spouse_of" },
+        { "name": "Ethel Johnson", "type": "parent_of" },
+        { "name": "Louisa Johnson", "type": "parent_of" },
+        { "name": "Emily S Johnson", "type": "parent_of" },
+        { "name": "Gertrude Caroline Johnson", "type": "parent_of" },
+        { "name": "James Johnson", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Johnson",
+      "born_year": 1831,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 50 },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 59 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 69 }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Ethel",
+      "last_name": "Johnson",
+      "born_year": 1859,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 22 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 31 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 40 },
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 52 }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "child_of" },
+        { "name": "Emily Johnson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Louisa",
+      "last_name": "Johnson",
+      "born_year": 1861,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 21 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 30 },
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 51 }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "child_of" },
+        { "name": "Emily Johnson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Emily S",
+      "last_name": "Johnson",
+      "born_year": 1862,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 19 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 27 }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "child_of" },
+        { "name": "Emily Johnson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Gertrude Caroline",
+      "last_name": "Johnson",
+      "born_year": 1869,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 13 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 },
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 42 }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "child_of" },
+        { "name": "Emily Johnson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "James",
+      "last_name": "Johnson",
+      "born_year": 1863,
+      "bio": "James Johnson was the son of Samuel Waite Johnson and himself became a mechanical engineer.",
+      "occupations": [{ "occupation": "Mechanical engineer" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 38, "occupation_at_census": "Mechanical engineer" }
+      ],
+      "relationships": [
+        { "name": "Samuel Waite Johnson", "type": "child_of" },
+        { "name": "Emily Johnson", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Hannah G", "last_name": "Hooson", "born_year": 1865, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
+    { "first_name": "Emma", "last_name": "Hooson", "born_year": 1869, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 12, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Mason", "born_year": 1844, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 37, "occupation_at_census": "Domestic cook" }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Brittain", "born_year": 1865, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant" }], "relationships": [] },
+    { "first_name": "Agnes", "last_name": "Marriott", "born_year": 1873, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "General servant" }, { "census_year": 1911, "relationship": "Servant", "age_at_census": 38, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Martha", "last_name": "Bish", "born_year": 1865, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant" }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Spencer", "born_year": 1854, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 47, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Fanny H", "last_name": "Shepherd", "born_year": 1872, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Parlourmaid" }], "relationships": [] },
+    { "first_name": "Eliza C", "last_name": "Slack", "born_year": 1881, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Harriet", "last_name": "Bentley", "born_year": 1885, "occupations": [{ "occupation": "Scullery maid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Scullery maid" }], "relationships": [] },
+    { "first_name": "Mary Ellen", "last_name": "Hayes", "born_year": 1870, "occupations": [{ "occupation": "Lady's maid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 41, "occupation_at_census": "Lady's maid" }], "relationships": [] },
+    { "first_name": "Ann Elizabeth", "last_name": "Beardall", "born_year": 1884, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Mary Ann", "last_name": "Moulding", "born_year": 1892, "occupations": [{ "occupation": "Kitchen maid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Kitchen maid" }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Packer", "born_year": 1889, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Mabel Evelyn", "last_name": "Eron", "born_year": 1883, "occupations": [{ "occupation": "Sick nurse" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "Sick nurse" }], "relationships": [] }
+  ],
+  "significant_places": [
+    {
+      "name": "Midland Railway Company",
+      "location": "Derby",
+      "place_type": "Railway company",
+      "description": "The Midland Railway was one of Britain's major Victorian railway companies. Samuel Waite Johnson of 27 Lenton Road served as its Chief Mechanical Engineer. His most celebrated designs include the Midland Single (the 'Spinner'), elegant single-driver express locomotives with 7-foot driving wheels that became icons of Victorian railway engineering.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Midland_Railway",
+      "lat": 52.9225,
+      "lng": -1.4746,
+      "person_connections": [
+        { "person": "Samuel Waite Johnson", "connection": "Chief Mechanical Engineer; designer of the Midland Single ('Spinner') and other celebrated locomotives" },
+        { "person": "James Johnson", "connection": "Mechanical engineer; son of Samuel Waite Johnson" }
+      ]
+    }
+  ],
+  "bibliography": []
+}

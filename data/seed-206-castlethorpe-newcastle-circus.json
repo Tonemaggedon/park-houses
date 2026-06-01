@@ -1,0 +1,132 @@
+{
+  "people": [
+    {
+      "first_name": "John Hind",
+      "last_name": "Brownsword",
+      "born_year": 1836,
+      "died_date": "7 December 1884",
+      "died_year": 1884,
+      "died_place": "Castlethorpe, Newcastle Circus",
+      "bio": "John Hind Brownsword (b. c. 1836; d. 7 December 1884) was the son of John Brownsword and Rebecca Hind. He was a silk merchant in Nottingham, in partnership with John Staines Cropper in the firm of Cropper and Brownsword, silk merchants, until the partnership was dissolved on 9 July 1864. He was declared bankrupt in January 1865 but was discharged from bankruptcy on 14 March 1865. The original lease to Castlethorpe was conveyed to John Hind Brownsword on 25 March 1874. He died at Castlethorpe on 7 December 1884.",
+      "occupations": [
+        { "occupation": "Silk merchant", "employer": "Cropper and Brownsword, silk merchants, Nottingham" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 45, "occupation_at_census": "Silk merchant" }
+      ],
+      "relationships": [
+        { "name": "Mary Hemsley Brownsword", "type": "spouse_of" },
+        { "name": "Edith Mary Brownsword", "type": "parent_of" },
+        { "name": "Arthur Brownsword", "type": "parent_of" },
+        { "name": "John Anthony Brownsword", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Mary Hemsley",
+      "last_name": "Brownsword",
+      "born_year": 1843,
+      "born_place": "Shardlow, Derbyshire",
+      "died_date": "4 October 1901",
+      "died_year": 1901,
+      "bio": "Mary Hemsley (b. Shardlow, Derbyshire, 1843; d. 4 October 1901) married John Hind Brownsword in Shardlow in 1864. She remained at Castlethorpe after her husband's death in 1884.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 38 },
+        { "census_year": 1891, "relationship": "Head (widow)", "age_at_census": 48 }
+      ],
+      "relationships": [
+        { "name": "John Hind Brownsword", "type": "spouse_of" },
+        { "name": "Edith Mary Brownsword", "type": "parent_of" },
+        { "name": "Arthur Brownsword", "type": "parent_of" },
+        { "name": "John Anthony Brownsword", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Edith Mary",
+      "last_name": "Brownsword",
+      "born_year": 1868,
+      "born_place": "Nottingham",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 13 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 }
+      ],
+      "relationships": [
+        { "name": "John Hind Brownsword", "type": "child_of" },
+        { "name": "Mary Hemsley Brownsword", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Arthur",
+      "last_name": "Brownsword",
+      "born_year": 1870,
+      "born_place": "Nottingham",
+      "died_year": 1951,
+      "died_place": "Nottingham",
+      "bio": "Arthur Brownsword (b. Nottingham, c. 1870; d. Nottingham, c. 1951) was a lace manufacturer in Nottingham. His partnership with James Henry Clark and William Haseldine in the form of Brownsword, Clark and Haseldine, lace manufacturers and lace finishers of Fletcher Gate, was dissolved on 22 June 1895, to be replaced by the new firm of Brownsword and Clark. Brownsword and Clark was liquidated in 1969. Arthur married Wilhelmina Sudbury (b. Nottingham, c. 1868; d. 12 November 1934), daughter of Charles and Marinah Sudbury of Cavendish House, Cavendish Road East, in Nottingham in 1906. By 1911 Arthur and Wilhelmina were living at 28 Barrack Lane. In 1934 they lived at 15 Cavendish Crescent South.",
+      "occupations": [
+        { "occupation": "Lace manufacturer", "employer": "Brownsword, Clark and Haseldine; Brownsword and Clark, Fletcher Gate, Nottingham" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 11 },
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 21 }
+      ],
+      "relationships": [
+        { "name": "John Hind Brownsword", "type": "child_of" },
+        { "name": "Mary Hemsley Brownsword", "type": "child_of" },
+        { "name": "Wilhelmina Sudbury", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "John Anthony",
+      "last_name": "Brownsword",
+      "born_year": 1872,
+      "born_place": "Nottingham",
+      "bio": "John Anthony Brownsword (b. Nottingham, 1872). His partnership with William John Westaway in W. J. Westaway and Co., warehousemen at Greyfriar Gate, was dissolved on 5 February 1898.",
+      "occupations": [
+        { "occupation": "Warehouseman", "employer": "W.J. Westaway and Co., Greyfriar Gate" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 9 },
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 19 }
+      ],
+      "relationships": [
+        { "name": "John Hind Brownsword", "type": "child_of" },
+        { "name": "Mary Hemsley Brownsword", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Herbert Francis",
+      "last_name": "Lancashire",
+      "known_as": "Herbert Francis Lancashire JP",
+      "born_year": 1869,
+      "born_place": "Sandiacre, Derbyshire",
+      "died_date": "31 January 1928",
+      "died_year": 1928,
+      "died_place": "Nottingham",
+      "bio": "Herbert Francis Lancashire JP (b. Sandiacre, c. 1869; d. Nottingham, 31 January 1928) was the son of Herbert Lancashire (b. Sandiacre c. 1839; d. Nottingham, 1904) and Jane R Lancashire (d. Nottingham, 1897) of 8 Park Terrace. He was educated at Nottingham High School. Herbert Francis was a second-generation hosier who followed his father into the large Nottingham hosiery firm of J.B. Lewis and Sons. The company was founded by James Blount Lewis in 1815 and relocated from to Nottingham in 1830. It became a limited company in 1893. Herbert Francis worked for Lewis' throughout his career, becoming Chairman and managing director of the company. He led the company's move from Stanford Street to Haydn Road. The Haydn Road works were recognised as a model factory — a 1914 article on Carrington noted that the development 'will contain 100,000 feet of floor space, with special attention not only to health, light, safety, convenience, but also to recreation, the site occupying between six and seven acres.' The firm was very committed to promoting good working conditions and by 1930 the site included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch, all for the use of the employees. Meridian Cricket Club (still active today) was also associated with the factory.",
+      "occupations": [
+        { "occupation": "Hosier; Chairman and Managing Director", "employer": "J.B. Lewis and Sons (Lewis'), Haydn Road, Nottingham" }
+      ],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 32, "occupation_at_census": "Hosier" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 42, "occupation_at_census": "Hosier" }
+      ],
+      "relationships": []
+    }
+  ],
+  "significant_places": [
+    {
+      "name": "J.B. Lewis and Sons (Lewis'), Haydn Road, Nottingham",
+      "location": "Haydn Road, Carrington, Nottingham",
+      "place_type": "Factory / company",
+      "description": "J.B. Lewis and Sons was a major Nottingham hosiery manufacturer, founded by James Blount Lewis in 1815. Under Herbert Francis Lancashire of Castlethorpe, the company moved to a model factory on Haydn Road, Carrington, which by 1930 included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch for employees.",
+      "lat": 52.9820,
+      "lng": -1.1680,
+      "person_connections": [
+        { "person": "Herbert Francis Lancashire", "connection": "Chairman and Managing Director; led relocation to Haydn Road model factory" }
+      ]
+    }
+  ],
+  "bibliography": []
+}

@@ -1,0 +1,266 @@
+{
+  "people": [
+    {
+      "first_name": "Elizabeth",
+      "last_name": "Lynam",
+      "born_year": 1830,
+      "bio": "Elizabeth Lynam (b. c. 1830) was a widow and property holder living at Newcastle Court (then known as The Elms) on Newcastle Circus in 1881 and 1891. She was the proprietor of Lynam and Kidd, based at the Castle Works, Castle Road, Nottingham. Lynam and Kidd built the cottages and boundary walls at Papplewick Pumping Station.",
+      "occupations": [
+        { "occupation": "Property holder" },
+        { "occupation": "Builder / contractor", "employer": "Lynam and Kidd, Castle Works, Castle Road" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head (widow)", "age_at_census": 51, "occupation_at_census": "Property holder" },
+        { "census_year": 1891, "relationship": "Head (widow)", "age_at_census": 61 }
+      ],
+      "relationships": [
+        { "name": "Amelia Ann Lynam", "type": "parent_of" },
+        { "name": "Henry A Lynam", "type": "parent_of" },
+        { "name": "Arthur D'E Lynam", "type": "parent_of" },
+        { "name": "Helena Gertrude Lynam", "type": "parent_of" },
+        { "name": "Mabel Winifred Lynam", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Laura",
+      "last_name": "Lawson",
+      "born_year": 1855,
+      "bio": "Laura Lawson was a daughter of Elizabeth Lynam, married by 1881.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter (married, as Lawson)", "age_at_census": 26 }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Amelia Ann",
+      "last_name": "Lynam",
+      "born_year": 1857,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 24 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 34 }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Henry A",
+      "last_name": "Lynam",
+      "born_year": 1860,
+      "occupations": [{ "occupation": "Builder" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 21, "occupation_at_census": "Builder" }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Arthur D'E",
+      "last_name": "Lynam",
+      "born_year": 1862,
+      "occupations": [{ "occupation": "Apprentice to lace manufacturer" }],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Son", "age_at_census": 19, "occupation_at_census": "Apprentice to lace manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Helena Gertrude",
+      "last_name": "Lynam",
+      "born_year": 1867,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 24 }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Mabel Winifred",
+      "last_name": "Lynam",
+      "born_year": 1872,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 9 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 19 }
+      ],
+      "relationships": [
+        { "name": "Elizabeth Lynam", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Ellen", "last_name": "Barkes", "born_year": 1859, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Domestic cook" }], "relationships": [] },
+    { "first_name": "Ellen A", "last_name": "Lovatt", "born_year": 1855, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Parlour maid" }], "relationships": [] },
+    { "first_name": "Ann", "last_name": "Webster", "born_year": 1863, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Eliza", "last_name": "Thorne", "born_year": 1865, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26 }], "relationships": [] },
+    { "first_name": "Emma Louise", "last_name": "Skeggs", "born_year": 1862, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 29 }], "relationships": [] },
+    {
+      "first_name": "Charles Wilfred",
+      "last_name": "Birkin",
+      "known_as": "Lt.-Col. Charles Wilfred Birkin, CMG, JP, DL",
+      "born_date": "11 February 1865",
+      "born_year": 1865,
+      "born_place": "New Basford, Nottingham",
+      "died_date": "3 April 1932",
+      "died_year": 1932,
+      "died_place": "Lamcote House, Radcliffe-on-Trent",
+      "bio": "Lt.-Col. Charles Wilfred Birkin, CMG, JP, DL (b. 11 February 1865, New Basford, Nottingham; d. 3 April 1932, Lamcote House, Radcliffe-on-Trent) was one of the nine children of Sir Thomas Isaac Birkin (1831–1922), who was the head of T.I. Birkin, one of the largest lace manufacturing businesses in the world. Sir Thomas was created 1st Baronet Birkin of Ruddington Grange on 25 July 1905.\n\nCharles Wilfred was a lace manufacturer and prominent racehorse owner and breeder. During the First World War he served in the 7th Battalion, Nottinghamshire and Derbyshire Regiment. He later served as Deputy Lieutenant of Nottinghamshire (DL) and in 1916 was invested as a Companion, Order of St. Michael and St. George (CMG).\n\nHe married Claire Lloyd Howell (b. New York; d. 27 September 1934, West Manor, Ruddington) on 2 July 1892. During the First World War, Claire turned their house into an auxiliary hospital for officers. She was awarded the Medaille de la Reconnaissance Francaise and the Medaille de la Reine Elisabeth of Belgium in recognition of her work.\n\nThey had three daughters and one son. Their daughter Winifred May Birkin became famous as Freda Dudley Ward, mistress of the Prince of Wales from 1918 to 1923 and a close confidante of the future King Edward VIII until the beginning of the Wallis Simpson affair in 1934. Their son Sir Charles Lloyd Birkin, 5th Baronet, was a leading British horror writer of the 1960s, writing under the pseudonym Charles Lloyd.",
+      "occupations": [
+        { "occupation": "Lace manufacturer", "employer": "T.I. Birkin" },
+        { "occupation": "Racehorse owner and breeder" },
+        { "occupation": "Lt.-Colonel, 7th Battalion Nottinghamshire and Derbyshire Regiment" },
+        { "occupation": "Deputy Lieutenant of Nottinghamshire" }
+      ],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 35, "occupation_at_census": "Lace manufacturer" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 45, "occupation_at_census": "Lace manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Claire Birkin", "type": "spouse_of" },
+        { "name": "Winifred May Birkin", "type": "parent_of" },
+        { "name": "Violet Hilda Birkin", "type": "parent_of" },
+        { "name": "Vera Lilian Birkin", "type": "parent_of" },
+        { "name": "Charles Lloyd Birkin", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Claire",
+      "last_name": "Birkin",
+      "known_as": "Claire Lloyd Howell Birkin",
+      "born_place": "New York",
+      "born_year": 1872,
+      "died_date": "27 September 1934",
+      "died_year": 1934,
+      "died_place": "West Manor, Ruddington",
+      "bio": "Claire Birkin (née Lloyd Howell; b. New York; d. 27 September 1934, West Manor, Ruddington) married Charles Wilfred Birkin on 2 July 1892. During the First World War she converted Newcastle Court into an auxiliary hospital for officers. She was awarded the Medaille de la Reconnaissance Francaise and the Medaille de la Reine Elisabeth of Belgium for her wartime work.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 29 }
+      ],
+      "relationships": [
+        { "name": "Charles Wilfred Birkin", "type": "spouse_of" },
+        { "name": "Winifred May Birkin", "type": "parent_of" },
+        { "name": "Violet Hilda Birkin", "type": "parent_of" },
+        { "name": "Vera Lilian Birkin", "type": "parent_of" },
+        { "name": "Charles Lloyd Birkin", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Winifred May",
+      "last_name": "Birkin",
+      "known_as": "Freda Dudley Ward",
+      "born_date": "28 July 1894",
+      "born_year": 1894,
+      "died_date": "16 March 1983",
+      "died_year": 1983,
+      "bio": "Winifred May Birkin (b. 28 July 1894; d. 16 March 1983) was the eldest daughter of Charles Wilfred and Claire Birkin. She married Rt. Hon. William Dudley Ward PC on 9 July 1913. Ward was Liberal MP for Southampton 1906–22, a leading rower and an Olympic sailor. He was sworn into the Privy Council in 1922, and from that point Winifred was always known as Freda Dudley Ward. They divorced in 1931. She then married Pedro Jose Isidro Manuel Ricardo Mones, Marques de Casa Maury on 20 October 1937. They divorced in 1954. Freda Dudley Ward was most famous for being the mistress of the Prince of Wales from 1918 to 1923 and remaining close to the future King Edward VIII until the beginning of the Wallis Simpson affair in 1934.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 6 }
+      ],
+      "relationships": [
+        { "name": "Charles Wilfred Birkin", "type": "child_of" },
+        { "name": "Claire Birkin", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Violet Hilda",
+      "last_name": "Birkin",
+      "born_date": "19 March 1899",
+      "born_year": 1899,
+      "died_date": "14 June 1953",
+      "died_year": 1953,
+      "bio": "Violet Hilda Margaret Birkin (19 March 1899 – 14 June 1953). She married Maj. Douglas Holden Blew-Jones (d. 1947) on 17 December 1918, and later married Geoffrey Hoare in 1949.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 2 }
+      ],
+      "relationships": [
+        { "name": "Charles Wilfred Birkin", "type": "child_of" },
+        { "name": "Claire Birkin", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Vera Lilian",
+      "last_name": "Birkin",
+      "born_date": "22 April 1903",
+      "born_year": 1903,
+      "died_date": "30 October 1970",
+      "died_year": 1970,
+      "bio": "Vera Lilian Margaret Birkin (b. 22 April 1903; d. 30 October 1970). She married Maj. Frank James Wriothesley Seely on 5 February 1925. Seely was the grandson of Col. Sir Charles Seely, Baronet, coal owner in Nottinghamshire, Liberal MP for Nottingham 1869–74 and 1880–1885, and Nottingham West 1885–86 and 1892–95. Sir Charles Seely became the first person to be presented with the Freedom of the City of Nottingham in 1895 in recognition of his philanthropic works.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Charles Wilfred Birkin", "type": "child_of" },
+        { "name": "Claire Birkin", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Charles Lloyd",
+      "last_name": "Birkin",
+      "known_as": "Sir Charles Lloyd Birkin, 5th Baronet Birkin of Ruddington Grange",
+      "born_date": "24 September 1907",
+      "born_year": 1907,
+      "died_year": 1986,
+      "bio": "Sir Charles Lloyd Birkin, 5th Baronet Birkin of Ruddington Grange (24 September 1907 – 1985/86) was the son of Charles Wilfred and Claire Birkin. He was educated at Eton College and served as a Captain in the 112th Regiment, 9th Sherwood Foresters during the Second World War. Writing under the pseudonym Charles Lloyd, he was one of the leading British horror writers of the 1960s.",
+      "occupations": [
+        { "occupation": "Author (horror fiction)", "notes": "Pseudonym: Charles Lloyd; one of the leading British horror writers of the 1960s" },
+        { "occupation": "Captain, 112th Regiment, 9th Sherwood Foresters" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Charles Wilfred Birkin", "type": "child_of" },
+        { "name": "Claire Birkin", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Eliz E", "last_name": "Homer", "born_year": 1880, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Mary E", "last_name": "Harrison", "born_year": 1881, "occupations": [{ "occupation": "Kitchen maid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Kitchen maid" }], "relationships": [] },
+    { "first_name": "Annie Wilson", "last_name": "Harrison", "born_year": 1878, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Nurse" }], "relationships": [] },
+    { "first_name": "Betsy", "last_name": "Osborne", "born_year": 1877, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Parlour maid" }], "relationships": [] },
+    { "first_name": "Ethel A", "last_name": "Oswin", "born_year": 1884, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Nurse" }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Tullack", "born_year": 1877, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Kate", "last_name": "Best", "born_year": 1884, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Sarah Ann", "last_name": "Baslow", "born_year": 1870, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 41, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Elizabeth", "last_name": "Ellies", "born_year": 1883, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Gertrude J", "last_name": "Castledine", "born_year": 1889, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Parlour maid" }], "relationships": [] },
+    { "first_name": "Julia Hannah", "last_name": "Eyre", "born_year": 1891, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Rosetta", "last_name": "Walker", "born_year": 1891, "occupations": [{ "occupation": "Kitchenmaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Kitchenmaid" }], "relationships": [] }
+  ],
+  "significant_places": [
+    {
+      "name": "Papplewick Pumping Station",
+      "location": "Papplewick, Nottinghamshire",
+      "place_type": "Industrial monument",
+      "description": "Papplewick Pumping Station is a Victorian water pumping station built 1884–85. Elizabeth Lynam's firm, Lynam and Kidd of Castle Works, Castle Road, built the cottages and boundary walls at the station.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Papplewick_Pumping_Station",
+      "lat": 53.0333,
+      "lng": -1.1500,
+      "person_connections": [
+        { "person": "Elizabeth Lynam", "connection": "Proprietor of Lynam and Kidd, who built the cottages and boundary walls at Papplewick Pumping Station" }
+      ]
+    },
+    {
+      "name": "Ruddington Grange",
+      "location": "Ruddington, Nottinghamshire",
+      "place_type": "Country house",
+      "description": "Ruddington Grange was the seat of the Birkin family. Sir Thomas Isaac Birkin was created 1st Baronet Birkin of Ruddington Grange in 1905.",
+      "lat": 52.8880,
+      "lng": -1.1530,
+      "person_connections": [
+        { "person": "Charles Wilfred Birkin", "connection": "Son of Sir Thomas Isaac Birkin, 1st Baronet Birkin of Ruddington Grange" },
+        { "person": "Charles Lloyd Birkin", "connection": "5th Baronet Birkin of Ruddington Grange" }
+      ]
+    }
+  ],
+  "bibliography": [
+    { "title": "Freda Dudley Ward", "notes": "Wikipedia article on Winifred May Birkin (Freda Dudley Ward)", "url": "https://en.wikipedia.org/wiki/Freda_Dudley_Ward" },
+    { "title": "Charles Birkin", "notes": "Wikipedia article on Sir Charles Lloyd Birkin, 5th Baronet, horror writer", "url": "https://en.wikipedia.org/wiki/Charles_Birkin" }
+  ]
+}

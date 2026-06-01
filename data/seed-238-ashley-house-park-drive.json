@@ -1,0 +1,90 @@
+{
+  "people": [
+    {
+      "first_name": "Alfred",
+      "last_name": "Cleaver",
+      "born_year": 1834,
+      "died_date": "27 August 1909",
+      "died_year": 1909,
+      "bio": "Alfred Cleaver (b. c. 1834; d. 27 August 1909) was from a lace-making family. By 1862 he was in partnership with his brother Francis Frederick Cleaver. They ran a lace dressing, dyeing and bleaching works on Wilford Road under the name of FF and A Cleaver and Co. Other partners in the business included Henry Massey Bishop (until 1865) and William Mayo (until 1870). The partnership between Francis Frederick and Alfred Cleaver was dissolved on 15 March 1881. Alfred Cleaver and Co. carried on business as lace dressers, lace dyers and bleachers and finishers at Lenton. Richard Landor Warham left his partnership with Cleaver in this firm on 30 June 1895.\n\nAlfred Cleaver contributed to the 2nd Report of the Children's Employment Commission, 1862, commenting that a limitation of the hours for workers under 18 would make no difference if applied across the trade, and that if the hours were limited at night he would begin at 6 and find no difficulty.\n\nHe married Annie Bennett (1838–1869) in 1863. Their only son was Robert Clifton Cleaver (b. 1868; d. 1 October 1900, Brandon, Manitoba, Canada). Alfred then married Mary Adelaide Allen (1841–1901) in 1874.",
+      "occupations": [
+        { "occupation": "Lace dresser, dyer and bleacher", "employer": "FF and A Cleaver and Co., Wilford Road" },
+        { "occupation": "Lace dresser and finisher", "employer": "Alfred Cleaver and Co., Lenton" }
+      ],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Head", "age_at_census": 47, "occupation_at_census": "Retired lace dresser" },
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 57, "occupation_at_census": "Lace dresser" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 67, "occupation_at_census": "Lace dresser" }
+      ],
+      "relationships": [
+        { "name": "Mary A Cleaver", "type": "spouse_of" },
+        { "name": "Robert C Cleaver", "type": "parent_of" },
+        { "name": "Beatrice M Cleaver", "type": "parent_of" },
+        { "name": "Francis Frederick Cleaver", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Mary A",
+      "last_name": "Cleaver",
+      "known_as": "Mary Adelaide Allen Cleaver",
+      "born_year": 1841,
+      "died_year": 1901,
+      "bio": "Mary Adelaide Allen (1841–1901) was the wife of Alfred Cleaver, whom she married in 1874. She was a daughter of the Allen family.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Wife", "age_at_census": 39 },
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 49 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 59 }
+      ],
+      "relationships": [
+        { "name": "Alfred Cleaver", "type": "spouse_of" },
+        { "name": "Beatrice M Cleaver", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Robert C",
+      "last_name": "Cleaver",
+      "known_as": "Robert Clifton Cleaver",
+      "born_year": 1868,
+      "died_date": "1 October 1900",
+      "died_year": 1900,
+      "died_place": "Brandon, Manitoba, Canada",
+      "bio": "Robert Clifton Cleaver (b. 1868; d. 1 October 1900, Brandon, Manitoba, Canada) was the only son of Alfred Cleaver by his first wife Annie Bennett. He trained as an articled lawyer's clerk and later emigrated to Canada, where he died in Brandon, Manitoba.",
+      "occupations": [{ "occupation": "Articled lawyer's clerk" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 23, "occupation_at_census": "Articled lawyers clerk" }
+      ],
+      "relationships": [
+        { "name": "Alfred Cleaver", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Beatrice M",
+      "last_name": "Cleaver",
+      "born_year": 1877,
+      "bio": "Beatrice Mary Cleaver was the daughter of Alfred Cleaver and his second wife Mary Adelaide Allen. By 1911 she had married into the Lamb family, appearing as Beatrice Mary Lamb (widow, head) at Ashley House.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 4 },
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 14 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 24 },
+        { "census_year": 1911, "relationship": "Head (widow, as Beatrice Mary Lamb)", "age_at_census": 34 }
+      ],
+      "relationships": [
+        { "name": "Alfred Cleaver", "type": "child_of" },
+        { "name": "Mary A Cleaver", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Charlotte", "last_name": "Wilson", "born_year": 1858, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Martha", "last_name": "Richmond", "born_year": 1863, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Charlotte T", "last_name": "Boak", "born_year": 1866, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 15, "occupation_at_census": "Nurse" }], "relationships": [] },
+    { "first_name": "Elizabeth", "last_name": "Lowley", "born_year": 1860, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Mary E C", "last_name": "Hollis", "born_year": 1869, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Annie", "last_name": "Tomlinson", "born_year": 1876, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Gowding", "born_year": 1879, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Mary Jane", "last_name": "Dale", "born_year": 1885, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Sarah Jane", "last_name": "Hutchinson", "born_year": 1894, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Housemaid" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}
