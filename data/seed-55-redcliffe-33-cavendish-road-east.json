@@ -1,0 +1,61 @@
+{
+  "people": [
+    {
+      "first_name": "Frank",
+      "last_name": "Woodward",
+      "born_year": 1859,
+      "born_place": "Nottingham",
+      "bio": "Frank Woodward was born c.1859, the son of John George Woodward (b.1829) and Mary Woodward (b.1825). John George was a partner in the local timber merchants Woodward Clark & Co. of Castle Road Wharf; his partner William Clark(e) and son William Froggatt Clark were also Park residents. John George Woodward was Sheriff of Nottingham in 1870–71.\n\nFrank had at least three siblings: Parker (b.1855), Walter (b.1857), and Mabel Mary (b.1860). Frank became a lace manufacturer, Walter a timber merchant, and Parker a lawyer. In 1881 the family were living in Carisbrooke House on Cavendish Crescent North. Parker subsequently lived at 25 Cavendish Road East from 1885 to 1933, and the 1901 census lists Walter as living at 6 Hamilton Drive.\n\nFrank and his wife Emma lived at Redcliffe, 33 Cavendish Road East. They had at least one child: Sydney Woodward (b.c.1884), listed in the Rugby School Register as Frank's only son. In 1911 Sydney was living at Park Dale, Peveril Drive.\n\nFrank and his elder brother Parker were leading figures in the Bacon–Shakespeare controversy, together producing around 60 books and pamphlets promoting the thesis that Shakespeare's plays were written by Francis Bacon. Frank was especially interested in the use of ciphers in Bacon's writing. His most influential work, Francis Bacon's Cipher Signatures, was published by Grafton & Co., London in 1923. Frank was also President of the Bacon Society of Great Britain. Parker Woodward's extensive collection of printed books on the controversy (around 480 items) was donated to the University.",
+      "occupations": [
+        { "occupation": "Lace manufacturer", "to_year": 1911 },
+        { "occupation": "Author", "notes": "Bacon–Shakespeare controversy; President, Bacon Society of Great Britain" }
+      ],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 42, "occupation_at_census": "Lace manufacturer" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 52, "occupation_at_census": "Retired lace manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Emma Woodward", "type": "spouse_of" },
+        { "name": "Sydney Woodward", "type": "parent_of" },
+        { "name": "Parker Woodward", "type": "sibling_of" }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Woodward",
+      "born_year": 1859,
+      "bio": "Emma Woodward was the wife of Frank Woodward. She lived with him at Redcliffe, 33 Cavendish Road East.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 42 },
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 52 }
+      ],
+      "relationships": [
+        { "name": "Frank Woodward", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Sydney",
+      "last_name": "Woodward",
+      "born_year": 1884,
+      "bio": "Sydney Woodward, listed in the Rugby School Register as the only son of Frank Woodward. By 1911 he was living at Park Dale, Peveril Drive.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Frank Woodward", "type": "child_of" },
+        { "name": "Emma Woodward", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Ada Mary", "last_name": "East", "born_year": 1880, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Louisa", "last_name": "Daft", "born_year": 1875, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Wright", "born_year": 1866, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 35, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Alice", "last_name": "Marsden", "born_year": 1885, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Frances", "last_name": "Rouse", "born_year": 1870, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 41, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Alice", "last_name": "Walston", "born_year": 1882, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Beatrice", "last_name": "Joyce", "born_year": 1894, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 17, "occupation_at_census": "Housemaid" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": [
+    { "author_name": "Frank Woodward", "title": "Francis Bacon's Cipher Signatures", "year": 1923, "publisher": "Grafton & Co., London", "notes": "Frank Woodward's most influential work on the Bacon–Shakespeare controversy", "property_id": 55 }
+  ]
+}

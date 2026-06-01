@@ -1,0 +1,181 @@
+{
+  "people": [
+    {
+      "first_name": "Charles",
+      "last_name": "Sudbury",
+      "born_year": 1831,
+      "died_date": "23 June 1902",
+      "died_year": 1902,
+      "bio": "Charles Sudbury (b.c.1831; d.23 June 1902) was the son of a framework knitter, grocer and tea-dealer in Ilkeston. His brother Francis Sudbury (1842–1908) was an Alderman and the first Mayor of Ilkeston (1887–88). Charles married Marinah Burgin and built a substantial business as a hosiery and glove manufacturer. Prior to moving to Cavendish House on Cavendish Road East, the family had lived at 5 Tattershall Drive. They had at least ten children.",
+      "occupations": [
+        { "occupation": "Hosiery and glove manufacturer" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 60, "occupation_at_census": "Hosiery and glove manufacturer" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 70, "occupation_at_census": "Hosiery and glove manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Marinah Sudbury", "type": "spouse_of" },
+        { "name": "Robert William Sudbury", "type": "parent_of" },
+        { "name": "Florence Sudbury", "type": "parent_of" },
+        { "name": "Charles F Sudbury", "type": "parent_of" },
+        { "name": "Wilhelmina Sudbury", "type": "parent_of" },
+        { "name": "Frederick Marcus Sudbury", "type": "parent_of" },
+        { "name": "Ernest A Sudbury", "type": "parent_of" },
+        { "name": "Edward B Sudbury", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Marinah",
+      "last_name": "Sudbury",
+      "known_as": "Marinah Burgin Sudbury",
+      "born_year": 1833,
+      "bio": "Marinah Burgin Sudbury was the wife of Charles Sudbury. She remained at Cavendish House after Charles's death in 1902, dying there as a widow. Their granddaughter Gladys Hanmore (daughter of Florence) also lived with her.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 58 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 68 },
+        { "census_year": 1911, "relationship": "Head (widow)", "age_at_census": 78 }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "spouse_of" },
+        { "name": "Florence Sudbury", "type": "parent_of" },
+        { "name": "Ernest A Sudbury", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Robert William",
+      "last_name": "Sudbury",
+      "born_year": 1859,
+      "bio": "Robert William Sudbury, son of Charles and Marinah Sudbury, worked as a hosiery assistant in 1891.",
+      "occupations": [{ "occupation": "Hosiery assistant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 32, "occupation_at_census": "Hosiery assistant" }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Sudbury",
+      "born_year": 1862,
+      "bio": "Florence Sudbury was a daughter of Charles and Marinah Sudbury. She married into the Hanmore family — her daughter Gladys Hanmore (b.c.1892) appears in the 1901 and 1911 census at Cavendish House as granddaughter of Charles/Marinah. Florence appears in the 1911 census as 'Hanmore Florence M', widowed, still living at Cavendish House.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 29 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 39 },
+        { "census_year": 1911, "relationship": "Daughter (Hanmore Florence M, widow)", "age_at_census": 49 }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" },
+        { "name": "Gladys Hanmore", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Gladys",
+      "last_name": "Hanmore",
+      "born_year": 1892,
+      "bio": "Gladys Hanmore (also listed as Gladys W Hanmore by 1911) was the granddaughter of Charles and Marinah Sudbury, and daughter of Florence Sudbury (who married into the Hanmore family). She lived at Cavendish House throughout the census years.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Grand-daughter", "age_at_census": 9 },
+        { "census_year": 1911, "relationship": "Grand-daughter", "age_at_census": 19 }
+      ],
+      "relationships": [
+        { "name": "Florence Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Charles F",
+      "last_name": "Sudbury",
+      "born_year": 1867,
+      "occupations": [{ "occupation": "Hosiery assistant" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 24, "occupation_at_census": "Hosiery assistant" }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Wilhelmina",
+      "last_name": "Sudbury",
+      "born_year": 1868,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 33 }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Frederick Marcus",
+      "last_name": "Sudbury",
+      "born_year": 1871,
+      "bio": "Frederick Marcus Sudbury followed his father into the hosiery and glove manufacturing business.",
+      "occupations": [{ "occupation": "Hosiery and glove manufacturer" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 20 },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 30, "occupation_at_census": "Hosiery and glove manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ernest A",
+      "last_name": "Sudbury",
+      "born_year": 1878,
+      "bio": "Ernest A Sudbury, youngest son of Charles and Marinah Sudbury, trained as an architect. He remained at Cavendish House in 1911, still working as an architect.",
+      "occupations": [{ "occupation": "Architect" }],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 23, "occupation_at_census": "Architect" },
+        { "census_year": 1911, "relationship": "Son", "age_at_census": 33, "occupation_at_census": "Architect" }
+      ],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Edward B",
+      "last_name": "Sudbury",
+      "born_year": 1857,
+      "bio": "Edward B Sudbury emigrated to the USA but continued in the glove and hosiery business, running E.B. Sudbury & Co., 343 Broadway, New York. He lived in Chester Hill, Mt. Vernon, NY. His elder son Edward Heron Sudbury attended Amherst College in Massachusetts.",
+      "occupations": [
+        { "occupation": "Hosiery and glove merchant", "employer": "E.B. Sudbury & Co., 343 Broadway, New York" }
+      ],
+      "census_entries": [],
+      "relationships": [
+        { "name": "Charles Sudbury", "type": "child_of" },
+        { "name": "Marinah Sudbury", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Lois E",
+      "last_name": "Hanmore",
+      "born_year": 1859,
+      "bio": "Lois E Hanmore was listed as a visitor at Cavendish House in 1891, aged 32, and described as a physician — one of the few women physicians recorded in the Park census. She may be related to the Hanmore family that Florence Sudbury later married into.",
+      "occupations": [{ "occupation": "Physician" }],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Visitor", "age_at_census": 32, "occupation_at_census": "Physician" }
+      ],
+      "relationships": []
+    },
+    { "first_name": "Elizabeth", "last_name": "Brittain", "born_year": 1858, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 33 }, { "census_year": 1911, "relationship": "Servant", "age_at_census": 53, "occupation_at_census": "Housemaid" }], "relationships": [] },
+    { "first_name": "Ellen", "last_name": "Hoylott", "born_year": 1869, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 22 }], "relationships": [] },
+    { "first_name": "Martha", "last_name": "Robinson", "born_year": 1878, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23 }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Limb", "born_year": 1877, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 24 }], "relationships": [] },
+    { "first_name": "Sarah", "last_name": "Scattergood", "born_year": 1869, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 42, "occupation_at_census": "Cook" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

@@ -1,0 +1,153 @@
+{
+  "people": [
+    {
+      "first_name": "Arthur Alfred",
+      "last_name": "Dawson",
+      "born_year": 1856,
+      "bio": "Arthur Alfred Dawson was a lace warehouse manager in 1891 and a lace merchant by 1901, living at Overdale on Cavendish Road East. He had a large family including at least five children.",
+      "occupations": [
+        { "occupation": "Lace warehouse manager" },
+        { "occupation": "Lace merchant" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 35, "occupation_at_census": "Lace warehouse manager" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 45, "occupation_at_census": "Lace merchant" }
+      ],
+      "relationships": [
+        { "name": "Harriett E Dawson", "type": "spouse_of" },
+        { "name": "Eleanor Dawson", "type": "spouse_of" },
+        { "name": "Ethel Dawson", "type": "parent_of" },
+        { "name": "Claude R Dawson", "type": "parent_of" },
+        { "name": "Leslie Dawson", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Harriett E",
+      "last_name": "Dawson",
+      "born_year": 1858,
+      "bio": "Harriett E Dawson was the first wife of Arthur Alfred Dawson. She appears in the 1891 census at Overdale.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 33 }
+      ],
+      "relationships": [
+        { "name": "Arthur Alfred Dawson", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Eleanor",
+      "last_name": "Dawson",
+      "born_year": 1862,
+      "bio": "Eleanor Dawson was the wife of Arthur Alfred Dawson, appearing in the 1901 census at Overdale.",
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 39 }
+      ],
+      "relationships": [
+        { "name": "Arthur Alfred Dawson", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Ethel",
+      "last_name": "Dawson",
+      "born_year": 1885,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 6 },
+        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 16 }
+      ],
+      "relationships": [
+        { "name": "Arthur Alfred Dawson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Claude R",
+      "last_name": "Dawson",
+      "born_year": 1887,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 4 },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 14 }
+      ],
+      "relationships": [
+        { "name": "Arthur Alfred Dawson", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Leslie",
+      "last_name": "Dawson",
+      "born_year": 1890,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 1 },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 11 }
+      ],
+      "relationships": [
+        { "name": "Arthur Alfred Dawson", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Mary", "last_name": "Walker", "born_year": 1861, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "Nurse" }, { "census_year": 1901, "relationship": "Servant", "age_at_census": 40, "occupation_at_census": "Nurse" }], "relationships": [] },
+    { "first_name": "Emily", "last_name": "Gooch", "born_year": 1869, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 22 }], "relationships": [] },
+    { "first_name": "Elizabeth", "last_name": "Asling", "born_year": 1872, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 19 }], "relationships": [] },
+    { "first_name": "Mary", "last_name": "Sansom", "born_year": 1877, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 24 }], "relationships": [] },
+    {
+      "first_name": "Christopher James",
+      "last_name": "Lewis",
+      "born_year": 1860,
+      "bio": "Christopher James Lewis was a yarn agent living at Overdale on Cavendish Road East in 1911, a widower. He had three children living with him: Chris Leslie, Gladys Noelle, and Madge Hilda.",
+      "occupations": [{ "occupation": "Yarn agent" }],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Head (widower)", "age_at_census": 51, "occupation_at_census": "Yarn agent" }
+      ],
+      "relationships": [
+        { "name": "Chris Leslie Lewis", "type": "parent_of" },
+        { "name": "Gladys Noelle Lewis", "type": "parent_of" },
+        { "name": "Madge Hilda Lewis", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Chris Leslie",
+      "last_name": "Lewis",
+      "born_date": "29 November 1884",
+      "born_year": 1884,
+      "bio": "Chris Leslie Lewis (b. 29 November 1884) was the son of Christopher James Lewis of Overdale. He served as a 2nd Lieutenant in the Royal Garrison Artillery during the First World War, recorded in the 1917 Army List.",
+      "occupations": [
+        { "occupation": "2nd Lieutenant, Royal Garrison Artillery", "from_year": 1917 }
+      ],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Son", "age_at_census": 26 }
+      ],
+      "relationships": [
+        { "name": "Christopher James Lewis", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Gladys Noelle",
+      "last_name": "Lewis",
+      "born_year": 1887,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 24 }
+      ],
+      "relationships": [
+        { "name": "Christopher James Lewis", "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Madge Hilda",
+      "last_name": "Lewis",
+      "born_year": 1889,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 22 }
+      ],
+      "relationships": [
+        { "name": "Christopher James Lewis", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Annie", "last_name": "Plumb", "born_year": 1882, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Cook" }], "relationships": [] },
+    { "first_name": "Florence", "last_name": "Jackson", "born_year": 1889, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }], "relationships": [] }
+  ],
+  "significant_places": [],
+  "bibliography": []
+}

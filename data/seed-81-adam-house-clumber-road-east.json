@@ -1,0 +1,90 @@
+{
+  "people": [
+    {
+      "first_name": "Samuel",
+      "last_name": "Bourne",
+      "born_date": "30 October 1834",
+      "born_year": 1834,
+      "born_place": "Munslow, Shropshire",
+      "died_year": 1912,
+      "bio": "Samuel Bourne (30 October 1834 – 1912) was one of the most celebrated travel photographers of the nineteenth century. Born in Munslow, Shropshire, he became a bank clerk in Nottingham before turning to photography. Between 1863 and 1870 he made three extended photographic expeditions to India, producing thousands of images of the subcontinent including the Himalayas, Kashmir, and major Indian cities. He was a partner in the firm Bourne & Shepherd, one of the most important commercial photography studios in colonial India, based in Calcutta and Simla. Returning to England around 1870, he continued in business as a manufacturer. He lived at Adam House (previously known as Brightlands) on Clumber Road East in the Park Estate.",
+      "occupations": [
+        { "occupation": "Photographer", "notes": "Bourne & Shepherd, Calcutta and Simla; major expeditions to India and the Himalayas 1863–1870" },
+        { "occupation": "Manufacturer" },
+        { "occupation": "Bank clerk" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Head", "age_at_census": 56, "occupation_at_census": "Manufacturer" },
+        { "census_year": 1901, "relationship": "Head", "age_at_census": 66, "occupation_at_census": "Manufacturer" },
+        { "census_year": 1911, "relationship": "Head", "age_at_census": 76, "occupation_at_census": "Retired manufacturer" }
+      ],
+      "relationships": [
+        { "name": "Mary Bourne", "type": "spouse_of" },
+        { "name": "Stanley Bourne", "type": "parent_of" }
+      ]
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Bourne",
+      "born_year": 1838,
+      "occupations": [],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Wife", "age_at_census": 53 },
+        { "census_year": 1901, "relationship": "Wife", "age_at_census": 63 },
+        { "census_year": 1911, "relationship": "Wife", "age_at_census": 73 }
+      ],
+      "relationships": [
+        { "name": "Samuel Bourne", "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "Stanley",
+      "last_name": "Bourne",
+      "born_year": 1876,
+      "died_year": 1942,
+      "bio": "Stanley Bourne (1876–1942) was the son of Samuel and Mary Bourne. He became a highly successful textiles businessman and rose to be Deputy Chairman of Courtaulds, one of Britain's largest textile corporations. He was also a significant art collector.",
+      "occupations": [
+        { "occupation": "Textiles businessman" },
+        { "occupation": "Deputy Chairman", "employer": "Courtaulds" }
+      ],
+      "census_entries": [
+        { "census_year": 1891, "relationship": "Son", "age_at_census": 15 },
+        { "census_year": 1901, "relationship": "Son", "age_at_census": 25 }
+      ],
+      "relationships": [
+        { "name": "Samuel Bourne", "type": "child_of" },
+        { "name": "Mary Bourne", "type": "child_of" }
+      ]
+    },
+    { "first_name": "Emily", "last_name": "Spencer", "born_year": 1867, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 24 }], "relationships": [] },
+    { "first_name": "Jane", "last_name": "Adams", "born_year": 1870, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 21 }], "relationships": [] },
+    { "first_name": "Ada", "last_name": "Bates", "born_year": 1873, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 18 }], "relationships": [] }
+  ],
+  "significant_places": [
+    {
+      "name": "Bourne & Shepherd, Calcutta",
+      "location": "Calcutta (Kolkata), India",
+      "place_type": "Photography studio",
+      "description": "Bourne & Shepherd was one of the most important commercial photography studios in colonial India, with premises in Calcutta and Simla. Samuel Bourne of Adam House was a founding partner. The studio produced thousands of images of the Indian subcontinent, many of the highest technical quality of the era.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Bourne_%26_Shepherd",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "person_connections": [
+        { "person": "Samuel Bourne", "connection": "Partner in Bourne & Shepherd; made three major photographic expeditions to India 1863–1870" }
+      ]
+    },
+    {
+      "name": "Courtaulds",
+      "location": "London / Coventry",
+      "place_type": "Company",
+      "description": "Courtaulds was one of Britain's largest textile manufacturers. Stanley Bourne, son of Samuel Bourne of Adam House, served as Deputy Chairman of the company.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Courtaulds",
+      "lat": 52.4068,
+      "lng": -1.5197,
+      "person_connections": [
+        { "person": "Stanley Bourne", "connection": "Deputy Chairman of Courtaulds" }
+      ]
+    }
+  ],
+  "bibliography": []
+}
