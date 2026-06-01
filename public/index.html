@@ -879,7 +879,7 @@ function makeIcon(p, isActive, isManual) {
   const star = p.listed
     ? `<span style="font-size:${isActive?8:6}px;color:#f0c040;line-height:1">★</span>`
     : '';
-  const manualStyle = isManual ? 'outline:2px solid #2090ff;outline-offset:1px;' : '';
+  const manualStyle = (isManual && isAdmin) ? 'outline:2px solid #2090ff;outline-offset:1px;' : '';
 
   return L.divIcon({
     className: '',
