@@ -1920,8 +1920,13 @@ async function deletePhoto(url) {
   streets.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
 })();
 
-loadPropOverrides().then(() => buildMarkers());
-initAdmin(); // Check if admin is logged in, load overrides
+// Load manual coord overrides for ALL users, then build markers
+fetch('/api/coords').then(r => r.json()).then(coords => {
+  manualCoords = coords;
+}).catch(() => {}).finally(() => {
+  loadPropOverrides().then(() => buildMarkers());
+  initAdmin(); // Check if admin is logged in, load overrides
+});
 </script>
 </body>
 </html>
