@@ -56,17 +56,16 @@
 
   /* Custom marker */
   .park-marker {
-    background: #8a6a2a; color: white;
-    border: 2px solid #4a3a10; border-radius: 4px;
+    background: #c0392b; color: white;
+    border: 2px solid #922b21; border-radius: 50%;
     font-size: 10px; font-weight: bold; font-family: Arial, sans-serif;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.45);
     transition: transform 0.1s;
-    white-space: nowrap; padding: 2px 5px;
   }
-  .park-marker.has-subs { background: #4a7c5a; border-color: #2a5a3a; }
-  .park-marker.listed::after { content: '★'; position: absolute; top:-7px; right:-4px; font-size:10px; color:#f0c040; }
-  .park-marker.active { background: #d4380d !important; border-color: #8b1a00 !important; transform: scale(1.2); z-index: 1000 !important; }
+  .park-marker.has-data { background: #2e7d4f; border-color: #1a5c36; }
+  .park-marker.has-people { background: #1a6fa8; border-color: #10497a; }
+  .park-marker.active { background: #d4380d !important; border-color: #8b1a00 !important; transform: scale(1.25); z-index: 1000 !important; }
   .park-marker:hover { transform: scale(1.15); }
 
   /* Detail panel */
@@ -154,7 +153,7 @@
   }
   .map-legend h4 { margin-bottom: 5px; font-size: 0.78rem; }
   .leg { display: flex; align-items: center; gap: 7px; margin-bottom: 3px; }
-  .legdot { width: 11px; height: 11px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.3); }
+  .legdot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.3); display:flex;align-items:center;justify-content:center;font-size:7px;flex-shrink:0; }
 
   .toast {
     position: fixed; bottom: 20px; right: 20px;
@@ -844,10 +843,11 @@ const legend = L.control({ position: 'bottomleft' });
 legend.onAdd = () => {
   const d = L.DomUtil.create('div', 'map-legend');
   d.innerHTML = `<h4>Map Key</h4>
-    <div class="leg"><div class="legdot" style="background:#8a6a2a"></div>Property record</div>
-    <div class="leg"><div class="legdot" style="background:#4a7c5a"></div>Has submissions</div>
+    <div class="leg"><div class="legdot" style="background:#c0392b"></div>No data</div>
+    <div class="leg"><div class="legdot" style="background:#1a6fa8"></div>People linked</div>
+    <div class="leg"><div class="legdot" style="background:#2e7d4f"></div>Data present</div>
     <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
-    <div class="leg"><div class="legdot" style="background:#8a6a2a;display:flex;align-items:center;justify-content:center;font-size:8px;color:#f0c040;line-height:1">★</div>Listed building</div>`;
+    <div class="leg"><div class="legdot" style="background:#6a6a6a;color:#f0c040">★</div>Listed building</div>`;
   return d;
 };
 legend.addTo(map);
@@ -855,27 +855,41 @@ legend.addTo(map);
 // ── MARKERS ──────────────────────────────────────────────────────────────────
 let markers = {};
 let activeId = null;
+let peopleCounts = {}; // propId → count, loaded on init
 
 function makeIcon(p, isActive, isManual) {
-  const hasSubs = (subs[p.id] || []).length > 0;
-  const showStar = p.listed;
-  const bg     = isActive ? '#d4380d' : hasSubs ? '#4a7c5a' : '#8a6a2a';
-  const border = isActive ? '#8b1a00' : hasSubs ? '#2a5a3a' : '#4a3a10';
-  const size   = isActive ? 18 : 14;
-  const star   = showStar
-    ? `<span style="font-size:${isActive?9:7}px;color:#f0c040;line-height:1;display:block;text-align:center;margin-top:${isActive?1:0}px">★</span>`
+  // Colour logic:
+  //   green  = has property data (desc, photos, or override present)
+  //   blue   = has people linked in DB (but no property-level data)
+  //   red    = no data at all
+  const ov = propOverrides[p.id] || {};
+  const hasData = !!(ov.desc || (ov.photos && ov.photos.length) || (ov.submissions && ov.submissions.length));
+  const hasPeople = !!(peopleCounts[p.id]);
+
+  const bg     = isActive ? '#d4380d'
+               : hasData  ? '#2e7d4f'
+               : hasPeople ? '#1a6fa8'
+               : '#c0392b';
+  const border = isActive ? '#8b1a00'
+               : hasData  ? '#1a5c36'
+               : hasPeople ? '#10497a'
+               : '#922b21';
+
+  const size = isActive ? 16 : 12;
+  const star = p.listed
+    ? `<span style="font-size:${isActive?8:6}px;color:#f0c040;line-height:1">★</span>`
     : '';
-  // Blue outline ring for manually placed markers
   const manualStyle = isManual ? 'outline:2px solid #2090ff;outline-offset:1px;' : '';
+
   return L.divIcon({
     className: '',
     html: `<div style="
       background:${bg};
       border:2px solid ${border};
-      border-radius:3px;
+      border-radius:50%;
       width:${size}px;
       height:${size}px;
-      box-shadow:0 2px 4px rgba(0,0,0,0.45);
+      box-shadow:0 1px 3px rgba(0,0,0,0.5);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -1487,8 +1501,8 @@ async function initAdmin() {
     manualCoords = await coordsRes.json();
     updatePlacedCount();
 
-    // Load property data overrides
-    await loadPropOverrides();
+    // Load property data overrides + people counts
+    await Promise.all([loadPropOverrides(), loadPeopleCounts()]);
 
     // Rebuild markers now that we have overrides + know we're admin
     buildMarkers(
@@ -1700,6 +1714,13 @@ async function loadPropOverrides() {
     const res = await fetch('/api/properties');
     propOverrides = await res.json();
   } catch(e) { propOverrides = {}; }
+}
+
+async function loadPeopleCounts() {
+  try {
+    const res = await fetch('/api/people-counts');
+    peopleCounts = await res.json();
+  } catch(e) { peopleCounts = {}; }
 }
 
 async function savePropOverride(fields) {
@@ -1939,7 +1960,7 @@ async function deletePhoto(url) {
 fetch('/api/coords').then(r => r.json()).then(coords => {
   manualCoords = coords;
 }).catch(() => {}).finally(() => {
-  loadPropOverrides().then(() => buildMarkers());
+  Promise.all([loadPropOverrides(), loadPeopleCounts()]).then(() => buildMarkers());
   initAdmin(); // Check if admin is logged in, load overrides
 });
 </script>

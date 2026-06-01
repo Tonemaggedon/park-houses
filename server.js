@@ -762,6 +762,22 @@ app.get('/api/census/:year', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// GET /api/people-counts — returns {propId: count} for all properties that have people
+app.get('/api/people-counts', async (req, res) => {
+  if (!db) return res.json({});
+  try {
+    const r = await db.query(`
+      SELECT ce.property_id, COUNT(DISTINCT ce.person_id) AS cnt
+      FROM census_entries ce
+      WHERE ce.property_id IS NOT NULL
+      GROUP BY ce.property_id
+    `);
+    const out = {};
+    r.rows.forEach(row => { out[row.property_id] = parseInt(row.cnt); });
+    res.json(out);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/people/occupation/:occ — everyone with this occupation across all properties
 app.get('/api/people/occupation/:occ', async (req, res) => {
   if (!db) return res.json([]);
