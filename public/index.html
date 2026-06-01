@@ -843,9 +843,9 @@ const legend = L.control({ position: 'bottomleft' });
 legend.onAdd = () => {
   const d = L.DomUtil.create('div', 'map-legend');
   d.innerHTML = `<h4>Map Key</h4>
-    <div class="leg"><div class="legdot" style="background:#c0392b"></div>No data</div>
-    <div class="leg"><div class="legdot" style="background:#1a6fa8"></div>People linked</div>
-    <div class="leg"><div class="legdot" style="background:#2e7d4f"></div>Data present</div>
+    <div class="leg"><div class="legdot" style="background:#c0392b"></div>Description only</div>
+    <div class="leg"><div class="legdot" style="background:#1a6fa8"></div>People (indirect)</div>
+    <div class="leg"><div class="legdot" style="background:#2e7d4f"></div>People (direct)</div>
     <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
     <div class="leg"><div class="legdot" style="background:#6a6a6a;color:#f0c040">★</div>Listed building</div>`;
   return d;
@@ -855,24 +855,24 @@ legend.addTo(map);
 // ── MARKERS ──────────────────────────────────────────────────────────────────
 let markers = {};
 let activeId = null;
-let peopleCounts = {}; // propId → count, loaded on init
+let peopleCounts = {};    // propId → count, loaded on init
+let seededProps = new Set(); // property IDs that have a dedicated seed file
 
 function makeIcon(p, isActive, isManual) {
   // Colour logic:
-  //   green  = has property data (desc, photos, or override present)
-  //   blue   = has people linked in DB (but no property-level data)
-  //   red    = no data at all
-  const ov = propOverrides[p.id] || {};
-  const hasData = !!(ov.desc || (ov.photos && ov.photos.length) || (ov.submissions && ov.submissions.length));
+  //   green = has a dedicated seed file (people directly researched for this property)
+  //   blue  = has people in DB linked to it, but via another property's research
+  //   red   = description only, no people data
+  const directlySeedeed = seededProps.has(p.id);
   const hasPeople = !!(peopleCounts[p.id]);
 
-  const bg     = isActive ? '#d4380d'
-               : hasData  ? '#2e7d4f'
-               : hasPeople ? '#1a6fa8'
+  const bg     = isActive       ? '#d4380d'
+               : directlySeedeed ? '#2e7d4f'
+               : hasPeople      ? '#1a6fa8'
                : '#c0392b';
-  const border = isActive ? '#8b1a00'
-               : hasData  ? '#1a5c36'
-               : hasPeople ? '#10497a'
+  const border = isActive       ? '#8b1a00'
+               : directlySeedeed ? '#1a5c36'
+               : hasPeople      ? '#10497a'
                : '#922b21';
 
   const size = isActive ? 16 : 12;
@@ -1501,8 +1501,8 @@ async function initAdmin() {
     manualCoords = await coordsRes.json();
     updatePlacedCount();
 
-    // Load property data overrides + people counts
-    await Promise.all([loadPropOverrides(), loadPeopleCounts()]);
+    // Load property data overrides + people counts + seeded list
+    await Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]);
 
     // Rebuild markers now that we have overrides + know we're admin
     buildMarkers(
@@ -1721,6 +1721,14 @@ async function loadPeopleCounts() {
     const res = await fetch('/api/people-counts');
     peopleCounts = await res.json();
   } catch(e) { peopleCounts = {}; }
+}
+
+async function loadSeededProps() {
+  try {
+    const res = await fetch('/api/seeded-properties');
+    const ids = await res.json();
+    seededProps = new Set(ids);
+  } catch(e) { seededProps = new Set(); }
 }
 
 async function savePropOverride(fields) {
@@ -1960,7 +1968,7 @@ async function deletePhoto(url) {
 fetch('/api/coords').then(r => r.json()).then(coords => {
   manualCoords = coords;
 }).catch(() => {}).finally(() => {
-  Promise.all([loadPropOverrides(), loadPeopleCounts()]).then(() => buildMarkers());
+  Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => buildMarkers());
   initAdmin(); // Check if admin is logged in, load overrides
 });
 </script>

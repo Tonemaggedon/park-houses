@@ -778,6 +778,18 @@ app.get('/api/people-counts', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// GET /api/seeded-properties — returns array of property IDs that have a seed file on disk
+app.get('/api/seeded-properties', (req, res) => {
+  const dataDir = path.join(__dirname, 'data');
+  try {
+    const ids = fs.readdirSync(dataDir)
+      .map(f => f.match(/^seed-(\d+)-/))
+      .filter(Boolean)
+      .map(m => parseInt(m[1]));
+    res.json(ids);
+  } catch(e) { res.json([]); }
+});
+
 // GET /api/people/occupation/:occ — everyone with this occupation across all properties
 app.get('/api/people/occupation/:occ', async (req, res) => {
   if (!db) return res.json([]);
