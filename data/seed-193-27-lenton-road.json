@@ -9,25 +9,69 @@
       "died_date": "14 January 1912",
       "died_year": 1912,
       "died_place": "Nottingham",
-      "bio": "Samuel Waite Johnson (b. 14 October 1831, Bramley, Yorkshire; d. 14 January 1912, Nottingham) was one of the foremost locomotive designers of the steam age. He served as Locomotive Superintendent and Chief Mechanical Engineer of the Midland Railway Company. His most celebrated designs include the Midland Single (the 'Spinner'), a series of elegant single-driver express locomotives with 7-foot driving wheels that became icons of Victorian railway engineering. He lived at 27 Lenton Road (Lenton House by 1911) throughout the census period, and was listed as Chief Mechanical Engineer of the Midland Railway Company in 1901.",
+      "bio": "Samuel Waite Johnson (b. 1831, Bramley, Yorkshire; d. Nottingham, 14 January 1912) was one of the foremost locomotive designers of the steam age.\n\nJohnson was educated at Leeds Grammar School. He went on to become the Chief Mechanical Engineer and Locomotive Superintendent of the Midland Railway Company from 1873 to 1903.\n\nThe steam locomotives he designed for Midland Railway are considered to be some of the finest steam engines ever built. His designs won the Gold Medal at the Saltaire Exhibition in 1877 and the Grand Prix at the Paris Exhibition in 1889. His most notable designs included the Prince of Wales class 4-2-2 engines built between 1887 and 1893, and the \"Midlands Compounds\" \u2014 the Midland Railway 1000 Class 3 cylinder compound 4-4-0s (1902+).\n\nHis Midland Railway 4-2-2 (\"Spinner\") locomotive No. 673 remains on display at the National Railway Museum in York.\n\nHe was President of the Institution of Mechanical Engineers in 1898. He was also honoured by the Khedive of Egypt for his contribution to the development of the Egyptian railway system.",
       "occupations": [
-        { "occupation": "Chief Mechanical Engineer", "employer": "Midland Railway Company" },
-        { "occupation": "Civil and mechanical engineer" }
+        {
+          "occupation": "Chief Mechanical Engineer",
+          "employer": "Midland Railway Company"
+        },
+        {
+          "occupation": "Civil and mechanical engineer"
+        }
       ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Head", "age_at_census": 49, "occupation_at_census": "Civil and mechanical engineer" },
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 59, "occupation_at_census": "Coal and mechanical engineer" },
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 69, "occupation_at_census": "Chief mechanical engineer, Midland Railway Co." },
-        { "census_year": 1911, "relationship": "Head (widower)", "age_at_census": 79, "occupation_at_census": "Retired" }
+        {
+          "census_year": 1881,
+          "relationship": "Head",
+          "age_at_census": 49,
+          "occupation_at_census": "Civil and mechanical engineer"
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 59,
+          "occupation_at_census": "Coal and mechanical engineer"
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 69,
+          "occupation_at_census": "Chief mechanical engineer, Midland Railway Co."
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head (widower)",
+          "age_at_census": 79,
+          "occupation_at_census": "Retired"
+        }
       ],
       "relationships": [
-        { "name": "Emily Johnson", "type": "spouse_of" },
-        { "name": "Ethel Johnson", "type": "parent_of" },
-        { "name": "Louisa Johnson", "type": "parent_of" },
-        { "name": "Emily S Johnson", "type": "parent_of" },
-        { "name": "Gertrude Caroline Johnson", "type": "parent_of" },
-        { "name": "James Johnson", "type": "parent_of" }
-      ]
+        {
+          "name": "Emily Johnson",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Ethel Johnson",
+          "type": "parent_of"
+        },
+        {
+          "name": "Louisa Johnson",
+          "type": "parent_of"
+        },
+        {
+          "name": "Emily S Johnson",
+          "type": "parent_of"
+        },
+        {
+          "name": "Gertrude Caroline Johnson",
+          "type": "parent_of"
+        },
+        {
+          "name": "James Johnson",
+          "type": "parent_of"
+        }
+      ],
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Samuel_Waite_Johnson"
     },
     {
       "first_name": "Emily",
@@ -35,12 +79,27 @@
       "born_year": 1831,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Wife", "age_at_census": 50 },
-        { "census_year": 1891, "relationship": "Wife", "age_at_census": 59 },
-        { "census_year": 1901, "relationship": "Wife", "age_at_census": 69 }
+        {
+          "census_year": 1881,
+          "relationship": "Wife",
+          "age_at_census": 50
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 59
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 69
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "spouse_of" }
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -49,15 +108,40 @@
       "born_year": 1859,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 22 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 31 },
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 40 },
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 52 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 22
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 31
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 40
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 52
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "child_of" },
-        { "name": "Emily Johnson", "type": "child_of" }
-      ]
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Johnson",
+          "type": "child_of"
+        }
+      ],
+      "died_date": "23 November 1916",
+      "died_year": 1916,
+      "bio": "Ethel Johnson lived at Lenton House until her death on 23rd November 1916. She never married."
     },
     {
       "first_name": "Louisa",
@@ -65,13 +149,31 @@
       "born_year": 1861,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 21 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 30 },
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 51 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 21
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 30
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 51
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "child_of" },
-        { "name": "Emily Johnson", "type": "child_of" }
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Johnson",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -80,12 +182,26 @@
       "born_year": 1862,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 19 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 27 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 19
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 27
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "child_of" },
-        { "name": "Emily Johnson", "type": "child_of" }
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Johnson",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -94,44 +210,354 @@
       "born_year": 1869,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 13 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 },
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 42 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 13
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 23
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 42
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "child_of" },
-        { "name": "Emily Johnson", "type": "child_of" }
-      ]
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Johnson",
+          "type": "child_of"
+        }
+      ],
+      "bio": "Gertrude Caroline W Johnson was a spinster who seems to have been still living at Lenton House in 1928 and possibly as late as 1935."
     },
     {
       "first_name": "James",
       "last_name": "Johnson",
       "born_year": 1863,
       "bio": "James Johnson was the son of Samuel Waite Johnson and himself became a mechanical engineer.",
-      "occupations": [{ "occupation": "Mechanical engineer" }],
+      "occupations": [
+        {
+          "occupation": "Mechanical engineer"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Son", "age_at_census": 38, "occupation_at_census": "Mechanical engineer" }
+        {
+          "census_year": 1901,
+          "relationship": "Son",
+          "age_at_census": 38,
+          "occupation_at_census": "Mechanical engineer"
+        }
       ],
       "relationships": [
-        { "name": "Samuel Waite Johnson", "type": "child_of" },
-        { "name": "Emily Johnson", "type": "child_of" }
+        {
+          "name": "Samuel Waite Johnson",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Johnson",
+          "type": "child_of"
+        }
       ]
     },
-    { "first_name": "Hannah G", "last_name": "Hooson", "born_year": 1865, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
-    { "first_name": "Emma", "last_name": "Hooson", "born_year": 1869, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 12, "occupation_at_census": "Domestic housemaid" }], "relationships": [] },
-    { "first_name": "Jane", "last_name": "Mason", "born_year": 1844, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 37, "occupation_at_census": "Domestic cook" }], "relationships": [] },
-    { "first_name": "Mary", "last_name": "Brittain", "born_year": 1865, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant" }], "relationships": [] },
-    { "first_name": "Agnes", "last_name": "Marriott", "born_year": 1873, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "General servant" }, { "census_year": 1911, "relationship": "Servant", "age_at_census": 38, "occupation_at_census": "Housemaid" }], "relationships": [] },
-    { "first_name": "Martha", "last_name": "Bish", "born_year": 1865, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant" }], "relationships": [] },
-    { "first_name": "Mary", "last_name": "Spencer", "born_year": 1854, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 47, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Fanny H", "last_name": "Shepherd", "born_year": 1872, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Parlourmaid" }], "relationships": [] },
-    { "first_name": "Eliza C", "last_name": "Slack", "born_year": 1881, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid" }], "relationships": [] },
-    { "first_name": "Harriet", "last_name": "Bentley", "born_year": 1885, "occupations": [{ "occupation": "Scullery maid" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Scullery maid" }], "relationships": [] },
-    { "first_name": "Mary Ellen", "last_name": "Hayes", "born_year": 1870, "occupations": [{ "occupation": "Lady's maid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 41, "occupation_at_census": "Lady's maid" }], "relationships": [] },
-    { "first_name": "Ann Elizabeth", "last_name": "Beardall", "born_year": 1884, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Mary Ann", "last_name": "Moulding", "born_year": 1892, "occupations": [{ "occupation": "Kitchen maid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Kitchen maid" }], "relationships": [] },
-    { "first_name": "Mary", "last_name": "Packer", "born_year": 1889, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid" }], "relationships": [] },
-    { "first_name": "Mabel Evelyn", "last_name": "Eron", "born_year": 1883, "occupations": [{ "occupation": "Sick nurse" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "Sick nurse" }], "relationships": [] }
+    {
+      "first_name": "Hannah G",
+      "last_name": "Hooson",
+      "born_year": 1865,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Servant",
+          "age_at_census": 16,
+          "occupation_at_census": "Domestic housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Hooson",
+      "born_year": 1869,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Servant",
+          "age_at_census": 12,
+          "occupation_at_census": "Domestic housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Jane",
+      "last_name": "Mason",
+      "born_year": 1844,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Servant",
+          "age_at_census": 37,
+          "occupation_at_census": "Domestic cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Brittain",
+      "born_year": 1865,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 26,
+          "occupation_at_census": "General servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Agnes",
+      "last_name": "Marriott",
+      "born_year": 1873,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 18,
+          "occupation_at_census": "General servant"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 38,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Martha",
+      "last_name": "Bish",
+      "born_year": 1865,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 26,
+          "occupation_at_census": "General servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Spencer",
+      "born_year": 1854,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 47,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Fanny H",
+      "last_name": "Shepherd",
+      "born_year": 1872,
+      "occupations": [
+        {
+          "occupation": "Parlourmaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 29,
+          "occupation_at_census": "Parlourmaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Eliza C",
+      "last_name": "Slack",
+      "born_year": 1881,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Harriet",
+      "last_name": "Bentley",
+      "born_year": 1885,
+      "occupations": [
+        {
+          "occupation": "Scullery maid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 16,
+          "occupation_at_census": "Scullery maid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary Ellen",
+      "last_name": "Hayes",
+      "born_year": 1870,
+      "occupations": [
+        {
+          "occupation": "Lady's maid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 41,
+          "occupation_at_census": "Lady's maid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Ann Elizabeth",
+      "last_name": "Beardall",
+      "born_year": 1884,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 27,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary Ann",
+      "last_name": "Moulding",
+      "born_year": 1892,
+      "occupations": [
+        {
+          "occupation": "Kitchen maid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 19,
+          "occupation_at_census": "Kitchen maid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Packer",
+      "born_year": 1889,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mabel Evelyn",
+      "last_name": "Eron",
+      "born_year": 1883,
+      "occupations": [
+        {
+          "occupation": "Sick nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 28,
+          "occupation_at_census": "Sick nurse"
+        }
+      ],
+      "relationships": []
+    }
   ],
   "significant_places": [
     {
@@ -143,10 +569,23 @@
       "lat": 52.9225,
       "lng": -1.4746,
       "person_connections": [
-        { "person": "Samuel Waite Johnson", "connection": "Chief Mechanical Engineer; designer of the Midland Single ('Spinner') and other celebrated locomotives" },
-        { "person": "James Johnson", "connection": "Mechanical engineer; son of Samuel Waite Johnson" }
+        {
+          "person": "Samuel Waite Johnson",
+          "connection": "Chief Mechanical Engineer; designer of the Midland Single ('Spinner') and other celebrated locomotives"
+        },
+        {
+          "person": "James Johnson",
+          "connection": "Mechanical engineer; son of Samuel Waite Johnson"
+        }
       ]
     }
   ],
-  "bibliography": []
+  "bibliography": [
+    {
+      "title": "Samuel Waite Johnson's Locomotive Aesthetic Beauty \u2014 An Appreciation",
+      "author": "Braithwaite, Jack",
+      "publisher": "Midland Railway Society",
+      "notes": "Key reference for Johnson's locomotive design philosophy"
+    }
+  ]
 }

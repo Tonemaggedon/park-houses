@@ -1223,7 +1223,7 @@ async function renderPeopleTab(propId, body) {
     const byYear = {};
     const noCensus = [];
     people.forEach(p => {
-      const years = p.census_years || [];
+      const years = (p.census_years || []).filter(yr => yr !== null && yr !== undefined);
       if (years.length === 0) { noCensus.push(p); return; }
       years.forEach(yr => {
         if (!byYear[yr]) byYear[yr] = [];
