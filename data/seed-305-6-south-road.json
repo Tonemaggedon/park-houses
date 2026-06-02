@@ -5,24 +5,54 @@
       "last_name": "Tarbotton",
       "born_year": 1835,
       "died_year": 1887,
-      "bio": "Marriott Ogle Tarbotton (b. 1835; d. 1887) was one of the most distinguished municipal engineers of Victorian England. He started his career in Wakefield. In 1859 he was appointed Nottingham's Borough Surveyor, and Engineer to the Waterworks Committee in 1880. He carried out many important projects but is especially remembered for replacing the old bridge over the River Trent with the structure that stands today (widened in 1926, but the original portion can still be identified from the water). He also started Nottingham's modern sewerage system, establishing Stoke Bardolph Sewerage Disposal Works. He was the first municipal engineer in the world to employ subways under streets to carry public services (gas, sewers, etc.), a system incorporated when Victoria Street was created. He built the University College in Shakespeare Street, Nottingham (now part of the Trent Polytechnic) and laid the foundation for the present inner city boulevards. He designed Papplewick Pumping Station, one of the finest examples of Victorian engineering. His initials MOT and his wife's initials EOT appear in the stained glass windows of 6 South Road, which was built for him.",
+      "bio": "Marriott Ogle Tarbotton (1835\u20131887) was one of Nottingham's most important Victorian engineers. The house at 6 South Road was built for him and his wife Emily, as established from the initials MOT and EOT on the stained glass windows \u2014 the same paintings are found at Papplewick Pumping Station, which he designed.\n\nHe started his career in Wakefield. In 1859 he was appointed Nottingham's Borough Surveyor and Engineer to the Waterworks Committee in 1880.\n\nHe carried out many important projects but is especially remembered for replacing the old bridge over the River Trent with the structure that stands today. It was widened in 1926 but passing underneath in a boat, the original portion can still be identified.\n\nHe also started the modern sewerage system, establishing Stoke Bardolph Sewerage Disposal Works. He was the first municipal Engineer in the world to employ subways under streets to carry public services \u2014 Gas, Sewers etc. When Victoria Street was created, this system was incorporated in the design.\n\nHe built the University College in Shakespeare Street, Nottingham, now part of the Trent Polytechnic, and laid the foundation for the present inner City Boulevards.\n\nPapplewick Pumping Station stands as a fitting monument to an early municipal Engineer. He died in 1887, just a few years after he had designed Papplewick Pumping Station.",
       "occupations": [
-        { "occupation": "Borough Surveyor of Nottingham", "from_year": 1859 },
-        { "occupation": "Engineer to the Waterworks Committee", "from_year": 1880 }
+        {
+          "occupation": "Borough Surveyor, Nottingham",
+          "from_year": 1859
+        },
+        {
+          "occupation": "Engineer to the Waterworks Committee",
+          "from_year": 1880,
+          "to_year": 1887
+        },
+        {
+          "occupation": "Municipal engineer"
+        }
       ],
-      "census_entries": [],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Head",
+          "occupation_at_census": "Borough Surveyor and Engineer",
+          "property_id": 305
+        }
+      ],
       "relationships": [
-        { "name": "Emily Tarbotton", "type": "spouse_of" }
-      ]
+        {
+          "name": "Emily Tarbotton",
+          "type": "spouse_of"
+        }
+      ],
+      "wikipedia_url": ""
     },
     {
       "first_name": "Emily",
       "last_name": "Tarbotton",
-      "bio": "Emily Tarbotton was the wife of Marriott Ogle Tarbotton. Her initials EOT appear in the stained glass windows of 6 South Road alongside her husband's MOT.",
+      "bio": "Emily Tarbotton, wife of Marriott Ogle Tarbotton. Her initials EOT appear in the stained glass windows of 6 South Road alongside those of her husband MOT.",
       "occupations": [],
-      "census_entries": [],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Wife",
+          "property_id": 305
+        }
+      ],
       "relationships": [
-        { "name": "Marriott Ogle Tarbotton", "type": "spouse_of" }
+        {
+          "name": "Marriott Ogle Tarbotton",
+          "type": "spouse_of"
+        }
       ]
     }
   ],
@@ -34,9 +64,12 @@
       "description": "Papplewick Pumping Station was designed by Marriott Ogle Tarbotton, Borough Surveyor of Nottingham, and opened in 1884. It is one of the finest examples of Victorian engineering in England, built to supply clean water to Nottingham. The initials MOT (Marriott Ogle Tarbotton) appear in the stained glass windows of the pumping station, matching those found in the windows of his home at 6 South Road.",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Papplewick_Pumping_Station",
       "lat": 53.0333,
-      "lng": -1.1500,
+      "lng": -1.15,
       "person_connections": [
-        { "person": "Marriott Ogle Tarbotton", "connection": "Designer of Papplewick Pumping Station; his initials MOT appear in its stained glass windows" }
+        {
+          "person": "Marriott Ogle Tarbotton",
+          "connection": "Designer of Papplewick Pumping Station; his initials MOT appear in its stained glass windows"
+        }
       ]
     },
     {
@@ -48,7 +81,10 @@
       "lat": 52.9342,
       "lng": -1.1313,
       "person_connections": [
-        { "person": "Marriott Ogle Tarbotton", "connection": "Designed the replacement Trent Bridge" }
+        {
+          "person": "Marriott Ogle Tarbotton",
+          "connection": "Designed the replacement Trent Bridge"
+        }
       ]
     },
     {
@@ -59,7 +95,10 @@
       "lat": 52.9733,
       "lng": -1.0467,
       "person_connections": [
-        { "person": "Marriott Ogle Tarbotton", "connection": "Established Stoke Bardolph Sewerage Disposal Works as part of Nottingham's modern sewerage system" }
+        {
+          "person": "Marriott Ogle Tarbotton",
+          "connection": "Established Stoke Bardolph Sewerage Disposal Works as part of Nottingham's modern sewerage system"
+        }
       ]
     }
   ],
