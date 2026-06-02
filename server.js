@@ -3,6 +3,7 @@ const session  = require('express-session');
 const path     = require('path');
 const fs       = require('fs');
 const bcrypt   = require('bcrypt');
+const multer   = require('multer');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -846,6 +847,24 @@ app.get('/api/people-counts', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── One-time occupation normalisation (admin only) ────────────────────────────
+app.post('/api/admin/normalise-occupations', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const merges = [
+    { targets: ['servant','general servant','domestic servant','general domestic servant','household servant','house servant'], canonical: 'Domestic servant' },
+    { targets: ['kitchenmaid','kitchen maid','kitchen-maid','scullery maid','scullery-maid'], canonical: 'Kitchenmaid' },
+    { targets: ['nurse','hospital nurse','sick nurse','monthly nurse'], canonical: 'Nurse' },
+  ];
+  let total = 0;
+  for (const { targets, canonical } of merges) {
+    for (const t of targets) {
+      const r = await db.query(`UPDATE occupations SET occupation=$1 WHERE LOWER(occupation)=LOWER($2)`, [canonical, t]);
+      total += r.rowCount;
+    }
+  }
+  res.json({ ok: true, updated: total });
+});
+
 // GET /api/seeded-properties — returns array of property IDs that have a seed file on disk
 app.get('/api/seeded-properties', (req, res) => {
   const dataDir = path.join(__dirname, 'data');
@@ -901,7 +920,6 @@ app.post('/api/person/:id/photo', (req, res, next) => {
   }
   next();
 }, (req, res) => {
-  const multer = require('multer');
   const personId = parseInt(req.params.id);
   const storage = multer.diskStorage({
     destination: PROFILE_DIR,
