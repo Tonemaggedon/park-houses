@@ -160,11 +160,21 @@ async function loadTree(id) {
     if(nodes.find(n=>n.id===otherId)) return;
 
     let level=0, linkType='family';
-    if(isSpouseRel(relType))         { level=0;  linkType='spouse'; }
-    else if(isParentRel(relType))    { level=-1; linkType='parent'; }
-    else if(isChildRel(relType))     { level=1;  linkType='child'; }
-    else if(isSiblingRel(relType))   { level=0;  linkType='sibling'; }
-    else                             { level=0;  linkType='family'; }
+    if(isSpouseRel(relType)) {
+      level=0; linkType='spouse';
+    } else if(isParentRel(relType)) {
+      // A is parent → if I am A, other (B) is my child (below +1); if I am B, A is above (-1)
+      level = isA ? 1 : -1;
+      linkType = isA ? 'child' : 'parent';
+    } else if(isChildRel(relType)) {
+      // A is child → if I am A, B is my parent (above -1); if I am B, A is child below (+1)
+      level = isA ? -1 : 1;
+      linkType = isA ? 'parent' : 'child';
+    } else if(isSiblingRel(relType)) {
+      level=0; linkType='sibling';
+    } else {
+      level=0; linkType='family';
+    }
 
     nodes.push({ id:otherId, name:otherName.filter(Boolean).join(' ')||'Unknown', level, type:linkType, rel:relType });
     links.push({ source:pid, target:otherId, type:linkType, label:relType });
@@ -246,11 +256,15 @@ function drawTree(nodes, links, centerPerson) {
 
     // Relationship label at midpoint
     if(lk.label) {
+      const lx=(sx+tx)/2, ly=(sy+ty)/2;
+      g.append('rect')
+        .attr('x',lx-22).attr('y',ly-9).attr('width',44).attr('height',14).attr('rx',3)
+        .attr('fill','#0f1923').attr('opacity',0.8);
       g.append('text')
-        .attr('x',(sx+tx)/2).attr('y',(sy+ty)/2-8)
-        .attr('text-anchor','middle')
-        .attr('fill','#8a7a4a').attr('font-size','9px').attr('font-family','Segoe UI,sans-serif')
-        .text(lk.label);
+        .attr('x',lx).attr('y',ly+1)
+        .attr('text-anchor','middle').attr('dominant-baseline','middle')
+        .attr('fill','#c8a060').attr('font-size','9px').attr('font-family','Segoe UI,sans-serif')
+        .text(lk.label.length>12?lk.label.substring(0,11)+'…':lk.label);
     }
   });
 
@@ -259,7 +273,14 @@ function drawTree(nodes, links, centerPerson) {
     const isCenter = node.type==='center';
     const isSpouse = node.type==='spouse';
     const card = g.append('g').attr('cursor','pointer')
-      .on('click', () => { if(!isCenter) loadTree(node.id); });
+      .on('click', () => {
+        if(!isCenter) {
+          // Ctrl/Cmd+click → load tree; plain click → go to profile
+          loadTree(node.id);
+        } else {
+          window.location.href = '/people#person-'+node.id;
+        }
+      });
 
     // Card background
     const borderCol = isCenter ? C.gold : isSpouse ? C.orange : C.green;
@@ -316,6 +337,16 @@ function drawTree(nodes, links, centerPerson) {
     const occ = node.person ? topOcc(node.person) : '';
     const born = node.person ? (node.person.born_year?'★ '+node.person.born_year:'') : '';
     const died = node.person ? (node.person.died_year?'† '+node.person.died_year:'') : '';
+
+    // Profile link icon top-right of card
+    card.append('text')
+      .attr('x', node.x+CARD_W-10).attr('y', node.y+13)
+      .attr('text-anchor','middle').attr('font-size','11px')
+      .attr('fill', isCenter ? C.gold : C.green).attr('opacity',0.6)
+      .attr('cursor','pointer')
+      .style('font-family','Segoe UI,sans-serif')
+      .text('→')
+      .on('click', (e) => { e.stopPropagation(); window.open('/people#person-'+node.id,'_blank'); });
 
     // Name (split into two lines if long)
     const nameParts = name.split(' ');
