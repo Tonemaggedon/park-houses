@@ -314,16 +314,17 @@ async function loadPeople() {
     // Build property name lookup
     const propNameLookup = {};
     allProps.forEach(p => {
-      const num = p.number ? String(p.number) + ' ' : '';
+      const num = p.number ? String(p.number) : '';
       const street = p.street || '';
-      const name = p.name ? p.name.replace(/:\s*$/, '') : '';
+      const name = (p.name||'').replace(/:\s*$/, '').trim();
       let label = '';
-      if (num && street) label = num + street;
-      else if (name && street) label = name + ', ' + street;
-      else if (name) label = name;
-      else if (street) label = street;
-      else label = 'Property ' + p.id;
-      propNameLookup[p.id] = label;
+      if (name && num && street)     label = name + ', ' + num + ' ' + street;
+      else if (num && street)        label = num + ' ' + street;
+      else if (name && street)       label = name + ', ' + street;
+      else if (name)                 label = name;
+      else if (street)               label = street;
+      else                           label = 'Property ' + p.id;
+      propNameLookup[p.id] = label.replace(/,\s*,/g, ',').trim();
     });
 
     // Populate occupation filter
@@ -543,7 +544,15 @@ function renderProfile(p) {
   }
 
   // Related people
-  if ((p.relationships||[]).length) {
+  // Deduplicate related people by person id (both directions may be present)
+  const seenRelIds = new Set();
+  const uniqueRels = (p.relationships||[]).filter(r => {
+    const otherId = parseInt(p.id) === parseInt(r.person_a_id) ? r.person_b_id : r.person_a_id;
+    if (seenRelIds.has(otherId)) return false;
+    seenRelIds.add(otherId);
+    return true;
+  });
+  if (uniqueRels.length) {
     const chips = p.relationships.map(rel => {
       const other = rel.person_a_id === p.id
         ? { id: rel.bid, first: rel.b_first, last: rel.b_last, known: rel.b_known }

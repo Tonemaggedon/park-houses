@@ -1,0 +1,105 @@
+{
+  "people": [
+    {
+      "first_name": "Robert",
+      "last_name": "Evans",
+      "known_as": "Robert Evans Sr.",
+      "bio": "Robert Evans Senior was a prominent Nottingham architect, partner in the firm Hine & Evans (with T.C. Hine). The firm designed Ravine House, 21 Lenton Road (c.1862), along with other notable buildings in The Park and across Nottingham. The lease of Ravine House was held by Robert Evans Senior and was assigned to his son Robert Evans Junior in July 1905.",
+      "occupations": [
+        {
+          "occupation": "Architect",
+          "employer": "Hine & Evans, Nottingham"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1871,
+          "relationship": "Head",
+          "property_id": 190,
+          "occupation_at_census": "Architect"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans Jr",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Robert",
+      "last_name": "Evans Jr",
+      "known_as": "Robert Evans Jr.",
+      "born_year": 1839,
+      "died_year": 1927,
+      "died_place": "24 Belvoir Drive, Sherwood, Nottingham",
+      "bio": "Robert Evans Junior (b. c.1839; d. August 1927, aged 88) was a well-known Nottingham architect and son of Robert Evans Senior, himself a prominent architect and partner in the firm Hine & Evans. Robert Evans Junior practised in Nottingham for many years and was responsible for many notable buildings in the city.\n\nHe was the founder of the Nottingham Architectural Society, a past-president of the Nottinghamshire Architectural Association, and served for 35 years as honorary secretary of the Nottingham Society of Artists.\n\nIn July 1905, the lease of Ravine House, 21 Lenton Road \u2014 which had been built by his father's firm Hine & Evans c.1862 \u2014 was assigned from his father to Robert Evans Junior, who was already occupying the premises at that time. His death was reported in the Sheffield Daily Telegraph on Wednesday 17 August 1927.",
+      "occupations": [
+        {
+          "occupation": "Architect"
+        },
+        {
+          "occupation": "Founder, Nottingham Architectural Society"
+        },
+        {
+          "occupation": "Honorary Secretary, Nottingham Society of Artists",
+          "notes": "Held for 35 years"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "property_id": 190,
+          "occupation_at_census": "Architect"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "property_id": 190,
+          "occupation_at_census": "Architect"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans",
+          "type": "child_of"
+        }
+      ]
+    }
+  ],
+  "significant_places": [
+    {
+      "name": "Nottingham Architectural Society",
+      "location": "Nottingham",
+      "place_type": "Professional society",
+      "description": "The Nottingham Architectural Society was founded by Robert Evans Junior of Ravine House, 21 Lenton Road.",
+      "person_connections": [
+        {
+          "person": "Robert Evans Jr",
+          "connection": "Founder"
+        }
+      ]
+    },
+    {
+      "name": "Nottingham Society of Artists",
+      "location": "Nottingham",
+      "place_type": "Arts society",
+      "description": "Robert Evans Junior served as honorary secretary of the Nottingham Society of Artists for 35 years.",
+      "person_connections": [
+        {
+          "person": "Robert Evans Jr",
+          "connection": "Honorary Secretary for 35 years"
+        }
+      ]
+    }
+  ],
+  "bibliography": [
+    {
+      "title": "Obituary: Well-Known Nottingham Architect Dead",
+      "publisher": "Sheffield Daily Telegraph",
+      "year": 1927,
+      "notes": "Wednesday 17 August 1927. Reports death of Robert Evans Junior at 24 Belvoir Drive, Sherwood, aged 88."
+    }
+  ]
+}

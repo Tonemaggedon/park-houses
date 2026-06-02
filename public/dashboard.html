@@ -148,11 +148,16 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
       </div>
       <div class="chart-container" style="height:280px;"><canvas id="jobsChart"></canvas></div>
       <!-- Data table -->
-      <div style="margin-top:1rem;overflow-x:auto;">
-        <table id="jobsTable" style="width:100%;border-collapse:collapse;font-size:0.75rem;display:none;">
-          <thead id="jobsTableHead"></thead>
-          <tbody id="jobsTableBody"></tbody>
-        </table>
+      <div style="margin-top:0.8rem;">
+        <button id="tableToggleBtn" onclick="toggleOccTable()" style="background:#1e2d1e;border:1px solid #2a3a2a;border-radius:6px;padding:0.3rem 0.8rem;font-size:0.75rem;color:#8a9a7a;cursor:pointer;display:flex;align-items:center;gap:0.4rem;">
+          <span id="tableToggleIcon">▶</span> Show data table
+        </button>
+        <div id="tableWrap" style="display:none;margin-top:0.6rem;overflow-x:auto;">
+          <table id="jobsTable" style="width:100%;border-collapse:collapse;font-size:0.75rem;">
+            <thead id="jobsTableHead"></thead>
+            <tbody id="jobsTableBody"></tbody>
+          </table>
+        </div>
       </div>
       <div class="jobs-top" id="jobTags" style="margin-top:0.8rem;"><div class="loading">Connect database to see occupation data</div></div>
     </div>
@@ -359,14 +364,22 @@ function buildChart(){
   });
 }
 
+function toggleOccTable(){
+  const wrap=document.getElementById('tableWrap');
+  const icon=document.getElementById('tableToggleIcon');
+  const btn=document.getElementById('tableToggleBtn');
+  const open=wrap.style.display==='none';
+  wrap.style.display=open?'block':'none';
+  icon.textContent=open?'▼':'▶';
+  btn.querySelector('span+*') || (btn.lastChild.textContent=open?' Hide data table':' Show data table');
+  btn.childNodes[1].textContent=open?' Hide data table':' Show data table';
+}
 function buildTable(){
   const {years,byCensusYear}=window._jobsData;
   const activeJobs=getActiveJobs();
-  const table=document.getElementById('jobsTable');
   const thead=document.getElementById('jobsTableHead');
   const tbody=document.getElementById('jobsTableBody');
-  if(!activeJobs.length){ table.style.display='none'; return; }
-  table.style.display='table';
+  if(!activeJobs.length){ return; }
   thead.innerHTML=`<tr><th>Occupation</th>${years.map(y=>`<th>${y}</th>`).join('')}<th>Total</th></tr>`;
   tbody.innerHTML=activeJobs.map(job=>{
     const vals=years.map(y=>byCensusYear[y][job]||0);

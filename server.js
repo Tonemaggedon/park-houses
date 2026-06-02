@@ -508,16 +508,17 @@ try {
   const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
   allProps.forEach(p => {
     // Build a readable address: "57 Elmhurst, Cavendish Road East" or "Elmhurst, Cavendish Road East"
-    const numPart = p.number ? String(p.number) + ' ' : '';
-    const streetPart = p.street || '';
-    const namePart = p.name || '';
+    const num = p.number ? String(p.number) : '';
+    const street = p.street || '';
+    const name = (p.name || '').replace(/:\s*$/, '').trim();
     let label = '';
-    if (numPart && streetPart) label = numPart + streetPart;
-    else if (namePart && streetPart) label = namePart + ', ' + streetPart;
-    else if (namePart) label = namePart;
-    else if (streetPart) label = streetPart;
-    else label = `Property ${p.id}`;
-    propNameMap[p.id] = label.replace(/:\s*$/, '').replace(/,\s*,/g, ',').trim();
+    if (name && num && street)      label = `${name}, ${num} ${street}`;
+    else if (num && street)         label = `${num} ${street}`;
+    else if (name && street)        label = `${name}, ${street}`;
+    else if (name)                  label = name;
+    else if (street)                label = street;
+    else                            label = `Property ${p.id}`;
+    propNameMap[p.id] = label.replace(/,\s*,/g, ',').trim();
   });
 } catch(e) { /* file may not exist in some envs */ }
 
