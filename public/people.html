@@ -314,17 +314,8 @@ async function loadPeople() {
     // Build property name lookup
     const propNameLookup = {};
     allProps.forEach(p => {
-      const num = p.number ? String(p.number) : '';
-      const street = p.street || '';
-      const name = (p.name||'').replace(/:\s*$/, '').trim();
-      let label = '';
-      if (name && num && street)     label = name + ', ' + num + ' ' + street;
-      else if (num && street)        label = num + ' ' + street;
-      else if (name && street)       label = name + ', ' + street;
-      else if (name)                 label = name;
-      else if (street)               label = street;
-      else                           label = 'Property ' + p.id;
-      propNameLookup[p.id] = label.replace(/,\s*,/g, ',').trim();
+      const addr = (p.address || p.name || '').replace(/:\s*([A-Z])/g, ', $1').replace(/:\s*$/, '').trim();
+      propNameLookup[p.id] = addr || ('Property ' + p.id);
     });
 
     // Populate occupation filter
