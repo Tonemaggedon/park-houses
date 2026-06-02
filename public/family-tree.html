@@ -209,37 +209,38 @@ async function loadTree(id) {
     const person = await fetch('/api/person/' + id).then(r => r.json());
     if (!person || person.error) return;
 
-    // Separate family relationships from household
-    const familyRels = (person.relationships || []).filter(r => isBloodOrMarriage(r.relationship_type));
-    const otherRels  = (person.relationships || []).filter(r => !isBloodOrMarriage(r.relationship_type));
+    // ALL relationships shown as connected family tree nodes
+    const allRels = (person.relationships || []);
 
-    // Build nodes & links for family tree only
+    // Build nodes & links
     const nodes = [], links = [];
     const centerNode = { id: person.id, name: nameOf(person), dates: dateStr(person), occ: topOcc(person), type: 'center', person };
     nodes.push(centerNode);
 
-    familyRels.forEach(rel => {
-      const isA = rel.person_a_id === id;
+    allRels.forEach(rel => {
+      const isA = parseInt(rel.person_a_id) === parseInt(id);
       const otherId = isA ? rel.person_b_id : rel.person_a_id;
       const otherName = isA ? [rel.b_known || rel.b_first, rel.b_last] : [rel.a_known || rel.a_first, rel.a_last];
-      if (!nodes.find(n => n.id === otherId)) {
-        nodes.push({ id: otherId, name: otherName.filter(Boolean).join(' '), type: isSpouse(rel.relationship_type) ? 'spouse' : 'family', rel: rel.relationship_type });
-        links.push({ source: id, target: otherId, type: isSpouse(rel.relationship_type) ? 'spouse' : 'family' });
+      if (!nodes.find(n => parseInt(n.id) === parseInt(otherId))) {
+        const relType = (rel.relationship_type || '').toLowerCase();
+        const nodeType = isSpouse(relType) ? 'spouse' : 'family';
+        nodes.push({ id: otherId, name: otherName.filter(Boolean).join(' ') || 'Unknown', type: nodeType, rel: rel.relationship_type });
+        links.push({ source: person.id, target: otherId, type: nodeType, label: rel.relationship_type || '' });
       }
     });
 
     drawTree(nodes, links, person);
     showDetail(person);
 
-    // Household panel: people who lived at same properties but aren't family
+    // Household panel: people at same property NOT already in family tree
     const propIds = [...new Set((person.census_entries || []).map(c => c.property_id).filter(Boolean))];
     let houseMembers = [];
     if (propIds.length) {
       const results = await Promise.all(propIds.map(pid => fetch('/api/people-at-property/' + pid).then(r=>r.json()).catch(()=>[])));
-      const familyIds = new Set(nodes.map(n => n.id));
+      const familyIds = new Set(nodes.map(n => parseInt(n.id)));
       results.forEach(arr => {
         (arr || []).forEach(p => {
-          if (!familyIds.has(p.id) && !houseMembers.find(h => h.id === p.id)) {
+          if (!familyIds.has(parseInt(p.id)) && !houseMembers.find(h => parseInt(h.id) === parseInt(p.id))) {
             houseMembers.push(p);
           }
         });

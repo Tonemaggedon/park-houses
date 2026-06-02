@@ -517,31 +517,30 @@ app.get('/api/stats', async (req, res) => {
     let jobsByCensusYear = {}, topJobs = {};
     let propsWithPhotos = 0;
 
-    // Stats from DB
+    // Stats from DB — each query independent so one failure doesn't kill the rest
     if (db) {
-      const [pplRes, occRes, censusRes, propPplRes, photoRes, topOccRes] = await Promise.all([
-        db.query('SELECT COUNT(*) as cnt FROM people'),
-        db.query('SELECT COUNT(*) as cnt FROM occupations'),
+      const safe = q => db.query(q).catch(() => ({ rows: [{ cnt: 0 }] }));
+      const [pplRes, occRes, propPplRes, photoRes, topOccRes, censusRes] = await Promise.all([
+        safe('SELECT COUNT(*) as cnt FROM people'),
+        safe('SELECT COUNT(*) as cnt FROM occupations'),
+        safe('SELECT COUNT(DISTINCT property_id) as cnt FROM census_entries WHERE property_id IS NOT NULL'),
+        safe(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`),
+        db.query(`SELECT LOWER(occupation) as occ, COUNT(*) as cnt FROM occupations GROUP BY LOWER(occupation) ORDER BY cnt DESC LIMIT 15`).catch(() => ({ rows: [] })),
         db.query(`SELECT ce.census_year, LOWER(o.occupation) as occ, COUNT(DISTINCT ce.person_id) as cnt
                   FROM census_entries ce JOIN occupations o ON o.person_id=ce.person_id
-                  GROUP BY ce.census_year, LOWER(o.occupation) ORDER BY ce.census_year, cnt DESC`),
-        db.query(`SELECT COUNT(DISTINCT ce.property_id) as cnt FROM census_entries ce WHERE ce.property_id IS NOT NULL`),
-        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`),
-        db.query(`SELECT LOWER(occupation) as occ, COUNT(*) as cnt FROM occupations GROUP BY LOWER(occupation) ORDER BY cnt DESC LIMIT 15`)
+                  GROUP BY ce.census_year, LOWER(o.occupation) ORDER BY ce.census_year, cnt DESC`).catch(() => ({ rows: [] }))
       ]);
-      totalPeople = parseInt(pplRes.rows[0].cnt);
-      totalOccupations = parseInt(occRes.rows[0].cnt);
-      propsWithPeople = parseInt(propPplRes.rows[0].cnt);
-      propsWithPhotos = parseInt(photoRes.rows[0].cnt);
+      totalPeople = parseInt(pplRes.rows[0]?.cnt || 0);
+      totalOccupations = parseInt(occRes.rows[0]?.cnt || 0);
+      propsWithPeople = parseInt(propPplRes.rows[0]?.cnt || 0);
+      propsWithPhotos = parseInt(photoRes.rows[0]?.cnt || 0);
 
-      // Jobs by census year
+      topOccRes.rows.forEach(r => { topJobs[r.occ] = parseInt(r.cnt); });
       censusRes.rows.forEach(r => {
         const yr = String(r.census_year);
         if (!jobsByCensusYear[yr]) jobsByCensusYear[yr] = {};
         jobsByCensusYear[yr][r.occ] = parseInt(r.cnt);
       });
-      // Top jobs from occupations table directly
-      topOccRes.rows.forEach(r => { topJobs[r.occ] = parseInt(r.cnt); });
     }
 
     const topJobsList = Object.entries(topJobs).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([job,count])=>({job,count}));

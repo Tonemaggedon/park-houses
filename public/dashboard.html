@@ -196,10 +196,12 @@ function renderResearchGrid(filter){
   if(!props.length){grid.innerHTML='<div class="loading">No properties match</div>';return;}
   grid.innerHTML=props.slice(0,300).map(p=>{
     const hasDesc=p.desc&&p.desc.length>50;
-    const addr=addrOf(p);
-    const parts=addr.split(' ');
-    const num=parts[0], street=parts.slice(1).join(' ');
-    return `<a href="/?id=${p.id}" class="research-card"><div class="rc-name">${num||addr}</div><div class="rc-street">${street||''}</div><span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span></a>`;
+    const num=p.number?String(p.number):'';
+    const street=p.street||'';
+    const name=p.name||'';
+    const line1=num&&street?num+' '+street:(name||street||'Property '+p.id);
+    const line2=num&&street?street:(street&&name?name:'');
+    return `<a href="/?id=${p.id}" class="research-card"><div class="rc-name">${line1}</div>${line2&&line2!==line1?`<div class="rc-street">${line2}</div>`:''}<span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span></a>`;
   }).join('');
 }
 
