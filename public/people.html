@@ -253,6 +253,8 @@
 <script>
 let allPeople = [];
 let currentPersonId = null;
+let canUploadPhotos = false;
+fetch('/api/me').then(r=>r.json()).then(d=>{ canUploadPhotos = !!(d.isAdmin || d.user); }).catch(()=>{});
 
 // ── Utilities ────────────────────────────────────────────────────────────────
 function initials(p) {
@@ -430,9 +432,7 @@ function renderProfile(p) {
   }
 
   // Photo upload button — shown to logged-in users
-  const meRes = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
-  const canUpload = meRes.isAdmin || meRes.user;
-  const photoUploadHtml = canUpload ? `
+  const photoUploadHtml = canUploadPhotos ? `
     <div style="margin-top:6px;text-align:center;">
       <label style="cursor:pointer;font-size:0.72rem;color:#8a9a7a;text-decoration:underline;" title="Upload photo">
         📷 ${p.photo_url ? 'Change photo' : 'Add photo'}
