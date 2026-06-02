@@ -5,7 +5,7 @@
       "last_name": "Woodward",
       "born_year": 1859,
       "born_place": "Nottingham",
-      "bio": "Frank Woodward was born c.1859, the son of John George Woodward (b.1829) and Mary Woodward (b.1825). John George was a partner in the local timber merchants Woodward Clark & Co. of Castle Road Wharf; his partner William Clark(e) and son William Froggatt Clark were also Park residents. John George Woodward was Sheriff of Nottingham in 1870\u201371.\n\nFrank had at least three siblings: Parker (b.1855), Walter (b.1857), and Mabel Mary (b.1860). Frank became a lace manufacturer, Walter a timber merchant, and Parker a lawyer. In 1881 the family were living in Carisbrooke House on Cavendish Crescent North. Parker subsequently lived at 25 Cavendish Road East from 1885 to 1933, and the 1901 census lists Walter as living at 6 Hamilton Drive.\n\nFrank and his wife Emma lived at Redcliffe, 33 Cavendish Road East. They had at least one child: Sydney Woodward (b.c.1884), listed in the Rugby School Register as Frank's only son. In 1911 Sydney was living at Park Dale, Peveril Drive.\n\nFrank and his elder brother Parker were leading figures in the Bacon\u2013Shakespeare controversy, together producing around 60 books and pamphlets promoting the thesis that Shakespeare's plays were written by Francis Bacon. Frank was especially interested in the use of ciphers in Bacon's writing. His most influential work, Francis Bacon's Cipher Signatures, was published by Grafton & Co., London in 1923. Frank was also President of the Bacon Society of Great Britain. Parker Woodward's extensive collection of printed books on the controversy (around 480 items) was donated to the University.",
+      "bio": "Frank Woodward (b. c.1859) was the son of John George Woodward (b.1829) and Mary Woodward (b.1825). John George was a partner in the local timber merchants Woodward Clark & Co. of Castle Road Wharf; his partner William Clark(e) and son William Froggatt Clark were also Park residents. John George Woodward was Sheriff of Nottingham in 1870\u201371.\n\nFrank had at least three siblings: Parker (b.1855), Walter (b.1857), and Mabel Mary (b.1860). Frank became a lace manufacturer, Walter a timber merchant, and Parker a lawyer. In 1881 the family were living in Carisbrooke House on Cavendish Crescent North. Parker subsequently lived at 25 Cavendish Road East from 1885 to 1933, and the 1901 census lists Walter as living at 6 Hamilton Drive.\n\nFrank and his wife Emma lived at Redcliffe, 33 Cavendish Road East. They had at least one child: Sydney Woodward (b. c.1884), listed in the Rugby School Register as Frank's only son. In 1911 Sydney was living at Park Dale, Peveril Drive.\n\nFrank and his elder brother Parker were leading figures in the Bacon\u2013Shakespeare controversy, together producing around 60 books and pamphlets promoting the thesis that Shakespeare's plays were written by Francis Bacon. Frank was especially interested in the use of ciphers in Bacon's writing. His most influential work, Francis Bacon's Cipher Signatures, was published by Grafton & Co., London in 1923. Frank was also President of the Bacon Society of Great Britain. Parker Woodward's extensive collection of printed books on the controversy (around 480 items) was donated to the University of Nottingham by his son W.O. Woodward, and the \"Woodward Collection\" is now housed in the University Library's Manuscripts and Special Collections section.",
       "occupations": [
         {
           "occupation": "Lace manufacturer",
@@ -14,6 +14,12 @@
         {
           "occupation": "Author",
           "notes": "Bacon\u2013Shakespeare controversy; President, Bacon Society of Great Britain"
+        },
+        {
+          "occupation": "Author (Bacon-Shakespeare controversy)"
+        },
+        {
+          "occupation": "President, Bacon Society of Great Britain"
         }
       ],
       "census_entries": [
@@ -42,6 +48,14 @@
         {
           "name": "Parker Woodward",
           "type": "sibling_of"
+        },
+        {
+          "name": "Walter Woodward",
+          "type": "sibling_of"
+        },
+        {
+          "name": "John George Woodward",
+          "type": "child_of"
         }
       ]
     },
@@ -220,6 +234,70 @@
         }
       ],
       "relationships": []
+    },
+    {
+      "first_name": "Parker",
+      "last_name": "Woodward",
+      "born_year": 1855,
+      "bio": "Parker Woodward (b.1855), elder brother of Frank Woodward. A lawyer by profession. He subsequently lived at 25 Cavendish Road East from 1885 to 1933. He and his brother Frank were leading figures in the Bacon\u2013Shakespeare controversy, together producing around 60 books and pamphlets. His extensive collection of printed books on the controversy (around 480 items) was donated to the University of Nottingham.",
+      "occupations": [
+        {
+          "occupation": "Solicitor"
+        },
+        {
+          "occupation": "Author (Bacon-Shakespeare controversy)"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "property_id": 49,
+          "household_role": "Head"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Frank Woodward",
+          "type": "sibling_of"
+        },
+        {
+          "name": "John George Woodward",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "John George",
+      "last_name": "Woodward",
+      "born_year": 1829,
+      "bio": "John George Woodward (b.1829), father of Frank, Parker, Walter and Mabel Mary Woodward. He was a partner in Woodward Clark & Co., timber merchants of Castle Road Wharf, Nottingham. He served as Sheriff of Nottingham in 1870\u201371. In 1881 the family were living in Carisbrooke House on Cavendish Crescent North.",
+      "occupations": [
+        {
+          "occupation": "Timber merchant",
+          "employer": "Woodward Clark & Co., Castle Road Wharf"
+        },
+        {
+          "occupation": "Sheriff of Nottingham",
+          "from_year": 1870,
+          "to_year": 1871
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "household_role": "Head"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Frank Woodward",
+          "type": "parent_of"
+        },
+        {
+          "name": "Parker Woodward",
+          "type": "parent_of"
+        }
+      ]
     }
   ],
   "significant_places": [],

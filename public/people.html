@@ -507,6 +507,22 @@ function renderProfile(p) {
       </div>`).join('')}</div>` : `<p class="section-empty">No occupation records.</p>`}
   </div>`);
 
+  // Properties lived at
+  const propIds = [...new Set((p.census_entries||[]).map(ce => ce.property_id).filter(Boolean))];
+  if (propIds.length) {
+    const propCards = propIds.map(pid => {
+      const name = (window._propNameLookup && window._propNameLookup[pid]) || (p.census_entries.find(ce=>ce.property_id===pid)||{}).property_name || 'Property '+pid;
+      const years = (p.census_entries||[]).filter(ce=>ce.property_id===pid).map(ce=>ce.census_year).filter(Boolean).sort();
+      const yearStr = years.length ? years.join(', ') : '';
+      return `<a href="/?id=${pid}" style="display:flex;align-items:center;gap:8px;background:#f5f0e8;border:1px solid #d8c8a0;border-radius:7px;padding:8px 12px;text-decoration:none;transition:background 0.15s" onmouseover="this.style.background='#ede5d0'" onmouseout="this.style.background='#f5f0e8'">
+        <span style="font-size:1.1rem">🏛️</span>
+        <div><div style="font-size:0.85rem;color:#1a3a2a;font-weight:600">${name}</div>${yearStr?`<div style="font-size:0.72rem;color:#8a7a5a">Census: ${yearStr}</div>`:''}</div>
+        <span style="margin-left:auto;font-size:0.75rem;color:#4a7c5a">View on map ↗</span>
+      </a>`;
+    }).join('');
+    html.push(`<div class="pane-section"><h3>Properties on The Park</h3><div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">${propCards}</div></div>`);
+  }
+
   // Census entries
   if ((p.census_entries||[]).length) {
     const byYear = {};

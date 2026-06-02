@@ -158,6 +158,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
 
   </div>
+
+    <!-- League table: most properties -->
+    <div class="panel jobs-full">
+      <div class="section-header"><span class="icon">🏆</span><h2>Most Properties on The Park</h2><span class="count" id="lt-count"></span></div>
+      <div id="leagueTable"><div class="loading">Connect database to see data</div></div>
+    </div>
 </div>
 
 <script>
@@ -169,7 +175,7 @@ async function init(){
     fetch('/api/stats').then(r=>r.json()).catch(()=>({}))
   ]);
   allProps=p; stats=s;
-  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs();
+  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable();
 }
 
 function renderStats(){
@@ -373,6 +379,31 @@ function buildEmptyChart(){
   const ctx=document.getElementById('jobsChart').getContext('2d');
   if(jobsChart) jobsChart.destroy();
   jobsChart=new Chart(ctx,{type:'line',data:{labels:['1841','1851','1861','1871','1881','1891','1901','1911'],datasets:[{label:'No data — connect database',data:[],borderColor:'rgba(200,184,122,0.2)',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8a9a7a'}}},scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}},y:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}}}}});
+}
+
+async function renderLeagueTable(){
+  try {
+    const res = await fetch('/api/stats/top-residents');
+    if(!res.ok) return;
+    const data = await res.json();
+    const el = document.getElementById('leagueTable');
+    if(!data||!data.length){ el.innerHTML='<div class="loading" style="color:#5a7a5a">No data yet</div>'; return; }
+    set('lt-count', data.length+' people');
+    el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+      <thead><tr>
+        <th style="text-align:left;padding:6px 8px;background:#1e2d1e;color:#c8b87a;border-bottom:1px solid #2a3a2a">#</th>
+        <th style="text-align:left;padding:6px 8px;background:#1e2d1e;color:#c8b87a;border-bottom:1px solid #2a3a2a">Person</th>
+        <th style="text-align:left;padding:6px 8px;background:#1e2d1e;color:#c8b87a;border-bottom:1px solid #2a3a2a">Properties</th>
+        <th style="text-align:right;padding:6px 8px;background:#1e2d1e;color:#c8b87a;border-bottom:1px solid #2a3a2a">Count</th>
+      </tr></thead>
+      <tbody>${data.map((r,i)=>`<tr style="border-bottom:1px solid #1e2a1e;${i%2?'background:rgba(200,184,122,0.03)':''}">
+        <td style="padding:6px 8px;color:#5a7a5a">${i+1}</td>
+        <td style="padding:6px 8px"><a href="/people?person=${r.person_id}" style="color:#e8e0d0;text-decoration:none;font-weight:500">${r.name}</a></td>
+        <td style="padding:6px 8px;color:#8a9a7a;font-size:0.75rem">${(r.properties||[]).slice(0,3).join(', ')}${r.prop_count>3?' …':''}</td>
+        <td style="padding:6px 8px;text-align:right;color:#c8b87a;font-weight:700">${r.prop_count}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+  } catch(e) {}
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}

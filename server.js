@@ -856,6 +856,32 @@ app.get('/api/people-counts', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Top residents by property count ──────────────────────────────────────────
+app.get('/api/stats/top-residents', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT p.id as person_id,
+             p.first_name || ' ' || p.last_name as name,
+             COUNT(DISTINCT ce.property_id) as prop_count,
+             ARRAY_AGG(DISTINCT ce.property_id) FILTER (WHERE ce.property_id IS NOT NULL) as prop_ids
+      FROM people p
+      JOIN census_entries ce ON ce.person_id = p.id
+      WHERE ce.property_id IS NOT NULL
+      GROUP BY p.id, p.first_name, p.last_name
+      HAVING COUNT(DISTINCT ce.property_id) > 0
+      ORDER BY prop_count DESC, p.last_name
+      LIMIT 30
+    `);
+    const rows = r.rows.map(row => ({
+      ...row,
+      prop_count: parseInt(row.prop_count),
+      properties: (row.prop_ids || []).map(id => propName(id))
+    }));
+    res.json(rows);
+  } catch(e) { res.json([]); }
+});
+
 // ── One-time occupation normalisation (admin only) ────────────────────────────
 app.post('/api/admin/normalise-occupations', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
