@@ -60,8 +60,16 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 .ab-title { font-size:0.85rem; color:#e8e0d0; font-weight:600; }
 .ab-label { font-size:0.7rem; color:#5a7a5a; margin-top:1px; }
 .jobs-full { grid-column:1 / -1; }
-.chart-container { position:relative; height:260px; }
-.jobs-top { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+.chart-container { position:relative; height:280px; }
+.jobs-top { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
+#jobsTable th { background:#1e2d1e; color:#c8b87a; padding:0.4rem 0.7rem; text-align:right; border-bottom:1px solid #2a3a2a; white-space:nowrap; font-weight:600; }
+#jobsTable th:first-child { text-align:left; }
+#jobsTable td { padding:0.35rem 0.7rem; text-align:right; border-bottom:1px solid #1e2a1e; color:#a8b8a8; }
+#jobsTable td:first-child { text-align:left; color:#e8e0d0; font-weight:500; }
+#jobsTable tr:hover td { background:rgba(200,184,122,0.05); }
+.occ-cb { display:flex; align-items:center; gap:0.3rem; background:#1e2d1e; border:1px solid #2a3a2a; border-radius:4px; padding:0.2rem 0.5rem; cursor:pointer; font-size:0.7rem; color:#a8b8a8; transition:border-color 0.15s; }
+.occ-cb.active { border-color:#c8b87a; color:#e8e0d0; }
+.occ-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 .job-tag { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:20px; padding:0.25rem 0.7rem; font-size:0.72rem; color:#a8b8a8; display:flex; align-items:center; gap:0.4rem; }
 .job-tag .jt-count { color:#c8b87a; font-weight:700; }
 .loading { color:#5a7a5a; font-size:0.82rem; text-align:center; padding:0.8rem; }
@@ -129,8 +137,24 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 
     <div class="panel jobs-full">
       <div class="section-header"><span class="icon">⚒️</span><h2>Occupations &amp; Social History</h2><span class="count" id="j-count"></span></div>
-      <div class="chart-container"><canvas id="jobsChart"></canvas></div>
-      <div class="jobs-top" id="jobTags"><div class="loading">Connect database to see occupation data</div></div>
+      <!-- Occupation selector -->
+      <div id="occSelector" style="display:none;margin-bottom:0.8rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.75rem;color:#8a9a7a;">Show:</span>
+          <button class="filter-btn active" id="selAllBtn" onclick="toggleSelectAll()">Select all</button>
+          <span style="font-size:0.72rem;color:#5a7a5a;margin-left:auto" id="occSelectedCount"></span>
+        </div>
+        <div id="occCheckboxes" style="display:flex;flex-wrap:wrap;gap:0.4rem;max-height:80px;overflow-y:auto;"></div>
+      </div>
+      <div class="chart-container" style="height:280px;"><canvas id="jobsChart"></canvas></div>
+      <!-- Data table -->
+      <div style="margin-top:1rem;overflow-x:auto;">
+        <table id="jobsTable" style="width:100%;border-collapse:collapse;font-size:0.75rem;display:none;">
+          <thead id="jobsTableHead"></thead>
+          <tbody id="jobsTableBody"></tbody>
+        </table>
+      </div>
+      <div class="jobs-top" id="jobTags" style="margin-top:0.8rem;"><div class="loading">Connect database to see occupation data</div></div>
     </div>
 
   </div>
@@ -222,27 +246,133 @@ function renderPeopleProgress(){
 function renderJobs(){
   const jobs=stats.jobs||{}, byCensusYear=jobs.byCensusYear||{}, topJobs=jobs.topJobs||[];
   const years=Object.keys(byCensusYear).sort();
+
+  // Top occupation tags
   document.getElementById('jobTags').innerHTML=topJobs.length
     ? topJobs.map(j=>`<div class="job-tag"><span>${j.job}</span><span class="jt-count">${j.count}</span></div>`).join('')
     : '<div class="loading" style="color:#5a7a5a">Connect a database to see occupation data</div>';
+
+  if(!years.length){ buildEmptyChart(); return; }
+
+  const allJobNames=[...new Set(years.flatMap(y=>Object.keys(byCensusYear[y])))];
+  // Sort by total count
+  allJobNames.sort((a,b)=>{
+    const ta=years.reduce((s,y)=>s+(byCensusYear[y][a]||0),0);
+    const tb=years.reduce((s,y)=>s+(byCensusYear[y][b]||0),0);
+    return tb-ta;
+  });
+
+  // Build occupation selector checkboxes
+  const selector=document.getElementById('occSelector');
+  const cbContainer=document.getElementById('occCheckboxes');
+  selector.style.display='block';
+  const colours=['#c8b87a','#4caf82','#5b9bd5','#e07b39','#9b7fd4','#e05a8a','#4ab8c8','#a8c84a','#c86a5a','#7ab87a','#d4a85a','#6ab87a','#b87a9a','#7a9ab8','#b8a87a'];
+
+  cbContainer.innerHTML=allJobNames.map((job,i)=>`
+    <div class="occ-cb active" id="cb-${i}" onclick="toggleOcc(${i})" data-idx="${i}">
+      <div class="occ-dot" style="background:${colours[i%colours.length]}"></div>
+      <span>${job}</span>
+    </div>`).join('');
+  updateOccCount();
+
+  window._jobsData={years,allJobNames,byCensusYear,colours};
+  buildChart();
+  buildTable();
+}
+
+function getActiveJobs(){
+  if(!window._jobsData) return [];
+  return window._jobsData.allJobNames.filter((_,i)=>document.getElementById('cb-'+i)?.classList.contains('active'));
+}
+
+function toggleOcc(i){
+  const el=document.getElementById('cb-'+i);
+  if(el) el.classList.toggle('active');
+  updateOccCount();
+  buildChart();
+  buildTable();
+}
+
+function toggleSelectAll(){
+  const cbs=document.querySelectorAll('.occ-cb');
+  const anyInactive=[...cbs].some(c=>!c.classList.contains('active'));
+  cbs.forEach(c=>{ if(anyInactive) c.classList.add('active'); else c.classList.remove('active'); });
+  document.getElementById('selAllBtn').textContent=anyInactive?'Deselect all':'Select all';
+  updateOccCount();
+  buildChart();
+  buildTable();
+}
+
+function updateOccCount(){
+  const total=document.querySelectorAll('.occ-cb').length;
+  const active=document.querySelectorAll('.occ-cb.active').length;
+  document.getElementById('occSelectedCount').textContent=active+' of '+total+' shown';
+}
+
+function buildChart(){
+  const {years,allJobNames,byCensusYear,colours}=window._jobsData;
+  const activeJobs=getActiveJobs();
   const ctx=document.getElementById('jobsChart').getContext('2d');
   if(jobsChart) jobsChart.destroy();
-  const colours=['#c8b87a','#4caf82','#5b9bd5','#e07b39','#9b7fd4','#e05a8a','#4ab8c8','#a8c84a','#c86a5a','#7ab87a'];
-  const labels=years.length?years:['1841','1851','1861','1871','1881','1891','1901','1911'];
-  const allJobNames=[...new Set(years.flatMap(y=>Object.keys(byCensusYear[y])))].slice(0,10);
   jobsChart=new Chart(ctx,{
-    type:'bar',
+    type:'line',
     data:{
-      labels,
-      datasets:allJobNames.length?allJobNames.map((job,i)=>({
-        label:job,data:years.map(y=>byCensusYear[y][job]||0),
-        backgroundColor:colours[i%colours.length]+'99',borderColor:colours[i%colours.length],borderWidth:1
-      })):[{label:'No data — connect database',data:labels.map(()=>0),backgroundColor:'rgba(200,184,122,0.1)',borderColor:'rgba(200,184,122,0.2)',borderWidth:1}]
+      labels:years,
+      datasets:activeJobs.map(job=>{
+        const i=allJobNames.indexOf(job);
+        return {
+          label:job,
+          data:years.map(y=>byCensusYear[y][job]||null),
+          borderColor:colours[i%colours.length],
+          backgroundColor:colours[i%colours.length]+'22',
+          borderWidth:2,
+          pointRadius:5,
+          pointHoverRadius:7,
+          tension:0.3,
+          spanGaps:true,
+          fill:false
+        };
+      })
     },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{labels:{color:'#8a9a7a',font:{size:10}},position:'bottom'}},
-      scales:{x:{stacked:true,ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}},y:{stacked:true,ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}}}}
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{labels:{color:'#8a9a7a',font:{size:10},boxWidth:12},position:'bottom'},
+        tooltip:{
+          backgroundColor:'#141e14',borderColor:'#2a3a2a',borderWidth:1,
+          titleColor:'#c8b87a',bodyColor:'#e8e0d0',
+          callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y||0}`}
+        }
+      },
+      scales:{
+        x:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'},title:{display:true,text:'Census Year',color:'#5a7a5a',font:{size:11}}},
+        y:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'},beginAtZero:true,title:{display:true,text:'Number of People',color:'#5a7a5a',font:{size:11}}}
+      }
+    }
   });
+}
+
+function buildTable(){
+  const {years,byCensusYear}=window._jobsData;
+  const activeJobs=getActiveJobs();
+  const table=document.getElementById('jobsTable');
+  const thead=document.getElementById('jobsTableHead');
+  const tbody=document.getElementById('jobsTableBody');
+  if(!activeJobs.length){ table.style.display='none'; return; }
+  table.style.display='table';
+  thead.innerHTML=`<tr><th>Occupation</th>${years.map(y=>`<th>${y}</th>`).join('')}<th>Total</th></tr>`;
+  tbody.innerHTML=activeJobs.map(job=>{
+    const vals=years.map(y=>byCensusYear[y][job]||0);
+    const total=vals.reduce((a,b)=>a+b,0);
+    return `<tr><td>${job}</td>${vals.map(v=>`<td>${v||'—'}</td>`).join('')}<td style="color:#c8b87a;font-weight:600">${total}</td></tr>`;
+  }).join('');
+}
+
+function buildEmptyChart(){
+  const ctx=document.getElementById('jobsChart').getContext('2d');
+  if(jobsChart) jobsChart.destroy();
+  jobsChart=new Chart(ctx,{type:'line',data:{labels:['1841','1851','1861','1871','1881','1891','1901','1911'],datasets:[{label:'No data — connect database',data:[],borderColor:'rgba(200,184,122,0.2)',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8a9a7a'}}},scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}},y:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}}}}});
 }
 
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}

@@ -883,6 +883,32 @@ app.get('/api/significant-places', async (req, res) => {
 
 // ── Admin: People write routes ────────────────────────────────────────────────
 
+// ── Person photo upload (any logged-in user or admin) ────────────────────────
+app.post('/api/person/:id/photo', (req, res, next) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) {
+    return res.status(401).json({ error: 'Login required' });
+  }
+  next();
+}, (req, res) => {
+  const multer = require('multer');
+  const personId = parseInt(req.params.id);
+  const storage = multer.diskStorage({
+    destination: PROFILE_DIR,
+    filename: (req, file, cb) => cb(null, `person-${personId}-${Date.now()}${path.extname(file.originalname)}`)
+  });
+  multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }).single('photo')(req, res, async (err) => {
+    if (err) return res.status(400).json({ error: err.message });
+    if (!req.file) return res.status(400).json({ error: 'No file' });
+    const url = `/data/photos/profiles/${req.file.filename}`;
+    if (db) {
+      try {
+        await db.query('UPDATE people SET photo_url=$1 WHERE id=$2', [url, personId]);
+      } catch(e) { /* continue even if DB update fails */ }
+    }
+    res.json({ ok: true, url });
+  });
+});
+
 app.post('/api/person', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {

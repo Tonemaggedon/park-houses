@@ -260,6 +260,29 @@ function initials(p) {
   const l = (p.last_name||'')[0]?.toUpperCase() || '';
   return f + l;
 }
+
+async function uploadPersonPhoto(personId, input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const formData = new FormData();
+  formData.append('photo', file);
+  const label = input.parentElement;
+  label.textContent = 'Uploading…';
+  try {
+    const res = await fetch(`/api/person/${personId}/photo`, { method: 'POST', body: formData });
+    const data = await res.json();
+    if (data.ok && data.url) {
+      const avatar = document.getElementById('paneAvatar');
+      avatar.innerHTML = `<img src="${data.url}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+      label.textContent = '✓ Photo saved';
+      setTimeout(() => { label.innerHTML = '📷 Change photo<input type="file" accept="image/*" style="display:none" onchange="uploadPersonPhoto('+personId+', this)">'; }, 2000);
+    } else {
+      label.textContent = '✗ Upload failed';
+    }
+  } catch(e) {
+    label.textContent = '✗ Error: ' + e.message;
+  }
+}
 function displayName(p) {
   let n = `${p.first_name || ''} ${p.last_name || ''}`.trim();
   if (p.known_as && p.known_as !== n) n = `${n}`;
@@ -401,10 +424,28 @@ function renderProfile(p) {
 
   const avatar = document.getElementById('paneAvatar');
   if (p.photo_url) {
-    avatar.innerHTML = `<img src="${p.photo_url}" alt="">`;
+    avatar.innerHTML = `<img src="${p.photo_url}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
   } else {
     avatar.textContent = initials(p);
   }
+
+  // Photo upload button — shown to logged-in users
+  const meRes = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
+  const canUpload = meRes.isAdmin || meRes.user;
+  const photoUploadHtml = canUpload ? `
+    <div style="margin-top:6px;text-align:center;">
+      <label style="cursor:pointer;font-size:0.72rem;color:#8a9a7a;text-decoration:underline;" title="Upload photo">
+        📷 ${p.photo_url ? 'Change photo' : 'Add photo'}
+        <input type="file" accept="image/*" style="display:none" onchange="uploadPersonPhoto(${p.id}, this)">
+      </label>
+    </div>` : '';
+  const avatarWrap = avatar.parentElement;
+  let existingUpload = avatarWrap.querySelector('.photo-upload-btn');
+  if (existingUpload) existingUpload.remove();
+  const uploadDiv = document.createElement('div');
+  uploadDiv.className = 'photo-upload-btn';
+  uploadDiv.innerHTML = photoUploadHtml;
+  avatarWrap.appendChild(uploadDiv);
 
   // Body
   const html = [];
