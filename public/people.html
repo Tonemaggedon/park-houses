@@ -302,12 +302,29 @@ function isServant(occ) { return servantOccupations.has((occ||'').toLowerCase())
 // ── Load people ──────────────────────────────────────────────────────────────
 async function loadPeople() {
   try {
-    const [peopleRes, occRes] = await Promise.all([
+    const [peopleRes, occRes, propsRes] = await Promise.all([
       fetch('/api/people'),
-      fetch('/api/occupations')
+      fetch('/api/occupations'),
+      fetch('/api/all-props')
     ]);
     allPeople = await peopleRes.json();
     const occs = await occRes.json();
+    const allProps = await propsRes.json().catch(() => []);
+
+    // Build property name lookup
+    const propNameLookup = {};
+    allProps.forEach(p => {
+      const num = p.number ? String(p.number) + ' ' : '';
+      const street = p.street || '';
+      const name = p.name ? p.name.replace(/:\s*$/, '') : '';
+      let label = '';
+      if (num && street) label = num + street;
+      else if (name && street) label = name + ', ' + street;
+      else if (name) label = name;
+      else if (street) label = street;
+      else label = 'Property ' + p.id;
+      propNameLookup[p.id] = label;
+    });
 
     // Populate occupation filter
     const occSel = document.getElementById('occFilter');
@@ -318,15 +335,18 @@ async function loadPeople() {
       occSel.appendChild(opt);
     });
 
-    // Populate property filter
+    // Populate property filter with real names
     const propSel = document.getElementById('propFilter');
     const propIds = [...new Set(allPeople.flatMap(p => p.property_ids || []).filter(Boolean))].sort((a,b)=>a-b);
     propIds.forEach(id => {
       const opt = document.createElement('option');
       opt.value = id;
-      opt.textContent = `Property ${id}`;
+      opt.textContent = propNameLookup[id] || `Property ${id}`;
       propSel.appendChild(opt);
     });
+
+    // Store lookup globally for card display
+    window._propNameLookup = propNameLookup;
 
     // Check URL for ?person=id
     const params = new URLSearchParams(location.search);
@@ -376,7 +396,7 @@ function renderGrid(list) {
         </div>
       </div>
       ${occs.length ? `<div class="occ-pills">${occHtml}</div>` : ''}
-      ${(p.property_names||propIds).length ? `<div class="card-props">📍 ${(p.property_names||propIds.map(id=>`Property ${id}`)).join(' · ')}</div>` : ''}
+      ${(p.property_ids||[]).length ? `<div class="card-props">📍 ${(p.property_ids||[]).map(id=>(window._propNameLookup&&window._propNameLookup[id])||((p.property_names||[])[0])||'Property '+id).join(' · ')}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -550,7 +570,64 @@ function renderProfile(p) {
     html.push(`<div class="pane-section"><h3>Bibliography</h3>${bibHtml}</div>`);
   }
 
+  // Media gallery placeholder — loaded async after render
+  html.push(`<div class="pane-section" id="mediaGallery"><h3>Photos &amp; Documents</h3><div id="mediaItems" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>${canUploadPhotos?`<div style="margin-top:12px"><label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#4a3a1a"><input type="file" accept="image/*,.pdf,.doc,.docx" style="display:none" onchange="uploadMedia(${p.id},this)">📎 Add photo or document</label></div>`:''}</div>`);
+
   document.getElementById('paneBody').innerHTML = html.join('');
+
+  // Load media gallery
+  loadMediaGallery(p.id);
+}
+
+async function loadMediaGallery(personId) {
+  try {
+    const media = await fetch(`/api/person/${personId}/media`).then(r=>r.json());
+    const container = document.getElementById('mediaItems');
+    if (!container) return;
+    if (!media.length) {
+      container.innerHTML = '<div style="color:#8a7a5a;font-size:0.8rem;font-style:italic">No photos or documents yet.</div>';
+      return;
+    }
+    container.innerHTML = media.map(m => {
+      if (m.media_type === 'document') {
+        return `<div style="background:#f0ead8;border:1px solid #d8c8a0;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:1.3rem">📄</span>
+          <div><a href="${m.url}" target="_blank" style="font-size:0.82rem;color:#2a4a2a;font-weight:600">${m.filename||'Document'}</a>${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a">${m.caption}</div>`:''}</div>
+          ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem">✕</button>`:''}
+        </div>`;
+      } else {
+        return `<div style="position:relative">
+          <img src="${m.url}" alt="${m.caption||''}" style="width:120px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #d8c8a0;cursor:pointer" onclick="window.open('${m.url}','_blank')" title="${m.caption||''}">
+          ${m.caption?`<div style="font-size:0.68rem;color:#8a7a5a;text-align:center;max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${m.caption}</div>`:''}
+          ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.5);border:none;cursor:pointer;color:white;font-size:0.7rem;border-radius:3px;padding:1px 4px">✕</button>`:''}
+        </div>`;
+      }
+    }).join('');
+  } catch(e) {}
+}
+
+async function uploadMedia(personId, input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const caption = prompt('Add a caption (optional):') || '';
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('caption', caption);
+  const label = input.parentElement;
+  const orig = label.innerHTML;
+  label.textContent = 'Uploading…';
+  try {
+    const res = await fetch(`/api/person/${personId}/media`, { method:'POST', body:fd });
+    const data = await res.json();
+    if (data.ok) { label.innerHTML = orig; loadMediaGallery(personId); }
+    else { label.textContent = '✗ ' + (data.error||'Failed'); setTimeout(()=>{label.innerHTML=orig;},2000); }
+  } catch(e) { label.innerHTML = orig; }
+}
+
+async function deleteMedia(personId, mediaId) {
+  if (!confirm('Remove this item?')) return;
+  await fetch(`/api/person/${personId}/media/${mediaId}`, { method:'DELETE' });
+  loadMediaGallery(personId);
 }
 
 function humaniseRelType(type, isA) {

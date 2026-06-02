@@ -164,6 +164,15 @@ async function dbInit() {
     `);
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
+    await db.query(`CREATE TABLE IF NOT EXISTS person_media (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
+      url TEXT NOT NULL,
+      caption TEXT,
+      media_type TEXT DEFAULT 'photo',
+      filename TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
@@ -508,7 +517,7 @@ try {
     else if (namePart) label = namePart;
     else if (streetPart) label = streetPart;
     else label = `Property ${p.id}`;
-    propNameMap[p.id] = label;
+    propNameMap[p.id] = label.replace(/:\s*$/, '').replace(/,\s*,/g, ',').trim();
   });
 } catch(e) { /* file may not exist in some envs */ }
 
@@ -912,6 +921,56 @@ app.get('/api/significant-places', async (req, res) => {
 });
 
 // ── Admin: People write routes ────────────────────────────────────────────────
+
+// ── Person media gallery ──────────────────────────────────────────────────────
+app.get('/api/person/:id/media', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query('SELECT * FROM person_media WHERE person_id=$1 ORDER BY created_at', [parseInt(req.params.id)]);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+app.post('/api/person/:id/media', (req, res, next) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  next();
+}, (req, res) => {
+  const personId = parseInt(req.params.id);
+  const storage = multer.diskStorage({
+    destination: PHOTOS_DIR,
+    filename: (req, file, cb) => cb(null, `person-${personId}-media-${Date.now()}${path.extname(file.originalname)}`)
+  });
+  multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } }).single('file')(req, res, async (err) => {
+    if (err) return res.status(400).json({ error: err.message });
+    if (!req.file) return res.status(400).json({ error: 'No file' });
+    const url = `/data/photos/${req.file.filename}`;
+    const caption = req.body.caption || '';
+    const isDoc = /\.(pdf|doc|docx|txt)$/i.test(req.file.originalname);
+    const media_type = isDoc ? 'document' : 'photo';
+    try {
+      if (db) {
+        const r = await db.query(
+          'INSERT INTO person_media (person_id, url, caption, media_type, filename) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+          [personId, url, caption, media_type, req.file.originalname]
+        );
+        res.json({ ok: true, media: r.rows[0] });
+      } else {
+        res.json({ ok: true, media: { url, caption, media_type, filename: req.file.originalname } });
+      }
+    } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+});
+
+app.delete('/api/person/:personId/media/:mediaId', requireAdmin, async (req, res) => {
+  if (!db) return res.json({ ok: true });
+  try {
+    const r = await db.query('DELETE FROM person_media WHERE id=$1 AND person_id=$2 RETURNING url', [parseInt(req.params.mediaId), parseInt(req.params.personId)]);
+    if (r.rows[0]) {
+      try { fs.unlinkSync(path.join(__dirname, 'public', r.rows[0].url)); } catch(e) {}
+    }
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
 
 // ── Person photo upload (any logged-in user or admin) ────────────────────────
 app.post('/api/person/:id/photo', (req, res, next) => {
