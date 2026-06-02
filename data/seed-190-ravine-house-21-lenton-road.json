@@ -4,21 +4,24 @@
       "first_name": "Robert",
       "last_name": "Evans",
       "known_as": "Robert Evans Sr.",
-      "bio": "Robert Evans Senior was a prominent Nottingham architect, partner in the firm Hine & Evans (with T.C. Hine). The firm designed Ravine House, 21 Lenton Road (c.1862), along with other notable buildings in The Park and across Nottingham. The lease of Ravine House was held by Robert Evans Senior and was assigned to his son Robert Evans Junior in July 1905.",
+      "born_year": 1839,
+      "born_place": "Nottingham",
+      "died_year": 1927,
+      "died_place": "24 Belvoir Drive, Sherwood, Nottingham",
+      "bio": "Robert Evans Senior (b. c.1839; d. August 1927, aged 88) was a prominent Nottingham architect, practising for many years in the town. He was the son of an earlier Robert Evans who was also an architect. He founded the Nottingham Architectural Society, was past-president of the Nottinghamshire Architectural Association, and served for 35 years as honorary secretary of the Nottingham Society of Artists. He was responsible for many notable buildings in Nottingham. The lease of Ravine House, 21 Lenton Road was held in his name and assigned to his son Robert Evans Junior in July 1905, when the son was already occupying the premises. His death was reported in the Sheffield Daily Telegraph on 17 August 1927.",
       "occupations": [
         {
-          "occupation": "Architect",
-          "employer": "Hine & Evans, Nottingham"
-        }
-      ],
-      "census_entries": [
+          "occupation": "Architect"
+        },
         {
-          "census_year": 1871,
-          "relationship": "Head",
-          "property_id": 190,
-          "occupation_at_census": "Architect"
+          "occupation": "Founder, Nottingham Architectural Society"
+        },
+        {
+          "occupation": "Honorary Secretary, Nottingham Society of Artists",
+          "notes": "35 years"
         }
       ],
+      "census_entries": [],
       "relationships": [
         {
           "name": "Robert Evans Jr",
@@ -30,42 +33,461 @@
       "first_name": "Robert",
       "last_name": "Evans Jr",
       "known_as": "Robert Evans Jr.",
-      "born_year": 1839,
-      "died_year": 1927,
-      "died_place": "24 Belvoir Drive, Sherwood, Nottingham",
-      "bio": "Robert Evans Junior (b. c.1839; d. August 1927, aged 88) was a well-known Nottingham architect and son of Robert Evans Senior, himself a prominent architect and partner in the firm Hine & Evans. Robert Evans Junior practised in Nottingham for many years and was responsible for many notable buildings in the city.\n\nHe was the founder of the Nottingham Architectural Society, a past-president of the Nottinghamshire Architectural Association, and served for 35 years as honorary secretary of the Nottingham Society of Artists.\n\nIn July 1905, the lease of Ravine House, 21 Lenton Road \u2014 which had been built by his father's firm Hine & Evans c.1862 \u2014 was assigned from his father to Robert Evans Junior, who was already occupying the premises at that time. His death was reported in the Sheffield Daily Telegraph on Wednesday 17 August 1927.",
+      "born_year": 1863,
+      "born_place": "Nottinghamshire, England",
+      "bio": "Robert Evans Junior (b. 1863) was an architect and son of Robert Evans Senior. He occupied Ravine House, 21 Lenton Road, from at least 1901, and formally received the lease from his father in July 1905. He is listed as architect in both the 1901 and 1911 censuses.",
       "occupations": [
         {
           "occupation": "Architect"
-        },
-        {
-          "occupation": "Founder, Nottingham Architectural Society"
-        },
-        {
-          "occupation": "Honorary Secretary, Nottingham Society of Artists",
-          "notes": "Held for 35 years"
         }
       ],
       "census_entries": [
         {
           "census_year": 1901,
           "relationship": "Head",
-          "property_id": 190,
-          "occupation_at_census": "Architect"
+          "age_at_census": 38,
+          "occupation_at_census": "Architect",
+          "property_id": 190
         },
         {
           "census_year": 1911,
           "relationship": "Head",
-          "property_id": 190,
-          "occupation_at_census": "Architect"
+          "age_at_census": 48,
+          "occupation_at_census": "Architect",
+          "property_id": 190
         }
       ],
       "relationships": [
         {
           "name": "Robert Evans",
           "type": "child_of"
+        },
+        {
+          "name": "Constance Katherine Evans",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edith Cecily Evans",
+          "type": "parent_of"
+        },
+        {
+          "name": "Gwenn M Evans",
+          "type": "parent_of"
+        },
+        {
+          "name": "Robert Holland Evans",
+          "type": "parent_of"
         }
       ]
+    },
+    {
+      "first_name": "Constance Katherine",
+      "last_name": "Evans",
+      "born_year": 1870,
+      "born_place": "Beeston, Nottinghamshire",
+      "bio": "Constance Katherine Evans (n\u00e9e unknown, b.1870, Beeston), wife of Robert Evans Junior. Listed at Ravine House in 1901 and 1911 census.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 31,
+          "property_id": 190
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Wife",
+          "age_at_census": 41,
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans Jr",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Cecily",
+      "last_name": "Evans",
+      "born_year": 1896,
+      "born_place": "Nottingham",
+      "bio": "Edith Cecily Evans (b.1896, Nottingham), daughter of Robert and Constance Evans of Ravine House. Listed aged 5 in the 1901 census and aged 15 in 1911. She is referenced in the 1970 Birthday Honours list.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/1970_Birthday_Honours",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 5,
+          "property_id": 190
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 15,
+          "occupation_at_census": "School",
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans Jr",
+          "type": "child_of"
+        },
+        {
+          "name": "Constance Katherine Evans",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Gwenn M",
+      "last_name": "Evans",
+      "born_year": 1894,
+      "born_place": "Nottinghamshire",
+      "bio": "Gwenn M Evans (b.1894), daughter of Robert and Constance Evans, listed aged 7 in the 1901 census at Ravine House. See also IWM record.",
+      "wikipedia_url": "https://livesofthefirstworldwar.iwm.org.uk/lifestory/7683522",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 7,
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans Jr",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Robert Holland",
+      "last_name": "Evans",
+      "born_year": 1904,
+      "born_place": "Nottingham",
+      "bio": "Robert Holland Evans (b.1904, Nottingham), son of Robert and Constance Evans. Listed aged 7 in the 1911 census at Ravine House.",
+      "wikipedia_url": "https://www.iwm.org.uk/collections/item/object/80000504",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Son",
+          "age_at_census": 7,
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Robert Evans Jr",
+          "type": "child_of"
+        },
+        {
+          "name": "Constance Katherine Evans",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "William Ebenezer",
+      "last_name": "Dobson",
+      "born_year": 1827,
+      "born_place": "Arnold, Nottinghamshire",
+      "died_year": 1901,
+      "died_place": "The Park, Nottingham",
+      "bio": "William Ebenezer Dobson (b.1827, Arnold, Notts; d. 31 January 1901, The Park, Nottingham, aged 74) was a Magistrate and lace dresser employing 108 hands (1881 census). He first married Sabina Pearson at St. Barnabas Cathedral, Nottingham on 27 September 1855; she died 14 February 1867 aged 54 in Hastings, East Sussex. He later remarried Mary Jane. He lived at Ravine House, 21 Lenton Road from at least 1871. He had several children including John G., Charles F., Clara, Bernard P., Ignatius R., and Edward J. Dobson, plus step-children Augusta M. and William Brooke Stevens from his second wife.",
+      "wikipedia_url": "https://www.wikitree.com/wiki/Dobson-4240",
+      "occupations": [
+        {
+          "occupation": "Magistrate"
+        },
+        {
+          "occupation": "Lace dresser",
+          "notes": "Employing 108 hands (1881)"
+        },
+        {
+          "occupation": "Lace manufacturer"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1871,
+          "relationship": "Head",
+          "age_at_census": 44,
+          "property_id": 190
+        },
+        {
+          "census_year": 1881,
+          "relationship": "Head",
+          "age_at_census": 54,
+          "occupation_at_census": "Magistrate & lace dresser employing 108 hands",
+          "property_id": 190
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 64,
+          "occupation_at_census": "Lace manufacturer",
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Sabina Pearson",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Mary Jane Dobson",
+          "type": "spouse_of"
+        },
+        {
+          "name": "John G Dobson",
+          "type": "parent_of"
+        },
+        {
+          "name": "Charles F Dobson",
+          "type": "parent_of"
+        },
+        {
+          "name": "Clara Dobson",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "John G",
+      "last_name": "Dobson",
+      "born_year": 1858,
+      "born_place": "Nottingham",
+      "bio": "John G Dobson (b.1858, Nottingham), son of William Ebenezer Dobson. Cotton doubler. Listed age 23 in the 1881 census at Ravine House.",
+      "occupations": [
+        {
+          "occupation": "Cotton doubler"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 23,
+          "occupation_at_census": "Cotton doubler",
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "William Ebenezer Dobson",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Charles F",
+      "last_name": "Dobson",
+      "born_year": 1863,
+      "born_place": "Nottingham",
+      "bio": "Charles F Dobson (b.1863, Nottingham), son of William Ebenezer Dobson. Lace dresser. Listed age 18 in the 1881 census at Ravine House.",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Charles_Dobson",
+      "occupations": [
+        {
+          "occupation": "Lace dresser"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 18,
+          "occupation_at_census": "Lace dresser",
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "William Ebenezer Dobson",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Clara",
+      "last_name": "Dobson",
+      "born_year": 1862,
+      "born_place": "Bramcote, Nottinghamshire",
+      "bio": "Clara Dobson (b.1862, Bramcote), daughter of William Ebenezer Dobson. Listed age 19 in the 1881 census at Ravine House.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 19,
+          "property_id": 190
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 29,
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "William Ebenezer Dobson",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Jane",
+      "last_name": "Dobson",
+      "born_year": 1847,
+      "born_place": "Salesbury, Wiltshire",
+      "bio": "Mary Jane Dobson (b.1847, Salesbury, Wiltshire), second wife of William Ebenezer Dobson. Listed in the 1891 census at Ravine House.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 44,
+          "property_id": 190
+        }
+      ],
+      "relationships": [
+        {
+          "name": "William Ebenezer Dobson",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Frances May",
+      "last_name": "Pearson",
+      "born_year": 1887,
+      "born_place": "Swarby, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "Nurse domestic"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 24,
+          "occupation_at_census": "Nurse domestic",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Amelia",
+      "last_name": "Brooks",
+      "born_year": 1886,
+      "born_place": "Branston, Staffordshire",
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 25,
+          "occupation_at_census": "Cook domestic",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Edith Annie",
+      "last_name": "Congreve",
+      "born_year": 1889,
+      "born_place": "Holbeach, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "occupation_at_census": "Housemaid domestic",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Bessie J O",
+      "last_name": "Ford",
+      "born_year": 1877,
+      "born_place": "Hunworth, Norfolk",
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 24,
+          "occupation_at_census": "Cook",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Lucy",
+      "last_name": "Otter",
+      "born_year": 1880,
+      "born_place": "Bingham, Nottinghamshire",
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 21,
+          "occupation_at_census": "Housemaid",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Kate J",
+      "last_name": "Howe",
+      "born_year": 1879,
+      "born_place": "Oundle, Northamptonshire",
+      "occupations": [
+        {
+          "occupation": "Nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "occupation_at_census": "Nurse",
+          "property_id": 190
+        }
+      ],
+      "relationships": []
     }
   ],
   "significant_places": [
@@ -73,23 +495,26 @@
       "name": "Nottingham Architectural Society",
       "location": "Nottingham",
       "place_type": "Professional society",
-      "description": "The Nottingham Architectural Society was founded by Robert Evans Junior of Ravine House, 21 Lenton Road.",
+      "description": "Founded by Robert Evans Senior of Ravine House, 21 Lenton Road.",
       "person_connections": [
         {
-          "person": "Robert Evans Jr",
+          "person": "Robert Evans",
           "connection": "Founder"
         }
       ]
     },
     {
-      "name": "Nottingham Society of Artists",
-      "location": "Nottingham",
-      "place_type": "Arts society",
-      "description": "Robert Evans Junior served as honorary secretary of the Nottingham Society of Artists for 35 years.",
+      "name": "Papplewick Pumping Station",
+      "location": "Papplewick, Nottinghamshire",
+      "place_type": "Industrial / engineering",
+      "description": "Victorian water pumping station designed by Marriott Ogle Tarbotton, Borough Surveyor of Nottingham. The stained glass paintings in its windows also appear in the windows of Tarbotton's home at 6 South Road (property 305).",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Papplewick_Pumping_Station",
+      "lat": 53.0217,
+      "lng": -1.1494,
       "person_connections": [
         {
-          "person": "Robert Evans Jr",
-          "connection": "Honorary Secretary for 35 years"
+          "person": "Marriott Ogle Tarbotton",
+          "connection": "Designer"
         }
       ]
     }
@@ -99,7 +524,7 @@
       "title": "Obituary: Well-Known Nottingham Architect Dead",
       "publisher": "Sheffield Daily Telegraph",
       "year": 1927,
-      "notes": "Wednesday 17 August 1927. Reports death of Robert Evans Junior at 24 Belvoir Drive, Sherwood, aged 88."
+      "notes": "Wednesday 17 August 1927. Reports death of Robert Evans Senior at 24 Belvoir Drive, Sherwood, aged 88."
     }
   ]
 }
