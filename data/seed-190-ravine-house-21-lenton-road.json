@@ -113,9 +113,16 @@
       "last_name": "Evans",
       "born_year": 1896,
       "born_place": "Nottingham",
-      "bio": "Edith Cecily Evans (b.1896, Nottingham), daughter of Robert and Constance Evans of Ravine House. Listed aged 5 in the 1901 census and aged 15 in 1911. She is referenced in the 1970 Birthday Honours list.",
+      "bio": "Edith Cecily Evans (b.1896, Nottingham; d.1980) was a British nurse who served with the Red Cross Voluntary Aid Detachment during the First World War, 1915\u20131919. She served at Wicklow Lodge Auxiliary Hospital, Melton Mowbray; Bowden Auxiliary Hospital, Nottingham; and St Anselm's Auxiliary Hospital, Walmer, GB.\n\nShe received an Order of the British Empire (OBE) on 5th June 1970, mentioned in the Birthday Honours List. A recorded interview of 90 minutes duration was made on 14th October 1974 \u2014 sound files of this interview are held by the Imperial War Museum and available at their website.",
       "wikipedia_url": "https://en.wikipedia.org/wiki/1970_Birthday_Honours",
-      "occupations": [],
+      "occupations": [
+        {
+          "occupation": "Nurse",
+          "employer": "Red Cross Voluntary Aid Detachment",
+          "from_year": 1915,
+          "to_year": 1919
+        }
+      ],
       "census_entries": [
         {
           "census_year": 1901,
@@ -140,7 +147,8 @@
           "name": "Constance Katherine Evans",
           "type": "child_of"
         }
-      ]
+      ],
+      "died_year": 1980
     },
     {
       "first_name": "Gwenn M",
@@ -525,6 +533,11 @@
       "publisher": "Sheffield Daily Telegraph",
       "year": 1927,
       "notes": "Wednesday 17 August 1927. Reports death of Robert Evans Senior at 24 Belvoir Drive, Sherwood, aged 88."
+    },
+    {
+      "title": "IWM Lives of the First World War \u2014 Edith Cecily Evans",
+      "url": "https://www.iwm.org.uk/collections/item/object/80000504",
+      "notes": "Sound recording: 90-minute interview made 14 October 1974. Received OBE 5 June 1970."
     }
   ]
 }

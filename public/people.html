@@ -586,13 +586,137 @@ function renderProfile(p) {
     html.push(`<div class="pane-section"><h3>Bibliography</h3>${bibHtml}</div>`);
   }
 
+  // Links section (loaded async)
+  html.push(`<div class="pane-section" id="linksSection">
+    <h3>External Links</h3>
+    <div id="linksList"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>
+    ${canUploadPhotos ? `<div style="margin-top:8px">
+      <button onclick="showAddLink(${p.id})" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:5px 12px;font-size:0.8rem;color:#4a3a1a;cursor:pointer">+ Add link</button>
+    </div>` : ''}
+  </div>`);
+
+  // Edit buttons for bio and dates (shown to logged-in users)
+  if (canUploadPhotos) {
+    html.push(`<div class="pane-section" style="border:1px solid #e8d8a0;border-radius:6px;padding:12px;background:#fdf9f0">
+      <h3>Edit Record</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Born year</label><br>
+          <input id="edit_born_year" value="${p.born_year||''}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
+          <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Died year</label><br>
+          <input id="edit_died_year" value="${p.died_year||''}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br>
+          <input id="edit_died_place" value="${(p.died_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+      </div>
+      <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br>
+        <textarea id="edit_bio" rows="6" style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;font-family:Georgia,serif;line-height:1.5">${(p.bio||'').replace(/</g,'&lt;')}</textarea></div>
+      <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Wikipedia / external URL</label><br>
+        <input id="edit_wikipedia_url" value="${(p.wikipedia_url||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="savePerson(${p.id})" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem">Save changes</button>
+        <button onclick="showAddRelationship(${p.id})" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#4a3a1a">+ Add relationship</button>
+        <span id="saveStatus" style="font-size:0.78rem;color:#4a7c5a"></span>
+      </div>
+    </div>`);
+  }
+
   // Media gallery placeholder — loaded async after render
   html.push(`<div class="pane-section" id="mediaGallery"><h3>Photos &amp; Documents</h3><div id="mediaItems" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>${canUploadPhotos?`<div style="margin-top:12px"><label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#4a3a1a"><input type="file" accept="image/*,.pdf,.doc,.docx" style="display:none" onchange="uploadMedia(${p.id},this)">📎 Add photo or document</label></div>`:''}</div>`);
 
   document.getElementById('paneBody').innerHTML = html.join('');
 
-  // Load media gallery
+  // Load media gallery and links
   loadMediaGallery(p.id);
+  loadPersonLinks(p.id);
+}
+
+async function loadPersonLinks(personId) {
+  const list = document.getElementById('linksList');
+  if (!list) return;
+  try {
+    const links = await fetch(`/api/person/${personId}/links`).then(r=>r.json());
+    if (!links.length) { list.innerHTML = '<div style="color:#8a7a5a;font-size:0.8rem;font-style:italic">No links added yet.</div>'; return; }
+    list.innerHTML = links.map(l => `
+      <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f0e8d0">
+        <span style="font-size:1rem">${l.link_type==='audio'?'🔊':l.link_type==='document'?'📄':'🔗'}</span>
+        <div style="flex:1">
+          <a href="${l.url}" target="_blank" style="font-size:0.85rem;color:#1a4a2a;font-weight:600">${l.title}</a>
+          ${l.notes?`<div style="font-size:0.73rem;color:#8a7a5a">${l.notes}</div>`:''}
+        </div>
+        ${canUploadPhotos?`<button onclick="deleteLink(${personId},${l.id})" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem">✕</button>`:''}
+      </div>`).join('');
+  } catch(e) { if(list) list.innerHTML = ''; }
+}
+
+async function showAddLink(personId) {
+  const title = prompt('Link title (e.g. "IWM Sound Recording"):');
+  if (!title) return;
+  const url = prompt('URL:');
+  if (!url) return;
+  const typeInput = prompt('Type (website / audio / document):', 'website');
+  const notes = prompt('Notes (optional):') || '';
+  const res = await fetch(`/api/person/${personId}/links`, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ title, url, link_type: typeInput||'website', notes })
+  }).then(r=>r.json());
+  if (res.ok) loadPersonLinks(personId);
+  else alert('Error: ' + (res.error||'unknown'));
+}
+
+async function deleteLink(personId, linkId) {
+  if (!confirm('Remove this link?')) return;
+  await fetch(`/api/person/${personId}/links/${linkId}`, { method:'DELETE' });
+  loadPersonLinks(personId);
+}
+
+async function savePerson(personId) {
+  const status = document.getElementById('saveStatus');
+  status.textContent = 'Saving…';
+  const fields = {
+    born_year: document.getElementById('edit_born_year').value ? parseInt(document.getElementById('edit_born_year').value) : null,
+    born_place: document.getElementById('edit_born_place').value || null,
+    died_year: document.getElementById('edit_died_year').value ? parseInt(document.getElementById('edit_died_year').value) : null,
+    died_place: document.getElementById('edit_died_place').value || null,
+    bio: document.getElementById('edit_bio').value || null,
+    wikipedia_url: document.getElementById('edit_wikipedia_url').value || null,
+  };
+  // Remove null fields to avoid overwriting with null
+  Object.keys(fields).forEach(k => { if (fields[k] === null) delete fields[k]; });
+  try {
+    const res = await fetch(`/api/person/${personId}`, {
+      method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fields)
+    }).then(r=>r.json());
+    if (res.ok) {
+      status.textContent = '✓ Saved';
+      status.style.color = '#2a7a2a';
+      // Refresh the card in the grid
+      const idx = allPeople.findIndex(p=>p.id===personId);
+      if (idx>=0) { Object.assign(allPeople[idx], fields); renderGrid(allPeople); }
+      setTimeout(()=>{ status.textContent=''; }, 3000);
+    } else { status.textContent = '✗ ' + (res.error||'Error'); status.style.color='#c04040'; }
+  } catch(e) { status.textContent = '✗ ' + e.message; status.style.color='#c04040'; }
+}
+
+async function showAddRelationship(personId) {
+  const name = prompt('Person name to link to:');
+  if (!name) return;
+  // Search for the person
+  const matches = allPeople.filter(p => (p.first_name+' '+p.last_name).toLowerCase().includes(name.toLowerCase()));
+  if (!matches.length) { alert('Person not found — try their exact name'); return; }
+  let chosen = matches[0];
+  if (matches.length > 1) {
+    const choice = prompt('Multiple matches:\n' + matches.map((m,i)=>`${i+1}. ${m.first_name} ${m.last_name} (${m.born_year||'?'})`).join('\n') + '\n\nEnter number:');
+    chosen = matches[parseInt(choice)-1] || matches[0];
+  }
+  const relType = prompt(`Relationship type for ${chosen.first_name} ${chosen.last_name}:\n(e.g. spouse_of, parent_of, child_of, sibling_of)`, 'spouse_of');
+  if (!relType) return;
+  const res = await fetch(`/api/person/${personId}/relationship`, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ other_person_id: chosen.id, relationship_type: relType })
+  }).then(r=>r.json());
+  if (res.ok) { alert(`Linked to ${chosen.first_name} ${chosen.last_name}`); openProfile(personId); }
+  else alert('Error: ' + (res.error||'unknown'));
 }
 
 async function loadMediaGallery(personId) {

@@ -164,6 +164,29 @@ async function dbInit() {
     `);
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
+    await db.query(`CREATE TABLE IF NOT EXISTS person_links (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
+      title TEXT NOT NULL,
+      url TEXT NOT NULL,
+      link_type TEXT DEFAULT 'website',
+      notes TEXT,
+      created_by TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS change_log (
+      id SERIAL PRIMARY KEY,
+      entity_type TEXT NOT NULL,
+      entity_id INTEGER NOT NULL,
+      username TEXT,
+      action TEXT NOT NULL,
+      field TEXT,
+      old_value TEXT,
+      new_value TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS change_log_entity ON change_log(entity_type, entity_id)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS change_log_time ON change_log(created_at DESC)`);
     await db.query(`CREATE TABLE IF NOT EXISTS person_media (
       id SERIAL PRIMARY KEY,
       person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
@@ -941,6 +964,90 @@ app.get('/api/significant-places', async (req, res) => {
 
 // ── Admin: People write routes ────────────────────────────────────────────────
 
+// ── Changelog helper ─────────────────────────────────────────────────────────
+async function logChange(entityType, entityId, req, action, field, oldVal, newVal) {
+  if (!db) return;
+  const username = req.session?.username || req.session?.userId || 'unknown';
+  try {
+    await db.query(
+      `INSERT INTO change_log (entity_type, entity_id, username, action, field, old_value, new_value) VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+      [entityType, entityId, username, action, field || null, oldVal != null ? String(oldVal) : null, newVal != null ? String(newVal) : null]
+    );
+  } catch(e) { /* non-critical */ }
+}
+
+// ── Person links API ──────────────────────────────────────────────────────────
+app.get('/api/person/:id/links', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query('SELECT * FROM person_links WHERE person_id=$1 ORDER BY created_at', [parseInt(req.params.id)]);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+app.post('/api/person/:id/links', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { title, url, link_type, notes } = req.body;
+  if (!title || !url) return res.status(400).json({ error: 'title and url required' });
+  try {
+    const username = req.session.username || req.session.userId || 'unknown';
+    const r = await db.query(
+      'INSERT INTO person_links (person_id, title, url, link_type, notes, created_by) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *',
+      [parseInt(req.params.id), title, url, link_type || 'website', notes || null, username]
+    );
+    await logChange('person', parseInt(req.params.id), req, 'add_link', 'links', null, `${title}: ${url}`);
+    res.json({ ok: true, link: r.rows[0] });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/person/:personId/links/:linkId', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const r = await db.query('DELETE FROM person_links WHERE id=$1 AND person_id=$2 RETURNING title,url', [parseInt(req.params.linkId), parseInt(req.params.personId)]);
+    if (r.rows[0]) await logChange('person', parseInt(req.params.personId), req, 'delete_link', 'links', `${r.rows[0].title}: ${r.rows[0].url}`, null);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Changelog API ─────────────────────────────────────────────────────────────
+app.get('/api/changelog', requireAdmin, async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const limit = parseInt(req.query.limit) || 100;
+    const entityType = req.query.entity_type;
+    const entityId = req.query.entity_id;
+    let q = 'SELECT * FROM change_log';
+    const params = [];
+    const wheres = [];
+    if (entityType) { params.push(entityType); wheres.push(`entity_type=$${params.length}`); }
+    if (entityId) { params.push(parseInt(entityId)); wheres.push(`entity_id=$${params.length}`); }
+    if (wheres.length) q += ' WHERE ' + wheres.join(' AND ');
+    params.push(limit);
+    q += ` ORDER BY created_at DESC LIMIT $${params.length}`;
+    const r = await db.query(q, params);
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Person add relationship ───────────────────────────────────────────────────
+app.post('/api/person/:id/relationship', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { other_person_id, relationship_type } = req.body;
+  if (!other_person_id || !relationship_type) return res.status(400).json({ error: 'other_person_id and relationship_type required' });
+  try {
+    const r = await db.query(
+      `INSERT INTO people_relationships (person_a_id, person_b_id, relationship_type) VALUES ($1,$2,$3)
+       ON CONFLICT DO NOTHING RETURNING *`,
+      [parseInt(req.params.id), parseInt(other_person_id), relationship_type]
+    );
+    await logChange('person', parseInt(req.params.id), req, 'add_relationship', 'relationships', null, `${relationship_type} with person ${other_person_id}`);
+    res.json({ ok: true, relationship: r.rows[0] });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Person media gallery ──────────────────────────────────────────────────────
 app.get('/api/person/:id/media', async (req, res) => {
   if (!db) return res.json([]);
@@ -1030,15 +1137,25 @@ app.post('/api/person', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.patch('/api/person/:id', requireAdmin, async (req, res) => {
+app.patch('/api/person/:id', async (req, res) => {
+  // Allow admin OR logged-in users to edit
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const id = parseInt(req.params.id);
     const fields = req.body;
     const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url'].includes(k));
     if (!keys.length) return res.status(400).json({ error: 'No valid fields' });
+    // Get old values for changelog
+    const old = await db.query(`SELECT ${keys.join(',')} FROM people WHERE id=$1`, [id]);
     const sets = keys.map((k,i) => `${k}=$${i+2}`).join(',');
-    await db.query(`UPDATE people SET ${sets}, updated_at=NOW() WHERE id=$1`, [id, ...keys.map(k=>fields[k])]);
+    await db.query(`UPDATE people SET ${sets} WHERE id=$1`, [id, ...keys.map(k=>fields[k])]);
+    // Log each changed field
+    for (const k of keys) {
+      const oldVal = old.rows[0]?.[k];
+      const newVal = fields[k];
+      if (String(oldVal) !== String(newVal)) await logChange('person', id, req, 'edit', k, oldVal, newVal);
+    }
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
