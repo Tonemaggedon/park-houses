@@ -724,16 +724,15 @@ app.get('/api/people', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const { occupation, property, q } = req.query;
+    // Use subqueries to avoid cartesian product of occupations × census_entries
     let query = `
       SELECT p.id, p.first_name, p.last_name, p.known_as,
              p.born_year, p.born_place, p.died_year, p.died_place,
              p.wikipedia_url, p.photo_url,
-             ARRAY_AGG(DISTINCT o.occupation) FILTER (WHERE o.occupation IS NOT NULL) AS occupations,
-             ARRAY_AGG(DISTINCT ce.property_id) FILTER (WHERE ce.property_id IS NOT NULL) AS property_ids,
-             ARRAY_AGG(DISTINCT ce.census_year) FILTER (WHERE ce.census_year IS NOT NULL) AS census_years
+             (SELECT ARRAY_AGG(DISTINCT o.occupation) FROM occupations o WHERE o.person_id=p.id AND o.occupation IS NOT NULL) AS occupations,
+             (SELECT ARRAY_AGG(DISTINCT ce.property_id) FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL) AS property_ids,
+             (SELECT ARRAY_AGG(DISTINCT ce.census_year) FROM census_entries ce WHERE ce.person_id=p.id AND ce.census_year IS NOT NULL) AS census_years
       FROM people p
-      LEFT JOIN occupations o ON o.person_id = p.id
-      LEFT JOIN census_entries ce ON ce.person_id = p.id
     `;
     const params = [];
     const wheres = [];
@@ -750,7 +749,7 @@ app.get('/api/people', async (req, res) => {
       wheres.push(`(LOWER(p.first_name) LIKE $${params.length} OR LOWER(p.last_name) LIKE $${params.length} OR LOWER(p.known_as) LIKE $${params.length})`);
     }
     if (wheres.length) query += ' WHERE ' + wheres.join(' AND ');
-    query += ' GROUP BY p.id ORDER BY p.last_name, p.first_name';
+    query += ' ORDER BY p.last_name, p.first_name';
     const r = await db.query(query, params);
     const rows = r.rows.map(row => ({
       ...row,
