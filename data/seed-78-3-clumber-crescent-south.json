@@ -5,22 +5,58 @@
       "last_name": "Fitzhugh",
       "born_year": 1834,
       "died_year": 1918,
-      "bio": "Richard Fitzhugh (1834–1918) was a pharmacist and prominent public figure in Nottingham. He was a partner in Fitzhugh & Carr, chemists of 21 Greyhound Street, Nottingham. He served as a Justice of the Peace and was Lord Mayor of Nottingham in 1891–92. He lived at 3 Clumber Crescent South with his wife Maria Louisa and their children.",
+      "bio": "Richard Fitzhugh (1834\u20131918) was a pharmacist and prominent public figure in Nottingham. He was a partner in Fitzhugh & Carr, chemists of 21 Greyhound Street, Nottingham. He served as a Justice of the Peace and was Lord Mayor of Nottingham in 1891\u201392. He lived at 3 Clumber Crescent South with his wife Maria Louisa and their children.",
       "occupations": [
-        { "occupation": "Chemist / Pharmacist", "employer": "Fitzhugh & Carr, 21 Greyhound Street, Nottingham" },
-        { "occupation": "Justice of the Peace" },
-        { "occupation": "Lord Mayor of Nottingham", "from_year": 1891, "to_year": 1892 }
+        {
+          "occupation": "Chemist / Pharmacist",
+          "employer": "Fitzhugh & Carr, 21 Greyhound Street, Nottingham"
+        },
+        {
+          "occupation": "Justice of the Peace"
+        },
+        {
+          "occupation": "Lord Mayor of Nottingham",
+          "from_year": 1891,
+          "to_year": 1892
+        }
       ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 57, "occupation_at_census": "Chemist" },
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 67, "occupation_at_census": "Pharmaceutical chemist" },
-        { "census_year": 1911, "relationship": "Head", "age_at_census": 77, "occupation_at_census": "Retired pharmacist" }
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 57,
+          "occupation_at_census": "Chemist"
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 67,
+          "occupation_at_census": "Pharmaceutical chemist"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "age_at_census": 77,
+          "occupation_at_census": "Retired pharmacist"
+        }
       ],
       "relationships": [
-        { "name": "Maria Louisa Fitzhugh", "type": "spouse_of" },
-        { "name": "Alice Louisa Fitzhugh", "type": "parent_of" },
-        { "name": "Richard Truman Fitzhugh", "type": "parent_of" },
-        { "name": "Annie Elizabeth Fitzhugh", "type": "parent_of" }
+        {
+          "name": "Maria Louisa Fitzhugh",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Alice Louisa Fitzhugh",
+          "type": "parent_of"
+        },
+        {
+          "name": "Richard Truman Fitzhugh",
+          "type": "parent_of"
+        },
+        {
+          "name": "Annie Elizabeth Fitzhugh",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -28,18 +64,42 @@
       "last_name": "Fitzhugh",
       "born_year": 1841,
       "died_year": 1915,
-      "bio": "Maria Louisa Fitzhugh (c.1841–1915) was the wife of Richard Fitzhugh. She lived at 3 Clumber Crescent South with her family, dying there in 1915.",
+      "bio": "Maria Louisa Fitzhugh (c.1841\u20131915) was the wife of Richard Fitzhugh. She lived at 3 Clumber Crescent South with her family, dying there in 1915.",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Wife", "age_at_census": 50 },
-        { "census_year": 1901, "relationship": "Wife", "age_at_census": 60 },
-        { "census_year": 1911, "relationship": "Wife", "age_at_census": 70 }
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 50
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 60
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Wife",
+          "age_at_census": 70
+        }
       ],
       "relationships": [
-        { "name": "Richard Fitzhugh", "type": "spouse_of" },
-        { "name": "Alice Louisa Fitzhugh", "type": "parent_of" },
-        { "name": "Richard Truman Fitzhugh", "type": "parent_of" },
-        { "name": "Annie Elizabeth Fitzhugh", "type": "parent_of" }
+        {
+          "name": "Richard Fitzhugh",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Alice Louisa Fitzhugh",
+          "type": "parent_of"
+        },
+        {
+          "name": "Richard Truman Fitzhugh",
+          "type": "parent_of"
+        },
+        {
+          "name": "Annie Elizabeth Fitzhugh",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -47,18 +107,42 @@
       "last_name": "Fitzhugh",
       "born_year": 1870,
       "died_year": 1954,
-      "bio": "Alice Louisa Fitzhugh (1870–c.1954) was the eldest daughter of Richard and Maria Louisa Fitzhugh. She remained at 3 Clumber Crescent South with her parents.",
+      "bio": "Alice Louisa Fitzhugh (1870\u2013c.1954), daughter of Richard and Maria Louisa Fitzhugh.",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 21 },
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 31 },
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 41 }
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 21
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 31
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 41
+        }
       ],
       "relationships": [
-        { "name": "Richard Fitzhugh", "type": "child_of" },
-        { "name": "Maria Louisa Fitzhugh", "type": "child_of" },
-        { "name": "Richard Truman Fitzhugh", "type": "sibling_of" },
-        { "name": "Annie Elizabeth Fitzhugh", "type": "sibling_of" }
+        {
+          "name": "Richard Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Maria Louisa Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Richard Truman Fitzhugh",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Annie Elizabeth Fitzhugh",
+          "type": "sibling_of"
+        }
       ]
     },
     {
@@ -67,56 +151,205 @@
       "born_year": 1872,
       "died_date": "15 June 1900",
       "died_year": 1900,
-      "bio": "Richard Truman Fitzhugh (1872 – 15 June 1900) was the son of Richard and Maria Louisa Fitzhugh. He died on 15 June 1900 of enteric fever (typhoid) contracted during the Second Boer War in South Africa.",
+      "bio": "Richard Truman Fitzhugh (b. 1872; d. 15 June 1900). Educated at Nottingham Grammar School and Shrewsbury Grammar School. He trained as a doctor at Guy's Hospital and was awarded a Bachelor of Medicine, University of London, in 1898. He served as a doctor during the Boer War and died of enteric fever (typhoid) at the Imperial Yeomanry Base Hospital at Deelfontein, South Africa, aged 28.",
       "occupations": [
-        { "occupation": "Soldier", "notes": "Died of enteric fever, Boer War, 15 June 1900" }
+        {
+          "occupation": "Doctor / Medical Officer",
+          "notes": "Boer War, Imperial Yeomanry Base Hospital, Deelfontein"
+        }
       ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 19 }
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 19
+        }
       ],
       "relationships": [
-        { "name": "Richard Fitzhugh", "type": "child_of" },
-        { "name": "Maria Louisa Fitzhugh", "type": "child_of" },
-        { "name": "Alice Louisa Fitzhugh", "type": "sibling_of" },
-        { "name": "Annie Elizabeth Fitzhugh", "type": "sibling_of" }
-      ]
+        {
+          "name": "Richard Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Maria Louisa Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Alice Louisa Fitzhugh",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Annie Elizabeth Fitzhugh",
+          "type": "sibling_of"
+        }
+      ],
+      "died_place": "Deelfontein, South Africa"
     },
     {
       "first_name": "Annie Elizabeth",
       "last_name": "Fitzhugh",
       "born_year": 1873,
       "died_year": 1924,
-      "bio": "Annie Elizabeth Fitzhugh (1873–c.1924) was a daughter of Richard and Maria Louisa Fitzhugh.",
+      "bio": "Annie Elizabeth Fitzhugh (1873\u2013c.1924), daughter of Richard and Maria Louisa Fitzhugh.",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 18 },
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 28 }
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 18
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 28
+        }
       ],
       "relationships": [
-        { "name": "Richard Fitzhugh", "type": "child_of" },
-        { "name": "Maria Louisa Fitzhugh", "type": "child_of" },
-        { "name": "Alice Louisa Fitzhugh", "type": "sibling_of" },
-        { "name": "Richard Truman Fitzhugh", "type": "sibling_of" }
+        {
+          "name": "Richard Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Maria Louisa Fitzhugh",
+          "type": "child_of"
+        },
+        {
+          "name": "Alice Louisa Fitzhugh",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Richard Truman Fitzhugh",
+          "type": "sibling_of"
+        }
       ]
     },
-    { "first_name": "Emma", "last_name": "Barnett", "born_year": 1868, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Sarah", "last_name": "Taylor", "born_year": 1871, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid" }], "relationships": [] },
-    { "first_name": "Annie", "last_name": "Foster", "born_year": 1876, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 25 }], "relationships": [] },
-    { "first_name": "Florence", "last_name": "Moore", "born_year": 1880, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 21 }], "relationships": [] },
-    { "first_name": "Ada", "last_name": "White", "born_year": 1884, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Mabel", "last_name": "Oswin", "born_year": 1888, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Housemaid" }], "relationships": [] }
+    {
+      "first_name": "Emma",
+      "last_name": "Barnett",
+      "born_year": 1868,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 23,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Taylor",
+      "born_year": 1871,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Foster",
+      "born_year": 1876,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 25
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Moore",
+      "born_year": 1880,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 21
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Ada",
+      "last_name": "White",
+      "born_year": 1884,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 27,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mabel",
+      "last_name": "Oswin",
+      "born_year": 1888,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 23,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    }
   ],
   "significant_places": [
     {
       "name": "Nottingham Council House (Lord Mayor's Office)",
       "location": "Nottingham",
       "place_type": "Civic building",
-      "description": "The civic centre of Nottingham. Richard Fitzhugh of 3 Clumber Crescent South served as Lord Mayor of Nottingham in 1891–92.",
+      "description": "The civic centre of Nottingham. Richard Fitzhugh of 3 Clumber Crescent South served as Lord Mayor of Nottingham in 1891\u201392.",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Council_House,_Nottingham",
-      "lat": 52.9540,
-      "lng": -1.1480,
+      "lat": 52.954,
+      "lng": -1.148,
       "person_connections": [
-        { "person": "Richard Fitzhugh", "connection": "Lord Mayor of Nottingham 1891–92" }
+        {
+          "person": "Richard Fitzhugh",
+          "connection": "Lord Mayor of Nottingham 1891\u201392"
+        }
       ]
     }
   ],

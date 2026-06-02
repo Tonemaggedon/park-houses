@@ -7,26 +7,75 @@
       "born_place": "Carrington, Nottinghamshire",
       "died_date": "13 December 1912",
       "died_year": 1912,
-      "bio": "William Godfrey Gregory (b. c. 1834, Carrington, Nottinghamshire; d. 13 December 1912) was the son of William Gregory, who began his career as a coal miner but later established himself as a lace manufacturer in Nottingham. William Gregory senior retired from Gregory and Sons, lace manufacturers and cotton doublers in 1866, leaving William Godfrey in partnership with his brothers Isaiah and Hezekiah Gregory in W.G. and I. and H. Gregory. On 31 December 1875 the partnership between WG and Isaiah in Gregory Brothers was dissolved, leaving William Godfrey as sole owner of the business. His business, based at Canal Street, Nottingham, was variously named as William G. Gregory Ltd. and W.G. Gregory (of Nottingham) Ltd. The latter went into voluntary liquidation in 1926.",
+      "bio": "William Godfrey Gregory (b. c. 1834, Carrington, Nottinghamshire; d. 13 December 1912) was the son of William Gregory, who began his career as a coal miner but later established himself as a lace manufacturer in Nottingham. William Gregory senior retired from Gregory and Sons, lace manufacturers and cotton doublers in 1866, leaving William Godfrey in partnership with his brothers Isaiah and Hezekiah Gregory in W.G. and I. and H. Gregory. On 31 December 1875 the partnership between WG and Isaiah in Gregory Brothers was dissolved, leaving William Godfrey as sole owner of the business. His business, based at Canal Street, Nottingham, was variously named as William G. Gregory Ltd. and W.G. Gregory (of Nottingham) Ltd. The latter went into voluntary liquidation in 1926.\n\nWilliam Godfrey married Harriett Gregory (b. c.1835; d. 1903). He died on 13th December 1912, still resident at Clumber House, leaving an estate worth \u00a3128,859 net.",
       "occupations": [
-        { "occupation": "Lace manufacturer and cotton doubler", "employer": "W.G. Gregory (of Nottingham) Ltd., Canal Street, Nottingham" },
-        { "occupation": "Plain and spot net manufacturer" }
+        {
+          "occupation": "Lace manufacturer and cotton doubler",
+          "employer": "W.G. Gregory (of Nottingham) Ltd., Canal Street, Nottingham"
+        },
+        {
+          "occupation": "Plain and spot net manufacturer"
+        }
       ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Head", "age_at_census": 47, "occupation_at_census": "Lace manufacturer" },
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 57, "occupation_at_census": "Lace manufacturer" },
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 67, "occupation_at_census": "Lace manufacturer" },
-        { "census_year": 1911, "relationship": "Head (widower)", "age_at_census": 77, "occupation_at_census": "Plain and spot net manufacturer" }
+        {
+          "census_year": 1881,
+          "relationship": "Head",
+          "age_at_census": 47,
+          "occupation_at_census": "Lace manufacturer"
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 57,
+          "occupation_at_census": "Lace manufacturer"
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 67,
+          "occupation_at_census": "Lace manufacturer"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head (widower)",
+          "age_at_census": 77,
+          "occupation_at_census": "Plain and spot net manufacturer"
+        }
       ],
       "relationships": [
-        { "name": "Harriett Gregory", "type": "spouse_of" },
-        { "name": "William Gregory Jr", "type": "parent_of" },
-        { "name": "Alice A Gregory", "type": "parent_of" },
-        { "name": "Ellen Augusta Gregory", "type": "parent_of" },
-        { "name": "Charles Arthur Gregory", "type": "parent_of" },
-        { "name": "Kate Gregory", "type": "parent_of" },
-        { "name": "Harriett Gregory Jr", "type": "parent_of" },
-        { "name": "Frank Henry Gregory", "type": "parent_of" }
+        {
+          "name": "Harriett Gregory",
+          "type": "spouse_of"
+        },
+        {
+          "name": "William Gregory Jr",
+          "type": "parent_of"
+        },
+        {
+          "name": "Alice A Gregory",
+          "type": "parent_of"
+        },
+        {
+          "name": "Ellen Augusta Gregory",
+          "type": "parent_of"
+        },
+        {
+          "name": "Charles Arthur Gregory",
+          "type": "parent_of"
+        },
+        {
+          "name": "Kate Gregory",
+          "type": "parent_of"
+        },
+        {
+          "name": "Harriett Gregory Jr",
+          "type": "parent_of"
+        },
+        {
+          "name": "Frank Henry Gregory",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -35,26 +84,64 @@
       "born_year": 1835,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Wife", "age_at_census": 46 },
-        { "census_year": 1891, "relationship": "Wife", "age_at_census": 56 },
-        { "census_year": 1901, "relationship": "Wife", "age_at_census": 66 }
+        {
+          "census_year": 1881,
+          "relationship": "Wife",
+          "age_at_census": 46
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 56
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 66
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "spouse_of" }
+        {
+          "name": "William Godfrey Gregory",
+          "type": "spouse_of"
+        }
       ]
     },
     {
       "first_name": "William",
       "last_name": "Gregory Jr",
       "born_year": 1860,
-      "occupations": [{ "occupation": "Warehouse assistant" }, { "occupation": "Book keeper" }],
+      "occupations": [
+        {
+          "occupation": "Warehouse assistant"
+        },
+        {
+          "occupation": "Book keeper"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Son", "age_at_census": 21, "occupation_at_census": "Warehouse assistant" },
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 31, "occupation_at_census": "Book keeper" }
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 21,
+          "occupation_at_census": "Warehouse assistant"
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 31,
+          "occupation_at_census": "Book keeper"
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -63,12 +150,26 @@
       "born_year": 1862,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 19 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 19
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
-      ]
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
+      ],
+      "born_place": "Nottingham",
+      "died_year": 1936,
+      "died_place": "Nottingham",
+      "bio": "Alice Ann Gregory (b. Nottingham, 1862; d. Nottingham, 1936). Alice married Leonard Oscroft Lindley, a lace dyer and dresser, in Nottingham in 1884."
     },
     {
       "first_name": "Ellen Augusta",
@@ -76,45 +177,120 @@
       "born_year": 1864,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 17 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 27 },
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 38 },
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 47 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 17
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 27
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 38
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 47
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
-      ]
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
+      ],
+      "died_date": "6 May 1914",
+      "died_year": 1914,
+      "died_place": "Nottingham",
+      "bio": "Ellen Augusta Gregory (b. Nottingham, 1863; d. Nottingham, 6 May 1914). Ellen did not marry and lived in Clumber House until her death in 1914."
     },
     {
       "first_name": "Charles Arthur",
       "last_name": "Gregory",
-      "born_year": 1866,
-      "occupations": [{ "occupation": "Book keeper" }],
+      "born_year": 1865,
+      "occupations": [
+        {
+          "occupation": "Book keeper"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Son", "age_at_census": 15 },
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 26, "occupation_at_census": "Book keeper" },
-        { "census_year": 1901, "relationship": "Son", "age_at_census": 36 },
-        { "census_year": 1911, "relationship": "Son", "age_at_census": 45, "occupation_at_census": "No occupation" }
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 15
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 26,
+          "occupation_at_census": "Book keeper"
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Son",
+          "age_at_census": 36
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Son",
+          "age_at_census": 45,
+          "occupation_at_census": "No occupation"
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
-      ]
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
+      ],
+      "born_place": "Nottingham",
+      "died_year": 1915,
+      "died_place": "Nottingham"
     },
     {
       "first_name": "Kate",
       "last_name": "Gregory",
-      "born_year": 1868,
+      "born_year": 1867,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 13 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 13
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 23
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
-      ]
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
+      ],
+      "born_place": "Nottingham",
+      "died_year": 1898,
+      "died_place": "Nottingham",
+      "bio": "Kate Gregory (b. Nottingham, 1867; d. Nottingham, 1898). Kate married William Higgins in Nottingham in 1891. They had at least one child: William Godfrey Higgins (b. Malmesbury, 1892)."
     },
     {
       "first_name": "Harriett",
@@ -122,27 +298,65 @@
       "born_year": 1869,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 12 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 22 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 12
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 22
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
       ]
     },
     {
       "first_name": "Frank Henry",
       "last_name": "Gregory",
-      "born_year": 1872,
-      "occupations": [{ "occupation": "Warehouse man" }],
+      "born_year": 1871,
+      "occupations": [
+        {
+          "occupation": "Warehouse man"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Son", "age_at_census": 9 },
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 19, "occupation_at_census": "Warehouse man" }
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 9
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 19,
+          "occupation_at_census": "Warehouse man"
+        }
       ],
       "relationships": [
-        { "name": "William Godfrey Gregory", "type": "child_of" },
-        { "name": "Harriett Gregory", "type": "child_of" }
-      ]
+        {
+          "name": "William Godfrey Gregory",
+          "type": "child_of"
+        },
+        {
+          "name": "Harriett Gregory",
+          "type": "child_of"
+        }
+      ],
+      "born_place": "Nottingham",
+      "died_date": "14 April 1917",
+      "died_year": 1917,
+      "died_place": "Southwell",
+      "bio": "Frank Henry Gregory (b. Nottingham, 1871; d. Southwell, 14 April 1917). Frank married Annie Wentworth (b. Laceby, Lincolnshire, c.1874) in Nottingham in 1894. In 1901 he listed his occupation as a \"lace salesman\". By 1911 Frank Henry was a widower. He lived at East Villa, Gunthorpe and listed his occupation as farmer. He was still living at East Villa, Gunthorpe at his death on 14 April 1917."
     },
     {
       "first_name": "W M",
@@ -152,17 +366,153 @@
       "bio": "W M Higgins was the grandson of William Godfrey Gregory, living at Clumber House in 1901.",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Grandson", "age_at_census": 8 }
+        {
+          "census_year": 1901,
+          "relationship": "Grandson",
+          "age_at_census": 8
+        }
       ],
       "relationships": []
     },
-    { "first_name": "Harriett", "last_name": "Rossington", "born_year": 1859, "born_place": "Branston, Lincolnshire", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Domestic servant" }], "relationships": [] },
-    { "first_name": "Lydia", "last_name": "Holmes", "born_year": 1862, "born_place": "Freeby, Leicestershire", "occupations": [{ "occupation": "Domestic servant" }], "census_entries": [{ "census_year": 1881, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Domestic servant" }], "relationships": [] },
-    { "first_name": "Edith", "last_name": "Cocker", "born_year": 1872, "born_place": "Bakewell, Derbyshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "General servant" }], "relationships": [] },
-    { "first_name": "Dina", "last_name": "Leivers", "born_year": 1866, "born_place": "Kimberley, Nottinghamshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "General servant" }], "relationships": [] },
-    { "first_name": "Gladys Eslie", "last_name": "Marler", "born_year": 1891, "born_place": "Burton on Trent", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "General servant domestic" }], "relationships": [] },
-    { "first_name": "Maud Mary", "last_name": "Wildmore", "born_year": 1879, "born_place": "Billinghay, Lincolnshire", "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 32, "occupation_at_census": "General servant domestic" }], "relationships": [] },
-    { "first_name": "Sarah Elizabeth", "last_name": "Wilkinson", "born_year": 1883, "occupations": [{ "occupation": "General servant" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "General servant domestic" }], "relationships": [] }
+    {
+      "first_name": "Harriett",
+      "last_name": "Rossington",
+      "born_year": 1859,
+      "born_place": "Branston, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "Domestic servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "occupation_at_census": "Domestic servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Lydia",
+      "last_name": "Holmes",
+      "born_year": 1862,
+      "born_place": "Freeby, Leicestershire",
+      "occupations": [
+        {
+          "occupation": "Domestic servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1881,
+          "relationship": "Servant",
+          "age_at_census": 19,
+          "occupation_at_census": "Domestic servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Cocker",
+      "born_year": 1872,
+      "born_place": "Bakewell, Derbyshire",
+      "occupations": [
+        {
+          "occupation": "General servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 19,
+          "occupation_at_census": "General servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Dina",
+      "last_name": "Leivers",
+      "born_year": 1866,
+      "born_place": "Kimberley, Nottinghamshire",
+      "occupations": [
+        {
+          "occupation": "General servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 25,
+          "occupation_at_census": "General servant"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Gladys Eslie",
+      "last_name": "Marler",
+      "born_year": 1891,
+      "born_place": "Burton on Trent",
+      "occupations": [
+        {
+          "occupation": "General servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "occupation_at_census": "General servant domestic"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Maud Mary",
+      "last_name": "Wildmore",
+      "born_year": 1879,
+      "born_place": "Billinghay, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "General servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 32,
+          "occupation_at_census": "General servant domestic"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Sarah Elizabeth",
+      "last_name": "Wilkinson",
+      "born_year": 1883,
+      "occupations": [
+        {
+          "occupation": "General servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 28,
+          "occupation_at_census": "General servant domestic"
+        }
+      ],
+      "relationships": []
+    }
   ],
   "significant_places": [],
   "bibliography": []

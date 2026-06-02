@@ -9,16 +9,36 @@
       "died_place": "Castlethorpe, Newcastle Circus",
       "bio": "John Hind Brownsword (b. c. 1836; d. 7 December 1884) was the son of John Brownsword and Rebecca Hind. He was a silk merchant in Nottingham, in partnership with John Staines Cropper in the firm of Cropper and Brownsword, silk merchants, until the partnership was dissolved on 9 July 1864. He was declared bankrupt in January 1865 but was discharged from bankruptcy on 14 March 1865. The original lease to Castlethorpe was conveyed to John Hind Brownsword on 25 March 1874. He died at Castlethorpe on 7 December 1884.",
       "occupations": [
-        { "occupation": "Silk merchant", "employer": "Cropper and Brownsword, silk merchants, Nottingham" }
+        {
+          "occupation": "Silk merchant",
+          "employer": "Cropper and Brownsword, silk merchants, Nottingham"
+        }
       ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Head", "age_at_census": 45, "occupation_at_census": "Silk merchant" }
+        {
+          "census_year": 1881,
+          "relationship": "Head",
+          "age_at_census": 45,
+          "occupation_at_census": "Silk merchant"
+        }
       ],
       "relationships": [
-        { "name": "Mary Hemsley Brownsword", "type": "spouse_of" },
-        { "name": "Edith Mary Brownsword", "type": "parent_of" },
-        { "name": "Arthur Brownsword", "type": "parent_of" },
-        { "name": "John Anthony Brownsword", "type": "parent_of" }
+        {
+          "name": "Mary Hemsley Brownsword",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edith Mary Brownsword",
+          "type": "parent_of"
+        },
+        {
+          "name": "Arthur Brownsword",
+          "type": "parent_of"
+        },
+        {
+          "name": "John Anthony Brownsword",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -31,14 +51,34 @@
       "bio": "Mary Hemsley (b. Shardlow, Derbyshire, 1843; d. 4 October 1901) married John Hind Brownsword in Shardlow in 1864. She remained at Castlethorpe after her husband's death in 1884.",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Wife", "age_at_census": 38 },
-        { "census_year": 1891, "relationship": "Head (widow)", "age_at_census": 48 }
+        {
+          "census_year": 1881,
+          "relationship": "Wife",
+          "age_at_census": 38
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Head (widow)",
+          "age_at_census": 48
+        }
       ],
       "relationships": [
-        { "name": "John Hind Brownsword", "type": "spouse_of" },
-        { "name": "Edith Mary Brownsword", "type": "parent_of" },
-        { "name": "Arthur Brownsword", "type": "parent_of" },
-        { "name": "John Anthony Brownsword", "type": "parent_of" }
+        {
+          "name": "John Hind Brownsword",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edith Mary Brownsword",
+          "type": "parent_of"
+        },
+        {
+          "name": "Arthur Brownsword",
+          "type": "parent_of"
+        },
+        {
+          "name": "John Anthony Brownsword",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -48,12 +88,26 @@
       "born_place": "Nottingham",
       "occupations": [],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Daughter", "age_at_census": 13 },
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 23 }
+        {
+          "census_year": 1881,
+          "relationship": "Daughter",
+          "age_at_census": 13
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 23
+        }
       ],
       "relationships": [
-        { "name": "John Hind Brownsword", "type": "child_of" },
-        { "name": "Mary Hemsley Brownsword", "type": "child_of" }
+        {
+          "name": "John Hind Brownsword",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Hemsley Brownsword",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -65,16 +119,36 @@
       "died_place": "Nottingham",
       "bio": "Arthur Brownsword (b. Nottingham, c. 1870; d. Nottingham, c. 1951) was a lace manufacturer in Nottingham. His partnership with James Henry Clark and William Haseldine in the form of Brownsword, Clark and Haseldine, lace manufacturers and lace finishers of Fletcher Gate, was dissolved on 22 June 1895, to be replaced by the new firm of Brownsword and Clark. Brownsword and Clark was liquidated in 1969. Arthur married Wilhelmina Sudbury (b. Nottingham, c. 1868; d. 12 November 1934), daughter of Charles and Marinah Sudbury of Cavendish House, Cavendish Road East, in Nottingham in 1906. By 1911 Arthur and Wilhelmina were living at 28 Barrack Lane. In 1934 they lived at 15 Cavendish Crescent South.",
       "occupations": [
-        { "occupation": "Lace manufacturer", "employer": "Brownsword, Clark and Haseldine; Brownsword and Clark, Fletcher Gate, Nottingham" }
+        {
+          "occupation": "Lace manufacturer",
+          "employer": "Brownsword, Clark and Haseldine; Brownsword and Clark, Fletcher Gate, Nottingham"
+        }
       ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Son", "age_at_census": 11 },
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 21 }
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 11
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 21
+        }
       ],
       "relationships": [
-        { "name": "John Hind Brownsword", "type": "child_of" },
-        { "name": "Mary Hemsley Brownsword", "type": "child_of" },
-        { "name": "Wilhelmina Sudbury", "type": "spouse_of" }
+        {
+          "name": "John Hind Brownsword",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Hemsley Brownsword",
+          "type": "child_of"
+        },
+        {
+          "name": "Wilhelmina Sudbury",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -84,15 +158,32 @@
       "born_place": "Nottingham",
       "bio": "John Anthony Brownsword (b. Nottingham, 1872). His partnership with William John Westaway in W. J. Westaway and Co., warehousemen at Greyfriar Gate, was dissolved on 5 February 1898.",
       "occupations": [
-        { "occupation": "Warehouseman", "employer": "W.J. Westaway and Co., Greyfriar Gate" }
+        {
+          "occupation": "Warehouseman",
+          "employer": "W.J. Westaway and Co., Greyfriar Gate"
+        }
       ],
       "census_entries": [
-        { "census_year": 1881, "relationship": "Son", "age_at_census": 9 },
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 19 }
+        {
+          "census_year": 1881,
+          "relationship": "Son",
+          "age_at_census": 9
+        },
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 19
+        }
       ],
       "relationships": [
-        { "name": "John Hind Brownsword", "type": "child_of" },
-        { "name": "Mary Hemsley Brownsword", "type": "child_of" }
+        {
+          "name": "John Hind Brownsword",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Hemsley Brownsword",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -104,15 +195,109 @@
       "died_date": "31 January 1928",
       "died_year": 1928,
       "died_place": "Nottingham",
-      "bio": "Herbert Francis Lancashire JP (b. Sandiacre, c. 1869; d. Nottingham, 31 January 1928) was the son of Herbert Lancashire (b. Sandiacre c. 1839; d. Nottingham, 1904) and Jane R Lancashire (d. Nottingham, 1897) of 8 Park Terrace. He was educated at Nottingham High School. Herbert Francis was a second-generation hosier who followed his father into the large Nottingham hosiery firm of J.B. Lewis and Sons. The company was founded by James Blount Lewis in 1815 and relocated from to Nottingham in 1830. It became a limited company in 1893. Herbert Francis worked for Lewis' throughout his career, becoming Chairman and managing director of the company. He led the company's move from Stanford Street to Haydn Road. The Haydn Road works were recognised as a model factory — a 1914 article on Carrington noted that the development 'will contain 100,000 feet of floor space, with special attention not only to health, light, safety, convenience, but also to recreation, the site occupying between six and seven acres.' The firm was very committed to promoting good working conditions and by 1930 the site included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch, all for the use of the employees. Meridian Cricket Club (still active today) was also associated with the factory.",
+      "bio": "Herbert Francis Lancashire JP (b. Sandiacre, c. 1869; d. Nottingham, 31 January 1928) was the son of Herbert Lancashire (b. Sandiacre c. 1839; d. Nottingham, 1904) and Jane R Lancashire (d. Nottingham, 1897) of 8 Park Terrace. He was educated at Nottingham High School. Herbert Francis was a second-generation hosier who followed his father into the large Nottingham hosiery firm of J.B. Lewis and Sons. The company was founded by James Blount Lewis in 1815 and relocated from to Nottingham in 1830. It became a limited company in 1893. Herbert Francis worked for Lewis' throughout his career, becoming Chairman and managing director of the company. He led the company's move from Stanford Street to Haydn Road. The Haydn Road works were recognised as a model factory \u2014 a 1914 article on Carrington noted that the development 'will contain 100,000 feet of floor space, with special attention not only to health, light, safety, convenience, but also to recreation, the site occupying between six and seven acres.' The firm was very committed to promoting good working conditions and by 1930 the site included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch, all for the use of the employees. Meridian Cricket Club (still active today) was also associated with the factory.\n\nHerbert Francis Lancashire was a prominent figure in industrial relations in the hosiery industry. He took a leading role in the formation of the joint industrial council for the hosiery manufacturing trade of England and acted as Chairman of the organisation. In 1922 he established a works' council at Lewis'. In 1922 he declared that \"The day has arrived for the new type of employer, one who neither fears nor fights his workpeople, but one who identifies their interests with his own, and founds his relationship with them on the law of mutual service.\"\n\nHe was also Chairman of the Federation of Hosiery Manufacturers' Association and of the Hosiery Trade Section of the Nottingham Chamber of Commerce.\n\nHerbert Francis was also prominent in the promotion of education in Nottingham. He was a Governor of Nottingham High School from 1921 to 1928. He was active in raising funds for the establishment of the Textile Department at University College Nottingham. He was a member of the Council of University College Nottingham, 1917\u201326, and Vice-President of University College Nottingham from 1926 to 1928. He bequeathed \u00a310,000 to University College Nottingham shortly before his death. The University of Nottingham holds a portrait of Herbert Francis by Noel Denholm Davis.\n\nHerbert Francis never married. He was living at 5 Park Terrace in 1901. He lived in Castlethorpe with his widowed sister Edith Helen Taylor until his death in 1928.\n\nJ.B. Lewis and Sons, the Haydn Road works, were recognised as a model factory. A 1914 article on Carrington notes that the development \"will contain 100,000 feet of floor space, with special attention not only to health, light, safety, convenience, but also to recreation, the site occupying between six and seven acres.\" By 1930 the site included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch. Meridian Cricket Club was formed in 1907. By 1927 the company employed more than 4,000 and had operations in Nottingham, USA and Melbourne, Australia. J.B. Lewis and Sons was taken over by Courtaulds in 1963.",
       "occupations": [
-        { "occupation": "Hosier; Chairman and Managing Director", "employer": "J.B. Lewis and Sons (Lewis'), Haydn Road, Nottingham" }
+        {
+          "occupation": "Hosier; Chairman and Managing Director",
+          "employer": "J.B. Lewis and Sons (Lewis'), Haydn Road, Nottingham"
+        }
       ],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 32, "occupation_at_census": "Hosier" },
-        { "census_year": 1911, "relationship": "Head", "age_at_census": 42, "occupation_at_census": "Hosier" }
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 32,
+          "occupation_at_census": "Hosier"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "age_at_census": 42,
+          "occupation_at_census": "Hosier"
+        }
       ],
       "relationships": []
+    },
+    {
+      "first_name": "Lucy Mabel",
+      "last_name": "Lancashire",
+      "born_year": 1876,
+      "born_place": "Nottingham",
+      "died_year": 1970,
+      "died_place": "Folkestone",
+      "bio": "Lucy Mabel Lancashire (b. Nottingham, 1876; d. Folkestone, 1970) was the sister of Herbert Francis Lancashire. She married the prominent antiquarian John Holland Walker (of 15 Park Valley) in Nottingham in 1899.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Francis Lancashire",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Edith Helen Taylor",
+          "type": "sibling_of"
+        },
+        {
+          "name": "John Holland Walker",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Helen",
+      "last_name": "Taylor",
+      "known_as": "Edith Helen Taylor (n\u00e9e Lancashire)",
+      "born_year": 1867,
+      "born_place": "Nottingham",
+      "bio": "Edith Helen Taylor (n\u00e9e Lancashire) (b. Nottingham, 1867) married John William Taylor (b. c.1861; d. Glandford Brigg, Lincolnshire, 1900) in Nottingham in 1895. Already widowed, she was living with her brother Herbert Francis Lancashire at 5 Park Terrace in 1901. She later lived with him at Castlethorpe, Newcastle Circus.",
+      "occupations": [],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Sister (widowed)",
+          "occupation_at_census": "Living on own means"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "Herbert Francis Lancashire",
+          "type": "sibling_of"
+        },
+        {
+          "name": "Lucy Mabel Lancashire",
+          "type": "sibling_of"
+        },
+        {
+          "name": "John William Taylor",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Edith Joan Taylor",
+          "type": "parent_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Joan",
+      "last_name": "Taylor",
+      "born_date": "19 December 1898",
+      "born_year": 1898,
+      "born_place": "Glandford Brigg, Lincolnshire",
+      "died_year": 1983,
+      "died_place": "Mendip, Somerset",
+      "bio": "Edith Joan Taylor (b. 19 December 1898, Glandford Brigg, Lincolnshire; d. 1983, Mendip, Somerset). Married William H Henshaw in 1928.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Edith Helen Taylor",
+          "type": "child_of"
+        },
+        {
+          "name": "William H Henshaw",
+          "type": "spouse_of"
+        }
+      ]
     }
   ],
   "significant_places": [
@@ -121,10 +306,27 @@
       "location": "Haydn Road, Carrington, Nottingham",
       "place_type": "Factory / company",
       "description": "J.B. Lewis and Sons was a major Nottingham hosiery manufacturer, founded by James Blount Lewis in 1815. Under Herbert Francis Lancashire of Castlethorpe, the company moved to a model factory on Haydn Road, Carrington, which by 1930 included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch for employees.",
-      "lat": 52.9820,
-      "lng": -1.1680,
+      "lat": 52.982,
+      "lng": -1.168,
       "person_connections": [
-        { "person": "Herbert Francis Lancashire", "connection": "Chairman and Managing Director; led relocation to Haydn Road model factory" }
+        {
+          "person": "Herbert Francis Lancashire",
+          "connection": "Chairman and Managing Director; led relocation to Haydn Road model factory"
+        }
+      ]
+    },
+    {
+      "name": "J.B. Lewis and Sons, Haydn Road Works",
+      "location": "Carrington, Nottingham",
+      "place_type": "Factory / company",
+      "description": "J.B. Lewis and Sons was a major hosiery manufacturer based on Haydn Road, Carrington. The works were recognised as a model factory. By 1930 the site included a heated indoor swimming pool, bowling greens, tennis courts and a hockey pitch for employees. Meridian Cricket Club was formed there in 1907. By 1927 the company employed more than 4,000 people with operations in Nottingham, USA and Melbourne, Australia. Taken over by Courtaulds in 1963.",
+      "lat": 52.9762,
+      "lng": -1.1532,
+      "person_connections": [
+        {
+          "person": "Herbert Francis Lancashire",
+          "connection": "Senior figure / director; Chairman of Federation of Hosiery Manufacturers' Association"
+        }
       ]
     }
   ],

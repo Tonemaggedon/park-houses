@@ -5,12 +5,24 @@
       "last_name": "Hardy",
       "born_year": 1825,
       "bio": "Edward Hardy was a retired grocer living at Elmhurst on Cavendish Road East in 1891, aged 66.",
-      "occupations": [{ "occupation": "Grocer (retired)" }],
+      "occupations": [
+        {
+          "occupation": "Grocer (retired)"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 66, "occupation_at_census": "Retired grocer" }
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 66,
+          "occupation_at_census": "Retired grocer"
+        }
       ],
       "relationships": [
-        { "name": "Elizabeth Hardy", "type": "spouse_of" }
+        {
+          "name": "Elizabeth Hardy",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -19,10 +31,17 @@
       "born_year": 1827,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Wife", "age_at_census": 64 }
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 64
+        }
       ],
       "relationships": [
-        { "name": "Edward Hardy", "type": "spouse_of" }
+        {
+          "name": "Edward Hardy",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -31,33 +50,116 @@
       "born_year": 1856,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Daughter", "age_at_census": 35 }
+        {
+          "census_year": 1891,
+          "relationship": "Daughter",
+          "age_at_census": 35
+        }
       ],
       "relationships": [
-        { "name": "Edward Hardy", "type": "child_of" },
-        { "name": "Elizabeth Hardy", "type": "child_of" }
+        {
+          "name": "Edward Hardy",
+          "type": "child_of"
+        },
+        {
+          "name": "Elizabeth Hardy",
+          "type": "child_of"
+        }
       ]
     },
-    { "first_name": "Lilley", "last_name": "Lilley", "born_year": 1870, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 21 }], "relationships": [] },
-    { "first_name": "Lamb", "last_name": "Lamb", "born_year": 1872, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 19 }], "relationships": [] },
-    { "first_name": "Smith", "last_name": "Smith", "born_year": 1874, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 17 }], "relationships": [] },
+    {
+      "first_name": "Lilley",
+      "last_name": "Lilley",
+      "born_year": 1870,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 21
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Lamb",
+      "last_name": "Lamb",
+      "born_year": 1872,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 19
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Smith",
+      "last_name": "Smith",
+      "born_year": 1874,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 17
+        }
+      ],
+      "relationships": []
+    },
     {
       "first_name": "John R",
       "last_name": "Goodwin",
       "born_year": 1843,
       "bio": "John R Goodwin was a bank manager living at Elmhurst on Cavendish Road East in 1901. He was appointed one of the Joint Liquidators of the Nottingham Joint Stock Bank.",
       "occupations": [
-        { "occupation": "Bank manager" },
-        { "occupation": "Joint Liquidator", "employer": "Nottingham Joint Stock Bank" }
+        {
+          "occupation": "Bank manager"
+        },
+        {
+          "occupation": "Joint Liquidator",
+          "employer": "Nottingham Joint Stock Bank"
+        }
       ],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 58, "occupation_at_census": "Bank manager" }
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 58,
+          "occupation_at_census": "Bank manager"
+        }
       ],
       "relationships": [
-        { "name": "Kate Goodwin", "type": "spouse_of" },
-        { "name": "Kate E Goodwin", "type": "parent_of" },
-        { "name": "Gertrude Goodwin", "type": "parent_of" },
-        { "name": "Hilda Goodwin", "type": "parent_of" }
+        {
+          "name": "Kate Goodwin",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Kate E Goodwin",
+          "type": "parent_of"
+        },
+        {
+          "name": "Gertrude Goodwin",
+          "type": "parent_of"
+        },
+        {
+          "name": "Hilda Goodwin",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -66,10 +168,17 @@
       "born_year": 1847,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Wife", "age_at_census": 54 }
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 54
+        }
       ],
       "relationships": [
-        { "name": "John R Goodwin", "type": "spouse_of" }
+        {
+          "name": "John R Goodwin",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -78,11 +187,21 @@
       "born_year": 1873,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 28 }
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 28
+        }
       ],
       "relationships": [
-        { "name": "John R Goodwin", "type": "child_of" },
-        { "name": "Kate Goodwin", "type": "child_of" }
+        {
+          "name": "John R Goodwin",
+          "type": "child_of"
+        },
+        {
+          "name": "Kate Goodwin",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -91,11 +210,21 @@
       "born_year": 1876,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 25 }
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 25
+        }
       ],
       "relationships": [
-        { "name": "John R Goodwin", "type": "child_of" },
-        { "name": "Kate Goodwin", "type": "child_of" }
+        {
+          "name": "John R Goodwin",
+          "type": "child_of"
+        },
+        {
+          "name": "Kate Goodwin",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -104,32 +233,103 @@
       "born_year": 1879,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Daughter", "age_at_census": 22 }
+        {
+          "census_year": 1901,
+          "relationship": "Daughter",
+          "age_at_census": 22
+        }
       ],
       "relationships": [
-        { "name": "John R Goodwin", "type": "child_of" },
-        { "name": "Kate Goodwin", "type": "child_of" }
+        {
+          "name": "John R Goodwin",
+          "type": "child_of"
+        },
+        {
+          "name": "Kate Goodwin",
+          "type": "child_of"
+        }
       ]
     },
-    { "first_name": "Annie", "last_name": "Radford", "born_year": 1878, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 23 }], "relationships": [] },
-    { "first_name": "Edith", "last_name": "Hopkinson", "born_year": 1882, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 19 }], "relationships": [] },
+    {
+      "first_name": "Annie",
+      "last_name": "Radford",
+      "born_year": 1878,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 23
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Hopkinson",
+      "born_year": 1882,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 19
+        }
+      ],
+      "relationships": []
+    },
     {
       "first_name": "Herbert Durrant",
       "last_name": "Snook",
       "born_date": "23 December 1867",
       "born_year": 1867,
-      "bio": "Herbert Durrant Snook (b. 23 December 1867) was the son of James Snook, founder of James Snook & Co., linen and woollen drapers of Nottingham. He was educated at Nottingham High School and Trent College. He became Company Chairman, continuing his father's business interests. His siblings included James Bracher Snook, Arundel Bracher Snook, Charlotte Snook, Frederick Snook, and Walter Percy Snook. He lived at Elmhurst on Cavendish Road East in 1911 with his wife Emily Gertrude and daughters Phyllis Mary and Dulcie Durrant.",
+      "bio": "Herbert Durrant Snook (b. 23 December 1867) was the son of James Snook, founder of James Snook & Co., linen and woollen drapers of Nottingham. He was educated at Nottingham High School and Trent College. He became Company Chairman, continuing his father's business interests. His siblings included James Bracher Snook, Arundel Bracher Snook, Charlotte Snook, Frederick Snook, and Walter Percy Snook. He lived at Elmhurst on Cavendish Road East in 1911 with his wife Emily Gertrude and daughters Phyllis Mary and Dulcie Durrant.\n\nHerbert Snook married twice: firstly Francis Mary, daughter of John Hardy Carter of Holbeach, in 1890; and secondly Emily Gertrude, daughter of Robert Pinder of Elmbank, Nottingham, in 1903. He had at least 4 children: Phyllis Mary Snook, Hilda Snook, Violet Mabel Snook, and Dulcie Durrant Snook.\n\nHerbert Snook became Chairman of J. Snook & Co., which had premises in Houndsgate (opposite St Peter's church) and was still in existence in the 1960s. Snook appears to have still been Chairman in 1952.\n\nHerbert was an enthusiastic sportsman. He was elected as a \"playing member\" of the company when Notts. County Football Club became a limited liability company in 1890; a Committee member of Notts. County Cricket Club; President of Nottinghamshire Union of Golf Clubs 1905 and Notts. Amateur Strokeplay champion 1913; First president of the Nottinghamshire Professional and Amateur Golfers Alliance in 1921, donating a trophy, the President's Cup, which is still competed for today; runner-up in the 1906 Nottinghamshire Lawn Tennis men's singles championship; and a Committee member of an Automobile Club (possibly the Nottingham and District Automobile Club). The Autocar, 1907, reported that Snook participated in a motor car race, driving a 1012 h.p. Humbert, winning a special gold medal as the competitor who made the best performance on the handicap of a member who had not owned or driven a car more than twelve months prior to the race.\n\nSnook was also Chairman of the Nottingham Liberal Association in 1912 and 1939, and a magistrate. Note: other sources claim that he acquired The Cedars at Highfields in 1904 and lived there subsequently.\n\nDocuments in the Park Estate archives (NPE PF): Lease dated 1st December 1883 to Henry Daubney. Notice of Assignment 24th November 1938, E.C. Watmough's Executors to Sir Arthur Black. Notice of Assignment 27th June 1939 to Sir Arthur William Black \u2014 now united with Overdale. Notice of Assignment 1941, Sir Arthur Black to Nottingham Nets Limited. Notice of Assignment 29th September 1949, Nottingham Nets Limited to Mr P.W. Gray (both properties). Plans for conversion of two semi-detached houses into 6 flats submitted by Jesse Gray, builder and contractor, 1948 (Mr P.W. Gray); licence granted December 1950. NPE D 1/268 Conveyance: Freehold conveyed to Elsie Beatrice Gray, of Cheadle, 4th October 1960 for \u00a31,650.",
       "occupations": [
-        { "occupation": "Company Chairman" },
-        { "occupation": "Linen and woollen draper", "employer": "James Snook & Co., Nottingham" }
+        {
+          "occupation": "Company Chairman"
+        },
+        {
+          "occupation": "Linen and woollen draper",
+          "employer": "James Snook & Co., Nottingham"
+        }
       ],
       "census_entries": [
-        { "census_year": 1911, "relationship": "Head", "age_at_census": 43, "occupation_at_census": "Company Chairman" }
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "age_at_census": 43,
+          "occupation_at_census": "Company Chairman"
+        }
       ],
       "relationships": [
-        { "name": "Emily Gertrude Snook", "type": "spouse_of" },
-        { "name": "Phyllis Mary Snook", "type": "parent_of" },
-        { "name": "Dulcie Durrant Snook", "type": "parent_of" }
+        {
+          "name": "Emily Gertrude Snook",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Phyllis Mary Snook",
+          "type": "parent_of"
+        },
+        {
+          "name": "Dulcie Durrant Snook",
+          "type": "parent_of"
+        },
+        {
+          "name": "Hilda Snook",
+          "type": "parent_of"
+        },
+        {
+          "name": "Violet Mabel Snook",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -138,10 +338,17 @@
       "born_year": 1871,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1911, "relationship": "Wife", "age_at_census": 40 }
+        {
+          "census_year": 1911,
+          "relationship": "Wife",
+          "age_at_census": 40
+        }
       ],
       "relationships": [
-        { "name": "Herbert Durrant Snook", "type": "spouse_of" }
+        {
+          "name": "Herbert Durrant Snook",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -150,11 +357,21 @@
       "born_year": 1898,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 13 }
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 13
+        }
       ],
       "relationships": [
-        { "name": "Herbert Durrant Snook", "type": "child_of" },
-        { "name": "Emily Gertrude Snook", "type": "child_of" }
+        {
+          "name": "Herbert Durrant Snook",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Gertrude Snook",
+          "type": "child_of"
+        }
       ]
     },
     {
@@ -163,17 +380,125 @@
       "born_year": 1901,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1911, "relationship": "Daughter", "age_at_census": 10 }
+        {
+          "census_year": 1911,
+          "relationship": "Daughter",
+          "age_at_census": 10
+        }
       ],
       "relationships": [
-        { "name": "Herbert Durrant Snook", "type": "child_of" },
-        { "name": "Emily Gertrude Snook", "type": "child_of" }
+        {
+          "name": "Herbert Durrant Snook",
+          "type": "child_of"
+        },
+        {
+          "name": "Emily Gertrude Snook",
+          "type": "child_of"
+        }
       ]
     },
-    { "first_name": "Florence", "last_name": "Lowe", "born_year": 1888, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Ethel", "last_name": "Paling", "born_year": 1891, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid" }], "relationships": [] },
-    { "first_name": "Mabel", "last_name": "Turner", "born_year": 1893, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Parlourmaid" }], "relationships": [] },
-    { "first_name": "Mary Ellen", "last_name": "Wright", "born_year": 1896, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 15, "occupation_at_census": "Nurse" }], "relationships": [] }
+    {
+      "first_name": "Florence",
+      "last_name": "Lowe",
+      "born_year": 1888,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 23,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Ethel",
+      "last_name": "Paling",
+      "born_year": 1891,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mabel",
+      "last_name": "Turner",
+      "born_year": 1893,
+      "occupations": [
+        {
+          "occupation": "Parlourmaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 18,
+          "occupation_at_census": "Parlourmaid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary Ellen",
+      "last_name": "Wright",
+      "born_year": 1896,
+      "occupations": [
+        {
+          "occupation": "Nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 15,
+          "occupation_at_census": "Nurse"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Hilda",
+      "last_name": "Snook",
+      "bio": "Hilda Snook, daughter of Herbert Durrant Snook.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Durrant Snook",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Violet Mabel",
+      "last_name": "Snook",
+      "bio": "Violet Mabel Snook, daughter of Herbert Durrant Snook.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Herbert Durrant Snook",
+          "type": "child_of"
+        }
+      ]
+    }
   ],
   "significant_places": [
     {
@@ -182,10 +507,13 @@
       "place_type": "School",
       "description": "Nottingham High School is a leading independent school. Herbert Durrant Snook of Elmhurst was educated here.",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Nottingham_High_School",
-      "lat": 52.9620,
-      "lng": -1.1530,
+      "lat": 52.962,
+      "lng": -1.153,
       "person_connections": [
-        { "person": "Herbert Durrant Snook", "connection": "Educated at Nottingham High School" }
+        {
+          "person": "Herbert Durrant Snook",
+          "connection": "Educated at Nottingham High School"
+        }
       ]
     },
     {
@@ -194,10 +522,13 @@
       "place_type": "School",
       "description": "Trent College is an independent school in Long Eaton. Herbert Durrant Snook was educated here.",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Trent_College",
-      "lat": 52.8950,
-      "lng": -1.2700,
+      "lat": 52.895,
+      "lng": -1.27,
       "person_connections": [
-        { "person": "Herbert Durrant Snook", "connection": "Educated at Trent College" }
+        {
+          "person": "Herbert Durrant Snook",
+          "connection": "Educated at Trent College"
+        }
       ]
     }
   ],

@@ -7,20 +7,64 @@
       "born_year": 1834,
       "born_place": "Munslow, Shropshire",
       "died_year": 1912,
-      "bio": "Samuel Bourne (30 October 1834 – 1912) was one of the most celebrated travel photographers of the nineteenth century. Born in Munslow, Shropshire, he became a bank clerk in Nottingham before turning to photography. Between 1863 and 1870 he made three extended photographic expeditions to India, producing thousands of images of the subcontinent including the Himalayas, Kashmir, and major Indian cities. He was a partner in the firm Bourne & Shepherd, one of the most important commercial photography studios in colonial India, based in Calcutta and Simla. Returning to England around 1870, he continued in business as a manufacturer. He lived at Adam House (previously known as Brightlands) on Clumber Road East in the Park Estate.",
+      "bio": "Samuel Bourne (30 October 1834 \u2013 1912) was one of the most celebrated travel photographers of the nineteenth century. Born in Munslow, Shropshire, he became a bank clerk in Nottingham before turning to photography. Between 1863 and 1870 he made three extended photographic expeditions to India, producing thousands of images of the subcontinent including the Himalayas, Kashmir, and major Indian cities. He was a partner in the firm Bourne & Shepherd, one of the most important commercial photography studios in colonial India, based in Calcutta and Simla. Returning to England around 1870, he continued in business as a manufacturer. He lived at Adam House (previously known as Brightlands) on Clumber Road East in the Park Estate.\n\nBourne left Moore and Robinson's to become a professional photographer in India. Based in Simla at the \"Bourne and Shepherd\" studio, Bourne travelled widely in India from 1863 to 1870 before returning to England in 1871 with approximately 2,200 images of the landscape and architecture of India and the Himalayas. These photographs established Bourne's reputation as the greatest photographer of Britain's colonies and one of the finest travel photographers of the nineteenth century.\n\nIn 1867 he married Mary Tolley, daughter of a wealthy Nottingham businessman.\n\nIn 1877 he became a cotton doubler in partnership with his brother-in-law James B. Tolley. They built a cotton doubling works in Netherfield in 1881. Bourne became a magistrate and was also President of the Nottingham Tennis Club.\n\nBourne commissioned Arthur Marshall to construct Brightlands in 1885. Bourne lived at Brightlands from its construction until his death in 1912.\n\nSamuel and Mary had 5 children: Constance Edith Bourne (b. c.1870\u20131958), Florence Gertrude Bourne (b. 1873), Lina Mary Bourne (b. 1874), Stanley Bourne (1876\u20131942), and Eveline Annie Bourne (b. 1879\u20131965).\n\nOn 29th March 1949 the lease on the property was assigned from the Exors. S. Bourne to S. & F.G. Blythen. The freehold was purchased by Blythen in 1953 for \u00a32,000.",
       "occupations": [
-        { "occupation": "Photographer", "notes": "Bourne & Shepherd, Calcutta and Simla; major expeditions to India and the Himalayas 1863–1870" },
-        { "occupation": "Manufacturer" },
-        { "occupation": "Bank clerk" }
+        {
+          "occupation": "Photographer",
+          "notes": "Bourne & Shepherd, Calcutta and Simla; major expeditions to India and the Himalayas 1863\u20131870"
+        },
+        {
+          "occupation": "Manufacturer"
+        },
+        {
+          "occupation": "Bank clerk"
+        }
       ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 56, "occupation_at_census": "Manufacturer" },
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 66, "occupation_at_census": "Manufacturer" },
-        { "census_year": 1911, "relationship": "Head", "age_at_census": 76, "occupation_at_census": "Retired manufacturer" }
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 56,
+          "occupation_at_census": "Manufacturer"
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 66,
+          "occupation_at_census": "Manufacturer"
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "age_at_census": 76,
+          "occupation_at_census": "Retired manufacturer"
+        }
       ],
       "relationships": [
-        { "name": "Mary Bourne", "type": "spouse_of" },
-        { "name": "Stanley Bourne", "type": "parent_of" }
+        {
+          "name": "Mary Bourne",
+          "type": "spouse_of"
+        },
+        {
+          "name": "Stanley Bourne",
+          "type": "parent_of"
+        },
+        {
+          "name": "Constance Edith Bourne",
+          "type": "parent_of"
+        },
+        {
+          "name": "Florence Gertrude Bourne",
+          "type": "parent_of"
+        },
+        {
+          "name": "Lina Mary Bourne",
+          "type": "parent_of"
+        },
+        {
+          "name": "Eveline Annie Bourne",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -29,12 +73,27 @@
       "born_year": 1838,
       "occupations": [],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Wife", "age_at_census": 53 },
-        { "census_year": 1901, "relationship": "Wife", "age_at_census": 63 },
-        { "census_year": 1911, "relationship": "Wife", "age_at_census": 73 }
+        {
+          "census_year": 1891,
+          "relationship": "Wife",
+          "age_at_census": 53
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 63
+        },
+        {
+          "census_year": 1911,
+          "relationship": "Wife",
+          "age_at_census": 73
+        }
       ],
       "relationships": [
-        { "name": "Samuel Bourne", "type": "spouse_of" }
+        {
+          "name": "Samuel Bourne",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -42,23 +101,185 @@
       "last_name": "Bourne",
       "born_year": 1876,
       "died_year": 1942,
-      "bio": "Stanley Bourne (1876–1942) was the son of Samuel and Mary Bourne. He became a highly successful textiles businessman and rose to be Deputy Chairman of Courtaulds, one of Britain's largest textile corporations. He was also a significant art collector.",
+      "bio": "Stanley Bourne (1876\u20131942) married Eileen Mary Michael in 1911. They had 4 children: Roland Michael, Humphrey Samuel, Edward J. Stanley, and Angela Mary Bourne. Stanley continued in the textile industry, moving from cotton to rayon, and became a millionaire and (by 1937) Deputy Chairman of Courtaulds Ltd. It seems that Stanley Bourne continued to hold the lease on Brightlands until his death in 1942.",
       "occupations": [
-        { "occupation": "Textiles businessman" },
-        { "occupation": "Deputy Chairman", "employer": "Courtaulds" }
+        {
+          "occupation": "Textiles businessman"
+        },
+        {
+          "occupation": "Deputy Chairman",
+          "employer": "Courtaulds"
+        }
       ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Son", "age_at_census": 15 },
-        { "census_year": 1901, "relationship": "Son", "age_at_census": 25 }
+        {
+          "census_year": 1891,
+          "relationship": "Son",
+          "age_at_census": 15
+        },
+        {
+          "census_year": 1901,
+          "relationship": "Son",
+          "age_at_census": 25
+        }
       ],
       "relationships": [
-        { "name": "Samuel Bourne", "type": "child_of" },
-        { "name": "Mary Bourne", "type": "child_of" }
+        {
+          "name": "Samuel Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Eileen Mary Michael",
+          "type": "spouse_of"
+        }
       ]
     },
-    { "first_name": "Emily", "last_name": "Spencer", "born_year": 1867, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 24 }], "relationships": [] },
-    { "first_name": "Jane", "last_name": "Adams", "born_year": 1870, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 21 }], "relationships": [] },
-    { "first_name": "Ada", "last_name": "Bates", "born_year": 1873, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 18 }], "relationships": [] }
+    {
+      "first_name": "Emily",
+      "last_name": "Spencer",
+      "born_year": 1867,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 24
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Jane",
+      "last_name": "Adams",
+      "born_year": 1870,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 21
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Ada",
+      "last_name": "Bates",
+      "born_year": 1873,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 18
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Constance Edith",
+      "last_name": "Bourne",
+      "born_year": 1870,
+      "died_year": 1958,
+      "bio": "Constance Edith Bourne (b. c.1870\u20131958) died unmarried in Nottingham in 1958.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Samuel Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Bourne",
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Florence Gertrude",
+      "last_name": "Bourne",
+      "born_year": 1873,
+      "died_year": 1914,
+      "bio": "Florence Gertrude Bourne (b. 1873) married Alfred C. Pearse (American?) in 1913 and died in 1914.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Samuel Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Alfred C Pearse",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Lina Mary",
+      "last_name": "Bourne",
+      "born_year": 1874,
+      "died_year": 1974,
+      "bio": "Lina Mary Bourne (b. 1874) married Hubert Arthur Dowson (b. 1866) in Nottingham in 1900. Hubert Arthur was the son of Benjamin Dowson of Felixstowe, Clumber Road West in 1891 & 1901. In 1901 Lina and Hubert were living on Western Terrace. The Dowsons lived at Woodborough Hall from 1923 to 1937. Hubert was a solicitor in Nottingham \u2014 manager (1919), trustee (1932) and Chairman (1937) of the Nottingham Trustee Savings Bank. The partnership of Dowson, Enfield and Co. of 13 Weekday Cross was dissolved on 20th May 1940. Hubert was knighted in 1937, at which time he was President of the Law Society. Hubert played for Nottingham Rugby Football Club. Hubert died in 1946. Their children included Benjamin Hubert, Enid Mary and Maud Susanna Stanley.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Samuel Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Hubert Arthur Dowson",
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Eveline Annie",
+      "last_name": "Bourne",
+      "born_year": 1879,
+      "died_year": 1965,
+      "bio": "Eveline Annie Bourne (b. 1879\u20131965) married the architect Edmund Herbert Child (b. Halifax, c.1866; d. 1938) in 1906. They were living at 24 The Ropewalk in 1911. From 1900\u201304 Child was a partner in Child, Gorman and Ross which had offices in Long Eaton, Nottingham and London.",
+      "occupations": [],
+      "census_entries": [],
+      "relationships": [
+        {
+          "name": "Samuel Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Mary Bourne",
+          "type": "child_of"
+        },
+        {
+          "name": "Edmund Herbert Child",
+          "type": "spouse_of"
+        }
+      ]
+    }
   ],
   "significant_places": [
     {
@@ -70,7 +291,10 @@
       "lat": 22.5726,
       "lng": 88.3639,
       "person_connections": [
-        { "person": "Samuel Bourne", "connection": "Partner in Bourne & Shepherd; made three major photographic expeditions to India 1863–1870" }
+        {
+          "person": "Samuel Bourne",
+          "connection": "Partner in Bourne & Shepherd; made three major photographic expeditions to India 1863\u20131870"
+        }
       ]
     },
     {
@@ -82,7 +306,10 @@
       "lat": 52.4068,
       "lng": -1.5197,
       "person_connections": [
-        { "person": "Stanley Bourne", "connection": "Deputy Chairman of Courtaulds" }
+        {
+          "person": "Stanley Bourne",
+          "connection": "Deputy Chairman of Courtaulds"
+        }
       ]
     }
   ],

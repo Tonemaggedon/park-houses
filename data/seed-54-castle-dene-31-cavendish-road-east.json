@@ -5,27 +5,105 @@
       "last_name": "Lloyd",
       "born_year": 1801,
       "bio": "Bertha Lloyd was living on her own means at Castle Dene, 31 Cavendish Road East in 1891, aged 90.",
-      "occupations": [{ "occupation": "Living on own means" }],
+      "occupations": [
+        {
+          "occupation": "Living on own means"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1891, "relationship": "Head", "age_at_census": 90, "occupation_at_census": "Living on own means" }
+        {
+          "census_year": 1891,
+          "relationship": "Head",
+          "age_at_census": 90,
+          "occupation_at_census": "Living on own means"
+        }
       ],
       "relationships": []
     },
-    { "first_name": "Ellen", "last_name": "Jones", "born_year": 1862, "occupations": [{ "occupation": "Lady's maid" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Lady's maid" }], "relationships": [] },
-    { "first_name": "Eliza", "last_name": "Jones", "born_year": 1858, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 33, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Lucy A", "last_name": "Nicholson", "born_year": 1867, "occupations": [{ "occupation": "Parlourmaid" }], "census_entries": [{ "census_year": 1891, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Parlourmaid" }], "relationships": [] },
+    {
+      "first_name": "Ellen",
+      "last_name": "Jones",
+      "born_year": 1862,
+      "occupations": [
+        {
+          "occupation": "Lady's maid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 29,
+          "occupation_at_census": "Lady's maid"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Eliza",
+      "last_name": "Jones",
+      "born_year": 1858,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 33,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Lucy A",
+      "last_name": "Nicholson",
+      "born_year": 1867,
+      "occupations": [
+        {
+          "occupation": "Parlourmaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1891,
+          "relationship": "Servant",
+          "age_at_census": 24,
+          "occupation_at_census": "Parlourmaid"
+        }
+      ],
+      "relationships": []
+    },
     {
       "first_name": "James",
       "last_name": "Marsden",
       "born_year": 1868,
       "bio": "James Marsden was a paper maker who lived at Castle Dene, 31 Cavendish Road East in 1901 with his wife Agnes and young son James.",
-      "occupations": [{ "occupation": "Paper maker" }],
+      "occupations": [
+        {
+          "occupation": "Paper maker"
+        }
+      ],
       "census_entries": [
-        { "census_year": 1901, "relationship": "Head", "age_at_census": 33, "occupation_at_census": "Paper maker" }
+        {
+          "census_year": 1901,
+          "relationship": "Head",
+          "age_at_census": 33,
+          "occupation_at_census": "Paper maker"
+        }
       ],
       "relationships": [
-        { "name": "Agnes Marsden", "type": "spouse_of" },
-        { "name": "James Marsden Jr", "type": "parent_of" }
+        {
+          "name": "Agnes Marsden",
+          "type": "spouse_of"
+        },
+        {
+          "name": "James Marsden Jr",
+          "type": "parent_of"
+        }
       ]
     },
     {
@@ -33,22 +111,136 @@
       "last_name": "Marsden",
       "born_year": 1869,
       "occupations": [],
-      "census_entries": [{ "census_year": 1901, "relationship": "Wife", "age_at_census": 32 }],
-      "relationships": [{ "name": "James Marsden", "type": "spouse_of" }]
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Wife",
+          "age_at_census": 32
+        }
+      ],
+      "relationships": [
+        {
+          "name": "James Marsden",
+          "type": "spouse_of"
+        }
+      ]
     },
     {
       "first_name": "James",
       "last_name": "Marsden Jr",
       "born_year": 1897,
       "occupations": [],
-      "census_entries": [{ "census_year": 1901, "relationship": "Son", "age_at_census": 4 }],
-      "relationships": [{ "name": "James Marsden", "type": "child_of" }, { "name": "Agnes Marsden", "type": "child_of" }]
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Son",
+          "age_at_census": 4
+        }
+      ],
+      "relationships": [
+        {
+          "name": "James Marsden",
+          "type": "child_of"
+        },
+        {
+          "name": "Agnes Marsden",
+          "type": "child_of"
+        }
+      ]
     },
-    { "first_name": "Louise A", "last_name": "Davis", "born_year": 1873, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 28 }], "relationships": [] },
-    { "first_name": "Louise", "last_name": "Persall", "born_year": 1876, "occupations": [{ "occupation": "Servant" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 25 }], "relationships": [] },
-    { "first_name": "Mary", "last_name": "Hancocks", "born_year": 1865, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 36, "occupation_at_census": "Nurse" }], "relationships": [] },
-    { "first_name": "J", "last_name": "Houghton", "born_year": 1874, "occupations": [{ "occupation": "Nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "Nurse" }], "relationships": [] },
-    { "first_name": "Eva", "last_name": "Piper", "born_year": 1867, "occupations": [{ "occupation": "Hospital nurse" }], "census_entries": [{ "census_year": 1901, "relationship": "Servant", "age_at_census": 34, "occupation_at_census": "Hospital nurse" }], "relationships": [] },
+    {
+      "first_name": "Louise A",
+      "last_name": "Davis",
+      "born_year": 1873,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 28
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Louise",
+      "last_name": "Persall",
+      "born_year": 1876,
+      "occupations": [
+        {
+          "occupation": "Servant"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 25
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Hancocks",
+      "born_year": 1865,
+      "occupations": [
+        {
+          "occupation": "Nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 36,
+          "occupation_at_census": "Nurse"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "J",
+      "last_name": "Houghton",
+      "born_year": 1874,
+      "occupations": [
+        {
+          "occupation": "Nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 27,
+          "occupation_at_census": "Nurse"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Eva",
+      "last_name": "Piper",
+      "born_year": 1867,
+      "occupations": [
+        {
+          "occupation": "Hospital nurse"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1901,
+          "relationship": "Servant",
+          "age_at_census": 34,
+          "occupation_at_census": "Hospital nurse"
+        }
+      ],
+      "relationships": []
+    },
     {
       "first_name": "George",
       "last_name": "Elder",
@@ -57,14 +249,31 @@
       "born_place": "Drogheda, Ireland",
       "bio": "George Elder was born in Drogheda, Ireland on 25 March 1847. He was educated at Nottingham High School and at the University of Glasgow, where he was a pupil of Joseph Lister, the pioneer of antiseptic surgery. He graduated as an MB CM (Bachelor of Medicine, Master of Surgery) in 1868 and as an MD (Doctor of Medicine) in 1880.\n\nHe worked as a surgeon at the Samaritan Hospital for Women in Nottingham, which opened in March 1885 and closed in 1930. The hospital's records are held in the Manuscripts and Special Collections section of the University of Nottingham Library. Elder was also a partner of Alexander Robert Tweedie in the practice Elder & Tweedie, 'consulting and general medical practitioners', until the partnership was dissolved in 1913.\n\nElder was a frequent correspondent with the British Medical Journal and in 1892 was listed as a vice-president of the obstetric medicine section of the BMA. He published in the BMJ including 'The treatment of uterine and peri-uterine affections by the method of Dr. Apostoli' (11 June 1887) and 'A case of puerperal eclampsia and its treatment by morphine' (2 March 1901). He was also a vice-president of the British Gynaecological Society, and had a number of works published in The Lancet.",
       "occupations": [
-        { "occupation": "Surgeon", "employer": "Samaritan Hospital for Women, Nottingham", "from_year": 1885, "to_year": 1930 },
-        { "occupation": "Consulting and general medical practitioner", "employer": "Elder & Tweedie", "to_year": 1913 }
+        {
+          "occupation": "Surgeon",
+          "employer": "Samaritan Hospital for Women, Nottingham",
+          "from_year": 1885,
+          "to_year": 1930
+        },
+        {
+          "occupation": "Consulting and general medical practitioner",
+          "employer": "Elder & Tweedie",
+          "to_year": 1913
+        }
       ],
       "census_entries": [
-        { "census_year": 1911, "relationship": "Head", "age_at_census": 64, "occupation_at_census": "Doctor of medicine" }
+        {
+          "census_year": 1911,
+          "relationship": "Head",
+          "age_at_census": 64,
+          "occupation_at_census": "Doctor of medicine"
+        }
       ],
       "relationships": [
-        { "name": "Sophie Louise Elder", "type": "spouse_of" }
+        {
+          "name": "Sophie Louise Elder",
+          "type": "spouse_of"
+        }
       ]
     },
     {
@@ -72,11 +281,58 @@
       "last_name": "Elder",
       "born_year": 1851,
       "occupations": [],
-      "census_entries": [{ "census_year": 1911, "relationship": "Wife", "age_at_census": 60 }],
-      "relationships": [{ "name": "George Elder", "type": "spouse_of" }]
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Wife",
+          "age_at_census": 60
+        }
+      ],
+      "relationships": [
+        {
+          "name": "George Elder",
+          "type": "spouse_of"
+        }
+      ]
     },
-    { "first_name": "Mary Elizabeth", "last_name": "Knighton", "born_year": 1848, "occupations": [{ "occupation": "Cook" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 63, "occupation_at_census": "Cook" }], "relationships": [] },
-    { "first_name": "Elizabeth Mary", "last_name": "Worth", "born_year": 1890, "occupations": [{ "occupation": "Housemaid" }], "census_entries": [{ "census_year": 1911, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Housemaid" }], "relationships": [] }
+    {
+      "first_name": "Mary Elizabeth",
+      "last_name": "Knighton",
+      "born_year": 1848,
+      "occupations": [
+        {
+          "occupation": "Cook"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 63,
+          "occupation_at_census": "Cook"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "first_name": "Elizabeth Mary",
+      "last_name": "Worth",
+      "born_year": 1890,
+      "occupations": [
+        {
+          "occupation": "Housemaid"
+        }
+      ],
+      "census_entries": [
+        {
+          "census_year": 1911,
+          "relationship": "Servant",
+          "age_at_census": 21,
+          "occupation_at_census": "Housemaid"
+        }
+      ],
+      "relationships": []
+    }
   ],
   "significant_places": [
     {
@@ -84,10 +340,13 @@
       "location": "Nottingham",
       "place_type": "Hospital",
       "description": "The Samaritan Hospital for Women opened in Nottingham in March 1885 and closed in 1930. George Elder of Castle Dene was a surgeon there. The hospital's records are held in the Manuscripts and Special Collections section of the University of Nottingham Library.",
-      "lat": 52.9530,
-      "lng": -1.1500,
+      "lat": 52.953,
+      "lng": -1.15,
       "person_connections": [
-        { "person": "George Elder", "connection": "Surgeon from the hospital's opening in 1885" }
+        {
+          "person": "George Elder",
+          "connection": "Surgeon from the hospital's opening in 1885"
+        }
       ]
     }
   ],

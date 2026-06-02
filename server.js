@@ -161,6 +161,8 @@ async function dbInit() {
         property_id INTEGER          -- which property record surfaced this book
       );
     `);
+    // Migrations — safe to run every startup
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
