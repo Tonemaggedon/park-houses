@@ -294,7 +294,7 @@ function lifespan(p) {
   const b = p.born_year || (p.born_date ? p.born_date : null);
   const d = p.died_year || (p.died_date ? p.died_date : null);
   if (!b && !d) return '';
-  return `${b || '?'} – ${d || 'present'}`;
+  return `${b || '?'} – ${d || '?'}`;
 }
 const servantOccupations = new Set(['domestic servant','general domestic servant','housemaid','kitchenmaid','nursemaid','cook','nurse','butler','footman','lady\'s maid','parlour maid','scullery maid','gardener','helper and gardener','valet']);
 function isServant(occ) { return servantOccupations.has((occ||'').toLowerCase()); }
