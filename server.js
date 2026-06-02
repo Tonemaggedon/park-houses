@@ -517,30 +517,31 @@ app.get('/api/stats', async (req, res) => {
     let jobsByCensusYear = {}, topJobs = {};
     let propsWithPhotos = 0;
 
-    // Photo count from overrides
+    // Stats from DB
     if (db) {
-      const [pplRes, occRes, censusRes, propPplRes, photoRes] = await Promise.all([
+      const [pplRes, occRes, censusRes, propPplRes, photoRes, topOccRes] = await Promise.all([
         db.query('SELECT COUNT(*) as cnt FROM people'),
         db.query('SELECT COUNT(*) as cnt FROM occupations'),
-        db.query(`SELECT census_year, LOWER(occupation) as occ, COUNT(*) as cnt
+        db.query(`SELECT ce.census_year, LOWER(o.occupation) as occ, COUNT(DISTINCT ce.person_id) as cnt
                   FROM census_entries ce JOIN occupations o ON o.person_id=ce.person_id
-                  WHERE ce.property_id IS NOT NULL
-                  GROUP BY census_year, LOWER(occupation) ORDER BY census_year, cnt DESC`),
-        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM census_entries WHERE property_id IS NOT NULL`),
-        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`)
+                  GROUP BY ce.census_year, LOWER(o.occupation) ORDER BY ce.census_year, cnt DESC`),
+        db.query(`SELECT COUNT(DISTINCT ce.property_id) as cnt FROM census_entries ce WHERE ce.property_id IS NOT NULL`),
+        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`),
+        db.query(`SELECT LOWER(occupation) as occ, COUNT(*) as cnt FROM occupations GROUP BY LOWER(occupation) ORDER BY cnt DESC LIMIT 15`)
       ]);
       totalPeople = parseInt(pplRes.rows[0].cnt);
       totalOccupations = parseInt(occRes.rows[0].cnt);
       propsWithPeople = parseInt(propPplRes.rows[0].cnt);
       propsWithPhotos = parseInt(photoRes.rows[0].cnt);
 
-      // Jobs by year
+      // Jobs by census year
       censusRes.rows.forEach(r => {
-        const yr = r.census_year;
+        const yr = String(r.census_year);
         if (!jobsByCensusYear[yr]) jobsByCensusYear[yr] = {};
         jobsByCensusYear[yr][r.occ] = parseInt(r.cnt);
-        topJobs[r.occ] = (topJobs[r.occ] || 0) + parseInt(r.cnt);
       });
+      // Top jobs from occupations table directly
+      topOccRes.rows.forEach(r => { topJobs[r.occ] = parseInt(r.cnt); });
     }
 
     const topJobsList = Object.entries(topJobs).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([job,count])=>({job,count}));
