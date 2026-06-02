@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Save Helper</title></head>
+<body>
+<p id="status">Waiting for data...</p>
+<script>
+window.addEventListener('message', function(e) {
+  const status = document.getElementById('status');
+  status.textContent = 'Received data, saving...';
+  fetch('/api/save-descs', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: e.data
+  }).then(r=>r.json()).then(result => {
+    status.textContent = 'DONE: ' + JSON.stringify(result);
+    window._done = result;
+  }).catch(err => {
+    status.textContent = 'ERROR: ' + err.message;
+    window._done = 'ERR:' + err.message;
+  });
+});
+document.getElementById('status').textContent = 'Ready — waiting for postMessage';
+</script>
+</body>
+</html>

@@ -7,6 +7,16 @@ const bcrypt   = require('bcrypt');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+// ── Global CORS (dev) ─────────────────────────────────────────────────────────
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Private-Network', 'true');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
+
 // ── Config ────────────────────────────────────────────────────────────────────
 const ADMIN_USER     = process.env.ADMIN_USER     || 'admin';
 const ADMIN_PASS     = process.env.ADMIN_PASS     || 'parkhouses2024';
@@ -494,6 +504,53 @@ function propName(id) { return propNameMap[id] || `Property ${id}`; }
 app.get('/api/all-props', (req, res) => {
   try { res.json(JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'))); }
   catch(e) { res.json([]); }
+});
+
+// ── Stats API ─────────────────────────────────────────────────────────────────
+app.get('/api/stats', async (req, res) => {
+  try {
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const totalProps = allProps.length;
+    const propsWithDesc = allProps.filter(p => p.desc && p.desc.length > 50).length;
+
+    let totalPeople = 0, propsWithPeople = 0, totalOccupations = 0;
+    let jobsByCensusYear = {}, topJobs = {};
+    let propsWithPhotos = 0;
+
+    // Photo count from overrides
+    if (db) {
+      const [pplRes, occRes, censusRes, propPplRes, photoRes] = await Promise.all([
+        db.query('SELECT COUNT(*) as cnt FROM people'),
+        db.query('SELECT COUNT(*) as cnt FROM occupations'),
+        db.query(`SELECT census_year, LOWER(occupation) as occ, COUNT(*) as cnt
+                  FROM census_entries ce JOIN occupations o ON o.person_id=ce.person_id
+                  WHERE ce.property_id IS NOT NULL
+                  GROUP BY census_year, LOWER(occupation) ORDER BY census_year, cnt DESC`),
+        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM census_entries WHERE property_id IS NOT NULL`),
+        db.query(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`)
+      ]);
+      totalPeople = parseInt(pplRes.rows[0].cnt);
+      totalOccupations = parseInt(occRes.rows[0].cnt);
+      propsWithPeople = parseInt(propPplRes.rows[0].cnt);
+      propsWithPhotos = parseInt(photoRes.rows[0].cnt);
+
+      // Jobs by year
+      censusRes.rows.forEach(r => {
+        const yr = r.census_year;
+        if (!jobsByCensusYear[yr]) jobsByCensusYear[yr] = {};
+        jobsByCensusYear[yr][r.occ] = parseInt(r.cnt);
+        topJobs[r.occ] = (topJobs[r.occ] || 0) + parseInt(r.cnt);
+      });
+    }
+
+    const topJobsList = Object.entries(topJobs).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([job,count])=>({job,count}));
+
+    res.json({
+      properties: { total: totalProps, withDesc: propsWithDesc, withPeople: propsWithPeople, withPhotos: propsWithPhotos },
+      people: { total: totalPeople, occupations: totalOccupations },
+      jobs: { byCensusYear: jobsByCensusYear, topJobs: topJobsList }
+    });
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── Property overrides API ────────────────────────────────────────────────────
@@ -1067,8 +1124,113 @@ app.post('/api/seed/property/:propId/people', requireAdmin, async (req, res) => 
 // ── Static ────────────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'people.html')));
+app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
+app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
+
+// ── People at a property ──────────────────────────────────────────────────────
+app.get('/api/people-at-property/:id', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`SELECT DISTINCT p.id, p.first_name, p.last_name, p.known_as
+      FROM census_entries ce JOIN people p ON p.id=ce.person_id
+      WHERE ce.property_id=$1`, [parseInt(req.params.id)]);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+// ── Debug: check what park houses returns server-side ─────────────────────────
+app.get('/api/test-fetch', (req, res) => {
+  const http = require('http');
+  const url = 'http://www.nottinghamparkhouses.co.uk/propertypagedetail.asp?infoId=130&linkid=130&pageId=130&id=101';
+  http.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' } }, (r) => {
+    let data = '';
+    r.on('data', c => data += c);
+    r.on('end', () => {
+      const startTag = data.indexOf('class="mainBody">');
+      const contentStart = startTag + 'class="mainBody">'.length;
+      const endTag = data.indexOf('</table>', contentStart);
+      const raw = data.substring(contentStart, endTag);
+      const text = raw.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+      res.send('LEN:'+text.length+' PREVIEW:'+text.substring(0,300));
+    });
+  }).on('error', e => res.send('ERR:'+e.message));
+});
+
+// ── Server-side scrape all descriptions from park houses website ──────────────
+app.get('/api/scrape-all-descs', async (req, res) => {
+  const http = require('http');
+  const allPropsFile = path.join(__dirname, 'data', 'all_props.json');
+  const props = JSON.parse(fs.readFileSync(allPropsFile, 'utf8'));
+  const ids = props.map(p => p.id);
+
+  function fetchDesc(id) {
+    return new Promise((resolve) => {
+      const url = `http://www.nottinghamparkhouses.co.uk/propertypagedetail.asp?infoId=${id}&linkid=${id}&pageId=${id}&id=101`;
+      http.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (r) => {
+        let data = '';
+        r.on('data', c => data += c);
+        r.on('end', () => {
+          // Find mainBody td start
+          const startTag = data.indexOf('class="mainBody">');
+          if (startTag === -1) return resolve({ id, desc: '' });
+          const contentStart = startTag + 'class="mainBody">'.length;
+          // Find the closing </table> tag after mainBody to capture full content
+          const endTag = data.indexOf('</table>', contentStart);
+          const raw = endTag === -1 ? data.substring(contentStart) : data.substring(contentStart, endTag);
+          // Preserve newlines, strip only inline tags
+          const text = raw.replace(/<br\s*\/?>/gi, '\n').replace(/<p[^>]*>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/[ \t]+/g, ' ').trim();
+          // Strip address header (everything up to first blank line)
+          const desc = text.replace(/^[\s\S]*?\n\n+/, '').trim() || text;
+          resolve({ id, desc });
+        });
+      }).on('error', () => resolve({ id, desc: '' }));
+    });
+  }
+
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write(`Scraping ${ids.length} properties...\n`);
+
+  let updated = 0;
+  for (let i = 0; i < ids.length; i += 10) {
+    const batch = ids.slice(i, i + 10);
+    const results = await Promise.all(batch.map(fetchDesc));
+    results.forEach(({ id, desc }) => {
+      if (desc) { const p = props.find(x => x.id === id); if (p) { p.desc = desc; updated++; } }
+    });
+    res.write(`Done ${Math.min(i + 10, ids.length)}/${ids.length}\n`);
+  }
+
+  fs.writeFileSync(allPropsFile, JSON.stringify(props, null, 2));
+  res.end(`\nComplete! Updated ${updated} properties.\n`);
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ── Save scraped descriptions (local dev helper) ──────────────────────────────
+app.options('/api/save-descs', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.sendStatus(204);
+});
+app.post('/api/save-descs', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}, express.json({limit: '10mb'}), (req, res) => {
+  const descs = req.body;
+  const allPropsFile = path.join(__dirname, 'data', 'all_props.json');
+  try {
+    const props = JSON.parse(fs.readFileSync(allPropsFile, 'utf8'));
+    let updated = 0;
+    props.forEach(p => {
+      if (descs[p.id]) { p.desc = descs[p.id]; updated++; }
+    });
+    fs.writeFileSync(allPropsFile, JSON.stringify(props, null, 2));
+    res.json({ ok: true, updated });
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 dbInit().then(() => {

@@ -3,426 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Park Houses — Admin Dashboard</title>
+<title>Nottingham Park Houses — Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg: #0f1117;
-    --card: #1a1d27;
-    --border: #2a2d3a;
-    --text: #e8eaf0;
-    --muted: #8b8fa8;
-    --accent: #4f8ef7;
-    --green: #3ecf8e;
-    --amber: #f5a623;
-    --red: #e05252;
-    --purple: #a78bfa;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
-
-  header {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
-  header .subtitle { color: var(--muted); font-size: 13px; margin-top: 2px; }
-  .refresh-btn {
-    background: var(--border);
-    border: none;
-    color: var(--text);
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: background 0.15s;
-  }
-  .refresh-btn:hover { background: #3a3d4a; }
-
-  main { padding: 32px; max-width: 1100px; margin: 0 auto; }
-
-  /* ── Top stat row ── */
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    cursor: pointer;
-    transition: border-color 0.15s, transform 0.1s;
-    position: relative;
-    overflow: hidden;
-  }
-  .stat-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .stat-card.active { border-color: var(--accent); background: #1e2235; }
-  .stat-card.total { cursor: default; }
-  .stat-card.total:hover { transform: none; border-color: var(--border); }
-  .stat-card .label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .stat-card .number {
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .stat-card .sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-  .stat-card .bar {
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 3px;
-    border-radius: 0 0 0 10px;
-    transition: width 0.5s ease;
-  }
-
-  /* ── Progress summary ── */
-  .progress-section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px;
-    margin-bottom: 32px;
-  }
-  .progress-section h2 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
-  .progress-row {
-    display: grid;
-    grid-template-columns: 130px 1fr 60px;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .progress-row:last-child { margin-bottom: 0; }
-  .progress-row .plabel { font-size: 13px; color: var(--text); }
-  .progress-track {
-    height: 8px;
-    background: var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.6s ease;
-  }
-  .progress-row .pct { font-size: 12px; color: var(--muted); text-align: right; }
-
-  /* ── Detail panel ── */
-  .detail-panel {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    display: none;
-  }
-  .detail-panel.visible { display: block; }
-  .detail-header {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .detail-header h2 { font-size: 15px; font-weight: 600; }
-  .detail-header .count-badge {
-    background: var(--border);
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .search-bar {
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--border);
-  }
-  .search-bar input {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    outline: none;
-  }
-  .search-bar input:focus { border-color: var(--accent); }
-
-  .prop-list {
-    max-height: 480px;
-    overflow-y: auto;
-  }
-  .prop-item {
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 50px 1fr auto;
-    align-items: center;
-    gap: 12px;
-    transition: background 0.1s;
-  }
-  .prop-item:last-child { border-bottom: none; }
-  .prop-item:hover { background: rgba(79,142,247,0.05); }
-  .prop-item .pid { font-size: 11px; color: var(--muted); font-family: monospace; }
-  .prop-item .pname { font-size: 13px; }
-  .prop-item .paddress { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .prop-item .open-link {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.1s, color 0.1s;
-    white-space: nowrap;
-  }
-  .prop-item .open-link:hover { border-color: var(--accent); color: var(--accent); }
-
-  .empty-state {
-    padding: 48px 24px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .loading { padding: 32px; text-align: center; color: var(--muted); font-size: 14px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #e8e0d0; min-height: 100vh; }
+.header { background: linear-gradient(135deg,#1a2a1a 0%,#0f1923 50%,#1a1a2e 100%); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; }
+.header-title { font-size:1.1rem; font-weight:700; color:#c8b87a; letter-spacing:0.05em; }
+.header-sub { font-size:0.75rem; color:#8a9a7a; margin-top:2px; }
+.nav-links { display:flex; gap:0.5rem; }
+.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.85rem; padding:0.3rem 0.8rem; border-radius:4px; transition:all 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:#c8b87a; background:rgba(200,184,122,0.1); }
+.hero { background:linear-gradient(135deg,#1a2a1a 0%,#1a1a2e 100%); padding:2.5rem 2rem 2rem; text-align:center; border-bottom:1px solid #2a2a3a; }
+.hero h1 { font-size:2rem; color:#c8b87a; font-weight:300; letter-spacing:0.08em; }
+.hero h1 strong { font-weight:700; }
+.hero p { color:#8a9a7a; margin-top:0.5rem; font-size:0.9rem; }
+.main { max-width:1300px; margin:0 auto; padding:2rem; }
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; margin-bottom:2rem; }
+.stat-card { background:linear-gradient(135deg,#1e2d1e,#1a2030); border:1px solid #2a3a2a; border-radius:12px; padding:1.2rem; text-align:center; transition:transform 0.2s,border-color 0.2s; }
+.stat-card:hover { transform:translateY(-2px); border-color:#c8b87a; }
+.stat-card .val { font-size:2.2rem; font-weight:700; line-height:1; }
+.stat-card .label { font-size:0.72rem; color:#8a9a7a; margin-top:0.3rem; text-transform:uppercase; letter-spacing:0.05em; }
+.stat-card .sub { font-size:0.68rem; color:#5a7a5a; margin-top:0.2rem; }
+.gold { color:#c8b87a; } .green { color:#4caf82; } .blue { color:#5b9bd5; } .orange { color:#e07b39; } .purple { color:#9b7fd4; }
+.sections-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2rem; }
+@media(max-width:900px){ .sections-grid { grid-template-columns:1fr; } }
+.panel { background:#141e14; border:1px solid #2a3a2a; border-radius:12px; padding:1.5rem; }
+.section-header { display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem; padding-bottom:0.7rem; border-bottom:1px solid #2a3a2a; }
+.section-header .icon { font-size:1.3rem; }
+.section-header h2 { font-size:1rem; font-weight:600; color:#c8b87a; }
+.section-header .count { font-size:0.78rem; color:#5a7a5a; margin-left:auto; }
+.progress-item { margin-bottom:0.9rem; }
+.progress-label { display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:0.3rem; color:#a8b8a8; }
+.progress-label span:last-child { color:#c8b87a; font-weight:600; }
+.progress-bar { height:8px; background:#2a3a2a; border-radius:4px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:4px; transition:width 1.2s ease; }
+.fill-gold { background:linear-gradient(90deg,#8a6a2a,#c8b87a); }
+.fill-green { background:linear-gradient(90deg,#2a6a4a,#4caf82); }
+.fill-blue { background:linear-gradient(90deg,#2a4a8a,#5b9bd5); }
+.fill-orange { background:linear-gradient(90deg,#8a4a2a,#e07b39); }
+.research-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.5rem; max-height:280px; overflow-y:auto; }
+.research-card { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:8px; padding:0.6rem 0.8rem; text-decoration:none; display:block; transition:all 0.2s; }
+.research-card:hover { border-color:#c8b87a; background:#253525; }
+.rc-name { font-size:0.8rem; color:#e8e0d0; font-weight:500; }
+.rc-street { font-size:0.7rem; color:#5a7a5a; margin-top:2px; }
+.rc-badge { display:inline-block; font-size:0.62rem; padding:1px 5px; border-radius:3px; margin-top:3px; }
+.badge-desc { background:rgba(91,155,213,0.15); color:#5b9bd5; border:1px solid rgba(91,155,213,0.3); }
+.badge-none { background:rgba(200,184,122,0.08); color:#8a7a4a; border:1px solid rgba(200,184,122,0.15); }
+.filter-bar { display:flex; gap:0.4rem; margin-bottom:0.7rem; flex-wrap:wrap; }
+.filter-btn { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:6px; padding:0.25rem 0.7rem; font-size:0.72rem; color:#8a9a7a; cursor:pointer; transition:all 0.2s; }
+.filter-btn.active,.filter-btn:hover { border-color:#c8b87a; color:#c8b87a; background:rgba(200,184,122,0.08); }
+.people-actions { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; }
+.action-btn { display:flex; align-items:center; gap:0.7rem; background:#1e2d1e; border:1px solid #2a3a2a; border-radius:10px; padding:0.9rem; text-decoration:none; transition:all 0.2s; }
+.action-btn:hover { border-color:#c8b87a; background:#253525; }
+.ab-icon { font-size:1.5rem; }
+.ab-title { font-size:0.85rem; color:#e8e0d0; font-weight:600; }
+.ab-label { font-size:0.7rem; color:#5a7a5a; margin-top:1px; }
+.jobs-full { grid-column:1 / -1; }
+.chart-container { position:relative; height:260px; }
+.jobs-top { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+.job-tag { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:20px; padding:0.25rem 0.7rem; font-size:0.72rem; color:#a8b8a8; display:flex; align-items:center; gap:0.4rem; }
+.job-tag .jt-count { color:#c8b87a; font-weight:700; }
+.loading { color:#5a7a5a; font-size:0.82rem; text-align:center; padding:0.8rem; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:#1a2a1a; }
+::-webkit-scrollbar-thumb { background:#2a4a2a; border-radius:3px; }
 </style>
 </head>
 <body>
-<header>
+
+<div class="header">
   <div>
-    <h1>🏛 Park Houses — Admin Dashboard</h1>
-    <div class="subtitle">The Park Estate, Nottingham</div>
+    <div class="header-title">THE PARK CONSERVATION TRUST</div>
+    <div class="header-sub">Historical Research Dashboard</div>
   </div>
-  <div style="display:flex;gap:8px;align-items:center">
-    <a href="/" style="background:var(--border);border:none;color:var(--text);padding:8px 14px;border-radius:6px;font-size:0.8rem;text-decoration:none">🗺 Map</a>
-    <a href="/people" style="background:var(--border);border:none;color:var(--text);padding:8px 14px;border-radius:6px;font-size:0.8rem;text-decoration:none">👤 People</a>
-    <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  <nav class="nav-links">
+    <a href="/dashboard" class="active">Dashboard</a>
+    <a href="/">Map</a>
+    <a href="/people">People</a>
+    <a href="/family-tree">Family Trees</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>The Park Estate, Nottingham — <strong>Historical Record</strong></h1>
+  <p>Documenting the lives and buildings of one of England's finest Victorian residential estates</p>
+</div>
+
+<div class="main">
+  <div class="stat-row">
+    <div class="stat-card"><div class="val gold" id="s-total">—</div><div class="label">Total Properties</div></div>
+    <div class="stat-card"><div class="val green" id="s-people">—</div><div class="label">People Recorded</div></div>
+    <div class="stat-card"><div class="val blue" id="s-desc">—</div><div class="label">Houses Described</div><div class="sub" id="s-desc-pct"></div></div>
+    <div class="stat-card"><div class="val orange" id="s-jobs">—</div><div class="label">Occupations</div></div>
+    <div class="stat-card"><div class="val purple" id="s-photos">—</div><div class="label">With Photos</div></div>
+    <div class="stat-card"><div class="val gold" id="s-linked">—</div><div class="label">Houses + People</div><div class="sub" id="s-linked-pct"></div></div>
   </div>
-</header>
 
-<main>
-  <div id="loading" class="loading">Loading property data…</div>
+  <div class="sections-grid">
 
-  <div id="content" style="display:none">
-    <div class="stat-row">
-      <div class="stat-card total">
-        <div class="label">Total Properties</div>
-        <div class="number" id="stat-total">—</div>
-        <div class="sub" id="stat-target">of 350 target</div>
-      </div>
-      <div class="stat-card" onclick="showList('desc')" id="card-desc">
-        <div class="label">Missing Description</div>
-        <div class="number" id="stat-desc">—</div>
-        <div class="sub">no data entered</div>
-        <div class="bar" id="bar-desc" style="background:var(--amber)"></div>
-      </div>
-      <div class="stat-card" onclick="showList('history')" id="card-history">
-        <div class="label">Missing History</div>
-        <div class="number" id="stat-history">—</div>
-        <div class="sub">no history text</div>
-        <div class="bar" id="bar-history" style="background:var(--purple)"></div>
-      </div>
-      <div class="stat-card" onclick="showList('photos')" id="card-photos">
-        <div class="label">Missing Photos</div>
-        <div class="number" id="stat-photos">—</div>
-        <div class="sub">no images uploaded</div>
-        <div class="bar" id="bar-photos" style="background:var(--accent)"></div>
-      </div>
-      <div class="stat-card" onclick="showList('submissions')" id="card-submissions">
-        <div class="label">Missing Submissions</div>
-        <div class="number" id="stat-submissions">—</div>
-        <div class="sub">no public submissions</div>
-        <div class="bar" id="bar-submissions" style="background:var(--green)"></div>
+    <div class="panel">
+      <div class="section-header"><span class="icon">🏛️</span><h2>Houses</h2><span class="count" id="h-count"></span></div>
+      <div id="houseProgress"><div class="loading">Loading...</div></div>
+      <div style="margin-top:1.2rem;">
+        <div style="font-size:0.82rem;color:#8a9a7a;margin-bottom:0.6rem;">Houses available for further research</div>
+        <div class="filter-bar">
+          <button class="filter-btn active" onclick="filterResearch('all',this)">All</button>
+          <button class="filter-btn" onclick="filterResearch('nodesc',this)">Needs description</button>
+          <button class="filter-btn" onclick="filterResearch('desc',this)">Has description</button>
+        </div>
+        <div class="research-grid" id="researchGrid"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
-    <div class="progress-section">
-      <h2>Completion Progress</h2>
-      <div class="progress-row">
-        <div class="plabel">Descriptions</div>
-        <div class="progress-track"><div class="progress-fill" id="prog-desc" style="background:var(--amber)"></div></div>
-        <div class="pct" id="pct-desc">0%</div>
+    <div class="panel">
+      <div class="section-header"><span class="icon">👥</span><h2>People</h2><span class="count" id="p-count"></span></div>
+      <div class="people-actions">
+        <a href="/people" class="action-btn"><span class="ab-icon">📋</span><div><div class="ab-title">Directory</div><div class="ab-label">Browse all people</div></div></a>
+        <a href="/family-tree" class="action-btn"><span class="ab-icon">🌳</span><div><div class="ab-title">Family Trees</div><div class="ab-label">View connections</div></div></a>
+        <a href="/" class="action-btn"><span class="ab-icon">🗺️</span><div><div class="ab-title">Map View</div><div class="ab-label">Properties on map</div></div></a>
+        <a href="/people" class="action-btn"><span class="ab-icon">📜</span><div><div class="ab-title">Census Records</div><div class="ab-label">By census year</div></div></a>
       </div>
-      <div class="progress-row">
-        <div class="plabel">History</div>
-        <div class="progress-track"><div class="progress-fill" id="prog-history" style="background:var(--purple)"></div></div>
-        <div class="pct" id="pct-history">0%</div>
-      </div>
-      <div class="progress-row">
-        <div class="plabel">Photos</div>
-        <div class="progress-track"><div class="progress-fill" id="prog-photos" style="background:var(--accent)"></div></div>
-        <div class="pct" id="pct-photos">0%</div>
-      </div>
-      <div class="progress-row">
-        <div class="plabel">Submissions</div>
-        <div class="progress-track"><div class="progress-fill" id="prog-submissions" style="background:var(--green)"></div></div>
-        <div class="pct" id="pct-submissions">0%</div>
-      </div>
+      <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
 
-    <div class="detail-panel" id="detail-panel">
-      <div class="detail-header">
-        <h2 id="detail-title">Properties</h2>
-        <span class="count-badge" id="detail-count">0</span>
-      </div>
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search by name or address…" oninput="filterList()">
-      </div>
-      <div class="prop-list" id="prop-list"></div>
+    <div class="panel jobs-full">
+      <div class="section-header"><span class="icon">⚒️</span><h2>Occupations &amp; Social History</h2><span class="count" id="j-count"></span></div>
+      <div class="chart-container"><canvas id="jobsChart"></canvas></div>
+      <div class="jobs-top" id="jobTags"><div class="loading">Connect database to see occupation data</div></div>
     </div>
+
   </div>
-</main>
+</div>
 
 <script>
-let allProps = [];
-let overrides = {};
-let activeFilter = null;
-let filteredProps = [];
+let allProps=[], stats={}, jobsChart=null, researchFilter='all';
 
-const TOTAL_TARGET = 350;
-
-async function loadData() {
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('content').style.display = 'none';
-
-  try {
-    const [propsRes, overridesRes] = await Promise.all([
-      fetch('/api/all-props'),
-      fetch('/api/properties')
-    ]);
-    allProps = await propsRes.json();
-    overrides = await overridesRes.json();
-    renderStats();
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    // Re-render active list if open
-    if (activeFilter) showList(activeFilter);
-  } catch(e) {
-    document.getElementById('loading').textContent = 'Error loading data: ' + e.message;
-  }
+async function init(){
+  const [p,s]=await Promise.all([
+    fetch('/api/all-props').then(r=>r.json()).catch(()=>[]),
+    fetch('/api/stats').then(r=>r.json()).catch(()=>({}))
+  ]);
+  allProps=p; stats=s;
+  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs();
 }
 
-function renderStats() {
-  const total = allProps.length;
-  document.getElementById('stat-total').textContent = total;
-  document.getElementById('stat-target').textContent = `of ${TOTAL_TARGET} target (${TOTAL_TARGET - total} missing)`;
-
-  const missing = {
-    desc: allProps.filter(p => !hasDesc(p)).length,
-    history: allProps.filter(p => !hasHistory(p)).length,
-    photos: allProps.filter(p => !hasPhotos(p)).length,
-    submissions: allProps.filter(p => !hasSubmissions(p)).length,
-  };
-
-  for (const [key, count] of Object.entries(missing)) {
-    document.getElementById(`stat-${key}`).textContent = count;
-    const have = total - count;
-    const pct = total > 0 ? Math.round((have / total) * 100) : 0;
-    document.getElementById(`prog-${key}`).style.width = pct + '%';
-    document.getElementById(`pct-${key}`).textContent = pct + '%';
-    // Bar width on card = proportion missing
-    const missingPct = total > 0 ? Math.round((count / total) * 100) : 0;
-    document.getElementById(`bar-${key}`).style.width = missingPct + '%';
-  }
+function renderStats(){
+  const p=stats.properties||{}, pe=stats.people||{};
+  const total=p.total||allProps.length||0;
+  const descCount=p.withDesc||allProps.filter(x=>x.desc&&x.desc.length>50).length;
+  set('s-total',total); set('s-people',pe.total||0);
+  set('s-desc',descCount); set('s-desc-pct',total?Math.round(descCount/total*100)+'% complete':'');
+  set('s-jobs',pe.occupations||0);
+  set('s-photos',p.withPhotos||0);
+  const linked=p.withPeople||0;
+  set('s-linked',linked); set('s-linked-pct',total&&linked?Math.round(linked/total*100)+'% of houses':'');
+  set('h-count',total+' properties'); set('p-count',(pe.total||0)+' people');
+  set('j-count',(pe.occupations||0)+' recorded');
 }
 
-function hasDesc(p) {
-  const ov = overrides[p.id];
-  return ov && ov.desc && ov.desc.trim().length > 0;
-}
-function hasHistory(p) {
-  const ov = overrides[p.id];
-  return ov && ov.history && ov.history.trim().length > 0;
-}
-function hasPhotos(p) {
-  const ov = overrides[p.id];
-  return ov && ov.photos && ov.photos.length > 0;
-}
-function hasSubmissions(p) {
-  const ov = overrides[p.id];
-  return ov && ov.submissions && ov.submissions.length > 0;
-}
-
-function showList(filter) {
-  // Toggle off if clicking same card
-  if (activeFilter === filter) {
-    activeFilter = null;
-    document.getElementById('detail-panel').classList.remove('visible');
-    document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
-    return;
-  }
-  activeFilter = filter;
-  document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
-  document.getElementById(`card-${filter}`).classList.add('active');
-
-  const titles = {
-    desc: 'Properties missing description',
-    history: 'Properties missing history',
-    photos: 'Properties missing photos',
-    submissions: 'Properties missing submissions',
-  };
-  document.getElementById('detail-title').textContent = titles[filter];
-
-  const checks = { desc: hasDesc, history: hasHistory, photos: hasPhotos, submissions: hasSubmissions };
-  filteredProps = allProps.filter(p => !checks[filter](p));
-
-  document.getElementById('detail-panel').classList.add('visible');
-  document.getElementById('search-input').value = '';
-  renderList(filteredProps);
-}
-
-function filterList() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  if (!q) { renderList(filteredProps); return; }
-  const shown = filteredProps.filter(p =>
-    (p.name || '').toLowerCase().includes(q) ||
-    (p.address || '').toLowerCase().includes(q) ||
-    (p.street || '').toLowerCase().includes(q) ||
-    String(p.id).includes(q)
-  );
-  renderList(shown);
-}
-
-function renderList(list) {
-  document.getElementById('detail-count').textContent = list.length + ' properties';
-  const el = document.getElementById('prop-list');
-  if (list.length === 0) {
-    el.innerHTML = '<div class="empty-state">✓ All properties have this data filled in</div>';
-    return;
-  }
-  el.innerHTML = list.map(p => {
-    const display = p.name || `${p.no} ${p.street}`.trim() || p.address;
-    const addr = p.address || `${p.no} ${p.street}`.trim();
-    return `<div class="prop-item">
-      <div class="pid">#${p.id}</div>
-      <div>
-        <div class="pname">${display}</div>
-        <div class="paddress">${addr !== display ? addr : ''}</div>
-      </div>
-      <a class="open-link" href="/?id=${p.id}" target="_blank">Open on map ↗</a>
-    </div>`;
+function renderHouseProgress(){
+  const p=stats.properties||{}, total=p.total||allProps.length||1;
+  const descCount=p.withDesc||allProps.filter(x=>x.desc&&x.desc.length>50).length;
+  const items=[
+    {label:'With descriptions',val:descCount,cls:'fill-blue'},
+    {label:'With people data',val:p.withPeople||0,cls:'fill-green'},
+    {label:'With photographs',val:p.withPhotos||0,cls:'fill-orange'}
+  ];
+  document.getElementById('houseProgress').innerHTML=items.map(it=>{
+    const pct=Math.round(it.val/total*100);
+    return `<div class="progress-item"><div class="progress-label"><span>${it.label}</span><span>${it.val} / ${total} (${pct}%)</span></div><div class="progress-bar"><div class="progress-fill ${it.cls}" style="width:${pct}%"></div></div></div>`;
   }).join('');
 }
 
-loadData();
+function renderResearchGrid(filter){
+  if(filter) researchFilter=filter;
+  let props=[...allProps];
+  if(researchFilter==='nodesc') props=props.filter(p=>!p.desc||p.desc.length<50);
+  if(researchFilter==='desc') props=props.filter(p=>p.desc&&p.desc.length>50);
+  const grid=document.getElementById('researchGrid');
+  if(!props.length){grid.innerHTML='<div class="loading">No properties match</div>';return;}
+  grid.innerHTML=props.slice(0,200).map(p=>{
+    const hasDesc=p.desc&&p.desc.length>50;
+    const name=p.number?`No. ${p.number}`:(p.name||`Property ${p.id}`);
+    return `<a href="/?id=${p.id}" class="research-card"><div class="rc-name">${name}</div><div class="rc-street">${p.street||''}</div><span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span></a>`;
+  }).join('');
+}
+
+function filterResearch(type,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderResearchGrid(type);
+}
+
+function renderPeopleProgress(){
+  const p=stats.properties||{}, total=p.total||allProps.length||1, linked=p.withPeople||0;
+  const pct=Math.round(linked/total*100);
+  document.getElementById('peopleProgress').innerHTML=`
+    <div class="progress-item"><div class="progress-label"><span>Houses with people data</span><span>${linked} / ${total} (${pct}%)</span></div><div class="progress-bar"><div class="progress-fill fill-green" style="width:${pct}%"></div></div></div>
+    <div class="progress-item"><div class="progress-label"><span>Research completion</span><span>${pct}%</span></div><div class="progress-bar"><div class="progress-fill fill-gold" style="width:${pct}%"></div></div></div>`;
+}
+
+function renderJobs(){
+  const jobs=stats.jobs||{}, byCensusYear=jobs.byCensusYear||{}, topJobs=jobs.topJobs||[];
+  const years=Object.keys(byCensusYear).sort();
+  document.getElementById('jobTags').innerHTML=topJobs.length
+    ? topJobs.map(j=>`<div class="job-tag"><span>${j.job}</span><span class="jt-count">${j.count}</span></div>`).join('')
+    : '<div class="loading" style="color:#5a7a5a">Connect a database to see occupation data</div>';
+  const ctx=document.getElementById('jobsChart').getContext('2d');
+  if(jobsChart) jobsChart.destroy();
+  const colours=['#c8b87a','#4caf82','#5b9bd5','#e07b39','#9b7fd4','#e05a8a','#4ab8c8','#a8c84a','#c86a5a','#7ab87a'];
+  const labels=years.length?years:['1841','1851','1861','1871','1881','1891','1901','1911'];
+  const allJobNames=[...new Set(years.flatMap(y=>Object.keys(byCensusYear[y])))].slice(0,10);
+  jobsChart=new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels,
+      datasets:allJobNames.length?allJobNames.map((job,i)=>({
+        label:job,data:years.map(y=>byCensusYear[y][job]||0),
+        backgroundColor:colours[i%colours.length]+'99',borderColor:colours[i%colours.length],borderWidth:1
+      })):[{label:'No data — connect database',data:labels.map(()=>0),backgroundColor:'rgba(200,184,122,0.1)',borderColor:'rgba(200,184,122,0.2)',borderWidth:1}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:'#8a9a7a',font:{size:10}},position:'bottom'}},
+      scales:{x:{stacked:true,ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}},y:{stacked:true,ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}}}}
+  });
+}
+
+function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
+init();
 </script>
 </body>
 </html>
