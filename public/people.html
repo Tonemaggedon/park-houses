@@ -773,11 +773,13 @@ async function deleteMedia(personId, mediaId) {
 function humaniseRelType(type, isA) {
   const map = {
     'spouse_of': 'Spouse',
-    'parent_of': isA ? 'Parent' : 'Child',
-    'child_of': isA ? 'Child' : 'Parent',
+    // parent_of: A is parent of B → when viewing A (isA=true), B is A's Child; when viewing B (isA=false), A is B's Parent
+    'parent_of': isA ? 'Child' : 'Parent',
+    'child_of': isA ? 'Parent' : 'Child',
     'sibling_of': 'Sibling',
     'employer_of': isA ? 'Employer' : 'Employee',
     'employee_of': isA ? 'Employee' : 'Employer',
+    'sibling_of': 'Sibling',
   };
   return map[type] || type;
 }

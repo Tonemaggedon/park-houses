@@ -187,10 +187,15 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_entity ON change_log(entity_type, entity_id)`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_time ON change_log(created_at DESC)`);
-    // Deduplicate relationships and add unique constraint
-    await db.query(`DELETE FROM people_relationships a USING people_relationships b
-      WHERE a.id > b.id AND a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id AND a.relationship_type=b.relationship_type`);
-    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_relationship ON people_relationships(person_a_id, person_b_id, relationship_type)`);
+    // Deduplicate relationships and add unique constraint (non-fatal)
+    try {
+      await db.query(`DELETE FROM people_relationships WHERE id IN (
+        SELECT a.id FROM people_relationships a
+        JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id AND a.relationship=b.relationship
+        WHERE a.id > b.id
+      )`);
+      await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_relationship ON people_relationships(person_a_id, person_b_id, relationship)`);
+    } catch(migErr) { console.warn('Relationship dedup migration:', migErr.message); }
     await db.query(`CREATE TABLE IF NOT EXISTS person_media (
       id SERIAL PRIMARY KEY,
       person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
@@ -1043,7 +1048,7 @@ app.post('/api/person/:id/relationship', async (req, res) => {
   if (!other_person_id || !relationship_type) return res.status(400).json({ error: 'other_person_id and relationship_type required' });
   try {
     const r = await db.query(
-      `INSERT INTO people_relationships (person_a_id, person_b_id, relationship_type) VALUES ($1,$2,$3)
+      `INSERT INTO people_relationships (person_a_id, person_b_id, relationship) VALUES ($1,$2,$3)
        ON CONFLICT DO NOTHING RETURNING *`,
       [parseInt(req.params.id), parseInt(other_person_id), relationship_type]
     );
