@@ -152,6 +152,8 @@ async function loadArchitect(personId) {
   document.getElementById('listView').style.display = 'none';
   const det = document.getElementById('detailView');
   det.style.display = 'flex';
+  // Wait for browser paint before map can measure container
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
   
   const [person, works] = await Promise.all([
     fetch('/api/person/' + personId).then(r=>r.json()),
@@ -200,13 +202,17 @@ function renderBuildingList() {
 }
 
 function initMap(works) {
+  const mapEl = document.getElementById('map');
+  mapEl.style.height = '420px';
+  mapEl.style.minHeight = '420px';
   if (!map) {
-    map = L.map('map').setView([52.955, -1.155], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors'}).addTo(map);
+    map = L.map('map', {preferCanvas: true}).setView([52.955, -1.155], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors', maxZoom:19}).addTo(map);
   } else {
     Object.values(markers).forEach(m=>map.removeLayer(m));
     markers = {};
   }
+  map.invalidateSize();
   
   works.forEach(w => {
     if (!w.lat || !w.lng) return;
@@ -237,7 +243,9 @@ function initMap(works) {
   
   // Fit bounds if we have markers
   const pts = works.filter(w=>w.lat&&w.lng).map(w=>[w.lat,w.lng]);
+  map.invalidateSize();
   if (pts.length > 1) map.fitBounds(pts, {padding:[30,30]});
+  else if (pts.length === 1) map.setView(pts[0], 14);
 }
 
 function selectWork(id) {
