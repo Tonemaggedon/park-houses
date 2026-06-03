@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Management — Nottingham Park Houses</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#0f1923; color:#e8e0d0; min-height:100vh; }
+.header { background:linear-gradient(135deg,#1a2a1a,#0f1923); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; }
+.header-title { font-size:1rem; font-weight:700; color:#c8b87a; }
+.nav-links { display:flex; gap:0.5rem; }
+.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.85rem; padding:0.3rem 0.8rem; border-radius:4px; }
+.nav-links a:hover { color:#c8b87a; background:rgba(200,184,122,0.1); }
+.main { max-width:1100px; margin:2rem auto; padding:0 1.5rem; }
+h1 { color:#c8b87a; font-size:1.3rem; font-weight:600; margin-bottom:1.5rem; }
+.stats-row { display:flex; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.stat { background:#141e14; border:1px solid #2a3a2a; border-radius:8px; padding:0.8rem 1.2rem; text-align:center; }
+.stat .val { font-size:1.6rem; font-weight:700; color:#c8b87a; }
+.stat .lbl { font-size:0.72rem; color:#8a9a7a; text-transform:uppercase; letter-spacing:0.05em; }
+.table-wrap { background:#141e14; border:1px solid #2a3a2a; border-radius:10px; overflow:hidden; }
+table { width:100%; border-collapse:collapse; font-size:0.83rem; }
+thead th { background:#1e2d1e; color:#c8b87a; padding:0.7rem 1rem; text-align:left; border-bottom:1px solid #2a3a2a; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }
+tbody tr { border-bottom:1px solid #1a2a1a; transition:background 0.15s; }
+tbody tr:hover { background:#1e2d1e; }
+tbody td { padding:0.7rem 1rem; color:#e8e0d0; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.72rem; font-weight:600; }
+.badge.viewer { background:rgba(91,155,213,0.15); color:#5b9bd5; }
+.badge.contributor { background:rgba(76,175,130,0.15); color:#4caf82; }
+.badge.admin { background:rgba(200,184,122,0.2); color:#c8b87a; }
+.badge.pending { background:rgba(224,123,57,0.15); color:#e07b39; }
+.badge.approved { background:rgba(76,175,130,0.1); color:#4caf82; }
+select.role-sel { background:#0f1923; border:1px solid #2a3a2a; color:#e8e0d0; border-radius:4px; padding:3px 6px; font-size:0.78rem; cursor:pointer; }
+.btn { background:none; border:1px solid #2a3a2a; color:#8a9a7a; border-radius:5px; padding:4px 10px; cursor:pointer; font-size:0.75rem; transition:all 0.15s; }
+.btn:hover { border-color:#c8b87a; color:#c8b87a; }
+.btn.approve { border-color:#4caf82; color:#4caf82; }
+.btn.approve:hover { background:rgba(76,175,130,0.1); }
+.btn.danger { border-color:#c04040; color:#c04040; }
+.btn.danger:hover { background:rgba(192,64,64,0.1); }
+.no-users { padding:2rem; text-align:center; color:#5a7a5a; }
+.log-wrap { margin-top:2rem; background:#141e14; border:1px solid #2a3a2a; border-radius:10px; overflow:hidden; }
+.log-head { padding:0.8rem 1rem; border-bottom:1px solid #2a3a2a; display:flex; align-items:center; justify-content:space-between; }
+.log-head h2 { color:#c8b87a; font-size:0.9rem; }
+.log-entry { padding:0.5rem 1rem; border-bottom:1px solid #1a2a1a; font-size:0.78rem; display:grid; grid-template-columns:140px 80px 1fr; gap:0.5rem; }
+.log-time { color:#5a7a5a; }
+.log-user { color:#8a9a7a; font-weight:600; }
+.log-detail { color:#a8b8a8; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">THE PARK CONSERVATION TRUST — User Management</div>
+  <nav class="nav-links">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/">Map</a>
+    <a href="/people">People</a>
+  </nav>
+</div>
+<div class="main">
+  <h1>👥 Registered Users</h1>
+  <div class="stats-row" id="statsRow"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Registered</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="usersBody"><tr><td colspan="6" class="no-users">Loading...</td></tr></tbody>
+    </table>
+  </div>
+  <div class="log-wrap" style="margin-top:2rem">
+    <div class="log-head"><h2>📋 Recent Changes</h2><button class="btn" onclick="loadLog()">Refresh</button></div>
+    <div id="logEntries"><div class="no-users">Loading...</div></div>
+  </div>
+</div>
+<script>
+async function load() {
+  const res = await fetch('/api/admin/users');
+  if (res.status === 401 || res.status === 403) { document.body.innerHTML = '<div style="padding:2rem;color:#c04040;text-align:center">Admin access required. <a href="/" style="color:#c8b87a">← Back</a></div>'; return; }
+  const users = await res.json();
+  const total = users.length;
+  const pending = users.filter(u=>!u.approved).length;
+  const contributors = users.filter(u=>u.role==='contributor').length;
+  document.getElementById('statsRow').innerHTML = [
+    {v:total,l:'Total users'},{v:pending,l:'Awaiting approval'},{v:contributors,l:'Contributors'}
+  ].map(s=>`<div class="stat"><div class="val ${s.v>0&&s.l.includes('Wait')?'':''}"> ${s.v}</div><div class="lbl">${s.l}</div></div>`).join('');
+
+  document.getElementById('usersBody').innerHTML = users.length ? users.map(u => `
+    <tr>
+      <td>${u.first_name} ${u.last_name}</td>
+      <td style="color:#8a9a7a">${u.email}</td>
+      <td>
+        <select class="role-sel" onchange="setRole(${u.id},this.value)">
+          <option value="viewer" ${u.role==='viewer'?'selected':''}>Viewer</option>
+          <option value="contributor" ${u.role==='contributor'?'selected':''}>Contributor</option>
+          <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
+        </select>
+      </td>
+      <td><span class="badge ${u.approved?'approved':'pending'}">${u.approved?'✓ Approved':'⏳ Pending'}</span></td>
+      <td style="color:#5a7a5a;font-size:0.75rem">${new Date(u.created_at).toLocaleDateString('en-GB')}</td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        ${!u.approved?`<button class="btn approve" onclick="approve(${u.id})">✓ Approve</button>`:''}
+        <button class="btn danger" onclick="deleteUser(${u.id},'${u.first_name} ${u.last_name}')">Remove</button>
+      </td>
+    </tr>`).join('') : '<tr><td colspan="6" class="no-users">No registered users yet</td></tr>';
+}
+
+async function setRole(id, role) {
+  await fetch(`/api/admin/users/${id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({role})});
+  load();
+}
+
+async function approve(id) {
+  await fetch(`/api/admin/users/${id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({approved:true})});
+  load();
+}
+
+async function deleteUser(id, name) {
+  if (!confirm(`Remove user "${name}"? This cannot be undone.`)) return;
+  await fetch(`/api/admin/users/${id}`,{method:'DELETE'});
+  load();
+}
+
+async function loadLog() {
+  const r = await fetch('/api/changelog?limit=50').then(res=>res.json()).catch(()=>[]);
+  const el = document.getElementById('logEntries');
+  if (!r.length) { el.innerHTML = '<div class="no-users">No changes logged yet</div>'; return; }
+  el.innerHTML = r.map(l=>`<div class="log-entry">
+    <span class="log-time">${new Date(l.created_at).toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
+    <span class="log-user">${l.username||'—'}</span>
+    <span class="log-detail">${l.action} ${l.entity_type} #${l.entity_id}${l.field?' · '+l.field:''}${l.new_value?' → '+String(l.new_value).substring(0,60):''}</span>
+  </div>`).join('');
+}
+
+load();
+loadLog();
+</script>
+</body>
+</html>

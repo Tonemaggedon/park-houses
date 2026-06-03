@@ -419,6 +419,9 @@ async function renderLeagueTable(){
   } catch(e) {}
 }
 
+// Show admin users link if admin
+fetch('/api/me').then(r=>r.json()).then(d=>{ if(d.isAdmin) { const el=document.getElementById('adminUsersLink'); if(el) el.style.display=''; } }).catch(()=>{});
+
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 init();
 </script>

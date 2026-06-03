@@ -164,6 +164,9 @@ async function dbInit() {
     `);
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
+    await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'viewer'`);
+    await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved BOOLEAN DEFAULT FALSE`);
+    await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved_by TEXT`);
     await db.query(`CREATE TABLE IF NOT EXISTS person_links (
       id SERIAL PRIMARY KEY,
       person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
@@ -345,7 +348,7 @@ async function findUserByEmail(email) {
 
 async function findUserById(id) {
   if (db) {
-    const r = await db.query('SELECT id,email,first_name,last_name,profile_photo,created_at FROM users WHERE id=$1', [id]);
+    const r = await db.query('SELECT id,email,first_name,last_name,profile_photo,role,approved,created_at FROM users WHERE id=$1', [id]);
     return r.rows[0] || null;
   }
   const all = loadUsersFile();
@@ -379,7 +382,7 @@ async function updateUserPhoto(id, photoUrl) {
 // Public user info (no password hash)
 function publicUser(u) {
   if (!u) return null;
-  return { id: u.id, email: u.email, firstName: u.first_name, lastName: u.last_name, profilePhoto: u.profile_photo, createdAt: u.created_at };
+  return { id: u.id, email: u.email, firstName: u.first_name, lastName: u.last_name, profilePhoto: u.profile_photo, role: u.role||'viewer', approved: u.approved||false, createdAt: u.created_at };
 }
 
 // ── Middleware ────────────────────────────────────────────────────────────────
@@ -395,6 +398,13 @@ app.use(session({
 function requireAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) return next();
   res.status(401).json({ error: 'Not authenticated' });
+}
+function requireContributor(req, res, next) {
+  if (req.session && (req.session.isAdmin || req.session.userRole === 'contributor')) return next();
+  res.status(403).json({ error: 'Contributor access required' });
+}
+function isContributor(req) {
+  return !!(req.session && (req.session.isAdmin || req.session.userRole === 'contributor'));
 }
 
 // ── Auth routes ───────────────────────────────────────────────────────────────
@@ -720,6 +730,7 @@ app.post('/api/property/:id/submission', async (req, res) => {
   if (!propId) return res.status(400).json({ error: 'invalid id' });
   try {
     const user = await findUserById(req.session.userId);
+    if (user) req.session.userRole = user.role || 'viewer';
     if (!user) return res.status(401).json({ error: 'User not found' });
     const { type, text, photoUrl } = req.body;
     if (!text && !photoUrl) return res.status(400).json({ error: 'text or photoUrl required' });
@@ -961,6 +972,43 @@ app.post('/api/admin/merge-people', requireAdmin, async (req, res) => {
     res.json({ ok: true, kept: keepId, deleted: deleteId });
   } catch(e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }
   finally { client.release(); }
+});
+
+// ── User management (admin) ───────────────────────────────────────────────────
+app.get('/api/admin/users', requireAdmin, async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query('SELECT id,email,first_name,last_name,role,approved,approved_by,created_at FROM users ORDER BY created_at DESC');
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/admin/users/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { role, approved } = req.body;
+  const validRoles = ['viewer','contributor','admin'];
+  if (role && !validRoles.includes(role)) return res.status(400).json({ error: 'Invalid role' });
+  try {
+    const sets = [], params = [parseInt(req.params.id)];
+    if (role !== undefined) { params.push(role); sets.push(`role=$${params.length}`); }
+    if (approved !== undefined) {
+      params.push(approved);
+      sets.push(`approved=$${params.length}`);
+      if (approved) { params.push(req.session.username||'admin'); sets.push(`approved_by=$${params.length}`); }
+    }
+    if (!sets.length) return res.status(400).json({ error: 'Nothing to update' });
+    await db.query(`UPDATE users SET ${sets.join(',')} WHERE id=$1`, params);
+    await logChange('user', parseInt(req.params.id), req, 'update', role?'role':approved?'approved':'', null, role||String(approved));
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/admin/users/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query('DELETE FROM users WHERE id=$1', [parseInt(req.params.id)]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── One-time occupation normalisation (admin only) ────────────────────────────
@@ -1440,6 +1488,7 @@ app.post('/api/seed/property/:propId/people', requireAdmin, async (req, res) => 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'people.html')));
 app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
+app.get('/admin/users', requireAdmin, (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin-users.html')));
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 
 // ── People at a property ──────────────────────────────────────────────────────
