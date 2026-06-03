@@ -119,6 +119,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
           <button class="filter-btn active" onclick="filterResearch('all',this)">All</button>
           <button class="filter-btn" onclick="filterResearch('nodesc',this)">Needs description</button>
           <button class="filter-btn" onclick="filterResearch('desc',this)">Has description</button>
+          <button class="filter-btn" onclick="filterResearch('researching',this)">Being researched</button>
         </div>
         <div class="research-grid" id="researchGrid"><div class="loading">Loading...</div></div>
       </div>
@@ -133,6 +134,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/people" class="action-btn"><span class="ab-icon">📜</span><div><div class="ab-title">Census Records</div><div class="ab-label">By census year</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
+    </div>
+
+    <!-- Architects panel -->
+    <div class="panel jobs-full" id="architectsPanel" style="display:none">
+      <div class="section-header"><span class="icon">🏛️</span><h2>Architects of The Park</h2><span class="count" id="arch-count"></span></div>
+      <div id="architectCards" style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem"></div>
     </div>
 
     <div class="panel jobs-full">
@@ -172,15 +179,18 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 </div>
 
 <script>
-let allProps=[], stats={}, jobsChart=null, researchFilter='all';
+let allProps=[], stats={}, jobsChart=null, researchFilter='all', researchMap={}, currentUser=null;
 
 async function init(){
-  const [p,s]=await Promise.all([
+  const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
+  currentUser = me.user || (me.isAdmin ? 'admin' : null);
+  const [p,s,rm]=await Promise.all([
     fetch('/api/all-props').then(r=>r.json()).catch(()=>[]),
     fetch('/api/stats').then(r=>r.json()).catch(()=>({}))
   ]);
   allProps=p; stats=s;
-  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable();
+  fetch('/api/property-research').then(r=>r.json()).then(d=>{researchMap=d;renderResearchGrid();}).catch(()=>{});
+  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable(); renderArchitects();
 }
 
 function renderStats(){
@@ -212,13 +222,8 @@ function renderHouseProgress(){
 }
 
 function addrOf(p){
-  const n=p.number?String(p.number):'';
-  const s=p.street||'';
-  const nm=p.name||'';
-  if(n&&s) return n+' '+s;
-  if(s) return s;
-  if(nm) return nm;
-  return 'Property '+p.id;
+  const addr=(p.address||p.name||'').replace(/:\s*([A-Z])/g,', $1').replace(/:\s*$/,'').trim();
+  return addr||('Property '+p.id);
 }
 function renderResearchGrid(filter){
   if(filter) researchFilter=filter;
@@ -226,6 +231,7 @@ function renderResearchGrid(filter){
   let props=[...allProps];
   if(researchFilter==='nodesc') props=props.filter(p=>!p.desc||p.desc.length<50);
   if(researchFilter==='desc') props=props.filter(p=>p.desc&&p.desc.length>50);
+  if(researchFilter==='researching') props=props.filter(p=>researchMap[p.id]&&researchMap[p.id].length>0);
   if(q) props=props.filter(p=>addrOf(p).toLowerCase().includes(q.toLowerCase()));
   const grid=document.getElementById('researchGrid');
   if(!props.length){grid.innerHTML='<div class="loading">No properties match</div>';return;}
@@ -234,9 +240,11 @@ function renderResearchGrid(filter){
     const num=p.number?String(p.number):'';
     const street=p.street||'';
     const name=p.name||'';
-    const line1=num&&street?num+' '+street:(name||street||'Property '+p.id);
-    const line2=num&&street?street:(street&&name?name:'');
-    return `<a href="/?id=${p.id}" class="research-card"><div class="rc-name">${line1}</div>${line2&&line2!==line1?`<div class="rc-street">${line2}</div>`:''}<span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span></a>`;
+    const addr=addrOf(p);
+    const researchers = (researchMap[p.id]||[]);
+    const resBadge = researchers.length ? `<span class="rc-badge" style="background:rgba(91,155,213,0.15);color:#5b9bd5;border:1px solid rgba(91,155,213,0.3)">🔍 ${researchers.join(', ')}</span>` : '';
+    const canToggle = currentUser ? `<button onclick="event.preventDefault();toggleResearch(${p.id})" style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:0.75rem;color:${researchers.includes(currentUser)?'#5b9bd5':'#5a7a5a'}" title="${researchers.includes(currentUser)?'Stop researching':'Mark as researching'}">${researchers.includes(currentUser)?'🔍':'○'}</button>` : '';
+    return `<a href="/?id=${p.id}" class="research-card" style="display:flex;flex-direction:column;gap:3px"><div style="display:flex;align-items:center;gap:4px"><div class="rc-name" style="flex:1">${addr}</div>${canToggle}</div><span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span>${resBadge}</a>`;
   }).join('');
 }
 
@@ -422,6 +430,35 @@ async function renderLeagueTable(){
 // Show admin users link if admin
 fetch('/api/me').then(r=>r.json()).then(d=>{ if(d.isAdmin) { const el=document.getElementById('adminUsersLink'); if(el) el.style.display=''; } }).catch(()=>{});
 
+async function renderArchitects(){
+  try {
+    const architects = await fetch('/api/architects').then(r=>r.json()).catch(()=>[]);
+    if(!architects.length) return;
+    const panel=document.getElementById('architectsPanel');
+    panel.style.display='block';
+    set('arch-count',architects.length+' architects');
+    document.getElementById('architectCards').innerHTML=architects.map(a=>{
+      const name=a.known_as||(a.first_name+' '+a.last_name);
+      const init=name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+      return `<a href="/architects/${a.id}" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.8rem 1rem;text-decoration:none;transition:border-color 0.15s;min-width:200px" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+        <div style="width:38px;height:38px;border-radius:50%;background:#4a7c5a;color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${init}</div>
+        <div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">${name}</div>
+        <div style="font-size:0.72rem;color:#8a9a7a">${a.work_count} buildings</div></div>
+      </a>`;
+    }).join('');
+  } catch(e) {}
+}
+
+async function toggleResearch(propId){
+  if(!currentUser){alert('Please sign in to mark properties as being researched');return;}
+  const researchers=researchMap[propId]||[];
+  const isResearching=researchers.includes(currentUser);
+  const method=isResearching?'DELETE':'POST';
+  await fetch('/api/property-research/'+propId,{method}).catch(()=>{});
+  const newRes=await fetch('/api/property-research').then(r=>r.json()).catch(()=>({}));
+  researchMap=newRes;
+  renderResearchGrid();
+}
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 init();
 </script>

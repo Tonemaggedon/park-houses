@@ -35,8 +35,10 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 .detail-header h2 { font-size:1.2rem; font-weight:normal; }
 .detail-header p { font-size:0.8rem; color:#90b890; margin-top:2px; }
 .back-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#e8dfc8; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:0.8rem; }
-.detail-body { display:flex; flex:1; overflow:hidden; }
-.buildings-panel { width:380px; overflow-y:auto; background:#faf8f2; border-right:1px solid #d8d0b8; flex-shrink:0; }
+.detail-body { display:flex; flex-direction:column; flex:1; overflow:hidden; }
+#map { height:420px; flex-shrink:0; }
+.buildings-panel { flex:1; overflow-y:auto; background:#faf8f2; border-top:1px solid #d8d0b8; }
+.buildings-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:0; }
 .buildings-panel h3 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; padding:14px 16px 8px; border-bottom:1px solid #e8d8a0; }
 .building-item { padding:10px 16px; border-bottom:1px solid #f0e8d0; cursor:pointer; transition:background 0.1s; }
 .building-item:hover { background:#f0ead8; }
@@ -85,6 +87,7 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
     <a href="#" id="dProfile" target="_blank" style="margin-left:auto;font-size:0.78rem;color:#90b890">View profile ↗</a>
   </div>
   <div class="detail-body">
+    <div id="map"></div>
     <div class="buildings-panel">
       <div class="stats-bar" id="statsBar"></div>
       <div class="filter-bar">
@@ -93,10 +96,9 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
         <button class="f-btn" onclick="filterBuildings('uncertain',this)">Needs location</button>
       </div>
       <h3>Buildings & Works</h3>
-      <div id="buildingList"></div>
+      <div id="buildingList" class="buildings-grid"></div>
       <button class="add-btn" id="addBtn" style="display:none" onclick="addBuilding()">+ Add building</button>
     </div>
-    <div id="map"></div>
   </div>
 </div>
 

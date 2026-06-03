@@ -207,6 +207,14 @@ async function dbInit() {
       created_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS architect_works_person ON architect_works(person_id)`);
+    await db.query(`CREATE TABLE IF NOT EXISTS property_research (
+      id SERIAL PRIMARY KEY,
+      property_id INTEGER NOT NULL,
+      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+      username TEXT,
+      started_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_property_research ON property_research(property_id, username)`);
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
       await db.query(`DELETE FROM people_relationships WHERE id IN (
@@ -1509,6 +1517,36 @@ app.get('/admin/users', requireAdmin, (req, res) => res.sendFile(path.join(__dir
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+
+// ── Property research tracking ────────────────────────────────────────────────
+app.get('/api/property-research', async (req, res) => {
+  if (!db) return res.json({});
+  try {
+    const r = await db.query('SELECT property_id, username, started_at FROM property_research ORDER BY started_at');
+    const out = {};
+    r.rows.forEach(row => { if (!out[row.property_id]) out[row.property_id] = []; out[row.property_id].push(row.username); });
+    res.json(out);
+  } catch(e) { res.json({}); }
+});
+app.post('/api/property-research/:id', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const username = req.session.username || req.session.userId || 'unknown';
+  const propId = parseInt(req.params.id);
+  try {
+    await db.query('INSERT INTO property_research (property_id, username) VALUES ($1,$2) ON CONFLICT DO NOTHING', [propId, username]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+app.delete('/api/property-research/:id', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const username = req.session.username || req.session.userId || 'unknown';
+  try {
+    await db.query('DELETE FROM property_research WHERE property_id=$1 AND username=$2', [parseInt(req.params.id), username]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
 
 // ── Architect works API ───────────────────────────────────────────────────────
 app.get('/api/architect-works/:personId', async (req, res) => {
