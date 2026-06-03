@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architects — Nottingham Park Houses</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Georgia,serif; background:#f5f0e8; color:#2c2416; min-height:100vh; display:flex; flex-direction:column; }
+header { background:#1a3a2a; color:#e8dfc8; padding:0 20px; height:58px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 6px rgba(0,0,0,0.35); }
+header h1 { font-size:1.2rem; font-weight:normal; }
+header h1 span { font-size:0.75rem; display:block; color:#90b090; letter-spacing:0.08em; text-transform:uppercase; }
+nav { display:flex; gap:6px; }
+nav a { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#e8dfc8; padding:5px 13px; border-radius:4px; font-size:0.8rem; text-decoration:none; transition:background 0.2s; }
+nav a:hover { background:rgba(255,255,255,0.2); }
+nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
+
+/* List view */
+#listView { max-width:900px; margin:0 auto; padding:28px 20px; }
+#listView h2 { font-size:1.4rem; color:#1a3a2a; font-weight:normal; margin-bottom:4px; }
+#listView p { color:#8a7a5a; font-size:0.85rem; margin-bottom:20px; }
+.architect-card { background:white; border:1px solid #d8d0b8; border-radius:8px; padding:16px 20px; margin-bottom:12px; display:flex; align-items:center; gap:16px; cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; }
+.architect-card:hover { border-color:#8a6a2a; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.arch-avatar { width:48px; height:48px; border-radius:50%; background:#4a7c5a; color:white; font-size:1.1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.arch-name { font-size:1rem; font-weight:bold; color:#1a3a2a; }
+.arch-dates { font-size:0.78rem; color:#8a7a5a; margin-top:2px; }
+.arch-count { margin-left:auto; background:#e8f0e0; color:#2a5a2a; padding:4px 10px; border-radius:12px; font-size:0.8rem; }
+
+/* Detail view */
+#detailView { display:none; flex:1; flex-direction:column; }
+.detail-header { background:#1a3a2a; color:#e8dfc8; padding:16px 24px; display:flex; align-items:center; gap:16px; }
+.detail-avatar { width:52px; height:52px; border-radius:50%; background:#4a7c5a; color:white; font-size:1.2rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.detail-header h2 { font-size:1.2rem; font-weight:normal; }
+.detail-header p { font-size:0.8rem; color:#90b890; margin-top:2px; }
+.back-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#e8dfc8; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:0.8rem; }
+.detail-body { display:flex; flex:1; overflow:hidden; }
+.buildings-panel { width:380px; overflow-y:auto; background:#faf8f2; border-right:1px solid #d8d0b8; flex-shrink:0; }
+.buildings-panel h3 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; padding:14px 16px 8px; border-bottom:1px solid #e8d8a0; }
+.building-item { padding:10px 16px; border-bottom:1px solid #f0e8d0; cursor:pointer; transition:background 0.1s; }
+.building-item:hover { background:#f0ead8; }
+.building-item.active { background:#e8f0e0; border-left:3px solid #4a7c5a; }
+.building-item.uncertain { border-left:3px solid #d4880a; }
+.b-name { font-size:0.88rem; color:#1a3a2a; font-weight:600; }
+.b-year { font-size:0.75rem; color:#8a7a5a; margin-top:2px; }
+.b-notes { font-size:0.73rem; color:#6a7a6a; font-style:italic; }
+.b-uncertain { font-size:0.7rem; color:#d4880a; font-weight:600; }
+.b-city { font-size:0.72rem; color:#8a9a8a; margin-top:1px; }
+#map { flex:1; }
+.add-btn { margin:10px 16px; background:#1a3a2a; color:#e8dfc8; border:none; border-radius:5px; padding:7px 14px; cursor:pointer; font-size:0.8rem; width:calc(100% - 32px); }
+.filter-bar { padding:8px 16px; display:flex; gap:6px; border-bottom:1px solid #e8d8a0; }
+.f-btn { background:#f0ead8; border:1px solid #d8c8a0; border-radius:4px; padding:3px 8px; font-size:0.72rem; color:#4a3a1a; cursor:pointer; }
+.f-btn.active { background:#1a3a2a; color:#e8dfc8; border-color:#1a3a2a; }
+.stats-bar { padding:8px 16px; background:#f0ead8; border-bottom:1px solid #e0d0a0; font-size:0.78rem; color:#6a5a3a; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Nottingham Park Houses <span>The Park Conservation Trust — Architects</span></h1>
+  <nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/">Map</a>
+    <a href="/people">People</a>
+    <a href="/architects" class="active">Architects</a>
+  </nav>
+</header>
+
+<!-- List view -->
+<div id="listView">
+  <h2>Architects of The Park</h2>
+  <p>Buildings and works associated with architects who lived on The Park Estate.</p>
+  <div id="architectList"><div style="color:#8a7a5a;padding:20px">Loading...</div></div>
+</div>
+
+<!-- Detail view -->
+<div id="detailView">
+  <div class="detail-header">
+    <button class="back-btn" onclick="showList()">← All architects</button>
+    <div class="detail-avatar" id="dAvatar"></div>
+    <div>
+      <h2 id="dName"></h2>
+      <p id="dDates"></p>
+    </div>
+    <a href="#" id="dProfile" target="_blank" style="margin-left:auto;font-size:0.78rem;color:#90b890">View profile ↗</a>
+  </div>
+  <div class="detail-body">
+    <div class="buildings-panel">
+      <div class="stats-bar" id="statsBar"></div>
+      <div class="filter-bar">
+        <button class="f-btn active" onclick="filterBuildings('all',this)">All</button>
+        <button class="f-btn" onclick="filterBuildings('placed',this)">Placed</button>
+        <button class="f-btn" onclick="filterBuildings('uncertain',this)">Needs location</button>
+      </div>
+      <h3>Buildings & Works</h3>
+      <div id="buildingList"></div>
+      <button class="add-btn" id="addBtn" style="display:none" onclick="addBuilding()">+ Add building</button>
+    </div>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script>
+let map, markers = {}, currentPersonId = null, allWorks = [], isAdmin = false, filter = 'all', selectedWorkId = null;
+
+async function init() {
+  const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
+  isAdmin = me.isAdmin;
+  
+  const path = location.pathname;
+  const match = path.match(/\/architects\/(\d+)/);
+  if (match) {
+    await loadArchitect(parseInt(match[1]));
+  } else {
+    await loadList();
+  }
+}
+
+async function loadList() {
+  document.getElementById('listView').style.display = 'block';
+  document.getElementById('detailView').style.display = 'none';
+  const architects = await fetch('/api/architects').then(r=>r.json()).catch(()=>[]);
+  const list = document.getElementById('architectList');
+  if (!architects.length) {
+    list.innerHTML = '<div style="color:#8a7a5a;padding:20px;font-style:italic">No architects with recorded works yet.</div>';
+    return;
+  }
+  list.innerHTML = architects.map(a => {
+    const name = [a.known_as || (a.first_name + ' ' + a.last_name)].join('');
+    const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    return `<div class="architect-card" onclick="loadArchitect(${a.id})">
+      <div class="arch-avatar">${init}</div>
+      <div>
+        <div class="arch-name">${name}</div>
+        <div class="arch-dates">${a.born_year||'?'} – ${a.died_year||'?'}</div>
+      </div>
+      <div class="arch-count">${a.work_count} buildings</div>
+    </div>`;
+  }).join('');
+}
+
+async function showList() {
+  history.pushState({}, '', '/architects');
+  await loadList();
+}
+
+async function loadArchitect(personId) {
+  currentPersonId = personId;
+  history.pushState({}, '', '/architects/' + personId);
+  document.getElementById('listView').style.display = 'none';
+  const det = document.getElementById('detailView');
+  det.style.display = 'flex';
+  
+  const [person, works] = await Promise.all([
+    fetch('/api/person/' + personId).then(r=>r.json()),
+    fetch('/api/architect-works/' + personId).then(r=>r.json())
+  ]);
+  allWorks = works;
+  
+  const name = person.known_as || (person.first_name + ' ' + person.last_name);
+  const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  document.getElementById('dAvatar').textContent = init;
+  document.getElementById('dName').textContent = name;
+  document.getElementById('dDates').textContent = `${person.born_year||'?'} – ${person.died_year||'?'} · Architect`;
+  document.getElementById('dProfile').href = '/people?person=' + personId;
+  if (isAdmin) document.getElementById('addBtn').style.display = 'block';
+  
+  renderBuildingList();
+  initMap(works);
+}
+
+function filterBuildings(f, btn) {
+  filter = f;
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBuildingList();
+}
+
+function renderBuildingList() {
+  const placed = allWorks.filter(w=>w.lat&&w.lng).length;
+  const uncertain = allWorks.filter(w=>w.location_uncertain).length;
+  document.getElementById('statsBar').textContent = `${allWorks.length} works · ${placed} placed · ${uncertain} need location`;
+  
+  let works = allWorks;
+  if (filter === 'placed') works = allWorks.filter(w=>w.lat&&w.lng&&!w.location_uncertain);
+  if (filter === 'uncertain') works = allWorks.filter(w=>!w.lat||!w.lng||w.location_uncertain);
+  
+  document.getElementById('buildingList').innerHTML = works.map(w => {
+    const uncertain = !w.lat || !w.lng || w.location_uncertain;
+    return `<div class="building-item ${uncertain?'uncertain':''} ${selectedWorkId===w.id?'active':''}" onclick="selectWork(${w.id})" id="bi-${w.id}">
+      <div class="b-name">${w.name}</div>
+      <div class="b-year">${w.year_start||''}${w.year_end&&w.year_end!==w.year_start?'–'+w.year_end:''}</div>
+      ${w.notes?`<div class="b-notes">${w.notes}</div>`:''}
+      <div class="b-city">${w.city||'Nottingham'}${w.address?', '+w.address:''}</div>
+      ${uncertain?`<div class="b-uncertain">⚠ Location needed</div>`:''}
+    </div>`;
+  }).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No buildings match this filter.</div>';
+}
+
+function initMap(works) {
+  if (!map) {
+    map = L.map('map').setView([52.955, -1.155], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors'}).addTo(map);
+  } else {
+    Object.values(markers).forEach(m=>map.removeLayer(m));
+    markers = {};
+  }
+  
+  works.forEach(w => {
+    if (!w.lat || !w.lng) return;
+    const uncertain = w.location_uncertain;
+    const m = L.circleMarker([w.lat, w.lng], {
+      radius: 7,
+      fillColor: uncertain ? '#d4880a' : '#1a3a2a',
+      color: uncertain ? '#a06008' : '#0a2a1a',
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.8
+    }).addTo(map);
+    m.bindTooltip(`<b>${w.name}</b><br>${w.year_start||''}${w.notes?'<br><i>'+w.notes+'</i>':''}`, {direction:'top'});
+    m.on('click', () => selectWork(w.id));
+    if (isAdmin) {
+      m.on('contextmenu', () => {
+        m.setStyle({fillColor:'#c04040'});
+        map.once('click', e => {
+          w.lat = e.latlng.lat; w.lng = e.latlng.lng;
+          m.setLatLng(e.latlng);
+          m.setStyle({fillColor: uncertain ? '#d4880a' : '#1a3a2a'});
+          fetch('/api/architect-works/'+w.id, {method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({lat:w.lat,lng:w.lng})});
+        });
+      });
+    }
+    markers[w.id] = m;
+  });
+  
+  // Fit bounds if we have markers
+  const pts = works.filter(w=>w.lat&&w.lng).map(w=>[w.lat,w.lng]);
+  if (pts.length > 1) map.fitBounds(pts, {padding:[30,30]});
+}
+
+function selectWork(id) {
+  selectedWorkId = id;
+  renderBuildingList();
+  // Scroll to item
+  const el = document.getElementById('bi-'+id);
+  if (el) el.scrollIntoView({block:'nearest'});
+  // Highlight marker
+  Object.entries(markers).forEach(([mid, m]) => {
+    const w = allWorks.find(w=>w.id===parseInt(mid));
+    m.setRadius(parseInt(mid)===id ? 11 : 7);
+    m.setStyle({fillColor: parseInt(mid)===id ? '#8a6a2a' : (w?.location_uncertain?'#d4880a':'#1a3a2a')});
+  });
+  if (markers[id]) map.panTo(markers[id].getLatLng());
+}
+
+async function addBuilding() {
+  const name = prompt('Building name:');
+  if (!name) return;
+  const year = prompt('Year (or start year):') || '';
+  const city = prompt('City:', 'Nottingham') || 'Nottingham';
+  const notes = prompt('Notes (e.g. "with Jolley", "restoration"):') || '';
+  const res = await fetch('/api/architect-works', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ person_id: currentPersonId, name, year_start: year?parseInt(year):null, city, notes, location_uncertain: true })
+  }).then(r=>r.json());
+  if (res.ok) { allWorks.push(res.work); renderBuildingList(); initMap(allWorks); }
+}
+
+init();
+</script>
+</body>
+</html>

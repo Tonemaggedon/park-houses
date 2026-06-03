@@ -190,6 +190,23 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_entity ON change_log(entity_type, entity_id)`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_time ON change_log(created_at DESC)`);
+    await db.query(`CREATE TABLE IF NOT EXISTS architect_works (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      location_text TEXT,
+      address TEXT,
+      city TEXT DEFAULT 'Nottingham',
+      year_start INTEGER,
+      year_end INTEGER,
+      notes TEXT,
+      wikipedia_url TEXT,
+      lat DOUBLE PRECISION,
+      lng DOUBLE PRECISION,
+      location_uncertain BOOLEAN DEFAULT FALSE,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS architect_works_person ON architect_works(person_id)`);
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
       await db.query(`DELETE FROM people_relationships WHERE id IN (
@@ -1490,6 +1507,64 @@ app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'pe
 app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
 app.get('/admin/users', requireAdmin, (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin-users.html')));
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
+app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+
+// ── Architect works API ───────────────────────────────────────────────────────
+app.get('/api/architect-works/:personId', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query('SELECT * FROM architect_works WHERE person_id=$1 ORDER BY year_start, name', [parseInt(req.params.personId)]);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+app.get('/api/architects', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.known_as, p.born_year, p.died_year,
+             COUNT(w.id) as work_count
+      FROM people p
+      JOIN architect_works w ON w.person_id = p.id
+      GROUP BY p.id ORDER BY p.last_name, p.first_name`);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+app.post('/api/architect-works', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { person_id, name, location_text, address, city, year_start, year_end, notes, wikipedia_url, lat, lng, location_uncertain } = req.body;
+  try {
+    const r = await db.query(
+      `INSERT INTO architect_works (person_id,name,location_text,address,city,year_start,year_end,notes,wikipedia_url,lat,lng,location_uncertain) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
+      [person_id, name, location_text||null, address||null, city||'Nottingham', year_start||null, year_end||null, notes||null, wikipedia_url||null, lat||null, lng||null, location_uncertain||false]
+    );
+    res.json({ ok: true, work: r.rows[0] });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/architect-works/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { lat, lng, location_uncertain, name, notes, address, year_start, year_end } = req.body;
+  const updates = [];
+  const vals = [parseInt(req.params.id)];
+  const add = (col, val) => { if (val !== undefined) { vals.push(val); updates.push(`${col}=$${vals.length}`); } };
+  add('lat', lat); add('lng', lng); add('location_uncertain', location_uncertain);
+  add('name', name); add('notes', notes); add('address', address);
+  add('year_start', year_start); add('year_end', year_end);
+  if (!updates.length) return res.status(400).json({ error: 'Nothing to update' });
+  try {
+    await db.query(`UPDATE architect_works SET ${updates.join(',')} WHERE id=$1`, vals);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/architect-works/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try { await db.query('DELETE FROM architect_works WHERE id=$1', [parseInt(req.params.id)]); res.json({ ok: true }); }
+  catch(e) { res.status(500).json({ error: e.message }); }
+});
 
 // ── People at a property ──────────────────────────────────────────────────────
 app.get('/api/people-at-property/:id', async (req, res) => {
