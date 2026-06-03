@@ -907,6 +907,60 @@ app.get('/api/stats/top-residents', async (req, res) => {
   } catch(e) { res.json([]); }
 });
 
+// ── Admin: deduplicate relationships ─────────────────────────────────────────
+app.post('/api/admin/deduplicate-relationships', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const r = await db.query(`
+      DELETE FROM people_relationships
+      WHERE id IN (
+        SELECT a.id FROM people_relationships a
+        JOIN people_relationships b
+          ON a.person_a_id=b.person_a_id
+         AND a.person_b_id=b.person_b_id
+         AND a.relationship=b.relationship
+         AND a.id > b.id
+      )
+    `);
+    res.json({ ok: true, deleted: r.rowCount });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Admin: merge two people (keep target, reassign all data from source) ──────
+app.post('/api/admin/merge-people', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { keep_id, delete_id } = req.body;
+  if (!keep_id || !delete_id) return res.status(400).json({ error: 'keep_id and delete_id required' });
+  const keepId = parseInt(keep_id), deleteId = parseInt(delete_id);
+  const client = await db.connect();
+  try {
+    await client.query('BEGIN');
+    // Reassign census entries
+    await client.query('UPDATE census_entries SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Reassign occupations
+    await client.query('UPDATE occupations SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Reassign relationships (both directions), avoid creating new duplicates
+    await client.query('UPDATE people_relationships SET person_a_id=$1 WHERE person_a_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE people_relationships SET person_b_id=$1 WHERE person_b_id=$2', [keepId, deleteId]);
+    // Remove self-referential relationships created by merge
+    await client.query('DELETE FROM people_relationships WHERE person_a_id=person_b_id');
+    // Remove person_media
+    await client.query('UPDATE person_media SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Remove person_links
+    await client.query('UPDATE person_links SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Delete the duplicate person
+    await client.query('DELETE FROM people WHERE id=$1', [deleteId]);
+    // Deduplicate relationships again after merge
+    await client.query(`DELETE FROM people_relationships WHERE id IN (
+      SELECT a.id FROM people_relationships a
+      JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id AND a.relationship=b.relationship AND a.id > b.id
+    )`);
+    await client.query('COMMIT');
+    res.json({ ok: true, kept: keepId, deleted: deleteId });
+  } catch(e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }
+  finally { client.release(); }
+});
+
 // ── One-time occupation normalisation (admin only) ────────────────────────────
 app.post('/api/admin/normalise-occupations', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
