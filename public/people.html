@@ -544,7 +544,7 @@ function renderProfile(p) {
     return true;
   });
   if (uniqueRels.length) {
-    const chips = p.relationships.map(rel => {
+    const chips = uniqueRels.map(rel => {
       const other = rel.person_a_id === p.id
         ? { id: rel.bid, first: rel.b_first, last: rel.b_last, known: rel.b_known }
         : { id: rel.pid, first: rel.a_first, last: rel.a_last, known: rel.a_known };

@@ -939,7 +939,9 @@ app.post('/api/admin/merge-people', requireAdmin, async (req, res) => {
     await client.query('UPDATE census_entries SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
     // Reassign occupations
     await client.query('UPDATE occupations SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
-    // Reassign relationships (both directions), avoid creating new duplicates
+    // Reassign relationships — delete any that would conflict first, then update
+    await client.query(`DELETE FROM people_relationships WHERE person_a_id=$2 AND (person_b_id, relationship) IN (SELECT person_b_id, relationship FROM people_relationships WHERE person_a_id=$1)`, [keepId, deleteId]);
+    await client.query(`DELETE FROM people_relationships WHERE person_b_id=$2 AND (person_a_id, relationship) IN (SELECT person_a_id, relationship FROM people_relationships WHERE person_b_id=$1)`, [keepId, deleteId]);
     await client.query('UPDATE people_relationships SET person_a_id=$1 WHERE person_a_id=$2', [keepId, deleteId]);
     await client.query('UPDATE people_relationships SET person_b_id=$1 WHERE person_b_id=$2', [keepId, deleteId]);
     // Remove self-referential relationships created by merge
