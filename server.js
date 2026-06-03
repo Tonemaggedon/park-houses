@@ -187,6 +187,10 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_entity ON change_log(entity_type, entity_id)`);
     await db.query(`CREATE INDEX IF NOT EXISTS change_log_time ON change_log(created_at DESC)`);
+    // Deduplicate relationships and add unique constraint
+    await db.query(`DELETE FROM people_relationships a USING people_relationships b
+      WHERE a.id > b.id AND a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id AND a.relationship_type=b.relationship_type`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_relationship ON people_relationships(person_a_id, person_b_id, relationship_type)`);
     await db.query(`CREATE TABLE IF NOT EXISTS person_media (
       id SERIAL PRIMARY KEY,
       person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
