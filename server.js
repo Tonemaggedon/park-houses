@@ -1768,3 +1768,29 @@ app.post('/api/admin/sync-props-to-db', requireAdmin, async (req, res) => {
     res.json({ ok: true, updated });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
+
+// ── Sync all_props.json fields into property_data DB ────────────────────────
+app.post('/api/admin/sync-props-to-db', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    let updated = 0;
+    for (const p of allProps) {
+      const fields = {};
+      if (p.desc) fields.desc = p.desc;
+      if (p.history) fields.history = p.history;
+      if (p.architect) fields.architect = p.architect;
+      if (p.builder) fields.builder = p.builder;
+      if (p.built_for) fields.built_for = p.built_for;
+      if (p.converted) fields.converted = p.converted;
+      if (p.prev_house_name) fields.prev_house_name = p.prev_house_name;
+      if (p.listed_grade) fields.listedGrade = p.listed_grade;
+      if (p.date_built) fields.built = p.date_built;
+      if (p.listed) fields.listed = p.listed === 'Yes';
+      if (!Object.keys(fields).length) continue;
+      await saveProp(p.id, fields, 'sync');
+      updated++;
+    }
+    res.json({ ok: true, updated });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
