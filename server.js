@@ -1734,3 +1734,35 @@ dbInit().then(() => {
     console.log(`Admin: ${ADMIN_USER} / (set ADMIN_USER + ADMIN_PASS env vars)`);
   });
 });
+
+// ── Sync all_props.json fields into property_overrides DB ────────────────────
+app.post('/api/admin/sync-props-to-db', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    let updated = 0;
+    for (const p of allProps) {
+      const fields = {};
+      if (p.desc) fields.desc = p.desc;
+      if (p.history) fields.history = p.history;
+      if (p.architect) fields.architect = p.architect;
+      if (p.builder) fields.builder = p.builder;
+      if (p.built_for) fields.built_for = p.built_for;
+      if (p.converted) fields.converted = p.converted;
+      if (p.prev_house_name) fields.prev_house_name = p.prev_house_name;
+      if (p.listed_grade) fields.listed_grade = p.listed_grade;
+      if (p.date_built) fields.built = p.date_built;
+      if (p.listed) fields.listed = p.listed === 'Yes';
+      if (!Object.keys(fields).length) continue;
+      const keys = Object.keys(fields);
+      const sets = keys.map((k,i) => `${k}=$${i+2}`).join(',');
+      await db.query(
+        `INSERT INTO property_overrides (property_id,${keys.join(',')}) VALUES ($1,${keys.map((_,i)=>'$'+(i+2)).join(',')})
+         ON CONFLICT (property_id) DO UPDATE SET ${sets}`,
+        [p.id, ...keys.map(k=>fields[k])]
+      );
+      updated++;
+    }
+    res.json({ ok: true, updated });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});

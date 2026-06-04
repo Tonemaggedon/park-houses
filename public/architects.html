@@ -105,6 +105,56 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 <script>
 let map, markers = {}, currentPersonId = null, allWorks = [], isAdmin = false, filter = 'all', selectedWorkId = null;
 
+async function loadPropArchitect(archName) {
+  history.pushState({}, '', '/architects');
+  document.getElementById('listView').style.display = 'none';
+  const det = document.getElementById('detailView');
+  det.style.display = 'flex';
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  
+  document.getElementById('dAvatar').textContent = archName.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  document.getElementById('dName').textContent = archName;
+  document.getElementById('dDates').textContent = 'Architecture firm';
+  document.getElementById('dProfile').style.display = 'none';
+  if (isAdmin) document.getElementById('addBtn').style.display = 'none';
+
+  // Fetch all props with this architect
+  const allProps = await fetch('/api/all-props').then(r=>r.json()).catch(()=>[]);
+  const works = allProps.filter(p=>p.architect===archName).map(p=>({
+    id: -p.id, name: (p.address||'').replace(/:\s*/,', ')||'Property '+p.id,
+    city: p.street||'', year_start: p.date_built ? parseInt(p.date_built) : null,
+    notes: p.builder ? 'Builder: '+p.builder : '',
+    lat: null, lng: null, location_uncertain: true, prop_id: p.id
+  }));
+  allWorks = works;
+  
+  // Override building item click to go to map
+  renderBuildingList = function() {
+    document.getElementById('statsBar').textContent = works.length + ' Park properties';
+    document.getElementById('buildingList').innerHTML = works.map(w =>
+      `<div class="building-item" onclick="window.open('/?id=${w.prop_id}','_blank')" id="bi-${w.id}">
+        <div class="b-name">${w.name}</div>
+        <div class="b-year">${w.year_start||''}</div>
+        ${w.notes?`<div class="b-notes">${w.notes}</div>`:''}
+        <div class="b-city" style="color:#5b9bd5;font-size:0.7rem">Click to view on map ↗</div>
+      </div>`
+    ).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No properties found.</div>';
+  };
+  renderBuildingList();
+  
+  // Show simple map with Nottingham centre - no markers since no coords
+  if (!map) {
+    const mapEl = document.getElementById('map');
+    mapEl.style.height = '420px';
+    mapEl.style.minHeight = '420px';
+    map = L.map('map', {preferCanvas:true}).setView([52.955, -1.155], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors'}).addTo(map);
+  }
+  map.invalidateSize();
+  markers = {};
+  document.getElementById('addBtn').style.display = 'none';
+}
+
 async function init() {
   const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
   isAdmin = me.isAdmin;
