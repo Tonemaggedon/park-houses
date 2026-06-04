@@ -1755,9 +1755,11 @@ app.post('/api/admin/sync-props-to-db', requireAdmin, async (req, res) => {
       if (p.listed) fields.listed = p.listed === 'Yes';
       if (!Object.keys(fields).length) continue;
       const keys = Object.keys(fields);
-      const sets = keys.map((k,i) => `${k}=$${i+2}`).join(',');
+      const q = k => ['desc','date','order','group'].includes(k) ? `"${k}"` : k;
+      const sets = keys.map((k,i) => `${q(k)}=$${i+2}`).join(',');
+      const cols = keys.map(q).join(',');
       await db.query(
-        `INSERT INTO property_overrides (property_id,${keys.join(',')}) VALUES ($1,${keys.map((_,i)=>'$'+(i+2)).join(',')})
+        `INSERT INTO property_overrides (property_id,${cols}) VALUES ($1,${keys.map((_,i)=>'$'+(i+2)).join(',')})
          ON CONFLICT (property_id) DO UPDATE SET ${sets}`,
         [p.id, ...keys.map(k=>fields[k])]
       );
