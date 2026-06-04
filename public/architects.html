@@ -42,16 +42,18 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 .back-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#e8dfc8; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:0.8rem; font-family:Georgia,serif; }
 .detail-body { display:flex; flex-direction:column; flex:1; overflow:hidden; }
 #map { height:380px; flex-shrink:0; border-bottom:1px solid #d0c090; }
-.detail-panels { display:flex; flex:1; overflow:hidden; }
-.props-panel { width:340px; overflow-y:auto; border-right:1px solid #d8d0b8; background:#faf8f2; flex-shrink:0; }
-.members-panel { flex:1; overflow-y:auto; background:#faf8f2; }
+.detail-panels { display:flex; flex-direction:column; flex:1; overflow-y:auto; background:#faf8f2; }
+.props-panel { border-bottom:1px solid #d8d0b8; }
+.members-panel { padding-bottom:20px; }
+.members-grid { display:flex; flex-wrap:wrap; gap:10px; padding:12px 16px; }
 .panel-title { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; padding:12px 16px 8px; border-bottom:1px solid #e8d8a0; }
 .prop-item { padding:9px 16px; border-bottom:1px solid #f0e8d0; cursor:pointer; }
 .prop-item:hover { background:#f0ead8; }
 .prop-name { font-size:0.85rem; color:#1a3a2a; font-weight:600; }
 .prop-date { font-size:0.73rem; color:#8a7a5a; }
-.member-item { padding:10px 16px; border-bottom:1px solid #f0e8d0; display:flex; align-items:center; gap:10px; }
-.member-avatar { width:32px; height:32px; border-radius:50%; background:#4a7c5a; color:white; font-size:0.75rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.member-item { background:white; border:1px solid #d8d0b8; border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:10px; min-width:180px; max-width:240px; cursor:pointer; transition:border-color 0.15s; }
+.member-item:hover { border-color:#8a6a2a; }
+.member-avatar { width:36px; height:36px; border-radius:50%; background:#4a7c5a; color:white; font-size:0.78rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .member-name { font-size:0.85rem; color:#1a3a2a; font-weight:600; cursor:pointer; }
 .member-name:hover { color:#4a7c5a; text-decoration:underline; }
 .member-role { font-size:0.73rem; color:#8a7a5a; }
@@ -200,19 +202,25 @@ function renderPropList(firmName) {
 }
 
 function renderMembers(members) {
-  document.getElementById('memberList').innerHTML = members.map(m => {
+  const items = members.map(m => {
     const name = m.known_as || (m.first_name+' '+m.last_name).trim();
     const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
     const yrs = m.from_year ? `${m.from_year}–${m.to_year||''}` : '';
-    return `<div class="member-item">
+    return `<div class="member-item" onclick="window.open('/people?person=${m.person_id}','_blank')">
       <div class="member-avatar">${init}</div>
       <div>
-        <div class="member-name" onclick="window.open('/people?person=${m.person_id}','_blank')">${name}</div>
-        <div class="member-role">${m.role||'Partner'}${yrs?' · '+yrs:''}</div>
+        <div class="member-name">${name}</div>
+        <div class="member-role">${m.role||'Partner'}${yrs?'<br>'+yrs:''}</div>
       </div>
-      ${isAdmin ? `<button onclick="removeMember(${currentFirm.id},${m.person_id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.85rem">✕</button>` : ''}
+      ${isAdmin ? `<button onclick="event.stopPropagation();removeMember(${currentFirm.id},${m.person_id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.85rem">✕</button>` : ''}
     </div>`;
-  }).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No members recorded yet.</div>';
+  });
+  const list = document.getElementById('memberList');
+  if (!items.length) {
+    list.innerHTML = '<div style="padding:12px 16px;color:#8a7a5a;font-size:0.83rem">No members recorded yet.</div>';
+  } else {
+    list.innerHTML = `<div class="members-grid">${items.join('')}</div>`;
+  }
 }
 
 async function loadPersonArch(personId) {
