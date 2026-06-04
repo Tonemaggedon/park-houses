@@ -13,317 +13,297 @@ header { background:#1a3a2a; color:#e8dfc8; padding:0 20px; height:58px; display
 header h1 { font-size:1.2rem; font-weight:normal; }
 header h1 span { font-size:0.75rem; display:block; color:#90b090; letter-spacing:0.08em; text-transform:uppercase; }
 nav { display:flex; gap:6px; }
-nav a { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#e8dfc8; padding:5px 13px; border-radius:4px; font-size:0.8rem; text-decoration:none; transition:background 0.2s; }
+nav a { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#e8dfc8; padding:5px 13px; border-radius:4px; font-size:0.8rem; text-decoration:none; }
 nav a:hover { background:rgba(255,255,255,0.2); }
 nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 
-/* List view */
-#listView { max-width:900px; margin:0 auto; padding:28px 20px; }
-#listView h2 { font-size:1.4rem; color:#1a3a2a; font-weight:normal; margin-bottom:4px; }
-#listView p { color:#8a7a5a; font-size:0.85rem; margin-bottom:20px; }
-.architect-card { background:white; border:1px solid #d8d0b8; border-radius:8px; padding:16px 20px; margin-bottom:12px; display:flex; align-items:center; gap:16px; cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; }
-.architect-card:hover { border-color:#8a6a2a; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
-.arch-avatar { width:48px; height:48px; border-radius:50%; background:#4a7c5a; color:white; font-size:1.1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.arch-name { font-size:1rem; font-weight:bold; color:#1a3a2a; }
-.arch-dates { font-size:0.78rem; color:#8a7a5a; margin-top:2px; }
-.arch-count { margin-left:auto; background:#e8f0e0; color:#2a5a2a; padding:4px 10px; border-radius:12px; font-size:0.8rem; }
+/* List page */
+.list-page { max-width:960px; margin:0 auto; padding:28px 20px; flex:1; }
+.list-page h2 { font-size:1.4rem; color:#1a3a2a; font-weight:normal; margin-bottom:4px; }
+.list-page .sub { color:#8a7a5a; font-size:0.85rem; margin-bottom:24px; }
+.section-title { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; border-bottom:1px solid #d8c8a0; padding-bottom:4px; margin:20px 0 12px; }
+.firm-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+.firm-card { background:white; border:1px solid #d8d0b8; border-radius:8px; padding:14px 16px; cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; display:flex; align-items:center; gap:12px; }
+.firm-card:hover { border-color:#8a6a2a; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.firm-avatar { width:44px; height:44px; border-radius:8px; background:#2a5a8a; color:white; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:Arial,sans-serif; }
+.firm-avatar.individual { background:#4a7c5a; border-radius:50%; }
+.firm-name { font-size:0.9rem; font-weight:bold; color:#1a3a2a; }
+.firm-meta { font-size:0.75rem; color:#8a7a5a; margin-top:2px; }
+.firm-count { margin-left:auto; background:#e8f0e0; color:#2a5a2a; padding:3px 9px; border-radius:10px; font-size:0.75rem; white-space:nowrap; }
+.add-btn { background:#1a3a2a; color:#e8dfc8; border:none; border-radius:5px; padding:7px 16px; cursor:pointer; font-size:0.82rem; font-family:Georgia,serif; }
 
-/* Detail view */
-#detailView { display:none; flex:1; flex-direction:column; }
-.detail-header { background:#1a3a2a; color:#e8dfc8; padding:16px 24px; display:flex; align-items:center; gap:16px; }
-.detail-avatar { width:52px; height:52px; border-radius:50%; background:#4a7c5a; color:white; font-size:1.2rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.detail-header h2 { font-size:1.2rem; font-weight:normal; }
-.detail-header p { font-size:0.8rem; color:#90b890; margin-top:2px; }
-.back-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#e8dfc8; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:0.8rem; }
+/* Detail page */
+.detail-page { display:none; flex:1; flex-direction:column; overflow:hidden; }
+.detail-header { background:#1a3a2a; color:#e8dfc8; padding:14px 24px; display:flex; align-items:center; gap:14px; flex-shrink:0; }
+.detail-avatar { width:48px; height:48px; border-radius:8px; background:#2a5a8a; color:white; font-size:1.1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; flex-shrink:0; }
+.detail-avatar.individual { border-radius:50%; background:#4a7c5a; }
+.dh-name { font-size:1.1rem; font-weight:600; }
+.dh-sub { font-size:0.8rem; color:#90b890; margin-top:2px; }
+.back-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#e8dfc8; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:0.8rem; font-family:Georgia,serif; }
 .detail-body { display:flex; flex-direction:column; flex:1; overflow:hidden; }
-#map { height:420px; flex-shrink:0; }
-.buildings-panel { flex:1; overflow-y:auto; background:#faf8f2; border-top:1px solid #d8d0b8; }
-.buildings-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:0; }
-.buildings-panel h3 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; padding:14px 16px 8px; border-bottom:1px solid #e8d8a0; }
-.building-item { padding:10px 16px; border-bottom:1px solid #f0e8d0; cursor:pointer; transition:background 0.1s; }
-.building-item:hover { background:#f0ead8; }
-.building-item.active { background:#e8f0e0; border-left:3px solid #4a7c5a; }
-.building-item.uncertain { border-left:3px solid #d4880a; }
-.b-name { font-size:0.88rem; color:#1a3a2a; font-weight:600; }
-.b-year { font-size:0.75rem; color:#8a7a5a; margin-top:2px; }
-.b-notes { font-size:0.73rem; color:#6a7a6a; font-style:italic; }
-.b-uncertain { font-size:0.7rem; color:#d4880a; font-weight:600; }
-.b-city { font-size:0.72rem; color:#8a9a8a; margin-top:1px; }
-#map { flex:1; }
-.add-btn { margin:10px 16px; background:#1a3a2a; color:#e8dfc8; border:none; border-radius:5px; padding:7px 14px; cursor:pointer; font-size:0.8rem; width:calc(100% - 32px); }
-.filter-bar { padding:8px 16px; display:flex; gap:6px; border-bottom:1px solid #e8d8a0; }
-.f-btn { background:#f0ead8; border:1px solid #d8c8a0; border-radius:4px; padding:3px 8px; font-size:0.72rem; color:#4a3a1a; cursor:pointer; }
-.f-btn.active { background:#1a3a2a; color:#e8dfc8; border-color:#1a3a2a; }
-.stats-bar { padding:8px 16px; background:#f0ead8; border-bottom:1px solid #e0d0a0; font-size:0.78rem; color:#6a5a3a; }
+#map { height:380px; flex-shrink:0; border-bottom:1px solid #d0c090; }
+.detail-panels { display:flex; flex:1; overflow:hidden; }
+.props-panel { width:340px; overflow-y:auto; border-right:1px solid #d8d0b8; background:#faf8f2; flex-shrink:0; }
+.members-panel { flex:1; overflow-y:auto; background:#faf8f2; }
+.panel-title { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a6a2a; padding:12px 16px 8px; border-bottom:1px solid #e8d8a0; }
+.prop-item { padding:9px 16px; border-bottom:1px solid #f0e8d0; cursor:pointer; }
+.prop-item:hover { background:#f0ead8; }
+.prop-name { font-size:0.85rem; color:#1a3a2a; font-weight:600; }
+.prop-date { font-size:0.73rem; color:#8a7a5a; }
+.member-item { padding:10px 16px; border-bottom:1px solid #f0e8d0; display:flex; align-items:center; gap:10px; }
+.member-avatar { width:32px; height:32px; border-radius:50%; background:#4a7c5a; color:white; font-size:0.75rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.member-name { font-size:0.85rem; color:#1a3a2a; font-weight:600; cursor:pointer; }
+.member-name:hover { color:#4a7c5a; text-decoration:underline; }
+.member-role { font-size:0.73rem; color:#8a7a5a; }
+.add-member-btn { margin:8px 16px; background:#f0ead8; border:1px solid #c8a870; border-radius:5px; padding:6px 12px; cursor:pointer; font-size:0.78rem; color:#4a3a1a; font-family:Georgia,serif; }
 </style>
 </head>
 <body>
 <header>
   <h1>Nottingham Park Houses <span>The Park Conservation Trust — Architects</span></h1>
   <nav>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/">Map</a>
-    <a href="/people">People</a>
-    <a href="/architects" class="active">Architects</a>
+    <a href="/dashboard">Dashboard</a><a href="/">Map</a><a href="/people">People</a><a href="/architects" class="active">Architects</a>
   </nav>
 </header>
 
-<!-- List view -->
-<div id="listView">
+<div class="list-page" id="listPage">
   <h2>Architects of The Park</h2>
-  <p>Buildings and works associated with architects who lived on The Park Estate.</p>
-  <div id="architectList"><div style="color:#8a7a5a;padding:20px">Loading...</div></div>
+  <p class="sub">Firms and individuals responsible for buildings on The Park Estate.</p>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <div class="section-title" style="margin:0">Architecture Firms</div>
+    <button class="add-btn" id="addFirmBtn" style="display:none" onclick="showAddFirm()">+ Add Firm</button>
+  </div>
+  <div class="firm-grid" id="firmList"><div style="color:#8a7a5a;padding:20px">Loading...</div></div>
+  <div class="section-title" style="margin-top:24px">Individual Architects (with recorded works)</div>
+  <div class="firm-grid" id="individualList"><div style="color:#8a7a5a;padding:20px">Loading...</div></div>
 </div>
 
-<!-- Detail view -->
-<div id="detailView">
+<div class="detail-page" id="detailPage">
   <div class="detail-header">
-    <button class="back-btn" onclick="showList()">← All architects</button>
+    <button class="back-btn" onclick="showList()">← Back</button>
     <div class="detail-avatar" id="dAvatar"></div>
-    <div>
-      <h2 id="dName"></h2>
-      <p id="dDates"></p>
-    </div>
-    <a href="#" id="dProfile" target="_blank" style="margin-left:auto;font-size:0.78rem;color:#90b890">View profile ↗</a>
+    <div><div class="dh-name" id="dName"></div><div class="dh-sub" id="dSub"></div></div>
+    <a id="dWiki" href="#" target="_blank" style="margin-left:auto;font-size:0.78rem;color:#90b890;display:none">Wikipedia ↗</a>
+    <a id="dProfile" href="#" target="_blank" style="font-size:0.78rem;color:#90b890;display:none">View profile ↗</a>
   </div>
   <div class="detail-body">
     <div id="map"></div>
-    <div class="buildings-panel">
-      <div class="stats-bar" id="statsBar"></div>
-      <div class="filter-bar">
-        <button class="f-btn active" onclick="filterBuildings('all',this)">All</button>
-        <button class="f-btn" onclick="filterBuildings('placed',this)">Placed</button>
-        <button class="f-btn" onclick="filterBuildings('uncertain',this)">Needs location</button>
+    <div class="detail-panels">
+      <div class="props-panel">
+        <div class="panel-title">Park Properties (<span id="propCount">0</span>)</div>
+        <div id="propList"></div>
       </div>
-      <h3>Buildings & Works</h3>
-      <div id="buildingList" class="buildings-grid"></div>
-      <button class="add-btn" id="addBtn" style="display:none" onclick="addBuilding()">+ Add building</button>
+      <div class="members-panel">
+        <div class="panel-title">Partners & Members</div>
+        <div id="memberList"></div>
+        <button class="add-member-btn" id="addMemberBtn" style="display:none" onclick="showAddMember()">+ Add member</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-let map, markers = {}, currentPersonId = null, allWorks = [], isAdmin = false, filter = 'all', selectedWorkId = null;
-
-async function loadPropArchitect(archName) {
-  history.pushState({}, '', '/architects');
-  document.getElementById('listView').style.display = 'none';
-  const det = document.getElementById('detailView');
-  det.style.display = 'flex';
-  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-  
-  document.getElementById('dAvatar').textContent = archName.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  document.getElementById('dName').textContent = archName;
-  document.getElementById('dDates').textContent = 'Architecture firm';
-  document.getElementById('dProfile').style.display = 'none';
-  if (isAdmin) document.getElementById('addBtn').style.display = 'none';
-
-  // Fetch all props with this architect
-  const allProps = await fetch('/api/all-props').then(r=>r.json()).catch(()=>[]);
-  const works = allProps.filter(p=>p.architect===archName).map(p=>({
-    id: -p.id, name: (p.address||'').replace(/:\s*/,', ')||'Property '+p.id,
-    city: p.street||'', year_start: p.date_built ? parseInt(p.date_built) : null,
-    notes: p.builder ? 'Builder: '+p.builder : '',
-    lat: null, lng: null, location_uncertain: true, prop_id: p.id
-  }));
-  allWorks = works;
-  
-  // Override building item click to go to map
-  renderBuildingList = function() {
-    document.getElementById('statsBar').textContent = works.length + ' Park properties';
-    document.getElementById('buildingList').innerHTML = works.map(w =>
-      `<div class="building-item" onclick="window.open('/?id=${w.prop_id}','_blank')" id="bi-${w.id}">
-        <div class="b-name">${w.name}</div>
-        <div class="b-year">${w.year_start||''}</div>
-        ${w.notes?`<div class="b-notes">${w.notes}</div>`:''}
-        <div class="b-city" style="color:#5b9bd5;font-size:0.7rem">Click to view on map ↗</div>
-      </div>`
-    ).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No properties found.</div>';
-  };
-  renderBuildingList();
-  
-  // Show simple map with Nottingham centre - no markers since no coords
-  if (!map) {
-    const mapEl = document.getElementById('map');
-    mapEl.style.height = '420px';
-    mapEl.style.minHeight = '420px';
-    map = L.map('map', {preferCanvas:true}).setView([52.955, -1.155], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors'}).addTo(map);
-  }
-  map.invalidateSize();
-  markers = {};
-  document.getElementById('addBtn').style.display = 'none';
-}
+let map, markers={}, isAdmin=false, allProps=[], currentFirm=null;
 
 async function init() {
   const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
   isAdmin = me.isAdmin;
-  
+  if (isAdmin) document.getElementById('addFirmBtn').style.display='';
+  allProps = await fetch('/api/all-props').then(r=>r.json()).catch(()=>[]);
   const path = location.pathname;
-  const match = path.match(/\/architects\/(\d+)/);
-  if (match) {
-    await loadArchitect(parseInt(match[1]));
-  } else {
-    await loadList();
-  }
+  const m = path.match(/\/architects\/firm\/(\d+)/);
+  if (m) await loadFirm(parseInt(m[1]));
+  else if (path.match(/\/architects\/person\/(\d+)/)) await loadPersonArch(parseInt(path.match(/\/architects\/person\/(\d+)/)[1]));
+  else await loadList();
 }
 
 async function loadList() {
-  document.getElementById('listView').style.display = 'block';
-  document.getElementById('detailView').style.display = 'none';
-  const architects = await fetch('/api/architects').then(r=>r.json()).catch(()=>[]);
-  const list = document.getElementById('architectList');
-  if (!architects.length) {
-    list.innerHTML = '<div style="color:#8a7a5a;padding:20px;font-style:italic">No architects with recorded works yet.</div>';
-    return;
-  }
-  list.innerHTML = architects.map(a => {
-    const name = [a.known_as || (a.first_name + ' ' + a.last_name)].join('');
-    const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-    return `<div class="architect-card" onclick="loadArchitect(${a.id})">
-      <div class="arch-avatar">${init}</div>
-      <div>
-        <div class="arch-name">${name}</div>
-        <div class="arch-dates">${a.born_year||'?'} – ${a.died_year||'?'}</div>
-      </div>
-      <div class="arch-count">${a.work_count} buildings</div>
-    </div>`;
-  }).join('');
-}
-
-async function showList() {
+  document.getElementById('listPage').style.display='block';
+  document.getElementById('detailPage').style.display='none';
   history.pushState({}, '', '/architects');
-  await loadList();
+
+  const [firms, individuals] = await Promise.all([
+    fetch('/api/firms').then(r=>r.json()).catch(()=>[]),
+    fetch('/api/architects').then(r=>r.json()).catch(()=>[])
+  ]);
+
+  // Firms
+  document.getElementById('firmList').innerHTML = firms.map(f => {
+    const init = f.name.split(/[\s&]+/).map(w=>w[0]||'').slice(0,2).join('').toUpperCase();
+    const yrs = f.active_from ? `${f.active_from}–${f.active_to||''}` : '';
+    const click = f.id ? `onclick="loadFirm(${f.id})"` : `onclick="loadFirmByName('${f.name.replace(/'/g,"\\'")}')"`;
+    return `<div class="firm-card" ${click}>
+      <div class="firm-avatar">${init}</div>
+      <div><div class="firm-name">${f.name}</div><div class="firm-meta">${yrs||'Architecture firm'} · ${f.member_count||0} members</div></div>
+      <div class="firm-count">${f.prop_count} properties</div>
+    </div>`;
+  }).join('') || '<div style="color:#8a7a5a;padding:8px">No firms recorded</div>';
+
+  // Individuals (from architect_works DB)
+  document.getElementById('individualList').innerHTML = individuals.filter(a=>a.source==='db').map(a => {
+    const name = a.known_as || (a.first_name+' '+a.last_name).trim();
+    const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    return `<div class="firm-card" onclick="loadPersonArch(${a.id})">
+      <div class="firm-avatar individual">${init}</div>
+      <div><div class="firm-name">${name}</div><div class="firm-meta">${a.born_year||'?'}–${a.died_year||'?'}</div></div>
+      <div class="firm-count">${a.work_count} works</div>
+    </div>`;
+  }).join('') || '<div style="color:#8a7a5a;padding:8px">No individual architect records</div>';
 }
 
-async function loadArchitect(personId) {
-  currentPersonId = personId;
-  history.pushState({}, '', '/architects/' + personId);
-  document.getElementById('listView').style.display = 'none';
-  const det = document.getElementById('detailView');
-  det.style.display = 'flex';
-  // Wait for browser paint before map can measure container
-  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-  
+function showList() { loadList(); }
+
+async function loadFirmByName(name) {
+  // Firm exists only in all_props — show prop list without DB record
+  currentFirm = { id: null, name, prop_count: 0 };
+  const init = name.split(/[\s&]+/).map(w=>w[0]||'').slice(0,2).join('').toUpperCase();
+  document.getElementById('listPage').style.display='none';
+  document.getElementById('detailPage').style.display='flex';
+  document.getElementById('dAvatar').textContent = init;
+  document.getElementById('dAvatar').className = 'detail-avatar';
+  document.getElementById('dName').textContent = name;
+  document.getElementById('dSub').textContent = 'Architecture firm';
+  document.getElementById('memberList').innerHTML = '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No DB record yet — create this firm to add members.</div>';
+  if (isAdmin) document.getElementById('addMemberBtn').style.display='none';
+  renderPropList(name);
+}
+
+async function loadFirm(id) {
+  history.pushState({}, '', '/architects/firm/'+id);
+  document.getElementById('listPage').style.display='none';
+  document.getElementById('detailPage').style.display='flex';
+  const firm = await fetch('/api/firm/'+id).then(r=>r.json()).catch(()=>null);
+  if (!firm) return;
+  currentFirm = firm;
+  const init = firm.name.split(/[\s&]+/).map(w=>w[0]||'').slice(0,2).join('').toUpperCase();
+  document.getElementById('dAvatar').textContent = init;
+  document.getElementById('dAvatar').className = 'detail-avatar';
+  document.getElementById('dName').textContent = firm.name;
+  document.getElementById('dSub').textContent = [firm.active_from ? `${firm.active_from}–${firm.active_to||'present'}` : '', 'Architecture firm'].filter(Boolean).join(' · ');
+  if (firm.wikipedia_url) { document.getElementById('dWiki').href=firm.wikipedia_url; document.getElementById('dWiki').style.display=''; }
+  if (isAdmin) document.getElementById('addMemberBtn').style.display='block';
+  renderPropList(firm.name);
+  renderMembers(firm.members||[]);
+}
+
+function renderPropList(firmName) {
+  const props = allProps.filter(p => p.architect && p.architect.trim() === firmName);
+  document.getElementById('propCount').textContent = props.length;
+  document.getElementById('propList').innerHTML = props.map(p => {
+    const addr = (p.address||'').replace(/:\s*([A-Z])/g,', $1').replace(/:\s*$/,'');
+    return `<div class="prop-item" onclick="window.open('/?id=${p.id}','_blank')">
+      <div class="prop-name">${addr||'Property '+p.id}</div>
+      <div class="prop-date">${p.date_built ? 'c.'+p.date_built : ''}${p.builder ? ' · Builder: '+p.builder : ''}</div>
+    </div>`;
+  }).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No Park properties recorded for this firm.</div>';
+  initOrUpdateMap(props);
+}
+
+function renderMembers(members) {
+  document.getElementById('memberList').innerHTML = members.map(m => {
+    const name = m.known_as || (m.first_name+' '+m.last_name).trim();
+    const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    const yrs = m.from_year ? `${m.from_year}–${m.to_year||''}` : '';
+    return `<div class="member-item">
+      <div class="member-avatar">${init}</div>
+      <div>
+        <div class="member-name" onclick="window.open('/people?person=${m.person_id}','_blank')">${name}</div>
+        <div class="member-role">${m.role||'Partner'}${yrs?' · '+yrs:''}</div>
+      </div>
+      ${isAdmin ? `<button onclick="removeMember(${currentFirm.id},${m.person_id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.85rem">✕</button>` : ''}
+    </div>`;
+  }).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No members recorded yet.</div>';
+}
+
+async function loadPersonArch(personId) {
+  history.pushState({}, '', '/architects/person/'+personId);
+  document.getElementById('listPage').style.display='none';
+  document.getElementById('detailPage').style.display='flex';
+  document.getElementById('memberList').innerHTML = '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">Individual architect — see People page for biography and relationships.</div>';
+  document.getElementById('addMemberBtn').style.display='none';
   const [person, works] = await Promise.all([
-    fetch('/api/person/' + personId).then(r=>r.json()),
-    fetch('/api/architect-works/' + personId).then(r=>r.json())
+    fetch('/api/person/'+personId).then(r=>r.json()),
+    fetch('/api/architect-works/'+personId).then(r=>r.json()).catch(()=>[])
   ]);
-  allWorks = works;
-  
-  const name = person.known_as || (person.first_name + ' ' + person.last_name);
+  const name = person.known_as || (person.first_name+' '+person.last_name).trim();
   const init = name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
   document.getElementById('dAvatar').textContent = init;
+  document.getElementById('dAvatar').className = 'detail-avatar individual';
   document.getElementById('dName').textContent = name;
-  document.getElementById('dDates').textContent = `${person.born_year||'?'} – ${person.died_year||'?'} · Architect`;
-  document.getElementById('dProfile').href = '/people?person=' + personId;
-  if (isAdmin) document.getElementById('addBtn').style.display = 'block';
-  
-  renderBuildingList();
-  initMap(works);
+  document.getElementById('dSub').textContent = `${person.born_year||'?'}–${person.died_year||'?'} · Architect`;
+  document.getElementById('dProfile').href='/people?person='+personId;
+  document.getElementById('dProfile').style.display='';
+  document.getElementById('propCount').textContent = works.filter(w=>w.lat&&w.lng).length + ' placed';
+  document.getElementById('propList').innerHTML = works.map(w =>
+    `<div class="prop-item" onclick="${w.id>0?'selectWork('+w.id+')':'\"\"'}">
+      <div class="prop-name">${w.name}</div>
+      <div class="prop-date">${w.year_start||''}${w.city&&w.city!=='Nottingham'?' · '+w.city:''}${w.location_uncertain?' ⚠':''}${w.notes?' · '+w.notes:''}</div>
+    </div>`
+  ).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No individual works recorded.</div>';
+  initOrUpdateMap([], works);
 }
 
-function filterBuildings(f, btn) {
-  filter = f;
-  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderBuildingList();
-}
-
-function renderBuildingList() {
-  const placed = allWorks.filter(w=>w.lat&&w.lng).length;
-  const uncertain = allWorks.filter(w=>w.location_uncertain).length;
-  document.getElementById('statsBar').textContent = `${allWorks.length} works · ${placed} placed · ${uncertain} need location`;
-  
-  let works = allWorks;
-  if (filter === 'placed') works = allWorks.filter(w=>w.lat&&w.lng&&!w.location_uncertain);
-  if (filter === 'uncertain') works = allWorks.filter(w=>!w.lat||!w.lng||w.location_uncertain);
-  
-  document.getElementById('buildingList').innerHTML = works.map(w => {
-    const uncertain = !w.lat || !w.lng || w.location_uncertain;
-    return `<div class="building-item ${uncertain?'uncertain':''} ${selectedWorkId===w.id?'active':''}" onclick="selectWork(${w.id})" id="bi-${w.id}">
-      <div class="b-name">${w.name}</div>
-      <div class="b-year">${w.year_start||''}${w.year_end&&w.year_end!==w.year_start?'–'+w.year_end:''}</div>
-      ${w.notes?`<div class="b-notes">${w.notes}</div>`:''}
-      <div class="b-city">${w.city||'Nottingham'}${w.address?', '+w.address:''}</div>
-      ${uncertain?`<div class="b-uncertain">⚠ Location needed</div>`:''}
-    </div>`;
-  }).join('') || '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No buildings match this filter.</div>';
-}
-
-function initMap(works) {
+function initOrUpdateMap(props, works=[]) {
   const mapEl = document.getElementById('map');
-  mapEl.style.height = '420px';
-  mapEl.style.minHeight = '420px';
+  mapEl.style.height='380px';
   if (!map) {
-    map = L.map('map', {preferCanvas: true}).setView([52.955, -1.155], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'© OpenStreetMap contributors', maxZoom:19}).addTo(map);
-  } else {
-    Object.values(markers).forEach(m=>map.removeLayer(m));
-    markers = {};
+    map = L.map('map',{preferCanvas:true}).setView([52.955,-1.155],13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
   }
-  map.invalidateSize();
-  
-  works.forEach(w => {
-    if (!w.lat || !w.lng) return;
-    const uncertain = w.location_uncertain;
-    const m = L.circleMarker([w.lat, w.lng], {
-      radius: 7,
-      fillColor: uncertain ? '#d4880a' : '#1a3a2a',
-      color: uncertain ? '#a06008' : '#0a2a1a',
-      weight: 2,
-      opacity: 1,
-      fillOpacity: 0.8
-    }).addTo(map);
-    m.bindTooltip(`<b>${w.name}</b><br>${w.year_start||''}${w.notes?'<br><i>'+w.notes+'</i>':''}`, {direction:'top'});
-    m.on('click', () => selectWork(w.id));
-    if (isAdmin) {
-      m.on('contextmenu', () => {
-        m.setStyle({fillColor:'#c04040'});
-        map.once('click', e => {
-          w.lat = e.latlng.lat; w.lng = e.latlng.lng;
-          m.setLatLng(e.latlng);
-          m.setStyle({fillColor: uncertain ? '#d4880a' : '#1a3a2a'});
-          fetch('/api/architect-works/'+w.id, {method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({lat:w.lat,lng:w.lng})});
-        });
-      });
-    }
-    markers[w.id] = m;
+  Object.values(markers).forEach(m=>map.removeLayer(m)); markers={};
+  const pts = [];
+  // Park properties
+  props.forEach(p => {
+    const prop = allProps.find(ap=>ap.id===p.id)||p;
+    if (!prop.lat||!prop.lng) return;
+    const m = L.circleMarker([prop.lat,prop.lng],{radius:7,fillColor:'#2a5a8a',color:'#1a3a6a',weight:2,fillOpacity:0.8}).addTo(map);
+    m.bindTooltip(`<b>${(prop.address||'Property '+prop.id).replace(/:\s*/,', ')}</b>${prop.date_built?'<br>c.'+prop.date_built:''}`,{direction:'top'});
+    m.on('click',()=>window.open('/?id='+prop.id,'_blank'));
+    markers[prop.id]=m; pts.push([prop.lat,prop.lng]);
   });
-  
-  // Fit bounds if we have markers
-  const pts = works.filter(w=>w.lat&&w.lng).map(w=>[w.lat,w.lng]);
+  // architect_works
+  works.filter(w=>w.lat&&w.lng).forEach(w=>{
+    const uncertain=w.location_uncertain;
+    const m=L.circleMarker([w.lat,w.lng],{radius:7,fillColor:uncertain?'#d4880a':'#4a7c5a',color:uncertain?'#a06008':'#2a5a3a',weight:2,fillOpacity:0.8}).addTo(map);
+    m.bindTooltip(`<b>${w.name}</b>${w.year_start?'<br>'+w.year_start:''}`,{direction:'top'});
+    markers[w.id]=m; pts.push([w.lat,w.lng]);
+  });
   map.invalidateSize();
-  if (pts.length > 1) map.fitBounds(pts, {padding:[30,30]});
-  else if (pts.length === 1) map.setView(pts[0], 14);
+  if (pts.length>1) map.fitBounds(pts,{padding:[30,30]});
+  else if (pts.length===1) map.setView(pts[0],14);
 }
 
-function selectWork(id) {
-  selectedWorkId = id;
-  renderBuildingList();
-  // Scroll to item
-  const el = document.getElementById('bi-'+id);
-  if (el) el.scrollIntoView({block:'nearest'});
-  // Highlight marker
-  Object.entries(markers).forEach(([mid, m]) => {
-    const w = allWorks.find(w=>w.id===parseInt(mid));
-    m.setRadius(parseInt(mid)===id ? 11 : 7);
-    m.setStyle({fillColor: parseInt(mid)===id ? '#8a6a2a' : (w?.location_uncertain?'#d4880a':'#1a3a2a')});
-  });
-  if (markers[id]) map.panTo(markers[id].getLatLng());
+async function showAddFirm() {
+  const name = prompt('Firm name (e.g. "Hine & Evans"):'); if(!name) return;
+  const from = prompt('Active from (year):') || null;
+  const to = prompt('Active to (year):') || null;
+  const wiki = prompt('Wikipedia URL (optional):') || null;
+  const r = await fetch('/api/firms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,active_from:from?parseInt(from):null,active_to:to?parseInt(to):null,wikipedia_url:wiki})}).then(r=>r.json());
+  if (r.ok) { alert('Firm created! You can now add members.'); loadList(); }
+  else alert('Error: '+r.error);
 }
 
-async function addBuilding() {
-  const name = prompt('Building name:');
-  if (!name) return;
-  const year = prompt('Year (or start year):') || '';
-  const city = prompt('City:', 'Nottingham') || 'Nottingham';
-  const notes = prompt('Notes (e.g. "with Jolley", "restoration"):') || '';
-  const res = await fetch('/api/architect-works', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ person_id: currentPersonId, name, year_start: year?parseInt(year):null, city, notes, location_uncertain: true })
-  }).then(r=>r.json());
-  if (res.ok) { allWorks.push(res.work); renderBuildingList(); initMap(allWorks); }
+async function showAddMember() {
+  if (!currentFirm?.id) return;
+  const name = prompt('Search for person by name:'); if(!name) return;
+  const people = await fetch('/api/people?q='+encodeURIComponent(name)).then(r=>r.json()).catch(()=>[]);
+  if (!people.length) { alert('No people found matching "'+name+'"'); return; }
+  const list = people.slice(0,10).map((p,i)=>`${i+1}. ${p.first_name} ${p.last_name} (${p.born_year||'?'})`).join('\n');
+  const choice = parseInt(prompt('Select:\n'+list+'\n\nEnter number:'));
+  if (!choice||!people[choice-1]) return;
+  const person = people[choice-1];
+  const role = prompt('Role (e.g. Partner, Principal, Associate):','Partner') || 'Partner';
+  const from = prompt('From year:') || null;
+  const to = prompt('To year:') || null;
+  const r = await fetch(`/api/firm/${currentFirm.id}/members`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({person_id:person.id,role,from_year:from?parseInt(from):null,to_year:to?parseInt(to):null})}).then(r=>r.json());
+  if (r.ok) loadFirm(currentFirm.id);
+  else alert('Error: '+r.error);
+}
+
+async function removeMember(firmId, personId) {
+  if (!confirm('Remove this member?')) return;
+  await fetch(`/api/firm/${firmId}/members/${personId}`,{method:'DELETE'});
+  loadFirm(firmId);
 }
 
 init();

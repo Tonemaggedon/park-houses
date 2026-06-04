@@ -207,6 +207,25 @@ async function dbInit() {
       created_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS architect_works_person ON architect_works(person_id)`);
+    await db.query(`CREATE TABLE IF NOT EXISTS architect_firms (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL UNIQUE,
+      active_from INTEGER,
+      active_to INTEGER,
+      notes TEXT,
+      wikipedia_url TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS firm_members (
+      id SERIAL PRIMARY KEY,
+      firm_id INTEGER REFERENCES architect_firms(id) ON DELETE CASCADE,
+      person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
+      role TEXT DEFAULT 'Partner',
+      from_year INTEGER,
+      to_year INTEGER,
+      UNIQUE(firm_id, person_id)
+    )`);"
+    
     await db.query(`CREATE TABLE IF NOT EXISTS property_research (
       id SERIAL PRIMARY KEY,
       property_id INTEGER NOT NULL,
@@ -1546,6 +1565,95 @@ app.delete('/api/property-research/:id', async (req, res) => {
   try {
     await db.query('DELETE FROM property_research WHERE property_id=$1 AND username=$2', [parseInt(req.params.id), username]);
     res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Architect Firms API ──────────────────────────────────────────────────────
+app.get('/api/firms', async (req, res) => {
+  const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+  if (!db) {
+    // Build from all_props.json only
+    const firmMap = {};
+    allProps.forEach(p => { if (p.architect) { const n=p.architect.trim(); if(!firmMap[n]) firmMap[n]={id:null,name:n,prop_count:0}; firmMap[n].prop_count++; } });
+    return res.json(Object.values(firmMap).sort((a,b)=>b.prop_count-a.prop_count));
+  }
+  try {
+    // Get DB firms
+    const firms = await db.query('SELECT f.*, COUNT(DISTINCT fm.person_id) as member_count FROM architect_firms f LEFT JOIN firm_members fm ON fm.firm_id=f.id GROUP BY f.id ORDER BY f.name');
+    // Count Park properties per firm from all_props
+    const propCount = {};
+    allProps.forEach(p => { if (p.architect) { const n=p.architect.trim(); propCount[n]=(propCount[n]||0)+1; } });
+    const result = firms.rows.map(f => ({...f, prop_count: propCount[f.name]||0, member_count: parseInt(f.member_count)}));
+    // Also include prop-only firms not in DB
+    const dbNames = new Set(firms.rows.map(f=>f.name));
+    const propOnly = Object.entries(propCount).filter(([n])=>!dbNames.has(n)).map(([name,cnt])=>({id:null,name,prop_count:cnt,member_count:0}));
+    res.json([...result, ...propOnly].sort((a,b)=>b.prop_count-a.prop_count));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/firm/:id', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const firm = await db.query('SELECT * FROM architect_firms WHERE id=$1', [parseInt(req.params.id)]);
+    if (!firm.rows[0]) return res.status(404).json({ error: 'Not found' });
+    const members = await db.query(`SELECT fm.*, p.first_name, p.last_name, p.known_as, p.born_year, p.died_year
+      FROM firm_members fm JOIN people p ON p.id=fm.person_id WHERE fm.firm_id=$1 ORDER BY fm.from_year`, [parseInt(req.params.id)]);
+    res.json({ ...firm.rows[0], members: members.rows });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/firms', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { name, active_from, active_to, notes, wikipedia_url } = req.body;
+  if (!name) return res.status(400).json({ error: 'name required' });
+  try {
+    const r = await db.query('INSERT INTO architect_firms (name,active_from,active_to,notes,wikipedia_url) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+      [name, active_from||null, active_to||null, notes||null, wikipedia_url||null]);
+    res.json({ ok: true, firm: r.rows[0] });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/firm/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { name, active_from, active_to, notes, wikipedia_url } = req.body;
+  try {
+    await db.query('UPDATE architect_firms SET name=COALESCE($2,name), active_from=$3, active_to=$4, notes=$5, wikipedia_url=$6 WHERE id=$1',
+      [parseInt(req.params.id), name||null, active_from||null, active_to||null, notes||null, wikipedia_url||null]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/firm/:id/members', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const { person_id, role, from_year, to_year } = req.body;
+  if (!person_id) return res.status(400).json({ error: 'person_id required' });
+  try {
+    await db.query('INSERT INTO firm_members (firm_id,person_id,role,from_year,to_year) VALUES ($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING',
+      [parseInt(req.params.id), parseInt(person_id), role||'Partner', from_year||null, to_year||null]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/firm/:firmId/members/:personId', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query('DELETE FROM firm_members WHERE firm_id=$1 AND person_id=$2', [parseInt(req.params.firmId), parseInt(req.params.personId)]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Auto-create firms from all_props.json architect names
+app.post('/api/admin/create-firms', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const names = [...new Set(allProps.map(p=>p.architect).filter(Boolean).map(n=>n.trim()))];
+    let created = 0;
+    for (const name of names) {
+      const r = await db.query('INSERT INTO architect_firms (name) VALUES ($1) ON CONFLICT (name) DO NOTHING RETURNING id', [name]);
+      if (r.rows[0]) created++;
+    }
+    res.json({ ok: true, created, total: names.length });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
