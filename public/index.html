@@ -430,7 +430,7 @@
       <!-- Login fields -->
       <div id="authLoginFields">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Email</label>
-        <input id="authEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="your@email.com">
+        <input id="authEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="email or username (admin)">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Password</label>
         <input id="authPassword" type="password" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:16px;box-sizing:border-box" placeholder="Password">
       </div>
@@ -448,7 +448,7 @@
           </div>
         </div>
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Email</label>
-        <input id="authRegEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="your@email.com">
+        <input id="authRegEmail" type="email" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="email or username (admin)">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Password (6+ characters)</label>
         <input id="authRegPassword" type="password" style="width:100%;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-bottom:12px;box-sizing:border-box" placeholder="Choose a password">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Profile Photo <span style="text-transform:none;letter-spacing:0;color:#9a8a6a">(optional)</span></label>
@@ -1377,6 +1377,21 @@ async function handleAuthSubmit() {
     const email = document.getElementById('authEmail').value.trim();
     const pw = document.getElementById('authPassword').value;
     if (!email || !pw) { errEl.textContent = 'Please enter email and password.'; return; }
+
+    // If no @ symbol treat as admin username login
+    if (!email.includes('@')) {
+      const adminRes = await fetch('/api/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password: pw })
+      });
+      const adminData = await adminRes.json();
+      if (adminData.ok) {
+        closeAuthModal();
+        await initAdmin(); // re-run admin init to show admin controls
+        return;
+      } else { errEl.textContent = 'Invalid credentials.'; return; }
+    }
+
     const res = await fetch('/api/user/login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password: pw })

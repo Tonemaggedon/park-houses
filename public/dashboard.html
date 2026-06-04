@@ -184,11 +184,11 @@ let allProps=[], stats={}, jobsChart=null, researchFilter='all', researchMap={},
 async function init(){
   const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
   currentUser = me.user || (me.isAdmin ? 'admin' : null);
-  const [p,s,rm]=await Promise.all([
+  const [p,s]=await Promise.all([
     fetch('/api/all-props').then(r=>r.json()).catch(()=>[]),
     fetch('/api/stats').then(r=>r.json()).catch(()=>({}))
   ]);
-  allProps=p; stats=s;
+  allProps=Array.isArray(p)?p:[]; stats=s||{};
   fetch('/api/property-research').then(r=>r.json()).then(d=>{researchMap=d;renderResearchGrid();}).catch(()=>{});
   renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable(); renderArchitects();
 }
