@@ -1261,7 +1261,8 @@ app.post('/api/person/:id/photo', (req, res, next) => {
   });
 });
 
-app.post('/api/person', requireAdmin, async (req, res) => {
+app.post('/api/person', async (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const { first_name, last_name, known_as, born_date, born_year, born_place,

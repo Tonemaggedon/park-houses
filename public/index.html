@@ -340,8 +340,7 @@
       <button onclick="closePanel()">✕</button>
     </div>
     <div class="tabs">
-      <button class="tab active" onclick="tab('data',this)">Data Sheet</button>
-      <button class="tab" onclick="tab('history',this)">History</button>
+      <button class="tab active" onclick="tab('data',this)">Property Info</button>
       <button class="tab" onclick="tab('photos',this)">Photos</button>
       <button class="tab" onclick="tab('people',this)">People <span class="badge" id="peopleBadge" style="display:none">0</span></button>
       <button class="tab" onclick="tab('subs',this)">Submissions <span class="badge" id="subBadge">0</span></button>
@@ -1008,42 +1007,39 @@ function renderPanel() {
 
   if (curTab === 'data') {
     const displayDesc = ov.desc || p.desc || '';
-    const displayBuilt = ov.built || p.built;
-    const displayListed = (ov.listed !== undefined) ? ov.listed : p.listed;
-    const displayGrade = ov.listedGrade || p.listedGrade || 'II';
-    const displayResidents = ov.residents || p.residents || [];
+    const displayHistory = ov.history || p.history || '';
+    const displayDate = ov.built || p.built || p.date_built;
+    const isListed = (ov.listed || p.listed) === 'Yes';
+    const displayGrade = ov.listedGrade || p.listedGrade || p.listed_grade;
+    const displayArch = ov.architect || p.architect;
+    const displayBuilder = ov.builder || p.builder;
+    const displayBuiltFor = ov.built_for || p.built_for;
+    const displayConverted = ov.converted || p.converted;
+    const displayPrevName = ov.prev_house_name || p.prev_house_name;
+    const hasNumber = !!(p.no || p.number);
+    const displayHouseName = hasNumber ? (p.name || p.house_name || '') : null;
+    const address = (p.no||p.number ? (p.no||p.number)+' ' : '') + (p.street||'');
+    const row = (lbl,val) => val ? `<div class="row"><span class="lbl">${lbl}</span><span class="val">${val}</span></div>` : '';
     body.innerHTML = `
       <div class="section">
         <h3>Property Details ${isAdmin ? '<button class="edit-btn" data-edit="details">Edit</button>' : ''}</h3>
-        <div class="row"><span class="lbl">Address</span><span class="val">${p.no ? p.no + ' ' : ''}${p.street}</span></div>
-        ${p.name ? `<div class="row"><span class="lbl">House Name</span><span class="val">${p.name}</span></div>` : ''}
-        ${displayBuilt ? `<div class="row"><span class="lbl">Date</span><span class="val">c.${displayBuilt}</span></div>` : ''}
-        <div class="row"><span class="lbl">Listing</span><span class="val">${displayListed ? `<span class="chip listed">&#9733; Grade ${displayGrade} Listed</span>` : 'Not listed'}</span></div>
-        ${ov.architect ? `<div class="row"><span class="lbl">Architect</span><span class="val">${ov.architect}</span></div>` : ''}
-        ${ov.style ? `<div class="row"><span class="lbl">Style</span><span class="val">${ov.style}</span></div>` : ''}
+        ${row('Address', address)}
+        ${displayHouseName ? row('House Name', displayHouseName) : ''}
+        ${displayPrevName ? row('Previous Name', displayPrevName) : ''}
+        ${displayDate ? row('Date', 'c.'+displayDate) : ''}
+        ${isListed ? `<div class="row"><span class="lbl">Listed Building</span><span class="val"><span class="chip listed">&#9733; Grade ${displayGrade||'II'} Listed</span></span></div>` : ''}
+        ${displayArch ? `<div class="row"><span class="lbl">Architect</span><span class="val" style="color:#2a5a8a;font-weight:500">${displayArch}</span></div>` : ''}
+        ${displayBuilder ? `<div class="row"><span class="lbl">Builder</span><span class="val" style="color:#8a4a2a;font-weight:500">${displayBuilder}</span></div>` : ''}
+        ${displayBuiltFor ? row('Built For', displayBuiltFor) : ''}
+        ${displayConverted ? row('Converted', displayConverted) : ''}
       </div>
+      ${displayHistory ? `<div class="section"><div class="desc" style="color:#4a4a4a;line-height:1.7">${displayHistory}</div></div>` : ''}
       <div class="section">
         <h3>Architectural Description ${isAdmin ? '<button class="edit-btn" data-edit="desc">Edit</button>' : ''}</h3>
         <div class="desc">${displayDesc || '<span style="color:#999;font-style:italic">No description recorded.</span>'}</div>
-        ${displayDesc && !ov.desc ? '<div style="margin-top:8px;font-size:0.72rem;color:#999">Source: The Park Conservation Trust</div>' : ''}
-        ${ov.desc ? '<div style="margin-top:8px;font-size:0.72rem;color:#5a8a5a">&#10003; Custom description saved</div>' : ''}
-      </div>
-      <div class="section">
-        <h3>Known Residents (pre-1918) ${isAdmin ? '<button class="edit-btn" data-edit="residents">Edit</button>' : ''}</h3>
-        ${displayResidents.length ? displayResidents.map(r=>`<div class="row"><span class="lbl">${r.y||'—'}</span><span class="val">${r.n}</span></div>`).join('') : '<div class="desc" style="color:#888;font-style:italic">No residents on record yet.</div>'}
       </div>`;
   }
-  else if (curTab === 'history') {
-    const displayHistory = ov.history || ov.desc || p.desc || '';
-    const displayNotes = ov.notes || '';
-    body.innerHTML = `
-      <div class="section">
-        <h3>Development History ${isAdmin ? '<button class="edit-btn" data-edit="history">Edit</button>' : ''}</h3>
-        <div class="desc">${displayHistory || `${p.name ? `<strong>${p.name}</strong> — ` : ''}${p.no ? p.no + ' ' : ''}${p.street} forms part of the wider development of The Park Estate by the Newcastle Trustees from the 1850s onwards.`}</div>
-      </div>
-      ${displayNotes ? `<div class="section"><h3>Additional Notes</h3><div class="desc">${displayNotes}</div></div>` : ''}`;
-  }
-  else if (curTab === 'photos') {
+    else if (curTab === 'photos') {
     const photos = ov.photos || [];
     let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
       <div class="photo-item">

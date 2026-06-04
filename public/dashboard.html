@@ -142,6 +142,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
       <div id="architectCards" style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem"></div>
     </div>
 
+    <!-- Builders panel -->
+    <div class="panel jobs-full" id="buildersPanel" style="display:none">
+      <div class="section-header"><span class="icon">🔨</span><h2>Builders of The Park</h2><span class="count" id="build-count"></span></div>
+      <div id="builderCards" style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem"></div>
+    </div>
+
     <div class="panel jobs-full">
       <div class="section-header"><span class="icon">⚒️</span><h2>Occupations &amp; Social History</h2><span class="count" id="j-count"></span></div>
       <!-- Occupation selector -->
@@ -190,7 +196,7 @@ async function init(){
   ]);
   allProps=Array.isArray(p)?p:[]; stats=s||{};
   fetch('/api/property-research').then(r=>r.json()).then(d=>{researchMap=d;renderResearchGrid();}).catch(()=>{});
-  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable(); renderArchitects();
+  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable(); renderArchitects(); renderBuilders();
 }
 
 function renderStats(){
@@ -430,6 +436,27 @@ async function renderLeagueTable(){
 // Show admin users link if admin
 fetch('/api/me').then(r=>r.json()).then(d=>{ if(d.isAdmin) { const el=document.getElementById('adminUsersLink'); if(el) el.style.display=''; } }).catch(()=>{});
 
+async function renderBuilders(){
+  try {
+    const props = allProps.filter(p=>p.builder);
+    if(!props.length) return;
+    // Group by builder name
+    const byBuilder = {};
+    props.forEach(p=>{ const b=p.builder; if(!byBuilder[b]) byBuilder[b]=0; byBuilder[b]++; });
+    const sorted = Object.entries(byBuilder).sort((a,b)=>b[1]-a[1]);
+    const panel=document.getElementById('buildersPanel');
+    panel.style.display='block';
+    set('build-count',sorted.length+' builders');
+    document.getElementById('builderCards').innerHTML=sorted.map(([name,count])=>{
+      const init=name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+      return `<div style="display:flex;align-items:center;gap:0.8rem;background:#2a1a0e;border:1px solid #4a2a0e;border-radius:9px;padding:0.8rem 1rem;min-width:200px">
+        <div style="width:38px;height:38px;border-radius:50%;background:#8a4a2a;color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${init}</div>
+        <div><div style="font-size:0.88rem;color:#e8d0b8;font-weight:600">${name}</div>
+        <div style="font-size:0.72rem;color:#a89a8a">${count} building${count>1?'s':''}</div></div>
+      </div>`;
+    }).join('');
+  } catch(e) {}
+}
 async function renderArchitects(){
   try {
     const architects = await fetch('/api/architects').then(r=>r.json()).catch(()=>[]);

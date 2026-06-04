@@ -220,6 +220,7 @@
 <div class="toolbar">
   <h2>People of The Park</h2>
   <input type="text" id="searchBox" placeholder="Search by name…" oninput="applyFilters()">
+  <button id="addPersonBtn" onclick="openAddPerson()" style="display:none;background:#4a7c5a;border:1px solid #3a6a4a;color:#e8dfc8;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif">+ Add Person</button>
   <select id="occFilter" onchange="applyFilters()">
     <option value="">All occupations</option>
   </select>
@@ -788,6 +789,86 @@ function humaniseRelType(type, isA) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
 
 loadPeople();
+
+// Show Add Person button if logged in
+fetch('/api/me').then(r=>r.json()).then(me=>{
+  if(me.isAdmin||(me.user&&(me.user.role==='contributor'||me.user.role==='admin'))) document.getElementById('addPersonBtn').style.display='';
+}).catch(()=>{});
+
+function openAddPerson() {
+  document.getElementById('addPersonOverlay').style.display='flex';
+  document.getElementById('ap_first_name').focus();
+}
+function closeAddPerson() {
+  document.getElementById('addPersonOverlay').style.display='none';
+  document.getElementById('addPersonForm').reset();
+  document.getElementById('apError').textContent='';
+}
+
+async function submitAddPerson() {
+  const get = id => document.getElementById(id).value.trim();
+  const first_name = get('ap_first_name');
+  const last_name = get('ap_last_name');
+  if (!first_name || !last_name) { document.getElementById('apError').textContent='First and last name are required.'; return; }
+  const body = {
+    first_name, last_name,
+    known_as: get('ap_known_as') || null,
+    born_year: get('ap_born_year') ? parseInt(get('ap_born_year')) : null,
+    born_place: get('ap_born_place') || null,
+    died_year: get('ap_died_year') ? parseInt(get('ap_died_year')) : null,
+    died_place: get('ap_died_place') || null,
+    bio: get('ap_bio') || null,
+    wikipedia_url: get('ap_wikipedia_url') || null,
+  };
+  const btn = document.getElementById('apSubmitBtn');
+  btn.textContent = 'Saving…'; btn.disabled = true;
+  try {
+    const res = await fetch('/api/person', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) }).then(r=>r.json());
+    if (res.ok) {
+      closeAddPerson();
+      // Add to list and open profile
+      const newPerson = { id: res.id, ...body, occupations: [], property_ids: [], census_years: [] };
+      allPeople.unshift(newPerson);
+      renderGrid(allPeople);
+      openProfile(res.id);
+    } else {
+      document.getElementById('apError').textContent = res.error || 'Failed to save.';
+    }
+  } catch(e) {
+    document.getElementById('apError').textContent = e.message;
+  }
+  btn.textContent = 'Save Person'; btn.disabled = false;
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeAddPerson(); });
 </script>
+
+<!-- Add Person Modal -->
+<div id="addPersonOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:600;align-items:center;justify-content:center">
+  <div style="background:#faf8f2;border-radius:10px;padding:28px;width:500px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="closeAddPerson()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#8a7a5a">✕</button>
+    <h2 style="font-size:1.1rem;color:#1a3a2a;font-weight:600;margin-bottom:18px">Add a Person</h2>
+    <form id="addPersonForm" onsubmit="event.preventDefault();submitAddPerson()">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div><label style="font-size:0.75rem;color:#8a7a5a">First name *</label><br><input id="ap_first_name" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Thomas"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Last name *</label><br><input id="ap_last_name" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Bayley"></div>
+      </div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as / title</label><br><input id="ap_known_as" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Sir Thomas Bayley"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Born year</label><br><input id="ap_born_year" type="number" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 1846"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Died year</label><br><input id="ap_died_year" type="number" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 1906"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br><input id="ap_died_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
+      </div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br><textarea id="ap_bio" rows="4" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.84rem;font-family:Georgia,serif;line-height:1.5;margin-top:3px" placeholder="Brief biography…"></textarea></div>
+      <div style="margin-bottom:16px"><label style="font-size:0.75rem;color:#8a7a5a">Wikipedia URL</label><br><input id="ap_wikipedia_url" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="https://en.wikipedia.org/wiki/..."></div>
+      <div id="apError" style="color:#c04040;font-size:0.8rem;margin-bottom:10px"></div>
+      <div style="display:flex;gap:10px">
+        <button id="apSubmitBtn" type="submit" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:9px 20px;cursor:pointer;font-size:0.85rem;font-family:Georgia,serif">Save Person</button>
+        <button type="button" onclick="closeAddPerson()" style="background:none;border:1px solid #d0c090;border-radius:5px;padding:9px 16px;cursor:pointer;font-size:0.85rem;color:#6a5a3a;font-family:Georgia,serif">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 </body>
 </html>
