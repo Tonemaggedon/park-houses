@@ -1019,25 +1019,25 @@ function renderPanel() {
     const hasNumber = !!(p.no || p.number);
     const displayHouseName = hasNumber ? (p.name || p.house_name || '') : null;
     const address = (p.no||p.number ? (p.no||p.number)+' ' : '') + (p.street||'');
-    const row = (lbl,val) => val ? `<div class="row"><span class="lbl">${lbl}</span><span class="val">${val}</span></div>` : '';
-    body.innerHTML = `
-      <div class="section">
-        <h3>Property Details ${isAdmin ? '<button class="edit-btn" data-edit="details">Edit</button>' : ''}</h3>
-        ${row('Address', address)}
-        ${displayHouseName ? row('House Name', displayHouseName) : ''}
-        ${displayPrevName ? row('Previous Name', displayPrevName) : ''}
-        ${displayDate ? row('Date', 'c.'+displayDate) : ''}
-        ${isListed ? `<div class="row"><span class="lbl">Listed Building</span><span class="val"><span class="chip listed">&#9733; Grade ${displayGrade||'II'} Listed</span></span></div>` : ''}
-        ${displayArch ? `<div class="row"><span class="lbl">Architect</span><span class="val" style="color:#2a5a8a;font-weight:500">${displayArch}</span></div>` : ''}
-        ${displayBuilder ? `<div class="row"><span class="lbl">Builder</span><span class="val" style="color:#8a4a2a;font-weight:500">${displayBuilder}</span></div>` : ''}
-        ${displayBuiltFor ? row('Built For', displayBuiltFor) : ''}
-        ${displayConverted ? row('Converted', displayConverted) : ''}
-      </div>
-      ${displayHistory ? `<div class="section"><div class="desc" style="color:#4a4a4a;line-height:1.7">${displayHistory}</div></div>` : ''}
-      <div class="section">
-        <h3>Architectural Description ${isAdmin ? '<button class="edit-btn" data-edit="desc">Edit</button>' : ''}</h3>
-        <div class="desc">${displayDesc || '<span style="color:#999;font-style:italic">No description recorded.</span>'}</div>
-      </div>`;
+    const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
+    let detailRows = '';
+    detailRows += '<div class="row"><span class="lbl">Address</span><span class="val">' + address + '</span></div>';
+    if (displayHouseName) detailRows += '<div class="row"><span class="lbl">House Name</span><span class="val">' + displayHouseName + '</span></div>';
+    if (displayPrevName) detailRows += '<div class="row"><span class="lbl">Previous Name</span><span class="val">' + displayPrevName + '</span></div>';
+    if (displayDate) detailRows += '<div class="row"><span class="lbl">Date</span><span class="val">c.' + displayDate + '</span></div>';
+    if (isListed) detailRows += '<div class="row"><span class="lbl">Listed Building</span><span class="val"><span class="chip listed">&#9733; Grade ' + (displayGrade||'II') + ' Listed</span></span></div>';
+    if (displayArch) detailRows += '<div class="row"><span class="lbl">Architect</span><span class="val" style="color:#2a5a8a;font-weight:500">' + displayArch + '</span></div>';
+    if (displayBuilder) detailRows += '<div class="row"><span class="lbl">Builder</span><span class="val" style="color:#8a4a2a;font-weight:500">' + displayBuilder + '</span></div>';
+    if (displayBuiltFor) detailRows += '<div class="row"><span class="lbl">Built For</span><span class="val">' + displayBuiltFor + '</span></div>';
+    if (displayConverted) detailRows += '<div class="row"><span class="lbl">Converted</span><span class="val">' + displayConverted + '</span></div>';
+    const histSection = displayHistory ? '<div class="section"><div class="desc" style="color:#4a4a4a;line-height:1.7">' + displayHistory + '</div></div>' : '';
+    const editBtn = canEdit ? '<button class="edit-btn" data-edit="details">Edit</button>' : '';
+    const descEditBtn = canEdit ? '<button class="edit-btn" data-edit="desc">Edit</button>' : '';
+    body.innerHTML =
+      '<div class="section"><h3>Property Details ' + editBtn + '</h3>' + detailRows + '</div>' +
+      histSection +
+      '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
+      '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>';
   }
     else if (curTab === 'photos') {
     const photos = ov.photos || [];

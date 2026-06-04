@@ -645,7 +645,7 @@ app.get('/api/property/:id', async (req, res) => {
   try { res.json(await loadProp(id)); } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post('/api/property/:id', requireAdmin, async (req, res) => {
+app.post('/api/property/:id', requireContributor, async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (!id) return res.status(400).json({ error: 'invalid id' });
   try {
@@ -1559,16 +1559,32 @@ app.get('/api/architect-works/:personId', async (req, res) => {
 });
 
 app.get('/api/architects', async (req, res) => {
-  if (!db) return res.json([]);
+  // Build from all_props.json architect fields
+  const fromProps = {};
   try {
-    const r = await db.query(`
-      SELECT p.id, p.first_name, p.last_name, p.known_as, p.born_year, p.died_year,
-             COUNT(w.id) as work_count
-      FROM people p
-      JOIN architect_works w ON w.person_id = p.id
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    allProps.forEach(p => {
+      if (p.architect) {
+        const name = p.architect.trim();
+        if (!fromProps[name]) fromProps[name] = { id: null, known_as: name, first_name: name, last_name: '', work_count: 0, source: 'props' };
+        fromProps[name].work_count++;
+      }
+    });
+  } catch(e) {}
+
+  if (!db) return res.json(Object.values(fromProps).sort((a,b)=>b.work_count-a.work_count));
+
+  try {
+    const r = await db.query(`SELECT p.id, p.first_name, p.last_name, p.known_as, p.born_year, p.died_year,
+      COUNT(w.id) as work_count FROM people p JOIN architect_works w ON w.person_id=p.id
       GROUP BY p.id ORDER BY p.last_name, p.first_name`);
-    res.json(r.rows);
-  } catch(e) { res.json([]); }
+    const dbArchs = r.rows.map(row => ({...row, work_count:parseInt(row.work_count), source:'db'}));
+    const dbNames = new Set(dbArchs.map(a=>(a.known_as||(a.first_name+' '+a.last_name)).toLowerCase()));
+    const propArchs = Object.values(fromProps).filter(a=>!dbNames.has(a.name&&a.name.toLowerCase()||a.known_as.toLowerCase())).sort((a,b)=>b.work_count-a.work_count);
+    res.json([...dbArchs, ...propArchs]);
+  } catch(e) {
+    res.json(Object.values(fromProps).sort((a,b)=>b.work_count-a.work_count));
+  }
 });
 
 app.post('/api/architect-works', requireAdmin, async (req, res) => {
