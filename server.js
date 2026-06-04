@@ -224,8 +224,7 @@ async function dbInit() {
       from_year INTEGER,
       to_year INTEGER,
       UNIQUE(firm_id, person_id)
-    )`);"
-    
+    )`);
     await db.query(`CREATE TABLE IF NOT EXISTS property_research (
       id SERIAL PRIMARY KEY,
       property_id INTEGER NOT NULL,
