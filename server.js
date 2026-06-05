@@ -32,6 +32,40 @@ const PROFILE_DIR    = path.join(__dirname, 'data', 'photos', 'profiles');
 if (!fs.existsSync(path.join(__dirname, 'data'))) fs.mkdirSync(path.join(__dirname, 'data'));
 if (!fs.existsSync(PHOTOS_DIR)) fs.mkdirSync(PHOTOS_DIR);
 if (!fs.existsSync(PROFILE_DIR)) fs.mkdirSync(PROFILE_DIR);
+
+// ── Cloudinary (optional — set env vars to enable persistent uploads) ─────────
+let cloudinary = null;
+if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+  try {
+    cloudinary = require('cloudinary').v2;
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key:    process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+    console.log('Cloudinary configured — uploads will be stored persistently');
+  } catch(e) {
+    console.warn('cloudinary package not installed, falling back to local disk');
+    cloudinary = null;
+  }
+}
+
+// Upload a buffer: uses Cloudinary if configured, otherwise saves to local disk
+async function uploadPhoto(buf, filename) {
+  if (cloudinary) {
+    return new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''), overwrite: true },
+        (err, result) => err ? reject(err) : resolve(result.secure_url)
+      );
+      stream.end(buf);
+    });
+  }
+  // Fallback: local disk (ephemeral on Railway)
+  const dest = path.join(PHOTOS_DIR, filename);
+  fs.writeFileSync(dest, buf);
+  return `/data/photos/${filename}`;
+}
 if (!fs.existsSync(COORDS_FILE)) fs.writeFileSync(COORDS_FILE, JSON.stringify({}));
 if (!fs.existsSync(PROPS_FILE))  fs.writeFileSync(PROPS_FILE, JSON.stringify({}));
 if (!fs.existsSync(USERS_FILE))  fs.writeFileSync(USERS_FILE, JSON.stringify({}));
@@ -528,8 +562,7 @@ app.post('/api/user/photo', async (req, res) => {
       if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
       const ext = (req.headers['x-filename'] || 'photo.jpg').split('.').pop().replace(/[^a-z]/gi,'').toLowerCase() || 'jpg';
       const filename = `profile_${req.session.userId}_${Date.now()}.${ext}`;
-      fs.writeFileSync(path.join(PROFILE_DIR, filename), buf);
-      const url = `/data/photos/profiles/${filename}`;
+      const url = await uploadPhoto(buf, filename);
       await updateUserPhoto(req.session.userId, url);
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
@@ -692,9 +725,8 @@ app.post('/api/property/:id/photo', requireAdmin, (req, res) => {
     try {
       const buf = Buffer.concat(chunks);
       const cd = req.headers['x-filename'] || `photo_${Date.now()}.jpg`;
-      const filename = `${id}_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi, '_')}`;
-      fs.writeFileSync(path.join(PHOTOS_DIR, filename), buf);
-      const url = `/data/photos/${filename}`;
+      const filename = `prop-${id}_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi, '_')}`;
+      const url = await uploadPhoto(buf, filename);
       const current = await loadProp(id);
       const photos = [...(current.photos || []), { url, caption: '', addedAt: new Date().toISOString() }];
       await saveProp(id, { ...current, photos }, req.session.username);
@@ -720,9 +752,8 @@ app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
       try {
         const buf = Buffer.concat(chunks);
         if (buf.length < 500) return res.json({ ok: false, reason: 'No image found' });
-        const filename = `${id}_orig_${num}${v}.jpg`;
-        fs.writeFileSync(path.join(PHOTOS_DIR, filename), buf);
-        const photoUrl = `/data/photos/${filename}`;
+        const filename = `prop-${id}_orig_${num}${v}.jpg`;
+        const photoUrl = await uploadPhoto(buf, filename);
         const current = await loadProp(id);
         const photos = current.photos || [];
         if (!photos.find(p => p.url === photoUrl)) {
@@ -803,14 +834,14 @@ app.post('/api/property/:id/submission-photo', async (req, res) => {
   const propId = parseInt(req.params.id, 10);
   const chunks = [];
   req.on('data', c => chunks.push(c));
-  req.on('end', () => {
+  req.on('end', async () => {
     try {
       const buf = Buffer.concat(chunks);
       if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
       const cd = req.headers['x-filename'] || `sub_${Date.now()}.jpg`;
-      const filename = `${propId}_sub_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi,'_')}`;
-      fs.writeFileSync(path.join(PHOTOS_DIR, filename), buf);
-      res.json({ ok: true, url: `/data/photos/${filename}` });
+      const filename = `prop-${propId}_sub_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi,'_')}`;
+      const url = await uploadPhoto(buf, filename);
+      res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
   req.on('error', e => res.status(500).json({ error: e.message }));
@@ -1901,27 +1932,26 @@ app.get('/api/admin/find-property-images/:id', requireAdmin, (req, res) => {
 });
 
 // ── Scrape property images from Park Houses website ───────────────────────────
+// Stores external URLs directly in the DB — no local disk storage needed,
+// so images persist across Railway restarts/redeployments.
 app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
   const http = require('http');
   const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
   const ids = req.query.id ? [parseInt(req.query.id)] : allProps.map(p => p.id);
-  
+
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.write(`Checking images for ${ids.length} properties...\n`);
 
-  function fetchImage(id, suffix) {
+  // Check if a URL returns a real image (status 200, size > 500 bytes)
+  function checkUrl(url) {
     return new Promise(resolve => {
-      const url = `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${id}${suffix}.jpg`;
       http.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, r => {
-        if (r.statusCode !== 200) { r.resume(); return resolve(null); }
-        const chunks = [];
-        r.on('data', c => chunks.push(c));
-        r.on('end', () => {
-          const buf = Buffer.concat(chunks);
-          if (buf.length < 500) return resolve(null); // skip tiny/placeholder images
-          resolve({ buf, suffix });
-        });
-      }).on('error', () => resolve(null));
+        if (r.statusCode !== 200) { r.resume(); return resolve(false); }
+        let len = 0;
+        r.on('data', c => { len += c.length; if (len > 500) { r.destroy(); resolve(true); } });
+        r.on('end', () => resolve(len > 500));
+        r.on('close', () => {});
+      }).on('error', () => resolve(false));
     });
   }
 
@@ -1929,59 +1959,41 @@ app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
   for (let i = 0; i < ids.length; i += 5) {
     const batch = ids.slice(i, i + 5);
     await Promise.all(batch.map(async id => {
-      // Check for floor plan image (MAP prefix, /imagesdb/ directory)
-      const planResult = await (new Promise(resolve => {
-        const planUrl = `http://www.nottinghamparkhouses.co.uk/imagesdb/MAP${id}.jpg`;
-        http.get(planUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, r => {
-          if (r.statusCode !== 200) { r.resume(); return resolve(null); }
-          const chunks = [];
-          r.on('data', c => chunks.push(c));
-          r.on('end', () => { const buf = Buffer.concat(chunks); resolve(buf.length > 500 ? buf : null); });
-        }).on('error', () => resolve(null));
-      }));
-      if (planResult) {
-        const fn = `prop-${id}-plan.jpg`;
-        fs.writeFileSync(path.join(PHOTOS_DIR, fn), planResult);
-        const url = `/data/photos/${fn}`;
-        if (db) {
-          try {
-            const current = await loadProp(id);
-            const photos = current.photos || [];
-            if (!photos.find(p => p.url === url)) {
-              photos.push({ url, caption: 'Floor plan' });
-              await saveProp(id, { photos }, 'image-scrape');
-            }
-          } catch(e) {}
-        }
-        saved++;
-        res.write(`✓ Property ${id} PLAN saved\n`);
+      if (!db) return; // needs DB to persist
+      const current = await loadProp(id);
+      const photos = current.photos || [];
+      const added = [];
+
+      // Floor plan: /imagesdb/MAP{id}.jpg
+      const planUrl = `http://www.nottinghamparkhouses.co.uk/imagesdb/MAP${id}.jpg`;
+      if (!photos.find(p => p.url === planUrl) && await checkUrl(planUrl)) {
+        photos.push({ url: planUrl, caption: 'Floor plan' });
+        added.push('PLAN');
       }
 
+      // Photos: /imagesDB/propertyimages/PIC{id}{suffix}.jpg
       for (const suffix of ['T', 'B', 'C', 'D', 'E']) {
-        const result = await fetchImage(id, suffix);
-        if (!result) continue;
-        const filename = `prop-${id}-${suffix.toLowerCase()}.jpg`;
-        const filepath = path.join(PHOTOS_DIR, filename);
-        fs.writeFileSync(filepath, result.buf);
-        const url = `/data/photos/${filename}`;
-        // Save to property_data as a photo
-        if (db) {
-          try {
-            const current = await loadProp(id);
-            const photos = current.photos || [];
-            if (!photos.find(p => p.url === url)) {
-              photos.push({ url, caption: `${suffix === 'T' ? 'Exterior' : suffix === 'B' ? 'Detail' : 'View ' + suffix}` });
-              await saveProp(id, { photos }, 'image-scrape');
-            }
-          } catch(e) {}
+        const imgUrl = `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${id}${suffix}.jpg`;
+        const caption = suffix === 'T' ? 'Exterior' : suffix === 'B' ? 'Detail' : `View ${suffix}`;
+        if (!photos.find(p => p.url === imgUrl) && await checkUrl(imgUrl)) {
+          photos.push({ url: imgUrl, caption });
+          added.push(suffix);
         }
-        saved++;
-        res.write(`✓ Property ${id} image ${suffix} saved\n`);
+      }
+
+      if (added.length) {
+        try {
+          await saveProp(id, { photos }, 'image-scrape');
+          saved += added.length;
+          res.write(`✓ Property ${id}: ${added.join(', ')}\n`);
+        } catch(e) {
+          res.write(`✗ Property ${id} save failed: ${e.message}\n`);
+        }
       }
     }));
-    if (i % 50 === 0) res.write(`Progress: ${Math.min(i+5, ids.length)}/${ids.length}\n`);
+    if (i % 50 === 0 && ids.length > 10) res.write(`Progress: ${Math.min(i+5, ids.length)}/${ids.length}\n`);
   }
-  res.end(`\nDone! Saved ${saved} images.\n`);
+  res.end(`\nDone! Saved ${saved} images across ${ids.length} properties.\n`);
 });
 
 // ── Catch-all: serve map page for any unmatched GET ───────────────────────────
