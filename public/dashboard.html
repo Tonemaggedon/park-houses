@@ -141,11 +141,6 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         </div>
         <div class="research-grid" id="researchGrid"><div class="loading">Loading...</div></div>
 
-        <!-- Who's researching what -->
-        <div id="whoPanel" style="display:none;margin-top:1.2rem">
-          <div style="font-size:0.78rem;color:#8a9a7a;margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em">Who is researching what</div>
-          <div id="whoGrid" style="display:flex;flex-direction:column;gap:0.5rem"></div>
-        </div>
       </div>
     </div>
 
@@ -257,36 +252,6 @@ function addrOf(p){
   const addr=(p.address||p.name||'').replace(/:\s*([A-Z])/g,', $1').replace(/:\s*$/,'').trim();
   return addr||('Property '+p.id);
 }
-function renderWhoPanel(){
-  const whoPanel = document.getElementById('whoPanel');
-  const whoGrid  = document.getElementById('whoGrid');
-  if(!whoPanel || !whoGrid) return;
-
-  // Build: { person → [address, address, ...] }
-  const byPerson = {};
-  Object.entries(researchMap).forEach(([propId, names]) => {
-    names.forEach(name => {
-      if(!byPerson[name]) byPerson[name] = [];
-      const p = allProps.find(x => x.id == propId);
-      byPerson[name].push(p ? addrOf(p) : 'Property ' + propId);
-    });
-  });
-
-  if(!Object.keys(byPerson).length){
-    whoPanel.style.display = 'none';
-    return;
-  }
-
-  whoPanel.style.display = 'block';
-  whoGrid.innerHTML = Object.entries(byPerson)
-    .sort((a,b) => a[0].localeCompare(b[0]))
-    .map(([name, addrs]) => `
-      <div style="background:#1a2a1a;border:1px solid #2a3a2a;border-radius:7px;padding:0.6rem 0.9rem">
-        <div style="font-size:0.8rem;color:#c8b87a;font-weight:600;margin-bottom:4px">🔍 ${name}</div>
-        <div style="font-size:0.72rem;color:#8a9a7a;line-height:1.6">${addrs.join(' · ')}</div>
-      </div>`).join('');
-}
-
 function renderResearchGrid(filter){
   if(filter) researchFilter=filter;
   const q=(document.getElementById('researchSearch')||{}).value||'';
@@ -296,7 +261,6 @@ function renderResearchGrid(filter){
   if(researchFilter==='researching') props=props.filter(p=>researchMap[p.id]&&researchMap[p.id].length>0);
   if(researchFilter==='mine')        props=props.filter(p=>currentUser&&(researchMap[p.id]||[]).includes(currentUser));
   if(q) props=props.filter(p=>addrOf(p).toLowerCase().includes(q.toLowerCase()));
-  renderWhoPanel();
   const grid=document.getElementById('researchGrid');
   if(!props.length){grid.innerHTML='<div class="loading">No properties match</div>';return;}
   grid.innerHTML=props.slice(0,300).map(p=>{
