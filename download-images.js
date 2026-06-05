@@ -20,25 +20,19 @@ if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR);
 const allProps = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'all_props.json'), 'utf8'));
 const ids = allProps.map(p => p.id);
 
-// URLs to try for each property
-function urlsForId(id) {
-  return [
-    {
-      url: `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${id}T.jpg`,
-      file: `prop-${id}-T.jpg`,
-      label: 'exterior'
-    },
-    {
-      url: `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${id}B.jpg`,
-      file: `prop-${id}-B.jpg`,
-      label: 'detail'
-    },
-    {
-      url: `http://www.nottinghamparkhouses.co.uk/imagesdb/MAP${id}.jpg`,
-      file: `prop-${id}-plan.jpg`,
-      label: 'plan'
-    },
-  ];
+// Build a list of candidate URLs for each image type.
+// For ids < 100, try the zero-padded form first (PIC001T), then unpadded (PIC1T).
+function candidatesForId(id) {
+  const pad = String(id).padStart(3, '0');
+  const raw = String(id);
+  const picForms = pad === raw ? [raw] : [pad, raw]; // e.g. ['001','1'] for id=1
+  const mapForms = pad === raw ? [raw] : [pad, raw];
+
+  return {
+    T:    picForms.map(p => `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${p}T.jpg`),
+    B:    picForms.map(p => `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${p}B.jpg`),
+    plan: mapForms.map(p => `http://www.nottinghamparkhouses.co.uk/imagesdb/MAP${p}.jpg`),
+  };
 }
 
 function download(url, dest) {
@@ -78,15 +72,22 @@ async function run() {
   console.log(`Downloading images for ${ids.length} properties into ./downloaded-images/\n`);
 
   for (let i = 0; i < ids.length; i++) {
-    const id = ids[i];
-    const entries = urlsForId(id);
-    const results = [];
+    const id         = ids[i];
+    const candidates = candidatesForId(id);
+    const results    = [];
 
-    for (const entry of entries) {
-      const dest = path.join(OUT_DIR, entry.file);
-      const result = await download(entry.url, dest);
-      if (result === 'saved') { total++; results.push(entry.label); }
-      if (result === 'skip')  { skipped++; results.push(`${entry.label}(cached)`); }
+    for (const [type, urls] of Object.entries(candidates)) {
+      const file  = `prop-${id}-${type}.jpg`;
+      const dest  = path.join(OUT_DIR, file);
+      let outcome = 'miss';
+
+      for (const url of urls) {
+        outcome = await download(url, dest);
+        if (outcome === 'saved' || outcome === 'skip') break; // got it
+      }
+
+      if (outcome === 'saved') { total++;   results.push(type); }
+      if (outcome === 'skip')  { skipped++; results.push(`${type}(cached)`); }
     }
 
     if (results.length) {

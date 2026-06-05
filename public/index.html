@@ -201,7 +201,39 @@
   .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .photo-item .ph-del { position: absolute; top: 3px; right: 3px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer; display: none; }
   .photo-item:hover .ph-del { display: block; }
-  .photo-item .ph-cap { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); color: white; font-size: 0.68rem; padding: 3px 5px; }
+  .photo-item { cursor: zoom-in; }
+  .photo-item .ph-cap { display: none; }
+
+  /* ── Lightbox ── */
+  #lightbox {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    z-index: 9999; align-items: center; justify-content: center;
+  }
+  #lightbox.open { display: flex; }
+  #lightbox img {
+    max-width: 90vw; max-height: 88vh; object-fit: contain;
+    border-radius: 4px; box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    user-select: none;
+  }
+  #lightbox .lb-close {
+    position: fixed; top: 16px; right: 20px;
+    color: white; font-size: 2rem; cursor: pointer; line-height: 1;
+    opacity: 0.75; background: none; border: none;
+  }
+  #lightbox .lb-close:hover { opacity: 1; }
+  #lightbox .lb-arrow {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    color: white; font-size: 2.5rem; cursor: pointer;
+    background: rgba(0,0,0,0.35); border: none; padding: 8px 14px;
+    border-radius: 4px; opacity: 0.7; user-select: none;
+  }
+  #lightbox .lb-arrow:hover { opacity: 1; background: rgba(0,0,0,0.6); }
+  #lightbox .lb-prev { left: 10px; }
+  #lightbox .lb-next { right: 10px; }
+  #lightbox .lb-counter {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.7); font-size: 0.82rem; font-family: Georgia, serif;
+  }
   .photo-upload-zone {
     border: 2px dashed #c8b888; border-radius: 5px; padding: 16px;
     text-align: center; color: #8a7a5a; font-size: 0.8rem; cursor: pointer;
@@ -479,6 +511,15 @@
 
 <!-- Hidden file input for photo upload -->
 <input type="file" id="globalPhotoInput" accept="image/*" style="display:none">
+
+<!-- ── Lightbox ── -->
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <button class="lb-arrow lb-prev" onclick="lightboxNav(-1)">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" onclick="lightboxNav(1)">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
 
 <!-- ── Auth modal ── -->
 <div id="authOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:3000;align-items:center;justify-content:center" onclick="if(event.target===this)closeAuthModal()">
@@ -1102,11 +1143,12 @@ function renderPanel() {
   }
     else if (curTab === 'photos') {
     const photos = ov.photos || [];
+    // Store photos for lightbox access
+    window._lightboxPhotos = photos;
     let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
-      <div class="photo-item">
-        <img src="${ph.url}" alt="">
-        ${ph.caption ? `<div class="ph-cap">${ph.caption}</div>` : ''}
-        ${isAdmin ? `<button class="ph-del" data-photo-url="${encodeURIComponent(ph.url)}">&#10005;</button>` : ''}
+      <div class="photo-item" onclick="openLightbox(${i})">
+        <img src="${ph.url}" alt="" loading="lazy">
+        ${isAdmin ? `<button class="ph-del" data-photo-url="${encodeURIComponent(ph.url)}" onclick="event.stopPropagation()">&#10005;</button>` : ''}
       </div>`).join('')}</div>` : `
       <div class="photo-ph">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
@@ -2049,6 +2091,60 @@ fetch('/api/coords').then(r => r.json()).then(coords => {
   Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => buildMarkers());
   initAdmin(); // Check if admin is logged in, load overrides
 });
+
+// ── Lightbox ─────────────────────────────────────────────────────────────────
+let _lbIndex = 0;
+
+function openLightbox(index) {
+  const photos = window._lightboxPhotos;
+  if (!photos || !photos.length) return;
+  _lbIndex = index;
+  _showLightboxSlide();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function _showLightboxSlide() {
+  const photos = window._lightboxPhotos;
+  if (!photos) return;
+  _lbIndex = (_lbIndex + photos.length) % photos.length;
+  document.getElementById('lbImg').src = photos[_lbIndex].url;
+  document.getElementById('lbCounter').textContent =
+    photos.length > 1 ? `${_lbIndex + 1} / ${photos.length}` : '';
+  // Hide arrows if only one photo
+  document.querySelectorAll('.lb-arrow').forEach(a =>
+    a.style.display = photos.length > 1 ? '' : 'none'
+  );
+}
+
+function lightboxNav(dir) {
+  _lbIndex += dir;
+  _showLightboxSlide();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lbImg').src = '';
+}
+
+// Keyboard: left/right arrows to navigate, Escape to close
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lightboxNav(1);
+  if (e.key === 'ArrowLeft')  lightboxNav(-1);
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+// Swipe on mobile
+(function() {
+  const lb = document.getElementById('lightbox');
+  let sx = 0;
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) lightboxNav(dx < 0 ? 1 : -1);
+  }, { passive: true });
+})();
 
 // Mobile bottom sheet
 (function() {
