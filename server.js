@@ -1806,10 +1806,6 @@ app.get('/api/scrape-all-descs', async (req, res) => {
   res.end(`\nComplete! Updated ${updated} properties.\n`);
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 // ── Save scraped descriptions (local dev helper) ──────────────────────────────
 app.options('/api/save-descs', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -1986,4 +1982,9 @@ app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
     if (i % 50 === 0) res.write(`Progress: ${Math.min(i+5, ids.length)}/${ids.length}\n`);
   }
   res.end(`\nDone! Saved ${saved} images.\n`);
+});
+
+// ── Catch-all: serve map page for any unmatched GET ───────────────────────────
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
