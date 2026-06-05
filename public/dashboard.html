@@ -464,14 +464,18 @@ async function renderArchitects(){
     const panel=document.getElementById('architectsPanel');
     panel.style.display='block';
     set('arch-count',architects.length+' architects');
+    const firms = await fetch('/api/firms').then(r=>r.json()).catch(()=>[]);
+    const firmMap = {};
+    firms.forEach(f=>{ if(f.id&&f.name) firmMap[f.name]=f.id; });
     document.getElementById('architectCards').innerHTML=architects.map(a=>{
-      const name=a.known_as||(a.first_name+' '+a.last_name);
-      const init=name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-      return `<a href="/architects/${a.id}" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.8rem 1rem;text-decoration:none;transition:border-color 0.15s;min-width:200px" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
-        <div style="width:38px;height:38px;border-radius:50%;background:#4a7c5a;color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${init}</div>
-        <div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">${name}</div>
-        <div style="font-size:0.72rem;color:#8a9a7a">${a.work_count} buildings</div></div>
-      </a>`;
+      const name=(a.known_as||(a.first_name+' '+a.last_name)||'').trim();
+      const init=name.split(/[\s&]+/).map(w=>w[0]||'').slice(0,2).join('').toUpperCase();
+      const firmId=firmMap[name];
+      const href=a.source==='db'&&a.id ? '/architects/person/'+a.id : (firmId ? '/architects/firm/'+firmId : '/architects');
+      return '<a href="'+href+'" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.8rem 1rem;text-decoration:none;min-width:200px" onmouseover="this.style.borderColor=\'#c8b87a\'" onmouseout="this.style.borderColor=\'#2a3a2a\'">'
+        +'<div style="width:38px;height:38px;border-radius:8px;background:#2a5a8a;color:white;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:Arial,sans-serif">'+init+'</div>'
+        +'<div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">'+name+'</div>'
+        +'<div style="font-size:0.72rem;color:#8a9a7a">'+a.work_count+' buildings</div></div></a>';
     }).join('');
   } catch(e) {}
 }

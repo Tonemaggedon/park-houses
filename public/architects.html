@@ -111,7 +111,12 @@ async function init() {
   const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
   isAdmin = me.isAdmin;
   if (isAdmin) document.getElementById('addFirmBtn').style.display='';
-  allProps = await fetch('/api/all-props').then(r=>r.json()).catch(()=>[]);
+  const [propsData, coordsData] = await Promise.all([
+    fetch('/api/all-props').then(r=>r.json()).catch(()=>[]),
+    fetch('/api/coords').then(r=>r.json()).catch(()=>({}))
+  ]);
+  // Merge coordinates into allProps
+  allProps = propsData.map(p => ({...p, lat: coordsData[p.id]?.lat, lng: coordsData[p.id]?.lng}));
   const path = location.pathname;
   const m = path.match(/\/architects\/firm\/(\d+)/);
   if (m) await loadFirm(parseInt(m[1]));
