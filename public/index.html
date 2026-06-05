@@ -262,6 +262,59 @@
 
   /* Manually placed marker gets a blue ring */
   .marker-manual div { outline: 2px solid #2090ff !important; outline-offset: 1px; }
+
+  /* ── Mobile responsive ─────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    /* Header */
+    header { height: auto; padding: 8px 12px; flex-wrap: wrap; gap: 6px; }
+    header h1 { font-size: 0.95rem; }
+    header h1 span { display: none; }
+    nav { gap: 4px; flex-wrap: wrap; }
+    nav button, nav a { padding: 5px 8px; font-size: 0.72rem; }
+
+    /* Search bar */
+    .search-bar { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
+    .search-bar input { width: 100%; max-width: none; }
+    .search-bar select { flex: 1; min-width: 120px; }
+    .prop-count { display: none; }
+
+    /* Map fills full screen width */
+    #map { width: 100% !important; }
+
+    /* Panel becomes a bottom sheet */
+    .panel {
+      position: fixed !important;
+      bottom: 0; left: 0; right: 0;
+      width: 100% !important;
+      height: 75vh;
+      transform: translateY(100%) !important;
+      transition: transform 0.3s ease !important;
+      border-left: none !important;
+      border-top: 2px solid #d8d0b8;
+      border-radius: 16px 16px 0 0;
+      z-index: 1000;
+    }
+    .panel.open { transform: translateY(0) !important; }
+
+    /* Drag handle at top of panel */
+    .panel-head::before {
+      content: '';
+      display: block;
+      width: 40px; height: 4px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 2px;
+      margin: 0 auto 10px;
+    }
+    .panel-head { flex-direction: column; align-items: stretch; padding: 8px 16px 12px; }
+    .panel-head > div { display: flex; align-items: flex-start; justify-content: space-between; }
+
+    /* Tabs full width */
+    .tab { font-size: 0.7rem; padding: 8px 2px; }
+
+    /* Admin bar stacks */
+    .admin-bar { flex-wrap: wrap; gap: 4px; padding: 6px 10px; font-size: 0.75rem; }
+    .admin-bar a, .admin-bar button { font-size: 0.72rem; padding: 3px 6px; }
+  }
 </style>
 </head>
 <body>
@@ -1991,3 +2044,25 @@ fetch('/api/coords').then(r => r.json()).then(coords => {
 </script>
 </body>
 </html>
+<script>
+// Mobile: swipe down to close panel
+(function() {
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+  let startY = 0, isDragging = false;
+  panel.addEventListener('touchstart', e => { startY = e.touches[0].clientY; isDragging = true; }, {passive:true});
+  panel.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 60) { closePanel(); isDragging = false; }
+  }, {passive:true});
+  panel.addEventListener('touchend', () => { isDragging = false; }, {passive:true});
+
+  // On mobile, clicking map closes panel
+  if (window.innerWidth <= 768) {
+    document.getElementById('map').addEventListener('click', () => {
+      if (panel.classList.contains('open')) closePanel();
+    });
+  }
+})();
+</script>
