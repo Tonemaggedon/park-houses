@@ -60,15 +60,20 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 .add-member-btn { margin:8px 16px; background:#f0ead8; border:1px solid #c8a870; border-radius:5px; padding:6px 12px; cursor:pointer; font-size:0.78rem; color:#4a3a1a; font-family:Georgia,serif; }
 
   @media (max-width: 900px) {
-    .detail-page { overflow-y: auto; }
-    #map { height: 220px !important; }
-    .detail-panels { flex-direction: column; overflow: visible; }
-    .props-panel { width: 100%; max-height: none; overflow: visible; }
-    .members-panel { overflow: visible; }
-    .detail-header { flex-wrap: wrap; gap: 8px; }
+    body { overflow-y: auto; }
+    .detail-page { display: block !important; overflow-y: auto; height: auto; min-height: 100vh; }
+    .detail-body { display: block !important; height: auto; overflow: visible; }
+    #map { height: 200px !important; min-height: 200px; }
+    .detail-panels { display: block !important; overflow: visible; height: auto; }
+    .props-panel { width: 100%; max-height: 400px; overflow-y: auto; border-right: none; border-bottom: 1px solid #d8d0b8; }
+    .members-panel { overflow: visible; padding-bottom: 40px; }
+    .members-grid { flex-wrap: wrap; }
+    .detail-header { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
     nav a { padding: 5px 8px; font-size: 0.72rem; }
+    .list-page { padding: 16px 12px; }
     .firm-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .firm-card { padding: 10px 12px; }
+    .firm-card { padding: 10px 12px; flex-wrap: wrap; }
+    .firm-count { margin-left: 0; }
   }
 </style>
 </head>

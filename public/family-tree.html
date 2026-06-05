@@ -154,8 +154,10 @@ async function loadTree(id) {
   rels.forEach(rel => {
     const isA = parseInt(rel.person_a_id)===pid;
     const otherId = parseInt(isA ? rel.person_b_id : rel.person_a_id);
-    const otherName = isA ? [rel.b_known||rel.b_first, rel.b_last] : [rel.a_known||rel.a_first, rel.a_last];
-    const relType = rel.relationship_type||'';
+    const otherParts = isA ? [rel.b_known||rel.b_first, rel.b_last] : [rel.a_known||rel.a_first, rel.a_last];
+    const otherKnownAs = isA ? rel.b_known : rel.a_known;
+    const otherName = otherKnownAs ? [otherKnownAs] : otherParts;
+    const relType = rel.relationship||rel.relationship_type||'';
 
     if(nodes.find(n=>n.id===otherId)) return;
 
@@ -407,7 +409,7 @@ function renderHousehold(members, censusEntries) {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function nameOf(p){ return [p.known_as||p.first_name, p.last_name].filter(Boolean).join(' ')||'Unknown'; }
+function nameOf(p){ return p.known_as || ([p.first_name, p.last_name].filter(Boolean).join(' '))||'Unknown'; }
 function dateStr(p){ return (p.born_year||p.died_year)?`${p.born_year||'?'} – ${p.died_year||''}`:'';}
 function topOcc(p){ return p.occupations&&p.occupations[0]?p.occupations[0].occupation:''; }
 function initials(n){ return n.split(' ').map(w=>w[0]||'').slice(0,2).join('').toUpperCase(); }
