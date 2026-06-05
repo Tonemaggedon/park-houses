@@ -501,15 +501,18 @@ app.post('/api/logout', (req, res) => {
 });
 
 app.get('/api/me', async (req, res) => {
-  const resp = { isAdmin: false, user: null };
+  const resp = { isAdmin: false, user: null, researchKey: null };
   if (req.session && req.session.isAdmin) {
     resp.isAdmin = true;
     resp.username = req.session.username;
+    resp.researchKey = 'admin';
   }
   if (req.session && req.session.userId) {
     try {
       const u = await findUserById(req.session.userId);
       resp.user = publicUser(u);
+      // researchKey is the display name stored in property_research table
+      resp.researchKey = u ? ((u.first_name || '') + ' ' + (u.last_name || '')).trim() : null;
     } catch(e) {}
   }
   res.json(resp);
@@ -1579,10 +1582,24 @@ app.get('/api/property-research', async (req, res) => {
     res.json(out);
   } catch(e) { res.json({}); }
 });
+async function getResearchKey(session) {
+  // Returns the display name to store/match in property_research table
+  if (session.isAdmin) return 'admin';
+  if (session.userId) {
+    try {
+      const u = await findUserById(session.userId);
+      if (u) return ((u.first_name || '') + ' ' + (u.last_name || '')).trim() || u.email;
+    } catch(e) {}
+    return String(session.userId);
+  }
+  return null;
+}
+
 app.post('/api/property-research/:id', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!req.session || (!req.session.isAdmin && !req.session.userId)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
-  const username = req.session.username || req.session.userId || 'unknown';
+  const username = await getResearchKey(req.session);
+  if (!username) return res.status(401).json({ error: 'Login required' });
   const propId = parseInt(req.params.id);
   try {
     await db.query('INSERT INTO property_research (property_id, username) VALUES ($1,$2) ON CONFLICT DO NOTHING', [propId, username]);
@@ -1590,9 +1607,10 @@ app.post('/api/property-research/:id', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 app.delete('/api/property-research/:id', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  if (!req.session || (!req.session.isAdmin && !req.session.userId)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
-  const username = req.session.username || req.session.userId || 'unknown';
+  const username = await getResearchKey(req.session);
+  if (!username) return res.status(401).json({ error: 'Login required' });
   try {
     await db.query('DELETE FROM property_research WHERE property_id=$1 AND username=$2', [parseInt(req.params.id), username]);
     res.json({ ok: true });
