@@ -58,6 +58,18 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 .member-name:hover { color:#4a7c5a; text-decoration:underline; }
 .member-role { font-size:0.73rem; color:#8a7a5a; }
 .add-member-btn { margin:8px 16px; background:#f0ead8; border:1px solid #c8a870; border-radius:5px; padding:6px 12px; cursor:pointer; font-size:0.78rem; color:#4a3a1a; font-family:Georgia,serif; }
+
+  @media (max-width: 900px) {
+    .detail-page { overflow-y: auto; }
+    #map { height: 220px !important; }
+    .detail-panels { flex-direction: column; overflow: visible; }
+    .props-panel { width: 100%; max-height: none; overflow: visible; }
+    .members-panel { overflow: visible; }
+    .detail-header { flex-wrap: wrap; gap: 8px; }
+    nav a { padding: 5px 8px; font-size: 0.72rem; }
+    .firm-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .firm-card { padding: 10px 12px; }
+  }
 </style>
 </head>
 <body>

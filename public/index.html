@@ -264,56 +264,64 @@
   .marker-manual div { outline: 2px solid #2090ff !important; outline-offset: 1px; }
 
   /* ── Mobile responsive ─────────────────────────────────────────────────────── */
-  @media (max-width: 768px) {
-    /* Header */
-    header { height: auto; padding: 8px 12px; flex-wrap: wrap; gap: 6px; }
-    header h1 { font-size: 0.95rem; }
+  @media (max-width: 900px) {
+    /* Header — compact with icon-only nav */
+    header { height: auto; min-height: 50px; padding: 6px 10px; flex-wrap: nowrap; gap: 6px; }
+    header h1 { font-size: 0.85rem; white-space: nowrap; }
     header h1 span { display: none; }
-    nav { gap: 4px; flex-wrap: wrap; }
-    nav button, nav a { padding: 5px 8px; font-size: 0.72rem; }
+    nav { gap: 3px; overflow-x: auto; }
+    nav button, nav a {
+      padding: 5px 8px; font-size: 0.7rem;
+      white-space: nowrap; flex-shrink: 0;
+    }
 
-    /* Search bar */
-    .search-bar { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
-    .search-bar input { width: 100%; max-width: none; }
-    .search-bar select { flex: 1; min-width: 120px; }
+    /* Search bar compact */
+    .search-bar { padding: 6px 8px; gap: 5px; }
+    .search-bar input { flex: 1; min-width: 0; }
+    .search-bar select { width: auto; }
     .prop-count { display: none; }
 
-    /* Map fills full screen width */
+    /* Map fills full width */
     #map { width: 100% !important; }
 
-    /* Panel becomes a bottom sheet */
+    /* Panel = bottom sheet, always positioned fixed */
     .panel {
       position: fixed !important;
-      bottom: 0; left: 0; right: 0;
+      top: auto !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
       width: 100% !important;
-      height: 75vh;
-      transform: translateY(100%) !important;
-      transition: transform 0.3s ease !important;
+      height: 78vh !important;
+      max-height: 78vh !important;
+      transform: translateY(110%) !important;
+      transition: transform 0.32s cubic-bezier(0.32,0.72,0,1) !important;
       border-left: none !important;
-      border-top: 2px solid #d8d0b8;
-      border-radius: 16px 16px 0 0;
-      z-index: 1000;
+      border-top: 3px solid #1a3a2a;
+      border-radius: 18px 18px 0 0;
+      z-index: 2000 !important;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
     }
     .panel.open { transform: translateY(0) !important; }
 
-    /* Drag handle at top of panel */
-    .panel-head::before {
+    /* Pull handle */
+    .panel::before {
       content: '';
       display: block;
-      width: 40px; height: 4px;
-      background: rgba(255,255,255,0.4);
-      border-radius: 2px;
-      margin: 0 auto 10px;
+      width: 44px; height: 5px;
+      background: #c8b87a;
+      border-radius: 3px;
+      margin: 10px auto 0;
     }
-    .panel-head { flex-direction: column; align-items: stretch; padding: 8px 16px 12px; }
-    .panel-head > div { display: flex; align-items: flex-start; justify-content: space-between; }
+    .panel-head { padding: 6px 14px 10px; }
+    .panel-head h2 { font-size: 0.95rem; }
 
-    /* Tabs full width */
-    .tab { font-size: 0.7rem; padding: 8px 2px; }
+    /* Tabs */
+    .tab { font-size: 0.68rem; padding: 7px 2px; }
 
-    /* Admin bar stacks */
-    .admin-bar { flex-wrap: wrap; gap: 4px; padding: 6px 10px; font-size: 0.75rem; }
-    .admin-bar a, .admin-bar button { font-size: 0.72rem; padding: 3px 6px; }
+    /* Admin bar */
+    .admin-bar { flex-wrap: wrap; gap: 3px; padding: 5px 8px; font-size: 0.7rem; }
+    .admin-bar a, .admin-bar button, .admin-bar span { font-size: 0.7rem; padding: 3px 6px; }
   }
 </style>
 </head>
@@ -2041,28 +2049,18 @@ fetch('/api/coords').then(r => r.json()).then(coords => {
   Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => buildMarkers());
   initAdmin(); // Check if admin is logged in, load overrides
 });
-</script>
-</body>
-</html>
-<script>
-// Mobile: swipe down to close panel
+
+// Mobile bottom sheet
 (function() {
   const panel = document.getElementById('panel');
   if (!panel) return;
-  let startY = 0, isDragging = false;
-  panel.addEventListener('touchstart', e => { startY = e.touches[0].clientY; isDragging = true; }, {passive:true});
+  let startY = 0;
+  panel.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, {passive:true});
   panel.addEventListener('touchmove', e => {
-    if (!isDragging) return;
     const dy = e.touches[0].clientY - startY;
-    if (dy > 60) { closePanel(); isDragging = false; }
+    if (dy > 80 && panel.classList.contains('open')) { closePanel(); }
   }, {passive:true});
-  panel.addEventListener('touchend', () => { isDragging = false; }, {passive:true});
-
-  // On mobile, clicking map closes panel
-  if (window.innerWidth <= 768) {
-    document.getElementById('map').addEventListener('click', () => {
-      if (panel.classList.contains('open')) closePanel();
-    });
-  }
 })();
 </script>
+</body>
+</html>
