@@ -1929,9 +1929,9 @@ app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
   for (let i = 0; i < ids.length; i += 5) {
     const batch = ids.slice(i, i + 5);
     await Promise.all(batch.map(async id => {
-      // Check for plan image (PLN prefix)
+      // Check for floor plan image (MAP prefix, /imagesdb/ directory)
       const planResult = await (new Promise(resolve => {
-        const planUrl = `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PLN${id}.jpg`;
+        const planUrl = `http://www.nottinghamparkhouses.co.uk/imagesdb/MAP${id}.jpg`;
         http.get(planUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, r => {
           if (r.statusCode !== 200) { r.resume(); return resolve(null); }
           const chunks = [];
