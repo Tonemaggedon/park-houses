@@ -1535,6 +1535,7 @@ app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 
 app.get('/admin/users', requireAdmin, (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin-users.html')));
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
 // ── Property research tracking ────────────────────────────────────────────────
@@ -1867,4 +1868,122 @@ app.post('/api/admin/sync-props-to-db', requireAdmin, async (req, res) => {
     }
     res.json({ ok: true, updated });
   } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Find all images for a property page ──────────────────────────────────────
+app.get('/api/admin/find-property-images/:id', requireAdmin, (req, res) => {
+  const http = require('http');
+  const id = parseInt(req.params.id);
+  const url = `http://www.nottinghamparkhouses.co.uk/propertypagedetail.asp?infoId=${id}&linkid=${id}&pageId=${id}&id=101`;
+  http.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (r) => {
+    let data = '';
+    r.on('data', c => data += c);
+    r.on('end', () => {
+      // Extract all image/src references
+      const imgs = [];
+      const patterns = [
+        /href=["']([^"']*\.(?:jpg|jpeg|png|gif|pdf))['"]/gi,
+        /src=["']([^"']*\.(?:jpg|jpeg|png|gif))['"]/gi,
+        /(imagesDB[^"'\s<>]*\.(?:jpg|jpeg|png|gif|pdf))/gi,
+        /(PIC\d+[A-Za-z]?\.(?:jpg|jpeg|png|gif))/gi,
+        /(PLN\d+[A-Za-z]?\.(?:jpg|jpeg|png|gif))/gi,
+        /([A-Za-z0-9_-]+plan[A-Za-z0-9_-]*\.(?:jpg|jpeg|png|gif))/gi,
+      ];
+      patterns.forEach(p => {
+        let m;
+        while ((m = p.exec(data)) !== null) {
+          let src = m[1];
+          if (!src.startsWith('http')) {
+            src = 'http://www.nottinghamparkhouses.co.uk/' + src.replace(/^\//, '').replace(/\\/g, '/');
+          }
+          if (!imgs.includes(src)) imgs.push(src);
+        }
+      });
+      res.json({ id, images: imgs, total: imgs.length });
+    });
+  }).on('error', e => res.status(500).json({ error: e.message }));
+});
+
+// ── Scrape property images from Park Houses website ───────────────────────────
+app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
+  const http = require('http');
+  const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+  const ids = req.query.id ? [parseInt(req.query.id)] : allProps.map(p => p.id);
+  
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write(`Checking images for ${ids.length} properties...\n`);
+
+  function fetchImage(id, suffix) {
+    return new Promise(resolve => {
+      const url = `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PIC${id}${suffix}.jpg`;
+      http.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, r => {
+        if (r.statusCode !== 200) { r.resume(); return resolve(null); }
+        const chunks = [];
+        r.on('data', c => chunks.push(c));
+        r.on('end', () => {
+          const buf = Buffer.concat(chunks);
+          if (buf.length < 500) return resolve(null); // skip tiny/placeholder images
+          resolve({ buf, suffix });
+        });
+      }).on('error', () => resolve(null));
+    });
+  }
+
+  let saved = 0;
+  for (let i = 0; i < ids.length; i += 5) {
+    const batch = ids.slice(i, i + 5);
+    await Promise.all(batch.map(async id => {
+      // Check for plan image (PLN prefix)
+      const planResult = await (new Promise(resolve => {
+        const planUrl = `http://www.nottinghamparkhouses.co.uk/imagesDB/propertyimages/PLN${id}.jpg`;
+        http.get(planUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, r => {
+          if (r.statusCode !== 200) { r.resume(); return resolve(null); }
+          const chunks = [];
+          r.on('data', c => chunks.push(c));
+          r.on('end', () => { const buf = Buffer.concat(chunks); resolve(buf.length > 500 ? buf : null); });
+        }).on('error', () => resolve(null));
+      }));
+      if (planResult) {
+        const fn = `prop-${id}-plan.jpg`;
+        fs.writeFileSync(path.join(PHOTOS_DIR, fn), planResult);
+        const url = `/data/photos/${fn}`;
+        if (db) {
+          try {
+            const current = await loadProp(id);
+            const photos = current.photos || [];
+            if (!photos.find(p => p.url === url)) {
+              photos.push({ url, caption: 'Floor plan' });
+              await saveProp(id, { photos }, 'image-scrape');
+            }
+          } catch(e) {}
+        }
+        saved++;
+        res.write(`✓ Property ${id} PLAN saved\n`);
+      }
+
+      for (const suffix of ['T', 'B', 'C', 'D', 'E']) {
+        const result = await fetchImage(id, suffix);
+        if (!result) continue;
+        const filename = `prop-${id}-${suffix.toLowerCase()}.jpg`;
+        const filepath = path.join(PHOTOS_DIR, filename);
+        fs.writeFileSync(filepath, result.buf);
+        const url = `/data/photos/${filename}`;
+        // Save to property_data as a photo
+        if (db) {
+          try {
+            const current = await loadProp(id);
+            const photos = current.photos || [];
+            if (!photos.find(p => p.url === url)) {
+              photos.push({ url, caption: `${suffix === 'T' ? 'Exterior' : suffix === 'B' ? 'Detail' : 'View ' + suffix}` });
+              await saveProp(id, { photos }, 'image-scrape');
+            }
+          } catch(e) {}
+        }
+        saved++;
+        res.write(`✓ Property ${id} image ${suffix} saved\n`);
+      }
+    }));
+    if (i % 50 === 0) res.write(`Progress: ${Math.min(i+5, ids.length)}/${ids.length}\n`);
+  }
+  res.end(`\nDone! Saved ${saved} images.\n`);
 });
