@@ -42,14 +42,31 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 .fill-green { background:linear-gradient(90deg,#2a6a4a,#4caf82); }
 .fill-blue { background:linear-gradient(90deg,#2a4a8a,#5b9bd5); }
 .fill-orange { background:linear-gradient(90deg,#8a4a2a,#e07b39); }
-.research-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.5rem; max-height:280px; overflow-y:auto; }
-.research-card { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:8px; padding:0.6rem 0.8rem; text-decoration:none; display:block; transition:all 0.2s; }
+.research-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.6rem; max-height:320px; overflow-y:auto; }
+.research-card {
+  background:#1e2d1e; border:1px solid #2a3a2a; border-radius:8px;
+  padding:0; display:block; transition:all 0.2s; cursor:pointer; position:relative; overflow:hidden;
+}
 .research-card:hover { border-color:#c8b87a; background:#253525; }
-.rc-name { font-size:0.8rem; color:#e8e0d0; font-weight:500; }
-.rc-street { font-size:0.7rem; color:#5a7a5a; margin-top:2px; }
-.rc-badge { display:inline-block; font-size:0.62rem; padding:1px 5px; border-radius:3px; margin-top:3px; }
+.research-card:hover .rc-body { background:#253525; }
+.rc-body { padding:0.6rem 0.8rem 0.6rem; padding-right:2.6rem; }
+.rc-name { font-size:0.8rem; color:#e8e0d0; font-weight:500; line-height:1.3; }
+.rc-badge { display:inline-block; font-size:0.62rem; padding:1px 5px; border-radius:3px; margin-top:4px; }
 .badge-desc { background:rgba(91,155,213,0.15); color:#5b9bd5; border:1px solid rgba(91,155,213,0.3); }
 .badge-none { background:rgba(200,184,122,0.08); color:#8a7a4a; border:1px solid rgba(200,184,122,0.15); }
+.rc-researchers { font-size:0.68rem; color:#5b9bd5; margin-top:4px; line-height:1.3; }
+/* Research toggle button — top-right corner of card */
+.rc-toggle {
+  position:absolute; top:0; right:0; bottom:0; width:2.2rem;
+  background:rgba(0,0,0,0.2); border:none; border-left:1px solid rgba(255,255,255,0.06);
+  cursor:pointer; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:3px; padding:0; transition:background 0.2s;
+}
+.rc-toggle:hover { background:rgba(91,155,213,0.25); }
+.rc-toggle.active { background:rgba(91,155,213,0.2); border-left-color:rgba(91,155,213,0.3); }
+.rc-toggle-icon { font-size:0.9rem; line-height:1; }
+.rc-toggle-label { font-size:0.45rem; color:#8a9a7a; letter-spacing:0.03em; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); }
+.rc-toggle.active .rc-toggle-label { color:#5b9bd5; }
 .filter-bar { display:flex; gap:0.4rem; margin-bottom:0.7rem; flex-wrap:wrap; }
 .filter-btn { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:6px; padding:0.25rem 0.7rem; font-size:0.72rem; color:#8a9a7a; cursor:pointer; transition:all 0.2s; }
 .filter-btn.active,.filter-btn:hover { border-color:#c8b87a; color:#c8b87a; background:rgba(200,184,122,0.08); }
@@ -248,9 +265,24 @@ function renderResearchGrid(filter){
     const name=p.name||'';
     const addr=addrOf(p);
     const researchers = (researchMap[p.id]||[]);
-    const resBadge = researchers.length ? `<span class="rc-badge" style="background:rgba(91,155,213,0.15);color:#5b9bd5;border:1px solid rgba(91,155,213,0.3)">🔍 ${researchers.join(', ')}</span>` : '';
-    const canToggle = currentUser ? `<button onclick="event.preventDefault();toggleResearch(${p.id})" style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:0.75rem;color:${researchers.includes(currentUser)?'#5b9bd5':'#5a7a5a'}" title="${researchers.includes(currentUser)?'Stop researching':'Mark as researching'}">${researchers.includes(currentUser)?'🔍':'○'}</button>` : '';
-    return `<a href="/?id=${p.id}" class="research-card" style="display:flex;flex-direction:column;gap:3px"><div style="display:flex;align-items:center;gap:4px"><div class="rc-name" style="flex:1">${addr}</div>${canToggle}</div><span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Description':'Needs research'}</span>${resBadge}</a>`;
+    const isMine = currentUser && researchers.includes(currentUser);
+    const researchersHtml = researchers.length
+      ? `<div class="rc-researchers">🔍 ${researchers.join(', ')}</div>` : '';
+    const toggleBtn = currentUser
+      ? `<button class="rc-toggle${isMine?' active':''}"
+           onclick="event.stopPropagation();toggleResearch(${p.id})"
+           title="${isMine?'Stop researching this property':'Mark as being researched by you'}">
+           <span class="rc-toggle-icon">${isMine?'🔍':'＋'}</span>
+           <span class="rc-toggle-label">${isMine?'STOP':'FLAG'}</span>
+         </button>` : '';
+    return `<div class="research-card" onclick="window.location='/?prop=${p.id}'">
+      <div class="rc-body">
+        <div class="rc-name">${addr}</div>
+        <span class="rc-badge ${hasDesc?'badge-desc':'badge-none'}">${hasDesc?'Has description':'Needs research'}</span>
+        ${researchersHtml}
+      </div>
+      ${toggleBtn}
+    </div>`;
   }).join('');
 }
 

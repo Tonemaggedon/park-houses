@@ -2088,7 +2088,22 @@ async function deletePhoto(url) {
 fetch('/api/coords').then(r => r.json()).then(coords => {
   manualCoords = coords;
 }).catch(() => {}).finally(() => {
-  Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => buildMarkers());
+  Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => {
+    buildMarkers();
+    // Auto-open property if URL contains ?prop=ID (linked from dashboard)
+    const propParam = new URLSearchParams(window.location.search).get('prop');
+    if (propParam) {
+      const id = parseInt(propParam);
+      if (id) {
+        // Small delay to let markers settle, then open the panel and fly to marker
+        setTimeout(() => {
+          openProp(id);
+          const p = props.find(x => x.id === id);
+          if (p) map.setView([p._lat || p.lat, p._lng || p.lng], 18);
+        }, 300);
+      }
+    }
+  });
   initAdmin(); // Check if admin is logged in, load overrides
 });
 
