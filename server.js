@@ -758,7 +758,7 @@ app.delete('/api/property/:id', requireAdmin, async (req, res) => {
 app.use('/data/photos', express.static(PHOTOS_DIR));
 
 // Admin: upload a photo for a property
-app.post('/api/property/:id/photo', requireAdmin, (req, res) => {
+app.post('/api/property/:id/photo', requireContributor, (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (!id) return res.status(400).json({ error: 'invalid id' });
   const chunks = [];
