@@ -1606,6 +1606,15 @@ app.post('/api/property-research/:id', async (req, res) => {
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
+// Admin: wipe ALL research records (one-time cleanup)
+app.delete('/api/property-research', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const r = await db.query('DELETE FROM property_research');
+    res.json({ ok: true, deleted: r.rowCount });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 app.delete('/api/property-research/:id', async (req, res) => {
   if (!req.session || (!req.session.isAdmin && !req.session.userId)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
