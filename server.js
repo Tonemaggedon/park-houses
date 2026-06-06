@@ -841,13 +841,20 @@ app.get('/api/scrape-proxy', requireAdmin, (req, res) => {
 // ── Submissions API ───────────────────────────────────────────────────────────
 // POST /api/property/:id/submission  — requires user login
 app.post('/api/property/:id/submission', async (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ error: 'Must be logged in to submit' });
+  if (!req.session.userId && !req.session.isAdmin) return res.status(401).json({ error: 'Must be logged in to submit' });
   const propId = parseInt(req.params.id, 10);
   if (!propId) return res.status(400).json({ error: 'invalid id' });
   try {
-    const user = await findUserById(req.session.userId);
-    if (user) req.session.userRole = user.role || 'viewer';
-    if (!user) return res.status(401).json({ error: 'User not found' });
+    let firstName = 'Admin', lastName = '', profilePhoto = null, userId = null;
+    if (req.session.userId) {
+      const user = await findUserById(req.session.userId);
+      if (!user) return res.status(401).json({ error: 'User not found' });
+      req.session.userRole = user.role || 'viewer';
+      firstName   = user.first_name;
+      lastName    = user.last_name;
+      profilePhoto = user.profile_photo || null;
+      userId      = user.id;
+    }
     const { type, text, photoUrl } = req.body;
     if (!text && !photoUrl) return res.status(400).json({ error: 'text or photoUrl required' });
 
@@ -855,24 +862,43 @@ app.post('/api/property/:id/submission', async (req, res) => {
     const submissions = current.submissions || [];
     const entry = {
       id: Date.now(),
-      userId: user.id,
-      firstName: user.first_name,
-      lastName: user.last_name,
-      profilePhoto: user.profile_photo || null,
+      userId,
+      firstName,
+      lastName,
+      profilePhoto,
       type: type || 'Other',
       text: text || '',
       photoUrl: photoUrl || null,
       submittedAt: new Date().toISOString()
     };
     submissions.push(entry);
-    await saveProp(propId, { ...current, submissions }, 'user:' + user.id);
+    await saveProp(propId, { ...current, submissions }, userId ? 'user:' + userId : 'admin');
     res.json({ ok: true, submission: entry });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Delete a submission (admin or the original submitter)
+app.delete('/api/property/:id/submission/:subId', async (req, res) => {
+  if (!req.session.userId && !req.session.isAdmin) return res.status(401).json({ error: 'Login required' });
+  const propId = parseInt(req.params.id);
+  const subId  = parseInt(req.params.subId);
+  try {
+    const current = await loadProp(propId);
+    const submissions = (current.submissions || []).filter(s => {
+      if (s.id === subId) {
+        // Allow if admin or the submitter themselves
+        return !(req.session.isAdmin || s.userId === req.session.userId);
+      }
+      return true;
+    });
+    await saveProp(propId, { ...current, submissions }, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId);
+    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 // Upload photo for a submission (returns URL, caller includes in submission)
 app.post('/api/property/:id/submission-photo', async (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ error: 'Must be logged in' });
+  if (!req.session.userId && !req.session.isAdmin) return res.status(401).json({ error: 'Must be logged in' });
   const propId = parseInt(req.params.id, 10);
   const chunks = [];
   req.on('data', c => chunks.push(c));

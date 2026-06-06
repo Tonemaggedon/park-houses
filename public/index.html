@@ -1176,13 +1176,16 @@ function renderPanel() {
         : `<div style="width:28px;height:28px;border-radius:50%;background:#4a7c5a;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:white;font-weight:bold;flex-shrink:0">${(s.firstName||s.u||'?')[0].toUpperCase()}</div>`;
       const name = s.firstName ? `${s.firstName} ${s.lastName||''}`.trim() : (s.u || 'Anonymous');
       const ts = s.submittedAt ? new Date(s.submittedAt).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : (s.d || '');
-      return `<div class="sub-card">
+      const canDelete = isAdmin || (currentUser && s.userId === currentUser.id);
+      const delBtn = canDelete && s.id ? `<button onclick="deleteSub(${s.id})" style="margin-left:auto;background:none;border:none;color:#c07070;cursor:pointer;font-size:0.75rem;padding:0 2px" title="Delete submission">✕</button>` : '';
+      return `<div class="sub-card" id="sub-${s.id}">
         <div class="sub-meta" style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           ${avatar}
           <div><strong>${name}</strong><br><span style="font-weight:normal">${s.type||s.t||''} · ${ts}</span></div>
+          ${delBtn}
         </div>
         ${s.text||s.tx ? `<div class="sub-text">${s.text||s.tx}</div>` : ''}
-        ${s.photoUrl ? `<img src="${s.photoUrl}" style="width:100%;border-radius:4px;margin-top:8px;object-fit:cover;max-height:200px">` : ''}
+        ${s.photoUrl ? `<img src="${s.photoUrl}" style="width:100%;border-radius:4px;margin-top:8px;object-fit:cover;max-height:400px;cursor:zoom-in" onclick="window._lightboxPhotos=[{url:'${s.photoUrl}'}];openLightbox(0)">` : ''}
       </div>`;
     }).join('');
     const loginPrompt = `<div style="border:1px solid #d8c890;border-radius:6px;padding:14px 16px;background:#faf8f2;text-align:center;margin-top:8px">
@@ -1298,6 +1301,22 @@ async function submitSub() {
     renderPanel();
   } else {
     toast(data.error || 'Submission failed');
+  }
+}
+
+async function deleteSub(subId) {
+  if (!confirm('Delete this submission?')) return;
+  const res = await fetch(`/api/property/${curProp.id}/submission/${subId}`, { method: 'DELETE' });
+  const data = await res.json();
+  if (data.ok) {
+    if (propOverrides[curProp.id]) {
+      propOverrides[curProp.id].submissions = (propOverrides[curProp.id].submissions || []).filter(s => s.id !== subId);
+    }
+    const el = document.getElementById('sub-' + subId);
+    if (el) el.remove();
+    toast('Submission deleted.');
+  } else {
+    toast(data.error || 'Could not delete');
   }
 }
 
