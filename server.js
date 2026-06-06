@@ -259,6 +259,14 @@ async function dbInit() {
       to_year INTEGER,
       UNIQUE(firm_id, person_id)
     )`);
+    // Session store table for persistent login across restarts
+    await db.query(`CREATE TABLE IF NOT EXISTS sessions (
+      sid VARCHAR PRIMARY KEY,
+      sess JSONB NOT NULL,
+      expire TIMESTAMPTZ NOT NULL
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS sessions_expire_idx ON sessions(expire)`);
+
     await db.query(`CREATE TABLE IF NOT EXISTS property_research (
       id SERIAL PRIMARY KEY,
       property_id INTEGER NOT NULL,
@@ -466,30 +474,42 @@ function publicUser(u) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Use PostgreSQL session store when DB is available so sessions survive restarts/redeploys
-function buildSessionMiddleware() {
-  const sessionOpts = {
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // 7 days
-  };
-  if (process.env.DATABASE_URL) {
+// ── Custom PostgreSQL session store (no extra npm package needed) ─────────────
+// Stores sessions in DB so they survive Railway restarts and redeployments.
+class PgStore extends session.Store {
+  async get(sid, cb) {
+    if (!db) return cb(null, null);
     try {
-      const pgSession = require('connect-pg-simple')(session);
-      sessionOpts.store = new pgSession({
-        conString: process.env.DATABASE_URL,
-        tableName: 'session',
-        createTableIfMissing: true,
-        ssl: { rejectUnauthorized: false }
-      });
-    } catch(e) {
-      console.warn('connect-pg-simple not available, using memory sessions:', e.message);
-    }
+      const r = await db.query(
+        "SELECT sess FROM sessions WHERE sid=$1 AND expire > NOW()", [sid]);
+      cb(null, r.rows[0]?.sess || null);
+    } catch(e) { cb(null, null); }
   }
-  return session(sessionOpts);
+  async set(sid, data, cb) {
+    if (!db) return cb(null);
+    try {
+      const exp = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+      await db.query(
+        `INSERT INTO sessions(sid,sess,expire) VALUES($1,$2,$3)
+         ON CONFLICT(sid) DO UPDATE SET sess=$2, expire=$3`,
+        [sid, data, exp]);
+      cb(null);
+    } catch(e) { cb(null); }
+  }
+  async destroy(sid, cb) {
+    if (!db) return cb(null);
+    try { await db.query("DELETE FROM sessions WHERE sid=$1", [sid]); cb(null); }
+    catch(e) { cb(null); }
+  }
 }
-app.use(buildSessionMiddleware());
+
+app.use(session({
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: new PgStore(),
+  cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // 7 days
+}));
 
 function requireAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) return next();
