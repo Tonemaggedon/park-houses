@@ -51,17 +51,29 @@ if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && proce
 }
 
 // Upload a buffer: uses Cloudinary if configured, otherwise saves to local disk
+// Upload a photo buffer to Cloudinary using the unsigned "park-houses" preset.
+// Uses native fetch + FormData (Node 18+) — no API secret or signing required.
 async function uploadPhoto(buf, filename) {
-  if (cloudinary) {
-    return new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        { folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''), overwrite: true },
-        (err, result) => err ? reject(err) : resolve(result.secure_url)
-      );
-      stream.end(buf);
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+  if (cloudName) {
+    const publicId = `park-houses/${filename.replace(/\.[^.]+$/, '')}`;
+    const ext = filename.split('.').pop().toLowerCase() || 'jpg';
+    const mimeType = ext === 'png' ? 'image/png' : ext === 'gif' ? 'image/gif' : 'image/jpeg';
+
+    const form = new FormData();
+    form.append('file', new Blob([buf], { type: mimeType }), filename);
+    form.append('upload_preset', 'park-houses'); // unsigned preset created in Cloudinary dashboard
+    form.append('public_id', publicId);
+
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      method: 'POST',
+      body: form,
     });
+    const data = await res.json();
+    if (data.secure_url) return data.secure_url;
+    throw new Error(data.error?.message || JSON.stringify(data));
   }
-  // Fallback: local disk (ephemeral on Railway)
+  // Fallback: local disk (ephemeral on Railway — only used in local dev without Cloudinary)
   const dest = path.join(PHOTOS_DIR, filename);
   fs.writeFileSync(dest, buf);
   return `/data/photos/${filename}`;
