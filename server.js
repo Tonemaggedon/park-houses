@@ -465,12 +465,31 @@ function publicUser(u) {
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(session({
-  secret: SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 8 * 60 * 60 * 1000 } // 8 hours
-}));
+
+// Use PostgreSQL session store when DB is available so sessions survive restarts/redeploys
+function buildSessionMiddleware() {
+  const sessionOpts = {
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // 7 days
+  };
+  if (process.env.DATABASE_URL) {
+    try {
+      const pgSession = require('connect-pg-simple')(session);
+      sessionOpts.store = new pgSession({
+        conString: process.env.DATABASE_URL,
+        tableName: 'session',
+        createTableIfMissing: true,
+        ssl: { rejectUnauthorized: false }
+      });
+    } catch(e) {
+      console.warn('connect-pg-simple not available, using memory sessions:', e.message);
+    }
+  }
+  return session(sessionOpts);
+}
+app.use(buildSessionMiddleware());
 
 function requireAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) return next();
@@ -1566,7 +1585,14 @@ app.post('/api/seed/property/:propId/people', requireAdmin, async (req, res) => 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'people.html')));
 app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
-app.get('/admin/users', requireAdmin, (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin-users.html')));
+app.get('/admin/users', (req, res) => {
+  // Serve the page — it checks auth itself via /api/admin/users fetch
+  if (req.session && req.session.isAdmin) {
+    return res.sendFile(path.join(__dirname, 'public', 'admin-users.html'));
+  }
+  // Not authenticated — redirect to map with login prompt
+  res.redirect('/?login=1');
+});
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
