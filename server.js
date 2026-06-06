@@ -53,16 +53,28 @@ if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && proce
 // Upload a buffer: uses Cloudinary if configured, otherwise saves to local disk
 // Upload a photo buffer to Cloudinary using the unsigned "park-houses" preset.
 // Uses native fetch + FormData (Node 18+) — no API secret or signing required.
-async function uploadPhoto(buf, filename) {
+async function uploadPhoto(buf, filename, contentType) {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   if (cloudName) {
-    const publicId = `park-houses/${filename.replace(/\.[^.]+$/, '')}`;
+    // Determine MIME type: prefer the passed content-type, fall back to extension
     const ext = filename.split('.').pop().toLowerCase() || 'jpg';
-    const mimeType = ext === 'png' ? 'image/png' : ext === 'gif' ? 'image/gif' : 'image/jpeg';
+    const mimeByExt = {
+      jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png',
+      gif: 'image/gif', webp: 'image/webp', heic: 'image/heic', heif: 'image/heif'
+    };
+    const mimeType = contentType || mimeByExt[ext] || 'image/jpeg';
+
+    // Cloudinary doesn't accept HEIC via unsigned upload — convert flag tells it to auto-convert
+    // Use a jpg extension in the public_id so it's stored correctly
+    const safeFilename = mimeType.includes('heic') || mimeType.includes('heif')
+      ? filename.replace(/\.[^.]+$/, '.jpg') : filename;
+    const publicId = `park-houses/${safeFilename.replace(/\.[^.]+$/, '')}`;
 
     const form = new FormData();
-    form.append('file', new Blob([buf], { type: mimeType }), filename);
-    form.append('upload_preset', 'park-houses'); // unsigned preset created in Cloudinary dashboard
+    // Send as octet-stream for HEIC — Cloudinary auto-detects format from content
+    const blobType = mimeType.includes('heic') || mimeType.includes('heif') ? 'application/octet-stream' : mimeType;
+    form.append('file', new Blob([buf], { type: blobType }), safeFilename);
+    form.append('upload_preset', 'park-houses');
     form.append('public_id', publicId);
 
     const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
@@ -71,7 +83,9 @@ async function uploadPhoto(buf, filename) {
     });
     const data = await res.json();
     if (data.secure_url) return data.secure_url;
-    throw new Error(data.error?.message || JSON.stringify(data));
+    const errMsg = data.error?.message || JSON.stringify(data);
+    console.error('Cloudinary upload error:', errMsg);
+    throw new Error(errMsg);
   }
   // Fallback: local disk (ephemeral on Railway — only used in local dev without Cloudinary)
   const dest = path.join(PHOTOS_DIR, filename);
@@ -616,7 +630,7 @@ app.post('/api/user/photo', async (req, res) => {
       if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
       const ext = (req.headers['x-filename'] || 'photo.jpg').split('.').pop().replace(/[^a-z]/gi,'').toLowerCase() || 'jpg';
       const filename = `profile_${req.session.userId}_${Date.now()}.${ext}`;
-      const url = await uploadPhoto(buf, filename);
+      const url = await uploadPhoto(buf, filename, req.headers["content-type"]);
       await updateUserPhoto(req.session.userId, url);
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
@@ -780,7 +794,7 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
       const buf = Buffer.concat(chunks);
       const cd = req.headers['x-filename'] || `photo_${Date.now()}.jpg`;
       const filename = `prop-${id}_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi, '_')}`;
-      const url = await uploadPhoto(buf, filename);
+      const url = await uploadPhoto(buf, filename, req.headers["content-type"]);
       const current = await loadProp(id);
       const photos = [...(current.photos || []), { url, caption: '', addedAt: new Date().toISOString() }];
       await saveProp(id, { ...current, photos }, req.session.username);
@@ -807,7 +821,7 @@ app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
         const buf = Buffer.concat(chunks);
         if (buf.length < 500) return res.json({ ok: false, reason: 'No image found' });
         const filename = `prop-${id}_orig_${num}${v}.jpg`;
-        const photoUrl = await uploadPhoto(buf, filename);
+        const photoUrl = await uploadPhoto(buf, filename, req.headers["content-type"]);
         const current = await loadProp(id);
         const photos = current.photos || [];
         if (!photos.find(p => p.url === photoUrl)) {
@@ -920,7 +934,7 @@ app.post('/api/property/:id/submission-photo', async (req, res) => {
       if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
       const cd = req.headers['x-filename'] || `sub_${Date.now()}.jpg`;
       const filename = `prop-${propId}_sub_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi,'_')}`;
-      const url = await uploadPhoto(buf, filename);
+      const url = await uploadPhoto(buf, filename, req.headers["content-type"]);
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
