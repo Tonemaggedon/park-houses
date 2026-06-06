@@ -1349,13 +1349,18 @@ async function contributorUploadPhoto(input) {
       toast('Photo added ✓');
       renderPanel();
     } else {
-      if (status) status.textContent = '✗ ' + (data.error || 'Upload failed');
-      toast(data.error || 'Upload failed');
+      const msg = data.error || 'Upload failed';
+      if (status) status.textContent = '✗ ' + msg;
+      // Show full error for 10 seconds so it can be read
+      const el = document.getElementById('toastEl');
+      el.textContent = msg; el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 10000);
     }
   } catch(e) {
     if (dropZone) dropZone.style.opacity = '1';
-    if (status) status.textContent = '✗ Upload failed';
-    toast('Upload failed');
+    const msg = 'Upload error: ' + e.message;
+    if (status) status.textContent = '✗ ' + msg;
+    toast(msg);
   }
 }
 
