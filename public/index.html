@@ -1145,10 +1145,11 @@ function renderPanel() {
     const photos = ov.photos || [];
     // Store photos for lightbox access
     window._lightboxPhotos = photos;
-    let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
-      <div class="photo-item" onclick="openLightbox(${i})">
-        <img src="${ph.url}" alt="" loading="lazy">
-      </div>`).join('')}</div>` : `
+    let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => {
+      const canDelPhoto = isAdmin || (currentUser && ph.uploadedBy && ph.uploadedBy === currentUser.id);
+      const delPhotoBtn = canDelPhoto ? `<button class="ph-del" onclick="event.stopPropagation();deletePhoto('${ph.url.replace(/'/g,"\\'")}')" title="Delete photo">&#10005;</button>` : '';
+      return `<div class="photo-item" onclick="openLightbox(${i})">\n        <img src="${ph.url}" alt="" loading="lazy">\n        ${delPhotoBtn}\n      </div>`;
+    }).join('')}</div>` : `
       <div class="photo-ph">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
           <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>

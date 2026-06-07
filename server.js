@@ -828,7 +828,12 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
       const filename = `prop-${id}_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi, '_')}`;
       const url = await uploadPhoto(buf, filename, req.headers["content-type"]);
       const current = await loadProp(id);
-      const photos = [...(current.photos || []), { url, caption: '', addedAt: new Date().toISOString() }];
+      const photos = [...(current.photos || []), {
+        url,
+        caption: '',
+        addedAt: new Date().toISOString(),
+        uploadedBy: req.session.userId || null
+      }];
       await saveProp(id, { ...current, photos }, req.session.username);
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
@@ -867,14 +872,20 @@ app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
     .on('timeout', () => res.json({ ok: false, reason: 'timeout' }));
 });
 
-// Admin: delete a photo
-app.delete('/api/property/:id/photo', requireAdmin, async (req, res) => {
+// Admin or photo owner: delete a photo
+app.delete('/api/property/:id/photo', async (req, res) => {
+  if (!req.session.isAdmin && !req.session.userId) return res.status(401).json({ error: 'Login required' });
   const id = parseInt(req.params.id, 10);
   const { url } = req.body;
   try {
     const current = await loadProp(id);
-    current.photos = (current.photos || []).filter(p => p.url !== url);
-    await saveProp(id, current, req.session.username);
+    const photo = (current.photos || []).find(p => p.url === url);
+    if (!photo) return res.status(404).json({ error: 'Photo not found' });
+    // Only admin or the contributor who uploaded it can delete
+    const isOwner = photo.uploadedBy && photo.uploadedBy === req.session.userId;
+    if (!req.session.isAdmin && !isOwner) return res.status(403).json({ error: 'Not authorised to delete this photo' });
+    current.photos = current.photos.filter(p => p.url !== url);
+    await saveProp(id, current, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId);
     try { if (url.startsWith('/data/photos/')) fs.unlinkSync(path.join(PHOTOS_DIR, path.basename(url))); } catch(e) {}
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
