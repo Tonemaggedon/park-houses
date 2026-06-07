@@ -1148,7 +1148,7 @@ function renderPanel() {
     let photoHtml = photos.length ? `<div class="photo-grid">${photos.map((ph,i) => `
       <div class="photo-item" onclick="openLightbox(${i})">
         <img src="${ph.url}" alt="" loading="lazy">
-        ${isAdmin ? `<button class="ph-del" data-photo-url="${encodeURIComponent(ph.url)}" onclick="event.stopPropagation()">&#10005;</button>` : ''}
+        ${isAdmin ? `<button class="ph-del" onclick="event.stopPropagation();deletePhoto('${ph.url.replace(/'/g, "\\'")}')">&#10005;</button>` : ''}
       </div>`).join('')}</div>` : `
       <div class="photo-ph">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
