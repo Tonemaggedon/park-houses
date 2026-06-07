@@ -52,40 +52,58 @@ if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && proce
 
 // Upload a buffer: uses Cloudinary if configured, otherwise saves to local disk
 // Upload a photo buffer to Cloudinary using the unsigned "park-houses" preset.
-// Uses native fetch + FormData (Node 18+) — no API secret or signing required.
+// Uses https + multipart form (no extra packages, no signing required).
 async function uploadPhoto(buf, filename, contentType) {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   if (cloudName) {
-    // Determine MIME type: prefer the passed content-type, fall back to extension
     const ext = filename.split('.').pop().toLowerCase() || 'jpg';
     const mimeByExt = {
       jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png',
-      gif: 'image/gif', webp: 'image/webp', heic: 'image/heic', heif: 'image/heif'
+      gif: 'image/gif', webp: 'image/webp', heic: 'image/jpeg', heif: 'image/jpeg'
     };
-    const mimeType = contentType || mimeByExt[ext] || 'image/jpeg';
-
-    // Cloudinary doesn't accept HEIC via unsigned upload — convert flag tells it to auto-convert
-    // Use a jpg extension in the public_id so it's stored correctly
-    const safeFilename = mimeType.includes('heic') || mimeType.includes('heif')
-      ? filename.replace(/\.[^.]+$/, '.jpg') : filename;
+    const mimeType = mimeByExt[ext] || contentType || 'image/jpeg';
+    // Use .jpg extension for HEIC so Cloudinary processes it correctly
+    const safeFilename = (ext === 'heic' || ext === 'heif') ? filename.replace(/\.[^.]+$/, '.jpg') : filename;
     const publicId = `park-houses/${safeFilename.replace(/\.[^.]+$/, '')}`;
 
-    const form = new FormData();
-    // Send as octet-stream for HEIC — Cloudinary auto-detects format from content
-    const blobType = mimeType.includes('heic') || mimeType.includes('heif') ? 'application/octet-stream' : mimeType;
-    form.append('file', new Blob([buf], { type: blobType }), safeFilename);
-    form.append('upload_preset', 'park-houses');
-    form.append('public_id', publicId);
+    return new Promise((resolve, reject) => {
+      const https = require('https');
+      const boundary = '----ParkHousesBoundary' + Date.now().toString(16);
 
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-      method: 'POST',
-      body: form,
+      const parts = [
+        `--${boundary}\r\nContent-Disposition: form-data; name="upload_preset"\r\n\r\npark-houses`,
+        `--${boundary}\r\nContent-Disposition: form-data; name="public_id"\r\n\r\n${publicId}`,
+      ];
+      const prelude = Buffer.from(parts.join('\r\n') + '\r\n');
+      const fileHeader = Buffer.from(
+        `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${safeFilename}"\r\nContent-Type: ${mimeType}\r\n\r\n`
+      );
+      const epilogue = Buffer.from(`\r\n--${boundary}--\r\n`);
+      const body = Buffer.concat([prelude, fileHeader, buf, epilogue]);
+
+      const req = https.request({
+        hostname: 'api.cloudinary.com',
+        path: `/v1_1/${cloudName}/image/upload`,
+        method: 'POST',
+        headers: {
+          'Content-Type': `multipart/form-data; boundary=${boundary}`,
+          'Content-Length': body.length,
+        },
+      }, res => {
+        let data = '';
+        res.on('data', c => data += c);
+        res.on('end', () => {
+          try {
+            const json = JSON.parse(data);
+            if (json.secure_url) { resolve(json.secure_url); }
+            else { reject(new Error(json.error?.message || data)); }
+          } catch(e) { reject(new Error(data)); }
+        });
+      });
+      req.on('error', reject);
+      req.write(body);
+      req.end();
     });
-    const data = await res.json();
-    if (data.secure_url) return data.secure_url;
-    const errMsg = data.error?.message || JSON.stringify(data);
-    console.error('Cloudinary upload error:', errMsg);
-    throw new Error(errMsg);
   }
   // Fallback: local disk (ephemeral on Railway — only used in local dev without Cloudinary)
   const dest = path.join(PHOTOS_DIR, filename);
