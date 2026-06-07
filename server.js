@@ -559,12 +559,24 @@ function requireAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) return next();
   res.status(401).json({ error: 'Not authenticated' });
 }
-function requireContributor(req, res, next) {
-  if (req.session && (req.session.isAdmin || req.session.userRole === 'contributor')) return next();
+async function requireContributor(req, res, next) {
+  if (!req.session) return res.status(403).json({ error: 'Contributor access required' });
+  if (req.session.isAdmin) return next();
+  if (req.session.userRole === 'contributor') return next();
+  // userRole might not be set in old sessions — look up from DB
+  if (req.session.userId) {
+    try {
+      const u = await findUserById(req.session.userId);
+      if (u && (u.role === 'contributor' || u.role === 'admin') && u.approved) {
+        req.session.userRole = u.role; // cache for next time
+        return next();
+      }
+    } catch(e) {}
+  }
   res.status(403).json({ error: 'Contributor access required' });
 }
 function isContributor(req) {
-  return !!(req.session && (req.session.isAdmin || req.session.userRole === 'contributor'));
+  return !!(req.session && (req.session.isAdmin || req.session.userRole === 'contributor' || req.session.userRole === 'admin'));
 }
 
 // ── Auth routes ───────────────────────────────────────────────────────────────
@@ -627,7 +639,9 @@ app.post('/api/user/login', async (req, res) => {
     if (!user) return res.status(401).json({ error: 'Invalid email or password' });
     const ok = await bcrypt.compare(password, user.password_hash);
     if (!ok) return res.status(401).json({ error: 'Invalid email or password' });
-    req.session.userId = user.id;
+    if (!user.approved) return res.status(403).json({ error: 'Your account is awaiting admin approval' });
+    req.session.userId   = user.id;
+    req.session.userRole = user.role || 'viewer';
     res.json({ ok: true, user: publicUser(user) });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
