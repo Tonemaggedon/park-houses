@@ -291,9 +291,15 @@ function displayName(p) {
   if (p.known_as && p.known_as !== n) n = `${n}`;
   return n;
 }
+function yearOnly(val) {
+  if (!val) return null;
+  if (typeof val === 'number') return val;
+  const m = String(val).match(/\b(1[0-9]{3}|20[0-2][0-9])\b/);
+  return m ? parseInt(m[1]) : val;
+}
 function lifespan(p) {
-  const b = p.born_year || (p.born_date ? p.born_date : null);
-  const d = p.died_year || (p.died_date ? p.died_date : null);
+  const b = yearOnly(p.born_year || p.born_date);
+  const d = yearOnly(p.died_year || p.died_date);
   if (!b && !d) return '';
   return `${b || '?'} – ${d || '?'}`;
 }
@@ -601,12 +607,12 @@ function renderProfile(p) {
     html.push(`<div class="pane-section" style="border:1px solid #e8d8a0;border-radius:6px;padding:12px;background:#fdf9f0">
       <h3>Edit Record</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Born year</label><br>
-          <input id="edit_born_year" value="${p.born_year||''}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label><br>
+          <input id="edit_born_date" value="${p.born_date||p.born_year||''}" placeholder="e.g. 25 February 1863" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
           <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Died year</label><br>
-          <input id="edit_died_year" value="${p.died_year||''}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of death</label><br>
+          <input id="edit_died_date" value="${p.died_date||p.died_year||''}" placeholder="e.g. 16 August 1927" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br>
           <input id="edit_died_place" value="${(p.died_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
       </div>
@@ -671,13 +677,21 @@ async function deleteLink(personId, linkId) {
   loadPersonLinks(personId);
 }
 
+function extractYear(str) {
+  if (!str) return null;
+  const m = String(str).match(/\b(1[0-9]{3}|20[0-2][0-9])\b/);
+  return m ? parseInt(m[1]) : null;
+}
+
 async function savePerson(personId) {
   const status = document.getElementById('saveStatus');
   status.textContent = 'Saving…';
   const fields = {
-    born_year: document.getElementById('edit_born_year').value ? parseInt(document.getElementById('edit_born_year').value) : null,
+    born_date: document.getElementById('edit_born_date').value || null,
+    born_year: extractYear(document.getElementById('edit_born_date').value) || null,
     born_place: document.getElementById('edit_born_place').value || null,
-    died_year: document.getElementById('edit_died_year').value ? parseInt(document.getElementById('edit_died_year').value) : null,
+    died_date: document.getElementById('edit_died_date').value || null,
+    died_year: extractYear(document.getElementById('edit_died_date').value) || null,
     died_place: document.getElementById('edit_died_place').value || null,
     bio: document.getElementById('edit_bio').value || null,
     wikipedia_url: document.getElementById('edit_wikipedia_url').value || null,
@@ -813,9 +827,11 @@ async function submitAddPerson() {
   const body = {
     first_name, last_name,
     known_as: get('ap_known_as') || null,
-    born_year: get('ap_born_year') ? parseInt(get('ap_born_year')) : null,
+    born_date: get('ap_born_date') || null,
+    born_year: extractYear(get('ap_born_date')) || null,
     born_place: get('ap_born_place') || null,
-    died_year: get('ap_died_year') ? parseInt(get('ap_died_year')) : null,
+    died_date: get('ap_died_date') || null,
+    died_year: extractYear(get('ap_died_date')) || null,
     died_place: get('ap_died_place') || null,
     bio: get('ap_bio') || null,
     wikipedia_url: get('ap_wikipedia_url') || null,
@@ -854,9 +870,9 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeAddPerson(
       </div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as / title</label><br><input id="ap_known_as" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Sir Thomas Bayley"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Born year</label><br><input id="ap_born_year" type="number" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 1846"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label><br><input id="ap_born_date" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 25 February 1863"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Died year</label><br><input id="ap_died_year" type="number" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 1906"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of death</label><br><input id="ap_died_date" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 16 August 1927"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br><input id="ap_died_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
       </div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br><textarea id="ap_bio" rows="4" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.84rem;font-family:Georgia,serif;line-height:1.5;margin-top:3px" placeholder="Brief biography…"></textarea></div>
