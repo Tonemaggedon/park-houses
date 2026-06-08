@@ -485,7 +485,7 @@ function renderProfile(p) {
 
   // Bio
   if (p.bio) {
-    const paras = p.bio.split('\n\n').map(t => `<p>${t.trim()}</p>`).join('');
+    const paras = p.bio.split(/\n\n+|\n/).filter(t => t.trim()).map(t => `<p>${t.trim()}</p>`).join('');
     html.push(`<div class="pane-section">
       <h3>Story</h3>
       <div class="bio-text">${paras}</div>
@@ -617,7 +617,7 @@ function renderProfile(p) {
           <input id="edit_died_place" value="${(p.died_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br>
-        <textarea id="edit_bio" rows="6" style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;font-family:Georgia,serif;line-height:1.5">${(p.bio||'').replace(/</g,'&lt;')}</textarea></div>
+        <textarea id="edit_bio" rows="8" placeholder="Use blank lines between paragraphs." style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;font-family:Georgia,serif;line-height:1.5">${(p.bio||'').replace(/</g,'&lt;')}</textarea></div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Wikipedia / external URL</label><br>
         <input id="edit_wikipedia_url" value="${(p.wikipedia_url||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
       <div style="display:flex;gap:8px;align-items:center">
