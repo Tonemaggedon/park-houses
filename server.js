@@ -243,6 +243,12 @@ async function dbInit() {
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS address TEXT`);
+    await db.query(`CREATE TABLE IF NOT EXISTS census_unoccupied (
+      property_id INTEGER NOT NULL,
+      census_year INTEGER NOT NULL,
+      notes TEXT,
+      PRIMARY KEY (property_id, census_year)
+    )`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'viewer'`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved BOOLEAN DEFAULT FALSE`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved_by TEXT`);
@@ -1087,6 +1093,67 @@ app.get('/api/census/:year', async (req, res) => {
     res.json(r.rows);
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
+
+// GET /api/census-stats — coverage counts per year for the census landing page
+app.get('/api/census-stats', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const props = await loadProps();
+    const total = props.length;
+    const [recordedRes, unoccupiedRes] = await Promise.all([
+      db.query(`SELECT census_year, COUNT(DISTINCT property_id) AS cnt FROM census_entries WHERE property_id IS NOT NULL GROUP BY census_year`),
+      db.query(`SELECT census_year, COUNT(*) AS cnt FROM census_unoccupied GROUP BY census_year`)
+    ]);
+    const recorded = {}, unoccupied = {};
+    recordedRes.rows.forEach(r => { recorded[r.census_year] = parseInt(r.cnt); });
+    unoccupiedRes.rows.forEach(r => { unoccupied[r.census_year] = parseInt(r.cnt); });
+    const years = [1851,1861,1871,1881,1891,1901,1911,1921,1939];
+    res.json(years.map(y => ({ year: y, recorded: recorded[y]||0, unoccupied: unoccupied[y]||0, total })));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/census-coverage/:year — all properties with their census status for that year
+app.get('/api/census-coverage/:year', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const year = parseInt(req.params.year);
+    const props = await loadProps();
+    const [recordedRes, unoccupiedRes, countsRes] = await Promise.all([
+      db.query(`SELECT DISTINCT property_id FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL`, [year]),
+      db.query(`SELECT property_id, notes FROM census_unoccupied WHERE census_year=$1`, [year]),
+      db.query(`SELECT property_id, COUNT(DISTINCT person_id) AS cnt FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL GROUP BY property_id`, [year])
+    ]);
+    const recordedSet = new Set(recordedRes.rows.map(r => r.property_id));
+    const unoccupiedMap = {};
+    unoccupiedRes.rows.forEach(r => { unoccupiedMap[r.property_id] = r.notes || ''; });
+    const countsMap = {};
+    countsRes.rows.forEach(r => { countsMap[r.property_id] = parseInt(r.cnt); });
+    res.json(props.map(p => ({
+      id: p.id,
+      address: (p.address||'Property '+p.id).replace(/:\s*([A-Z])/g,', $1').replace(/:\s*$/,''),
+      status: recordedSet.has(p.id) ? 'recorded' : unoccupiedMap[p.id] !== undefined ? 'unoccupied' : 'none',
+      people_count: countsMap[p.id] || 0,
+      unoccupied_notes: unoccupiedMap[p.id] || null
+    })));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/census-unoccupied — mark a property as unoccupied for a census year
+app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { property_id, census_year, notes } = req.body;
+    await db.query(
+      `INSERT INTO census_unoccupied (property_id, census_year, notes) VALUES ($1,$2,$3)
+       ON CONFLICT (property_id, census_year) DO UPDATE SET notes=EXCLUDED.notes`,
+      [property_id, census_year, notes||null]
+    );
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /census page
+app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 
 // GET /api/people-counts — returns {propId: count} for all properties that have people
 app.get('/api/people-counts', async (req, res) => {

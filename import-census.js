@@ -159,6 +159,17 @@ const ARCHITECT_DATA = [
 ];
 
 // ─────────────────────────────────────────────────────────────────
+// UNOCCUPIED PROPERTIES
+// Format: { propId: 123, year: 1939, notes: 'optional note' }
+// Send entries to me as: "UNOCCUPIED: [property number] [year]"
+// ─────────────────────────────────────────────────────────────────
+const UNOCCUPIED_DATA = [
+
+  // ── Add unoccupied properties below ───────────────────────────
+
+];
+
+// ─────────────────────────────────────────────────────────────────
 // IMPORT LOGIC — no need to edit below this line
 // ─────────────────────────────────────────────────────────────────
 async function run() {
@@ -299,6 +310,23 @@ async function run() {
     }
 
     total++;
+  }
+
+  // ── Unoccupied properties ─────────────────────────────────────
+  if (UNOCCUPIED_DATA.length) {
+    await db.query(`CREATE TABLE IF NOT EXISTS census_unoccupied (
+      property_id INTEGER NOT NULL, census_year INTEGER NOT NULL, notes TEXT,
+      PRIMARY KEY (property_id, census_year)
+    )`);
+    console.log(`\n── Unoccupied properties ──`);
+    for (const u of UNOCCUPIED_DATA) {
+      await db.query(
+        `INSERT INTO census_unoccupied (property_id, census_year, notes)
+         VALUES ($1,$2,$3) ON CONFLICT DO NOTHING`,
+        [u.propId, u.year, u.notes || null]
+      );
+      console.log(`  ✓ Property ${u.propId} marked unoccupied in ${u.year}`);
+    }
   }
 
   console.log(`\nDone — ${total} people processed.`);
