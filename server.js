@@ -242,6 +242,7 @@ async function dbInit() {
     `);
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS address TEXT`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'viewer'`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved BOOLEAN DEFAULT FALSE`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved_by TEXT`);
@@ -1500,11 +1501,11 @@ app.post('/api/person/:id/occupation', requireAdmin, async (req, res) => {
 app.post('/api/person/:id/census', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
-    const { property_id, census_year, relationship, age_at_census, occupation_at_census, source } = req.body;
+    const { property_id, address, census_year, relationship, age_at_census, occupation_at_census, source } = req.body;
     const r = await db.query(
-      `INSERT INTO census_entries (person_id,property_id,census_year,relationship,age_at_census,occupation_at_census,source)
-       VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id`,
-      [parseInt(req.params.id), property_id||null, census_year, relationship||null, age_at_census||null, occupation_at_census||null, source||null]
+      `INSERT INTO census_entries (person_id,property_id,address,census_year,relationship,age_at_census,occupation_at_census,source)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id`,
+      [parseInt(req.params.id), property_id||null, address||null, census_year, relationship||null, age_at_census||null, occupation_at_census||null, source||null]
     );
     res.json({ ok: true, id: r.rows[0].id });
   } catch(e) { res.status(500).json({ error: e.message }); }

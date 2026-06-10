@@ -535,7 +535,7 @@ function renderProfile(p) {
         ${entries.map(ce => `<div class="census-row">
           <span class="census-role">${ce.relationship||'—'}</span>
           <span class="census-occ">${ce.occupation_at_census||'—'}${ce.age_at_census ? ` (aged ${ce.age_at_census})` : ''}</span>
-          ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ''}
+          ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ce.address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#2a1a4a" title="Address outside The Park">${ce.address}</span>` : ''}
         </div>`).join('')}
       </div>`).join('');
     html.push(`<div class="pane-section"><h3>Census Records</h3>${rows}</div>`);
