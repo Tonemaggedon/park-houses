@@ -240,19 +240,22 @@ async function loadLanding() {
     const grid = document.getElementById('yearGrid');
     if (!stats.length) { grid.innerHTML = '<div style="color:#8a7a5a;padding:20px">No data yet.</div>'; return; }
     grid.innerHTML = stats.map(s => {
-      const pct = s.total ? Math.round(((s.recorded + s.unoccupied) / s.total) * 100) : 0;
-      const hasData = s.recorded > 0 || s.unoccupied > 0;
+      const total = (typeof s.total === 'number' && s.total > 0) ? s.total : 350;
+      const recorded = s.recorded || 0;
+      const unoccupied = s.unoccupied || 0;
+      const missing = total - recorded - unoccupied;
+      const pct = Math.round((recorded / total) * 100);
+      const hasData = recorded > 0 || unoccupied > 0;
       return `<div class="year-card${hasData?' has-data':''}" onclick="loadYear(${s.year})">
         <div class="year-num">${s.year}</div>
         <div class="year-sub">Census</div>
         <div class="progress-bar"><div class="progress-fill${hasData?'':' none'}" style="width:${pct}%"></div></div>
         <div class="year-stats">
-          ${s.recorded > 0 ? `<span><span class="dot dot-green"></span>${s.recorded} recorded</span><br>` : ''}
-          ${s.unoccupied > 0 ? `<span><span class="dot dot-grey"></span>${s.unoccupied} unoccupied</span><br>` : ''}
-          ${hasData
-            ? `<span><span class="dot dot-red"></span>${s.total - s.recorded - s.unoccupied} no data</span>`
-            : `<span style="color:#a0907a">No records yet</span>`
-          }
+          ${hasData ? `
+            <span><span class="dot dot-green"></span>${recorded} recorded</span><br>
+            ${unoccupied > 0 ? `<span><span class="dot dot-grey"></span>${unoccupied} unoccupied</span><br>` : ''}
+            <span><span class="dot dot-red"></span>${missing} no data</span>
+          ` : `<span style="color:#a0907a">No records yet</span>`}
         </div>
       </div>`;
     }).join('');
@@ -274,7 +277,7 @@ async function loadYear(year) {
   document.getElementById('searchInput').value = '';
   document.getElementById('yearTitle').textContent = year + ' Census';
   document.getElementById('landingView').style.display = 'none';
-  document.getElementById('yearView').style.display = '';
+  document.getElementById('yearView').style.display = 'block';
   document.getElementById('propGrid').innerHTML = '<div style="color:#8a7a5a;padding:20px;grid-column:1/-1">Loading…</div>';
   history.pushState({}, '', '/census/' + year);
 

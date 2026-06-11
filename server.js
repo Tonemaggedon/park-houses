@@ -1099,7 +1099,7 @@ app.get('/api/census-stats', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const props = await loadProps();
-    const total = props.length;
+    const total = Array.isArray(props) ? props.length : 350;
     const [recordedRes, unoccupiedRes] = await Promise.all([
       db.query(`SELECT census_year, COUNT(DISTINCT property_id) AS cnt FROM census_entries WHERE property_id IS NOT NULL GROUP BY census_year`),
       db.query(`SELECT census_year, COUNT(*) AS cnt FROM census_unoccupied GROUP BY census_year`)
