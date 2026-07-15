@@ -441,8 +441,11 @@ function renderProfile(p) {
     // subtitle handled below
   }
   const dates = [];
+  const bornYr = parseInt(p.born_year) || parseInt((p.born_date||'').match(/\d{4}/)?.[0]);
+  const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
+  const ageAtDeath = (bornYr && diedYr && diedYr > bornYr) ? (diedYr - bornYr) : null;
   if (p.born_date || p.born_year) dates.push(`b. ${p.born_date || p.born_year}${p.born_place ? ', '+p.born_place : ''}`);
-  if (p.died_date || p.died_year) dates.push(`d. ${p.died_date || p.died_year}${p.died_place ? ', '+p.died_place : ''}`);
+  if (p.died_date || p.died_year) dates.push(`d. ${p.died_date || p.died_year}${p.died_place ? ', '+p.died_place : ''}${ageAtDeath ? ` (aged ${ageAtDeath})` : ''}`);
   document.getElementById('paneDates').textContent = dates.join('  ·  ');
 
   const avatar = document.getElementById('paneAvatar');
@@ -483,6 +486,17 @@ function renderProfile(p) {
 
   if (p.wikipedia_url) {
     html.push(`<div style="margin-bottom:16px"><a class="wiki-link" href="${p.wikipedia_url}" target="_blank">📖 Wikipedia article ↗</a></div>`);
+  }
+
+  // Grave
+  if (p.grave_location || p.grave_number) {
+    html.push(`<div class="pane-section">
+      <h3>Burial</h3>
+      <div class="detail-grid">
+        ${p.grave_location ? `<span class="lbl">Location</span><span class="val">${p.grave_location}</span>` : ''}
+        ${p.grave_number ? `<span class="lbl">Grave ref.</span><span class="val">${p.grave_number}</span>` : ''}
+      </div>
+    </div>`);
   }
 
   // Bio
@@ -608,15 +622,37 @@ function renderProfile(p) {
   if (canUploadPhotos) {
     html.push(`<div class="pane-section" style="border:1px solid #e8d8a0;border-radius:6px;padding:12px;background:#fdf9f0">
       <h3>Edit Record</h3>
+      ${(()=>{
+        const MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+        function parseDateParts(val) {
+          if (!val) return {d:'',m:'',y:''};
+          const m = String(val).match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
+          if (m) { const mi = MONTHS.findIndex(mo=>mo.toLowerCase()===m[2].toLowerCase()); return {d:m[1],m:mi>0?mi:'',y:m[3]}; }
+          const m2 = String(val).match(/^([A-Za-z]+)\s+(\d{4})$/);
+          if (m2) { const mi = MONTHS.findIndex(mo=>mo.toLowerCase()===m2[1].toLowerCase()); return {d:'',m:mi>0?mi:'',y:m2[2]}; }
+          return {d:'',m:'',y:String(val).match(/\d{4}/)?.[0]||''};
+        }
+        const monthOpts = MONTHS.map((mo,i)=>i===0?`<option value="">Month</option>`:`<option value="${i}">${mo}</option>`).join('');
+        const dayOpts = Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('');
+        function dateRow(label, id, val) {
+          const {d,m,y} = parseDateParts(val);
+          const dSel = `<select id="${id}_day" data-val="${d}" style="padding:5px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.8rem"><option value="">Day</option>${dayOpts}</select>`;
+          const mSel = `<select id="${id}_month" data-val="${m}" style="padding:5px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.8rem">${monthOpts}</select>`;
+          const yIn  = `<input id="${id}_year" type="text" value="${y}" placeholder="Year" style="width:62px;padding:5px 6px;border:1px solid #d0c090;border-radius:4px;font-size:0.8rem">`;
+          return `<div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">${label}</label><br>
+            <div style="display:flex;gap:4px;margin-top:3px">${dSel}${mSel}${yIn}</div></div>`;
+        }
+        return dateRow('Date of birth','edit_born',p.born_date||p.born_year||'') + dateRow('Date of death','edit_died',p.died_date||p.died_year||'');
+      })()}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label><br>
-          <input id="edit_born_date" value="${p.born_date||p.born_year||''}" placeholder="e.g. 25 February 1863" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
           <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of death</label><br>
-          <input id="edit_died_date" value="${p.died_date||p.died_year||''}" placeholder="e.g. 16 August 1927" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br>
           <input id="edit_died_place" value="${(p.died_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Grave location</label><br>
+          <input id="edit_grave_location" value="${(p.grave_location||'').replace(/"/g,'&quot;')}" placeholder="e.g. General Cemetery, Nottm" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+        <div><label style="font-size:0.75rem;color:#8a7a5a">Grave number</label><br>
+          <input id="edit_grave_number" value="${(p.grave_number||'').replace(/"/g,'&quot;')}" placeholder="e.g. Section A, Plot 12" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br>
         <textarea id="edit_bio" rows="8" placeholder="Use blank lines between paragraphs." style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;font-family:Georgia,serif;line-height:1.5">${(p.bio||'').replace(/</g,'&lt;')}</textarea></div>
@@ -634,6 +670,12 @@ function renderProfile(p) {
   html.push(`<div class="pane-section" id="mediaGallery"><h3>Photos &amp; Documents</h3><div id="mediaItems" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>${canUploadPhotos?`<div style="margin-top:12px"><label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#4a3a1a"><input type="file" accept="image/*,.pdf,.doc,.docx" style="display:none" onchange="uploadMedia(${p.id},this)">📎 Add photo or document</label></div>`:''}</div>`);
 
   document.getElementById('paneBody').innerHTML = html.join('');
+
+  // Initialise date selects from data-val (can't set value before insertion)
+  ['edit_born_day','edit_born_month','edit_died_day','edit_died_month'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.dataset.val) el.value = el.dataset.val;
+  });
 
   // Load media gallery and links
   loadMediaGallery(p.id);
@@ -685,16 +727,31 @@ function extractYear(str) {
   return m ? parseInt(m[1]) : null;
 }
 
+function buildDateString(prefix) {
+  const MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = document.getElementById(prefix+'_day')?.value || '';
+  const m = parseInt(document.getElementById(prefix+'_month')?.value || '') || 0;
+  const y = document.getElementById(prefix+'_year')?.value?.trim() || '';
+  if (!y) return null;
+  if (d && m) return `${d} ${MONTHS[m]} ${y}`;
+  if (m) return `${MONTHS[m]} ${y}`;
+  return y;
+}
+
 async function savePerson(personId) {
   const status = document.getElementById('saveStatus');
   status.textContent = 'Saving…';
+  const bornDate = buildDateString('edit_born');
+  const diedDate = buildDateString('edit_died');
   const fields = {
-    born_date: document.getElementById('edit_born_date').value || null,
-    born_year: extractYear(document.getElementById('edit_born_date').value) || null,
+    born_date: bornDate,
+    born_year: bornDate ? (bornDate.match(/\d{4}/)?.[0] ? parseInt(bornDate.match(/\d{4}/)[0]) : null) : null,
     born_place: document.getElementById('edit_born_place').value || null,
-    died_date: document.getElementById('edit_died_date').value || null,
-    died_year: extractYear(document.getElementById('edit_died_date').value) || null,
+    died_date: diedDate,
+    died_year: diedDate ? (diedDate.match(/\d{4}/)?.[0] ? parseInt(diedDate.match(/\d{4}/)[0]) : null) : null,
     died_place: document.getElementById('edit_died_place').value || null,
+    grave_location: document.getElementById('edit_grave_location').value || null,
+    grave_number: document.getElementById('edit_grave_number').value || null,
     bio: document.getElementById('edit_bio').value || null,
     wikipedia_url: document.getElementById('edit_wikipedia_url').value || null,
   };

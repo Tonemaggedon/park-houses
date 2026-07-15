@@ -205,6 +205,49 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
 </div>
 
+<!-- Recent Updates -->
+<div class="panel" style="margin-bottom:1.5rem">
+  <div class="section-header">
+    <span class="icon">🕐</span><h2>Recent Updates</h2>
+    <div style="margin-left:auto;display:flex;gap:0.4rem">
+      <button id="btn-mode-recent" onclick="setChangesMode('recent')" class="filter-btn active" style="font-size:0.72rem">Most recent</button>
+      <button id="btn-mode-most" onclick="setChangesMode('most-updated')" class="filter-btn" style="font-size:0.72rem">Most updated</button>
+    </div>
+  </div>
+  <div id="recentChangesList"><div class="loading">Loading…</div></div>
+</div>
+
+<!-- Useful Resources -->
+<div class="panel" style="margin-bottom:2rem">
+  <div class="section-header"><span class="icon">🔗</span><h2>Useful Resources</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.7rem">
+    <a href="https://www.findmypast.co.uk" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">📜</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Findmypast</div><div style="font-size:0.71rem;color:#8a9a7a">Census, BMD, newspapers</div></div>
+    </a>
+    <a href="https://www.findagrave.com" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🪦</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Find A Grave</div><div style="font-size:0.71rem;color:#8a9a7a">Burial records worldwide</div></div>
+    </a>
+    <a href="https://www.ancestry.co.uk" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🧬</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Ancestry</div><div style="font-size:0.71rem;color:#8a9a7a">Family trees &amp; records</div></div>
+    </a>
+    <a href="https://www.nottinghamshire.gov.uk/council/archives" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🗄️</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Nottinghamshire Archives</div><div style="font-size:0.71rem;color:#8a9a7a">Local records &amp; documents</div></div>
+    </a>
+    <a href="https://www.nottinghamcitymuseums.org.uk" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🏛️</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Nottingham City Museums</div><div style="font-size:0.71rem;color:#8a9a7a">Local history collections</div></div>
+    </a>
+    <a href="https://historicengland.org.uk/listing/the-list/" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🏗️</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Historic England</div><div style="font-size:0.71rem;color:#8a9a7a">Listed buildings register</div></div>
+    </a>
+    <a href="https://www.thegenealogist.co.uk" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">🌳</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">The Genealogist</div><div style="font-size:0.71rem;color:#8a9a7a">UK genealogy records</div></div>
+    </a>
+    <a href="https://www.probatesearch.service.gov.uk" target="_blank" style="display:flex;align-items:center;gap:0.8rem;background:#1e2d1e;border:1px solid #2a3a2a;border-radius:9px;padding:0.9rem 1rem;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='#c8b87a'" onmouseout="this.style.borderColor='#2a3a2a'">
+      <span style="font-size:1.4rem">📋</span><div><div style="font-size:0.88rem;color:#e8e0d0;font-weight:600">Probate Search</div><div style="font-size:0.71rem;color:#8a9a7a">Wills &amp; estate records</div></div>
+    </a>
+  </div>
+</div>
+
 <script>
 let allProps=[], stats={}, jobsChart=null, researchFilter='all', researchMap={}, currentUser=null;
 let peopleCounts={};
@@ -536,7 +579,55 @@ async function toggleResearch(propId){
   renderResearchGrid();
 }
 function set(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
+
+let _changesMode = 'recent';
+function setChangesMode(mode) {
+  _changesMode = mode;
+  document.getElementById('btn-mode-recent').classList.toggle('active', mode==='recent');
+  document.getElementById('btn-mode-most').classList.toggle('active', mode==='most-updated');
+  renderRecentChanges();
+}
+async function renderRecentChanges() {
+  const el = document.getElementById('recentChangesList');
+  el.innerHTML = '<div class="loading">Loading…</div>';
+  try {
+    const data = await fetch('/api/recent-changes?mode=' + _changesMode).then(r=>r.json());
+    if (!data || !data.length) { el.innerHTML = '<div class="loading" style="color:#5a7a5a">No changes recorded yet.</div>'; return; }
+    const entityIcon = t => t==='property'?'🏠':t==='person'?'👤':t==='architect'?'🏛️':'✏️';
+    const rows = data.map(c => {
+      const ago = timeSince(c.created_at || c.last_update);
+      const entityLink = c.entity_type==='property' && c.entity_id
+        ? `<a href="/?id=${c.entity_id}" style="color:#c8b87a;text-decoration:none">${c.entity_label||'Property '+c.entity_id}</a>`
+        : c.entity_type==='person' && c.entity_id
+        ? `<a href="/people?id=${c.entity_id}" style="color:#c8b87a;text-decoration:none">${c.entity_label||'Person'}</a>`
+        : `<span style="color:#a8b8a8">${c.entity_label||c.entity_type}</span>`;
+      const detail = _changesMode==='most-updated'
+        ? `<span style="color:#5b9bd5;font-size:0.72rem">${c.update_count} update${c.update_count!==1?'s':''}</span>`
+        : `<span style="color:#5a7a5a;font-size:0.72rem">${c.field||c.action||''}</span>`;
+      return `<div style="display:flex;align-items:center;gap:0.8rem;padding:0.55rem 0;border-bottom:1px solid #1e2a1e">
+        <span style="font-size:1rem;flex-shrink:0">${entityIcon(c.entity_type)}</span>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:0.83rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${entityLink} ${detail}</div>
+          <div style="font-size:0.7rem;color:#5a7a5a">${c.username||'system'} · ${ago}</div>
+        </div>
+      </div>`;
+    }).join('');
+    el.innerHTML = `<div style="max-height:360px;overflow-y:auto">${rows}</div>`;
+  } catch(e) { el.innerHTML = '<div class="loading" style="color:#804040">Could not load recent changes.</div>'; }
+}
+function timeSince(ts) {
+  if (!ts) return '';
+  const diff = Date.now() - new Date(ts).getTime();
+  const m = Math.floor(diff/60000), h = Math.floor(m/60), d = Math.floor(h/24);
+  if (d>30) return new Date(ts).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  if (d>0) return d+'d ago';
+  if (h>0) return h+'h ago';
+  if (m>0) return m+'m ago';
+  return 'just now';
+}
+
 init();
+renderRecentChanges();
 </script>
 </body>
 </html>

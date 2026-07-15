@@ -461,6 +461,8 @@
 
       <!-- DETAILS form -->
       <div id="ef_details_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Original Plot Number</label>
+        <input id="ef_plot" type="text" placeholder="e.g. 47" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:10px">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Date Built (year)</label>
         <input id="ef_built" type="number" min="1800" max="1920" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:10px">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Architect</label>
@@ -498,6 +500,14 @@
         <div id="ef_uploadZone" style="border:2px dashed #c8b888;border-radius:5px;padding:18px;text-align:center;color:#8a7a5a;font-size:0.82rem;cursor:pointer;margin-bottom:8px">Click or drag &amp; drop to upload a photo</div>
         <input type="text" id="ef_photoUrl" placeholder="Or paste an image URL…" style="width:100%;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:6px">
         <button id="ef_addUrlBtn" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:8px;border-radius:4px;cursor:pointer;font-size:0.82rem">Add URL photo</button>
+        <div style="margin-top:16px;border-top:1px solid #e0d0a0;padding-top:12px">
+          <div style="font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Videos</div>
+          <div id="ef_videoList" style="margin-bottom:8px"></div>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="ef_videoUrl" placeholder="YouTube or Vimeo URL…" style="flex:1;padding:7px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+            <button onclick="addVideo()" style="background:#1a3a2a;color:#e8dfc8;border:none;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem">Add</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1111,6 +1121,7 @@ function renderPanel() {
     const displayDesc = ov.desc || p.desc || '';
     const displayHistory = ov.history || p.history || '';
     const displayDate = ov.built || p.built || p.date_built;
+    const displayPlot = ov.plot_number || p.plot_number;
     const isListed = (ov.listed || p.listed) === 'Yes';
     const displayGrade = ov.listedGrade || p.listedGrade || p.listed_grade;
     const displayArch = ov.architect || p.architect;
@@ -1124,6 +1135,7 @@ function renderPanel() {
     const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
     let detailRows = '';
     detailRows += '<div class="row"><span class="lbl">Address</span><span class="val">' + address + '</span></div>';
+    if (displayPlot) detailRows += '<div class="row"><span class="lbl">Original Plot</span><span class="val">' + displayPlot + '</span></div>';
     if (displayHouseName) detailRows += '<div class="row"><span class="lbl">House Name</span><span class="val">' + displayHouseName + '</span></div>';
     if (displayPrevName) detailRows += '<div class="row"><span class="lbl">Previous Name</span><span class="val">' + displayPrevName + '</span></div>';
     if (displayDate) detailRows += '<div class="row"><span class="lbl">Date</span><span class="val">c.' + displayDate + '</span></div>';
@@ -1184,6 +1196,21 @@ function renderPanel() {
         <div id="contribUploadStatus" style="font-size:0.78rem;color:#6a5a3a;margin-top:8px;text-align:center"></div>`;
     } else if (currentUser) {
       photoHtml += '<p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6;margin-top:10px">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>';
+    }
+    // Videos section
+    const videos = ov.videos || [];
+    if (videos.length) {
+      photoHtml += '<div style="margin-top:14px;border-top:1px solid #e0d8c0;padding-top:12px"><div style="font-size:0.72rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">Videos</div>';
+      videos.forEach((v,i) => {
+        const embedUrl = videoEmbedUrl(v.url);
+        const delBtn = isAdmin ? `<button onclick="deleteVideo(${i})" style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:0.7rem">✕</button>` : '';
+        if (embedUrl) {
+          photoHtml += `<div style="position:relative;margin-bottom:10px">${delBtn}<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px"><iframe src="${embedUrl}" style="position:absolute;top:0;left:0;width:100%;height:100%" frameborder="0" allowfullscreen></iframe></div>${v.title?`<div style="font-size:0.78rem;color:#6a5a3a;margin-top:4px">${v.title}</div>`:''}</div>`;
+        } else {
+          photoHtml += `<div style="position:relative;background:#f0ead8;border:1px solid #d0c090;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:0.82rem">${delBtn}🎥 <a href="${v.url}" target="_blank" style="color:#1a3a2a">${v.title||v.url}</a></div>`;
+        }
+      });
+      photoHtml += '</div>';
     }
     body.innerHTML = photoHtml;
   }
@@ -1969,6 +1996,7 @@ function openEdit(type) {
     clearBtn.onclick = async () => { await savePropOverride({ desc: '' }); closeEdit(); };
   } else if (type === 'details') {
     document.getElementById('editTitle').textContent = 'Edit Details';
+    document.getElementById('ef_plot').value = ov.plot_number || curProp.plot_number || '';
     document.getElementById('ef_built').value = ov.built || curProp.built || '';
     document.getElementById('ef_arch').value = ov.architect || '';
     document.getElementById('ef_style').value = ov.style || '';
@@ -1990,6 +2018,7 @@ function openEdit(type) {
   } else if (type === 'photos') {
     document.getElementById('editTitle').textContent = 'Manage Photos';
     renderPhotoGrid();
+    renderVideoList();
     document.getElementById('ef_clearBtn').style.display = 'none';
     document.getElementById('ef_saveBtn').style.display = 'none'; // photos save inline
     // Wire up photo tools
@@ -2021,6 +2050,7 @@ document.getElementById('ef_saveBtn').addEventListener('click', async () => {
   } else if (curEditType === 'details') {
     const grade = document.getElementById('ef_grade').value;
     await savePropOverride({
+      plot_number: document.getElementById('ef_plot').value.trim() || null,
       built: parseInt(document.getElementById('ef_built').value) || null,
       architect: document.getElementById('ef_arch').value.trim(),
       style: document.getElementById('ef_style').value.trim(),
@@ -2064,6 +2094,50 @@ function addResidentRowWith(y, n) {
   del.onclick = () => row.remove();
   row.appendChild(yInp); row.appendChild(nInp); row.appendChild(del);
   list.appendChild(row);
+}
+
+// ── VIDEO HELPERS ─────────────────────────────────────────────────────────────
+function videoEmbedUrl(url) {
+  if (!url) return null;
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  const vm = url.match(/vimeo\.com\/(\d+)/);
+  if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
+  return null;
+}
+
+function renderVideoList() {
+  const ov = propOverrides[curProp.id] || {};
+  const videos = ov.videos || [];
+  const list = document.getElementById('ef_videoList');
+  if (!list) return;
+  list.innerHTML = videos.map((v,i) => `
+    <div style="display:flex;align-items:center;gap:8px;background:#f5f0e8;border:1px solid #d8c8a0;border-radius:4px;padding:6px 10px;margin-bottom:6px;font-size:0.8rem">
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${v.title||v.url}</span>
+      <button onclick="removeVideo(${i})" style="background:none;border:none;color:#c04040;cursor:pointer;font-size:0.85rem;flex-shrink:0">✕</button>
+    </div>`).join('') || '<div style="color:#a0907a;font-size:0.78rem;margin-bottom:6px">No videos added yet.</div>';
+}
+
+async function addVideo() {
+  const url = document.getElementById('ef_videoUrl').value.trim();
+  if (!url) return;
+  const ov = propOverrides[curProp.id] || {};
+  const videos = [...(ov.videos || []), { url, title: '' }];
+  await savePropOverride({ videos });
+  document.getElementById('ef_videoUrl').value = '';
+  renderVideoList();
+}
+
+async function removeVideo(idx) {
+  const ov = propOverrides[curProp.id] || {};
+  const videos = (ov.videos || []).filter((_,i) => i !== idx);
+  await savePropOverride({ videos });
+  renderVideoList();
+}
+
+async function deleteVideo(idx) {
+  await removeVideo(idx);
+  renderPanel();
 }
 
 // Photos

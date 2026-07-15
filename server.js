@@ -243,6 +243,8 @@ async function dbInit() {
     // Migrations — safe to run every startup
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS photo_url TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS address TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_location TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_number TEXT`);
     await db.query(`CREATE TABLE IF NOT EXISTS census_unoccupied (
       property_id INTEGER NOT NULL,
       census_year INTEGER NOT NULL,
@@ -1155,6 +1157,51 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 
+// GET /api/recent-changes — for dashboard activity feed
+app.get('/api/recent-changes', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const mode = req.query.mode || 'recent'; // 'recent' or 'most-updated'
+    let out;
+    if (mode === 'most-updated') {
+      const r = await db.query(`
+        SELECT entity_type, entity_id, COUNT(*) AS update_count,
+               MAX(created_at) AS last_update, MAX(username) AS username
+        FROM change_log GROUP BY entity_type, entity_id
+        ORDER BY update_count DESC LIMIT 30`);
+      out = await Promise.all(r.rows.map(async row => {
+        let label = row.entity_type + ' ' + row.entity_id;
+        try {
+          if (row.entity_type === 'person') {
+            const p = await db.query('SELECT first_name, last_name, known_as FROM people WHERE id=$1', [row.entity_id]);
+            if (p.rows[0]) { const x=p.rows[0]; label = x.known_as||(x.first_name+' '+x.last_name); }
+          } else if (row.entity_type === 'property') {
+            const prop = await loadProp(parseInt(row.entity_id));
+            label = (prop && (prop.address || prop.name)) ? (prop.address||prop.name) : 'Property '+row.entity_id;
+          }
+        } catch(_) {}
+        return { ...row, entity_label: label, update_count: parseInt(row.update_count) };
+      }));
+    } else {
+      const r = await db.query(`
+        SELECT cl.*, p.first_name, p.last_name, p.known_as
+        FROM change_log cl
+        LEFT JOIN people p ON cl.entity_type='person' AND p.id=cl.entity_id
+        ORDER BY cl.created_at DESC LIMIT 40`);
+      out = r.rows.map(row => {
+        let label = row.entity_type;
+        if (row.entity_type === 'person' && (row.first_name || row.last_name)) {
+          label = row.known_as || ((row.first_name||'') + ' ' + (row.last_name||'')).trim();
+        } else if (row.entity_type === 'property') {
+          label = 'Property ' + row.entity_id;
+        }
+        return { ...row, entity_label: label };
+      });
+    }
+    res.json(out);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/people-counts — returns {propId: count} for all properties that have people
 app.get('/api/people-counts', async (req, res) => {
   if (!db) return res.json({});
@@ -1537,7 +1584,7 @@ app.patch('/api/person/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const fields = req.body;
-    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url'].includes(k));
+    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url','grave_location','grave_number'].includes(k));
     if (!keys.length) return res.status(400).json({ error: 'No valid fields' });
     // Get old values for changelog
     const old = await db.query(`SELECT ${keys.join(',')} FROM people WHERE id=$1`, [id]);
