@@ -110,72 +110,81 @@ async function uploadPhoto(buf, filename, contentType) {
   fs.writeFileSync(dest, buf);
   return `/data/photos/${filename}`;
 }
-// Upload a video buffer to Cloudinary using a SIGNED upload (required for video — unsigned presets only allow images)
+// Upload a video buffer to Cloudinary.
+// 1) Uses Cloudinary SDK if available (handles signing automatically)
+// 2) Falls back to manual signed upload using env vars
+// 3) Last resort: local disk (ephemeral on Railway)
 async function uploadVideo(buf, filename) {
-  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-  const apiKey    = process.env.CLOUDINARY_API_KEY;
-  const apiSecret = process.env.CLOUDINARY_API_SECRET;
-  if (!cloudName || !apiKey || !apiSecret) {
-    // Fallback: local disk (ephemeral on Railway)
-    const dest = path.join(PHOTOS_DIR, filename);
-    fs.writeFileSync(dest, buf);
-    return `/data/photos/${filename}`;
+  const cloudName  = process.env.CLOUDINARY_CLOUD_NAME;
+  const apiKey     = (process.env.CLOUDINARY_API_KEY    || '').trim();
+  const apiSecret  = (process.env.CLOUDINARY_API_SECRET || '').trim();
+
+  if (cloudinary) {
+    // SDK available — use upload_stream (signing handled internally)
+    return new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: 'video', folder: 'park-houses', use_filename: true, unique_filename: true },
+        (error, result) => {
+          if (error) reject(new Error(error.message || JSON.stringify(error)));
+          else resolve(result.secure_url);
+        }
+      );
+      stream.end(buf);
+    });
   }
-  const ext = filename.split('.').pop().toLowerCase();
-  const mimeByExt = {
-    mp4:'video/mp4', mov:'video/quicktime', avi:'video/x-msvideo',
-    mkv:'video/x-matroska', webm:'video/webm', m4v:'video/mp4',
-    wmv:'video/x-ms-wmv', ogv:'video/ogg'
-  };
-  const mimeType = mimeByExt[ext] || 'video/mp4';
-  const safeFilename = filename.replace(/[^a-z0-9._-]/gi, '_');
 
-  // Build signed upload: signature = SHA1(sorted_params + api_secret)
-  const crypto = require('crypto');
-  const timestamp = Math.floor(Date.now() / 1000);
-  const sigStr = `timestamp=${timestamp}${apiSecret}`;
-  const signature = crypto.createHash('sha1').update(sigStr).digest('hex');
-
-  return new Promise((resolve, reject) => {
-    const https = require('https');
-    const boundary = '----ParkHousesVideoBoundary' + Date.now().toString(16);
-    const parts = [
-      `--${boundary}\r\nContent-Disposition: form-data; name="api_key"\r\n\r\n${apiKey}`,
-      `--${boundary}\r\nContent-Disposition: form-data; name="timestamp"\r\n\r\n${timestamp}`,
-      `--${boundary}\r\nContent-Disposition: form-data; name="signature"\r\n\r\n${signature}`,
-    ];
-    const prelude = Buffer.from(parts.join('\r\n') + '\r\n');
+  if (cloudName && apiKey && apiSecret) {
+    // No SDK but have credentials — manual signed upload
+    const crypto   = require('crypto');
+    const https    = require('https');
+    const safeFile = filename.replace(/[^a-z0-9._-]/gi, '_');
+    const ext      = safeFile.split('.').pop().toLowerCase();
+    const mimes    = { mp4:'video/mp4', mov:'video/quicktime', avi:'video/x-msvideo', mkv:'video/x-matroska', webm:'video/webm', m4v:'video/mp4', wmv:'video/x-ms-wmv', ogv:'video/ogg' };
+    const mime     = mimes[ext] || 'video/mp4';
+    const ts       = Math.floor(Date.now() / 1000);
+    // Cloudinary signature: SHA1(sorted_params_string + api_secret)
+    const sig = crypto.createHash('sha1').update(`timestamp=${ts}${apiSecret}`).digest('hex');
+    const boundary = '----VidBound' + Date.now().toString(16);
+    const textPart = (name, val) =>
+      `--${boundary}\r\nContent-Disposition: form-data; name="${name}"\r\n\r\n${val}\r\n`;
+    const prelude = Buffer.from(
+      textPart('api_key', apiKey) +
+      textPart('timestamp', ts) +
+      textPart('signature', sig)
+    );
     const fileHeader = Buffer.from(
-      `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${safeFilename}"\r\nContent-Type: ${mimeType}\r\n\r\n`
+      `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${safeFile}"\r\nContent-Type: ${mime}\r\n\r\n`
     );
     const epilogue = Buffer.from(`\r\n--${boundary}--\r\n`);
     const body = Buffer.concat([prelude, fileHeader, buf, epilogue]);
-    const req = https.request({
-      hostname: 'api.cloudinary.com',
-      path: `/v1_1/${cloudName}/video/upload`,
-      method: 'POST',
-      headers: { 'Content-Type': `multipart/form-data; boundary=${boundary}`, 'Content-Length': body.length },
-      timeout: 300000, // 5 min timeout for large video files
-    }, resp => {
-      let data = '';
-      resp.on('data', c => data += c);
-      resp.on('end', () => {
-        try {
-          const json = JSON.parse(data);
-          if (json.secure_url) resolve(json.secure_url);
-          else reject(new Error(json.error?.message || `Cloudinary error: ${data.slice(0,200)}`));
-        } catch(e) { reject(new Error(`Parse error: ${data.slice(0,200)}`)); }
+    return new Promise((resolve, reject) => {
+      const req = https.request({
+        hostname: 'api.cloudinary.com',
+        path: `/v1_1/${cloudName}/video/upload`,
+        method: 'POST',
+        headers: { 'Content-Type': `multipart/form-data; boundary=${boundary}`, 'Content-Length': body.length },
+        timeout: 300000,
+      }, resp => {
+        let data = '';
+        resp.on('data', c => data += c);
+        resp.on('end', () => {
+          try {
+            const json = JSON.parse(data);
+            if (json.secure_url) resolve(json.secure_url);
+            else reject(new Error(json.error?.message || data.slice(0, 300)));
+          } catch(e) { reject(new Error(data.slice(0, 300))); }
+        });
       });
+      req.on('error', reject);
+      req.on('timeout', () => { req.destroy(); reject(new Error('Upload timed out')); });
+      req.end(body);
     });
-    req.on('error', reject);
-    req.on('timeout', () => { req.destroy(); reject(new Error('Upload timed out')); });
-    // Write in chunks to avoid memory/backpressure issues with large files
-    const CHUNK = 64 * 1024;
-    for (let i = 0; i < body.length; i += CHUNK) {
-      req.write(body.slice(i, i + CHUNK));
-    }
-    req.end();
-  });
+  }
+
+  // Last resort: local disk (ephemeral on Railway)
+  const dest = path.join(PHOTOS_DIR, filename.replace(/[^a-z0-9._-]/gi, '_'));
+  fs.writeFileSync(dest, buf);
+  return `/data/photos/${path.basename(dest)}`;
 }
 
 if (!fs.existsSync(COORDS_FILE)) fs.writeFileSync(COORDS_FILE, JSON.stringify({}));
