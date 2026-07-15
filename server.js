@@ -110,6 +110,57 @@ async function uploadPhoto(buf, filename, contentType) {
   fs.writeFileSync(dest, buf);
   return `/data/photos/${filename}`;
 }
+// Upload a video buffer to Cloudinary (/video/upload endpoint)
+async function uploadVideo(buf, filename) {
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+  if (!cloudName) {
+    const dest = path.join(PHOTOS_DIR, filename);
+    fs.writeFileSync(dest, buf);
+    return `/data/photos/${filename}`;
+  }
+  const ext = filename.split('.').pop().toLowerCase();
+  const mimeByExt = {
+    mp4:'video/mp4', mov:'video/quicktime', avi:'video/x-msvideo',
+    mkv:'video/x-matroska', webm:'video/webm', m4v:'video/mp4',
+    wmv:'video/x-ms-wmv', ogv:'video/ogg'
+  };
+  const mimeType = mimeByExt[ext] || 'video/mp4';
+  const safeFilename = filename.replace(/[^a-z0-9._-]/gi, '_');
+  return new Promise((resolve, reject) => {
+    const https = require('https');
+    const boundary = '----ParkHousesVideoBoundary' + Date.now().toString(16);
+    const parts = [
+      `--${boundary}\r\nContent-Disposition: form-data; name="upload_preset"\r\n\r\npark-houses`,
+      `--${boundary}\r\nContent-Disposition: form-data; name="resource_type"\r\n\r\nvideo`,
+    ];
+    const prelude = Buffer.from(parts.join('\r\n') + '\r\n');
+    const fileHeader = Buffer.from(
+      `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${safeFilename}"\r\nContent-Type: ${mimeType}\r\n\r\n`
+    );
+    const epilogue = Buffer.from(`\r\n--${boundary}--\r\n`);
+    const body = Buffer.concat([prelude, fileHeader, buf, epilogue]);
+    const req = https.request({
+      hostname: 'api.cloudinary.com',
+      path: `/v1_1/${cloudName}/video/upload`,
+      method: 'POST',
+      headers: { 'Content-Type': `multipart/form-data; boundary=${boundary}`, 'Content-Length': body.length },
+    }, res => {
+      let data = '';
+      res.on('data', c => data += c);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          if (json.secure_url) resolve(json.secure_url);
+          else reject(new Error(json.error?.message || data));
+        } catch(e) { reject(new Error(data)); }
+      });
+    });
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
+}
+
 if (!fs.existsSync(COORDS_FILE)) fs.writeFileSync(COORDS_FILE, JSON.stringify({}));
 if (!fs.existsSync(PROPS_FILE))  fs.writeFileSync(PROPS_FILE, JSON.stringify({}));
 if (!fs.existsSync(USERS_FILE))  fs.writeFileSync(USERS_FILE, JSON.stringify({}));
@@ -850,6 +901,30 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
   req.on('error', e => res.status(500).json({ error: e.message }));
 });
 
+// Upload a video file for a property
+app.post('/api/property/:id/video/upload', requireContributor, (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (!id) return res.status(400).json({ error: 'invalid id' });
+  const chunks = [];
+  let size = 0;
+  req.on('data', c => { size += c.length; if (size > 200 * 1024 * 1024) req.destroy(new Error('File too large (max 200MB)')); else chunks.push(c); });
+  req.on('end', async () => {
+    try {
+      const buf = Buffer.concat(chunks);
+      if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
+      const origName = (req.headers['x-filename'] || `video_${Date.now()}.mp4`).replace(/[^a-z0-9._-]/gi, '_');
+      const filename = `prop-${id}_vid_${Date.now()}_${origName}`;
+      const url = await uploadVideo(buf, filename);
+      const title = req.headers['x-title'] || origName.replace(/\.[^.]+$/, '').replace(/_/g, ' ');
+      const current = await loadProp(id);
+      const videos = [...(current.videos || []), { url, title }];
+      await saveProp(id, { ...current, videos }, req.session.username);
+      res.json({ ok: true, url, title });
+    } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+  req.on('error', e => res.status(500).json({ error: e.message }));
+});
+
 // Admin: fetch photo from original site and save locally
 app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
   const http = require('http');
@@ -1535,6 +1610,35 @@ app.delete('/api/person/:personId/media/:mediaId', requireAdmin, async (req, res
     }
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Upload a video file for a person
+app.post('/api/person/:id/media/video', (req, res) => {
+  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  const personId = parseInt(req.params.id);
+  const chunks = [];
+  let size = 0;
+  req.on('data', c => { size += c.length; if (size > 200 * 1024 * 1024) req.destroy(new Error('File too large (max 200MB)')); else chunks.push(c); });
+  req.on('end', async () => {
+    try {
+      const buf = Buffer.concat(chunks);
+      if (buf.length < 100) return res.status(400).json({ error: 'Empty file' });
+      const origName = (req.headers['x-filename'] || `video_${Date.now()}.mp4`).replace(/[^a-z0-9._-]/gi, '_');
+      const filename = `person-${personId}_vid_${Date.now()}_${origName}`;
+      const url = await uploadVideo(buf, filename);
+      const caption = req.headers['x-caption'] || '';
+      if (db) {
+        const r = await db.query(
+          'INSERT INTO person_media (person_id, url, caption, media_type, filename) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+          [personId, url, caption, 'video', origName]
+        );
+        res.json({ ok: true, media: r.rows[0] });
+      } else {
+        res.json({ ok: true, media: { url, caption, media_type: 'video', filename: origName } });
+      }
+    } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+  req.on('error', e => res.status(500).json({ error: e.message }));
 });
 
 // ── Person photo upload (any logged-in user or admin) ────────────────────────

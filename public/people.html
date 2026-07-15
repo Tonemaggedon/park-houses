@@ -667,7 +667,11 @@ function renderProfile(p) {
   }
 
   // Media gallery placeholder — loaded async after render
-  html.push(`<div class="pane-section" id="mediaGallery"><h3>Photos &amp; Documents</h3><div id="mediaItems" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>${canUploadPhotos?`<div style="margin-top:12px"><label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#4a3a1a"><input type="file" accept="image/*,.pdf,.doc,.docx" style="display:none" onchange="uploadMedia(${p.id},this)">📎 Add photo or document</label></div>`:''}</div>`);
+  html.push(`<div class="pane-section" id="mediaGallery"><h3>Photos, Documents &amp; Videos</h3><div id="mediaItems" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"><div style="color:#8a7a5a;font-size:0.8rem">Loading...</div></div>${canUploadPhotos?`<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+    <label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#f0ead8;border:1px solid #c8b87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#4a3a1a"><input type="file" accept="image/*,.pdf,.doc,.docx" style="display:none" onchange="uploadMedia(${p.id},this)">📎 Add photo or document</label>
+    <label id="personVideoLabel_${p.id}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:#e8f0e8;border:1px solid #8ab87a;border-radius:6px;padding:6px 12px;font-size:0.8rem;color:#1a4a1a"><input type="file" accept="video/*,.mp4,.mov,.avi,.mkv,.webm" style="display:none" onchange="uploadPersonVideo(${p.id},this)">🎥 Add video</label>
+    <span id="personVideoStatus_${p.id}" style="font-size:0.78rem;color:#6a5a3a;align-self:center"></span>
+  </div>`:''}</div>`);
 
   document.getElementById('paneBody').innerHTML = html.join('');
 
@@ -804,10 +808,16 @@ async function loadMediaGallery(personId) {
     }
     container.innerHTML = media.map(m => {
       if (m.media_type === 'document') {
-        return `<div style="background:#f0ead8;border:1px solid #d8c8a0;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px">
+        return `<div style="width:100%;background:#f0ead8;border:1px solid #d8c8a0;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px">
           <span style="font-size:1.3rem">📄</span>
           <div><a href="${m.url}" target="_blank" style="font-size:0.82rem;color:#2a4a2a;font-weight:600">${m.filename||'Document'}</a>${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a">${m.caption}</div>`:''}</div>
           ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem">✕</button>`:''}
+        </div>`;
+      } else if (m.media_type === 'video') {
+        return `<div style="width:100%">
+          <video controls style="width:100%;border-radius:6px;max-height:260px;background:#1a1a1a"><source src="${m.url}">Your browser does not support video.</video>
+          ${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a;margin-top:3px">${m.caption}</div>`:''}
+          ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="margin-top:4px;background:none;border:1px solid #d8c8a0;border-radius:4px;cursor:pointer;color:#c04040;font-size:0.75rem;padding:2px 8px">Remove</button>`:''}
         </div>`;
       } else {
         return `<div style="position:relative">
@@ -836,6 +846,35 @@ async function uploadMedia(personId, input) {
     if (data.ok) { label.innerHTML = orig; loadMediaGallery(personId); }
     else { label.textContent = '✗ ' + (data.error||'Failed'); setTimeout(()=>{label.innerHTML=orig;},2000); }
   } catch(e) { label.innerHTML = orig; }
+}
+
+async function uploadPersonVideo(personId, input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const status = document.getElementById('personVideoStatus_' + personId);
+  const label = document.getElementById('personVideoLabel_' + personId);
+  const caption = prompt('Add a caption (optional):') || '';
+  if (status) { status.textContent = `Uploading ${file.name} (${(file.size/1024/1024).toFixed(1)} MB)…`; status.style.color='#6a5a3a'; }
+  if (label) label.style.opacity = '0.6';
+  input.value = '';
+  try {
+    const res = await fetch(`/api/person/${personId}/media/video`, {
+      method: 'POST',
+      headers: { 'x-filename': file.name, 'x-caption': caption },
+      body: file,
+    });
+    const data = await res.json();
+    if (data.ok) {
+      if (status) { status.textContent = '✓ Uploaded'; status.style.color='#2a6a2a'; }
+      loadMediaGallery(personId);
+      setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+    } else {
+      if (status) { status.textContent = '✗ ' + (data.error||'Failed'); status.style.color='#c04040'; }
+    }
+  } catch(e) {
+    if (status) { status.textContent = '✗ ' + e.message; status.style.color='#c04040'; }
+  }
+  if (label) label.style.opacity = '1';
 }
 
 async function deleteMedia(personId, mediaId) {
