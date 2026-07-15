@@ -155,19 +155,25 @@ async function uploadVideo(buf, filename) {
       path: `/v1_1/${cloudName}/video/upload`,
       method: 'POST',
       headers: { 'Content-Type': `multipart/form-data; boundary=${boundary}`, 'Content-Length': body.length },
-    }, res => {
+      timeout: 300000, // 5 min timeout for large video files
+    }, resp => {
       let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => {
+      resp.on('data', c => data += c);
+      resp.on('end', () => {
         try {
           const json = JSON.parse(data);
           if (json.secure_url) resolve(json.secure_url);
-          else reject(new Error(json.error?.message || data));
-        } catch(e) { reject(new Error(data)); }
+          else reject(new Error(json.error?.message || `Cloudinary error: ${data.slice(0,200)}`));
+        } catch(e) { reject(new Error(`Parse error: ${data.slice(0,200)}`)); }
       });
     });
     req.on('error', reject);
-    req.write(body);
+    req.on('timeout', () => { req.destroy(); reject(new Error('Upload timed out')); });
+    // Write in chunks to avoid memory/backpressure issues with large files
+    const CHUNK = 64 * 1024;
+    for (let i = 0; i < body.length; i += CHUNK) {
+      req.write(body.slice(i, i + CHUNK));
+    }
     req.end();
   });
 }
@@ -312,6 +318,15 @@ async function dbInit() {
       census_year INTEGER NOT NULL,
       notes TEXT,
       PRIMARY KEY (property_id, census_year)
+    )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS property_residents (
+      id SERIAL PRIMARY KEY,
+      property_id INTEGER NOT NULL,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      from_year INTEGER,
+      to_year INTEGER,
+      notes TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'viewer'`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved BOOLEAN DEFAULT FALSE`);
@@ -1179,6 +1194,52 @@ app.get('/api/census/:year', async (req, res) => {
     query += ' ORDER BY ce.property_id, ce.relationship';
     const r = await db.query(query, params);
     res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Property Residents API ────────────────────────────────────────────────────
+// GET /api/property/:id/residents
+app.get('/api/property/:id/residents', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT pr.id, pr.property_id, pr.person_id, pr.from_year, pr.to_year, pr.notes,
+             p.first_name, p.last_name, p.known_as, p.born_year, p.died_year, p.born_date, p.died_date
+      FROM property_residents pr
+      JOIN people p ON p.id = pr.person_id
+      WHERE pr.property_id = $1
+      ORDER BY pr.from_year NULLS LAST, p.last_name
+    `, [parseInt(req.params.id)]);
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/property/:id/residents
+app.post('/api/property/:id/residents', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const propId = parseInt(req.params.id);
+    const { person_id, from_year, to_year, notes } = req.body;
+    if (!person_id) return res.status(400).json({ error: 'person_id required' });
+    // Prevent duplicates
+    const exists = await db.query('SELECT id FROM property_residents WHERE property_id=$1 AND person_id=$2', [propId, person_id]);
+    if (exists.rows.length) return res.status(409).json({ error: 'This person is already linked to this property' });
+    const r = await db.query(
+      `INSERT INTO property_residents (property_id, person_id, from_year, to_year, notes)
+       VALUES ($1,$2,$3,$4,$5) RETURNING id`,
+      [propId, person_id, from_year||null, to_year||null, notes||null]
+    );
+    await logChange('property', propId, req, 'add_resident', 'person_id', null, person_id);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// DELETE /api/property/:propId/residents/:residentId
+app.delete('/api/property/:propId/residents/:residentId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    await db.query('DELETE FROM property_residents WHERE id=$1 AND property_id=$2', [parseInt(req.params.residentId), parseInt(req.params.propId)]);
+    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 

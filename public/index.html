@@ -1431,8 +1431,14 @@ async function renderPeopleTab(propId, body) {
       if (headCount > 0) { badge.textContent = headCount; badge.style.display = ''; }
     }
     if (!people.length) {
-      body.innerHTML = '<div style="padding:20px;font-size:0.83rem;color:#8a7a5a">No people records yet for this property.<br><br>People are added when census data or biographical records are attached to a property.</div>';
-      return;
+      // Still need to check residents before giving up
+      let residents = [];
+      try { residents = await fetch(`/api/property/${propId}/residents`).then(r=>r.json()); } catch(e) {}
+      if (!residents.length && !isAdmin) {
+        body.innerHTML = '<div style="padding:20px;font-size:0.83rem;color:#8a7a5a">No people records yet for this property.<br><br>People are added when census data or biographical records are attached to a property.</div>';
+        return;
+      }
+      // Fall through to full render with empty census but show residents + add button
     }
 
     // Group by census year
@@ -1490,13 +1496,75 @@ async function renderPeopleTab(propId, body) {
       html += '</div>';
     }
 
-    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e8d8a0">
+    // Known Residents (non-census)
+    let residents = [];
+    try { residents = await fetch(`/api/property/${propId}/residents`).then(r=>r.json()); } catch(e) {}
+    if (residents.length || isAdmin) {
+      html += `<div style="margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <div style="font-size:0.72rem;color:#8a7a5a;text-transform:uppercase;letter-spacing:0.08em">Known Residents</div>
+          ${isAdmin ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:3px 10px;font-size:0.72rem;cursor:pointer">+ Add resident</button>` : ''}
+        </div>
+        ${residents.length ? residents.map(r => {
+          const name = r.known_as || `${r.first_name||''} ${r.last_name||''}`.trim();
+          const years = r.from_year || r.to_year ? `${r.from_year||'?'}–${r.to_year||'?'}` : '';
+          return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${r.person_id})">
+            <div style="width:30px;height:30px;border-radius:50%;background:#5a6a8a;color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(r.first_name||'?')[0].toUpperCase()}</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:0.85rem;color:#1a1a1a">${name}</div>
+              <div style="font-size:0.74rem;color:#8a7a5a">${years}${r.notes ? (years ? ' · ' : '') + r.notes : ''}</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="font-size:0.7rem;color:#4a7c5a">View →</div>
+              ${isAdmin ? `<button onclick="event.stopPropagation();removeResident(${propId},${r.id})" style="background:none;border:none;color:#c04040;cursor:pointer;font-size:0.8rem;padding:2px 4px" title="Remove">✕</button>` : ''}
+            </div>
+          </div>`;
+        }).join('') : `<div style="font-size:0.8rem;color:#b0a080;font-style:italic;padding:6px 0">No known residents added yet.</div>`}
+      </div>`;
+    } else if (!people.length) {
+      // Already showed "no people" message above, just add the add-resident button
+    }
+
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e8d8a0;display:flex;align-items:center;gap:12px">
       <a href="/people?property=${propId}" style="font-size:0.8rem;color:#4a7c5a;text-decoration:none">View all people for this property ↗</a>
+      ${!residents.length && !people.length && isAdmin ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:4px 12px;font-size:0.78rem;cursor:pointer">+ Add resident</button>` : ''}
     </div>`;
     body.innerHTML = html;
   } catch(e) {
     body.innerHTML = `<div style="padding:20px;font-size:0.83rem;color:#c04040">Error loading people: ${e.message}</div>`;
   }
+}
+
+async function showAddResident(propId) {
+  // Search for a person by name
+  const query = prompt('Search for a person by name:');
+  if (!query) return;
+  const all = await fetch('/api/people?q=' + encodeURIComponent(query)).then(r=>r.json()).catch(()=>[]);
+  if (!all.length) { alert('No people found matching "' + query + '"'); return; }
+  const choices = all.slice(0,10);
+  const list = choices.map((p,i) => `${i+1}. ${p.first_name} ${p.last_name}${p.born_year ? ' (b.'+p.born_year+')' : ''}`).join('\n');
+  const pick = prompt('Select a person:\n\n' + list + '\n\nEnter number:');
+  const person = choices[parseInt(pick)-1];
+  if (!person) return;
+  const from_year = prompt(`From year (when ${person.first_name} moved in):`);
+  const to_year   = prompt(`To year (when ${person.first_name} moved out — leave blank if unknown):`);
+  const notes     = prompt('Notes (optional, e.g. "Died in residence"):') || '';
+  const res = await fetch(`/api/property/${propId}/residents`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ person_id: person.id, from_year: from_year||null, to_year: to_year||null, notes })
+  }).then(r=>r.json());
+  if (res.ok) {
+    delete peopleCache[propId];
+    renderPanel();
+  } else { alert(res.error || 'Failed to add resident'); }
+}
+
+async function removeResident(propId, residentId) {
+  if (!confirm('Remove this resident link?')) return;
+  await fetch(`/api/property/${propId}/residents/${residentId}`, { method:'DELETE' });
+  delete peopleCache[propId];
+  renderPanel();
 }
 
 // Open a person's profile in a floating overlay within the map page
