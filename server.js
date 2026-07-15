@@ -110,10 +110,13 @@ async function uploadPhoto(buf, filename, contentType) {
   fs.writeFileSync(dest, buf);
   return `/data/photos/${filename}`;
 }
-// Upload a video buffer to Cloudinary (/video/upload endpoint)
+// Upload a video buffer to Cloudinary using a SIGNED upload (required for video — unsigned presets only allow images)
 async function uploadVideo(buf, filename) {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
+  const apiKey    = process.env.CLOUDINARY_API_KEY;
+  const apiSecret = process.env.CLOUDINARY_API_SECRET;
+  if (!cloudName || !apiKey || !apiSecret) {
+    // Fallback: local disk (ephemeral on Railway)
     const dest = path.join(PHOTOS_DIR, filename);
     fs.writeFileSync(dest, buf);
     return `/data/photos/${filename}`;
@@ -126,12 +129,20 @@ async function uploadVideo(buf, filename) {
   };
   const mimeType = mimeByExt[ext] || 'video/mp4';
   const safeFilename = filename.replace(/[^a-z0-9._-]/gi, '_');
+
+  // Build signed upload: signature = SHA1(sorted_params + api_secret)
+  const crypto = require('crypto');
+  const timestamp = Math.floor(Date.now() / 1000);
+  const sigStr = `timestamp=${timestamp}${apiSecret}`;
+  const signature = crypto.createHash('sha1').update(sigStr).digest('hex');
+
   return new Promise((resolve, reject) => {
     const https = require('https');
     const boundary = '----ParkHousesVideoBoundary' + Date.now().toString(16);
     const parts = [
-      `--${boundary}\r\nContent-Disposition: form-data; name="upload_preset"\r\n\r\npark-houses`,
-      `--${boundary}\r\nContent-Disposition: form-data; name="resource_type"\r\n\r\nvideo`,
+      `--${boundary}\r\nContent-Disposition: form-data; name="api_key"\r\n\r\n${apiKey}`,
+      `--${boundary}\r\nContent-Disposition: form-data; name="timestamp"\r\n\r\n${timestamp}`,
+      `--${boundary}\r\nContent-Disposition: form-data; name="signature"\r\n\r\n${signature}`,
     ];
     const prelude = Buffer.from(parts.join('\r\n') + '\r\n');
     const fileHeader = Buffer.from(
