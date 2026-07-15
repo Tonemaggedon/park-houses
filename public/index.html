@@ -2058,8 +2058,9 @@ function openEdit(type) {
   const ov = propOverrides[curProp.id] || {};
 
   // Hide all form sections, show only the relevant one
-  ['desc','details','history','residents','photos'].forEach(t => {
-    document.getElementById('ef_' + t + '_wrap').style.display = t === type ? 'block' : 'none';
+  ['desc','details','history','residents','photo'].forEach(t => {
+    const el = document.getElementById('ef_' + t + '_wrap');
+    if (el) el.style.display = (t === type || (t === 'photo' && type === 'photos')) ? 'block' : 'none';
   });
 
   // Populate fields using .value = ... (never innerHTML for user data)
