@@ -883,14 +883,16 @@ async function submitAddPerson() {
   const first_name = get('ap_first_name');
   const last_name = get('ap_last_name');
   if (!first_name || !last_name) { document.getElementById('apError').textContent='First and last name are required.'; return; }
+  const bornDate = buildDateString('ap_born');
+  const diedDate = buildDateString('ap_died');
   const body = {
     first_name, last_name,
     known_as: get('ap_known_as') || null,
-    born_date: get('ap_born_date') || null,
-    born_year: extractYear(get('ap_born_date')) || null,
+    born_date: bornDate,
+    born_year: bornDate ? (parseInt(bornDate.match(/\d{4}/)?.[0]) || null) : null,
     born_place: get('ap_born_place') || null,
-    died_date: get('ap_died_date') || null,
-    died_year: extractYear(get('ap_died_date')) || null,
+    died_date: diedDate,
+    died_year: diedDate ? (parseInt(diedDate.match(/\d{4}/)?.[0]) || null) : null,
     died_place: get('ap_died_place') || null,
     bio: get('ap_bio') || null,
     wikipedia_url: get('ap_wikipedia_url') || null,
@@ -928,12 +930,36 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeAddPerson(
         <div><label style="font-size:0.75rem;color:#8a7a5a">Last name *</label><br><input id="ap_last_name" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Bayley"></div>
       </div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as / title</label><br><input id="ap_known_as" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Sir Thomas Bayley"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label><br><input id="ap_born_date" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 25 February 1863"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Date of death</label><br><input id="ap_died_date" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. 16 August 1927"></div>
-        <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br><input id="ap_died_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
+      <div style="margin-bottom:10px">
+        <label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label>
+        <div style="display:flex;gap:5px;margin-top:4px">
+          <select id="ap_born_day" style="padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+            <option value="">Day</option>
+            <script>for(let i=1;i<=31;i++)document.write('<option>'+i+'</option>');</script>
+          </select>
+          <select id="ap_born_month" style="flex:1;padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+            <option value="">Month</option>
+            <script>['January','February','March','April','May','June','July','August','September','October','November','December'].forEach((m,i)=>document.write('<option value="'+(i+1)+'">'+m+'</option>'));</script>
+          </select>
+          <input id="ap_born_year" type="text" placeholder="Year" style="width:68px;padding:6px 7px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+        </div>
       </div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
+      <div style="margin-bottom:10px">
+        <label style="font-size:0.75rem;color:#8a7a5a">Date of death</label>
+        <div style="display:flex;gap:5px;margin-top:4px">
+          <select id="ap_died_day" style="padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+            <option value="">Day</option>
+            <script>for(let i=1;i<=31;i++)document.write('<option>'+i+'</option>');</script>
+          </select>
+          <select id="ap_died_month" style="flex:1;padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+            <option value="">Month</option>
+            <script>['January','February','March','April','May','June','July','August','September','October','November','December'].forEach((m,i)=>document.write('<option value="'+(i+1)+'">'+m+'</option>'));</script>
+          </select>
+          <input id="ap_died_year" type="text" placeholder="Year" style="width:68px;padding:6px 7px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
+        </div>
+      </div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br><input id="ap_died_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Biography</label><br><textarea id="ap_bio" rows="4" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.84rem;font-family:Georgia,serif;line-height:1.5;margin-top:3px" placeholder="Brief biography…"></textarea></div>
       <div style="margin-bottom:16px"><label style="font-size:0.75rem;color:#8a7a5a">Wikipedia URL</label><br><input id="ap_wikipedia_url" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="https://en.wikipedia.org/wiki/..."></div>
       <div id="apError" style="color:#c04040;font-size:0.8rem;margin-bottom:10px"></div>
