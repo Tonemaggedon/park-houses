@@ -197,7 +197,8 @@
   #earthBar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #0a2a0a; color: #c8e8a8; flex-shrink: 0; }
   #earthBar span { font-family: Georgia, serif; font-size: 0.9rem; }
   #earthBar button { background: none; border: none; color: #c8e8a8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
-  #earthMap { flex: 1; width: 100%; }
+  #earthMapWrap { flex: 1; overflow: hidden; perspective: 700px; background: #000; }
+  #earthMap { width: 120%; height: 130%; margin-left: -10%; transform: rotateX(38deg); transform-origin: center 20%; }
 
   /* Leaflet popup override */
   .leaflet-popup-content-wrapper { border-radius: 6px; font-family: Georgia, serif; font-size: 0.82rem; }
@@ -503,7 +504,7 @@
       <button onclick="closeEarthView()" title="Close">✕</button>
     </div>
   </div>
-  <div id="earthMap"></div>
+  <div id="earthMapWrap"><div id="earthMap"></div></div>
 </div>
 
 <!-- ── Admin edit modal (always in DOM, shown/hidden) ── -->
@@ -2592,19 +2593,17 @@ function _initEarth(pos) {
 
   _earthMap = new google.maps.Map(container, {
     center: pos,
-    zoom: 15,
+    zoom: 19,
     mapTypeId: 'satellite',
-    tilt: 45,
-    heading: 0,
     disableDefaultUI: true,
     gestureHandling: 'greedy',
+    mapTypeControl: false,
   });
 
-  // Fly in: zoom from overview to street level
-  setTimeout(() => {
-    _earthMap.setZoom(18);
-    setTimeout(() => _startEarthRotation(), 1500);
-  }, 600);
+  // Start rotation once tiles are loaded
+  google.maps.event.addListenerOnce(_earthMap, 'tilesloaded', () => {
+    _startEarthRotation();
+  });
 }
 
 function _startEarthRotation() {
