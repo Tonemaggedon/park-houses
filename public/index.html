@@ -2476,11 +2476,15 @@ let _mapsReady = false;
 
 window._mapsLoaded = function() { _mapsReady = true; };
 
+// Fetch key from server env var — never hardcoded in source
 (function loadMapsAPI() {
-  const s = document.createElement('script');
-  s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBevC8hJmAlR_6Eh6SpqE1raWxsdRBEHuY&callback=_mapsLoaded';
-  s.async = true; s.defer = true;
-  document.head.appendChild(s);
+  fetch('/api/config').then(r => r.json()).then(cfg => {
+    if (!cfg.googleMapsKey) return; // key not configured
+    const s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + cfg.googleMapsKey + '&callback=_mapsLoaded';
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  }).catch(() => {});
 })();
 
 function _propLatLng() {

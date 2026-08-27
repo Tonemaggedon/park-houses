@@ -2240,6 +2240,11 @@ app.get('/api/people-at-property/:id', async (req, res) => {
 });
 
 // ── Debug: check what park houses returns server-side ─────────────────────────
+// Public config — exposes only keys that are safe for the browser
+app.get('/api/config', (req, res) => {
+  res.json({ googleMapsKey: process.env.GOOGLE_MAPS_KEY || '' });
+});
+
 app.get('/api/test-fetch', (req, res) => {
   const http = require('http');
   const url = 'http://www.nottinghamparkhouses.co.uk/propertypagedetail.asp?infoId=130&linkid=130&pageId=130&id=101';
