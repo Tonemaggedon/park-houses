@@ -2481,7 +2481,7 @@ window._mapsLoaded = function() { _mapsReady = true; };
   fetch('/api/config').then(r => r.json()).then(cfg => {
     if (!cfg.googleMapsKey) return; // key not configured
     const s = document.createElement('script');
-    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + cfg.googleMapsKey + '&callback=_mapsLoaded';
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + cfg.googleMapsKey + '&libraries=geometry&callback=_mapsLoaded';
     s.async = true; s.defer = true;
     document.head.appendChild(s);
   }).catch(() => {});
@@ -2514,24 +2514,30 @@ function openStreetView() {
 function _initSV(pos) {
   const container = document.getElementById('svPano');
   container.innerHTML = '';
-  _svPano = new google.maps.StreetViewPanorama(container, {
-    position: pos,
-    pov: { heading: 34, pitch: 0 },
-    zoom: 1,
-    addressControl: true,
-    fullscreenControl: false,
-    motionTrackingControl: false,
-  });
-  // Show "no imagery" message if SV unavailable
+  // Find nearest outdoor panorama first, then initialise facing it
   const svc = new google.maps.StreetViewService();
-  svc.getPanorama({ location: pos, radius: 80 }, (data, status) => {
+  svc.getPanorama({ location: pos, radius: 150, source: google.maps.StreetViewSource.OUTDOOR }, (data, status) => {
     if (status !== 'OK') {
       container.innerHTML =
         '<div style="color:#ccc;padding:60px;text-align:center;font-size:0.9rem">' +
         '&#128247; No Street View imagery available for this location.<br>' +
         '<a href="https://maps.google.com/?q=' + pos.lat + ',' + pos.lng + '" target="_blank" ' +
         'style="color:#6af;margin-top:12px;display:inline-block">Open in Google Maps &#8599;</a></div>';
+      return;
     }
+    // Compute heading from the found panorama toward the property
+    const panoLatLng = data.location.latLng;
+    const heading = google.maps.geometry
+      ? google.maps.geometry.spherical.computeHeading(panoLatLng, new google.maps.LatLng(pos.lat, pos.lng))
+      : 0;
+    _svPano = new google.maps.StreetViewPanorama(container, {
+      pano: data.location.pano,
+      pov: { heading: heading, pitch: 5 },
+      zoom: 1,
+      addressControl: true,
+      fullscreenControl: false,
+      motionTrackingControl: false,
+    });
   });
 }
 
