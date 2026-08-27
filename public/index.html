@@ -192,6 +192,13 @@
   #svBar button { background: none; border: none; color: #e8dfc8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
   #svPano { flex: 1; width: 100%; }
 
+  #earthOverlay { display: none; position: fixed; inset: 0; z-index: 3500; flex-direction: column; background: #000; }
+  #earthOverlay.open { display: flex; }
+  #earthBar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #0a2a0a; color: #c8e8a8; flex-shrink: 0; }
+  #earthBar span { font-family: Georgia, serif; font-size: 0.9rem; }
+  #earthBar button { background: none; border: none; color: #c8e8a8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
+  #earthMap { flex: 1; width: 100%; }
+
   /* Leaflet popup override */
   .leaflet-popup-content-wrapper { border-radius: 6px; font-family: Georgia, serif; font-size: 0.82rem; }
   .leaflet-popup-content { margin: 8px 12px; }
@@ -483,6 +490,20 @@
     <button onclick="closeStreetView()" title="Close">✕</button>
   </div>
   <div id="svPano"></div>
+</div>
+
+<!-- 3D Fly-Around overlay -->
+<div id="earthOverlay">
+  <div id="earthBar">
+    <span id="earthTitle">3D Fly-Around</span>
+    <div style="display:flex;align-items:center;gap:10px">
+      <label style="font-size:0.78rem;color:#c8e8a8;display:flex;align-items:center;gap:5px;cursor:pointer">
+        <input type="checkbox" id="earthRotate" checked onchange="toggleEarthRotation(this.checked)" style="accent-color:#6aaa3a"> Auto-rotate
+      </label>
+      <button onclick="closeEarthView()" title="Close">✕</button>
+    </div>
+  </div>
+  <div id="earthMap"></div>
 </div>
 
 <!-- ── Admin edit modal (always in DOM, shown/hidden) ── -->
@@ -2546,11 +2567,68 @@ function closeStreetView() {
   if (_svPano) { _svPano = null; document.getElementById('svPano').innerHTML = ''; }
 }
 
+let _earthMap = null, _earthRotateTimer = null, _earthHeading = 0;
+
 function open3DView() {
   if (!curProp) return;
-  const { lat, lng } = _propLatLng();
-  // Google Earth Web: @lat,lng,altitudea,ranged,tilty,headingh
-  window.open('https://earth.google.com/web/@' + lat + ',' + lng + ',80a,500d,60y,0h,0t,0r', '_blank');
+  const pos = _propLatLng();
+  const name = curProp.name || curProp.address || ((curProp.no ? curProp.no + ' ' : '') + curProp.street);
+  document.getElementById('earthTitle').textContent = '3D Fly-Around: ' + name;
+  document.getElementById('earthOverlay').classList.add('open');
+  document.getElementById('earthRotate').checked = true;
+
+  if (!_mapsReady) {
+    document.getElementById('earthMap').innerHTML = '<div style="color:#aaa;padding:60px;text-align:center;font-size:0.9rem">Loading Google Maps…</div>';
+    const wait = setInterval(() => { if (_mapsReady) { clearInterval(wait); _initEarth(pos); } }, 300);
+    return;
+  }
+  _initEarth(pos);
+}
+
+function _initEarth(pos) {
+  const container = document.getElementById('earthMap');
+  container.innerHTML = '';
+  _earthHeading = 0;
+
+  _earthMap = new google.maps.Map(container, {
+    center: pos,
+    zoom: 15,
+    mapTypeId: 'satellite',
+    tilt: 45,
+    heading: 0,
+    disableDefaultUI: true,
+    gestureHandling: 'greedy',
+  });
+
+  // Fly in: zoom from overview to street level
+  setTimeout(() => {
+    _earthMap.setZoom(18);
+    setTimeout(() => _startEarthRotation(), 1500);
+  }, 600);
+}
+
+function _startEarthRotation() {
+  if (_earthRotateTimer) clearInterval(_earthRotateTimer);
+  _earthRotateTimer = setInterval(() => {
+    if (!_earthMap) return;
+    _earthHeading = (_earthHeading + 0.5) % 360;
+    _earthMap.setHeading(_earthHeading);
+  }, 50);
+}
+
+function toggleEarthRotation(on) {
+  if (on) {
+    _startEarthRotation();
+  } else {
+    if (_earthRotateTimer) { clearInterval(_earthRotateTimer); _earthRotateTimer = null; }
+  }
+}
+
+function closeEarthView() {
+  document.getElementById('earthOverlay').classList.remove('open');
+  if (_earthRotateTimer) { clearInterval(_earthRotateTimer); _earthRotateTimer = null; }
+  _earthMap = null;
+  document.getElementById('earthMap').innerHTML = '';
 }
 // ── END Street View / Earth ─────────────────────────────────────
 
