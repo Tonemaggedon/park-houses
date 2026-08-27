@@ -164,19 +164,11 @@
   .toast.show { opacity: 1; transform: translateY(0); }
   .badge { background: #c49a3a; color: white; border-radius: 10px; padding: 1px 6px; font-size: 0.7rem; margin-left: 3px; }
 
-  /* Street View / 3D View buttons */
-  .view-btns { display: none; gap: 6px; margin-top: 7px; flex-wrap: wrap; }
-  .view-btns.visible { display: flex; }
-  .view-btn {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 11px; border-radius: 4px; border: 1px solid;
-    font-size: 0.72rem; font-family: Georgia, serif; cursor: pointer;
-    white-space: nowrap; transition: background 0.15s;
-  }
-  .view-btn.sv  { background: #1a4a6a; border-color: #2a7aaa; color: #d0eeff; }
-  .view-btn.sv:hover  { background: #1e5a80; }
-  .view-btn.earth { background: #1a3a0a; border-color: #4a9a2a; color: #c8f0a8; }
-  .view-btn.earth:hover { background: #224a10; }
+  /* Street View link */
+  .view-btns { display: none; margin-top: 5px; }
+  .view-btns.visible { display: block; }
+  .view-btn.sv { background: none; border: none; padding: 0; font-size: 0.68rem; font-family: Georgia, serif; color: #7ab8d8; cursor: pointer; text-decoration: underline; }
+  .view-btn.sv:hover { color: #aad8f8; }
 
   /* Street View full-screen overlay */
   #svOverlay {
@@ -192,13 +184,6 @@
   #svBar button { background: none; border: none; color: #e8dfc8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
   #svPano { flex: 1; width: 100%; }
 
-  #earthOverlay { display: none; position: fixed; inset: 0; z-index: 3500; flex-direction: column; background: #000; }
-  #earthOverlay.open { display: flex; }
-  #earthBar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #0a2a0a; color: #c8e8a8; flex-shrink: 0; }
-  #earthBar span { font-family: Georgia, serif; font-size: 0.9rem; }
-  #earthBar button { background: none; border: none; color: #c8e8a8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
-  #earthMapWrap { flex: 1; overflow: hidden; perspective: 700px; background: #000; }
-  #earthMap { width: 120%; height: 130%; margin-left: -10%; transform: rotateX(38deg); transform-origin: center 20%; }
 
   /* Leaflet popup override */
   .leaflet-popup-content-wrapper { border-radius: 6px; font-family: Georgia, serif; font-size: 0.82rem; }
@@ -467,7 +452,6 @@
         <div class="sub" id="pSub"></div>
         <div class="view-btns" id="viewBtns">
           <button class="view-btn sv" onclick="openStreetView()">&#128247; Street View</button>
-          <button class="view-btn earth" onclick="open3DView()">&#127758; 3D Earth</button>
         </div>
       </div>
       <button onclick="closePanel()">✕</button>
@@ -493,19 +477,6 @@
   <div id="svPano"></div>
 </div>
 
-<!-- 3D Fly-Around overlay -->
-<div id="earthOverlay">
-  <div id="earthBar">
-    <span id="earthTitle">3D Fly-Around</span>
-    <div style="display:flex;align-items:center;gap:10px">
-      <label style="font-size:0.78rem;color:#c8e8a8;display:flex;align-items:center;gap:5px;cursor:pointer">
-        <input type="checkbox" id="earthRotate" checked onchange="toggleEarthRotation(this.checked)" style="accent-color:#6aaa3a"> Auto-rotate
-      </label>
-      <button onclick="closeEarthView()" title="Close">✕</button>
-    </div>
-  </div>
-  <div id="earthMapWrap"><div id="earthMap"></div></div>
-</div>
 
 <!-- ── Admin edit modal (always in DOM, shown/hidden) ── -->
 <div id="editOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:2000" onclick="if(event.target===this)closeEdit()">
@@ -2568,67 +2539,6 @@ function closeStreetView() {
   if (_svPano) { _svPano = null; document.getElementById('svPano').innerHTML = ''; }
 }
 
-let _earthMap = null, _earthRotateTimer = null, _earthHeading = 0;
-
-function open3DView() {
-  if (!curProp) return;
-  const pos = _propLatLng();
-  const name = curProp.name || curProp.address || ((curProp.no ? curProp.no + ' ' : '') + curProp.street);
-  document.getElementById('earthTitle').textContent = '3D Fly-Around: ' + name;
-  document.getElementById('earthOverlay').classList.add('open');
-  document.getElementById('earthRotate').checked = true;
-
-  if (!_mapsReady) {
-    document.getElementById('earthMap').innerHTML = '<div style="color:#aaa;padding:60px;text-align:center;font-size:0.9rem">Loading Google Maps…</div>';
-    const wait = setInterval(() => { if (_mapsReady) { clearInterval(wait); _initEarth(pos); } }, 300);
-    return;
-  }
-  _initEarth(pos);
-}
-
-function _initEarth(pos) {
-  const container = document.getElementById('earthMap');
-  container.innerHTML = '';
-  _earthHeading = 0;
-
-  _earthMap = new google.maps.Map(container, {
-    center: pos,
-    zoom: 19,
-    mapTypeId: 'satellite',
-    disableDefaultUI: true,
-    gestureHandling: 'greedy',
-    mapTypeControl: false,
-  });
-
-  // Start rotation once tiles are loaded
-  google.maps.event.addListenerOnce(_earthMap, 'tilesloaded', () => {
-    _startEarthRotation();
-  });
-}
-
-function _startEarthRotation() {
-  if (_earthRotateTimer) clearInterval(_earthRotateTimer);
-  _earthRotateTimer = setInterval(() => {
-    if (!_earthMap) return;
-    _earthHeading = (_earthHeading + 0.5) % 360;
-    _earthMap.setHeading(_earthHeading);
-  }, 50);
-}
-
-function toggleEarthRotation(on) {
-  if (on) {
-    _startEarthRotation();
-  } else {
-    if (_earthRotateTimer) { clearInterval(_earthRotateTimer); _earthRotateTimer = null; }
-  }
-}
-
-function closeEarthView() {
-  document.getElementById('earthOverlay').classList.remove('open');
-  if (_earthRotateTimer) { clearInterval(_earthRotateTimer); _earthRotateTimer = null; }
-  _earthMap = null;
-  document.getElementById('earthMap').innerHTML = '';
-}
 // ── END Street View / Earth ─────────────────────────────────────
 
 // Mobile bottom sheet
