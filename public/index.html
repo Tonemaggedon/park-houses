@@ -2489,8 +2489,8 @@ window._mapsLoaded = function() { _mapsReady = true; };
 
 function _propLatLng() {
   if (!curProp) return null;
-  const ov = propOverrides[curProp.id] || {};
-  return { lat: parseFloat(ov.lat || curProp.lat), lng: parseFloat(ov.lng || curProp.lng) };
+  // _lat/_lng are set in buildMarkers() and reflect manual drag overrides (/api/coords)
+  return { lat: parseFloat(curProp._lat || curProp.lat), lng: parseFloat(curProp._lng || curProp.lng) };
 }
 
 function openStreetView() {
