@@ -164,6 +164,34 @@
   .toast.show { opacity: 1; transform: translateY(0); }
   .badge { background: #c49a3a; color: white; border-radius: 10px; padding: 1px 6px; font-size: 0.7rem; margin-left: 3px; }
 
+  /* Street View / 3D View buttons */
+  .view-btns { display: none; gap: 6px; margin-top: 7px; flex-wrap: wrap; }
+  .view-btns.visible { display: flex; }
+  .view-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 11px; border-radius: 4px; border: 1px solid;
+    font-size: 0.72rem; font-family: Georgia, serif; cursor: pointer;
+    white-space: nowrap; transition: background 0.15s;
+  }
+  .view-btn.sv  { background: #1a4a6a; border-color: #2a7aaa; color: #d0eeff; }
+  .view-btn.sv:hover  { background: #1e5a80; }
+  .view-btn.earth { background: #1a3a0a; border-color: #4a9a2a; color: #c8f0a8; }
+  .view-btn.earth:hover { background: #224a10; }
+
+  /* Street View full-screen overlay */
+  #svOverlay {
+    display: none; position: fixed; inset: 0; z-index: 3500;
+    flex-direction: column; background: #000;
+  }
+  #svOverlay.open { display: flex; }
+  #svBar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; background: #1a3a2a; color: #e8dfc8; flex-shrink: 0;
+  }
+  #svBar span { font-family: Georgia, serif; font-size: 0.9rem; }
+  #svBar button { background: none; border: none; color: #e8dfc8; font-size: 1.3rem; cursor: pointer; line-height: 1; }
+  #svPano { flex: 1; width: 100%; }
+
   /* Leaflet popup override */
   .leaflet-popup-content-wrapper { border-radius: 6px; font-family: Georgia, serif; font-size: 0.82rem; }
   .leaflet-popup-content { margin: 8px 12px; }
@@ -429,6 +457,10 @@
           <button id="panelAddDataBtn" onclick="openAddData()" style="display:none;background:#1a3a2a;color:#e8dfc8;border:none;padding:3px 10px;border-radius:4px;font-size:0.72rem;cursor:pointer;white-space:nowrap;font-family:Georgia,serif">+ Add Data</button>
         </div>
         <div class="sub" id="pSub"></div>
+        <div class="view-btns" id="viewBtns">
+          <button class="view-btn sv" onclick="openStreetView()">&#128247; Street View</button>
+          <button class="view-btn earth" onclick="open3DView()">&#127758; 3D Earth</button>
+        </div>
       </div>
       <button onclick="closePanel()">✕</button>
     </div>
@@ -443,6 +475,15 @@
 </div>
 
 <div class="toast" id="toastEl"></div>
+
+<!-- Street View full-screen overlay -->
+<div id="svOverlay">
+  <div id="svBar">
+    <span id="svTitle">Street View</span>
+    <button onclick="closeStreetView()" title="Close">✕</button>
+  </div>
+  <div id="svPano"></div>
+</div>
 
 <!-- ── Admin edit modal (always in DOM, shown/hidden) ── -->
 <div id="editOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:2000" onclick="if(event.target===this)closeEdit()">
@@ -1093,12 +1134,17 @@ function openProp(id) {
   }).catch(()=>{});
   document.getElementById('panel').classList.add('open');
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===0));
+  // Show view buttons if property has coords
+  const vb = document.getElementById('viewBtns');
+  if (vb) vb.classList.toggle('visible', !!(p.lat && p.lng));
   curTab = 'data';
   renderPanel();
 }
 
 function closePanel() {
   document.getElementById('panel').classList.remove('open');
+  const vb = document.getElementById('viewBtns');
+  if (vb) vb.classList.remove('visible');
   activeId = null;
   curProp = null;
   buildMarkers(
@@ -2423,6 +2469,80 @@ document.addEventListener('keydown', e => {
     if (Math.abs(dx) > 50) lightboxNav(dx < 0 ? 1 : -1);
   }, { passive: true });
 })();
+
+// ── Street View & Google Earth 3D ──────────────────────────────
+let _svPano = null;
+let _mapsReady = false;
+
+window._mapsLoaded = function() { _mapsReady = true; };
+
+(function loadMapsAPI() {
+  const s = document.createElement('script');
+  s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBevC8hJmAlR_6Eh6SpqE1raWxsdRBEHuY&callback=_mapsLoaded';
+  s.async = true; s.defer = true;
+  document.head.appendChild(s);
+})();
+
+function _propLatLng() {
+  if (!curProp) return null;
+  const ov = propOverrides[curProp.id] || {};
+  return { lat: parseFloat(ov.lat || curProp.lat), lng: parseFloat(ov.lng || curProp.lng) };
+}
+
+function openStreetView() {
+  if (!curProp) return;
+  const pos = _propLatLng();
+  const name = curProp.name || curProp.address || (curProp.no + ' ' + curProp.street);
+  document.getElementById('svTitle').textContent = name;
+  document.getElementById('svOverlay').classList.add('open');
+
+  if (!_mapsReady) {
+    document.getElementById('svPano').innerHTML =
+      '<div style="color:#aaa;padding:60px;text-align:center;font-size:0.9rem">Loading Google Maps…<br><small>If this persists, check your API key is active.</small></div>';
+    const wait = setInterval(() => {
+      if (_mapsReady) { clearInterval(wait); _initSV(pos); }
+    }, 300);
+    return;
+  }
+  _initSV(pos);
+}
+
+function _initSV(pos) {
+  const container = document.getElementById('svPano');
+  container.innerHTML = '';
+  _svPano = new google.maps.StreetViewPanorama(container, {
+    position: pos,
+    pov: { heading: 34, pitch: 0 },
+    zoom: 1,
+    addressControl: true,
+    fullscreenControl: false,
+    motionTrackingControl: false,
+  });
+  // Show "no imagery" message if SV unavailable
+  const svc = new google.maps.StreetViewService();
+  svc.getPanorama({ location: pos, radius: 80 }, (data, status) => {
+    if (status !== 'OK') {
+      container.innerHTML =
+        '<div style="color:#ccc;padding:60px;text-align:center;font-size:0.9rem">' +
+        '&#128247; No Street View imagery available for this location.<br>' +
+        '<a href="https://maps.google.com/?q=' + pos.lat + ',' + pos.lng + '" target="_blank" ' +
+        'style="color:#6af;margin-top:12px;display:inline-block">Open in Google Maps &#8599;</a></div>';
+    }
+  });
+}
+
+function closeStreetView() {
+  document.getElementById('svOverlay').classList.remove('open');
+  if (_svPano) { _svPano = null; document.getElementById('svPano').innerHTML = ''; }
+}
+
+function open3DView() {
+  if (!curProp) return;
+  const { lat, lng } = _propLatLng();
+  // Google Earth Web: @lat,lng,altitudea,ranged,tilty,headingh
+  window.open('https://earth.google.com/web/@' + lat + ',' + lng + ',80a,500d,60y,0h,0t,0r', '_blank');
+}
+// ── END Street View / Earth ─────────────────────────────────────
 
 // Mobile bottom sheet
 (function() {
