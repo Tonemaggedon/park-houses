@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Watchlist — Nottingham Park Houses</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #e8e0d0; min-height: 100vh; }
+.header { background: linear-gradient(135deg,#1a2a1a 0%,#0f1923 50%,#1a1a2e 100%); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; flex-wrap:wrap; gap:0.5rem; }
+.header-title { font-size:1.1rem; font-weight:700; color:#c8b87a; letter-spacing:0.05em; }
+.nav-links { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.82rem; padding:0.3rem 0.7rem; border-radius:4px; transition:all 0.2s; }
+.nav-links a:hover { color:#c8b87a; background:rgba(200,184,122,0.1); }
+.hero { background:linear-gradient(135deg,#1a2a1a 0%,#1a1a2e 100%); padding:2rem; text-align:center; border-bottom:1px solid #2a2a3a; }
+.hero h1 { font-size:1.8rem; color:#c8b87a; font-weight:300; letter-spacing:0.08em; }
+.hero p { color:#8a9a7a; margin-top:0.4rem; font-size:0.88rem; }
+.main { max-width:860px; margin:0 auto; padding:2rem; }
+.login-prompt, .empty { text-align:center; padding:3rem; color:#8a9a7a; font-size:0.88rem; }
+.login-prompt a { color:#5b9bd5; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+.prop-card { background:#141e14; border:1px solid #2a3a2a; border-radius:10px; overflow:hidden; display:flex; flex-direction:column; transition:border-color 0.2s; }
+.prop-card:hover { border-color:#c8b87a44; }
+.prop-photo { height:120px; object-fit:cover; width:100%; background:#1a2a1a; }
+.prop-photo.placeholder { display:flex; align-items:center; justify-content:center; color:#2a4a2a; font-size:2rem; }
+.prop-body { padding:0.9rem; flex:1; display:flex; flex-direction:column; gap:0.4rem; }
+.prop-name { font-size:0.88rem; font-weight:600; color:#e8e0d0; }
+.prop-addr { font-size:0.75rem; color:#8a9a7a; }
+.prop-footer { display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0.9rem; border-top:1px solid #1e2e1e; }
+.prop-footer a { color:#5b9bd5; font-size:0.78rem; text-decoration:none; }
+.prop-footer a:hover { text-decoration:underline; }
+.unwatch-btn { background:none; border:1px solid #3a2a2a; color:#8a5a5a; border-radius:4px; padding:2px 8px; font-size:0.72rem; cursor:pointer; transition:all 0.2s; }
+.unwatch-btn:hover { background:#3a1a1a; border-color:#c07070; color:#c07070; }
+.since { font-size:0.68rem; color:#4a6a4a; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">🏛️ Nottingham Park Houses</div>
+  <nav class="nav-links">
+    <a href="/">Map</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/watchlist">My Watchlist</a>
+    <a href="/my-contributions">My Contributions</a>
+  </nav>
+</div>
+<div class="hero">
+  <h1>⭐ My Watchlist</h1>
+  <p>Properties you're following — star any property on the map to add it here</p>
+</div>
+<div class="main" id="main"><div class="empty">Loading…</div></div>
+
+<script>
+let allProps = {};
+fetch('/api/all-props').then(r=>r.json()).then(arr=>{ arr.forEach(p=>{ allProps[p.id]=p; }); renderOnce && renderOnce(); }).catch(()=>{});
+let renderOnce = null;
+
+async function load() {
+  const main = document.getElementById('main');
+  const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({user:null}));
+  if (!me.user) {
+    main.innerHTML = `<div class="login-prompt">You need to be signed in to use your watchlist.<br><br><a href="/">Return to map and sign in ↗</a></div>`;
+    return;
+  }
+
+  const watches = await fetch('/api/watchlist').then(r=>r.json()).catch(()=>[]);
+  if (!watches.length) {
+    main.innerHTML = `<div class="empty">No properties on your watchlist yet.<br>Open any property on the map and click the ⭐ star to follow it.</div>`;
+    return;
+  }
+
+  let overrides = {};
+  try { overrides = await fetch('/api/properties').then(r=>r.json()); } catch(e) {}
+
+  function render() {
+    if (!Object.keys(allProps).length) return; // wait for allProps
+    const html = '<div class="grid">' + watches.map(w => {
+      const id = w.property_id;
+      const p = allProps[id] || {};
+      const ov = overrides[id] || {};
+      const name = p.name || ov.name || '';
+      const addr = p.address || ((p.no?p.no+' ':'')+p.street) || 'Property ' + id;
+      const displayName = name ? name : addr;
+      const displaySub = name ? addr : '';
+      const photos = ov.photos || [];
+      const photoUrl = photos[0]?.url;
+      const since = new Date(w.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+      const photoHtml = photoUrl
+        ? `<img class="prop-photo" src="${photoUrl}" alt="" loading="lazy">`
+        : `<div class="prop-photo placeholder">🏠</div>`;
+      return `
+      <div class="prop-card" id="card-${id}">
+        ${photoHtml}
+        <div class="prop-body">
+          <div class="prop-name">${displayName}</div>
+          ${displaySub ? `<div class="prop-addr">${displaySub}</div>` : ''}
+          <div class="since">Following since ${since}</div>
+        </div>
+        <div class="prop-footer">
+          <a href="/?prop=${id}">View on map ↗</a>
+          <button class="unwatch-btn" onclick="unwatch(${id})">✕ Unfollow</button>
+        </div>
+      </div>`;
+    }).join('') + '</div>';
+    main.innerHTML = html;
+  }
+
+  renderOnce = render;
+  render();
+}
+
+async function unwatch(propId) {
+  await fetch('/api/watchlist/' + propId, { method: 'DELETE' });
+  const card = document.getElementById('card-' + propId);
+  if (card) { card.style.opacity = '0'; card.style.transition = 'opacity 0.3s'; setTimeout(()=>card.remove(), 300); }
+}
+
+load();
+</script>
+</body>
+</html>

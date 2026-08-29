@@ -432,6 +432,13 @@ async function dbInit() {
       filename TEXT,
       created_at TIMESTAMPTZ DEFAULT NOW()
     )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS property_watches (
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+      property_id INTEGER NOT NULL,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      UNIQUE(user_id, property_id)
+    )`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
@@ -873,11 +880,152 @@ app.get('/api/stats', async (req, res) => {
 
     const topJobsList = Object.entries(topJobs).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([job,count])=>({job,count}));
 
+    // Building decades from allProps built years
+    const decades = {};
+    allProps.forEach(p => {
+      const yr = parseInt(p.built);
+      if (yr > 1700 && yr < 1980) {
+        const dec = Math.floor(yr / 10) * 10;
+        decades[dec] = (decades[dec] || 0) + 1;
+      }
+    });
+
+    // Top streets
+    const streets = {};
+    allProps.forEach(p => { if (p.street) streets[p.street] = (streets[p.street] || 0) + 1; });
+    const topStreets = Object.entries(streets).sort((a,b)=>b[1]-a[1]).slice(0,20).map(([s,n])=>({street:s,count:n}));
+
+    // Architects by property count (from architect_works, where each work can have property_id or address matching Park estate)
+    let topArchitects = [];
+    if (db) {
+      const archRes = await db.query(`
+        SELECT p.id, p.first_name, p.last_name, p.known_as, COUNT(aw.id) as works
+        FROM people p JOIN architect_works aw ON aw.person_id = p.id
+        GROUP BY p.id ORDER BY works DESC LIMIT 15
+      `).catch(() => ({ rows: [] }));
+      topArchitects = archRes.rows.map(r => ({
+        id: r.id,
+        name: r.known_as || `${r.first_name} ${r.last_name}`.trim(),
+        works: parseInt(r.works)
+      }));
+    }
+
     res.json({
       properties: { total: totalProps, withDesc: propsWithDesc, withPeople: propsWithPeople, withPhotos: propsWithPhotos },
       people: { total: totalPeople, occupations: totalOccupations },
-      jobs: { byCensusYear: jobsByCensusYear, topJobs: topJobsList }
+      jobs: { byCensusYear: jobsByCensusYear, topJobs: topJobsList },
+      decades,
+      topStreets,
+      topArchitects
     });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Census coverage API (for map slider) ─────────────────────────────────────
+// Returns {propId: [years...]} for all properties with any census/resident record
+app.get('/api/census-coverage', async (req, res) => {
+  if (!db) return res.json({});
+  try {
+    const [ceRes, prRes] = await Promise.all([
+      db.query(`SELECT property_id, census_year FROM census_entries WHERE property_id IS NOT NULL GROUP BY property_id, census_year`),
+      db.query(`SELECT property_id, from_year, to_year FROM property_residents`)
+    ]);
+    const coverage = {};
+    const censusYears = [1841,1851,1861,1871,1881,1891,1901,1911];
+    ceRes.rows.forEach(r => {
+      const id = String(r.property_id);
+      if (!coverage[id]) coverage[id] = new Set();
+      coverage[id].add(r.census_year);
+    });
+    // Also infer from property_residents from_year/to_year ranges
+    prRes.rows.forEach(r => {
+      if (!r.from_year && !r.to_year) return;
+      const id = String(r.property_id);
+      if (!coverage[id]) coverage[id] = new Set();
+      censusYears.forEach(yr => {
+        const from = r.from_year || 0;
+        const to = r.to_year || 9999;
+        if (yr >= from && yr <= to) coverage[id].add(yr);
+      });
+    });
+    // Serialise sets to arrays
+    const out = {};
+    Object.entries(coverage).forEach(([id, s]) => { out[id] = [...s].sort(); });
+    res.json(out);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Property timeline API ─────────────────────────────────────────────────────
+app.get('/api/property/:id/timeline', async (req, res) => {
+  if (!db) return res.json({ events: [] });
+  const propId = parseInt(req.params.id);
+  try {
+    const [resRes, censusRes] = await Promise.all([
+      db.query(`SELECT pr.from_year, pr.to_year, pr.notes,
+                       p.first_name, p.last_name, p.known_as, p.born_year, p.died_year, p.id as person_id
+                FROM property_residents pr JOIN people p ON p.id=pr.person_id
+                WHERE pr.property_id=$1 ORDER BY pr.from_year NULLS LAST`, [propId]),
+      db.query(`SELECT ce.census_year, ce.relationship, ce.age_at_census, ce.occupation_at_census,
+                       p.first_name, p.last_name, p.known_as, p.id as person_id
+                FROM census_entries ce JOIN people p ON p.id=ce.person_id
+                WHERE ce.property_id=$1 ORDER BY ce.census_year, ce.relationship`, [propId])
+    ]);
+    res.json({ residents: resRes.rows, censusEntries: censusRes.rows });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── My Contributions API ──────────────────────────────────────────────────────
+app.get('/api/my-contributions', async (req, res) => {
+  if (!req.session || !req.session.userId) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.json([]);
+  try {
+    const userId = req.session.userId;
+    const username = req.session.username || req.session.email;
+    const r = await db.query(`
+      SELECT cl.entity_type, cl.entity_id, cl.action, cl.field, cl.new_value, cl.created_at
+      FROM change_log cl
+      WHERE cl.username = $1
+      ORDER BY cl.created_at DESC
+      LIMIT 200
+    `, [username]);
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Watchlist API ─────────────────────────────────────────────────────────────
+app.get('/api/watchlist', async (req, res) => {
+  if (!req.session || !req.session.userId) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(
+      `SELECT property_id, created_at FROM property_watches WHERE user_id=$1 ORDER BY created_at DESC`,
+      [req.session.userId]
+    );
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/watchlist/:propId', async (req, res) => {
+  if (!req.session || !req.session.userId) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'DB unavailable' });
+  try {
+    await db.query(
+      `INSERT INTO property_watches(user_id, property_id) VALUES($1,$2) ON CONFLICT DO NOTHING`,
+      [req.session.userId, parseInt(req.params.propId)]
+    );
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/watchlist/:propId', async (req, res) => {
+  if (!req.session || !req.session.userId) return res.status(401).json({ error: 'Login required' });
+  if (!db) return res.status(503).json({ error: 'DB unavailable' });
+  try {
+    await db.query(
+      `DELETE FROM property_watches WHERE user_id=$1 AND property_id=$2`,
+      [req.session.userId, parseInt(req.params.propId)]
+    );
+    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -2000,6 +2148,9 @@ app.post('/api/seed/property/:propId/people', requireAdmin, async (req, res) => 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'people.html')));
 app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
+app.get('/stats', (req, res) => res.sendFile(path.join(__dirname, 'public', 'stats.html')));
+app.get('/my-contributions', (req, res) => res.sendFile(path.join(__dirname, 'public', 'my-contributions.html')));
+app.get('/watchlist', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watchlist.html')));
 app.get('/admin/users', (req, res) => {
   // Serve the page — it checks auth itself via /api/admin/users fetch
   if (req.session && req.session.isAdmin) {

@@ -170,6 +170,27 @@
   .view-btn.sv { background: none; border: none; padding: 0; font-size: 0.68rem; font-family: Georgia, serif; color: #7ab8d8; cursor: pointer; text-decoration: underline; }
   .view-btn.sv:hover { color: #aad8f8; }
 
+  /* Timeline tab */
+  .tl-item { display:flex; gap:12px; margin-bottom:14px; }
+  .tl-dot { width:10px; height:10px; border-radius:50%; background:#c8b87a; flex-shrink:0; margin-top:4px; }
+  .tl-line-wrap { display:flex; flex-direction:column; align-items:center; }
+  .tl-line { width:2px; background:#e0d8c0; flex:1; min-height:20px; }
+  .tl-year { font-size:0.72rem; font-weight:bold; color:#5a6a4a; min-width:36px; }
+  .tl-body { flex:1; font-size:0.8rem; }
+  .tl-title { font-weight:600; color:#1a3a2a; margin-bottom:2px; }
+  .tl-sub { color:#6a5a3a; font-size:0.75rem; }
+  .census-block { background:#f8f4ec; border-radius:5px; padding:6px 8px; margin-top:4px; }
+  .census-block .head { font-size:0.72rem; color:#8a7a5a; font-weight:bold; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:4px; }
+  .census-person { font-size:0.78rem; color:#3a3a2a; padding:2px 0; }
+
+  /* Watchlist star */
+  #watchBtn.watching { color:#c8b87a; }
+  #watchBtn { color:#aaa; }
+
+  /* PDF print button */
+  .pdf-btn { display:inline-flex; align-items:center; gap:4px; margin-top:10px; background:none; border:1px solid #c8b88866; color:#8a7a5a; border-radius:4px; padding:3px 10px; font-size:0.72rem; cursor:pointer; font-family:Georgia,serif; }
+  .pdf-btn:hover { background:#f4f0e8; border-color:#c8b87a; color:#5a3a1a; }
+
   /* Street View full-screen overlay */
   #svOverlay {
     display: none; position: fixed; inset: 0; z-index: 3500;
@@ -387,6 +408,8 @@
     <button onclick="focusSearch()">🔍 Search</button>
     <a href="/people" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">👤 People</a>
     <a href="/family-tree" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">🌳 Trees</a>
+    <a href="/stats" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">📈 Insights</a>
+    <a href="/watchlist" id="watchlistNavLink" style="display:none;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">⭐ Watchlist</a>
     <button class="primary" onclick="addDataClick()">+ Add Data</button>
     <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">&#9881; Admin</button>
     <div id="userNavArea" style="display:flex;align-items:center;gap:8px">
@@ -436,7 +459,15 @@
     <option value="listed">Listed buildings only</option>
   </select>
   <button onclick="resetFilters()">Reset</button>
+  <button onclick="openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
   <span class="info" id="countInfo">350 properties · click a marker to view its record</span>
+</div>
+<div id="censusBar" style="display:none;background:#1a3a2a;padding:5px 14px;flex-direction:row;align-items:center;gap:10px;font-size:0.75rem;color:#c8d8b8;font-family:Georgia,serif">
+  <span style="white-space:nowrap">Census year:</span>
+  <input type="range" id="censusSlider" min="0" max="7" step="1" value="0" style="flex:1;accent-color:#4caf82;max-width:220px" oninput="onCensusSlide(this.value)">
+  <span id="censusLabel" style="min-width:32px;font-weight:bold;color:#4caf82">—</span>
+  <span id="censusCoverage" style="color:#8a9a7a;font-size:0.7rem"></span>
+  <button onclick="closeCensusMode()" style="background:none;border:none;color:#8a9a7a;cursor:pointer;font-size:0.85rem;padding:0 4px;line-height:1" title="Close census filter">✕</button>
 </div>
 
 <div class="layout">
@@ -454,13 +485,17 @@
           <button class="view-btn sv" onclick="openStreetView()">&#128247; Street View</button>
         </div>
       </div>
-      <button onclick="closePanel()">✕</button>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+        <button id="watchBtn" onclick="toggleWatch()" title="Follow this property" style="display:none;background:none;border:none;font-size:1.2rem;cursor:pointer;line-height:1;padding:2px" aria-label="Watch">☆</button>
+        <button onclick="closePanel()">✕</button>
+      </div>
     </div>
     <div class="tabs">
       <button class="tab active" onclick="tab('data',this)">Property Info</button>
       <button class="tab" onclick="tab('photos',this)">Photos</button>
       <button class="tab" onclick="tab('people',this)">People <span class="badge" id="peopleBadge" style="display:none">0</span></button>
       <button class="tab" onclick="tab('subs',this)">Submissions <span class="badge" id="subBadge">0</span></button>
+      <button class="tab" onclick="tab('timeline',this)">Timeline</button>
     </div>
     <div class="panel-body" id="panelBody"></div>
   </div>
@@ -1095,6 +1130,11 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     } else {
       m.on('click', () => openProp(p.id));
     }
+    // Census mode: dim markers with no records for selected year
+    if (censusMode && censusCoverage && censusYear) {
+      const hasCensus = censusCoverage[p.id] && censusCoverage[p.id].includes(censusYear);
+      m.setOpacity(hasCensus ? 1 : 0.2);
+    }
     markers[p.id] = m;
   });
   document.getElementById('countInfo').textContent = `${count} of ${props.length} properties shown · click a marker to view its record`;
@@ -1132,6 +1172,12 @@ function openProp(id) {
   if (vb) vb.classList.toggle('visible', !!(p.lat && p.lng));
   curTab = 'data';
   renderPanel();
+  // Watchlist star
+  const wBtn = document.getElementById('watchBtn');
+  if (wBtn) {
+    wBtn.style.display = currentUser ? '' : 'none';
+    updateWatchBtn();
+  }
 }
 
 function closePanel() {
@@ -1328,6 +1374,182 @@ function renderPanel() {
       }
     }
   }
+  else if (curTab === 'timeline') {
+    renderTimeline(p, body);
+    return;
+  }
+}
+
+// ── TIMELINE TAB ─────────────────────────────────────────────────────────────
+async function renderTimeline(p, body) {
+  body.innerHTML = '<div style="padding:20px;color:#8a7a5a;font-size:0.82rem">Loading timeline…</div>';
+  const ov = propOverrides[p.id] || {};
+  const builtYear = ov.built || p.built;
+  const data = await fetch(`/api/property/${p.id}/timeline`).then(r=>r.json()).catch(()=>({residents:[],censusEntries:[]}));
+
+  // Group census entries by year
+  const byCensus = {};
+  (data.censusEntries||[]).forEach(e => {
+    if (!byCensus[e.census_year]) byCensus[e.census_year] = [];
+    byCensus[e.census_year].push(e);
+  });
+
+  // Build event list
+  const events = [];
+  if (builtYear) events.push({ year: parseInt(builtYear)||0, type:'built', label:'Property built', sub: ov.architect||p.architect ? `Architect: ${ov.architect||p.architect}` : '' });
+  (data.residents||[]).forEach(r => {
+    const name = r.known_as || `${r.first_name||''} ${r.last_name||''}`.trim();
+    const yr = r.from_year || r.to_year || 0;
+    events.push({ year: yr, type:'resident', label: name, sub: [r.from_year?`from ${r.from_year}`:'', r.to_year?`to ${r.to_year}`:''].filter(Boolean).join(' ') + (r.notes?` · ${r.notes}`:''), id: r.person_id });
+  });
+  Object.entries(byCensus).forEach(([yr, entries]) => {
+    events.push({ year: parseInt(yr), type:'census', label:`${yr} Census`, entries });
+  });
+  events.sort((a,b) => (a.year||9999)-(b.year||9999));
+
+  if (!events.length) {
+    body.innerHTML = '<div style="padding:20px;color:#8a7a5a;font-size:0.82rem">No timeline data recorded yet for this property.</div>';
+    return;
+  }
+
+  const icons = { built:'🏗️', resident:'👤', census:'📋' };
+  const dotColors = { built:'#c8b87a', resident:'#4caf82', census:'#5b9bd5' };
+  let html = '<div style="padding:14px 16px">';
+  events.forEach((ev, i) => {
+    const isLast = i === events.length - 1;
+    html += `<div class="tl-item">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:2px">
+        <div class="tl-dot" style="background:${dotColors[ev.type]||'#c8b87a'}"></div>
+        ${!isLast ? '<div class="tl-line"></div>' : ''}
+      </div>
+      <div style="flex:1;min-width:0;padding-bottom:${isLast?0:10}px">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font-size:0.9rem">${icons[ev.type]||'•'}</span>
+          <span class="tl-year">${ev.year||'?'}</span>
+          <span class="tl-title">${ev.label}</span>
+        </div>
+        ${ev.sub ? `<div class="tl-sub">${ev.sub}</div>` : ''}
+        ${ev.entries ? `<div class="census-block">
+          <div class="head">Household</div>
+          ${ev.entries.slice(0,8).map(e => {
+            const name = e.known_as || `${e.first_name||''} ${e.last_name||''}`.trim();
+            return `<div class="census-person"><a href="/people?id=${e.person_id}" style="color:#4a7c5a;text-decoration:none">${name}</a>${e.relationship?' · '+e.relationship:''}${e.age_at_census?' · age '+e.age_at_census:''}${e.occupation_at_census?' · '+e.occupation_at_census:''}</div>`;
+          }).join('')}
+          ${ev.entries.length>8 ? `<div style="font-size:0.72rem;color:#8a7a5a;margin-top:2px">+${ev.entries.length-8} more</div>` : ''}
+        </div>` : ''}
+      </div>
+    </div>`;
+  });
+  html += `<button class="pdf-btn" onclick="printProperty()">🖨️ Export as PDF</button>`;
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+// ── WATCHLIST ─────────────────────────────────────────────────────────────────
+let _watchedIds = new Set();
+let _watchlistLoaded = false;
+
+async function loadWatchlist() {
+  if (!currentUser || _watchlistLoaded) return;
+  try {
+    const rows = await fetch('/api/watchlist').then(r=>r.json());
+    _watchedIds = new Set(rows.map(r=>String(r.property_id)));
+    _watchlistLoaded = true;
+  } catch(e) {}
+}
+
+function updateWatchBtn() {
+  const btn = document.getElementById('watchBtn');
+  if (!btn || !currentUser) return;
+  const watching = _watchedIds.has(String(curProp?.id));
+  btn.textContent = watching ? '★' : '☆';
+  btn.title = watching ? 'Unfollow this property' : 'Follow this property';
+  btn.classList.toggle('watching', watching);
+}
+
+async function toggleWatch() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const id = curProp?.id; if (!id) return;
+  const watching = _watchedIds.has(String(id));
+  if (watching) {
+    await fetch('/api/watchlist/' + id, { method:'DELETE' });
+    _watchedIds.delete(String(id));
+  } else {
+    await fetch('/api/watchlist/' + id, { method:'POST' });
+    _watchedIds.add(String(id));
+    showToast('Added to watchlist ⭐');
+  }
+  updateWatchBtn();
+}
+
+// ── PDF EXPORT ────────────────────────────────────────────────────────────────
+function printProperty() {
+  if (!curProp) return;
+  const p = curProp;
+  const ov = propOverrides[p.id] || {};
+  const name = p.name || p.address || ((p.no?p.no+' ':'')+p.street);
+  const photos = (ov.photos||[]).slice(0,3);
+  const w = window.open('', '_blank', 'width=800,height=900');
+  w.document.write(`<!DOCTYPE html><html><head><title>${name}</title>
+  <style>
+    body{font-family:Georgia,serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6;font-size:14px}
+    h1{font-size:1.5rem;color:#1a3a2a;margin-bottom:4px}
+    .sub{color:#6a5a3a;font-size:0.85rem;margin-bottom:20px}
+    .photos{display:flex;gap:10px;margin:16px 0}
+    .photos img{flex:1;max-height:180px;object-fit:cover;border-radius:4px}
+    .section{margin-top:18px}
+    .section h2{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:#8a7a5a;border-bottom:1px solid #e0d8c0;padding-bottom:4px;margin-bottom:8px}
+    .row{display:flex;gap:12px;margin-bottom:6px;font-size:0.88rem}
+    .row .lbl{color:#8a7a5a;min-width:120px}
+    p{font-size:0.88rem;line-height:1.7;color:#2a2a2a}
+    @media print{body{margin:20px}}
+  </style></head><body>
+  <h1>${name}</h1>
+  <div class="sub">Property ${p.id} · Nottingham Park Estate</div>
+  ${photos.length ? `<div class="photos">${photos.map(ph=>`<img src="${ph.url}" alt="">`).join('')}</div>` : ''}
+  <div class="section"><h2>Details</h2>
+    ${ov.built||p.built ? `<div class="row"><span class="lbl">Built</span><span>${ov.built||p.built}</span></div>` : ''}
+    ${ov.architect||p.architect ? `<div class="row"><span class="lbl">Architect</span><span>${ov.architect||p.architect}</span></div>` : ''}
+    ${ov.listed ? `<div class="row"><span class="lbl">Listed</span><span>${ov.listedGrade||'Yes'}</span></div>` : ''}
+  </div>
+  ${ov.history ? `<div class="section"><h2>History</h2><p>${ov.history}</p></div>` : ''}
+  ${ov.desc ? `<div class="section"><h2>Architectural Description</h2><p>${ov.desc}</p></div>` : ''}
+  <div style="margin-top:30px;font-size:0.75rem;color:#aaa;border-top:1px solid #eee;padding-top:10px">
+    Exported from Nottingham Park Houses · ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
+  </div>
+  <script>window.onload=()=>window.print();<\/script></body></html>`);
+  w.document.close();
+}
+
+// ── CENSUS YEAR SLIDER ────────────────────────────────────────────────────────
+const CENSUS_YEARS = [1841,1851,1861,1871,1881,1891,1901,1911];
+let censusCoverage = null;
+let censusMode = false;
+let censusYear = null;
+
+async function openCensusMode() {
+  if (!censusCoverage) {
+    censusCoverage = await fetch('/api/census-coverage').then(r=>r.json()).catch(()=>({}));
+  }
+  censusMode = true;
+  const cb = document.getElementById('censusBar');
+  cb.style.display = 'flex';
+  onCensusSlide(document.getElementById('censusSlider').value);
+}
+
+function closeCensusMode() {
+  censusMode = false;
+  censusYear = null;
+  document.getElementById('censusBar').style.display = 'none';
+  buildMarkers(document.getElementById('searchBox').value, document.getElementById('typeFilter').value, document.getElementById('listedFilter').value);
+}
+
+function onCensusSlide(idx) {
+  censusYear = CENSUS_YEARS[parseInt(idx)];
+  document.getElementById('censusLabel').textContent = censusYear;
+  const covered = censusCoverage ? Object.values(censusCoverage).filter(yrs=>yrs.includes(censusYear)).length : 0;
+  document.getElementById('censusCoverage').textContent = `${covered} properties with records`;
+  buildMarkers(document.getElementById('searchBox').value, document.getElementById('typeFilter').value, document.getElementById('listedFilter').value);
 }
 
 function toggleForm() {
@@ -1670,6 +1892,9 @@ function updateUserUI() {
   // Update Add Data button visibility if panel is open
   const addBtn = document.getElementById('panelAddDataBtn');
   if (addBtn) addBtn.style.display = currentUser ? '' : 'none';
+  // Show user-specific nav links
+  const wlLink = document.getElementById('watchlistNavLink');
+  if (wlLink) wlLink.style.display = currentUser ? '' : 'none';
 }
 
 function openAuthModal(mode) {
@@ -1723,6 +1948,7 @@ async function handleAuthSubmit() {
     if (data.ok) {
       currentUser = data.user;
       updateUserUI();
+      loadWatchlist();
       closeAuthModal();
       if (curProp) renderPanel(); // refresh subs tab
     } else { errEl.textContent = data.error || 'Sign in failed.'; }
@@ -1752,6 +1978,7 @@ async function handleAuthSubmit() {
         const pData = await pRes.json();
         if (pData.url) { currentUser.profilePhoto = pData.url; updateUserUI(); }
       }
+      loadWatchlist();
       closeAuthModal();
       if (curProp) renderPanel();
     } else { errEl.textContent = data.error || 'Registration failed.'; }
@@ -1773,6 +2000,8 @@ function openUserMenu() {
       <span style="font-size:0.75rem;color:#8a7a5a">${currentUser.email||''}</span>
     </div>
     <button onclick="uploadNewProfilePhoto()" style="display:block;width:100%;text-align:left;padding:10px 16px;border:none;background:none;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif;color:#2c2416">📷 Change photo</button>
+    <a href="/watchlist" style="display:block;padding:10px 16px;font-size:0.82rem;font-family:Georgia,serif;color:#2c2416;text-decoration:none">⭐ My Watchlist</a>
+    <a href="/my-contributions" style="display:block;padding:10px 16px;font-size:0.82rem;font-family:Georgia,serif;color:#2c2416;text-decoration:none">✏️ My Contributions</a>
     <button onclick="userLogout()" style="display:block;width:100%;text-align:left;padding:10px 16px;border:none;background:none;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif;color:#8a2020">Sign out</button>`;
   document.body.appendChild(menu);
   setTimeout(() => document.addEventListener('click', function rm(e) {
@@ -1827,6 +2056,7 @@ async function initAdmin() {
     if (me.user) {
       currentUser = me.user;
       updateUserUI();
+      loadWatchlist();
     }
 
     if (!me.isAdmin) return;

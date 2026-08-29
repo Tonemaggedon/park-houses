@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nottingham Park Houses — Insights</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #e8e0d0; min-height: 100vh; }
+.header { background: linear-gradient(135deg,#1a2a1a 0%,#0f1923 50%,#1a1a2e 100%); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; flex-wrap:wrap; gap:0.5rem; }
+.header-title { font-size:1.1rem; font-weight:700; color:#c8b87a; letter-spacing:0.05em; }
+.nav-links { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.82rem; padding:0.3rem 0.7rem; border-radius:4px; transition:all 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:#c8b87a; background:rgba(200,184,122,0.1); }
+.hero { background:linear-gradient(135deg,#1a2a1a 0%,#1a1a2e 100%); padding:2rem 2rem 1.5rem; text-align:center; border-bottom:1px solid #2a2a3a; }
+.hero h1 { font-size:1.8rem; color:#c8b87a; font-weight:300; letter-spacing:0.08em; }
+.hero p { color:#8a9a7a; margin-top:0.4rem; font-size:0.88rem; }
+.main { max-width:1200px; margin:0 auto; padding:2rem; }
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-bottom:2rem; }
+.stat-card { background:linear-gradient(135deg,#1e2d1e,#1a2030); border:1px solid #2a3a2a; border-radius:10px; padding:1.2rem; text-align:center; }
+.stat-card .val { font-size:2rem; font-weight:700; color:#c8b87a; }
+.stat-card .label { font-size:0.7rem; color:#8a9a7a; margin-top:0.3rem; text-transform:uppercase; letter-spacing:0.05em; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+@media(max-width:900px){ .grid2,.grid3 { grid-template-columns:1fr; } }
+.panel { background:#141e14; border:1px solid #2a3a2a; border-radius:12px; padding:1.4rem; }
+.panel h2 { font-size:0.95rem; font-weight:600; color:#c8b87a; margin-bottom:1rem; padding-bottom:0.6rem; border-bottom:1px solid #2a3a2a; display:flex; align-items:center; gap:0.5rem; }
+.bar-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; font-size:0.8rem; }
+.bar-row .lbl { width:120px; color:#a8b8a8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
+.bar-row .bar { height:14px; border-radius:3px; background:linear-gradient(90deg,#2a6a4a,#4caf82); min-width:2px; transition:width 0.8s ease; }
+.bar-row .cnt { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+.bar-row .bar.gold { background:linear-gradient(90deg,#8a6a2a,#c8b87a); }
+.bar-row .bar.blue { background:linear-gradient(90deg,#2a4a8a,#5b9bd5); }
+.bar-row .bar.orange { background:linear-gradient(90deg,#8a4a2a,#e07b39); }
+canvas { max-height:260px; }
+.arch-item { display:flex; align-items:center; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #1e2e1e; font-size:0.82rem; }
+.arch-item a { color:#5b9bd5; text-decoration:none; }
+.arch-item a:hover { text-decoration:underline; }
+.arch-item .works { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+.spinner { text-align:center; padding:3rem; color:#5a7a5a; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">🏛️ Nottingham Park Houses</div>
+  <nav class="nav-links">
+    <a href="/">Map</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/people">People</a>
+    <a href="/architects">Architects</a>
+    <a href="/stats" class="active">Insights</a>
+  </nav>
+</div>
+<div class="hero">
+  <h1>Estate Insights</h1>
+  <p>Patterns and statistics across 350 properties and their residents</p>
+</div>
+<div class="main" id="main"><div class="spinner">Loading…</div></div>
+
+<script>
+async function load() {
+  const s = await fetch('/api/stats').then(r=>r.json());
+  const main = document.getElementById('main');
+
+  const pct = (n,t) => t ? Math.round(n/t*100) : 0;
+  const P = s.properties, Pe = s.people;
+
+  // Top number card row
+  main.innerHTML = `
+  <div class="stat-row">
+    <div class="stat-card"><div class="val">${P.total}</div><div class="label">Properties</div></div>
+    <div class="stat-card"><div class="val">${Pe.total.toLocaleString()}</div><div class="label">Known People</div></div>
+    <div class="stat-card"><div class="val">${Pe.occupations.toLocaleString()}</div><div class="label">Occupation Records</div></div>
+    <div class="stat-card"><div class="val">${P.withPhotos}</div><div class="label">With Photos</div></div>
+    <div class="stat-card"><div class="val">${pct(P.withDesc,P.total)}%</div><div class="label">With Description</div></div>
+    <div class="stat-card"><div class="val">${pct(P.withPeople,P.total)}%</div><div class="label">With Census Data</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>🗓️ When Was The Estate Built?</h2>
+      <canvas id="decadesChart"></canvas>
+    </div>
+    <div class="panel">
+      <h2>💼 Top Occupations (All Census Years)</h2>
+      <canvas id="jobsChart"></canvas>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel" id="archPanel">
+      <h2>🏗️ Most Prolific Architects</h2>
+      ${(s.topArchitects||[]).length
+        ? buildBars(s.topArchitects.map(a=>({lbl:a.name,cnt:a.works,href:'/architects/'+a.id})), 'blue', s.topArchitects[0]?.works||1)
+        : '<div style="font-size:0.82rem;color:#5a7a5a;padding:0.5rem 0">No architect data recorded yet.</div>'}
+    </div>
+    <div class="panel">
+      <h2>🏘️ Properties by Street</h2>
+      ${buildBars((s.topStreets||[]).slice(0,15).map(t=>({lbl:t.street,cnt:t.count})), 'gold', (s.topStreets||[{count:1}])[0].count)}
+    </div>
+  </div>
+  `;
+
+  // Building decades chart
+  const decades = s.decades || {};
+  const decKeys = Object.keys(decades).map(Number).sort();
+  new Chart(document.getElementById('decadesChart'), {
+    type: 'bar',
+    data: {
+      labels: decKeys.map(d => d+'s'),
+      datasets: [{ data: decKeys.map(d=>decades[d]), backgroundColor: '#c8b87a99', borderColor:'#c8b87a', borderWidth:1, borderRadius:3 }]
+    },
+    options: { plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}},y:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}}}, responsive:true, maintainAspectRatio:true }
+  });
+
+  // Jobs chart
+  const jobs = (s.jobs?.topJobs||[]).slice(0,12);
+  new Chart(document.getElementById('jobsChart'), {
+    type: 'bar',
+    data: {
+      labels: jobs.map(j=>j.job.replace(/\b\w/g,c=>c.toUpperCase())),
+      datasets: [{ data: jobs.map(j=>j.count), backgroundColor:'#4caf8299', borderColor:'#4caf82', borderWidth:1, borderRadius:3 }]
+    },
+    options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}},y:{ticks:{color:'#8a9a7a',font:{size:10}},grid:{color:'#1a2a1a'}}}, responsive:true, maintainAspectRatio:true }
+  });
+}
+
+function buildBars(items, colour, max) {
+  if (!items.length) return '<div style="font-size:0.82rem;color:#5a7a5a">No data</div>';
+  return items.map(({lbl,cnt,href}) => {
+    const w = Math.round(cnt/max*100);
+    const label = href ? `<a href="${href}" style="color:#5b9bd5;text-decoration:none">${lbl}</a>` : lbl;
+    return `<div class="bar-row"><div class="lbl" title="${lbl}">${label}</div><div class="bar ${colour}" style="width:${w}%;max-width:calc(100% - 185px)"></div><div class="cnt">${cnt}</div></div>`;
+  }).join('');
+}
+
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Contributions — Nottingham Park Houses</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #e8e0d0; min-height: 100vh; }
+.header { background: linear-gradient(135deg,#1a2a1a 0%,#0f1923 50%,#1a1a2e 100%); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; flex-wrap:wrap; gap:0.5rem; }
+.header-title { font-size:1.1rem; font-weight:700; color:#c8b87a; letter-spacing:0.05em; }
+.nav-links { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.82rem; padding:0.3rem 0.7rem; border-radius:4px; transition:all 0.2s; }
+.nav-links a:hover { color:#c8b87a; background:rgba(200,184,122,0.1); }
+.hero { background:linear-gradient(135deg,#1a2a1a 0%,#1a1a2e 100%); padding:2rem; text-align:center; border-bottom:1px solid #2a2a3a; }
+.hero h1 { font-size:1.8rem; color:#c8b87a; font-weight:300; letter-spacing:0.08em; }
+.hero p { color:#8a9a7a; margin-top:0.4rem; font-size:0.88rem; }
+.main { max-width:860px; margin:0 auto; padding:2rem; }
+.login-prompt { text-align:center; padding:3rem; color:#8a9a7a; }
+.login-prompt a { color:#5b9bd5; }
+.empty { text-align:center; padding:3rem; color:#5a7a5a; font-size:0.88rem; }
+.summary-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1rem; margin-bottom:2rem; }
+.sum-card { background:#141e14; border:1px solid #2a3a2a; border-radius:8px; padding:1rem; text-align:center; }
+.sum-card .val { font-size:1.6rem; font-weight:700; color:#c8b87a; }
+.sum-card .label { font-size:0.7rem; color:#8a9a7a; margin-top:0.2rem; text-transform:uppercase; letter-spacing:0.05em; }
+.group { margin-bottom:1.5rem; }
+.group-header { font-size:0.72rem; color:#6a8a6a; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; }
+.entry { background:#141e14; border:1px solid #2a3a2a; border-radius:8px; padding:0.75rem 1rem; margin-bottom:0.4rem; display:flex; align-items:flex-start; gap:0.8rem; }
+.entry-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+.entry-body { flex:1; min-width:0; }
+.entry-action { font-size:0.82rem; color:#c8b87a; font-weight:500; }
+.entry-detail { font-size:0.78rem; color:#8a9a7a; margin-top:2px; }
+.entry-prop { font-size:0.75rem; }
+.entry-prop a { color:#5b9bd5; text-decoration:none; }
+.entry-prop a:hover { text-decoration:underline; }
+.entry-time { font-size:0.7rem; color:#4a6a4a; white-space:nowrap; margin-left:auto; }
+.badge { display:inline-block; font-size:0.62rem; padding:1px 6px; border-radius:3px; margin-right:4px; }
+.badge-photo { background:rgba(155,127,212,0.2); color:#9b7fd4; border:1px solid rgba(155,127,212,0.3); }
+.badge-resident { background:rgba(76,175,130,0.2); color:#4caf82; border:1px solid rgba(76,175,130,0.3); }
+.badge-data { background:rgba(91,155,213,0.2); color:#5b9bd5; border:1px solid rgba(91,155,213,0.3); }
+.badge-other { background:rgba(200,184,122,0.15); color:#c8b87a; border:1px solid rgba(200,184,122,0.3); }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">🏛️ Nottingham Park Houses</div>
+  <nav class="nav-links">
+    <a href="/">Map</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/watchlist">My Watchlist</a>
+    <a href="/my-contributions">My Contributions</a>
+  </nav>
+</div>
+<div class="hero">
+  <h1>My Contributions</h1>
+  <p>Everything you've added to the estate record</p>
+</div>
+<div class="main" id="main"><div class="empty">Loading…</div></div>
+
+<script>
+// Load all-props list for property name lookup
+let allProps = {};
+fetch('/api/all-props').then(r=>r.json()).then(arr=>{ arr.forEach(p=>{ allProps[p.id] = p; }); }).catch(()=>{});
+
+const ACTION_LABELS = {
+  add_resident: { label:'Linked a resident', icon:'👤', badge:'resident' },
+  upload_photo: { label:'Uploaded a photo', icon:'📷', badge:'photo' },
+  add_submission: { label:'Made a submission', icon:'✉️', badge:'other' },
+  edit_data: { label:'Edited data', icon:'✏️', badge:'data' },
+  update: { label:'Updated data', icon:'✏️', badge:'data' },
+};
+
+function propName(id) {
+  const p = allProps[id];
+  if (!p) return 'Property ' + id;
+  return p.name ? `${p.name}: ${p.address||''}` : (p.address || ((p.no?p.no+' ':'')+p.street));
+}
+
+function formatDate(ts) {
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+function formatTime(ts) {
+  return new Date(ts).toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+}
+
+async function load() {
+  const main = document.getElementById('main');
+  const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({isAdmin:false,user:null}));
+  if (!me.user) {
+    main.innerHTML = `<div class="login-prompt"><p>You need to be signed in to see your contributions.</p><p style="margin-top:1rem"><a href="/">Return to map and sign in</a></p></div>`;
+    return;
+  }
+
+  const entries = await fetch('/api/my-contributions').then(r=>r.json()).catch(()=>[]);
+  if (!entries.length) {
+    main.innerHTML = `<div class="empty">No contributions recorded yet. Start by adding residents to properties or uploading photos.</div>`;
+    return;
+  }
+
+  // Summary counts
+  const counts = { photo:0, resident:0, data:0, other:0 };
+  entries.forEach(e => {
+    const info = ACTION_LABELS[e.action] || ACTION_LABELS.edit_data;
+    counts[info.badge] = (counts[info.badge]||0) + 1;
+  });
+
+  // Group by date
+  const groups = {};
+  entries.forEach(e => {
+    const day = formatDate(e.created_at);
+    if (!groups[day]) groups[day] = [];
+    groups[day].push(e);
+  });
+
+  let html = `
+  <div class="summary-row">
+    <div class="sum-card"><div class="val">${entries.length}</div><div class="label">Total</div></div>
+    <div class="sum-card"><div class="val">${counts.photo||0}</div><div class="label">Photos</div></div>
+    <div class="sum-card"><div class="val">${counts.resident||0}</div><div class="label">Residents</div></div>
+    <div class="sum-card"><div class="val">${counts.data||0}</div><div class="label">Data Edits</div></div>
+  </div>`;
+
+  Object.entries(groups).forEach(([day, dayEntries]) => {
+    html += `<div class="group"><div class="group-header">${day}</div>`;
+    dayEntries.forEach(e => {
+      const info = ACTION_LABELS[e.action] || { label: e.action, icon:'📝', badge:'other' };
+      const propId = e.entity_id;
+      const pname = propName(propId);
+      let detail = '';
+      if (e.field) detail = `Field: <em>${e.field}</em>`;
+      if (e.new_value && e.new_value.length < 80) detail += (detail?' · ':'') + e.new_value;
+      html += `
+      <div class="entry">
+        <div class="entry-icon">${info.icon}</div>
+        <div class="entry-body">
+          <div class="entry-action"><span class="badge badge-${info.badge}">${info.badge}</span>${info.label}</div>
+          <div class="entry-prop">on <a href="/?prop=${propId}">${pname}</a></div>
+          ${detail ? `<div class="entry-detail">${detail}</div>` : ''}
+        </div>
+        <div class="entry-time">${formatTime(e.created_at)}</div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+
+  main.innerHTML = html;
+}
+
+load();
+</script>
+</body>
+</html>
