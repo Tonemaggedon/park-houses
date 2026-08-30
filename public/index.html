@@ -1699,8 +1699,14 @@ async function renderPeopleTab(propId, body) {
       // Still need to check residents before giving up
       let residents = [];
       try { residents = await fetch(`/api/property/${propId}/residents`).then(r=>r.json()); } catch(e) {}
-      if (!residents.length && !isAdmin) {
+      const canAdd = isAdmin || (currentUser && currentUser.role === 'contributor');
+      if (!residents.length && !canAdd) {
         body.innerHTML = '<div style="padding:20px;font-size:0.83rem;color:#8a7a5a">No people records yet for this property.<br><br>People are added when census data or biographical records are attached to a property.</div>';
+        return;
+      }
+      if (!residents.length && canAdd) {
+        body.innerHTML = `<div style="padding:20px;font-size:0.83rem;color:#8a7a5a">No people records yet for this property.</div>
+          <div style="padding:0 20px"><button onclick="showAddResident(${propId})" style="background:#4a7c5a;color:white;border:none;border-radius:4px;padding:6px 16px;font-size:0.82rem;cursor:pointer;font-family:Georgia,serif">+ Add resident</button></div>`;
         return;
       }
       // Fall through to full render with empty census but show residents + add button
