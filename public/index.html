@@ -459,7 +459,7 @@
     <option value="listed">Listed buildings only</option>
   </select>
   <button onclick="resetFilters()">Reset</button>
-  <button onclick="openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
+  <button id="censusToggleBtn" onclick="censusMode ? closeCensusMode() : openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
   <span class="info" id="countInfo">350 properties · click a marker to view its record</span>
 </div>
 <div id="censusBar" style="display:none;background:#1a3a2a;padding:5px 14px;flex-direction:row;align-items:center;gap:10px;font-size:0.75rem;color:#c8d8b8;font-family:Georgia,serif">
@@ -1534,6 +1534,8 @@ async function openCensusMode() {
   censusMode = true;
   const cb = document.getElementById('censusBar');
   cb.style.display = 'flex';
+  const tb = document.getElementById('censusToggleBtn');
+  if (tb) { tb.textContent = '✕ Census'; tb.style.background = '#1a3a2a'; tb.style.color = '#4caf82'; }
   onCensusSlide(document.getElementById('censusSlider').value);
 }
 
@@ -1541,6 +1543,8 @@ function closeCensusMode() {
   censusMode = false;
   censusYear = null;
   document.getElementById('censusBar').style.display = 'none';
+  const tb = document.getElementById('censusToggleBtn');
+  if (tb) { tb.textContent = '📋 Census'; tb.style.background = 'none'; tb.style.color = '#8ab87a'; }
   buildMarkers(document.getElementById('searchBox').value, document.getElementById('typeFilter').value, document.getElementById('listedFilter').value);
 }
 
@@ -1760,11 +1764,12 @@ async function renderPeopleTab(propId, body) {
     // Known Residents (non-census)
     let residents = [];
     try { residents = await fetch(`/api/property/${propId}/residents`).then(r=>r.json()); } catch(e) {}
-    if (residents.length || isAdmin) {
+    const canAddResident = isAdmin || (currentUser && currentUser.role === 'contributor');
+    if (residents.length || canAddResident) {
       html += `<div style="margin-bottom:18px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           <div style="font-size:0.72rem;color:#8a7a5a;text-transform:uppercase;letter-spacing:0.08em">Known Residents</div>
-          ${(isAdmin || (currentUser && currentUser.role === 'contributor')) ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:3px 10px;font-size:0.72rem;cursor:pointer">+ Add resident</button>` : ''}
+          ${canAddResident ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:3px 10px;font-size:0.72rem;cursor:pointer">+ Add resident</button>` : ''}
         </div>
         ${residents.length ? residents.map(r => {
           const name = r.known_as || `${r.first_name||''} ${r.last_name||''}`.trim();
@@ -1788,7 +1793,7 @@ async function renderPeopleTab(propId, body) {
 
     html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e8d8a0;display:flex;align-items:center;gap:12px">
       <a href="/people?property=${propId}" style="font-size:0.8rem;color:#4a7c5a;text-decoration:none">View all people for this property ↗</a>
-      ${!residents.length && !people.length && (isAdmin || (currentUser && currentUser.role === 'contributor')) ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:4px 12px;font-size:0.78rem;cursor:pointer">+ Add resident</button>` : ''}
+      ${!residents.length && !people.length && canAddResident ? `<button onclick="showAddResident(${propId})" style="margin-left:auto;background:#4a7c5a;color:white;border:none;border-radius:4px;padding:4px 12px;font-size:0.78rem;cursor:pointer">+ Add resident</button>` : ''}
     </div>`;
     body.innerHTML = html;
   } catch(e) {
@@ -1842,7 +1847,8 @@ function resetFilters() {
   document.getElementById('searchBox').value = '';
   document.getElementById('typeFilter').value = '';
   document.getElementById('listedFilter').value = '';
-  buildMarkers('', '', '');
+  if (censusMode) closeCensusMode();
+  else buildMarkers('', '', '');
 }
 function focusSearch() { document.getElementById('searchBox').focus(); }
 function addDataClick() {
