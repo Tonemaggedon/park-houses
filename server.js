@@ -1407,8 +1407,8 @@ app.get('/api/census-stats', async (req, res) => {
     const props = await loadProps();
     const total = Array.isArray(props) ? props.length : 350;
     const [recordedRes, unoccupiedRes] = await Promise.all([
-      db.query(`SELECT census_year, COUNT(DISTINCT property_id) AS cnt FROM census_entries WHERE property_id IS NOT NULL GROUP BY census_year`),
-      db.query(`SELECT census_year, COUNT(*) AS cnt FROM census_unoccupied GROUP BY census_year`)
+      db.query(`SELECT census_year, COUNT(DISTINCT property_id) AS cnt FROM census_entries WHERE property_id IS NOT NULL GROUP BY census_year`).catch(()=>({rows:[]})),
+      db.query(`SELECT census_year, COUNT(*) AS cnt FROM census_unoccupied GROUP BY census_year`).catch(()=>({rows:[]}))
     ]);
     const recorded = {}, unoccupied = {};
     recordedRes.rows.forEach(r => { recorded[r.census_year] = parseInt(r.cnt); });
@@ -1878,20 +1878,15 @@ app.post('/api/person/:id/photo', (req, res, next) => {
   next();
 }, (req, res) => {
   const personId = parseInt(req.params.id);
-  const storage = multer.diskStorage({
-    destination: PROFILE_DIR,
-    filename: (req, file, cb) => cb(null, `person-${personId}-${Date.now()}${path.extname(file.originalname)}`)
-  });
-  multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }).single('photo')(req, res, async (err) => {
+  multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } }).single('photo')(req, res, async (err) => {
     if (err) return res.status(400).json({ error: err.message });
     if (!req.file) return res.status(400).json({ error: 'No file' });
-    const url = `/data/photos/profiles/${req.file.filename}`;
-    if (db) {
-      try {
-        await db.query('UPDATE people SET photo_url=$1 WHERE id=$2', [url, personId]);
-      } catch(e) { /* continue even if DB update fails */ }
-    }
-    res.json({ ok: true, url });
+    try {
+      const filename = `person-${personId}-${Date.now()}${path.extname(req.file.originalname||'.jpg')}`;
+      const url = await uploadPhoto(req.file.buffer, filename, req.file.mimetype);
+      if (db) await db.query('UPDATE people SET photo_url=$1 WHERE id=$2', [url, personId]).catch(()=>{});
+      res.json({ ok: true, url });
+    } catch(e) { res.status(500).json({ error: e.message }); }
   });
 });
 
