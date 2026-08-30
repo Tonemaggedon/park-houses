@@ -1933,7 +1933,7 @@ app.patch('/api/person/:id', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post('/api/person/:id/occupation', requireAdmin, async (req, res) => {
+app.post('/api/person/:id/occupation', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const { occupation, from_year, to_year, employer, notes } = req.body;
