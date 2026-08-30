@@ -1792,6 +1792,23 @@ app.post('/api/person/:id/relationship', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+app.delete('/api/person/:id/relationship/:relId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const relId = parseInt(req.params.relId);
+    const personId = parseInt(req.params.id);
+    // Verify this relationship involves the stated person (security check)
+    const check = await db.query(
+      'SELECT id FROM people_relationships WHERE id=$1 AND (person_a_id=$2 OR person_b_id=$2)',
+      [relId, personId]
+    );
+    if (!check.rows.length) return res.status(404).json({ error: 'Relationship not found' });
+    await db.query('DELETE FROM people_relationships WHERE id=$1', [relId]);
+    await logChange('person', personId, req, 'delete_relationship', 'relationships', null, `Deleted relationship id ${relId}`);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Person media gallery ──────────────────────────────────────────────────────
 app.get('/api/person/:id/media', async (req, res) => {
   if (!db) return res.json([]);
@@ -1951,18 +1968,6 @@ app.post('/api/person/:id/census', requireAdmin, async (req, res) => {
       [parseInt(req.params.id), property_id||null, address||null, census_year, relationship||null, age_at_census||null, occupation_at_census||null, source||null]
     );
     res.json({ ok: true, id: r.rows[0].id });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-app.post('/api/person/:id/relationship', requireAdmin, async (req, res) => {
-  if (!db) return res.status(503).json({ error: 'DB not available' });
-  try {
-    const { related_person_id, relationship, notes } = req.body;
-    await db.query(
-      `INSERT INTO people_relationships (person_a_id,person_b_id,relationship,notes) VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-      [parseInt(req.params.id), related_person_id, relationship, notes||null]
-    );
-    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 

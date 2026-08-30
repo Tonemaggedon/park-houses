@@ -591,12 +591,16 @@ function renderProfile(p) {
         : { id: rel.pid, first: rel.a_first, last: rel.a_last, known: rel.a_known };
       const relLabel = humaniseRelType(rel.relationship, rel.person_a_id === p.id);
       const otherName = `${other.first||''} ${other.last||''}`.trim();
-      return `<div class="rel-chip" onclick="openProfile(${other.id})">
+      const delBtn = canUploadPhotos
+        ? `<button onclick="event.stopPropagation();deleteRelationship(${rel.id},${p.id})" title="Remove relationship" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.85rem;padding:0 2px;line-height:1">✕</button>`
+        : '';
+      return `<div class="rel-chip" data-rel-id="${rel.id}" onclick="openProfile(${other.id})" style="display:flex;align-items:center;gap:8px">
         <div class="rel-avatar">${(other.first||'?')[0].toUpperCase()}</div>
-        <div>
+        <div style="flex:1">
           <div class="rel-name">${otherName}</div>
           <div class="rel-type">${relLabel}</div>
         </div>
+        ${delBtn}
       </div>`;
     }).join('');
     html.push(`<div class="pane-section"><h3>Related People</h3><div class="rel-list">${chips}</div></div>`);
@@ -813,6 +817,21 @@ async function showAddRelationship(personId) {
   }).then(r=>r.json());
   if (res.ok) { alert(`Linked to ${chosen.first_name} ${chosen.last_name}`); openProfile(personId); }
   else alert('Error: ' + (res.error||'unknown'));
+}
+
+async function deleteRelationship(relId, personId) {
+  if (!confirm('Remove this relationship?')) return;
+  try {
+    const res = await fetch(`/api/person/${personId}/relationship/${relId}`, { method: 'DELETE' }).then(r => r.json());
+    if (res.ok) {
+      // Remove chip from DOM without full reload
+      const chip = document.querySelector(`[data-rel-id="${relId}"]`);
+      if (chip) chip.remove();
+      else openProfile(personId); // fallback reload
+    } else {
+      alert('Error: ' + (res.error || 'Could not delete'));
+    }
+  } catch(e) { alert('Error: ' + e.message); }
 }
 
 async function loadMediaGallery(personId) {
