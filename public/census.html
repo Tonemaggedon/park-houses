@@ -286,10 +286,15 @@ async function loadYear(year) {
   document.querySelector('.ftab').classList.add('active');
 
   try {
-    allProps = await fetch('/api/census-coverage/' + year).then(r => r.json());
+    const data = await fetch('/api/census-coverage/' + year).then(r => r.json());
+    allProps = Array.isArray(data) ? data : [];
+    if (!Array.isArray(data) && data.error) {
+      document.getElementById('propGrid').innerHTML = `<div style="color:#c04040;padding:20px;grid-column:1/-1">Could not load census data — please try again in a moment.<br><small style="color:#aaa">${data.error}</small></div>`;
+      return;
+    }
     renderProps();
   } catch(e) {
-    document.getElementById('propGrid').innerHTML = '<div style="color:#c04040;padding:20px;grid-column:1/-1">Error loading data</div>';
+    document.getElementById('propGrid').innerHTML = '<div style="color:#c04040;padding:20px;grid-column:1/-1">Could not load census data — please try again in a moment.</div>';
   }
 }
 

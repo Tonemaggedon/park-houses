@@ -1404,8 +1404,8 @@ app.delete('/api/property/:propId/residents/:residentId', requireContributor, as
 app.get('/api/census-stats', async (req, res) => {
   if (!db) return res.json([]);
   try {
-    const props = await loadProps();
-    const total = Array.isArray(props) ? props.length : 350;
+    const allPropsArr = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const total = allPropsArr.length || 350;
     const [recordedRes, unoccupiedRes] = await Promise.all([
       db.query(`SELECT census_year, COUNT(DISTINCT property_id) AS cnt FROM census_entries WHERE property_id IS NOT NULL GROUP BY census_year`).catch(()=>({rows:[]})),
       db.query(`SELECT census_year, COUNT(*) AS cnt FROM census_unoccupied GROUP BY census_year`).catch(()=>({rows:[]}))
@@ -1423,25 +1423,26 @@ app.get('/api/census-coverage/:year', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const year = parseInt(req.params.year);
-    const props = await loadProps();
+    if (!year) return res.json([]);
+    const props = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
     const [recordedRes, unoccupiedRes, countsRes] = await Promise.all([
-      db.query(`SELECT DISTINCT property_id FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL`, [year]),
-      db.query(`SELECT property_id, notes FROM census_unoccupied WHERE census_year=$1`, [year]),
-      db.query(`SELECT property_id, COUNT(DISTINCT person_id) AS cnt FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL GROUP BY property_id`, [year])
+      db.query(`SELECT DISTINCT property_id FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL`, [year]).catch(()=>({rows:[]})),
+      db.query(`SELECT property_id, notes FROM census_unoccupied WHERE census_year=$1`, [year]).catch(()=>({rows:[]})),
+      db.query(`SELECT property_id, COUNT(DISTINCT person_id) AS cnt FROM census_entries WHERE census_year=$1 AND property_id IS NOT NULL GROUP BY property_id`, [year]).catch(()=>({rows:[]}))
     ]);
     const recordedSet = new Set(recordedRes.rows.map(r => r.property_id));
     const unoccupiedMap = {};
     unoccupiedRes.rows.forEach(r => { unoccupiedMap[r.property_id] = r.notes || ''; });
     const countsMap = {};
     countsRes.rows.forEach(r => { countsMap[r.property_id] = parseInt(r.cnt); });
-    res.json(props.map(p => ({
+    res.json((Array.isArray(props) ? props : []).map(p => ({
       id: p.id,
       address: (p.address||'Property '+p.id).replace(/:\s*([A-Z])/g,', $1').replace(/:\s*$/,''),
       status: recordedSet.has(p.id) ? 'recorded' : unoccupiedMap[p.id] !== undefined ? 'unoccupied' : 'none',
       people_count: countsMap[p.id] || 0,
       unoccupied_notes: unoccupiedMap[p.id] || null
     })));
-  } catch(e) { res.status(500).json({ error: e.message }); }
+  } catch(e) { console.error('census-coverage error:', e.message); res.status(500).json({ error: e.message }); }
 });
 
 // POST /api/census-unoccupied — mark a property as unoccupied for a census year
