@@ -103,6 +103,9 @@ HOUSE_NAME_ALIASES = {
     ('11 see smac email', 'western terrace'):    350,  # = no.11
     # Lenton Avenue
     ('?33 is so on 1911 census', 'lenton avenue'): 173,  # = no.33
+    # Named properties confirmed by user
+    ('iveston',                  'kenilworth road'):      153,  # = 1 Kenilworth Road
+    ('penryn or pensby cottage', 'tunnel road'):           84,  # = Penryn House, Clumber Road East
 }
 
 def find_property_id(raw_no, raw_street):
