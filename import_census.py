@@ -119,6 +119,12 @@ def find_property_id(raw_no, raw_street):
     if (no, st) in HOUSE_NAME_ALIASES:
         return HOUSE_NAME_ALIASES[(no, st)]
 
+    # 1c. Street is itself a property name (e.g. 'fairlawn' used as street)
+    for prop in ALL_PROPS:
+        prop_name = normalize(str(prop.get('name', '')))
+        if prop_name and prop_name == st:
+            return prop['id']
+
     # 2. Prefix fuzzy — census street may be truncated
     min_prefix = 8
     for prop_st, entries in prop_by_street.items():

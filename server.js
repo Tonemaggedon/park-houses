@@ -1468,7 +1468,7 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 });
 
 // GET /api/census/unresolved — people saved with no matched property
-app.get('/api/census/unresolved', requireAdmin, async (req, res) => {
+app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const r = await db.query(`
@@ -1504,7 +1504,7 @@ app.get('/api/census/unresolved', requireAdmin, async (req, res) => {
 });
 
 // POST /api/census/resolve/:id — assign an unresolved census entry to a property
-app.post('/api/census/resolve/:id', requireAdmin, async (req, res) => {
+app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const entryId = parseInt(req.params.id);

@@ -475,6 +475,7 @@
   </select>
   <button onclick="resetFilters()">Reset</button>
   <button id="censusToggleBtn" onclick="censusMode ? closeCensusMode() : openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
+  <button id="contribUnresolvedBtn" onclick="openUnresolvedPanel()" title="Review unresolved census people" style="display:none;background:none;border:1px solid #8a6a1a;color:#c8a040;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">🔍 Unresolved</button>
   <span class="info" id="countInfo">350 properties · click a marker to view its record</span>
 </div>
 <div id="censusBar" style="display:none;background:#1a3a2a;padding:5px 14px;flex-direction:row;align-items:center;gap:10px;font-size:0.75rem;color:#c8d8b8;font-family:Georgia,serif">
@@ -1969,6 +1970,12 @@ function updateUserUI() {
   // Show user-specific nav links
   const wlLink = document.getElementById('watchlistNavLink');
   if (wlLink) wlLink.style.display = currentUser ? '' : 'none';
+  // Show unresolved census button for contributors (admins see it in the admin bar)
+  const unresolvedBtn = document.getElementById('contribUnresolvedBtn');
+  if (unresolvedBtn) {
+    const isContrib = currentUser && currentUser.role === 'contributor';
+    unresolvedBtn.style.display = isContrib ? '' : 'none';
+  }
 }
 
 function openAuthModal(mode) {
