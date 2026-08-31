@@ -348,11 +348,13 @@ async function loadPeople() {
     // Store lookup globally for card display
     window._propNameLookup = propNameLookup;
 
-    // Check URL for ?person=id
+    // Check URL for ?person=id and ?property=id
     const params = new URLSearchParams(location.search);
+    if (params.get('property')) {
+      document.getElementById('propFilter').value = params.get('property');
+    }
+    applyFilters();
     if (params.get('person')) openProfile(parseInt(params.get('person')));
-
-    renderGrid(allPeople);
   } catch(e) {
     document.getElementById('loading').textContent = 'Error loading people: ' + e.message;
   }
