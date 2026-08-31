@@ -81,6 +81,30 @@ for p in ALL_PROPS:
     if ns:
         prop_by_street.setdefault(ns, []).append((no, pid))
 
+# House-name aliases: census uses property name as the "number" field
+# Format: (normalized_name, normalized_street) → prop_id
+HOUSE_NAME_ALIASES = {
+    ('elmhurst',       'cavendish road east'): 57,
+    ('overdale',       'cavendish road east'): 58,
+    # Kenilworth Road: KR1=no.1, KR2=no.3, KR3=no.5
+    ('? 1',            'kenilworth road'):      153,  # KR1
+    ('2 ? 1911',       'kenilworth road'):      155,  # KR2
+    # Fishpond Drive house names (no street numbers)
+    ('sunnyside',      'fishpond drive'):        390,
+    ('glenmaye',       'fishpond drive'):        391,
+    # Hermitage Walk
+    ('the hermitage',  'hermitage walk'):        392,
+    # Hope Drive HD1 (1911 Brampton family) — no street number in census
+    ('hd1',            'hope drive'):            351,  # = 1 Hope Drive
+    # Duke William Mount
+    ('fairlawn',       'duke william mount'):    393,
+    # Western Terrace uncertain entries
+    ('1&2',            'western terrace'):       340,  # linked to no.1
+    ('11 see smac email', 'western terrace'):    350,  # = no.11
+    # Lenton Avenue
+    ('?33 is so on 1911 census', 'lenton avenue'): 173,  # = no.33
+}
+
 def find_property_id(raw_no, raw_street):
     """Return property_id or None. Tries exact then prefix-fuzzy match."""
     no = normalize(str(raw_no)) if raw_no else ''
@@ -90,6 +114,10 @@ def find_property_id(raw_no, raw_street):
     # 1. Exact
     if (no, st) in prop_by_no_street:
         return prop_by_no_street[(no, st)]
+
+    # 1b. House-name alias (e.g. "Elmhurst" on Cavendish Road East)
+    if (no, st) in HOUSE_NAME_ALIASES:
+        return HOUSE_NAME_ALIASES[(no, st)]
 
     # 2. Prefix fuzzy — census street may be truncated
     min_prefix = 8
@@ -143,7 +171,7 @@ conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 
 stats = dict(people_matched=0, people_created=0,
-             census_inserted=0, census_skipped=0,
+             census_inserted=0, census_skipped=0, census_unresolved=0,
              no_address=0, rows_skipped=0)
 address_misses = set()
 unmatched_rows = []  # {year, name, no, street, age, relationship}
@@ -175,21 +203,32 @@ def find_or_create_person(first_name, last_name, born_year=None):
     stats['people_created'] += 1
     return cur.fetchone()[0]
 
-def insert_census(person_id, prop_id, year, relationship, age, occupation, source):
-    cur.execute(
-        "SELECT id FROM census_entries WHERE person_id=%s AND census_year=%s AND property_id=%s",
-        (person_id, year, prop_id)
-    )
+def insert_census(person_id, prop_id, year, relationship, age, occupation, source,
+                  unresolved_address=None):
+    # Duplicate check — property_id may be NULL so use IS NULL when needed
+    if prop_id is not None:
+        cur.execute(
+            "SELECT id FROM census_entries WHERE person_id=%s AND census_year=%s AND property_id=%s",
+            (person_id, year, prop_id)
+        )
+    else:
+        cur.execute(
+            """SELECT id FROM census_entries
+               WHERE person_id=%s AND census_year=%s AND property_id IS NULL
+               AND unresolved_address=%s""",
+            (person_id, year, unresolved_address)
+        )
     if cur.fetchone():
         stats['census_skipped'] += 1
         return
     cur.execute(
         """INSERT INTO census_entries
-           (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, source)
-           VALUES (%s,%s,%s,%s,%s,%s,%s)""",
-        (person_id, prop_id, year, relationship, age, occupation, source)
+           (person_id, property_id, census_year, relationship, age_at_census,
+            occupation_at_census, source, unresolved_address)
+           VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",
+        (person_id, prop_id, year, relationship, age, occupation, source, unresolved_address)
     )
-    stats['census_inserted'] += 1
+    stats['census_inserted' if prop_id else 'census_unresolved'] += 1
 
 # ── 1911 import ──────────────────────────────────────────────────────────────
 # Sheet layout (2 header rows then data):
@@ -240,25 +279,47 @@ def process_1911():
             SKIP_VALS = {'no entry','none','','-'}
             if house_no and str(house_no).lower() not in SKIP_VALS:
                 current_no = str(house_no).strip()
+            elif not current_no:
+                # Fallback 1: House Name (col 1) e.g. "Sunnyside", "The Hermitage"
+                house_name = row[1] if len(row) > 1 else None
+                if house_name and str(house_name).lower() not in SKIP_VALS:
+                    current_no = str(house_name).strip()
+                else:
+                    # Fallback 2: House ID (col 0) e.g. "HD1" → alias-matched in find_property_id
+                    house_id = row[0] if len(row) > 0 else None
+                    if house_id and str(house_id).lower() not in SKIP_VALS:
+                        candidate = str(house_id).strip()
+                        # Only use if it looks like a specific property code (letters+digit)
+                        import re as _re
+                        if _re.match(r'^[A-Za-z]{2,4}\d+$', candidate):
+                            current_no = candidate
             if street and str(street).lower() not in SKIP_VALS:
                 current_street = str(street).strip()
 
             prop_id = find_property_id(current_no, current_street)
+            relationship = rel_from_flags(row, 10)
+            if len(row) > 14 and row[14] and str(row[14]) not in ('1','None','0',''):
+                relationship = str(row[14])
+
             if not prop_id:
                 address_misses.add((str(current_no or ''), str(current_street or '')))
-                relationship = rel_from_flags(row, 10)
-                if len(row) > 14 and row[14] and str(row[14]) not in ('1','None','0',''):
-                    relationship = str(row[14])
                 unmatched_rows.append({'year': 1911,
                     'name': f"{forename} {surname}",
                     'no': current_no or '', 'street': current_street or '',
                     'age': clean_int(age), 'relationship': relationship})
-                stats['no_address'] += 1; continue
-
-            relationship = rel_from_flags(row, 10)
-            # col 14 "Other" may hold free text
-            if len(row) > 14 and row[14] and str(row[14]) not in ('1','None','0',''):
-                relationship = str(row[14])
+                # Save unresolved person to DB with property_id=NULL
+                if current_street:
+                    unres_addr = f"{current_no} {current_street}".strip() if current_no else current_street
+                    age_val2 = clean_int(age)
+                    person_id2 = find_or_create_person(str(forename), str(surname),
+                                                       (1911 - age_val2) if age_val2 else None)
+                    if person_id2:
+                        insert_census(person_id2, None, 1911, relationship, age_val2,
+                                      clean_str(occ), 'National Archives 1911 Census',
+                                      unresolved_address=unres_addr)
+                else:
+                    stats['no_address'] += 1
+                continue
 
             age_val = clean_int(age)
             born_year = (1911 - age_val) if age_val else None
@@ -331,14 +392,26 @@ def _process_1921_format_a(data_rows):
         if not forename or not surname: stats['rows_skipped'] += 1; continue
 
         prop_id = find_property_id(house_no, street)
+        born_year = clean_int(birth_year)
+        age_val_a = clean_int(age)
+        if not born_year and age_val_a: born_year = 1921 - age_val_a
+
         if not prop_id:
             address_misses.add((str(house_no or ''), str(street or '')))
             unmatched_rows.append({'year': 1921,
                 'name': f"{forename} {surname}",
                 'no': str(house_no or ''), 'street': str(street or ''),
-                'age': clean_int(row[5] if len(row) > 5 else None),
-                'relationship': clean_str(rel)})
-            stats['no_address'] += 1; continue
+                'age': age_val_a, 'relationship': clean_str(rel)})
+            if street:
+                unres_addr = f"{house_no} {street}".strip() if house_no else str(street)
+                person_id_a = find_or_create_person(str(forename), str(surname), born_year)
+                if person_id_a:
+                    insert_census(person_id_a, None, 1921, clean_str(rel), age_val_a,
+                                  clean_str(occ), 'National Archives 1921 Census',
+                                  unresolved_address=unres_addr)
+            else:
+                stats['no_address'] += 1
+            continue
 
         born_year = clean_int(birth_year)
         age_val   = clean_int(age)
@@ -380,19 +453,15 @@ def _process_1921_format_b(data_rows):
             current_street = str(street).strip()
         if house_no and str(house_no).lower() not in SKIP_VALS:
             current_no = str(house_no).strip()
+        elif not current_no:
+            # Fallback: use House Name (col 4) when NO is blank and no carry-forward
+            house_name_4 = row[4] if len(row) > 4 else None
+            if house_name_4 and str(house_name_4).lower() not in SKIP_VALS:
+                current_no = str(house_name_4).strip()
 
         prop_id = find_property_id(current_no, current_street)
-        if not prop_id:
-            address_misses.add((str(current_no or ''), str(current_street or '')))
-            # Capture relationship for the unmatched report
-            _rel_raw = row[13] if len(row) > 13 else None
-            _rel = str(_rel_raw).strip() if _rel_raw and str(_rel_raw) not in ('1','0','None','') else rel_from_flags(row, 13)
-            unmatched_rows.append({'year': 1921,
-                'name': f"{forename} {surname}",
-                'no': current_no or '', 'street': current_street or '',
-                'age': clean_int(age), 'relationship': _rel})
-            stats['no_address'] += 1; continue
 
+        # Relationship (needed for both matched and unmatched)
         # Relationship: col 13 often has text; cols 13-18 are flag cols
         rel_raw = row[13] if len(row) > 13 else None
         if rel_raw and str(rel_raw) not in ('1','0','None',''):
@@ -411,6 +480,21 @@ def _process_1921_format_b(data_rows):
         person_id = find_or_create_person(str(forename), str(surname), born_year)
         if not person_id: continue
 
+        if not prop_id:
+            address_misses.add((str(current_no or ''), str(current_street or '')))
+            unmatched_rows.append({'year': 1921,
+                'name': f"{forename} {surname}",
+                'no': current_no or '', 'street': current_street or '',
+                'age': age_val, 'relationship': relationship})
+            if current_street:
+                unres_addr = f"{current_no} {current_street}".strip() if current_no else current_street
+                insert_census(person_id, None, 1921, relationship, age_val, occ_val,
+                              'National Archives 1921 Census',
+                              unresolved_address=unres_addr)
+            else:
+                stats['no_address'] += 1
+            continue
+
         insert_census(person_id, prop_id, 1921, relationship,
                       age_val, occ_val, 'National Archives 1921 Census')
 
@@ -427,9 +511,10 @@ try:
     print(f"  People matched (existing):  {stats['people_matched']}")
     print(f"  People created (new):       {stats['people_created']}")
     print(f"  Census entries inserted:    {stats['census_inserted']}")
+    print(f"  Census entries unresolved:  {stats['census_unresolved']}  (saved, no property match)")
     print(f"  Census entries skipped:     {stats['census_skipped']}  (already existed)")
     print(f"  Rows skipped (no name):     {stats['rows_skipped']}")
-    print(f"  Addresses not matched:      {stats['no_address']}")
+    print(f"  Addresses not matched:      {stats['no_address']}  (no street — not saved)")
 
     if address_misses:
         print(f"\nUnique addresses not matched to a property ({len(address_misses)}):")

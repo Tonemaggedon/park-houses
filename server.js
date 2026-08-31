@@ -439,6 +439,7 @@ async function dbInit() {
       created_at TIMESTAMPTZ DEFAULT NOW(),
       UNIQUE(user_id, property_id)
     )`);
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS unresolved_address TEXT`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
@@ -1461,6 +1462,57 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
       `INSERT INTO census_unoccupied (property_id, census_year, notes) VALUES ($1,$2,$3)
        ON CONFLICT (property_id, census_year) DO UPDATE SET notes=EXCLUDED.notes`,
       [property_id, census_year, notes||null]
+    );
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/census/unresolved — people saved with no matched property
+app.get('/api/census/unresolved', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const r = await db.query(`
+      SELECT ce.id, ce.census_year, ce.unresolved_address, ce.relationship,
+             ce.age_at_census, ce.occupation_at_census, ce.source,
+             p.first_name, p.last_name, p.known_as, p.id AS person_id
+      FROM census_entries ce
+      JOIN people p ON p.id = ce.person_id
+      WHERE ce.property_id IS NULL
+      ORDER BY ce.unresolved_address, ce.census_year, p.last_name, p.first_name
+    `);
+    // Group by address + year for a tidier response
+    const grouped = {};
+    r.rows.forEach(row => {
+      const key = (row.unresolved_address || '(no address)') + '|' + row.census_year;
+      if (!grouped[key]) grouped[key] = {
+        address: row.unresolved_address,
+        year: row.census_year,
+        people: []
+      };
+      grouped[key].people.push({
+        entry_id: row.id,
+        person_id: row.person_id,
+        name: row.known_as || (row.first_name + ' ' + row.last_name),
+        relationship: row.relationship,
+        age: row.age_at_census,
+        occupation: row.occupation_at_census,
+        source: row.source
+      });
+    });
+    res.json(Object.values(grouped));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/census/resolve/:id — assign an unresolved census entry to a property
+app.post('/api/census/resolve/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const entryId = parseInt(req.params.id);
+    const { property_id } = req.body;
+    if (!property_id) return res.status(400).json({ error: 'property_id required' });
+    await db.query(
+      `UPDATE census_entries SET property_id=$1, unresolved_address=NULL WHERE id=$2 AND property_id IS NULL`,
+      [property_id, entryId]
     );
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
