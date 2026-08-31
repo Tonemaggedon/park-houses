@@ -1264,7 +1264,11 @@ app.get('/api/people', async (req, res) => {
              p.born_year, p.born_place, p.died_year, p.died_place,
              p.wikipedia_url, p.photo_url,
              (SELECT ARRAY_AGG(DISTINCT o.occupation) FROM occupations o WHERE o.person_id=p.id AND o.occupation IS NOT NULL) AS occupations,
-             (SELECT ARRAY_AGG(DISTINCT ce.property_id) FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL) AS property_ids,
+             (SELECT ARRAY_AGG(DISTINCT pid) FROM (
+               SELECT ce.property_id AS pid FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL
+               UNION
+               SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
+             ) all_props) AS property_ids,
              (SELECT ARRAY_AGG(DISTINCT ce.census_year) FROM census_entries ce WHERE ce.person_id=p.id AND ce.census_year IS NOT NULL) AS census_years
       FROM people p
     `;
@@ -1276,7 +1280,10 @@ app.get('/api/people', async (req, res) => {
     }
     if (property) {
       params.push(parseInt(property));
-      wheres.push(`EXISTS (SELECT 1 FROM census_entries cx WHERE cx.person_id=p.id AND cx.property_id=$${params.length})`);
+      wheres.push(`(
+        EXISTS (SELECT 1 FROM census_entries cx WHERE cx.person_id=p.id AND cx.property_id=$${params.length})
+        OR EXISTS (SELECT 1 FROM property_residents rx WHERE rx.person_id=p.id AND rx.property_id=$${params.length})
+      )`);
     }
     if (q) {
       params.push(`%${q.toLowerCase()}%`);
