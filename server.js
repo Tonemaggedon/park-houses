@@ -1473,17 +1473,12 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   try {
     const r = await db.query(`
       SELECT ce.id, ce.census_year, ce.unresolved_address, ce.relationship,
-             CASE WHEN ce.age_at_census::text = 'NaN' THEN NULL
-                  ELSE ce.age_at_census END AS age_at_census,
-             ce.occupation_at_census, ce.source,
+             ce.age_at_census, ce.occupation_at_census, ce.source,
              p.first_name, p.last_name, p.known_as, p.id AS person_id
-      FROM (
-        SELECT * FROM census_entries
-        WHERE property_id IS NULL
-          AND person_id IS NOT NULL
-          AND person_id::text != 'NaN'
-      ) ce
+      FROM census_entries ce
       JOIN people p ON p.id = ce.person_id
+      WHERE ce.property_id IS NULL
+        AND ce.person_id IS NOT NULL
       ORDER BY ce.unresolved_address, ce.census_year, p.last_name, p.first_name
     `);
     // Group by address + year for a tidier response
@@ -1506,7 +1501,7 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
       });
     });
     res.json(Object.values(grouped));
-  } catch(e) { res.status(500).json({ error: e.message }); }
+  } catch(e) { console.error('GET /api/census/unresolved error:', e.stack || e); res.status(500).json({ error: e.message }); }
 });
 
 // POST /api/census/resolve/:id — assign an unresolved census entry to a property
