@@ -221,7 +221,7 @@
 
 <div class="toolbar">
   <h2>People of The Park</h2>
-  <input type="text" id="searchBox" placeholder="Search by name…" oninput="applyFilters()">
+  <input type="text" id="searchBox" placeholder="Search by name, address or place…" oninput="applyFilters()">
   <button id="addPersonBtn" onclick="openAddPerson()" style="display:none;background:#4a7c5a;border:1px solid #3a6a4a;color:#e8dfc8;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif">+ Add Person</button>
   <select id="occFilter" onchange="applyFilters()">
     <option value="">All occupations</option>
@@ -257,7 +257,6 @@
 let allPeople = [];
 let currentPersonId = null;
 let canUploadPhotos = false;
-fetch('/api/me').then(r=>r.json()).then(d=>{ canUploadPhotos = !!(d.isAdmin || d.user); }).catch(()=>{});
 
 // ── Utilities ────────────────────────────────────────────────────────────────
 function initials(p) {
@@ -364,7 +363,13 @@ function applyFilters() {
   const occ = document.getElementById('occFilter').value.toLowerCase();
   const prop = parseInt(document.getElementById('propFilter').value) || null;
   let list = allPeople;
-  if (q) list = list.filter(p => displayName(p).toLowerCase().includes(q) || (p.known_as||'').toLowerCase().includes(q));
+  if (q) list = list.filter(p =>
+    displayName(p).toLowerCase().includes(q) ||
+    (p.known_as||'').toLowerCase().includes(q) ||
+    (p.born_place||'').toLowerCase().includes(q) ||
+    (p.died_place||'').toLowerCase().includes(q) ||
+    (p.property_names||[]).some(n => n.toLowerCase().includes(q))
+  );
   if (occ) list = list.filter(p => (p.occupations||[]).some(o => o.toLowerCase().includes(occ)));
   if (prop) list = list.filter(p => (p.property_ids||[]).includes(prop));
   renderGrid(list);
@@ -557,9 +562,10 @@ function renderProfile(p) {
   }
 
   // Census entries
-  if ((p.census_entries||[]).length) {
+  const canEditCensus = _me && (_me.isAdmin || (_me.user && (_me.user.role === 'contributor' || _me.user.role === 'admin')));
+  if ((p.census_entries||[]).length || canEditCensus) {
     const byYear = {};
-    p.census_entries.forEach(ce => {
+    (p.census_entries||[]).forEach(ce => {
       if (!byYear[ce.census_year]) byYear[ce.census_year] = [];
       byYear[ce.census_year].push(ce);
     });
@@ -572,7 +578,36 @@ function renderProfile(p) {
           ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ce.address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#2a1a4a" title="Address outside The Park">${ce.address}</span>` : ''}
         </div>`).join('')}
       </div>`).join('');
-    html.push(`<div class="pane-section"><h3>Census Records</h3>${rows}</div>`);
+    const addCensusBtn = canEditCensus ? `<button onclick="showAddCensus(${p.id})" style="background:none;border:1px solid #8a6a2a;color:#8a6a2a;border-radius:4px;padding:2px 10px;font-size:0.72rem;cursor:pointer;margin-left:auto">+ Add</button>` : '';
+    const yearOpts = [1841,1851,1861,1871,1881,1891,1901,1911].map(y=>`<option value="${y}">${y}</option>`).join('');
+    const roleOpts = ['Head','Wife','Husband','Son','Daughter','Boarder','Lodger','Servant','Visitor','Scholar','Other'].map(r=>`<option value="${r}">${r}</option>`).join('');
+    html.push(`<div class="pane-section" id="census-section-${p.id}">
+      <h3 style="display:flex;align-items:center">Census Records ${addCensusBtn}</h3>
+      <div id="census-list-${p.id}">
+        ${rows || `<p class="section-empty">No census records.</p>`}
+      </div>
+      ${canEditCensus ? `<div id="census-form-${p.id}" style="display:none;margin-top:10px;background:#f8f4ec;border-radius:6px;padding:12px;border:1px solid #d8c890">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div><label style="font-size:0.72rem;color:#8a7a5a">Census year *</label><br>
+            <select id="cf-year-${p.id}" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem"><option value="">— select —</option>${yearOpts}</select></div>
+          <div><label style="font-size:0.72rem;color:#8a7a5a">Role in household</label><br>
+            <select id="cf-role-${p.id}" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem"><option value="">— select —</option>${roleOpts}</select></div>
+          <div><label style="font-size:0.72rem;color:#8a7a5a">Age at census</label><br>
+            <input id="cf-age-${p.id}" type="number" min="0" max="120" placeholder="e.g. 34" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;box-sizing:border-box"></div>
+          <div><label style="font-size:0.72rem;color:#8a7a5a">Occupation at census</label><br>
+            <input id="cf-occ-${p.id}" placeholder="e.g. Lace merchant" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;box-sizing:border-box"></div>
+        </div>
+        <div style="margin-bottom:8px"><label style="font-size:0.72rem;color:#8a7a5a">Property on The Park (type to search) or free-text address</label><br>
+          <input id="cf-addr-${p.id}" placeholder="e.g. The Limes, or 14 Cavendish Road East" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box">
+          <div id="cf-prop-results-${p.id}" style="display:none;border:1px solid #c8b888;border-radius:4px;background:#fff;max-height:120px;overflow-y:auto;margin-top:2px;font-size:0.8rem"></div></div>
+        <input id="cf-source-${p.id}" placeholder="Source (optional — e.g. Ancestry, FindMyPast)" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;margin-bottom:8px;box-sizing:border-box">
+        <div style="display:flex;gap:8px">
+          <button onclick="submitCensus(${p.id})" style="background:#4a7c5a;color:white;border:none;border-radius:4px;padding:5px 14px;font-size:0.8rem;cursor:pointer;font-family:Georgia,serif">Save</button>
+          <button onclick="document.getElementById('census-form-${p.id}').style.display='none'" style="background:none;border:1px solid #c8b888;border-radius:4px;padding:5px 12px;font-size:0.8rem;cursor:pointer;font-family:Georgia,serif;color:#6a5a3a">Cancel</button>
+          <span id="cf-err-${p.id}" style="font-size:0.78rem;color:#c04040;align-self:center"></span>
+        </div>
+      </div>` : ''}
+    </div>`);
   }
 
   // Related people
@@ -834,6 +869,71 @@ async function deleteRelationship(relId, personId) {
   } catch(e) { alert('Error: ' + e.message); }
 }
 
+function showAddCensus(personId) {
+  const form = document.getElementById(`census-form-${personId}`);
+  if (!form) return;
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  if (form.style.display !== 'none') {
+    // Wire up property search autocomplete
+    const addrInput = document.getElementById(`cf-addr-${personId}`);
+    const results = document.getElementById(`cf-prop-results-${personId}`);
+    addrInput._propId = null;
+    addrInput.oninput = function() {
+      addrInput._propId = null;
+      const q = this.value.toLowerCase().trim();
+      if (!q || !window._propNameLookup) { results.style.display = 'none'; return; }
+      const matches = Object.entries(window._propNameLookup)
+        .filter(([,name]) => name.toLowerCase().includes(q))
+        .slice(0, 8);
+      if (!matches.length) { results.style.display = 'none'; return; }
+      results.style.display = 'block';
+      results.innerHTML = matches.map(([id, name]) =>
+        `<div style="padding:5px 10px;cursor:pointer" onmouseover="this.style.background='#f0e8d0'" onmouseout="this.style.background=''" onclick="
+          document.getElementById('cf-addr-${personId}').value='${name.replace(/'/g,"\\'")}';
+          document.getElementById('cf-addr-${personId}')._propId=${id};
+          document.getElementById('cf-prop-results-${personId}').style.display='none'
+        ">${name}</div>`
+      ).join('');
+    };
+  }
+}
+
+async function submitCensus(personId) {
+  const get = id => document.getElementById(id);
+  const year = get(`cf-year-${personId}`).value;
+  if (!year) { get(`cf-err-${personId}`).textContent = 'Census year is required'; return; }
+  const role = get(`cf-role-${personId}`).value;
+  const age = get(`cf-age-${personId}`).value;
+  const occ = get(`cf-occ-${personId}`).value.trim();
+  const addrEl = get(`cf-addr-${personId}`);
+  const source = get(`cf-source-${personId}`).value.trim();
+  const propId = addrEl._propId ? parseInt(addrEl._propId) : null;
+  const address = (!propId && addrEl.value.trim()) ? addrEl.value.trim() : null;
+  get(`cf-err-${personId}`).textContent = '';
+  try {
+    const res = await fetch(`/api/person/${personId}/census`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        census_year: parseInt(year),
+        property_id: propId,
+        address,
+        relationship: role || null,
+        age_at_census: age ? parseInt(age) : null,
+        occupation_at_census: occ || null,
+        source: source || null
+      })
+    }).then(r => r.json());
+    if (res.ok) {
+      get(`cf-err-${personId}`).textContent = '';
+      get(`census-form-${personId}`).style.display = 'none';
+      // Refresh the profile to show the new entry
+      openProfile(personId);
+    } else {
+      get(`cf-err-${personId}`).textContent = '✗ ' + (res.error || 'Error saving');
+    }
+  } catch(e) { get(`cf-err-${personId}`).textContent = '✗ ' + e.message; }
+}
+
 async function loadMediaGallery(personId) {
   try {
     const media = await fetch(`/api/person/${personId}/media`).then(r=>r.json());
@@ -943,7 +1043,10 @@ loadPeople();
 let _me = null;
 fetch('/api/me').then(r=>r.json()).then(me=>{
   _me = me;
+  canUploadPhotos = !!(me.isAdmin || me.user);
   if(me.isAdmin||(me.user&&(me.user.role==='contributor'||me.user.role==='admin'))) document.getElementById('addPersonBtn').style.display='';
+  // Re-render open profile now that permissions are known (fixes race condition)
+  if (currentPersonId) openProfile(currentPersonId);
 }).catch(()=>{});
 
 function openAddPerson() {

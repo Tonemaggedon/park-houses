@@ -1958,7 +1958,7 @@ app.post('/api/person/:id/occupation', requireContributor, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post('/api/person/:id/census', requireAdmin, async (req, res) => {
+app.post('/api/person/:id/census', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const { property_id, address, census_year, relationship, age_at_census, occupation_at_census, source } = req.body;
