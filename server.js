@@ -1473,11 +1473,15 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   try {
     const r = await db.query(`
       SELECT ce.id, ce.census_year, ce.unresolved_address, ce.relationship,
-             ce.age_at_census, ce.occupation_at_census, ce.source,
+             CASE WHEN ce.age_at_census::text = 'NaN' THEN NULL
+                  ELSE ce.age_at_census END AS age_at_census,
+             ce.occupation_at_census, ce.source,
              p.first_name, p.last_name, p.known_as, p.id AS person_id
       FROM census_entries ce
       JOIN people p ON p.id = ce.person_id
       WHERE ce.property_id IS NULL
+        AND ce.person_id IS NOT NULL
+        AND ce.person_id::text != 'NaN'
       ORDER BY ce.unresolved_address, ce.census_year, p.last_name, p.first_name
     `);
     // Group by address + year for a tidier response
