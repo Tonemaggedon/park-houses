@@ -440,6 +440,8 @@ async function dbInit() {
       UNIQUE(user_id, property_id)
     )`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS unresolved_address TEXT`);
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_house_id TEXT`);
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_household_num INTEGER`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
@@ -1358,10 +1360,11 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   try {
     ceRows = (await db.query(`
       SELECT id, census_year, unresolved_address, relationship,
-             age_at_census, occupation_at_census, source, person_id
+             age_at_census, occupation_at_census, source, person_id,
+             census_house_id, census_household_num
       FROM census_entries
       WHERE property_id IS NULL AND person_id IS NOT NULL
-      ORDER BY unresolved_address, census_year
+      ORDER BY census_year, census_house_id NULLS LAST, census_household_num NULLS LAST, unresolved_address
     `)).rows;
   } catch(e) { return res.status(500).json({ error: e.message }); }
 
@@ -1384,8 +1387,30 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   ceRows.forEach(ce => {
     const p = peopleMap[ce.person_id];
     if (!p) return;
-    const key = (ce.unresolved_address || '') + '|' + ce.census_year;
-    if (!grouped[key]) grouped[key] = { address: ce.unresolved_address, year: ce.census_year, people: [] };
+
+    let key, displayAddress;
+    if (ce.census_year === 1911 && ce.census_house_id) {
+      // 1911: group by House ID (PC7, PC8, etc.)
+      key = `hid:${ce.census_house_id}|${ce.census_year}`;
+      displayAddress = ce.census_house_id + (ce.unresolved_address ? ' — ' + ce.unresolved_address : '');
+    } else if (ce.census_year === 1921 && ce.census_household_num != null) {
+      // 1921: group by street (strip leading number) + household number
+      const street = (ce.unresolved_address || '').replace(/^\d+\s+/i, '');
+      key = `${street.toLowerCase()}|hh:${ce.census_household_num}|${ce.census_year}`;
+      displayAddress = street + ' — Household ' + ce.census_household_num;
+    } else {
+      // Fallback: existing behaviour (group by full unresolved_address + year)
+      key = (ce.unresolved_address || '') + '|' + ce.census_year;
+      displayAddress = ce.unresolved_address;
+    }
+
+    if (!grouped[key]) grouped[key] = {
+      address: displayAddress,
+      year: ce.census_year,
+      house_id: ce.census_house_id,
+      household_num: ce.census_household_num,
+      people: []
+    };
     grouped[key].people.push({
       entry_id: ce.id, person_id: ce.person_id,
       name: p.known_as || (p.first_name + ' ' + p.last_name),
@@ -1393,8 +1418,15 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
       occupation: ce.occupation_at_census, source: ce.source
     });
   });
+  // Sort people within each group: Head first, then by relationship, then by name
+  const relOrder = ['head','wife','husband','son','daughter','brother','sister','visitor','boarder','lodger','servant','cook'];
   Object.values(grouped).forEach(g =>
-    g.people.sort((a, b) => (peopleMap[a.person_id]?.last_name || '').localeCompare(peopleMap[b.person_id]?.last_name || ''))
+    g.people.sort((a, b) => {
+      const ra = relOrder.indexOf((a.relationship||'').toLowerCase());
+      const rb = relOrder.indexOf((b.relationship||'').toLowerCase());
+      if (ra !== rb) return (ra < 0 ? 99 : ra) - (rb < 0 ? 99 : rb);
+      return (a.name||'').localeCompare(b.name||'');
+    })
   );
   res.json(Object.values(grouped));
 });
