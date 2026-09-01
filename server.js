@@ -1469,6 +1469,9 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 
 // GET /api/census/unresolved — people saved with no matched property
 app.get('/api/census/unresolved', requireContributor, async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  // DIAGNOSTIC: static response — if this still shows the NaN error, problem is in middleware
+  return res.json({ diagnostic: true, version: 'v4-static' });
   if (!db) return res.status(503).json({ error: 'DB not available' });
 
   // Query 1: unresolved census entries
