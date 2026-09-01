@@ -28,6 +28,7 @@
   .toolbar {
     background: #2c4a38; padding: 14px 24px;
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    position: relative; z-index: 101;
   }
   .toolbar h2 { color: #e8dfc8; font-size: 1rem; font-weight: normal; margin-right: 8px; }
   .toolbar input, .toolbar select {
@@ -81,9 +82,9 @@
   #personOverlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.4); z-index: 500;
-    overflow-y: auto;
+    overflow-y: auto; pointer-events: none;
   }
-  #personOverlay.visible { display: block; }
+  #personOverlay.visible { display: block; pointer-events: auto; }
   #personPane {
     background: #faf8f2; min-height: 100vh;
     max-width: 780px; margin: 0 auto;
