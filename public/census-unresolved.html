@@ -46,7 +46,9 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   background: white; border: 1px solid #d8cead; border-radius: 8px;
   margin-bottom: 16px; overflow: hidden;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: opacity 0.4s;
 }
+.group-card.done { opacity: 0.35; }
 .group-head {
   background: #f0ead8; padding: 10px 16px;
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -54,19 +56,12 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
 }
 .group-addr { font-weight: bold; color: #2a1a00; font-size: 0.97rem; flex: 1; min-width: 160px; }
 .group-meta { font-size: 0.77rem; color: #8a7a5a; white-space: nowrap; }
-.assign-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.assign-row select {
-  font-size: 0.78rem; padding: 4px 8px; border: 1px solid #c8b888;
-  border-radius: 4px; font-family: Georgia, serif; max-width: 280px;
-  background: white; color: #2c2416;
-}
-.assign-btn {
-  font-size: 0.78rem; padding: 4px 12px; background: #2e7d4f; color: white;
+.assign-all-btn {
+  font-size: 0.75rem; padding: 3px 10px; background: #4a6a8a; color: white;
   border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, serif;
   white-space: nowrap;
 }
-.assign-btn:hover { background: #256040; }
-.assign-btn:disabled { background: #888; cursor: default; }
+.assign-all-btn:hover { background: #3a5a7a; }
 
 .people-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
 .people-table th {
@@ -74,14 +69,21 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   font-weight: 600; color: #6a5a3a; font-size: 0.76rem;
   border-bottom: 1px solid #e8dfc8; letter-spacing: 0.03em;
 }
-.people-table td { padding: 7px 14px; border-bottom: 1px solid #f0e8d8; color: #3a2a0a; }
+.people-table td { padding: 7px 14px; border-bottom: 1px solid #f0e8d8; color: #3a2a0a; vertical-align: middle; }
 .people-table tr:last-child td { border-bottom: none; }
 .people-table tr:hover td { background: #fdf8f0; }
+.people-table tr.assigned td { opacity: 0.45; text-decoration: line-through; text-decoration-color: #888; }
+.people-table tr.assigned td:last-child { text-decoration: none; }
 .person-link { color: #1a5a8a; text-decoration: none; }
 .person-link:hover { text-decoration: underline; }
 
-.done-card { opacity: 0.4; pointer-events: none; }
-.done-label { font-size: 0.78rem; color: #4a7a4a; font-style: italic; }
+.row-assign-btn {
+  font-size: 0.73rem; padding: 3px 9px; background: #2e7d4f; color: white;
+  border: none; border-radius: 3px; cursor: pointer; font-family: Georgia, serif;
+  white-space: nowrap;
+}
+.row-assign-btn:hover { background: #256040; }
+.row-assigned-label { font-size: 0.72rem; color: #2e7d4f; }
 
 .empty { text-align: center; padding: 48px 24px; color: #6a7a6a; font-size: 0.95rem; }
 .empty big { display: block; font-size: 2.5rem; margin-bottom: 12px; }
@@ -104,6 +106,37 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   background: #2e7d4f; color: white; font-size: 0.72rem; font-family: Arial, sans-serif;
   padding: 2px 7px; border-radius: 10px; font-weight: bold;
 }
+
+/* ── Assign popup ── */
+#assignOverlay {
+  display: none; position: fixed; inset: 0; z-index: 900;
+  background: rgba(0,0,0,0.3);
+}
+#assignPop {
+  display: none; position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white; border: 2px solid #c8b888; border-radius: 10px;
+  padding: 22px 24px; z-index: 901; min-width: 340px; max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+#assignPop h3 { font-size: 0.9rem; color: #2a1a00; margin-bottom: 14px; font-weight: bold; line-height: 1.4; }
+#popSel {
+  width: 100%; padding: 8px 10px; border: 1px solid #c8b888; border-radius: 4px;
+  font-family: Georgia, serif; font-size: 0.85rem; margin-bottom: 14px;
+  background: white; color: #2c2416;
+}
+.pop-btns { display: flex; gap: 8px; justify-content: flex-end; }
+.pop-cancel {
+  padding: 6px 16px; background: white; border: 1px solid #c8b888;
+  border-radius: 4px; cursor: pointer; font-family: Georgia, serif; font-size: 0.82rem;
+}
+.pop-confirm {
+  padding: 6px 18px; background: #2e7d4f; color: white;
+  border: none; border-radius: 4px; cursor: pointer;
+  font-family: Georgia, serif; font-size: 0.82rem;
+}
+.pop-confirm:hover { background: #256040; }
+.pop-confirm:disabled { background: #888; cursor: default; }
 </style>
 </head>
 <body>
@@ -132,18 +165,33 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   <div class="loading">Loading…</div>
 </div>
 
+<!-- Shared assign popup -->
+<div id="assignOverlay" onclick="closeAssignPop()"></div>
+<div id="assignPop">
+  <h3 id="popTitle"></h3>
+  <select id="popSel">
+    <option value="">— select property —</option>
+  </select>
+  <div class="pop-btns">
+    <button class="pop-cancel" onclick="closeAssignPop()">Cancel</button>
+    <button class="pop-confirm" id="popConfirm" onclick="confirmAssign()">Assign</button>
+  </div>
+</div>
+
 <script>
 let allGroups = [];
 let allProps = [];
+let canEdit = false;
+
+// Current pending assignment: { type:'single', entryId, rowEl } or { type:'all', groupIdx, cardEl }
+let pendingAssign = null;
 
 async function init() {
-  // Check access
   const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
-  const canEdit = me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin') && me.user.approved);
+  canEdit = me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin') && me.user.approved);
 
   const main = document.getElementById('main');
 
-  // Fetch both in parallel
   const [groupsRes, propsRes] = await Promise.all([
     fetch('/api/census/unresolved'),
     fetch('/api/all-props')
@@ -166,14 +214,23 @@ async function init() {
   allProps = (await propsRes.json().catch(() => [])).filter(p => !p.census_only);
   allProps.sort((a, b) => (a.street || '').localeCompare(b.street || '') || (a.no || '').localeCompare(b.no || ''));
 
+  // Populate popup select once
+  const popSel = document.getElementById('popSel');
+  allProps.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p.id;
+    o.textContent = (p.no ? p.no + ' ' : '') + (p.street || p.name || 'Property ' + p.id);
+    popSel.appendChild(o);
+  });
+
   const totalPeople = allGroups.reduce((s, g) => s + g.people.length, 0);
   document.getElementById('summary').textContent =
     `${allGroups.length} address group${allGroups.length !== 1 ? 's' : ''} · ${totalPeople} people`;
 
-  render(allGroups, canEdit);
+  render(allGroups);
 }
 
-function render(groups, canEdit) {
+function render(groups) {
   const main = document.getElementById('main');
 
   if (!groups.length) {
@@ -181,45 +238,42 @@ function render(groups, canEdit) {
     return;
   }
 
-  const propOpts = allProps
-    .map(p => `<option value="${p.id}">${p.no ? p.no + ' ' : ''}${p.street || p.name || 'Property ' + p.id}</option>`)
-    .join('');
-
   let html = `<div class="filter-bar">
     <label>Filter:</label>
     <input type="text" id="filterInput" placeholder="Search by address or name…" oninput="filterGroups()">
     <span id="filterCount" class="count-badge">${groups.length}</span>
   </div>`;
 
-  html += `<div id="groupList">` + groups.map((g, i) => {
-    const key = `g${i}_${encodeURIComponent(g.address || '')}`;
-    const assignHtml = canEdit ? `
-      <div class="assign-row">
-        <select id="sel_${key}">
-          <option value="">— assign to property —</option>
-          ${propOpts}
-        </select>
-        <button class="assign-btn" onclick="assignGroup(${i}, '${key}', this)">Assign all</button>
-      </div>` : '';
+  html += `<div id="groupList">` + groups.map((g, gi) => {
+    const assignAllBtn = canEdit
+      ? `<button class="assign-all-btn" onclick="openAssignAllPop(${gi}, this)">Assign all →</button>`
+      : '';
 
-    const rows = g.people.map(p => `
-      <tr data-entry="${p.entry_id}">
+    const rows = g.people.map((p, pi) => {
+      const assignCell = canEdit
+        ? `<td><button class="row-assign-btn" onclick="openAssignPop(${gi}, ${pi}, this)">Assign →</button></td>`
+        : '';
+      return `<tr data-gi="${gi}" data-pi="${pi}">
         <td><a class="person-link" href="/person/${p.person_id}" target="_blank">${esc(p.name)}</a></td>
         <td>${esc(p.relationship) || '—'}</td>
         <td>${p.age != null ? p.age : '—'}</td>
         <td>${esc(p.occupation) || '—'}</td>
         <td style="font-size:0.75rem;color:#8a7a5a">${esc(p.source) || ''}</td>
-      </tr>`).join('');
+        ${assignCell}
+      </tr>`;
+    }).join('');
 
-    return `<div class="group-card" data-addr="${esc(g.address || '')}" data-names="${g.people.map(p=>p.name).join(' ').toLowerCase()}">
+    const assignTh = canEdit ? `<th></th>` : '';
+
+    return `<div class="group-card" id="card_${gi}" data-addr="${esc(g.address || '')}" data-names="${g.people.map(p=>p.name).join(' ').toLowerCase()}">
       <div class="group-head">
         <span class="group-addr">${esc(g.address) || '<em style="color:#8a7a5a">(no address recorded)</em>'}</span>
         <span class="group-meta">${g.year} census &middot; ${g.people.length} person${g.people.length !== 1 ? 's' : ''}</span>
-        ${assignHtml}
+        ${assignAllBtn}
       </div>
       <table class="people-table">
         <thead><tr>
-          <th>Name</th><th>Relationship</th><th>Age</th><th>Occupation</th><th>Source</th>
+          <th>Name</th><th>Relationship</th><th>Age</th><th>Occupation</th><th>Source</th>${assignTh}
         </tr></thead>
         <tbody>${rows}</tbody>
       </table>
@@ -228,6 +282,113 @@ function render(groups, canEdit) {
 
   main.innerHTML = html;
 }
+
+// ── Popup open / close ────────────────────────────────────────────────────────
+
+function openAssignPop(gi, pi, btn) {
+  const person = allGroups[gi].people[pi];
+  pendingAssign = { type: 'single', gi, pi, entryId: person.entry_id, btn };
+  document.getElementById('popTitle').textContent = `Assign ${person.name} to property:`;
+  document.getElementById('popSel').value = '';
+  showPop();
+}
+
+function openAssignAllPop(gi, btn) {
+  const g = allGroups[gi];
+  const unassigned = g.people.filter(p => !p._assigned);
+  if (!unassigned.length) { alert('All people in this group are already assigned.'); return; }
+  pendingAssign = { type: 'all', gi, btn };
+  document.getElementById('popTitle').textContent =
+    `Assign all ${unassigned.length} unassigned people at "${g.address || '(no address)'}" to:`;
+  document.getElementById('popSel').value = '';
+  showPop();
+}
+
+function showPop() {
+  document.getElementById('assignOverlay').style.display = '';
+  document.getElementById('assignPop').style.display = '';
+  document.getElementById('popConfirm').disabled = false;
+  document.getElementById('popConfirm').textContent = 'Assign';
+  document.getElementById('popSel').focus();
+}
+
+function closeAssignPop() {
+  document.getElementById('assignOverlay').style.display = 'none';
+  document.getElementById('assignPop').style.display = 'none';
+  pendingAssign = null;
+}
+
+// ── Confirm assignment ────────────────────────────────────────────────────────
+
+async function confirmAssign() {
+  const propId = parseInt(document.getElementById('popSel').value);
+  if (!propId) { alert('Please select a property first.'); return; }
+
+  const confirmBtn = document.getElementById('popConfirm');
+  confirmBtn.disabled = true;
+  confirmBtn.textContent = 'Saving…';
+
+  if (pendingAssign.type === 'single') {
+    const { gi, pi, entryId } = pendingAssign;
+    const ok = await resolveEntry(entryId, propId);
+    if (ok) {
+      allGroups[gi].people[pi]._assigned = true;
+      markRowAssigned(gi, pi);
+      checkGroupDone(gi);
+    } else {
+      alert('Failed to save. Please try again.');
+    }
+  } else {
+    // Assign all unassigned in group
+    const { gi } = pendingAssign;
+    const group = allGroups[gi];
+    let anyFail = false;
+    for (let pi = 0; pi < group.people.length; pi++) {
+      const p = group.people[pi];
+      if (p._assigned) continue;
+      const ok = await resolveEntry(p.entry_id, propId);
+      if (ok) {
+        p._assigned = true;
+        markRowAssigned(gi, pi);
+      } else {
+        anyFail = true;
+      }
+    }
+    checkGroupDone(gi);
+    if (anyFail) alert('Some entries failed to save.');
+  }
+
+  closeAssignPop();
+}
+
+async function resolveEntry(entryId, propId) {
+  try {
+    const r = await fetch('/api/census/resolve/' + entryId, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ property_id: propId })
+    });
+    return r.ok;
+  } catch (_) { return false; }
+}
+
+function markRowAssigned(gi, pi) {
+  const row = document.querySelector(`#groupList tr[data-gi="${gi}"][data-pi="${pi}"]`);
+  if (!row) return;
+  row.classList.add('assigned');
+  const lastCell = row.cells[row.cells.length - 1];
+  lastCell.innerHTML = '<span class="row-assigned-label">✓ Assigned</span>';
+}
+
+function checkGroupDone(gi) {
+  const group = allGroups[gi];
+  if (group.people.every(p => p._assigned)) {
+    const card = document.getElementById('card_' + gi);
+    if (card) card.classList.add('done');
+  }
+}
+
+// ── Filter ────────────────────────────────────────────────────────────────────
 
 function filterGroups() {
   const q = document.getElementById('filterInput').value.toLowerCase();
@@ -240,40 +401,6 @@ function filterGroups() {
   });
   const badge = document.getElementById('filterCount');
   if (badge) badge.textContent = visible;
-}
-
-async function assignGroup(groupIdx, key, btn) {
-  const sel = document.getElementById('sel_' + key);
-  const propId = parseInt(sel.value);
-  if (!propId) { alert('Please choose a property first.'); return; }
-
-  const group = allGroups[groupIdx];
-  const ids = group.people.map(p => p.entry_id);
-
-  btn.disabled = true;
-  btn.textContent = 'Saving…';
-
-  let ok = 0, fail = 0;
-  for (const id of ids) {
-    try {
-      const r = await fetch('/api/census/resolve/' + id, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ property_id: propId })
-      });
-      if (r.ok) ok++; else fail++;
-    } catch (_) { fail++; }
-  }
-
-  if (fail === 0) {
-    const card = btn.closest('.group-card');
-    card.classList.add('done-card');
-    btn.textContent = `✓ Assigned ${ok}`;
-    btn.style.background = '#4a6a4a';
-  } else {
-    btn.disabled = false;
-    btn.textContent = `${ok} ok, ${fail} failed — retry?`;
-  }
 }
 
 function esc(s) {
