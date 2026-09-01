@@ -1270,7 +1270,8 @@ app.get('/api/people', async (req, res) => {
                UNION
                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
              ) all_props) AS property_ids,
-             (SELECT ARRAY_AGG(DISTINCT ce.census_year) FROM census_entries ce WHERE ce.person_id=p.id AND ce.census_year IS NOT NULL) AS census_years
+             (SELECT ARRAY_AGG(DISTINCT ce.census_year) FROM census_entries ce WHERE ce.person_id=p.id AND ce.census_year IS NOT NULL) AS census_years,
+             EXISTS(SELECT 1 FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NULL) AS has_unresolved_census
       FROM people p
     `;
     const params = [];
@@ -1645,37 +1646,64 @@ app.post('/api/admin/deduplicate-relationships', requireAdmin, async (req, res) 
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-// ── Admin: merge two people (keep target, reassign all data from source) ──────
-app.post('/api/admin/merge-people', requireAdmin, async (req, res) => {
+// ── Merge two people (contributors+): keep one, absorb all data from the other ──
+app.post('/api/admin/merge-people', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const { keep_id, delete_id } = req.body;
   if (!keep_id || !delete_id) return res.status(400).json({ error: 'keep_id and delete_id required' });
   const keepId = parseInt(keep_id), deleteId = parseInt(delete_id);
+  if (keepId === deleteId) return res.status(400).json({ error: 'Cannot merge a person with themselves' });
   const client = await db.connect();
   try {
     await client.query('BEGIN');
-    // Reassign census entries
-    await client.query('UPDATE census_entries SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
-    // Reassign occupations
-    await client.query('UPDATE occupations SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
-    // Reassign relationships — delete any that would conflict first, then update
+
+    // Fill biographical gaps on the kept person from the deleted person
+    await client.query(`
+      UPDATE people SET
+        known_as       = COALESCE(known_as,       (SELECT known_as       FROM people WHERE id=$2)),
+        born_date      = COALESCE(born_date,      (SELECT born_date      FROM people WHERE id=$2)),
+        born_year      = COALESCE(born_year,      (SELECT born_year      FROM people WHERE id=$2)),
+        born_place     = COALESCE(born_place,     (SELECT born_place     FROM people WHERE id=$2)),
+        died_date      = COALESCE(died_date,      (SELECT died_date      FROM people WHERE id=$2)),
+        died_year      = COALESCE(died_year,      (SELECT died_year      FROM people WHERE id=$2)),
+        died_place     = COALESCE(died_place,     (SELECT died_place     FROM people WHERE id=$2)),
+        photo_url      = COALESCE(photo_url,      (SELECT photo_url      FROM people WHERE id=$2)),
+        wikipedia_url  = COALESCE(wikipedia_url,  (SELECT wikipedia_url  FROM people WHERE id=$2)),
+        grave_location = COALESCE(grave_location, (SELECT grave_location FROM people WHERE id=$2)),
+        grave_number   = COALESCE(grave_number,   (SELECT grave_number   FROM people WHERE id=$2)),
+        bio = CASE
+          WHEN bio IS NULL THEN (SELECT bio FROM people WHERE id=$2)
+          WHEN (SELECT bio FROM people WHERE id=$2) IS NULL THEN bio
+          ELSE bio || E'\n\n' || (SELECT bio FROM people WHERE id=$2)
+        END
+      WHERE id=$1
+    `, [keepId, deleteId]);
+
+    // Reassign all related records
+    await client.query('UPDATE census_entries    SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE occupations       SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE people_places     SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE person_media      SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE person_links      SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    await client.query('UPDATE bibliography      SET author_person_id=$1 WHERE author_person_id=$2', [keepId, deleteId]);
+    // property_residents (may not exist)
+    try { await client.query('UPDATE property_residents SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]); } catch(_) {}
+
+    // Relationships: drop conflicts first, then reassign, then clean up
     await client.query(`DELETE FROM people_relationships WHERE person_a_id=$2 AND (person_b_id, relationship) IN (SELECT person_b_id, relationship FROM people_relationships WHERE person_a_id=$1)`, [keepId, deleteId]);
     await client.query(`DELETE FROM people_relationships WHERE person_b_id=$2 AND (person_a_id, relationship) IN (SELECT person_a_id, relationship FROM people_relationships WHERE person_b_id=$1)`, [keepId, deleteId]);
     await client.query('UPDATE people_relationships SET person_a_id=$1 WHERE person_a_id=$2', [keepId, deleteId]);
     await client.query('UPDATE people_relationships SET person_b_id=$1 WHERE person_b_id=$2', [keepId, deleteId]);
-    // Remove self-referential relationships created by merge
     await client.query('DELETE FROM people_relationships WHERE person_a_id=person_b_id');
-    // Remove person_media
-    await client.query('UPDATE person_media SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
-    // Remove person_links
-    await client.query('UPDATE person_links SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
-    // Delete the duplicate person
-    await client.query('DELETE FROM people WHERE id=$1', [deleteId]);
-    // Deduplicate relationships again after merge
     await client.query(`DELETE FROM people_relationships WHERE id IN (
       SELECT a.id FROM people_relationships a
-      JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id AND a.relationship=b.relationship AND a.id > b.id
+      JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id
+        AND a.relationship=b.relationship AND a.id > b.id
     )`);
+
+    // Delete the absorbed person
+    await client.query('DELETE FROM people WHERE id=$1', [deleteId]);
+
     await client.query('COMMIT');
     res.json({ ok: true, kept: keepId, deleted: deleteId });
   } catch(e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }

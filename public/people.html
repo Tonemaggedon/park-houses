@@ -394,7 +394,10 @@ function renderGrid(list) {
     const avatar = p.photo_url
       ? `<img src="${p.photo_url}" alt="">`
       : initials(p);
-    return `<div class="person-card" onclick="openProfile(${p.id})">
+    const unresolvedBadge = p.has_unresolved_census
+      ? `<span style="position:absolute;bottom:8px;right:8px;background:#c8780a;color:white;font-size:0.65rem;padding:2px 6px;border-radius:8px;font-family:Arial,sans-serif">⚠ unresolved census</span>`
+      : '';
+    return `<div class="person-card" onclick="openProfile(${p.id})" style="position:relative">
       ${wikiHtml}
       <div class="card-top">
         <div class="person-avatar">${avatar}</div>
@@ -406,6 +409,7 @@ function renderGrid(list) {
       </div>
       ${occs.length ? `<div class="occ-pills">${occHtml}</div>` : ''}
       ${(p.property_ids||[]).length ? `<div class="card-props">📍 ${(p.property_ids||[]).map(id=>(window._propNameLookup&&window._propNameLookup[id])||((p.property_names||[])[0])||'Property '+id).join(' · ')}</div>` : ''}
+      ${unresolvedBadge}
     </div>`;
   }).join('');
 }
@@ -718,9 +722,10 @@ function renderProfile(p) {
         <textarea id="edit_bio" rows="8" placeholder="Use blank lines between paragraphs." style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;font-family:Georgia,serif;line-height:1.5">${(p.bio||'').replace(/</g,'&lt;')}</textarea></div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Wikipedia / external URL</label><br>
         <input id="edit_wikipedia_url" value="${(p.wikipedia_url||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
-      <div style="display:flex;gap:8px;align-items:center">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button onclick="savePerson(${p.id})" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem">Save changes</button>
         <button onclick="showAddRelationship(${p.id})" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#4a3a1a">+ Add relationship</button>
+        <button onclick="showMergeModal(${p.id})" style="background:#fff0f0;border:1px solid #e0a0a0;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#8a2020">⚠ Merge duplicate…</button>
         <span id="saveStatus" style="font-size:0.78rem;color:#4a7c5a"></span>
       </div>
     </div>`);
@@ -1107,6 +1112,122 @@ function showAddOccupation(personId) {
   if (form) form.style.display = form.style.display === 'none' ? 'block' : 'none';
 }
 
+// ── Merge duplicate people ────────────────────────────────────────────────────
+let _mergeCurrentPersonId = null;
+
+function showMergeModal(personId) {
+  _mergeCurrentPersonId = personId;
+  document.getElementById('mergeOverlay').style.display = 'flex';
+  const s = document.getElementById('mergeSearch');
+  s.value = '';
+  document.getElementById('mergeResults').innerHTML = '';
+  document.getElementById('mergePreview').innerHTML = '';
+  s.focus();
+}
+
+function closeMergeModal() {
+  document.getElementById('mergeOverlay').style.display = 'none';
+}
+
+function mergePeopleSearch() {
+  const q = document.getElementById('mergeSearch').value.toLowerCase().trim();
+  const results = document.getElementById('mergeResults');
+  if (!q) { results.innerHTML = ''; return; }
+  const currentId = _mergeCurrentPersonId;
+  const matches = allPeople.filter(p => p.id !== currentId &&
+    (p.first_name + ' ' + p.last_name + ' ' + (p.known_as||'')).toLowerCase().includes(q)
+  ).slice(0, 10);
+  if (!matches.length) { results.innerHTML = '<div style="color:#8a7a5a;font-size:0.82rem;padding:6px 0">No matches</div>'; return; }
+  results.innerHTML = matches.map(m => {
+    const years = [m.born_year, m.died_year].filter(Boolean).join('–');
+    return `<div onclick="selectMergeTarget(${m.id})" style="padding:7px 10px;border-radius:5px;cursor:pointer;border:1px solid #e8d8b0;margin-bottom:4px;background:#f5f0e8" onmouseover="this.style.background='#ede8d8'" onmouseout="this.style.background='#f5f0e8'">
+      <strong style="font-size:0.9rem">${m.first_name} ${m.last_name}</strong>${m.known_as ? ` <em style="font-size:0.78rem;color:#8a7a5a">(${m.known_as})</em>` : ''}
+      ${years ? `<span style="font-size:0.78rem;color:#8a7a5a;margin-left:8px">${years}</span>` : ''}
+    </div>`;
+  }).join('');
+}
+
+async function selectMergeTarget(targetId) {
+  const currentId = _mergeCurrentPersonId;
+  const aPerson = allPeople.find(p => p.id === currentId);
+  const bPerson = allPeople.find(p => p.id === targetId);
+  if (!aPerson || !bPerson) return;
+
+  function personSummary(p, value, checked) {
+    const years = [p.born_year || (p.born_date ? String(p.born_date).match(/\d{4}/)?.[0] : null),
+                   p.died_year || (p.died_date ? String(p.died_date).match(/\d{4}/)?.[0] : null)].filter(Boolean).join('–');
+    return `<label style="flex:1;border:2px solid #d0c090;border-radius:8px;padding:12px;cursor:pointer;display:block;background:#fdf9f0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <input type="radio" name="mergeKeep" value="${value}" ${checked ? 'checked' : ''} onchange="updateMergeConfirm(${currentId},${targetId})">
+        <strong style="font-size:0.82rem;color:#4a7c5a">Keep this one</strong>
+      </div>
+      <div style="font-size:0.98rem;font-weight:600;color:#1a3a2a">${p.first_name} ${p.last_name}</div>
+      ${p.known_as ? `<div style="font-size:0.78rem;color:#8a7a5a;margin-top:2px">${p.known_as}</div>` : ''}
+      ${years ? `<div style="font-size:0.78rem;color:#6a5a3a;margin-top:4px">b. ${years}</div>` : ''}
+      ${p.born_place ? `<div style="font-size:0.75rem;color:#8a7a5a">${p.born_place}</div>` : ''}
+      <div style="font-size:0.72rem;color:#aaa;margin-top:4px">ID #${p.id}</div>
+    </label>`;
+  }
+
+  document.getElementById('mergePreview').innerHTML = `
+    <div style="font-size:0.8rem;color:#6a5a3a;margin-bottom:10px;padding:8px 12px;background:#fffbe8;border:1px solid #e8d870;border-radius:5px">
+      Select which record to <strong>keep</strong>. The other will be deleted and all its census entries, relationships, media, and biography will be absorbed into the kept record.
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:14px">
+      ${personSummary(aPerson, 'keep_current', true)}
+      ${personSummary(bPerson, 'keep_target', false)}
+    </div>
+    <div id="mergeConfirmArea"></div>
+  `;
+  updateMergeConfirm(currentId, targetId);
+}
+
+function updateMergeConfirm(currentId, targetId) {
+  const keeping = document.querySelector('input[name="mergeKeep"]:checked')?.value;
+  const keepId   = keeping === 'keep_current' ? currentId : targetId;
+  const deleteId = keeping === 'keep_current' ? targetId  : currentId;
+  const keepP    = allPeople.find(p => p.id === keepId);
+  const delP     = allPeople.find(p => p.id === deleteId);
+  document.getElementById('mergeConfirmArea').innerHTML = `
+    <div style="background:#fff3e0;border:1px solid #e8c870;border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:0.82rem">
+      Keep <strong>${keepP?.first_name} ${keepP?.last_name}</strong> (ID #${keepId}),
+      absorb and delete <strong>${delP?.first_name} ${delP?.last_name}</strong> (ID #${deleteId}).
+      <strong>This cannot be undone.</strong>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button onclick="executeMerge(${keepId},${deleteId})" id="mergeExecBtn" style="background:#8a2020;color:white;border:none;border-radius:5px;padding:9px 20px;cursor:pointer;font-size:0.85rem;font-family:Georgia,serif">Merge and delete duplicate</button>
+      <span id="mergeStatus" style="font-size:0.8rem;color:#c04040"></span>
+    </div>
+  `;
+}
+
+async function executeMerge(keepId, deleteId) {
+  const btn = document.getElementById('mergeExecBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Merging…'; }
+  try {
+    const res = await fetch('/api/admin/merge-people', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keep_id: keepId, delete_id: deleteId })
+    }).then(r => r.json());
+    if (res.ok) {
+      closeMergeModal();
+      const idx = allPeople.findIndex(p => p.id === deleteId);
+      if (idx >= 0) allPeople.splice(idx, 1);
+      renderGrid(allPeople);
+      openProfile(keepId);
+    } else {
+      const st = document.getElementById('mergeStatus');
+      if (st) st.textContent = '✗ ' + (res.error || 'Merge failed');
+      if (btn) { btn.disabled = false; btn.textContent = 'Merge and delete duplicate'; }
+    }
+  } catch(e) {
+    const st = document.getElementById('mergeStatus');
+    if (st) st.textContent = '✗ ' + e.message;
+    if (btn) { btn.disabled = false; btn.textContent = 'Merge and delete duplicate'; }
+  }
+}
+
 async function submitOccupation(personId) {
   const g = id => document.getElementById(id);
   const occupation = g('of-occ-' + personId).value.trim();
@@ -1140,6 +1261,18 @@ async function submitOccupation(personId) {
   g('occ-form-' + personId).style.display = 'none';
 }
 </script>
+
+<!-- Merge People Modal -->
+<div id="mergeOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:700;align-items:center;justify-content:center">
+  <div style="background:#faf8f2;border-radius:10px;padding:28px;width:600px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="closeMergeModal()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#8a7a5a">✕</button>
+    <h2 style="font-size:1.1rem;color:#1a3a2a;font-weight:600;margin-bottom:4px">Merge duplicate person</h2>
+    <p style="font-size:0.8rem;color:#8a7a5a;margin-bottom:16px">Search for the person you want to merge with the currently open profile.</p>
+    <input id="mergeSearch" type="search" oninput="mergePeopleSearch()" placeholder="Search by name…" style="width:100%;padding:8px 12px;border:1px solid #d0c090;border-radius:5px;font-size:0.88rem;font-family:Georgia,serif;margin-bottom:8px">
+    <div id="mergeResults" style="margin-bottom:12px"></div>
+    <div id="mergePreview"></div>
+  </div>
+</div>
 
 <!-- Add Person Modal -->
 <div id="addPersonOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:600;align-items:center;justify-content:center">
