@@ -58,3 +58,60 @@ WHERE person_id = 1092
 
 UPDATE people SET born_year = 1859 WHERE id = 1092 AND born_year IS NULL;
 
+-- Persons 1132, 1133, 1134: surname Bridght → Bright
+UPDATE people SET last_name = 'Bright' WHERE id IN (1132, 1133, 1134);
+
+-- Clean up blank/invalid wikipedia_url values (these cause blank tabs to open)
+UPDATE people SET wikipedia_url = NULL
+WHERE wikipedia_url IS NOT NULL
+  AND (trim(wikipedia_url) = '' OR trim(wikipedia_url) NOT LIKE 'http%');
+
+-- Cavendish Crescent North 1921 — unresolved_address is null for these entries.
+-- Set the street name so they appear in the unresolved list.
+-- Identify them by house name or by person last names from the spreadsheet:
+UPDATE census_entries SET unresolved_address = 'Cavendish Crescent North'
+WHERE census_year = 1921
+  AND property_id IS NULL
+  AND (unresolved_address IS NULL OR unresolved_address = '')
+  AND person_id IN (
+    SELECT id FROM people WHERE last_name IN
+      ('Sands','Harison','Spear','Stranther','Locke',
+       'Weinberg','Rosenhim','Marting','Plowman','Halliday',
+       'Bury','Arthur','Dobson','Taylor','Edgar','Wright','Jovan')
+  );
+
+-- Fairlawn bad import — all 9 people have occupation/relationship as their first name.
+-- These are duplicates of real records; delete their census entries then the person rows.
+-- People to remove:
+--   Servant Bambery, Cook Barber, Nurse maid Baun, Daughter Lomax, Head Lomax,
+--   Wife Lomax, Servant Sharpe, Visitor Taylor, Servant Thorpe
+
+-- Step 1: delete all census entries belonging to these junk person records
+DELETE FROM census_entries
+WHERE person_id IN (
+  SELECT id FROM people WHERE (
+    (first_name ILIKE 'servant'    AND last_name ILIKE 'bambery') OR
+    (first_name ILIKE 'cook'       AND last_name ILIKE 'barber')  OR
+    (first_name ILIKE '%nurse%'    AND last_name ILIKE 'baun')    OR
+    (first_name ILIKE 'daughter'   AND last_name ILIKE 'lomax')   OR
+    (first_name ILIKE 'head'       AND last_name ILIKE 'lomax')   OR
+    (first_name ILIKE 'wife'       AND last_name ILIKE 'lomax')   OR
+    (first_name ILIKE 'servant'    AND last_name ILIKE 'sharpe')  OR
+    (first_name ILIKE 'visitor'    AND last_name ILIKE 'taylor')  OR
+    (first_name ILIKE 'servant'    AND last_name ILIKE 'thorpe')
+  )
+);
+
+-- Step 2: delete the junk person records themselves
+DELETE FROM people WHERE (
+  (first_name ILIKE 'servant'    AND last_name ILIKE 'bambery') OR
+  (first_name ILIKE 'cook'       AND last_name ILIKE 'barber')  OR
+  (first_name ILIKE '%nurse%'    AND last_name ILIKE 'baun')    OR
+  (first_name ILIKE 'daughter'   AND last_name ILIKE 'lomax')   OR
+  (first_name ILIKE 'head'       AND last_name ILIKE 'lomax')   OR
+  (first_name ILIKE 'wife'       AND last_name ILIKE 'lomax')   OR
+  (first_name ILIKE 'servant'    AND last_name ILIKE 'sharpe')  OR
+  (first_name ILIKE 'visitor'    AND last_name ILIKE 'taylor')  OR
+  (first_name ILIKE 'servant'    AND last_name ILIKE 'thorpe')
+);
+

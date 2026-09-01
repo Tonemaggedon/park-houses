@@ -389,7 +389,9 @@ function renderGrid(list) {
   grid.innerHTML = list.map(p => {
     const occs = (p.occupations || []).slice(0, 4);
     const propIds = p.property_ids || [];
-    const wikiHtml = p.wikipedia_url ? `<a class="wiki-badge" href="${p.wikipedia_url}" target="_blank" onclick="event.stopPropagation()">Wikipedia ↗</a>` : '';
+    const _wikiUrl = (p.wikipedia_url||'').trim();
+    const wikiHtml = (_wikiUrl.startsWith('http://') || _wikiUrl.startsWith('https://')) && _wikiUrl.length > 10
+      ? `<a class="wiki-badge" href="${_wikiUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Wikipedia ↗</a>` : '';
     const occHtml = occs.map(o => `<span class="occ-pill${isServant(o) ? ' servant' : ''}">${o}</span>`).join('');
     const avatar = p.photo_url
       ? `<img src="${p.photo_url}" alt="">`
