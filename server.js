@@ -1345,6 +1345,74 @@ app.get('/api/occupations', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// NOTE: /api/census/unresolved and /api/census/resolve/:id MUST be registered BEFORE
+// /api/census/:year, otherwise Express matches "unresolved" as the :year param.
+
+// GET /api/census/unresolved — people saved with no matched property
+app.get('/api/census/unresolved', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+
+  // Two separate queries — avoids JOIN issues with node-postgres
+  let ceRows;
+  try {
+    ceRows = (await db.query(`
+      SELECT id, census_year, unresolved_address, relationship,
+             age_at_census, occupation_at_census, source, person_id
+      FROM census_entries
+      WHERE property_id IS NULL AND person_id IS NOT NULL
+      ORDER BY unresolved_address, census_year
+    `)).rows;
+  } catch(e) { return res.status(500).json({ error: e.message }); }
+
+  if (!ceRows.length) return res.json([]);
+
+  const personIds = [...new Set(ceRows.map(r => r.person_id).filter(id => Number.isInteger(id)))];
+
+  let peopleRows;
+  try {
+    peopleRows = (await db.query(
+      `SELECT id, first_name, last_name, known_as FROM people WHERE id = ANY($1)`,
+      [personIds]
+    )).rows;
+  } catch(e) { return res.status(500).json({ error: e.message }); }
+
+  const peopleMap = {};
+  peopleRows.forEach(p => { peopleMap[p.id] = p; });
+
+  const grouped = {};
+  ceRows.forEach(ce => {
+    const p = peopleMap[ce.person_id];
+    if (!p) return;
+    const key = (ce.unresolved_address || '') + '|' + ce.census_year;
+    if (!grouped[key]) grouped[key] = { address: ce.unresolved_address, year: ce.census_year, people: [] };
+    grouped[key].people.push({
+      entry_id: ce.id, person_id: ce.person_id,
+      name: p.known_as || (p.first_name + ' ' + p.last_name),
+      relationship: ce.relationship, age: ce.age_at_census,
+      occupation: ce.occupation_at_census, source: ce.source
+    });
+  });
+  Object.values(grouped).forEach(g =>
+    g.people.sort((a, b) => (peopleMap[a.person_id]?.last_name || '').localeCompare(peopleMap[b.person_id]?.last_name || ''))
+  );
+  res.json(Object.values(grouped));
+});
+
+// POST /api/census/resolve/:id — assign an unresolved census entry to a property
+app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const entryId = parseInt(req.params.id);
+    const { property_id } = req.body;
+    if (!property_id) return res.status(400).json({ error: 'property_id required' });
+    await db.query(
+      `UPDATE census_entries SET property_id=$1, unresolved_address=NULL WHERE id=$2 AND property_id IS NULL`,
+      [property_id, entryId]
+    );
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/census/:year — all people recorded at a census year, optionally ?property=
 app.get('/api/census/:year', async (req, res) => {
   if (!db) return res.json([]);
@@ -1467,113 +1535,9 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-// GET /api/census/unresolved — people saved with no matched property
-app.get('/api/census/unresolved', requireContributor, async (req, res) => {
-  res.set('Cache-Control', 'no-store');
-  // DIAGNOSTIC: static response — if this still shows the NaN error, problem is in middleware
-  return res.json({ diagnostic: true, version: 'v4-static' });
-  if (!db) return res.status(503).json({ error: 'DB not available' });
-
-  // Query 1: unresolved census entries
-  let ceRows;
-  try {
-    ceRows = (await db.query(`
-      SELECT id, census_year, unresolved_address, relationship,
-             age_at_census, occupation_at_census, source, person_id
-      FROM census_entries
-      WHERE property_id IS NULL AND person_id IS NOT NULL
-      ORDER BY unresolved_address, census_year
-    `)).rows;
-  } catch(e) {
-    console.error('Q1 error:', e.message);
-    return res.status(500).json({ error: 'Q1: ' + e.message });
-  }
-
-  if (!ceRows.length) return res.json([]);
-
-  // Query 2: fetch people by id array
-  const personIds = [...new Set(ceRows.map(r => r.person_id))];
-  // Guard: filter out any non-integer values before passing to pg
-  const safeIds = personIds.filter(id => Number.isInteger(id));
-  console.log(`Q1 ok: ${ceRows.length} rows, ${personIds.length} unique person_ids, ${safeIds.length} safe, NaN count: ${personIds.length - safeIds.length}`);
-
-  let peopleRows;
-  try {
-    peopleRows = (await db.query(
-      `SELECT id, first_name, last_name, known_as FROM people WHERE id = ANY($1)`,
-      [safeIds]
-    )).rows;
-  } catch(e) {
-    console.error('Q2 error:', e.message, 'safeIds sample:', safeIds.slice(0,5));
-    return res.status(500).json({ error: 'Q2: ' + e.message });
-  }
-
-  try {
-    const peopleMap = {};
-    peopleRows.forEach(p => { peopleMap[p.id] = p; });
-
-    // Group by address + year
-    const grouped = {};
-    ceRows.forEach(ce => {
-      const p = peopleMap[ce.person_id];
-      if (!p) return; // person deleted — skip
-      const key = (ce.unresolved_address || '') + '|' + ce.census_year;
-      if (!grouped[key]) grouped[key] = {
-        address: ce.unresolved_address,
-        year: ce.census_year,
-        people: []
-      };
-      grouped[key].people.push({
-        entry_id: ce.id,
-        person_id: ce.person_id,
-        name: p.known_as || (p.first_name + ' ' + p.last_name),
-        relationship: ce.relationship,
-        age: ce.age_at_census,
-        occupation: ce.occupation_at_census,
-        source: ce.source
-      });
-    });
-    // Sort each group's people by last name
-    Object.values(grouped).forEach(g =>
-      g.people.sort((a, b) => (peopleMap[a.person_id]?.last_name || '').localeCompare(peopleMap[b.person_id]?.last_name || ''))
-    );
-    res.json(Object.values(grouped));
-  } catch(e) { console.error('GET /api/census/unresolved error:', e.stack || e); res.status(500).json({ error: e.message }); }
-});
-
-// POST /api/census/resolve/:id — assign an unresolved census entry to a property
-app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
-  if (!db) return res.status(503).json({ error: 'DB not available' });
-  try {
-    const entryId = parseInt(req.params.id);
-    const { property_id } = req.body;
-    if (!property_id) return res.status(400).json({ error: 'property_id required' });
-    await db.query(
-      `UPDATE census_entries SET property_id=$1, unresolved_address=NULL WHERE id=$2 AND property_id IS NULL`,
-      [property_id, entryId]
-    );
-    res.json({ ok: true });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 app.get('/census/unresolved', (req, res) => res.sendFile(path.join(__dirname,'public','census-unresolved.html')));
-
-// TEMPORARY DIAGNOSTIC — no auth, shows which query fails and what person_ids look like
-app.get('/api/diag-unresolved', async (req, res) => {
-  res.set('Cache-Control', 'no-store');
-  if (!db) return res.json({ error: 'no db' });
-  try {
-    const ping = await db.query('SELECT 1 AS ping');
-    const ce = await db.query(`SELECT id, person_id FROM census_entries WHERE property_id IS NULL AND person_id IS NOT NULL LIMIT 10`);
-    const ids = ce.rows.map(r => r.person_id);
-    const nanIds = ids.filter(id => !Number.isInteger(id));
-    res.json({ ping: ping.rows[0], ceCount: ce.rows.length, sampleIds: ids, nanIds, nanCount: nanIds.length });
-  } catch(e) {
-    res.status(500).json({ error: e.message, code: e.code, where: e.where });
-  }
-});
 
 // GET /api/recent-changes — for dashboard activity feed
 app.get('/api/recent-changes', async (req, res) => {
