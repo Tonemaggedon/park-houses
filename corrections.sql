@@ -58,6 +58,61 @@ WHERE person_id = 1092
 
 UPDATE people SET born_year = 1859 WHERE id = 1092 AND born_year IS NULL;
 
+-- Person 585: source field has "Marital status - Single Marital status - Married" — bad import
+-- Check which census year is affected first:
+-- SELECT id, census_year, source FROM census_entries WHERE person_id = 585;
+-- Then uncomment the correct fix:
+-- If they were Single in one year and Married in another, the entries may be correct but wrongly merged.
+-- If it's a single entry with both values concatenated, clear the marital status noise:
+UPDATE census_entries
+SET source = regexp_replace(
+    regexp_replace(source, 'Marital status - (Single|Married)\s*', '', 'g'),
+    ',\s*,', ',', 'g')
+WHERE person_id = 585
+  AND source ILIKE '%Marital status%';
+
+-- ════════════════════════════════════════════════════════════════
+-- BROAD CLEANUP: people whose first_name is a relationship/role word
+-- (bad import where relationship column ended up in first_name field)
+-- Catches: Head Hormer (1996), Head Johnson (1992), and any others.
+-- Run a SELECT first to review before deleting:
+-- SELECT id, first_name, last_name FROM people
+--   WHERE first_name ~* '^(Head|Wife|Husband|Son|Daughter|Brother|Sister|Servant|Cook|Visitor|Boarder|Lodger|Nurse\s*maid|Nurse|Housekeeper|Parlourmaid|Housemaid)$';
+-- ════════════════════════════════════════════════════════════════
+
+-- Step 1: remove census entries for all such records
+DELETE FROM census_entries WHERE person_id IN (
+  SELECT id FROM people WHERE first_name ~* '^(Head|Wife|Husband|Son|Daughter|Brother|Sister|Servant|Cook|Visitor|Boarder|Lodger|Nurse\s*maid|Nurse|Housekeeper|Parlourmaid|Housemaid)$'
+);
+-- Step 2: remove relationships
+DELETE FROM people_relationships WHERE person_a_id IN (
+  SELECT id FROM people WHERE first_name ~* '^(Head|Wife|Husband|Son|Daughter|Brother|Sister|Servant|Cook|Visitor|Boarder|Lodger|Nurse\s*maid|Nurse|Housekeeper|Parlourmaid|Housemaid)$'
+) OR person_b_id IN (
+  SELECT id FROM people WHERE first_name ~* '^(Head|Wife|Husband|Son|Daughter|Brother|Sister|Servant|Cook|Visitor|Boarder|Lodger|Nurse\s*maid|Nurse|Housekeeper|Parlourmaid|Housemaid)$'
+);
+-- Step 3: delete the junk people rows
+DELETE FROM people WHERE first_name ~* '^(Head|Wife|Husband|Son|Daughter|Brother|Sister|Servant|Cook|Visitor|Boarder|Lodger|Nurse\s*maid|Nurse|Housekeeper|Parlourmaid|Housemaid)$';
+
+-- Person 1987: spreadsheet header row imported as a person ("Relationship to head", "Last name")
+DELETE FROM census_entries        WHERE person_id = 1987;
+DELETE FROM occupations           WHERE person_id = 1987;
+DELETE FROM people_relationships  WHERE person_a_id = 1987 OR person_b_id = 1987;
+DELETE FROM people_places         WHERE person_id = 1987;
+DELETE FROM person_media          WHERE person_id = 1987;
+DELETE FROM person_links          WHERE person_id = 1987;
+DELETE FROM bibliography          WHERE author_person_id = 1987;
+DELETE FROM people                WHERE id = 1987;
+
+-- Person 2000: delete
+DELETE FROM census_entries        WHERE person_id = 2000;
+DELETE FROM occupations           WHERE person_id = 2000;
+DELETE FROM people_relationships  WHERE person_a_id = 2000 OR person_b_id = 2000;
+DELETE FROM people_places         WHERE person_id = 2000;
+DELETE FROM person_media          WHERE person_id = 2000;
+DELETE FROM person_links          WHERE person_id = 2000;
+DELETE FROM bibliography          WHERE author_person_id = 2000;
+DELETE FROM people                WHERE id = 2000;
+
 -- Persons 1132, 1133, 1134: surname Bridght → Bright
 UPDATE people SET last_name = 'Bright' WHERE id IN (1132, 1133, 1134);
 

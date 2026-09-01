@@ -442,6 +442,7 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS unresolved_address TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_house_id TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_household_num INTEGER`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS title TEXT`);
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
@@ -1263,7 +1264,7 @@ app.get('/api/people', async (req, res) => {
     const { occupation, property, q } = req.query;
     // Use subqueries to avoid cartesian product of occupations × census_entries
     let query = `
-      SELECT p.id, p.first_name, p.last_name, p.known_as,
+      SELECT p.id, p.first_name, p.last_name, p.known_as, p.title,
              p.born_year, p.born_place, p.died_year, p.died_place,
              p.wikipedia_url, p.photo_url,
              (SELECT ARRAY_AGG(DISTINCT o.occupation) FROM occupations o WHERE o.person_id=p.id AND o.occupation IS NOT NULL) AS occupations,
@@ -2096,7 +2097,7 @@ app.patch('/api/person/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const fields = req.body;
-    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url','grave_location','grave_number'].includes(k));
+    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','title','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url','grave_location','grave_number'].includes(k));
     if (!keys.length) return res.status(400).json({ error: 'No valid fields' });
     // Get old values for changelog
     const old = await db.query(`SELECT ${keys.join(',')} FROM people WHERE id=$1`, [id]);

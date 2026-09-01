@@ -224,6 +224,19 @@
   <h2>People of The Park</h2>
   <input type="text" id="searchBox" placeholder="Search by name, address or place…" oninput="applyFilters()">
   <button id="addPersonBtn" onclick="openAddPerson()" style="display:none;background:#4a7c5a;border:1px solid #3a6a4a;color:#e8dfc8;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif">+ Add Person</button>
+  <select id="titleFilter" onchange="applyFilters()" title="Filter by title">
+    <option value="">All titles</option>
+    <option value="Sir">Sir</option>
+    <option value="Lady">Lady</option>
+    <option value="Dr">Dr</option>
+    <option value="Rev">Rev</option>
+    <option value="Prof">Prof</option>
+    <option value="Major">Major</option>
+    <option value="Colonel">Colonel</option>
+    <option value="Captain">Captain</option>
+    <option value="Lord">Lord</option>
+    <option value="Hon">Hon</option>
+  </select>
   <select id="occFilter" onchange="applyFilters()">
     <option value="">All occupations</option>
   </select>
@@ -289,8 +302,8 @@ async function uploadPersonPhoto(personId, input) {
   }
 }
 function displayName(p) {
-  let n = `${p.first_name || ''} ${p.last_name || ''}`.trim();
-  if (p.known_as && p.known_as !== n) n = `${n}`;
+  const prefix = p.title ? p.title + ' ' : '';
+  let n = `${prefix}${p.first_name || ''} ${p.last_name || ''}`.trim();
   return n;
 }
 function yearOnly(val) {
@@ -365,7 +378,9 @@ function applyFilters() {
   const q = document.getElementById('searchBox').value.toLowerCase();
   const occ = document.getElementById('occFilter').value.toLowerCase();
   const prop = parseInt(document.getElementById('propFilter').value) || null;
+  const titleF = document.getElementById('titleFilter').value;
   let list = allPeople;
+  if (titleF) list = list.filter(p => (p.title||'').toLowerCase() === titleF.toLowerCase());
   if (q) list = list.filter(p =>
     displayName(p).toLowerCase().includes(q) ||
     (p.known_as||'').toLowerCase().includes(q) ||
@@ -710,6 +725,13 @@ function renderProfile(p) {
         }
         return dateRow('Date of birth','edit_born',p.born_date||p.born_year||'') + dateRow('Date of death','edit_died',p.died_date||p.died_year||'');
       })()}
+      <div style="margin-bottom:8px">
+        <label style="font-size:0.75rem;color:#8a7a5a">Title / honour</label><br>
+        <select id="edit_title" style="padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px">
+          <option value="">— none —</option>
+          ${['Sir','Lady','Dr','Rev','Prof','Major','Colonel','Captain','Lord','Hon'].map(t => `<option value="${t}"${p.title===t?' selected':''}>${t}</option>`).join('')}
+        </select>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
           <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
@@ -816,6 +838,7 @@ async function savePerson(personId) {
   const bornDate = buildDateString('edit_born');
   const diedDate = buildDateString('edit_died');
   const fields = {
+    title: document.getElementById('edit_title')?.value || null,
     born_date: bornDate,
     born_year: bornDate ? (bornDate.match(/\d{4}/)?.[0] ? parseInt(bornDate.match(/\d{4}/)[0]) : null) : null,
     born_place: document.getElementById('edit_born_place').value || null,
