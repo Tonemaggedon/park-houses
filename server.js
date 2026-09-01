@@ -1470,23 +1470,42 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 // GET /api/census/unresolved — people saved with no matched property
 app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
+
+  // Query 1: unresolved census entries
+  let ceRows;
   try {
-    // Two separate queries — avoids a node-postgres JOIN quirk with this schema
-    const ceRows = (await db.query(`
+    ceRows = (await db.query(`
       SELECT id, census_year, unresolved_address, relationship,
              age_at_census, occupation_at_census, source, person_id
       FROM census_entries
       WHERE property_id IS NULL AND person_id IS NOT NULL
       ORDER BY unresolved_address, census_year
     `)).rows;
+  } catch(e) {
+    console.error('Q1 error:', e.message);
+    return res.status(500).json({ error: 'Q1: ' + e.message });
+  }
 
-    if (!ceRows.length) return res.json([]);
+  if (!ceRows.length) return res.json([]);
 
-    const personIds = [...new Set(ceRows.map(r => r.person_id))];
-    const peopleRows = (await db.query(
+  // Query 2: fetch people by id array
+  const personIds = [...new Set(ceRows.map(r => r.person_id))];
+  // Guard: filter out any non-integer values before passing to pg
+  const safeIds = personIds.filter(id => Number.isInteger(id));
+  console.log(`Q1 ok: ${ceRows.length} rows, ${personIds.length} unique person_ids, ${safeIds.length} safe, NaN count: ${personIds.length - safeIds.length}`);
+
+  let peopleRows;
+  try {
+    peopleRows = (await db.query(
       `SELECT id, first_name, last_name, known_as FROM people WHERE id = ANY($1)`,
-      [personIds]
+      [safeIds]
     )).rows;
+  } catch(e) {
+    console.error('Q2 error:', e.message, 'safeIds sample:', safeIds.slice(0,5));
+    return res.status(500).json({ error: 'Q2: ' + e.message });
+  }
+
+  try {
     const peopleMap = {};
     peopleRows.forEach(p => { peopleMap[p.id] = p; });
 
@@ -1537,6 +1556,21 @@ app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 app.get('/census/unresolved', (req, res) => res.sendFile(path.join(__dirname,'public','census-unresolved.html')));
+
+// TEMPORARY DIAGNOSTIC — no auth, shows which query fails and what person_ids look like
+app.get('/api/diag-unresolved', async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  if (!db) return res.json({ error: 'no db' });
+  try {
+    const ping = await db.query('SELECT 1 AS ping');
+    const ce = await db.query(`SELECT id, person_id FROM census_entries WHERE property_id IS NULL AND person_id IS NOT NULL LIMIT 10`);
+    const ids = ce.rows.map(r => r.person_id);
+    const nanIds = ids.filter(id => !Number.isInteger(id));
+    res.json({ ping: ping.rows[0], ceCount: ce.rows.length, sampleIds: ids, nanIds, nanCount: nanIds.length });
+  } catch(e) {
+    res.status(500).json({ error: e.message, code: e.code, where: e.where });
+  }
+});
 
 // GET /api/recent-changes — for dashboard activity feed
 app.get('/api/recent-changes', async (req, res) => {
