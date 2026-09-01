@@ -1646,6 +1646,35 @@ app.post('/api/admin/deduplicate-relationships', requireAdmin, async (req, res) 
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Delete a person entirely (admin only) ────────────────────────────────────
+app.delete('/api/person/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const personId = parseInt(req.params.id);
+  if (!personId) return res.status(400).json({ error: 'Invalid person id' });
+  const client = await db.connect();
+  try {
+    await client.query('BEGIN');
+    // Get name for audit log
+    const who = await client.query('SELECT first_name,last_name FROM people WHERE id=$1', [personId]);
+    if (!who.rows.length) { await client.query('ROLLBACK'); return res.status(404).json({ error: 'Person not found' }); }
+    // Remove all related records
+    await client.query('DELETE FROM census_entries        WHERE person_id=$1', [personId]);
+    await client.query('DELETE FROM occupations           WHERE person_id=$1', [personId]);
+    await client.query('DELETE FROM people_relationships  WHERE person_a_id=$1 OR person_b_id=$1', [personId]);
+    await client.query('DELETE FROM people_places         WHERE person_id=$1', [personId]);
+    await client.query('DELETE FROM person_media          WHERE person_id=$1', [personId]);
+    await client.query('DELETE FROM person_links          WHERE person_id=$1', [personId]);
+    await client.query('DELETE FROM bibliography          WHERE author_person_id=$1', [personId]);
+    try { await client.query('DELETE FROM property_residents WHERE person_id=$1', [personId]); } catch(_) {}
+    await client.query('DELETE FROM people WHERE id=$1', [personId]);
+    await client.query('COMMIT');
+    const name = `${who.rows[0].first_name} ${who.rows[0].last_name}`;
+    await logChange('person', personId, req, 'delete', 'person', name, null);
+    res.json({ ok: true, deleted: personId, name });
+  } catch(e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }
+  finally { client.release(); }
+});
+
 // ── Merge two people (contributors+): keep one, absorb all data from the other ──
 app.post('/api/admin/merge-people', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });

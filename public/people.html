@@ -726,6 +726,7 @@ function renderProfile(p) {
         <button onclick="savePerson(${p.id})" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem">Save changes</button>
         <button onclick="showAddRelationship(${p.id})" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#4a3a1a">+ Add relationship</button>
         <button onclick="showMergeModal(${p.id})" style="background:#fff0f0;border:1px solid #e0a0a0;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#8a2020">⚠ Merge duplicate…</button>
+        ${(()=>{ const me = window._me || _me; const isAdmin = me && (me.isAdmin || (me.user && me.user.role==='admin')); return isAdmin ? `<button onclick="deletePerson(${p.id},'${(p.first_name+' '+p.last_name).replace(/'/g,"\\'")}')" style="background:#6a1010;color:white;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;margin-left:auto">🗑 Delete person</button>` : ''; })()}
         <span id="saveStatus" style="font-size:0.78rem;color:#4a7c5a"></span>
       </div>
     </div>`);
@@ -1110,6 +1111,23 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeAddPerson(
 function showAddOccupation(personId) {
   const form = document.getElementById('occ-form-' + personId);
   if (form) form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+// ── Delete a person (admin only) ─────────────────────────────────────────────
+async function deletePerson(personId, name) {
+  if (!confirm(`Permanently delete "${name}" and ALL their census records, relationships, and media?\n\nThis cannot be undone.`)) return;
+  if (!confirm(`Second confirmation: delete "${name}" (ID #${personId})?`)) return;
+  try {
+    const res = await fetch(`/api/person/${personId}`, { method: 'DELETE' }).then(r => r.json());
+    if (res.ok) {
+      closeProfile();
+      const idx = allPeople.findIndex(p => p.id === personId);
+      if (idx >= 0) allPeople.splice(idx, 1);
+      renderGrid(allPeople);
+    } else {
+      alert('Delete failed: ' + (res.error || 'unknown error'));
+    }
+  } catch(e) { alert('Delete failed: ' + e.message); }
 }
 
 // ── Merge duplicate people ────────────────────────────────────────────────────
