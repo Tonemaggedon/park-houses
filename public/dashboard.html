@@ -152,7 +152,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/people" class="action-btn"><span class="ab-icon">📋</span><div><div class="ab-title">Directory</div><div class="ab-label">Browse all people</div></div></a>
         <a href="/family-tree" class="action-btn"><span class="ab-icon">🌳</span><div><div class="ab-title">Family Trees</div><div class="ab-label">View connections</div></div></a>
         <a href="/" class="action-btn"><span class="ab-icon">🗺️</span><div><div class="ab-title">Map View</div><div class="ab-label">Properties on map</div></div></a>
-        <a href="/people" class="action-btn"><span class="ab-icon">📜</span><div><div class="ab-title">Census Records</div><div class="ab-label">By census year</div></div></a>
+        <a href="/census" class="action-btn"><span class="ab-icon">📜</span><div><div class="ab-title">Census Records</div><div class="ab-label">By census year</div></div></a>
+        <a href="/census/unresolved" class="action-btn" id="unresolvedCard" style="display:none"><span class="ab-icon">🔍</span><div><div class="ab-title">Unresolved Census</div><div class="ab-label" id="unresolvedLabel">People without a matched property</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
@@ -255,6 +256,19 @@ let peopleCounts={};
 async function init(){
   const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
   currentUser = me.researchKey || (me.isAdmin ? 'admin' : null);
+  // Show unresolved census card for contributors and admins, with live count
+  const isContrib = me.isAdmin || (me.user && (me.user.role==='contributor'||me.user.role==='admin') && me.user.approved);
+  if (isContrib) {
+    const card = document.getElementById('unresolvedCard');
+    if (card) {
+      card.style.display = '';
+      fetch('/api/census/unresolved').then(r=>r.json()).then(groups=>{
+        const n = groups.reduce((s,g)=>s+g.people.length, 0);
+        const lbl = document.getElementById('unresolvedLabel');
+        if (lbl) lbl.textContent = n ? n + ' people without a match' : 'All people matched ✓';
+      }).catch(()=>{});
+    }
+  }
   const [p,s]=await Promise.all([
     fetch('/api/all-props').then(r=>r.json()).catch(()=>[]),
     fetch('/api/stats').then(r=>r.json()).catch(()=>({}))

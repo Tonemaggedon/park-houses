@@ -1521,6 +1521,7 @@ app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
 
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
+app.get('/census/unresolved', (req, res) => res.sendFile(path.join(__dirname,'public','census-unresolved.html')));
 
 // GET /api/recent-changes — for dashboard activity feed
 app.get('/api/recent-changes', async (req, res) => {

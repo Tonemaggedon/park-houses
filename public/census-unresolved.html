@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unresolved Census People — Nottingham Park Houses</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #f5f0e8; color: #2c2416; min-height: 100vh; }
+
+header {
+  background: #1a3a2a; color: #e8dfc8;
+  padding: 0 20px; height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35); position: sticky; top: 0; z-index: 100;
+}
+header h1 { font-size: 1.2rem; font-weight: normal; }
+header h1 span { font-size: 0.75rem; display: block; color: #90b090; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+nav { display: flex; gap: 6px; align-items: center; }
+nav a {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+  color: #e8dfc8; padding: 5px 13px; border-radius: 4px;
+  font-size: 0.8rem; text-decoration: none; transition: background 0.2s;
+}
+nav a:hover { background: rgba(255,255,255,0.2); }
+nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
+
+.page-head {
+  background: #2c4a38; color: #e8dfc8;
+  padding: 22px 28px 18px;
+  border-bottom: 2px solid #1a3a2a;
+}
+.page-head h2 { font-size: 1.4rem; font-weight: normal; margin-bottom: 4px; }
+.page-head p { font-size: 0.83rem; color: #a0c0a0; }
+.page-head .summary { margin-top: 10px; font-size: 0.82rem; color: #c8d8b8; }
+
+.main { max-width: 960px; margin: 0 auto; padding: 24px 20px; }
+
+.access-denied {
+  background: white; border: 2px solid #e8d8b0; border-radius: 10px;
+  padding: 40px; text-align: center; color: #6a5a3a; margin-top: 24px;
+}
+.access-denied h3 { font-size: 1.1rem; margin-bottom: 8px; color: #3a2a0a; }
+
+.group-card {
+  background: white; border: 1px solid #d8cead; border-radius: 8px;
+  margin-bottom: 16px; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.group-head {
+  background: #f0ead8; padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  border-bottom: 1px solid #e0d4b8;
+}
+.group-addr { font-weight: bold; color: #2a1a00; font-size: 0.97rem; flex: 1; min-width: 160px; }
+.group-meta { font-size: 0.77rem; color: #8a7a5a; white-space: nowrap; }
+.assign-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.assign-row select {
+  font-size: 0.78rem; padding: 4px 8px; border: 1px solid #c8b888;
+  border-radius: 4px; font-family: Georgia, serif; max-width: 280px;
+  background: white; color: #2c2416;
+}
+.assign-btn {
+  font-size: 0.78rem; padding: 4px 12px; background: #2e7d4f; color: white;
+  border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, serif;
+  white-space: nowrap;
+}
+.assign-btn:hover { background: #256040; }
+.assign-btn:disabled { background: #888; cursor: default; }
+
+.people-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.people-table th {
+  background: #f8f4ec; padding: 6px 14px; text-align: left;
+  font-weight: 600; color: #6a5a3a; font-size: 0.76rem;
+  border-bottom: 1px solid #e8dfc8; letter-spacing: 0.03em;
+}
+.people-table td { padding: 7px 14px; border-bottom: 1px solid #f0e8d8; color: #3a2a0a; }
+.people-table tr:last-child td { border-bottom: none; }
+.people-table tr:hover td { background: #fdf8f0; }
+.person-link { color: #1a5a8a; text-decoration: none; }
+.person-link:hover { text-decoration: underline; }
+
+.done-card { opacity: 0.4; pointer-events: none; }
+.done-label { font-size: 0.78rem; color: #4a7a4a; font-style: italic; }
+
+.empty { text-align: center; padding: 48px 24px; color: #6a7a6a; font-size: 0.95rem; }
+.empty big { display: block; font-size: 2.5rem; margin-bottom: 12px; }
+
+.loading { text-align: center; padding: 40px; color: #8a7a5a; font-style: italic; }
+.error { background: #fdf0f0; border: 1px solid #e8b0a0; border-radius: 6px;
+         padding: 14px 18px; color: #803030; margin-top: 16px; }
+
+.filter-bar {
+  background: white; border: 1px solid #d8cead; border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.filter-bar label { font-size: 0.82rem; color: #6a5a3a; }
+.filter-bar input {
+  padding: 4px 10px; border: 1px solid #c8b888; border-radius: 4px;
+  font-family: Georgia, serif; font-size: 0.82rem; flex: 1; min-width: 180px;
+}
+.count-badge {
+  background: #2e7d4f; color: white; font-size: 0.72rem; font-family: Arial, sans-serif;
+  padding: 2px 7px; border-radius: 10px; font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nottingham Park Estate
+    <span>Historical Record</span>
+  </h1>
+  <nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/">Map</a>
+    <a href="/people">People</a>
+    <a href="/architects">Architects</a>
+    <a href="/census" class="active">Census</a>
+    <a href="/family-tree">Family Trees</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <h2>🔍 Unresolved Census People</h2>
+  <p>People found in the census whose address could not be matched to a specific Park property</p>
+  <div class="summary" id="summary"></div>
+</div>
+
+<div class="main" id="main">
+  <div class="loading">Loading…</div>
+</div>
+
+<script>
+let allGroups = [];
+let allProps = [];
+
+async function init() {
+  // Check access
+  const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+  const canEdit = me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin') && me.user.approved);
+
+  const main = document.getElementById('main');
+
+  // Fetch both in parallel
+  const [groupsRes, propsRes] = await Promise.all([
+    fetch('/api/census/unresolved'),
+    fetch('/api/all-props')
+  ]);
+
+  if (groupsRes.status === 403) {
+    main.innerHTML = `<div class="access-denied">
+      <h3>Contributor access required</h3>
+      <p>Sign in as a contributor or admin to view unresolved census entries.</p>
+    </div>`;
+    return;
+  }
+  if (!groupsRes.ok) {
+    const err = await groupsRes.json().catch(() => ({ error: groupsRes.statusText }));
+    main.innerHTML = `<div class="error">Error loading data: ${err.error}</div>`;
+    return;
+  }
+
+  allGroups = await groupsRes.json();
+  allProps = (await propsRes.json().catch(() => [])).filter(p => !p.census_only);
+  allProps.sort((a, b) => (a.street || '').localeCompare(b.street || '') || (a.no || '').localeCompare(b.no || ''));
+
+  const totalPeople = allGroups.reduce((s, g) => s + g.people.length, 0);
+  document.getElementById('summary').textContent =
+    `${allGroups.length} address group${allGroups.length !== 1 ? 's' : ''} · ${totalPeople} people`;
+
+  render(allGroups, canEdit);
+}
+
+function render(groups, canEdit) {
+  const main = document.getElementById('main');
+
+  if (!groups.length) {
+    main.innerHTML = `<div class="empty"><big>✓</big>No unresolved census entries — everyone matched!</div>`;
+    return;
+  }
+
+  const propOpts = allProps
+    .map(p => `<option value="${p.id}">${p.no ? p.no + ' ' : ''}${p.street || p.name || 'Property ' + p.id}</option>`)
+    .join('');
+
+  let html = `<div class="filter-bar">
+    <label>Filter:</label>
+    <input type="text" id="filterInput" placeholder="Search by address or name…" oninput="filterGroups()">
+    <span id="filterCount" class="count-badge">${groups.length}</span>
+  </div>`;
+
+  html += `<div id="groupList">` + groups.map((g, i) => {
+    const key = `g${i}_${encodeURIComponent(g.address || '')}`;
+    const assignHtml = canEdit ? `
+      <div class="assign-row">
+        <select id="sel_${key}">
+          <option value="">— assign to property —</option>
+          ${propOpts}
+        </select>
+        <button class="assign-btn" onclick="assignGroup(${i}, '${key}', this)">Assign all</button>
+      </div>` : '';
+
+    const rows = g.people.map(p => `
+      <tr data-entry="${p.entry_id}">
+        <td><a class="person-link" href="/person/${p.person_id}" target="_blank">${esc(p.name)}</a></td>
+        <td>${esc(p.relationship) || '—'}</td>
+        <td>${p.age != null ? p.age : '—'}</td>
+        <td>${esc(p.occupation) || '—'}</td>
+        <td style="font-size:0.75rem;color:#8a7a5a">${esc(p.source) || ''}</td>
+      </tr>`).join('');
+
+    return `<div class="group-card" data-addr="${esc(g.address || '')}" data-names="${g.people.map(p=>p.name).join(' ').toLowerCase()}">
+      <div class="group-head">
+        <span class="group-addr">${esc(g.address) || '<em style="color:#8a7a5a">(no address recorded)</em>'}</span>
+        <span class="group-meta">${g.year} census &middot; ${g.people.length} person${g.people.length !== 1 ? 's' : ''}</span>
+        ${assignHtml}
+      </div>
+      <table class="people-table">
+        <thead><tr>
+          <th>Name</th><th>Relationship</th><th>Age</th><th>Occupation</th><th>Source</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  }).join('') + `</div>`;
+
+  main.innerHTML = html;
+}
+
+function filterGroups() {
+  const q = document.getElementById('filterInput').value.toLowerCase();
+  const cards = document.querySelectorAll('#groupList .group-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const match = !q || card.dataset.addr.toLowerCase().includes(q) || card.dataset.names.includes(q);
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  const badge = document.getElementById('filterCount');
+  if (badge) badge.textContent = visible;
+}
+
+async function assignGroup(groupIdx, key, btn) {
+  const sel = document.getElementById('sel_' + key);
+  const propId = parseInt(sel.value);
+  if (!propId) { alert('Please choose a property first.'); return; }
+
+  const group = allGroups[groupIdx];
+  const ids = group.people.map(p => p.entry_id);
+
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  let ok = 0, fail = 0;
+  for (const id of ids) {
+    try {
+      const r = await fetch('/api/census/resolve/' + id, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ property_id: propId })
+      });
+      if (r.ok) ok++; else fail++;
+    } catch (_) { fail++; }
+  }
+
+  if (fail === 0) {
+    const card = btn.closest('.group-card');
+    card.classList.add('done-card');
+    btn.textContent = `✓ Assigned ${ok}`;
+    btn.style.background = '#4a6a4a';
+  } else {
+    btn.disabled = false;
+    btn.textContent = `${ok} ok, ${fail} failed — retry?`;
+  }
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+init();
+</script>
+</body>
+</html>
