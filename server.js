@@ -1471,35 +1471,50 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 app.get('/api/census/unresolved', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
-    const r = await db.query(`
-      SELECT ce.id, ce.census_year, ce.unresolved_address, ce.relationship,
-             ce.age_at_census, ce.occupation_at_census, ce.source,
-             p.first_name, p.last_name, p.known_as, p.id AS person_id
-      FROM census_entries ce
-      JOIN people p ON p.id = ce.person_id
-      WHERE ce.property_id IS NULL
-        AND ce.person_id IS NOT NULL
-      ORDER BY ce.unresolved_address, ce.census_year, p.last_name, p.first_name
-    `);
-    // Group by address + year for a tidier response
+    // Two separate queries — avoids a node-postgres JOIN quirk with this schema
+    const ceRows = (await db.query(`
+      SELECT id, census_year, unresolved_address, relationship,
+             age_at_census, occupation_at_census, source, person_id
+      FROM census_entries
+      WHERE property_id IS NULL AND person_id IS NOT NULL
+      ORDER BY unresolved_address, census_year
+    `)).rows;
+
+    if (!ceRows.length) return res.json([]);
+
+    const personIds = [...new Set(ceRows.map(r => r.person_id))];
+    const peopleRows = (await db.query(
+      `SELECT id, first_name, last_name, known_as FROM people WHERE id = ANY($1)`,
+      [personIds]
+    )).rows;
+    const peopleMap = {};
+    peopleRows.forEach(p => { peopleMap[p.id] = p; });
+
+    // Group by address + year
     const grouped = {};
-    r.rows.forEach(row => {
-      const key = (row.unresolved_address || '(no address)') + '|' + row.census_year;
+    ceRows.forEach(ce => {
+      const p = peopleMap[ce.person_id];
+      if (!p) return; // person deleted — skip
+      const key = (ce.unresolved_address || '') + '|' + ce.census_year;
       if (!grouped[key]) grouped[key] = {
-        address: row.unresolved_address,
-        year: row.census_year,
+        address: ce.unresolved_address,
+        year: ce.census_year,
         people: []
       };
       grouped[key].people.push({
-        entry_id: row.id,
-        person_id: row.person_id,
-        name: row.known_as || (row.first_name + ' ' + row.last_name),
-        relationship: row.relationship,
-        age: row.age_at_census,
-        occupation: row.occupation_at_census,
-        source: row.source
+        entry_id: ce.id,
+        person_id: ce.person_id,
+        name: p.known_as || (p.first_name + ' ' + p.last_name),
+        relationship: ce.relationship,
+        age: ce.age_at_census,
+        occupation: ce.occupation_at_census,
+        source: ce.source
       });
     });
+    // Sort each group's people by last name
+    Object.values(grouped).forEach(g =>
+      g.people.sort((a, b) => (peopleMap[a.person_id]?.last_name || '').localeCompare(peopleMap[b.person_id]?.last_name || ''))
+    );
     res.json(Object.values(grouped));
   } catch(e) { console.error('GET /api/census/unresolved error:', e.stack || e); res.status(500).json({ error: e.message }); }
 });
