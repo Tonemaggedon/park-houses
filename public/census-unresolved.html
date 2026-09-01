@@ -34,7 +34,7 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
 .page-head p { font-size: 0.83rem; color: #a0c0a0; }
 .page-head .summary { margin-top: 10px; font-size: 0.82rem; color: #c8d8b8; }
 
-.main { max-width: 960px; margin: 0 auto; padding: 24px 20px; }
+.main { max-width: 1060px; margin: 0 auto; padding: 24px 20px; }
 
 .access-denied {
   background: white; border: 2px solid #e8d8b0; border-radius: 10px;
@@ -48,42 +48,59 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   transition: opacity 0.4s;
 }
-.group-card.done { opacity: 0.35; }
+.group-card.done { opacity: 0.35; pointer-events: none; }
+
 .group-head {
-  background: #f0ead8; padding: 10px 16px;
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: #f0ead8; padding: 9px 14px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   border-bottom: 1px solid #e0d4b8;
 }
-.group-addr { font-weight: bold; color: #2a1a00; font-size: 0.97rem; flex: 1; min-width: 160px; }
-.group-meta { font-size: 0.77rem; color: #8a7a5a; white-space: nowrap; }
+.group-addr { font-weight: bold; color: #2a1a00; font-size: 0.95rem; min-width: 140px; }
+.group-meta { font-size: 0.75rem; color: #8a7a5a; white-space: nowrap; }
+
+/* Property picker — always visible inline */
+.prop-picker {
+  flex: 1; min-width: 200px; max-width: 340px;
+  padding: 5px 8px; border: 1px solid #c8b888; border-radius: 4px;
+  font-family: Georgia, serif; font-size: 0.78rem;
+  background: white; color: #2c2416;
+}
+
+.assign-sel-btn {
+  font-size: 0.75rem; padding: 4px 11px; background: #2e7d4f; color: white;
+  border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, serif;
+  white-space: nowrap;
+}
+.assign-sel-btn:hover { background: #256040; }
+.assign-sel-btn:disabled { background: #aaa; cursor: default; }
+
 .assign-all-btn {
-  font-size: 0.75rem; padding: 3px 10px; background: #4a6a8a; color: white;
+  font-size: 0.75rem; padding: 4px 11px; background: #4a6a8a; color: white;
   border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, serif;
   white-space: nowrap;
 }
 .assign-all-btn:hover { background: #3a5a7a; }
 
+.sel-count { font-size: 0.72rem; color: #6a5a3a; white-space: nowrap; min-width: 70px; }
+
 .people-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
 .people-table th {
-  background: #f8f4ec; padding: 6px 14px; text-align: left;
-  font-weight: 600; color: #6a5a3a; font-size: 0.76rem;
+  background: #f8f4ec; padding: 6px 10px; text-align: left;
+  font-weight: 600; color: #6a5a3a; font-size: 0.75rem;
   border-bottom: 1px solid #e8dfc8; letter-spacing: 0.03em;
 }
-.people-table td { padding: 7px 14px; border-bottom: 1px solid #f0e8d8; color: #3a2a0a; vertical-align: middle; }
+.people-table th.cb-col { width: 32px; text-align: center; }
+.people-table td { padding: 6px 10px; border-bottom: 1px solid #f0e8d8; color: #3a2a0a; vertical-align: middle; }
 .people-table tr:last-child td { border-bottom: none; }
-.people-table tr:hover td { background: #fdf8f0; }
-.people-table tr.assigned td { opacity: 0.45; text-decoration: line-through; text-decoration-color: #888; }
-.people-table tr.assigned td:last-child { text-decoration: none; }
+.people-table tr:not(.assigned):hover td { background: #fdf8f0; }
+.people-table tr.selected td { background: #eef5e8 !important; }
+.people-table tr.assigned td { opacity: 0.4; text-decoration: line-through; text-decoration-color: #aaa; }
+.people-table tr.assigned td.cb-cell,
+.people-table tr.assigned td.done-cell { text-decoration: none; opacity: 1; }
 .person-link { color: #1a5a8a; text-decoration: none; }
 .person-link:hover { text-decoration: underline; }
 
-.row-assign-btn {
-  font-size: 0.73rem; padding: 3px 9px; background: #2e7d4f; color: white;
-  border: none; border-radius: 3px; cursor: pointer; font-family: Georgia, serif;
-  white-space: nowrap;
-}
-.row-assign-btn:hover { background: #256040; }
-.row-assigned-label { font-size: 0.72rem; color: #2e7d4f; }
+.done-label { font-size: 0.72rem; color: #2e7d4f; white-space: nowrap; }
 
 .empty { text-align: center; padding: 48px 24px; color: #6a7a6a; font-size: 0.95rem; }
 .empty big { display: block; font-size: 2.5rem; margin-bottom: 12px; }
@@ -106,37 +123,6 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   background: #2e7d4f; color: white; font-size: 0.72rem; font-family: Arial, sans-serif;
   padding: 2px 7px; border-radius: 10px; font-weight: bold;
 }
-
-/* ── Assign popup ── */
-#assignOverlay {
-  display: none; position: fixed; inset: 0; z-index: 900;
-  background: rgba(0,0,0,0.3);
-}
-#assignPop {
-  display: none; position: fixed; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: white; border: 2px solid #c8b888; border-radius: 10px;
-  padding: 22px 24px; z-index: 901; min-width: 340px; max-width: 90vw;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-}
-#assignPop h3 { font-size: 0.9rem; color: #2a1a00; margin-bottom: 14px; font-weight: bold; line-height: 1.4; }
-#popSel {
-  width: 100%; padding: 8px 10px; border: 1px solid #c8b888; border-radius: 4px;
-  font-family: Georgia, serif; font-size: 0.85rem; margin-bottom: 14px;
-  background: white; color: #2c2416;
-}
-.pop-btns { display: flex; gap: 8px; justify-content: flex-end; }
-.pop-cancel {
-  padding: 6px 16px; background: white; border: 1px solid #c8b888;
-  border-radius: 4px; cursor: pointer; font-family: Georgia, serif; font-size: 0.82rem;
-}
-.pop-confirm {
-  padding: 6px 18px; background: #2e7d4f; color: white;
-  border: none; border-radius: 4px; cursor: pointer;
-  font-family: Georgia, serif; font-size: 0.82rem;
-}
-.pop-confirm:hover { background: #256040; }
-.pop-confirm:disabled { background: #888; cursor: default; }
 </style>
 </head>
 <body>
@@ -165,26 +151,11 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   <div class="loading">Loading…</div>
 </div>
 
-<!-- Shared assign popup -->
-<div id="assignOverlay" onclick="closeAssignPop()"></div>
-<div id="assignPop">
-  <h3 id="popTitle"></h3>
-  <select id="popSel">
-    <option value="">— select property —</option>
-  </select>
-  <div class="pop-btns">
-    <button class="pop-cancel" onclick="closeAssignPop()">Cancel</button>
-    <button class="pop-confirm" id="popConfirm" onclick="confirmAssign()">Assign</button>
-  </div>
-</div>
-
 <script>
 let allGroups = [];
 let allProps = [];
 let canEdit = false;
-
-// Current pending assignment: { type:'single', entryId, rowEl } or { type:'all', groupIdx, cardEl }
-let pendingAssign = null;
+let propOptsHtml = '';
 
 async function init() {
   const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
@@ -214,14 +185,10 @@ async function init() {
   allProps = (await propsRes.json().catch(() => [])).filter(p => !p.census_only);
   allProps.sort((a, b) => (a.street || '').localeCompare(b.street || '') || (a.no || '').localeCompare(b.no || ''));
 
-  // Populate popup select once
-  const popSel = document.getElementById('popSel');
-  allProps.forEach(p => {
-    const o = document.createElement('option');
-    o.value = p.id;
-    o.textContent = (p.no ? p.no + ' ' : '') + (p.street || p.name || 'Property ' + p.id);
-    popSel.appendChild(o);
-  });
+  // Build option HTML once, reused in every group's picker
+  propOptsHtml = allProps.map(p =>
+    `<option value="${p.id}">${esc((p.no ? p.no + ' ' : '') + (p.street || p.name || 'Property ' + p.id))}</option>`
+  ).join('');
 
   const totalPeople = allGroups.reduce((s, g) => s + g.people.length, 0);
   document.getElementById('summary').textContent =
@@ -245,36 +212,42 @@ function render(groups) {
   </div>`;
 
   html += `<div id="groupList">` + groups.map((g, gi) => {
-    const assignAllBtn = canEdit
-      ? `<button class="assign-all-btn" onclick="openAssignAllPop(${gi}, this)">Assign all →</button>`
-      : '';
+    const editControls = canEdit ? `
+      <select class="prop-picker" id="picker_${gi}">
+        <option value="">— assign to property —</option>
+        ${propOptsHtml}
+      </select>
+      <span class="sel-count" id="selcount_${gi}"></span>
+      <button class="assign-sel-btn" id="selbtn_${gi}" onclick="assignSelected(${gi})" disabled>Assign selected</button>
+      <button class="assign-all-btn" onclick="assignAll(${gi})">Assign all</button>` : '';
+
+    const cbTh = canEdit ? `<th class="cb-col"><input type="checkbox" title="Select all" onchange="toggleAll(${gi}, this.checked)"></th>` : '';
 
     const rows = g.people.map((p, pi) => {
-      const assignCell = canEdit
-        ? `<td><button class="row-assign-btn" onclick="openAssignPop(${gi}, ${pi}, this)">Assign →</button></td>`
+      const cbCell = canEdit
+        ? `<td class="cb-cell" style="text-align:center"><input type="checkbox" data-gi="${gi}" data-pi="${pi}" onchange="onCheck(${gi})"></td>`
         : '';
       return `<tr data-gi="${gi}" data-pi="${pi}">
+        ${cbCell}
         <td><a class="person-link" href="/person/${p.person_id}" target="_blank">${esc(p.name)}</a></td>
         <td>${esc(p.relationship) || '—'}</td>
         <td>${p.age != null ? p.age : '—'}</td>
         <td>${esc(p.occupation) || '—'}</td>
         <td style="font-size:0.75rem;color:#8a7a5a">${esc(p.source) || ''}</td>
-        ${assignCell}
+        ${canEdit ? `<td class="done-cell"></td>` : ''}
       </tr>`;
     }).join('');
 
-    const assignTh = canEdit ? `<th></th>` : '';
+    const doneTh = canEdit ? `<th></th>` : '';
 
     return `<div class="group-card" id="card_${gi}" data-addr="${esc(g.address || '')}" data-names="${g.people.map(p=>p.name).join(' ').toLowerCase()}">
       <div class="group-head">
         <span class="group-addr">${esc(g.address) || '<em style="color:#8a7a5a">(no address recorded)</em>'}</span>
-        <span class="group-meta">${g.year} census &middot; ${g.people.length} person${g.people.length !== 1 ? 's' : ''}</span>
-        ${assignAllBtn}
+        <span class="group-meta">${g.year} census · ${g.people.length} person${g.people.length !== 1 ? 's' : ''}</span>
+        ${editControls}
       </div>
       <table class="people-table">
-        <thead><tr>
-          <th>Name</th><th>Relationship</th><th>Age</th><th>Occupation</th><th>Source</th>${assignTh}
-        </tr></thead>
+        <thead><tr>${cbTh}<th>Name</th><th>Relationship</th><th>Age</th><th>Occupation</th><th>Source</th>${doneTh}</tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
@@ -283,82 +256,80 @@ function render(groups) {
   main.innerHTML = html;
 }
 
-// ── Popup open / close ────────────────────────────────────────────────────────
+// ── Checkbox handling ─────────────────────────────────────────────────────────
 
-function openAssignPop(gi, pi, btn) {
-  const person = allGroups[gi].people[pi];
-  pendingAssign = { type: 'single', gi, pi, entryId: person.entry_id, btn };
-  document.getElementById('popTitle').textContent = `Assign ${person.name} to property:`;
-  document.getElementById('popSel').value = '';
-  showPop();
+function toggleAll(gi, checked) {
+  document.querySelectorAll(`input[type=checkbox][data-gi="${gi}"]`).forEach(cb => {
+    const pi = parseInt(cb.dataset.pi);
+    if (!allGroups[gi].people[pi]._assigned) cb.checked = checked;
+  });
+  onCheck(gi);
 }
 
-function openAssignAllPop(gi, btn) {
-  const g = allGroups[gi];
-  const unassigned = g.people.filter(p => !p._assigned);
-  if (!unassigned.length) { alert('All people in this group are already assigned.'); return; }
-  pendingAssign = { type: 'all', gi, btn };
-  document.getElementById('popTitle').textContent =
-    `Assign all ${unassigned.length} unassigned people at "${g.address || '(no address)'}" to:`;
-  document.getElementById('popSel').value = '';
-  showPop();
+function onCheck(gi) {
+  const cbs = document.querySelectorAll(`input[type=checkbox][data-gi="${gi}"]`);
+  const n = [...cbs].filter(cb => cb.checked).length;
+  const countEl = document.getElementById('selcount_' + gi);
+  const btn = document.getElementById('selbtn_' + gi);
+  if (countEl) countEl.textContent = n ? `${n} selected` : '';
+  if (btn) btn.disabled = n === 0;
+  // Update row highlight
+  cbs.forEach(cb => {
+    const row = cb.closest('tr');
+    if (row) row.classList.toggle('selected', cb.checked);
+  });
 }
 
-function showPop() {
-  document.getElementById('assignOverlay').style.display = '';
-  document.getElementById('assignPop').style.display = '';
-  document.getElementById('popConfirm').disabled = false;
-  document.getElementById('popConfirm').textContent = 'Assign';
-  document.getElementById('popSel').focus();
-}
+// ── Assign actions ────────────────────────────────────────────────────────────
 
-function closeAssignPop() {
-  document.getElementById('assignOverlay').style.display = 'none';
-  document.getElementById('assignPop').style.display = 'none';
-  pendingAssign = null;
-}
+async function assignSelected(gi) {
+  const propId = parseInt(document.getElementById('picker_' + gi).value);
+  if (!propId) { alert('Please choose a property first.'); return; }
 
-// ── Confirm assignment ────────────────────────────────────────────────────────
+  const cbs = [...document.querySelectorAll(`input[type=checkbox][data-gi="${gi}"]`)].filter(cb => cb.checked);
+  if (!cbs.length) return;
 
-async function confirmAssign() {
-  const propId = parseInt(document.getElementById('popSel').value);
-  if (!propId) { alert('Please select a property first.'); return; }
+  const btn = document.getElementById('selbtn_' + gi);
+  btn.disabled = true; btn.textContent = 'Saving…';
 
-  const confirmBtn = document.getElementById('popConfirm');
-  confirmBtn.disabled = true;
-  confirmBtn.textContent = 'Saving…';
-
-  if (pendingAssign.type === 'single') {
-    const { gi, pi, entryId } = pendingAssign;
-    const ok = await resolveEntry(entryId, propId);
+  for (const cb of cbs) {
+    const pi = parseInt(cb.dataset.pi);
+    const ok = await resolveEntry(allGroups[gi].people[pi].entry_id, propId);
     if (ok) {
       allGroups[gi].people[pi]._assigned = true;
       markRowAssigned(gi, pi);
-      checkGroupDone(gi);
-    } else {
-      alert('Failed to save. Please try again.');
+      cb.checked = false;
     }
-  } else {
-    // Assign all unassigned in group
-    const { gi } = pendingAssign;
-    const group = allGroups[gi];
-    let anyFail = false;
-    for (let pi = 0; pi < group.people.length; pi++) {
-      const p = group.people[pi];
-      if (p._assigned) continue;
-      const ok = await resolveEntry(p.entry_id, propId);
-      if (ok) {
-        p._assigned = true;
-        markRowAssigned(gi, pi);
-      } else {
-        anyFail = true;
-      }
-    }
-    checkGroupDone(gi);
-    if (anyFail) alert('Some entries failed to save.');
   }
+  onCheck(gi);
+  checkGroupDone(gi);
+  btn.textContent = 'Assign selected';
+}
 
-  closeAssignPop();
+async function assignAll(gi) {
+  const propId = parseInt(document.getElementById('picker_' + gi).value);
+  if (!propId) { alert('Please choose a property first.'); return; }
+
+  const group = allGroups[gi];
+  const unassigned = group.people.filter(p => !p._assigned);
+  if (!unassigned.length) { alert('All people in this group are already assigned.'); return; }
+
+  const btn = document.querySelector(`#card_${gi} .assign-all-btn`);
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  let anyFail = false;
+  for (let pi = 0; pi < group.people.length; pi++) {
+    if (group.people[pi]._assigned) continue;
+    const ok = await resolveEntry(group.people[pi].entry_id, propId);
+    if (ok) {
+      group.people[pi]._assigned = true;
+      markRowAssigned(gi, pi);
+    } else { anyFail = true; }
+  }
+  onCheck(gi);
+  checkGroupDone(gi);
+  btn.disabled = false; btn.textContent = 'Assign all';
+  if (anyFail) alert('Some entries failed to save.');
 }
 
 async function resolveEntry(entryId, propId) {
@@ -376,13 +347,15 @@ function markRowAssigned(gi, pi) {
   const row = document.querySelector(`#groupList tr[data-gi="${gi}"][data-pi="${pi}"]`);
   if (!row) return;
   row.classList.add('assigned');
-  const lastCell = row.cells[row.cells.length - 1];
-  lastCell.innerHTML = '<span class="row-assigned-label">✓ Assigned</span>';
+  row.classList.remove('selected');
+  const cb = row.querySelector('input[type=checkbox]');
+  if (cb) { cb.checked = false; cb.disabled = true; }
+  const doneCell = row.querySelector('.done-cell');
+  if (doneCell) doneCell.innerHTML = '<span class="done-label">✓</span>';
 }
 
 function checkGroupDone(gi) {
-  const group = allGroups[gi];
-  if (group.people.every(p => p._assigned)) {
+  if (allGroups[gi].people.every(p => p._assigned)) {
     const card = document.getElementById('card_' + gi);
     if (card) card.classList.add('done');
   }
