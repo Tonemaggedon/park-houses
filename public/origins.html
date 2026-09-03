@@ -230,6 +230,17 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
     </div>
 
     <div class="filter-group">
+      <label>House</label>
+      <div class="tag-input-wrap" id="wrap-house" onclick="openDropdown('house')">
+        <div id="tags-house" style="display:contents"></div>
+      </div>
+      <div class="dropdown-list" id="drop-house">
+        <input class="dropdown-search" placeholder="Search…" oninput="filterDrop('house',this.value)">
+        <div id="drop-house-items"></div>
+      </div>
+    </div>
+
+    <div class="filter-group">
       <label>Occupation / Job</label>
       <div class="tag-input-wrap" id="wrap-occ" onclick="openDropdown('occ')">
         <div id="tags-occ" style="display:contents"></div>
@@ -269,8 +280,8 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
 
 <script>
 // ── State ────────────────────────────────────────────────────────────────────
-const selected = { year: [], street: [], occ: [] };
-const options  = { year: [], street: [], occ: [] };
+const selected = { year: [], street: [], house: [], occ: [] };
+const options  = { year: [], street: [], house: [], occ: [] };
 
 // ── Map setup ─────────────────────────────────────────────────────────────────
 const map = L.map('map', { center: [54, -2], zoom: 6 });
@@ -340,7 +351,7 @@ function renderTags(key) {
 }
 
 function clearFilters() {
-  ['year','street','occ'].forEach(k => { selected[k] = []; renderTags(k); renderDropItems(k); });
+  ['year','street','house','occ'].forEach(k => { selected[k] = []; renderTags(k); renderDropItems(k); });
   loadOrigins();
 }
 
@@ -349,8 +360,9 @@ async function loadFilterOptions() {
   const data = await fetch('/api/origins/filters').then(r => r.json());
   options.year   = data.years.map(String);   // ensure strings so .replace() works in renderTags
   options.street = data.streets;
+  options.house  = data.houses || [];
   options.occ    = data.occupations;
-  ['year','street','occ'].forEach(k => renderDropItems(k));
+  ['year','street','house','occ'].forEach(k => renderDropItems(k));
 }
 
 // ── Load & render origins ─────────────────────────────────────────────────────
@@ -361,6 +373,7 @@ async function loadOrigins() {
   const params = new URLSearchParams();
   if (selected.year.length)   params.set('years',       selected.year.join(','));
   if (selected.street.length) params.set('streets',     selected.street.join(','));
+  if (selected.house.length)  params.set('houses',      selected.house.join(','));
   if (selected.occ.length)    params.set('occupations', selected.occ.join(','));
 
   const data = await fetch('/api/origins?' + params).then(r => r.json());

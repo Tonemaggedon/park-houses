@@ -2791,7 +2791,7 @@ app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
 // ── Origins API ───────────────────────────────────────────────────────────────
 app.get('/api/origins', async (req, res) => {
   try {
-    const { years, streets, properties, occupations } = req.query;
+    const { years, streets, houses, occupations } = req.query;
     const conditions = ['ce.birth_place IS NOT NULL', 'gc.lat IS NOT NULL'];
     const params = [];
 
@@ -2807,21 +2807,32 @@ app.get('/api/origins', async (req, res) => {
     if (streets) {
       const sList = streets.split(',').map(s => s.trim()).filter(Boolean);
       if (sList.length) {
-        // Convert street names to property IDs using allProps
         const pidsByStreet = allPropsData
           .filter(p => p.street && sList.includes(p.street))
           .map(p => p.id);
         if (pidsByStreet.length) {
           conditions.push(`ce.property_id = ANY($${params.push(pidsByStreet)})`);
         } else {
-          // No properties on those streets — return empty
           return res.json({ places: [], unknown: [] });
         }
       }
     }
-    if (properties) {
-      const pList = properties.split(',').map(Number).filter(Boolean);
-      if (pList.length) { conditions.push(`ce.property_id = ANY($${params.push(pList)})`); }
+    if (houses) {
+      // houses param is comma-separated labels like "1 Park Drive,3 Park Drive"
+      const hList = houses.split(',').map(s => s.trim()).filter(Boolean);
+      if (hList.length) {
+        const pidsByHouse = allPropsData
+          .filter(p => {
+            const label = [p.no, p.street].filter(Boolean).join(' ');
+            return hList.includes(label);
+          })
+          .map(p => p.id);
+        if (pidsByHouse.length) {
+          conditions.push(`ce.property_id = ANY($${params.push(pidsByHouse)})`);
+        } else {
+          return res.json({ places: [], unknown: [] });
+        }
+      }
     }
     if (occupations) {
       const oList = occupations.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
@@ -2890,17 +2901,32 @@ app.get('/api/origins', async (req, res) => {
 // Filter options for origins page
 app.get('/api/origins/filters', async (req, res) => {
   try {
-    // Streets come from in-memory allProps (property_data has no street column)
     const allPropsData = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const propMap = {};
+    allPropsData.forEach(p => { propMap[p.id] = p; });
+
     const streets = [...new Set(allPropsData.map(p => p.street).filter(Boolean))].sort();
 
-    const [years, occupations] = await Promise.all([
+    const [years, occupations, propRows] = await Promise.all([
       db.query(`SELECT DISTINCT census_year FROM census_entries WHERE birth_place IS NOT NULL ORDER BY census_year`),
-      db.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`)
+      db.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`),
+      db.query(`SELECT DISTINCT property_id FROM census_entries WHERE birth_place IS NOT NULL AND property_id IS NOT NULL`)
     ]);
+
+    // Build house list: only properties that have birth_place data, sorted by label
+    const houses = propRows.rows
+      .map(r => {
+        const p = propMap[r.property_id];
+        if (!p) return null;
+        return [p.no, p.street].filter(Boolean).join(' ');
+      })
+      .filter(Boolean)
+      .sort();
+
     res.json({
       years: years.rows.map(r => r.census_year),
       streets,
+      houses,
       occupations: occupations.rows.map(r => r.occupation_at_census)
     });
   } catch (err) {
