@@ -347,7 +347,7 @@ function clearFilters() {
 // ── Load filter options ───────────────────────────────────────────────────────
 async function loadFilterOptions() {
   const data = await fetch('/api/origins/filters').then(r => r.json());
-  options.year   = data.years;
+  options.year   = data.years.map(String);   // ensure strings so .replace() works in renderTags
   options.street = data.streets;
   options.occ    = data.occupations;
   ['year','street','occ'].forEach(k => renderDropItems(k));
