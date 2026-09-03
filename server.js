@@ -2788,6 +2788,109 @@ app.get('/api/admin/scrape-property-images', requireAdmin, async (req, res) => {
   res.end(`\nDone! Saved ${saved} images across ${ids.length} properties.\n`);
 });
 
+// ── Origins API ───────────────────────────────────────────────────────────────
+app.get('/api/origins', async (req, res) => {
+  try {
+    const { years, streets, properties, occupations } = req.query;
+    const conditions = ['ce.birth_place IS NOT NULL', 'gc.lat IS NOT NULL'];
+    const params = [];
+
+    if (years) {
+      const yList = years.split(',').map(Number).filter(Boolean);
+      if (yList.length) { conditions.push(`ce.census_year = ANY($${params.push(yList)})`); }
+    }
+    if (streets) {
+      const sList = streets.split(',').map(s => s.trim()).filter(Boolean);
+      if (sList.length) { conditions.push(`pr.street = ANY($${params.push(sList)})`); }
+    }
+    if (properties) {
+      const pList = properties.split(',').map(Number).filter(Boolean);
+      if (pList.length) { conditions.push(`ce.property_id = ANY($${params.push(pList)})`); }
+    }
+    if (occupations) {
+      const oList = occupations.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      if (oList.length) {
+        conditions.push(`(${oList.map((o,i) => `LOWER(ce.occupation_at_census) LIKE $${params.push('%'+o+'%')}`).join(' OR ')})`);
+      }
+    }
+
+    const sql = `
+      SELECT
+        TRIM(ce.birth_place) AS birth_place,
+        gc.lat, gc.lng, gc.formatted_address,
+        ce.census_year,
+        p.first_name, p.last_name,
+        ce.occupation_at_census AS occupation,
+        ce.relationship,
+        pr.street,
+        pr.no AS house_no,
+        pr.address AS property_address,
+        ce.unresolved_address
+      FROM census_entries ce
+      JOIN people p ON p.id = ce.person_id
+      JOIN geocode_cache gc ON gc.place_text = TRIM(ce.birth_place) AND gc.status IN ('found','manual')
+      LEFT JOIN properties pr ON pr.id = ce.property_id
+      WHERE ${conditions.join(' AND ')}
+      ORDER BY birth_place, census_year
+    `;
+
+    const { rows } = await pool.query(sql, params);
+
+    // Group by place
+    const places = {};
+    for (const r of rows) {
+      const key = r.birth_place;
+      if (!places[key]) {
+        places[key] = { birth_place: r.birth_place, lat: r.lat, lng: r.lng,
+                        formatted_address: r.formatted_address, people: [] };
+      }
+      places[key].people.push({
+        name: `${r.first_name} ${r.last_name}`,
+        year: r.census_year,
+        occupation: r.occupation || '',
+        relationship: r.relationship || '',
+        street: r.street || r.unresolved_address || '',
+        house: r.property_address || r.unresolved_address || ''
+      });
+    }
+
+    // Also return places with no coords so UI can list them
+    const { rows: unknown } = await pool.query(`
+      SELECT DISTINCT TRIM(ce.birth_place) AS birth_place, COUNT(*) AS cnt
+      FROM census_entries ce
+      WHERE ce.birth_place IS NOT NULL AND TRIM(ce.birth_place) != ''
+        AND NOT EXISTS (SELECT 1 FROM geocode_cache gc WHERE gc.place_text = TRIM(ce.birth_place) AND gc.status IN ('found','manual'))
+      GROUP BY TRIM(ce.birth_place)
+      ORDER BY cnt DESC
+    `);
+
+    res.json({ places: Object.values(places), unknown });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Filter options for origins page
+app.get('/api/origins/filters', async (req, res) => {
+  try {
+    const [years, streets, occupations] = await Promise.all([
+      pool.query(`SELECT DISTINCT census_year FROM census_entries WHERE birth_place IS NOT NULL ORDER BY census_year`),
+      pool.query(`SELECT DISTINCT street FROM properties WHERE street IS NOT NULL ORDER BY street`),
+      pool.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`)
+    ]);
+    res.json({
+      years: years.rows.map(r => r.census_year),
+      streets: streets.rows.map(r => r.street),
+      occupations: occupations.rows.map(r => r.occupation_at_census)
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/origins', (req, res) => res.sendFile(path.join(__dirname, 'public', 'origins.html')));
+
 // ── Catch-all: serve map page for any unmatched GET ───────────────────────────
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origins — Nottingham Park Houses</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #1a1f1a; color: #e8dfc8; height: 100vh; display: flex; flex-direction: column; }
+
+header {
+  background: #1e2e1e;
+  border-bottom: 1px solid #3a4a3a;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+header h1 { font-size: 1.1rem; color: #c8b888; letter-spacing: 0.03em; }
+header h1 span { font-size: 0.75rem; color: #8a9a8a; display: block; font-weight: normal; letter-spacing: 0.08em; text-transform: uppercase; }
+nav { display: flex; gap: 6px; margin-left: auto; flex-wrap: wrap; }
+nav a {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #e8dfc8;
+  padding: 5px 13px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-family: Georgia, serif;
+}
+nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
+
+.layout { display: flex; flex: 1; overflow: hidden; }
+
+/* Filter panel */
+.filters {
+  width: 300px;
+  flex-shrink: 0;
+  background: #1e2e1e;
+  border-right: 1px solid #3a4a3a;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.filters h2 { font-size: 0.85rem; color: #c8b888; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid #3a4a3a; padding-bottom: 6px; }
+
+.filter-group label { display: block; font-size: 0.72rem; color: #8a9a8a; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+
+.tag-input-wrap {
+  background: #141a14;
+  border: 1px solid #3a4a3a;
+  border-radius: 4px;
+  padding: 5px;
+  min-height: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  cursor: text;
+}
+.tag {
+  background: #2a4a2a;
+  border: 1px solid #4a7c5a;
+  color: #c8b888;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tag button { background: none; border: none; color: #c8b888; cursor: pointer; font-size: 0.9rem; padding: 0; line-height: 1; }
+.dropdown-list {
+  background: #141a14;
+  border: 1px solid #4a7c5a;
+  border-radius: 4px;
+  max-height: 160px;
+  overflow-y: auto;
+  margin-top: 2px;
+  display: none;
+  z-index: 100;
+  position: relative;
+}
+.dropdown-list.open { display: block; }
+.dropdown-list div {
+  padding: 5px 9px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: #e8dfc8;
+}
+.dropdown-list div:hover { background: #2a4a2a; }
+.dropdown-search {
+  width: 100%;
+  background: #141a14;
+  border: none;
+  border-bottom: 1px solid #3a4a3a;
+  color: #e8dfc8;
+  font-family: Georgia, serif;
+  font-size: 0.78rem;
+  padding: 5px 8px;
+  outline: none;
+}
+
+.apply-btn {
+  background: #4a7c5a;
+  border: 1px solid #3a6a4a;
+  color: #e8dfc8;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  width: 100%;
+}
+.apply-btn:hover { background: #5a8c6a; }
+.clear-btn {
+  background: transparent;
+  border: 1px solid #3a4a3a;
+  color: #8a9a8a;
+  padding: 6px;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  width: 100%;
+}
+.clear-btn:hover { border-color: #c8b888; color: #c8b888; }
+
+.stats-bar {
+  font-size: 0.75rem;
+  color: #8a9a8a;
+  padding: 6px 2px;
+  border-top: 1px solid #3a4a3a;
+  margin-top: auto;
+}
+
+/* Unknown places panel */
+.unknown-section { margin-top: 4px; }
+.unknown-section h3 { font-size: 0.75rem; color: #c8b888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.unknown-list { font-size: 0.72rem; color: #8a9a8a; }
+.unknown-list .uitem {
+  padding: 3px 0;
+  border-bottom: 1px solid #2a3a2a;
+  display: flex;
+  justify-content: space-between;
+}
+.unknown-list .uitem span { color: #e8dfc8; font-size: 0.7rem; }
+.unknown-note {
+  font-size: 0.68rem;
+  color: #6a7a6a;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.unknown-note a { color: #c8b888; }
+
+/* Map area */
+.map-wrap { flex: 1; position: relative; }
+#map { width: 100%; height: 100%; }
+
+/* Popup */
+.origin-popup h4 { font-size: 0.85rem; color: #1e2e1e; margin-bottom: 6px; }
+.origin-popup .person { padding: 3px 0; border-bottom: 1px solid #ddd; font-size: 0.75rem; }
+.origin-popup .person:last-child { border-bottom: none; }
+.origin-popup .person strong { display: block; }
+.origin-popup .person em { color: #666; }
+
+/* Loading overlay */
+#loadingOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,31,26,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  font-size: 0.9rem;
+  color: #c8b888;
+}
+#loadingOverlay.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
+  </div>
+  <nav>
+    <a href="/">🗺 Map</a>
+    <a href="/people">👤 People</a>
+    <a href="/stats">📈 Insights</a>
+    <a href="/origins" class="active">🌍 Origins</a>
+  </nav>
+</header>
+
+<div class="layout">
+
+  <!-- Filter panel -->
+  <div class="filters">
+    <h2>Filter Origins</h2>
+
+    <div class="filter-group">
+      <label>Census Year</label>
+      <div class="tag-input-wrap" id="wrap-year" onclick="openDropdown('year')">
+        <div id="tags-year" style="display:contents"></div>
+      </div>
+      <div class="dropdown-list" id="drop-year">
+        <input class="dropdown-search" placeholder="Search…" oninput="filterDrop('year',this.value)">
+        <div id="drop-year-items"></div>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Street</label>
+      <div class="tag-input-wrap" id="wrap-street" onclick="openDropdown('street')">
+        <div id="tags-street" style="display:contents"></div>
+      </div>
+      <div class="dropdown-list" id="drop-street">
+        <input class="dropdown-search" placeholder="Search…" oninput="filterDrop('street',this.value)">
+        <div id="drop-street-items"></div>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Occupation / Job</label>
+      <div class="tag-input-wrap" id="wrap-occ" onclick="openDropdown('occ')">
+        <div id="tags-occ" style="display:contents"></div>
+      </div>
+      <div class="dropdown-list" id="drop-occ">
+        <input class="dropdown-search" placeholder="Search…" oninput="filterDrop('occ',this.value)">
+        <div id="drop-occ-items"></div>
+      </div>
+    </div>
+
+    <button class="apply-btn" onclick="applyFilters()">Apply Filters</button>
+    <button class="clear-btn" onclick="clearFilters()">Clear All</button>
+
+    <div class="stats-bar" id="statsBar">Loading…</div>
+
+    <div class="unknown-section" id="unknownSection" style="display:none">
+      <h3>⚠ Unresolved Places</h3>
+      <div class="unknown-list" id="unknownList"></div>
+      <p class="unknown-note">
+        These places couldn't be geocoded automatically.<br>
+        Look them up at <a href="https://www.latlong.net" target="_blank">latlong.net</a> or
+        <a href="https://visionofbritain.org.uk/place/" target="_blank">visionofbritain.org.uk</a>,
+        then run:<br>
+        <code style="font-size:0.65rem;color:#c8b888">UPDATE geocode_cache SET lat=?, lng=?, status='manual' WHERE place_text='?';</code><br>
+        then re-run <code style="font-size:0.65rem;color:#c8b888">geocode_birth_places.py</code>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-wrap">
+    <div id="loadingOverlay">Loading origins…</div>
+    <div id="map"></div>
+  </div>
+
+</div>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+const selected = { year: [], street: [], occ: [] };
+const options  = { year: [], street: [], occ: [] };
+
+// ── Map setup ─────────────────────────────────────────────────────────────────
+const map = L.map('map', { center: [54, -2], zoom: 6 });
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors', maxZoom: 18
+}).addTo(map);
+
+const markers = L.markerClusterGroup({ maxClusterRadius: 40 });
+map.addLayer(markers);
+
+// ── Dropdown logic ────────────────────────────────────────────────────────────
+function openDropdown(key) {
+  document.querySelectorAll('.dropdown-list').forEach(d => {
+    if (d.id !== `drop-${key}`) d.classList.remove('open');
+  });
+  const drop = document.getElementById(`drop-${key}`);
+  drop.classList.toggle('open');
+  drop.querySelector('.dropdown-search').focus();
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.filter-group')) {
+    document.querySelectorAll('.dropdown-list').forEach(d => d.classList.remove('open'));
+  }
+});
+
+function filterDrop(key, query) {
+  const items = document.getElementById(`drop-${key}-items`);
+  items.innerHTML = '';
+  const q = query.toLowerCase();
+  options[key]
+    .filter(o => String(o).toLowerCase().includes(q) && !selected[key].includes(o))
+    .slice(0, 60)
+    .forEach(o => {
+      const div = document.createElement('div');
+      div.textContent = o;
+      div.onclick = () => addTag(key, o);
+      items.appendChild(div);
+    });
+}
+
+function renderDropItems(key) {
+  filterDrop(key, document.querySelector(`#drop-${key} .dropdown-search`).value);
+}
+
+function addTag(key, value) {
+  if (selected[key].includes(value)) return;
+  selected[key].push(value);
+  renderTags(key);
+  renderDropItems(key);
+}
+
+function removeTag(key, value) {
+  selected[key] = selected[key].filter(v => v !== value);
+  renderTags(key);
+  renderDropItems(key);
+}
+
+function renderTags(key) {
+  const wrap = document.getElementById(`tags-${key}`);
+  wrap.innerHTML = '';
+  selected[key].forEach(v => {
+    const t = document.createElement('div');
+    t.className = 'tag';
+    t.innerHTML = `${v} <button onclick="event.stopPropagation();removeTag('${key}','${v.replace(/'/g,"\\'")}')">×</button>`;
+    wrap.appendChild(t);
+  });
+}
+
+function clearFilters() {
+  ['year','street','occ'].forEach(k => { selected[k] = []; renderTags(k); renderDropItems(k); });
+  loadOrigins();
+}
+
+// ── Load filter options ───────────────────────────────────────────────────────
+async function loadFilterOptions() {
+  const data = await fetch('/api/origins/filters').then(r => r.json());
+  options.year   = data.years;
+  options.street = data.streets;
+  options.occ    = data.occupations;
+  ['year','street','occ'].forEach(k => renderDropItems(k));
+}
+
+// ── Load & render origins ─────────────────────────────────────────────────────
+async function loadOrigins() {
+  document.getElementById('loadingOverlay').classList.remove('hidden');
+  markers.clearLayers();
+
+  const params = new URLSearchParams();
+  if (selected.year.length)   params.set('years',       selected.year.join(','));
+  if (selected.street.length) params.set('streets',     selected.street.join(','));
+  if (selected.occ.length)    params.set('occupations', selected.occ.join(','));
+
+  const data = await fetch('/api/origins?' + params).then(r => r.json());
+
+  let totalPeople = 0;
+  data.places.forEach(place => {
+    totalPeople += place.people.length;
+    const colour = place.people.length > 10 ? '#b85a3a' : place.people.length > 4 ? '#c8883a' : '#4a7c5a';
+    const circle = L.circleMarker([place.lat, place.lng], {
+      radius: Math.min(6 + place.people.length * 1.2, 22),
+      fillColor: colour, color: '#fff', weight: 1, fillOpacity: 0.8
+    });
+
+    // Build popup
+    const peopleHtml = place.people.slice(0, 15).map(p =>
+      `<div class="person"><strong>${p.name}</strong><em>${p.year} · ${p.house || p.street} · ${p.occupation || 'no occupation'}</em></div>`
+    ).join('');
+    const more = place.people.length > 15 ? `<div style="font-size:0.7rem;color:#666;margin-top:4px">…and ${place.people.length - 15} more</div>` : '';
+
+    circle.bindPopup(`<div class="origin-popup">
+      <h4>📍 ${place.birth_place}</h4>
+      <div style="font-size:0.72rem;color:#666;margin-bottom:6px">${place.people.length} resident${place.people.length>1?'s':''}</div>
+      ${peopleHtml}${more}
+    </div>`, { maxHeight: 280 });
+
+    markers.addLayer(circle);
+  });
+
+  // Stats
+  document.getElementById('statsBar').textContent =
+    `${data.places.length} birthplaces · ${totalPeople} people`;
+
+  // Unknown places
+  if (data.unknown && data.unknown.length) {
+    document.getElementById('unknownSection').style.display = '';
+    const ul = document.getElementById('unknownList');
+    ul.innerHTML = data.unknown.map(u =>
+      `<div class="uitem">${u.birth_place}<span>${u.cnt} person${u.cnt>1?'s':''}</span></div>`
+    ).join('');
+  } else {
+    document.getElementById('unknownSection').style.display = 'none';
+  }
+
+  document.getElementById('loadingOverlay').classList.add('hidden');
+}
+
+function applyFilters() {
+  document.querySelectorAll('.dropdown-list').forEach(d => d.classList.remove('open'));
+  loadOrigins();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadFilterOptions();
+loadOrigins();
+</script>
+</body>
+</html>
