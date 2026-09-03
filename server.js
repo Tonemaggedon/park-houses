@@ -2834,7 +2834,7 @@ app.get('/api/origins', async (req, res) => {
       ORDER BY birth_place, census_year
     `;
 
-    const { rows } = await pool.query(sql, params);
+    const { rows } = await db.query(sql, params);
 
     // Group by place
     const places = {};
@@ -2855,7 +2855,7 @@ app.get('/api/origins', async (req, res) => {
     }
 
     // Also return places with no coords so UI can list them
-    const { rows: unknown } = await pool.query(`
+    const { rows: unknown } = await db.query(`
       SELECT DISTINCT TRIM(ce.birth_place) AS birth_place, COUNT(*) AS cnt
       FROM census_entries ce
       WHERE ce.birth_place IS NOT NULL AND TRIM(ce.birth_place) != ''
@@ -2875,9 +2875,9 @@ app.get('/api/origins', async (req, res) => {
 app.get('/api/origins/filters', async (req, res) => {
   try {
     const [years, streets, occupations] = await Promise.all([
-      pool.query(`SELECT DISTINCT census_year FROM census_entries WHERE birth_place IS NOT NULL ORDER BY census_year`),
-      pool.query(`SELECT DISTINCT street FROM properties WHERE street IS NOT NULL ORDER BY street`),
-      pool.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`)
+      db.query(`SELECT DISTINCT census_year FROM census_entries WHERE birth_place IS NOT NULL ORDER BY census_year`),
+      db.query(`SELECT DISTINCT street FROM properties WHERE street IS NOT NULL ORDER BY street`),
+      db.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`)
     ]);
     res.json({
       years: years.rows.map(r => r.census_year),
