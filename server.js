@@ -2795,13 +2795,29 @@ app.get('/api/origins', async (req, res) => {
     const conditions = ['ce.birth_place IS NOT NULL', 'gc.lat IS NOT NULL'];
     const params = [];
 
+    // Build property lookup from in-memory allProps JSON
+    const allPropsData = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const propMap = {};
+    allPropsData.forEach(p => { propMap[p.id] = p; });
+
     if (years) {
       const yList = years.split(',').map(Number).filter(Boolean);
       if (yList.length) { conditions.push(`ce.census_year = ANY($${params.push(yList)})`); }
     }
     if (streets) {
       const sList = streets.split(',').map(s => s.trim()).filter(Boolean);
-      if (sList.length) { conditions.push(`pr.street = ANY($${params.push(sList)})`); }
+      if (sList.length) {
+        // Convert street names to property IDs using allProps
+        const pidsByStreet = allPropsData
+          .filter(p => p.street && sList.includes(p.street))
+          .map(p => p.id);
+        if (pidsByStreet.length) {
+          conditions.push(`ce.property_id = ANY($${params.push(pidsByStreet)})`);
+        } else {
+          // No properties on those streets — return empty
+          return res.json({ places: [], unknown: [] });
+        }
+      }
     }
     if (properties) {
       const pList = properties.split(',').map(Number).filter(Boolean);
@@ -2810,7 +2826,7 @@ app.get('/api/origins', async (req, res) => {
     if (occupations) {
       const oList = occupations.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
       if (oList.length) {
-        conditions.push(`(${oList.map((o,i) => `LOWER(ce.occupation_at_census) LIKE $${params.push('%'+o+'%')}`).join(' OR ')})`);
+        conditions.push(`(${oList.map((o) => `LOWER(ce.occupation_at_census) LIKE $${params.push('%'+o+'%')}`).join(' OR ')})`);
       }
     }
 
@@ -2822,21 +2838,18 @@ app.get('/api/origins', async (req, res) => {
         p.first_name, p.last_name,
         ce.occupation_at_census AS occupation,
         ce.relationship,
-        pr.street,
-        pr.no AS house_no,
-        pr.address AS property_address,
+        ce.property_id,
         ce.unresolved_address
       FROM census_entries ce
       JOIN people p ON p.id = ce.person_id
       JOIN geocode_cache gc ON gc.place_text = TRIM(ce.birth_place) AND gc.status IN ('found','manual')
-      LEFT JOIN properties pr ON pr.id = ce.property_id
       WHERE ${conditions.join(' AND ')}
       ORDER BY birth_place, census_year
     `;
 
     const { rows } = await db.query(sql, params);
 
-    // Group by place
+    // Group by place, enriching property info from in-memory propMap
     const places = {};
     for (const r of rows) {
       const key = r.birth_place;
@@ -2844,13 +2857,16 @@ app.get('/api/origins', async (req, res) => {
         places[key] = { birth_place: r.birth_place, lat: r.lat, lng: r.lng,
                         formatted_address: r.formatted_address, people: [] };
       }
+      const prop = r.property_id ? propMap[r.property_id] : null;
+      const street = prop ? (prop.street || '') : '';
+      const house  = prop ? (prop.no ? `${prop.no} ${street}`.trim() : street) : (r.unresolved_address || '');
       places[key].people.push({
         name: `${r.first_name} ${r.last_name}`,
         year: r.census_year,
         occupation: r.occupation || '',
         relationship: r.relationship || '',
-        street: r.street || r.unresolved_address || '',
-        house: r.property_address || r.unresolved_address || ''
+        street: street || r.unresolved_address || '',
+        house: house || r.unresolved_address || ''
       });
     }
 
@@ -2874,14 +2890,17 @@ app.get('/api/origins', async (req, res) => {
 // Filter options for origins page
 app.get('/api/origins/filters', async (req, res) => {
   try {
-    const [years, streets, occupations] = await Promise.all([
+    // Streets come from in-memory allProps (property_data has no street column)
+    const allPropsData = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const streets = [...new Set(allPropsData.map(p => p.street).filter(Boolean))].sort();
+
+    const [years, occupations] = await Promise.all([
       db.query(`SELECT DISTINCT census_year FROM census_entries WHERE birth_place IS NOT NULL ORDER BY census_year`),
-      db.query(`SELECT DISTINCT street FROM properties WHERE street IS NOT NULL ORDER BY street`),
       db.query(`SELECT DISTINCT occupation_at_census FROM census_entries WHERE occupation_at_census IS NOT NULL AND birth_place IS NOT NULL ORDER BY occupation_at_census`)
     ]);
     res.json({
       years: years.rows.map(r => r.census_year),
-      streets: streets.rows.map(r => r.street),
+      streets,
       occupations: occupations.rows.map(r => r.occupation_at_census)
     });
   } catch (err) {
