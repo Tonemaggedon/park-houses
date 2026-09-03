@@ -451,7 +451,7 @@
 </div>
 
 <div class="toolbar">
-  <input id="searchBox" type="text" placeholder="Search by house name, street, number…" oninput="filterMarkers(this.value)">
+  <input id="searchBox" type="text" autocomplete="off" placeholder="Search by house name, street, number…" oninput="filterMarkers(this.value)">
   <select id="typeFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
     <option value="">All streets</option>
   </select>
