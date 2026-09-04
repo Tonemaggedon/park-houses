@@ -465,11 +465,9 @@ function closeProfile() {
 
 function renderProfile(p) {
   // Header
-  document.getElementById('paneName').textContent = p.known_as || displayName(p);
-  if (p.known_as && p.known_as !== displayName(p)) {
-    document.getElementById('paneName').textContent = displayName(p);
-    // subtitle handled below
-  }
+  { let headName = p.known_as || displayName(p);
+    if (p.postnominals && !headName.includes(p.postnominals)) headName += ', ' + p.postnominals;
+    document.getElementById('paneName').textContent = headName; }
   const dates = [];
   const bornYr = parseInt(p.born_year) || parseInt((p.born_date||'').match(/\d{4}/)?.[0]);
   const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
