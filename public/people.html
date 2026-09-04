@@ -500,11 +500,12 @@ function renderProfile(p) {
   // Body
   const html = [];
 
-  // Known as / title
-  if (p.known_as) {
+  // Known as / née / title
+  if (p.known_as || p.maiden_name) {
     html.push(`<div class="pane-section">
       <div class="detail-grid">
-        <span class="lbl">Also known as</span><span class="val">${p.known_as}</span>
+        ${p.known_as ? `<span class="lbl">Also known as</span><span class="val">${p.known_as}</span>` : ''}
+        ${p.maiden_name ? `<span class="lbl">Née</span><span class="val">${p.maiden_name}</span>` : ''}
         ${p.born_place ? `<span class="lbl">Born</span><span class="val">${p.born_date||p.born_year||''}${p.born_place ? ' — '+p.born_place : ''}</span>` : ''}
       </div>
     </div>`);
@@ -708,6 +709,8 @@ function renderProfile(p) {
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as</label><br>
         <input id="edit_known_as" value="${(p.known_as||'').replace(/"/g,'&quot;')}" placeholder="e.g. nickname or full formal name" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+      <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Née (maiden name)</label><br>
+        <input id="edit_maiden_name" value="${(p.maiden_name||'').replace(/"/g,'&quot;')}" placeholder="e.g. Smith" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       ${(()=>{
         const MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
         function parseDateParts(val) {
@@ -848,6 +851,7 @@ async function savePerson(personId) {
     first_name: document.getElementById('edit_first_name')?.value.trim() || null,
     last_name: document.getElementById('edit_last_name')?.value.trim() || null,
     known_as: document.getElementById('edit_known_as')?.value.trim() || null,
+    maiden_name: document.getElementById('edit_maiden_name')?.value.trim() || null,
     title: document.getElementById('edit_title')?.value || null,
     postnominals: document.getElementById('edit_postnominals')?.value || null,
     born_date: bornDate,
