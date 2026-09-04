@@ -526,7 +526,9 @@ let _canImport = false;
           <textarea class="imp-paste" id="impPaste"
             placeholder="First name(s)&#9;Last name&#9;Relationship to head&#9;Sex&#9;Birth year&#9;Age in years&#9;Birth place&#9;Occupation&#9;Employer&#10;Robert&#9;Evans&#9;Head&#9;Male&#9;1863&#9;58&#9;Nottingham&#9;Architect&#9;Employer"></textarea>
         </div>
-        <p class="imp-hint">Expected columns (tab-separated): First name(s) · Last name · Relationship · Sex · Birth year · Age · Birth place · Occupation · Employer</p>
+        <p class="imp-hint">Accepts two formats (header row auto-detected):<br>
+        <strong>FindMyPast 1939:</strong> First name · Last name · Birth date · Sex · Occupation · Marital status · Schedule · Sub number<br>
+        <strong>Standard:</strong> First name · Last name · Relationship · Sex · Birth year · Age · Birth place · Occupation · Employer</p>
         <div style="display:flex;gap:8px;margin-top:14px">
           <button class="imp-btn imp-btn-primary" onclick="parseImport()">Preview →</button>
           <button class="imp-btn imp-btn-secondary" onclick="closeImport()">Cancel</button>
@@ -601,34 +603,64 @@ function backToStep1() {
   document.getElementById('impStep2').style.display = 'none';
 }
 
+function detectFormat(headerLine) {
+  const h = headerLine.toLowerCase();
+  // FindMyPast 1939 register: has "birth date" and "marital status"
+  if (h.includes('birth date') || h.includes('marital status') || h.includes('schedule sub')) return 'findmypast1939';
+  // FindMyPast 1921/other: has "relationship" and "birth year" or "birth place"
+  if (h.includes('birth year') || h.includes('age in years')) return 'standard';
+  return 'standard'; // default
+}
+
+function parseLine(cols, format) {
+  if (format === 'findmypast1939') {
+    // FindMyPast 1939: First name | Last name | Birth date | Sex | Occupation | Marital status | Schedule | Sub number
+    const birthDateStr = (cols[2] || '').trim();
+    const birthYear = birthDateStr.match(/\d{4}/) ? parseInt(birthDateStr.match(/\d{4}/)[0]) : null;
+    return {
+      first_name: (cols[0] || '').trim(),
+      last_name: (cols[1] || '').trim(),
+      relationship: '',
+      sex: (cols[3] || '').trim(),
+      birth_year: birthYear,
+      age: null,
+      birth_place: '',
+      occupation: (cols[4] || '').trim(),
+      employer: '',
+      person_id: null, person_name_matched: null
+    };
+  }
+  // Standard: First name | Last name | Relationship | Sex | Birth year | Age | Birth place | Occupation | Employer
+  return {
+    first_name: (cols[0] || '').trim(),
+    last_name: (cols[1] || '').trim(),
+    relationship: (cols[2] || '').trim(),
+    sex: (cols[3] || '').trim(),
+    birth_year: parseInt(cols[4]) || null,
+    age: parseInt(cols[5]) || null,
+    birth_place: (cols[6] || '').trim(),
+    occupation: (cols[7] || '').trim(),
+    employer: (cols[8] || '').trim(),
+    person_id: null, person_name_matched: null
+  };
+}
+
 async function parseImport() {
   const raw = document.getElementById('impPaste').value.trim();
   if (!raw) { alert('Please paste some data first.'); return; }
 
   const lines = raw.split('\n').filter(l => l.trim());
-  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation'];
+  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital'];
   const firstLineLower = lines[0].toLowerCase();
   const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k));
+  const format = isHeader ? detectFormat(lines[0]) : 'standard';
   const dataLines = isHeader ? lines.slice(1) : lines;
 
   if (!dataLines.length) { alert('No data rows found.'); return; }
 
   importRows = dataLines.map((line, i) => {
     const cols = line.split('\t');
-    return {
-      idx: i,
-      first_name: (cols[0] || '').trim(),
-      last_name: (cols[1] || '').trim(),
-      relationship: (cols[2] || '').trim(),
-      sex: (cols[3] || '').trim(),
-      birth_year: parseInt(cols[4]) || null,
-      age: parseInt(cols[5]) || null,
-      birth_place: (cols[6] || '').trim(),
-      occupation: (cols[7] || '').trim(),
-      employer: (cols[8] || '').trim(),
-      person_id: null,
-      person_name_matched: null
-    };
+    return { idx: i, ...parseLine(cols, format) };
   }).filter(r => r.first_name || r.last_name);
 
   if (!importRows.length) { alert('Could not parse any rows.'); return; }
