@@ -844,9 +844,16 @@ function buildDateString(prefix) {
 
 async function savePerson(personId) {
   const status = document.getElementById('saveStatus');
-  status.textContent = 'Saving…';
   const bornDate = buildDateString('edit_born');
   const diedDate = buildDateString('edit_died');
+  const bornYrCheck = bornDate ? parseInt(bornDate.match(/\d{4}/)?.[0]) : null;
+  const diedYrCheck = diedDate ? parseInt(diedDate.match(/\d{4}/)?.[0]) : null;
+  if (bornYrCheck && bornYrCheck > new Date().getFullYear() - 100 && !diedYrCheck) {
+    status.textContent = '✗ Person may still be living — add a date of death to confirm deceased.';
+    status.style.color = '#c04040';
+    return;
+  }
+  status.textContent = 'Saving…';
   const fields = {
     first_name: document.getElementById('edit_first_name')?.value.trim() || null,
     last_name: document.getElementById('edit_last_name')?.value.trim() || null,
@@ -1119,6 +1126,12 @@ async function submitAddPerson() {
   if (!first_name || !last_name) { document.getElementById('apError').textContent='First and last name are required.'; return; }
   const bornDate = buildDateString('ap_born');
   const diedDate = buildDateString('ap_died');
+  const bornYearVal = parseInt(get('ap_born_year'));
+  const diedYearVal = parseInt(get('ap_died_year')) || (diedDate ? parseInt(diedDate.match(/\d{4}/)?.[0]) : null);
+  if (bornYearVal && bornYearVal > new Date().getFullYear() - 100 && !diedYearVal && !diedDate) {
+    document.getElementById('apError').textContent = 'This person may still be living. Add a date of death to confirm they are deceased, or leave date of birth blank.';
+    return;
+  }
   const body = {
     first_name, last_name,
     known_as: get('ap_known_as') || null,
