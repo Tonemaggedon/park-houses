@@ -618,7 +618,9 @@ function detectFormat(headerLine) {
   const h = headerLine.toLowerCase();
   // FindMyPast 1939 register: has "birth date" and "marital status"
   if (h.includes('birth date') || h.includes('marital status') || h.includes('schedule sub')) return 'findmypast1939';
-  // FindMyPast 1921/other: has "relationship" and "birth year" or "birth place"
+  // Custom 1921 HD format: has "house id" and "count house"
+  if (h.includes('house id') && (h.includes('count house') || h.includes('location'))) return 'custom1921hd';
+  // Standard: has "birth year" or "age in years"
   if (h.includes('birth year') || h.includes('age in years')) return 'standard';
   return 'standard'; // default
 }
@@ -638,6 +640,47 @@ function parseLine(cols, format) {
       birth_place: '',
       occupation: (cols[4] || '').trim(),
       employer: '',
+      person_id: null, person_name_matched: null
+    };
+  }
+  if (format === 'custom1921hd') {
+    // Custom 1921 HD format:
+    // 0:House ID  1:year  2:count house  3:Location  4:House Name  5:house NO.
+    // 6:Family(last)  7:Name(first)  8:number in house
+    // 9:W(female)  10:M(male)  11:G(girl)  12:B(boy)
+    // 13:HEAD  14:WIFE  15:daughter  16:son  17:Other  18:Servant  19:<15=child
+    // 20:Married woman  21:(other)  22:Age in years  23:Married/Single/Widow/er
+    const lastName  = (cols[6] || '').trim();
+    const firstName = (cols[7] || '').trim();
+    // Skip sub-header and separator rows
+    if (!lastName && !firstName) return { first_name: '', last_name: '' };
+    if (/^(last ?name|family|name)$/i.test(lastName)) return { first_name: '', last_name: '' };
+    const countHouse = parseInt(cols[2]) || null;
+    const location   = (cols[3] || '').trim();
+    const houseName  = (cols[4] || '').trim();
+    // Sex: W/G = female, M/B = male
+    const isF = (cols[9]||'').trim()==='1' || (cols[11]||'').trim()==='1';
+    const isM = (cols[10]||'').trim()==='1' || (cols[12]||'').trim()==='1';
+    const sex = isM ? 'M' : isF ? 'F' : '';
+    // Relationship from boolean flags (cols 13–19)
+    const relNames = ['Head','Wife','Daughter','Son','Other','Servant','Child'];
+    let relationship = '';
+    for (let i = 0; i < relNames.length; i++) {
+      if ((cols[13+i]||'').trim() === '1') { relationship = relNames[i]; break; }
+    }
+    const age = parseInt(cols[22]) || null;
+    const unresolvedAddress = houseName ? `${location} (${houseName})` : location;
+    return {
+      first_name: firstName,
+      last_name: lastName,
+      relationship,
+      sex,
+      birth_year: age ? (1921 - age) : null,
+      age,
+      birth_place: '',
+      occupation: '',
+      census_household_num: countHouse,
+      unresolved_address: unresolvedAddress,
       person_id: null, person_name_matched: null
     };
   }
@@ -661,11 +704,13 @@ async function parseImport() {
   if (!raw) { alert('Please paste some data first.'); return; }
 
   const lines = raw.split('\n').filter(l => l.trim());
-  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital'];
+  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house'];
   const firstLineLower = lines[0].toLowerCase();
   const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k));
   const format = isHeader ? detectFormat(lines[0]) : 'standard';
-  const dataLines = isHeader ? lines.slice(1) : lines;
+  // Custom 1921 HD format has 3 header rows; standard formats have 1
+  const headerRows = (format === 'custom1921hd') ? 3 : (isHeader ? 1 : 0);
+  const dataLines = lines.slice(headerRows);
 
   if (!dataLines.length) { alert('No data rows found.'); return; }
 
@@ -759,7 +804,9 @@ async function submitImport() {
       birth_year: r.birth_year,
       birth_place: r.birth_place,
       occupation: r.occupation,
-      sex: r.sex
+      sex: r.sex,
+      census_household_num: r.census_household_num || null,
+      unresolved_address: r.unresolved_address || null,
     }))
   };
 

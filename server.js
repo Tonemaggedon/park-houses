@@ -1562,10 +1562,11 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
         results.push({ personId, created: false });
       }
       await db.query(
-        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census)
-         VALUES ($1,$2,$3,$4,$5,$6)`,
+        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, census_household_num, unresolved_address)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
         [personId, property_id || null, census_year, row.relationship || null,
-         row.age ? parseInt(row.age) : null, row.occupation || null]
+         row.age ? parseInt(row.age) : null, row.occupation || null,
+         row.census_household_num || null, row.unresolved_address || null]
       );
     }
     res.json({ ok: true, results });
