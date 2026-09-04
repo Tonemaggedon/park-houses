@@ -67,6 +67,7 @@
   .park-marker.has-people { background: #1a6fa8; border-color: #10497a; }
   .park-marker.active { background: #d4380d !important; border-color: #8b1a00 !important; transform: scale(1.25); z-index: 1000 !important; }
   .park-marker:hover { transform: scale(1.15); }
+  .park-marker.demolished { background: transparent !important; border-color: #555 !important; border-style: dashed !important; }
 
   /* Detail panel */
   .panel {
@@ -463,7 +464,7 @@
   <button onclick="resetFilters()">Reset</button>
   <button id="censusToggleBtn" onclick="censusMode ? closeCensusMode() : openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
   <a id="contribUnresolvedBtn" href="/census/unresolved" title="Review unresolved census people" style="display:none;text-decoration:none;border:1px solid #8a6a1a;color:#c8a040;border-radius:4px;padding:3px 9px;font-size:0.75rem;white-space:nowrap">🔍 Unresolved</a>
-  <span class="info" id="countInfo">350 properties · click a marker to view its record</span>
+  <span class="info" id="countInfo">393 properties · click a marker to view its record</span>
 </div>
 <div id="censusBar" style="display:none;background:#1a3a2a;padding:5px 14px;flex-direction:row;align-items:center;gap:10px;font-size:0.75rem;color:#c8d8b8;font-family:Georgia,serif">
   <span style="white-space:nowrap">Census year:</span>
@@ -484,6 +485,7 @@
           <button id="panelAddDataBtn" onclick="openAddData()" style="display:none;background:#1a3a2a;color:#e8dfc8;border:none;padding:3px 10px;border-radius:4px;font-size:0.72rem;cursor:pointer;white-space:nowrap;font-family:Georgia,serif">+ Add Data</button>
         </div>
         <div class="sub" id="pSub"></div>
+        <div id="demolishedBanner" style="display:none;margin-top:4px;padding:3px 8px;background:#555;color:#fff;border-radius:4px;font-size:0.72rem;font-family:Georgia,serif;width:fit-content">🏚 Lost house — demolished</div>
         <div class="view-btns" id="viewBtns">
           <button class="view-btn sv" onclick="openStreetView()">&#128247; Street View</button>
         </div>
@@ -1057,7 +1059,8 @@ const props = [
     {id:390,name:"Sunnyside",street:"Fish Pond Drive",no:"Sunnyside",address:"Sunnyside, Fish Pond Drive",desc:"",history:"",date_built:"",listed:"No",census_only:true,lat:52.950059,lng:-1.1607417},
     {id:391,name:"Glenmaye",street:"Fish Pond Drive",no:"Glenmaye",address:"Glenmaye, Fish Pond Drive",desc:"",history:"",date_built:"",listed:"No",census_only:true,lat:52.950259,lng:-1.1605417},
     {id:392,name:"The Hermitage",street:"Hermitage Walk",no:"The Hermitage",address:"The Hermitage, Hermitage Walk",desc:"",history:"",date_built:"",listed:"No",census_only:true,lat:52.9505,lng:-1.161},
-    {id:393,name:"Fairlawn",street:"Duke William Mount",no:"Fairlawn",address:"Fairlawn, Duke William Mount",desc:"",history:"",date_built:"",listed:"No",census_only:true,lat:52.9515189,lng:-1.1644901}
+    {id:393,name:"Fairlawn",street:"Duke William Mount",no:"Fairlawn",address:"Fairlawn, Duke William Mount",desc:"",history:"",date_built:"",listed:"No",census_only:true,lat:52.9515189,lng:-1.1644901},
+    {id:394,name:"Felixstowe",street:"Clumber Road West",no:"",address:"Felixstowe, Clumber Road West",desc:"",history:"",date_built:"",listed:false,listedGrade:"",lat:52.9508,lng:-1.1659,demolished:true,demolished_notes:"House demolished. Approximate position shown.",residents:[]}
 ];
 
 const subs = {}; // Submissions are stored server-side; this will be populated via API in the full build
@@ -1085,7 +1088,8 @@ legend.onAdd = () => {
     <div class="leg"><div class="legdot" style="background:#2e7d4f"></div>People (direct)</div>
     <div class="leg"><div class="legdot" style="background:#e6b800"></div>Census only</div>
     <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
-    <div class="leg"><div class="legdot" style="background:#6a6a6a;color:#f0c040">★</div>Listed building</div>`;
+    <div class="leg"><div class="legdot" style="background:#6a6a6a;color:#f0c040">★</div>Listed building</div>
+    <div class="leg"><div class="legdot" style="background:transparent;border:2px dashed #555;box-sizing:border-box"></div>Lost house (demolished)</div>`;
   return d;
 };
 legend.addTo(map);
@@ -1104,16 +1108,19 @@ function makeIcon(p, isActive, isManual) {
   const directlySeedeed = seededProps.has(p.id);
   const hasPeople = !!(peopleCounts[p.id]);
 
-  const bg     = isActive        ? '#d4380d'
+  const bg     = p.demolished     ? 'transparent'
+               : isActive        ? '#d4380d'
                : p.census_only   ? '#e6b800'
                : directlySeedeed ? '#2e7d4f'
                : hasPeople       ? '#1a6fa8'
                : '#c0392b';
-  const border = isActive        ? '#8b1a00'
+  const border = p.demolished     ? '#555'
+               : isActive        ? '#8b1a00'
                : p.census_only   ? '#b8910a'
                : directlySeedeed ? '#1a5c36'
                : hasPeople       ? '#10497a'
                : '#922b21';
+  const borderStyle = p.demolished ? 'dashed' : 'solid';
 
   const size = isActive ? 16 : 12;
   const star = p.listed
@@ -1125,7 +1132,7 @@ function makeIcon(p, isActive, isManual) {
     className: '',
     html: `<div style="
       background:${bg};
-      border:2px solid ${border};
+      border:2px ${borderStyle} ${border};
       border-radius:50%;
       width:${size}px;
       height:${size}px;
@@ -1168,10 +1175,10 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
 
     const m = L.marker([lat, lng], { icon, draggable: canDrag })
       .bindPopup(`
-        <div class="popup-title">${p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street)}</div>
-        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}${isManual ? ' <span style="color:#2090ff;font-size:0.7rem">● placed</span>' : ''}</div>
+        <div class="popup-title">${p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street)}${p.demolished ? ' <span style="font-size:0.65rem;background:#555;color:#fff;border-radius:3px;padding:1px 5px;vertical-align:middle">LOST</span>' : ''}</div>
+        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}${p.demolished ? ' · <em style="color:#888">demolished</em>' : ''}${isManual ? ' <span style="color:#2090ff;font-size:0.7rem">● placed</span>' : ''}</div>
         <button class="popup-btn" onclick="openProp(${p.id})">View Record →</button>
-      `, { maxWidth: 220 })
+      `, { maxWidth: 240 })
       .addTo(map);
 
     if (canDrag) {
@@ -1187,7 +1194,8 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     }
     markers[p.id] = m;
   });
-  document.getElementById('countInfo').textContent = `${count} of ${props.length} properties shown · click a marker to view its record`;
+  const standing = props.filter(x => !x.demolished).length;
+  document.getElementById('countInfo').textContent = `${count} of ${standing} properties shown · click a marker to view its record`;
 }
 
 // ── PANEL ────────────────────────────────────────────────────────────────────
@@ -1205,6 +1213,9 @@ function openProp(id) {
   );
   document.getElementById('pTitle').textContent = p.name || p.address || (p.no + ' ' + p.street);
   document.getElementById('pSub').textContent = `${p.no ? p.no + ' ' : ''}${p.street} · Property ${p.id}`;
+  // Demolished banner
+  const demolishedBanner = document.getElementById('demolishedBanner');
+  if (demolishedBanner) demolishedBanner.style.display = p.demolished ? '' : 'none';
   const subCount = ((propOverrides[p.id] || {}).submissions || subs[p.id] || []).length;
   document.getElementById('subBadge').textContent = subCount;
   document.getElementById('panelAddDataBtn').style.display = currentUser ? '' : 'none';
