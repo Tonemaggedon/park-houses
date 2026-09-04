@@ -585,6 +585,15 @@ async function openImport() {
 
 function closeImport() {
   document.getElementById('importOverlay').classList.add('hidden');
+  // Reset form for next use
+  document.getElementById('impPaste').value = '';
+  document.getElementById('impStep1').style.display = '';
+  document.getElementById('impStep2').style.display = 'none';
+  document.getElementById('impPreviewBody').innerHTML = '';
+  document.getElementById('impSummary').textContent = '';
+  document.getElementById('impProgress').textContent = '';
+  document.getElementById('impSubmitBtn').disabled = false;
+  importRows = [];
 }
 
 function backToStep1() {
