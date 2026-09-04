@@ -183,12 +183,22 @@ async function init() {
 
   allGroups = await groupsRes.json();
   allProps = (await propsRes.json().catch(() => [])).filter(p => !p.census_only);
-  allProps.sort((a, b) => (a.street || '').localeCompare(b.street || '') || (a.no || '').localeCompare(b.no || ''));
+  allProps.sort((a, b) => {
+    const sa = (a.street || '').localeCompare(b.street || '');
+    if (sa !== 0) return sa;
+    const na = parseInt(a.no) || 0, nb = parseInt(b.no) || 0;
+    if (na && nb) return na - nb;
+    return (a.no || a.name || '').localeCompare(b.no || b.name || '');
+  });
 
   // Build option HTML once, reused in every group's picker
-  propOptsHtml = allProps.map(p =>
-    `<option value="${p.id}">${esc((p.no ? p.no + ' ' : '') + (p.street || p.name || 'Property ' + p.id))}</option>`
-  ).join('');
+  propOptsHtml = allProps.map(p => {
+    const housePart = (p.name || '').replace(/:\s*$/, '').trim();
+    const noPart = (p.no || '').trim();
+    const qualifier = housePart ? (noPart ? `${noPart} (${housePart})` : housePart) : noPart;
+    const label = qualifier ? `${p.street} — ${qualifier}` : (p.address || `Property ${p.id}`);
+    return `<option value="${p.id}">${esc(label)}</option>`;
+  }).join('');
 
   const totalPeople = allGroups.reduce((s, g) => s + g.people.length, 0);
   document.getElementById('summary').textContent =
