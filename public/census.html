@@ -570,11 +570,22 @@ async function openImport() {
   }
   const sel = document.getElementById('impPropSel');
   if (sel.options.length <= 1) {
-    const sorted = [...allPropsCache].sort((a,b) => (a.address||'').localeCompare(b.address||''));
+    // Sort by street then by house number / name
+    const sorted = [...allPropsCache].sort((a,b) => {
+      const sa = (a.street||'').localeCompare(b.street||'');
+      if (sa !== 0) return sa;
+      const na = parseInt(a.no)||0, nb = parseInt(b.no)||0;
+      if (na && nb) return na - nb;
+      return (a.no||a.name||'').localeCompare(b.no||b.name||'');
+    });
     sorted.forEach(p => {
       const opt = document.createElement('option');
       opt.value = p.id;
-      opt.textContent = p.address || `Property ${p.id}`;
+      // Build a clear label: "Street — Name/No" so house names are always visible
+      const housePart = (p.name||'').replace(/:\s*$/, '').trim();
+      const noPart = (p.no||'').trim();
+      const qualifier = housePart ? (noPart ? `${noPart} (${housePart})` : housePart) : noPart;
+      opt.textContent = qualifier ? `${p.street} — ${qualifier}` : (p.address || `Property ${p.id}`);
       sel.appendChild(opt);
     });
   }

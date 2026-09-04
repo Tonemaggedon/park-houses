@@ -1392,14 +1392,19 @@ app.get('/api/census/unresolved', requireContributor, async (req, res) => {
 
     let key, displayAddress;
     if (ce.census_year === 1911 && ce.census_house_id) {
-      // 1911: group by House ID (PC7, PC8, etc.)
+      // 1911: group by House ID (PD1, PeD1, etc.)
       key = `hid:${ce.census_house_id}|${ce.census_year}`;
-      displayAddress = ce.census_house_id + (ce.unresolved_address ? ' — ' + ce.unresolved_address : '');
+      // Extract trailing number from house_id (PD1→1, PeD2→2)
+      const hhNum = (ce.census_house_id.match(/(\d+)$/) || [,''])[1] || ce.census_house_id;
+      // Strip leading code prefix from unresolved_address (e.g. "PD1 Park Drive" → "Park Drive")
+      const street1911 = (ce.unresolved_address || '').replace(/^[A-Za-z]+\d+\s*/,'').trim()
+                       || ce.unresolved_address || ce.census_house_id;
+      displayAddress = `Household ${hhNum} — ${street1911}`;
     } else if (ce.census_year === 1921 && ce.census_household_num != null) {
       // 1921: group by street (strip leading number) + household number
       const street = (ce.unresolved_address || '').replace(/^\d+\s+/i, '');
       key = `${street.toLowerCase()}|hh:${ce.census_household_num}|${ce.census_year}`;
-      displayAddress = street + ' — Household ' + ce.census_household_num;
+      displayAddress = `Household ${ce.census_household_num} — ${street}`;
     } else {
       // Fallback: existing behaviour (group by full unresolved_address + year)
       key = (ce.unresolved_address || '') + '|' + ce.census_year;
