@@ -1514,6 +1514,18 @@ app.patch('/api/property/:propId/residents/:residentId', requireContributor, asy
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// GET /api/admin/occupations-export
+app.get('/api/admin/occupations-export', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const [occ, census] = await Promise.all([
+      db.query(`SELECT occupation, COUNT(*) as count FROM occupations WHERE occupation IS NOT NULL AND TRIM(occupation)!='' GROUP BY occupation ORDER BY count DESC, occupation`),
+      db.query(`SELECT occupation_at_census as occupation, COUNT(*) as count FROM census_entries WHERE occupation_at_census IS NOT NULL AND TRIM(occupation_at_census)!='' GROUP BY occupation_at_census ORDER BY count DESC, occupation_at_census`)
+    ]);
+    res.json({ occupations: occ.rows, censusOccupations: census.rows });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // DELETE /api/property/:propId/residents/:residentId
 app.delete('/api/property/:propId/residents/:residentId', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });

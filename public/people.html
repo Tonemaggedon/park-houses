@@ -465,9 +465,7 @@ function closeProfile() {
 
 function renderProfile(p) {
   // Header
-  { let headName = p.known_as || displayName(p);
-    if (p.postnominals && !headName.includes(p.postnominals)) headName += ', ' + p.postnominals;
-    document.getElementById('paneName').textContent = headName; }
+  document.getElementById('paneName').textContent = displayName(p);
   const dates = [];
   const bornYr = parseInt(p.born_year) || parseInt((p.born_date||'').match(/\d{4}/)?.[0]);
   const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
@@ -736,7 +734,7 @@ function renderProfile(p) {
         <label style="font-size:0.75rem;color:#8a7a5a">Title / honour</label><br>
         <select id="edit_title" style="padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px">
           <option value="">— none —</option>
-          ${['Sir','Lady','Dr','Rev','Prof','Major','Colonel','Captain','Lord','Hon'].map(t => `<option value="${t}"${p.title===t?' selected':''}>${t}</option>`).join('')}
+          ${['Sir','Lady','Dr','Rev','Prof','Major','Lieut','Colonel','Captain','Lord','Hon'].map(t => `<option value="${t}"${p.title===t?' selected':''}>${t}</option>`).join('')}
         </select>
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Honours / postnominals</label><br>
@@ -877,11 +875,8 @@ async function savePerson(personId) {
       if (idx>=0) { Object.assign(allPeople[idx], fields); renderGrid(allPeople); }
       // Update pane header name immediately
       const updated = Object.assign({}, allPeople[idx]||{}, fields);
-      const prefix = updated.title ? updated.title + ' ' : '';
-      let headName = updated.known_as || `${prefix}${updated.first_name||''} ${updated.last_name||''}`.trim();
-      if (updated.postnominals && !headName.includes(updated.postnominals)) headName += ', ' + updated.postnominals;
       const paneNameEl = document.getElementById('paneName');
-      if (paneNameEl) paneNameEl.textContent = headName;
+      if (paneNameEl) paneNameEl.textContent = displayName(updated);
       setTimeout(()=>{ status.textContent=''; }, 3000);
     } else { status.textContent = '✗ ' + (res.error||'Error'); status.style.color='#c04040'; }
   } catch(e) { status.textContent = '✗ ' + e.message; status.style.color='#c04040'; }
