@@ -1471,7 +1471,7 @@ async function renderTimeline(p, body) {
   events.forEach((ev, i) => {
     const isLast = i === events.length - 1;
     const editBtn = (canEdit && ev.type === 'resident' && ev.residentId)
-      ? `<button onclick="editResident(${p.id},${ev.residentId},${ev.fromYear||'null'},${ev.toYear||'null'},${JSON.stringify(ev.notes||'')})" title="Edit dates/notes" style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:#8a7a5a;padding:0 2px;line-height:1" tabindex="0">✏️</button>`
+      ? `<button onclick="editResident(this)" data-prop="${p.id}" data-res="${ev.residentId}" data-from="${ev.fromYear||''}" data-to="${ev.toYear||''}" data-notes="${(ev.notes||'').replace(/"/g,'&quot;')}" title="Edit dates/notes" style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:#8a7a5a;padding:0 2px;line-height:1" tabindex="0">✏️</button>`
       : '';
     html += `<div class="tl-item">
       <div style="display:flex;flex-direction:column;align-items:center;margin-right:2px">
@@ -1502,7 +1502,15 @@ async function renderTimeline(p, body) {
   body.innerHTML = html;
 }
 
-async function editResident(propId, residentId, fromYear, toYear, notes) {
+async function editResident(btn) {
+  const propId    = parseInt(btn.dataset.prop);
+  const residentId = parseInt(btn.dataset.res);
+  const fromYear  = btn.dataset.from ? parseInt(btn.dataset.from) : null;
+  const toYear    = btn.dataset.to   ? parseInt(btn.dataset.to)   : null;
+  const notes     = btn.dataset.notes || '';
+  return _editResidentModal(propId, residentId, fromYear, toYear, notes);
+}
+async function _editResidentModal(propId, residentId, fromYear, toYear, notes) {
   // Build inline form in a small modal
   const existing = document.getElementById('editResModal');
   if (existing) existing.remove();
