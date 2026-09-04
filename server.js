@@ -1535,6 +1535,54 @@ app.delete('/api/property/:propId/residents/:residentId', requireContributor, as
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// POST /api/census/import — bulk import from pasted census data
+app.post('/api/census/import', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { property_id, census_year, rows } = req.body;
+    if (!census_year || !rows || !rows.length) return res.status(400).json({ error: 'Missing required fields' });
+    const results = [];
+    for (const row of rows) {
+      let personId = row.person_id ? parseInt(row.person_id) : null;
+      if (!personId) {
+        // Create new person
+        const pRes = await db.query(
+          `INSERT INTO people (first_name, last_name, born_year, born_place) VALUES ($1,$2,$3,$4) RETURNING id`,
+          [row.first_name || null, row.last_name || null, row.birth_year || null, row.birth_place || null]
+        );
+        personId = pRes.rows[0].id;
+        results.push({ personId, created: true, name: `${row.first_name} ${row.last_name}`.trim() });
+      } else {
+        results.push({ personId, created: false });
+      }
+      await db.query(
+        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census)
+         VALUES ($1,$2,$3,$4,$5,$6)`,
+        [personId, property_id || null, census_year, row.relationship || null,
+         row.age ? parseInt(row.age) : null, row.occupation || null]
+      );
+    }
+    res.json({ ok: true, results });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/normalise-occupations — apply OCC_NORM_SERVER to census_entries + occupations
+app.post('/api/admin/normalise-occupations', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    let totalUpdated = 0;
+    for (const [raw, norm] of Object.entries(OCC_NORM_SERVER)) {
+      if (raw === norm.toLowerCase().trim()) continue;
+      const [r1, r2] = await Promise.all([
+        db.query(`UPDATE census_entries SET occupation_at_census=$1 WHERE LOWER(TRIM(occupation_at_census))=$2`, [norm, raw]),
+        db.query(`UPDATE occupations SET occupation=$1 WHERE LOWER(TRIM(occupation))=$2`, [norm, raw])
+      ]);
+      totalUpdated += (r1.rowCount || 0) + (r2.rowCount || 0);
+    }
+    res.json({ ok: true, updated: totalUpdated });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/census-stats — coverage counts per year for the census landing page
 app.get('/api/census-stats', async (req, res) => {
   if (!db) return res.json([]);
