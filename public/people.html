@@ -205,6 +205,24 @@
     font-size: 0.78rem; text-decoration: none; margin-top: 8px;
   }
   .wiki-link:hover { background: #d8ecf8; }
+
+  /* Occupation groups */
+  .groups-bar {
+    background: #f0ebe0; border-bottom: 1px solid #d8cdb8;
+    padding: 8px 20px 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  }
+  .groups-label { font-size: 0.75rem; color: #7a6a4a; font-style: italic; margin-right: 4px; white-space: nowrap; }
+  .group-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: 20px; font-size: 0.75rem;
+    border: 1.5px solid transparent; cursor: pointer; transition: all 0.15s;
+    font-family: Georgia, serif; white-space: nowrap;
+  }
+  .group-chip:hover { filter: brightness(0.92); }
+  .group-chip.active { border-color: #1a2a1a !important; box-shadow: 0 0 0 2px rgba(0,0,0,0.18); font-weight: bold; }
+  .group-chip-count { font-size: 0.68rem; opacity: 0.75; }
+  .groups-clear { font-size: 0.72rem; color: #7a6a4a; cursor: pointer; text-decoration: underline; margin-left: 4px; }
+  .groups-clear:hover { color: #4a3a2a; }
 </style>
 </head>
 <body>
@@ -244,6 +262,12 @@
     <option value="">All properties</option>
   </select>
   <span class="info" id="countInfo"></span>
+</div>
+
+<div class="groups-bar" id="groupsBar" style="display:none">
+  <span class="groups-label">Browse by group:</span>
+  <div id="groupChips" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"></div>
+  <span class="groups-clear" id="groupsClear" onclick="clearGroupFilter()" style="display:none">✕ Clear</span>
 </div>
 
 <div class="main">
@@ -368,11 +392,63 @@ async function loadPeople() {
     if (params.get('property')) {
       document.getElementById('propFilter').value = params.get('property');
     }
+    buildGroupChips();
     applyFilters();
     if (params.get('person')) openProfile(parseInt(params.get('person')));
   } catch(e) {
     document.getElementById('loading').textContent = 'Error loading people: ' + e.message;
   }
+}
+
+// ── Occupation group mappings ─────────────────────────────────────────────────
+const OCC_NORM = {"domestic servant":"Domestic Servant","domestic servants":"Domestic Servant","domestic":"Domestic Servant","general domestic servant":"Domestic Servant","general domestic":"Domestic Servant","general servant":"Domestic Servant","general servant domestic":"Domestic Servant","general servant (domestic)":"Domestic Servant","general domestic service":"Domestic Servant","domestic service":"Domestic Servant","servant":"Domestic Servant","housemaid":"Housemaid","house maid":"Housemaid","housemaid domestic":"Housemaid","housemaid (domestic servant)":"Housemaid","housemaid (dom)":"Housemaid","domestic housemaid":"Housemaid","under housemaid":"Under Housemaid","cook":"Cook","domestic cook":"Cook","cook domestic":"Cook","cook (dom)":"Cook","coole":"Cook","parlourmaid":"Parlourmaid","parlour maid":"Parlourmaid","parlor maid":"Parlourmaid","parlormaid":"Parlourmaid","house parlourmaid":"House Parlourmaid","house parlour maid":"House Parlourmaid","kitchenmaid":"Kitchenmaid","kitchen maid":"Kitchenmaid","lady's maid":"Lady's Maid","ladies' maid":"Lady's Maid","ladies maid":"Lady's Maid","ladys maid":"Lady's Maid","housekeeper":"Housekeeper","house keeper":"Housekeeper","nursemaid":"Nursemaid","nurse maid":"Nursemaid","childs nurse":"Nursemaid","childrens nurse":"Nursemaid","nurse domestic":"Domestic Nurse","domestic nurse":"Domestic Nurse","nurse":"Nurse","sick nurse":"Sick Nurse","hospital nurse":"Nurse","private nurse":"Nurse","trained nurse":"Nurse","red cross nurse":"Red Cross Nurse","maternity nurse":"Maternity Nurse","solicitor":"Solicitor","solicitior":"Solicitor","lace manufacturer":"Lace Manufacturer","lace manufacturers":"Lace Manufacturer","lace manuf":"Lace Manufacturer","lace manu":"Lace Manufacturer","lace manufacturer (retired)":"Lace Manufacturer (Retired)","lace manuf (retired)":"Lace Manufacturer (Retired)","retired lace manufacturer":"Lace Manufacturer (Retired)","retired lace manufacture":"Lace Manufacturer (Retired)","retired lace manuf":"Lace Manufacturer (Retired)","lace dresser":"Lace Dresser","lace dresser and bleacher":"Lace Dresser and Bleacher","lace dresser and finisher":"Lace Dresser","lace dresser, dyer and bleacher":"Lace Dresser and Bleacher","lace merchant":"Lace Merchant","retired lace merchant":"Lace Merchant (Retired)","hosiery manufacturer":"Hosiery Manufacturer","hosier":"Hosier","hosiery and glove manufacturer":"Hosiery and Glove Manufacturer","yarn agent":"Yarn Agent","yarn merchant":"Yarn Merchant","retired yarn merchant":"Yarn Merchant (Retired)","draper":"Draper","draper's clerk":"Draper's Clerk","linen and woollen draper":"Draper","architect":"Architect","civil engineer":"Civil Engineer","mechanical engineer":"Mechanical Engineer","mining engineer":"Mining Engineer","municipal engineer":"Municipal Engineer","steam engineer":"Steam Engineer","electrical engineer":"Electrical Engineer","mech eng":"Mechanical Engineer","engineer (steam)":"Steam Engineer","borough surveyor, nottingham":"Borough Surveyor","borough surveyor of nottingham":"Borough Surveyor","building surveyor":"Surveyor","estate agent and surveyor":"Estate Agent and Surveyor","surveyor & valuer":"Surveyor","private means":"Private Means","living on own means":"Private Means","living on means":"Private Means","independant":"Private Means","independent":"Private Means","independent means":"Private Means","funds derived from property":"Private Means","ground rent and fundholder":"Private Means","property holder":"Private Means","unpaid domestic duties":"Unpaid Domestic Duties","domestic duties":"Unpaid Domestic Duties","household duties":"Unpaid Domestic Duties","home duties":"Unpaid Domestic Duties","house duties":"Unpaid Domestic Duties","housewife":"Unpaid Domestic Duties","house wife":"Unpaid Domestic Duties","house work":"Unpaid Domestic Duties","housework":"Unpaid Domestic Duties","wife":"Unpaid Domestic Duties","at home":"Unpaid Domestic Duties","no occ":"No Occupation","no occu":"No Occupation","no occup":"No Occupation","no occupation":"No Occupation","not occupied for a living":"No Occupation","scholar":"Scholar","school":"Scholar","book keeper":"Book-keeper","bookeeper":"Book-keeper","clerk":"Clerk","retired":"Retired","coachman":"Coachman","coachman (domestic)":"Coachman","coachman domestic":"Coachman","groom - coachman":"Coachman","chauffeur":"Chauffeur","chaffeur":"Chauffeur","chauffer":"Chauffeur","chauffeur (private)":"Chauffeur","private chauffeur":"Chauffeur","gardener chauffeur":"Gardener/Chauffeur","auctioneer":"Auctioneer","auctioneer stationer":"Auctioneer","auctioneer & valuer":"Auctioneer and Valuer","teacher":"Teacher","head teacher":"Head Teacher","school master":"Schoolmaster","school mistress":"Schoolmistress","governess":"Governess","timber merchant":"Timber Merchant","grocer":"Grocer","grocer (retired)":"Grocer (Retired)","retired grocer":"Grocer (Retired)","grocer's clerk":"Grocer's Clerk","grocers clerk":"Grocer's Clerk","leather manufacturer":"Leather Manufacturer","leather manufacturers":"Leather Manufacturer","leather merchant":"Leather Merchant","maid":"Maid","maid domestic":"Maid"};
+const OCC_GROUP = {"Domestic Servant":"Domestic Service","Housemaid":"Domestic Service","Under Housemaid":"Domestic Service","Cook":"Domestic Service","Parlourmaid":"Domestic Service","House Parlourmaid":"Domestic Service","Kitchenmaid":"Domestic Service","Lady's Maid":"Domestic Service","Housekeeper":"Domestic Service","Domestic Nurse":"Domestic Service","Nursemaid":"Domestic Service","Maid":"Domestic Service","Butler":"Domestic Service","Groom":"Domestic Service","Coachman":"Domestic Service","Chauffeur":"Domestic Service","Gardener":"Domestic Service","Gardener/Chauffeur":"Domestic Service","Caretaker":"Domestic Service","Charwoman":"Domestic Service","Park Keeper":"Domestic Service","Houseman":"Domestic Service","Betweenmaid":"Domestic Service","Private Means":"Household / Private Means","Unpaid Domestic Duties":"Household / Private Means","Paid Domestic Duties":"Household / Private Means","No Occupation":"Household / Private Means","Invalid":"Household / Private Means","Scholar":"Student / Scholar","Student":"Student / Scholar","Retired":"Retired","Lace Manufacturer":"Lace Industry","Lace Manufacturer (Retired)":"Lace Industry","Lace Dresser":"Lace Industry","Lace Dresser and Bleacher":"Lace Industry","Lace Dresser (Retired)":"Lace Industry","Lace Bleacher":"Lace Industry","Lace Merchant":"Lace Industry","Lace Merchant (Retired)":"Lace Industry","Lace Dresser and Magistrate":"Lace Industry","Plain and Spot Net Manufacturer":"Lace Industry","Lace Machine Builder":"Lace Industry","Lace Warehouse Manager":"Lace Industry","Lace Manufacturer and Inventor":"Lace Industry","Hosiery Manufacturer":"Hosiery & Textiles","Hosiery Manufacturer (Retired)":"Hosiery & Textiles","Hosier":"Hosiery & Textiles","Hosier (Retired)":"Hosiery & Textiles","Hosiery and Glove Manufacturer":"Hosiery & Textiles","Hosiery Machinery Manufacturer":"Hosiery & Textiles","Textile Machinery Manufacturer":"Hosiery & Textiles","Yarn Agent":"Hosiery & Textiles","Yarn Merchant":"Hosiery & Textiles","Yarn Merchant (Retired)":"Hosiery & Textiles","Yarn Manufacturer":"Hosiery & Textiles","Cotton Doubler":"Hosiery & Textiles","Draper":"Hosiery & Textiles","Draper's Clerk":"Hosiery & Textiles","Bleacher":"Hosiery & Textiles","Solicitor":"Law","Barrister":"Law","Solicitor and Notary Public":"Law","Law Student":"Law","Law Clerk":"Law","Surgeon":"Medicine","Physician":"Medicine","Medical Officer":"Medicine","Medical Practitioner":"Medicine","Nurse":"Medicine","Sick Nurse":"Medicine","Red Cross Nurse":"Medicine","Maternity Nurse":"Medicine","Chemist / Pharmacist":"Medicine","Dental Surgeon":"Medicine","Masseuse":"Medicine","Architect":"Architecture & Engineering","Architect (Retired)":"Architecture & Engineering","Architect and Surveyor":"Architecture & Engineering","Civil Engineer":"Architecture & Engineering","Mechanical Engineer":"Architecture & Engineering","Mining Engineer":"Architecture & Engineering","Chief Mechanical Engineer":"Architecture & Engineering","Civil and Mechanical Engineer":"Architecture & Engineering","Municipal Engineer":"Architecture & Engineering","Steam Engineer":"Architecture & Engineering","Electrical Engineer":"Architecture & Engineering","Consulting Engineer":"Architecture & Engineering","Borough Surveyor":"Architecture & Engineering","Surveyor":"Architecture & Engineering","Estate Agent and Surveyor":"Architecture & Engineering","Magistrate":"Public Life & Civic","Justice of the Peace":"Public Life & Civic","Alderman":"Public Life & Civic","Sheriff of Nottingham":"Public Life & Civic","Sheriff of London":"Public Life & Civic","High Sheriff":"Public Life & Civic","Mayor of Nottingham":"Public Life & Civic","Lord Mayor of Nottingham":"Public Life & Civic","Lord Mayor of London":"Public Life & Civic","Town Councillor":"Public Life & Civic","County Councillor":"Public Life & Civic","Member of Parliament":"Public Life & Civic","Deputy-Lieutenant":"Public Life & Civic","Army Officer":"Military","Soldier":"Military","Teacher":"Education","Head Teacher":"Education","Schoolmaster":"Education","Schoolmistress":"Education","Headmaster":"Education","Governess":"Education","Professor":"Education","Librarian":"Education","Instructress in Wood Carving":"Education","Author":"Arts & Culture","Composer":"Arts & Culture","Conductor":"Arts & Culture","Violinist":"Arts & Culture","Organist":"Arts & Culture","Photographer":"Arts & Culture","Folklorist":"Arts & Culture","Journalist":"Arts & Culture","Cricketer":"Arts & Culture","Wood Carver":"Arts & Culture","Artist":"Arts & Culture","Singer":"Arts & Culture","Publisher":"Arts & Culture","Bank Manager":"Trade & Commerce","Bank Clerk":"Trade & Commerce","Stockbroker":"Trade & Commerce","Auctioneer":"Trade & Commerce","Auctioneer and Valuer":"Trade & Commerce","Grocer":"Trade & Commerce","Grocer (Retired)":"Trade & Commerce","Wholesale Grocer":"Trade & Commerce","Timber Merchant":"Trade & Commerce","Timber Merchant (Retired)":"Trade & Commerce","Leather Manufacturer":"Trade & Commerce","Leather Merchant":"Trade & Commerce","Furniture Manufacturer":"Trade & Commerce","Cabinet Maker":"Trade & Commerce","Commission Agent":"Trade & Commerce","Wine & Spirit Merchant":"Trade & Commerce","Cigar Manufacturer":"Trade & Commerce","Paper Maker":"Trade & Commerce","Manufacturer":"Trade & Commerce","Manager":"Trade & Commerce","Managing Director":"Trade & Commerce","Company Chairman":"Trade & Commerce","Director":"Trade & Commerce","Book-keeper":"Trade & Commerce","Clerk":"Trade & Commerce","Typist":"Trade & Commerce","Cashier":"Trade & Commerce","Warehouseman":"Trade & Commerce"};
+
+const GROUP_COLORS = {"Domestic Service":"#c8e6c9","Lace Industry":"#c5cae9","Hosiery & Textiles":"#b2ebf2","Law":"#ffccbc","Medicine":"#f8bbd0","Architecture & Engineering":"#e1bee7","Trade & Commerce":"#dcedc8","Public Life & Civic":"#ffe0b2","Military":"#cfd8dc","Education":"#fff9c4","Arts & Culture":"#fce4ec","Student / Scholar":"#e0f7fa","Household / Private Means":"#f5f5f5","Retired":"#efebe9"};
+
+function normOcc(raw) { return OCC_NORM[(raw||'').toLowerCase().trim()] || (raw||'').trim(); }
+function occToGroup(raw) { const n = normOcc(raw); return OCC_GROUP[n] || null; }
+function personGroups(p) {
+  const g = new Set();
+  (p.occupations||[]).forEach(o => { const gr = occToGroup(o); if (gr) g.add(gr); });
+  return g;
+}
+
+let activeGroup = null;
+
+function buildGroupChips() {
+  const container = document.getElementById('groupChips');
+  container.innerHTML = '';
+  // Count people per group
+  const counts = {};
+  allPeople.forEach(p => personGroups(p).forEach(g => { counts[g] = (counts[g]||0) + 1; }));
+  const groups = Object.keys(GROUP_COLORS).filter(g => counts[g]);
+  groups.forEach(g => {
+    const chip = document.createElement('button');
+    chip.className = 'group-chip';
+    chip.style.background = GROUP_COLORS[g] || '#e0e0e0';
+    chip.innerHTML = `${g} <span class="group-chip-count">(${counts[g]||0})</span>`;
+    chip.onclick = () => toggleGroupFilter(g);
+    chip.dataset.group = g;
+    container.appendChild(chip);
+  });
+  document.getElementById('groupsBar').style.display = groups.length ? 'flex' : 'none';
+}
+
+function toggleGroupFilter(group) {
+  activeGroup = activeGroup === group ? null : group;
+  document.querySelectorAll('.group-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.group === activeGroup);
+  });
+  document.getElementById('groupsClear').style.display = activeGroup ? 'inline' : 'none';
+  applyFilters();
+}
+
+function clearGroupFilter() {
+  activeGroup = null;
+  document.querySelectorAll('.group-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('groupsClear').style.display = 'none';
+  applyFilters();
 }
 
 function applyFilters() {
@@ -391,6 +467,7 @@ function applyFilters() {
   );
   if (occ) list = list.filter(p => (p.occupations||[]).some(o => o.toLowerCase().includes(occ)));
   if (prop) list = list.filter(p => (p.property_ids||[]).includes(prop));
+  if (activeGroup) list = list.filter(p => personGroups(p).has(activeGroup));
   renderGrid(list);
 }
 
