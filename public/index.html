@@ -1448,9 +1448,11 @@ async function renderTimeline(p, body) {
   const events = [];
   if (builtYear) events.push({ year: parseInt(builtYear)||0, type:'built', label:'Property built', sub: ov.architect||p.architect ? `Architect: ${ov.architect||p.architect}` : '' });
   (data.residents||[]).forEach(r => {
-    const name = r.known_as || `${r.first_name||''} ${r.last_name||''}`.trim();
+    const prefix = r.title ? r.title + ' ' : '';
+    let name = r.known_as || `${prefix}${r.first_name||''} ${r.last_name||''}`.trim();
+    if (r.postnominals && !name.includes(r.postnominals)) name += ', ' + r.postnominals;
     const yr = r.from_year || r.to_year || 0;
-    events.push({ year: yr, type:'resident', label: name, sub: [r.from_year?`from ${r.from_year}`:'', r.to_year?`to ${r.to_year}`:''].filter(Boolean).join(' ') + (r.notes?` · ${r.notes}`:''), id: r.person_id });
+    events.push({ year: yr, type:'resident', label: name, sub: [r.from_year?`from ${r.from_year}`:'', r.to_year?`to ${r.to_year}`:''].filter(Boolean).join(' ') + (r.notes?` · ${r.notes}`:''), id: r.person_id, residentId: r.resident_id, fromYear: r.from_year, toYear: r.to_year, notes: r.notes });
   });
   Object.entries(byCensus).forEach(([yr, entries]) => {
     events.push({ year: parseInt(yr), type:'census', label:`${yr} Census`, entries });
@@ -1462,23 +1464,28 @@ async function renderTimeline(p, body) {
     return;
   }
 
+  const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
   const icons = { built:'🏗️', resident:'👤', census:'📋' };
   const dotColors = { built:'#c8b87a', resident:'#4caf82', census:'#5b9bd5' };
   let html = '<div style="padding:14px 16px">';
   events.forEach((ev, i) => {
     const isLast = i === events.length - 1;
+    const editBtn = (canEdit && ev.type === 'resident' && ev.residentId)
+      ? `<button onclick="editResident(${p.id},${ev.residentId},${ev.fromYear||'null'},${ev.toYear||'null'},${JSON.stringify(ev.notes||'')})" title="Edit dates/notes" style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:#8a7a5a;padding:0 2px;line-height:1" tabindex="0">✏️</button>`
+      : '';
     html += `<div class="tl-item">
       <div style="display:flex;flex-direction:column;align-items:center;margin-right:2px">
         <div class="tl-dot" style="background:${dotColors[ev.type]||'#c8b87a'}"></div>
         ${!isLast ? '<div class="tl-line"></div>' : ''}
       </div>
       <div style="flex:1;min-width:0;padding-bottom:${isLast?0:10}px">
-        <div style="display:flex;align-items:baseline;gap:6px">
+        <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap">
           <span style="font-size:0.9rem">${icons[ev.type]||'•'}</span>
           <span class="tl-year">${ev.year||'?'}</span>
           <span class="tl-title">${ev.label}</span>
+          ${editBtn}
         </div>
-        ${ev.sub ? `<div class="tl-sub">${ev.sub}</div>` : ''}
+        ${ev.sub ? `<div class="tl-sub" id="tl-sub-${ev.residentId||''}">${ev.sub}</div>` : ''}
         ${ev.entries ? `<div class="census-block">
           <div class="head">Household</div>
           ${ev.entries.slice(0,8).map(e => {
@@ -1493,6 +1500,54 @@ async function renderTimeline(p, body) {
   html += `<button class="pdf-btn" onclick="printProperty()">🖨️ Export as PDF</button>`;
   html += '</div>';
   body.innerHTML = html;
+}
+
+async function editResident(propId, residentId, fromYear, toYear, notes) {
+  // Build inline form in a small modal
+  const existing = document.getElementById('editResModal');
+  if (existing) existing.remove();
+  const modal = document.createElement('div');
+  modal.id = 'editResModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9999;display:flex;align-items:center;justify-content:center';
+  modal.innerHTML = `<div style="background:#fdf9f0;border-radius:8px;padding:22px 24px;width:320px;box-shadow:0 4px 24px rgba(0,0,0,0.25);font-family:Georgia,serif">
+    <h3 style="margin:0 0 14px;font-size:1rem;color:#1a3a2a">Edit residence dates</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      <div><label style="font-size:0.75rem;color:#8a7a5a">From year</label><br>
+        <input id="erm_from" type="number" value="${fromYear||''}" placeholder="e.g. 1920" style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem"></div>
+      <div><label style="font-size:0.75rem;color:#8a7a5a">To year</label><br>
+        <input id="erm_to" type="number" value="${toYear||''}" placeholder="e.g. 1935" style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem"></div>
+    </div>
+    <div style="margin-bottom:14px"><label style="font-size:0.75rem;color:#8a7a5a">Notes</label><br>
+      <input id="erm_notes" value="${(notes||'').replace(/"/g,'&quot;')}" placeholder="e.g. died in residence" style="width:100%;padding:6px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem"></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="erm_save" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem">Save</button>
+      <button onclick="document.getElementById('editResModal').remove()" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:7px 14px;cursor:pointer;font-size:0.83rem;color:#4a3a1a">Cancel</button>
+      <span id="erm_status" style="font-size:0.78rem;color:#4a7c5a"></span>
+    </div>
+  </div>`;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+  document.getElementById('erm_save').addEventListener('click', async () => {
+    const from_year = document.getElementById('erm_from').value ? parseInt(document.getElementById('erm_from').value) : null;
+    const to_year   = document.getElementById('erm_to').value   ? parseInt(document.getElementById('erm_to').value)   : null;
+    const notes     = document.getElementById('erm_notes').value.trim() || null;
+    const st = document.getElementById('erm_status');
+    st.textContent = 'Saving…'; st.style.color = '#8a7a5a';
+    const res = await fetch(`/api/property/${propId}/residents/${residentId}`, {
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ from_year, to_year, notes })
+    }).then(r=>r.json()).catch(e=>({error:e.message}));
+    if (res.ok) {
+      st.textContent = '✓ Saved'; st.style.color = '#2a7a2a';
+      // Update the subtitle in the timeline without full reload
+      const subEl = document.getElementById(`tl-sub-${residentId}`);
+      if (subEl) {
+        const parts = [from_year?`from ${from_year}`:'', to_year?`to ${to_year}`:''].filter(Boolean).join(' ');
+        subEl.textContent = parts + (notes ? ` · ${notes}` : '');
+      }
+      setTimeout(() => modal.remove(), 800);
+    } else { st.textContent = '✗ ' + (res.error||'Error'); st.style.color = '#c04040'; }
+  });
 }
 
 // ── WATCHLIST ─────────────────────────────────────────────────────────────────

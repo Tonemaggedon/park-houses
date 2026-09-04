@@ -965,8 +965,8 @@ app.get('/api/property/:id/timeline', async (req, res) => {
   const propId = parseInt(req.params.id);
   try {
     const [resRes, censusRes] = await Promise.all([
-      db.query(`SELECT pr.from_year, pr.to_year, pr.notes,
-                       p.first_name, p.last_name, p.known_as, p.born_year, p.died_year, p.id as person_id
+      db.query(`SELECT pr.id as resident_id, pr.from_year, pr.to_year, pr.notes,
+                       p.first_name, p.last_name, p.known_as, p.title, p.postnominals, p.born_year, p.died_year, p.id as person_id
                 FROM property_residents pr JOIN people p ON p.id=pr.person_id
                 WHERE pr.property_id=$1 ORDER BY pr.from_year NULLS LAST`, [propId]),
       db.query(`SELECT ce.census_year, ce.relationship, ce.age_at_census, ce.occupation_at_census,
@@ -1498,6 +1498,19 @@ app.post('/api/property/:id/residents', requireContributor, async (req, res) => 
     );
     await logChange('property', propId, req, 'add_resident', 'person_id', null, person_id);
     res.json({ ok: true, id: r.rows[0].id });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// PATCH /api/property/:propId/residents/:residentId
+app.patch('/api/property/:propId/residents/:residentId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { from_year, to_year, notes } = req.body;
+    await db.query(
+      `UPDATE property_residents SET from_year=$1, to_year=$2, notes=$3 WHERE id=$4 AND property_id=$5`,
+      [from_year||null, to_year||null, notes||null, parseInt(req.params.residentId), parseInt(req.params.propId)]
+    );
+    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
