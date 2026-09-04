@@ -468,7 +468,7 @@ if (pathParts[1] === 'census' && pathParts[2]) {
 
 // Show import button if contributor/admin
 fetch('/api/me').then(r=>r.json()).then(me => {
-  if (me && (me.role === 'admin' || me.role === 'contributor')) {
+  if (me && (me.isAdmin || (me.user && (me.user.role === 'admin' || me.user.role === 'contributor')))) {
     document.getElementById('importFab').style.display = 'flex';
     document.getElementById('normFab').style.display = 'flex';
     _canImport = true;
