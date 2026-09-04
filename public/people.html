@@ -304,6 +304,7 @@ async function uploadPersonPhoto(personId, input) {
 function displayName(p) {
   const prefix = p.title ? p.title + ' ' : '';
   let n = `${prefix}${p.first_name || ''} ${p.last_name || ''}`.trim();
+  if (p.postnominals) n += ', ' + p.postnominals;
   return n;
 }
 function yearOnly(val) {
@@ -732,6 +733,8 @@ function renderProfile(p) {
           ${['Sir','Lady','Dr','Rev','Prof','Major','Colonel','Captain','Lord','Hon'].map(t => `<option value="${t}"${p.title===t?' selected':''}>${t}</option>`).join('')}
         </select>
       </div>
+      <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Honours / postnominals</label><br>
+        <input id="edit_postnominals" value="${(p.postnominals||'').replace(/"/g,'&quot;')}" placeholder="e.g. OBE, CBE, MBE" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
           <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
@@ -839,6 +842,7 @@ async function savePerson(personId) {
   const diedDate = buildDateString('edit_died');
   const fields = {
     title: document.getElementById('edit_title')?.value || null,
+    postnominals: document.getElementById('edit_postnominals')?.value || null,
     born_date: bornDate,
     born_year: bornDate ? (bornDate.match(/\d{4}/)?.[0] ? parseInt(bornDate.match(/\d{4}/)[0]) : null) : null,
     born_place: document.getElementById('edit_born_place').value || null,
@@ -1103,6 +1107,7 @@ async function submitAddPerson() {
   const body = {
     first_name, last_name,
     known_as: get('ap_known_as') || null,
+    postnominals: get('ap_postnominals') || null,
     born_date: bornDate,
     born_year: bornDate ? (parseInt(bornDate.match(/\d{4}/)?.[0]) || null) : null,
     born_place: get('ap_born_place') || null,
@@ -1328,6 +1333,7 @@ async function submitOccupation(personId) {
         <div><label style="font-size:0.75rem;color:#8a7a5a">Last name *</label><br><input id="ap_last_name" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Bayley"></div>
       </div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as / title</label><br><input id="ap_known_as" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Sir Thomas Bayley"></div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Honours / postnominals</label><br><input id="ap_postnominals" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. OBE, CBE, MBE"></div>
       <div style="margin-bottom:10px">
         <label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label>
         <div style="display:flex;gap:5px;margin-top:4px">
