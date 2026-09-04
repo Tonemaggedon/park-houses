@@ -182,7 +182,7 @@ async function init() {
   }
 
   allGroups = await groupsRes.json();
-  allProps = (await propsRes.json().catch(() => [])).filter(p => !p.census_only);
+  allProps = (await propsRes.json().catch(() => []));
   allProps.sort((a, b) => {
     const sa = (a.street || '').localeCompare(b.street || '');
     if (sa !== 0) return sa;
