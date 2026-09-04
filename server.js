@@ -834,7 +834,8 @@ try {
     // Build a readable address: "57 Elmhurst, Cavendish Road East" or "Elmhurst, Cavendish Road East"
     // Use the pre-formatted address field, cleaning up trailing colons
     const addr = (p.address || p.name || '').replace(/:\s*([A-Z])/g, ', $1').replace(/:\s*$/, '').trim();
-    propNameMap[p.id] = addr || `Property ${p.id}`;
+    const houseName = (p.house_name || '').trim();
+    propNameMap[p.id] = houseName ? `${addr} (${houseName})` : (addr || `Property ${p.id}`);
   });
 } catch(e) { /* file may not exist in some envs */ }
 
