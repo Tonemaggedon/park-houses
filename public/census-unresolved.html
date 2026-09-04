@@ -229,7 +229,7 @@ function render(groups) {
         : '';
       return `<tr data-gi="${gi}" data-pi="${pi}">
         ${cbCell}
-        <td><a class="person-link" href="/person/${p.person_id}" target="_blank">${esc(p.name)}</a></td>
+        <td><a class="person-link" href="/people?person=${p.person_id}" target="_blank">${esc(p.name)}</a></td>
         <td>${esc(p.relationship) || '—'}</td>
         <td>${p.age != null ? p.age : '—'}</td>
         <td>${esc(p.occupation) || '—'}</td>
