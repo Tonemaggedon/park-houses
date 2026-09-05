@@ -1731,6 +1731,26 @@ app.post('/api/admin/import-census-xlsx',
       const ws = wb.Sheets[sheet_name];
       if (!ws) return res.status(400).json({ error: `Sheet "${sheet_name}" not found` });
 
+      // Load all_props for property auto-matching
+      let allProps = [];
+      try { allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8')); } catch(e) {}
+      // Build lookup: "street_lower|no_lower" → property_id
+      const propByNoStreet = {};
+      for (const p of allProps) {
+        if (p.street && p.no) {
+          const k = `${p.street.toLowerCase().trim()}|${String(p.no).toLowerCase().trim()}`;
+          propByNoStreet[k] = p.id;
+        }
+      }
+      // Also index by house_name for fallback: "street_lower|housename_lower"
+      const propByNameStreet = {};
+      for (const p of allProps) {
+        if (p.street && (p.house_name || p.name)) {
+          const hn = (p.house_name || p.name || '').toLowerCase().trim();
+          if (hn) propByNameStreet[`${p.street.toLowerCase().trim()}|${hn}`] = p.id;
+        }
+      }
+
       // Get all rows as arrays (defval fills empty cells with '')
       const allRows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
@@ -1739,7 +1759,8 @@ app.post('/api/admin/import-census-xlsx',
         if (format === 'custom1911dan') {
           const houseId   = String(row[0] || '').trim();
           const houseName = String(row[1] || '').trim();
-          const street    = String(row[3] || '').trim();
+          const streetNo  = String(row[2] || '').trim();   // col C = house number on street
+          const street    = String(row[3] || '').trim();   // col D = street name
           const lastName  = String(row[6] || '').trim();
           const firstName = String(row[7] || '').trim();
           if (!lastName && !firstName) return null;
@@ -1763,17 +1784,27 @@ app.post('/api/admin/import-census-xlsx',
           const hhMatch = houseId.match(/(\d+)$/);
           const householdNum = hhMatch ? parseInt(hhMatch[1]) : null;
           const unresolvedAddress = houseName ? `${houseName} ${street}`.trim() : (street || null);
+          // Try to auto-match property: first by street number, then by house name
+          let matchedPropId = null;
+          if (streetNo && street) {
+            matchedPropId = propByNoStreet[`${street.toLowerCase()}|${streetNo.toLowerCase()}`] || null;
+          }
+          if (!matchedPropId && houseName && street) {
+            matchedPropId = propByNameStreet[`${street.toLowerCase()}|${houseName.toLowerCase()}`] || null;
+          }
           return { first_name: firstName||null, last_name: lastName||null, relationship:relationship||null,
                    sex:sex||null, birth_year:birthYear||null, age, birth_place:birthPlace||null,
                    occupation:occupation||null, census_household_num:householdNum,
-                   unresolved_address:unresolvedAddress };
+                   census_house_id: houseId || null,
+                   unresolved_address: matchedPropId ? null : unresolvedAddress,
+                   matched_property_id: matchedPropId };
         }
         // Standard format fallback
         return { first_name: String(row[0]||'').trim()||null, last_name: String(row[1]||'').trim()||null,
                  relationship: String(row[2]||'').trim()||null, sex: String(row[3]||'').trim()||null,
                  birth_year: parseInt(row[4])||null, age: parseInt(row[5])||null,
                  birth_place: String(row[6]||'').trim()||null, occupation: String(row[7]||'').trim()||null,
-                 census_household_num: null, unresolved_address: null };
+                 census_household_num: null, census_house_id: null, unresolved_address: null, matched_property_id: null };
       }
 
       // Determine header rows to skip
@@ -1783,26 +1814,32 @@ app.post('/api/admin/import-census-xlsx',
       let parsedRows = dataRows.map(r => parseXlsxRow(r)).filter(Boolean);
       parsedRows = parsedRows.filter(r => r.first_name || r.last_name);
 
-      // Best-address carry-forward (handles merged cells where house name only in first row)
+      // Best-address carry-forward for rows with merged/blank house ID cells
       if (format === 'custom1911dan') {
-        const bestAddr = {};
+        const bestAddr = {}, bestPropId = {}, bestHouseId = {};
         for (const r of parsedRows) {
           if (r.census_household_num != null) {
+            const n = r.census_household_num;
             const a = r.unresolved_address || '';
-            if (!bestAddr[r.census_household_num] || a.length > (bestAddr[r.census_household_num]||'').length)
-              bestAddr[r.census_household_num] = a;
+            if (!bestAddr[n] || a.length > (bestAddr[n]||'').length) bestAddr[n] = a;
+            if (r.matched_property_id) bestPropId[n] = r.matched_property_id;
+            if (r.census_house_id) bestHouseId[n] = r.census_house_id;
           }
         }
         let anchorNum = null;
         for (const r of parsedRows) {
           if (r.census_household_num != null) anchorNum = r.census_household_num;
           else if (anchorNum != null) r.census_household_num = anchorNum;
-          if (anchorNum != null && bestAddr[anchorNum]) r.unresolved_address = bestAddr[anchorNum];
+          if (anchorNum != null) {
+            if (bestAddr[anchorNum]) r.unresolved_address = bestAddr[anchorNum];
+            if (bestPropId[anchorNum]) { r.matched_property_id = bestPropId[anchorNum]; r.unresolved_address = null; }
+            if (bestHouseId[anchorNum]) r.census_house_id = bestHouseId[anchorNum];
+          }
         }
       }
 
       // Insert people + census entries
-      let imported = 0, skipped = 0, created = 0, matched = 0;
+      let imported = 0, skipped = 0, created = 0, matched = 0, propMatched = 0;
       for (const row of parsedRows) {
         const fn = (row.first_name || '').trim();
         const ln = (row.last_name || '').trim();
@@ -1830,6 +1867,9 @@ app.post('/api/admin/import-census-xlsx',
           personId = pRes.rows[0].id;
           created++;
         }
+        // Use auto-matched property or the manually chosen one
+        const effectivePropId = row.matched_property_id || property_id || null;
+        if (row.matched_property_id) propMatched++;
         // Skip if census entry already exists for this person+year
         const dup = await db.query(
           `SELECT id FROM census_entries WHERE person_id=$1 AND census_year=$2 LIMIT 1`,
@@ -1837,16 +1877,16 @@ app.post('/api/admin/import-census-xlsx',
         );
         if (dup.rows.length > 0) { skipped++; continue; }
         await db.query(
-          `INSERT INTO census_entries (person_id,property_id,census_year,relationship,age_at_census,occupation_at_census,census_household_num,unresolved_address,birth_place)
-           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
-          [personId, property_id||null, census_year, row.relationship||null,
+          `INSERT INTO census_entries (person_id,property_id,census_year,relationship,age_at_census,occupation_at_census,census_household_num,census_house_id,unresolved_address,birth_place)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
+          [personId, effectivePropId, census_year, row.relationship||null,
            row.age||null, row.occupation||null, row.census_household_num||null,
-           row.unresolved_address||null, row.birth_place||null]
+           row.census_house_id||null, row.unresolved_address||null, row.birth_place||null]
         );
         imported++;
       }
 
-      res.json({ ok: true, imported, skipped, created, matched, total: parsedRows.length });
+      res.json({ ok: true, imported, skipped, created, matched, propMatched, total: parsedRows.length });
       // Async geocode birthplaces
       const newPlaces = [...new Set(parsedRows.map(r => r.birth_place).filter(Boolean))];
       if (newPlaces.length) geocodePlacesBatch(newPlaces).catch(e => console.error(e.message));

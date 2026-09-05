@@ -744,7 +744,8 @@ async function doXlsxImport() {
     const r = await fetch('/api/admin/import-census-xlsx', { method:'POST', body: fd });
     const data = await r.json();
     if (data.ok) {
-      status.innerHTML = `✅ <strong>Done!</strong> ${data.imported} imported · ${data.skipped} already existed · ${data.created} new people · ${data.matched} matched existing`;
+      const propNote = data.propMatched ? ` · ${data.propMatched} auto-matched to properties` : '';
+      status.innerHTML = `✅ <strong>Done!</strong> ${data.imported} imported · ${data.skipped} already existed · ${data.created} new people · ${data.matched} matched existing${propNote}`;
       btn.textContent = '✓ Complete';
       // Refresh year counts in background
       setTimeout(() => { closeImport(); loadYears(); }, 2000);
