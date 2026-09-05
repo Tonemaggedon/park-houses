@@ -561,6 +561,30 @@
         <textarea id="ef_notes" style="width:100%;min-height:100px;padding:8px 10px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;resize:vertical;box-sizing:border-box"></textarea>
       </div>
 
+      <!-- NAMES form -->
+      <div id="ef_names_wrap">
+        <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">House Names Through History</label>
+        <div id="ef_namesList" style="margin-bottom:10px"></div>
+        <div style="border:1px solid #d0c090;border-radius:5px;padding:12px;background:#fdfaf4">
+          <label style="display:block;font-size:0.72rem;color:#6a5a3a;margin-bottom:3px">House Name *</label>
+          <input id="ef_newName" type="text" placeholder="e.g. Newlands" style="width:100%;padding:6px 9px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:8px">
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <div style="flex:1">
+              <label style="display:block;font-size:0.72rem;color:#6a5a3a;margin-bottom:3px">Year From</label>
+              <input id="ef_nameFrom" type="number" placeholder="e.g. 1901" min="1800" max="2000" style="width:100%;padding:6px 9px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box">
+            </div>
+            <div style="flex:1">
+              <label style="display:block;font-size:0.72rem;color:#6a5a3a;margin-bottom:3px">Year To</label>
+              <input id="ef_nameTo" type="number" placeholder="e.g. 1921" min="1800" max="2000" style="width:100%;padding:6px 9px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box">
+            </div>
+          </div>
+          <label style="display:block;font-size:0.72rem;color:#6a5a3a;margin-bottom:3px">Notes (optional)</label>
+          <input id="ef_nameNotes" type="text" placeholder="e.g. Named in 1911 census" style="width:100%;padding:6px 9px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box;margin-bottom:8px">
+          <button onclick="addPropertyName()" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:7px;border-radius:4px;cursor:pointer;font-size:0.82rem">+ Add Name</button>
+          <div id="ef_nameStatus" style="margin-top:6px;font-size:0.78rem;color:#5a4a2a"></div>
+        </div>
+      </div>
+
       <!-- RESIDENTS form -->
       <div id="ef_residents_wrap">
         <label style="display:block;font-size:0.74rem;color:#6a5a3a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Known Residents</label>
@@ -1237,6 +1261,11 @@ function openProp(id) {
   if (vb) vb.classList.toggle('visible', !!(p.lat && p.lng));
   curTab = 'data';
   renderPanel();
+  // Load house names async, then re-render data tab
+  fetch(`/api/property/${p.id}/names`).then(r=>r.json()).then(names => {
+    _propNames[p.id] = names;
+    if (curProp && curProp.id === p.id && curTab === 'data') renderPanel();
+  }).catch(()=>{});
   // Watchlist star
   const wBtn = document.getElementById('watchBtn');
   if (wBtn) {
@@ -1302,8 +1331,19 @@ function renderPanel() {
     const histSection = displayHistory ? '<div class="section"><div class="desc" style="color:#4a4a4a;line-height:1.7">' + displayHistory + '</div></div>' : '';
     const editBtn = canEdit ? '<button class="edit-btn" data-edit="details">Edit</button>' : '';
     const descEditBtn = canEdit ? '<button class="edit-btn" data-edit="desc">Edit</button>' : '';
+    const namesEditBtn = canEdit ? '<button class="edit-btn" data-edit="names">Edit</button>' : '';
+    // Build house names section from cache
+    const cachedNames = _propNames[p.id] || [];
+    let namesHtml = '';
+    if (cachedNames.length) {
+      namesHtml = cachedNames.map(n => {
+        const years = n.year_from || n.year_to ? ` <span style="color:#8a7a5a;font-size:0.76rem">(${n.year_from||'?'}–${n.year_to||'present'})</span>` : '';
+        return `<div class="row"><span class="lbl">${n.house_name}</span><span class="val">${years}${n.notes ? '<br><span style="color:#8a7a5a;font-size:0.76rem">'+n.notes+'</span>' : ''}</span></div>`;
+      }).join('');
+    }
     body.innerHTML =
       '<div class="section"><h3>Property Details ' + editBtn + '</h3>' + detailRows + '</div>' +
+      (namesHtml || canEdit ? '<div class="section"><h3>House Names ' + namesEditBtn + '</h3>' + (namesHtml || '<div style="color:#999;font-size:0.82rem;font-style:italic">No names recorded.</div>') + '</div>' : '') +
       histSection +
       '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
       '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>';
@@ -2473,7 +2513,7 @@ function openEdit(type) {
   const ov = propOverrides[curProp.id] || {};
 
   // Hide all form sections, show only the relevant one
-  ['desc','details','history','residents','photo'].forEach(t => {
+  ['desc','details','history','names','residents','photo'].forEach(t => {
     const el = document.getElementById('ef_' + t + '_wrap');
     if (el) el.style.display = (t === type || (t === 'photo' && type === 'photos')) ? 'block' : 'none';
   });
@@ -2499,6 +2539,16 @@ function openEdit(type) {
     document.getElementById('ef_hist').value = ov.history || '';
     document.getElementById('ef_notes').value = ov.notes || '';
     document.getElementById('ef_clearBtn').style.display = 'none';
+  } else if (type === 'names') {
+    document.getElementById('editTitle').textContent = 'House Names';
+    document.getElementById('ef_clearBtn').style.display = 'none';
+    document.getElementById('ef_saveBtn').style.display = 'none';
+    // Clear add form
+    ['ef_newName','ef_nameFrom','ef_nameTo','ef_nameNotes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('ef_nameStatus').textContent = '';
+    loadPropertyNames();
+    document.getElementById('editOverlay').style.display = 'block';
+    return;
   } else if (type === 'residents') {
     document.getElementById('editTitle').textContent = 'Edit Residents';
     const residents = ov.residents || curProp.residents || [];
@@ -2532,6 +2582,71 @@ function openEdit(type) {
 function closeEdit() {
   document.getElementById('editOverlay').style.display = 'none';
   curEditType = null;
+}
+
+// ── Property Names ────────────────────────────────────────────────────────────
+let _propNames = {}; // cache: propId → array of name records
+
+async function loadPropertyNames() {
+  if (!curProp) return;
+  try {
+    const r = await fetch(`/api/property/${curProp.id}/names`);
+    const names = await r.json();
+    _propNames[curProp.id] = names;
+    renderNamesList(names);
+  } catch(e) { console.error(e); }
+}
+
+function renderNamesList(names) {
+  const list = document.getElementById('ef_namesList');
+  if (!list) return;
+  if (!names || !names.length) {
+    list.innerHTML = '<div style="color:#999;font-size:0.8rem;font-style:italic;margin-bottom:8px">No names recorded yet.</div>';
+    return;
+  }
+  list.innerHTML = names.map(n => {
+    const years = n.year_from || n.year_to
+      ? ` <span style="color:#8a7a5a;font-size:0.76rem">(${n.year_from||'?'}–${n.year_to||'present'})</span>`
+      : '';
+    const notes = n.notes ? `<div style="color:#8a7a5a;font-size:0.75rem">${n.notes}</div>` : '';
+    return `<div style="display:flex;align-items:flex-start;justify-content:space-between;padding:7px 9px;border:1px solid #ddd8c0;border-radius:4px;margin-bottom:5px;background:white">
+      <div><span style="font-weight:500">${n.house_name}</span>${years}${notes}</div>
+      <button onclick="deletePropertyName(${n.id})" style="background:none;border:none;color:#c05050;cursor:pointer;font-size:1rem;line-height:1;padding:0 0 0 8px;flex-shrink:0" title="Remove">✕</button>
+    </div>`;
+  }).join('');
+}
+
+async function addPropertyName() {
+  if (!curProp) return;
+  const name = document.getElementById('ef_newName').value.trim();
+  if (!name) { document.getElementById('ef_nameStatus').textContent = 'Please enter a name.'; return; }
+  const status = document.getElementById('ef_nameStatus');
+  status.textContent = 'Saving…';
+  try {
+    const r = await fetch(`/api/property/${curProp.id}/names`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        house_name: name,
+        year_from: parseInt(document.getElementById('ef_nameFrom').value) || null,
+        year_to: parseInt(document.getElementById('ef_nameTo').value) || null,
+        notes: document.getElementById('ef_nameNotes').value.trim() || null
+      })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      ['ef_newName','ef_nameFrom','ef_nameTo','ef_nameNotes'].forEach(id => document.getElementById(id).value = '');
+      status.textContent = '✓ Added';
+      await loadPropertyNames();
+    } else { status.textContent = 'Error: ' + (d.error||'Unknown'); }
+  } catch(e) { status.textContent = 'Error: ' + e.message; }
+}
+
+async function deletePropertyName(nameId) {
+  if (!curProp || !confirm('Remove this name?')) return;
+  try {
+    await fetch(`/api/property/${curProp.id}/names/${nameId}`, { method: 'DELETE' });
+    await loadPropertyNames();
+  } catch(e) { console.error(e); }
 }
 
 document.getElementById('ef_saveBtn').addEventListener('click', async () => {

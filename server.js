@@ -1102,6 +1102,40 @@ app.delete('/api/property/:id', requireAdmin, async (req, res) => {
   catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Property Names API ────────────────────────────────────────────────────────
+app.get('/api/property/:id/names', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  try {
+    const r = await db.query(
+      `SELECT id, house_name, year_from, year_to, notes FROM property_names WHERE property_id=$1 ORDER BY year_from NULLS LAST, id`,
+      [id]
+    );
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/property/:id/names', requireContributor, async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const { house_name, year_from, year_to, notes } = req.body;
+  if (!house_name) return res.status(400).json({ error: 'house_name required' });
+  try {
+    const r = await db.query(
+      `INSERT INTO property_names (property_id, house_name, year_from, year_to, notes) VALUES ($1,$2,$3,$4,$5) RETURNING id`,
+      [id, house_name.trim(), year_from||null, year_to||null, notes||null]
+    );
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/property/:id/names/:nameId', requireContributor, async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const nameId = parseInt(req.params.nameId, 10);
+  try {
+    await db.query(`DELETE FROM property_names WHERE id=$1 AND property_id=$2`, [nameId, id]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Photo API ─────────────────────────────────────────────────────────────────
 // Serve uploaded photos
 app.use('/data/photos', express.static(PHOTOS_DIR));
