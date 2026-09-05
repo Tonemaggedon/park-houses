@@ -706,7 +706,7 @@ function parseLine(cols, format) {
     // 8:Woman  9:Man  10:Girl  11:Boy
     // 12:Head  13:Wife  14:Daughter  15:Son  16:Other  17:Servant
     // 18:Age  19:Year of Birth  20:Married  21:SINGLE  22:Widow/er  23:Years Married
-    // 24:Personal occupation  25:Birth county  26:Place Town  (verify cols 25-26 if wrong)
+    // 24:Personal occupation  31(AF):Birth county  32(AG):Place Town
     const houseId   = (cols[0] || '').trim();
     const houseName = (cols[1] || '').trim();
     const street    = (cols[3] || '').trim();
@@ -729,8 +729,8 @@ function parseLine(cols, format) {
     const age      = parseInt(cols[18]) || null;
     const birthYear = parseInt(cols[19]) || null;
     const occupation   = (cols[24] || '').trim();
-    const birthCounty  = (cols[25] || '').trim();
-    const birthTown    = (cols[26] || '').trim();
+    const birthCounty  = (cols[31] || '').trim();  // AF
+    const birthTown    = (cols[32] || '').trim();  // AG
     const birthPlace   = [birthTown, birthCounty].filter(Boolean).join(', ');
     // Col A (cols[0]) = House ID (e.g. "LA1", "CRW3") — extract trailing number as household grouping key
     const hhMatch = houseId.match(/(\d+)$/);
