@@ -444,6 +444,38 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_household_num INTEGER`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS title TEXT`);
     // Gate House and North Lodge are separate properties — no migration needed
+    // Fix Huntingdon Drive 1921 — split into correct households by house name
+    const hdFixes = [
+      {first:'Frederick Percy', last:'Johnson',          hh:1, addr:'Huntingdon Drive (Acacia)'},
+      {first:'Madeline Beatrice',last:'Johnson',         hh:1, addr:'Huntingdon Drive (Acacia)'},
+      {first:'Sylvia Millicent', last:'Johnson',         hh:1, addr:'Huntingdon Drive (Acacia)'},
+      {first:'Maria Elizabeth',  last:'Buckingham',      hh:1, addr:'Huntingdon Drive (Acacia)'},
+      {first:'Gertrude Margaret',last:'Dobrashian',      hh:2, addr:'Huntingdon Drive (Brampton)'},
+      {first:'John',             last:'Clark',           hh:2, addr:'Huntingdon Drive (Brampton)'},
+      {first:'Mary Dorcas',      last:'Clark',           hh:2, addr:'Huntingdon Drive (Brampton)'},
+      {first:'Joseph',           last:'Spray',           hh:3, addr:'Huntingdon Drive (Greendale)'},
+      {first:'Martha',           last:'Spray',           hh:3, addr:'Huntingdon Drive (Greendale)'},
+      {first:'Jessie',           last:'Spray',           hh:3, addr:'Huntingdon Drive (Greendale)'},
+      {first:'Louisa',           last:'Paecy',           hh:3, addr:'Huntingdon Drive (Greendale)'},
+      {first:'Samuel Ritchie',   last:'Jackson',         hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Margaret Emily',   last:'Jackson',         hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Margaret Alys',    last:'Jackson',         hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Geoffrey William', last:'Jackson',         hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Beryl Louise',     last:'Jackson',         hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Millicent',        last:'Thomas',          hh:4, addr:'Huntingdon Drive (Kenmore)'},
+      {first:'Sidney Richard',   last:'Tann',            hh:6, addr:'Huntingdon Drive (The Cottage)'},
+      {first:'Daisy Chrisball',  last:'Tann',            hh:6, addr:'Huntingdon Drive (The Cottage)'},
+    ];
+    for (const f of hdFixes) {
+      await db.query(`
+        UPDATE census_entries ce
+        SET census_household_num=$1, unresolved_address=$2
+        FROM people p
+        WHERE ce.person_id=p.id
+          AND LOWER(p.first_name)=LOWER($3) AND LOWER(p.last_name)=LOWER($4)
+          AND ce.census_year=1921 AND ce.property_id IS NULL
+      `, [f.hh, f.addr, f.first, f.last]).catch(()=>{});
+    }
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);
