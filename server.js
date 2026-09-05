@@ -1681,14 +1681,21 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
       } else {
         results.push({ personId, created: false });
       }
-      await db.query(
-        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, census_household_num, unresolved_address, birth_place)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
-        [personId, property_id || null, census_year, row.relationship || null,
-         row.age ? parseInt(row.age) : null, row.occupation || null,
-         row.census_household_num || null, row.unresolved_address || null,
-         row.birth_place || null]
+      // Skip if an entry for this person+year already exists (prevents double-import)
+      const dupCheck = await db.query(
+        `SELECT id FROM census_entries WHERE person_id=$1 AND census_year=$2 LIMIT 1`,
+        [personId, census_year]
       );
+      if (dupCheck.rows.length === 0) {
+        await db.query(
+          `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, census_household_num, unresolved_address, birth_place)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+          [personId, property_id || null, census_year, row.relationship || null,
+           row.age ? parseInt(row.age) : null, row.occupation || null,
+           row.census_household_num || null, row.unresolved_address || null,
+           row.birth_place || null]
+        );
+      }
     }
     res.json({ ok: true, results });
     // Async geocode any new unique birth places (don't block the response)
