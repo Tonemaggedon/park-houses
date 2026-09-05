@@ -520,9 +520,19 @@ let _canImport = false;
               <option value="1939">1939</option>
             </select>
           </div>
+          <div class="imp-field">
+            <label>Format <span style="font-size:0.72rem;color:#8a7a5a">(auto-detect usually works)</span></label>
+            <select id="impFormatSel">
+              <option value="auto">Auto-detect</option>
+              <option value="custom1911dan">1911 DAN (House ID + house name columns)</option>
+              <option value="custom1921hd">1921 HD (House ID + count house columns)</option>
+              <option value="findmypast1939">FindMyPast 1939 Register</option>
+              <option value="standard">Standard</option>
+            </select>
+          </div>
         </div>
         <div class="imp-field" style="margin-bottom:8px">
-          <label>Paste data (copy from spreadsheet — include or omit the header row):</label>
+          <label>Paste data (copy from spreadsheet — include header rows):</label>
           <textarea class="imp-paste" id="impPaste"
             placeholder="First name(s)&#9;Last name&#9;Relationship to head&#9;Sex&#9;Birth year&#9;Age in years&#9;Birth place&#9;Occupation&#9;Employer&#10;Robert&#9;Evans&#9;Head&#9;Male&#9;1863&#9;58&#9;Nottingham&#9;Architect&#9;Employer"></textarea>
         </div>
@@ -760,13 +770,14 @@ async function parseImport() {
   if (!raw) { alert('Please paste some data first.'); return; }
 
   const lines = raw.split('\n').filter(l => l.trim());
+  const manualFormat = (document.getElementById('impFormatSel') || {}).value || 'auto';
   const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house','house name','year of birth','head of family','belongs to'];
   const firstLineLower = lines[0].toLowerCase();
   const secondLineLower = (lines[1] || '').toLowerCase();
   const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k))
                 || secondLineLower.includes('smallest household')
                 || secondLineLower.includes('largest household');
-  const format = isHeader ? detectFormat(lines[0], lines[1]) : 'standard';
+  const format = manualFormat !== 'auto' ? manualFormat : (isHeader ? detectFormat(lines[0], lines[1]) : 'standard');
   // Custom formats have multiple header rows
   const headerRows = (format === 'custom1921hd') ? 3 : (format === 'custom1911dan') ? 2 : (isHeader ? 1 : 0);
   const dataLines = lines.slice(headerRows);
