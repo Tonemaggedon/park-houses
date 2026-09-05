@@ -443,10 +443,7 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_house_id TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_household_num INTEGER`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS title TEXT`);
-    // One-time fix: rename "Gate House" unresolved entries to "North Lodge" and set household 1
-    await db.query(`UPDATE census_entries SET census_household_num=1, unresolved_address='North Lodge North Road'
-      WHERE property_id IS NULL AND census_household_num=2
-        AND unresolved_address ILIKE '%gate house%'`).catch(()=>{});
+    // Gate House and North Lodge are separate properties — no migration needed
     console.log('PostgreSQL connected and tables ready');
   } catch(e) {
     console.error('DB init failed, falling back to JSON files:', e.message);

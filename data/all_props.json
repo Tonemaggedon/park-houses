@@ -5057,6 +5057,20 @@
   },
   {
     "id": 396,
+    "name": "Gate House",
+    "street": "North Road",
+    "no": "",
+    "address": "Gate House, North Road",
+    "desc": "",
+    "history": "",
+    "date_built": "",
+    "listed": "No",
+    "census_only": true,
+    "lat": 52.9542,
+    "lng": -1.1663
+  },
+  {
+    "id": 397,
     "name": "North Lodge",
     "street": "North Road",
     "no": "",
@@ -5066,7 +5080,7 @@
     "date_built": "",
     "listed": "No",
     "census_only": true,
-    "lat": 52.9542,
-    "lng": -1.1663
+    "lat": 52.9544,
+    "lng": -1.1662
   }
 ]
