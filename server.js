@@ -1644,12 +1644,17 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
     if (!census_year || !rows || !rows.length) return res.status(400).json({ error: 'Missing required fields' });
     const results = [];
     for (const row of rows) {
+      // Skip rows with no usable name (blanks, *MISSING*, sub-headers that slipped through)
+      const fn = (row.first_name || '').trim();
+      const ln = (row.last_name || '').trim();
+      if (!fn && !ln) continue;
+      if (/^\*.*\*$/.test(fn) || /^\*.*\*$/.test(ln)) continue; // e.g. *MISSING*
       let personId = row.person_id ? parseInt(row.person_id) : null;
       if (!personId) {
         // Create new person
         const pRes = await db.query(
           `INSERT INTO people (first_name, last_name, born_year, born_place) VALUES ($1,$2,$3,$4) RETURNING id`,
-          [row.first_name || null, row.last_name || null, row.birth_year || null, row.birth_place || null]
+          [fn || null, ln || null, row.birth_year || null, row.birth_place || null]
         );
         personId = pRes.rows[0].id;
         results.push({ personId, created: true, name: `${row.first_name} ${row.last_name}`.trim() });
