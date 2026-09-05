@@ -732,10 +732,9 @@ function parseLine(cols, format) {
     const birthCounty  = (cols[25] || '').trim();
     const birthTown    = (cols[26] || '').trim();
     const birthPlace   = [birthTown, birthCounty].filter(Boolean).join(', ');
-    // Col C (cols[2]) = No. — the explicit house number. Fallback: extract trailing digits from House ID (e.g. "CRW1" → 1)
-    const noColVal = parseInt(cols[2]);
+    // Col A (cols[0]) = House ID (e.g. "LA1", "CRW3") — extract trailing number as household grouping key
     const hhMatch = houseId.match(/(\d+)$/);
-    const householdNum = (!isNaN(noColVal) && noColVal > 0) ? noColVal : (hhMatch ? parseInt(hhMatch[1]) : null);
+    const householdNum = hhMatch ? parseInt(hhMatch[1]) : null;
     const unresolvedAddress = houseName ? `${houseName} ${street}` : street;
     return {
       first_name: firstName,
