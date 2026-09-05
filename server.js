@@ -1785,8 +1785,49 @@ app.post('/api/admin/import-census-xlsx',
         }
       }
 
+      // Helper: normalise abbreviated street names to match all_props.json
+      function normalizeStreet(s) {
+        if (!s) return s;
+        const overrides = {
+          'lenton rd': 'Lenton Road', 'clumber rd w': 'Clumber Road West',
+          'clumber rd west': 'Clumber Road West', 'clumber rd e': 'Clumber Road East',
+          'clumber rd east': 'Clumber Road East', 'cavendish rd east': 'Cavendish Road East',
+          'clumber cres s': 'Clumber Crescent South', 'cavendish cres s.': 'Cavendish Crescent South',
+          'cavendish cres s': 'Cavendish Crescent South', 'holles cres': 'Holles Crescent',
+          'kenilworth rd': 'Kenilworth Road', 'newcastle circus': 'Newcastle Circus',
+          'maxtoke rd': 'Maxtoke Road', 'cavendish cres n': 'Cavendish Crescent North',
+          'cavendish cres north': 'Cavendish Crescent North',
+        };
+        const lo = s.trim().toLowerCase();
+        if (overrides[lo]) return overrides[lo];
+        return s.trim().replace(/\brd\b/gi, 'Road').replace(/\bcres\b/gi, 'Crescent');
+      }
+
       // Get all rows as arrays (defval fills empty cells with '')
       const allRows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+
+      // Pre-process: for 1921hd, carry forward hid/street/sno/hname so sub-member rows
+      // (where only last/first name are filled) inherit the correct household address.
+      if (format === 'custom1921hd') {
+        let chid = '', cstreet = '', chname = '', csno = '';
+        for (const row of allRows.slice(2)) {
+          const hid    = String(row[0]||'').trim();
+          const street = String(row[3]||'').trim();
+          const hname  = String(row[4]||'').trim();
+          const sno    = String(row[5]||'').trim();
+          if (hid && !['house id','total','largest household'].includes(hid.toLowerCase())) {
+            chid = hid;
+            if (street) cstreet = normalizeStreet(street);
+            if (sno) { csno = sno; chname = hname; } // new household — reset house name
+          }
+          if (!String(row[0]||'').trim()) row[0] = chid;
+          if (!String(row[3]||'').trim()) row[3] = cstreet;
+          if (!String(row[5]||'').trim()) row[5] = csno;
+          if (!String(row[4]||'').trim()) row[4] = chname;
+          // Normalise street in place for rows that did have a value
+          if (String(row[3]||'').trim()) row[3] = normalizeStreet(String(row[3]).trim());
+        }
+      }
 
       // Parse rows according to format
       function parseXlsxRow(row) {
@@ -1833,6 +1874,72 @@ app.post('/api/admin/import-census-xlsx',
                    unresolved_address: matchedPropId ? null : unresolvedAddress,
                    matched_property_id: matchedPropId };
         }
+        if (format === 'custom1921hd') {
+          // 1921 House-ID format (hd):
+          // col[0]=House ID  col[3]=Location/Street  col[4]=House Name  col[5]=Street No
+          // col[6]=Last name  col[7]=First name(s)
+          // col[9]=Sex text ('Male'/'Female')  col[10]=1 if Male  col[13]=Relationship (1=Head or text)
+          // col[19]=Age  col[26]=Occupation  col[31]=1 if born Notts  col[32]=Birth place text
+          const houseId   = String(row[0] || '').trim();
+          const street    = String(row[3] || '').trim();
+          const houseName = String(row[4] || '').trim();
+          const streetNo  = String(row[5] || '').trim();
+          const lastName  = String(row[6] || '').trim();
+          const firstName = String(row[7] || '').trim();
+          // Skip blank rows, totals, sub-headers, and placeholder house IDs
+          if (!lastName && !firstName) return null;
+          if (/^(last ?name|family|name|total)$/i.test(lastName)) return null;
+          if (/^(none found|missing|n\/a)$/i.test(houseId)) return null;
+          if (/^total$/i.test(houseId)) return null;
+          // Sex: text or checkbox
+          const sexText = String(row[9] || '').trim().toLowerCase();
+          const sex = sexText === 'female' ? 'F' : sexText === 'male' ? 'M'
+                    : String(row[10]||'')==='1' ? 'M' : String(row[9]||'')==='1' ? 'F' : '';
+          // Relationship: col[13] = 1 means Head, or text like 'Wife','Daughter'
+          const relRaw = String(row[13] || '').trim();
+          const relationship = relRaw === '1' ? 'Head' : relRaw || null;
+          const age = parseInt(row[19]) || null;
+          const occupation = String(row[26] || '').trim();
+          // Birth place: col[32] = free text; col[31]=1 means Nottinghamshire
+          const bornOther = String(row[32] || '').trim();
+          const bornNotts = String(row[31] || '').trim() === '1';
+          const birthPlace = bornOther || (bornNotts ? 'Nottinghamshire, England' : null);
+          // Property matching: street_no + street, then house_name + street
+          // street/streetNo/houseName are already carry-forwarded by the pre-process pass above
+          let matchedPropId = null;
+          const streetL = street.toLowerCase();
+          if (streetNo && street) matchedPropId = propByNoStreet[`${streetL}|${String(streetNo).toLowerCase()}`] || null;
+          if (!matchedPropId && houseName && street) matchedPropId = propByNameStreet[`${streetL}|${houseName.toLowerCase()}`] || null;
+          const unresolvedAddress = houseName ? `${houseName}, ${street}`.trim() : (streetNo ? `${streetNo} ${street}`.trim() : street || null);
+          return { first_name: firstName||null, last_name: lastName||null, relationship: relationship||null,
+                   sex: sex||null, birth_year: age ? (1921 - age) : null, age,
+                   birth_place: birthPlace||null, occupation: occupation||null,
+                   census_household_num: null, census_house_id: houseId||null,
+                   unresolved_address: matchedPropId ? null : unresolvedAddress,
+                   matched_property_id: matchedPropId };
+        }
+        if (format === 'custom1921simple') {
+          // Simple 1921 format (CCN, Pelham Cres):
+          // col[0]=First name(s)  col[1]=Last name  col[2]=Relationship  col[3]=Sex
+          // col[4]=Birth year  col[5]=Age  col[6]=Birth place  col[7]=Occupation
+          // col[8]=Employer  col[9]=House number  col[10]=Street
+          const firstName = String(row[0] || '').trim();
+          const lastName  = String(row[1] || '').trim();
+          if (!lastName && !firstName) return null;
+          if (/^(last ?name|first ?name)$/i.test(lastName)) return null;
+          const streetNo  = String(row[9] || '').trim();
+          const street    = normalizeStreet(String(row[10] || '').trim());
+          let matchedPropId = null;
+          if (streetNo && street) matchedPropId = propByNoStreet[`${street.toLowerCase()}|${streetNo.toLowerCase()}`] || null;
+          const unresolvedAddress = streetNo ? `${streetNo} ${street}`.trim() : (street || null);
+          return { first_name: firstName||null, last_name: lastName||null,
+                   relationship: String(row[2]||'').trim()||null, sex: String(row[3]||'').trim()||null,
+                   birth_year: parseInt(row[4])||null, age: parseInt(row[5])||null,
+                   birth_place: String(row[6]||'').trim()||null, occupation: String(row[7]||'').trim()||null,
+                   census_household_num: null, census_house_id: null,
+                   unresolved_address: matchedPropId ? null : unresolvedAddress,
+                   matched_property_id: matchedPropId };
+        }
         // Standard format fallback
         return { first_name: String(row[0]||'').trim()||null, last_name: String(row[1]||'').trim()||null,
                  relationship: String(row[2]||'').trim()||null, sex: String(row[3]||'').trim()||null,
@@ -1842,12 +1949,14 @@ app.post('/api/admin/import-census-xlsx',
       }
 
       // Determine header rows to skip
-      const headerRows = format === 'custom1911dan' ? 2 : format === 'custom1921hd' ? 3 : 1;
+      const headerRows = format === 'custom1911dan' ? 2 : format === 'custom1921hd' ? 2 : format === 'custom1921simple' ? 1 : 1;
       const dataRows = allRows.slice(headerRows);
 
       let parsedRows = dataRows.map(r => parseXlsxRow(r)).filter(Boolean);
       parsedRows = parsedRows.filter(r => r.first_name || r.last_name);
 
+      // Note: 1921hd carry-forward is handled by the pre-process pass above (fills blank cells
+      // in allRows before parseXlsxRow is called), so no post-parse carry-forward needed here.
       // Best-address carry-forward for rows with merged/blank house ID cells
       if (format === 'custom1911dan') {
         const bestAddr = {}, bestPropId = {}, bestHouseId = {};
