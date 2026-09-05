@@ -614,14 +614,17 @@ function backToStep1() {
   document.getElementById('impStep2').style.display = 'none';
 }
 
-function detectFormat(headerLine) {
+function detectFormat(headerLine, secondLine) {
   const h = headerLine.toLowerCase();
+  const h2 = (secondLine || '').toLowerCase();
   // FindMyPast 1939 register: has "birth date" and "marital status"
   if (h.includes('birth date') || h.includes('marital status') || h.includes('schedule sub')) return 'findmypast1939';
   // Custom 1921 HD format: has "house id" and "count house"
   if (h.includes('house id') && (h.includes('count house') || h.includes('location'))) return 'custom1921hd';
-  // Custom 1911 DAN format: has "house id" and "house name" (Clumber Road West, Maxthorpe Rd, Lenton Ave sheets)
+  // Custom 1911 DAN format: "house id"+"house name" on line 1, OR distinctive sub-header on line 2
   if (h.includes('house id') && h.includes('house name')) return 'custom1911dan';
+  if (h.includes('house id') && (h.includes('year of birth') || h.includes('head of family') || h.includes('belongs to'))) return 'custom1911dan';
+  if (h2.includes('smallest household') || h2.includes('largest household') || h2.includes('coach house')) return 'custom1911dan';
   // Standard: has "birth year" or "age in years"
   if (h.includes('birth year') || h.includes('age in years')) return 'standard';
   return 'standard'; // default
@@ -757,10 +760,13 @@ async function parseImport() {
   if (!raw) { alert('Please paste some data first.'); return; }
 
   const lines = raw.split('\n').filter(l => l.trim());
-  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house','house name'];
+  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house','house name','year of birth','head of family','belongs to'];
   const firstLineLower = lines[0].toLowerCase();
-  const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k));
-  const format = isHeader ? detectFormat(lines[0]) : 'standard';
+  const secondLineLower = (lines[1] || '').toLowerCase();
+  const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k))
+                || secondLineLower.includes('smallest household')
+                || secondLineLower.includes('largest household');
+  const format = isHeader ? detectFormat(lines[0], lines[1]) : 'standard';
   // Custom formats have multiple header rows
   const headerRows = (format === 'custom1921hd') ? 3 : (format === 'custom1911dan') ? 2 : (isHeader ? 1 : 0);
   const dataLines = lines.slice(headerRows);
