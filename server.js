@@ -442,7 +442,17 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS unresolved_address TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_house_id TEXT`);
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS census_household_num INTEGER`);
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS birth_place TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS title TEXT`);
+    await db.query(`CREATE TABLE IF NOT EXISTS geocode_cache (
+      place_text        TEXT PRIMARY KEY,
+      lat               NUMERIC,
+      lng               NUMERIC,
+      formatted_address TEXT,
+      status            TEXT DEFAULT 'found',
+      corrected_from    TEXT,
+      queried_at        TIMESTAMPTZ DEFAULT NOW()
+    )`);
     // Gate House and North Lodge are separate properties — no migration needed
     // Fix Huntingdon Drive 1921 — split into correct households by house name
     const hdFixes = [
@@ -1574,6 +1584,58 @@ app.delete('/api/property/:propId/residents/:residentId', requireContributor, as
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Geocoding ─────────────────────────────────────────────────────────────────
+async function geocodePlace(placeText, searchText) {
+  // placeText = the key stored in census_entries (original as-imported)
+  // searchText = what to actually search (corrected version, or same as placeText)
+  if (!db) return null;
+  const key = process.env.GOOGLE_MAPS_KEY;
+  if (!key) { console.warn('geocodePlace: no GOOGLE_MAPS_KEY'); return null; }
+  const query = (searchText || placeText || '').trim();
+  if (!query) return null;
+  try {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(query)}&key=${key}`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    if (json.status === 'OK' && json.results[0]) {
+      const loc = json.results[0].geometry.location;
+      const formatted = json.results[0].formatted_address;
+      await db.query(
+        `INSERT INTO geocode_cache (place_text, lat, lng, formatted_address, status, corrected_from)
+         VALUES ($1,$2,$3,$4,'found',$5)
+         ON CONFLICT (place_text) DO UPDATE
+           SET lat=$2, lng=$3, formatted_address=$4, status='found',
+               corrected_from=$5, queried_at=NOW()`,
+        [placeText.trim(), loc.lat, loc.lng, formatted,
+         searchText && searchText !== placeText ? placeText.trim() : null]
+      );
+      return { lat: loc.lat, lng: loc.lng, formatted_address: formatted };
+    } else {
+      await db.query(
+        `INSERT INTO geocode_cache (place_text, status) VALUES ($1,'not_found')
+         ON CONFLICT (place_text) DO UPDATE SET status='not_found', queried_at=NOW()`,
+        [placeText.trim()]
+      );
+      return null;
+    }
+  } catch(e) {
+    console.error('geocodePlace error:', e.message);
+    return null;
+  }
+}
+
+// Geocode an array of unique place strings (skip already cached), fire-and-forget
+async function geocodePlacesBatch(places) {
+  for (const p of places) {
+    const existing = await db.query(
+      `SELECT status FROM geocode_cache WHERE place_text=$1`, [p.trim()]
+    ).catch(()=>({rows:[]}));
+    if (existing.rows[0]) continue; // already attempted
+    await geocodePlace(p, p);
+    await new Promise(r => setTimeout(r, 200)); // stay under rate limit
+  }
+}
+
 // POST /api/census/import — bulk import from pasted census data
 app.post('/api/census/import', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
@@ -1595,14 +1657,67 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
         results.push({ personId, created: false });
       }
       await db.query(
-        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, census_household_num, unresolved_address)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
+        `INSERT INTO census_entries (person_id, property_id, census_year, relationship, age_at_census, occupation_at_census, census_household_num, unresolved_address, birth_place)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
         [personId, property_id || null, census_year, row.relationship || null,
          row.age ? parseInt(row.age) : null, row.occupation || null,
-         row.census_household_num || null, row.unresolved_address || null]
+         row.census_household_num || null, row.unresolved_address || null,
+         row.birth_place || null]
       );
     }
     res.json({ ok: true, results });
+    // Async geocode any new unique birth places (don't block the response)
+    const newPlaces = [...new Set(rows.map(r => r.birth_place).filter(Boolean))];
+    if (newPlaces.length) geocodePlacesBatch(newPlaces).catch(e => console.error('Batch geocode error:', e.message));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Birthplace admin ──────────────────────────────────────────────────────────
+// GET /api/admin/unknown-places — birth places with no geocode result yet
+app.get('/api/admin/unknown-places', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { rows } = await db.query(`
+      SELECT
+        TRIM(ce.birth_place) AS birth_place,
+        COUNT(DISTINCT ce.person_id) AS cnt,
+        JSON_AGG(DISTINCT p.first_name || ' ' || p.last_name ORDER BY 1) FILTER (WHERE p.id IS NOT NULL) AS examples,
+        gc.status AS geocode_status
+      FROM census_entries ce
+      JOIN people p ON p.id = ce.person_id
+      LEFT JOIN geocode_cache gc ON gc.place_text = TRIM(ce.birth_place)
+      WHERE ce.birth_place IS NOT NULL AND TRIM(ce.birth_place) != ''
+        AND (gc.place_text IS NULL OR gc.status = 'not_found')
+      GROUP BY TRIM(ce.birth_place), gc.status
+      ORDER BY cnt DESC, birth_place
+    `);
+    res.json(rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/geocode-place — try to geocode a place (with optional corrected search text)
+app.post('/api/admin/geocode-place', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const { place_text, search_text } = req.body;
+  if (!place_text) return res.status(400).json({ error: 'place_text required' });
+  try {
+    const result = await geocodePlace(place_text, search_text || place_text);
+    if (result) {
+      res.json({ ok: true, found: true, ...result });
+    } else {
+      res.json({ ok: true, found: false });
+    }
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// DELETE /api/admin/geocode-place — remove a cache entry (to allow retry)
+app.delete('/api/admin/geocode-place', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const { place_text } = req.body;
+  if (!place_text) return res.status(400).json({ error: 'place_text required' });
+  try {
+    await db.query('DELETE FROM geocode_cache WHERE place_text=$1', [place_text.trim()]);
+    res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -1685,6 +1800,7 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 app.get('/census/unresolved', (req, res) => res.sendFile(path.join(__dirname,'public','census-unresolved.html')));
+app.get('/admin/birthplaces', (req, res) => res.sendFile(path.join(__dirname,'public','admin-birthplaces.html')));
 
 // GET /api/recent-changes — for dashboard activity feed
 app.get('/api/recent-changes', async (req, res) => {

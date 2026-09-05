@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthplace Geocoding — Nottingham Park Houses</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #f5f0e8; color: #1a1a1a; min-height: 100vh; }
+header { background: #1a3a2a; color: #f0e8d0; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+header h1 { font-size: 1.1rem; font-weight: normal; }
+header a { color: #a8c890; font-size: 0.8rem; text-decoration: none; margin-left: auto; }
+header a:hover { text-decoration: underline; }
+.container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+.summary { background: #fff; border: 1px solid #d8c8a0; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; font-size: 0.85rem; color: #5a4a2a; display: flex; align-items: center; gap: 16px; }
+.summary strong { color: #1a3a2a; font-size: 1.1rem; }
+.summary .hint { margin-left: auto; color: #8a7a5a; font-size: 0.78rem; font-style: italic; }
+.place-card { background: #fff; border: 1px solid #d8c8a0; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; transition: border-color 0.2s; }
+.place-card.resolved { border-color: #4a7c5a; background: #f0f8f0; opacity: 0.7; }
+.place-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.place-name { font-size: 0.95rem; font-weight: bold; color: #1a1a1a; }
+.place-count { font-size: 0.75rem; color: #8a7a5a; background: #f0e8d0; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+.place-examples { font-size: 0.75rem; color: #6a5a3a; margin-bottom: 10px; font-style: italic; }
+.place-controls { display: flex; gap: 8px; align-items: center; }
+.place-controls input { flex: 1; padding: 6px 10px; border: 1px solid #c8b888; border-radius: 5px; font-size: 0.85rem; font-family: Georgia, serif; background: #fdfaf4; }
+.place-controls input:focus { outline: none; border-color: #4a7c5a; }
+.btn { padding: 6px 14px; border: none; border-radius: 5px; font-size: 0.8rem; font-family: Georgia, serif; cursor: pointer; white-space: nowrap; }
+.btn-try { background: #4a7c5a; color: white; }
+.btn-try:hover { background: #3a6a4a; }
+.btn-try:disabled { background: #a0c0a8; cursor: default; }
+.btn-skip { background: none; border: 1px solid #c8b888; color: #8a7a5a; }
+.btn-skip:hover { background: #f5f0e8; }
+.place-result { margin-top: 8px; font-size: 0.78rem; padding: 5px 10px; border-radius: 5px; }
+.place-result.found { background: #e8f4e8; color: #2a5a2a; border: 1px solid #a0c8a0; }
+.place-result.not-found { background: #fdf0e8; color: #8a3a1a; border: 1px solid #e0b898; }
+.loading { text-align: center; padding: 40px; color: #8a7a5a; font-style: italic; }
+.empty { text-align: center; padding: 60px; color: #8a7a5a; }
+.empty h2 { font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🌍 Birthplace Geocoding</h1>
+  <a href="/">← Map</a>
+  <a href="/census/unresolved" style="margin-left:8px">Unresolved Census</a>
+</header>
+<div class="container">
+  <div class="summary" id="summary">
+    <span>Loading…</span>
+  </div>
+  <div id="list"><div class="loading">Loading unresolved birth places…</div></div>
+</div>
+
+<script>
+let places = [];
+
+async function load() {
+  try {
+    const r = await fetch('/api/admin/unknown-places');
+    if (r.status === 401 || r.status === 403) {
+      document.getElementById('list').innerHTML = '<div class="empty"><h2>Access denied</h2><p>Admin login required.</p></div>';
+      return;
+    }
+    places = await r.json();
+    render();
+  } catch(e) {
+    document.getElementById('list').innerHTML = `<div class="empty"><h2>Error loading</h2><p>${e.message}</p></div>`;
+  }
+}
+
+function render() {
+  const summary = document.getElementById('summary');
+  const list = document.getElementById('list');
+
+  if (!places.length) {
+    summary.innerHTML = '<span>✅ All birth places are geocoded — nothing to fix.</span>';
+    list.innerHTML = '<div class="empty"><h2>All done!</h2><p>Every birth place in the database has been mapped.</p></div>';
+    return;
+  }
+
+  const totalPeople = places.reduce((s, p) => s + parseInt(p.cnt), 0);
+  summary.innerHTML = `
+    <span><strong>${places.length}</strong> place${places.length !== 1 ? 's' : ''} not yet geocoded</span>
+    <span style="color:#8a7a5a">·</span>
+    <span><strong>${totalPeople}</strong> people affected</span>
+    <span class="hint">Fix typos in the search field, then click Try. The original name stays linked in the database.</span>
+  `;
+
+  list.innerHTML = places.map((p, i) => {
+    const examples = (p.examples || []).slice(0, 4).join(', ');
+    const moreCount = (p.examples || []).length > 4 ? ` +${p.examples.length - 4} more` : '';
+    return `
+    <div class="place-card" id="card-${i}">
+      <div class="place-header">
+        <span class="place-name">${esc(p.birth_place)}</span>
+        <span class="place-count">${p.cnt} ${parseInt(p.cnt) === 1 ? 'person' : 'people'}</span>
+        ${p.geocode_status === 'not_found' ? '<span style="font-size:0.72rem;color:#c04040;margin-left:4px">Previously not found</span>' : ''}
+      </div>
+      ${examples ? `<div class="place-examples">${esc(examples)}${moreCount}</div>` : ''}
+      <div class="place-controls">
+        <input id="inp-${i}" type="text" value="${esc(p.birth_place)}" placeholder="Corrected place name to search…" onkeydown="if(event.key==='Enter')tryGeocode(${i})">
+        <button class="btn btn-try" id="btn-${i}" onclick="tryGeocode(${i})">Try geocode</button>
+        <button class="btn btn-skip" onclick="skipPlace(${i})">Skip</button>
+      </div>
+      <div id="result-${i}"></div>
+    </div>`;
+  }).join('');
+}
+
+async function tryGeocode(i) {
+  const p = places[i];
+  const searchText = document.getElementById(`inp-${i}`).value.trim();
+  const btn = document.getElementById(`btn-${i}`);
+  const resultEl = document.getElementById(`result-${i}`);
+
+  btn.disabled = true;
+  btn.textContent = 'Searching…';
+  resultEl.innerHTML = '';
+
+  try {
+    const r = await fetch('/api/admin/geocode-place', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ place_text: p.birth_place, search_text: searchText })
+    });
+    const data = await r.json();
+
+    if (data.found) {
+      resultEl.className = 'place-result found';
+      resultEl.innerHTML = `✅ Found: <strong>${esc(data.formatted_address)}</strong> · ${data.lat.toFixed(4)}, ${data.lng.toFixed(4)}`;
+      document.getElementById(`card-${i}`).classList.add('resolved');
+      btn.textContent = '✓ Done';
+    } else {
+      resultEl.className = 'place-result not-found';
+      resultEl.innerHTML = `❌ Not found by Google Maps. Try a different spelling or add ", England" / ", UK" to the end.`;
+      btn.disabled = false;
+      btn.textContent = 'Try again';
+    }
+  } catch(e) {
+    resultEl.className = 'place-result not-found';
+    resultEl.innerHTML = `Error: ${e.message}`;
+    btn.disabled = false;
+    btn.textContent = 'Try geocode';
+  }
+}
+
+function skipPlace(i) {
+  document.getElementById(`card-${i}`).style.display = 'none';
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+load();
+</script>
+</body>
+</html>
