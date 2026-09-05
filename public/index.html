@@ -2581,6 +2581,7 @@ function openEdit(type) {
 
 function closeEdit() {
   document.getElementById('editOverlay').style.display = 'none';
+  if (curEditType === 'names') renderPanel();
   curEditType = null;
 }
 
@@ -2594,6 +2595,8 @@ async function loadPropertyNames() {
     const names = await r.json();
     _propNames[curProp.id] = names;
     renderNamesList(names);
+    // Also refresh the panel so House Names section updates
+    if (curTab === 'data') renderPanel();
   } catch(e) { console.error(e); }
 }
 
