@@ -2262,6 +2262,15 @@ app.post('/api/person/:id/census', requireContributor, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+app.delete('/api/census-entry/:entryId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const r = await db.query('DELETE FROM census_entries WHERE id=$1 RETURNING id', [parseInt(req.params.entryId)]);
+    if (!r.rowCount) return res.status(404).json({ error: 'Entry not found' });
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post('/api/significant-place', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {

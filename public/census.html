@@ -620,6 +620,8 @@ function detectFormat(headerLine) {
   if (h.includes('birth date') || h.includes('marital status') || h.includes('schedule sub')) return 'findmypast1939';
   // Custom 1921 HD format: has "house id" and "count house"
   if (h.includes('house id') && (h.includes('count house') || h.includes('location'))) return 'custom1921hd';
+  // Custom 1911 DAN format: has "house id" and "house name" (Clumber Road West, Maxthorpe Rd, Lenton Ave sheets)
+  if (h.includes('house id') && h.includes('house name')) return 'custom1911dan';
   // Standard: has "birth year" or "age in years"
   if (h.includes('birth year') || h.includes('age in years')) return 'standard';
   return 'standard'; // default
@@ -684,6 +686,57 @@ function parseLine(cols, format) {
       person_id: null, person_name_matched: null
     };
   }
+  if (format === 'custom1911dan') {
+    // Custom 1911 DAN format (Clumber Road West, Maxthorpe Rd, Lenton Ave, etc.):
+    // 0:House ID  1:House Name  2:NO.  3:Address  4:Belongs to House  5:Plot No
+    // 6:Family(surname)  7:Name(first names)
+    // 8:Woman  9:Man  10:Girl  11:Boy
+    // 12:Head  13:Wife  14:Daughter  15:Son  16:Other  17:Servant
+    // 18:Age  19:Year of Birth  20:Married  21:SINGLE  22:Widow/er  23:Years Married
+    // 24:Personal occupation  25:Birth county  26:Place Town  (verify cols 25-26 if wrong)
+    const houseId   = (cols[0] || '').trim();
+    const houseName = (cols[1] || '').trim();
+    const street    = (cols[3] || '').trim();
+    const lastName  = (cols[6] || '').trim();
+    const firstName = (cols[7] || '').trim();
+    // Skip blank rows, TOTAL rows, sub-header rows
+    if (!lastName && !firstName) return { first_name: '', last_name: '' };
+    if (/^total$/i.test(houseId)) return { first_name: '', last_name: '' };
+    if (/^(family|surname|last ?name)$/i.test(lastName)) return { first_name: '', last_name: '' };
+    // Sex: Woman/Girl = F, Man/Boy = M
+    const isF = (cols[8]||'').trim()==='1' || (cols[10]||'').trim()==='1';
+    const isM = (cols[9]||'').trim()==='1' || (cols[11]||'').trim()==='1';
+    const sex = isM ? 'M' : isF ? 'F' : '';
+    // Relationship from boolean flags cols 12-17
+    const relNames = ['Head','Wife','Daughter','Son','Other','Servant'];
+    let relationship = '';
+    for (let i = 0; i < relNames.length; i++) {
+      if ((cols[12+i]||'').trim() === '1') { relationship = relNames[i]; break; }
+    }
+    const age      = parseInt(cols[18]) || null;
+    const birthYear = parseInt(cols[19]) || null;
+    const occupation   = (cols[24] || '').trim();
+    const birthCounty  = (cols[25] || '').trim();
+    const birthTown    = (cols[26] || '').trim();
+    const birthPlace   = [birthTown, birthCounty].filter(Boolean).join(', ');
+    // Extract trailing number from House ID (e.g. "CRW1" → 1) as household grouping
+    const hhMatch = houseId.match(/(\d+)$/);
+    const householdNum = hhMatch ? parseInt(hhMatch[1]) : null;
+    const unresolvedAddress = houseName ? `${houseName} ${street}` : street;
+    return {
+      first_name: firstName,
+      last_name: lastName,
+      relationship,
+      sex,
+      birth_year: birthYear || null,
+      age,
+      birth_place: birthPlace,
+      occupation,
+      census_household_num: householdNum,
+      unresolved_address: unresolvedAddress,
+      person_id: null, person_name_matched: null
+    };
+  }
   // Standard: First name | Last name | Relationship | Sex | Birth year | Age | Birth place | Occupation | Employer
   return {
     first_name: (cols[0] || '').trim(),
@@ -704,12 +757,12 @@ async function parseImport() {
   if (!raw) { alert('Please paste some data first.'); return; }
 
   const lines = raw.split('\n').filter(l => l.trim());
-  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house'];
+  const HEADER_KEYWORDS = ['first name','last name','relationship','birth year','occupation','birth date','marital','house id','count house','house name'];
   const firstLineLower = lines[0].toLowerCase();
   const isHeader = HEADER_KEYWORDS.some(k => firstLineLower.includes(k));
   const format = isHeader ? detectFormat(lines[0]) : 'standard';
-  // Custom 1921 HD format has 3 header rows; standard formats have 1
-  const headerRows = (format === 'custom1921hd') ? 3 : (isHeader ? 1 : 0);
+  // Custom formats have multiple header rows
+  const headerRows = (format === 'custom1921hd') ? 3 : (format === 'custom1911dan') ? 2 : (isHeader ? 1 : 0);
   const dataLines = lines.slice(headerRows);
 
   if (!dataLines.length) { alert('No data rows found.'); return; }
