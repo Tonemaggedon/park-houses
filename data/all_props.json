@@ -5057,14 +5057,16 @@
   },
   {
     "id": 396,
-    "name": "Gate House",
+    "name": "North Lodge",
     "street": "North Road",
     "no": "",
-    "address": "Gate House, North Road",
+    "address": "North Lodge, North Road",
     "desc": "",
     "history": "",
     "date_built": "",
     "listed": "No",
-    "census_only": true
+    "census_only": true,
+    "lat": 52.9542,
+    "lng": -1.1663
   }
 ]
