@@ -789,6 +789,23 @@ async function parseImport() {
     return { idx: i, ...parseLine(cols, format) };
   }).filter(r => r.first_name || r.last_name);
 
+  // For 1911 DAN format: merged cells mean house ID and name only appear on the first
+  // row of each household. Carry householdNum and unresolved_address forward to blank rows.
+  if (format === 'custom1911dan') {
+    let anchorNum = null, anchorAddr = null;
+    for (const row of importRows) {
+      if (row.census_household_num != null) {
+        // First row of a new household — update anchor
+        anchorNum = row.census_household_num;
+        anchorAddr = row.unresolved_address || null;
+      } else {
+        // Subsequent rows (merged cell was blank) — inherit anchor
+        if (anchorNum != null) row.census_household_num = anchorNum;
+        if (anchorAddr)       row.unresolved_address   = anchorAddr;
+      }
+    }
+  }
+
   if (!importRows.length) { alert('Could not parse any rows.'); return; }
 
   // Search for matching people
