@@ -789,19 +789,27 @@ async function parseImport() {
     return { idx: i, ...parseLine(cols, format) };
   }).filter(r => r.first_name || r.last_name);
 
-  // For 1911 DAN format: merged cells mean house ID and name only appear on the first
-  // row of each household. Carry householdNum and unresolved_address forward to blank rows.
+  // For 1911 DAN format: House Name (col B) may only appear on the first row of each
+  // household (merged cell). Two-pass fix:
+  // Pass 1 — find the most specific address (longest) for each household number.
+  // Pass 2 — apply it to every row in that household; carry num forward for null-num rows.
   if (format === 'custom1911dan') {
-    let anchorNum = null, anchorAddr = null;
+    const bestAddr = {};
+    for (const row of importRows) {
+      const num = row.census_household_num;
+      if (num == null) continue;
+      const addr = (row.unresolved_address || '').trim();
+      if (!bestAddr[num] || addr.length > (bestAddr[num] || '').length) bestAddr[num] = addr;
+    }
+    let anchorNum = null;
     for (const row of importRows) {
       if (row.census_household_num != null) {
-        // First row of a new household — update anchor
         anchorNum = row.census_household_num;
-        anchorAddr = row.unresolved_address || null;
-      } else {
-        // Subsequent rows (merged cell was blank) — inherit anchor
-        if (anchorNum != null) row.census_household_num = anchorNum;
-        if (anchorAddr)       row.unresolved_address   = anchorAddr;
+      } else if (anchorNum != null) {
+        row.census_household_num = anchorNum;
+      }
+      if (anchorNum != null && bestAddr[anchorNum]) {
+        row.unresolved_address = bestAddr[anchorNum];
       }
     }
   }
