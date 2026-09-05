@@ -1651,13 +1651,33 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
       if (/^\*.*\*$/.test(fn) || /^\*.*\*$/.test(ln)) continue; // e.g. *MISSING*
       let personId = row.person_id ? parseInt(row.person_id) : null;
       if (!personId) {
-        // Create new person
-        const pRes = await db.query(
-          `INSERT INTO people (first_name, last_name, born_year, born_place) VALUES ($1,$2,$3,$4) RETURNING id`,
-          [fn || null, ln || null, row.birth_year || null, row.birth_place || null]
+        // Try to match an existing person by name before creating a new one
+        const existing = await db.query(
+          `SELECT id FROM people WHERE LOWER(TRIM(first_name))=$1 AND LOWER(TRIM(last_name))=$2 LIMIT 1`,
+          [fn.toLowerCase(), ln.toLowerCase()]
         );
-        personId = pRes.rows[0].id;
-        results.push({ personId, created: true, name: `${row.first_name} ${row.last_name}`.trim() });
+        if (existing.rows.length > 0) {
+          personId = existing.rows[0].id;
+          // Backfill born_year / born_place if the existing record lacks them
+          if (row.birth_year || row.birth_place) {
+            await db.query(
+              `UPDATE people SET
+                born_year  = COALESCE(born_year,  $2),
+                born_place = COALESCE(born_place, $3)
+               WHERE id=$1`,
+              [personId, row.birth_year || null, row.birth_place || null]
+            );
+          }
+          results.push({ personId, created: false, matched: true, name: `${fn} ${ln}`.trim() });
+        } else {
+          // Create new person
+          const pRes = await db.query(
+            `INSERT INTO people (first_name, last_name, born_year, born_place) VALUES ($1,$2,$3,$4) RETURNING id`,
+            [fn || null, ln || null, row.birth_year || null, row.birth_place || null]
+          );
+          personId = pRes.rows[0].id;
+          results.push({ personId, created: true, name: `${fn} ${ln}`.trim() });
+        }
       } else {
         results.push({ personId, created: false });
       }
