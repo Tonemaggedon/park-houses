@@ -1136,13 +1136,13 @@ function makeIcon(p, isActive, isManual) {
   const directlySeedeed = seededProps.has(p.id);
   const hasPeople = !!(peopleCounts[p.id]);
 
-  const bg     = p.demolished     ? 'transparent'
+  const bg     = p.demolished     ? 'rgba(80,80,80,0.15)'
                : isActive        ? '#d4380d'
                : p.census_only   ? '#e6b800'
                : directlySeedeed ? '#2e7d4f'
                : hasPeople       ? '#1a6fa8'
                : '#c0392b';
-  const border = p.demolished     ? '#555'
+  const border = p.demolished     ? '#666'
                : isActive        ? '#8b1a00'
                : p.census_only   ? '#b8910a'
                : directlySeedeed ? '#1a5c36'
@@ -1150,7 +1150,7 @@ function makeIcon(p, isActive, isManual) {
                : '#922b21';
   const borderStyle = p.demolished ? 'dashed' : 'solid';
 
-  const size = isActive ? 16 : 12;
+  const size = isActive ? 16 : p.demolished ? 14 : 12;
   const star = p.listed
     ? `<span style="font-size:${isActive?8:6}px;color:#f0c040;line-height:1">★</span>`
     : '';
