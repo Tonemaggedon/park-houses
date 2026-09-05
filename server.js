@@ -1704,6 +1704,159 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Census XLSX file import ───────────────────────────────────────────────────
+// POST /api/admin/import-census-xlsx — upload an xlsx file and import a sheet
+app.post('/api/admin/import-census-xlsx',
+  requireContributor,
+  multer({ storage: multer.memoryStorage(), limits: { fileSize: 20 * 1024 * 1024 } }).single('file'),
+  async (req, res) => {
+    if (!db) return res.status(503).json({ error: 'DB not available' });
+    try {
+      const XLSX = require('xlsx');
+      const census_year = parseInt(req.body.census_year);
+      const format = req.body.format || 'custom1911dan';
+      const property_id = req.body.property_id ? parseInt(req.body.property_id) : null;
+      const sheet_name = req.body.sheet_name || null; // optional: name of sheet to import
+
+      if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+      if (!census_year) return res.status(400).json({ error: 'census_year required' });
+
+      const wb = XLSX.read(req.file.buffer, { type: 'buffer', cellDates: true });
+
+      // Return sheet list if no sheet_name given
+      if (!sheet_name) {
+        return res.json({ sheets: wb.SheetNames });
+      }
+
+      const ws = wb.Sheets[sheet_name];
+      if (!ws) return res.status(400).json({ error: `Sheet "${sheet_name}" not found` });
+
+      // Get all rows as arrays (defval fills empty cells with '')
+      const allRows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+
+      // Parse rows according to format
+      function parseXlsxRow(row) {
+        if (format === 'custom1911dan') {
+          const houseId   = String(row[0] || '').trim();
+          const houseName = String(row[1] || '').trim();
+          const street    = String(row[3] || '').trim();
+          const lastName  = String(row[6] || '').trim();
+          const firstName = String(row[7] || '').trim();
+          if (!lastName && !firstName) return null;
+          if (/^\*.*\*$/.test(lastName) || /^\*.*\*$/.test(firstName)) return null;
+          if (/^(family|surname|last ?name|head of family)$/i.test(lastName)) return null;
+          if (/^total$/i.test(houseId)) return null;
+          const isF = String(row[8]||'')==='1' || String(row[10]||'')==='1';
+          const isM = String(row[9]||'')==='1' || String(row[11]||'')==='1';
+          const sex = isM ? 'M' : isF ? 'F' : '';
+          const relNames = ['Head','Wife','Daughter','Son','Other','Servant'];
+          let relationship = '';
+          for (let i = 0; i < relNames.length; i++) {
+            if (String(row[12+i]||'').trim() === '1') { relationship = relNames[i]; break; }
+          }
+          const age = parseInt(row[18]) || null;
+          const birthYear = parseInt(row[19]) || null;
+          const occupation = String(row[24] || '').trim();
+          const birthCounty = String(row[31] || '').trim();
+          const birthTown   = String(row[32] || '').trim();
+          const birthPlace  = [birthTown, birthCounty].filter(Boolean).join(', ');
+          const hhMatch = houseId.match(/(\d+)$/);
+          const householdNum = hhMatch ? parseInt(hhMatch[1]) : null;
+          const unresolvedAddress = houseName ? `${houseName} ${street}`.trim() : (street || null);
+          return { first_name: firstName||null, last_name: lastName||null, relationship:relationship||null,
+                   sex:sex||null, birth_year:birthYear||null, age, birth_place:birthPlace||null,
+                   occupation:occupation||null, census_household_num:householdNum,
+                   unresolved_address:unresolvedAddress };
+        }
+        // Standard format fallback
+        return { first_name: String(row[0]||'').trim()||null, last_name: String(row[1]||'').trim()||null,
+                 relationship: String(row[2]||'').trim()||null, sex: String(row[3]||'').trim()||null,
+                 birth_year: parseInt(row[4])||null, age: parseInt(row[5])||null,
+                 birth_place: String(row[6]||'').trim()||null, occupation: String(row[7]||'').trim()||null,
+                 census_household_num: null, unresolved_address: null };
+      }
+
+      // Determine header rows to skip
+      const headerRows = format === 'custom1911dan' ? 2 : format === 'custom1921hd' ? 3 : 1;
+      const dataRows = allRows.slice(headerRows);
+
+      let parsedRows = dataRows.map(r => parseXlsxRow(r)).filter(Boolean);
+      parsedRows = parsedRows.filter(r => r.first_name || r.last_name);
+
+      // Best-address carry-forward (handles merged cells where house name only in first row)
+      if (format === 'custom1911dan') {
+        const bestAddr = {};
+        for (const r of parsedRows) {
+          if (r.census_household_num != null) {
+            const a = r.unresolved_address || '';
+            if (!bestAddr[r.census_household_num] || a.length > (bestAddr[r.census_household_num]||'').length)
+              bestAddr[r.census_household_num] = a;
+          }
+        }
+        let anchorNum = null;
+        for (const r of parsedRows) {
+          if (r.census_household_num != null) anchorNum = r.census_household_num;
+          else if (anchorNum != null) r.census_household_num = anchorNum;
+          if (anchorNum != null && bestAddr[anchorNum]) r.unresolved_address = bestAddr[anchorNum];
+        }
+      }
+
+      // Insert people + census entries
+      let imported = 0, skipped = 0, created = 0, matched = 0;
+      for (const row of parsedRows) {
+        const fn = (row.first_name || '').trim();
+        const ln = (row.last_name || '').trim();
+        if (!fn && !ln) continue;
+        // Find or create person
+        const existing = await db.query(
+          `SELECT id FROM people WHERE LOWER(TRIM(first_name))=$1 AND LOWER(TRIM(last_name))=$2 LIMIT 1`,
+          [fn.toLowerCase(), ln.toLowerCase()]
+        );
+        let personId;
+        if (existing.rows.length > 0) {
+          personId = existing.rows[0].id;
+          if (row.birth_year || row.birth_place) {
+            await db.query(
+              `UPDATE people SET born_year=COALESCE(born_year,$2), born_place=COALESCE(born_place,$3) WHERE id=$1`,
+              [personId, row.birth_year||null, row.birth_place||null]
+            );
+          }
+          matched++;
+        } else {
+          const pRes = await db.query(
+            `INSERT INTO people (first_name,last_name,born_year,born_place) VALUES ($1,$2,$3,$4) RETURNING id`,
+            [fn||null, ln||null, row.birth_year||null, row.birth_place||null]
+          );
+          personId = pRes.rows[0].id;
+          created++;
+        }
+        // Skip if census entry already exists for this person+year
+        const dup = await db.query(
+          `SELECT id FROM census_entries WHERE person_id=$1 AND census_year=$2 LIMIT 1`,
+          [personId, census_year]
+        );
+        if (dup.rows.length > 0) { skipped++; continue; }
+        await db.query(
+          `INSERT INTO census_entries (person_id,property_id,census_year,relationship,age_at_census,occupation_at_census,census_household_num,unresolved_address,birth_place)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+          [personId, property_id||null, census_year, row.relationship||null,
+           row.age||null, row.occupation||null, row.census_household_num||null,
+           row.unresolved_address||null, row.birth_place||null]
+        );
+        imported++;
+      }
+
+      res.json({ ok: true, imported, skipped, created, matched, total: parsedRows.length });
+      // Async geocode birthplaces
+      const newPlaces = [...new Set(parsedRows.map(r => r.birth_place).filter(Boolean))];
+      if (newPlaces.length) geocodePlacesBatch(newPlaces).catch(e => console.error(e.message));
+    } catch(e) {
+      console.error('xlsx import error:', e);
+      res.status(500).json({ error: e.message });
+    }
+  }
+);
+
 // ── Birthplace admin ──────────────────────────────────────────────────────────
 // GET /api/admin/unknown-places — birth places with no geocode result yet
 app.get('/api/admin/unknown-places', requireAdmin, async (req, res) => {

@@ -496,7 +496,7 @@ let _canImport = false;
     </div>
     <div class="modal-body" id="importBody">
 
-      <!-- Step 1: configure + paste -->
+      <!-- Step 1: configure + paste/upload -->
       <div id="impStep1">
         <div class="imp-row">
           <div class="imp-field">
@@ -515,13 +515,13 @@ let _canImport = false;
               <option value="1881">1881</option>
               <option value="1891">1891</option>
               <option value="1901">1901</option>
-              <option value="1911">1911</option>
+              <option value="1911" selected>1911</option>
               <option value="1921">1921</option>
               <option value="1939">1939</option>
             </select>
           </div>
           <div class="imp-field">
-            <label>Format <span style="font-size:0.72rem;color:#8a7a5a">(auto-detect usually works)</span></label>
+            <label>Format</label>
             <select id="impFormatSel">
               <option value="auto">Auto-detect</option>
               <option value="custom1911dan">1911 DAN (House ID + house name columns)</option>
@@ -531,17 +531,57 @@ let _canImport = false;
             </select>
           </div>
         </div>
-        <div class="imp-field" style="margin-bottom:8px">
-          <label>Paste data (copy from spreadsheet — include header rows):</label>
-          <textarea class="imp-paste" id="impPaste"
-            placeholder="First name(s)&#9;Last name&#9;Relationship to head&#9;Sex&#9;Birth year&#9;Age in years&#9;Birth place&#9;Occupation&#9;Employer&#10;Robert&#9;Evans&#9;Head&#9;Male&#9;1863&#9;58&#9;Nottingham&#9;Architect&#9;Employer"></textarea>
+
+        <!-- Import method tabs -->
+        <div style="display:flex;gap:0;margin:12px 0 0;border-bottom:2px solid #d8c8a0">
+          <button id="tabFile" onclick="switchImpTab('file')"
+            style="padding:7px 16px;border:none;background:#4a7c5a;color:white;border-radius:6px 6px 0 0;font-size:0.82rem;font-family:Georgia,serif;cursor:pointer;margin-right:4px">
+            📂 Upload .xlsx file
+          </button>
+          <button id="tabPaste" onclick="switchImpTab('paste')"
+            style="padding:7px 16px;border:none;background:#e8e0d0;color:#5a4a2a;border-radius:6px 6px 0 0;font-size:0.82rem;font-family:Georgia,serif;cursor:pointer">
+            📋 Paste data
+          </button>
         </div>
-        <p class="imp-hint">Accepts two formats (header row auto-detected):<br>
-        <strong>FindMyPast 1939:</strong> First name · Last name · Birth date · Sex · Occupation · Marital status · Schedule · Sub number<br>
-        <strong>Standard:</strong> First name · Last name · Relationship · Sex · Birth year · Age · Birth place · Occupation · Employer</p>
-        <div style="display:flex;gap:8px;margin-top:14px">
-          <button class="imp-btn imp-btn-primary" onclick="parseImport()">Preview →</button>
-          <button class="imp-btn imp-btn-secondary" onclick="closeImport()">Cancel</button>
+
+        <!-- File upload panel -->
+        <div id="impFilePanel" style="padding:14px 0 8px">
+          <div id="xlsxDropZone"
+            ondragover="event.preventDefault();this.style.borderColor='#4a7c5a'"
+            ondragleave="this.style.borderColor='#c8b888'"
+            ondrop="handleXlsxDrop(event)"
+            style="border:2px dashed #c8b888;border-radius:8px;padding:28px;text-align:center;cursor:pointer;color:#8a7a5a;font-size:0.88rem;transition:border-color 0.2s"
+            onclick="document.getElementById('xlsxFileInput').click()">
+            <div style="font-size:2rem;margin-bottom:6px">📊</div>
+            <div>Drag an .xlsx file here, or click to browse</div>
+            <div id="xlsxFileName" style="margin-top:8px;font-size:0.78rem;color:#4a7c5a;font-weight:bold"></div>
+          </div>
+          <input type="file" id="xlsxFileInput" accept=".xlsx" style="display:none" onchange="handleXlsxFile(this.files[0])">
+
+          <div id="xlsxSheetRow" style="display:none;margin-top:10px">
+            <label style="font-size:0.82rem;color:#5a4a2a">Sheet to import:</label>
+            <select id="xlsxSheetSel" style="margin-left:8px;padding:5px 10px;border:1px solid #c8b888;border-radius:5px;font-family:Georgia,serif;font-size:0.82rem;background:#fdfaf4"></select>
+          </div>
+
+          <div id="xlsxStatus" style="margin-top:8px;font-size:0.8rem;color:#5a4a2a"></div>
+
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <button class="imp-btn imp-btn-primary" id="xlsxImportBtn" onclick="doXlsxImport()" style="display:none">Import from file →</button>
+            <button class="imp-btn imp-btn-secondary" onclick="closeImport()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Paste panel -->
+        <div id="impPastePanel" style="display:none;padding-top:8px">
+          <div class="imp-field" style="margin-bottom:8px">
+            <label>Paste data (copy from spreadsheet — include header rows):</label>
+            <textarea class="imp-paste" id="impPaste"
+              placeholder="First name(s)&#9;Last name&#9;Relationship to head&#9;Sex&#9;Birth year&#9;Age in years&#9;Birth place&#9;Occupation&#9;Employer&#10;Robert&#9;Evans&#9;Head&#9;Male&#9;1863&#9;58&#9;Nottingham&#9;Architect&#9;Employer"></textarea>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <button class="imp-btn imp-btn-primary" onclick="parseImport()">Preview →</button>
+            <button class="imp-btn imp-btn-secondary" onclick="closeImport()">Cancel</button>
+          </div>
         </div>
       </div>
 
@@ -622,6 +662,102 @@ function closeImport() {
 function backToStep1() {
   document.getElementById('impStep1').style.display = '';
   document.getElementById('impStep2').style.display = 'none';
+}
+
+// ── xlsx file import tab ────────────────────────────────────────────────────
+let xlsxFile = null;
+
+function switchImpTab(tab) {
+  const filePanel  = document.getElementById('impFilePanel');
+  const pastePanel = document.getElementById('impPastePanel');
+  const tabFile    = document.getElementById('tabFile');
+  const tabPaste   = document.getElementById('tabPaste');
+  if (tab === 'file') {
+    filePanel.style.display  = '';
+    pastePanel.style.display = 'none';
+    tabFile.style.background  = '#4a7c5a'; tabFile.style.color  = 'white';
+    tabPaste.style.background = '#e8e0d0'; tabPaste.style.color = '#5a4a2a';
+  } else {
+    filePanel.style.display  = 'none';
+    pastePanel.style.display = '';
+    tabFile.style.background  = '#e8e0d0'; tabFile.style.color  = '#5a4a2a';
+    tabPaste.style.background = '#4a7c5a'; tabPaste.style.color = 'white';
+  }
+}
+
+function handleXlsxDrop(e) {
+  e.preventDefault();
+  document.getElementById('xlsxDropZone').style.borderColor = '#c8b888';
+  const file = e.dataTransfer.files[0];
+  if (file) handleXlsxFile(file);
+}
+
+async function handleXlsxFile(file) {
+  if (!file || !file.name.endsWith('.xlsx')) {
+    document.getElementById('xlsxStatus').textContent = 'Please select an .xlsx file.';
+    return;
+  }
+  xlsxFile = file;
+  document.getElementById('xlsxFileName').textContent = file.name;
+  document.getElementById('xlsxStatus').textContent = 'Reading sheet list…';
+
+  // Ask server what sheets are in the file
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('census_year', document.getElementById('impYearSel').value || '1911');
+  fd.append('format', document.getElementById('impFormatSel').value || 'custom1911dan');
+
+  try {
+    const r = await fetch('/api/admin/import-census-xlsx', { method:'POST', body: fd });
+    const data = await r.json();
+    if (data.sheets) {
+      const sel = document.getElementById('xlsxSheetSel');
+      sel.innerHTML = data.sheets.map(s => `<option>${s}</option>`).join('');
+      document.getElementById('xlsxSheetRow').style.display = '';
+      document.getElementById('xlsxImportBtn').style.display = '';
+      document.getElementById('xlsxStatus').textContent = `${data.sheets.length} sheet(s) found. Select one and click Import.`;
+    } else {
+      document.getElementById('xlsxStatus').textContent = 'Error: ' + (data.error || 'Unknown error');
+    }
+  } catch(e) {
+    document.getElementById('xlsxStatus').textContent = 'Error reading file: ' + e.message;
+  }
+}
+
+async function doXlsxImport() {
+  if (!xlsxFile) return;
+  const btn = document.getElementById('xlsxImportBtn');
+  const status = document.getElementById('xlsxStatus');
+  btn.disabled = true;
+  btn.textContent = 'Importing…';
+  status.textContent = '';
+
+  const fd = new FormData();
+  fd.append('file', xlsxFile);
+  fd.append('census_year', document.getElementById('impYearSel').value || '1911');
+  fd.append('format', document.getElementById('impFormatSel').value || 'custom1911dan');
+  fd.append('sheet_name', document.getElementById('xlsxSheetSel').value);
+  const propId = document.getElementById('impPropSel').value;
+  if (propId) fd.append('property_id', propId);
+
+  try {
+    const r = await fetch('/api/admin/import-census-xlsx', { method:'POST', body: fd });
+    const data = await r.json();
+    if (data.ok) {
+      status.innerHTML = `✅ <strong>Done!</strong> ${data.imported} imported · ${data.skipped} already existed · ${data.created} new people · ${data.matched} matched existing`;
+      btn.textContent = '✓ Complete';
+      // Refresh year counts in background
+      setTimeout(() => { closeImport(); loadYears(); }, 2000);
+    } else {
+      status.textContent = 'Error: ' + (data.error || 'Unknown');
+      btn.disabled = false;
+      btn.textContent = 'Import from file →';
+    }
+  } catch(e) {
+    status.textContent = 'Error: ' + e.message;
+    btn.disabled = false;
+    btn.textContent = 'Import from file →';
+  }
 }
 
 function detectFormat(headerLine, secondLine) {
