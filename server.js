@@ -1370,7 +1370,7 @@ app.get('/api/people', async (req, res) => {
     }
     if (q) {
       params.push(`%${q.toLowerCase()}%`);
-      wheres.push(`(LOWER(p.first_name) LIKE $${params.length} OR LOWER(p.last_name) LIKE $${params.length} OR LOWER(p.known_as) LIKE $${params.length})`);
+      wheres.push(`(LOWER(p.first_name) LIKE $${params.length} OR LOWER(p.last_name) LIKE $${params.length} OR LOWER(COALESCE(p.known_as,'')) LIKE $${params.length} OR LOWER(p.first_name || ' ' || COALESCE(p.last_name,'')) LIKE $${params.length})`);
     }
     if (wheres.length) query += ' WHERE ' + wheres.join(' AND ');
     query += ' ORDER BY p.last_name, p.first_name';
