@@ -1809,21 +1809,30 @@ app.post('/api/admin/import-census-xlsx',
       // Pre-process: for 1921hd, carry forward hid/street/sno/hname so sub-member rows
       // (where only last/first name are filled) inherit the correct household address.
       if (format === 'custom1921hd') {
-        let chid = '', cstreet = '', chname = '', csno = '';
+        let chid = '', cstreet = '', chname = '', csno = '', ccountHouse = '';
         for (const row of allRows.slice(2)) {
           const hid    = String(row[0]||'').trim();
           const street = String(row[3]||'').trim();
           const hname  = String(row[4]||'').trim();
           const sno    = String(row[5]||'').trim();
+          // col[2] = "count house" — integer grouping key used on sheets with no street number
+          const countHouse = row[2];
           if (hid && !['house id','total','largest household'].includes(hid.toLowerCase())) {
             chid = hid;
             if (street) cstreet = normalizeStreet(street);
-            if (sno) { csno = sno; chname = hname; } // new household — reset house name
+            if (sno) { csno = sno; chname = hname; } // new household via street no
+            // New household via count_house (sheets like Clumber Cres S with no street no)
+            if (!sno && countHouse !== null && countHouse !== '' && Number.isInteger(Number(countHouse))) {
+              const ch = String(Math.round(Number(countHouse)));
+              if (ch !== ccountHouse) { ccountHouse = ch; chname = hname; }
+            }
           }
           if (!String(row[0]||'').trim()) row[0] = chid;
           if (!String(row[3]||'').trim()) row[3] = cstreet;
           if (!String(row[5]||'').trim()) row[5] = csno;
           if (!String(row[4]||'').trim()) row[4] = chname;
+          // For sheets with no street number, append count_house to make house ID unique per household
+          if (!csno && ccountHouse) row[0] = (String(row[0]||'').trim() || chid) + ccountHouse;
           // Normalise street in place for rows that did have a value
           if (String(row[3]||'').trim()) row[3] = normalizeStreet(String(row[3]).trim());
         }
