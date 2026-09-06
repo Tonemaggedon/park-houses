@@ -628,13 +628,14 @@ function renderProfile(p) {
     <h3 style="display:flex;align-items:center">Occupations &amp; Roles ${addOccBtn}</h3>
     <div id="occ-list-${p.id}">
     ${(p.occupations||[]).length ? `<div class="occ-timeline">${p.occupations.map(o => `
-      <div class="occ-item">
+      <div class="occ-item" style="display:flex;align-items:flex-start;gap:4px">
         <div class="occ-years">${o.from_year||''}${o.from_year && o.to_year ? '–' : ''}${o.to_year&&o.to_year!==o.from_year ? o.to_year : ''}</div>
-        <div>
+        <div style="flex:1">
           <div class="occ-title">${o.occupation}</div>
           ${o.employer ? `<div class="occ-employer">${o.employer}</div>` : ''}
           ${o.notes ? `<div class="occ-notes">${o.notes}</div>` : ''}
         </div>
+        ${canEditOcc && o.id ? `<button onclick="event.stopPropagation();deleteOccupation(${o.id},${p.id})" title="Remove occupation" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
       </div>`).join('')}</div>` : `<p class="section-empty">No occupation records.</p>`}
     </div>
     <div id="occ-form-${p.id}" style="display:none;margin-top:10px;background:#f8f4ec;border-radius:6px;padding:12px;border:1px solid #d8c890">
@@ -1111,6 +1112,15 @@ async function deleteCensusEntry(entryId, personId) {
     } else {
       alert('Error deleting entry: ' + (res.error || 'Unknown error'));
     }
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function deleteOccupation(occId, personId) {
+  if (!confirm('Remove this occupation?')) return;
+  try {
+    const res = await fetch(`/api/occupation/${occId}`, { method: 'DELETE' }).then(r => r.json());
+    if (res.ok) { openProfile(personId); }
+    else { alert('Error: ' + (res.error || 'Unknown error')); }
   } catch(e) { alert('Error: ' + e.message); }
 }
 
