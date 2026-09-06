@@ -454,7 +454,7 @@
 </div>
 
 <div class="toolbar">
-  <input id="searchBox" type="text" autocomplete="off" placeholder="Search by house name, street, number…" oninput="filterMarkers(this.value)">
+  <input id="searchBox" type="text" autocomplete="off" placeholder="Search by house name, street, number…">
   <select id="typeFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
     <option value="">All streets</option>
   </select>
@@ -2017,6 +2017,17 @@ function openPersonInOverlay(personId) {
 function filterMarkers(val) {
   buildMarkers(val, document.getElementById('typeFilter').value, document.getElementById('listedFilter').value);
 }
+// Debounce search so markers only rebuild after user stops typing (300ms)
+(function() {
+  let _searchTimer;
+  document.addEventListener('DOMContentLoaded', () => {
+    const sb = document.getElementById('searchBox');
+    if (sb) sb.addEventListener('input', () => {
+      clearTimeout(_searchTimer);
+      _searchTimer = setTimeout(() => filterMarkers(sb.value), 300);
+    });
+  });
+})();
 function resetFilters() {
   document.getElementById('searchBox').value = '';
   document.getElementById('typeFilter').value = '';

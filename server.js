@@ -2792,6 +2792,28 @@ app.post('/api/person/:id/census', requireContributor, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+app.patch('/api/census-entry/:entryId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { relationship, occupation_at_census, age_at_census, birth_place, census_year } = req.body;
+    await db.query(
+      `UPDATE census_entries SET
+        relationship = COALESCE($1, relationship),
+        occupation_at_census = COALESCE($2, occupation_at_census),
+        age_at_census = COALESCE($3, age_at_census),
+        birth_place = COALESCE($4, birth_place),
+        census_year = COALESCE($5, census_year)
+       WHERE id = $6`,
+      [relationship ?? null, occupation_at_census ?? null,
+       age_at_census ? parseInt(age_at_census) : null,
+       birth_place ?? null,
+       census_year ? parseInt(census_year) : null,
+       parseInt(req.params.entryId)]
+    );
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 app.delete('/api/census-entry/:entryId', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
