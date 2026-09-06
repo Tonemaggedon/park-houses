@@ -1900,6 +1900,11 @@ app.post('/api/admin/import-census-xlsx',
           if (/^(last ?name|family|name|total)$/i.test(lastName)) return null;
           if (/^(none found|missing|n\/a)$/i.test(houseId)) return null;
           if (/^total$/i.test(houseId)) return null;
+          // Skip rows where last name looks like a column header (e.g. "House Name", "Location")
+          if (/^(house name|house no|location|count house|largest household|smallest household)$/i.test(lastName)) return null;
+          // Skip rows where firstName+lastName together form a header phrase
+          const fullName = `${firstName} ${lastName}`.toLowerCase();
+          if (/largest household|smallest household|house name location/.test(fullName)) return null;
           // Sex: text or checkbox
           const sexText = String(row[9] || '').trim().toLowerCase();
           const sex = sexText === 'female' ? 'F' : sexText === 'male' ? 'M'
