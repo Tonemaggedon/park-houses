@@ -240,7 +240,7 @@
 
 <div class="toolbar">
   <h2>People of The Park</h2>
-  <input type="text" id="searchBox" placeholder="Search by name, address or place…" oninput="applyFilters()">
+  <input type="text" id="searchBox" placeholder="Search by name, address or place…">
   <button id="addPersonBtn" onclick="openAddPerson()" style="display:none;background:#4a7c5a;border:1px solid #3a6a4a;color:#e8dfc8;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif">+ Add Person</button>
   <select id="titleFilter" onchange="applyFilters()" title="Filter by title">
     <option value="">All titles</option>
@@ -450,6 +450,15 @@ function clearGroupFilter() {
   document.getElementById('groupsClear').style.display = 'none';
   applyFilters();
 }
+
+// Debounce people search — only filter after user stops typing
+(function() {
+  let _t;
+  document.addEventListener('DOMContentLoaded', () => {
+    const sb = document.getElementById('searchBox');
+    if (sb) sb.addEventListener('input', () => { clearTimeout(_t); _t = setTimeout(applyFilters, 300); });
+  });
+})();
 
 function applyFilters() {
   const q = document.getElementById('searchBox').value.toLowerCase();
