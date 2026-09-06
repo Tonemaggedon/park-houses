@@ -2597,6 +2597,47 @@ app.get('/api/changelog', requireAdmin, async (req, res) => {
 });
 
 // ── Person add relationship ───────────────────────────────────────────────────
+// Helper: infer sibling + grandparent relationships when a parent/child link is added
+async function inferFamilyRelationships(db, personId, otherId, relType) {
+  const safeInsert = (aId, bId, rel) => {
+    if (aId === bId) return Promise.resolve();
+    return db.query(
+      `INSERT INTO people_relationships (person_a_id, person_b_id, relationship) VALUES ($1,$2,$3) ON CONFLICT DO NOTHING`,
+      [aId, bId, rel]
+    );
+  };
+  // Normalise: who is the parent, who is the child?
+  // Relationship types are stored as e.g. 'parent_of', 'child_of', 'sibling_of'
+  let parentId, childId;
+  if (relType === 'parent_of') { parentId = personId; childId = otherId; }       // personId is parent of otherId
+  else if (relType === 'child_of') { parentId = otherId; childId = personId; }   // personId is child of otherId
+  else return; // only infer for parent/child links
+
+  // Existing children of parentId → siblings of childId
+  const siblings = await db.query(
+    `SELECT person_b_id AS sid FROM people_relationships WHERE person_a_id=$1 AND relationship='parent_of' AND person_b_id<>$2
+     UNION
+     SELECT person_a_id AS sid FROM people_relationships WHERE person_b_id=$1 AND relationship='child_of' AND person_a_id<>$2`,
+    [parentId, childId]
+  );
+  for (const { sid } of siblings.rows) {
+    await safeInsert(childId, sid, 'sibling_of');
+    await safeInsert(sid, childId, 'sibling_of');
+  }
+
+  // Parents of parentId → grandparents of childId
+  const grandparents = await db.query(
+    `SELECT person_b_id AS gpid FROM people_relationships WHERE person_a_id=$1 AND relationship='child_of'
+     UNION
+     SELECT person_a_id AS gpid FROM people_relationships WHERE person_b_id=$1 AND relationship='parent_of'`,
+    [parentId]
+  );
+  for (const { gpid } of grandparents.rows) {
+    await safeInsert(childId, gpid, 'grandchild_of');
+    await safeInsert(gpid, childId, 'grandparent_of');
+  }
+}
+
 app.post('/api/person/:id/relationship', async (req, res) => {
   if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
@@ -2609,6 +2650,8 @@ app.post('/api/person/:id/relationship', async (req, res) => {
       [parseInt(req.params.id), parseInt(other_person_id), relationship_type]
     );
     await logChange('person', parseInt(req.params.id), req, 'add_relationship', 'relationships', null, `${relationship_type} with person ${other_person_id}`);
+    // Auto-infer sibling and grandparent links
+    await inferFamilyRelationships(db, parseInt(req.params.id), parseInt(other_person_id), relationship_type);
     res.json({ ok: true, relationship: r.rows[0] });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
