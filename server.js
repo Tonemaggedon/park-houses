@@ -1088,21 +1088,26 @@ app.post('/api/admin/extract-gazette', requireAdmin, async (req, res) => {
 app.post('/api/admin/gazette-sweep', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const dryRun = req.body && req.body.dryRun === true;
-  const limit = Math.min(parseInt(req.body && req.body.limit, 10) || 60, 200);
+  // Each search is a round trip to an external service, so a full sweep runs for
+  // minutes and a hosting proxy kills the request long before it finishes — that
+  // showed up as a 502. The work is done a few people at a time and the caller
+  // comes back for the next slice.
+  const batch = Math.min(parseInt(req.body && req.body.batch, 10) || 6, 20);
+  const offset = Math.max(parseInt(req.body && req.body.offset, 10) || 0, 0);
   try {
-    const people = await db.query(`
+    const all = await db.query(`
       SELECT p.id, p.first_name, p.last_name, p.born_year, p.died_year
         FROM people p
        WHERE COALESCE(p.last_name,'') <> '' AND COALESCE(p.first_name,'') <> ''
          AND (${SIGNAL_SQL}) > 0
-       ORDER BY (${SIGNAL_SQL}) DESC, p.last_name
-       LIMIT ${limit}`);
+       ORDER BY (${SIGNAL_SQL}) DESC, p.last_name, p.id`);
 
     if (dryRun) {
-      return res.json({ ok: true, dryRun: true, wouldSearch: people.rows.length,
-        names: people.rows.slice(0, 12).map(p => p.first_name + ' ' + p.last_name) });
+      return res.json({ ok: true, dryRun: true, wouldSearch: all.rows.length,
+        names: all.rows.slice(0, 12).map(p => p.first_name + ' ' + p.last_name) });
     }
 
+    const people = { rows: all.rows.slice(offset, offset + batch) };
     let searched = 0, hits = 0, added = 0, already = 0;
     for (const person of people.rows) {
       const name = (person.first_name + ' ' + person.last_name).replace(/\s+/g, ' ').trim();
@@ -1149,7 +1154,9 @@ app.post('/api/admin/gazette-sweep', requireAdmin, async (req, res) => {
       }
       await new Promise(r => setTimeout(r, 400));   // be a good neighbour
     }
-    res.json({ ok: true, searched, plausibleHits: hits, added, alreadyRecorded: already });
+    const nextOffset = offset + people.rows.length;
+    res.json({ ok: true, searched, plausibleHits: hits, added, alreadyRecorded: already,
+               offset: nextOffset, total: all.rows.length, done: nextOffset >= all.rows.length });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -1267,6 +1274,45 @@ app.post('/api/admin/import-works', requireAdmin, async (req, res) => {
       report.push({ file, person: personId, added, alreadyPresent: already });
     }
     res.json({ ok: true, report });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Most common forenames by census year. Takes the first word of first_name, so
+// "William Henry" counts as William — many entries record several given names
+// and the first is the one people were called by.
+app.get('/api/stats/first-names', async (req, res) => {
+  if (!db) return res.json({});
+  const limit = Math.min(parseInt(req.query.limit, 10) || 8, 25);
+  try {
+    const r = await db.query(`
+      WITH named AS (
+        SELECT ce.census_year,
+               INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name,
+               p.id AS person_id
+          FROM census_entries ce
+          JOIN people p ON p.id = ce.person_id
+         WHERE ce.census_year IS NOT NULL
+           AND COALESCE(TRIM(p.first_name),'') <> ''
+      ), counted AS (
+        SELECT census_year, name, COUNT(DISTINCT person_id) AS count
+          FROM named
+         WHERE LENGTH(name) > 1
+         GROUP BY census_year, name
+      ), ranked AS (
+        SELECT *, ROW_NUMBER() OVER (PARTITION BY census_year ORDER BY count DESC, name) AS rn,
+                  SUM(count) OVER (PARTITION BY census_year) AS year_total
+          FROM counted
+      )
+      SELECT census_year, name, count, year_total FROM ranked WHERE rn <= $1
+       ORDER BY census_year, count DESC, name`, [limit]);
+
+    const out = {};
+    for (const row of r.rows) {
+      const y = String(row.census_year);
+      if (!out[y]) out[y] = { total: Number(row.year_total), names: [] };
+      out[y].names.push({ name: row.name, count: Number(row.count) });
+    }
+    res.json(out);
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 

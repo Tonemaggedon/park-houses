@@ -285,6 +285,13 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
   <div id="recentChangesList"><div class="loading">Loading…</div></div>
 </div>
 
+<!-- Popular forenames by census -->
+<div class="panel" style="margin-bottom:1.5rem">
+  <div class="section-header"><span class="icon">👶</span><h2>Most common forenames</h2>
+    <span class="count" id="fn-count"></span></div>
+  <div id="firstNames"><div class="loading">Loading…</div></div>
+</div>
+
 <!-- Useful Resources -->
 <div class="panel" style="margin-bottom:2rem">
   <div class="section-header"><span class="icon">🔗</span><h2>Useful Resources</h2></div>
@@ -667,8 +674,43 @@ const describeSweep = d => d.dryRun
 
 document.getElementById('btnSweepPreview')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/gazette-sweep', { dryRun: true }, describeSweep));
-document.getElementById('btnSweepRun')?.addEventListener('click', e =>
-  runAdminJob(e.target, '/api/admin/gazette-sweep', {}, describeSweep));
+
+// The sweep runs a few people at a time, because each one is a search against an
+// external service and a whole run takes minutes — long enough for the host to
+// cut the request off, which is what returned a 502.
+document.getElementById('btnSweepRun')?.addEventListener('click', async e => {
+  const btn = e.target, out = document.getElementById('adminToolsResult');
+  const label = btn.textContent;
+  btn.disabled = true;
+  out.hidden = false; out.className = 'admin-tool-result';
+  let offset = 0, total = null, added = 0, already = 0, hits = 0, slices = 0;
+  try {
+    do {
+      btn.textContent = total ? `Searching ${offset}/${total}…` : 'Searching…';
+      out.textContent = total
+        ? `Searched ${offset} of ${total} people. ${added} suggestions recorded so far…`
+        : 'Starting…';
+      const r = await fetch('/api/admin/gazette-sweep', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ offset, batch: 6 }),
+      });
+      const d = await r.json();
+      if (!r.ok || d.error) throw new Error(d.error || ('HTTP ' + r.status));
+      offset = d.offset; total = d.total;
+      added += d.added; already += d.alreadyRecorded; hits += d.plausibleHits;
+      if (++slices > 200) throw new Error('stopped after 200 slices');
+      if (d.done) break;
+    } while (true);
+    out.textContent = `Done.\nSearched ${total} people. ${hits} notices fell within their `
+      + `lifetime; ${added} recorded as suggestions, ${already} already there.\n`
+      + `Open each person to confirm or dismiss them.`;
+  } catch (err) {
+    out.className = 'admin-tool-result bad';
+    out.textContent = `Stopped after ${offset} of ${total || '?'} people: ${err.message}\n`
+      + `${added} suggestions were recorded before it stopped — running it again picks up `
+      + `where it left off.`;
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
 
 document.getElementById('btnImportWorks')?.addEventListener('click', async e => {
   const btn = e.target, out = document.getElementById('adminToolsResult');
@@ -689,6 +731,33 @@ document.getElementById('btnImportWorks')?.addEventListener('click', async e => 
     btn.disabled = false; btn.textContent = 'Import';
   }
 });
+
+async function renderFirstNames(){
+  const box = document.getElementById('firstNames');
+  if (!box) return;
+  try {
+    const data = await fetch('/api/stats/first-names?limit=8').then(r=>r.json());
+    const years = Object.keys(data).sort();
+    if (!years.length) { box.innerHTML = '<div class="loading">No census names recorded.</div>'; return; }
+    const top = Math.max(...years.flatMap(y => data[y].names.map(n => n.count)));
+    document.getElementById('fn-count').textContent = years.join(' · ');
+    box.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem">'
+      + years.map(y => `<div>
+          <div style="font-size:0.78rem;color:#8a9a7a;margin-bottom:0.6rem;letter-spacing:0.04em">
+            ${y} <span style="color:#5a6a5a">· ${data[y].total} people</span></div>
+          ${data[y].names.map(n => `
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.35rem">
+              <div style="width:74px;font-size:0.84rem;color:#e8e0d0">${n.name}</div>
+              <div style="flex:1;background:#1a2a1a;border-radius:3px;height:14px;overflow:hidden">
+                <div style="height:100%;width:${Math.round(n.count/top*100)}%;background:#4a7c5a"></div>
+              </div>
+              <div style="width:28px;text-align:right;font-size:0.78rem;color:#8a9a7a;
+                          font-variant-numeric:tabular-nums">${n.count}</div>
+            </div>`).join('')}
+        </div>`).join('') + '</div>';
+  } catch(e) { box.innerHTML = '<div class="loading">Could not load names.</div>'; }
+}
+renderFirstNames();
 
 async function renderBuilders(){
   try {
