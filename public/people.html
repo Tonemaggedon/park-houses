@@ -128,6 +128,11 @@
   .wd-suggest a { color:#2a5a8a; font-size:0.9rem; text-decoration:none; font-weight:600; }
   .wd-suggest a:hover { text-decoration:underline; }
   .wd-meta { font-size:0.74rem; color:#6a6a6a; margin-top:2px; }
+  .wd-accept { margin-top:8px; font-family:inherit; font-size:0.76rem; background:#2f4d27;
+    color:#f2ecd8; border:none; border-radius:4px; padding:5px 13px; cursor:pointer; display:block; }
+  .wd-accept:hover { background:#3d6333; }
+  .wd-accept:disabled { opacity:.6; cursor:default; }
+
   .wd-conf { font-style:italic; color:#8a7a5a; }
   .works { display:flex; flex-direction:column; gap:9px; }
   .work { display:flex; gap:12px; align-items:baseline; }
@@ -363,6 +368,8 @@ async function loadWikidataSuggestion(p) {
     const rows = await fetch('/api/wikidata-match?' + qs).then(r => r.json());
     const strong = rows.filter(r => r.confidence === 'name and birth year');
     if (!strong.length) return;
+    const canEdit = _me && (_me.isAdmin || (_me.user &&
+      (_me.user.role === 'contributor' || _me.user.role === 'admin')));
     box.innerHTML = strong.map(r =>
       `<div class="wd-suggest">
          <div class="wd-head">Possible match on Wikidata</div>
@@ -370,13 +377,38 @@ async function loadWikidataSuggestion(p) {
          <div class="wd-meta">${esc(r.born || '?')}–${esc(r.died || '?')}${
            r.occupations.length ? ' · ' + esc(r.occupations.slice(0, 3).join(', ')) : ''}</div>
          ${r.awards.length ? `<div class="wd-meta">Awards: ${esc(r.awards.join('; '))}</div>` : ''}
-         <div class="wd-meta wd-conf">matched on name and birth year — confirm before recording</div>
+         <div class="wd-meta wd-conf">matched on name and birth year — check the article is the
+           same person before recording it</div>
+         ${canEdit && (r.wikipedia || r.wikidata)
+           ? `<button class="wd-accept" data-wd-accept="${esc(r.wikipedia || r.wikidata)}"
+                data-wd-person="${esc(p.id)}">Yes, this is them</button>` : ''}
        </div>`).join('');
   } catch (e) { /* suggestion only; stay silent if unavailable */ }
 }
 
 // A person's own published works. Hidden entirely when there are none, which is
 // almost everyone — only a handful of residents wrote anything.
+// Record a confirmed Wikidata match as the person's Wikipedia article.
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-wd-accept]');
+  if (!btn) return;
+  btn.disabled = true; btn.textContent = 'Saving…';
+  try {
+    const res = await fetch('/api/person/' + btn.dataset.wdPerson, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ wikipedia_url: btn.dataset.wdAccept }),
+    });
+    if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || ('HTTP ' + res.status));
+    const box = document.getElementById('wdSuggest');
+    if (box) box.innerHTML = `<div style="margin-bottom:16px">`
+      + `<a class="wiki-link" href="${esc(btn.dataset.wdAccept)}" target="_blank" rel="noopener">`
+      + `📖 Wikipedia article ↗</a></div>`;
+  } catch (err) {
+    btn.disabled = false; btn.textContent = 'Yes, this is them';
+    alert('Could not save that: ' + err.message);
+  }
+});
+
 async function loadWorks(p) {
   const section = document.getElementById('works-section-' + p.id);
   const list = document.getElementById('works-list-' + p.id);

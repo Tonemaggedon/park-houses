@@ -105,6 +105,13 @@
   .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 0.82rem; }
   .lbl { color: #7a6a4a; min-width: 110px; font-size: 0.78rem; }
   .val { color: #1a1a1a; flex: 1; }
+  .nhle-btn { margin-top:5px; font-family:Georgia,serif; font-size:0.7rem; background:#f6f0dd;
+    border:1px solid #c8b87a; color:#5a4a1a; border-radius:4px; padding:3px 9px; cursor:pointer; }
+  .nhle-btn:hover { background:#eee5c8; }
+  .nhle-btn:disabled { opacity:.5; cursor:default; }
+  .nhle-linked { background:#f2f7f2; border:1px solid #b8d4b8; border-radius:5px; padding:8px 10px; }
+  .nhle-unlink { background:#fff; border-color:#ddd; color:#8a7a6a; }
+  .nhle-note { font-size:0.7rem; color:#a09070; font-style:italic; margin-top:7px; }
   .gaz-row { padding:4px 0; }
   .gaz-row a { color:#2a5a8a; text-decoration:none; font-size:0.8rem; }
   .gaz-row a:hover { text-decoration:underline; }
@@ -2188,6 +2195,23 @@ function showToast(msg) {
 async function loadNhle(p) {
   const body = document.getElementById('nhleBody');
   if (!body) return;
+  const ov = propOverrides[p.id] || {};
+  const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
+
+  // Once someone has identified the right entry, show that instead of the guesses.
+  if (ov.list_entry) {
+    body.innerHTML =
+      '<div class="nhle-row nhle-linked">'
+      + '<a href="' + esc(ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry))
+      + '" target="_blank" rel="noopener">' + esc(ov.list_name || ('List entry ' + ov.list_entry)) + '</a>'
+      + '<div class="nhle-meta">Grade ' + esc(ov.list_grade || '—')
+      + (ov.list_date ? ' · listed ' + esc(ov.list_date) : '')
+      + ' · entry ' + esc(ov.list_entry) + '</div>'
+      + (canEdit ? '<button class="nhle-btn nhle-unlink" data-nhle-clear="1">Not this one</button>' : '')
+      + '</div>';
+    return;
+  }
+
   try {
     const rows = await fetch('/api/nhle?lat=' + p.lat + '&lng=' + p.lng + '&radius=120')
       .then(r => r.json());
@@ -2196,10 +2220,28 @@ async function loadNhle(p) {
       '<div class="nhle-row">'
       + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener">' + esc(e.name) + '</a>'
       + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
-      + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div></div>').join('');
+      + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
+      + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
+                 + 'This is the one</button>' : '')
+      + '</div>').join('')
+      + (canEdit ? '<div class="nhle-note">The list records walls and gateways separately, so '
+                 + 'the nearest entry is often not the house.</div>' : '');
   } catch (err) {
     body.textContent = 'Could not reach the list right now.';
   }
+}
+
+// Record which list entry actually belongs to this property, or clear it.
+async function setNhle(propId, entry) {
+  const fields = entry
+    ? { list_entry: entry.entry, list_name: entry.name, list_grade: entry.grade,
+        list_date: entry.listed || null, list_link: entry.link }
+    : { list_entry: null, list_name: null, list_grade: null, list_date: null, list_link: null };
+  const res = await fetch('/api/property/' + propId, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+  });
+  if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || ('HTTP ' + res.status));
+  propOverrides[propId] = (await res.json()).data;
 }
 
 // ── THE GAZETTE ──────────────────────────────────────────────────────────────
@@ -2236,7 +2278,21 @@ async function loadGazette(p) {
 
 // ── PANEL CLICK DELEGATION ────────────────────────────────────────────────────
 // Use data-edit attributes so no onclick handlers are injected into innerHTML
-document.getElementById('panelBody').addEventListener('click', function(e) {
+document.getElementById('panelBody').addEventListener('click', async function(e) {
+  const nhleBtn = e.target.closest('[data-nhle]');
+  const nhleClear = e.target.closest('[data-nhle-clear]');
+  if (nhleBtn || nhleClear) {
+    const btn = nhleBtn || nhleClear;
+    btn.disabled = true;
+    try {
+      await setNhle(curProp.id, nhleBtn ? JSON.parse(nhleBtn.dataset.nhle) : null);
+      loadNhle(curProp);
+    } catch (err) {
+      btn.disabled = false;
+      alert('Could not save that: ' + err.message);
+    }
+    return;
+  }
   const editBtn = e.target.closest('[data-edit]');
   if (editBtn) { openEdit(editBtn.dataset.edit); return; }
   const delBtn = e.target.closest('[data-photo-url]');
