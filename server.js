@@ -354,6 +354,22 @@ async function dbInit() {
     // fresh database would fail on them.
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS postnominals TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS maiden_name TEXT`);
+
+    // A person's own published works. Kept as rows rather than a block of text
+    // so the list can be ordered by year and each entry cited on its own.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_works (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      title TEXT NOT NULL,
+      year INTEGER,
+      work_type TEXT,              -- novel, collection, short story, edited, non-fiction…
+      publisher TEXT,
+      notes TEXT,                  -- pseudonym, series, first appearance
+      source TEXT,                 -- where the entry came from
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_works_person_idx ON person_works(person_id)`);
+    await db.query(`ALTER TABLE person_works ADD COLUMN IF NOT EXISTS source TEXT`);
     // Significance is a curated judgement, not a computed score: a person is
     // featured because someone decided they should be, and says why.
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significant BOOLEAN DEFAULT FALSE`);
@@ -953,6 +969,99 @@ app.get('/api/all-props', (req, res) => {
     res.type('application/json').send(c.body);
   }
   catch(e) { res.json([]); }
+});
+
+// ── A person's published works ───────────────────────────────────────────────
+app.get('/api/person/:id/works', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(
+      `SELECT id, title, year, work_type, publisher, notes, source FROM person_works
+        WHERE person_id=$1 ORDER BY year NULLS LAST, title`, [parseInt(req.params.id, 10)]);
+    res.json(r.rows);
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Accepts one work or a list, so a whole bibliography can be loaded in one go.
+app.post('/api/person/:id/works', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const personId = parseInt(req.params.id, 10);
+  const items = Array.isArray(req.body) ? req.body : [req.body];
+  const clean = items
+    .map(w => ({
+      title: String(w.title || '').trim().slice(0, 400),
+      year: Number.isFinite(parseInt(w.year, 10)) ? parseInt(w.year, 10) : null,
+      work_type: w.work_type ? String(w.work_type).trim().slice(0, 60) : null,
+      publisher: w.publisher ? String(w.publisher).trim().slice(0, 200) : null,
+      notes: w.notes ? String(w.notes).trim().slice(0, 500) : null,
+    }))
+    .filter(w => w.title);
+  if (!clean.length) return res.status(400).json({ error: 'Each work needs a title' });
+  try {
+    for (const w of clean) {
+      await db.query(
+        `INSERT INTO person_works (person_id,title,year,work_type,publisher,notes)
+         VALUES ($1,$2,$3,$4,$5,$6)`,
+        [personId, w.title, w.year, w.work_type, w.publisher, w.notes]);
+    }
+    await logChange('person', personId, req, 'add', 'works', null, clean.length + ' work(s)');
+    res.json({ ok: true, added: clean.length });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/person/:personId/works/:workId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query(`DELETE FROM person_works WHERE id=$1 AND person_id=$2`,
+      [parseInt(req.params.workId, 10), parseInt(req.params.personId, 10)]);
+    await logChange('person', parseInt(req.params.personId, 10), req, 'delete', 'works', null, null);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Bulk-load a bibliography prepared as data/works_*.json. Idempotent: a work
+// already recorded for that person by the same title and year is left alone, so
+// running it twice does not duplicate the list.
+app.post('/api/admin/import-works', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const files = fs.readdirSync(path.join(__dirname, 'data'))
+      .filter(f => /^works_.*\.json$/.test(f));
+    const report = [];
+    for (const file of files) {
+      const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
+      const who = doc.person || {};
+      const found = await db.query(
+        `SELECT id FROM people WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
+        [who.first_name || '', who.last_name || '']);
+      if (found.rows.length !== 1) {
+        report.push({ file, skipped: found.rows.length ? 'several people match that name' : 'no person of that name' });
+        continue;
+      }
+      const personId = found.rows[0].id;
+      let added = 0, already = 0;
+      for (const w of (doc.works || [])) {
+        if (!w.title) continue;
+        // Type matters to the key: a collection is routinely named after the
+        // title story inside it, so "Spawn of Satan" is legitimately both a
+        // 1970 collection and a 1970 short story.
+        const dup = await db.query(
+          `SELECT 1 FROM person_works WHERE person_id=$1 AND LOWER(title)=LOWER($2)
+             AND COALESCE(year,-1)=COALESCE($3,-1)
+             AND COALESCE(LOWER(work_type),'')=COALESCE(LOWER($4),'')`,
+          [personId, w.title, w.year ?? null, w.work_type || null]);
+        if (dup.rows.length) { already++; continue; }
+        await db.query(
+          `INSERT INTO person_works (person_id,title,year,work_type,publisher,notes,source)
+           VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+          [personId, w.title, w.year ?? null, w.work_type || null, w.publisher || null,
+           w.notes || null, doc.source || null]);
+        added++;
+      }
+      report.push({ file, person: personId, added, alreadyPresent: already });
+    }
+    res.json({ ok: true, report });
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── Significant people ───────────────────────────────────────────────────────
