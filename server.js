@@ -945,6 +945,51 @@ app.get('/api/all-props', (req, res) => {
   catch(e) { res.json([]); }
 });
 
+// ── The Gazette (official public record) ──────────────────────────────────────
+// Full-text search over scanned notices. Genuine finds are mostly deceased
+// estates and winding-up notices naming a resident at a house — e.g. "Frederick
+// Goddard, of Gartree House, the Park" (1909). Modern hits are usually
+// companies that happen to share the name, so results carry their date and the
+// caller decides. Proxied server-side for CORS, and cached for an hour so
+// repeated panel views do not hammer their service.
+const gazetteCache = new Map(); // query -> { at, rows }
+const GAZETTE_TTL = 60 * 60 * 1000;
+
+app.get('/api/gazette', async (req, res) => {
+  const name = String(req.query.name || '').trim();
+  if (name.length < 5) return res.json([]);
+  const key = name.toLowerCase();
+  const hit = gazetteCache.get(key);
+  if (hit && Date.now() - hit.at < GAZETTE_TTL) return res.json(hit.rows);
+
+  const url = 'https://www.thegazette.co.uk/all-notices/notice/data.feed?text='
+    + encodeURIComponent('"' + name + '" Nottingham');
+  try {
+    const r = await fetch(url, {
+      headers: { 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!r.ok) return res.json([]);
+    const xml = await r.text();
+    const rows = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(m => {
+      const e = m[1];
+      const grab = re => ((e.match(re) || [])[1] || '').trim();
+      const date = grab(/<published>(.*?)<\/published>/) || grab(/<updated>(.*?)<\/updated>/);
+      const href = grab(/<link[^>]*href="(.*?)"/);
+      return {
+        title: grab(/<title>([\s\S]*?)<\/title>/).replace(/\s+/g, ' '),
+        date: date.slice(0, 10),
+        year: parseInt(date.slice(0, 4), 10) || null,
+        link: href.startsWith('http') ? href : 'https://www.thegazette.co.uk' + href,
+      };
+    }).filter(x => x.link).sort((a, b) => (a.year || 9999) - (b.year || 9999)).slice(0, 10);
+    gazetteCache.set(key, { at: Date.now(), rows });
+    res.json(rows);
+  } catch (e) {
+    res.json([]);   // a search aid; never break the panel over it
+  }
+});
+
 // ── Wikidata: notable people connected to Nottingham ──────────────────────────
 // A cached cohort (born 1780-1920, born/died/resident in Nottingham) that the
 // people page can check a resident against. Suggestions only — a shared surname

@@ -105,6 +105,13 @@
   .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 0.82rem; }
   .lbl { color: #7a6a4a; min-width: 110px; font-size: 0.78rem; }
   .val { color: #1a1a1a; flex: 1; }
+  .gaz-row { padding:4px 0; }
+  .gaz-row a { color:#2a5a8a; text-decoration:none; font-size:0.8rem; }
+  .gaz-row a:hover { text-decoration:underline; }
+  .gaz-name { font-size:0.72rem; color:#8a7a5a; text-transform:uppercase; letter-spacing:.05em; margin-top:7px; }
+  .gaz-more { margin-top:5px; }
+  .gaz-more summary { font-size:0.74rem; color:#8a7a5a; cursor:pointer; }
+  .gaz-note { font-size:0.7rem; color:#a09070; font-style:italic; margin-top:7px; }
   .nhle-row { padding:6px 0; border-bottom:1px solid #efe9dc; }
   .nhle-row:last-child { border-bottom:none; }
   .nhle-row a { color:#2a5a8a; text-decoration:none; font-size:0.82rem; line-height:1.35; display:block; }
@@ -1051,8 +1058,12 @@ function renderPanel() {
       '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>' +
       srcSection +
       (isListedProp(p) ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
-        + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '');
+        + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '')
+      + ((p.house_name || p.prev_house_name)
+        ? '<div class="section" id="gazSection"><h3>The Gazette</h3>'
+          + '<div id="gazBody" style="font-size:0.78rem;color:#8a7a5a">Searching the official record…</div></div>' : '');
     if (isListedProp(p) && p.lat != null) loadNhle(p);
+    if (p.house_name || p.prev_house_name) loadGazette(p);
   }
     else if (curTab === 'photos') {
     const photos = ov.photos || [];
@@ -2187,6 +2198,38 @@ async function loadNhle(p) {
       + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div></div>').join('');
   } catch (err) {
     body.textContent = 'Could not reach the list right now.';
+  }
+}
+
+// ── THE GAZETTE ──────────────────────────────────────────────────────────────
+// Full-text hits on the house name in the official public record. The useful
+// ones are old — deceased estates and winding-up notices naming a resident, like
+// "Frederick Goddard, of Gartree House, the Park" in 1909. Post-1960 hits are
+// usually unrelated companies sharing the name, so they are shown separately.
+async function loadGazette(p) {
+  const body = document.getElementById('gazBody');
+  if (!body) return;
+  const names = [...new Set([p.house_name, p.prev_house_name].filter(Boolean))];
+  try {
+    const sets = await Promise.all(names.map(n =>
+      fetch('/api/gazette?name=' + encodeURIComponent(n))
+        .then(r => r.json()).then(rows => ({ n, rows })).catch(() => ({ n, rows: [] }))));
+    const blocks = sets.filter(s => s.rows.length).map(s => {
+      const old = s.rows.filter(r => r.year && r.year < 1960);
+      const recent = s.rows.filter(r => !r.year || r.year >= 1960);
+      const line = r => '<div class="gaz-row"><a href="' + esc(r.link) + '" target="_blank" rel="noopener">'
+        + esc(r.year || '?') + ' — ' + esc(r.title) + '</a></div>';
+      return (names.length > 1 ? '<div class="gaz-name">' + esc(s.n) + '</div>' : '')
+        + (old.length ? old.map(line).join('') : '')
+        + (recent.length ? '<details class="gaz-more"><summary>' + recent.length
+            + ' later notice' + (recent.length > 1 ? 's' : '')
+            + ' (usually unrelated companies)</summary>' + recent.map(line).join('') + '</details>' : '');
+    });
+    body.innerHTML = blocks.length
+      ? blocks.join('') + '<div class="gaz-note">Full-text matches on the house name — not verified as this property.</div>'
+      : 'No notices found under this name.';
+  } catch (e) {
+    body.textContent = 'Could not reach the Gazette right now.';
   }
 }
 
