@@ -350,6 +350,10 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS address TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_location TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_number TEXT`);
+    // Selected by several endpoints but previously only ever added by hand, so a
+    // fresh database would fail on them.
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS postnominals TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS maiden_name TEXT`);
     // Significance is a curated judgement, not a computed score: a person is
     // featured because someone decided they should be, and says why.
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significant BOOLEAN DEFAULT FALSE`);
@@ -1003,7 +1007,11 @@ app.get('/api/significant', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const r = await db.query(`
-      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count
+      SELECT p.*, (SELECT COUNT(*) FROM (
+                SELECT ce.property_id AS pid FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL
+                UNION
+                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
+              ) linked) AS property_count
       FROM people p WHERE p.significant = TRUE
       ORDER BY COALESCE(p.last_name,''), COALESCE(p.first_name,'')`);
     res.json(r.rows.map(p => ({ ...p, signals: signalsOf(p) })));
@@ -1015,7 +1023,11 @@ app.get('/api/significant/candidates', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const r = await db.query(`
-      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count,
+      SELECT p.*, (SELECT COUNT(*) FROM (
+                SELECT ce.property_id AS pid FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL
+                UNION
+                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
+              ) linked) AS property_count,
              (${SIGNAL_SQL}) AS signal_count
       FROM people p
       WHERE COALESCE(p.significant,FALSE) = FALSE AND (${SIGNAL_SQL}) > 0
@@ -1046,7 +1058,11 @@ app.get('/api/person-of-week', async (req, res) => {
   if (!db) return res.json(null);
   try {
     const r = await db.query(`
-      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count
+      SELECT p.*, (SELECT COUNT(*) FROM (
+                SELECT ce.property_id AS pid FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL
+                UNION
+                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
+              ) linked) AS property_count
       FROM people p WHERE p.significant = TRUE ORDER BY p.id`);
     if (!r.rows.length) return res.json(null);
     const n = r.rows.length;

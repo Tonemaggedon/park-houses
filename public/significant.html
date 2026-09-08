@@ -132,9 +132,12 @@ async function load() {
     canEdit = !!(me.isAdmin || (me.user && (me.user.role==='contributor' || me.user.role==='admin')));
   } catch(e) {}
 
+  // Endpoints return {error} on failure, so guard the shape rather than letting
+  // an error object render as "undefined".
+  const asRows = v => Array.isArray(v) ? v : [];
   const [potw, featured] = await Promise.all([
     fetch('/api/person-of-week').then(r=>r.json()).catch(()=>null),
-    fetch('/api/significant').then(r=>r.json()).catch(()=>[]),
+    fetch('/api/significant').then(r=>r.json()).then(asRows).catch(()=>[]),
   ]);
 
   renderPotw(potw);
@@ -177,7 +180,9 @@ async function loadCandidates() {
   const box = document.getElementById('candidates');
   box.innerHTML = '<div class="empty">Loading…</div>';
   try {
-    const rows = await fetch('/api/significant/candidates').then(r=>r.json());
+    const raw = await fetch('/api/significant/candidates').then(r=>r.json());
+    if (!Array.isArray(raw)) throw new Error(raw && raw.error ? raw.error : 'unexpected response');
+    const rows = raw;
     document.getElementById('candCount').textContent = `(${rows.length})`;
     box.innerHTML = rows.length ? rows.map(p => `<div class="cand-row">
       <div class="who">
@@ -186,7 +191,10 @@ async function loadCandidates() {
       </div>
       <button class="btn" data-on="${esc(p.id)}">Feature</button>
     </div>`).join('') : '<div class="empty">No further suggestions.</div>';
-  } catch(e) { box.innerHTML = '<div class="empty err">Could not load suggestions.</div>'; }
+  } catch(e) {
+    document.getElementById('candCount').textContent = '';
+    box.innerHTML = '<div class="empty err">Could not load suggestions — ' + esc(e.message) + '</div>';
+  }
 }
 
 let findTimer = null;
@@ -234,7 +242,8 @@ document.addEventListener('click', async e => {
     }
   } catch(err) {
     (on||off).disabled = false;
-    alert('Could not save that — you may need to sign in as a contributor.');
+    alert('Could not save that: ' + (err.message || 'unknown error')
+      + '\n\nYou may need to sign in as an admin or approved contributor.');
   }
 });
 
