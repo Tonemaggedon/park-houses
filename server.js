@@ -3675,9 +3675,20 @@ app.patch('/api/person/:id', requireContributor, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const fields = req.body;
-    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','maiden_name','title','postnominals','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url','grave_location','grave_number'].includes(k));
+    const keys = Object.keys(fields).filter(k => ['first_name','last_name','known_as','maiden_name','title','postnominals','born_date','born_year','born_place','died_date','died_year','died_place','bio','wikipedia_url','photo_url','grave_location','grave_number','sex'].includes(k));
     if (!keys.length) return res.status(400).json({ error: 'No valid fields' });
     // Get old values for changelog
+    // Setting sex here is an individual judgement — record that, so a later
+    // forename pass leaves it alone.
+    if (Object.prototype.hasOwnProperty.call(fields, 'sex')) {
+      if (fields.sex !== 'M' && fields.sex !== 'F' && fields.sex !== null && fields.sex !== '') {
+        return res.status(400).json({ error: "sex must be 'M', 'F' or empty" });
+      }
+      if (fields.sex === '') fields.sex = null;
+      await db.query(
+        `UPDATE people SET sex_source=$2 WHERE id=$1`,
+        [id, fields.sex ? 'set on the person record by ' + (req.session.username || 'contributor') : null]);
+    }
     const old = await db.query(`SELECT ${keys.join(',')} FROM people WHERE id=$1`, [id]);
     const sets = keys.map((k,i) => `${k}=$${i+2}`).join(',');
     await db.query(`UPDATE people SET ${sets} WHERE id=$1`, [id, ...keys.map(k=>fields[k])]);
