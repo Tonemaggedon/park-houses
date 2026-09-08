@@ -4410,7 +4410,11 @@
     "listed": "No",
     "house_name": "Ivanhoe Lodge",
     "lat": 52.9494812,
-    "lng": -1.1564209
+    "lng": -1.1564209,
+    "prev_house_name": "Dudley Lodge",
+    "sources": {
+      "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet; identified by owner"
+    }
   },
   {
     "id": 297,
@@ -4423,7 +4427,13 @@
     "date_built": "1890",
     "listed": "No",
     "lat": 52.9494328,
-    "lng": -1.1569873
+    "lng": -1.1569873,
+    "house_name": "Parkdale",
+    "prev_house_name": "Parkside",
+    "sources": {
+      "house_name": "Owner knowledge (A. Hagues)",
+      "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet; identified by owner"
+    }
   },
   {
     "id": 298,
