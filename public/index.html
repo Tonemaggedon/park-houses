@@ -67,7 +67,7 @@
   .park-marker.has-people { background: #1a6fa8; border-color: #10497a; }
   .park-marker.active { background: #d4380d !important; border-color: #8b1a00 !important; transform: scale(1.25); z-index: 1000 !important; }
   .park-marker:hover { transform: scale(1.15); }
-  .park-marker.demolished { background: transparent !important; border-color: #555 !important; border-style: dashed !important; }
+  .park-marker.demolished { background: #33383d !important; border-color: #fff !important; }
 
   /* Detail panel */
   .panel {
@@ -721,7 +721,7 @@ legend.onAdd = () => {
     <div class="leg"><div class="legdot" style="background:#e6b800"></div>Census only</div>
     <div class="leg"><div class="legdot" style="background:#d4380d"></div>Selected</div>
     <div class="leg"><div class="legdot" style="background:#6a6a6a;color:#f0c040">★</div>Listed building</div>
-    <div class="leg"><div class="legdot" style="background:transparent;border:2px dashed #555;box-sizing:border-box"></div>Lost house (demolished)</div>`;
+    <div class="leg"><div class="legdot" style="background:#33383d;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.35);color:#fff;font-weight:700;font-size:8px">\u00d7</div>Lost house (demolished)</div>`;
   return d;
 };
 legend.addTo(map);
@@ -740,23 +740,28 @@ function makeIcon(p, isActive, isManual) {
   const directlySeedeed = seededProps.has(p.id);
   const hasPeople = !!(peopleCounts[p.id]);
 
-  const bg     = p.demolished     ? 'rgba(80,80,80,0.15)'
+  // Demolished houses were a near-transparent grey and vanished against the
+  // basemap. Solid dark slate with a white ring and cross reads clearly at
+  // this size and is distinct from every other (saturated) marker colour.
+  const bg     = p.demolished     ? '#33383d'
                : isActive        ? '#d4380d'
                : p.census_only   ? '#e6b800'
                : directlySeedeed ? '#2e7d4f'
                : hasPeople       ? '#1a6fa8'
                : '#c0392b';
-  const border = p.demolished     ? '#666'
+  const border = p.demolished     ? '#ffffff'
                : isActive        ? '#8b1a00'
                : p.census_only   ? '#b8910a'
                : directlySeedeed ? '#1a5c36'
                : hasPeople       ? '#10497a'
                : '#922b21';
-  const borderStyle = p.demolished ? 'dashed' : 'solid';
+  const borderStyle = 'solid';
 
-  const size = isActive ? 16 : p.demolished ? 14 : 12;
-  const star = p.listed
-    ? `<span style="font-size:${isActive?8:6}px;color:#f0c040;line-height:1">★</span>`
+  const size = isActive ? 16 : p.demolished ? 15 : 12;
+  const glyph = p.demolished
+    ? `<span style="font-size:${isActive?10:9}px;color:#fff;line-height:1;font-weight:700">\u00d7</span>`
+    : isListedProp(p)
+    ? `<span style="font-size:${isActive?8:6}px;color:#f0c040;line-height:1">\u2605</span>`
     : '';
   const manualStyle = (isManual && isAdmin) ? 'outline:2px solid #2090ff;outline-offset:1px;' : '';
 
@@ -768,14 +773,14 @@ function makeIcon(p, isActive, isManual) {
       border-radius:50%;
       width:${size}px;
       height:${size}px;
-      box-shadow:0 1px 3px rgba(0,0,0,0.5);
+      box-shadow:${p.demolished ? '0 0 0 1px rgba(0,0,0,0.35),0 1px 4px rgba(0,0,0,0.6)' : '0 1px 3px rgba(0,0,0,0.5)'};
       display:flex;
       align-items:center;
       justify-content:center;
       ${isActive ? 'transform:scale(1.25);' : ''}
       ${manualStyle}
       cursor:pointer;
-    ">${star}</div>`,
+    ">${glyph}</div>`,
     iconAnchor: [size/2, size/2],
     iconSize: [size, size],
     popupAnchor: [0, -(size/2 + 4)],
