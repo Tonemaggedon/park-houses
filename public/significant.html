@@ -93,6 +93,15 @@
     <p class="lede">Residents carrying a signal worth a second look. Nothing here is featured
       until you say so — length of biography is deliberately not one of the signals.</p>
     <div id="candidates"></div>
+
+    <h3 style="margin:26px 0 4px;font-size:1rem">Feature someone else</h3>
+    <p class="lede">The signals only catch honours and offices. Anyone can be featured —
+      search for them by name.</p>
+    <input id="findPerson" type="search" placeholder="Search residents by name…"
+      autocomplete="off" aria-label="Search residents by name"
+      style="width:100%;max-width:380px;padding:8px 11px;border:1px solid var(--rule);
+             border-radius:5px;font-family:inherit;font-size:.88rem;background:#fff">
+    <div id="findResults" style="margin-top:9px"></div>
   </details>
 </div>
 
@@ -180,6 +189,27 @@ async function loadCandidates() {
   } catch(e) { box.innerHTML = '<div class="empty err">Could not load suggestions.</div>'; }
 }
 
+let findTimer = null;
+document.getElementById('findPerson').addEventListener('input', e => {
+  clearTimeout(findTimer);
+  const q = e.target.value.trim();
+  const box = document.getElementById('findResults');
+  if (q.length < 2) { box.innerHTML = ''; return; }
+  findTimer = setTimeout(async () => {
+    try {
+      const rows = await fetch('/api/people?q=' + encodeURIComponent(q)).then(r => r.json());
+      box.innerHTML = rows.length ? rows.slice(0, 12).map(p => `<div class="cand-row">
+          <div class="who">
+            <div><strong>${esc(nameOf(p))}</strong> <span class="dates">${esc(lifeOf(p))}</span></div>
+            ${p.born_place ? `<div class="dates">born ${esc(p.born_place)}</div>` : ''}
+          </div>
+          <button class="btn" data-on="${esc(p.id)}">Feature</button>
+        </div>`).join('')
+        : '<div class="empty">Nobody found by that name.</div>';
+    } catch (err) { box.innerHTML = '<div class="empty err">Search failed.</div>'; }
+  }, 250);
+});
+
 document.addEventListener('click', async e => {
   const on = e.target.closest('[data-on]'), off = e.target.closest('[data-off]');
   if (!on && !off) return;
@@ -197,7 +227,11 @@ document.addEventListener('click', async e => {
     });
     if (!r.ok) throw new Error(await r.text());
     await load();
-    if (canEdit) { document.getElementById('candBlock').open = true; }
+    if (canEdit) {
+      document.getElementById('candBlock').open = true;
+      const f = document.getElementById('findPerson');
+      if (f) { f.value = ''; document.getElementById('findResults').innerHTML = ''; }
+    }
   } catch(err) {
     (on||off).disabled = false;
     alert('Could not save that — you may need to sign in as a contributor.');
