@@ -1277,9 +1277,14 @@ app.post('/api/admin/import-works', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-// Most common forenames by census year. Takes the first word of first_name, so
-// "William Henry" counts as William — many entries record several given names
-// and the first is the one people were called by.
+// Most common forenames by census year, split by sex.
+//
+// There is no sex field: the census import parses one but census_entries has no
+// column for it, so it is discarded. Rather than guess from a list of names, the
+// sex of each *name* is inferred from the relationships its bearers hold — a
+// name borne by daughters, wives and sisters is a girl's name. That uses the
+// record's own evidence, and any name without enough of it stays unclassified
+// rather than being assigned on a hunch.
 app.get('/api/stats/first-names', async (req, res) => {
   if (!db) return res.json({});
   const limit = Math.min(parseInt(req.query.limit, 10) || 8, 25);
@@ -1288,29 +1293,51 @@ app.get('/api/stats/first-names', async (req, res) => {
       WITH named AS (
         SELECT ce.census_year,
                INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name,
-               p.id AS person_id
+               p.id AS person_id,
+               LOWER(TRIM(COALESCE(ce.relationship,''))) AS rel
           FROM census_entries ce
           JOIN people p ON p.id = ce.person_id
          WHERE ce.census_year IS NOT NULL
            AND COALESCE(TRIM(p.first_name),'') <> ''
+      ), gendered AS (
+        SELECT name,
+               COUNT(*) FILTER (WHERE rel IN ('wife','daughter','mother','sister','widow',
+                 'niece','aunt','granddaughter','housekeeper','maid','housemaid','parlourmaid',
+                 'kitchenmaid','cook','nurse','governess','lady')) AS female,
+               COUNT(*) FILTER (WHERE rel IN ('son','father','brother','nephew','uncle',
+                 'grandson','husband','butler','footman','groom','coachman','gardener')) AS male
+          FROM named GROUP BY name
+      ), sexed AS (
+        SELECT name,
+               CASE WHEN female + male < 2 THEN 'unknown'
+                    WHEN female >= (female + male) * 0.8 THEN 'girls'
+                    WHEN male   >= (female + male) * 0.8 THEN 'boys'
+                    ELSE 'unknown' END AS sex
+          FROM gendered
       ), counted AS (
-        SELECT census_year, name, COUNT(DISTINCT person_id) AS count
-          FROM named
-         WHERE LENGTH(name) > 1
-         GROUP BY census_year, name
+        SELECT n.census_year, n.name, s.sex, COUNT(DISTINCT n.person_id) AS count
+          FROM named n JOIN sexed s ON s.name = n.name
+         WHERE LENGTH(n.name) > 1
+         GROUP BY n.census_year, n.name, s.sex
       ), ranked AS (
-        SELECT *, ROW_NUMBER() OVER (PARTITION BY census_year ORDER BY count DESC, name) AS rn,
-                  SUM(count) OVER (PARTITION BY census_year) AS year_total
+        SELECT *, ROW_NUMBER() OVER (PARTITION BY census_year, sex
+                                     ORDER BY count DESC, name) AS rn
           FROM counted
       )
-      SELECT census_year, name, count, year_total FROM ranked WHERE rn <= $1
-       ORDER BY census_year, count DESC, name`, [limit]);
+      SELECT census_year, sex, name, count FROM ranked
+       WHERE rn <= $1 ORDER BY census_year, sex, count DESC, name`, [limit]);
+
+    const totals = await db.query(`
+      SELECT ce.census_year, COUNT(DISTINCT p.id) AS total
+        FROM census_entries ce JOIN people p ON p.id = ce.person_id
+       WHERE ce.census_year IS NOT NULL AND COALESCE(TRIM(p.first_name),'') <> ''
+       GROUP BY ce.census_year`);
 
     const out = {};
+    for (const t of totals.rows) out[String(t.census_year)] = { total: Number(t.total), girls: [], boys: [], unknown: [] };
     for (const row of r.rows) {
-      const y = String(row.census_year);
-      if (!out[y]) out[y] = { total: Number(row.year_total), names: [] };
-      out[y].names.push({ name: row.name, count: Number(row.count) });
+      const y = out[String(row.census_year)];
+      if (y) y[row.sex].push({ name: row.name, count: Number(row.count) });
     }
     res.json(out);
   } catch(e) { res.status(500).json({ error: e.message }); }

@@ -172,7 +172,9 @@
   /* Map legend */
   .hist-control { background:rgba(255,255,255,0.94); border:1px solid #c8b87a; border-radius:5px;
     padding:7px 10px; font-family:Georgia,serif; box-shadow:0 1px 5px rgba(0,0,0,0.25); }
-  .hist-control label { display:block; font-size:0.72rem; color:#5a4a2a; margin-bottom:4px; white-space:nowrap; }
+  .hist-control label { display:block; font-size:0.72rem; color:#5a4a2a; margin:4px 0; white-space:nowrap; }
+  .hist-control select { width:100%; font-family:Georgia,serif; font-size:0.74rem; color:#5a4a2a;
+    background:#fff; border:1px solid #c8b87a; border-radius:4px; padding:3px 5px; cursor:pointer; }
   .hist-control.on label { color:#8a4a1a; font-weight:600; }
   .hist-control #histPct { color:#8a7a5a; font-variant-numeric:tabular-nums; }
   .hist-control input[type=range] { width:118px; accent-color:#8a6a3a; display:block; cursor:pointer; }
@@ -749,28 +751,59 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(map);
 
-// ── HISTORIC OS LAYER ─────────────────────────────────────────────────────────
-// OS 25-inch County Series for Nottinghamshire (surveyed 1880s-1910s), served by
-// the National Library of Scotland. Tiles only exist to z18, so overzoom past
-// that rather than showing blanks. Lets the demolished houses be seen in place.
-const histLayer = L.tileLayer(
-  'https://mapseries-tilesets.s3.amazonaws.com/25_inch/nottinghamshire/{z}/{x}/{y}.png', {
-  attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
-  maxNativeZoom: 18,
-  maxZoom: 19,
-  opacity: 0,
-  zIndex: 350,
-});
-histLayer.addTo(map);
+// ── HISTORIC & AERIAL OVERLAYS ────────────────────────────────────────────────
+// One overlay at a time over the modern map, faded with a slider. Only sources
+// that actually serve tiles over The Park are offered — NLS publish more series
+// but do not expose them as open tiles, so the 1940s-70s National Grid plans are
+// not available here even though they are the sheets we work from on paper.
+const OVERLAYS = {
+  os25: {
+    label: '1880s OS 25-inch',
+    url: 'https://mapseries-tilesets.s3.amazonaws.com/25_inch/nottinghamshire/{z}/{x}/{y}.png',
+    attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
+    maxNativeZoom: 18,
+  },
+  os1inch: {
+    label: 'OS 1-inch, 2nd ed.',
+    url: 'https://mapseries-tilesets.s3.amazonaws.com/1inch_2nd_ed/{z}/{x}/{y}.png',
+    attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
+    maxNativeZoom: 15,
+  },
+  aerial: {
+    label: 'Aerial photography',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
+    maxNativeZoom: 19,
+  },
+};
 
-let histOpacity = 0;
-function setHistoric(v) {
-  histOpacity = Math.max(0, Math.min(1, Number(v) || 0));
-  histLayer.setOpacity(histOpacity);
+let overlayLayer = null, overlayKey = 'os25', overlayOpacity = 0;
+
+function buildOverlay(key) {
+  if (overlayLayer) { map.removeLayer(overlayLayer); overlayLayer = null; }
+  const cfg = OVERLAYS[key];
+  if (!cfg) return;
+  overlayLayer = L.tileLayer(cfg.url, {
+    attribution: cfg.attribution,
+    maxNativeZoom: cfg.maxNativeZoom,
+    maxZoom: 19,
+    opacity: overlayOpacity,
+    zIndex: 350,
+  }).addTo(map);
+}
+
+function setOverlayOpacity(v) {
+  overlayOpacity = Math.max(0, Math.min(1, Number(v) || 0));
+  if (overlayLayer) overlayLayer.setOpacity(overlayOpacity);
   const out = document.getElementById('histPct');
-  if (out) out.textContent = Math.round(histOpacity * 100) + '%';
+  if (out) out.textContent = Math.round(overlayOpacity * 100) + '%';
   const wrap = document.getElementById('histControl');
-  if (wrap) wrap.classList.toggle('on', histOpacity > 0);
+  if (wrap) wrap.classList.toggle('on', overlayOpacity > 0);
+}
+
+function setOverlay(key) {
+  overlayKey = key;
+  buildOverlay(key);
 }
 
 const histControl = L.control({ position: 'topright' });
@@ -778,15 +811,22 @@ histControl.onAdd = () => {
   const d = L.DomUtil.create('div', 'hist-control');
   d.id = 'histControl';
   d.innerHTML =
-    '<label for="histSlider">1880s OS map <span id="histPct">0%</span></label>' +
-    '<input id="histSlider" type="range" min="0" max="1" step="0.05" value="0" ' +
-    'aria-label="Historic map opacity">';
+    '<select id="overlayPick" aria-label="Historic map layer">'
+    + Object.entries(OVERLAYS).map(([k, v]) =>
+        '<option value="' + k + '"' + (k === overlayKey ? ' selected' : '') + '>'
+        + v.label + '</option>').join('')
+    + '</select>'
+    + '<label for="histSlider">Fade in <span id="histPct">0%</span></label>'
+    + '<input id="histSlider" type="range" min="0" max="1" step="0.05" value="0" '
+    + 'aria-label="Overlay opacity">';
   L.DomEvent.disableClickPropagation(d);
   L.DomEvent.disableScrollPropagation(d);
-  d.querySelector('#histSlider').addEventListener('input', e => setHistoric(e.target.value));
+  d.querySelector('#histSlider').addEventListener('input', e => setOverlayOpacity(e.target.value));
+  d.querySelector('#overlayPick').addEventListener('change', e => setOverlay(e.target.value));
   return d;
 };
 histControl.addTo(map);
+buildOverlay(overlayKey);
 
 // Add a subtle historical overlay hint
 const legend = L.control({ position: 'bottomleft' });

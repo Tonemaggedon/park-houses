@@ -739,22 +739,35 @@ async function renderFirstNames(){
     const data = await fetch('/api/stats/first-names?limit=8').then(r=>r.json());
     const years = Object.keys(data).sort();
     if (!years.length) { box.innerHTML = '<div class="loading">No census names recorded.</div>'; return; }
-    const top = Math.max(...years.flatMap(y => data[y].names.map(n => n.count)));
+    const top = Math.max(1, ...years.flatMap(y => ['girls','boys'].flatMap(g => (data[y][g]||[]).map(n => n.count))));
     document.getElementById('fn-count').textContent = years.join(' · ');
-    box.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem">'
-      + years.map(y => `<div>
-          <div style="font-size:0.78rem;color:#8a9a7a;margin-bottom:0.6rem;letter-spacing:0.04em">
-            ${y} <span style="color:#5a6a5a">· ${data[y].total} people</span></div>
-          ${data[y].names.map(n => `
-            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.35rem">
-              <div style="width:74px;font-size:0.84rem;color:#e8e0d0">${n.name}</div>
-              <div style="flex:1;background:#1a2a1a;border-radius:3px;height:14px;overflow:hidden">
-                <div style="height:100%;width:${Math.round(n.count/top*100)}%;background:#4a7c5a"></div>
-              </div>
-              <div style="width:28px;text-align:right;font-size:0.78rem;color:#8a9a7a;
-                          font-variant-numeric:tabular-nums">${n.count}</div>
-            </div>`).join('')}
-        </div>`).join('') + '</div>';
+    const col = (rows, colour) => (rows && rows.length) ? rows.map(n => `
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.35rem">
+        <div style="width:78px;font-size:0.84rem;color:#e8e0d0">${n.name}</div>
+        <div style="flex:1;background:#1a2a1a;border-radius:3px;height:14px;overflow:hidden">
+          <div style="height:100%;width:${Math.round(n.count/top*100)}%;background:${colour}"></div>
+        </div>
+        <div style="width:28px;text-align:right;font-size:0.78rem;color:#8a9a7a;
+                    font-variant-numeric:tabular-nums">${n.count}</div>
+      </div>`).join('') : '<div style="font-size:0.78rem;color:#5a6a5a;font-style:italic">none identified</div>';
+
+    box.innerHTML = years.map(y => `
+      <div style="margin-bottom:1.6rem">
+        <div style="font-size:0.8rem;color:#8a9a7a;margin-bottom:0.7rem;letter-spacing:0.04em">
+          ${y} <span style="color:#5a6a5a">· ${data[y].total} people</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem">
+          <div><div style="font-size:0.72rem;color:#c88aa8;margin-bottom:0.5rem;
+                letter-spacing:0.08em;text-transform:uppercase">Girls</div>
+            ${col(data[y].girls, '#a85a7a')}</div>
+          <div><div style="font-size:0.72rem;color:#7aa8c8;margin-bottom:0.5rem;
+                letter-spacing:0.08em;text-transform:uppercase">Boys</div>
+            ${col(data[y].boys, '#4a7c9a')}</div>
+        </div>
+      </div>`).join('')
+      + `<div style="font-size:0.72rem;color:#5a6a5a;font-style:italic;border-top:1px solid #2a3a2a;padding-top:0.7rem">
+           A name's sex is inferred from the relationships its bearers held in the census —
+           wives and daughters, sons and brothers. Names without enough evidence are left out.
+         </div>`;
   } catch(e) { box.innerHTML = '<div class="loading">Could not load names.</div>'; }
 }
 renderFirstNames();
