@@ -1065,12 +1065,12 @@ function renderPanel() {
       '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
       '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>' +
       srcSection +
-      (isListedProp(p) ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
+      (p.lat != null ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
         + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '')
       + ((p.house_name || p.prev_house_name)
         ? '<div class="section" id="gazSection"><h3>The Gazette</h3>'
           + '<div id="gazBody" style="font-size:0.78rem;color:#8a7a5a">Searching the official record…</div></div>' : '');
-    if (isListedProp(p) && p.lat != null) loadNhle(p);
+    if (p.lat != null) loadNhle(p);
     if (p.house_name || p.prev_house_name) loadGazette(p);
   }
     else if (curTab === 'photos') {
@@ -2203,7 +2203,7 @@ async function loadNhle(p) {
     body.innerHTML =
       '<div class="nhle-row nhle-linked">'
       + '<a href="' + esc(ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry))
-      + '" target="_blank" rel="noopener">' + esc(ov.list_name || ('List entry ' + ov.list_entry)) + '</a>'
+      + '" target="_blank" rel="noopener noreferrer">' + esc(ov.list_name || ('List entry ' + ov.list_entry)) + '</a>'
       + '<div class="nhle-meta">Grade ' + esc(ov.list_grade || '—')
       + (ov.list_date ? ' · listed ' + esc(ov.list_date) : '')
       + ' · entry ' + esc(ov.list_entry) + '</div>'
@@ -2218,7 +2218,7 @@ async function loadNhle(p) {
     if (!rows.length) { body.textContent = 'No list entries recorded within 120m.'; return; }
     body.innerHTML = rows.map(e =>
       '<div class="nhle-row">'
-      + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener">' + esc(e.name) + '</a>'
+      + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener noreferrer">' + esc(e.name) + '</a>'
       + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
       + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
       + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
@@ -2233,9 +2233,14 @@ async function loadNhle(p) {
 
 // Record which list entry actually belongs to this property, or clear it.
 async function setNhle(propId, entry) {
+  // Being on the National Heritage List is what "listed" means, so confirming an
+  // entry records that too — a property can be listed without anyone having
+  // ticked the box, which is how Walton's Hotel ended up showing under a
+  // neighbour 146m away instead of the house it belongs to.
   const fields = entry
     ? { list_entry: entry.entry, list_name: entry.name, list_grade: entry.grade,
-        list_date: entry.listed || null, list_link: entry.link }
+        list_date: entry.listed || null, list_link: entry.link,
+        listed: 'Yes', listedGrade: entry.grade }
     : { list_entry: null, list_name: null, list_grade: null, list_date: null, list_link: null };
   const res = await fetch('/api/property/' + propId, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
@@ -2286,7 +2291,7 @@ document.getElementById('panelBody').addEventListener('click', async function(e)
     btn.disabled = true;
     try {
       await setNhle(curProp.id, nhleBtn ? JSON.parse(nhleBtn.dataset.nhle) : null);
-      loadNhle(curProp);
+      renderPanel();   // the Listed row and grade change too, so repaint the lot
     } catch (err) {
       btn.disabled = false;
       alert('Could not save that: ' + err.message);
