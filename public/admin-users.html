@@ -73,6 +73,15 @@ select.role-sel { background:#0f1923; border:1px solid #2a3a2a; color:#e8e0d0; b
   </div>
 </div>
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 async function load() {
   const res = await fetch('/api/admin/users');
   if (res.status === 401 || res.status === 403) { document.body.innerHTML = '<div style="padding:2rem;color:#c04040;text-align:center">Admin access required. <a href="/" style="color:#c8b87a">← Back</a></div>'; return; }
@@ -86,7 +95,7 @@ async function load() {
 
   document.getElementById('usersBody').innerHTML = users.length ? users.map(u => `
     <tr>
-      <td>${u.first_name} ${u.last_name}</td>
+      <td>${esc(u.first_name)} ${esc(u.last_name)}</td>
       <td style="color:#8a9a7a">${u.email}</td>
       <td>
         <select class="role-sel" onchange="setRole(${u.id},this.value)">
@@ -99,7 +108,7 @@ async function load() {
       <td style="color:#5a7a5a;font-size:0.75rem">${new Date(u.created_at).toLocaleDateString('en-GB')}</td>
       <td style="display:flex;gap:6px;flex-wrap:wrap">
         ${!u.approved?`<button class="btn approve" onclick="approve(${u.id})">✓ Approve</button>`:''}
-        <button class="btn danger" onclick="deleteUser(${u.id},'${u.first_name} ${u.last_name}')">Remove</button>
+        <button class="btn danger" onclick="deleteUser(${u.id},'${esc(u.first_name)} ${esc(u.last_name)}')">Remove</button>
       </td>
     </tr>`).join('') : '<tr><td colspan="6" class="no-users">No registered users yet</td></tr>';
 }
@@ -126,7 +135,7 @@ async function loadLog() {
   if (!r.length) { el.innerHTML = '<div class="no-users">No changes logged yet</div>'; return; }
   el.innerHTML = r.map(l=>`<div class="log-entry">
     <span class="log-time">${new Date(l.created_at).toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
-    <span class="log-user">${l.username||'—'}</span>
+    <span class="log-user">${esc(l.username||'—')}</span>
     <span class="log-detail">${l.action} ${l.entity_type} #${l.entity_id}${l.field?' · '+l.field:''}${l.new_value?' → '+String(l.new_value).substring(0,60):''}</span>
   </div>`).join('');
 }

@@ -690,6 +690,15 @@
 </div>
 
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 // ── DATA ─────────────────────────────────────────────────────────────────────
 // Properties are loaded from /api/all-props (data/all_props.json) so the map,
 // dashboard and server all read one source. Populated by loadProps() at init.
@@ -819,7 +828,7 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     const m = L.marker([lat, lng], { icon, draggable: canDrag })
       .bindPopup(`
         <div class="popup-title">${p.name || p.address || ((p.no ? p.no + ' ' : '') + p.street)}${p.demolished ? ' <span style="font-size:0.65rem;background:#555;color:#fff;border-radius:3px;padding:1px 5px;vertical-align:middle">LOST</span>' : ''}</div>
-        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${p.street}${p.demolished ? ' · <em style="color:#888">demolished</em>' : ''}${isManual ? ' <span style="color:#2090ff;font-size:0.7rem">● placed</span>' : ''}</div>
+        <div class="popup-sub">${p.no ? p.no + ' ' : ''}${esc(p.street)}${p.demolished ? ' · <em style="color:#888">demolished</em>' : ''}${isManual ? ' <span style="color:#2090ff;font-size:0.7rem">● placed</span>' : ''}</div>
         <button class="popup-btn" onclick="openProp(${p.id})">View Record →</button>
       `, { maxWidth: 240 })
       .addTo(map);
@@ -922,19 +931,19 @@ function renderPanel() {
   const ov = propOverrides[p.id] || {};  // server-saved overrides for this property
 
   if (curTab === 'data') {
-    const displayDesc = ov.desc || p.desc || '';
-    const displayHistory = ov.history || p.history || '';
-    const displayDate = ov.built || p.built || p.date_built;
-    const displayPlot = ov.plot_number || p.plot_number;
+    const displayDesc = esc(ov.desc || p.desc || '');
+    const displayHistory = esc(ov.history || p.history || '');
+    const displayDate = esc(ov.built || p.built || p.date_built);
+    const displayPlot = esc(ov.plot_number || p.plot_number);
     const isListed = isListedProp({ listed: ov.listed || p.listed });
-    const displayGrade = ov.listedGrade || p.listedGrade || p.listed_grade;
-    const displayArch = ov.architect || p.architect;
-    const displayBuilder = ov.builder || p.builder;
-    const displayBuiltFor = ov.built_for || p.built_for;
-    const displayConverted = ov.converted || p.converted;
-    const displayPrevName = ov.prev_house_name || p.prev_house_name;
+    const displayGrade = esc(ov.listedGrade || p.listedGrade || p.listed_grade);
+    const displayArch = esc(ov.architect || p.architect);
+    const displayBuilder = esc(ov.builder || p.builder);
+    const displayBuiltFor = esc(ov.built_for || p.built_for);
+    const displayConverted = esc(ov.converted || p.converted);
+    const displayPrevName = esc(ov.prev_house_name || p.prev_house_name);
     const hasNumber = !!(p.no || p.number);
-    const displayHouseName = hasNumber ? (p.name || p.house_name || '') : null;
+    const displayHouseName = hasNumber ? esc(p.name || p.house_name || '') : null;
     const address = (p.no||p.number ? (p.no||p.number)+' ' : '') + (p.street||'');
     const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
     let detailRows = '';
@@ -958,7 +967,7 @@ function renderPanel() {
     if (cachedNames.length) {
       namesHtml = cachedNames.map(n => {
         const years = n.year_from || n.year_to ? ` <span style="color:#8a7a5a;font-size:0.76rem">(${n.year_from||'?'}–${n.year_to||'present'})</span>` : '';
-        return `<div class="row"><span class="lbl">${n.house_name}</span><span class="val">${years}${n.notes ? '<br><span style="color:#8a7a5a;font-size:0.76rem">'+n.notes+'</span>' : ''}</span></div>`;
+        return `<div class="row"><span class="lbl">${esc(n.house_name)}</span><span class="val">${years}${n.notes ? '<br><span style="color:#8a7a5a;font-size:0.76rem">'+esc(n.notes)+'</span>' : ''}</span></div>`;
       }).join('');
     }
     body.innerHTML =
@@ -1051,7 +1060,7 @@ function renderPanel() {
           <div><strong>${name}</strong><br><span style="font-weight:normal">${s.type||s.t||''} · ${ts}</span></div>
           ${delBtn}
         </div>
-        ${s.text||s.tx ? `<div class="sub-text">${s.text||s.tx}</div>` : ''}
+        ${s.text||s.tx ? `<div class="sub-text">${esc(s.text||s.tx)}</div>` : ''}
         ${s.photoUrl ? `<img src="${s.photoUrl}" style="width:100%;border-radius:4px;margin-top:8px;object-fit:cover;max-height:400px;cursor:zoom-in" onclick="window._lightboxPhotos=[{url:'${s.photoUrl}'}];openLightbox(0)">` : ''}
       </div>`;
     }).join('');
@@ -1146,7 +1155,7 @@ async function renderTimeline(p, body) {
   events.forEach((ev, i) => {
     const isLast = i === events.length - 1;
     const editBtn = (canEdit && ev.type === 'resident' && ev.residentId)
-      ? `<button onclick="editResident(this)" data-prop="${p.id}" data-res="${ev.residentId}" data-from="${ev.fromYear||''}" data-to="${ev.toYear||''}" data-notes="${(ev.notes||'').replace(/"/g,'&quot;')}" title="Edit dates/notes" style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:#8a7a5a;padding:0 2px;line-height:1" tabindex="0">✏️</button>`
+      ? `<button onclick="editResident(this)" data-prop="${p.id}" data-res="${ev.residentId}" data-from="${ev.fromYear||''}" data-to="${ev.toYear||''}" data-notes="${esc((ev.notes||'').replace(/"/g,'&quot;'))}" title="Edit dates/notes" style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:#8a7a5a;padding:0 2px;line-height:1" tabindex="0">✏️</button>`
       : '';
     html += `<div class="tl-item">
       <div style="display:flex;flex-direction:column;align-items:center;margin-right:2px">
@@ -1297,11 +1306,11 @@ function printProperty() {
   ${photos.length ? `<div class="photos">${photos.map(ph=>`<img src="${ph.url}" alt="">`).join('')}</div>` : ''}
   <div class="section"><h2>Details</h2>
     ${ov.built||p.built ? `<div class="row"><span class="lbl">Built</span><span>${ov.built||p.built}</span></div>` : ''}
-    ${ov.architect||p.architect ? `<div class="row"><span class="lbl">Architect</span><span>${ov.architect||p.architect}</span></div>` : ''}
+    ${ov.architect||p.architect ? `<div class="row"><span class="lbl">Architect</span><span>${esc(ov.architect||p.architect)}</span></div>` : ''}
     ${ov.listed ? `<div class="row"><span class="lbl">Listed</span><span>${ov.listedGrade||'Yes'}</span></div>` : ''}
   </div>
-  ${ov.history ? `<div class="section"><h2>History</h2><p>${ov.history}</p></div>` : ''}
-  ${ov.desc ? `<div class="section"><h2>Architectural Description</h2><p>${ov.desc}</p></div>` : ''}
+  ${ov.history ? `<div class="section"><h2>History</h2><p>${esc(ov.history)}</p></div>` : ''}
+  ${ov.desc ? `<div class="section"><h2>Architectural Description</h2><p>${esc(ov.desc)}</p></div>` : ''}
   <div style="margin-top:30px;font-size:0.75rem;color:#aaa;border-top:1px solid #eee;padding-top:10px">
     Exported from Nottingham Park Houses · ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
   </div>
@@ -1533,7 +1542,7 @@ async function renderPeopleTab(propId, body) {
         html += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${ce.person_id})">
           <div style="width:30px;height:30px;border-radius:50%;background:${isServant?'#8a6a2a':'#4a7c5a'};color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(ce.first_name||'?')[0].toUpperCase()}</div>
           <div style="flex:1;min-width:0">
-            <div style="font-size:0.85rem;color:#1a1a1a">${ce.first_name||''} ${ce.last_name||''}</div>
+            <div style="font-size:0.85rem;color:#1a1a1a">${esc(ce.first_name||'')} ${esc(ce.last_name||'')}</div>
             <div style="font-size:0.74rem;color:#8a7a5a">${ce.relationship||''}${ce.occupation_at_census ? ' · '+ce.occupation_at_census : ''}${ce.age_at_census ? ' · aged '+ce.age_at_census : ''}</div>
           </div>
           <div style="font-size:0.7rem;color:#4a7c5a">View →</div>
@@ -1547,8 +1556,8 @@ async function renderPeopleTab(propId, body) {
       noCensus.forEach(p => {
         html += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${p.id})">
           <div style="width:30px;height:30px;border-radius:50%;background:#6a5a3a;color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(p.first_name||'?')[0].toUpperCase()}</div>
-          <div style="flex:1"><div style="font-size:0.85rem;color:#1a1a1a">${p.first_name||''} ${p.last_name||''}</div>
-          ${p.known_as ? `<div style="font-size:0.74rem;color:#8a7a5a;font-style:italic">${p.known_as}</div>` : ''}
+          <div style="flex:1"><div style="font-size:0.85rem;color:#1a1a1a">${esc(p.first_name||'')} ${esc(p.last_name||'')}</div>
+          ${p.known_as ? `<div style="font-size:0.74rem;color:#8a7a5a;font-style:italic">${esc(p.known_as)}</div>` : ''}
           </div><div style="font-size:0.7rem;color:#4a7c5a">View →</div>
         </div>`;
       });
@@ -1571,8 +1580,8 @@ async function renderPeopleTab(propId, body) {
           return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0e8d0;cursor:pointer" onclick="openPersonInOverlay(${r.person_id})">
             <div style="width:30px;height:30px;border-radius:50%;background:#5a6a8a;color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:bold;flex-shrink:0">${(r.first_name||r.known_as||'?')[0].toUpperCase()}</div>
             <div style="flex:1;min-width:0">
-              <div style="font-size:0.85rem;color:#1a1a1a">${fullName}${r.known_as && r.known_as !== fullName ? ` <span style="font-style:italic;color:#8a7a5a;font-size:0.78rem">(${r.known_as})</span>` : ''}</div>
-              <div style="font-size:0.74rem;color:#8a7a5a">${years}${r.notes ? (years ? ' · ' : '') + r.notes : ''}</div>
+              <div style="font-size:0.85rem;color:#1a1a1a">${fullName}${r.known_as && r.known_as !== fullName ? ` <span style="font-style:italic;color:#8a7a5a;font-size:0.78rem">(${esc(r.known_as)})</span>` : ''}</div>
+              <div style="font-size:0.74rem;color:#8a7a5a">${years}${r.notes ? (years ? ' · ' : '') + esc(r.notes) : ''}</div>
             </div>
             <div style="display:flex;align-items:center;gap:6px">
               <div style="font-size:0.7rem;color:#4a7c5a">View →</div>
@@ -2242,9 +2251,9 @@ function renderNamesList(names) {
     const years = n.year_from || n.year_to
       ? ` <span style="color:#8a7a5a;font-size:0.76rem">(${n.year_from||'?'}–${n.year_to||'present'})</span>`
       : '';
-    const notes = n.notes ? `<div style="color:#8a7a5a;font-size:0.75rem">${n.notes}</div>` : '';
+    const notes = n.notes ? `<div style="color:#8a7a5a;font-size:0.75rem">${esc(n.notes)}</div>` : '';
     return `<div style="display:flex;align-items:flex-start;justify-content:space-between;padding:7px 9px;border:1px solid #ddd8c0;border-radius:4px;margin-bottom:5px;background:white">
-      <div><span style="font-weight:500">${n.house_name}</span>${years}${notes}</div>
+      <div><span style="font-weight:500">${esc(n.house_name)}</span>${years}${notes}</div>
       <button onclick="deletePropertyName(${n.id})" style="background:none;border:none;color:#c05050;cursor:pointer;font-size:1rem;line-height:1;padding:0 0 0 8px;flex-shrink:0" title="Remove">✕</button>
     </div>`;
   }).join('');

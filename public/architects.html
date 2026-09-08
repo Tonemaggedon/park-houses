@@ -125,6 +125,15 @@ nav a.active { background:#4a7c5a; border-color:#3a6a4a; }
 </div>
 
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 let map, markers={}, isAdmin=false, allProps=[], currentFirm=null;
 
 async function init() {
@@ -161,7 +170,7 @@ async function loadList() {
     const click = f.id ? `onclick="loadFirm(${f.id})"` : `onclick="loadFirmByName('${f.name.replace(/'/g,"\\'")}')"`;
     return `<div class="firm-card" ${click}>
       <div class="firm-avatar">${init}</div>
-      <div><div class="firm-name">${f.name}</div><div class="firm-meta">${yrs||'Architecture firm'} · ${f.member_count||0} members</div></div>
+      <div><div class="firm-name">${esc(f.name)}</div><div class="firm-meta">${yrs||'Architecture firm'} · ${f.member_count||0} members</div></div>
       <div class="firm-count">${f.prop_count} properties</div>
     </div>`;
   }).join('') || '<div style="color:#8a7a5a;padding:8px">No firms recorded</div>';
@@ -221,7 +230,7 @@ function renderPropList(firmName) {
     return `<div class="prop-item" onclick="window.open('/?id=${p.id}','_blank')" title="Open on map">
       <div class="prop-name">${addr||'Property '+p.id}</div>
       ${p.date_built ? `<div class="prop-date">c.${p.date_built}</div>` : ''}
-      ${p.builder ? `<span class="prop-tag">Builder: ${p.builder}</span>` : ''}
+      ${p.builder ? `<span class="prop-tag">Builder: ${esc(p.builder)}</span>` : ''}
     </div>`;
   }).join('')}</div>` : '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No Park properties recorded for this firm.</div>';
   initOrUpdateMap(props);
@@ -270,11 +279,11 @@ async function loadPersonArch(personId) {
   document.getElementById('propCount').textContent = works.length + (works.filter(w=>w.lat&&w.lng).length < works.length ? ` (${works.filter(w=>w.lat&&w.lng).length} mapped)` : '');
   document.getElementById('propList').innerHTML = works.length ? `<div class="prop-grid">${works.map(w =>
     `<div class="prop-item" onclick="${w.id>0?'selectWork('+w.id+')':''}">
-      <div class="prop-name">${w.name}</div>
+      <div class="prop-name">${esc(w.name)}</div>
       ${w.year_start ? `<div class="prop-date">${w.year_start}${w.year_end&&w.year_end!==w.year_start?'–'+w.year_end:''}</div>` : ''}
       ${w.city&&w.city!=='Nottingham' ? `<span class="prop-tag">${w.city}</span>` : ''}
       ${w.location_uncertain ? `<span class="prop-tag" style="background:#fef0d0;color:#7a4a00">⚠ Location approximate</span>` : ''}
-      ${w.notes ? `<div class="prop-date" style="font-style:italic">${w.notes}</div>` : ''}
+      ${w.notes ? `<div class="prop-date" style="font-style:italic">${esc(w.notes)}</div>` : ''}
     </div>`
   ).join('')}</div>` : '<div style="padding:16px;color:#8a7a5a;font-size:0.83rem">No individual works recorded.</div>';
   initOrUpdateMap([], works);
@@ -294,7 +303,7 @@ function initOrUpdateMap(props, works=[]) {
     const prop = allProps.find(ap=>ap.id===p.id)||p;
     if (!prop.lat||!prop.lng) return;
     const m = L.circleMarker([prop.lat,prop.lng],{radius:7,fillColor:'#2a5a8a',color:'#1a3a6a',weight:2,fillOpacity:0.8}).addTo(map);
-    m.bindTooltip(`<b>${(prop.address||'Property '+prop.id).replace(/:\s*/,', ')}</b>${prop.date_built?'<br>c.'+prop.date_built:''}`,{direction:'top'});
+    m.bindTooltip(`<b>${esc((prop.address||'Property '+prop.id).replace(/:\s*/,', '))}</b>${prop.date_built?'<br>c.'+prop.date_built:''}`,{direction:'top'});
     m.on('click',()=>window.open('/?id='+prop.id,'_blank'));
     markers[prop.id]=m; pts.push([prop.lat,prop.lng]);
   });
@@ -302,7 +311,7 @@ function initOrUpdateMap(props, works=[]) {
   works.filter(w=>w.lat&&w.lng).forEach(w=>{
     const uncertain=w.location_uncertain;
     const m=L.circleMarker([w.lat,w.lng],{radius:7,fillColor:uncertain?'#d4880a':'#4a7c5a',color:uncertain?'#a06008':'#2a5a3a',weight:2,fillOpacity:0.8}).addTo(map);
-    m.bindTooltip(`<b>${w.name}</b>${w.year_start?'<br>'+w.year_start:''}`,{direction:'top'});
+    m.bindTooltip(`<b>${esc(w.name)}</b>${w.year_start?'<br>'+w.year_start:''}`,{direction:'top'});
     markers[w.id]=m; pts.push([w.lat,w.lng]);
   });
   map.invalidateSize();

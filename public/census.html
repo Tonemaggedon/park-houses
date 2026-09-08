@@ -280,6 +280,15 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
 </div>
 
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 let currentYear = null;
 let allProps = [];
 let currentFilter = 'all';
@@ -382,7 +391,7 @@ function renderProps() {
       ? 'Unoccupied'
       : 'No census record';
     return `<div class="prop-card ${p.status}" onclick="openCensus(${p.id},'${esc(p.address)}')" title="${esc(p.address)}">
-      <div class="pc-address">${p.address}</div>
+      <div class="pc-address">${esc(p.address)}</div>
       <div class="pc-status">${statusLabel}</div>
     </div>`;
   }).join('');
@@ -1056,7 +1065,7 @@ function renderPreview() {
       <td><strong>${name}</strong>${row.relationship?' <span style="color:#9a8a6a;font-size:0.72rem">('+row.relationship+')</span>':''}</td>
       <td style="color:#6a5a3a">${row.relationship||'—'}</td>
       <td style="color:#6a5a3a">${row.birth_year||'—'}${row.age?' / age '+row.age:''}</td>
-      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${row.occupation||'—'}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(row.occupation||'—')}</td>
       <td>${badge} ${selectHtml}</td>
     </tr>`;
   }).join('');

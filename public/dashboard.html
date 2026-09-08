@@ -250,6 +250,15 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 </div>
 
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 let allProps=[], stats={}, jobsChart=null, researchFilter='all', researchMap={}, currentUser=null;
 let peopleCounts={};
 
@@ -343,7 +352,7 @@ function renderResearchGrid(filter){
     const chips = [
       pCount ? `<span class="rc-badge badge-desc">👤 ${pCount} ${pCount===1?'person':'people'}</span>`
              : `<span class="rc-badge badge-none">No people</span>`,
-      p.architect ? `<span class="rc-badge badge-desc" style="color:#8a9a7a;border-color:rgba(138,154,122,0.3)">🏛 ${p.architect}</span>` : '',
+      p.architect ? `<span class="rc-badge badge-desc" style="color:#8a9a7a;border-color:rgba(138,154,122,0.3)">🏛 ${esc(p.architect)}</span>` : '',
     ].filter(Boolean).join('');
     return `<div class="research-card" onclick="window.location='/?prop=${p.id}'">
       <div class="rc-body">
@@ -527,7 +536,7 @@ async function renderLeagueTable(){
       </tr></thead>
       <tbody>${data.map((r,i)=>`<tr style="border-bottom:1px solid #1e2a1e;${i%2?'background:rgba(200,184,122,0.03)':''}">
         <td style="padding:6px 8px;color:#5a7a5a">${i+1}</td>
-        <td style="padding:6px 8px"><a href="/people?person=${r.person_id}" style="color:#e8e0d0;text-decoration:none;font-weight:500">${r.name}</a></td>
+        <td style="padding:6px 8px"><a href="/people?person=${r.person_id}" style="color:#e8e0d0;text-decoration:none;font-weight:500">${esc(r.name)}</a></td>
         <td style="padding:6px 8px;color:#8a9a7a;font-size:0.75rem">${(r.properties||[]).slice(0,3).join(', ')}${r.prop_count>3?' …':''}</td>
         <td style="padding:6px 8px;text-align:right;color:#c8b87a;font-weight:700">${r.prop_count}</td>
       </tr>`).join('')}</tbody>
@@ -622,7 +631,7 @@ async function renderRecentChanges() {
         <span style="font-size:1rem;flex-shrink:0">${entityIcon(c.entity_type)}</span>
         <div style="flex:1;min-width:0">
           <div style="font-size:0.83rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${entityLink} ${detail}</div>
-          <div style="font-size:0.7rem;color:#5a7a5a">${c.username||'system'} · ${ago}</div>
+          <div style="font-size:0.7rem;color:#5a7a5a">${esc(c.username||'system')} · ${ago}</div>
         </div>
       </div>`;
     }).join('');

@@ -8,20 +8,48 @@ const multer   = require('multer');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// ── Global CORS (dev) ─────────────────────────────────────────────────────────
+// ── Global CORS ───────────────────────────────────────────────────────────────
+// Reads are public, so other origins may GET. Writes must come from our own
+// pages: allowing cross-origin POST/PUT/DELETE let any website drive the API on
+// a visitor's behalf. The site's own pages are same-origin and never use CORS.
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  res.header('Access-Control-Allow-Private-Network', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const ADMIN_USER     = process.env.ADMIN_USER     || 'admin';
-const ADMIN_PASS     = process.env.ADMIN_PASS     || 'parkhouses2024';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ph-secret-change-in-prod';
+const IS_PROD        = process.env.NODE_ENV === 'production';
+const ADMIN_USER     = process.env.ADMIN_USER || 'admin';
+
+// These defaults are public (this repo is on GitHub), so in production they must
+// never be used: the fallback password would be a known admin login, and the
+// fallback session secret would let anyone forge an admin cookie. Rather than
+// take the site down, fall back to something safe-but-degraded and say so.
+const ADMIN_PASS_SET = !!process.env.ADMIN_PASS;
+const ADMIN_PASS     = process.env.ADMIN_PASS || (IS_PROD ? null : 'parkhouses2024');
+const SESSION_SECRET = process.env.SESSION_SECRET
+  || (IS_PROD ? require('crypto').randomBytes(32).toString('hex') : 'ph-secret-change-in-prod');
+
+if (IS_PROD && !process.env.SESSION_SECRET) {
+  console.error('[SECURITY] SESSION_SECRET is not set. Using a random secret for this ' +
+                'process — everyone will be logged out on each restart. Set it in Railway Variables.');
+}
+// Compare in constant time so the admin password can't be recovered a character
+// at a time from response timings. Hashing first keeps lengths equal.
+function timingSafeEqualStr(a, b) {
+  const crypto = require('crypto');
+  const ha = crypto.createHash('sha256').update(String(a)).digest();
+  const hb = crypto.createHash('sha256').update(String(b)).digest();
+  return crypto.timingSafeEqual(ha, hb);
+}
+
+if (IS_PROD && !ADMIN_PASS_SET) {
+  console.error('[SECURITY] ADMIN_PASS is not set. The built-in admin login is DISABLED ' +
+                'so the public default cannot be used. Set it in Railway Variables.');
+}
 const COORDS_FILE    = path.join(__dirname, 'data', 'coords_overrides.json');
 const PROPS_FILE     = path.join(__dirname, 'data', 'property_overrides.json');
 const USERS_FILE     = path.join(__dirname, 'data', 'users.json');
@@ -738,7 +766,11 @@ function isContributor(req) {
 // ── Auth routes ───────────────────────────────────────────────────────────────
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === ADMIN_USER && password === ADMIN_PASS) {
+  if (!ADMIN_PASS) return res.status(503).json({ error: 'Admin login is not configured' });
+  if (typeof username !== 'string' || typeof password !== 'string') {
+    return res.status(400).json({ error: 'Invalid credentials' });
+  }
+  if (username === ADMIN_USER && timingSafeEqualStr(password, ADMIN_PASS)) {
     req.session.isAdmin = true;
     req.session.username = username;
     res.json({ ok: true });
@@ -1246,8 +1278,8 @@ app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
 });
 
 // Admin or photo owner: delete a photo
-app.delete('/api/property/:id/photo', async (req, res) => {
-  if (!req.session.isAdmin && !req.session.userId) return res.status(401).json({ error: 'Login required' });
+app.delete('/api/property/:id/photo', requireContributor, async (req, res) => {
+  // authorization handled by requireContributor in the route signature
   const id = parseInt(req.params.id, 10);
   const { url } = req.body;
   try {
@@ -1321,7 +1353,7 @@ app.post('/api/property/:id/submission', async (req, res) => {
 
 // Delete a submission (admin or the original submitter)
 app.delete('/api/property/:id/submission/:subId', async (req, res) => {
-  if (!req.session.userId && !req.session.isAdmin) return res.status(401).json({ error: 'Login required' });
+  // authorization handled by requireContributor in the route signature
   const propId = parseInt(req.params.id);
   const subId  = parseInt(req.params.subId);
   try {
@@ -1340,7 +1372,7 @@ app.delete('/api/property/:id/submission/:subId', async (req, res) => {
 
 // Upload photo for a submission (returns URL, caller includes in submission)
 app.post('/api/property/:id/submission-photo', async (req, res) => {
-  if (!req.session.userId && !req.session.isAdmin) return res.status(401).json({ error: 'Must be logged in' });
+  // authorization handled by requireContributor in the route signature
   const propId = parseInt(req.params.id, 10);
   const chunks = [];
   req.on('data', c => chunks.push(c));
@@ -2574,8 +2606,8 @@ app.get('/api/person/:id/links', async (req, res) => {
   } catch(e) { res.json([]); }
 });
 
-app.post('/api/person/:id/links', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.post('/api/person/:id/links', requireContributor, async (req, res) => {
+  // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'No DB' });
   const { title, url, link_type, notes } = req.body;
   if (!title || !url) return res.status(400).json({ error: 'title and url required' });
@@ -2590,8 +2622,8 @@ app.post('/api/person/:id/links', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.delete('/api/person/:personId/links/:linkId', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.delete('/api/person/:personId/links/:linkId', requireContributor, async (req, res) => {
+  // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'No DB' });
   try {
     const r = await db.query('DELETE FROM person_links WHERE id=$1 AND person_id=$2 RETURNING title,url', [parseInt(req.params.linkId), parseInt(req.params.personId)]);
@@ -2662,8 +2694,8 @@ async function inferFamilyRelationships(db, personId, otherId, relType) {
   }
 }
 
-app.post('/api/person/:id/relationship', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.post('/api/person/:id/relationship', requireContributor, async (req, res) => {
+  // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'No DB' });
   const { other_person_id, relationship_type } = req.body;
   if (!other_person_id || !relationship_type) return res.status(400).json({ error: 'other_person_id and relationship_type required' });
@@ -2706,8 +2738,8 @@ app.get('/api/person/:id/media', async (req, res) => {
   } catch(e) { res.json([]); }
 });
 
-app.post('/api/person/:id/media', (req, res, next) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.post('/api/person/:id/media', requireContributor, (req, res, next) => {
+  // authorization handled by requireContributor in the route signature
   next();
 }, (req, res) => {
   const personId = parseInt(req.params.id);
@@ -2748,8 +2780,8 @@ app.delete('/api/person/:personId/media/:mediaId', requireAdmin, async (req, res
 });
 
 // Upload a video file for a person
-app.post('/api/person/:id/media/video', (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.post('/api/person/:id/media/video', requireContributor, (req, res) => {
+  // authorization handled by requireContributor in the route signature
   const personId = parseInt(req.params.id);
   const chunks = [];
   let size = 0;
@@ -2777,7 +2809,7 @@ app.post('/api/person/:id/media/video', (req, res) => {
 });
 
 // ── Person photo upload (any logged-in user or admin) ────────────────────────
-app.post('/api/person/:id/photo', (req, res, next) => {
+app.post('/api/person/:id/photo', requireContributor, (req, res, next) => {
   if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) {
     return res.status(401).json({ error: 'Login required' });
   }
@@ -2796,8 +2828,8 @@ app.post('/api/person/:id/photo', (req, res, next) => {
   });
 });
 
-app.post('/api/person', async (req, res) => {
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+app.post('/api/person', requireContributor, async (req, res) => {
+  // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const { first_name, last_name, known_as, born_date, born_year, born_place,
@@ -2811,9 +2843,9 @@ app.post('/api/person', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.patch('/api/person/:id', async (req, res) => {
+app.patch('/api/person/:id', requireContributor, async (req, res) => {
   // Allow admin OR logged-in users to edit
-  if (!req.session || (!req.session.isAdmin && !req.session.userId && !req.session.username)) return res.status(401).json({ error: 'Login required' });
+  // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     const id = parseInt(req.params.id);
@@ -3116,7 +3148,7 @@ async function getResearchKey(session) {
   return null;
 }
 
-app.post('/api/property-research/:id', async (req, res) => {
+app.post('/api/property-research/:id', requireContributor, async (req, res) => {
   if (!req.session || (!req.session.isAdmin && !req.session.userId)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
   const username = await getResearchKey(req.session);
@@ -3136,7 +3168,7 @@ app.delete('/api/property-research', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.delete('/api/property-research/:id', async (req, res) => {
+app.delete('/api/property-research/:id', requireContributor, async (req, res) => {
   if (!req.session || (!req.session.isAdmin && !req.session.userId)) return res.status(401).json({ error: 'Login required' });
   if (!db) return res.status(503).json({ error: 'No DB' });
   const username = await getResearchKey(req.session);
@@ -3392,23 +3424,23 @@ app.get('/api/scrape-all-descs', async (req, res) => {
 
 // ── Save scraped descriptions (local dev helper) ──────────────────────────────
 app.options('/api/save-descs', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'POST');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.sendStatus(204);
 });
-app.post('/api/save-descs', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}, express.json({limit: '10mb'}), (req, res) => {
+// Admin only. This rewrites the description of every property in the shared data
+// file, so it was previously an unauthenticated, cross-origin site defacement —
+// and descriptions render as HTML, which made it stored XSS.
+app.post('/api/save-descs', requireAdmin, express.json({limit: '10mb'}), (req, res) => {
   const descs = req.body;
+  if (!descs || typeof descs !== 'object' || Array.isArray(descs)) {
+    return res.status(400).json({ error: 'Expected an object of { propertyId: description }' });
+  }
   const allPropsFile = path.join(__dirname, 'data', 'all_props.json');
   try {
     const props = JSON.parse(fs.readFileSync(allPropsFile, 'utf8'));
     let updated = 0;
     props.forEach(p => {
-      if (descs[p.id]) { p.desc = descs[p.id]; updated++; }
+      const d = descs[p.id];
+      if (typeof d === 'string') { p.desc = d; updated++; }
     });
     fs.writeFileSync(allPropsFile, JSON.stringify(props, null, 2));
     res.json({ ok: true, updated });

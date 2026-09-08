@@ -292,6 +292,15 @@
 </div>
 
 <script>
+// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
+// bios, notes, descriptions) would otherwise execute as markup.
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 let allPeople = [];
 let currentPersonId = null;
 let canUploadPhotos = false;
@@ -506,9 +515,9 @@ function renderGrid(list) {
       <div class="card-top">
         <div class="person-avatar">${avatar}</div>
         <div>
-          <div class="card-name">${displayName(p)}</div>
-          ${p.known_as ? `<div class="card-dates" style="font-style:italic">${p.known_as}</div>` : ''}
-          <div class="card-dates">${lifespan(p)}</div>
+          <div class="card-name">${esc(displayName(p))}</div>
+          ${p.known_as ? `<div class="card-dates" style="font-style:italic">${esc(p.known_as)}</div>` : ''}
+          <div class="card-dates">${esc(lifespan(p))}</div>
         </div>
       </div>
       ${occs.length ? `<div class="occ-pills">${occHtml}</div>` : ''}
@@ -590,8 +599,8 @@ function renderProfile(p) {
   if (p.known_as || p.maiden_name) {
     html.push(`<div class="pane-section">
       <div class="detail-grid">
-        ${p.known_as ? `<span class="lbl">Also known as</span><span class="val">${p.known_as}</span>` : ''}
-        ${p.maiden_name ? `<span class="lbl">Née</span><span class="val">${p.maiden_name}</span>` : ''}
+        ${p.known_as ? `<span class="lbl">Also known as</span><span class="val">${esc(p.known_as)}</span>` : ''}
+        ${p.maiden_name ? `<span class="lbl">Née</span><span class="val">${esc(p.maiden_name)}</span>` : ''}
         ${p.born_place ? `<span class="lbl">Born</span><span class="val">${p.born_date||p.born_year||''}${p.born_place ? ' — '+p.born_place : ''}</span>` : ''}
       </div>
     </div>`);
@@ -606,7 +615,7 @@ function renderProfile(p) {
     html.push(`<div class="pane-section">
       <h3>Burial</h3>
       <div class="detail-grid">
-        ${p.grave_location ? `<span class="lbl">Location</span><span class="val">${p.grave_location}</span>` : ''}
+        ${p.grave_location ? `<span class="lbl">Location</span><span class="val">${esc(p.grave_location)}</span>` : ''}
         ${p.grave_number ? `<span class="lbl">Grave ref.</span><span class="val">${p.grave_number}</span>` : ''}
       </div>
     </div>`);
@@ -631,9 +640,9 @@ function renderProfile(p) {
       <div class="occ-item" style="display:flex;align-items:flex-start;gap:4px">
         <div class="occ-years">${o.from_year||''}${o.from_year && o.to_year ? '–' : ''}${o.to_year&&o.to_year!==o.from_year ? o.to_year : ''}</div>
         <div style="flex:1">
-          <div class="occ-title">${o.occupation}</div>
+          <div class="occ-title">${esc(o.occupation)}</div>
           ${o.employer ? `<div class="occ-employer">${o.employer}</div>` : ''}
-          ${o.notes ? `<div class="occ-notes">${o.notes}</div>` : ''}
+          ${o.notes ? `<div class="occ-notes">${esc(o.notes)}</div>` : ''}
         </div>
         ${canEditOcc && o.id ? `<button onclick="event.stopPropagation();deleteOccupation(${o.id},${p.id})" title="Remove occupation" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
       </div>`).join('')}</div>` : `<p class="section-empty">No occupation records.</p>`}
@@ -686,7 +695,7 @@ function renderProfile(p) {
           <div class="census-row" style="display:flex;align-items:center;gap:6px">
             <span class="census-role">${ce.relationship||'—'}</span>
             <span class="census-occ">${ce.occupation_at_census||'—'}${ce.age_at_census ? ` (aged ${ce.age_at_census})` : ''}</span>
-            ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ce.address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#2a1a4a" title="Address outside The Park">${ce.address}</span>` : ce.unresolved_address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#5a3a7a" title="Unresolved census address">${ce.unresolved_address} (unresolved)</span>` : ''}
+            ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ce.address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#2a1a4a" title="Address outside The Park">${esc(ce.address)}</span>` : ce.unresolved_address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#5a3a7a" title="Unresolved census address">${ce.unresolved_address} (unresolved)</span>` : ''}
             ${canEditCensus && ce.id ? `<button onclick="event.stopPropagation();toggleCensusEdit(${ce.id})" title="Edit this census entry" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#5a7a5a;font-size:0.8rem;padding:0 4px;line-height:1;flex-shrink:0">✎</button>` : ''}
             ${canEditCensus && ce.id ? `<button onclick="event.stopPropagation();deleteCensusEntry(${ce.id},${p.id})" title="Delete this census entry" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
           </div>
@@ -699,7 +708,7 @@ function renderProfile(p) {
               <div style="grid-column:1/-1"><label style="font-size:0.7rem;color:#8a7a5a">Occupation</label><br>
                 <input id="ce-occ-${ce.id}" value="${(ce.occupation_at_census||'').replace(/"/g,'&quot;')}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem;box-sizing:border-box"></div>
               <div style="grid-column:1/-1"><label style="font-size:0.7rem;color:#8a7a5a">Birth place</label><br>
-                <input id="ce-birth-${ce.id}" value="${(ce.birth_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem;box-sizing:border-box"></div>
+                <input id="ce-birth-${ce.id}" value="${esc((ce.birth_place||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem;box-sizing:border-box"></div>
             </div>
             <div style="display:flex;gap:6px">
               <button onclick="saveCensusEdit(${ce.id},${p.id})" style="background:#4a7c5a;color:white;border:none;border-radius:4px;padding:4px 12px;font-size:0.78rem;cursor:pointer;font-family:Georgia,serif">Save</button>
@@ -776,7 +785,7 @@ function renderProfile(p) {
   if ((p.places||[]).length) {
     const placeHtml = p.places.map(pl => `
       <div class="place-item">
-        <h4>${pl.name}</h4>
+        <h4>${esc(pl.name)}</h4>
         ${pl.connection ? `<div class="place-conn">${pl.connection}</div>` : ''}
         ${pl.location ? `<div class="place-loc">📍 ${pl.location}</div>` : ''}
         ${pl.description ? `<div style="font-size:0.8rem;color:#4a4a4a;margin-top:6px;line-height:1.6">${pl.description}</div>` : ''}
@@ -791,7 +800,7 @@ function renderProfile(p) {
       <div class="bib-item">
         <div class="bib-title">${b.title}</div>
         <div class="bib-year">${[b.year, b.publisher].filter(Boolean).join(' · ')}</div>
-        ${b.notes ? `<div class="bib-notes">${b.notes}</div>` : ''}
+        ${b.notes ? `<div class="bib-notes">${esc(b.notes)}</div>` : ''}
         ${b.url ? `<a href="${b.url}" target="_blank">View online ↗</a>` : ''}
       </div>`).join('');
     html.push(`<div class="pane-section"><h3>Bibliography</h3>${bibHtml}</div>`);
@@ -812,14 +821,14 @@ function renderProfile(p) {
       <h3>Edit Record</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
         <div><label style="font-size:0.75rem;color:#8a7a5a">First name(s)</label><br>
-          <input id="edit_first_name" value="${(p.first_name||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+          <input id="edit_first_name" value="${esc((p.first_name||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Last name</label><br>
-          <input id="edit_last_name" value="${(p.last_name||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+          <input id="edit_last_name" value="${esc((p.last_name||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as</label><br>
-        <input id="edit_known_as" value="${(p.known_as||'').replace(/"/g,'&quot;')}" placeholder="e.g. nickname or full formal name" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+        <input id="edit_known_as" value="${esc((p.known_as||'').replace(/"/g,'&quot;'))}" placeholder="e.g. nickname or full formal name" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Née (maiden name)</label><br>
-        <input id="edit_maiden_name" value="${(p.maiden_name||'').replace(/"/g,'&quot;')}" placeholder="e.g. Smith" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+        <input id="edit_maiden_name" value="${esc((p.maiden_name||'').replace(/"/g,'&quot;'))}" placeholder="e.g. Smith" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       ${(()=>{
         const MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
         function parseDateParts(val) {
@@ -850,14 +859,14 @@ function renderProfile(p) {
         </select>
       </div>
       <div style="margin-bottom:8px"><label style="font-size:0.75rem;color:#8a7a5a">Honours / postnominals</label><br>
-        <input id="edit_postnominals" value="${(p.postnominals||'').replace(/"/g,'&quot;')}" placeholder="e.g. OBE, CBE, MBE" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
+        <input id="edit_postnominals" value="${esc((p.postnominals||'').replace(/"/g,'&quot;'))}" placeholder="e.g. OBE, CBE, MBE" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem;margin-top:3px"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
         <div><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br>
-          <input id="edit_born_place" value="${(p.born_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+          <input id="edit_born_place" value="${esc((p.born_place||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Died place</label><br>
-          <input id="edit_died_place" value="${(p.died_place||'').replace(/"/g,'&quot;')}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+          <input id="edit_died_place" value="${esc((p.died_place||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Grave location</label><br>
-          <input id="edit_grave_location" value="${(p.grave_location||'').replace(/"/g,'&quot;')}" placeholder="e.g. General Cemetery, Nottm" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
+          <input id="edit_grave_location" value="${esc((p.grave_location||'').replace(/"/g,'&quot;'))}" placeholder="e.g. General Cemetery, Nottm" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
         <div><label style="font-size:0.75rem;color:#8a7a5a">Grave number</label><br>
           <input id="edit_grave_number" value="${(p.grave_number||'').replace(/"/g,'&quot;')}" placeholder="e.g. Section A, Plot 12" style="width:100%;padding:5px 8px;border:1px solid #d0c090;border-radius:4px;font-size:0.83rem"></div>
       </div>
@@ -869,7 +878,7 @@ function renderProfile(p) {
         <button onclick="savePerson(${p.id})" style="background:#1a3a2a;color:#e8dfc8;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem">Save changes</button>
         <button onclick="showAddRelationship(${p.id})" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#4a3a1a">+ Add relationship</button>
         <button onclick="showMergeModal(${p.id})" style="background:#fff0f0;border:1px solid #e0a0a0;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;color:#8a2020">⚠ Merge duplicate…</button>
-        ${(()=>{ const me = window._me || _me; const isAdmin = me && (me.isAdmin || (me.user && me.user.role==='admin')); return isAdmin ? `<button onclick="deletePerson(${p.id},'${(p.first_name+' '+p.last_name).replace(/'/g,"\\'")}')" style="background:#6a1010;color:white;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;margin-left:auto">🗑 Delete person</button>` : ''; })()}
+        ${(()=>{ const me = window._me || _me; const isAdmin = me && (me.isAdmin || (me.user && me.user.role==='admin')); return isAdmin ? `<button onclick="deletePerson(${p.id},'${esc((p.first_name+' '+p.last_name).replace(/'/g,"\\'"))}')" style="background:#6a1010;color:white;border:none;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.83rem;margin-left:auto">🗑 Delete person</button>` : ''; })()}
         <span id="saveStatus" style="font-size:0.78rem;color:#4a7c5a"></span>
       </div>
     </div>`);
@@ -906,7 +915,7 @@ async function loadPersonLinks(personId) {
         <span style="font-size:1rem">${l.link_type==='audio'?'🔊':l.link_type==='document'?'📄':'🔗'}</span>
         <div style="flex:1">
           <a href="${l.url}" target="_blank" style="font-size:0.85rem;color:#1a4a2a;font-weight:600">${l.title}</a>
-          ${l.notes?`<div style="font-size:0.73rem;color:#8a7a5a">${l.notes}</div>`:''}
+          ${l.notes?`<div style="font-size:0.73rem;color:#8a7a5a">${esc(l.notes)}</div>`:''}
         </div>
         ${canUploadPhotos?`<button onclick="deleteLink(${personId},${l.id})" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem">✕</button>`:''}
       </div>`).join('');
@@ -1162,19 +1171,19 @@ async function loadMediaGallery(personId) {
       if (m.media_type === 'document') {
         return `<div style="width:100%;background:#f0ead8;border:1px solid #d8c8a0;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px">
           <span style="font-size:1.3rem">📄</span>
-          <div><a href="${m.url}" target="_blank" style="font-size:0.82rem;color:#2a4a2a;font-weight:600">${m.filename||'Document'}</a>${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a">${m.caption}</div>`:''}</div>
+          <div><a href="${m.url}" target="_blank" style="font-size:0.82rem;color:#2a4a2a;font-weight:600">${m.filename||'Document'}</a>${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a">${esc(m.caption)}</div>`:''}</div>
           ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem">✕</button>`:''}
         </div>`;
       } else if (m.media_type === 'video') {
         return `<div style="width:100%">
           <video controls style="width:100%;border-radius:6px;max-height:260px;background:#1a1a1a"><source src="${m.url}">Your browser does not support video.</video>
-          ${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a;margin-top:3px">${m.caption}</div>`:''}
+          ${m.caption?`<div style="font-size:0.72rem;color:#8a7a5a;margin-top:3px">${esc(m.caption)}</div>`:''}
           ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="margin-top:4px;background:none;border:1px solid #d8c8a0;border-radius:4px;cursor:pointer;color:#c04040;font-size:0.75rem;padding:2px 8px">Remove</button>`:''}
         </div>`;
       } else {
         return `<div style="position:relative">
-          <img src="${m.url}" alt="${m.caption||''}" style="width:120px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #d8c8a0;cursor:pointer" onclick="window.open('${m.url}','_blank')" title="${m.caption||''}">
-          ${m.caption?`<div style="font-size:0.68rem;color:#8a7a5a;text-align:center;max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${m.caption}</div>`:''}
+          <img src="${m.url}" alt="${esc(m.caption||'')}" style="width:120px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #d8c8a0;cursor:pointer" onclick="window.open('${m.url}','_blank')" title="${esc(m.caption||'')}">
+          ${m.caption?`<div style="font-size:0.68rem;color:#8a7a5a;text-align:center;max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${esc(m.caption)}</div>`:''}
           ${canUploadPhotos?`<button onclick="deleteMedia(${personId},${m.id})" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.5);border:none;cursor:pointer;color:white;font-size:0.7rem;border-radius:3px;padding:1px 4px">✕</button>`:''}
         </div>`;
       }
@@ -1372,7 +1381,7 @@ function mergePeopleSearch() {
   results.innerHTML = matches.map(m => {
     const years = [m.born_year, m.died_year].filter(Boolean).join('–');
     return `<div onclick="selectMergeTarget(${m.id})" style="padding:7px 10px;border-radius:5px;cursor:pointer;border:1px solid #e8d8b0;margin-bottom:4px;background:#f5f0e8" onmouseover="this.style.background='#ede8d8'" onmouseout="this.style.background='#f5f0e8'">
-      <strong style="font-size:0.9rem">${m.first_name} ${m.last_name}</strong>${m.known_as ? ` <em style="font-size:0.78rem;color:#8a7a5a">(${m.known_as})</em>` : ''}
+      <strong style="font-size:0.9rem">${esc(m.first_name)} ${esc(m.last_name)}</strong>${m.known_as ? ` <em style="font-size:0.78rem;color:#8a7a5a">(${esc(m.known_as)})</em>` : ''}
       ${years ? `<span style="font-size:0.78rem;color:#8a7a5a;margin-left:8px">${years}</span>` : ''}
     </div>`;
   }).join('');
@@ -1392,10 +1401,10 @@ async function selectMergeTarget(targetId) {
         <input type="radio" name="mergeKeep" value="${value}" ${checked ? 'checked' : ''} onchange="updateMergeConfirm(${currentId},${targetId})">
         <strong style="font-size:0.82rem;color:#4a7c5a">Keep this one</strong>
       </div>
-      <div style="font-size:0.98rem;font-weight:600;color:#1a3a2a">${p.first_name} ${p.last_name}</div>
-      ${p.known_as ? `<div style="font-size:0.78rem;color:#8a7a5a;margin-top:2px">${p.known_as}</div>` : ''}
+      <div style="font-size:0.98rem;font-weight:600;color:#1a3a2a">${esc(p.first_name)} ${esc(p.last_name)}</div>
+      ${p.known_as ? `<div style="font-size:0.78rem;color:#8a7a5a;margin-top:2px">${esc(p.known_as)}</div>` : ''}
       ${years ? `<div style="font-size:0.78rem;color:#6a5a3a;margin-top:4px">b. ${years}</div>` : ''}
-      ${p.born_place ? `<div style="font-size:0.75rem;color:#8a7a5a">${p.born_place}</div>` : ''}
+      ${p.born_place ? `<div style="font-size:0.75rem;color:#8a7a5a">${esc(p.born_place)}</div>` : ''}
       <div style="font-size:0.72rem;color:#aaa;margin-top:4px">ID #${p.id}</div>
     </label>`;
   }
