@@ -105,6 +105,11 @@
   .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 0.82rem; }
   .lbl { color: #7a6a4a; min-width: 110px; font-size: 0.78rem; }
   .val { color: #1a1a1a; flex: 1; }
+  .nhle-row { padding:6px 0; border-bottom:1px solid #efe9dc; }
+  .nhle-row:last-child { border-bottom:none; }
+  .nhle-row a { color:#2a5a8a; text-decoration:none; font-size:0.82rem; line-height:1.35; display:block; }
+  .nhle-row a:hover { text-decoration:underline; }
+  .nhle-meta { color:#8a7a5a; font-size:0.72rem; margin-top:2px; font-variant-numeric:tabular-nums; }
   .src-row { display:flex; gap:10px; padding:5px 0; border-bottom:1px solid #efe9dc; font-size:0.76rem; align-items:baseline; }
   .src-row:last-child { border-bottom:none; }
   .src-field { flex:0 0 92px; color:#8a7a5a; text-transform:capitalize; }
@@ -1044,7 +1049,10 @@ function renderPanel() {
       histSection +
       '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
       '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>' +
-      srcSection;
+      srcSection +
+      (isListedProp(p) ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
+        + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '');
+    if (isListedProp(p) && p.lat != null) loadNhle(p);
   }
     else if (curTab === 'photos') {
     const photos = ov.photos || [];
@@ -2160,6 +2168,26 @@ function showToast(msg) {
   t.style.opacity = '1';
   clearTimeout(t._timeout);
   t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+
+// ── HISTORIC ENGLAND LOOKUP ──────────────────────────────────────────────────
+// Candidates only. The list records walls and gateways as their own entries, so
+// the nearest one is often not the house — the reader picks the right entry.
+async function loadNhle(p) {
+  const body = document.getElementById('nhleBody');
+  if (!body) return;
+  try {
+    const rows = await fetch('/api/nhle?lat=' + p.lat + '&lng=' + p.lng + '&radius=120')
+      .then(r => r.json());
+    if (!rows.length) { body.textContent = 'No list entries recorded within 120m.'; return; }
+    body.innerHTML = rows.map(e =>
+      '<div class="nhle-row">'
+      + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener">' + esc(e.name) + '</a>'
+      + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
+      + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div></div>').join('');
+  } catch (err) {
+    body.textContent = 'Could not reach the list right now.';
+  }
 }
 
 // ── PANEL CLICK DELEGATION ────────────────────────────────────────────────────

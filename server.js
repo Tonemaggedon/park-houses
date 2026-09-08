@@ -945,6 +945,35 @@ app.get('/api/all-props', (req, res) => {
   catch(e) { res.json([]); }
 });
 
+// ── Historic England listed entries ───────────────────────────────────────────
+// The National Heritage List treats gateways, walls and railings as separate
+// entries, so a nearest-match is unreliable. This returns the candidates near a
+// property and leaves the identification to a person.
+const NHLE_FILE = path.join(__dirname, 'data', 'nhle.json');
+let nhleCache = null;
+function readNhle() {
+  if (!nhleCache) {
+    try { nhleCache = JSON.parse(fs.readFileSync(NHLE_FILE, 'utf8')); }
+    catch(e) { nhleCache = []; }
+  }
+  return nhleCache;
+}
+
+app.get('/api/nhle', (req, res) => {
+  const entries = readNhle();
+  const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  if (!isFinite(lat) || !isFinite(lng)) return res.json(entries);
+  const radius = Math.min(parseFloat(req.query.radius) || 120, 1000);
+  const m = (a, b) => Math.hypot(
+    (a.lng - b.lng) * Math.cos(lat * Math.PI / 180) * 111320,
+    (a.lat - b.lat) * 110540);
+  res.json(entries
+    .map(e => ({ ...e, distance: Math.round(m(e, { lat, lng })) }))
+    .filter(e => e.distance <= radius)
+    .sort((a, b) => a.distance - b.distance)
+    .slice(0, 12));
+});
+
 // ── Stats API ─────────────────────────────────────────────────────────────────
 app.get('/api/stats', async (req, res) => {
   try {
