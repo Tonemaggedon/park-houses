@@ -486,7 +486,7 @@
 </div>
 
 <div class="toolbar">
-  <input id="searchBox" type="text" autocomplete="off" placeholder="Search by house name, street, number…">
+  <input id="searchBox" type="text" autocomplete="off" placeholder="Search name, street, number, or #ID…">
   <select id="typeFilter" onchange="filterMarkers(document.getElementById('searchBox').value)">
     <option value="">All streets</option>
   </select>
@@ -922,7 +922,18 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     const txt = ((p.name || '') + ' ' + (p.street || '') + ' ' + (p.no || '') + ' '
                + (p.address || '') + ' ' + (p.house_name || '') + ' '
                + (p.prev_house_name || '')).toLowerCase();
-    if (filter && !txt.includes(filter.toLowerCase())) return;
+    if (filter) {
+      const q = filter.trim().toLowerCase();
+      // "#280" means the property ID and nothing else. A bare number matches the
+      // ID as well as any house number, so working from a spreadsheet of IDs and
+      // searching an address both still work.
+      const strictId = q.match(/^#\s*(\d+)$/);
+      if (strictId) {
+        if (String(p.id) !== String(parseInt(strictId[1], 10))) return;
+      } else if (/^\d+$/.test(q)) {
+        if (String(p.id) !== String(parseInt(q, 10)) && !txt.includes(q)) return;
+      } else if (!txt.includes(q)) return;
+    }
     if (typeF && p.street !== typeF) return;
     if (listedF === 'listed' && !isListedProp(p)) return;
 
