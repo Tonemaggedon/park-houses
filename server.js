@@ -354,6 +354,7 @@ async function dbInit() {
     // fresh database would fail on them.
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS postnominals TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS maiden_name TEXT`);
+    await db.query(`ALTER TABLE occupations ADD COLUMN IF NOT EXISTS source TEXT`);
 
     // A person's own published works. Kept as rows rather than a block of text
     // so the list can be ordered by year and each entry cited on its own.
@@ -1016,6 +1017,115 @@ app.delete('/api/person/:personId/works/:workId', requireContributor, async (req
       [parseInt(req.params.workId, 10), parseInt(req.params.personId, 10)]);
     await logChange('person', parseInt(req.params.personId, 10), req, 'delete', 'works', null, null);
     res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Gazette references pasted into a biography are invisible to everything else —
+// not searchable, not listed, not citable. This lifts them into person_gazette
+// so each one becomes a proper reference with its issue and page.
+app.post('/api/admin/extract-gazette', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    await db.query(`CREATE TABLE IF NOT EXISTS person_gazette (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      url TEXT NOT NULL,
+      gazette TEXT,               -- London, Edinburgh, Belfast
+      issue TEXT,
+      page TEXT,
+      supplement BOOLEAN DEFAULT FALSE,
+      found_in TEXT,              -- which field the link came from
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_gazette_person_idx ON person_gazette(person_id)`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
+                      ON person_gazette(person_id, url)`);
+
+    const rows = await db.query(
+      `SELECT id, bio FROM people WHERE bio ILIKE '%thegazette.co.uk%'`);
+    const LINK = /https?:\/\/(?:www\.)?thegazette\.co\.uk\/[^\s"'<>)\]]+/gi;
+    let found = 0, added = 0, already = 0;
+    const people = new Set();
+    for (const person of rows.rows) {
+      for (const raw of (person.bio.match(LINK) || [])) {
+        const url = raw.replace(/[.,;]+$/, '');
+        found++;
+        const m = url.match(/thegazette\.co\.uk\/([A-Za-z]+)\/issue\/(\d+)\/(supplement|page)\/(\d+)/i);
+        const rec = {
+          gazette: m ? m[1] : null, issue: m ? m[2] : null,
+          page: m ? m[4] : null, supplement: m ? m[3].toLowerCase() === 'supplement' : false,
+        };
+        if (dryRun) { added++; people.add(person.id); continue; }
+        const r = await db.query(
+          `INSERT INTO person_gazette (person_id,url,gazette,issue,page,supplement,found_in)
+           VALUES ($1,$2,$3,$4,$5,$6,'biography')
+           ON CONFLICT (person_id, url) DO NOTHING RETURNING id`,
+          [person.id, url, rec.gazette, rec.issue, rec.page, rec.supplement]);
+        if (r.rows.length) { added++; people.add(person.id); } else already++;
+      }
+    }
+    res.json({ ok: true, dryRun, peopleWithLinks: rows.rows.length,
+               linksFound: found, added, alreadyRecorded: already, peopleAffected: people.size });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/person/:id/gazette', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(
+      `SELECT id, url, gazette, issue, page, supplement FROM person_gazette
+        WHERE person_id=$1 ORDER BY issue::bigint NULLS LAST`, [parseInt(req.params.id, 10)]);
+    res.json(r.rows);
+  } catch(e) { res.json([]); }
+});
+
+// Census occupations were written onto the census entry but never onto the
+// person, so the People page, the group chips and the occupation filter — which
+// all read the occupations table — saw about a third of what the census holds.
+// This copies them across, dated to the census year. Idempotent: a person who
+// already has that occupation is left alone.
+app.post('/api/admin/backfill-occupations', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const candidates = await db.query(`
+      SELECT DISTINCT ce.person_id, TRIM(ce.occupation_at_census) AS occupation, ce.census_year
+        FROM census_entries ce
+       WHERE ce.person_id IS NOT NULL
+         AND ce.occupation_at_census IS NOT NULL
+         AND TRIM(ce.occupation_at_census) <> ''
+       ORDER BY ce.person_id, occupation, ce.census_year`);
+
+    // Skip anything that would read as an absence of work rather than a job.
+    const NOT_AN_OCCUPATION = /^(none|nil|n\/?a|-+|\.+|unknown|not stated|no occupation|blank)$/i;
+
+    let added = 0, alreadyHad = 0, skipped = 0;
+    const peopleTouched = new Set();
+    // Someone can hold the same occupation in both censuses. Ordering by year
+    // means the earliest is recorded; this set stops the later one being counted
+    // again, which otherwise made a dry run forecast more than the real run did.
+    const accountedFor = new Set();
+    for (const row of candidates.rows) {
+      if (NOT_AN_OCCUPATION.test(row.occupation)) { skipped++; continue; }
+      const key = row.person_id + '|' + row.occupation.toLowerCase();
+      if (accountedFor.has(key)) { alreadyHad++; continue; }
+      const existing = await db.query(
+        `SELECT 1 FROM occupations WHERE person_id=$1 AND LOWER(TRIM(occupation))=LOWER($2)`,
+        [row.person_id, row.occupation]);
+      if (existing.rows.length) { alreadyHad++; accountedFor.add(key); continue; }
+      accountedFor.add(key);
+      if (!dryRun) {
+        await db.query(
+          `INSERT INTO occupations (person_id, occupation, from_year, source)
+           VALUES ($1,$2,$3,$4)`,
+          [row.person_id, row.occupation, row.census_year, row.census_year + ' census']);
+      }
+      added++; peopleTouched.add(row.person_id);
+    }
+    if (!dryRun) await logChange('person', 0, req, 'backfill', 'occupations', null, added + ' added');
+    res.json({ ok: true, dryRun, candidates: candidates.rows.length,
+               added, alreadyHad, skipped, peopleAffected: peopleTouched.size });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 

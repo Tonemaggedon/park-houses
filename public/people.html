@@ -141,6 +141,9 @@
   .work-title { font-size:0.92rem; font-style:italic; color:#1a3a2a; }
   .work-meta { font-size:0.74rem; color:#6a5c44; }
   .work-notes { font-size:0.74rem; color:#8a7a5a; }
+  .gazref { padding:4px 0; font-size:0.85rem; }
+  .gazref a { color:#2a5a8a; text-decoration:none; }
+  .gazref a:hover { text-decoration:underline; }
   .work-source { font-size:0.72rem; color:#8a7a5a; font-style:italic; margin-top:10px;
     padding-top:8px; border-top:1px solid #e8e0cc; }
   /* Occupation timeline */
@@ -415,6 +418,25 @@ document.addEventListener('click', async e => {
   }
 });
 
+// Gazette notices recorded against this person.
+async function loadGazetteRefs(p) {
+  const section = document.getElementById('gaz-section-' + p.id);
+  const list = document.getElementById('gaz-list-' + p.id);
+  if (!section || !list) return;
+  try {
+    const rows = await fetch('/api/person/' + p.id + '/gazette').then(r => r.json());
+    if (!Array.isArray(rows) || !rows.length) return;
+    list.innerHTML = rows.map(g => {
+      const label = [g.gazette ? g.gazette + ' Gazette' : 'The Gazette',
+                     g.issue ? 'issue ' + g.issue : null,
+                     g.page ? (g.supplement ? 'supplement ' : 'page ') + g.page : null]
+                    .filter(Boolean).join(', ');
+      return `<div class="gazref"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(label)}</a></div>`;
+    }).join('');
+    section.hidden = false;
+  } catch (e) { /* most people have none */ }
+}
+
 async function loadWorks(p) {
   const section = document.getElementById('works-section-' + p.id);
   const list = document.getElementById('works-list-' + p.id);
@@ -670,6 +692,7 @@ function renderProfile(p) {
   document.getElementById('paneName').textContent = displayName(p);
   if (!p.wikipedia_url) setTimeout(() => loadWikidataSuggestion(p), 0);
   setTimeout(() => loadWorks(p), 0);
+  setTimeout(() => loadGazetteRefs(p), 0);
   const dates = [];
   const bornYr = parseInt(p.born_year) || parseInt((p.born_date||'').match(/\d{4}/)?.[0]);
   const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
@@ -746,6 +769,12 @@ function renderProfile(p) {
   const canEditOcc = _me && (_me.isAdmin || (_me.user && (_me.user.role === 'contributor' || _me.user.role === 'admin')));
   const addOccBtn = canEditOcc ? `<button onclick="showAddOccupation(${p.id})" style="background:none;border:1px solid #8a6a2a;color:#8a6a2a;border-radius:4px;padding:2px 10px;font-size:0.72rem;cursor:pointer;margin-left:auto">+ Add</button>` : '';
   // Published works, loaded separately so the pane renders without waiting on them.
+  // Gazette references lifted out of the biography, shown as proper citations.
+  html.push(`<div class="pane-section" id="gaz-section-${p.id}" hidden>
+    <h3>Official record</h3>
+    <div id="gaz-list-${p.id}"></div>
+  </div>`);
+
   html.push(`<div class="pane-section" id="works-section-${p.id}" hidden>
     <h3>Published works</h3>
     <div id="works-list-${p.id}"></div>

@@ -146,6 +146,29 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
       </div>
       <button id="btnImportWorks" class="admin-btn">Import</button>
     </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Backfill census occupations</div>
+        <div class="admin-tool-desc">Copies occupations recorded on census entries onto the people
+          themselves, so they appear in the People page, the group chips and the occupation filter.
+          Preview first — it shows what it would do without changing anything.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnBackfillPreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnBackfillRun" class="admin-btn">Run</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Extract Gazette references</div>
+        <div class="admin-tool-desc">Finds London Gazette links written into biographies and records
+          them as proper citations with their issue and page.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnGazettePreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnGazetteRun" class="admin-btn">Run</button>
+      </div>
+    </div>
     <div id="adminToolsResult" class="admin-tool-result" hidden></div>
   </div>
 
@@ -583,6 +606,44 @@ fetch('/api/me').then(r=>r.json()).then(d=>{
   const el = document.getElementById('adminUsersLink'); if (el) el.style.display='';
   const tools = document.getElementById('adminTools'); if (tools) tools.hidden = false;
 }).catch(()=>{});
+
+async function runAdminJob(btn, url, body, describe) {
+  const out = document.getElementById('adminToolsResult');
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Working…';
+  out.hidden = false; out.className = 'admin-tool-result'; out.textContent = 'Working…';
+  try {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                 body: JSON.stringify(body || {}) });
+    const data = await r.json();
+    if (!r.ok || data.error) throw new Error(data.error || ('HTTP ' + r.status));
+    out.textContent = describe(data);
+  } catch (err) {
+    out.className = 'admin-tool-result bad';
+    out.textContent = 'Failed: ' + err.message;
+  } finally { btn.disabled = false; btn.textContent = label; }
+}
+
+const describeBackfill = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.added} occupation${d.added === 1 ? '' : 's'} ${d.dryRun ? 'would be added' : 'added'} `
+  + `across ${d.peopleAffected} people.\n`
+  + `${d.alreadyHad} already recorded, ${d.skipped} skipped as not an occupation, `
+  + `from ${d.candidates} census entries.`;
+
+const describeGazette = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.linksFound} link${d.linksFound === 1 ? '' : 's'} found in ${d.peopleWithLinks} biographies. `
+  + `${d.added} ${d.dryRun ? 'would be recorded' : 'recorded'}, ${d.alreadyRecorded} already there.`;
+
+document.getElementById('btnBackfillPreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/backfill-occupations', { dryRun: true }, describeBackfill));
+document.getElementById('btnBackfillRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/backfill-occupations', {}, describeBackfill));
+document.getElementById('btnGazettePreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/extract-gazette', { dryRun: true }, describeGazette));
+document.getElementById('btnGazetteRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/extract-gazette', {}, describeGazette));
 
 document.getElementById('btnImportWorks')?.addEventListener('click', async e => {
   const btn = e.target, out = document.getElementById('adminToolsResult');
