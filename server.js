@@ -39,6 +39,41 @@ if (IS_PROD && !process.env.SESSION_SECRET) {
 }
 // Compare in constant time so the admin password can't be recovered a character
 // at a time from response timings. Hashing first keeps lengths equal.
+// ── Login throttling ─────────────────────────────────────────────────────────
+// Both login routes were unlimited, so a password could be worked out at
+// whatever rate the host would serve. Counts failures per IP over a rolling
+// window and refuses once they pile up; a success clears the count, so an
+// ordinary person who mistypes twice is unaffected.
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+const LOGIN_MAX_FAILS = 8;
+const loginFails = new Map();   // ip -> { count, first }
+
+function loginKey(req) {
+  // trust proxy is on in production, so req.ip is the real client address
+  return req.ip || req.connection?.remoteAddress || 'unknown';
+}
+function loginBlocked(req) {
+  const rec = loginFails.get(loginKey(req));
+  if (!rec) return 0;
+  if (Date.now() - rec.first > LOGIN_WINDOW_MS) { loginFails.delete(loginKey(req)); return 0; }
+  return rec.count >= LOGIN_MAX_FAILS
+    ? Math.ceil((LOGIN_WINDOW_MS - (Date.now() - rec.first)) / 1000)
+    : 0;
+}
+function loginFailed(req) {
+  const k = loginKey(req);
+  const rec = loginFails.get(k);
+  if (!rec || Date.now() - rec.first > LOGIN_WINDOW_MS) loginFails.set(k, { count: 1, first: Date.now() });
+  else rec.count++;
+}
+function loginSucceeded(req) { loginFails.delete(loginKey(req)); }
+
+// Keep the map from growing without bound on a long-running process.
+setInterval(() => {
+  const cutoff = Date.now() - LOGIN_WINDOW_MS;
+  for (const [k, v] of loginFails) if (v.first < cutoff) loginFails.delete(k);
+}, LOGIN_WINDOW_MS).unref();
+
 function timingSafeEqualStr(a, b) {
   const crypto = require('crypto');
   const ha = crypto.createHash('sha256').update(String(a)).digest();
@@ -819,15 +854,20 @@ function isContributor(req) {
 // ── Auth routes ───────────────────────────────────────────────────────────────
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
+  const wait = loginBlocked(req);
+  if (wait) return res.status(429).json({ error: 'Too many failed attempts. Try again in '
+    + Math.ceil(wait / 60) + ' minutes.' });
   if (!ADMIN_PASS) return res.status(503).json({ error: 'Admin login is not configured' });
   if (typeof username !== 'string' || typeof password !== 'string') {
     return res.status(400).json({ error: 'Invalid credentials' });
   }
   if (username === ADMIN_USER && timingSafeEqualStr(password, ADMIN_PASS)) {
+    loginSucceeded(req);
     req.session.isAdmin = true;
     req.session.username = username;
     res.json({ ok: true });
   } else {
+    loginFailed(req);
     res.status(401).json({ error: 'Invalid credentials' });
   }
 });
@@ -873,14 +913,19 @@ app.post('/api/user/register', async (req, res) => {
 
 app.post('/api/user/login', async (req, res) => {
   const { email, password } = req.body;
+  const wait = loginBlocked(req);
+  if (wait) return res.status(429).json({ error: 'Too many failed attempts. Try again in '
+    + Math.ceil(wait / 60) + ' minutes.' });
   if (!email || !password)
     return res.status(400).json({ error: 'email and password required' });
   try {
     const user = await findUserByEmail(email);
-    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+    if (!user) { loginFailed(req); return res.status(401).json({ error: 'Invalid email or password' }); }
     const ok = await bcrypt.compare(password, user.password_hash);
-    if (!ok) return res.status(401).json({ error: 'Invalid email or password' });
+    if (!ok) { loginFailed(req); return res.status(401).json({ error: 'Invalid email or password' }); }
+    // A correct password on an unapproved account is not a failed attempt.
     if (!user.approved) return res.status(403).json({ error: 'Your account is awaiting admin approval' });
+    loginSucceeded(req);
     req.session.userId   = user.id;
     req.session.userRole = user.role || 'viewer';
     res.json({ ok: true, user: publicUser(user) });
