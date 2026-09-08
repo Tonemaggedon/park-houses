@@ -35,6 +35,16 @@
   .potw .dates { color:var(--faint); font-size:.86rem; margin-bottom:12px; }
   .potw .bio { font-size:.94rem; color:#3c3428; max-width:70ch; }
   .potw .rotates { font-size:.72rem; color:var(--faint); font-style:italic; margin-top:14px; }
+  .potw.has-portrait { display:flex; gap:22px; align-items:flex-start; }
+  .potw-text { flex:1 1 auto; min-width:0; }
+  .potw-portrait { flex:0 0 auto; display:block; width:132px; height:164px; border-radius:5px;
+    overflow:hidden; border:1px solid var(--gold); background:#f0e8d4;
+    box-shadow:0 1px 5px rgba(90,58,26,.16); }
+  .potw-portrait img { width:100%; height:100%; object-fit:cover; display:block; }
+  @media (max-width:560px) {
+    .potw.has-portrait { flex-direction:column; gap:14px; }
+    .potw-portrait { width:112px; height:140px; }
+  }
 
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(258px,1fr)); gap:13px; }
   .card { background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:14px 16px; }
@@ -48,6 +58,10 @@
     border-radius:3px; padding:2px 6px; }
   .sig.wiki { background:#e2ecf5; color:#2a5a8a; border-color:#bcd4e8; }
 
+  .card.with-thumb { display:grid; grid-template-columns:54px 1fr; grid-template-rows:auto;
+    column-gap:12px; align-items:start; }
+  .card.with-thumb .thumb { grid-row:1 / span 99; width:54px; height:66px; object-fit:cover;
+    border-radius:4px; border:1px solid var(--rule); }
   .starred { color:var(--gold); }
   .btn { font-family:inherit; font-size:.76rem; border:1px solid #c8b87a; background:#f6f0dd;
     color:#5a4a1a; border-radius:4px; padding:4px 11px; cursor:pointer; }
@@ -123,6 +137,28 @@ const lifeOf = p => {
   const d = p.died_year || (p.died_date ? String(p.died_date).slice(0,4) : '');
   return (b || d) ? `${b||'?'}–${d||'?'}` : '';
 };
+// A photo_url can rot. Tidy the layout up rather than leaving an empty frame.
+// Listeners are attached after render rather than as inline onerror attributes:
+// this page builds its markup through innerHTML, where inline handlers do not
+// run. Find the container before detaching, or closest() returns null.
+function dropPortrait(img) {
+  const potw = img.closest('.potw');
+  const card = img.closest('.card');
+  const frame = img.closest('.potw-portrait');
+  if (frame) frame.remove(); else img.remove();
+  if (potw) potw.classList.remove('has-portrait');
+  if (card) card.classList.remove('with-thumb');
+}
+
+// Call after any render that may contain portraits. Images that already failed
+// before we got here report complete with a zero natural width.
+function watchPortraits(root) {
+  (root || document).querySelectorAll('img[data-portrait]').forEach(img => {
+    if (img.complete && img.naturalWidth === 0) { dropPortrait(img); return; }
+    img.addEventListener('error', () => dropPortrait(img), { once: true });
+  });
+}
+
 const sigChips = p => (p.signals||[]).map(s =>
   `<span class="sig${/Wikipedia/.test(s)?' wiki':''}">${esc(s)}</span>`).join('');
 
@@ -149,14 +185,25 @@ function renderPotw(p) {
   const el = document.getElementById('potw');
   if (!p) { el.innerHTML = ''; return; }
   const bio = (p.bio || '').replace(/\s+/g,' ').trim();
-  el.innerHTML = `<div class="potw">
-    <div class="eyebrow">Person of the week</div>
-    <h3><a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h3>
-    <div class="dates">${esc(lifeOf(p))}${p.born_place ? ' · born ' + esc(p.born_place) : ''}</div>
-    ${bio ? `<div class="bio">${esc(bio.slice(0,420))}${bio.length>420?'…':''}</div>` : ''}
-    <div class="signals">${sigChips(p)}</div>
-    <div class="rotates">Chosen from ${esc(p.of)} notable resident${p.of===1?'':'s'} — changes each week.</div>
+  // A portrait is the whole point of featuring someone, so give it real size —
+  // but the card has to read just as well for the many residents with no photo.
+  const portrait = p.photo_url
+    ? `<a class="potw-portrait" href="/people?person=${encodeURIComponent(p.id)}">
+         <img src="${esc(p.photo_url)}" alt="Portrait of ${esc(nameOf(p))}" data-portrait>
+       </a>`
+    : '';
+  el.innerHTML = `<div class="potw${portrait ? ' has-portrait' : ''}">
+    ${portrait}
+    <div class="potw-text">
+      <div class="eyebrow">Person of the week</div>
+      <h3><a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h3>
+      <div class="dates">${esc(lifeOf(p))}${p.born_place ? ' · born ' + esc(p.born_place) : ''}</div>
+      ${bio ? `<div class="bio">${esc(bio.slice(0,420))}${bio.length>420?'…':''}</div>` : ''}
+      <div class="signals">${sigChips(p)}</div>
+      <div class="rotates">Chosen from ${esc(p.of)} notable resident${p.of===1?'':'s'} — changes each week.</div>
+    </div>
   </div>`;
+  watchPortraits(el);
 }
 
 function renderFeatured(rows) {
@@ -165,13 +212,15 @@ function renderFeatured(rows) {
     el.innerHTML = `<div class="empty">Nobody featured yet.${canEdit?' Open Suggestions below to add the first.':''}</div>`;
     return;
   }
-  el.innerHTML = rows.map(p => `<div class="card">
+  el.innerHTML = rows.map(p => `<div class="card${p.photo_url ? ' with-thumb' : ''}">
+    ${p.photo_url ? `<img class="thumb" src="${esc(p.photo_url)}" alt="" loading="lazy" data-portrait>` : ''}
     <h4><span class="starred">★</span> <a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h4>
     <div class="dates">${esc(lifeOf(p))}</div>
     ${p.significance_note ? `<div class="note">${esc(p.significance_note)}</div>` : ''}
     <div class="signals">${sigChips(p)}</div>
     ${canEdit ? `<div style="margin-top:10px"><button class="btn remove" data-off="${esc(p.id)}">Remove</button></div>` : ''}
   </div>`).join('');
+  watchPortraits(el);
 }
 
 async function loadCandidates() {
