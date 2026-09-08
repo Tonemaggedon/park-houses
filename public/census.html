@@ -98,7 +98,8 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
   gap: 10px;
 }
 
-.prop-card {
+.pc-id { color:#a89878; font-size:0.72rem; font-variant-numeric:tabular-nums; }
+  .prop-card {
   border-radius: 8px; padding: 12px 14px; cursor: pointer;
   transition: box-shadow 0.15s, transform 0.1s;
   border: 1px solid transparent;
@@ -259,7 +260,7 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
       <button class="ftab" onclick="setFilter('unoccupied',this)">Unoccupied</button>
       <button class="ftab" onclick="setFilter('none',this)">No data</button>
     </div>
-    <input id="searchInput" placeholder="Search address…" oninput="renderProps()">
+    <input id="searchInput" placeholder="Search address, or a property ID…" oninput="renderProps()">
     <div class="filter-stats" id="filterStats"></div>
   </div>
   <div class="prop-grid-wrap">
@@ -370,7 +371,17 @@ function renderProps() {
   const search = (document.getElementById('searchInput').value || '').toLowerCase();
   let props = allProps;
   if (currentFilter !== 'all') props = props.filter(p => p.status === currentFilter);
-  if (search) props = props.filter(p => p.address.toLowerCase().includes(search));
+  // A bare number, or #123, means the property ID — the quickest way in when
+  // working through a spreadsheet that quotes IDs rather than addresses.
+  const byId = search.match(/^#?(\d+)$/);
+  if (byId) {
+    const want = String(parseInt(byId[1], 10));
+    props = props.filter(p => String(p.id) === want);
+  } else if (search) {
+    props = props.filter(p =>
+      (p.address || '').toLowerCase().includes(search) ||
+      String(p.id) === search);
+  }
 
   const recorded = allProps.filter(p => p.status === 'recorded').length;
   const unoccupied = allProps.filter(p => p.status === 'unoccupied').length;
@@ -392,7 +403,7 @@ function renderProps() {
       ? 'Unoccupied'
       : 'No census record';
     return `<div class="prop-card ${p.status}" onclick="openCensus(${p.id},'${esc(p.address)}')" title="${esc(p.address)}">
-      <div class="pc-address">${esc(p.address)}</div>
+      <div class="pc-address">${esc(p.address)} <span class="pc-id">#${p.id}</span></div>
       <div class="pc-status">${statusLabel}</div>
     </div>`;
   }).join('');
