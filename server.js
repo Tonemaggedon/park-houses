@@ -1713,8 +1713,18 @@ app.get('/api/person/:id', async (req, res) => {
 app.get('/api/occupations', async (req, res) => {
   if (!db) return res.json([]);
   try {
-    const r = await db.query(`SELECT DISTINCT LOWER(occupation) as occupation, COUNT(*) as count
-                               FROM occupations GROUP BY LOWER(occupation) ORDER BY count DESC`);
+    // The count has to mean "people you will get if you pick this", so it must
+    // match the filter, which is a substring test — picking "author" also
+    // returns "Author (Bacon-Shakespeare controversy)". Counting rows grouped by
+    // exact label said 4 where the filter returned 5. Distinct people, too: one
+    // person can hold the same occupation over several date ranges.
+    const r = await db.query(`
+      SELECT labels.occupation,
+             (SELECT COUNT(DISTINCT ox.person_id) FROM occupations ox
+               WHERE LOWER(ox.occupation) LIKE '%' || labels.occupation || '%') AS count
+      FROM (SELECT DISTINCT LOWER(occupation) AS occupation FROM occupations
+             WHERE occupation IS NOT NULL AND TRIM(occupation) <> '') labels
+      ORDER BY count DESC, labels.occupation`);
     res.json(r.rows);
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
