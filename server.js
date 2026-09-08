@@ -356,6 +356,29 @@ async function dbInit() {
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS maiden_name TEXT`);
     await db.query(`ALTER TABLE occupations ADD COLUMN IF NOT EXISTS source TEXT`);
 
+    // Gazette references. Created here rather than lazily inside one endpoint,
+    // so every caller can rely on it existing.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_gazette (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      url TEXT NOT NULL,
+      gazette TEXT,               -- London, Edinburgh, Belfast
+      issue TEXT,
+      page TEXT,
+      supplement BOOLEAN DEFAULT FALSE,
+      found_in TEXT,              -- which field the link came from
+      status TEXT DEFAULT 'confirmed',  -- confirmed | suggested | dismissed
+      title TEXT,
+      notice_date TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`ALTER TABLE person_gazette ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'confirmed'`);
+    await db.query(`ALTER TABLE person_gazette ADD COLUMN IF NOT EXISTS title TEXT`);
+    await db.query(`ALTER TABLE person_gazette ADD COLUMN IF NOT EXISTS notice_date TEXT`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_gazette_person_idx ON person_gazette(person_id)`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
+                      ON person_gazette(person_id, url)`);
+
     // A person's own published works. Kept as rows rather than a block of text
     // so the list can be ordered by year and each entry cited on its own.
     await db.query(`CREATE TABLE IF NOT EXISTS person_works (
@@ -1027,20 +1050,6 @@ app.post('/api/admin/extract-gazette', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const dryRun = req.body && req.body.dryRun === true;
   try {
-    await db.query(`CREATE TABLE IF NOT EXISTS person_gazette (
-      id SERIAL PRIMARY KEY,
-      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
-      url TEXT NOT NULL,
-      gazette TEXT,               -- London, Edinburgh, Belfast
-      issue TEXT,
-      page TEXT,
-      supplement BOOLEAN DEFAULT FALSE,
-      found_in TEXT,              -- which field the link came from
-      created_at TIMESTAMPTZ DEFAULT NOW()
-    )`);
-    await db.query(`CREATE INDEX IF NOT EXISTS person_gazette_person_idx ON person_gazette(person_id)`);
-    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
-                      ON person_gazette(person_id, url)`);
 
     const rows = await db.query(
       `SELECT id, bio FROM people WHERE bio ILIKE '%thegazette.co.uk%'`);
@@ -1070,12 +1079,99 @@ app.post('/api/admin/extract-gazette', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Search The Gazette for people already carrying an honours signal, rather than
+// for everyone. A national record of three centuries of notices will return a
+// different Mary Adcock for most of the 2,500 residents, and attaching those
+// would put wrong citations on real people. Restricting it to people whose
+// record already suggests an honour or public office keeps the hit rate worth
+// reading — and everything lands as a suggestion for a person to confirm.
+app.post('/api/admin/gazette-sweep', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  const limit = Math.min(parseInt(req.body && req.body.limit, 10) || 60, 200);
+  try {
+    const people = await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.born_year, p.died_year
+        FROM people p
+       WHERE COALESCE(p.last_name,'') <> '' AND COALESCE(p.first_name,'') <> ''
+         AND (${SIGNAL_SQL}) > 0
+       ORDER BY (${SIGNAL_SQL}) DESC, p.last_name
+       LIMIT ${limit}`);
+
+    if (dryRun) {
+      return res.json({ ok: true, dryRun: true, wouldSearch: people.rows.length,
+        names: people.rows.slice(0, 12).map(p => p.first_name + ' ' + p.last_name) });
+    }
+
+    let searched = 0, hits = 0, added = 0, already = 0;
+    for (const person of people.rows) {
+      const name = (person.first_name + ' ' + person.last_name).replace(/\s+/g, ' ').trim();
+      searched++;
+      let rows = [];
+      try {
+        const r = await fetch('https://www.thegazette.co.uk/all-notices/notice/data.feed?text='
+            + encodeURIComponent('"' + name + '"'), {
+          headers: { 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+          signal: AbortSignal.timeout(12000),
+        });
+        if (r.ok) {
+          const xml = await r.text();
+          rows = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(m => {
+            const g = re => ((m[1].match(re) || [])[1] || '').trim();
+            const date = g(/<published>(.*?)<\/published>/) || g(/<updated>(.*?)<\/updated>/);
+            const href = g(/<link[^>]*href="(.*?)"/);
+            return { title: g(/<title>([\s\S]*?)<\/title>/).replace(/\s+/g, ' '),
+                     date: date.slice(0, 10),
+                     year: parseInt(date.slice(0, 4), 10) || null,
+                     url: href.startsWith('http') ? href : 'https://www.thegazette.co.uk' + href };
+          }).filter(x => x.url);
+        }
+      } catch (e) { /* one failed search should not stop the sweep */ }
+
+      // A notice printed after they died, or long before they were born, is not them.
+      const plausible = rows.filter(x => {
+        if (!x.year) return false;
+        if (person.born_year && x.year < person.born_year + 15) return false;
+        if (person.died_year && x.year > person.died_year + 2) return false;
+        return true;
+      }).slice(0, 5);
+      hits += plausible.length;
+
+      for (const n of plausible) {
+        const m = n.url.match(/thegazette\.co\.uk\/([A-Za-z]+)\/issue\/(\d+)\/(supplement|page)\/(\d+)/i);
+        const r2 = await db.query(
+          `INSERT INTO person_gazette (person_id,url,gazette,issue,page,supplement,found_in,status,title,notice_date)
+           VALUES ($1,$2,$3,$4,$5,$6,'gazette search','suggested',$7,$8)
+           ON CONFLICT (person_id, url) DO NOTHING RETURNING id`,
+          [person.id, n.url, m ? m[1] : null, m ? m[2] : null, m ? m[4] : null,
+           m ? m[3].toLowerCase() === 'supplement' : false, n.title, n.date]);
+        if (r2.rows.length) added++; else already++;
+      }
+      await new Promise(r => setTimeout(r, 400));   // be a good neighbour
+    }
+    res.json({ ok: true, searched, plausibleHits: hits, added, alreadyRecorded: already });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/person/:personId/gazette/:refId', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const status = req.body && req.body.status === 'confirmed' ? 'confirmed' : 'dismissed';
+  try {
+    await db.query(`UPDATE person_gazette SET status=$3 WHERE id=$1 AND person_id=$2`,
+      [parseInt(req.params.refId, 10), parseInt(req.params.personId, 10), status]);
+    res.json({ ok: true, status });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 app.get('/api/person/:id/gazette', async (req, res) => {
   if (!db) return res.json([]);
   try {
     const r = await db.query(
-      `SELECT id, url, gazette, issue, page, supplement FROM person_gazette
-        WHERE person_id=$1 ORDER BY issue::bigint NULLS LAST`, [parseInt(req.params.id, 10)]);
+      `SELECT id, url, gazette, issue, page, supplement, status, title, notice_date
+         FROM person_gazette
+        WHERE person_id=$1 AND COALESCE(status,'confirmed') <> 'dismissed'
+        ORDER BY CASE WHEN COALESCE(status,'confirmed')='confirmed' THEN 0 ELSE 1 END,
+                 notice_date NULLS LAST`, [parseInt(req.params.id, 10)]);
     res.json(r.rows);
   } catch(e) { res.json([]); }
 });

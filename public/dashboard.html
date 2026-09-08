@@ -169,6 +169,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <button id="btnGazetteRun" class="admin-btn">Run</button>
       </div>
     </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Search The Gazette for honours</div>
+        <div class="admin-tool-desc">Searches the official record for people whose entry already
+          suggests an honour or public office — not everyone, because a national record returns a
+          different person of the same name for most residents. Results are filtered against their
+          lifetime and appear as suggestions to confirm, never as facts.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnSweepPreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnSweepRun" class="admin-btn">Search</button>
+      </div>
+    </div>
     <div id="adminToolsResult" class="admin-tool-result" hidden></div>
   </div>
 
@@ -644,6 +657,18 @@ document.getElementById('btnGazettePreview')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/extract-gazette', { dryRun: true }, describeGazette));
 document.getElementById('btnGazetteRun')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/extract-gazette', {}, describeGazette));
+
+const describeSweep = d => d.dryRun
+  ? `Preview — nothing searched yet.\n${d.wouldSearch} people carry an honours signal, including: `
+    + d.names.join(', ') + '…'
+  : `Done.\nSearched ${d.searched} people. ${d.plausibleHits} notices fell within their lifetime; `
+    + `${d.added} recorded as suggestions, ${d.alreadyRecorded} already there.\n`
+    + `Open each person to confirm or dismiss them.`;
+
+document.getElementById('btnSweepPreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/gazette-sweep', { dryRun: true }, describeSweep));
+document.getElementById('btnSweepRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/gazette-sweep', {}, describeSweep));
 
 document.getElementById('btnImportWorks')?.addEventListener('click', async e => {
   const btn = e.target, out = document.getElementById('adminToolsResult');

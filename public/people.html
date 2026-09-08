@@ -144,6 +144,18 @@
   .gazref { padding:4px 0; font-size:0.85rem; }
   .gazref a { color:#2a5a8a; text-decoration:none; }
   .gazref a:hover { text-decoration:underline; }
+  .gazref-date { color:#8a7a5a; font-size:0.75rem; margin-left:7px; }
+  .gazref-head { font-size:0.72rem; letter-spacing:.06em; text-transform:uppercase;
+    color:#8a7a5a; margin:12px 0 4px; }
+  .gazref-sug { background:#fdfaf2; border:1px solid #e0d4ab; border-radius:5px;
+    padding:8px 10px; margin-bottom:6px; }
+  .gazref-warn { font-size:0.72rem; color:#8a7a5a; font-style:italic; margin-top:3px; }
+  .gazref-acts { margin-top:6px; display:flex; gap:6px; }
+  .gaz-yes, .gaz-no { font-family:inherit; font-size:0.73rem; border-radius:4px;
+    padding:3px 10px; cursor:pointer; border:1px solid #c8b87a; }
+  .gaz-yes { background:#2f4d27; color:#f2ecd8; border-color:#2f4d27; }
+  .gaz-no { background:#fff; color:#8a7a6a; border-color:#ddd; }
+  .gaz-yes:disabled, .gaz-no:disabled { opacity:.5; cursor:default; }
   .work-source { font-size:0.72rem; color:#8a7a5a; font-style:italic; margin-top:10px;
     padding-top:8px; border-top:1px solid #e8e0cc; }
   /* Occupation timeline */
@@ -418,6 +430,25 @@ document.addEventListener('click', async e => {
   }
 });
 
+// Confirm or dismiss a suggested Gazette notice.
+document.addEventListener('click', async e => {
+  const yes = e.target.closest('.gaz-yes'), no = e.target.closest('.gaz-no');
+  if (!yes && !no) return;
+  const btn = yes || no;
+  btn.disabled = true;
+  try {
+    const res = await fetch(`/api/person/${btn.dataset.gazPerson}/gazette/${btn.dataset.gazId}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: yes ? 'confirmed' : 'dismissed' }),
+    });
+    if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || ('HTTP ' + res.status));
+    loadGazetteRefs({ id: btn.dataset.gazPerson });
+  } catch (err) {
+    btn.disabled = false;
+    alert('Could not save that: ' + err.message);
+  }
+});
+
 // Gazette notices recorded against this person.
 async function loadGazetteRefs(p) {
   const section = document.getElementById('gaz-section-' + p.id);
@@ -426,13 +457,30 @@ async function loadGazetteRefs(p) {
   try {
     const rows = await fetch('/api/person/' + p.id + '/gazette').then(r => r.json());
     if (!Array.isArray(rows) || !rows.length) return;
-    list.innerHTML = rows.map(g => {
+    const canEdit = _me && (_me.isAdmin || (_me.user &&
+      (_me.user.role === 'contributor' || _me.user.role === 'admin')));
+    const line = g => {
       const label = [g.gazette ? g.gazette + ' Gazette' : 'The Gazette',
                      g.issue ? 'issue ' + g.issue : null,
                      g.page ? (g.supplement ? 'supplement ' : 'page ') + g.page : null]
                     .filter(Boolean).join(', ');
-      return `<div class="gazref"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(label)}</a></div>`;
-    }).join('');
+      const suggested = (g.status || 'confirmed') === 'suggested';
+      return `<div class="gazref${suggested ? ' gazref-sug' : ''}">
+        <a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(label)}</a>
+        ${g.notice_date ? `<span class="gazref-date">${esc(g.notice_date)}</span>` : ''}
+        ${suggested ? `<div class="gazref-warn">Found by searching this name — open it and check
+          it is the same person before confirming.</div>` : ''}
+        ${suggested && canEdit ? `<div class="gazref-acts">
+          <button class="gaz-yes" data-gaz-id="${esc(g.id)}" data-gaz-person="${esc(p.id)}">This is them</button>
+          <button class="gaz-no" data-gaz-id="${esc(g.id)}" data-gaz-person="${esc(p.id)}">Not them</button>
+        </div>` : ''}
+      </div>`;
+    };
+    const confirmed = rows.filter(g => (g.status || 'confirmed') !== 'suggested');
+    const suggested = rows.filter(g => (g.status || 'confirmed') === 'suggested');
+    list.innerHTML = confirmed.map(line).join('')
+      + (suggested.length ? `<div class="gazref-head">Possible matches (${suggested.length})</div>`
+         + suggested.map(line).join('') : '');
     section.hidden = false;
   } catch (e) { /* most people have none */ }
 }
