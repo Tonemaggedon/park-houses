@@ -355,6 +355,9 @@ async function dbInit() {
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS postnominals TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS maiden_name TEXT`);
     await db.query(`ALTER TABLE occupations ADD COLUMN IF NOT EXISTS source TEXT`);
+    // 'M' or 'F'
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS sex TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS sex_source TEXT`);
 
     // Gazette references. Created here rather than lazily inside one endpoint,
     // so every caller can rely on it existing.
@@ -1311,6 +1314,76 @@ app.post('/api/admin/import-works', requireAdmin, async (req, res) => {
       report.push({ file, person: personId, added, alreadyPresent: already });
     }
     res.json({ ok: true, report });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Forenames still needing a sex, worked through a name at a time rather than a
+// person at a time — setting "Mary" once covers every Mary in the record.
+// Relationship evidence from the census is offered as a suggestion so the
+// obvious ones can be confirmed at a glance.
+app.get('/api/names/sex-queue', async (req, res) => {
+  if (!db) return res.json({ names: [], remaining: 0, peopleRemaining: 0 });
+  try {
+    const r = await db.query(`
+      WITH forename AS (
+        SELECT p.id, INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name, p.sex
+          FROM people p
+         WHERE COALESCE(TRIM(p.first_name),'') <> ''
+      ), rel AS (
+        SELECT INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name,
+               LOWER(TRIM(COALESCE(ce.relationship,''))) AS r
+          FROM census_entries ce JOIN people p ON p.id = ce.person_id
+      ), evidence AS (
+        SELECT name,
+               COUNT(*) FILTER (WHERE r IN ('wife','daughter','mother','sister','widow','niece',
+                 'aunt','granddaughter','housekeeper','maid','housemaid','parlourmaid',
+                 'kitchenmaid','cook','nurse','governess')) AS female,
+               COUNT(*) FILTER (WHERE r IN ('son','father','brother','nephew','uncle','grandson',
+                 'husband','butler','footman','groom','coachman','gardener')) AS male
+          FROM rel GROUP BY name
+      )
+      SELECT f.name,
+             COUNT(*) AS people,
+             COUNT(*) FILTER (WHERE f.sex IS NULL) AS unset,
+             COALESCE(e.female,0) AS female_evidence,
+             COALESCE(e.male,0)   AS male_evidence
+        FROM forename f LEFT JOIN evidence e ON e.name = f.name
+       WHERE LENGTH(f.name) > 1
+       GROUP BY f.name, e.female, e.male
+      HAVING COUNT(*) FILTER (WHERE f.sex IS NULL) > 0
+       ORDER BY COUNT(*) FILTER (WHERE f.sex IS NULL) DESC, f.name`);
+
+    const names = r.rows.map(row => {
+      const f = Number(row.female_evidence), m = Number(row.male_evidence);
+      let suggested = null;
+      if (f + m >= 1) {
+        if (f >= (f + m) * 0.8) suggested = 'F';
+        else if (m >= (f + m) * 0.8) suggested = 'M';
+      }
+      return { name: row.name, people: Number(row.people), unset: Number(row.unset),
+               evidence: { female: f, male: m }, suggested };
+    });
+    res.json({ names,
+               remaining: names.length,
+               peopleRemaining: names.reduce((t, n) => t + n.unset, 0) });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Apply a sex to everyone sharing a forename who does not already have one set.
+app.post('/api/names/sex', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const name = String(req.body && req.body.name || '').trim();
+  const sex = req.body && req.body.sex;
+  if (!name) return res.status(400).json({ error: 'name required' });
+  if (sex !== 'M' && sex !== 'F') return res.status(400).json({ error: "sex must be 'M' or 'F'" });
+  try {
+    const r = await db.query(
+      `UPDATE people SET sex=$2, sex_source=$3
+        WHERE INITCAP(SPLIT_PART(TRIM(first_name), ' ', 1)) = INITCAP($1)
+          AND sex IS NULL`,
+      [name, sex, 'forename review by ' + (req.session.username || 'contributor')]);
+    await logChange('person', 0, req, 'set-sex', name, null, sex + ' × ' + r.rowCount);
+    res.json({ ok: true, name, sex, updated: r.rowCount });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -3795,6 +3868,7 @@ app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public'
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
 app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
+app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
