@@ -123,6 +123,12 @@
   .detail-grid .lbl { color: #8a7a5a; }
   .detail-grid .val { color: #1a1a1a; }
 
+  .wd-suggest { border:1px solid #c8b87a; background:#fdfaf2; border-radius:5px; padding:9px 12px; }
+  .wd-head { font-size:0.68rem; letter-spacing:.06em; text-transform:uppercase; color:#8a7a5a; margin-bottom:3px; }
+  .wd-suggest a { color:#2a5a8a; font-size:0.9rem; text-decoration:none; font-weight:600; }
+  .wd-suggest a:hover { text-decoration:underline; }
+  .wd-meta { font-size:0.74rem; color:#6a6a6a; margin-top:2px; }
+  .wd-conf { font-style:italic; color:#8a7a5a; }
   /* Occupation timeline */
   .occ-timeline { }
   .occ-item {
@@ -334,6 +340,31 @@ async function uploadPersonPhoto(personId, input) {
     label.textContent = '✗ Error: ' + e.message;
   }
 }
+// Suggest a Wikidata person matching this resident. A shared surname is not an
+// identification, so the confidence the API returns is always shown alongside.
+async function loadWikidataSuggestion(p) {
+  const box = document.getElementById('wdSuggest');
+  if (!box || !p.last_name) return;
+  const qs = new URLSearchParams({
+    first: p.first_name || '', last: p.last_name,
+    born: p.born_year || (p.born_date ? String(p.born_date).slice(0, 4) : '')
+  });
+  try {
+    const rows = await fetch('/api/wikidata-match?' + qs).then(r => r.json());
+    const strong = rows.filter(r => r.confidence === 'name and birth year');
+    if (!strong.length) return;
+    box.innerHTML = strong.map(r =>
+      `<div class="wd-suggest">
+         <div class="wd-head">Possible match on Wikidata</div>
+         <a href="${esc(r.wikipedia || r.wikidata)}" target="_blank" rel="noopener">${esc(r.name)}</a>
+         <div class="wd-meta">${esc(r.born || '?')}–${esc(r.died || '?')}${
+           r.occupations.length ? ' · ' + esc(r.occupations.slice(0, 3).join(', ')) : ''}</div>
+         ${r.awards.length ? `<div class="wd-meta">Awards: ${esc(r.awards.join('; '))}</div>` : ''}
+         <div class="wd-meta wd-conf">matched on name and birth year — confirm before recording</div>
+       </div>`).join('');
+  } catch (e) { /* suggestion only; stay silent if unavailable */ }
+}
+
 function displayName(p) {
   const prefix = p.title ? p.title + ' ' : '';
   let n = `${prefix}${p.first_name || ''} ${p.last_name || ''}`.trim();
@@ -561,6 +592,7 @@ function closeProfile() {
 function renderProfile(p) {
   // Header
   document.getElementById('paneName').textContent = displayName(p);
+  if (!p.wikipedia_url) setTimeout(() => loadWikidataSuggestion(p), 0);
   const dates = [];
   const bornYr = parseInt(p.born_year) || parseInt((p.born_date||'').match(/\d{4}/)?.[0]);
   const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
@@ -607,7 +639,10 @@ function renderProfile(p) {
   }
 
   if (p.wikipedia_url) {
-    html.push(`<div style="margin-bottom:16px"><a class="wiki-link" href="${p.wikipedia_url}" target="_blank">📖 Wikipedia article ↗</a></div>`);
+    html.push(`<div style="margin-bottom:16px"><a class="wiki-link" href="${esc(p.wikipedia_url)}" target="_blank" rel="noopener">📖 Wikipedia article ↗</a></div>`);
+  } else {
+    // No article recorded — offer any Wikidata person of the same name and era.
+    html.push('<div id="wdSuggest" style="margin-bottom:16px"></div>');
   }
 
   // Grave

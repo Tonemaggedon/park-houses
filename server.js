@@ -945,6 +945,42 @@ app.get('/api/all-props', (req, res) => {
   catch(e) { res.json([]); }
 });
 
+// ── Wikidata: notable people connected to Nottingham ──────────────────────────
+// A cached cohort (born 1780-1920, born/died/resident in Nottingham) that the
+// people page can check a resident against. Suggestions only — a shared surname
+// is not an identification, so a birth year within 3 years is required before
+// a match is called strong.
+const WIKIDATA_FILE = path.join(__dirname, 'data', 'wikidata_nottingham.json');
+let wikidataCache = null;
+function readWikidata() {
+  if (!wikidataCache) {
+    try { wikidataCache = JSON.parse(fs.readFileSync(WIKIDATA_FILE, 'utf8')); }
+    catch(e) { wikidataCache = []; }
+  }
+  return wikidataCache;
+}
+
+app.get('/api/wikidata-match', (req, res) => {
+  const norm = v => String(v || '').toLowerCase().replace(/[^a-z ]/g, '').trim();
+  const last = norm(req.query.last), first = norm(req.query.first).split(' ')[0];
+  const born = parseInt(req.query.born, 10);
+  if (!last) return res.json([]);
+  const hits = readWikidata().map(p => {
+    const parts = norm(p.name).split(' ').filter(Boolean);
+    if (parts.length < 2) return null;
+    if (parts[parts.length - 1] !== last) return null;
+    const firstMatches = first && parts[0] === first;
+    const yearGap = (born && p.born) ? Math.abs(born - parseInt(p.born, 10)) : null;
+    if (yearGap !== null && yearGap > 3) return null;      // same surname, wrong person
+    let confidence = 'surname only';
+    if (firstMatches && yearGap !== null) confidence = 'name and birth year';
+    else if (firstMatches) confidence = 'name only';
+    return { ...p, confidence };
+  }).filter(Boolean);
+  const rank = { 'name and birth year': 0, 'name only': 1, 'surname only': 2 };
+  res.json(hits.sort((a, b) => rank[a.confidence] - rank[b.confidence]).slice(0, 8));
+});
+
 // ── Historic England listed entries ───────────────────────────────────────────
 // The National Heritage List treats gateways, walls and railings as separate
 // entries, so a nearest-match is unreliable. This returns the candidates near a
