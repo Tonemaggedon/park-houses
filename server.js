@@ -350,6 +350,12 @@ async function dbInit() {
     await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS address TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_location TEXT`);
     await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS grave_number TEXT`);
+    // Significance is a curated judgement, not a computed score: a person is
+    // featured because someone decided they should be, and says why.
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significant BOOLEAN DEFAULT FALSE`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significance_note TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significant_by TEXT`);
+    await db.query(`ALTER TABLE people ADD COLUMN IF NOT EXISTS significant_at TIMESTAMPTZ`);
     await db.query(`CREATE TABLE IF NOT EXISTS census_unoccupied (
       property_id INTEGER NOT NULL,
       census_year INTEGER NOT NULL,
@@ -943,6 +949,110 @@ app.get('/api/all-props', (req, res) => {
     res.type('application/json').send(c.body);
   }
   catch(e) { res.json([]); }
+});
+
+// ── Significant people ───────────────────────────────────────────────────────
+// Who is featured is a human decision. These endpoints surface *candidates* —
+// people carrying a signal worth a second look — and record the curator's
+// choice; nothing promotes itself. Deliberately no length-of-biography test: a
+// long entry means someone had time to write, not that the subject mattered.
+const SIGNAL_SQL = `
+  CASE WHEN COALESCE(p.title,'') <> '' THEN 1 ELSE 0 END
++ CASE WHEN COALESCE(p.postnominals,'') <> '' THEN 1 ELSE 0 END
++ CASE WHEN COALESCE(p.wikipedia_url,'') <> '' THEN 1 ELSE 0 END
++ CASE WHEN p.bio ~* '(knight|baronet|lord mayor|high sheriff|deputy lieutenant|\\mM\\.?P\\.?\\M|O\\.?B\\.?E|M\\.?B\\.?E|C\\.?B\\.?E|K\\.?B\\.?E|C\\.?M\\.?G|D\\.?S\\.?O|alderman|mayor of)' THEN 1 ELSE 0 END
++ CASE WHEN COALESCE(p.known_as,'') ~* '(^|\\s)(sir|dame|lord|lady|rev|col|capt|major|hon)\\M' THEN 1 ELSE 0 END`;
+
+function signalsOf(p) {
+  const out = [];
+  if ((p.title || '').trim()) out.push('has a title');
+  if ((p.postnominals || '').trim()) out.push('has post-nominals');
+  if ((p.wikipedia_url || '').trim()) out.push('has a Wikipedia article');
+  const bio = p.bio || '';
+  const m = bio.match(/(knight\w*|baronet|Lord Mayor|High Sheriff|Deputy Lieutenant|O\.?B\.?E|M\.?B\.?E|C\.?B\.?E|K\.?B\.?E|C\.?M\.?G|D\.?S\.?O|alderman|Mayor of)/i);
+  if (m) out.push('biography mentions “' + m[1] + '”');
+  if (/(^|\s)(Sir|Dame|Lord|Lady|Rev|Col|Capt|Major|Hon)\b/.test(p.known_as || '')) out.push('honorific in the name');
+  if (p.property_count >= 3) out.push('linked to ' + p.property_count + ' properties');
+  return out;
+}
+
+// Weeks run Monday to Sunday (1970-01-05 was a Monday), so the feature changes
+// on a predictable day. splitmix32's finaliser mixes consecutive week numbers
+// properly — a plain xorshift on a sequential seed clumps badly, repeating the
+// same person three weeks running. If the draw lands on last week's person
+// anyway, step on by one.
+function weekNumber(d) {
+  const t = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+  return Math.floor((t - Date.UTC(1970, 0, 5)) / 604800000);
+}
+function mix32(n) {
+  let x = (n + 0x9e3779b9) >>> 0;
+  x = Math.imul(x ^ (x >>> 16), 0x21f0aaad) >>> 0;
+  x = Math.imul(x ^ (x >>> 15), 0x735a2d97) >>> 0;
+  return (x ^ (x >>> 15)) >>> 0;
+}
+function weeklyIndex(date, n) {
+  if (n <= 1) return 0;
+  const w = weekNumber(date);
+  const i = mix32(w) % n;
+  return i === mix32(w - 1) % n ? (i + 1) % n : i;
+}
+
+// People already chosen for the page
+app.get('/api/significant', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count
+      FROM people p WHERE p.significant = TRUE
+      ORDER BY COALESCE(p.last_name,''), COALESCE(p.first_name,'')`);
+    res.json(r.rows.map(p => ({ ...p, signals: signalsOf(p) })));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Suggestions for the curator: a signal, but not yet chosen
+app.get('/api/significant/candidates', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count,
+             (${SIGNAL_SQL}) AS signal_count
+      FROM people p
+      WHERE COALESCE(p.significant,FALSE) = FALSE AND (${SIGNAL_SQL}) > 0
+      ORDER BY (${SIGNAL_SQL}) DESC, COALESCE(p.last_name,'')
+      LIMIT 200`);
+    res.json(r.rows.map(p => ({ ...p, signals: signalsOf(p) })));
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/person/:id/significant', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const on = !!req.body.significant;
+  const note = typeof req.body.note === 'string' ? req.body.note.slice(0, 500) : null;
+  try {
+    await db.query(
+      `UPDATE people SET significant=$2, significance_note=$3, significant_by=$4,
+         significant_at = CASE WHEN $2 THEN NOW() ELSE NULL END WHERE id=$1`,
+      [id, on, on ? note : null, on ? (req.session.username || 'contributor') : null]);
+    await logChange('person', id, req, on ? 'featured' : 'unfeatured', 'significant', null, String(on));
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Person of the week — random, but the same person all week for everyone, and
+// it moves on by itself. Seeded by ISO week so it needs no stored state.
+app.get('/api/person-of-week', async (req, res) => {
+  if (!db) return res.json(null);
+  try {
+    const r = await db.query(`
+      SELECT p.*, (SELECT COUNT(DISTINCT property_id) FROM people_places WHERE person_id=p.id) AS property_count
+      FROM people p WHERE p.significant = TRUE ORDER BY p.id`);
+    if (!r.rows.length) return res.json(null);
+    const n = r.rows.length;
+    const pick = r.rows[weeklyIndex(new Date(), n)];
+    res.json({ ...pick, signals: signalsOf(pick), of: n });
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── The Gazette (official public record) ──────────────────────────────────────
@@ -3232,6 +3342,7 @@ app.get('/admin/users', (req, res) => {
 });
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notable Residents — Nottingham Park Houses</title>
+<style>
+  :root {
+    --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+    --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --gold:#c8a03a; --green:#2e5d3f;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; letter-spacing:.01em; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:1080px; margin:0 auto; padding:26px 20px 70px; }
+
+  h2 { font-size:1.28rem; margin:0 0 4px; letter-spacing:-.01em; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 22px; max-width:64ch; }
+
+  /* person of the week */
+  .potw { background:linear-gradient(180deg,#fffdf6,#f7f1e2); border:1px solid var(--gold);
+    border-radius:8px; padding:22px 24px; margin-bottom:34px; box-shadow:0 2px 10px rgba(90,58,26,.09); }
+  .potw .eyebrow { font-size:.66rem; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--accent); font-weight:700; margin-bottom:8px; }
+  .potw h3 { margin:0 0 3px; font-size:1.7rem; letter-spacing:-.015em; }
+  .potw h3 a { color:var(--ink); text-decoration:none; }
+  .potw h3 a:hover { text-decoration:underline; }
+  .potw .dates { color:var(--faint); font-size:.86rem; margin-bottom:12px; }
+  .potw .bio { font-size:.94rem; color:#3c3428; max-width:70ch; }
+  .potw .rotates { font-size:.72rem; color:var(--faint); font-style:italic; margin-top:14px; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(258px,1fr)); gap:13px; }
+  .card { background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:14px 16px; }
+  .card h4 { margin:0 0 2px; font-size:1rem; }
+  .card h4 a { color:var(--ink); text-decoration:none; }
+  .card h4 a:hover { text-decoration:underline; }
+  .card .dates { color:var(--faint); font-size:.78rem; }
+  .card .note { font-size:.82rem; color:var(--soft); margin-top:7px; font-style:italic; }
+  .signals { margin-top:9px; display:flex; flex-wrap:wrap; gap:4px; }
+  .sig { font-size:.66rem; background:#f0ead8; color:#6a5a2a; border:1px solid #ded2ab;
+    border-radius:3px; padding:2px 6px; }
+  .sig.wiki { background:#e2ecf5; color:#2a5a8a; border-color:#bcd4e8; }
+
+  .starred { color:var(--gold); }
+  .btn { font-family:inherit; font-size:.76rem; border:1px solid #c8b87a; background:#f6f0dd;
+    color:#5a4a1a; border-radius:4px; padding:4px 11px; cursor:pointer; }
+  .btn:hover { background:#eee5c8; }
+  .btn.remove { background:#fff; border-color:#ddd; color:#8a7a6a; }
+  .btn:focus-visible, a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+  details.cand { margin-top:38px; border-top:1px solid var(--rule); padding-top:22px; }
+  details.cand summary { cursor:pointer; font-size:1.06rem; font-weight:600; }
+  details.cand .lede { margin-top:6px; }
+  .cand-row { display:flex; gap:13px; align-items:flex-start; justify-content:space-between;
+    background:var(--card); border:1px solid var(--rule); border-radius:6px;
+    padding:11px 14px; margin-bottom:8px; }
+  .cand-row .who { flex:1 1 auto; min-width:0; }
+  .empty { color:var(--faint); font-style:italic; padding:16px 0; }
+  .err { color:#a3341f; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/significant" class="active">★ Notable</a>
+  <a href="/architects">🏛 Architects</a>
+  <a href="/census">📜 Census</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <div id="potw"></div>
+
+  <h2>Notable residents</h2>
+  <p class="lede">People chosen for the record — for the offices they held, the honours they
+    received, or the lives they led. Each is here because someone decided they should be.</p>
+  <div id="featured" class="grid"><div class="empty">Loading…</div></div>
+
+  <details class="cand" id="candBlock" hidden>
+    <summary>Suggestions <span id="candCount" class="dates"></span></summary>
+    <p class="lede">Residents carrying a signal worth a second look. Nothing here is featured
+      until you say so — length of biography is deliberately not one of the signals.</p>
+    <div id="candidates"></div>
+  </details>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false;
+
+const nameOf = p => {
+  const t = p.title ? p.title + ' ' : '';
+  let n = (t + (p.first_name||'') + ' ' + (p.last_name||'')).replace(/\s+/g,' ').trim();
+  if (p.postnominals) n += ', ' + p.postnominals;
+  return n || 'Unnamed';
+};
+const lifeOf = p => {
+  const b = p.born_year || (p.born_date ? String(p.born_date).slice(0,4) : '');
+  const d = p.died_year || (p.died_date ? String(p.died_date).slice(0,4) : '');
+  return (b || d) ? `${b||'?'}–${d||'?'}` : '';
+};
+const sigChips = p => (p.signals||[]).map(s =>
+  `<span class="sig${/Wikipedia/.test(s)?' wiki':''}">${esc(s)}</span>`).join('');
+
+async function load() {
+  try {
+    const me = await fetch('/api/me').then(r=>r.json()).catch(()=>({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role==='contributor' || me.user.role==='admin')));
+  } catch(e) {}
+
+  const [potw, featured] = await Promise.all([
+    fetch('/api/person-of-week').then(r=>r.json()).catch(()=>null),
+    fetch('/api/significant').then(r=>r.json()).catch(()=>[]),
+  ]);
+
+  renderPotw(potw);
+  renderFeatured(featured);
+  if (canEdit) loadCandidates();
+}
+
+function renderPotw(p) {
+  const el = document.getElementById('potw');
+  if (!p) { el.innerHTML = ''; return; }
+  const bio = (p.bio || '').replace(/\s+/g,' ').trim();
+  el.innerHTML = `<div class="potw">
+    <div class="eyebrow">Person of the week</div>
+    <h3><a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h3>
+    <div class="dates">${esc(lifeOf(p))}${p.born_place ? ' · born ' + esc(p.born_place) : ''}</div>
+    ${bio ? `<div class="bio">${esc(bio.slice(0,420))}${bio.length>420?'…':''}</div>` : ''}
+    <div class="signals">${sigChips(p)}</div>
+    <div class="rotates">Chosen from ${esc(p.of)} notable resident${p.of===1?'':'s'} — changes each week.</div>
+  </div>`;
+}
+
+function renderFeatured(rows) {
+  const el = document.getElementById('featured');
+  if (!rows.length) {
+    el.innerHTML = `<div class="empty">Nobody featured yet.${canEdit?' Open Suggestions below to add the first.':''}</div>`;
+    return;
+  }
+  el.innerHTML = rows.map(p => `<div class="card">
+    <h4><span class="starred">★</span> <a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h4>
+    <div class="dates">${esc(lifeOf(p))}</div>
+    ${p.significance_note ? `<div class="note">${esc(p.significance_note)}</div>` : ''}
+    <div class="signals">${sigChips(p)}</div>
+    ${canEdit ? `<div style="margin-top:10px"><button class="btn remove" data-off="${esc(p.id)}">Remove</button></div>` : ''}
+  </div>`).join('');
+}
+
+async function loadCandidates() {
+  const block = document.getElementById('candBlock');
+  block.hidden = false;
+  const box = document.getElementById('candidates');
+  box.innerHTML = '<div class="empty">Loading…</div>';
+  try {
+    const rows = await fetch('/api/significant/candidates').then(r=>r.json());
+    document.getElementById('candCount').textContent = `(${rows.length})`;
+    box.innerHTML = rows.length ? rows.map(p => `<div class="cand-row">
+      <div class="who">
+        <div><strong>${esc(nameOf(p))}</strong> <span class="dates">${esc(lifeOf(p))}</span></div>
+        <div class="signals">${sigChips(p)}</div>
+      </div>
+      <button class="btn" data-on="${esc(p.id)}">Feature</button>
+    </div>`).join('') : '<div class="empty">No further suggestions.</div>';
+  } catch(e) { box.innerHTML = '<div class="empty err">Could not load suggestions.</div>'; }
+}
+
+document.addEventListener('click', async e => {
+  const on = e.target.closest('[data-on]'), off = e.target.closest('[data-off]');
+  if (!on && !off) return;
+  const id = (on || off).dataset.on || (on || off).dataset.off;
+  let note = null;
+  if (on) {
+    note = prompt('Why is this person notable? (shown on their card)');
+    if (note === null) return;
+  }
+  (on||off).disabled = true;
+  try {
+    const r = await fetch(`/api/person/${id}/significant`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ significant: !!on, note }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    await load();
+    if (canEdit) { document.getElementById('candBlock').open = true; }
+  } catch(err) {
+    (on||off).disabled = false;
+    alert('Could not save that — you may need to sign in as a contributor.');
+  }
+});
+
+load();
+</script>
+</body>
+</html>
