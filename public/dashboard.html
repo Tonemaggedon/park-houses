@@ -328,7 +328,9 @@ function renderResearchGrid(filter){
   if(researchFilter==='noarchitect') props=props.filter(p=>!p.architect&&!p.builder);
   if(researchFilter==='researching') props=props.filter(p=>researchMap[p.id]&&researchMap[p.id].length>0);
   if(researchFilter==='mine')        props=props.filter(p=>currentUser&&(researchMap[p.id]||[]).includes(currentUser));
-  if(q) props=props.filter(p=>addrOf(p).toLowerCase().includes(q.toLowerCase()));
+  // Match former names too, so a historic name finds the current record.
+  if(q) props=props.filter(p=>[addrOf(p),p.house_name,p.prev_house_name]
+    .filter(Boolean).join(' ').toLowerCase().includes(q.toLowerCase()));
   const grid=document.getElementById('researchGrid');
   if(!props.length){grid.innerHTML='<div class="loading">No properties match</div>';return;}
   grid.innerHTML=props.slice(0,300).map(p=>{

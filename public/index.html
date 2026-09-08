@@ -808,7 +808,11 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
   markers = {};
   let count = 0;
   props.forEach(p => {
-    const txt = ((p.name || '') + ' ' + (p.street || '') + ' ' + (p.no || '') + ' ' + (p.address || '')).toLowerCase();
+    // Include the house name and any former name, so searching a historic name
+    // ("Cuylerholme", "Brightlands") finds the property it is now recorded under.
+    const txt = ((p.name || '') + ' ' + (p.street || '') + ' ' + (p.no || '') + ' '
+               + (p.address || '') + ' ' + (p.house_name || '') + ' '
+               + (p.prev_house_name || '')).toLowerCase();
     if (filter && !txt.includes(filter.toLowerCase())) return;
     if (typeF && p.street !== typeF) return;
     if (listedF === 'listed' && !isListedProp(p)) return;
@@ -942,9 +946,15 @@ function renderPanel() {
     const displayBuiltFor = esc(ov.built_for || p.built_for);
     const displayConverted = esc(ov.converted || p.converted);
     const displayPrevName = esc(ov.prev_house_name || p.prev_house_name);
-    const hasNumber = !!(p.no || p.number);
+    // Some records keep the house name in `no` ("Cedar Lodge"), so only treat it
+    // as a street number when it actually starts with a digit.
+    const hasNumber = /^\d/.test(String(p.no || p.number || ''));
     const displayHouseName = hasNumber ? esc(p.name || p.house_name || '') : null;
-    const address = (p.no||p.number ? (p.no||p.number)+' ' : '') + (p.street||'');
+    // A named house with no street number would otherwise show only the street,
+    // dropping its name from the panel entirely (30 properties do this).
+    const address = hasNumber
+      ? esc((p.no||p.number) + ' ' + (p.street||''))
+      : esc([p.name || p.house_name, p.street].filter(Boolean).join(', '));
     const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
     let detailRows = '';
     detailRows += '<div class="row"><span class="lbl">Address</span><span class="val">' + address + '</span></div>';
