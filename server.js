@@ -4614,6 +4614,23 @@ app.get('/api/origins/filters', async (req, res) => {
 app.get('/origins', (req, res) => res.sendFile(path.join(__dirname, 'public', 'origins.html')));
 
 // ── Catch-all: serve map page for any unmatched GET ───────────────────────────
-app.get('*', (req, res) => {
+// Express 5 uses path-to-regexp v8, where a bare '*' is no longer a valid path
+// and a wildcard must be named. Resolved from the installed version so this
+// keeps working either side of that upgrade.
+const CATCH_ALL = require('express/package.json').version.startsWith('4') ? '*' : '/*splat';
+app.get(CATCH_ALL, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ── Errors ───────────────────────────────────────────────────────────────────
+// There was no error handler at all. Most routes catch their own failures, but
+// two async ones do not, and Express 5 forwards a rejected promise here rather
+// than leaving the request hanging as Express 4 does. Log it, and say something
+// useful without leaking a stack trace to the browser in production.
+app.use((err, req, res, next) => {
+  console.error('[error]', req.method, req.originalUrl, '—', err && err.stack || err);
+  if (res.headersSent) return next(err);
+  res.status(err && err.status || 500).json({
+    error: IS_PROD ? 'Something went wrong handling that request.' : String(err && err.message || err),
+  });
 });
