@@ -49,6 +49,11 @@
   .err { color:#a3341f; }
   .done { text-align:center; padding:44px 0; }
   .done h3 { font-size:1.2rem; margin:0 0 6px; }
+  details.fix { margin-top:26px; border-top:1px solid var(--rule); padding-top:16px; }
+  details.fix summary { cursor:pointer; font-size:1rem; font-weight:600; }
+  details.fix input { width:100%; max-width:340px; padding:7px 10px; border:1px solid var(--rule);
+    border-radius:5px; font-family:inherit; font-size:.88rem; background:#fff; }
+  details.fix #fixResults { margin-top:10px; }
   .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:20px;
     border-top:1px solid var(--rule); padding-top:12px; max-width:70ch; }
   a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
@@ -75,6 +80,15 @@
     daughters and wives, or by sons and brothers.</p>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
+  <details class="fix">
+    <summary>Put a mistake right</summary>
+    <p class="lede">Search a name you have already set and switch it. This changes everyone with
+      that forename, except anyone whose sex was set individually on their own record.</p>
+    <input id="fixSearch" type="search" placeholder="Search a name already set…"
+      autocomplete="off" aria-label="Search a name already set">
+    <div id="fixResults"></div>
+  </details>
+
   <div class="note">This sets the sex for everyone sharing a forename who does not already have one.
     Individuals can be corrected afterwards on their own record — this is the quick pass.</div>
 </div>
@@ -159,6 +173,57 @@ document.addEventListener('click', async e => {
       document.getElementById('bar').textContent =
         `${left} names left · ${people} people · ${donePeople} people done this session`;
     }, 180);
+  } catch (err) {
+    row.querySelectorAll('button').forEach(b => b.disabled = false);
+    alert('Could not save that: ' + err.message);
+  }
+});
+
+// Correcting a name already set — a wrong click is easy when moving quickly.
+let fixTimer = null;
+document.getElementById('fixSearch').addEventListener('input', e => {
+  clearTimeout(fixTimer);
+  const q = e.target.value.trim();
+  const box = document.getElementById('fixResults');
+  if (q.length < 2) { box.innerHTML = ''; return; }
+  fixTimer = setTimeout(async () => {
+    try {
+      const rows = await fetch('/api/names/sex-set?q=' + encodeURIComponent(q)).then(r => r.json());
+      box.innerHTML = rows.length ? '<div class="grid">' + rows.map(n => `
+        <div class="row" data-fix="${esc(n.name)}">
+          <div class="who">
+            <div class="nm">${esc(n.name)}</div>
+            <div class="ct">currently ${n.sex === 'F' ? 'female' : 'male'} ·
+              ${n.female + n.male} ${n.female + n.male === 1 ? 'person' : 'people'}</div>
+            ${n.individuallySet ? `<div class="ev">${n.individuallySet} set individually — left alone</div>` : ''}
+          </div>
+          <div class="btns">
+            <button class="f${n.sex === 'F' ? ' sug' : ''}" data-fixsex="F" title="Female">♀</button>
+            <button class="m${n.sex === 'M' ? ' sug' : ''}" data-fixsex="M" title="Male">♂</button>
+          </div>
+        </div>`).join('') + '</div>'
+        : '<div class="empty">No name set matches that.</div>';
+    } catch (err) { box.innerHTML = '<div class="empty err">Search failed.</div>'; }
+  }, 250);
+});
+
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-fixsex]');
+  if (!btn) return;
+  const row = btn.closest('.row');
+  const name = row.dataset.fix;
+  row.querySelectorAll('button').forEach(b => b.disabled = true);
+  try {
+    const res = await fetch('/api/names/sex', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, sex: btn.dataset.fixsex, correct: true }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    row.querySelector('.ct').textContent =
+      `now ${btn.dataset.fixsex === 'F' ? 'female' : 'male'} · ${data.updated} updated`;
+    row.querySelectorAll('button').forEach(b => { b.disabled = false; b.classList.remove('sug'); });
+    btn.classList.add('sug');
   } catch (err) {
     row.querySelectorAll('button').forEach(b => b.disabled = false);
     alert('Could not save that: ' + err.message);

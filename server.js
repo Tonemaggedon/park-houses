@@ -1421,22 +1421,51 @@ app.get('/api/names/sex-queue', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-// Apply a sex to everyone sharing a forename who does not already have one set.
+// Apply a sex to everyone sharing a forename. By default it only fills blanks;
+// with correct:true it also changes people already set by a previous forename
+// pass — a wrong click is easy when working quickly. People whose sex was set
+// individually on their own record are never overwritten either way.
 app.post('/api/names/sex', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const name = String(req.body && req.body.name || '').trim();
   const sex = req.body && req.body.sex;
+  const correct = req.body && req.body.correct === true;
   if (!name) return res.status(400).json({ error: 'name required' });
   if (sex !== 'M' && sex !== 'F') return res.status(400).json({ error: "sex must be 'M' or 'F'" });
   try {
+    const who = 'forename review by ' + (req.session.username || 'contributor');
     const r = await db.query(
       `UPDATE people SET sex=$2, sex_source=$3
         WHERE INITCAP(SPLIT_PART(TRIM(first_name), ' ', 1)) = INITCAP($1)
-          AND sex IS NULL`,
-      [name, sex, 'forename review by ' + (req.session.username || 'contributor')]);
-    await logChange('person', 0, req, 'set-sex', name, null, sex + ' × ' + r.rowCount);
-    res.json({ ok: true, name, sex, updated: r.rowCount });
+          AND (sex IS NULL ${correct ? "OR COALESCE(sex_source,'') LIKE 'forename review%'" : ''})`,
+      [name, sex, who]);
+    await logChange('person', 0, req, correct ? 'correct-sex' : 'set-sex', name, null,
+      sex + ' × ' + r.rowCount);
+    res.json({ ok: true, name, sex, updated: r.rowCount, corrected: correct });
   } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// Forenames already classified, for putting a mistake right.
+app.get('/api/names/sex-set', async (req, res) => {
+  if (!db) return res.json([]);
+  const q = String(req.query.q || '').trim();
+  try {
+    const r = await db.query(`
+      SELECT INITCAP(SPLIT_PART(TRIM(first_name), ' ', 1)) AS name,
+             COUNT(*) FILTER (WHERE sex='F') AS female,
+             COUNT(*) FILTER (WHERE sex='M') AS male,
+             COUNT(*) FILTER (WHERE COALESCE(sex_source,'') NOT LIKE 'forename review%'
+                                AND sex IS NOT NULL) AS individually_set
+        FROM people
+       WHERE sex IS NOT NULL AND COALESCE(TRIM(first_name),'') <> ''
+         ${q ? "AND INITCAP(SPLIT_PART(TRIM(first_name),' ',1)) ILIKE $1" : ''}
+       GROUP BY 1 ORDER BY COUNT(*) DESC, 1 LIMIT 40`, q ? ['%' + q + '%'] : []);
+    res.json(r.rows.map(x => ({
+      name: x.name, female: Number(x.female), male: Number(x.male),
+      individuallySet: Number(x.individually_set),
+      sex: Number(x.female) >= Number(x.male) ? 'F' : 'M',
+    })));
+  } catch(e) { res.json([]); }
 });
 
 // Most common forenames by census year, split by sex.
