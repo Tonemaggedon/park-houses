@@ -151,6 +151,12 @@
   }
 
   /* Map legend */
+  .hist-control { background:rgba(255,255,255,0.94); border:1px solid #c8b87a; border-radius:5px;
+    padding:7px 10px; font-family:Georgia,serif; box-shadow:0 1px 5px rgba(0,0,0,0.25); }
+  .hist-control label { display:block; font-size:0.72rem; color:#5a4a2a; margin-bottom:4px; white-space:nowrap; }
+  .hist-control.on label { color:#8a4a1a; font-weight:600; }
+  .hist-control #histPct { color:#8a7a5a; font-variant-numeric:tabular-nums; }
+  .hist-control input[type=range] { width:118px; accent-color:#8a6a3a; display:block; cursor:pointer; }
   .map-legend {
     background: white; padding: 10px 13px; border-radius: 6px;
     border: 1px solid #c8b888; font-size: 0.75rem; color: #4a3a20;
@@ -722,6 +728,45 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | The Park Conservation Trust',
   maxZoom: 19,
 }).addTo(map);
+
+// ── HISTORIC OS LAYER ─────────────────────────────────────────────────────────
+// OS 25-inch County Series for Nottinghamshire (surveyed 1880s-1910s), served by
+// the National Library of Scotland. Tiles only exist to z18, so overzoom past
+// that rather than showing blanks. Lets the demolished houses be seen in place.
+const histLayer = L.tileLayer(
+  'https://mapseries-tilesets.s3.amazonaws.com/25_inch/nottinghamshire/{z}/{x}/{y}.png', {
+  attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
+  maxNativeZoom: 18,
+  maxZoom: 19,
+  opacity: 0,
+  zIndex: 350,
+});
+histLayer.addTo(map);
+
+let histOpacity = 0;
+function setHistoric(v) {
+  histOpacity = Math.max(0, Math.min(1, Number(v) || 0));
+  histLayer.setOpacity(histOpacity);
+  const out = document.getElementById('histPct');
+  if (out) out.textContent = Math.round(histOpacity * 100) + '%';
+  const wrap = document.getElementById('histControl');
+  if (wrap) wrap.classList.toggle('on', histOpacity > 0);
+}
+
+const histControl = L.control({ position: 'topright' });
+histControl.onAdd = () => {
+  const d = L.DomUtil.create('div', 'hist-control');
+  d.id = 'histControl';
+  d.innerHTML =
+    '<label for="histSlider">1880s OS map <span id="histPct">0%</span></label>' +
+    '<input id="histSlider" type="range" min="0" max="1" step="0.05" value="0" ' +
+    'aria-label="Historic map opacity">';
+  L.DomEvent.disableClickPropagation(d);
+  L.DomEvent.disableScrollPropagation(d);
+  d.querySelector('#histSlider').addEventListener('input', e => setHistoric(e.target.value));
+  return d;
+};
+histControl.addTo(map);
 
 // Add a subtle historical overlay hint
 const legend = L.control({ position: 'bottomleft' });
