@@ -5769,9 +5769,9 @@
   {
     "id": 390,
     "name": "Sunnyside",
-    "street": "Fish Pond Drive",
+    "street": "Park Terrace",
     "no": "Sunnyside",
-    "address": "Sunnyside, Fish Pond Drive",
+    "address": "Sunnyside, Park Terrace",
     "desc": "",
     "history": "",
     "date_built": "",
@@ -5779,8 +5779,12 @@
     "census_only": true,
     "demolished": true,
     "demolished_notes": "House demolished.",
-    "lat": 52.950059,
-    "lng": -1.1607417
+    "lat": 52.952471,
+    "lng": -1.159465,
+    "sources": {
+      "street": "Owner knowledge (A. Hagues) — recorded as Fish Pond Drive in error; a different property of that name exists there",
+      "position": "Placed by owner, 8 Sep 2026 — 28m from 9 Park Terrace"
+    }
   },
   {
     "id": 391,
@@ -5920,9 +5924,13 @@
     "listed": "No",
     "census_only": true,
     "demolished": true,
-    "demolished_notes": "House demolished. Approximate position shown.",
-    "lat": 52.949,
-    "lng": -1.1632
+    "demolished_notes": "Villa demolished and replaced by flats. Positioned on the private drive still named Clumber Court, off Clumber Crescent South.",
+    "lat": 52.949624,
+    "lng": -1.165353,
+    "sources": {
+      "position": "OpenStreetMap: the private drive named Clumber Court (Nottingham Park Estate Ltd), 22m off Clumber Crescent South",
+      "demolished": "Owner knowledge (A. Hagues) — a villa, replaced by flats. London Gazette 1952 records a resident at \"Clumber Court, Clumber Crescent South, The Park\"; by 1969 it was numbered flats (\"27 Clumber Court\")"
+    }
   },
   {
     "id": 400,
