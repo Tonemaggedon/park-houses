@@ -93,6 +93,23 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 ::-webkit-scrollbar { width:5px; }
 ::-webkit-scrollbar-track { background:#1a2a1a; }
 ::-webkit-scrollbar-thumb { background:#2a4a2a; border-radius:3px; }
+
+  .admin-tools { background:#fffdf5; border:1px solid #c8b87a; border-radius:8px;
+    padding:14px 18px; margin-bottom:22px; }
+  .admin-tools-head { font-size:0.68rem; letter-spacing:.13em; text-transform:uppercase;
+    color:#8a6a2a; font-weight:700; margin-bottom:10px; }
+  .admin-tool { display:flex; gap:16px; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; }
+  .admin-tool-name { font-weight:600; font-size:0.94rem; color:#2a2418; }
+  .admin-tool-desc { font-size:0.8rem; color:#6a5c44; max-width:60ch; margin-top:2px; }
+  .admin-tool-desc code { background:#f0ead8; padding:1px 4px; border-radius:3px; font-size:0.94em; }
+  .admin-btn { font-family:inherit; font-size:0.84rem; background:#2f4d27; color:#f2ecd8;
+    border:none; border-radius:5px; padding:7px 18px; cursor:pointer; white-space:nowrap; }
+  .admin-btn:hover { background:#3d6333; }
+  .admin-btn:disabled { opacity:.6; cursor:default; }
+  .admin-tool-result { margin-top:12px; padding-top:10px; border-top:1px solid #e8dfc4;
+    font-size:0.84rem; color:#3c3428; white-space:pre-line; }
+  .admin-tool-result.bad { color:#a3341f; }
 </style>
 </head>
 <body>
@@ -119,6 +136,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 </div>
 
 <div class="main">
+  <div id="adminTools" class="admin-tools" hidden>
+    <div class="admin-tools-head">Admin tools</div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Import bibliographies</div>
+        <div class="admin-tool-desc">Loads any prepared works list in <code>data/</code> onto the
+          matching person. Safe to run more than once — it never duplicates an entry.</div>
+      </div>
+      <button id="btnImportWorks" class="admin-btn">Import</button>
+    </div>
+    <div id="adminToolsResult" class="admin-tool-result" hidden></div>
+  </div>
+
   <div class="stat-row">
     <div class="stat-card"><div class="val gold" id="s-total">—</div><div class="label">Total Properties</div></div>
     <div class="stat-card"><div class="val green" id="s-people">—</div><div class="label">People Recorded</div></div>
@@ -547,8 +577,32 @@ async function renderLeagueTable(){
   } catch(e) {}
 }
 
-// Show admin users link if admin
-fetch('/api/me').then(r=>r.json()).then(d=>{ if(d.isAdmin) { const el=document.getElementById('adminUsersLink'); if(el) el.style.display=''; } }).catch(()=>{});
+// Admin-only tools
+fetch('/api/me').then(r=>r.json()).then(d=>{
+  if (!d.isAdmin) return;
+  const el = document.getElementById('adminUsersLink'); if (el) el.style.display='';
+  const tools = document.getElementById('adminTools'); if (tools) tools.hidden = false;
+}).catch(()=>{});
+
+document.getElementById('btnImportWorks')?.addEventListener('click', async e => {
+  const btn = e.target, out = document.getElementById('adminToolsResult');
+  btn.disabled = true; btn.textContent = 'Importing…';
+  out.hidden = false; out.className = 'admin-tool-result'; out.textContent = 'Working…';
+  try {
+    const r = await fetch('/api/admin/import-works', { method: 'POST' });
+    const data = await r.json();
+    if (!r.ok || data.error) throw new Error(data.error || ('HTTP ' + r.status));
+    out.textContent = (data.report || []).map(x =>
+      x.skipped ? `${x.file}: skipped — ${x.skipped}`
+                : `${x.file}: ${x.added} added, ${x.alreadyPresent} already recorded`
+    ).join('\n') || 'No bibliography files found in data/.';
+  } catch (err) {
+    out.className = 'admin-tool-result bad';
+    out.textContent = 'Could not import: ' + err.message;
+  } finally {
+    btn.disabled = false; btn.textContent = 'Import';
+  }
+});
 
 async function renderBuilders(){
   try {
