@@ -231,6 +231,10 @@
     background: #f0ebe0; border-bottom: 1px solid #d8cdb8;
     padding: 8px 20px 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
   }
+  #signedOutHint { font-size:0.78rem; color:#e8dfc8; text-decoration:underline;
+    white-space:nowrap; opacity:.9; }
+  #signedOutHint:hover { opacity:1; }
+  #signedInAs { font-size:0.74rem; color:#b9c9a8; white-space:nowrap; }
   .groups-label { font-size: 0.75rem; color: #7a6a4a; font-style: italic; margin-right: 4px; white-space: nowrap; }
   .group-chip {
     display: inline-flex; align-items: center; gap: 4px;
@@ -263,6 +267,8 @@
   <h2>People of The Park</h2>
   <input type="text" id="searchBox" placeholder="Search by name, address or place…">
   <button id="addPersonBtn" onclick="openAddPerson()" style="display:none;background:#4a7c5a;border:1px solid #3a6a4a;color:#e8dfc8;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:Georgia,serif">+ Add Person</button>
+  <a id="signedOutHint" href="/?signin=1" style="display:none">Sign in to add or edit</a>
+  <span id="signedInAs" style="display:none"></span>
   <select id="titleFilter" onchange="applyFilters()" title="Filter by title">
     <option value="">All titles</option>
     <option value="Sir">Sir</option>
@@ -1380,7 +1386,22 @@ let _me = null;
 fetch('/api/me').then(r=>r.json()).then(me=>{
   _me = me;
   canUploadPhotos = !!(me.isAdmin || me.user);
-  if(me.isAdmin||(me.user&&(me.user.role==='contributor'||me.user.role==='admin'))) document.getElementById('addPersonBtn').style.display='';
+  // Say who you are, or that you are not signed in. Silently hiding the controls
+  // reads as a missing feature rather than a session that has ended.
+  const canAdd = me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin'));
+  const hint = document.getElementById('signedOutHint');
+  const who  = document.getElementById('signedInAs');
+  if (canAdd) document.getElementById('addPersonBtn').style.display = '';
+  if (me.isAdmin || me.user) {
+    const name = me.isAdmin ? 'admin'
+      : [me.user.firstName, me.user.lastName].filter(Boolean).join(' ') || me.user.email;
+    const role = me.isAdmin ? 'admin' : (me.user.role || 'viewer');
+    who.textContent = 'Signed in as ' + name + ' (' + role + ')'
+      + (!canAdd ? ' — ask an admin for contributor access to add people' : '');
+    who.style.display = '';
+  } else {
+    hint.style.display = '';
+  }
   // Re-render open profile now that permissions are known (fixes race condition)
   if (currentPersonId) openProfile(currentPersonId);
 }).catch(()=>{});
