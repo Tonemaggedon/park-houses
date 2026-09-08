@@ -1160,6 +1160,43 @@ app.post('/api/admin/gazette-sweep', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Every pending suggestion in one list, so they can be worked through rather
+// than found one person at a time.
+app.get('/api/gazette/pending', async (req, res) => {
+  if (!db) return res.json({ people: [], total: 0 });
+  try {
+    const r = await db.query(`
+      SELECT g.id, g.url, g.gazette, g.issue, g.page, g.supplement, g.title, g.notice_date,
+             p.id AS person_id, p.first_name, p.last_name, p.known_as, p.title AS person_title,
+             p.postnominals, p.born_year, p.died_year, p.bio
+        FROM person_gazette g
+        JOIN people p ON p.id = g.person_id
+       WHERE g.status = 'suggested'
+       ORDER BY p.last_name, p.first_name, g.notice_date`);
+    const people = [];
+    const byPerson = new Map();
+    for (const row of r.rows) {
+      if (!byPerson.has(row.person_id)) {
+        const bio = (row.bio || '').replace(/\s+/g, ' ').trim();
+        const person = {
+          id: row.person_id, first_name: row.first_name, last_name: row.last_name,
+          known_as: row.known_as, title: row.person_title, postnominals: row.postnominals,
+          born_year: row.born_year, died_year: row.died_year,
+          bio: bio.length > 260 ? bio.slice(0, 260) + '…' : bio,
+          notices: [],
+        };
+        byPerson.set(row.person_id, person);
+        people.push(person);
+      }
+      byPerson.get(row.person_id).notices.push({
+        id: row.id, url: row.url, gazette: row.gazette, issue: row.issue,
+        page: row.page, supplement: row.supplement, title: row.title, notice_date: row.notice_date,
+      });
+    }
+    res.json({ people, total: r.rows.length });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post('/api/person/:personId/gazette/:refId', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const status = req.body && req.body.status === 'confirmed' ? 'confirmed' : 'dismissed';
@@ -3757,6 +3794,7 @@ app.get('/admin/users', (req, res) => {
 app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public', 'family-tree.html')));
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
+app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
