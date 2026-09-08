@@ -184,6 +184,16 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
     <div class="admin-tool">
       <div>
+        <div class="admin-tool-name">Find rows that are not people</div>
+        <div class="admin-tool-desc">A pasted spreadsheet sometimes brings its own column headings
+          with it, and they end up filed as residents. This lists any record whose name is a
+          heading rather than a name, plus any with no name at all. Nothing is deleted — each one
+          links to its record, where the delete button lives.</div>
+      </div>
+      <button id="btnStrayRows" class="admin-btn" style="background:#5a5a4a">Check</button>
+    </div>
+    <div class="admin-tool">
+      <div>
         <div class="admin-tool-name">Import people</div>
         <div class="admin-tool-desc">Adds people prepared in <code>data/</code> — figures found in
           someone else's biography with no record of their own — and links them to their
@@ -684,6 +694,34 @@ const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done
       + `${x.alreadyPresent} already present, ${x.propertyLinks} property link`
       + `${x.propertyLinks === 1 ? '' : 's'}`).join('\n')
   + ((d.report || []).length ? '' : 'No people files found in data/.');
+
+document.getElementById('btnStrayRows')?.addEventListener('click', async e => {
+  const btn = e.target, out = document.getElementById('adminToolsResult');
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Checking…';
+  out.hidden = false; out.className = 'admin-tool-result'; out.textContent = 'Checking…';
+  try {
+    const r = await fetch('/api/admin/stray-rows');
+    const d = await r.json();
+    if (!r.ok || d.error) throw new Error(d.error || ('HTTP ' + r.status));
+    if (!d.strays.length) {
+      out.textContent = `Checked ${d.scanned} people. None of them is a header row.`;
+    } else {
+      out.innerHTML = `Checked ${d.scanned} people. `
+        + `${d.strays.length} ${d.strays.length === 1 ? 'record is' : 'records are'} not a person:<br>`
+        + d.strays.map(p => {
+            const nm = [p.first_name, p.last_name].filter(Boolean).join(' ').trim() || '(no name)';
+            const ce = Number(p.census_entries);
+            return `<a href="/people?person=${encodeURIComponent(p.id)}" target="_blank">`
+              + `#${p.id} ${nm.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</a>`
+              + (ce ? ` — ${ce} census ${ce === 1 ? 'entry' : 'entries'} attached, check before deleting` : '');
+          }).join('<br>');
+    }
+  } catch (err) {
+    out.className = 'admin-tool-result bad';
+    out.textContent = 'Failed: ' + err.message;
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
 
 document.getElementById('btnPeoplePreview')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/import-people', { dryRun: true }, describePeople));

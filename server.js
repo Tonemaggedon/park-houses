@@ -2596,6 +2596,39 @@ async function geocodePlacesBatch(places) {
   }
 }
 
+// A spreadsheet's own column headings sometimes survive a copy-paste and arrive
+// looking like a person. No resident is called "Last name", so treat an exact
+// match on a heading as the header row it is.
+const COLUMN_HEADINGS = new Set([
+  'last name', 'lastname', 'first name', 'first names', 'firstname', 'forename',
+  'forenames', 'given name', 'given names', 'surname', 'name', 'full name',
+  'age', 'sex', 'gender', 'relation', 'relationship', 'occupation',
+  'birth place', 'birthplace', 'place of birth', 'where born', 'year',
+]);
+const looksLikeHeading = v => COLUMN_HEADINGS.has(
+  String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
+);
+
+// GET /api/admin/stray-rows — people who are not people: header rows and blanks
+// that survived an import. Read-only; deleting stays a deliberate click.
+app.get('/api/admin/stray-rows', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const r = await db.query(
+      `SELECT p.id, p.first_name, p.last_name,
+              (SELECT COUNT(*) FROM census_entries c WHERE c.person_id = p.id) AS census_entries
+         FROM people p
+        ORDER BY p.id`
+    );
+    const strays = r.rows.filter(p => {
+      const fn = (p.first_name || '').trim(), ln = (p.last_name || '').trim();
+      if (!fn && !ln) return true;
+      return (!fn || looksLikeHeading(fn)) && (!ln || looksLikeHeading(ln));
+    });
+    res.json({ scanned: r.rows.length, strays });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // POST /api/census/import — bulk import from pasted census data
 app.post('/api/census/import', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
@@ -2609,6 +2642,8 @@ app.post('/api/census/import', requireContributor, async (req, res) => {
       const ln = (row.last_name || '').trim();
       if (!fn && !ln) continue;
       if (/^\*.*\*$/.test(fn) || /^\*.*\*$/.test(ln)) continue; // e.g. *MISSING*
+      // The spreadsheet's own header row, pasted in along with the data.
+      if ((!fn || looksLikeHeading(fn)) && (!ln || looksLikeHeading(ln))) continue;
       let personId = row.person_id ? parseInt(row.person_id) : null;
       if (!personId) {
         // Try to match an existing person by name before creating a new one
