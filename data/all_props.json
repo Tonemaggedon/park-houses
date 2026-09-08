@@ -1151,7 +1151,10 @@
     "listed": "No",
     "house_name": "Adam House",
     "lat": 52.9515337,
-    "lng": -1.1637924
+    "lng": -1.1637924,
+    "sources": {
+      "prev_house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953; still Brightlands on OS 1:1250 SK 5639 NW, revised Dec 1967, Adam House by OS 1:1250 SK 5639 NW, boundaries Dec 1970"
+    }
   },
   {
     "id": 82,
@@ -1184,7 +1187,10 @@
     "house_name": "Jelenice",
     "lat": 52.95119,
     "lng": -1.1637848,
-    "prev_house_name": "Northwood"
+    "prev_house_name": "Northwood",
+    "sources": {
+      "prev_house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953; still Northwood on OS 1:1250 SK 5639 NW, revised Dec 1967"
+    }
   },
   {
     "id": 84,
@@ -1200,7 +1206,10 @@
     "listed": "No",
     "house_name": "Penrhyn House",
     "lat": 52.9510808,
-    "lng": -1.1629773
+    "lng": -1.1629773,
+    "sources": {
+      "house_name": "OS 1:1250 SK 5539 NE and OpenStreetMap building footprint — record previously read Penryhn"
+    }
   },
   {
     "id": 85,
@@ -1215,7 +1224,11 @@
     "listed": "No",
     "house_name": "Westwood",
     "lat": 52.950908,
-    "lng": -1.162484
+    "lng": -1.162484,
+    "sources": {
+      "position": "OpenStreetMap building footprint (Netherhouse, 1A Clumber Road East)",
+      "prev_house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953"
+    }
   },
   {
     "id": 86,
@@ -1783,7 +1796,10 @@
     "listed": "No",
     "lat": 52.9484169,
     "lng": -1.1571505,
-    "house_name": "Wisteria House"
+    "house_name": "Wisteria House",
+    "sources": {
+      "house_name": "OpenStreetMap building footprint"
+    }
   },
   {
     "id": 124,
@@ -1813,7 +1829,10 @@
     "listed": "No",
     "lat": 52.9489775,
     "lng": -1.1579824,
-    "prev_house_name": "Thorndale"
+    "prev_house_name": "Thorndale",
+    "sources": {
+      "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet"
+    }
   },
   {
     "id": 126,
@@ -2948,7 +2967,10 @@
     "listed": "No",
     "lat": 52.950158,
     "lng": -1.165793,
-    "house_name": "Stowe House"
+    "house_name": "Stowe House",
+    "sources": {
+      "position": "OpenStreetMap building footprint (6 Maxtoke Road, NG7 1EG)"
+    }
   },
   {
     "id": 203,
@@ -3026,7 +3048,10 @@
     "listed": "No",
     "house_name": "Newcastle Court",
     "lat": 52.9507131,
-    "lng": -1.1646425
+    "lng": -1.1646425,
+    "sources": {
+      "prev_house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953; Newcastle Court by OS 1:1250 SK 5639 NW, revised Dec 1967"
+    }
   },
   {
     "id": 208,
@@ -3351,7 +3376,10 @@
     "listed": "No",
     "lat": 52.953185,
     "lng": -1.1658675,
-    "house_name": "Yorke House"
+    "house_name": "Yorke House",
+    "sources": {
+      "house_name": "OpenStreetMap building footprint"
+    }
   },
   {
     "id": 230,
@@ -3518,7 +3546,10 @@
     "listed": "No",
     "lat": 52.9483307,
     "lng": -1.1604687,
-    "house_name": "Beech House"
+    "house_name": "Beech House",
+    "sources": {
+      "house_name": "OpenStreetMap building footprint"
+    }
   },
   {
     "id": 241,
@@ -4329,7 +4360,10 @@
     "residents": [],
     "history": "Prominently located close to southern entrance of The Park, c1886-88. Central section of larger building accommodating three houses (6, 7 and ‘Ferndene’). Building is very similar in form and scale to adjacent building which also accommodates three houses (1, 2 and 3). In single household use. Area had been previously used for garden allotments, known as Fishpond Gardens, since beginning of 19c. ",
     "date_built": "1886",
-    "prev_house_name": "Harlech House"
+    "prev_house_name": "Harlech House",
+    "sources": {
+      "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet"
+    }
   },
   {
     "id": 294,
@@ -4344,7 +4378,10 @@
     "listed": "No",
     "lat": 52.9493323,
     "lng": -1.1570563,
-    "house_name": "Castleview House"
+    "house_name": "Castleview House",
+    "sources": {
+      "house_name": "OpenStreetMap building footprint"
+    }
   },
   {
     "id": 295,
@@ -5759,7 +5796,10 @@
     "census_only": true,
     "lat": 52.9479,
     "lng": -1.1629,
-    "demolished_notes": "Approximate position, at the west end of Hermitage Walk above Rock Holes, from the OS 1:1250 sheet. Standing when that sheet was surveyed."
+    "demolished_notes": "Approximate position, at the west end of Hermitage Walk above Rock Holes, from the OS 1:1250 sheet. Standing when that sheet was surveyed.",
+    "sources": {
+      "position": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet — approximate, west end of Hermitage Walk above Rock Holes"
+    }
   },
   {
     "id": 393,
@@ -5775,7 +5815,10 @@
     "demolished": true,
     "demolished_notes": "House demolished.",
     "lat": 52.9515189,
-    "lng": -1.1644901
+    "lng": -1.1644901,
+    "sources": {
+      "demolished": "Present on OS 1:1250 SK 5639 NW, surveyed Sept 1953, absent from OS 1:1250 SK 5639 NW, revised Dec 1967 — demolished 1953-1967"
+    }
   },
   {
     "id": 394,
@@ -5846,7 +5889,11 @@
     "demolished": true,
     "demolished_notes": "Original house demolished and replaced on the same plot, on the corner of Cavendish Crescent North and Alexander Road.",
     "lat": 52.951603,
-    "lng": -1.167729
+    "lng": -1.167729,
+    "sources": {
+      "position": "OpenStreetMap building footprint, corroborated by OS 1:1250 SK 5539 NE",
+      "house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953 (spelt Hardwicke; OS 1:1250 SK 5639 NW, boundaries Dec 1970 spells it Hardwick)"
+    }
   },
   {
     "id": 399,
@@ -5878,7 +5925,11 @@
     "demolished": true,
     "demolished_notes": "Demolished; a large block of flats now stands on the plot. Position from the OS 1:1250 sheet SK 5539 NE, beside Penrhyn Cottage at the Tunnel Road end of the crescent.",
     "lat": 52.952743,
-    "lng": -1.163743
+    "lng": -1.163743,
+    "sources": {
+      "position": "OpenStreetMap building footprint, corroborated by OS 1:1250 SK 5539 NE",
+      "demolished": "Owner knowledge (A. Hagues) — replaced by a block of flats"
+    }
   },
   {
     "id": 401,

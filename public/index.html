@@ -105,6 +105,10 @@
   .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 0.82rem; }
   .lbl { color: #7a6a4a; min-width: 110px; font-size: 0.78rem; }
   .val { color: #1a1a1a; flex: 1; }
+  .src-row { display:flex; gap:10px; padding:5px 0; border-bottom:1px solid #efe9dc; font-size:0.76rem; align-items:baseline; }
+  .src-row:last-child { border-bottom:none; }
+  .src-field { flex:0 0 92px; color:#8a7a5a; text-transform:capitalize; }
+  .src-val { color:#5a5a5a; line-height:1.5; }
   .desc {
     font-size: 0.83rem; line-height: 1.65; color: #2a2a2a;
     background: #faf6ee; padding: 10px 12px; border-radius: 4px;
@@ -968,6 +972,15 @@ function renderPanel() {
     if (displayBuiltFor) detailRows += '<div class="row"><span class="lbl">Built For</span><span class="val">' + displayBuiltFor + '</span></div>';
     if (displayConverted) detailRows += '<div class="row"><span class="lbl">Converted</span><span class="val">' + displayConverted + '</span></div>';
     const histSection = displayHistory ? '<div class="section"><div class="desc" style="color:#4a4a4a;line-height:1.7">' + displayHistory + '</div></div>' : '';
+    // Provenance: where each corrected fact came from, so the record carries its
+    // own evidence rather than relying on someone remembering which sheet it was.
+    const srcEntries = Object.entries(p.sources || {});
+    const srcSection = srcEntries.length
+      ? '<div class="section"><h3>Sources</h3>' + srcEntries.map(([field, src]) =>
+          '<div class="src-row"><span class="src-field">' + esc(field.replace(/_/g, ' ')) + '</span>'
+          + '<span class="src-val">' + esc(src) + '</span></div>').join('') + '</div>'
+      : '';
+
     const editBtn = canEdit ? '<button class="edit-btn" data-edit="details">Edit</button>' : '';
     const descEditBtn = canEdit ? '<button class="edit-btn" data-edit="desc">Edit</button>' : '';
     const namesEditBtn = canEdit ? '<button class="edit-btn" data-edit="names">Edit</button>' : '';
@@ -985,7 +998,8 @@ function renderPanel() {
       (namesHtml || canEdit ? '<div class="section"><h3>House Names ' + namesEditBtn + '</h3>' + (namesHtml || '<div style="color:#999;font-size:0.82rem;font-style:italic">No names recorded.</div>') + '</div>' : '') +
       histSection +
       '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
-      '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>';
+      '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>' +
+      srcSection;
   }
     else if (curTab === 'photos') {
     const photos = ov.photos || [];
