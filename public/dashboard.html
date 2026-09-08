@@ -124,7 +124,6 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     <a href="/">Map</a>
     <a href="/people">People</a>
     <a href="/significant">★ Notable</a>
-    <a href="/gazette-review">📰 Gazette review</a>
     <a href="/architects">Architects</a>
     <a href="/census">Census</a>
     <a href="/family-tree">Family Trees</a>
@@ -183,6 +182,18 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <button id="btnSweepRun" class="admin-btn">Search</button>
       </div>
     </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Import people</div>
+        <div class="admin-tool-desc">Adds people prepared in <code>data/</code> — figures found in
+          someone else's biography with no record of their own — and links them to their
+          properties. Matches on name, so it never creates a duplicate.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnPeoplePreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnPeopleRun" class="admin-btn">Import</button>
+      </div>
+    </div>
     <div id="adminToolsResult" class="admin-tool-result" hidden></div>
   </div>
 
@@ -222,6 +233,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/" class="action-btn"><span class="ab-icon">🗺️</span><div><div class="ab-title">Map View</div><div class="ab-label">Properties on map</div></div></a>
         <a href="/census" class="action-btn"><span class="ab-icon">📜</span><div><div class="ab-title">Census Records</div><div class="ab-label">By census year</div></div></a>
         <a href="/census/unresolved" class="action-btn" id="unresolvedCard" style="display:none"><span class="ab-icon">🔍</span><div><div class="ab-title">Unresolved Census</div><div class="ab-label" id="unresolvedLabel">People without a matched property</div></div></a>
+        <a href="/gazette-review" class="action-btn" id="gazetteCard" style="display:none"><span class="ab-icon">📰</span><div><div class="ab-title">Gazette Review</div><div class="ab-label" id="gazetteLabel">Notices to confirm or dismiss</div></div></a>
+        <a href="/name-sex" class="action-btn" id="nameSexCard" style="display:none"><span class="ab-icon">⚥</span><div><div class="ab-title">Forename Sex</div><div class="ab-label" id="nameSexLabel">Names still to classify</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
@@ -666,6 +679,17 @@ document.getElementById('btnGazettePreview')?.addEventListener('click', e =>
 document.getElementById('btnGazetteRun')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/extract-gazette', {}, describeGazette));
 
+const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + (d.report || []).map(x => `${x.file}: ${x.added} ${d.dryRun ? 'would be added' : 'added'}, `
+      + `${x.alreadyPresent} already present, ${x.propertyLinks} property link`
+      + `${x.propertyLinks === 1 ? '' : 's'}`).join('\n')
+  + ((d.report || []).length ? '' : 'No people files found in data/.');
+
+document.getElementById('btnPeoplePreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/import-people', { dryRun: true }, describePeople));
+document.getElementById('btnPeopleRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/import-people', {}, describePeople));
+
 const describeSweep = d => d.dryRun
   ? `Preview — nothing searched yet.\n${d.wouldSearch} people carry an honours signal, including: `
     + d.names.join(', ') + '…'
@@ -732,6 +756,28 @@ document.getElementById('btnImportWorks')?.addEventListener('click', async e => 
     btn.disabled = false; btn.textContent = 'Import';
   }
 });
+
+// The two review queues sit with the other people tools, and only appear when
+// there is something waiting — an empty queue is not a task.
+async function renderReviewCards(){
+  try {
+    const g = await fetch('/api/gazette/pending').then(r=>r.json());
+    if (g && g.total > 0) {
+      document.getElementById('gazetteLabel').textContent =
+        `${g.total} notice${g.total===1?'':'s'} to confirm or dismiss`;
+      document.getElementById('gazetteCard').style.display = '';
+    }
+  } catch(e) {}
+  try {
+    const n = await fetch('/api/names/sex-queue').then(r=>r.json());
+    if (n && n.remaining > 0) {
+      document.getElementById('nameSexLabel').textContent =
+        `${n.remaining} name${n.remaining===1?'':'s'} covering ${n.peopleRemaining} people`;
+      document.getElementById('nameSexCard').style.display = '';
+    }
+  } catch(e) {}
+}
+renderReviewCards();
 
 async function renderFirstNames(){
   const box = document.getElementById('firstNames');

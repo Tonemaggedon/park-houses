@@ -1272,6 +1272,58 @@ app.post('/api/admin/backfill-occupations', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Load people prepared as data/people_*.json — for figures found in the prose of
+// someone else's biography, who have no record of their own. Matches on name, so
+// running it twice does not create duplicates.
+app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const files = fs.readdirSync(path.join(__dirname, 'data'))
+      .filter(f => /^people_.*\.json$/.test(f));
+    const report = [];
+    for (const file of files) {
+      const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
+      let added = 0, already = 0, linked = 0;
+      for (const person of (doc.people || [])) {
+        if (!person.first_name || !person.last_name) continue;
+        const found = await db.query(
+          `SELECT id FROM people WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
+          [person.first_name, person.last_name]);
+        let id = null;
+        if (found.rows.length) { id = found.rows[0].id; already++; }
+        else if (dryRun) { added++; }   // no id yet, but still count the links below
+        else {
+          const r = await db.query(
+            `INSERT INTO people (first_name,last_name,known_as,title,postnominals,sex,
+                                 born_year,died_year,bio,wikipedia_url)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id`,
+            [person.first_name, person.last_name, person.known_as || null, person.title || null,
+             person.postnominals || null, person.sex || null, person.born_year || null,
+             person.died_year || null, person.bio || null, person.wikipedia_url || null]);
+          id = r.rows[0].id; added++;
+          await logChange('person', id, req, 'create', 'import', null, file);
+        }
+        for (const propId of (person.properties || [])) {
+          // A person who does not exist yet has no links either, so every one counts.
+          if (id === null) { linked++; continue; }
+          const dup = await db.query(
+            `SELECT 1 FROM property_residents WHERE person_id=$1 AND property_id=$2`, [id, propId]);
+          if (dup.rows.length) continue;
+          if (dryRun) { linked++; continue; }
+          if (true) {
+            await db.query(`INSERT INTO property_residents (person_id, property_id) VALUES ($1,$2)`,
+              [id, propId]);
+            linked++;
+          }
+        }
+      }
+      report.push({ file, added, alreadyPresent: already, propertyLinks: linked });
+    }
+    res.json({ ok: true, dryRun, report });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // Bulk-load a bibliography prepared as data/works_*.json. Idempotent: a work
 // already recorded for that person by the same title and year is left alone, so
 // running it twice does not duplicate the list.
