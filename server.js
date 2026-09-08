@@ -891,8 +891,25 @@ try {
 
 function propName(id) { return propNameMap[id] || `Property ${id}`; }
 
+// Every map page load hits this, and the file is ~800KB, so serve a cached
+// string and re-read only when the file actually changes on disk.
+let allPropsCache = null; // { mtimeMs, body, etag }
+function readAllPropsCached() {
+  const mtimeMs = fs.statSync(ALL_PROPS_FILE).mtimeMs;
+  if (!allPropsCache || allPropsCache.mtimeMs !== mtimeMs) {
+    const body = fs.readFileSync(ALL_PROPS_FILE, 'utf8');
+    allPropsCache = { mtimeMs, body, etag: '"props-' + mtimeMs + '-' + body.length + '"' };
+  }
+  return allPropsCache;
+}
+
 app.get('/api/all-props', (req, res) => {
-  try { res.json(JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'))); }
+  try {
+    const c = readAllPropsCached();
+    res.set('ETag', c.etag);
+    if (req.headers['if-none-match'] === c.etag) return res.status(304).end();
+    res.type('application/json').send(c.body);
+  }
   catch(e) { res.json([]); }
 });
 
