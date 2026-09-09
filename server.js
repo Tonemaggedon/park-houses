@@ -2829,6 +2829,48 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// POST /api/census/reassign — send each census record to the property named
+// against it. One address holding several households is untangled a line at a
+// time, which no single "move everyone" action can do.
+app.post('/api/census/reassign', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const moves = Array.isArray(req.body && req.body.moves) ? req.body.moves : null;
+  if (!moves || !moves.length) return res.status(400).json({ error: 'no moves given' });
+  if (moves.length > 500) return res.status(400).json({ error: 'too many at once' });
+  try {
+    let filed = 0, unfiled = 0;
+    for (const m of moves) {
+      const entryId = parseInt(m && m.entryId, 10);
+      if (!Number.isInteger(entryId)) continue;
+      const raw = m.propertyId;
+      const target = (raw === null || raw === undefined || raw === '') ? null : parseInt(raw, 10);
+      if (target !== null && !Number.isInteger(target)) {
+        return res.status(400).json({ error: `"${raw}" is not a property number` });
+      }
+      await db.query(
+        `UPDATE census_entries
+            SET property_id = $1,
+                unresolved_address = CASE WHEN $1::int IS NULL THEN unresolved_address ELSE NULL END
+          WHERE id = $2`, [target, entryId]);
+      if (target === null) unfiled++; else filed++;
+      // Keep the resident link in step with where the record now sits.
+      if (target !== null) {
+        const person = await db.query(`SELECT person_id FROM census_entries WHERE id=$1`, [entryId]);
+        const pid = person.rows[0] && person.rows[0].person_id;
+        if (pid) {
+          const dup = await db.query(
+            `SELECT 1 FROM property_residents WHERE person_id=$1 AND property_id=$2`, [pid, target]);
+          if (!dup.rows.length) {
+            await db.query(`INSERT INTO property_residents (person_id, property_id) VALUES ($1,$2)`,
+              [pid, target]);
+          }
+        }
+      }
+    }
+    res.json({ ok: true, filed, unfiled });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // POST /api/admin/clean-occupations — values in the occupation field that are
 // not occupations. A slipped column in an import leaves a sex or a relationship
 // there; a spreadsheet's "none" placeholder leaves a dash. They are few, but
@@ -4187,6 +4229,7 @@ app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'publ
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
+app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 

@@ -147,7 +147,9 @@ async function load() {
             <td class="n ${manyNames ? 'sev3' : ''}">${r.surnames}</td>
             <td class="n">${r.census_year}</td>
             <td><a href="/?id=${r.property_id}" target="_blank">#${r.property_id} —
-              ${esc(propNames[r.property_id] || 'property ' + r.property_id)}</a></td>
+              ${esc(propNames[r.property_id] || 'property ' + r.property_id)}</a>
+              <a href="/reassign?prop=${r.property_id}&year=${r.census_year}"
+                 style="margin-left:8px;font-size:.76rem">sort it ↗</a></td>
             <td class="other">${esc(otherTxt)}</td>
             <td class="why">${why}</td>
           </tr>`;

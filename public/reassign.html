@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sort a Crowded House — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.45; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:960px; margin:0 auto; padding:22px 20px 120px; }
+
+  h2 { font-size:1.28rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.88rem; margin:0 0 6px; max-width:72ch; }
+  .pick { margin:14px 0 18px; font-size:.84rem; color:var(--soft); display:flex;
+    gap:8px; align-items:center; flex-wrap:wrap; }
+  .pick input, .pick select { padding:5px 8px; border:1px solid var(--rule); border-radius:4px;
+    font-family:inherit; font-size:.84rem; background:#fff; color:var(--ink); }
+  .pick input { width:92px; }
+
+  .hh { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    margin-bottom:12px; overflow:hidden; }
+  .hh-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:9px 13px; background:#f6f2e6; border-bottom:1px solid var(--rule); }
+  .hh-title { font-weight:700; font-size:.92rem; }
+  .hh-sub { font-size:.75rem; color:var(--faint); }
+  .hh-set { margin-left:auto; display:flex; gap:6px; align-items:center; font-size:.76rem;
+    color:var(--soft); }
+  .hh-set input { width:86px; padding:4px 7px; border:1px solid var(--rule); border-radius:4px;
+    font-family:inherit; font-size:.8rem; }
+  .hh-set button { font-family:inherit; font-size:.74rem; border:1px solid var(--rule);
+    background:#fff; border-radius:4px; padding:4px 9px; cursor:pointer; color:var(--soft); }
+
+  table { border-collapse:collapse; width:100%; font-size:.85rem; }
+  td, th { padding:6px 13px; border-bottom:1px solid #f2ece0; vertical-align:middle; }
+  th { text-align:left; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--faint); font-weight:600; }
+  tr:last-child td { border-bottom:none; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; color:var(--faint);
+    font-size:.78rem; white-space:nowrap; }
+  .who { font-weight:600; }
+  .rel { color:var(--faint); font-size:.78rem; }
+  .dest { width:104px; padding:4px 8px; border:1px solid var(--rule); border-radius:4px;
+    font-family:inherit; font-size:.85rem; text-align:center; }
+  .dest.set { border-color:var(--green); background:#f2f7ef; font-weight:700; }
+  .dest.unfile { border-color:#c8a86a; background:#fbf4e2; font-weight:700; }
+
+  .savebar { position:fixed; left:0; right:0; bottom:0; background:#25401f; color:#f2ecd8;
+    padding:11px 20px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+    box-shadow:0 -2px 10px rgba(0,0,0,.18); }
+  .savebar button { font-family:inherit; font-size:.86rem; border:none; border-radius:5px;
+    padding:7px 18px; cursor:pointer; background:#f2ecd8; color:#25401f; font-weight:700; }
+  .savebar button:disabled { opacity:.45; cursor:default; }
+  .savebar .msg { font-size:.8rem; }
+
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  .err { color:var(--red); }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:20px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  a { color:#2a5a8a; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  a:focus-visible, input:focus-visible, button:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/crowding">⚠ Crowded houses</a>
+  <a href="/reassign" class="active">↔ Sort a house</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>Sort a crowded house</h2>
+  <p class="lede">Every person recorded at one address in one year, grouped into households by
+    the order they were entered — each <em>Head</em> starts a new one. Put the property number
+    each household belongs to in the box beside it.</p>
+  <p class="lede">Leave a box empty to leave that record alone. Type <strong>0</strong> or a dash
+    to unfile it, sending it back to the unresolved queue when the right house is not yet known.</p>
+
+  <div class="pick">
+    Property <input id="prop" type="number" placeholder="e.g. 310">
+    Year <input id="year" type="number" placeholder="1921">
+    <button id="go" style="font-family:inherit;font-size:.84rem;padding:5px 14px;border:1px solid var(--rule);border-radius:4px;background:#fff;cursor:pointer">Load</button>
+    <span id="propName" class="hh-sub"></span>
+  </div>
+
+  <div id="list"><div class="empty">Choose a property and year.</div></div>
+  <div class="note">Moving a record also links the person to the property it lands on. The record
+    they came from keeps its own link, which is right when someone genuinely lived at both.</div>
+</div>
+
+<div class="savebar" id="savebar" hidden>
+  <span class="msg" id="msg">Nothing to save yet.</span>
+  <button id="save" disabled>Save changes</button>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let propNames = {}, canEdit = false;
+
+async function init() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+  } catch (e) {}
+  try {
+    const list = await fetch('/api/all-props').then(r => r.json());
+    for (const p of (Array.isArray(list) ? list : [])) {
+      propNames[p.id] = p.name ? `${p.no ? p.no + ' ' : ''}${p.street} (${p.name})`
+                               : `${p.no ? p.no + ' ' : ''}${p.street}`;
+    }
+  } catch (e) {}
+  const q = new URLSearchParams(location.search);
+  if (q.get('prop')) document.getElementById('prop').value = q.get('prop');
+  document.getElementById('year').value = q.get('year') || 1921;
+  if (q.get('prop')) load();
+}
+
+// Households are recoverable from the order records were entered: each Head
+// begins one. The API sorts by relationship, which scatters them, so sort back
+// to entry id first.
+function households(rows) {
+  const sorted = rows.slice().sort((a, b) => a.id - b.id);
+  const out = []; let cur = null;
+  for (const e of sorted) {
+    if ((e.relationship || '').toLowerCase() === 'head' || !cur) {
+      cur = { head: null, members: [] }; out.push(cur);
+    }
+    if ((e.relationship || '').toLowerCase() === 'head') cur.head = e;
+    cur.members.push(e);
+  }
+  return out;
+}
+
+const nameOf = e => ((e.first_name || '') + ' ' + (e.last_name || '')).trim() || 'Unnamed';
+
+async function load() {
+  const prop = parseInt(document.getElementById('prop').value, 10);
+  const year = parseInt(document.getElementById('year').value, 10);
+  const box = document.getElementById('list');
+  document.getElementById('propName').textContent = propNames[prop] ? '— ' + propNames[prop] : '';
+  if (!prop || !year) { box.innerHTML = '<div class="empty">Choose a property and year.</div>'; return; }
+  box.innerHTML = '<div class="empty">Loading…</div>';
+  try {
+    const rows = await fetch(`/api/census/${year}?property=${prop}`).then(r => r.json());
+    if (rows.error) throw new Error(rows.error);
+    if (!rows.length) { box.innerHTML = '<div class="empty">Nobody recorded there that year.</div>'; return; }
+
+    const hh = households(rows);
+    box.innerHTML = hh.map((h, i) => {
+      const title = h.head ? nameOf(h.head) + ' household' : 'No head recorded';
+      const occ = h.head && h.head.occupation_at_census ? ' · ' + esc(h.head.occupation_at_census) : '';
+      return `<div class="hh" data-hh="${i}">
+        <div class="hh-head">
+          <span class="hh-title">${esc(title)}</span>
+          <span class="hh-sub">${h.members.length} ${h.members.length === 1 ? 'person' : 'people'}${occ}</span>
+          <span class="hh-set">
+            send all to <input type="number" class="hh-dest" placeholder="#" data-hh="${i}">
+            <button type="button" data-apply="${i}">Apply</button>
+          </span>
+        </div>
+        <table><thead><tr>
+          <th>Person</th><th>Role</th><th class="n">Age</th><th>Occupation</th>
+          <th class="n">Person&nbsp;#</th><th>Goes to</th>
+        </tr></thead><tbody>
+        ${h.members.map(e => `<tr>
+          <td class="who"><a href="/people?person=${e.person_id}" target="_blank">${esc(nameOf(e))}</a></td>
+          <td class="rel">${esc(e.relationship || '')}</td>
+          <td class="n">${e.age_at_census || ''}</td>
+          <td class="rel">${esc(e.occupation_at_census || '')}</td>
+          <td class="n">${e.person_id}</td>
+          <td><input class="dest" data-entry="${e.id}" data-hh="${i}"
+                placeholder="#" aria-label="Property for ${esc(nameOf(e))}"></td>
+        </tr>`).join('')}
+        </tbody></table></div>`;
+    }).join('');
+
+    document.getElementById('savebar').hidden = false;
+    refresh();
+  } catch (e) {
+    box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+// 0 or a dash means unfile; anything else must be a property number.
+function parseDest(raw) {
+  const v = String(raw || '').trim();
+  if (v === '') return { skip: true };
+  if (v === '0' || /^[-–—]$/.test(v)) return { propertyId: null };
+  const n = parseInt(v, 10);
+  if (!Number.isInteger(n) || n < 1) return { bad: true };
+  return { propertyId: n };
+}
+
+function refresh() {
+  let filed = 0, unfiled = 0, bad = 0;
+  document.querySelectorAll('.dest').forEach(i => {
+    const d = parseDest(i.value);
+    i.classList.toggle('set', !!d.propertyId);
+    i.classList.toggle('unfile', d.propertyId === null && !d.skip && !d.bad);
+    i.style.borderColor = d.bad ? '#a3341f' : '';
+    if (d.bad) bad++;
+    else if (d.skip) {}
+    else if (d.propertyId === null) unfiled++;
+    else filed++;
+  });
+  const msg = document.getElementById('msg'), btn = document.getElementById('save');
+  if (bad) { msg.textContent = `${bad} box${bad === 1 ? '' : 'es'} not a property number.`; btn.disabled = true; return; }
+  if (!filed && !unfiled) { msg.textContent = 'Nothing to save yet.'; btn.disabled = true; return; }
+  const parts = [];
+  if (filed) parts.push(`${filed} record${filed === 1 ? '' : 's'} to move`);
+  if (unfiled) parts.push(`${unfiled} to unfile`);
+  msg.textContent = parts.join(', ') + '.';
+  btn.disabled = !canEdit;
+  if (!canEdit) msg.textContent += ' Sign in as a contributor to save.';
+}
+
+document.addEventListener('input', e => { if (e.target.classList.contains('dest')) refresh(); });
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-apply]');
+  if (!btn) return;
+  const i = btn.dataset.apply;
+  const val = document.querySelector(`.hh-dest[data-hh="${i}"]`).value;
+  document.querySelectorAll(`.dest[data-hh="${i}"]`).forEach(inp => { inp.value = val; });
+  refresh();
+});
+
+document.getElementById('go').addEventListener('click', load);
+document.getElementById('save').addEventListener('click', async () => {
+  const moves = [];
+  document.querySelectorAll('.dest').forEach(i => {
+    const d = parseDest(i.value);
+    if (d.skip || d.bad) return;
+    moves.push({ entryId: Number(i.dataset.entry), propertyId: d.propertyId });
+  });
+  if (!moves.length) return;
+  const btn = document.getElementById('save'), msg = document.getElementById('msg');
+  btn.disabled = true; msg.textContent = 'Saving…';
+  try {
+    const res = await fetch('/api/census/reassign', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ moves }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    msg.textContent = `Saved — ${data.filed} moved, ${data.unfiled} unfiled.`;
+    load();
+  } catch (err) {
+    btn.disabled = false;
+    msg.textContent = 'Could not save: ' + err.message;
+  }
+});
+
+init();
+</script>
+</body>
+</html>
