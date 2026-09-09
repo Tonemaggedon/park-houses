@@ -83,6 +83,9 @@
     occupations, photographs, links. Blank fields on the kept record are filled from the other,
     and the biographies are joined. <strong>It cannot be undone</strong>, so check the two are
     really the same before merging.</p>
+  <div class="ctrl" style="font-size:.82rem;color:var(--soft);margin:10px 0 0">
+    <label><input id="showDismissed" type="checkbox"> including pairs marked as different people</label>
+  </div>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
   <div class="note">Never appearing in the same census year is the strongest part of this: two
@@ -123,16 +126,22 @@ const holdings = p => [
 async function load() {
   const bar = document.getElementById('bar'), box = document.getElementById('list');
   try {
-    const d = await fetch('/api/people/duplicates').then(r => r.json());
+    const withD = document.getElementById('showDismissed').checked ? '?dismissed=1' : '';
+    const d = await fetch('/api/people/duplicates' + withD).then(r => r.json());
     if (d.error) throw new Error(d.error);
     if (!d.total) {
-      bar.textContent = '';
-      box.innerHTML = '<div class="empty">No likely duplicates. Every person appears once.</div>';
+      bar.textContent = d.dismissedCount
+        ? `${d.dismissedCount} pair${d.dismissedCount === 1 ? '' : 's'} marked as different people and hidden`
+        : '';
+      box.innerHTML = '<div class="empty">Nothing left to check'
+        + (d.dismissedCount ? ' — tick the box above to see the pairs you have already ruled out.' : '.')
+        + '</div>';
       return;
     }
     const shared = d.pairs.filter(p => p.sharedProperty).length;
     bar.textContent = `${d.total} likely pair${d.total === 1 ? '' : 's'}`
-      + (shared ? ` · ${shared} also share a property` : '');
+      + (shared ? ` · ${shared} also share a property` : '')
+      + (d.dismissedCount ? ` · ${d.dismissedCount} marked as different people and hidden` : '');
     if (!canEdit) { box.innerHTML = '<div class="empty">Sign in as a contributor to merge these.</div>'; return; }
 
     box.innerHTML = d.pairs.map((pr, i) => `
@@ -154,7 +163,11 @@ async function load() {
             </div>`).join('')}
         </div>
         <div class="act">
-          <button class="go" data-merge="${i}">Merge</button>
+          ${pr.dismissed
+            ? `<button data-undismiss="${i}">Put back in the list</button>
+               <span class="out">marked as two different people</span>`
+            : `<button class="go" data-merge="${i}">Merge</button>
+               <button data-dismiss="${i}">Not the same person</button>`}
           <span class="out" data-out="${i}"></span>
         </div>
       </div>`).join('');
@@ -173,7 +186,35 @@ document.addEventListener('change', e => {
     r.classList.toggle('keep', r.dataset.rec === e.target.value));
 });
 
+// Two people of one name really are two people often enough that saying so
+// once has to stick, or the pair is judged again every time.
+async function setDismissed(i, on) {
+  const pair = window._pairs[i];
+  const [a, b] = pair.people;
+  const res = await fetch('/api/people/duplicates/dismiss', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ person_a_id: a.id, person_b_id: b.id, dismissed: on }),
+  });
+  const data = await res.json();
+  if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+  load();
+}
+
 document.addEventListener('click', async e => {
+  const dis = e.target.closest('[data-dismiss]');
+  if (dis) {
+    dis.disabled = true;
+    try { await setDismissed(dis.dataset.dismiss, true); }
+    catch (err) { dis.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
+  const und = e.target.closest('[data-undismiss]');
+  if (und) {
+    und.disabled = true;
+    try { await setDismissed(und.dataset.undismiss, false); }
+    catch (err) { und.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
   const btn = e.target.closest('[data-merge]');
   if (!btn) return;
   const i = btn.dataset.merge;

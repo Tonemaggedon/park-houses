@@ -443,6 +443,25 @@ async function dbInit() {
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
                       ON person_gazette(person_id, url)`);
 
+    // "Not the same person" has to be remembered, or a pair that has already been
+    // judged is offered again every time the page is opened. Stored lowest id
+    // first so the pair is one row whichever way round it is sent.
+    await db.query(`CREATE TABLE IF NOT EXISTS duplicate_dismissed (
+      id SERIAL PRIMARY KEY,
+      person_a_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      person_b_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      note TEXT,
+      dismissed_by TEXT,
+      dismissed_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS duplicate_dismissed_pair_idx
+                      ON duplicate_dismissed(person_a_id, person_b_id)`);
+
+    // The 1939 Register records marital status, and a slipped column dropped it
+    // into `source` along with the sex. It is real information and wants a
+    // column of its own rather than clearing.
+    await db.query(`ALTER TABLE census_entries ADD COLUMN IF NOT EXISTS marital_status TEXT`);
+
     // A house genuinely full of people — a boarding house, a large staff — is
     // not a fault, and should stop being offered once someone has said so.
     await db.query(`CREATE TABLE IF NOT EXISTS crowding_reviewed (
@@ -2878,6 +2897,34 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// POST /api/people/duplicates/dismiss — two people of the same name who really
+// are two people. Sending dismissed:false puts the pair back in the list.
+app.post('/api/people/duplicates/dismiss', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const a = parseInt(req.body && req.body.person_a_id, 10);
+  const b = parseInt(req.body && req.body.person_b_id, 10);
+  const on = !(req.body && req.body.dismissed === false);
+  if (!Number.isInteger(a) || !Number.isInteger(b) || a === b) {
+    return res.status(400).json({ error: 'two different person ids are required' });
+  }
+  const lo = Math.min(a, b), hi = Math.max(a, b);
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (!on) {
+      await db.query(`DELETE FROM duplicate_dismissed WHERE person_a_id=$1 AND person_b_id=$2`,
+        [lo, hi]);
+      return res.json({ ok: true, dismissed: false });
+    }
+    await db.query(
+      `INSERT INTO duplicate_dismissed (person_a_id, person_b_id, note, dismissed_by)
+            VALUES ($1,$2,$3,$4)
+       ON CONFLICT (person_a_id, person_b_id)
+       DO UPDATE SET note=EXCLUDED.note, dismissed_by=EXCLUDED.dismissed_by, dismissed_at=NOW()`,
+      [lo, hi, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, dismissed: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/people/duplicates — the same person imported twice. The 1911 and
 // 1921 spreadsheets were loaded separately and name people differently: one
 // holds "Helena Brownsword Dowson", the other "Helena Dowson". They match on
@@ -2909,6 +2956,11 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
       buckets.get(k).push(p);
     }
 
+    const dismissedRows = (await db.query(
+      `SELECT person_a_id, person_b_id, note FROM duplicate_dismissed`)).rows;
+    const dismissedKey = new Set(dismissedRows.map(d => `${d.person_a_id}:${d.person_b_id}`));
+    const showDismissed = req.query.dismissed === '1';
+
     const pairs = [];
     for (const list of buckets.values()) {
       if (list.length < 2) continue;
@@ -2930,7 +2982,14 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
             + (p.wikipedia_url ? 3 : 0) + (p.photo_url ? 3 : 0) + (p.has_bio ? 3 : 0)
             + (String(p.first_name).trim().split(/\s+/).length > 1 ? 1 : 0);
           const [keep, drop] = weight(a) >= weight(b) ? [a, b] : [b, a];
+          const lo = Math.min(a.id, b.id), hi = Math.max(a.id, b.id);
+          const isDismissed = dismissedKey.has(`${lo}:${hi}`);
+          if (isDismissed && !showDismissed) continue;
           pairs.push({
+            dismissed: isDismissed,
+            note: isDismissed
+              ? (dismissedRows.find(d => d.person_a_id === lo && d.person_b_id === hi) || {}).note || null
+              : null,
             suggestKeep: keep.id, suggestDrop: drop.id,
             sharedProperty: sharedProp, reasons,
             people: [a, b].map(p => ({
@@ -2945,7 +3004,7 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
     }
     pairs.sort((x, y) => (y.sharedProperty - x.sharedProperty)
                       || x.people[0].name.localeCompare(y.people[0].name));
-    res.json({ total: pairs.length, pairs });
+    res.json({ total: pairs.length, dismissedCount: dismissedRows.length, pairs });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -3094,6 +3153,71 @@ app.post('/api/census/reassign', requireContributor, async (req, res) => {
       }
     }
     res.json({ ok: true, filed, unfiled });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/recover-source-column — a slipped column put "Married, Male"
+// and the like into `source`, where the provenance should be. Both halves are
+// real: the sex fills a blank on the person, the marital status moves to its own
+// column. Only then is the source cleared, so nothing is thrown away.
+const MARITAL = ['married', 'single', 'widowed', 'divorced', 'separated'];
+const SEXWORD = { male: 'M', female: 'F', m: 'M', f: 'F' };
+function readSlippedSource(v) {
+  const parts = String(v || '').split(',').map(x => x.trim().toLowerCase()).filter(Boolean);
+  if (!parts.length || parts.length > 2) return null;
+  let marital = null, sex = null;
+  for (const part of parts) {
+    if (MARITAL.includes(part)) { if (marital) return null; marital = part; }
+    else if (SEXWORD[part]) { if (sex) return null; sex = SEXWORD[part]; }
+    else return null;                       // anything else means it is a real source
+  }
+  return (marital || sex) ? { marital, sex } : null;
+}
+
+app.post('/api/admin/recover-source-column', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const rows = (await db.query(`
+      SELECT c.id, c.person_id, c.source, c.census_year, c.marital_status,
+             p.first_name, p.last_name, p.sex
+        FROM census_entries c JOIN people p ON p.id = c.person_id
+       WHERE COALESCE(TRIM(c.source), '') <> ''
+       ORDER BY c.id`)).rows;
+
+    const work = [];
+    for (const r of rows) {
+      const got = readSlippedSource(r.source);
+      if (!got) continue;
+      work.push({
+        id: r.id, person_id: r.person_id, year: r.census_year,
+        name: [r.first_name, r.last_name].filter(Boolean).join(' '),
+        was: r.source.trim(),
+        setMarital: got.marital && !r.marital_status ? got.marital : null,
+        setSex: got.sex && !r.sex ? got.sex : null,
+      });
+    }
+    if (!dryRun) {
+      for (const w of work) {
+        if (w.setMarital) {
+          await db.query(`UPDATE census_entries SET marital_status=$2 WHERE id=$1`,
+            [w.id, w.setMarital]);
+        }
+        if (w.setSex) {
+          await db.query(
+            `UPDATE people SET sex=$2, sex_source='recovered from census source column'
+              WHERE id=$1 AND sex IS NULL`, [w.person_id, w.setSex]);
+        }
+        await db.query(`UPDATE census_entries SET source=NULL WHERE id=$1`, [w.id]);
+      }
+    }
+    res.json({
+      ok: true, dryRun,
+      entries: work.length,
+      maritalRecovered: work.filter(w => w.setMarital).length,
+      sexRecovered: work.filter(w => w.setSex).length,
+      sample: work.slice(0, 15),
+    });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

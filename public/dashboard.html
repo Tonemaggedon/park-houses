@@ -208,6 +208,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
     <div class="admin-tool">
       <div>
+        <div class="admin-tool-name">Recover the slipped source column</div>
+        <div class="admin-tool-desc">A slipped column put "Married, Female" and the like into the
+          source field, where the provenance should be. Both halves are real: the sex fills a
+          blank on the person, the marital status moves to its own column. Only then is the
+          source cleared, so nothing is thrown away.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnSourcePreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnSourceRun" class="admin-btn">Run</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
         <div class="admin-tool-name">Backfill birth places onto people</div>
         <div class="admin-tool-desc">The census entries hold far more birth places than the
           person records do. Copies one onto anybody whose own record is blank. Never overwrites,
@@ -787,6 +800,21 @@ document.getElementById('btnMoveRun')?.addEventListener('click', e => {
                (b.year ? ` for ${b.year}` : '') + '?')) return;
   runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
 });
+
+const describeSource = d =>
+  !d.entries ? 'Nothing to recover — every source field looks like a source.'
+  : (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.entries} entr${d.entries === 1 ? 'y' : 'ies'} ${d.dryRun ? 'would be' : 'were'} cleared. `
+    + `${d.maritalRecovered} marital status${d.maritalRecovered === 1 ? '' : 'es'} kept, `
+    + `${d.sexRecovered} ${d.sexRecovered === 1 ? 'person gains' : 'people gain'} a sex.\n\n`
+    + d.sample.map(x => `  ${x.year}  ${x.name} — "${x.was}"`
+        + (x.setSex ? ` → sex ${x.setSex}` : '')
+        + (x.setMarital ? `, ${x.setMarital}` : '')).join('\n');
+
+document.getElementById('btnSourcePreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/recover-source-column', { dryRun: true }, describeSource));
+document.getElementById('btnSourceRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/recover-source-column', {}, describeSource));
 
 const describeBirth = d =>
   (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
