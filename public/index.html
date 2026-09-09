@@ -2802,18 +2802,22 @@ loadProps().then(() => {
   }).catch(() => {}).finally(() => {
     Promise.all([loadPropOverrides(), loadPeopleCounts(), loadSeededProps()]).then(() => {
     buildMarkers();
-    // Auto-open property if URL contains ?prop=ID (linked from dashboard)
-    const propParam = new URLSearchParams(window.location.search).get('prop');
-    if (propParam) {
-      const id = parseInt(propParam);
-      if (id) {
-        // Small delay to let markers settle, then open the panel and fly to marker
-        setTimeout(() => {
-          openProp(id);
-          const p = props.find(x => x.id === id);
-          if (p) map.setView([p._lat || p.lat, p._lng || p.lng], 18);
-        }, 300);
-      }
+    // Auto-open a property named in the URL. Both spellings are accepted: the
+    // dashboard, watchlist and contributions pages link with ?prop=, while the
+    // person and architect pages link with ?id=. Only ?prop= was read, so every
+    // ?id= link quietly opened the whole map instead of the property.
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('prop') || params.get('id'), 10);
+    if (id) {
+      // Small delay to let markers settle, then open the panel and fly to marker
+      setTimeout(() => {
+        openProp(id);
+        const p = props.find(x => x.id === id);
+        // A property with no coordinates cannot be flown to — setView with
+        // undefined leaves the map blank rather than simply not moving.
+        const lat = p && (p._lat || p.lat), lng = p && (p._lng || p.lng);
+        if (lat && lng) map.setView([lat, lng], 18);
+      }, 300);
     }
     });
     initAdmin(); // Check if admin is logged in, load overrides

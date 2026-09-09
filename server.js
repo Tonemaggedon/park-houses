@@ -2673,7 +2673,11 @@ app.post('/api/census/resolve/:id', requireContributor, async (req, res) => {
 });
 
 // GET /api/census/:year — all people recorded at a census year, optionally ?property=
-app.get('/api/census/:year', async (req, res) => {
+app.get('/api/census/:year', async (req, res, next) => {
+  // ":year" happily swallows any word, so /api/census/crowding arrived here and
+  // was parsed as a year, giving a Postgres error instead of the route that
+  // actually exists further down. Anything that is not a year is not ours.
+  if (!/^\d{4}$/.test(String(req.params.year))) return next();
   if (!db) return res.json([]);
   try {
     const year = parseInt(req.params.year);
@@ -2824,6 +2828,66 @@ const COLUMN_HEADINGS = new Set([
 const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
+
+// GET /api/census/crowding — property-years holding an improbable number of
+// people. The Park's households run to a median of five; a house showing
+// twenty-odd in one year is usually several households filed against one
+// address rather than a genuinely enormous one. Distinct surnames is the
+// stronger tell: one household is rarely more than two or three families.
+app.get('/api/census/crowding', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const min = Math.max(parseInt(req.query.min, 10) || 12, 2);
+  try {
+    const r = await db.query(`
+      WITH per AS (
+        SELECT c.property_id, c.census_year,
+               COUNT(*) AS people,
+               COUNT(DISTINCT LOWER(TRIM(p.last_name))) FILTER (
+                 WHERE COALESCE(TRIM(p.last_name),'') <> '') AS surnames
+          FROM census_entries c
+          JOIN people p ON p.id = c.person_id
+         WHERE c.property_id IS NOT NULL
+         GROUP BY c.property_id, c.census_year
+      ),
+      stats AS (
+        SELECT property_id,
+               PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY people) AS median_all,
+               COUNT(*) AS years_recorded
+          FROM per GROUP BY property_id
+      )
+      SELECT per.property_id, per.census_year, per.people, per.surnames,
+             s.years_recorded,
+             (SELECT JSON_AGG(JSON_BUILD_ARRAY(o.census_year, o.people) ORDER BY o.census_year)
+                FROM per o WHERE o.property_id = per.property_id AND o.census_year <> per.census_year
+             ) AS other_years
+        FROM per JOIN stats s ON s.property_id = per.property_id
+       WHERE per.people >= $1
+       ORDER BY per.people DESC, per.surnames DESC`, [min]);
+
+    const all = await db.query(`
+      SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY n) AS median,
+             PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY n) AS p95
+        FROM (SELECT COUNT(*) AS n FROM census_entries
+               WHERE property_id IS NOT NULL
+               GROUP BY property_id, census_year) t`);
+
+    const unfiled = await db.query(`
+      SELECT census_year, COUNT(*) AS n FROM census_entries
+       WHERE property_id IS NULL GROUP BY census_year ORDER BY census_year`);
+
+    res.json({
+      threshold: min,
+      median: Number(all.rows[0] && all.rows[0].median) || null,
+      p95: Number(all.rows[0] && all.rows[0].p95) || null,
+      unfiled: unfiled.rows.map(u => ({ year: u.census_year, count: Number(u.n) })),
+      rows: r.rows.map(x => ({
+        property_id: x.property_id, census_year: x.census_year,
+        people: Number(x.people), surnames: Number(x.surnames),
+        other_years: x.other_years || [],
+      })),
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 // POST /api/admin/move-residents — a household filed against the wrong house.
 // Moves census records from one property to another, and the resident links
@@ -4048,6 +4112,7 @@ app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public'
 app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
+app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
@@ -4666,7 +4731,8 @@ app.get(CATCH_ALL, (req, res) => {
   // so the browser drew a broken-image icon and nothing anywhere said what had
   // happened. Anything under an asset directory, or carrying a file extension,
   // now says so plainly.
-  if (/^\/(data|uploads|assets)\//.test(req.path) || /\.[a-z0-9]{2,5}$/i.test(req.path)) {
+  if (/^\/api\//.test(req.path) || /^\/(data|uploads|assets)\//.test(req.path)
+      || /\.[a-z0-9]{2,5}$/i.test(req.path)) {
     return res.status(404).json({ error: 'Not found: ' + req.path });
   }
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
