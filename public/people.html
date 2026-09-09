@@ -904,6 +904,11 @@ function renderProfile(p) {
                 <input id="ce-occ-${ce.id}" value="${(ce.occupation_at_census||'').replace(/"/g,'&quot;')}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem;box-sizing:border-box"></div>
               <div style="grid-column:1/-1"><label style="font-size:0.7rem;color:#8a7a5a">Birth place</label><br>
                 <input id="ce-birth-${ce.id}" value="${esc((ce.birth_place||'').replace(/"/g,'&quot;'))}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem;box-sizing:border-box"></div>
+              <div style="grid-column:1/-1"><label style="font-size:0.7rem;color:#8a7a5a">Property this record belongs to</label><br>
+                <select id="ce-prop-${ce.id}" style="width:100%;padding:4px 6px;border:1px solid #c8b888;border-radius:4px;font-size:0.8rem">
+                  <option value="">— not filed against a property —</option>
+                  ${_propOptions(ce.property_id)}
+                </select></div>
             </div>
             <div style="display:flex;gap:6px">
               <button onclick="saveCensusEdit(${ce.id},${p.id})" style="background:#4a7c5a;color:white;border:none;border-radius:4px;padding:4px 12px;font-size:0.78rem;cursor:pointer;font-family:Georgia,serif">Save</button>
@@ -1341,6 +1346,26 @@ async function deleteOccupation(occId, personId) {
   } catch(e) { alert('Error: ' + e.message); }
 }
 
+// Property list for the census-record property picker. Sorted by street then
+// number so 3 Kenilworth Road sits next to 1 Kenilworth Road rather than
+// wherever the ids happen to fall.
+let _allPropsCache = null;
+function _propOptions(selectedId) {
+  if (!_allPropsCache) return '';
+  return _allPropsCache.map(p => {
+    const label = p.name && p.no ? `${p.no} ${p.street} (${p.name})`
+                : p.name ? `${p.name}, ${p.street}`
+                : `${p.no ? p.no + ' ' : ''}${p.street}`;
+    const sel = String(p.id) === String(selectedId) ? ' selected' : '';
+    return `<option value="${p.id}"${sel}>#${p.id} — ${esc(label)}</option>`;
+  }).join('');
+}
+fetch('/api/all-props').then(r => r.json()).then(list => {
+  _allPropsCache = (Array.isArray(list) ? list : []).slice().sort((a, b) =>
+    (a.street || '').localeCompare(b.street || '')
+    || (parseInt(a.no, 10) || 0) - (parseInt(b.no, 10) || 0));
+}).catch(() => {});
+
 function toggleCensusEdit(entryId) {
   const el = document.getElementById(`ce-edit-${entryId}`);
   if (el) el.style.display = el.style.display === 'none' ? '' : 'none';
@@ -1352,11 +1377,17 @@ async function saveCensusEdit(entryId, personId) {
   const age_at_census = get(`ce-age-${entryId}`).value ? parseInt(get(`ce-age-${entryId}`).value) : null;
   const occupation_at_census = get(`ce-occ-${entryId}`).value.trim() || null;
   const birth_place = get(`ce-birth-${entryId}`).value.trim() || null;
+  // Explicitly null rather than omitted, so clearing the box unfiles the record
+  // instead of silently leaving it where it was.
+  const propSel = get(`ce-prop-${entryId}`);
+  const property_id = propSel ? (propSel.value === '' ? null : parseInt(propSel.value, 10)) : undefined;
   get(`ce-err-${entryId}`).textContent = '';
   try {
+    const body = { relationship, age_at_census, occupation_at_census, birth_place };
+    if (property_id !== undefined) body.property_id = property_id;
     const res = await fetch(`/api/census-entry/${entryId}`, {
       method: 'PATCH', headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ relationship, age_at_census, occupation_at_census, birth_place })
+      body: JSON.stringify(body)
     }).then(r => r.json());
     if (res.ok) {
       openProfile(personId);

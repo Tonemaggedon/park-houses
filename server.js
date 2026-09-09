@@ -3738,7 +3738,22 @@ app.post('/api/person/:id/census', requireContributor, async (req, res) => {
 app.patch('/api/census-entry/:entryId', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
-    const { relationship, occupation_at_census, age_at_census, birth_place, census_year } = req.body;
+    const { relationship, occupation_at_census, age_at_census, birth_place, census_year,
+            property_id } = req.body;
+    // Moving a record to another property. /api/census/resolve only ever fills a
+    // blank — it carries "AND property_id IS NULL" — so a record filed against
+    // the wrong house could not be moved at all. Sending property_id here does
+    // it; sending null explicitly unfiles it, back to the unresolved queue.
+    if (property_id !== undefined) {
+      const target = property_id === null || property_id === '' ? null : parseInt(property_id, 10);
+      if (target !== null && !Number.isInteger(target)) {
+        return res.status(400).json({ error: 'property_id must be a number, or null to unfile' });
+      }
+      await db.query(`UPDATE census_entries SET property_id=$1,
+                        unresolved_address = CASE WHEN $1::int IS NULL THEN unresolved_address ELSE NULL END
+                      WHERE id=$2`,
+        [target, parseInt(req.params.entryId)]);
+    }
     await db.query(
       `UPDATE census_entries SET
         relationship = COALESCE($1, relationship),
