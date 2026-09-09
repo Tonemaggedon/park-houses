@@ -79,9 +79,10 @@
   <p class="lede">Records filed against no property, gathered by the address they carry rather
     than listed one by one. Most of the backlog is a handful of addresses repeated many times,
     so the whole of one can be settled in a single click.</p>
-  <p class="lede">Where a house name appears in the text the match is offered outlined in green.
-    A street alone is only a street — those need the house, and the people are listed under each
-    group to help work it out.</p>
+  <p class="lede">Where a house name appears in the text and the group holds one household, the
+    match is offered outlined in green. A street alone is only a street. And a group holding
+    several households is flagged as such: a house name in the text evidences one of them, not
+    all of them, so those want splitting before filing.</p>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
   <div class="note">Nothing here is applied for you. Filing a group also links each person to the
@@ -135,7 +136,9 @@ async function load() {
       <div class="grp${g.confident ? ' sure' : ''}" data-g="${i}">
         <div class="addr">${g.address ? esc(g.address) : '<span class="none">no address recorded</span>'}</div>
         <div class="meta">${g.count} record${g.count === 1 ? '' : 's'} ·
-          ${g.years.join(', ')}</div>
+          ${g.years.join(', ')}${g.households > 1
+            ? ` · <strong>${g.households} households</strong> — these do not all belong to one house`
+            : ''}</div>
         ${g.suggestions.length ? `<div class="sugg">
           ${g.suggestions.map((s, j) => `<button data-pick="${s.id}" data-g="${i}"
               class="${j === 0 && g.confident ? 'top' : ''}">#${s.id} ${esc(s.label)}</button>`).join('')}
@@ -188,8 +191,12 @@ document.addEventListener('click', async e => {
   const g = window._groups[i];
   const target = parseInt(document.querySelector(`[data-in="${i}"]`).value, 10);
   if (!Number.isInteger(target) || !propNames[target]) return;
+  const warn = g.households > 1
+    ? `\n\nThese are ${g.households} separate households. Filing them together puts them all `
+      + `in one house.`
+    : '';
   if (!confirm(`File all ${g.count} record${g.count === 1 ? '' : 's'} at `
-             + `"${g.address || 'no address'}" to ${propNames[target]}?`)) return;
+             + `"${g.address || 'no address'}" to ${propNames[target]}?` + warn)) return;
   file.disabled = true; file.textContent = 'Filing…';
   try {
     const res = await fetch('/api/census/reassign', {

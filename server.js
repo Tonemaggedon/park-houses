@@ -2892,10 +2892,20 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
     }
     const groups = [...byAddr.entries()].map(([addr, entries]) => {
       const s = addr === '\u0000none' ? [] : suggest(addr);
-      const strong = s.length && s[0].score >= 10 && (s.length === 1 || s[0].score > s[1].score);
+      // One address string can hold several households — the Dowsons and two
+      // neighbours all arrived under "Felixstowe see 1911 Clumber rd W". A
+      // house name in the text then evidences one of them, not all of them, so
+      // a group carrying more than one household is never called confident.
+      const heads = entries.filter(e => /^head$/i.test((e.relationship || '').trim())).length;
+      const wives = entries.filter(e => /^wife$/i.test((e.relationship || '').trim())).length;
+      const households = Math.max(heads, wives, 1);
+      const strong = s.length && s[0].score >= 10
+                     && (s.length === 1 || s[0].score > s[1].score)
+                     && households === 1;
       return {
         address: addr === '\u0000none' ? null : addr,
         count: entries.length,
+        households,
         years: [...new Set(entries.map(e => e.census_year))].sort(),
         suggestions: s,
         confident: !!strong,
