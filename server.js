@@ -1346,22 +1346,49 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
     const report = [];
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0;
+      let added = 0, already = 0, linked = 0, census = 0, enriched = 0;
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
         const found = await db.query(
-          `SELECT id FROM people WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
+          `SELECT id, born_date, born_year, born_place, sex FROM people
+            WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
           [person.first_name, person.last_name]);
         let id = null;
-        if (found.rows.length) { id = found.rows[0].id; already++; }
+        if (found.rows.length) {
+          id = found.rows[0].id; already++;
+          // Fill blanks only. A register gives an exact birth date where the
+          // record often holds nothing — but someone else's entered value is
+          // never overwritten by an import.
+          const have = found.rows[0];
+          const fills = [];
+          // Only take the date when it does not contradict a year already held:
+          // filling born_date "1 August 1870" beside an existing born_year of
+          // 1872 would leave the record disagreeing with itself.
+          const yearAgrees = !have.born_year || !person.born_year
+                             || Number(have.born_year) === Number(person.born_year);
+          if (!have.born_date  && person.born_date && yearAgrees)
+            fills.push(['born_date', person.born_date]);
+          if (!have.born_year  && person.born_year)  fills.push(['born_year',  person.born_year]);
+          if (!have.born_place && person.born_place) fills.push(['born_place', person.born_place]);
+          if (!have.sex        && person.sex)        fills.push(['sex',        person.sex]);
+          if (fills.length) {
+            enriched++;
+            if (!dryRun) {
+              await db.query(
+                `UPDATE people SET ${fills.map((f, i) => `${f[0]}=$${i + 2}`).join(', ')} WHERE id=$1`,
+                [id, ...fills.map(f => f[1])]);
+            }
+          }
+        }
         else if (dryRun) { added++; }   // no id yet, but still count the links below
         else {
           const r = await db.query(
             `INSERT INTO people (first_name,last_name,known_as,title,postnominals,sex,
-                                 born_year,died_year,bio,wikipedia_url)
-             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id`,
+                                 born_date,born_year,born_place,died_year,bio,wikipedia_url)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING id`,
             [person.first_name, person.last_name, person.known_as || null, person.title || null,
-             person.postnominals || null, person.sex || null, person.born_year || null,
+             person.postnominals || null, person.sex || null, person.born_date || null,
+             person.born_year || null, person.born_place || null,
              person.died_year || null, person.bio || null, person.wikipedia_url || null]);
           id = r.rows[0].id; added++;
           await logChange('person', id, req, 'create', 'import', null, file);
@@ -1379,8 +1406,30 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             linked++;
           }
         }
+        // Census (and 1939 Register) appearances. Keyed on person, year and
+        // property so running the import twice does not double the record.
+        for (const c of (person.census || [])) {
+          if (!c.census_year) continue;
+          if (id === null) { census++; continue; }   // person is new in this dry run
+          const dup = await db.query(
+            `SELECT 1 FROM census_entries
+              WHERE person_id=$1 AND census_year=$2
+                AND property_id IS NOT DISTINCT FROM $3`,
+            [id, c.census_year, c.property_id || null]);
+          if (dup.rows.length) continue;
+          census++;
+          if (dryRun) continue;
+          await db.query(
+            `INSERT INTO census_entries
+               (person_id, property_id, address, census_year, relationship,
+                age_at_census, occupation_at_census, birth_place, source)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+            [id, c.property_id || null, c.address || null, c.census_year,
+             c.relationship || null, c.age_at_census || null,
+             c.occupation_at_census || null, c.birth_place || null, c.source || null]);
+        }
       }
-      report.push({ file, added, alreadyPresent: already, propertyLinks: linked });
+      report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked, census });
     }
     res.json({ ok: true, dryRun, report });
   } catch(e) { res.status(500).json({ error: e.message }); }
