@@ -1,7 +1,7 @@
 # Outstanding — Nottingham Park Houses
 
 A working tick list. Tick items off as you go (`- [ ]` → `- [x]`).
-Last checked against the live site: **9 September 2026**.
+Last checked against the live site: **9 September 2026** (second pass).
 
 ---
 
@@ -52,7 +52,49 @@ Each of these is a fork I deliberately did not take on your behalf.
 
 ---
 
-## 3. The big data gap
+## 3. Misfiled census records
+
+### Finish the Kenilworth move
+
+- [ ] **Emily Purden (#932) is still at 1 Kenilworth Road.** The four Pembertons moved to No. 3;
+      their servant did not — her 1911 record (entry 2555) is still filed against #153 while
+      Samuel's is at #155. Different surname, so she was missed. Move her the same way.
+
+### Houses holding improbably many people — `/crowding`
+
+Across the whole record a household runs to a **median of 5**, and **95% hold 11 or fewer**.
+A house showing twenty-odd in one year is usually several households filed against one address.
+**The surname count is the tell** — one household is rarely more than two or three families.
+
+21 property-years are currently flagged. The worst:
+
+- [ ] **#227 — 39 Newcastle Drive (Priests House)** — 27 people, **22 surnames**, 1921
+- [ ] **#310 — 5 Tattershall Drive** — 26 people, **16 surnames**, 1921
+- [ ] **#25 — 9 Cavendish Crescent North** — 22 people, **14 surnames**, 1911
+- [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921
+- [ ] **#85 — Westwood, Clumber Road East** — 20 people, **13 surnames**, 1921
+- [ ] **#201 — Gladstone House, Lincoln Circus** — 16 people, 12 surnames, 1921
+      (10 here in 1911)
+- [ ] **#121 — 8 Hamilton Drive** — 16 people, 8 surnames, 1921
+
+The full list of 21 is on the page, and it recalculates as you fix things.
+
+Not every one is wrong: 10 Barrack Lane holds 17 people under only 6 surnames in 1911, which
+is plausibly one family with staff. A boarding house or a school will show here legitimately.
+
+Tools: **Dashboard → Admin tools → Move a household to another property** for a whole
+household, or the **property picker on each census record** on a person's page for one-offs.
+
+### Records filed against no property at all
+
+- [ ] **245 census records sit at no property** — 154 in 1921, 82 in 1911, 8 in 1901, 1 in 1891.
+      They are invisible on the map, invisible on `/crowding`, and are the other half of the
+      same problem: the Pembertons' three 1921 records were among them. The Unresolved Census
+      page is where these get assigned.
+
+---
+
+## 4. The big data gap
 
 - [ ] **1911 birth places.** Only **330 of 902** people in the 1911 census have a
       birth place recorded (37%), against **1,272 of 1,289** for 1921 (99%). This
@@ -70,7 +112,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 4. Offered, not yet started
+## 5. Offered, not yet started
 
 - [ ] **Backfill `born_place` onto people from census entries.** Only 511 person
       records hold a birth place while the census entries behind them hold far
@@ -86,7 +128,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 5. Property questions
+## 6. Property questions
 
 - [ ] **Clumber Court (#399)** — marked demolished, but has **no residents linked
       and no census years**. Either the links are missing or the record is a stub.
@@ -98,7 +140,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 6. Known weak spot in the code
+## 7. Known weak spots in the code
 
 - [ ] **Two sources of truth for property positions.** `data/all_props.json` holds a
       base coordinate for each property; roughly **396 manual placements** live in
@@ -109,6 +151,20 @@ Other gaps, for reference rather than action:
       alone made your own corrections look like faults. Anyone touching
       coordinates must check `/api/coords` first. Reconciling the two into one
       source would remove the trap for good.
+
+- [ ] **Duplicate resident links are possible.** `property_residents` has no unique index on
+      (person_id, property_id), so nothing stops the same person being linked to the same
+      property twice — my first attempt at the household move wrote one. The move tool now
+      checks explicitly, but older duplicates may already exist. A constraint cannot simply be
+      added without first finding and clearing any. Ask and I will write the cleanup.
+
+- [ ] **Search: "it either works, hangs or shuts the page".** I could not reproduce it. Map
+      search worst case 79ms over 403 properties, People 72ms over 2,550, the census page 43ms
+      for a whole word, and the server under a second. No memory leak across 60 rebuilds.
+      **I need to know which page, what you typed, and what "shuts the page" looks like** —
+      the tab closing, the property panel snapping shut, or jumping back to the map. Noted
+      in passing: the census and family-tree searches have no debounce where the map and
+      people pages have 300ms. Harmless at these sizes, but I can even them up.
 
 ---
 
@@ -125,3 +181,12 @@ Other gaps, for reference rather than action:
       instead of silently serving the map.
 - [x] Wikidata pool rebuilt from 451 to 718 people, and the query committed so it
       can be refreshed: `node build-wikidata-snapshot.js`.
+- [x] The Pemberton household moved from 1 to 3 Kenilworth Road — four of the five;
+      see Emily Purden above.
+- [x] Census records can be moved between properties at all — there was no way to,
+      neither a picker on the record nor an endpoint that would accept it.
+- [x] Map links from a person, an architect, or the dashboard's recent changes opened
+      the whole map instead of the property: five links used `?id=` where the map read
+      only `?prop=`. It now accepts either.
+- [x] `/api/census/:year` swallowed any word, so `/api/census/crowding` was parsed as a
+      year; and an unknown `/api/` path answered 200 with the map, which is what hid it.
