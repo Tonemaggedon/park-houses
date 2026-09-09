@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duplicate People — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.45; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:980px; margin:0 auto; padding:22px 20px 80px; }
+
+  h2 { font-size:1.28rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.88rem; margin:0 0 6px; max-width:74ch; }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
+    margin:14px 0 18px; }
+
+  .pair { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    padding:12px 14px; margin-bottom:11px; }
+  .pair.strong { border-color:#9ab88a; }
+  .why { font-size:.74rem; color:var(--faint); margin-bottom:8px; }
+  .why .tag { display:inline-block; border:1px solid var(--rule); border-radius:9px;
+    padding:0 7px; margin-right:4px; background:#f6f2e6; }
+  .why .tag.hot { border-color:#9ab88a; background:#eef5e8; color:var(--green); }
+
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  @media (max-width:640px) { .two { grid-template-columns:1fr; } }
+  .rec { border:1px solid var(--rule); border-radius:6px; padding:9px 11px; background:#fdfbf5; }
+  .rec.keep { border-color:var(--green); background:#f4f8f1; }
+  .rec .nm { font-weight:700; font-size:.95rem; }
+  .rec .nm a { color:var(--ink); text-decoration:none; }
+  .rec .nm a:hover { text-decoration:underline; }
+  .rec .d { font-size:.76rem; color:var(--faint); margin-top:2px; }
+  .rec .has { font-size:.72rem; color:var(--green); margin-top:3px; }
+  .rec label { display:flex; gap:6px; align-items:center; font-size:.78rem; margin-top:7px;
+    cursor:pointer; color:var(--soft); }
+
+  .act { margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .act button { font-family:inherit; font-size:.8rem; border-radius:4px; padding:5px 13px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  .act button.go { background:var(--green); color:#f2ecd8; border-color:var(--green); }
+  .act button:disabled { opacity:.45; cursor:default; }
+  .act .out { font-size:.78rem; color:var(--faint); }
+
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  .err { color:var(--red); }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:20px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:74ch; }
+  a { color:#2a5a8a; text-decoration:none; } a:hover { text-decoration:underline; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/unfiled">📥 Unfiled records</a>
+  <a href="/duplicates" class="active">👥 Duplicates</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>The same person, recorded twice</h2>
+  <p class="lede">The census spreadsheets were loaded separately and name people differently —
+    one holds <em>Helena Brownsword Dowson</em>, the other <em>Helena Dowson</em>. Where two
+    records share a surname and first forename, were born within two years of each other, and
+    never appear in the same census year, they are usually one person split in half.</p>
+  <p class="lede">Merging keeps one record and moves everything onto it: census entries,
+    occupations, photographs, links. Blank fields on the kept record are filled from the other,
+    and the biographies are joined. <strong>It cannot be undone</strong>, so check the two are
+    really the same before merging.</p>
+  <div class="bar" id="bar">Loading…</div>
+  <div id="list"><div class="empty">Loading…</div></div>
+  <div class="note">Never appearing in the same census year is the strongest part of this: two
+    people of the same name who were both recorded in 1911 are two people, and are not listed
+    here. A pair that shares a property as well is more likely still.</div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false, propNames = {};
+
+async function init() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+  } catch (e) {}
+  try {
+    const list = await fetch('/api/all-props').then(r => r.json());
+    for (const p of (Array.isArray(list) ? list : [])) {
+      const no = (p.no || '').trim(), nm = (p.name || '').trim();
+      propNames[p.id] = (nm && no && no.toLowerCase() !== nm.toLowerCase())
+        ? `${no} ${p.street} (${nm})` : nm ? `${nm}, ${p.street}` : `${no ? no + ' ' : ''}${p.street}`;
+    }
+  } catch (e) {}
+  load();
+}
+
+const holdings = p => [
+  p.entries ? `${p.entries} census record${p.entries === 1 ? '' : 's'}` : null,
+  p.wikipedia_url ? 'a Wikipedia link' : null,
+  p.has_photo ? 'a photograph' : null,
+  p.has_bio ? 'a biography' : null,
+].filter(Boolean).join(' · ');
+
+async function load() {
+  const bar = document.getElementById('bar'), box = document.getElementById('list');
+  try {
+    const d = await fetch('/api/people/duplicates').then(r => r.json());
+    if (d.error) throw new Error(d.error);
+    if (!d.total) {
+      bar.textContent = '';
+      box.innerHTML = '<div class="empty">No likely duplicates. Every person appears once.</div>';
+      return;
+    }
+    const shared = d.pairs.filter(p => p.sharedProperty).length;
+    bar.textContent = `${d.total} likely pair${d.total === 1 ? '' : 's'}`
+      + (shared ? ` · ${shared} also share a property` : '');
+    if (!canEdit) { box.innerHTML = '<div class="empty">Sign in as a contributor to merge these.</div>'; return; }
+
+    box.innerHTML = d.pairs.map((pr, i) => `
+      <div class="pair${pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
+        <div class="why">${pr.reasons.map(r =>
+          `<span class="tag${/property/.test(r) ? ' hot' : ''}">${esc(r)}</span>`).join('')}</div>
+        <div class="two">
+          ${pr.people.map(p => `
+            <div class="rec${p.id === pr.suggestKeep ? ' keep' : ''}" data-rec="${p.id}">
+              <div class="nm"><a href="/people?person=${p.id}" target="_blank">${esc(p.name)}</a>
+                <span style="font-weight:400;color:var(--faint);font-size:.78rem">#${p.id}</span></div>
+              <div class="d">b. ${p.born_year || '?'}${p.died_year ? ' – d. ' + p.died_year : ''}
+                ${p.years.length ? ' · census ' + p.years.join(', ') : ' · no census year'}</div>
+              ${p.properties.length ? `<div class="d">${p.properties.map(x =>
+                esc(propNames[x] || ('property ' + x))).join(' · ')}</div>` : ''}
+              ${holdings(p) ? `<div class="has">${esc(holdings(p))}</div>` : ''}
+              <label><input type="radio" name="keep-${i}" value="${p.id}"
+                ${p.id === pr.suggestKeep ? 'checked' : ''}> keep this one</label>
+            </div>`).join('')}
+        </div>
+        <div class="act">
+          <button class="go" data-merge="${i}">Merge</button>
+          <span class="out" data-out="${i}"></span>
+        </div>
+      </div>`).join('');
+    window._pairs = d.pairs;
+  } catch (e) {
+    bar.textContent = '';
+    box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+// Keep the highlight on whichever record is actually selected.
+document.addEventListener('change', e => {
+  if (!e.target.name || !e.target.name.startsWith('keep-')) return;
+  const pair = e.target.closest('.pair');
+  pair.querySelectorAll('.rec').forEach(r =>
+    r.classList.toggle('keep', r.dataset.rec === e.target.value));
+});
+
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-merge]');
+  if (!btn) return;
+  const i = btn.dataset.merge;
+  const pair = window._pairs[i];
+  const chosen = document.querySelector(`input[name="keep-${i}"]:checked`);
+  if (!chosen) return;
+  const keepId = Number(chosen.value);
+  const dropId = pair.people.find(p => p.id !== keepId).id;
+  const keep = pair.people.find(p => p.id === keepId);
+  const drop = pair.people.find(p => p.id === dropId);
+  if (!confirm(`Keep "${keep.name}" (#${keepId}) and merge "${drop.name}" (#${dropId}) into it?`
+             + `\n\nEverything on #${dropId} moves across and the record is deleted. `
+             + `This cannot be undone.`)) return;
+  const out = document.querySelector(`[data-out="${i}"]`);
+  btn.disabled = true; out.textContent = 'Merging…';
+  try {
+    const res = await fetch('/api/admin/merge-people', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keep_id: keepId, delete_id: dropId }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    load();
+  } catch (err) {
+    btn.disabled = false; out.textContent = '';
+    alert('Could not merge those: ' + err.message);
+  }
+});
+
+init();
+</script>
+</body>
+</html>

@@ -2842,6 +2842,77 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// GET /api/people/duplicates — the same person imported twice. The 1911 and
+// 1921 spreadsheets were loaded separately and name people differently: one
+// holds "Helena Brownsword Dowson", the other "Helena Dowson". They match on
+// surname and first forename with birth years within two, and crucially appear
+// in no census year together — two records of one person, not two people.
+app.get('/api/people/duplicates', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const r = await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.born_year, p.died_year, p.sex,
+             p.wikipedia_url, p.photo_url, p.bio IS NOT NULL AS has_bio,
+             ARRAY(SELECT DISTINCT c.census_year FROM census_entries c
+                    WHERE c.person_id = p.id AND c.census_year IS NOT NULL
+                    ORDER BY 1) AS years,
+             (SELECT COUNT(*) FROM census_entries c WHERE c.person_id = p.id) AS entries,
+             ARRAY(SELECT DISTINCT c.property_id FROM census_entries c
+                    WHERE c.person_id = p.id AND c.property_id IS NOT NULL) AS props
+        FROM people p
+       WHERE COALESCE(TRIM(p.last_name), '') <> ''
+         AND COALESCE(TRIM(p.first_name), '') <> ''`);
+
+    const key = v => String(v || '').toLowerCase().replace(/[^a-z]/g, '');
+    const firstWord = v => key(String(v || '').trim().split(/\s+/)[0]);
+    const buckets = new Map();
+    for (const p of r.rows) {
+      const k = key(p.last_name) + '|' + firstWord(p.first_name);
+      if (!k.includes('|') || k.startsWith('|') || k.endsWith('|')) continue;
+      if (!buckets.has(k)) buckets.set(k, []);
+      buckets.get(k).push(p);
+    }
+
+    const pairs = [];
+    for (const list of buckets.values()) {
+      if (list.length < 2) continue;
+      for (let i = 0; i < list.length; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+          const a = list[i], b = list[j];
+          if (!a.born_year || !b.born_year) continue;
+          if (Math.abs(a.born_year - b.born_year) > 2) continue;
+          const ya = new Set(a.years), yb = new Set(b.years);
+          if ([...ya].some(y => yb.has(y))) continue;   // both in one year: two real people
+          const sharedProp = a.props.some(x => b.props.includes(x));
+          const reasons = [];
+          if (a.born_year === b.born_year) reasons.push('same birth year');
+          else reasons.push(`birth years ${a.born_year} and ${b.born_year}`);
+          if (sharedProp) reasons.push('same property');
+          if (key(a.first_name) !== key(b.first_name)) reasons.push('one name fuller than the other');
+          // Prefer keeping the record with more on it.
+          const weight = p => (p.years.length * 4) + Number(p.entries)
+            + (p.wikipedia_url ? 3 : 0) + (p.photo_url ? 3 : 0) + (p.has_bio ? 3 : 0)
+            + (String(p.first_name).trim().split(/\s+/).length > 1 ? 1 : 0);
+          const [keep, drop] = weight(a) >= weight(b) ? [a, b] : [b, a];
+          pairs.push({
+            suggestKeep: keep.id, suggestDrop: drop.id,
+            sharedProperty: sharedProp, reasons,
+            people: [a, b].map(p => ({
+              id: p.id, name: [p.first_name, p.last_name].filter(Boolean).join(' '),
+              born_year: p.born_year, died_year: p.died_year, sex: p.sex,
+              years: p.years, entries: Number(p.entries), properties: p.props,
+              wikipedia_url: p.wikipedia_url, has_photo: !!p.photo_url, has_bio: p.has_bio,
+            })),
+          });
+        }
+      }
+    }
+    pairs.sort((x, y) => (y.sharedProperty - x.sharedProperty)
+                      || x.people[0].name.localeCompare(y.people[0].name));
+    res.json({ total: pairs.length, pairs });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/census/unfiled-groups — records filed against no property, gathered
 // by the address they carry. 238 records turn out to be 22 distinct addresses,
 // so this is 22 decisions rather than 238. Suggestions are offered, never
@@ -4361,6 +4432,7 @@ app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'pub
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
 app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'unfiled.html')));
+app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'duplicates.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 

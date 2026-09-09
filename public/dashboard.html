@@ -285,6 +285,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/wikidata-review" class="action-btn" id="wikidataCard" style="display:none"><span class="ab-icon">🔗</span><div><div class="ab-title">Wikidata Review</div><div class="ab-label" id="wikidataLabel">Possible Wikipedia matches to confirm</div></div></a>
         <a href="/crowding" class="action-btn" id="crowdingCard" style="display:none"><span class="ab-icon">⚠</span><div><div class="ab-title">Crowded Houses</div><div class="ab-label" id="crowdingLabel">Properties with improbably many people</div></div></a>
         <a href="/unfiled" class="action-btn" id="unfiledCard" style="display:none"><span class="ab-icon">📥</span><div><div class="ab-title">Unfiled Records</div><div class="ab-label" id="unfiledLabel">Census records at no property</div></div></a>
+        <a href="/duplicates" class="action-btn" id="dupCard" style="display:none"><span class="ab-icon">👥</span><div><div class="ab-title">Duplicate People</div><div class="ab-label" id="dupLabel">The same person recorded twice</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
@@ -898,6 +899,14 @@ async function renderReviewCards(){
       document.getElementById('nameSexLabel').textContent =
         `${n.remaining} name${n.remaining===1?'':'s'} covering ${n.peopleRemaining} people`;
       document.getElementById('nameSexCard').style.display = '';
+    }
+  } catch(e) {}
+  try {
+    const dp = await fetch('/api/people/duplicates').then(r=>r.json());
+    if (dp && dp.total) {
+      document.getElementById('dupLabel').textContent =
+        `${dp.total} likely pair${dp.total===1?'':'s'} to check`;
+      document.getElementById('dupCard').style.display = '';
     }
   } catch(e) {}
   try {
