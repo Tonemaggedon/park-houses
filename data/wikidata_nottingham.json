@@ -24,6 +24,101 @@
     "wikidata": "https://www.wikidata.org/wiki/Q308241"
   },
   {
+    "qid": "Q18756558",
+    "name": "Abigail Gawthern",
+    "born": "1757",
+    "died": "1822",
+    "occupations": [
+      "diarist",
+      "industrialist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Abigail_Gawthern",
+    "wikidata": "https://www.wikidata.org/wiki/Q18756558"
+  },
+  {
+    "qid": "Q59631073",
+    "name": "Adam Willis Kirkaldy",
+    "born": "1867",
+    "died": "1931",
+    "occupations": [
+      "university teacher",
+      "economist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q59631073"
+  },
+  {
+    "qid": "Q113547778",
+    "name": "Agnes Newberry Maltby",
+    "born": "1899",
+    "died": "1984",
+    "occupations": [
+      "cartoonist",
+      "illustrator"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peg_Maltby",
+    "wikidata": "https://www.wikidata.org/wiki/Q113547778"
+  },
+  {
+    "qid": "Q4706075",
+    "name": "Alan Armitage",
+    "born": "1930",
+    "died": "2025",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Alan_Armitage",
+    "wikidata": "https://www.wikidata.org/wiki/Q4706075"
+  },
+  {
+    "qid": "Q20986595",
+    "name": "Alan Gauld",
+    "born": "1932",
+    "died": "2024",
+    "occupations": [
+      "psychologist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Alan_Gauld",
+    "wikidata": "https://www.wikidata.org/wiki/Q20986595"
+  },
+  {
+    "qid": "Q216398",
+    "name": "Alan Sillitoe",
+    "born": "1928",
+    "died": "2010",
+    "occupations": [
+      "autobiographer",
+      "novelist",
+      "children's writer",
+      "poet",
+      "writer",
+      "screenwriter"
+    ],
+    "awards": [
+      "Hawthornden Prize",
+      "Fellow of the Royal Society of Literature"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Alan_Sillitoe",
+    "wikidata": "https://www.wikidata.org/wiki/Q216398"
+  },
+  {
+    "qid": "Q10556420",
+    "name": "Alan Withers",
+    "born": "1930",
+    "died": "2017",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Alan_Withers",
+    "wikidata": "https://www.wikidata.org/wiki/Q10556420"
+  },
+  {
     "qid": "Q19560202",
     "name": "Albert Carnelly",
     "born": "1870",
@@ -55,8 +150,8 @@
     "born": "1881",
     "died": "1937",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Albert_Fisher_(footballer)",
@@ -68,8 +163,8 @@
     "born": "1867",
     "died": "1940",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Albert_Fletcher_(footballer,_born_1867)",
@@ -100,17 +195,41 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4710316"
   },
   {
+    "qid": "Q28549745",
+    "name": "Albert Hatton",
+    "born": "1879",
+    "died": "1963",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Albert_Hatton",
+    "wikidata": "https://www.wikidata.org/wiki/Q28549745"
+  },
+  {
     "qid": "Q4710528",
     "name": "Albert Iremonger",
     "born": "1884",
     "died": "1958",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Albert_Iremonger",
     "wikidata": "https://www.wikidata.org/wiki/Q4710528"
+  },
+  {
+    "qid": "Q73176204",
+    "name": "Albert Keetley",
+    "born": "1930",
+    "died": "2019",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q73176204"
   },
   {
     "qid": "Q4710861",
@@ -125,14 +244,29 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4710861"
   },
   {
+    "qid": "Q88322127",
+    "name": "Albert Murray",
+    "born": "1887",
+    "died": "1974",
+    "occupations": [
+      "golfer"
+    ],
+    "awards": [
+      "Canada's Sports Hall of Fame",
+      "Canadian Golf Hall of Fame"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Albert_Murray_(golfer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q88322127"
+  },
+  {
     "qid": "Q29033779",
     "name": "Albert Nelson Bromley",
     "born": "1850",
     "died": "1934",
     "occupations": [
-      "architect",
+      "draftsperson",
       "painter",
-      "draftsperson"
+      "architect"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Albert_Nelson_Bromley",
@@ -175,16 +309,30 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4721788"
   },
   {
+    "qid": "Q121007764",
+    "name": "Alfred Edward Lawson Lowe",
+    "born": "1849",
+    "died": "1888",
+    "occupations": [
+      "soldier",
+      "historian",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q121007764"
+  },
+  {
     "qid": "Q17626874",
     "name": "Alfred F Johnson",
     "born": "1884",
     "died": "1972",
     "occupations": [
-      "librarian",
-      "historian",
-      "curator",
+      "bibliologist",
       "bibliographer",
-      "bibliologist"
+      "curator",
+      "historian",
+      "librarian"
     ],
     "awards": [
       "Military Cross"
@@ -193,13 +341,25 @@
     "wikidata": "https://www.wikidata.org/wiki/Q17626874"
   },
   {
+    "qid": "Q137678807",
+    "name": "Alfred Farmilo",
+    "born": "1885",
+    "died": "1965",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q137678807"
+  },
+  {
     "qid": "Q18533403",
     "name": "Alfred Gibson",
     "born": "1849",
     "died": "1924",
     "occupations": [
-      "violist",
-      "violinist"
+      "violinist",
+      "violist"
     ],
     "awards": [],
     "wikipedia": null,
@@ -211,8 +371,8 @@
     "born": "1874",
     "died": "1925",
     "occupations": [
-      "actor",
-      "comedian"
+      "comedian",
+      "actor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Alfred_Lester",
@@ -224,8 +384,8 @@
     "born": "1848",
     "died": "1912",
     "occupations": [
-      "organist",
-      "organ builder"
+      "organ builder",
+      "organist"
     ],
     "awards": [],
     "wikipedia": null,
@@ -237,12 +397,15 @@
     "born": "1830",
     "died": "1908",
     "occupations": [
-      "naturalist",
-      "photographer",
-      "civil servant",
+      "traveler",
+      "draftsperson",
+      "explorer",
+      "anthropologist",
       "botanical collector",
       "botanist",
-      "anthropologist"
+      "civil servant",
+      "photographer",
+      "naturalist"
     ],
     "awards": [
       "Clarke Medal",
@@ -252,19 +415,60 @@
     "wikidata": "https://www.wikidata.org/wiki/Q368705"
   },
   {
+    "qid": "Q19594694",
+    "name": "Alfred Wilson Cox",
+    "born": "1820",
+    "died": "1890",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q19594694"
+  },
+  {
+    "qid": "Q136795985",
+    "name": "Algernon Aloysius Mary Moore",
+    "born": "1839",
+    "died": "1880",
+    "occupations": [
+      "school teacher",
+      "curate",
+      "parson",
+      "deacon",
+      "Catholic priest",
+      "chaplain"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q136795985"
+  },
+  {
     "qid": "Q2836687",
     "name": "Alice Zimmern",
     "born": "1855",
     "died": "1939",
     "occupations": [
-      "writer",
-      "teacher",
+      "suffragist",
       "translator",
-      "suffragist"
+      "teacher",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Alice_Zimmern",
     "wikidata": "https://www.wikidata.org/wiki/Q2836687"
+  },
+  {
+    "qid": "Q113798066",
+    "name": "Alison K. McHardy",
+    "born": "1931",
+    "died": null,
+    "occupations": [
+      "medievalist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q113798066"
   },
   {
     "qid": "Q1557763",
@@ -272,12 +476,12 @@
     "born": "1896",
     "died": "1985",
     "occupations": [
-      "writer",
-      "zoologist",
-      "biologist",
-      "university teacher",
+      "essayist",
       "marine biologist",
-      "essayist"
+      "university teacher",
+      "biologist",
+      "zoologist",
+      "writer"
     ],
     "awards": [
       "Templeton Prize",
@@ -293,16 +497,29 @@
     "born": "1899",
     "died": "1982",
     "occupations": [
-      "screenwriter",
-      "writer",
-      "script",
+      "film screenwriter",
+      "film actor",
       "assistant director",
       "film editor",
-      "film actor"
+      "script",
+      "writer",
+      "screenwriter"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Alma_Reville",
     "wikidata": "https://www.wikidata.org/wiki/Q203165"
+  },
+  {
+    "qid": "Q4741818",
+    "name": "Ambrose Lisle March Phillipps De Lisle",
+    "born": "1809",
+    "died": "1878",
+    "occupations": [
+      "theologian"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ambrose_Phillipps_De_Lisle",
+    "wikidata": "https://www.wikidata.org/wiki/Q4741818"
   },
   {
     "qid": "Q17479360",
@@ -329,13 +546,30 @@
     "wikidata": "https://www.wikidata.org/wiki/Q22087175"
   },
   {
+    "qid": "Q29829806",
+    "name": "Andrzej Lichtarowicz",
+    "born": "1930",
+    "died": "2015",
+    "occupations": [
+      "academic",
+      "mechanical engineer",
+      "engineer"
+    ],
+    "awards": [
+      "Pro Ecclesia et Pontifice",
+      "Gold Cross of Merit"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q29829806"
+  },
+  {
     "qid": "Q2055966",
     "name": "Andy Beattie",
     "born": "1913",
     "died": "1983",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Andy_Beattie",
@@ -347,15 +581,15 @@
     "born": "1919",
     "died": "1991",
     "occupations": [
-      "writer",
-      "historian",
-      "translator",
+      "philosopher",
       "university teacher",
-      "philosopher"
+      "translator",
+      "historian",
+      "writer"
     ],
     "awards": [
-      "Prix Stanislas Julien",
-      "Fellow of the British Academy"
+      "Fellow of the British Academy",
+      "Prix Stanislas Julien"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/A._C._Graham",
     "wikidata": "https://www.wikidata.org/wiki/Q544397"
@@ -366,8 +600,8 @@
     "born": "1782",
     "died": "1866",
     "occupations": [
-      "writer",
-      "poet"
+      "poet",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Ann_Taylor_(poet)",
@@ -379,8 +613,8 @@
     "born": "1824",
     "died": "1884",
     "occupations": [
-      "writer",
-      "painter"
+      "painter",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Anna_Mary_Howitt",
@@ -392,16 +626,55 @@
     "born": "1840",
     "died": "1913",
     "occupations": [
-      "editor",
-      "journalist",
-      "school teacher",
+      "Unitarian pastor",
       "spiritualist",
       "religious writer",
-      "Unitarian pastor"
+      "school teacher",
+      "journalist",
+      "editor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Annie_Bright",
     "wikidata": "https://www.wikidata.org/wiki/Q24204976"
+  },
+  {
+    "qid": "Q134719678",
+    "name": "Annie Jackson",
+    "born": "1863",
+    "died": "1934",
+    "occupations": [
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134719678"
+  },
+  {
+    "qid": "Q16939894",
+    "name": "Anthony James Merrill Spencer",
+    "born": "1929",
+    "died": "2008",
+    "occupations": [
+      "mathematician",
+      "engineer"
+    ],
+    "awards": [
+      "Fellow of the Royal Society"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Anthony_James_Merrill_Spencer",
+    "wikidata": "https://www.wikidata.org/wiki/Q16939894"
+  },
+  {
+    "qid": "Q28844106",
+    "name": "Archibald Rudd",
+    "born": "1887",
+    "died": "1957",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Archibald_Rudd",
+    "wikidata": "https://www.wikidata.org/wiki/Q28844106"
   },
   {
     "qid": "Q546177",
@@ -428,6 +701,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4786636"
   },
   {
+    "qid": "Q59346280",
+    "name": "Arnold Goodwin",
+    "born": "1890",
+    "died": "1978",
+    "occupations": [
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Arnold_Goodwin",
+    "wikidata": "https://www.wikidata.org/wiki/Q59346280"
+  },
+  {
     "qid": "Q16030967",
     "name": "Arthur Bates",
     "born": "1852",
@@ -438,6 +723,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Bates_(cricketer)",
     "wikidata": "https://www.wikidata.org/wiki/Q16030967"
+  },
+  {
+    "qid": "Q55367354",
+    "name": "Arthur Bennett",
+    "born": "1868",
+    "died": "1899",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Bennett_(English_cricketer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q55367354"
   },
   {
     "qid": "Q112992647",
@@ -457,17 +754,17 @@
     "born": "1894",
     "died": "1956",
     "occupations": [
-      "geologist",
-      "university teacher"
+      "university teacher",
+      "geologist"
     ],
     "awards": [
-      "Wollaston Medal",
       "Bigsby Medal",
-      "Fellow of the Royal Society of Edinburgh",
-      "Murchison Fund",
+      "Fellow of the Geological Society of London",
+      "Wollaston Medal",
       "Knight Commander of the Order of the British Empire",
       "Fellow of the Royal Society",
-      "Fellow of the Geological Society of London"
+      "Fellow of the Royal Society of Edinburgh",
+      "Murchison Fund"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/A._E._Trueman",
     "wikidata": "https://www.wikidata.org/wiki/Q709238"
@@ -483,6 +780,36 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Elliott_(footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q16066728"
+  },
+  {
+    "qid": "Q4798692",
+    "name": "Arthur Fitton",
+    "born": "1902",
+    "died": "1984",
+    "occupations": [
+      "cricketer",
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Fitton",
+    "wikidata": "https://www.wikidata.org/wiki/Q4798692"
+  },
+  {
+    "qid": "Q709475",
+    "name": "Arthur Geoffrey Woodhead",
+    "born": "1922",
+    "died": "2008",
+    "occupations": [
+      "historian of classical antiquity",
+      "epigrapher",
+      "classical scholar",
+      "archaeologist",
+      "university teacher",
+      "historian"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q709475"
   },
   {
     "qid": "Q21458723",
@@ -509,6 +836,19 @@
     "wikidata": "https://www.wikidata.org/wiki/Q18813607"
   },
   {
+    "qid": "Q115982546",
+    "name": "Arthur Lepere",
+    "born": "1862",
+    "died": "1919",
+    "occupations": [
+      "parson",
+      "Catholic priest"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q115982546"
+  },
+  {
     "qid": "Q4799572",
     "name": "Arthur Lowe",
     "born": "1865",
@@ -533,16 +873,28 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4799695"
   },
   {
+    "qid": "Q58484105",
+    "name": "Arthur Mellor",
+    "born": "1851",
+    "died": null,
+    "occupations": [
+      "industrialist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q58484105"
+  },
+  {
     "qid": "Q2424878",
     "name": "Arthur Pink",
     "born": "1886",
     "died": "1952",
     "occupations": [
-      "writer",
-      "missionary",
-      "preacher",
+      "evangelist",
       "theologian",
-      "evangelist"
+      "preacher",
+      "missionary",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Pink",
@@ -597,17 +949,42 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4800337"
   },
   {
+    "qid": "Q91955870",
+    "name": "Arthur Thurman",
+    "born": "1874",
+    "died": "1900",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Thurman_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q91955870"
+  },
+  {
     "qid": "Q2865381",
     "name": "Arthur W. Barton",
     "born": "1899",
     "died": "1976",
     "occupations": [
-      "association football referee",
-      "nuclear physicist"
+      "nuclear physicist",
+      "association football referee"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Arthur_W._Barton",
     "wikidata": "https://www.wikidata.org/wiki/Q2865381"
+  },
+  {
+    "qid": "Q56282807",
+    "name": "Barbara Cass-Beggs",
+    "born": "1904",
+    "died": "1990",
+    "occupations": [
+      "singer",
+      "composer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Barbara_Cass-Beggs",
+    "wikidata": "https://www.wikidata.org/wiki/Q56282807"
   },
   {
     "qid": "Q807403",
@@ -615,12 +992,24 @@
     "born": "1919",
     "died": "1983",
     "occupations": [
-      "university teacher",
-      "anthropologist"
+      "anthropologist",
+      "university teacher"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Barbara_E._Ward",
     "wikidata": "https://www.wikidata.org/wiki/Q807403"
+  },
+  {
+    "qid": "Q134958659",
+    "name": "Barbara Richardson",
+    "born": "1881",
+    "died": "1964",
+    "occupations": [
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134958659"
   },
   {
     "qid": "Q18121437",
@@ -628,8 +1017,8 @@
     "born": "1829",
     "died": "1909",
     "occupations": [
-      "surgeon",
-      "anti-vaccine activist"
+      "anti-vaccine activist",
+      "surgeon"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Bell_Taylor",
@@ -650,7 +1039,7 @@
   {
     "qid": "Q21288544",
     "name": "Benjamin Shipham",
-    "born": "1806",
+    "born": "1808",
     "died": "1872",
     "occupations": [
       "painter"
@@ -685,6 +1074,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Bernard_Dobson",
     "wikidata": "https://www.wikidata.org/wiki/Q108309910"
+  },
+  {
+    "qid": "Q51385274",
+    "name": "Bernard Hookins",
+    "born": "1883",
+    "died": "1946",
+    "occupations": [
+      "athlete"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bernard_Hookins",
+    "wikidata": "https://www.wikidata.org/wiki/Q51385274"
   },
   {
     "qid": "Q4893601",
@@ -735,6 +1136,32 @@
     "wikidata": "https://www.wikidata.org/wiki/Q10509069"
   },
   {
+    "qid": "Q850406",
+    "name": "Betty Smith",
+    "born": "1929",
+    "died": "2011",
+    "occupations": [
+      "saxophonist",
+      "singer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Betty_Smith_(musician)",
+    "wikidata": "https://www.wikidata.org/wiki/Q850406"
+  },
+  {
+    "qid": "Q850968",
+    "name": "Beulah Garrick",
+    "born": "1921",
+    "died": null,
+    "occupations": [
+      "film actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Beulah_Garrick",
+    "wikidata": "https://www.wikidata.org/wiki/Q850968"
+  },
+  {
     "qid": "Q19519968",
     "name": "Bill Corkhill",
     "born": "1910",
@@ -764,12 +1191,40 @@
     "born": "1914",
     "died": "1976",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Bill_Lambton",
     "wikidata": "https://www.wikidata.org/wiki/Q4909819"
+  },
+  {
+    "qid": "Q3736724",
+    "name": "Bill Maynard",
+    "born": "1928",
+    "died": "2018",
+    "occupations": [
+      "stand-up comedian",
+      "television actor",
+      "stage actor",
+      "association football player",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bill_Maynard",
+    "wikidata": "https://www.wikidata.org/wiki/Q3736724"
+  },
+  {
+    "qid": "Q4911338",
+    "name": "Bill Whare",
+    "born": "1925",
+    "died": "1995",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bill_Whare",
+    "wikidata": "https://www.wikidata.org/wiki/Q4911338"
   },
   {
     "qid": "Q4912202",
@@ -777,8 +1232,8 @@
     "born": "1875",
     "died": "1938",
     "occupations": [
-      "cricket umpire",
-      "cricketer"
+      "cricketer",
+      "cricket umpire"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Billy_Bestwick",
@@ -797,6 +1252,19 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4912337"
   },
   {
+    "qid": "Q4912631",
+    "name": "Billy Gray",
+    "born": "1927",
+    "died": "2011",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Billy_Gray_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q4912631"
+  },
+  {
     "qid": "Q4912970",
     "name": "Billy May",
     "born": "1865",
@@ -812,10 +1280,10 @@
     "qid": "Q4913022",
     "name": "Billy Merson",
     "born": "1879",
-    "died": "1947",
+    "died": "1948",
     "occupations": [
-      "songwriter",
-      "film director"
+      "film director",
+      "songwriter"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Billy_Merson",
@@ -846,6 +1314,30 @@
     "wikidata": "https://www.wikidata.org/wiki/Q41451077"
   },
   {
+    "qid": "Q56236109",
+    "name": "Bob Starkey",
+    "born": "1904",
+    "died": "1978",
+    "occupations": [
+      "rower"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bob_Starkey_(rower)",
+    "wikidata": "https://www.wikidata.org/wiki/Q56236109"
+  },
+  {
+    "qid": "Q28439978",
+    "name": "Brenda Atherton",
+    "born": "1934",
+    "died": null,
+    "occupations": [
+      "bowls player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Brenda_Atherton",
+    "wikidata": "https://www.wikidata.org/wiki/Q28439978"
+  },
+  {
     "qid": "Q4979185",
     "name": "Bruno De Roeper",
     "born": "1892",
@@ -860,17 +1352,62 @@
     "wikidata": "https://www.wikidata.org/wiki/Q4979185"
   },
   {
+    "qid": "Q4980019",
+    "name": "Bryan Clarke",
+    "born": "1932",
+    "died": "2014",
+    "occupations": [
+      "geneticist",
+      "biologist"
+    ],
+    "awards": [
+      "Darwin–Wallace Medal",
+      "Linnean Medal",
+      "Darwin Medal",
+      "Fellow of the Royal Society",
+      "Fellow of the American Academy of Arts and Sciences"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bryan_Clarke",
+    "wikidata": "https://www.wikidata.org/wiki/Q4980019"
+  },
+  {
+    "qid": "Q4980085",
+    "name": "Bryan Farr",
+    "born": "1924",
+    "died": "2017",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Bryan_Farr",
+    "wikidata": "https://www.wikidata.org/wiki/Q4980085"
+  },
+  {
     "qid": "Q5045040",
     "name": "Caroline Dexter",
     "born": "1819",
     "died": "1884",
     "occupations": [
-      "journalist",
-      "feminist"
+      "feminist",
+      "journalist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Caroline_Dexter",
     "wikidata": "https://www.wikidata.org/wiki/Q5045040"
+  },
+  {
+    "qid": "Q138675690",
+    "name": "Cecil Ogden",
+    "born": "1858",
+    "died": "1944",
+    "occupations": [
+      "civil engineer",
+      "surveyor",
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q138675690"
   },
   {
     "qid": "Q5056301",
@@ -878,14 +1415,26 @@
     "born": "1892",
     "died": "1976",
     "occupations": [
-      "poet",
-      "playwright",
+      "novelist",
       "journalist",
-      "novelist"
+      "playwright",
+      "poet"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Cecil_Roberts",
     "wikidata": "https://www.wikidata.org/wiki/Q5056301"
+  },
+  {
+    "qid": "Q64729640",
+    "name": "Charles Barrowdale Carryer",
+    "born": "1857",
+    "died": "1940",
+    "occupations": [
+      "businessperson"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q64729640"
   },
   {
     "qid": "Q65705985",
@@ -905,12 +1454,36 @@
     "born": "1892",
     "died": "1975",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Charles_Bunyan_Jr.",
     "wikidata": "https://www.wikidata.org/wiki/Q2251308"
+  },
+  {
+    "qid": "Q98366412",
+    "name": "Charles Caborn",
+    "born": "1856",
+    "died": null,
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Charles_Caborn",
+    "wikidata": "https://www.wikidata.org/wiki/Q98366412"
+  },
+  {
+    "qid": "Q94130397",
+    "name": "Charles F. Aked",
+    "born": "1864",
+    "died": "1941",
+    "occupations": [
+      "cleric"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q94130397"
   },
   {
     "qid": "Q1064352",
@@ -918,12 +1491,12 @@
     "born": "1799",
     "died": "1860",
     "occupations": [
-      "writer",
-      "art historian",
-      "classical scholar",
-      "archaeologist",
+      "explorer",
       "anthropologist",
-      "explorer"
+      "archaeologist",
+      "classical scholar",
+      "art historian",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Charles_Fellows",
@@ -968,6 +1541,19 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5081092"
   },
   {
+    "qid": "Q50284461",
+    "name": "Charles Spencer",
+    "born": "1854",
+    "died": "1933",
+    "occupations": [
+      "artist",
+      "photographer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q50284461"
+  },
+  {
     "qid": "Q5084573",
     "name": "Charlie Bramley",
     "born": "1870",
@@ -985,10 +1571,10 @@
     "born": "1912",
     "died": "2004",
     "occupations": [
-      "association football coach",
-      "association football player",
+      "cricketer",
       "cricket umpire",
-      "cricketer"
+      "association football player",
+      "association football coach"
     ],
     "awards": [
       "Member of the Order of the British Empire"
@@ -1035,6 +1621,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q3666592"
   },
   {
+    "qid": "Q860301",
+    "name": "Charlie Thomson",
+    "born": "1930",
+    "died": "2009",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Charlie_Thomson",
+    "wikidata": "https://www.wikidata.org/wiki/Q860301"
+  },
+  {
     "qid": "Q5085659",
     "name": "Charlie Walker",
     "born": "1911",
@@ -1059,6 +1657,32 @@
     "wikidata": "https://www.wikidata.org/wiki/Q18162854"
   },
   {
+    "qid": "Q5126174",
+    "name": "Clare Greet",
+    "born": "1871",
+    "died": "1939",
+    "occupations": [
+      "film actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Clare_Greet",
+    "wikidata": "https://www.wikidata.org/wiki/Q5126174"
+  },
+  {
+    "qid": "Q63155383",
+    "name": "Clarence Edgar Allen",
+    "born": "1871",
+    "died": "1951",
+    "occupations": [
+      "journalist",
+      "mechanical engineer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q63155383"
+  },
+  {
     "qid": "Q2641020",
     "name": "Claude Thomas Stanfield Moore",
     "born": "1853",
@@ -1076,16 +1700,28 @@
     "born": "1884",
     "died": "1943",
     "occupations": [
-      "screenwriter",
-      "writer",
+      "novelist",
       "playwright",
-      "novelist"
+      "writer",
+      "screenwriter"
     ],
     "awards": [
       "Academy Award for Best Writing, Adapted Screenplay"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Claudine_West",
     "wikidata": "https://www.wikidata.org/wiki/Q1097965"
+  },
+  {
+    "qid": "Q19672218",
+    "name": "Clifton Tomson",
+    "born": "1775",
+    "died": "1828",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q19672218"
   },
   {
     "qid": "Q1811881",
@@ -1098,6 +1734,30 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Constance_Jeans",
     "wikidata": "https://www.wikidata.org/wiki/Q1811881"
+  },
+  {
+    "qid": "Q5200610",
+    "name": "Cyril \"Squib\" Burton",
+    "born": "1908",
+    "died": "1990",
+    "occupations": [
+      "motorcycle racer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Cyril_\"Squib\"_Burton",
+    "wikidata": "https://www.wikidata.org/wiki/Q5200610"
+  },
+  {
+    "qid": "Q5200861",
+    "name": "Cyril Robinson",
+    "born": "1929",
+    "died": "2019",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Cyril_Robinson_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q5200861"
   },
   {
     "qid": "Q18601970",
@@ -1115,6 +1775,110 @@
     "wikidata": "https://www.wikidata.org/wiki/Q18601970"
   },
   {
+    "qid": "Q500417",
+    "name": "Dave Mackay",
+    "born": "1934",
+    "died": "2015",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [
+      "English Football Hall of Fame"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Dave_Mackay",
+    "wikidata": "https://www.wikidata.org/wiki/Q500417"
+  },
+  {
+    "qid": "Q9202623",
+    "name": "David Hay",
+    "born": "1935",
+    "died": "2014",
+    "occupations": [
+      "psychologist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q9202623"
+  },
+  {
+    "qid": "Q1174833",
+    "name": "David J. Furley",
+    "born": "1922",
+    "died": "2010",
+    "occupations": [
+      "classical philologist",
+      "university teacher"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/David_J._Furley",
+    "wikidata": "https://www.wikidata.org/wiki/Q1174833"
+  },
+  {
+    "qid": "Q3018835",
+    "name": "David Stronach",
+    "born": "1931",
+    "died": "2020",
+    "occupations": [
+      "Near Eastern archaeologist",
+      "archaeologist"
+    ],
+    "awards": [
+      "Officer of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/David_Stronach",
+    "wikidata": "https://www.wikidata.org/wiki/Q3018835"
+  },
+  {
+    "qid": "Q55214085",
+    "name": "Delia Huddy",
+    "born": "1934",
+    "died": "2005",
+    "occupations": [
+      "editor",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q55214085"
+  },
+  {
+    "qid": "Q5258134",
+    "name": "Dennis Alexander",
+    "born": "1935",
+    "died": "2011",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Dennis_Alexander",
+    "wikidata": "https://www.wikidata.org/wiki/Q5258134"
+  },
+  {
+    "qid": "Q5258183",
+    "name": "Dennis Banton",
+    "born": "1930",
+    "died": "2010",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Dennis_Banton",
+    "wikidata": "https://www.wikidata.org/wiki/Q5258183"
+  },
+  {
+    "qid": "Q42765035",
+    "name": "Dennis Lees",
+    "born": "1924",
+    "died": "2008",
+    "occupations": [
+      "economist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Dennis_Lees",
+    "wikidata": "https://www.wikidata.org/wiki/Q42765035"
+  },
+  {
     "qid": "Q5259862",
     "name": "Denys Morkel",
     "born": "1906",
@@ -1125,6 +1889,32 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Denys_Morkel",
     "wikidata": "https://www.wikidata.org/wiki/Q5259862"
+  },
+  {
+    "qid": "Q79033560",
+    "name": "Derek Chamberlain",
+    "born": "1933",
+    "died": "2013",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Derek_Chamberlain",
+    "wikidata": "https://www.wikidata.org/wiki/Q79033560"
+  },
+  {
+    "qid": "Q1145008",
+    "name": "Derek Kinne",
+    "born": "1930",
+    "died": "2018",
+    "occupations": [
+      "soldier"
+    ],
+    "awards": [
+      "George Cross"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Derek_Kinne",
+    "wikidata": "https://www.wikidata.org/wiki/Q1145008"
   },
   {
     "qid": "Q5272628",
@@ -1151,6 +1941,58 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5273561"
   },
   {
+    "qid": "Q1226602",
+    "name": "Dinny Pails",
+    "born": "1921",
+    "died": "1986",
+    "occupations": [
+      "tennis player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Dinny_Pails",
+    "wikidata": "https://www.wikidata.org/wiki/Q1226602"
+  },
+  {
+    "qid": "Q432185",
+    "name": "Don Brothwell",
+    "born": "1933",
+    "died": "2016",
+    "occupations": [
+      "anthropologist",
+      "archaeologist"
+    ],
+    "awards": [
+      "Fellow of the Royal Anthropological Institute of Great Britain and Ireland"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Don_Brothwell",
+    "wikidata": "https://www.wikidata.org/wiki/Q432185"
+  },
+  {
+    "qid": "Q50676832",
+    "name": "Doreen Simmons",
+    "born": "1932",
+    "died": "2018",
+    "occupations": [
+      "sports commentator"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Doreen_Simmons",
+    "wikidata": "https://www.wikidata.org/wiki/Q50676832"
+  },
+  {
+    "qid": "Q56038340",
+    "name": "Doris Rhoda Crofts",
+    "born": "1893",
+    "died": "1973",
+    "occupations": [
+      "scientific illustrator",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q56038340"
+  },
+  {
     "qid": "Q5298258",
     "name": "Dorothea Waddingham",
     "born": "1899",
@@ -1161,6 +2003,20 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Dorothea_Waddingham",
     "wikidata": "https://www.wikidata.org/wiki/Q5298258"
+  },
+  {
+    "qid": "Q76268241",
+    "name": "Dorothy Clewes",
+    "born": "1907",
+    "died": "2003",
+    "occupations": [
+      "children's writer",
+      "novelist",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76268241"
   },
   {
     "qid": "Q5300876",
@@ -1175,14 +2031,26 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5300876"
   },
   {
+    "qid": "Q5301030",
+    "name": "Doug Wragg",
+    "born": "1934",
+    "died": "2020",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Doug_Wragg",
+    "wikidata": "https://www.wikidata.org/wiki/Q5301030"
+  },
+  {
     "qid": "Q5301679",
     "name": "Douglas Anthony Kendrew",
     "born": "1910",
     "died": "1989",
     "occupations": [
-      "military personnel",
+      "rugby union player",
       "governor",
-      "rugby union player"
+      "military personnel"
     ],
     "awards": [
       "Distinguished Service Order",
@@ -1191,6 +2059,16 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Douglas_Kendrew",
     "wikidata": "https://www.wikidata.org/wiki/Q5301679"
+  },
+  {
+    "qid": "Q96988807",
+    "name": "Douglas Leonard Booth",
+    "born": "1889",
+    "died": "1956",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Douglas_Leonard_Booth",
+    "wikidata": "https://www.wikidata.org/wiki/Q96988807"
   },
   {
     "qid": "Q5314477",
@@ -1217,6 +2095,29 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5321841"
   },
   {
+    "qid": "Q517644",
+    "name": "Eddie Lowe",
+    "born": "1925",
+    "died": "2009",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Lowe_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q517644"
+  },
+  {
+    "qid": "Q90185804",
+    "name": "Edith Maud Ellis",
+    "born": "1878",
+    "died": "1963",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Edith_Maud_Ellis",
+    "wikidata": "https://www.wikidata.org/wiki/Q90185804"
+  },
+  {
     "qid": "Q5339744",
     "name": "Edmund Plant",
     "born": "1844",
@@ -1234,13 +2135,40 @@
     "born": "1862",
     "died": "1942",
     "occupations": [
-      "composer",
+      "violinist",
       "conductor",
-      "violinist"
+      "composer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Edmund_Severn",
     "wikidata": "https://www.wikidata.org/wiki/Q5339815"
+  },
+  {
+    "qid": "Q55610523",
+    "name": "Edmund Ward",
+    "born": "1928",
+    "died": "1993",
+    "occupations": [
+      "screenwriter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Edmund_Ward_(screenwriter)",
+    "wikidata": "https://www.wikidata.org/wiki/Q55610523"
+  },
+  {
+    "qid": "Q55946600",
+    "name": "Edoardo Grendi",
+    "born": "1932",
+    "died": "1999",
+    "occupations": [
+      "university teacher",
+      "historian"
+    ],
+    "awards": [
+      "Bonavera Prize"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q55946600"
   },
   {
     "qid": "Q5343309",
@@ -1260,9 +2188,9 @@
     "born": "1914",
     "died": "1994",
     "occupations": [
-      "historian",
+      "classical scholar",
       "university teacher",
-      "classical scholar"
+      "historian"
     ],
     "awards": [
       "Fellow of the British Academy"
@@ -1271,15 +2199,30 @@
     "wikidata": "https://www.wikidata.org/wiki/Q1291497"
   },
   {
+    "qid": "Q1292054",
+    "name": "Edward Dicey",
+    "born": "1832",
+    "died": "1911",
+    "occupations": [
+      "journalist",
+      "writer"
+    ],
+    "awards": [
+      "Companion of the Order of the Bath"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Edward_Dicey",
+    "wikidata": "https://www.wikidata.org/wiki/Q1292054"
+  },
+  {
     "qid": "Q1292523",
     "name": "Edward Henry Howard",
     "born": "1829",
     "died": "1892",
     "occupations": [
-      "bishop",
+      "Catholic bishop",
       "diplomat",
       "Catholic priest",
-      "Catholic bishop"
+      "bishop"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Edward_Henry_Howard",
@@ -1291,9 +2234,9 @@
     "born": "1788",
     "died": "1872",
     "occupations": [
-      "writer",
+      "novelist",
       "poet",
-      "novelist"
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Edwin_Atherstone",
@@ -1317,8 +2260,8 @@
     "born": "1858",
     "died": "1925",
     "occupations": [
-      "physicist",
-      "author"
+      "author",
+      "physicist"
     ],
     "awards": [],
     "wikipedia": null,
@@ -1354,12 +2297,27 @@
     "born": "1914",
     "died": "1995",
     "occupations": [
-      "actor",
-      "film actor"
+      "film actor",
+      "actor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Eileen_Erskine",
     "wikidata": "https://www.wikidata.org/wiki/Q16013409"
+  },
+  {
+    "qid": "Q4476207",
+    "name": "Eleanor Catherine Warren",
+    "born": "1919",
+    "died": "2005",
+    "occupations": [
+      "music educator",
+      "cellist"
+    ],
+    "awards": [
+      "Member of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Eleanor_Warren_(cellist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q4476207"
   },
   {
     "qid": "Q104771041",
@@ -1367,12 +2325,44 @@
     "born": "1917",
     "died": "2020",
     "occupations": [
-      "architect",
-      "aircraft pilot"
+      "aircraft pilot",
+      "architect"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Eleanor_Wadsworth",
     "wikidata": "https://www.wikidata.org/wiki/Q104771041"
+  },
+  {
+    "qid": "Q76302670",
+    "name": "Eliza Watts",
+    "born": "1842",
+    "died": "1907",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76302670"
+  },
+  {
+    "qid": "Q78553574",
+    "name": "Elizabeth Brentnall",
+    "born": "1830",
+    "died": "1909",
+    "occupations": [
+      "suffragist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Brentnall",
+    "wikidata": "https://www.wikidata.org/wiki/Q78553574"
+  },
+  {
+    "qid": "Q76289638",
+    "name": "Elizabeth Josephine Ann Topham",
+    "born": "1908",
+    "died": "1984",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76289638"
   },
   {
     "qid": "Q120832257",
@@ -1380,8 +2370,8 @@
     "born": "1842",
     "died": "1921",
     "occupations": [
-      "writer",
-      "miner"
+      "miner",
+      "writer"
     ],
     "awards": [],
     "wikipedia": null,
@@ -1393,8 +2383,8 @@
     "born": "1910",
     "died": "1991",
     "occupations": [
-      "Christian minister",
-      "broadcaster"
+      "broadcaster",
+      "Christian minister"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Elsie_Chamberlain",
@@ -1418,16 +2408,39 @@
     "born": "1839",
     "died": "1898",
     "occupations": [
-      "chaplain",
-      "missionary",
-      "Catholic priest",
-      "parson",
+      "assistant",
       "school teacher",
-      "assistant"
+      "parson",
+      "missionary",
+      "chaplain",
+      "Catholic priest"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q115808465"
+  },
+  {
+    "qid": "Q86934722",
+    "name": "Emily Fletcher Cooper",
+    "born": "1895",
+    "died": null,
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q86934722"
+  },
+  {
+    "qid": "Q61989481",
+    "name": "Emma Mundella",
+    "born": "1858",
+    "died": "1896",
+    "occupations": [
+      "pianist",
+      "composer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Emma_Mundella",
+    "wikidata": "https://www.wikidata.org/wiki/Q61989481"
   },
   {
     "qid": "Q21458050",
@@ -1454,6 +2467,16 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Eric_Abbott",
     "wikidata": "https://www.wikidata.org/wiki/Q5385986"
+  },
+  {
+    "qid": "Q64624688",
+    "name": "Eric Brown",
+    "born": "1877",
+    "died": "1939",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q64624688"
   },
   {
     "qid": "Q5386310",
@@ -1495,20 +2518,57 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5393843"
   },
   {
+    "qid": "Q23041531",
+    "name": "Ernie Cant",
+    "born": "1890",
+    "died": "1982",
+    "occupations": [
+      "trade unionist",
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ernie_Cant",
+    "wikidata": "https://www.wikidata.org/wiki/Q23041531"
+  },
+  {
+    "qid": "Q79494535",
+    "name": "Ernie Roe",
+    "born": "1919",
+    "died": "2007",
+    "occupations": [
+      "weightlifter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ernie_Roe",
+    "wikidata": "https://www.wikidata.org/wiki/Q79494535"
+  },
+  {
     "qid": "Q18640601",
     "name": "Ethel Doidge",
     "born": "1887",
     "died": "1965",
     "occupations": [
-      "botanical collector",
-      "botanist",
-      "mycologist",
+      "scientific collector",
       "bacteriologist",
-      "scientific collector"
+      "mycologist",
+      "botanist",
+      "botanical collector"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Ethel_Doidge",
     "wikidata": "https://www.wikidata.org/wiki/Q18640601"
+  },
+  {
+    "qid": "Q134719691",
+    "name": "Ethel Landon",
+    "born": "1878",
+    "died": "1971",
+    "occupations": [
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134719691"
   },
   {
     "qid": "Q9256051",
@@ -1516,14 +2576,14 @@
     "born": "1917",
     "died": "1991",
     "occupations": [
-      "military officer",
-      "flying ace"
+      "flying ace",
+      "military officer"
     ],
     "awards": [
-      "Cross of Merit (Poland)",
       "Virtuti Militari",
       "Cross of Valour",
-      "Distinguished Flying Medal"
+      "Distinguished Flying Medal",
+      "Cross of Merit (Poland)"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Eugeniusz_Szaposznikow",
     "wikidata": "https://www.wikidata.org/wiki/Q9256051"
@@ -1547,9 +2607,9 @@
     "born": "1868",
     "died": "1940",
     "occupations": [
-      "head teacher",
+      "governess",
       "pedagogue",
-      "governess"
+      "head teacher"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Eva_Gilpin",
@@ -1604,13 +2664,62 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5481953"
   },
   {
+    "qid": "Q47499239",
+    "name": "Francis Towle",
+    "born": "1874",
+    "died": "1932",
+    "occupations": [
+      "administrator"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q47499239"
+  },
+  {
+    "qid": "Q541700",
+    "name": "Frank Abney Hastings",
+    "born": "1794",
+    "died": "1828",
+    "occupations": [
+      "sea captain",
+      "military officer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frank_Abney_Hastings",
+    "wikidata": "https://www.wikidata.org/wiki/Q541700"
+  },
+  {
+    "qid": "Q5484990",
+    "name": "Frank Allcock",
+    "born": "1925",
+    "died": "2005",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frank_Allcock",
+    "wikidata": "https://www.wikidata.org/wiki/Q5484990"
+  },
+  {
+    "qid": "Q47519500",
+    "name": "Frank Bee",
+    "born": "1927",
+    "died": "2010",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frank_Bee",
+    "wikidata": "https://www.wikidata.org/wiki/Q47519500"
+  },
+  {
     "qid": "Q5485307",
     "name": "Frank Beswick, Baron Beswick",
     "born": "1911",
     "died": "1987",
     "occupations": [
-      "politician",
-      "journalist"
+      "journalist",
+      "politician"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Frank_Beswick,_Baron_Beswick",
@@ -1634,8 +2743,8 @@
     "born": "1866",
     "died": "1918",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Frank_Guttridge",
@@ -1647,9 +2756,9 @@
     "born": "1894",
     "died": "1955",
     "occupations": [
-      "engineer",
+      "military flight engineer",
       "aircraft pilot",
-      "military flight engineer"
+      "engineer"
     ],
     "awards": [
       "Commander of the Order of the British Empire",
@@ -1657,6 +2766,22 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Frank_Halford",
     "wikidata": "https://www.wikidata.org/wiki/Q5487068"
+  },
+  {
+    "qid": "Q76102732",
+    "name": "Frank Howitt",
+    "born": "1896",
+    "died": "1954",
+    "occupations": [
+      "courtier",
+      "physician"
+    ],
+    "awards": [
+      "Commander of the Royal Victorian Order",
+      "Fellow of the Royal College of Physicians of London"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76102732"
   },
   {
     "qid": "Q15994700",
@@ -1681,6 +2806,20 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Frank_Mann_(footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q1587616"
+  },
+  {
+    "qid": "Q1444220",
+    "name": "Frank Spedding",
+    "born": "1929",
+    "died": "2001",
+    "occupations": [
+      "film score composer",
+      "university teacher",
+      "composer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q1444220"
   },
   {
     "qid": "Q18816021",
@@ -1743,6 +2882,19 @@
     "wikidata": "https://www.wikidata.org/wiki/Q1452230"
   },
   {
+    "qid": "Q77676386",
+    "name": "Fred Earp",
+    "born": "1860",
+    "died": "1948",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Fred_Earp",
+    "wikidata": "https://www.wikidata.org/wiki/Q77676386"
+  },
+  {
     "qid": "Q5495595",
     "name": "Fred Jones",
     "born": "1888",
@@ -1772,8 +2924,8 @@
     "born": "1886",
     "died": "1939",
     "occupations": [
-      "politician",
-      "trade unionist"
+      "trade unionist",
+      "politician"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Fred_Simpson_(politician)",
@@ -1785,9 +2937,9 @@
     "born": "1907",
     "died": "1990",
     "occupations": [
-      "actor",
+      "film actor",
       "stage actor",
-      "film actor"
+      "actor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Freda_Jackson",
@@ -1806,6 +2958,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q432588"
   },
   {
+    "qid": "Q97665484",
+    "name": "Freddie Martin",
+    "born": "1925",
+    "died": "1969",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Freddie_Martin_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q97665484"
+  },
+  {
     "qid": "Q18737045",
     "name": "Freddie Scott",
     "born": "1916",
@@ -1816,6 +2980,31 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Freddie_Scott_(footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q18737045"
+  },
+  {
+    "qid": "Q137596894",
+    "name": "Frederick Acton",
+    "born": "1845",
+    "died": "1933",
+    "occupations": [
+      "solicitor"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q137596894"
+  },
+  {
+    "qid": "Q123852067",
+    "name": "Frederick Arthur Wadsworth",
+    "born": "1871",
+    "died": "1943",
+    "occupations": [
+      "librarian",
+      "lawyer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q123852067"
   },
   {
     "qid": "Q5497339",
@@ -1854,6 +3043,21 @@
     "wikidata": "https://www.wikidata.org/wiki/Q61976594"
   },
   {
+    "qid": "Q98518272",
+    "name": "Frederick Coates",
+    "born": "1890",
+    "died": "1965",
+    "occupations": [
+      "instructional staff",
+      "model maker",
+      "sculptor",
+      "art director"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q98518272"
+  },
+  {
     "qid": "Q117215061",
     "name": "Frederick Cullen",
     "born": "1864",
@@ -1864,6 +3068,33 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q117215061"
+  },
+  {
+    "qid": "Q64031684",
+    "name": "Frederick Haynes",
+    "born": "1832",
+    "died": "1897",
+    "occupations": [
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frederick_Haynes",
+    "wikidata": "https://www.wikidata.org/wiki/Q64031684"
+  },
+  {
+    "qid": "Q55343406",
+    "name": "Frederick Lawson Whitlock",
+    "born": "1860",
+    "died": "1953",
+    "occupations": [
+      "collector",
+      "entomologist",
+      "ornithologist",
+      "author"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frederick_Bulstrode_Lawson_Whitlock",
+    "wikidata": "https://www.wikidata.org/wiki/Q55343406"
   },
   {
     "qid": "Q15453654",
@@ -1883,12 +3114,55 @@
     "born": "1877",
     "died": "1939",
     "occupations": [
-      "swimmer",
-      "water polo player"
+      "water polo player",
+      "swimmer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Frederick_Stapleton",
     "wikidata": "https://www.wikidata.org/wiki/Q3752765"
+  },
+  {
+    "qid": "Q5498874",
+    "name": "Frederick Townley-Smith",
+    "born": "1887",
+    "died": "1961",
+    "occupations": [
+      "farmer",
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frederick_Townley-Smith",
+    "wikidata": "https://www.wikidata.org/wiki/Q5498874"
+  },
+  {
+    "qid": "Q5499059",
+    "name": "Frederick William Burbidge",
+    "born": "1847",
+    "died": "1905",
+    "occupations": [
+      "explorer",
+      "botanical illustrator",
+      "botanist"
+    ],
+    "awards": [
+      "Victoria Medal of Honour"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Frederick_William_Burbidge",
+    "wikidata": "https://www.wikidata.org/wiki/Q5499059"
+  },
+  {
+    "qid": "Q25768315",
+    "name": "G. F. Sargent",
+    "born": "1811",
+    "died": "1864",
+    "occupations": [
+      "draftsperson",
+      "watercolorist",
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q25768315"
   },
   {
     "qid": "Q5512545",
@@ -1901,19 +3175,80 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5512545"
   },
   {
+    "qid": "Q5515891",
+    "name": "Gabriel Turville-Petre",
+    "born": "1908",
+    "died": "1978",
+    "occupations": [
+      "philologist",
+      "linguist",
+      "university teacher"
+    ],
+    "awards": [
+      "Knight Grand Cross of the Order of the Falcon",
+      "Fellow of the British Academy",
+      "honorary doctor of the University of Uppsala",
+      "honorary doctorate at the University of Iceland"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Gabriel_Turville-Petre",
+    "wikidata": "https://www.wikidata.org/wiki/Q5515891"
+  },
+  {
     "qid": "Q107536833",
     "name": "Gavin Alfred Dunlop",
     "born": "1868",
     "died": "1933",
     "occupations": [
-      "curator",
-      "botanical collector",
+      "entomologist",
       "botanist",
-      "entomologist"
+      "botanical collector",
+      "curator"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q107536833"
+  },
+  {
+    "qid": "Q16937430",
+    "name": "Geoff Stone",
+    "born": "1924",
+    "died": "1993",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Geoff_Stone",
+    "wikidata": "https://www.wikidata.org/wiki/Q16937430"
+  },
+  {
+    "qid": "Q1364785",
+    "name": "Geoffrey Kirk",
+    "born": "1921",
+    "died": "2003",
+    "occupations": [
+      "philosophy historian",
+      "classical philologist",
+      "university teacher"
+    ],
+    "awards": [
+      "Fellow of the British Academy"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Geoffrey_Kirk",
+    "wikidata": "https://www.wikidata.org/wiki/Q1364785"
+  },
+  {
+    "qid": "Q19624436",
+    "name": "Geoffrey Owen Whittaker",
+    "born": "1932",
+    "died": "2015",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [
+      "Officer of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Geoffrey_Owen_Whittaker",
+    "wikidata": "https://www.wikidata.org/wiki/Q19624436"
   },
   {
     "qid": "Q5534855",
@@ -1921,11 +3256,11 @@
     "born": "1913",
     "died": "1983",
     "occupations": [
-      "engineer",
-      "chemist",
-      "dean",
+      "metallurgist",
       "university teacher",
-      "metallurgist"
+      "dean",
+      "chemist",
+      "engineer"
     ],
     "awards": [
       "Fellow of the Royal Society",
@@ -1940,9 +3275,9 @@
     "born": "1909",
     "died": "1998",
     "occupations": [
-      "writer",
+      "novelist",
       "children's writer",
-      "novelist"
+      "writer"
     ],
     "awards": [
       "Fellow of the Royal Society of Literature"
@@ -1956,10 +3291,10 @@
     "born": "1894",
     "died": "1982",
     "occupations": [
-      "scientist",
-      "military personnel",
+      "cyberneticist",
       "jurist",
-      "cyberneticist"
+      "military personnel",
+      "scientist"
     ],
     "awards": [
       "Victoria Cross"
@@ -1973,10 +3308,10 @@
     "born": "1807",
     "died": "1884",
     "occupations": [
-      "writer",
-      "physician",
+      "activist",
       "surgeon",
-      "activist"
+      "physician",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Alfred_Walker_(sanitary_reformer)",
@@ -1995,20 +3330,44 @@
     "wikidata": "https://www.wikidata.org/wiki/Q21462406"
   },
   {
+    "qid": "Q60776524",
+    "name": "George Bell",
+    "born": "1878",
+    "died": "1959",
+    "occupations": [
+      "trade unionist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/George_Bell_(trade_unionist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q60776524"
+  },
+  {
     "qid": "Q1507013",
     "name": "George Brough",
     "born": "1890",
     "died": "1970",
     "occupations": [
-      "businessperson",
+      "racing automobile driver",
+      "motorcycle racer",
       "engineer",
       "entrepreneur",
-      "motorcycle racer",
-      "racing automobile driver"
+      "businessperson"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Brough",
     "wikidata": "https://www.wikidata.org/wiki/Q1507013"
+  },
+  {
+    "qid": "Q60752912",
+    "name": "George Brown",
+    "born": "1912",
+    "died": "1979",
+    "occupations": [
+      "motorcycle racer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/George_Brown_(motorcyclist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q60752912"
   },
   {
     "qid": "Q5537449",
@@ -2041,8 +3400,8 @@
     "born": "1822",
     "died": "1906",
     "occupations": [
-      "lawyer",
-      "botanist"
+      "botanist",
+      "lawyer"
     ],
     "awards": [],
     "wikipedia": null,
@@ -2054,11 +3413,11 @@
     "born": "1825",
     "died": "1911",
     "occupations": [
-      "geographer",
-      "university teacher",
       "geodesist",
-      "astronomer",
-      "surveyor"
+      "university teacher",
+      "geographer",
+      "surveyor",
+      "astronomer"
     ],
     "awards": [
       "Charles P. Daly Medal"
@@ -2072,17 +3431,27 @@
     "born": "1858",
     "died": "1933",
     "occupations": [
-      "politician",
-      "merchant",
+      "importer",
       "justice of the peace",
-      "importer"
+      "merchant",
+      "politician"
     ],
     "awards": [
-      "Commander of the Order of the British Empire",
-      "Knight of the Order of Polonia Restituta"
+      "Knight of the Order of Polonia Restituta",
+      "Commander of the Order of the British Empire"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Earp",
     "wikidata": "https://www.wikidata.org/wiki/Q20983284"
+  },
+  {
+    "qid": "Q76085982",
+    "name": "George Foljambe",
+    "born": "1856",
+    "died": "1920",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76085982"
   },
   {
     "qid": "Q19933444",
@@ -2097,6 +3466,20 @@
     ],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q19933444"
+  },
+  {
+    "qid": "Q3101594",
+    "name": "George G. Hall",
+    "born": "1925",
+    "died": "2018",
+    "occupations": [
+      "university teacher",
+      "chemist",
+      "mathematician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/George_G._Hall",
+    "wikidata": "https://www.wikidata.org/wiki/Q3101594"
   },
   {
     "qid": "Q5539600",
@@ -2128,8 +3511,8 @@
     "born": "1793",
     "died": "1841",
     "occupations": [
-      "physicist",
-      "mathematician"
+      "mathematician",
+      "physicist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Green_(mathematician)",
@@ -2141,8 +3524,8 @@
     "born": "1868",
     "died": "1941",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Groves_(footballer)",
@@ -2176,12 +3559,24 @@
     "born": "1862",
     "died": "1936",
     "occupations": [
-      "chess composer",
-      "chess player"
+      "chess player",
+      "chess composer"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q1507613"
+  },
+  {
+    "qid": "Q5540867",
+    "name": "George Hunter",
+    "born": "1930",
+    "died": "1990",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/George_Hunter_(footballer,_born_1930)",
+    "wikidata": "https://www.wikidata.org/wiki/Q5540867"
   },
   {
     "qid": "Q5540911",
@@ -2230,6 +3625,20 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Martin_(Nottinghamshire_cricketer)",
     "wikidata": "https://www.wikidata.org/wiki/Q5542176"
+  },
+  {
+    "qid": "Q112563817",
+    "name": "George Mills Bennison",
+    "born": "1922",
+    "died": "2020",
+    "occupations": [
+      "paleontologist",
+      "university teacher",
+      "geologist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q112563817"
   },
   {
     "qid": "Q5543731",
@@ -2282,18 +3691,6 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5544951"
   },
   {
-    "qid": "Q110727213",
-    "name": "George Toone",
-    "born": "1893",
-    "died": "1950",
-    "occupations": [
-      "association football player"
-    ],
-    "awards": [],
-    "wikipedia": "https://en.wikipedia.org/wiki/George_Toone_(footballer,_born_1893)",
-    "wikidata": "https://www.wikidata.org/wiki/Q110727213"
-  },
-  {
     "qid": "Q5545275",
     "name": "George Toone",
     "born": "1868",
@@ -2304,6 +3701,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/George_Toone_(footballer,_born_1868)",
     "wikidata": "https://www.wikidata.org/wiki/Q5545275"
+  },
+  {
+    "qid": "Q110727213",
+    "name": "George Toone",
+    "born": "1893",
+    "died": "1950",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/George_Toone_(footballer,_born_1893)",
+    "wikidata": "https://www.wikidata.org/wiki/Q110727213"
   },
   {
     "qid": "Q16013546",
@@ -2318,13 +3727,23 @@
     "wikidata": "https://www.wikidata.org/wiki/Q16013546"
   },
   {
+    "qid": "Q60169407",
+    "name": "Georges Le Mée",
+    "born": "1902",
+    "died": "1957",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q60169407"
+  },
+  {
     "qid": "Q124352777",
     "name": "Gertrude Richards",
     "born": "1864",
     "died": "1944",
     "occupations": [
-      "nurse",
-      "matron"
+      "matron",
+      "nurse"
     ],
     "awards": [
       "Decoration of the Royal Red Cross",
@@ -2334,18 +3753,59 @@
     "wikidata": "https://www.wikidata.org/wiki/Q124352777"
   },
   {
+    "qid": "Q3105890",
+    "name": "Gilbert Wakefield",
+    "born": "1756",
+    "died": "1801",
+    "occupations": [
+      "classical philologist",
+      "scholar",
+      "philologist",
+      "pundit",
+      "translator",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Gilbert_Wakefield",
+    "wikidata": "https://www.wikidata.org/wiki/Q3105890"
+  },
+  {
     "qid": "Q23926921",
     "name": "Giorgio Busato",
     "born": "1836",
     "died": "1916",
     "occupations": [
-      "artist",
+      "theatre designer",
       "painter",
-      "theatre designer"
+      "artist"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q23926921"
+  },
+  {
+    "qid": "Q41039978",
+    "name": "Glenda Williams",
+    "born": "1912",
+    "died": "1989",
+    "occupations": [
+      "chef"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q41039978"
+  },
+  {
+    "qid": "Q77208518",
+    "name": "Gordon Baird",
+    "born": "1924",
+    "died": "1999",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Gordon_Baird",
+    "wikidata": "https://www.wikidata.org/wiki/Q77208518"
   },
   {
     "qid": "Q1350211",
@@ -2353,8 +3813,8 @@
     "born": "1918",
     "died": "2004",
     "occupations": [
-      "historian",
-      "journalist"
+      "journalist",
+      "historian"
     ],
     "awards": [
       "Commander of the Order of the British Empire"
@@ -2363,10 +3823,46 @@
     "wikidata": "https://www.wikidata.org/wiki/Q1350211"
   },
   {
+    "qid": "Q5584916",
+    "name": "Gordon Brown",
+    "born": "1929",
+    "died": "2010",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Gordon_Brown_(footballer,_born_1929)",
+    "wikidata": "https://www.wikidata.org/wiki/Q5584916"
+  },
+  {
+    "qid": "Q28474201",
+    "name": "Gordon Coles",
+    "born": "1875",
+    "died": "1947",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Gordon_Coles",
+    "wikidata": "https://www.wikidata.org/wiki/Q28474201"
+  },
+  {
+    "qid": "Q5592724",
+    "name": "Graham Clarke",
+    "born": "1935",
+    "died": "2010",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Graham_Clarke_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q5592724"
+  },
+  {
     "qid": "Q18715822",
     "name": "Gus Platts",
     "born": "1891",
-    "died": "1942",
+    "died": "1943",
     "occupations": [
       "boxer"
     ],
@@ -2387,6 +3883,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5622678"
   },
   {
+    "qid": "Q134719670",
+    "name": "Gwendolyn Glendinning Hunter",
+    "born": "1885",
+    "died": "1962",
+    "occupations": [
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134719670"
+  },
+  {
     "qid": "Q5661381",
     "name": "Harold Knight",
     "born": "1874",
@@ -2397,6 +3905,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Harold_Knight_(artist)",
     "wikidata": "https://www.wikidata.org/wiki/Q5661381"
+  },
+  {
+    "qid": "Q59588800",
+    "name": "Harold Tarbolton",
+    "born": "1869",
+    "died": "1947",
+    "occupations": [
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Harold_Tarbolton",
+    "wikidata": "https://www.wikidata.org/wiki/Q59588800"
   },
   {
     "qid": "Q5662762",
@@ -2417,12 +3937,13 @@
     "born": "1834",
     "died": "1911",
     "occupations": [
-      "painter",
-      "botanical collector",
-      "botanist",
-      "botanical illustrator",
+      "scientific collector",
+      "explorer",
       "stockbroker",
-      "explorer"
+      "botanical illustrator",
+      "botanical collector",
+      "painter",
+      "botanist"
     ],
     "awards": [
       "Fellow of the Linnean Society of London"
@@ -2446,12 +3967,24 @@
     "born": "1896",
     "died": "1987",
     "occupations": [
-      "writer",
-      "poet"
+      "poet",
+      "writer"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q15618836"
+  },
+  {
+    "qid": "Q28508797",
+    "name": "Harry Flanaghan",
+    "born": "1896",
+    "died": "1938",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Harry_Flanaghan",
+    "wikidata": "https://www.wikidata.org/wiki/Q28508797"
   },
   {
     "qid": "Q15999591",
@@ -2471,9 +4004,9 @@
     "born": "1880",
     "died": "1951",
     "occupations": [
+      "journalist",
       "association football referee",
-      "association football player",
-      "journalist"
+      "association football player"
     ],
     "awards": [],
     "wikipedia": null,
@@ -2509,20 +4042,28 @@
     "born": "1858",
     "died": "1927",
     "occupations": [
-      "naturalist",
-      "photographer",
-      "writer",
-      "diplomat",
+      "botanist",
+      "botanical collector",
+      "ethnologist",
+      "Africanist",
+      "colonial administrator",
+      "traveler",
+      "explorer",
+      "visual artist",
+      "official",
       "zoologist",
-      "official"
+      "diplomat",
+      "writer",
+      "photographer",
+      "naturalist"
     ],
     "awards": [
       "honorary degree",
-      "Silver Medal of the Zoological Society of London",
-      "Livingstone Medal",
       "Knight Grand Cross of the Order of St Michael and St George",
       "Companion of the Order of the Bath",
-      "Founder’s Medal"
+      "Founder’s Medal",
+      "Silver Medal of the Zoological Society of London",
+      "Livingstone Medal"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Harry_Johnston",
     "wikidata": "https://www.wikidata.org/wiki/Q772064"
@@ -2590,6 +4131,20 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5677897"
   },
   {
+    "qid": "Q139713864",
+    "name": "Helena Brownsword Dowson",
+    "born": "1866",
+    "died": "1964",
+    "occupations": [
+      "magistrate",
+      "council member",
+      "suffragette"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Helena_Brownsword_Dowson",
+    "wikidata": "https://www.wikidata.org/wiki/Q139713864"
+  },
+  {
     "qid": "Q5717524",
     "name": "Henry Attenburrow",
     "born": "1807",
@@ -2626,6 +4181,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5719356"
   },
   {
+    "qid": "Q5720232",
+    "name": "Henry Dawson",
+    "born": "1811",
+    "died": "1878",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Henry_Dawson_(artist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q5720232"
+  },
+  {
     "qid": "Q5720848",
     "name": "Henry Enfield",
     "born": "1849",
@@ -2655,11 +4222,11 @@
     "born": "1889",
     "died": "1954",
     "occupations": [
-      "businessperson",
-      "engineer",
-      "entrepreneur",
+      "military flight engineer",
       "design engineer",
-      "military flight engineer"
+      "entrepreneur",
+      "engineer",
+      "businessperson"
     ],
     "awards": [
       "Officer of the Order of the British Empire"
@@ -2724,8 +4291,8 @@
     "born": "1844",
     "died": "1917",
     "occupations": [
-      "antiquarian",
-      "art collector"
+      "art collector",
+      "antiquarian"
     ],
     "awards": [],
     "wikipedia": null,
@@ -2737,12 +4304,38 @@
     "born": "1785",
     "died": "1806",
     "occupations": [
-      "writer",
-      "poet"
+      "poet",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Henry_Kirke_White",
     "wikidata": "https://www.wikidata.org/wiki/Q5724396"
+  },
+  {
+    "qid": "Q18671436",
+    "name": "Henry Lee",
+    "born": "1765",
+    "died": "1836",
+    "occupations": [
+      "playwright",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q18671436"
+  },
+  {
+    "qid": "Q15497791",
+    "name": "Henry Melvill Gwatkin",
+    "born": "1844",
+    "died": "1916",
+    "occupations": [
+      "church historian",
+      "historian"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Henry_Melvill_Gwatkin",
+    "wikidata": "https://www.wikidata.org/wiki/Q15497791"
   },
   {
     "qid": "Q21453464",
@@ -2800,8 +4393,8 @@
     "born": "1825",
     "died": "1901",
     "occupations": [
-      "poet",
-      "journalist"
+      "journalist",
+      "poet"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Henry_Septimus_Sutton",
@@ -2825,11 +4418,11 @@
     "born": "1823",
     "died": "1908",
     "occupations": [
-      "geologist",
-      "geographer",
-      "university teacher",
+      "explorer",
       "research fellow",
-      "explorer"
+      "university teacher",
+      "geographer",
+      "geologist"
     ],
     "awards": [
       "Person of National Historic Significance"
@@ -2843,8 +4436,8 @@
     "born": "1857",
     "died": "1901",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Herbert_Emmitt",
@@ -2856,8 +4449,8 @@
     "born": "1870",
     "died": "1916",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Herbert_Kilpin",
@@ -2888,6 +4481,43 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5742003"
   },
   {
+    "qid": "Q91528847",
+    "name": "Hilda Butsova",
+    "born": "1896",
+    "died": "1976",
+    "occupations": [
+      "dancer",
+      "choreographer",
+      "ballet master",
+      "ballet dancer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Hilda_Butsova",
+    "wikidata": "https://www.wikidata.org/wiki/Q91528847"
+  },
+  {
+    "qid": "Q137972743",
+    "name": "Hilda Vincent Foster",
+    "born": "1896",
+    "died": "1970",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q137972743"
+  },
+  {
+    "qid": "Q50378185",
+    "name": "Honora Enfield",
+    "born": "1882",
+    "died": "1935",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Honora_Enfield",
+    "wikidata": "https://www.wikidata.org/wiki/Q50378185"
+  },
+  {
     "qid": "Q106449245",
     "name": "Horace Hart",
     "born": "1894",
@@ -2915,13 +4545,52 @@
     "wikidata": "https://www.wikidata.org/wiki/Q15998729"
   },
   {
+    "qid": "Q134719702",
+    "name": "Isabelle Margaret Little",
+    "born": "1889",
+    "died": "1969",
+    "occupations": [
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134719702"
+  },
+  {
+    "qid": "Q6099385",
+    "name": "Ivor G. Balding",
+    "born": "1908",
+    "died": "2005",
+    "occupations": [
+      "polo player",
+      "horse trainer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ivor_G._Balding",
+    "wikidata": "https://www.wikidata.org/wiki/Q6099385"
+  },
+  {
+    "qid": "Q6099506",
+    "name": "Ivor Roberts",
+    "born": "1925",
+    "died": "1999",
+    "occupations": [
+      "film actor",
+      "television actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ivor_Roberts_(actor)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6099506"
+  },
+  {
     "qid": "Q130568058",
     "name": "Ivor Stewart-Liberty",
     "born": "1887",
     "died": "1952",
     "occupations": [
-      "merchant",
-      "manufacturer"
+      "manufacturer",
+      "merchant"
     ],
     "awards": [
       "Military Cross"
@@ -2944,16 +4613,66 @@
     "wikidata": "https://www.wikidata.org/wiki/Q3805088"
   },
   {
+    "qid": "Q93554520",
+    "name": "J. R. Hammond",
+    "born": "1933",
+    "died": "2018",
+    "occupations": [
+      "literary scholar"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q93554520"
+  },
+  {
     "qid": "Q117036061",
     "name": "J. S. Steward",
     "born": "1906",
     "died": "1994",
     "occupations": [
+      "zoologist",
       "veterinarian"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/J._S._Steward",
     "wikidata": "https://www.wikidata.org/wiki/Q117036061"
+  },
+  {
+    "qid": "Q676952",
+    "name": "Jack Archer",
+    "born": "1921",
+    "died": "1997",
+    "occupations": [
+      "athletics competitor",
+      "sprinter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jack_Archer_(sprinter)",
+    "wikidata": "https://www.wikidata.org/wiki/Q676952"
+  },
+  {
+    "qid": "Q65048113",
+    "name": "Jack Earp",
+    "born": "1872",
+    "died": null,
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jack_Earp",
+    "wikidata": "https://www.wikidata.org/wiki/Q65048113"
+  },
+  {
+    "qid": "Q6112304",
+    "name": "Jack Edwards",
+    "born": "1924",
+    "died": "1978",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jack_Edwards_(footballer,_born_1924)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6112304"
   },
   {
     "qid": "Q56248079",
@@ -2973,8 +4692,8 @@
     "born": "1867",
     "died": "1917",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Jack_Hendry_(footballer,_born_1867)",
@@ -2986,8 +4705,8 @@
     "born": "1910",
     "died": "1977",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Jack_Nicholas",
@@ -3004,6 +4723,19 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Jack_Watson_(footballer,_born_1892)",
     "wikidata": "https://www.wikidata.org/wiki/Q6115685"
+  },
+  {
+    "qid": "Q6116647",
+    "name": "Jackie Sewell",
+    "born": "1927",
+    "died": "2016",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jackie_Sewell",
+    "wikidata": "https://www.wikidata.org/wiki/Q6116647"
   },
   {
     "qid": "Q6129229",
@@ -3023,8 +4755,8 @@
     "born": "1790",
     "died": "1853",
     "occupations": [
-      "geologist",
-      "botanist"
+      "botanist",
+      "geologist"
     ],
     "awards": [
       "Fellow of the American Academy of Arts and Sciences"
@@ -3049,13 +4781,23 @@
     "wikidata": "https://www.wikidata.org/wiki/Q15992974"
   },
   {
+    "qid": "Q6135728",
+    "name": "James Hawker",
+    "born": "1836",
+    "died": "1921",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/James_Hawker_(poacher)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6135728"
+  },
+  {
     "qid": "Q10805574",
     "name": "James Iremonger",
     "born": "1876",
     "died": "1956",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [
       "Wisden Cricketer of the Year"
@@ -3069,14 +4811,26 @@
     "born": "1905",
     "died": "1969",
     "occupations": [
-      "engineer",
-      "university teacher"
+      "university teacher",
+      "engineer"
     ],
     "awards": [
       "Timoshenko Medal"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/James_N._Goodier",
     "wikidata": "https://www.wikidata.org/wiki/Q1680873"
+  },
+  {
+    "qid": "Q84361771",
+    "name": "James Peet",
+    "born": "1862",
+    "died": "1935",
+    "occupations": [
+      "real estate developer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/James_Peet",
+    "wikidata": "https://www.wikidata.org/wiki/Q84361771"
   },
   {
     "qid": "Q18127460",
@@ -3158,8 +4912,8 @@
     "born": "1916",
     "died": "2000",
     "occupations": [
-      "military officer",
-      "aircraft pilot"
+      "aircraft pilot",
+      "military officer"
     ],
     "awards": [
       "Silver Cross of the Virtuti Militari"
@@ -3180,6 +4934,56 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6152939"
   },
   {
+    "qid": "Q131625314",
+    "name": "Jānis Frišvalds",
+    "born": "1923",
+    "died": "2009",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q131625314"
+  },
+  {
+    "qid": "Q6194279",
+    "name": "Jim Collins",
+    "born": "1923",
+    "died": "1996",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jim_Collins_(footballer,_born_1923)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6194279"
+  },
+  {
+    "qid": "Q6196395",
+    "name": "Jim Lester",
+    "born": "1932",
+    "died": "2021",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [
+      "Knight Bachelor"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jim_Lester_(British_politician)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6196395"
+  },
+  {
+    "qid": "Q6197984",
+    "name": "Jim Scarborough",
+    "born": "1931",
+    "died": "2019",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jim_Scarborough",
+    "wikidata": "https://www.wikidata.org/wiki/Q6197984"
+  },
+  {
     "qid": "Q6198398",
     "name": "Jim Sullivan",
     "born": "1904",
@@ -3190,6 +4994,19 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Jim_Sullivan_(English_footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q6198398"
+  },
+  {
+    "qid": "Q6201286",
+    "name": "Jimmy Sirrel",
+    "born": "1922",
+    "died": "2008",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Jimmy_Sirrel",
+    "wikidata": "https://www.wikidata.org/wiki/Q6201286"
   },
   {
     "qid": "Q6210144",
@@ -3216,6 +5033,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6211548"
   },
   {
+    "qid": "Q16093509",
+    "name": "John Abthorpe",
+    "born": "1933",
+    "died": "2005",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Abthorpe",
+    "wikidata": "https://www.wikidata.org/wiki/Q16093509"
+  },
+  {
     "qid": "Q6218433",
     "name": "John Albert Axel Gibson",
     "born": "1916",
@@ -3224,11 +5053,24 @@
       "aircraft pilot"
     ],
     "awards": [
-      "Distinguished Service Order",
-      "Distinguished Flying Cross"
+      "Distinguished Flying Cross",
+      "Distinguished Service Order"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Gibson_(RAF_officer)",
     "wikidata": "https://www.wikidata.org/wiki/Q6218433"
+  },
+  {
+    "qid": "Q6219306",
+    "name": "John Archer",
+    "born": "1865",
+    "died": "1949",
+    "occupations": [
+      "cleric",
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Archer_(New_Zealand_politician)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6219306"
   },
   {
     "qid": "Q5587797",
@@ -3243,6 +5085,30 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5587797"
   },
   {
+    "qid": "Q6222100",
+    "name": "John Blackner",
+    "born": "1770",
+    "died": "1816",
+    "occupations": [
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Blackner",
+    "wikidata": "https://www.wikidata.org/wiki/Q6222100"
+  },
+  {
+    "qid": "Q65085825",
+    "name": "John Brown",
+    "born": "1807",
+    "died": "1883",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Brown_(cricketer,_born_1807)",
+    "wikidata": "https://www.wikidata.org/wiki/Q65085825"
+  },
+  {
     "qid": "Q6223499",
     "name": "John Brown",
     "born": "1867",
@@ -3253,6 +5119,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Brown_(footballer,_born_1866)",
     "wikidata": "https://www.wikidata.org/wiki/Q6223499"
+  },
+  {
+    "qid": "Q15989876",
+    "name": "John Burnett",
+    "born": "1925",
+    "died": "2006",
+    "occupations": [
+      "historian"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Burnett_(historian)",
+    "wikidata": "https://www.wikidata.org/wiki/Q15989876"
   },
   {
     "qid": "Q6223972",
@@ -3267,20 +5145,44 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6223972"
   },
   {
+    "qid": "Q6225746",
+    "name": "John Charles Felix Rossi",
+    "born": "1762",
+    "died": "1839",
+    "occupations": [
+      "sculptor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Charles_Felix_Rossi",
+    "wikidata": "https://www.wikidata.org/wiki/Q6225746"
+  },
+  {
     "qid": "Q18753463",
     "name": "John Charles Robinson",
     "born": "1824",
     "died": "1913",
     "occupations": [
-      "curator",
-      "painter",
-      "art historian",
+      "art collector",
       "art critic",
-      "art collector"
+      "art historian",
+      "painter",
+      "curator"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Charles_Robinson",
     "wikidata": "https://www.wikidata.org/wiki/Q18753463"
+  },
+  {
+    "qid": "Q19593928",
+    "name": "John Clegg",
+    "born": "1935",
+    "died": "2015",
+    "occupations": [
+      "archaeologist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Clegg_(archaeologist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q19593928"
   },
   {
     "qid": "Q6226328",
@@ -3293,6 +5195,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Clements_(footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q6226328"
+  },
+  {
+    "qid": "Q2598715",
+    "name": "John Coape Sherbrooke",
+    "born": "1764",
+    "died": "1830",
+    "occupations": [
+      "military personnel"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Coape_Sherbrooke",
+    "wikidata": "https://www.wikidata.org/wiki/Q2598715"
   },
   {
     "qid": "Q3817476",
@@ -3314,8 +5228,8 @@
     "born": "1891",
     "died": null,
     "occupations": [
-      "military personnel",
-      "association football player"
+      "association football player",
+      "military personnel"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Derrick_(footballer)",
@@ -3339,13 +5253,13 @@
     "born": "1835",
     "died": "1901",
     "occupations": [
-      "composer",
-      "organist",
+      "music educator",
       "music teacher",
-      "music educator"
+      "organist",
+      "composer"
     ],
     "awards": [],
-    "wikipedia": "https://en.wikipedia.org/wiki/John_Farmer_(1835%E2%80%931901)",
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Farmer_(1835–1901)",
     "wikidata": "https://www.wikidata.org/wiki/Q1335446"
   },
   {
@@ -3362,6 +5276,32 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Firth_(cricketer)",
     "wikidata": "https://www.wikidata.org/wiki/Q6233203"
+  },
+  {
+    "qid": "Q64666012",
+    "name": "John Furley Lewis",
+    "born": "1867",
+    "died": "1939",
+    "occupations": [
+      "photographer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q64666012"
+  },
+  {
+    "qid": "Q6235456",
+    "name": "John Glasby",
+    "born": "1928",
+    "died": "2011",
+    "occupations": [
+      "chemist",
+      "astronomer",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Glasby",
+    "wikidata": "https://www.wikidata.org/wiki/Q6235456"
   },
   {
     "qid": "Q6237329",
@@ -3381,12 +5321,24 @@
     "born": "1808",
     "died": "1884",
     "occupations": [
-      "painter",
-      "botanical illustrator"
+      "botanical illustrator",
+      "painter"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Haslem_(artist)",
     "wikidata": "https://www.wikidata.org/wiki/Q2640995"
+  },
+  {
+    "qid": "Q56236115",
+    "name": "John Healey",
+    "born": "1927",
+    "died": "2022",
+    "occupations": [
+      "rower"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Healey_(rower)",
+    "wikidata": "https://www.wikidata.org/wiki/Q56236115"
   },
   {
     "qid": "Q6239596",
@@ -3430,10 +5382,10 @@
     "born": "1792",
     "died": "1881",
     "occupations": [
-      "physician",
-      "geologist",
       "paleontologist",
-      "botanist"
+      "botanist",
+      "geologist",
+      "physician"
     ],
     "awards": [
       "Murchison Medal",
@@ -3442,6 +5394,18 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Jeremiah_Bigsby",
     "wikidata": "https://www.wikidata.org/wiki/Q4086441"
+  },
+  {
+    "qid": "Q85771590",
+    "name": "John Johnson",
+    "born": "1809",
+    "died": null,
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Johnson_(cricketer,_born_1809)",
+    "wikidata": "https://www.wikidata.org/wiki/Q85771590"
   },
   {
     "qid": "Q6243521",
@@ -3454,6 +5418,18 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q6243521"
+  },
+  {
+    "qid": "Q6246867",
+    "name": "John Marshall",
+    "born": "1922",
+    "died": "2008",
+    "occupations": [
+      "historian"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Marshall_(railway_historian)",
+    "wikidata": "https://www.wikidata.org/wiki/Q6246867"
   },
   {
     "qid": "Q16997527",
@@ -3516,21 +5492,31 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6251454"
   },
   {
+    "qid": "Q110728446",
+    "name": "John Patrick Arthur Keays",
+    "born": "1934",
+    "died": "2021",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q110728446"
+  },
+  {
     "qid": "Q909266",
     "name": "John Percy",
     "born": "1817",
     "died": "1889",
     "occupations": [
-      "photographer",
-      "physician",
-      "university teacher",
+      "metallurgist",
       "art collector",
-      "metallurgist"
+      "university teacher",
+      "physician",
+      "photographer"
     ],
     "awards": [
       "Albert Medal",
-      "Fellow of the Royal Society",
-      "Bessemer Gold Medal"
+      "Bessemer Gold Medal",
+      "Fellow of the Royal Society"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Percy_(metallurgist)",
     "wikidata": "https://www.wikidata.org/wiki/Q909266"
@@ -3553,8 +5539,8 @@
     "born": "1904",
     "died": "1989",
     "occupations": [
-      "association football player",
-      "cricketer"
+      "cricketer",
+      "association football player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Reddish",
@@ -3566,12 +5552,38 @@
     "born": "1913",
     "died": "2000",
     "occupations": [
-      "physician",
-      "pulmonologist"
+      "pulmonologist",
+      "physician"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q108752480"
+  },
+  {
+    "qid": "Q61918653",
+    "name": "John Rigby Poyser",
+    "born": "1872",
+    "died": "1954",
+    "occupations": [
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Rigby_Poyser",
+    "wikidata": "https://www.wikidata.org/wiki/Q61918653"
+  },
+  {
+    "qid": "Q132371216",
+    "name": "John Rudd",
+    "born": "1849",
+    "died": "1922",
+    "occupations": [
+      "editor",
+      "author",
+      "translator"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q132371216"
   },
   {
     "qid": "Q310479",
@@ -3579,8 +5591,8 @@
     "born": "1823",
     "died": "1895",
     "occupations": [
-      "astronomer",
-      "writer"
+      "writer",
+      "astronomer"
     ],
     "awards": [
       "Lalande Prize",
@@ -3610,12 +5622,25 @@
     "died": "1951",
     "occupations": [
       "businessperson",
-      "association football referee",
-      "association football player"
+      "association football player",
+      "association football referee"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Savage_(English_footballer)",
     "wikidata": "https://www.wikidata.org/wiki/Q3182432"
+  },
+  {
+    "qid": "Q6256747",
+    "name": "John Savidge",
+    "born": "1924",
+    "died": "1979",
+    "occupations": [
+      "athletics competitor",
+      "shot putter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Savidge",
+    "wikidata": "https://www.wikidata.org/wiki/Q6256747"
   },
   {
     "qid": "Q6257200",
@@ -3642,6 +5667,45 @@
     "wikidata": "https://www.wikidata.org/wiki/Q3526933"
   },
   {
+    "qid": "Q134467519",
+    "name": "John Spencer",
+    "born": "1874",
+    "died": "1965",
+    "occupations": [
+      "actuary"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q134467519"
+  },
+  {
+    "qid": "Q6262961",
+    "name": "John War Eagle",
+    "born": "1901",
+    "died": "1991",
+    "occupations": [
+      "television actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_War_Eagle",
+    "wikidata": "https://www.wikidata.org/wiki/Q6262961"
+  },
+  {
+    "qid": "Q49886289",
+    "name": "John Watchorn",
+    "born": "1826",
+    "died": "1905",
+    "occupations": [
+      "publican",
+      "wine merchant",
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/John_Watchorn",
+    "wikidata": "https://www.wikidata.org/wiki/Q49886289"
+  },
+  {
     "qid": "Q6264506",
     "name": "John Wilson",
     "born": "1919",
@@ -3650,10 +5714,10 @@
       "writer"
     ],
     "awards": [
-      "Lasker-Bloomberg Public Service Award",
       "Knight Bachelor",
-      "Officer of the Order of the British Empire",
-      "Commander of the Order of the British Empire"
+      "Commander of the Order of the British Empire",
+      "Lasker-Bloomberg Public Service Award",
+      "Officer of the Order of the British Empire"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Wilson_(blind_activist)",
     "wikidata": "https://www.wikidata.org/wiki/Q6264506"
@@ -3664,13 +5728,37 @@
     "born": "1884",
     "died": "1959",
     "occupations": [
-      "association football coach",
+      "association football player",
       "association football referee",
-      "association football player"
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/John_Wood_(footballer,_born_1884)",
     "wikidata": "https://www.wikidata.org/wiki/Q2730699"
+  },
+  {
+    "qid": "Q10394676",
+    "name": "Johnny Quigley",
+    "born": "1935",
+    "died": "2004",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Johnny_Quigley",
+    "wikidata": "https://www.wikidata.org/wiki/Q10394676"
+  },
+  {
+    "qid": "Q548671",
+    "name": "Johnny Williams",
+    "born": "1926",
+    "died": "2007",
+    "occupations": [
+      "boxer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Johnny_Williams_(boxer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q548671"
   },
   {
     "qid": "Q13414783",
@@ -3683,6 +5771,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Joseph_Byron",
     "wikidata": "https://www.wikidata.org/wiki/Q13414783"
+  },
+  {
+    "qid": "Q21557325",
+    "name": "Joseph Fussell",
+    "born": "1818",
+    "died": "1912",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q21557325"
   },
   {
     "qid": "Q16062557",
@@ -3736,12 +5836,37 @@
     "born": "1842",
     "died": "1923",
     "occupations": [
-      "poet",
-      "industrialist"
+      "industrialist",
+      "poet"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q89060310"
+  },
+  {
+    "qid": "Q15700879",
+    "name": "Joseph William Noble",
+    "born": "1797",
+    "died": "1861",
+    "occupations": [
+      "politician",
+      "physician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Joseph_William_Noble",
+    "wikidata": "https://www.wikidata.org/wiki/Q15700879"
+  },
+  {
+    "qid": "Q6289946",
+    "name": "Joshua Jeays",
+    "born": "1812",
+    "died": "1881",
+    "occupations": [
+      "alderman"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Joshua_Jeays",
+    "wikidata": "https://www.wikidata.org/wiki/Q6289946"
   },
   {
     "qid": "Q6290429",
@@ -3749,10 +5874,10 @@
     "born": "1837",
     "died": "1916",
     "occupations": [
-      "mathematician",
-      "civil servant",
+      "beamter",
       "statistician",
-      "beamter"
+      "civil servant",
+      "mathematician"
     ],
     "awards": [
       "Legion of Honour",
@@ -3762,21 +5887,69 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6290429"
   },
   {
+    "qid": "Q76265927",
+    "name": "Joyce Mary Letts",
+    "born": "1925",
+    "died": "2004",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q76265927"
+  },
+  {
+    "qid": "Q117409290",
+    "name": "Julian Skrzat",
+    "born": "1897",
+    "died": "1954",
+    "occupations": [
+      "aircraft pilot"
+    ],
+    "awards": [
+      "Medal Lotniczy"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q117409290"
+  },
+  {
     "qid": "Q6312426",
     "name": "June Spencer",
     "born": "1919",
     "died": "2024",
     "occupations": [
-      "actor",
+      "radio drama actor",
       "autobiographer",
-      "radio drama actor"
+      "actor"
     ],
     "awards": [
-      "Officer of the Order of the British Empire",
-      "Commander of the Order of the British Empire"
+      "Commander of the Order of the British Empire",
+      "Officer of the Order of the British Empire"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/June_Spencer",
     "wikidata": "https://www.wikidata.org/wiki/Q6312426"
+  },
+  {
+    "qid": "Q1717195",
+    "name": "Jürgen Girgensohn",
+    "born": "1924",
+    "died": "2007",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q1717195"
+  },
+  {
+    "qid": "Q116235673",
+    "name": "Karl Wood",
+    "born": "1888",
+    "died": "1958",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q116235673"
   },
   {
     "qid": "Q20563632",
@@ -3793,13 +5966,37 @@
     "wikidata": "https://www.wikidata.org/wiki/Q20563632"
   },
   {
+    "qid": "Q97929274",
+    "name": "Katherine McEwen",
+    "born": "1875",
+    "died": "1957",
+    "occupations": [
+      "cattle rancher",
+      "painter",
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q97929274"
+  },
+  {
+    "qid": "Q123529036",
+    "name": "Kathleen Ada Lane",
+    "born": "1907",
+    "died": "1967",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q123529036"
+  },
+  {
     "qid": "Q16030871",
     "name": "Katie Seymour",
-    "born": "1868",
+    "born": "1870",
     "died": "1903",
     "occupations": [
-      "stage actor",
-      "dancer"
+      "dancer",
+      "stage actor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Katie_Seymour",
@@ -3818,6 +6015,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q21664853"
   },
   {
+    "qid": "Q6388269",
+    "name": "Ken Oxford",
+    "born": "1929",
+    "died": "1993",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ken_Oxford",
+    "wikidata": "https://www.wikidata.org/wiki/Q6388269"
+  },
+  {
     "qid": "Q16015646",
     "name": "Ken Taylor",
     "born": "1916",
@@ -3830,6 +6039,19 @@
     "wikidata": "https://www.wikidata.org/wiki/Q16015646"
   },
   {
+    "qid": "Q1738681",
+    "name": "Ken Whyld",
+    "born": "1926",
+    "died": "2003",
+    "occupations": [
+      "chess player",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ken_Whyld",
+    "wikidata": "https://www.wikidata.org/wiki/Q1738681"
+  },
+  {
     "qid": "Q6389800",
     "name": "Kenneth Adam",
     "born": "1908",
@@ -3838,8 +6060,8 @@
       "journalist"
     ],
     "awards": [
-      "Fellow of the Royal Society of Arts",
-      "Commander of the Order of the British Empire"
+      "Commander of the Order of the British Empire",
+      "Fellow of the Royal Society of Arts"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Kenneth_Adam",
     "wikidata": "https://www.wikidata.org/wiki/Q6389800"
@@ -3864,12 +6086,24 @@
     "born": "1860",
     "died": "1955",
     "occupations": [
-      "writer",
-      "philosopher"
+      "philosopher",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/L._P._Jacks",
     "wikidata": "https://www.wikidata.org/wiki/Q6456581"
+  },
+  {
+    "qid": "Q2303445",
+    "name": "Larry Canning",
+    "born": "1925",
+    "died": "2012",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Larry_Canning",
+    "wikidata": "https://www.wikidata.org/wiki/Q2303445"
   },
   {
     "qid": "Q1808013",
@@ -3877,8 +6111,8 @@
     "born": "1909",
     "died": "2007",
     "occupations": [
-      "zoologist",
-      "musicologist"
+      "musicologist",
+      "zoologist"
     ],
     "awards": [
       "Fellow of the British Academy",
@@ -3900,6 +6134,22 @@
     "wikidata": "https://www.wikidata.org/wiki/Q106461777"
   },
   {
+    "qid": "Q42687928",
+    "name": "Lawrence Butler",
+    "born": "1934",
+    "died": "2014",
+    "occupations": [
+      "archaeologist",
+      "university teacher",
+      "teacher"
+    ],
+    "awards": [
+      "Fellow of the Society of Antiquaries"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q42687928"
+  },
+  {
     "qid": "Q5407601",
     "name": "Lee Wilkinson",
     "born": "1901",
@@ -3910,6 +6160,20 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Lee_Wilkinson",
     "wikidata": "https://www.wikidata.org/wiki/Q5407601"
+  },
+  {
+    "qid": "Q725410",
+    "name": "Lemuel Francis Abbott",
+    "born": "1760",
+    "died": "1803",
+    "occupations": [
+      "draftsperson",
+      "watercolorist",
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Lemuel_Francis_Abbott",
+    "wikidata": "https://www.wikidata.org/wiki/Q725410"
   },
   {
     "qid": "Q6524754",
@@ -3936,6 +6200,18 @@
     "wikidata": "https://www.wikidata.org/wiki/Q6525111"
   },
   {
+    "qid": "Q99542884",
+    "name": "Leonard Goddard",
+    "born": "1925",
+    "died": "2009",
+    "occupations": [
+      "logician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q99542884"
+  },
+  {
     "qid": "Q88207571",
     "name": "Leonard Hudzicki",
     "born": "1899",
@@ -3944,11 +6220,24 @@
       "aircraft pilot"
     ],
     "awards": [
-      "Medal of Independence",
-      "Silver Cross of the Virtuti Militari"
+      "Silver Cross of the Virtuti Militari",
+      "Medal of Independence"
     ],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q88207571"
+  },
+  {
+    "qid": "Q67199640",
+    "name": "Leonard Lindley",
+    "born": "1861",
+    "died": "1915",
+    "occupations": [
+      "cricketer",
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Leonard_Lindley",
+    "wikidata": "https://www.wikidata.org/wiki/Q67199640"
   },
   {
     "qid": "Q19758435",
@@ -3972,8 +6261,8 @@
     "born": "1900",
     "died": "1975",
     "occupations": [
-      "actor",
-      "film actor"
+      "film actor",
+      "actor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Lester_Matthews",
@@ -3985,15 +6274,27 @@
     "born": "1860",
     "died": "1915",
     "occupations": [
-      "screenwriter",
-      "theatre manager",
-      "stage actor",
       "actor-manager",
-      "film actor"
+      "film actor",
+      "stage actor",
+      "theatre manager",
+      "screenwriter"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Lewis_Waller",
     "wikidata": "https://www.wikidata.org/wiki/Q6537146"
+  },
+  {
+    "qid": "Q75350079",
+    "name": "Lilian Leach",
+    "born": "1899",
+    "died": "1986",
+    "occupations": [
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q75350079"
   },
   {
     "qid": "Q711250",
@@ -4001,18 +6302,30 @@
     "born": "1908",
     "died": "1997",
     "occupations": [
-      "physicist",
+      "cyclist",
       "inventor",
-      "cyclist"
+      "physicist"
     ],
     "awards": [
       "A. S. Popov Gold Medal",
-      "Officer of the Order of the British Empire",
+      "I. I. Rabi Award",
       "Fellow of the Royal Society",
-      "I. I. Rabi Award"
+      "Officer of the Order of the British Empire"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Louis_Essen",
     "wikidata": "https://www.wikidata.org/wiki/Q711250"
+  },
+  {
+    "qid": "Q6687626",
+    "name": "Louis Lawson",
+    "born": "1921",
+    "died": "2009",
+    "occupations": [
+      "speedway rider"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Louis_Lawson",
+    "wikidata": "https://www.wikidata.org/wiki/Q6687626"
   },
   {
     "qid": "Q21455014",
@@ -4025,6 +6338,30 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q21455014"
+  },
+  {
+    "qid": "Q6701815",
+    "name": "Luke Booker",
+    "born": "1762",
+    "died": "1837",
+    "occupations": [
+      "poet"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Luke_Booker",
+    "wikidata": "https://www.wikidata.org/wiki/Q6701815"
+  },
+  {
+    "qid": "Q85517791",
+    "name": "M Mann",
+    "born": "1925",
+    "died": "2019",
+    "occupations": [
+      "librarian"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q85517791"
   },
   {
     "qid": "Q110832795",
@@ -4042,9 +6379,9 @@
     "born": "1804",
     "died": "1899",
     "occupations": [
+      "pteridologist",
       "botanical collector",
-      "botanist",
-      "pteridologist"
+      "botanist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Margaretta_Riley",
@@ -4100,19 +6437,59 @@
     "wikidata": "https://www.wikidata.org/wiki/Q17423842"
   },
   {
+    "qid": "Q16065837",
+    "name": "Martha Walker Robinson",
+    "born": "1822",
+    "died": "1888",
+    "occupations": [
+      "historian",
+      "writer",
+      "biographer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Martha_Walker_Freer",
+    "wikidata": "https://www.wikidata.org/wiki/Q16065837"
+  },
+  {
+    "qid": "Q6775047",
+    "name": "Martin Brandon-Bravo",
+    "born": "1932",
+    "died": "2018",
+    "occupations": [
+      "politician"
+    ],
+    "awards": [
+      "Officer of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Martin_Brandon-Bravo",
+    "wikidata": "https://www.wikidata.org/wiki/Q6775047"
+  },
+  {
     "qid": "Q6776445",
     "name": "Martin Redmayne, Baron Redmayne",
     "born": "1910",
     "died": "1983",
     "occupations": [
-      "military personnel",
-      "politician"
+      "politician",
+      "military personnel"
     ],
     "awards": [
       "Distinguished Service Order"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Martin_Redmayne,_Baron_Redmayne",
     "wikidata": "https://www.wikidata.org/wiki/Q6776445"
+  },
+  {
+    "qid": "Q6778879",
+    "name": "Mary Ann Greaves",
+    "born": "1834",
+    "died": "1897",
+    "occupations": [
+      "prostitute"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Mary_Ann_Greaves",
+    "wikidata": "https://www.wikidata.org/wiki/Q6778879"
   },
   {
     "qid": "Q26180322",
@@ -4132,8 +6509,8 @@
     "born": "1881",
     "died": "1965",
     "occupations": [
-      "sculptor",
-      "medalist"
+      "medalist",
+      "sculptor"
     ],
     "awards": [
       "Officer of the Order of the British Empire"
@@ -4147,15 +6524,122 @@
     "born": "1799",
     "died": "1888",
     "occupations": [
-      "writer",
-      "poet",
-      "translator",
+      "linguist",
       "editor",
-      "linguist"
+      "translator",
+      "poet",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Mary_Howitt",
     "wikidata": "https://www.wikidata.org/wiki/Q521991"
+  },
+  {
+    "qid": "Q69398097",
+    "name": "Mary Kendrick",
+    "born": "1928",
+    "died": "2015",
+    "occupations": [
+      "engineer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Mary_Kendrick",
+    "wikidata": "https://www.wikidata.org/wiki/Q69398097"
+  },
+  {
+    "qid": "Q915929",
+    "name": "Matt Gillies",
+    "born": "1921",
+    "died": "1998",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Matt_Gillies",
+    "wikidata": "https://www.wikidata.org/wiki/Q915929"
+  },
+  {
+    "qid": "Q89248666",
+    "name": "Matthew Drake Babington",
+    "born": "1788",
+    "died": "1851",
+    "occupations": [
+      "Anglican priest"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q89248666"
+  },
+  {
+    "qid": "Q563136",
+    "name": "Michael Argyle",
+    "born": "1925",
+    "died": "2002",
+    "occupations": [
+      "university teacher",
+      "psychologist"
+    ],
+    "awards": [
+      "honorary doctorate of the Vrije Universiteit Brussel"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Michael_Argyle_(psychologist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q563136"
+  },
+  {
+    "qid": "Q55994512",
+    "name": "Michael Butler",
+    "born": "1935",
+    "died": "2007",
+    "occupations": [
+      "literary scholar",
+      "philologist",
+      "Germanist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q55994512"
+  },
+  {
+    "qid": "Q512059",
+    "name": "Michael Jayston",
+    "born": "1935",
+    "died": "2024",
+    "occupations": [
+      "explorer",
+      "television actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Michael_Jayston",
+    "wikidata": "https://www.wikidata.org/wiki/Q512059"
+  },
+  {
+    "qid": "Q29061189",
+    "name": "Mieczysław Rzechorzek",
+    "born": "1924",
+    "died": "2017",
+    "occupations": [
+      "businessperson"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q29061189"
+  },
+  {
+    "qid": "Q6846213",
+    "name": "Mike Butterworth",
+    "born": "1924",
+    "died": "1986",
+    "occupations": [
+      "comics writer",
+      "crime fiction writer",
+      "writer",
+      "screenwriter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Mike_Butterworth",
+    "wikidata": "https://www.wikidata.org/wiki/Q6846213"
   },
   {
     "qid": "Q112089976",
@@ -4175,8 +6659,8 @@
     "born": "1915",
     "died": "2008",
     "occupations": [
-      "academic",
-      "slavist"
+      "slavist",
+      "academic"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Monica_Partridge",
@@ -4188,8 +6672,8 @@
     "born": "1851",
     "died": "1910",
     "occupations": [
-      "association football player",
       "cricket umpire",
+      "association football player",
       "cricketer"
     ],
     "awards": [
@@ -4211,6 +6695,20 @@
     "wikidata": "https://www.wikidata.org/wiki/Q585157"
   },
   {
+    "qid": "Q93509338",
+    "name": "Muriel Glauert",
+    "born": "1892",
+    "died": "1949",
+    "occupations": [
+      "aerodynamicist",
+      "mathematician",
+      "engineer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Muriel_Glauert",
+    "wikidata": "https://www.wikidata.org/wiki/Q93509338"
+  },
+  {
     "qid": "Q337194",
     "name": "N. R. Pogson",
     "born": "1829",
@@ -4225,17 +6723,41 @@
     "wikidata": "https://www.wikidata.org/wiki/Q337194"
   },
   {
+    "qid": "Q52295120",
+    "name": "Nan Green",
+    "born": "1904",
+    "died": "1984",
+    "occupations": [
+      "health administrator"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Nan_Green",
+    "wikidata": "https://www.wikidata.org/wiki/Q52295120"
+  },
+  {
     "qid": "Q6969500",
     "name": "Nathaniel Beardmore",
     "born": "1816",
     "died": "1872",
     "occupations": [
-      "engineer",
-      "civil engineer"
+      "civil engineer",
+      "engineer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Nathaniel_Beardmore",
     "wikidata": "https://www.wikidata.org/wiki/Q6969500"
+  },
+  {
+    "qid": "Q17489803",
+    "name": "Nipper Read",
+    "born": "1925",
+    "died": "2020",
+    "occupations": [
+      "police officer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Nipper_Read",
+    "wikidata": "https://www.wikidata.org/wiki/Q17489803"
   },
   {
     "qid": "Q17362889",
@@ -4255,8 +6777,8 @@
     "born": "1905",
     "died": "1977",
     "occupations": [
-      "ballet dancer",
-      "ballet teacher"
+      "ballet teacher",
+      "ballet dancer"
     ],
     "awards": [],
     "wikipedia": null,
@@ -4280,8 +6802,8 @@
     "born": "1880",
     "died": "1949",
     "occupations": [
-      "physicist",
-      "philosopher"
+      "philosopher",
+      "physicist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Norman_Robert_Campbell",
@@ -4293,12 +6815,37 @@
     "born": "1877",
     "died": "1971",
     "occupations": [
-      "botanical collector",
-      "scientific collector"
+      "scientific collector",
+      "botanical collector"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q106663810"
+  },
+  {
+    "qid": "Q30502161",
+    "name": "Oliver Furley",
+    "born": "1927",
+    "died": "2015",
+    "occupations": [
+      "historian"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Oliver_Furley",
+    "wikidata": "https://www.wikidata.org/wiki/Q30502161"
+  },
+  {
+    "qid": "Q108755744",
+    "name": "Oliver Peter Gray",
+    "born": "1924",
+    "died": "1994",
+    "occupations": [
+      "neonatologist",
+      "pediatrician"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q108755744"
   },
   {
     "qid": "Q7087788",
@@ -4320,10 +6867,10 @@
     "born": "1901",
     "died": "1970",
     "occupations": [
-      "poster artist",
-      "postage stamp designer",
+      "draftsperson",
       "designer",
-      "draftsperson"
+      "postage stamp designer",
+      "poster artist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Pat_Keely",
@@ -4340,6 +6887,76 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Pat_Vaulkhard",
     "wikidata": "https://www.wikidata.org/wiki/Q7144089"
+  },
+  {
+    "qid": "Q37723781",
+    "name": "Patrick Brendan Kennedy",
+    "born": "1929",
+    "died": "1966",
+    "occupations": [
+      "chess player",
+      "mathematician"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Patrick_Brendan_Kennedy",
+    "wikidata": "https://www.wikidata.org/wiki/Q37723781"
+  },
+  {
+    "qid": "Q7146329",
+    "name": "Patrick D. Wall (scientist)",
+    "born": "1925",
+    "died": "2001",
+    "occupations": [
+      "neuroscientist",
+      "neurologist"
+    ],
+    "awards": [
+      "Fellow of the Royal Society",
+      "The Paton Lecture",
+      "Royal Medal"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Patrick_D._Wall",
+    "wikidata": "https://www.wikidata.org/wiki/Q7146329"
+  },
+  {
+    "qid": "Q2057676",
+    "name": "Patrick Horgan",
+    "born": "1929",
+    "died": "2021",
+    "occupations": [
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Patrick_Horgan_(actor)",
+    "wikidata": "https://www.wikidata.org/wiki/Q2057676"
+  },
+  {
+    "qid": "Q75982137",
+    "name": "Patrick James Danvers McCraith",
+    "born": "1916",
+    "died": "1998",
+    "occupations": [
+      "lawyer"
+    ],
+    "awards": [
+      "Military Cross"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q75982137"
+  },
+  {
+    "qid": "Q576005",
+    "name": "Paul Oliver",
+    "born": "1927",
+    "died": "2017",
+    "occupations": [
+      "music historian",
+      "musicologist",
+      "university teacher"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Paul_Oliver",
+    "wikidata": "https://www.wikidata.org/wiki/Q576005"
   },
   {
     "qid": "Q7167281",
@@ -4359,16 +6976,16 @@
     "born": "1913",
     "died": "1986",
     "occupations": [
-      "geologist",
-      "researcher"
+      "researcher",
+      "geologist"
     ],
     "awards": [
-      "Royal Medal",
       "Knight Bachelor",
       "Murchison Medal",
       "Bigsby Medal",
       "Fellow of the Royal Society",
-      "Fellow of the Geological Society of London"
+      "Fellow of the Geological Society of London",
+      "Royal Medal"
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/Percy_Edward_Kent",
     "wikidata": "https://www.wikidata.org/wiki/Q7167326"
@@ -4386,14 +7003,106 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7167614"
   },
   {
+    "qid": "Q1342123",
+    "name": "Peter Hopkirk",
+    "born": "1930",
+    "died": "2014",
+    "occupations": [
+      "non-fiction writer",
+      "essayist",
+      "journalist",
+      "historian",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peter_Hopkirk",
+    "wikidata": "https://www.wikidata.org/wiki/Q1342123"
+  },
+  {
+    "qid": "Q243601",
+    "name": "Peter Mansfield",
+    "born": "1933",
+    "died": "2017",
+    "occupations": [
+      "biophysicist",
+      "university teacher",
+      "inventor",
+      "physicist"
+    ],
+    "awards": [
+      "Nobel Prize in Physiology or Medicine",
+      "honorary doctor of the Jagiellonian University of Krakow",
+      "Knight Bachelor",
+      "National Inventors Hall of Fame",
+      "Fellow of the Royal Society",
+      "honorary doctor of Louis Pasteur University",
+      "Dennis Gabor Medal and Prize",
+      "Mullard Award"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peter_Mansfield",
+    "wikidata": "https://www.wikidata.org/wiki/Q243601"
+  },
+  {
+    "qid": "Q131450563",
+    "name": "Peter Middleton",
+    "born": "1917",
+    "died": "1996",
+    "occupations": [
+      "university teacher",
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q131450563"
+  },
+  {
+    "qid": "Q1669163",
+    "name": "Peter Swanwick",
+    "born": "1922",
+    "died": "1968",
+    "occupations": [
+      "film actor",
+      "television actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peter_Swanwick",
+    "wikidata": "https://www.wikidata.org/wiki/Q1669163"
+  },
+  {
+    "qid": "Q403215",
+    "name": "Peter Taylor",
+    "born": "1928",
+    "died": "1990",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peter_Taylor_(footballer,_born_1928)",
+    "wikidata": "https://www.wikidata.org/wiki/Q403215"
+  },
+  {
+    "qid": "Q7177727",
+    "name": "Peter Williams",
+    "born": "1931",
+    "died": "2021",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Peter_Williams_(English_footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q7177727"
+  },
+  {
     "qid": "Q119882508",
     "name": "Philip Henry Palmer",
     "born": "1860",
     "died": "1925",
     "occupations": [
-      "surveyor",
+      "railway engineer",
       "civil engineer",
-      "railway engineer"
+      "surveyor"
     ],
     "awards": [],
     "wikipedia": null,
@@ -4405,81 +7114,52 @@
     "born": "1816",
     "died": "1902",
     "occupations": [
-      "writer",
+      "barrister",
       "poet",
-      "barrister"
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Philip_James_Bailey",
     "wikidata": "https://www.wikidata.org/wiki/Q324158"
   },
   {
-    "qid": "Q1052290",
-    "name": "Q1052290",
-    "born": "1912",
-    "died": "1991",
+    "qid": "Q52352175",
+    "name": "Philip Richmond",
+    "born": "1890",
+    "died": "1958",
     "occupations": [
-      "biophysicist"
+      "association football player"
     ],
     "awards": [],
     "wikipedia": null,
-    "wikidata": "https://www.wikidata.org/wiki/Q1052290"
+    "wikidata": "https://www.wikidata.org/wiki/Q52352175"
   },
   {
-    "qid": "Q105790797",
-    "name": "Q105790797",
-    "born": "1867",
-    "died": null,
+    "qid": "Q7281939",
+    "name": "Rae Woodland",
+    "born": "1922",
+    "died": "2013",
     "occupations": [
-      "politician"
+      "music educator",
+      "opera singer",
+      "musician"
     ],
     "awards": [],
-    "wikipedia": null,
-    "wikidata": "https://www.wikidata.org/wiki/Q105790797"
+    "wikipedia": "https://en.wikipedia.org/wiki/Rae_Woodland",
+    "wikidata": "https://www.wikidata.org/wiki/Q7281939"
   },
   {
-    "qid": "Q112607570",
-    "name": "Q112607570",
-    "born": "1851",
-    "died": null,
+    "qid": "Q7287519",
+    "name": "Ralph G. Foster",
+    "born": "1934",
+    "died": "2021",
     "occupations": [
-      "photographer"
+      "bowls player",
+      "athlete"
     ],
     "awards": [],
-    "wikipedia": null,
-    "wikidata": "https://www.wikidata.org/wiki/Q112607570"
-  },
-  {
-    "qid": "Q12166163",
-    "name": "Q12166163",
-    "born": "1901",
-    "died": "1977",
-    "occupations": [
-      "military personnel"
-    ],
-    "awards": [
-      "Iron Cross",
-      "Order of Symon Petliura",
-      "Military Cross"
-    ],
-    "wikipedia": null,
-    "wikidata": "https://www.wikidata.org/wiki/Q12166163"
-  },
-  {
-    "qid": "Q138528294",
-    "name": "Q138528294",
-    "born": "1893",
-    "died": "1989",
-    "occupations": [
-      "composer",
-      "singer",
-      "radio personality"
-    ],
-    "awards": [
-      "Associate of the Royal College of Music"
-    ],
-    "wikipedia": "https://en.wikipedia.org/wiki/Ida_Sargent_(musician)",
-    "wikidata": "https://www.wikidata.org/wiki/Q138528294"
+    "wikipedia": "https://en.wikipedia.org/wiki/Ralph_G._Foster",
+    "wikidata": "https://www.wikidata.org/wiki/Q7287519"
   },
   {
     "qid": "Q7288149",
@@ -4502,6 +7182,19 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Ransley_Thacker",
     "wikidata": "https://www.wikidata.org/wiki/Q21078512"
+  },
+  {
+    "qid": "Q7298097",
+    "name": "Ray Shaw",
+    "born": "1913",
+    "died": "1980",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ray_Shaw_(English_footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q7298097"
   },
   {
     "qid": "Q21584629",
@@ -4528,6 +7221,20 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7308762"
   },
   {
+    "qid": "Q61996877",
+    "name": "Rex Collinge",
+    "born": "1935",
+    "died": "2025",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [
+      "Member of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Alan_Collinge",
+    "wikidata": "https://www.wikidata.org/wiki/Q61996877"
+  },
+  {
     "qid": "Q26259951",
     "name": "Richard A. Radford",
     "born": "1919",
@@ -4552,21 +7259,46 @@
     "wikidata": "https://www.wikidata.org/wiki/Q110543518"
   },
   {
+    "qid": "Q21289727",
+    "name": "Richard Bonington",
+    "born": "1768",
+    "died": "1835",
+    "occupations": [
+      "pastellist",
+      "draftsperson",
+      "painter",
+      "engraver"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q21289727"
+  },
+  {
     "qid": "Q7324889",
     "name": "Richard Copley Christie",
     "born": "1830",
     "died": "1901",
     "occupations": [
-      "historian",
-      "barrister",
-      "pedagogue",
-      "university teacher",
+      "philanthropist",
       "romanist",
-      "philanthropist"
+      "university teacher",
+      "pedagogue",
+      "barrister",
+      "historian"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Richard_Copley_Christie",
     "wikidata": "https://www.wikidata.org/wiki/Q7324889"
+  },
+  {
+    "qid": "Q52556716",
+    "name": "Richard Cordley",
+    "born": "1829",
+    "died": "1904",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Richard_Cordley",
+    "wikidata": "https://www.wikidata.org/wiki/Q52556716"
   },
   {
     "qid": "Q7325071",
@@ -4586,10 +7318,10 @@
     "born": "1914",
     "died": "2014",
     "occupations": [
+      "metallurgist",
       "poet",
       "engineer",
-      "historian",
-      "metallurgist"
+      "historian"
     ],
     "awards": [
       "Fellow of the Royal Society of Literature"
@@ -4603,18 +7335,18 @@
     "born": "1888",
     "died": "1970",
     "occupations": [
-      "mathematician",
+      "military flight engineer",
       "university teacher",
-      "military flight engineer"
+      "mathematician"
     ],
     "awards": [
-      "Knight Bachelor",
       "Royal Society Bakerian Medal",
       "Timoshenko Medal",
+      "Knight Bachelor",
       "Elliott Cresson Medal",
-      "Fellow of the Royal Society",
       "honorary doctor of the University of St Andrews",
       "honorary doctorate of the University of Glasgow",
+      "Fellow of the Royal Society",
       "honorary doctor of the University of Bristol",
       "honorary doctor of the University of Sheffield"
     ],
@@ -4627,14 +7359,55 @@
     "born": "1857",
     "died": "1943",
     "occupations": [
-      "writer",
-      "university teacher",
       "scholar of English",
-      "literary scholar"
+      "literary scholar",
+      "university teacher",
+      "writer"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q109854173"
+  },
+  {
+    "qid": "Q19335573",
+    "name": "Robert Austin Markus",
+    "born": "1924",
+    "died": "2010",
+    "occupations": [
+      "medievalist",
+      "historian"
+    ],
+    "awards": [
+      "Officer of the Order of the British Empire",
+      "Fellow of the British Academy"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Austin_Markus",
+    "wikidata": "https://www.wikidata.org/wiki/Q19335573"
+  },
+  {
+    "qid": "Q94924296",
+    "name": "Robert B. Flintoft",
+    "born": "1866",
+    "died": "1946",
+    "occupations": [
+      "painter",
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q94924296"
+  },
+  {
+    "qid": "Q2156432",
+    "name": "Robert Bakewell",
+    "born": "1767",
+    "died": "1843",
+    "occupations": [
+      "geologist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Bakewell_(geologist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q2156432"
   },
   {
     "qid": "Q3434489",
@@ -4642,12 +7415,48 @@
     "born": "1810",
     "died": "1867",
     "occupations": [
-      "naturalist",
-      "entomologist"
+      "entomologist",
+      "naturalist"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q3434489"
+  },
+  {
+    "qid": "Q11945780",
+    "name": "Robert Brian Tate",
+    "born": "1921",
+    "died": "2011",
+    "occupations": [
+      "hispanist"
+    ],
+    "awards": [
+      "honorary doctor of the University of Girona"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Brian_Tate",
+    "wikidata": "https://www.wikidata.org/wiki/Q11945780"
+  },
+  {
+    "qid": "Q7342509",
+    "name": "Robert Burnaby",
+    "born": "1828",
+    "died": "1878",
+    "occupations": [
+      "explorer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Burnaby",
+    "wikidata": "https://www.wikidata.org/wiki/Q7342509"
+  },
+  {
+    "qid": "Q7342897",
+    "name": "Robert Chessher",
+    "born": "1750",
+    "died": "1831",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Chessher",
+    "wikidata": "https://www.wikidata.org/wiki/Q7342897"
   },
   {
     "qid": "Q37732411",
@@ -4670,6 +7479,20 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q120908557"
+  },
+  {
+    "qid": "Q7345542",
+    "name": "Robert Hoe",
+    "born": "1784",
+    "died": "1833",
+    "occupations": [
+      "mechanical technician",
+      "joiner",
+      "machinist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Robert_Hoe_(machinist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q7345542"
   },
   {
     "qid": "Q7346890",
@@ -4701,12 +7524,62 @@
     "born": "1794",
     "died": "1866",
     "occupations": [
-      "Catholic priest",
-      "Catholic bishop"
+      "Catholic bishop",
+      "Catholic priest"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Robert_Willson_(bishop)",
     "wikidata": "https://www.wikidata.org/wiki/Q7351147"
+  },
+  {
+    "qid": "Q7363219",
+    "name": "Romilly Lunge",
+    "born": "1904",
+    "died": "1994",
+    "occupations": [
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Romilly_Lunge",
+    "wikidata": "https://www.wikidata.org/wiki/Q7363219"
+  },
+  {
+    "qid": "Q85797811",
+    "name": "Ron Brown",
+    "born": "1923",
+    "died": "1968",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ron_Brown_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q85797811"
+  },
+  {
+    "qid": "Q28935651",
+    "name": "Ron Wheatley",
+    "born": "1924",
+    "died": "2003",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ron_Wheatley",
+    "wikidata": "https://www.wikidata.org/wiki/Q28935651"
+  },
+  {
+    "qid": "Q98594633",
+    "name": "Ronald Crossland",
+    "born": "1920",
+    "died": "2006",
+    "occupations": [
+      "Hittitologist",
+      "classical scholar",
+      "military personnel"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Ronald_Crossland",
+    "wikidata": "https://www.wikidata.org/wiki/Q98594633"
   },
   {
     "qid": "Q28974268",
@@ -4726,12 +7599,66 @@
     "born": "1877",
     "died": "1957",
     "occupations": [
-      "writer",
-      "teacher"
+      "teacher",
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Rose_Fyleman",
     "wikidata": "https://www.wikidata.org/wiki/Q7367724"
+  },
+  {
+    "qid": "Q60693756",
+    "name": "Roy Brown",
+    "born": "1917",
+    "died": "2005",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Roy_Brown_(footballer,_born_1917)",
+    "wikidata": "https://www.wikidata.org/wiki/Q60693756"
+  },
+  {
+    "qid": "Q7373182",
+    "name": "Roy Minton",
+    "born": "1933",
+    "died": "2024",
+    "occupations": [
+      "playwright",
+      "writer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Roy_Minton",
+    "wikidata": "https://www.wikidata.org/wiki/Q7373182"
+  },
+  {
+    "qid": "Q19799263",
+    "name": "Roy Palmer",
+    "born": "1932",
+    "died": "2015",
+    "occupations": [
+      "writer"
+    ],
+    "awards": [
+      "honorary master's degree"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Roy_Palmer_(folklorist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q19799263"
+  },
+  {
+    "qid": "Q7373369",
+    "name": "Roy Skelton",
+    "born": "1931",
+    "died": "2011",
+    "occupations": [
+      "film actor",
+      "television actor",
+      "voice actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Roy_Skelton",
+    "wikidata": "https://www.wikidata.org/wiki/Q7373369"
   },
   {
     "qid": "Q2173925",
@@ -4739,12 +7666,38 @@
     "born": "1907",
     "died": "2007",
     "occupations": [
-      "university teacher",
-      "scholar of English"
+      "scholar of English",
+      "university teacher"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q2173925"
+  },
+  {
+    "qid": "Q18576959",
+    "name": "Rudolph de Lisle",
+    "born": "1853",
+    "died": "1885",
+    "occupations": [
+      "soldier",
+      "military officer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q18576959"
+  },
+  {
+    "qid": "Q130749497",
+    "name": "Ruth Janette Ruck",
+    "born": "1928",
+    "died": "2006",
+    "occupations": [
+      "author",
+      "farmer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q130749497"
   },
   {
     "qid": "Q1354893",
@@ -4752,8 +7705,8 @@
     "born": "1866",
     "died": "1942",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Sam_Hollis",
@@ -4789,13 +7742,26 @@
     "born": "1837",
     "died": "1899",
     "occupations": [
-      "painter",
+      "draftsperson",
       "watercolorist",
-      "draftsperson"
+      "painter"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q110082553"
+  },
+  {
+    "qid": "Q7411741",
+    "name": "Samuel Howitt",
+    "born": "1756",
+    "died": "1822",
+    "occupations": [
+      "watercolorist",
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Samuel_Howitt",
+    "wikidata": "https://www.wikidata.org/wiki/Q7411741"
   },
   {
     "qid": "Q68930636",
@@ -4803,13 +7769,25 @@
     "born": "1914",
     "died": "1987",
     "occupations": [
-      "mathematician",
+      "historian of science",
       "historian",
-      "historian of science"
+      "mathematician"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Sam_Lilley",
     "wikidata": "https://www.wikidata.org/wiki/Q68930636"
+  },
+  {
+    "qid": "Q139784512",
+    "name": "Samuel Mcall",
+    "born": "1807",
+    "died": "1888",
+    "occupations": [
+      "Christian minister"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q139784512"
   },
   {
     "qid": "Q7412226",
@@ -4846,6 +7824,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Samuel_Waite_Johnson",
     "wikidata": "https://www.wikidata.org/wiki/Q7412841"
+  },
+  {
+    "qid": "Q52145695",
+    "name": "Samuel William Oscroft",
+    "born": "1834",
+    "died": "1924",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q52145695"
   },
   {
     "qid": "Q10368417",
@@ -4901,13 +7891,27 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7526084"
   },
   {
+    "qid": "Q15997388",
+    "name": "Sir Edward Packe",
+    "born": "1878",
+    "died": "1946",
+    "occupations": [
+      "justice of the peace"
+    ],
+    "awards": [
+      "Knight Commander of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Edward_Packe",
+    "wikidata": "https://www.wikidata.org/wiki/Q15997388"
+  },
+  {
     "qid": "Q24203429",
     "name": "Sir Ernest Jardine, 1st Baronet",
     "born": "1859",
     "died": "1947",
     "occupations": [
-      "businessperson",
-      "politician"
+      "politician",
+      "businessperson"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Ernest_Jardine",
@@ -4929,13 +7933,23 @@
     "born": "1915",
     "died": "2004",
     "occupations": [
-      "writer",
+      "military officer",
       "architect",
-      "military officer"
+      "writer"
     ],
     "awards": [],
-    "wikipedia": "https://en.wikipedia.org/wiki/S%C5%82awomir_Rawicz",
+    "wikipedia": "https://en.wikipedia.org/wiki/Sławomir_Rawicz",
     "wikidata": "https://www.wikidata.org/wiki/Q563218"
+  },
+  {
+    "qid": "Q57292370",
+    "name": "Sophia Mort",
+    "born": "1807",
+    "died": "1882",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Sophia_Mort",
+    "wikidata": "https://www.wikidata.org/wiki/Q57292370"
   },
   {
     "qid": "Q7596606",
@@ -4950,6 +7964,23 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7596606"
   },
   {
+    "qid": "Q123507920",
+    "name": "Stanisław Cwynar",
+    "born": "1897",
+    "died": "1982",
+    "occupations": [
+      "aircraft pilot"
+    ],
+    "awards": [
+      "Virtuti Militari",
+      "Distinguished Flying Cross",
+      "Medal Lotniczy",
+      "Cross of Valour"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q123507920"
+  },
+  {
     "qid": "Q16606012",
     "name": "Stanisław Kujawiński",
     "born": "1920",
@@ -4958,8 +7989,8 @@
     "awards": [
       "Pro Ecclesia et Pontifice",
       "Armia Krajowa Cross",
-      "Army Medal for War 1939-45",
       "Knight of the Order of Polonia Restituta",
+      "Army Medal for War 1939-45",
       "Silver Cross of the Virtuti Militari"
     ],
     "wikipedia": null,
@@ -4971,9 +8002,9 @@
     "born": "1887",
     "died": "1961",
     "occupations": [
-      "writer",
-      "illustrator",
       "painter",
+      "illustrator",
+      "writer",
       "draftsperson"
     ],
     "awards": [],
@@ -4981,17 +8012,76 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7599919"
   },
   {
+    "qid": "Q51167441",
+    "name": "Stella Rebecca Crofts",
+    "born": "1898",
+    "died": "1964",
+    "occupations": [
+      "ceramicist",
+      "sculptor",
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Stella_Rebecca_Crofts",
+    "wikidata": "https://www.wikidata.org/wiki/Q51167441"
+  },
+  {
+    "qid": "Q20984389",
+    "name": "Stewart Adams",
+    "born": "1923",
+    "died": "2019",
+    "occupations": [
+      "pharmacologist",
+      "chemist"
+    ],
+    "awards": [
+      "National Inventors Hall of Fame",
+      "Officer of the Order of the British Empire"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Stewart_Adams_(chemist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q20984389"
+  },
+  {
     "qid": "Q2357852",
     "name": "Stuart Edward Mann",
     "born": "1905",
     "died": "1986",
     "occupations": [
-      "university teacher",
-      "linguist"
+      "linguist",
+      "university teacher"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q2357852"
+  },
+  {
+    "qid": "Q120798894",
+    "name": "Stuart Slater",
+    "born": "1928",
+    "died": "2016",
+    "occupations": [
+      "blacksmith",
+      "sculptor"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q120798894"
+  },
+  {
+    "qid": "Q28873120",
+    "name": "Susan Fereday",
+    "born": "1815",
+    "died": "1878",
+    "occupations": [
+      "scientific illustrator",
+      "botanical illustrator",
+      "botanist",
+      "botanical collector",
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Susan_Fereday_(botanical_artist)",
+    "wikidata": "https://www.wikidata.org/wiki/Q28873120"
   },
   {
     "qid": "Q99533053",
@@ -5026,6 +8116,19 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Sydney_Pierrepont,_3rd_Earl_Manvers",
     "wikidata": "https://www.wikidata.org/wiki/Q7660092"
+  },
+  {
+    "qid": "Q94913075",
+    "name": "Sylwerjusz Saski",
+    "born": "1864",
+    "died": "1954",
+    "occupations": [
+      "painter",
+      "artist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q94913075"
   },
   {
     "qid": "Q7693268",
@@ -5064,17 +8167,81 @@
     "wikidata": "https://www.wikidata.org/wiki/Q5344371"
   },
   {
+    "qid": "Q16915360",
+    "name": "Terry Bell",
+    "born": "1934",
+    "died": "2014",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Terry_Bell_(footballer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q16915360"
+  },
+  {
+    "qid": "Q7777207",
+    "name": "Thea Gregory",
+    "born": "1929",
+    "died": "2022",
+    "occupations": [
+      "film actor",
+      "actor"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Thea_Gregory",
+    "wikidata": "https://www.wikidata.org/wiki/Q7777207"
+  },
+  {
+    "qid": "Q7787138",
+    "name": "Thomas Armstrong",
+    "born": "1909",
+    "died": "2000",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Armstrong_(Derbyshire_cricketer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q7787138"
+  },
+  {
+    "qid": "Q28972059",
+    "name": "Thomas Ashwell",
+    "born": "1897",
+    "died": "1969",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [
+      "Military Cross"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Ashwell_(cricketer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q28972059"
+  },
+  {
     "qid": "Q7787202",
     "name": "Thomas Attewell",
     "born": "1869",
     "died": "1937",
     "occupations": [
-      "cricket umpire",
-      "cricketer"
+      "cricketer",
+      "cricket umpire"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Attewell",
     "wikidata": "https://www.wikidata.org/wiki/Q7787202"
+  },
+  {
+    "qid": "Q21459955",
+    "name": "Thomas Barber",
+    "born": "1771",
+    "died": "1843",
+    "occupations": [
+      "draftsperson",
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q21459955"
   },
   {
     "qid": "Q21459970",
@@ -5087,6 +8254,29 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q21459970"
+  },
+  {
+    "qid": "Q121924373",
+    "name": "Thomas Bruges Gerard",
+    "born": "1842",
+    "died": "1929",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q121924373"
+  },
+  {
+    "qid": "Q55024046",
+    "name": "Thomas Chapman",
+    "born": "1816",
+    "died": "1879",
+    "occupations": [
+      "entomologist",
+      "naturalist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q55024046"
   },
   {
     "qid": "Q7788548",
@@ -5154,8 +8344,8 @@
     "born": "1868",
     "died": "1939",
     "occupations": [
-      "cricket umpire",
-      "cricketer"
+      "cricketer",
+      "cricket umpire"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Flowers_(cricketer,_born_1868)",
@@ -5179,9 +8369,9 @@
     "born": "1829",
     "died": "1889",
     "occupations": [
-      "translator",
+      "principal",
       "Christian minister",
-      "principal"
+      "translator"
     ],
     "awards": [],
     "wikipedia": null,
@@ -5222,9 +8412,9 @@
     "born": "1853",
     "died": "1931",
     "occupations": [
-      "author",
+      "Anglican priest",
       "theologian",
-      "Anglican priest"
+      "author"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Alexander_Lacey",
@@ -5236,11 +8426,11 @@
     "born": "1860",
     "died": "1933",
     "occupations": [
-      "naturalist",
-      "physician",
-      "botanical collector",
+      "scientific collector",
       "entomologist",
-      "scientific collector"
+      "botanical collector",
+      "physician",
+      "naturalist"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Lane_Bancroft",
@@ -5252,8 +8442,8 @@
     "born": "1868",
     "died": "1926",
     "occupations": [
-      "politician",
-      "farmer"
+      "farmer",
+      "politician"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Sales",
@@ -5277,12 +8467,24 @@
     "born": "1802",
     "died": "1874",
     "occupations": [
-      "painter",
-      "draftsperson"
+      "draftsperson",
+      "painter"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q20490742"
+  },
+  {
+    "qid": "Q28964550",
+    "name": "Thomas William Bush",
+    "born": "1839",
+    "died": "1928",
+    "occupations": [
+      "astronomer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q28964550"
   },
   {
     "qid": "Q709118",
@@ -5302,10 +8504,10 @@
     "born": "1865",
     "died": "1940",
     "occupations": [
-      "judge",
+      "cricketer",
       "barrister",
       "association football player",
-      "cricketer"
+      "judge"
     ],
     "awards": [
       "Officer of the Order of the British Empire"
@@ -5331,10 +8533,10 @@
     "born": "1870",
     "died": "1910",
     "occupations": [
-      "illustrator",
-      "comics artist",
       "painter",
-      "cartoonist"
+      "cartoonist",
+      "comics artist",
+      "illustrator"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Tom_Browne_(illustrator)",
@@ -5353,13 +8555,25 @@
     "wikidata": "https://www.wikidata.org/wiki/Q981476"
   },
   {
+    "qid": "Q7815578",
+    "name": "Tom Dickinson",
+    "born": "1931",
+    "died": "2018",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Tom_Dickinson_(cricketer)",
+    "wikidata": "https://www.wikidata.org/wiki/Q7815578"
+  },
+  {
     "qid": "Q7816356",
     "name": "Tom Johnston",
     "born": "1918",
     "died": "1994",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Tom_Johnston_(footballer)",
@@ -5371,8 +8585,8 @@
     "born": "1864",
     "died": "1928",
     "occupations": [
-      "rugby union player",
-      "rugby league player"
+      "rugby league player",
+      "rugby union player"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Tom_Kent_(rugby)",
@@ -5415,15 +8629,40 @@
     "wikidata": "https://www.wikidata.org/wiki/Q19975445"
   },
   {
+    "qid": "Q7819283",
+    "name": "Tommy Capel",
+    "born": "1922",
+    "died": "2009",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Tommy_Capel",
+    "wikidata": "https://www.wikidata.org/wiki/Q7819283"
+  },
+  {
+    "qid": "Q16744947",
+    "name": "Tommy Deans",
+    "born": "1922",
+    "died": "2000",
+    "occupations": [
+      "association football player",
+      "association football coach"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Tommy_Deans",
+    "wikidata": "https://www.wikidata.org/wiki/Q16744947"
+  },
+  {
     "qid": "Q726272",
     "name": "Tommy Lawton",
     "born": "1919",
     "died": "1996",
     "occupations": [
-      "association football coach",
-      "association football player",
+      "autobiographer",
       "cricketer",
-      "autobiographer"
+      "association football player",
+      "association football coach"
     ],
     "awards": [
       "English Football Hall of Fame"
@@ -5444,13 +8683,26 @@
     "wikidata": "https://www.wikidata.org/wiki/Q7819987"
   },
   {
+    "qid": "Q72703006",
+    "name": "Tony Bullen",
+    "born": "1931",
+    "died": "2014",
+    "occupations": [
+      "speed skater",
+      "athlete"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Tony_Bullen",
+    "wikidata": "https://www.wikidata.org/wiki/Q72703006"
+  },
+  {
     "qid": "Q7839340",
     "name": "Trevor Morris",
     "born": "1920",
     "died": "2003",
     "occupations": [
-      "association football coach",
-      "association football player"
+      "association football player",
+      "association football coach"
     ],
     "awards": [
       "Distinguished Flying Cross",
@@ -5466,8 +8718,8 @@
     "born": "1895",
     "died": "1966",
     "occupations": [
-      "chemist",
-      "university teacher"
+      "university teacher",
+      "chemist"
     ],
     "awards": [
       "Fellow of the American Physical Society",
@@ -5482,8 +8734,8 @@
     "born": "1893",
     "died": "1957",
     "occupations": [
-      "merchant",
-      "publisher"
+      "publisher",
+      "merchant"
     ],
     "awards": [],
     "wikipedia": null,
@@ -5500,6 +8752,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Vincent_Blatchford",
     "wikidata": "https://www.wikidata.org/wiki/Q51384704"
+  },
+  {
+    "qid": "Q7965865",
+    "name": "Walter Powys",
+    "born": "1849",
+    "died": "1892",
+    "occupations": [
+      "cricketer"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Walter_Powys",
+    "wikidata": "https://www.wikidata.org/wiki/Q7965865"
   },
   {
     "qid": "Q138751237",
@@ -5531,13 +8795,25 @@
     "born": "1827",
     "died": "1884",
     "occupations": [
-      "judge",
+      "politician",
       "physician",
-      "politician"
+      "judge"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Watkin_Williams_(Liberal_politician)",
     "wikidata": "https://www.wikidata.org/wiki/Q5079461"
+  },
+  {
+    "qid": "Q7974820",
+    "name": "Watson Fothergill",
+    "born": "1841",
+    "died": "1928",
+    "occupations": [
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/Watson_Fothergill",
+    "wikidata": "https://www.wikidata.org/wiki/Q7974820"
   },
   {
     "qid": "Q9374400",
@@ -5564,17 +8840,57 @@
     "wikidata": "https://www.wikidata.org/wiki/Q2076700"
   },
   {
+    "qid": "Q124900974",
+    "name": "William Aubrey Boswell",
+    "born": "1926",
+    "died": null,
+    "occupations": [
+      "painter",
+      "illustrator",
+      "graphic designer",
+      "architect"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q124900974"
+  },
+  {
+    "qid": "Q81655069",
+    "name": "William Bertram Edwards",
+    "born": "1881",
+    "died": "1944",
+    "occupations": [
+      "printer",
+      "photographer"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q81655069"
+  },
+  {
     "qid": "Q309882",
     "name": "William Booth",
     "born": "1829",
     "died": "1912",
     "occupations": [
-      "preacher",
-      "theologian"
+      "theologian",
+      "preacher"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Booth",
     "wikidata": "https://www.wikidata.org/wiki/Q309882"
+  },
+  {
+    "qid": "Q11288150",
+    "name": "William Brown",
+    "born": "1761",
+    "died": "1793",
+    "occupations": [
+      "horticulturist"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q11288150"
   },
   {
     "qid": "Q3531389",
@@ -5594,8 +8910,8 @@
     "born": "1918",
     "died": "2000",
     "occupations": [
-      "solicitor",
-      "politician"
+      "politician",
+      "solicitor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Bill_Carr_(politician)",
@@ -5614,6 +8930,31 @@
     "wikidata": "https://www.wikidata.org/wiki/Q13426435"
   },
   {
+    "qid": "Q18911293",
+    "name": "William Cyples",
+    "born": "1831",
+    "died": "1882",
+    "occupations": [
+      "philosopher",
+      "journalist",
+      "editor",
+      "poet"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q18911293"
+  },
+  {
+    "qid": "Q52063239",
+    "name": "William Danks",
+    "born": "1845",
+    "died": "1916",
+    "occupations": [],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/William_Danks",
+    "wikidata": "https://www.wikidata.org/wiki/Q52063239"
+  },
+  {
     "qid": "Q8007737",
     "name": "William Delacombe",
     "born": "1860",
@@ -5624,6 +8965,20 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Delacombe",
     "wikidata": "https://www.wikidata.org/wiki/Q8007737"
+  },
+  {
+    "qid": "Q18735719",
+    "name": "William Garner",
+    "born": "1889",
+    "died": "1960",
+    "occupations": [
+      "chemist"
+    ],
+    "awards": [
+      "Commander of the Order of the British Empire"
+    ],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q18735719"
   },
   {
     "qid": "Q18508732",
@@ -5643,12 +8998,14 @@
     "born": "1814",
     "died": "1898",
     "occupations": [
-      "naturalist",
+      "scientific collector",
+      "botanist",
+      "botanical collector",
+      "surgeon",
+      "geologist",
       "photographer",
       "physician",
-      "geologist",
-      "surgeon",
-      "botanical collector"
+      "naturalist"
     ],
     "awards": [
       "Fellow of the Geological Society of London"
@@ -5667,6 +9024,18 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_H._F._Brothers",
     "wikidata": "https://www.wikidata.org/wiki/Q16008629"
+  },
+  {
+    "qid": "Q61890419",
+    "name": "William H. Wright",
+    "born": "1886",
+    "died": "1943",
+    "occupations": [
+      "sculptor"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q61890419"
   },
   {
     "qid": "Q8010698",
@@ -5688,8 +9057,8 @@
     "born": "1872",
     "died": "1959",
     "occupations": [
-      "architect",
-      "engraver"
+      "engraver",
+      "architect"
     ],
     "awards": [
       "Military Cross",
@@ -5705,8 +9074,8 @@
     "born": "1849",
     "died": "1918",
     "occupations": [
-      "illustrator",
-      "painter"
+      "painter",
+      "illustrator"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Henry_James_Boot",
@@ -5730,12 +9099,24 @@
     "born": "1823",
     "died": "1907",
     "occupations": [
-      "physician",
-      "embryologist"
+      "embryologist",
+      "physician"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Henry_Ransom",
     "wikidata": "https://www.wikidata.org/wiki/Q18784046"
+  },
+  {
+    "qid": "Q96482289",
+    "name": "William Henry Revis",
+    "born": "1849",
+    "died": "1923",
+    "occupations": [
+      "association football player"
+    ],
+    "awards": [],
+    "wikipedia": "https://en.wikipedia.org/wiki/William_Henry_Revis",
+    "wikidata": "https://www.wikidata.org/wiki/Q96482289"
   },
   {
     "qid": "Q16031325",
@@ -5743,9 +9124,9 @@
     "born": "1858",
     "died": "1924",
     "occupations": [
-      "librarian",
+      "philologist",
       "historian",
-      "philologist"
+      "librarian"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/W._H._Stevenson",
@@ -5769,9 +9150,9 @@
     "born": "1792",
     "died": "1879",
     "occupations": [
-      "writer",
+      "historian",
       "poet",
-      "historian"
+      "writer"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Howitt",
@@ -5788,6 +9169,19 @@
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q21465899"
+  },
+  {
+    "qid": "Q104502476",
+    "name": "William Matthews",
+    "born": "1759",
+    "died": "1830",
+    "occupations": [
+      "music teacher",
+      "choir director"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q104502476"
   },
   {
     "qid": "Q8016388",
@@ -5807,8 +9201,8 @@
     "born": "1853",
     "died": "1913",
     "occupations": [
-      "solicitor",
-      "genealogist"
+      "genealogist",
+      "solicitor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Phillimore_Watts_Phillimore",
@@ -5844,9 +9238,9 @@
     "born": "1812",
     "died": "1888",
     "occupations": [
+      "aircraft pilot",
       "engineer",
-      "inventor",
-      "aircraft pilot"
+      "inventor"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Samuel_Henson",
@@ -5882,13 +9276,25 @@
     "born": "1832",
     "died": "1922",
     "occupations": [
-      "writer",
+      "antiquarian",
       "merchant",
-      "antiquarian"
+      "writer"
     ],
     "awards": [],
     "wikipedia": null,
     "wikidata": "https://www.wikidata.org/wiki/Q51683442"
+  },
+  {
+    "qid": "Q138751359",
+    "name": "William Thomas Hancock",
+    "born": "1859",
+    "died": "1931",
+    "occupations": [
+      "lace maker"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q138751359"
   },
   {
     "qid": "Q3525881",
@@ -5903,6 +9309,18 @@
     ],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Whysall",
     "wikidata": "https://www.wikidata.org/wiki/Q3525881"
+  },
+  {
+    "qid": "Q29018058",
+    "name": "William Wilde",
+    "born": "1826",
+    "died": "1901",
+    "occupations": [
+      "painter"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q29018058"
   },
   {
     "qid": "Q8020371",
@@ -5922,10 +9340,10 @@
     "born": "1800",
     "died": "1878",
     "occupations": [
-      "bishop",
-      "missionary",
+      "Anglican theologian",
       "Anglican priest",
-      "Anglican theologian"
+      "bishop",
+      "missionary"
     ],
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/William_Williams_(bishop)",
@@ -5956,5 +9374,49 @@
     "awards": [],
     "wikipedia": "https://en.wikipedia.org/wiki/Willie_Fallon",
     "wikidata": "https://www.wikidata.org/wiki/Q21604440"
+  },
+  {
+    "qid": "Q4979857",
+    "name": "Winifred Spooner",
+    "born": "1900",
+    "died": "1933",
+    "occupations": [
+      "aircraft pilot",
+      "engineer"
+    ],
+    "awards": [
+      "Harmon Trophy"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Winifred_Spooner",
+    "wikidata": "https://www.wikidata.org/wiki/Q4979857"
+  },
+  {
+    "qid": "Q15436767",
+    "name": "Wolf Liebeschuetz",
+    "born": "1927",
+    "died": "2022",
+    "occupations": [
+      "historian of classical antiquity",
+      "historian of religion",
+      "university teacher",
+      "historian"
+    ],
+    "awards": [
+      "Fellow of the British Academy"
+    ],
+    "wikipedia": "https://en.wikipedia.org/wiki/Wolf_Liebeschuetz",
+    "wikidata": "https://www.wikidata.org/wiki/Q15436767"
+  },
+  {
+    "qid": "Q131718438",
+    "name": "Yuri Galitzine",
+    "born": "1919",
+    "died": "2002",
+    "occupations": [
+      "entrepreneur"
+    ],
+    "awards": [],
+    "wikipedia": null,
+    "wikidata": "https://www.wikidata.org/wiki/Q131718438"
   }
 ]
