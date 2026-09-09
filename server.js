@@ -177,6 +177,32 @@ async function uploadPhoto(buf, filename, contentType) {
 // 1) Uses Cloudinary SDK if available (handles signing automatically)
 // 2) Falls back to manual signed upload using env vars
 // 3) Last resort: local disk (ephemeral on Railway)
+// Photographs and documents attached to a person. Cloudinary where it is
+// configured — 'auto' so a PDF or a Word file is stored as a raw asset rather
+// than being rejected as an image. Falls back to the local disk only when
+// Cloudinary is not set up, which is the case locally and nowhere else; on a
+// host with an ephemeral filesystem that fallback does not survive a deploy.
+async function uploadMedia(buf, filename, contentType) {
+  if (cloudinary) {
+    return new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: 'auto', folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''),
+          use_filename: true, unique_filename: false },
+        (error, result) => {
+          if (error) return reject(new Error(error.message || JSON.stringify(error)));
+          resolve(result.secure_url);
+        });
+      stream.end(buf);
+    });
+  }
+  if (process.env.CLOUDINARY_CLOUD_NAME && /^image\//.test(contentType || '')) {
+    return uploadPhoto(buf, filename, contentType);   // unsigned preset path
+  }
+  fs.mkdirSync(PHOTOS_DIR, { recursive: true });
+  fs.writeFileSync(path.join(PHOTOS_DIR, filename), buf);
+  return `/data/photos/${filename}`;
+}
+
 async function uploadVideo(buf, filename) {
   const cloudName  = process.env.CLOUDINARY_CLOUD_NAME;
   const apiKey     = (process.env.CLOUDINARY_API_KEY    || '').trim();
@@ -3533,14 +3559,22 @@ app.post('/api/person/:id/media', requireContributor, (req, res, next) => {
   next();
 }, (req, res) => {
   const personId = parseInt(req.params.id);
-  const storage = multer.diskStorage({
-    destination: PHOTOS_DIR,
-    filename: (req, file, cb) => cb(null, `person-${personId}-media-${Date.now()}${path.extname(file.originalname)}`)
-  });
-  multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } }).single('file')(req, res, async (err) => {
+  // Held in memory, not written to the container's disk. Railway rebuilds the
+  // container on every deploy, so anything saved under data/photos/ is gone the
+  // next time the site ships — which is exactly what happened to the plaque
+  // photographs. Portraits and videos already went to Cloudinary; this is the
+  // one upload path that did not.
+  multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } })
+    .single('file')(req, res, async (err) => {
     if (err) return res.status(400).json({ error: err.message });
     if (!req.file) return res.status(400).json({ error: 'No file' });
-    const url = `/data/photos/${req.file.filename}`;
+    const stamped = `person-${personId}-media-${Date.now()}${path.extname(req.file.originalname)}`;
+    let url;
+    try {
+      url = await uploadMedia(req.file.buffer, stamped, req.file.mimetype);
+    } catch (e) {
+      return res.status(500).json({ error: 'Upload failed: ' + e.message });
+    }
     const caption = req.body.caption || '';
     const isDoc = /\.(pdf|doc|docx|txt)$/i.test(req.file.originalname);
     const media_type = isDoc ? 'document' : 'photo';
@@ -4540,6 +4574,14 @@ app.get('/origins', (req, res) => res.sendFile(path.join(__dirname, 'public', 'o
 // keeps working either side of that upgrade.
 const CATCH_ALL = require('express/package.json').version.startsWith('4') ? '*' : '/*splat';
 app.get(CATCH_ALL, (req, res) => {
+  // A request for a file that is not there is a missing file, not a page. Sending
+  // the map back for it meant a lost photograph answered 200 with 159KB of HTML,
+  // so the browser drew a broken-image icon and nothing anywhere said what had
+  // happened. Anything under an asset directory, or carrying a file extension,
+  // now says so plainly.
+  if (/^\/(data|uploads|assets)\//.test(req.path) || /\.[a-z0-9]{2,5}$/i.test(req.path)) {
+    return res.status(404).json({ error: 'Not found: ' + req.path });
+  }
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
