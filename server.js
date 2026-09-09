@@ -1385,7 +1385,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
     const report = [];
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0, census = 0, enriched = 0;
+      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0;
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
         const found = await db.query(
@@ -1445,6 +1445,42 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             linked++;
           }
         }
+        // Relationships to other people, named rather than given as ids so a file
+        // can be written before knowing what number anybody has.
+        for (const rel of (person.relationships || [])) {
+          if (!rel || !rel.to || !rel.type) continue;
+          if (id === null) { rels++; continue; }             // person is new in this dry run
+          const other = await db.query(
+            `SELECT id FROM people WHERE LOWER(TRIM(first_name))=LOWER($1)
+                                     AND LOWER(TRIM(last_name))=LOWER($2)`,
+            [String(rel.to.first_name || '').trim(), String(rel.to.last_name || '').trim()]);
+          if (other.rows.length !== 1) { relsSkipped++; continue; }   // ambiguous or absent
+          const otherId = other.rows[0].id;
+          if (otherId === id) { relsSkipped++; continue; }
+          const dup = await db.query(
+            `SELECT 1 FROM people_relationships
+              WHERE person_a_id=$1 AND person_b_id=$2 AND relationship=$3`,
+            [id, otherId, rel.type]);
+          if (dup.rows.length) continue;
+          rels++;
+          if (dryRun) continue;
+          await db.query(
+            `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
+                  VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
+            [id, otherId, rel.type, rel.notes || null]);
+          // Record it both ways where the word is its own opposite.
+          if (rel.reciprocal !== false) {
+            const back = { spouse_of:'spouse_of', sibling_of:'sibling_of', cousin_of:'cousin_of',
+                           parent_of:'child_of', child_of:'parent_of',
+                           employer_of:'employee_of', employee_of:'employer_of' }[rel.type];
+            if (back) {
+              await db.query(
+                `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
+                      VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
+                [otherId, id, back, rel.notes || null]);
+            }
+          }
+        }
         // Census (and 1939 Register) appearances. Keyed on person, year and
         // property so running the import twice does not double the record.
         for (const c of (person.census || [])) {
@@ -1468,7 +1504,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
              c.occupation_at_census || null, c.birth_place || null, c.source || null]);
         }
       }
-      report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked, census });
+      report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked, census, relationships: rels, relationshipsSkipped: relsSkipped });
     }
     res.json({ ok: true, dryRun, report });
   } catch(e) { res.status(500).json({ error: e.message }); }
@@ -3058,6 +3094,74 @@ app.post('/api/census/reassign', requireContributor, async (req, res) => {
       }
     }
     res.json({ ok: true, filed, unfiled });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/backfill-birthplaces — the census entries hold far more birth
+// places than the person records do, the same shape as the occupations gap.
+// Fills a blank born_place from that person's census entries; never overwrites,
+// and never guesses when their entries disagree.
+app.post('/api/admin/backfill-birthplaces', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const r = await db.query(`
+      SELECT p.id, p.first_name, p.last_name,
+             ARRAY_AGG(DISTINCT TRIM(c.birth_place)) AS places
+        FROM people p
+        JOIN census_entries c ON c.person_id = p.id
+       WHERE COALESCE(TRIM(p.born_place), '') = ''
+         AND COALESCE(TRIM(c.birth_place), '') <> ''
+       GROUP BY p.id, p.first_name, p.last_name
+       ORDER BY p.last_name, p.first_name`);
+
+    const filled = [], conflicted = [];
+    for (const row of r.rows) {
+      const places = (row.places || []).filter(Boolean);
+      const name = [row.first_name, row.last_name].filter(Boolean).join(' ');
+      // Two spellings of one place is a conflict we should not resolve blind.
+      if (places.length === 1) filled.push({ id: row.id, name, place: places[0] });
+      else conflicted.push({ id: row.id, name, places });
+    }
+    if (!dryRun && filled.length) {
+      for (const f of filled) {
+        await db.query(`UPDATE people SET born_place=$2 WHERE id=$1
+                         AND COALESCE(TRIM(born_place),'') = ''`, [f.id, f.place]);
+      }
+    }
+    res.json({ ok: true, dryRun, filled: filled.length, conflicted: conflicted.length,
+               sample: filled.slice(0, 12), conflicts: conflicted.slice(0, 12) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/dedupe-resident-links — property_residents has no unique index
+// on (person_id, property_id), so the same link can be written twice. Keeps the
+// lowest id of each and removes the rest.
+app.post('/api/admin/dedupe-resident-links', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const dupes = (await db.query(`
+      SELECT r.person_id, r.property_id, COUNT(*) AS n,
+             p.first_name, p.last_name
+        FROM property_residents r JOIN people p ON p.id = r.person_id
+       GROUP BY r.person_id, r.property_id, p.first_name, p.last_name
+      HAVING COUNT(*) > 1
+       ORDER BY COUNT(*) DESC`)).rows;
+    const extra = dupes.reduce((n, d) => n + (Number(d.n) - 1), 0);
+    if (!dryRun && dupes.length) {
+      await db.query(`
+        DELETE FROM property_residents a
+         USING property_residents b
+         WHERE a.person_id = b.person_id
+           AND a.property_id = b.property_id
+           AND a.id > b.id`);
+    }
+    res.json({ ok: true, dryRun, pairs: dupes.length, extraRows: extra,
+      sample: dupes.slice(0, 12).map(d => ({
+        person_id: d.person_id, property_id: d.property_id, copies: Number(d.n),
+        name: [d.first_name, d.last_name].filter(Boolean).join(' '),
+      })) });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

@@ -208,6 +208,29 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
     <div class="admin-tool">
       <div>
+        <div class="admin-tool-name">Backfill birth places onto people</div>
+        <div class="admin-tool-desc">The census entries hold far more birth places than the
+          person records do. Copies one onto anybody whose own record is blank. Never overwrites,
+          and leaves alone anyone whose entries disagree with each other.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnBirthPreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnBirthRun" class="admin-btn">Run</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Remove duplicate resident links</div>
+        <div class="admin-tool-desc">The same person can be linked to the same property twice —
+          nothing in the database prevents it. Keeps one of each and removes the rest.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnDedupePreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnDedupeRun" class="admin-btn">Run</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
         <div class="admin-tool-name">Clear occupations that are not occupations</div>
         <div class="admin-tool-desc">A slipped column in an import leaves a sex or a relationship
           in the occupation field, and a spreadsheet's placeholder leaves a dash. "Servant" and
@@ -764,6 +787,31 @@ document.getElementById('btnMoveRun')?.addEventListener('click', e => {
                (b.year ? ` for ${b.year}` : '') + '?')) return;
   runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
 });
+
+const describeBirth = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.filled} ${d.dryRun ? 'would gain' : 'gained'} a birth place`
+  + (d.conflicted ? `, ${d.conflicted} left alone because their census entries disagree` : '')
+  + '.\n'
+  + (d.sample.length ? '\n' + d.sample.map(x => `  ${x.name} — ${x.place}`).join('\n') : '')
+  + (d.conflicts.length ? '\n\nDisagreeing, for you to settle:\n'
+      + d.conflicts.map(x => `  ${x.name} — ${x.places.join(' / ')}`).join('\n') : '');
+
+const describeDedupe = d =>
+  !d.pairs ? 'No duplicate links. Nobody is linked to the same property twice.'
+  : (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.extraRows} extra link${d.extraRows === 1 ? '' : 's'} across ${d.pairs} `
+    + `person-and-property pair${d.pairs === 1 ? '' : 's'} ${d.dryRun ? 'would be removed' : 'removed'}.\n`
+    + d.sample.map(x => `  ${x.name} at property ${x.property_id} — ${x.copies} copies`).join('\n');
+
+document.getElementById('btnBirthPreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/backfill-birthplaces', { dryRun: true }, describeBirth));
+document.getElementById('btnBirthRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/backfill-birthplaces', {}, describeBirth));
+document.getElementById('btnDedupePreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/dedupe-resident-links', { dryRun: true }, describeDedupe));
+document.getElementById('btnDedupeRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/dedupe-resident-links', {}, describeDedupe));
 
 const describeCleanOcc = d => {
   if (!d.censusCleared && !d.peopleCleared) return 'Nothing to clear — every occupation looks like one.';

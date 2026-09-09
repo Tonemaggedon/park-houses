@@ -65,7 +65,7 @@ body { font-family:'Segoe UI',Arial,sans-serif; background:#0f1923; color:#e8e0d
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-title">🌳 Select a Person</div>
-      <input class="search-box" id="personSearch" placeholder="Search by name..." oninput="filterPeople(this.value)">
+      <input class="search-box" id="personSearch" placeholder="Search by name..." oninput="_filterDebounced(this.value)">
     </div>
     <div class="people-list" id="peopleList"><div style="padding:1rem;color:#5a7a5a;font-size:0.8rem;text-align:center">Loading...</div></div>
   </div>
@@ -126,6 +126,10 @@ function renderList(people) {
     ? people.map(p=>`<div class="person-item" id="pi-${p.id}" onclick="loadTree(${p.id})"><div class="person-name">${nameOf(p)}</div><div class="person-dates">${dateStr(p)}</div></div>`).join('')
     : '<div style="padding:1rem;color:#5a7a5a;font-size:0.8rem">No results</div>';
 }
+
+// The list holds every person, so redrawing it on each key is wasteful.
+let _filterTimer = null;
+function _filterDebounced(q) { clearTimeout(_filterTimer); _filterTimer = setTimeout(() => filterPeople(q), 250); }
 
 function filterPeople(q) {
   renderList(q ? allPeople.filter(p=>nameOf(p).toLowerCase().includes(q.toLowerCase())) : allPeople);

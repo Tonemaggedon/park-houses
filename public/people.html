@@ -560,14 +560,32 @@ async function loadPeople() {
       occSel.appendChild(opt);
     });
 
-    // Populate property filter with real names
+    // Populate property filter. Every property, not only those that already have
+    // someone in them — a house newly added has nobody yet, so building the list
+    // from residents made it unreachable exactly when it was being worked on.
     const propSel = document.getElementById('propFilter');
-    const propIds = [...new Set(allPeople.flatMap(p => p.property_ids || []).filter(Boolean))].sort((a,b)=>a-b);
-    propIds.forEach(id => {
-      const opt = document.createElement('option');
-      opt.value = id;
-      opt.textContent = propNameLookup[id] || `Property ${id}`;
-      propSel.appendChild(opt);
+    const occupied = new Set(allPeople.flatMap(p => p.property_ids || []).filter(Boolean));
+    fetch('/api/all-props').then(r => r.json()).then(list => {
+      const all = (Array.isArray(list) ? list : []).slice().sort((a, b) =>
+        (a.street || '').localeCompare(b.street || '')
+        || (parseInt(a.no, 10) || 0) - (parseInt(b.no, 10) || 0));
+      for (const pr of all) {
+        const no = (pr.no || '').trim(), nm = (pr.name || '').trim();
+        const label = (nm && no && no.toLowerCase() !== nm.toLowerCase())
+          ? `${no} ${pr.street} (${nm})` : nm ? `${nm}, ${pr.street}`
+          : `${no ? no + ' ' : ''}${pr.street}`;
+        const opt = document.createElement('option');
+        opt.value = pr.id;
+        opt.textContent = label + (occupied.has(pr.id) ? '' : ' — nobody recorded');
+        propSel.appendChild(opt);
+      }
+    }).catch(() => {
+      [...occupied].sort((a, b) => a - b).forEach(id => {
+        const opt = document.createElement('option');
+        opt.value = id;
+        opt.textContent = propNameLookup[id] || `Property ${id}`;
+        propSel.appendChild(opt);
+      });
     });
 
     // Store lookup globally for card display

@@ -1,0 +1,19 @@
+{
+  "note": "Relationships between people already in the record, stated by the owner rather than derived. Named rather than numbered so the file can be written without looking ids up.",
+  "people": [
+    {
+      "first_name": "Arthur",
+      "last_name": "Brownsword",
+      "relationships": [
+        {
+          "to": {
+            "first_name": "Helena Brownsword",
+            "last_name": "Dowson"
+          },
+          "type": "cousin_of",
+          "notes": "Stated by A. Hagues. Both Nottingham Brownswords; Helena was born Helena Brownsword, daughter of Alderman Anderson Brownsword."
+        }
+      ]
+    }
+  ]
+}

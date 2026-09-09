@@ -260,7 +260,7 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
       <button class="ftab" onclick="setFilter('unoccupied',this)">Unoccupied</button>
       <button class="ftab" onclick="setFilter('none',this)">No data</button>
     </div>
-    <input id="searchInput" placeholder="Search address, or a property ID…" oninput="renderProps()">
+    <input id="searchInput" placeholder="Search address, or a property ID…" oninput="_searchDebounced()">
     <div class="filter-stats" id="filterStats"></div>
   </div>
   <div class="prop-grid-wrap">
@@ -366,6 +366,10 @@ function setFilter(f, btn) {
   if (btn) btn.classList.add('active');
   renderProps();
 }
+
+// Debounced like the map and People pages, rather than rebuilding on every key.
+let _searchTimer = null;
+function _searchDebounced() { clearTimeout(_searchTimer); _searchTimer = setTimeout(renderProps, 250); }
 
 function renderProps() {
   const search = (document.getElementById('searchInput').value || '').toLowerCase();
