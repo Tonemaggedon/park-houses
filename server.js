@@ -443,6 +443,19 @@ async function dbInit() {
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
                       ON person_gazette(person_id, url)`);
 
+    // A house genuinely full of people — a boarding house, a large staff — is
+    // not a fault, and should stop being offered once someone has said so.
+    await db.query(`CREATE TABLE IF NOT EXISTS crowding_reviewed (
+      id SERIAL PRIMARY KEY,
+      property_id INTEGER NOT NULL,
+      census_year INTEGER NOT NULL,
+      note TEXT,
+      reviewed_by TEXT,
+      reviewed_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS crowding_reviewed_unique_idx
+                      ON crowding_reviewed(property_id, census_year)`);
+
     // Wikidata identifications. A dismissal has to be remembered, or the sweep
     // offers the same wrong match every time it is run.
     await db.query(`CREATE TABLE IF NOT EXISTS person_wikidata (
@@ -2829,6 +2842,33 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// POST /api/census/crowding/confirm — this house really did hold that many.
+// Sending confirmed:false takes it back into the list.
+app.post('/api/census/crowding/confirm', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const propertyId = parseInt(req.body && req.body.property_id, 10);
+  const year = parseInt(req.body && req.body.census_year, 10);
+  const on = !(req.body && req.body.confirmed === false);
+  if (!Number.isInteger(propertyId) || !Number.isInteger(year)) {
+    return res.status(400).json({ error: 'property_id and census_year are required' });
+  }
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (!on) {
+      await db.query(`DELETE FROM crowding_reviewed WHERE property_id=$1 AND census_year=$2`,
+        [propertyId, year]);
+      return res.json({ ok: true, confirmed: false });
+    }
+    await db.query(
+      `INSERT INTO crowding_reviewed (property_id, census_year, note, reviewed_by)
+            VALUES ($1,$2,$3,$4)
+       ON CONFLICT (property_id, census_year)
+       DO UPDATE SET note=EXCLUDED.note, reviewed_by=EXCLUDED.reviewed_by, reviewed_at=NOW()`,
+      [propertyId, year, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, confirmed: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // POST /api/census/reassign — send each census record to the property named
 // against it. One address holding several households is untangled a line at a
 // time, which no single "move everyone" action can do.
@@ -2976,16 +3016,27 @@ app.get('/api/census/crowding', async (req, res) => {
       SELECT census_year, COUNT(*) AS n FROM census_entries
        WHERE property_id IS NULL GROUP BY census_year ORDER BY census_year`);
 
+    const okRows = (await db.query(
+      `SELECT property_id, census_year, note FROM crowding_reviewed`)).rows;
+    const okKey = new Set(okRows.map(o => `${o.property_id}:${o.census_year}`));
+    const confirmed = req.query.confirmed === '1';
+
     res.json({
       threshold: min,
+      confirmedCount: okRows.length,
       median: Number(all.rows[0] && all.rows[0].median) || null,
       p95: Number(all.rows[0] && all.rows[0].p95) || null,
       unfiled: unfiled.rows.map(u => ({ year: u.census_year, count: Number(u.n) })),
-      rows: r.rows.map(x => ({
-        property_id: x.property_id, census_year: x.census_year,
-        people: Number(x.people), surnames: Number(x.surnames),
-        other_years: x.other_years || [],
-      })),
+      rows: r.rows
+        .filter(x => confirmed || !okKey.has(`${x.property_id}:${x.census_year}`))
+        .map(x => ({
+          property_id: x.property_id, census_year: x.census_year,
+          people: Number(x.people), surnames: Number(x.surnames),
+          other_years: x.other_years || [],
+          confirmed: okKey.has(`${x.property_id}:${x.census_year}`),
+          note: (okRows.find(o => o.property_id === x.property_id
+                                && o.census_year === x.census_year) || {}).note || null,
+        })),
     });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });

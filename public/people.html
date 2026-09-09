@@ -939,9 +939,13 @@ function renderProfile(p) {
           <div><label style="font-size:0.72rem;color:#8a7a5a">Occupation at census</label><br>
             <input id="cf-occ-${p.id}" placeholder="e.g. Lace merchant" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;box-sizing:border-box"></div>
         </div>
-        <div style="margin-bottom:8px"><label style="font-size:0.72rem;color:#8a7a5a">Property on The Park (type to search) or free-text address</label><br>
-          <input id="cf-addr-${p.id}" placeholder="e.g. The Limes, or 14 Cavendish Road East" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box">
-          <div id="cf-prop-results-${p.id}" style="display:none;border:1px solid #c8b888;border-radius:4px;background:#fff;max-height:120px;overflow-y:auto;margin-top:2px;font-size:0.8rem"></div></div>
+        <div style="margin-bottom:8px"><label style="font-size:0.72rem;color:#8a7a5a">Property on The Park</label><br>
+          <select id="cf-prop-${p.id}" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem">
+            <option value="">— not filed against a property —</option>
+            ${_propOptions(null)}
+          </select></div>
+        <div style="margin-bottom:8px"><label style="font-size:0.72rem;color:#8a7a5a">Or an address outside The Park</label><br>
+          <input id="cf-addr-${p.id}" placeholder="only if the house is not on The Park" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;box-sizing:border-box"></div>
         <input id="cf-source-${p.id}" placeholder="Source (optional — e.g. Ancestry, FindMyPast)" style="width:100%;padding:5px 8px;border:1px solid #c8b888;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif;margin-bottom:8px;box-sizing:border-box">
         <div style="display:flex;gap:8px">
           <button onclick="submitCensus(${p.id})" style="background:#4a7c5a;color:white;border:none;border-radius:4px;padding:5px 14px;font-size:0.8rem;cursor:pointer;font-family:Georgia,serif">Save</button>
@@ -1264,29 +1268,6 @@ function showAddCensus(personId) {
   const form = document.getElementById(`census-form-${personId}`);
   if (!form) return;
   form.style.display = form.style.display === 'none' ? 'block' : 'none';
-  if (form.style.display !== 'none') {
-    // Wire up property search autocomplete
-    const addrInput = document.getElementById(`cf-addr-${personId}`);
-    const results = document.getElementById(`cf-prop-results-${personId}`);
-    addrInput._propId = null;
-    addrInput.oninput = function() {
-      addrInput._propId = null;
-      const q = this.value.toLowerCase().trim();
-      if (!q || !window._propNameLookup) { results.style.display = 'none'; return; }
-      const matches = Object.entries(window._propNameLookup)
-        .filter(([,name]) => name.toLowerCase().includes(q))
-        .slice(0, 8);
-      if (!matches.length) { results.style.display = 'none'; return; }
-      results.style.display = 'block';
-      results.innerHTML = matches.map(([id, name]) =>
-        `<div style="padding:5px 10px;cursor:pointer" onmouseover="this.style.background='#f0e8d0'" onmouseout="this.style.background=''" onclick="
-          document.getElementById('cf-addr-${personId}').value='${name.replace(/'/g,"\\'")}';
-          document.getElementById('cf-addr-${personId}')._propId=${id};
-          document.getElementById('cf-prop-results-${personId}').style.display='none'
-        ">${name}</div>`
-      ).join('');
-    };
-  }
 }
 
 async function submitCensus(personId) {
@@ -1298,7 +1279,11 @@ async function submitCensus(personId) {
   const occ = get(`cf-occ-${personId}`).value.trim();
   const addrEl = get(`cf-addr-${personId}`);
   const source = get(`cf-source-${personId}`).value.trim();
-  const propId = addrEl._propId ? parseInt(addrEl._propId) : null;
+  // Read the chosen property directly. This used to depend on the user having
+  // clicked an autocomplete suggestion — typing the address and pressing Save
+  // looked identical but filed the record against no property at all.
+  const propSel = get(`cf-prop-${personId}`);
+  const propId = propSel && propSel.value ? parseInt(propSel.value, 10) : null;
   const address = (!propId && addrEl.value.trim()) ? addrEl.value.trim() : null;
   get(`cf-err-${personId}`).textContent = '';
   try {

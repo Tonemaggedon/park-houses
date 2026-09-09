@@ -45,6 +45,10 @@
   .tag { display:inline-block; border:1px solid var(--rule); border-radius:9px;
     padding:0 7px; font-size:.7rem; color:var(--soft); background:#f6f2e6; margin-right:4px; }
   .tag.hot { border-color:#e0b8a8; background:#fbeee8; color:var(--red); }
+  button.ok { font-family:inherit; font-size:.72rem; border:1px solid var(--rule); background:#fff;
+    color:var(--soft); border-radius:4px; padding:3px 9px; cursor:pointer; white-space:nowrap; }
+  button.ok:hover { border-color:var(--accent); }
+  button.ok:disabled { opacity:.5; cursor:default; }
 
   .empty { color:var(--faint); font-style:italic; padding:26px 0; }
   .err { color:var(--red); }
@@ -77,6 +81,7 @@
   <div class="ctrl">
     Show property-years with at least
     <input id="min" type="number" min="2" max="100" value="12"> people
+    <label style="margin-left:14px"><input id="showOk" type="checkbox"> including ones marked correct</label>
   </div>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
@@ -109,12 +114,14 @@ async function load() {
   const min = parseInt(document.getElementById('min').value, 10) || 12;
   bar.textContent = 'Loading…';
   try {
-    const d = await fetch('/api/census/crowding?min=' + min).then(r => r.json());
+    const withOk = document.getElementById('showOk').checked ? '&confirmed=1' : '';
+    const d = await fetch('/api/census/crowding?min=' + min + withOk).then(r => r.json());
     if (d.error) throw new Error(d.error);
 
     bar.textContent = `${d.rows.length} property-year${d.rows.length === 1 ? '' : 's'} at or above `
       + `${d.threshold} people · across the whole record the median household is `
-      + `${Math.round(d.median)} and 95% hold ${Math.round(d.p95)} or fewer`;
+      + `${Math.round(d.median)} and 95% hold ${Math.round(d.p95)} or fewer`
+      + (d.confirmedCount ? ` · ${d.confirmedCount} marked correct and hidden` : '');
 
     const un = (d.unfiled || []).filter(u => u.count);
     document.getElementById('unfiled').textContent = un.length
@@ -126,7 +133,7 @@ async function load() {
 
     box.innerHTML = '<div class="scroll"><table><thead><tr>'
       + '<th>People</th><th>Surnames</th><th>Year</th><th>Property</th>'
-      + '<th>Same house, other years</th><th>Why flagged</th>'
+      + '<th>Same house, other years</th><th>Why flagged</th><th></th>'
       + '</tr></thead><tbody>'
       + d.rows.map(r => {
           const others = (r.other_years || []);
@@ -151,7 +158,11 @@ async function load() {
               <a href="/reassign?prop=${r.property_id}&year=${r.census_year}"
                  style="margin-left:8px;font-size:.76rem">sort it ↗</a></td>
             <td class="other">${esc(otherTxt)}</td>
-            <td class="why">${why}</td>
+            <td class="why">${r.confirmed
+              ? `<span class="tag" style="border-color:#9ab88a;background:#eef5e8;color:#2f4d27">correct as it stands</span>`
+              : why}</td>
+            <td><button class="ok" data-prop="${r.property_id}" data-year="${r.census_year}"
+              data-on="${r.confirmed ? '0' : '1'}">${r.confirmed ? 'Undo' : 'This is correct'}</button></td>
           </tr>`;
         }).join('')
       + '</tbody></table></div>';
@@ -164,6 +175,29 @@ async function load() {
 let t = null;
 document.getElementById('min').addEventListener('input', () => {
   clearTimeout(t); t = setTimeout(load, 350);
+});
+document.getElementById('showOk').addEventListener('change', load);
+
+// A boarding house or a large staff is not a fault. Saying so once should stop
+// it being offered again, rather than being re-judged every time.
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('button.ok');
+  if (!btn) return;
+  btn.disabled = true; btn.textContent = '…';
+  try {
+    const res = await fetch('/api/census/crowding/confirm', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ property_id: Number(btn.dataset.prop),
+                             census_year: Number(btn.dataset.year),
+                             confirmed: btn.dataset.on === '1' }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    load();
+  } catch (err) {
+    btn.disabled = false; btn.textContent = 'This is correct';
+    alert('Could not save that: ' + err.message);
+  }
 });
 
 loadNames().then(load);
