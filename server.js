@@ -2842,6 +2842,75 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// GET /api/census/unfiled-groups — records filed against no property, gathered
+// by the address they carry. 238 records turn out to be 22 distinct addresses,
+// so this is 22 decisions rather than 238. Suggestions are offered, never
+// applied: a house name in the text is a strong hint, a street alone is not.
+const STREET_WORDS = { rd:'road', st:'street', dr:'drive', cres:'crescent', ave:'avenue',
+  e:'east', w:'west', n:'north', s:'south', sq:'square', ter:'terrace', ln:'lane' };
+const addrNorm = v => String(v || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ')
+  .split(/\s+/).filter(Boolean).map(w => STREET_WORDS[w] || w).join(' ');
+
+app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const r = await db.query(`
+      SELECT c.id, c.census_year, c.unresolved_address, c.relationship, c.person_id,
+             p.first_name, p.last_name
+        FROM census_entries c JOIN people p ON p.id = c.person_id
+       WHERE c.property_id IS NULL
+       ORDER BY c.id`);
+
+    let props = [];
+    try { props = JSON.parse(readAllPropsCached().body); } catch (e) { props = []; }
+    if (!Array.isArray(props)) props = [];
+    const suggest = (addr) => {
+      const a = addrNorm(addr);
+      if (!a) return [];
+      const out = [];
+      for (const pr of props) {
+        const nm = addrNorm(pr.name), st = addrNorm(pr.street);
+        const no = String(pr.no || '').trim();
+        let score = 0, why = [];
+        if (nm && nm.length > 3 && a.includes(nm)) { score += 10; why.push('house name'); }
+        if (st && a.includes(st)) { score += 4; why.push('street'); }
+        // House codes like "PeD1" or "SR1" carry the number after the letters.
+        const m = a.match(/^[a-z]{0,4}(\d+)\b/);
+        if (m && no && m[1] === no) { score += 5; why.push('number'); }
+        if (score >= 4) out.push({ id: pr.id, label: pr.address || pr.name || pr.street,
+                                   street: pr.street, score, why: why.join(' + ') });
+      }
+      out.sort((x, y) => y.score - x.score || x.id - y.id);
+      return out.slice(0, 6);
+    };
+
+    const byAddr = new Map();
+    for (const e of r.rows) {
+      const key = (e.unresolved_address || '').trim() || '\u0000none';
+      if (!byAddr.has(key)) byAddr.set(key, []);
+      byAddr.get(key).push(e);
+    }
+    const groups = [...byAddr.entries()].map(([addr, entries]) => {
+      const s = addr === '\u0000none' ? [] : suggest(addr);
+      const strong = s.length && s[0].score >= 10 && (s.length === 1 || s[0].score > s[1].score);
+      return {
+        address: addr === '\u0000none' ? null : addr,
+        count: entries.length,
+        years: [...new Set(entries.map(e => e.census_year))].sort(),
+        suggestions: s,
+        confident: !!strong,
+        entries: entries.map(e => ({
+          id: e.id, person_id: e.person_id, year: e.census_year,
+          name: [e.first_name, e.last_name].filter(Boolean).join(' '),
+          relationship: e.relationship,
+        })),
+      };
+    }).sort((a, b) => b.count - a.count);
+
+    res.json({ total: r.rows.length, groups });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // POST /api/census/crowding/confirm — this house really did hold that many.
 // Sending confirmed:false takes it back into the list.
 app.post('/api/census/crowding/confirm', requireContributor, async (req, res) => {
@@ -4281,6 +4350,7 @@ app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', '
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
+app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'unfiled.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 

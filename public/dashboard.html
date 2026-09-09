@@ -284,6 +284,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/name-sex" class="action-btn" id="nameSexCard" style="display:none"><span class="ab-icon">⚥</span><div><div class="ab-title">Forename Sex</div><div class="ab-label" id="nameSexLabel">Names still to classify</div></div></a>
         <a href="/wikidata-review" class="action-btn" id="wikidataCard" style="display:none"><span class="ab-icon">🔗</span><div><div class="ab-title">Wikidata Review</div><div class="ab-label" id="wikidataLabel">Possible Wikipedia matches to confirm</div></div></a>
         <a href="/crowding" class="action-btn" id="crowdingCard" style="display:none"><span class="ab-icon">⚠</span><div><div class="ab-title">Crowded Houses</div><div class="ab-label" id="crowdingLabel">Properties with improbably many people</div></div></a>
+        <a href="/unfiled" class="action-btn" id="unfiledCard" style="display:none"><span class="ab-icon">📥</span><div><div class="ab-title">Unfiled Records</div><div class="ab-label" id="unfiledLabel">Census records at no property</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
@@ -897,6 +898,14 @@ async function renderReviewCards(){
       document.getElementById('nameSexLabel').textContent =
         `${n.remaining} name${n.remaining===1?'':'s'} covering ${n.peopleRemaining} people`;
       document.getElementById('nameSexCard').style.display = '';
+    }
+  } catch(e) {}
+  try {
+    const u = await fetch('/api/census/unfiled-groups').then(r=>r.json());
+    if (u && u.total) {
+      document.getElementById('unfiledLabel').textContent =
+        `${u.total} record${u.total===1?'':'s'} across ${u.groups.length} address${u.groups.length===1?'':'es'}`;
+      document.getElementById('unfiledCard').style.display = '';
     }
   } catch(e) {}
   try {
