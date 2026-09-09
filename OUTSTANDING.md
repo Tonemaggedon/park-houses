@@ -1,7 +1,9 @@
 # Outstanding — Nottingham Park Houses
 
 A working tick list. Tick items off as you go (`- [ ]` → `- [x]`).
-Last checked against the live site: **9 September 2026** (second pass).
+Last checked against the live site: **9 September 2026** (third pass).
+
+**To see this list, just ask me for "the list"** — or "what's outstanding". I will read this file, check it against the live site, and show you what is left.
 
 ---
 
@@ -34,14 +36,14 @@ the old path and will not survive the next deploy.
 
 Each of these is a fork I deliberately did not take on your behalf.
 
-- [ ] **Edith Curnow's birth year.** Her record (#457) says **1872**; the 1939
-      Register says **1 August 1870**. The import left the 1872 alone rather than
-      writing a date that contradicted it, so she currently has no birth date at
-      all. Which is right?
-- [ ] **White Cottage or Amelia House?** You said schedule 231 is White Cottage.
-      The site records 19 Cavendish Crescent South as **Amelia House**. The 1939
-      people are linked to that property but I have not renamed it. Add White
-      Cottage as a former name, replace Amelia House, or leave it?
+- [x] ~~Edith Curnow's birth year~~ — **settled: 1872 is right, my transcription was wrong.**
+      Her 1939 Register entry records her as **67**, which puts her birth in 1871 or 1872, not
+      1870. I mis-read the year in the register image. Nothing to change; she could gain the
+      birth date **1 August 1872** if you want it.
+- [ ] **White Cottage or Amelia House?** You said schedule 231 is White Cottage; the site
+      records 19 Cavendish Crescent South (#46) as **Amelia House**. Say the word and I will
+      record White Cottage as a former name, exactly as The Lindens now sits on Linden House —
+      or replace the name outright if Amelia House is the wrong one.
 - [ ] **Henry H Goddard junior.** Father and son share a name at 17 Cavendish
       Crescent South. Name-matching would have merged them, so the son is entered
       as first name **"Henry H jnr"**. Rename him on his page if you would rather
@@ -52,7 +54,54 @@ Each of these is a fork I deliberately did not take on your behalf.
 
 ---
 
-## 3. Misfiled census records
+## 3. Houses named in the census that the record does not hold
+
+Six house names appear in unfiled census addresses with no matching property. Each needs a
+number, or creating as its own property the way Gartree Lodge was.
+
+**I tried to deduce the Huntingdon Drive numbers and could not.** The four households appear in
+no other census year at a numbered Huntingdon Drive address, so there is nothing to triangulate
+from. These need your knowledge or a source.
+
+- [ ] **Kenmore, Huntingdon Drive** — 6 records, 1921. Samuel Ritchie Jackson (52), wife
+      Margaret Emily, three children, one servant.
+- [ ] **Greendale, Huntingdon Drive** — 4 records, 1921. Joseph Spray (77), wife Martha,
+      daughter Jessie, one servant.
+- [ ] **Brampton, Huntingdon Drive** — 3 records, 1921. Gertrude Margaret Dobrashian (34),
+      a boarder and a servant.
+- [ ] **The Cottage, Huntingdon Drive** — 2 records, 1921. Sidney Richard Tann (42) and
+      wife Daisy.
+- [ ] **Allendale, Cavendish Road East** — 3 records.
+- [ ] **Gertrude House, Cavendish Road East** — 9 records. Frank Woodward as head. The address
+      reads "gertrude house /Gartree Cavendish Rd East", so it may be a muddle with Gartree —
+      but Gartree House already holds the Goddards in 1921, so it cannot simply be the same house.
+
+Huntingdon Drive is recorded as plain numbers 1–10 with no names at all, so these four names
+belong to four of those ten.
+
+---
+
+## 4. The three big piles
+
+Each of these has a page now. They are the bulk of the "crap imported" and are worth doing in
+this order.
+
+- [ ] **`/unfiled` — 271 records at no property, across only 22 addresses.** Roughly 90 can go
+      in six clicks: Peveril Drive (31), South Road (22), Felixstowe (21, but split the three
+      households first), Park Drive (6), Tower House (6), Kenilworth House (4). Another 121
+      carry only a street and need the house. 33 carry nothing at all.
+- [ ] **`/duplicates` — 48 pairs.** The 1911 and 1921 spreadsheets were loaded separately and
+      name people differently, so the same person exists twice: "Helena Brownsword Dowson" and
+      "Helena Dowson", "Kate A Homberger" and "Kate Adeline Homberger". A split person has half
+      their census history and appears at two addresses. **Merging cannot be undone**, so check
+      each pair.
+- [ ] **`/crowding` — 21 property-years.** Several households filed against one address. Use
+      **"sort it"** on each row to split them, or **"This is correct"** where the house really
+      did hold that many.
+
+---
+
+## 5. Misfiled census records
 
 ### Finish the Kenilworth move
 
@@ -94,7 +143,7 @@ household, or the **property picker on each census record** on a person's page f
 
 ---
 
-## 4. The big data gap
+## 6. The big data gap
 
 - [ ] **1911 birth places.** Only **330 of 902** people in the 1911 census have a
       birth place recorded (37%), against **1,272 of 1,289** for 1921 (99%). This
@@ -112,7 +161,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 5. Offered, not yet started
+## 7. Offered, not yet started
 
 - [ ] **Backfill `born_place` onto people from census entries.** Only 511 person
       records hold a birth place while the census entries behind them hold far
@@ -128,7 +177,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 6. Property questions
+## 8. Property questions
 
 - [ ] **Clumber Court (#399)** — marked demolished, but has **no residents linked
       and no census years**. Either the links are missing or the record is a stub.
@@ -140,7 +189,7 @@ Other gaps, for reference rather than action:
 
 ---
 
-## 7. Known weak spots in the code
+## 9. Known weak spots in the code
 
 - [ ] **Two sources of truth for property positions.** `data/all_props.json` holds a
       base coordinate for each property; roughly **396 manual placements** live in
@@ -151,6 +200,12 @@ Other gaps, for reference rather than action:
       alone made your own corrections look like faults. Anyone touching
       coordinates must check `/api/coords` first. Reconciling the two into one
       source would remove the trap for good.
+
+- [ ] **A slipped column put marital status and sex into the `source` field.** 41 census
+      entries have a source reading "Single, Female", "Married, Male" and so on, instead of
+      where the record came from. Same family of fault as the occupations one. The sex in them
+      could be recovered into the `sex` column where a person has none — worth doing before
+      clearing, since it is real information in the wrong place. Ask and I will build it.
 
 - [ ] **Duplicate resident links are possible.** `property_residents` has no unique index on
       (person_id, property_id), so nothing stops the same person being linked to the same
@@ -181,6 +236,21 @@ Other gaps, for reference rather than action:
       instead of silently serving the map.
 - [x] Wikidata pool rebuilt from 451 to 718 people, and the query committed so it
       can be refreshed: `node build-wikidata-snapshot.js`.
+- [x] Gartree Lodge created (#404, Tattershall Drive) — Gartree House's coach house, where the
+      Hattons lived; it did not exist as a property.
+- [x] The Lindens recorded as a former name of Linden House (#87).
+- [x] Arthur Brownsword and Helena Brownsword Dowson recorded as cousins; the people import
+      now understands relationships.
+- [x] Birth places can be backfilled onto people from census entries (dashboard job).
+- [x] Duplicate resident links can be cleaned up (dashboard job).
+- [x] Occupations that are not occupations can be cleared (dashboard job) — 40 census values
+      and 7 on people.
+- [x] The People page property filter lists every property, not only occupied ones.
+- [x] Census and family-tree searches debounced, as the map and People pages already were.
+- [x] Sir Frank and Sir Harold Bowden — **looked for, not there.** No Bowden of any spelling
+      among the 2,552 people; Harold's own Wikidata entry has no birthplace or residence. The
+      Gazette found them through honours lists, not through The Park. Dead end unless a source
+      turns up.
 - [x] The Pemberton household moved from 1 to 3 Kenilworth Road — four of the five;
       see Emily Purden above.
 - [x] Census records can be moved between properties at all — there was no way to,
