@@ -2829,6 +2829,65 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// POST /api/admin/clean-occupations — values in the occupation field that are
+// not occupations. A slipped column in an import leaves a sex or a relationship
+// there; a spreadsheet's "none" placeholder leaves a dash. They are few, but
+// "servant" and "wife" are plausible enough to survive a filter and skew the
+// occupation counts, which is exactly what makes them worth clearing.
+const NOT_AN_OCCUPATION = new Set([
+  'male', 'female', 'm', 'f',
+  'head', 'wife', 'husband', 'son', 'daughter', 'servant', 'boarder', 'lodger',
+  'visitor', 'sister', 'brother', 'mother', 'father', 'niece', 'nephew',
+  'sister-in-law', 'brother-in-law', 'cousin', 'grandson', 'granddaughter',
+  'none', 'n/a', 'na', 'unknown', 'nil',
+]);
+const isNotAnOccupation = v => {
+  const t = String(v == null ? '' : v).trim();
+  if (!t) return false;                       // already empty; nothing to clear
+  if (/^[-–—.]+$/.test(t)) return true;       // a dash standing in for "none"
+  if (/^\d{1,4}$/.test(t)) return true;       // a bare number
+  return NOT_AN_OCCUPATION.has(t.toLowerCase());
+};
+
+app.post('/api/admin/clean-occupations', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const ce = (await db.query(`
+      SELECT c.id, c.census_year, c.occupation_at_census AS val,
+             p.first_name, p.last_name, p.id AS person_id
+        FROM census_entries c JOIN people p ON p.id = c.person_id
+       WHERE COALESCE(TRIM(c.occupation_at_census), '') <> ''
+       ORDER BY c.id`)).rows.filter(r => isNotAnOccupation(r.val));
+
+    const occ = (await db.query(`
+      SELECT o.id, o.occupation AS val, p.first_name, p.last_name, p.id AS person_id
+        FROM occupations o JOIN people p ON p.id = o.person_id
+       WHERE COALESCE(TRIM(o.occupation), '') <> ''
+       ORDER BY o.id`)).rows.filter(r => isNotAnOccupation(r.val));
+
+    if (!dryRun) {
+      if (ce.length) {
+        await db.query(`UPDATE census_entries SET occupation_at_census = NULL WHERE id = ANY($1)`,
+          [ce.map(r => r.id)]);
+      }
+      if (occ.length) {
+        await db.query(`DELETE FROM occupations WHERE id = ANY($1)`, [occ.map(r => r.id)]);
+      }
+    }
+    const shape = r => ({
+      value: String(r.val).trim(), person_id: r.person_id,
+      name: [r.first_name, r.last_name].filter(Boolean).join(' '),
+      year: r.census_year || null,
+    });
+    res.json({
+      ok: true, dryRun,
+      censusCleared: ce.length, peopleCleared: occ.length,
+      census: ce.map(shape), people: occ.map(shape),
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/census/crowding — property-years holding an improbable number of
 // people. The Park's households run to a median of five; a house showing
 // twenty-odd in one year is usually several households filed against one

@@ -208,6 +208,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
     <div class="admin-tool">
       <div>
+        <div class="admin-tool-name">Clear occupations that are not occupations</div>
+        <div class="admin-tool-desc">A slipped column in an import leaves a sex or a relationship
+          in the occupation field, and a spreadsheet's placeholder leaves a dash. "Servant" and
+          "wife" are plausible enough to survive the filter and skew the occupation counts.
+          Preview lists every one by name before anything is cleared.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnCleanOccPreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnCleanOccRun" class="admin-btn">Clear</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
         <div class="admin-tool-name">Find rows that are not people</div>
         <div class="admin-tool-desc">A pasted spreadsheet sometimes brings its own column headings
           with it, and they end up filed as residents. This lists any record whose name is a
@@ -748,6 +761,23 @@ document.getElementById('btnMoveRun')?.addEventListener('click', e => {
   if (!confirm(`Move ${who} from property #${b.from} ${dest}` +
                (b.year ? ` for ${b.year}` : '') + '?')) return;
   runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
+});
+
+const describeCleanOcc = d => {
+  if (!d.censusCleared && !d.peopleCleared) return 'Nothing to clear — every occupation looks like one.';
+  const line = r => `  ${r.year ? r.year + '  ' : ''}${r.name} — "${r.value}"`;
+  return (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.censusCleared} census record${d.censusCleared === 1 ? '' : 's'} and `
+    + `${d.peopleCleared} occupation${d.peopleCleared === 1 ? '' : 's'} on people `
+    + `${d.dryRun ? 'would be cleared' : 'cleared'}.\n`
+    + (d.people.length ? '\nOn people (these show in the filter):\n' + d.people.map(line).join('\n') : '')
+    + (d.census.length ? '\n\nOn census records:\n' + d.census.map(line).join('\n') : '');
+};
+document.getElementById('btnCleanOccPreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/clean-occupations', { dryRun: true }, describeCleanOcc));
+document.getElementById('btnCleanOccRun')?.addEventListener('click', e => {
+  if (!confirm('Clear every occupation value that is not an occupation?')) return;
+  runAdminJob(e.target, '/api/admin/clean-occupations', {}, describeCleanOcc);
 });
 
 document.getElementById('btnStrayRows')?.addEventListener('click', async e => {
