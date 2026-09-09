@@ -245,6 +245,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <a href="/census/unresolved" class="action-btn" id="unresolvedCard" style="display:none"><span class="ab-icon">🔍</span><div><div class="ab-title">Unresolved Census</div><div class="ab-label" id="unresolvedLabel">People without a matched property</div></div></a>
         <a href="/gazette-review" class="action-btn" id="gazetteCard" style="display:none"><span class="ab-icon">📰</span><div><div class="ab-title">Gazette Review</div><div class="ab-label" id="gazetteLabel">Notices to confirm or dismiss</div></div></a>
         <a href="/name-sex" class="action-btn" id="nameSexCard" style="display:none"><span class="ab-icon">⚥</span><div><div class="ab-title">Forename Sex</div><div class="ab-label" id="nameSexLabel">Names still to classify</div></div></a>
+        <a href="/wikidata-review" class="action-btn" id="wikidataCard" style="display:none"><span class="ab-icon">🔗</span><div><div class="ab-title">Wikidata Review</div><div class="ab-label" id="wikidataLabel">Possible Wikipedia matches to confirm</div></div></a>
       </div>
       <div style="margin-top:1rem;" id="peopleProgress"></div>
     </div>
@@ -812,6 +813,15 @@ async function renderReviewCards(){
       document.getElementById('nameSexLabel').textContent =
         `${n.remaining} name${n.remaining===1?'':'s'} covering ${n.peopleRemaining} people`;
       document.getElementById('nameSexCard').style.display = '';
+    }
+  } catch(e) {}
+  try {
+    const w = await fetch('/api/wikidata/sweep').then(r=>r.json());
+    if (w && w.total > 0) {
+      document.getElementById('wikidataLabel').textContent =
+        `${w.total} possible match${w.total===1?'':'es'} across `
+        + `${w.matches.length} ${w.matches.length===1?'person':'people'}`;
+      document.getElementById('wikidataCard').style.display = '';
     }
   } catch(e) {}
 }

@@ -417,6 +417,23 @@ async function dbInit() {
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
                       ON person_gazette(person_id, url)`);
 
+    // Wikidata identifications. A dismissal has to be remembered, or the sweep
+    // offers the same wrong match every time it is run.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_wikidata (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      qid TEXT NOT NULL,
+      name TEXT,
+      url TEXT,
+      status TEXT NOT NULL DEFAULT 'suggested',  -- confirmed | dismissed
+      decided_by TEXT,
+      decided_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_wikidata_person_idx
+                      ON person_wikidata(person_id)`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_wikidata_unique_idx
+                      ON person_wikidata(person_id, qid)`);
+
     // A person's own published works. Kept as rows rather than a block of text
     // so the list can be ordered by year and each entry cited on its own.
     await db.query(`CREATE TABLE IF NOT EXISTS person_works (
@@ -1755,25 +1772,149 @@ function readWikidata() {
   return wikidataCache;
 }
 
-app.get('/api/wikidata-match', (req, res) => {
-  const norm = v => String(v || '').toLowerCase().replace(/[^a-z ]/g, '').trim();
-  const last = norm(req.query.last), first = norm(req.query.first).split(' ')[0];
-  const born = parseInt(req.query.born, 10);
-  if (!last) return res.json([]);
-  const hits = readWikidata().map(p => {
-    const parts = norm(p.name).split(' ').filter(Boolean);
-    if (parts.length < 2) return null;
-    if (parts[parts.length - 1] !== last) return null;
-    const firstMatches = first && parts[0] === first;
-    const yearGap = (born && p.born) ? Math.abs(born - parseInt(p.born, 10)) : null;
-    if (yearGap !== null && yearGap > 3) return null;      // same surname, wrong person
+// How far apart two birth years may be and still count as the same person.
+// Deliberately forgiving: many birth years here are derived from an age given
+// at a census, which is a year out as often as not, and plainly wrong more
+// rarely. Widening this finds more matches but admits more wrong ones — the
+// year gap is shown on every suggestion so a person can judge.
+const WD_YEAR_TOLERANCE = 3;
+
+const wdNorm = v => String(v || '').toLowerCase().replace(/[^a-z ]/g, '').trim();
+
+// Surname -> entries, built once. The sweep compares every resident against the
+// whole pool, which is far too much work to do by scanning the list each time.
+let wikidataBySurname = null;
+function wikidataIndex() {
+  if (!wikidataBySurname) {
+    wikidataBySurname = new Map();
+    for (const p of readWikidata()) {
+      const parts = wdNorm(p.name).split(' ').filter(Boolean);
+      if (parts.length < 2) continue;
+      const surname = parts[parts.length - 1];
+      if (!wikidataBySurname.has(surname)) wikidataBySurname.set(surname, []);
+      wikidataBySurname.get(surname).push({ entry: p, firstPart: parts[0] });
+    }
+  }
+  return wikidataBySurname;
+}
+
+// Shared by the per-person suggestion and the sweep, so the two never disagree.
+function matchWikidata({ first, last, born }) {
+  const lastN = wdNorm(last), firstN = wdNorm(first).split(' ')[0];
+  if (!lastN) return [];
+  const bornY = parseInt(born, 10);
+  const hits = [];
+  for (const { entry, firstPart } of wikidataIndex().get(lastN) || []) {
+    const firstMatches = firstN && firstPart === firstN;
+    const yearGap = (bornY && entry.born) ? Math.abs(bornY - parseInt(entry.born, 10)) : null;
+    if (yearGap !== null && yearGap > WD_YEAR_TOLERANCE) continue;  // same surname, wrong person
     let confidence = 'surname only';
     if (firstMatches && yearGap !== null) confidence = 'name and birth year';
     else if (firstMatches) confidence = 'name only';
-    return { ...p, confidence };
-  }).filter(Boolean);
+    hits.push({ ...entry, confidence, yearGap });
+  }
   const rank = { 'name and birth year': 0, 'name only': 1, 'surname only': 2 };
-  res.json(hits.sort((a, b) => rank[a.confidence] - rank[b.confidence]).slice(0, 8));
+  return hits.sort((a, b) => rank[a.confidence] - rank[b.confidence]);
+}
+
+app.get('/api/wikidata-match', (req, res) => {
+  res.json(matchWikidata({
+    first: req.query.first, last: req.query.last, born: req.query.born,
+  }).slice(0, 8));
+});
+
+// Every resident checked against the pool at once, so matches can be worked
+// through rather than stumbled upon one person at a time. The per-person
+// suggestion on the People page still works exactly as before; this is the
+// same matching, run across everybody.
+app.get('/api/wikidata/sweep', requireContributor, async (req, res) => {
+  if (!db) return res.json({ matches: [], total: 0, scanned: 0 });
+  try {
+    const r = await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.known_as, p.title, p.postnominals,
+             p.born_year, p.died_year, p.bio,
+             ARRAY(SELECT w.qid FROM person_wikidata w WHERE w.person_id = p.id) AS decided
+        FROM people p
+       WHERE p.wikipedia_url IS NULL OR p.wikipedia_url = ''
+       ORDER BY p.last_name, p.first_name`);
+
+    const matches = [];
+    for (const p of r.rows) {
+      const decided = new Set(p.decided || []);
+      const strong = matchWikidata({
+        first: p.first_name, last: p.last_name, born: p.born_year,
+      }).filter(m => m.confidence === 'name and birth year' && !decided.has(m.qid));
+      if (!strong.length) continue;
+      const bio = (p.bio || '').replace(/\s+/g, ' ').trim();
+      matches.push({
+        id: p.id, first_name: p.first_name, last_name: p.last_name,
+        known_as: p.known_as, title: p.title, postnominals: p.postnominals,
+        born_year: p.born_year, died_year: p.died_year,
+        bio: bio.length > 240 ? bio.slice(0, 240) + '…' : bio,
+        candidates: strong.slice(0, 4),
+      });
+    }
+    res.json({
+      matches, total: matches.reduce((n, m) => n + m.candidates.length, 0),
+      scanned: r.rows.length, tolerance: WD_YEAR_TOLERANCE,
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// What has already been decided, newest first — so a wrong click can be found
+// and undone rather than being permanent.
+app.get('/api/wikidata/decided', requireContributor, async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(`
+      SELECT w.person_id, w.qid, w.name, w.url, w.status, w.decided_at,
+             p.first_name, p.last_name, p.born_year
+        FROM person_wikidata w
+        JOIN people p ON p.id = w.person_id
+       ORDER BY w.decided_at DESC
+       LIMIT 200`);
+    res.json(r.rows);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Confirming records the article on the person; dismissing remembers the 'no'
+// so the sweep stops offering it.
+app.post('/api/person/:id/wikidata', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const personId = parseInt(req.params.id, 10);
+  const { qid, name, url } = req.body || {};
+  const asked = req.body && req.body.status;
+  const status = asked === 'confirmed' ? 'confirmed' : asked === 'reset' ? 'reset' : 'dismissed';
+  if (!personId || !qid) return res.status(400).json({ error: 'person and qid required' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    // Undoing a wrong click: forget the decision so the sweep offers it again.
+    // A confirmation also wrote the article onto the person, and someone with a
+    // Wikipedia link is out of the sweep's scope entirely — so that has to come
+    // off too, or undoing a confirmation would quietly do nothing. Only clear it
+    // when it is still the link this decision set, never someone else's work.
+    if (status === 'reset') {
+      const prev = await db.query(
+        `DELETE FROM person_wikidata WHERE person_id=$1 AND qid=$2 RETURNING status, url`,
+        [personId, String(qid)]);
+      const row = prev.rows[0];
+      if (row && row.status === 'confirmed' && row.url) {
+        await db.query(`UPDATE people SET wikipedia_url=NULL WHERE id=$1 AND wikipedia_url=$2`,
+          [personId, row.url]);
+      }
+      return res.json({ ok: true, status });
+    }
+    await db.query(
+      `INSERT INTO person_wikidata (person_id, qid, name, url, status, decided_by)
+            VALUES ($1,$2,$3,$4,$5,$6)
+       ON CONFLICT (person_id, qid)
+       DO UPDATE SET status=EXCLUDED.status, decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
+      [personId, String(qid), name || null, url || null, status, who]);
+    if (status === 'confirmed' && url) {
+      await db.query(`UPDATE people SET wikipedia_url=$2 WHERE id=$1`, [personId, String(url)]);
+    }
+    res.json({ ok: true, status });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── Historic England listed entries ───────────────────────────────────────────
@@ -3736,6 +3877,7 @@ app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
 app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
+app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
