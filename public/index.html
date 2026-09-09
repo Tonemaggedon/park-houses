@@ -501,7 +501,7 @@
 </div>
 <div id="censusBar" style="display:none;background:#1a3a2a;padding:5px 14px;flex-direction:row;align-items:center;gap:10px;font-size:0.75rem;color:#c8d8b8;font-family:Georgia,serif">
   <span style="white-space:nowrap">Census year:</span>
-  <input type="range" id="censusSlider" min="0" max="7" step="1" value="0" style="flex:1;accent-color:#4caf82;max-width:220px" oninput="onCensusSlide(this.value)">
+  <input type="range" id="censusSlider" min="0" max="9" step="1" value="0" style="flex:1;accent-color:#4caf82;max-width:220px" oninput="onCensusSlide(this.value)">
   <span id="censusLabel" style="min-width:32px;font-weight:bold;color:#4caf82">—</span>
   <span id="censusCoverage" style="color:#8a9a7a;font-size:0.7rem"></span>
   <button onclick="closeCensusMode()" style="background:none;border:none;color:#8a9a7a;cursor:pointer;font-size:0.85rem;padding:0 4px;line-height:1" title="Close census filter">✕</button>
@@ -1466,12 +1466,16 @@ function printProperty() {
 }
 
 // ── CENSUS YEAR SLIDER ────────────────────────────────────────────────────────
-const CENSUS_YEARS = [1841,1851,1861,1871,1881,1891,1901,1911];
+const CENSUS_YEARS = [1841,1851,1861,1871,1881,1891,1901,1911,1921,1939];
 let censusCoverage = null;
 let censusMode = false;
 let censusYear = null;
 
 async function openCensusMode() {
+  // Range comes from the list itself. It was hardcoded to 7, which quietly cut
+  // the slider off at 1911 and put 1921 — the largest year — out of reach.
+  const slider = document.getElementById('censusSlider');
+  if (slider) slider.max = String(CENSUS_YEARS.length - 1);
   if (!censusCoverage) {
     censusCoverage = await fetch('/api/census-coverage').then(r=>r.json()).catch(()=>({}));
   }

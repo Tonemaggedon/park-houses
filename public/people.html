@@ -914,7 +914,9 @@ function renderProfile(p) {
         </div>`).join('')}
       </div>`).join('');
     const addCensusBtn = canEditCensus ? `<button onclick="showAddCensus(${p.id})" style="background:none;border:1px solid #8a6a2a;color:#8a6a2a;border-radius:4px;padding:2px 10px;font-size:0.72rem;cursor:pointer;margin-left:auto">+ Add</button>` : '';
-    const yearOpts = [1841,1851,1861,1871,1881,1891,1901,1911].map(y=>`<option value="${y}">${y}</option>`).join('');
+    // 1921 and the 1939 Register are in the record too — the list stopped at 1911
+    // while the import screen already offered both.
+    const yearOpts = [1841,1851,1861,1871,1881,1891,1901,1911,1921,1939].map(y=>`<option value="${y}">${y}</option>`).join('');
     const roleOpts = ['Head','Wife','Husband','Son','Daughter','Boarder','Lodger','Servant','Visitor','Scholar','Other'].map(r=>`<option value="${r}">${r}</option>`).join('');
     html.push(`<div class="pane-section" id="census-section-${p.id}">
       <h3 style="display:flex;align-items:center">Census Records ${addCensusBtn}</h3>
