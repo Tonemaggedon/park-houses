@@ -90,8 +90,10 @@
   <p class="lede">Every person recorded at one address in one year, grouped into households by
     the order they were entered — each <em>Head</em> starts a new one. Put the property number
     each household belongs to in the box beside it.</p>
-  <p class="lede">Leave a box empty to leave that record alone. Type <strong>0</strong> or a dash
-    to unfile it, sending it back to the unresolved queue when the right house is not yet known.</p>
+  <p class="lede"><strong>An empty box leaves that record where it is</strong> — so unfiling is
+    <strong>0</strong> (or a dash), not blank. There is an <strong>Unfile</strong> button on each
+    household for the same thing. Unfiled records go back to the unresolved queue, which is what
+    you want when a household plainly does not belong here but the right house is not yet known.</p>
 
   <div class="pick">
     Property <input id="prop" type="number" placeholder="e.g. 310">
@@ -176,6 +178,7 @@ async function load() {
           <span class="hh-set">
             send all to <input type="number" class="hh-dest" placeholder="#" data-hh="${i}">
             <button type="button" data-apply="${i}">Apply</button>
+            <button type="button" data-unfile="${i}" title="Send this household back to the unresolved queue">Unfile</button>
           </span>
         </div>
         <table><thead><tr>
@@ -189,7 +192,7 @@ async function load() {
           <td class="rel">${esc(e.occupation_at_census || '')}</td>
           <td class="n">${e.person_id}</td>
           <td><input class="dest" data-entry="${e.id}" data-hh="${i}"
-                placeholder="#" aria-label="Property for ${esc(nameOf(e))}"></td>
+                placeholder="# or 0" aria-label="Property for ${esc(nameOf(e))} — a property number, or 0 to unfile"></td>
         </tr>`).join('')}
         </tbody></table></div>`;
     }).join('');
@@ -237,12 +240,19 @@ function refresh() {
 document.addEventListener('input', e => { if (e.target.classList.contains('dest')) refresh(); });
 
 document.addEventListener('click', e => {
-  const btn = e.target.closest('[data-apply]');
-  if (!btn) return;
-  const i = btn.dataset.apply;
-  const val = document.querySelector(`.hh-dest[data-hh="${i}"]`).value;
-  document.querySelectorAll(`.dest[data-hh="${i}"]`).forEach(inp => { inp.value = val; });
-  refresh();
+  const apply = e.target.closest('[data-apply]');
+  if (apply) {
+    const i = apply.dataset.apply;
+    const val = document.querySelector(`.hh-dest[data-hh="${i}"]`).value;
+    document.querySelectorAll(`.dest[data-hh="${i}"]`).forEach(inp => { inp.value = val; });
+    return refresh();
+  }
+  // Unfiling had to be typed as 0, which nobody would guess.
+  const un = e.target.closest('[data-unfile]');
+  if (un) {
+    document.querySelectorAll(`.dest[data-hh="${un.dataset.unfile}"]`).forEach(inp => { inp.value = '0'; });
+    return refresh();
+  }
 });
 
 document.getElementById('go').addEventListener('click', load);
