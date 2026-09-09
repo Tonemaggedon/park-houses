@@ -186,15 +186,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
       <div>
         <div class="admin-tool-name">Move a household to another property</div>
         <div class="admin-tool-desc">For a household filed against the wrong house. Moves every
-          census record from one property to another, and the resident links with them. Preview
-          first — it lists each record by name and year before anything changes.</div>
+          census record from one property to another, and the resident links with them. Leave
+          <em>to</em> blank to unfile instead, sending the records back to the unresolved queue
+          when the right address is not yet known. Fill <em>only these people</em> to move one
+          household out of an address holding several. Preview first — it lists each record by
+          name and year before anything changes.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <input id="mvFrom" type="number" placeholder="from #" style="width:88px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
           <span style="color:#8a9a7a">→</span>
-          <input id="mvTo" type="number" placeholder="to #" style="width:88px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
+          <input id="mvTo" type="number" placeholder="to # (blank = unfile)" style="width:150px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
           <input id="mvYear" type="number" placeholder="year (all)" style="width:104px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
           <label style="font-size:.76rem;color:#8a9a7a;display:flex;gap:5px;align-items:center">
             <input id="mvUnfiled" type="checkbox" checked> also their unfiled records</label>
+          <input id="mvPeople" type="text" placeholder="only these people, e.g. 2226,2227" style="flex:1;min-width:210px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
         </div>
       </div>
       <div style="display:flex;gap:8px">
@@ -719,7 +723,9 @@ const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done
 
 function _moveBody(dryRun) {
   const num = id => { const v = document.getElementById(id).value.trim(); return v === '' ? null : parseInt(v, 10); };
-  return { from: num('mvFrom'), to: num('mvTo'), year: num('mvYear'),
+  const ids = document.getElementById('mvPeople').value.split(/[^0-9]+/)
+    .filter(Boolean).map(Number);
+  return { from: num('mvFrom'), to: num('mvTo'), year: num('mvYear'), personIds: ids,
            includeUnfiled: document.getElementById('mvUnfiled').checked, dryRun };
 }
 const describeMove = d => {
@@ -727,7 +733,8 @@ const describeMove = d => {
   const head = (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
     + `${d.entries.length} census record${d.entries.length === 1 ? '' : 's'} across `
     + `${d.people} ${d.people === 1 ? 'person' : 'people'}, and ${d.links} resident link`
-    + `${d.links === 1 ? '' : 's'}, ${d.dryRun ? 'would move' : 'moved'} from #${d.from} to #${d.to}`
+    + `${d.links === 1 ? '' : 's'}, ${d.dryRun ? (d.unfile ? 'would be unfiled' : 'would move') : (d.unfile ? 'unfiled' : 'moved')} `
+    + `from #${d.from}` + (d.unfile ? '' : ` to #${d.to}`)
     + (d.year ? ` for ${d.year}` : '') + ':\n';
   return head + d.entries.map(e => `  ${e.year}  ${e.name}${e.wasUnfiled ? '  (was unfiled)' : ''}`).join('\n');
 };
@@ -735,7 +742,10 @@ document.getElementById('btnMovePreview')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/move-residents', _moveBody(true), describeMove));
 document.getElementById('btnMoveRun')?.addEventListener('click', e => {
   const b = _moveBody(false);
-  if (!confirm(`Move every census record from property #${b.from} to #${b.to}` +
+  const who = b.personIds.length ? `${b.personIds.length} selected people` : 'every census record';
+  const dest = (b.to === null || b.to === undefined || Number.isNaN(b.to))
+    ? 'back to unfiled (no property)' : `to #${b.to}`;
+  if (!confirm(`Move ${who} from property #${b.from} ${dest}` +
                (b.year ? ` for ${b.year}` : '') + '?')) return;
   runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
 });

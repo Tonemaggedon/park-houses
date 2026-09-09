@@ -2898,15 +2898,21 @@ app.post('/api/admin/move-residents', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const dryRun = req.body && req.body.dryRun === true;
   const from = parseInt(req.body && req.body.from, 10);
-  const to   = parseInt(req.body && req.body.to, 10);
+  // A blank destination means unfile: send the records back to the unresolved
+  // queue rather than to another house. That is the honest move when a
+  // household plainly does not belong where it sits but the right address is
+  // not yet known.
+  const rawTo = req.body && req.body.to;
+  const unfile = rawTo === null || rawTo === undefined || rawTo === '';
+  const to = unfile ? null : parseInt(rawTo, 10);
   const year = req.body && req.body.year ? parseInt(req.body.year, 10) : null;
   const includeUnfiled = req.body && req.body.includeUnfiled === true;
   const only = Array.isArray(req.body && req.body.personIds) && req.body.personIds.length
     ? req.body.personIds.map(n => parseInt(n, 10)).filter(Number.isInteger) : null;
-  if (!Number.isInteger(from) || !Number.isInteger(to)) {
-    return res.status(400).json({ error: 'from and to property ids are required' });
+  if (!Number.isInteger(from) || (!unfile && !Number.isInteger(to))) {
+    return res.status(400).json({ error: 'a from property id is required, and a to id unless unfiling' });
   }
-  if (from === to) return res.status(400).json({ error: 'from and to are the same property' });
+  if (!unfile && from === to) return res.status(400).json({ error: 'from and to are the same property' });
   try {
     // Who is actually at the source, so an unfiled sweep cannot reach beyond them.
     const atSource = (await db.query(
@@ -2931,10 +2937,19 @@ app.post('/api/admin/move-residents', requireAdmin, async (req, res) => {
       [from, people])).rows.map(r => r.person_id);
 
     if (!dryRun && entries.length) {
-      await db.query(`UPDATE census_entries SET property_id=$1, unresolved_address=NULL
-                       WHERE id = ANY($2)`, [to, entries.map(e => e.id)]);
+      // Unfiling keeps whatever address hint the record carries; filing clears it.
+      await db.query(
+        `UPDATE census_entries
+            SET property_id=$1,
+                unresolved_address = CASE WHEN $1::int IS NULL THEN unresolved_address ELSE NULL END
+          WHERE id = ANY($2)`, [to, entries.map(e => e.id)]);
     }
-    if (!dryRun && linkRows.length) {
+    // Unfiling removes the resident link rather than pointing it somewhere new.
+    if (!dryRun && unfile && linkRows.length) {
+      await db.query(`DELETE FROM property_residents WHERE property_id=$1 AND person_id = ANY($2)`,
+        [from, linkRows]);
+    }
+    if (!dryRun && !unfile && linkRows.length) {
       // The person may already be linked to the destination. property_residents
       // has no unique index on (person_id, property_id), so ON CONFLICT has
       // nothing to catch on and would happily write a second identical link —
@@ -2950,7 +2965,7 @@ app.post('/api/admin/move-residents', requireAdmin, async (req, res) => {
         [from, linkRows]);
     }
     res.json({
-      ok: true, dryRun, from, to, year, people: people.length,
+      ok: true, dryRun, from, to, unfile, year, people: people.length,
       links: linkRows.length,
       entries: entries.map(e => ({
         id: e.id, year: e.census_year,
