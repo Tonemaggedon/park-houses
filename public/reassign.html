@@ -53,6 +53,11 @@
     font-family:inherit; font-size:.85rem; text-align:center; }
   .dest.set { border-color:var(--green); background:#f2f7ef; font-weight:700; }
   .dest.unfile { border-color:#c8a86a; background:#fbf4e2; font-weight:700; }
+  .destname { display:block; font-size:.72rem; color:var(--faint); margin-top:2px;
+    max-width:190px; }
+  .destname.bad { color:var(--red); }
+  .destname.ok { color:var(--green); }
+  .hh-set .destname { display:inline; margin:0; max-width:none; }
 
   .savebar { position:fixed; left:0; right:0; bottom:0; background:#25401f; color:#f2ecd8;
     padding:11px 20px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;
@@ -127,8 +132,12 @@ async function init() {
   try {
     const list = await fetch('/api/all-props').then(r => r.json());
     for (const p of (Array.isArray(list) ? list : [])) {
-      propNames[p.id] = p.name ? `${p.no ? p.no + ' ' : ''}${p.street} (${p.name})`
-                               : `${p.no ? p.no + ' ' : ''}${p.street}`;
+      propNames[p.id] = (p => {
+    const no = (p.no || '').trim(), nm = (p.name || '').trim();
+    if (nm && no && no.toLowerCase() !== nm.toLowerCase()) return `${no} ${p.street} (${nm})`;
+    if (nm) return `${nm}, ${p.street}`;
+    return `${no ? no + ' ' : ''}${p.street}`;
+  })(p);
     }
   } catch (e) {}
   const q = new URLSearchParams(location.search);
@@ -177,6 +186,7 @@ async function load() {
           <span class="hh-sub">${h.members.length} ${h.members.length === 1 ? 'person' : 'people'}${occ}</span>
           <span class="hh-set">
             send all to <input type="number" class="hh-dest" placeholder="#" data-hh="${i}">
+            <span class="destname" data-forhh="${i}"></span>
             <button type="button" data-apply="${i}">Apply</button>
             <button type="button" data-unfile="${i}" title="Send this household back to the unresolved queue">Unfile</button>
           </span>
@@ -192,7 +202,8 @@ async function load() {
           <td class="rel">${esc(e.occupation_at_census || '')}</td>
           <td class="n">${e.person_id}</td>
           <td><input class="dest" data-entry="${e.id}" data-hh="${i}"
-                placeholder="# or 0" aria-label="Property for ${esc(nameOf(e))} — a property number, or 0 to unfile"></td>
+                placeholder="# or 0" aria-label="Property for ${esc(nameOf(e))} — a property number, or 0 to unfile">
+              <span class="destname" data-for="${e.id}"></span></td>
         </tr>`).join('')}
         </tbody></table></div>`;
     }).join('');
@@ -214,10 +225,28 @@ function parseDest(raw) {
   return { propertyId: n };
 }
 
+// A bare number says nothing. Show the property it means as it is typed, so a
+// wrong one is caught before saving rather than after.
+function describeDest(d) {
+  if (d.skip) return { text: '', cls: '' };
+  if (d.bad) return { text: 'not a property number', cls: 'bad' };
+  if (d.propertyId === null) return { text: 'unfile — back to the queue', cls: 'ok' };
+  const name = propNames[d.propertyId];
+  return name ? { text: name, cls: 'ok' }
+              : { text: `no property #${d.propertyId}`, cls: 'bad' };
+}
+
 function refresh() {
-  let filed = 0, unfiled = 0, bad = 0;
+  let filed = 0, unfiled = 0, bad = 0, unknown = 0;
+  document.querySelectorAll('.hh-dest').forEach(i => {
+    const lbl = document.querySelector(`.destname[data-forhh="${i.dataset.hh}"]`);
+    if (lbl) { const d = describeDest(parseDest(i.value)); lbl.textContent = d.text; lbl.className = 'destname ' + d.cls; }
+  });
   document.querySelectorAll('.dest').forEach(i => {
     const d = parseDest(i.value);
+    const lbl = document.querySelector(`.destname[data-for="${i.dataset.entry}"]`);
+    if (lbl) { const t = describeDest(d); lbl.textContent = t.text; lbl.className = 'destname ' + t.cls; }
+    if (d.propertyId && !propNames[d.propertyId]) unknown++;
     i.classList.toggle('set', !!d.propertyId);
     i.classList.toggle('unfile', d.propertyId === null && !d.skip && !d.bad);
     i.style.borderColor = d.bad ? '#a3341f' : '';
@@ -228,6 +257,10 @@ function refresh() {
   });
   const msg = document.getElementById('msg'), btn = document.getElementById('save');
   if (bad) { msg.textContent = `${bad} box${bad === 1 ? '' : 'es'} not a property number.`; btn.disabled = true; return; }
+  if (unknown) {
+    msg.textContent = `${unknown} box${unknown === 1 ? ' names' : 'es name'} a property that does not exist.`;
+    btn.disabled = true; return;
+  }
   if (!filed && !unfiled) { msg.textContent = 'Nothing to save yet.'; btn.disabled = true; return; }
   const parts = [];
   if (filed) parts.push(`${filed} record${filed === 1 ? '' : 's'} to move`);

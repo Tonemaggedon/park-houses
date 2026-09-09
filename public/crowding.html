@@ -103,8 +103,12 @@ async function loadNames() {
   try {
     const list = await fetch('/api/all-props').then(r => r.json());
     for (const p of (Array.isArray(list) ? list : [])) {
-      propNames[p.id] = p.name ? `${p.no ? p.no + ' ' : ''}${p.street} (${p.name})`
-                               : `${p.no ? p.no + ' ' : ''}${p.street}`;
+      propNames[p.id] = (p => {
+    const no = (p.no || '').trim(), nm = (p.name || '').trim();
+    if (nm && no && no.toLowerCase() !== nm.toLowerCase()) return `${no} ${p.street} (${nm})`;
+    if (nm) return `${nm}, ${p.street}`;
+    return `${no ? no + ' ' : ''}${p.street}`;
+  })(p);
     }
   } catch (e) {}
 }

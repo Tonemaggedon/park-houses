@@ -1338,9 +1338,12 @@ let _allPropsCache = null;
 function _propOptions(selectedId) {
   if (!_allPropsCache) return '';
   return _allPropsCache.map(p => {
-    const label = p.name && p.no ? `${p.no} ${p.street} (${p.name})`
-                : p.name ? `${p.name}, ${p.street}`
-                : `${p.no ? p.no + ' ' : ''}${p.street}`;
+    const label = (p => {
+    const no = (p.no || '').trim(), nm = (p.name || '').trim();
+    if (nm && no && no.toLowerCase() !== nm.toLowerCase()) return `${no} ${p.street} (${nm})`;
+    if (nm) return `${nm}, ${p.street}`;
+    return `${no ? no + ' ' : ''}${p.street}`;
+  })(p);
     const sel = String(p.id) === String(selectedId) ? ' selected' : '';
     return `<option value="${p.id}"${sel}>#${p.id} — ${esc(label)}</option>`;
   }).join('');
