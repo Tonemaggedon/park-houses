@@ -184,6 +184,26 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
     <div class="admin-tool">
       <div>
+        <div class="admin-tool-name">Move a household to another property</div>
+        <div class="admin-tool-desc">For a household filed against the wrong house. Moves every
+          census record from one property to another, and the resident links with them. Preview
+          first — it lists each record by name and year before anything changes.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
+          <input id="mvFrom" type="number" placeholder="from #" style="width:88px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
+          <span style="color:#8a9a7a">→</span>
+          <input id="mvTo" type="number" placeholder="to #" style="width:88px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
+          <input id="mvYear" type="number" placeholder="year (all)" style="width:104px;padding:5px 8px;border:1px solid #3a4a3a;border-radius:4px;background:#101c10;color:#e8dfc8;font-family:inherit;font-size:.8rem">
+          <label style="font-size:.76rem;color:#8a9a7a;display:flex;gap:5px;align-items:center">
+            <input id="mvUnfiled" type="checkbox" checked> also their unfiled records</label>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnMovePreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnMoveRun" class="admin-btn">Move</button>
+      </div>
+    </div>
+    <div class="admin-tool">
+      <div>
         <div class="admin-tool-name">Find rows that are not people</div>
         <div class="admin-tool-desc">A pasted spreadsheet sometimes brings its own column headings
           with it, and they end up filed as residents. This lists any record whose name is a
@@ -695,6 +715,29 @@ const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done
       + `${x.alreadyPresent} already present, ${x.propertyLinks} property link`
       + `${x.propertyLinks === 1 ? '' : 's'}`).join('\n')
   + ((d.report || []).length ? '' : 'No people files found in data/.');
+
+function _moveBody(dryRun) {
+  const num = id => { const v = document.getElementById(id).value.trim(); return v === '' ? null : parseInt(v, 10); };
+  return { from: num('mvFrom'), to: num('mvTo'), year: num('mvYear'),
+           includeUnfiled: document.getElementById('mvUnfiled').checked, dryRun };
+}
+const describeMove = d => {
+  if (!d.entries.length) return 'Nothing to move — no census records found at that property.';
+  const head = (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.entries.length} census record${d.entries.length === 1 ? '' : 's'} across `
+    + `${d.people} ${d.people === 1 ? 'person' : 'people'}, and ${d.links} resident link`
+    + `${d.links === 1 ? '' : 's'}, ${d.dryRun ? 'would move' : 'moved'} from #${d.from} to #${d.to}`
+    + (d.year ? ` for ${d.year}` : '') + ':\n';
+  return head + d.entries.map(e => `  ${e.year}  ${e.name}${e.wasUnfiled ? '  (was unfiled)' : ''}`).join('\n');
+};
+document.getElementById('btnMovePreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/move-residents', _moveBody(true), describeMove));
+document.getElementById('btnMoveRun')?.addEventListener('click', e => {
+  const b = _moveBody(false);
+  if (!confirm(`Move every census record from property #${b.from} to #${b.to}` +
+               (b.year ? ` for ${b.year}` : '') + '?')) return;
+  runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
+});
 
 document.getElementById('btnStrayRows')?.addEventListener('click', async e => {
   const btn = e.target, out = document.getElementById('adminToolsResult');

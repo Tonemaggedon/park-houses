@@ -2825,6 +2825,78 @@ const looksLikeHeading = v => COLUMN_HEADINGS.has(
   String(v || '').toLowerCase().replace(/\(s\)/g, 's').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
 );
 
+// POST /api/admin/move-residents — a household filed against the wrong house.
+// Moves census records from one property to another, and the resident links
+// with them. Optionally limited to a census year, and optionally sweeping up
+// the same people's unfiled records, which sit at no property at all and so
+// would not otherwise be caught by a move "from" one.
+app.post('/api/admin/move-residents', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  const from = parseInt(req.body && req.body.from, 10);
+  const to   = parseInt(req.body && req.body.to, 10);
+  const year = req.body && req.body.year ? parseInt(req.body.year, 10) : null;
+  const includeUnfiled = req.body && req.body.includeUnfiled === true;
+  const only = Array.isArray(req.body && req.body.personIds) && req.body.personIds.length
+    ? req.body.personIds.map(n => parseInt(n, 10)).filter(Number.isInteger) : null;
+  if (!Number.isInteger(from) || !Number.isInteger(to)) {
+    return res.status(400).json({ error: 'from and to property ids are required' });
+  }
+  if (from === to) return res.status(400).json({ error: 'from and to are the same property' });
+  try {
+    // Who is actually at the source, so an unfiled sweep cannot reach beyond them.
+    const atSource = (await db.query(
+      `SELECT DISTINCT person_id FROM census_entries
+        WHERE property_id=$1 AND person_id IS NOT NULL
+          ${year ? 'AND census_year=$2' : ''}`,
+      year ? [from, year] : [from])).rows.map(r => r.person_id);
+    const people = only ? atSource.filter(id => only.includes(id)) : atSource;
+    if (!people.length) return res.json({ ok: true, dryRun, entries: [], links: 0, people: 0 });
+
+    const entries = (await db.query(
+      `SELECT c.id, c.census_year, c.property_id, p.first_name, p.last_name
+         FROM census_entries c JOIN people p ON p.id = c.person_id
+        WHERE c.person_id = ANY($1)
+          AND ( c.property_id = $2 ${includeUnfiled ? 'OR c.property_id IS NULL' : ''} )
+          ${year ? 'AND c.census_year = $3' : ''}
+        ORDER BY p.last_name, p.first_name, c.census_year`,
+      year ? [people, from, year] : [people, from])).rows;
+
+    const linkRows = (await db.query(
+      `SELECT person_id FROM property_residents WHERE property_id=$1 AND person_id = ANY($2)`,
+      [from, people])).rows.map(r => r.person_id);
+
+    if (!dryRun && entries.length) {
+      await db.query(`UPDATE census_entries SET property_id=$1, unresolved_address=NULL
+                       WHERE id = ANY($2)`, [to, entries.map(e => e.id)]);
+    }
+    if (!dryRun && linkRows.length) {
+      // The person may already be linked to the destination. property_residents
+      // has no unique index on (person_id, property_id), so ON CONFLICT has
+      // nothing to catch on and would happily write a second identical link —
+      // the source of a duplicate the first time this ran. Test explicitly.
+      await db.query(
+        `INSERT INTO property_residents (person_id, property_id)
+         SELECT pid, $2 FROM unnest($1::int[]) AS t(pid)
+          WHERE NOT EXISTS (
+            SELECT 1 FROM property_residents r
+             WHERE r.person_id = t.pid AND r.property_id = $2)`,
+        [linkRows, to]);
+      await db.query(`DELETE FROM property_residents WHERE property_id=$1 AND person_id = ANY($2)`,
+        [from, linkRows]);
+    }
+    res.json({
+      ok: true, dryRun, from, to, year, people: people.length,
+      links: linkRows.length,
+      entries: entries.map(e => ({
+        id: e.id, year: e.census_year,
+        name: [e.first_name, e.last_name].filter(Boolean).join(' '),
+        wasUnfiled: e.property_id === null,
+      })),
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/admin/stray-rows — people who are not people: header rows and blanks
 // that survived an import. Read-only; deleting stays a deliberate click.
 app.get('/api/admin/stray-rows', requireAdmin, async (req, res) => {
