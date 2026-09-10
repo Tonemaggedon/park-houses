@@ -3325,9 +3325,20 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       // neighbours all arrived under "Felixstowe see 1911 Clumber rd W". A
       // house name in the text then evidences one of them, not all of them, so
       // a group carrying more than one household is never called confident.
-      const heads = entries.filter(e => /^head$/i.test((e.relationship || '').trim())).length;
-      const wives = entries.filter(e => /^wife$/i.test((e.relationship || '').trim())).length;
-      const households = Math.max(heads, wives, 1);
+      // Counted within each census year. One family recorded in 1901 and again
+      // in 1911 has two heads in the group and is still one household — the
+      // Jardines were flagged as "2 households" for exactly that reason, and
+      // told not to file, when all twenty records are one family in two years.
+      const perYear = new Map();
+      for (const e of entries) {
+        const y = e.census_year || 0;
+        if (!perYear.has(y)) perYear.set(y, { heads: 0, wives: 0 });
+        const t = perYear.get(y), rel = (e.relationship || '').trim();
+        if (/^head$/i.test(rel)) t.heads++;
+        if (/^wife$/i.test(rel)) t.wives++;
+      }
+      const households = Math.max(1,
+        ...[...perYear.values()].map(t => Math.max(t.heads, t.wives)));
       const strong = s.length && s[0].score >= 10
                      && (s.length === 1 || s[0].score > s[1].score)
                      && households === 1;
