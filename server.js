@@ -1622,10 +1622,15 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           if (dryRun) continue;
           await db.query(
             `INSERT INTO census_entries
-               (person_id, property_id, address, census_year, relationship,
+               (person_id, property_id, address, unresolved_address, census_year, relationship,
                 age_at_census, occupation_at_census, birth_place, marital_status, source)
-             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
-            [id, c.property_id || null, c.address || null, c.census_year,
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+            [id, c.property_id || null, c.address || null,
+             // A record added without a house needs the address it was returned
+             // under, or it lands in the "no address recorded" heap on the
+             // unfiled page instead of beside the household it belongs to.
+             (!c.property_id && c.unresolved_address) ? c.unresolved_address : null,
+             c.census_year,
              c.relationship || null, c.age_at_census || null,
              c.occupation_at_census || null, c.birth_place || null,
              c.marital_status || null, c.source || null]);

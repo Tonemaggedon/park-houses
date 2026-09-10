@@ -1,0 +1,36 @@
+{
+  "note": "Elizabeth Mary Phillips (#2379) is the missing fourth of the Holford household: she was created as a person by an earlier import but her census record was lost, so she sits in the record with no census year and no house. She is added here unfiled under \"Cavendish Crescent North\", the address the rest of the household carries, so she groups with them on the unfiled page and moves with them. Also records Henry Holford's employer, which the census tables have no column for.",
+  "source": "1921 census, the Holford household",
+  "people": [
+    {
+      "id": 2379,
+      "first_name": "Elizabeth Mary",
+      "last_name": "Phillips",
+      "sex": "F",
+      "born_year": 1875,
+      "born_place": "East Kirkby, Nottinghamshire, England",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Cavendish Crescent North",
+          "relationship": "Servant",
+          "age_at_census": 46,
+          "occupation_at_census": "Cook",
+          "birth_place": "East Kirkby, Nottinghamshire",
+          "source": "1921 census, the Holford household — transcribed by A. Hagues. She was in the record as a person with no census entry at all; this restores it."
+        }
+      ]
+    },
+    {
+      "id": 2377,
+      "first_name": "Henry",
+      "last_name": "Holford",
+      "occupations": [
+        { "occupation": "Bank manager",
+          "employer": "Lloyds Bank, Carlton Street and Market Place, Nottingham",
+          "from_year": 1921, "to_year": 1921,
+          "notes": "Named as his employer on the 1921 return, written \"Llyods & Bank Carlton St Market Place, Nottingham\"." }
+      ]
+    }
+  ]
+}
