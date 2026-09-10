@@ -1,7 +1,7 @@
 # Outstanding — Nottingham Park Houses
 
 A working tick list. Tick items off as you go (`- [ ]` → `- [x]`).
-Last checked against the live site: **9 September 2026** (third pass).
+Last checked against the live site: **10 September 2026**.
 
 **To see this list, just ask me for "the list"** — or "what's outstanding". I will read this file, check it against the live site, and show you what is left.
 
@@ -86,16 +86,18 @@ belong to four of those ten.
 Each of these has a page now. They are the bulk of the "crap imported" and are worth doing in
 this order.
 
-- [ ] **`/unfiled` — 271 records at no property, across only 22 addresses.** Roughly 90 can go
-      in six clicks: Peveril Drive (31), South Road (22), Felixstowe (21, but split the three
-      households first), Park Drive (6), Tower House (6), Kenilworth House (4). Another 121
-      carry only a street and need the house. 33 carry nothing at all.
+- [ ] **`/unfiled` — 271 records at no property** (1921: 175, 1911: 87, 1901: 8, 1891: 1),
+      across only ~22 addresses. Roughly 90 can go in six clicks: Peveril Drive (31), South Road
+      (22), Felixstowe (21, but split the three households first), Park Drive (6), Tower House
+      (6), Kenilworth House (4). Around 121 carry only a street and need the house; ~33 carry
+      nothing at all. **This number rising is progress** — unfiling a misfiled household moves
+      it here on the way to the right house.
 - [ ] **`/duplicates` — 48 pairs.** The 1911 and 1921 spreadsheets were loaded separately and
       name people differently, so the same person exists twice: "Helena Brownsword Dowson" and
       "Helena Dowson", "Kate A Homberger" and "Kate Adeline Homberger". A split person has half
       their census history and appears at two addresses. **Merging cannot be undone**, so check
       each pair.
-- [ ] **`/crowding` — 21 property-years.** Several households filed against one address. Use
+- [ ] **`/crowding` — 19 property-years** (was 21). Several households filed against one address. Use
       **"sort it"** on each row to split them, or **"This is correct"** where the house really
       did hold that many.
 
@@ -154,10 +156,11 @@ Other gaps, for reference rather than action:
 
 | | Count |
 |---|---|
-| People with an unresolved census entry | 240 |
-| People with no property link at all | 302 |
-| People with no birth year | 48 |
-| Person records carrying a birth place | 511 of 2,550 |
+| People in the record | 2,510 (was 2,552 — you have been merging) |
+| People with an unresolved census entry | 262 |
+| People with no property link at all | 314 |
+| People with no birth year | 50 |
+| Person records carrying a birth place | 510 of 2,510 — **the backfill job has not been run yet** |
 
 ---
 
