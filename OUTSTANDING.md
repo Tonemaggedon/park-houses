@@ -249,7 +249,15 @@ the other seventeen cottages on Barrack Lane holds no 1911 record at all**. That
 lane's return filed on number 10.
 
 - [ ] **#7 — 10 Barrack Lane, 1911.** Four schedules to split across a lane of eighteen
-      cottages, all of them empty in the record. `/reassign?prop=7&year=1911`.
+      cottages, all of them empty in the record. `/reassign?prop=7&year=1911`. Progress:
+      the **Derrys** (630–634, plus the son being imported) are the household that belongs;
+      **Elizabeth Baker and the Smiths** (635–637) were at **Barrack Yard, Barrack Lane** and
+      should be unfiled under that address. The **Blythes** with their boarder (638–643) and
+      the **Hinds** (644–646) are still to place.
+- [ ] **Barrack Yard is not in the record.** Dougal's map notes "Allegedly known as Barrack
+      Yard" at the **southern end of Barrack Lane**, around Pelham Cottages and Reveille, by
+      the pedestrian access to Harlaxton Drive — his own word is *allegedly*. Pelham Cottages
+      is not in the record either. On `/research`.
 
 Tools: **Dashboard → Admin tools → Move a household to another property** for a whole
 household, or the **property picker on each census record** on a person's page for one-offs.
