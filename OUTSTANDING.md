@@ -249,15 +249,18 @@ the other seventeen cottages on Barrack Lane holds no 1911 record at all**. That
 lane's return filed on number 10.
 
 - [ ] **#7 — 10 Barrack Lane, 1911.** Four schedules to split across a lane of eighteen
-      cottages, all of them empty in the record. `/reassign?prop=7&year=1911`. Progress:
-      the **Derrys** (630–634, plus the son being imported) are the household that belongs;
-      **Elizabeth Baker and the Smiths** (635–637) were at **Barrack Yard, Barrack Lane** and
-      should be unfiled under that address. The **Blythes** with their boarder (638–643) and
-      the **Hinds** (644–646) are still to place.
-- [ ] **Barrack Yard is not in the record.** Dougal's map notes "Allegedly known as Barrack
-      Yard" at the **southern end of Barrack Lane**, around Pelham Cottages and Reveille, by
-      the pedestrian access to Harlaxton Drive — his own word is *allegedly*. Pelham Cottages
-      is not in the record either. On `/research`.
+      cottages, all of them empty in the record. `/reassign?prop=7&year=1911`. **Solved.**
+      Only the **Derrys** (630–634, plus the son being imported) belong at number 10. The
+      other three schedules — **Elizabeth Baker and the Smiths** (635–637), the **Blythes**
+      with their boarder (638–643) and the **Hinds** (644–646), twelve people — were at
+      **Barrack Yard, Barrack Lane**, and want unfiling under that address until the yard is
+      found. Press Unfile on each of the three and type the address in the box.
+- [ ] **Barrack Yard is not in the record, and twelve people lived there in 1911.** Three
+      households: Baker and the Smiths, the Blythes with a boarder, and the Hinds. Three
+      households makes it a yard of cottages rather than a single house. Dougal's map notes
+      "Allegedly known as Barrack Yard" at the **southern end of Barrack Lane**, around Pelham
+      Cottages and Reveille, by the pedestrian access to Harlaxton Drive — his own word is
+      *allegedly*. Pelham Cottages is not in the record either. On `/research`.
 
 Tools: **Dashboard → Admin tools → Move a household to another property** for a whole
 household, or the **property picker on each census record** on a person's page for one-offs.
