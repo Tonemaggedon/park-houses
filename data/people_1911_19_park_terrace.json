@@ -1,0 +1,142 @@
+{
+  "note": "The 1911 household at 19 Park Terrace (#379), which held no 1911 record at all. William and Elise are already in the record from 1921 as #1836 and #1837, so they are named by number rather than by name: the 1921 return spells him \"William F\" and her \"Elsie\", and matching on the name would have made a second William and a second Elsie. Transcribed by A. Hagues.",
+  "source": "1911 census, 19 Park Terrace",
+  "people": [
+    {
+      "id": 1836,
+      "first_name": "William Froggatt",
+      "last_name": "Clark",
+      "sex": "M",
+      "born_year": 1857,
+      "born_place": "Nottingham",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 54,
+          "occupation_at_census": "Timber merchant, saw mill owner and book maker",
+          "birth_place": "Nottingham",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        { "to": { "id": 1837 }, "type": "spouse_of",
+          "notes": "Recorded as his wife on the 1911 return for 19 Park Terrace." }
+      ]
+    },
+    {
+      "id": 1837,
+      "first_name": "Elise",
+      "last_name": "Clark",
+      "sex": "F",
+      "born_year": 1859,
+      "born_place": "Nottingham",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 52,
+          "birth_place": "Nottingham",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Grace Cecily",
+      "last_name": "Clark",
+      "sex": "F",
+      "born_year": 1888,
+      "born_place": "Nottingham",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 23,
+          "birth_place": "Nottingham",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        { "to": { "id": 1836 }, "type": "child_of",
+          "notes": "Recorded as his daughter on the 1911 return for 19 Park Terrace." },
+        { "to": { "id": 1837 }, "type": "child_of",
+          "notes": "Recorded as a daughter of the household on the 1911 return for 19 Park Terrace." }
+      ]
+    },
+    {
+      "first_name": "May",
+      "last_name": "Greensmith",
+      "sex": "F",
+      "born_year": 1890,
+      "born_place": "London",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 21,
+          "occupation_at_census": "Housemaid, domestic servant",
+          "birth_place": "London",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Gregory",
+      "sex": "F",
+      "born_year": 1862,
+      "born_place": "Lichfield",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 49,
+          "occupation_at_census": "Cook, domestic servant",
+          "birth_place": "Lichfield",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Rhodes",
+      "sex": "F",
+      "born_year": 1885,
+      "born_place": "Bulwell, Nottinghamshire",
+      "properties": [379],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 379,
+          "address": "19 Park Terrace",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 26,
+          "occupation_at_census": "Housemaid, domestic servant",
+          "birth_place": "Bulwell, Nottinghamshire",
+          "source": "1911 census, 19 Park Terrace — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}

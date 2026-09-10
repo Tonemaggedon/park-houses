@@ -769,7 +769,14 @@ document.getElementById('btnGazetteRun')?.addEventListener('click', e =>
 const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
   + (d.report || []).map(x => `${x.file}: ${x.added} ${d.dryRun ? 'would be added' : 'added'}, `
       + `${x.alreadyPresent} already present, ${x.propertyLinks} property link`
-      + `${x.propertyLinks === 1 ? '' : 's'}`).join('\n')
+      + `${x.propertyLinks === 1 ? '' : 's'}`
+      + (x.census ? `, ${x.census} census record${x.census === 1 ? '' : 's'}` : '')
+      + (x.enriched ? `, ${x.enriched} filled out` : '')
+      + (x.relationships ? `, ${x.relationships} relationship${x.relationships === 1 ? '' : 's'}` : '')
+      // A file naming a person by number that nobody holds is a silent no-op
+      // otherwise — say so rather than let it read as a clean run.
+      + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '')
+    ).join('\n')
   + ((d.report || []).length ? '' : 'No people files found in data/.');
 
 function _moveBody(dryRun) {

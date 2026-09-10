@@ -81,7 +81,10 @@ from. These need your knowledge or a source.
       reunites him at 5 Tattershall Drive where he belongs.
 - [ ] **Emma Woodward, Frank's wife, had no 1921 record at all.** Prepared in
       `data/people_1921_redcliffe_house.json` — run **Import people** and she goes in at #55
-      as Wife, aged 62, with the marriage recorded.
+      as Wife, aged 62, with the marriage recorded. One **Import people** run does every
+      prepared file at once, so this, the Brownsword cousins and 19 Park Terrace all land
+      together. Take the dry-run preview first — it now reports census records, relationships
+      and any person number it could not find.
 
 **Still unknown — narrowed from ten houses to four:**
 
@@ -156,7 +159,12 @@ A house showing twenty-odd in one year is usually several households filed again
       (#27)** hold no 1911 record at all, so they are the obvious candidates to check against
       the original. Both heads are lace manufacturers. `/reassign?prop=25&year=1911` already
       shows the three blocks separately with a "send all to" box on each.
-- [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921
+- [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. Separately, its **1911
+      household is now prepared** in `data/people_1911_19_park_terrace.json` — the house held
+      no 1911 record at all. Run **Import people**: William Froggatt Clark and his wife are
+      already in the record from 1921 as **#1836** and **#1837**, so the file names them by
+      number rather than by name and will not make second copies of them whatever you rename
+      them to. Grace Cecily Clark and the three servants are new.
 - [ ] **#85 — Westwood, Clumber Road East** — 20 people, **13 surnames**, 1921
 - [ ] **#201 — Gladstone House, Lincoln Circus** — 16 people, 12 surnames, 1921
       (10 here in 1911)

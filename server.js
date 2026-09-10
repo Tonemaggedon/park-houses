@@ -1423,12 +1423,29 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
       let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0;
+      const noSuchId = [];
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
-        const found = await db.query(
-          `SELECT id, born_date, born_year, born_place, sex FROM people
-            WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
-          [person.first_name, person.last_name]);
+        // A person the record already holds can be named by number instead. The
+        // name match is exact, so "William F" and "William Froggatt" are two
+        // different people to it — a spelling the source disagrees with, or one
+        // about to be corrected by hand, would quietly become a second record.
+        // An id says which person is meant and survives the rename either way.
+        const byId = Number.isInteger(person.id);
+        const found = byId
+          ? await db.query(
+              `SELECT id, born_date, born_year, born_place, sex FROM people WHERE id=$1`,
+              [person.id])
+          : await db.query(
+              `SELECT id, born_date, born_year, born_place, sex FROM people
+                WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
+              [person.first_name, person.last_name]);
+        if (byId && !found.rows.length) {
+          // Never fall back to creating one: the file asked for a specific
+          // person, and inventing another is the mistake it was avoiding.
+          noSuchId.push(`#${person.id} ${person.first_name} ${person.last_name}`);
+          continue;
+        }
         let id = null;
         if (found.rows.length) {
           id = found.rows[0].id; already++;
@@ -1487,10 +1504,13 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         for (const rel of (person.relationships || [])) {
           if (!rel || !rel.to || !rel.type) continue;
           if (id === null) { rels++; continue; }             // person is new in this dry run
-          const other = await db.query(
-            `SELECT id FROM people WHERE LOWER(TRIM(first_name))=LOWER($1)
-                                     AND LOWER(TRIM(last_name))=LOWER($2)`,
-            [String(rel.to.first_name || '').trim(), String(rel.to.last_name || '').trim()]);
+          // The other end can be given by number too, for the same reason as above.
+          const other = Number.isInteger(rel.to.id)
+            ? await db.query(`SELECT id FROM people WHERE id=$1`, [rel.to.id])
+            : await db.query(
+                `SELECT id FROM people WHERE LOWER(TRIM(first_name))=LOWER($1)
+                                         AND LOWER(TRIM(last_name))=LOWER($2)`,
+                [String(rel.to.first_name || '').trim(), String(rel.to.last_name || '').trim()]);
           if (other.rows.length !== 1) { relsSkipped++; continue; }   // ambiguous or absent
           const otherId = other.rows[0].id;
           if (otherId === id) { relsSkipped++; continue; }
@@ -1534,14 +1554,17 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           await db.query(
             `INSERT INTO census_entries
                (person_id, property_id, address, census_year, relationship,
-                age_at_census, occupation_at_census, birth_place, source)
-             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+                age_at_census, occupation_at_census, birth_place, marital_status, source)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
             [id, c.property_id || null, c.address || null, c.census_year,
              c.relationship || null, c.age_at_census || null,
-             c.occupation_at_census || null, c.birth_place || null, c.source || null]);
+             c.occupation_at_census || null, c.birth_place || null,
+             c.marital_status || null, c.source || null]);
         }
       }
-      report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked, census, relationships: rels, relationshipsSkipped: relsSkipped });
+      report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
+                    census, relationships: rels, relationshipsSkipped: relsSkipped,
+                    ...(noSuchId.length ? { noSuchPerson: noSuchId } : {}) });
     }
     res.json({ ok: true, dryRun, report });
   } catch(e) { res.status(500).json({ error: e.message }); }
