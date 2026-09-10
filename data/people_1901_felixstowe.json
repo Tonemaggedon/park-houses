@@ -1,5 +1,5 @@
 {
-  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. **The surname is Dowson.** It is written with a looped capital that can be read as Morrison, but the head is Benjamin Dowson, solicitor, born at Geldeston in Norfolk on 11 September 1836 and living at Felixstowe in The Park — which matches the age, the profession, the birthplace and the house on this schedule. The record already holds William Enfield Dowson and Helena Brownsword Dowson at the same house in 1911, so this is the same family ten years earlier. Servant birthplaces are deliberately omitted: see the source note on each.",
+  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. **The surname is Dowson.** It is written with a looped capital that can be read as Morrison, but the head is Benjamin Dowson, solicitor, born at Geldeston in Norfolk on 11 September 1836 and living at Felixstowe in The Park — which matches the age, the profession, the birthplace and the house on this schedule. The record already holds William Enfield Dowson and Helena Brownsword Dowson at the same house in 1911, so this is the same family ten years earlier. The servants' names and birthplaces were read off the original by A. Hagues after a first pass from a photograph got the column alignment wrong.",
   "source": "1901 census, schedule 178, Felixstowe",
   "people": [
     {
@@ -149,11 +149,11 @@
     },
     {
       "first_name": "Emily J",
-      "last_name": "Dunstwater",
+      "last_name": "Drinkwater",
       "match_born_year": true,
       "sex": "F",
       "born_year": 1849,
-      "born_place": "Croxton Kerrial, Leicestershire",
+      "born_place": "Knutsford, Cheshire",
       "properties": [
         394
       ],
@@ -165,8 +165,8 @@
           "relationship": "Servant",
           "age_at_census": 52,
           "occupation_at_census": "Nurse (domestic), certified",
-          "birth_place": "Croxton Kerrial, Leicestershire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Surname uncertain — Dunstwater is the best reading of a difficult hand."
+          "birth_place": "Knutsford, Cheshire",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Surname read off the original as Drinkwater; first transcribed here as Dunstwater and corrected by A. Hagues. Born at Knutsford, the same Cheshire town as Gerard S Dowson — she may have come to Nottingham with the family."
         }
       ]
     },
@@ -187,9 +187,11 @@
           "relationship": "Servant",
           "age_at_census": 39,
           "occupation_at_census": "Cook (domestic)",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Croxton Kerrial is a Leicestershire village a couple of miles from the Lincolnshire border, and the page gives the county as Leics.",
+          "birth_place": "Croxton Kerrial, Leicestershire"
         }
-      ]
+      ],
+      "born_place": "Croxton Kerrial, Leicestershire"
     },
     {
       "first_name": "Kate",
@@ -208,12 +210,14 @@
           "relationship": "Servant",
           "age_at_census": 32,
           "occupation_at_census": "Parlourmaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
+          "birth_place": "Dry Doddington, Lincolnshire"
         }
-      ]
+      ],
+      "born_place": "Dry Doddington, Lincolnshire"
     },
     {
-      "first_name": "Harrie",
+      "first_name": "Florrie",
       "last_name": "Butler",
       "match_born_year": true,
       "sex": "F",
@@ -229,9 +233,11 @@
           "relationship": "Servant",
           "age_at_census": 21,
           "occupation_at_census": "Housemaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Forename read as Harrie; may be Harriet abbreviated. The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Forename read off the original as Florrie; first transcribed here as Harrie and corrected by A. Hagues.",
+          "birth_place": "Wollaton, Nottinghamshire"
         }
-      ]
+      ],
+      "born_place": "Wollaton, Nottinghamshire"
     },
     {
       "first_name": "Sarah",
@@ -250,9 +256,11 @@
           "relationship": "Servant",
           "age_at_census": 22,
           "occupation_at_census": "Housemaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
+          "birth_place": "Cossall, Nottinghamshire"
         }
-      ]
+      ],
+      "born_place": "Cossall, Nottinghamshire"
     }
   ]
 }

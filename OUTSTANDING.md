@@ -291,14 +291,11 @@ household, or the **property picker on each census record** on a person's page f
       Dorrison, a solicitor of 64, his wife Alice, three sons, a daughter and five servants.
       The house is demolished and the record held only its 1911 household, the Dowsons, so
       this is the family before them. Run **Import people**.
-- [ ] **Read the servants' birthplaces off the original.** Dry Doddington in Lincolnshire, and
-      Wollaton and Cossall in Nottinghamshire, are on the page against the five servants, but
-      the column could not be aligned to the rows from the photograph, so none was recorded
-      rather than guess. Four birthplaces for five servants, so one row also carries a ditto
-      or a blank.
-- [ ] **Check the surname.** Read as **Dorrison**; the capital is looped and Morrison is
-      possible. Also *Emily J Dunstwater*, a hard hand, and *Harrie Butler*, which may be
-      Harriet abbreviated. Bernard W and Alexander are both returned as 27.
+- [x] ~~Servants' birthplaces~~ — read off the original by A. Hagues. My first pass from the
+      photograph had the column out of step by one and two names wrong: *Dunstwater* is
+      **Drinkwater**, *Harrie* is **Florrie**. Emily Drinkwater was born at **Knutsford**, the
+      same Cheshire town as Gerard Dowson — she may have come with the family.
+- [x] ~~The surname~~ — **Dowson**, confirmed. Not Dorrison, not Morrison.
 
 ---
 
