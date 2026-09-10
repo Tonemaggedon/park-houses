@@ -264,6 +264,15 @@ function refresh() {
     else if (d.propertyId === null) unfiled++;
     else filed++;
   });
+  // The address box opens with the Unfile button, but a row can also be unfiled
+  // by typing 0 into it — and then the box would never appear. Open it wherever
+  // anything in the household is heading back to the queue.
+  document.querySelectorAll('[data-unaddr]').forEach(box => {
+    const hh = box.dataset.unaddr;
+    const any = [...document.querySelectorAll(`.dest[data-hh="${hh}"]`)]
+      .some(i => parseDest(i.value).propertyId === null && !parseDest(i.value).skip);
+    if (any) box.classList.add('open');
+  });
   const msg = document.getElementById('msg'), btn = document.getElementById('save');
   if (bad) { msg.textContent = `${bad} box${bad === 1 ? '' : 'es'} not a property number.`; btn.disabled = true; return; }
   if (unknown) {
