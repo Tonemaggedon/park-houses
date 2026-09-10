@@ -107,6 +107,18 @@ belong to four of those ten.
 
 ---
 
+## 3b. Open questions — `/research`
+
+The questions in the record that no amount of reading will settle: which house a name belongs
+to, whether a building still stands, what a colour on a map meant. **14 are seeded** from
+`data/research_questions.json`, and a contributor presses *I'm looking into this* to put their
+name against one so two people don't spend the same Saturday on the same gatepost. Answers are
+recorded on the page — including "walked the road, found nothing", which saves the next person
+the walk. Adding a question to the JSON file puts it on the site at the next deploy; an answer
+or an edit made on the site is never overwritten by the file.
+
+---
+
 ## 4. The three big piles
 
 Each of these has a page now. They are the bulk of the "crap imported" and are worth doing in
@@ -169,7 +181,9 @@ A house showing twenty-odd in one year is usually several households filed again
       16, 17, then these three, then Sunnyside — and **20 Park Terrace (#257) holds no 1921
       record at all**, so it is the first candidate for one of the two strays. Sunnyside (#390)
       holds two schedules of its own in the same run, which may bear on where the third goes.
-      `/reassign?prop=379&year=1921` already shows the three blocks separately.
+      **Broxtowe House is now #406**, created census-only. `/reassign?prop=379&year=1921`
+      shows the three blocks separately — send the Kneebone block to **406**. The schedule
+      spells it *Broxtow*, without the e; recorded as Broxtowe.
 - [ ] **The nine at Broxtow House are worth a page of their own.** Aged 26–33, all surgeons or
       physicians, none related, born Dorset, Aberdeen, Kent, Yorkshire, Hertfordshire, London,
       Surrey, Perthshire and South Australia — a residents' house for junior hospital doctors,

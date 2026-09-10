@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Questions — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --claim:#7a5a2a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 20px 90px; }
+
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 8px; max-width:70ch; }
+  .lede strong { color:var(--ink); }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint);
+    margin:16px 0 14px; }
+
+  .q { background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:14px 16px; margin-bottom:12px; }
+  .q.taken { border-color:#cbb98e; background:#fffdf6; }
+  .q.done { background:#f7f5ee; border-color:#d8d2c0; }
+  .q h3 { margin:0 0 4px; font-size:1.04rem; }
+  .q .detail { font-size:.87rem; color:var(--soft); margin:6px 0 0; max-width:68ch; }
+  .q .where { font-size:.78rem; margin-top:7px; }
+  .q .where a { color:#2a5a8a; text-decoration:none; }
+  .q .where a:hover { text-decoration:underline; }
+  .kind { display:inline-block; border:1px solid var(--rule); border-radius:9px; padding:0 7px;
+    font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--soft);
+    background:#f6f2e6; vertical-align:2px; margin-left:6px; }
+
+  .who { margin-top:10px; font-size:.82rem; color:var(--claim); }
+  .who .none { color:var(--faint); font-style:italic; }
+  .who ul { margin:4px 0 0; padding-left:18px; }
+  .who li { margin:1px 0; }
+  .who .note { color:var(--soft); font-style:italic; }
+
+  .acts { margin-top:11px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  button { font-family:inherit; font-size:.8rem; border-radius:5px; padding:5px 13px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button:hover { border-color:var(--accent); }
+  button.go { background:var(--green); color:#f2ecd8; border-color:var(--green); font-weight:600; }
+  button.warn { color:var(--red); }
+  button:disabled { opacity:.5; cursor:default; }
+  .answer { margin-top:10px; display:none; }
+  .answer.open { display:block; }
+  .answer textarea, .claimnote input { width:100%; padding:7px 9px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.85rem; background:#fff; color:var(--ink); }
+  .answer textarea { min-height:72px; resize:vertical; }
+  .claimnote { margin-top:9px; display:none; }
+  .claimnote.open { display:block; }
+
+  .found { margin-top:10px; padding:9px 12px; background:#eef5e8; border:1px solid #9ab88a;
+    border-radius:6px; font-size:.87rem; }
+  .found .by { display:block; font-size:.74rem; color:var(--faint); margin-top:5px; font-style:italic; }
+
+  details.add { margin-top:30px; border-top:1px solid var(--rule); padding-top:16px; }
+  details.add summary { cursor:pointer; font-size:1rem; font-weight:600; }
+  .form { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:12px; max-width:660px; }
+  .form label { font-size:.74rem; color:var(--faint); }
+  .form input, .form select, .form textarea { width:100%; padding:6px 9px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.85rem; background:#fff; color:var(--ink); }
+  .form .wide { grid-column:1/-1; }
+  .form textarea { min-height:70px; resize:vertical; }
+  .msg { font-size:.8rem; color:var(--soft); }
+  .msg.bad { color:var(--red); }
+
+  h3.sec { font-size:.72rem; letter-spacing:.11em; text-transform:uppercase; color:var(--faint);
+    margin:30px 0 10px; border-top:1px solid var(--rule); padding-top:14px; }
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  .err { color:var(--red); }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/census">📜 Census</a>
+  <a href="/archive">🗄 Archive</a>
+  <a href="/research" class="active">❓ Open questions</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>Open questions</h2>
+  <p class="lede">Some of what is missing from this record cannot be read out of a document.
+    It needs somebody to walk down the road and look at a gatepost, or to remember what a house
+    was called, or to open a rate book in the Archives.</p>
+  <p class="lede"><strong>If you are taking one on, say so.</strong> Press <em>I'm looking into
+    this</em> and your name goes against it, so two people don't spend a Saturday on the same
+    gatepost. It is not a claim on the question and nobody minds if you get nowhere — press it
+    again to step back off.</p>
+  <p class="lede">When you find something, <strong>record what you found</strong>, whatever it
+    turns out to be. "The name is on the right-hand pillar" and "walked the whole road, no sign
+    of it" are both answers, and the second one saves the next person the walk.</p>
+
+  <div class="bar" id="bar">Loading…</div>
+  <div id="open"><div class="empty">Loading…</div></div>
+
+  <div id="doneWrap" hidden>
+    <h3 class="sec" id="doneHead">Settled</h3>
+    <div id="done"></div>
+  </div>
+
+  <details class="add" id="addBox" hidden>
+    <summary>Add a question</summary>
+    <div class="form">
+      <div class="wide"><label for="f_title">The question *</label>
+        <input id="f_title" placeholder="e.g. Which house on Huntingdon Drive is Greendale?"></div>
+      <div class="wide"><label for="f_detail">What is known already</label>
+        <textarea id="f_detail" placeholder="What the record holds, what has been ruled out, and what would settle it"></textarea></div>
+      <div><label for="f_kind">Kind</label>
+        <select id="f_kind">
+          <option value="">— choose —</option>
+          <option value="place">place</option>
+          <option value="house-name">house-name</option>
+          <option value="building">building</option>
+          <option value="person">person</option>
+          <option value="document">document</option>
+          <option value="record">record</option>
+        </select></div>
+      <div><label for="f_prop">Property number, if it has one</label>
+        <input id="f_prop" type="number" placeholder="e.g. 406">
+        <span class="msg" id="f_propname"></span></div>
+      <div class="wide" style="display:flex;gap:10px;align-items:center">
+        <button class="go" id="f_go">Add the question</button>
+        <span class="msg" id="f_msg"></span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false, isAdmin = false, me = null, propNames = {}, questions = [];
+
+const label = p => {
+  const no = (p.no || '').trim(), nm = (p.name || '').trim();
+  if (nm && no && no.toLowerCase() !== nm.toLowerCase()) return `${no} ${p.street} (${nm})`;
+  if (nm) return `${nm}, ${p.street}`;
+  return `${no ? no + ' ' : ''}${p.street}`;
+};
+
+const when = t => { if (!t) return ''; const d = new Date(t);
+  return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }); };
+
+async function init() {
+  try {
+    const who = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    isAdmin = !!(who.isAdmin || (who.user && who.user.role === 'admin'));
+    canEdit = !!(isAdmin || (who.user && who.user.role === 'contributor'));
+    me = isAdmin ? 'admin'
+       : (who.user ? ((who.user.first_name || '') + ' ' + (who.user.last_name || '')).trim() || who.user.email : null);
+  } catch (e) {}
+  if (canEdit) document.getElementById('addBox').hidden = false;
+  try {
+    const list = await fetch('/api/all-props').then(r => r.json());
+    for (const p of (Array.isArray(list) ? list : [])) propNames[p.id] = label(p);
+  } catch (e) {}
+  load();
+}
+
+function card(q) {
+  const mine = q.claims.some(c => c.username === me);
+  const taken = q.claims.length > 0;
+  const done = q.status === 'answered';
+  const cls = done ? 'q done' : (taken ? 'q taken' : 'q');
+  const place = q.property_id
+    ? `<div class="where">↳ <a href="/?id=${q.property_id}" target="_blank">#${q.property_id} —
+         ${esc(propNames[q.property_id] || 'property ' + q.property_id)}</a></div>` : '';
+  const whoBlock = done ? '' : `<div class="who">${taken
+    ? `Looking into this:<ul>${q.claims.map(c => `<li>${esc(c.username)}`
+        + (c.note ? ` — <span class="note">${esc(c.note)}</span>` : '')
+        + `</li>`).join('')}</ul>`
+    : '<span class="none">Nobody is looking into this yet.</span>'}</div>`;
+  const answer = done
+    ? `<div class="found">${esc(q.answer)}
+         <span class="by">Answered by ${esc(q.answered_by || 'someone')}${when(q.answered_at) ? ' · ' + when(q.answered_at) : ''}</span>
+       </div>` : '';
+  const acts = !canEdit ? '' : `
+    <div class="acts">
+      ${done
+        ? `<button data-reopen="${q.id}">Reopen it</button>`
+        : `<button data-claim="${q.id}" data-on="${mine ? '0' : '1'}" class="${mine ? '' : 'go'}">${
+             mine ? "I'm no longer looking" : "I'm looking into this"}</button>
+           <button data-answer="${q.id}">Record what you found</button>`}
+      ${isAdmin ? `<button class="warn" data-del="${q.id}" style="margin-left:auto">Remove</button>` : ''}
+    </div>
+    ${done ? '' : `
+    <div class="claimnote" data-notefor="${q.id}">
+      <input data-noteinput="${q.id}" placeholder="Optional — how you mean to go about it, so others know">
+    </div>
+    <div class="answer" data-answerfor="${q.id}">
+      <textarea data-answerinput="${q.id}" placeholder="What you found — including finding nothing"></textarea>
+      <div class="acts"><button class="go" data-saveanswer="${q.id}">Save it</button>
+        <button data-cancel="${q.id}">Cancel</button></div>
+    </div>`}`;
+  return `<div class="${cls}" data-q="${q.id}">
+      <h3>${esc(q.title)}${q.kind ? `<span class="kind">${esc(q.kind)}</span>` : ''}</h3>
+      ${q.detail ? `<p class="detail">${esc(q.detail)}</p>` : ''}
+      ${place}${answer}${whoBlock}${acts}
+    </div>`;
+}
+
+async function load() {
+  const bar = document.getElementById('bar');
+  const openBox = document.getElementById('open'), doneBox = document.getElementById('done');
+  try {
+    const d = await fetch('/api/research-questions').then(r => r.json());
+    if (d.error) throw new Error(d.error);
+    questions = d.questions || [];
+    const open = questions.filter(q => q.status !== 'answered');
+    const done = questions.filter(q => q.status === 'answered');
+    const claimed = open.filter(q => q.claims.length).length;
+
+    bar.textContent = `${open.length} open question${open.length === 1 ? '' : 's'}`
+      + (claimed ? ` · ${claimed} being looked into` : ' · none taken up yet')
+      + (done.length ? ` · ${done.length} settled` : '');
+
+    openBox.innerHTML = open.length
+      ? open.map(card).join('')
+      : '<div class="empty">Nothing open. Every question in the list has been answered.</div>';
+    document.getElementById('doneWrap').hidden = !done.length;
+    doneBox.innerHTML = done.map(card).join('');
+    if (!canEdit) {
+      const note = document.createElement('p');
+      note.className = 'lede';
+      note.style.marginTop = '18px';
+      note.textContent = 'Sign in as a contributor to take one of these on or to record what you found.';
+      if (!document.getElementById('signin')) { note.id = 'signin'; openBox.appendChild(note); }
+    }
+  } catch (e) {
+    bar.textContent = '';
+    openBox.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+async function send(url, method, body) {
+  const res = await fetch(url, {
+    method,
+    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+  return data;
+}
+
+document.addEventListener('click', async e => {
+  const t = el => e.target.closest(el);
+
+  const claim = t('[data-claim]');
+  if (claim) {
+    const id = claim.dataset.claim, taking = claim.dataset.on === '1';
+    // Offer the note box first, then send on the second press — the note is
+    // worth having and nobody types one into a box that has already gone.
+    const box = document.querySelector(`[data-notefor="${id}"]`);
+    if (taking && box && !box.classList.contains('open')) {
+      box.classList.add('open');
+      claim.textContent = 'Confirm';
+      box.querySelector('input').focus();
+      return;
+    }
+    claim.disabled = true;
+    try {
+      if (taking) {
+        const note = box ? box.querySelector('input').value.trim() : '';
+        await send(`/api/research-questions/${id}/claim`, 'POST', { note });
+      } else {
+        await send(`/api/research-questions/${id}/claim`, 'DELETE');
+      }
+      load();
+    } catch (err) { claim.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
+
+  const ans = t('[data-answer]');
+  if (ans) {
+    const box = document.querySelector(`[data-answerfor="${ans.dataset.answer}"]`);
+    box.classList.add('open');
+    box.querySelector('textarea').focus();
+    return;
+  }
+
+  const cancel = t('[data-cancel]');
+  if (cancel) {
+    document.querySelector(`[data-answerfor="${cancel.dataset.cancel}"]`).classList.remove('open');
+    return;
+  }
+
+  const save = t('[data-saveanswer]');
+  if (save) {
+    const id = save.dataset.saveanswer;
+    const text = document.querySelector(`[data-answerinput="${id}"]`).value.trim();
+    if (!text) { alert('Write what you found first — including if you found nothing.'); return; }
+    save.disabled = true;
+    try { await send(`/api/research-questions/${id}`, 'PATCH', { answer: text }); load(); }
+    catch (err) { save.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
+
+  const reopen = t('[data-reopen]');
+  if (reopen) {
+    if (!confirm('Reopen this question? The answer is removed.')) return;
+    try { await send(`/api/research-questions/${reopen.dataset.reopen}`, 'PATCH', { answer: '' }); load(); }
+    catch (err) { alert('Could not reopen it: ' + err.message); }
+    return;
+  }
+
+  const del = t('[data-del]');
+  if (del) {
+    if (!confirm('Remove this question for good?')) return;
+    try { await send(`/api/research-questions/${del.dataset.del}`, 'DELETE'); load(); }
+    catch (err) { alert('Could not remove it: ' + err.message); }
+  }
+});
+
+document.getElementById('f_prop').addEventListener('input', e => {
+  const n = parseInt(e.target.value, 10);
+  const out = document.getElementById('f_propname');
+  if (!Number.isInteger(n)) { out.textContent = ''; out.className = 'msg'; return; }
+  const nm = propNames[n];
+  out.textContent = nm || `no property #${n}`;
+  out.className = nm ? 'msg' : 'msg bad';
+});
+
+document.getElementById('f_go').addEventListener('click', async () => {
+  const g = id => document.getElementById(id);
+  const msg = g('f_msg'), btn = g('f_go');
+  const title = g('f_title').value.trim();
+  if (!title) { msg.className = 'msg bad'; msg.textContent = 'The question needs a title.'; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Adding…';
+  try {
+    await send('/api/research-questions', 'POST', {
+      title, detail: g('f_detail').value.trim(), kind: g('f_kind').value,
+      property_id: g('f_prop').value.trim() || null,
+    });
+    msg.textContent = 'Added.';
+    ['f_title','f_detail','f_prop'].forEach(id => g(id).value = '');
+    g('f_kind').value = ''; g('f_propname').textContent = '';
+    load();
+  } catch (err) { msg.className = 'msg bad'; msg.textContent = 'Could not add it: ' + err.message; }
+  finally { btn.disabled = false; }
+});
+
+init();
+</script>
+</body>
+</html>

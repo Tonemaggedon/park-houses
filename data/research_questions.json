@@ -1,0 +1,99 @@
+{
+  "note": "Open questions seeded with a deploy. Keyed on slug: adding one here adds it to the site, and an answer or an edit made on the site is never overwritten by this file.",
+  "questions": [
+    {
+      "slug": "broxtowe-house-where",
+      "kind": "place",
+      "property_id": 406,
+      "title": "Where is Broxtowe House?",
+      "detail": "The 1921 census schedule gives Dr Kneebone's postal address as \"Broxtow House, The Park, Nottingham\" — spelt without the e. No house of that name is in the record, and it is on none of the labels on Dougal de Havilland's map. The enumerator's round runs 16 Park Terrace, 17, then 19, then this household, then one more, then Sunnyside, so it stands on or immediately off Park Terrace. 20 Park Terrace holds no 1921 record at all and is the obvious candidate. Is the name still known? Is it on a gatepost, a deed, a rate book, or an older map?"
+    },
+    {
+      "slug": "broxtowe-house-which-hospital",
+      "kind": "document",
+      "property_id": 406,
+      "title": "Which hospital did the nine doctors at Broxtowe House serve?",
+      "detail": "Nine house surgeons and house physicians, aged 26 to 33, living in one Park house in June 1921 with no patients and no family. Nottingham General Hospital at Standard Hill is the obvious answer on geography alone, and the hospital's own history records it taking houses in The Park, Park Terrace and the Ropewalk as doctors' residences — but dates that to 1969. If a hospital minute book, annual report or staff list names the residence, it would push the practice back nearly fifty years. Five of the nine were women, which in 1921 makes the house worth a note in its own right."
+    },
+    {
+      "slug": "park-terrace-1921-third-household",
+      "kind": "place",
+      "property_id": 379,
+      "title": "Where did the Carr household live in 1921?",
+      "detail": "Three separate schedules were filed under 19 Park Terrace in the 1921 census: the Clark household (19 Park Terrace itself), the nine doctors at Broxtowe House, and Arthur Carr with his wife, a son of three, a visitor and three servants. The Carrs need a house. The enumerator's round puts them between Broxtowe House and Sunnyside. 20 Park Terrace is empty in the record for that year, and Sunnyside itself already holds two schedules."
+    },
+    {
+      "slug": "cavendish-crescent-north-1911-strays",
+      "kind": "place",
+      "property_id": 25,
+      "title": "Which houses did the Weinberg and Smith families live in?",
+      "detail": "Twenty-two people were filed under 9 Cavendish Crescent North in the 1911 census, which is three schedules, not one household. Four servants with no head belong to Peveril House itself — Weston Fulford Marriott Weston-Webb held the lease and signed the return without being there on the night. The other two are the Weinbergs (nine people, head a shipping merchant and lace manufacturer) and the Smiths (nine people, head a lace manufacturer). The enumerator ran 1, 3, 5, 7, 9 up the crescent, and 10, 11 (Gleadthorpe) and 12 all hold no 1911 record, so the next two houses along are the candidates."
+    },
+    {
+      "slug": "greendale-huntingdon-drive",
+      "kind": "house-name",
+      "title": "Which house on Huntingdon Drive is Greendale?",
+      "detail": "Four people are recorded at \"Greendale, Huntingdon Drive\" in 1921: Joseph Spray, 77, his wife Martha, 77, their daughter Jessie, 47, and one servant. Huntingdon Drive is otherwise recorded as plain numbers 1 to 10 with no names at all. Brampton has since been placed at 9 and Napier House at 5, which leaves 2, 4 and 8 unnamed. A gatepost, a fanlight or a neighbour's memory would settle it."
+    },
+    {
+      "slug": "belwood-where",
+      "kind": "house-name",
+      "title": "Where is Belwood?",
+      "detail": "Belwood appears as a label on Dougal de Havilland's map of The Park and on the OS sheets, but no property of that name is in the record and no census household carries it. Which building is it, and is the name still in use?"
+    },
+    {
+      "slug": "penrhyn-cottage-or-house",
+      "kind": "building",
+      "property_id": 84,
+      "title": "Penrhyn Cottage and Penrhyn House — one building or two?",
+      "detail": "The record holds Penrhyn House on Clumber Road East. Penrhyn Cottage turns up separately. Is the cottage the same building under an earlier or a smaller name, a lodge or coach house in its grounds, or a different building altogether? The Park has a number of coach houses turned into cottages and given their own name — Gartree Lodge is one — so a second building is entirely plausible."
+    },
+    {
+      "slug": "gartree-lodge-standing",
+      "kind": "building",
+      "property_id": 404,
+      "title": "Does Gartree Lodge still stand, and exactly where?",
+      "detail": "Created from Gartree House's own building description: \"Part of original carriage and stable building at bottom of garden adjacent to Tattershall Drive converted into separate dwelling.\" In 1921 it held John Raven Erwin Hatton, a chauffeur of 28, and his wife Evelyn, 22 — a chauffeur housed over the stables of the house he drove for. Its position on the map is a guess at the Tattershall Drive end of the garden and wants placing by somebody who can walk it."
+    },
+    {
+      "slug": "the-cottage-huntingdon-drive",
+      "kind": "building",
+      "property_id": 405,
+      "title": "Is there a house at 14 Huntingdon Drive?",
+      "detail": "The 1921 census records Sidney Richard Tann, a chiropodist of 42, and his wife Daisy at \"Huntingdon Drive (The Cottage)\". The road is otherwise recorded only as far as number 10, so the number 14 is a guess and the house may no longer stand. Does anything of it survive, and where was it?"
+    },
+    {
+      "slug": "hermitage-position",
+      "kind": "place",
+      "property_id": 392,
+      "title": "Where exactly does The Hermitage stand?",
+      "detail": "Two positions are held for The Hermitage and they are 48 metres apart — one placed by hand, one derived. Nothing turns on it except the map, but on a site this small 48 metres is the difference between one building and its neighbour."
+    },
+    {
+      "slug": "clumber-court-stub",
+      "kind": "record",
+      "property_id": 399,
+      "title": "What was Clumber Court?",
+      "detail": "Recorded as demolished, with no residents linked to it and no census year at all. Either the links have gone missing or the record was never more than a stub. What stood there, when did it go, and did anyone in the record live in it?"
+    },
+    {
+      "slug": "peveril-house-or-peveril-tower",
+      "kind": "house-name",
+      "property_id": 25,
+      "title": "Peveril House or Peveril Tower — which name, and when?",
+      "detail": "9 Cavendish Crescent North is recorded under both names, and there is a second Peveril House on Peveril Drive. Which name did the Cavendish Crescent house carry, and over what period? The name clash is a live risk: a census address reading only \"Peveril House\" could be filed against either."
+    },
+    {
+      "slug": "dougal-map-architect-colours",
+      "kind": "document",
+      "title": "What is the colour key on Dougal de Havilland's map?",
+      "detail": "The map colours the houses, and the colouring appears to encode the architect or the building period. Reading it off the scan gave forty suggestions that all fell into a single class, which is almost certainly wrong — the yellow road markings were being read as the yellow of one of the periods. Does a printed key exist, or does anyone remember what the colours meant? With the key, the map would name the architect of a great many houses at once."
+    },
+    {
+      "slug": "dougal-map-unmatched-names",
+      "kind": "house-name",
+      "title": "171 names on Dougal's map have no house in the record",
+      "detail": "Mining the map turned up 964 labels. 86 matched a property outright; 171 are house-shaped names with nothing behind them. Some will be subdivisions and flats, some earlier names of houses already held, and some genuinely missing. Working the list down is the single largest source of new house names available, and most of it can be done from an armchair by anyone who knows the estate."
+    }
+  ]
+}

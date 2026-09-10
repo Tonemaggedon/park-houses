@@ -623,6 +623,35 @@ async function dbInit() {
       started_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_property_research ON property_research(property_id, username)`);
+
+    // Open questions about the estate that only somebody standing in front of the
+    // house can settle. Seeded from data/research_questions.json and keyed on the
+    // slug, so a redeploy neither duplicates a question nor overwrites an answer.
+    await db.query(`CREATE TABLE IF NOT EXISTS research_questions (
+      id SERIAL PRIMARY KEY,
+      slug TEXT UNIQUE,
+      title TEXT NOT NULL,
+      detail TEXT,
+      kind TEXT,
+      property_id INTEGER,
+      person_id INTEGER,
+      status TEXT NOT NULL DEFAULT 'open',
+      answer TEXT,
+      answered_by TEXT,
+      answered_at TIMESTAMPTZ,
+      created_by TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      edited_at TIMESTAMPTZ
+    )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS research_claims (
+      id SERIAL PRIMARY KEY,
+      question_id INTEGER REFERENCES research_questions(id) ON DELETE CASCADE,
+      username TEXT NOT NULL,
+      note TEXT,
+      started_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_research_claim ON research_claims(question_id, username)`);
+    await seedResearchQuestions();
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
       await db.query(`DELETE FROM people_relationships WHERE id IN (
@@ -4812,8 +4841,143 @@ app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', '
 app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'unfiled.html')));
 app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'duplicates.html')));
 app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'archive.html')));
+app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+
+// ── Research questions ────────────────────────────────────────────────────────
+// The record has questions in it that no amount of reading will settle: which
+// house a name belongs to, whether a building still stands, what a plaque says.
+// They are written into data/research_questions.json so they arrive with a
+// deploy, and a contributor claims one to say they are looking into it.
+async function seedResearchQuestions() {
+  const file = path.join(__dirname, 'data', 'research_questions.json');
+  if (!fs.existsSync(file)) return;
+  let doc;
+  try { doc = JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch (e) { console.warn('research_questions.json is not valid JSON:', e.message); return; }
+  let added = 0, refreshed = 0;
+  for (const q of (doc.questions || [])) {
+    if (!q.slug || !q.title) continue;
+    try {
+      const r = await db.query(
+        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, created_by)
+         VALUES ($1,$2,$3,$4,$5,$6,'seed')
+         ON CONFLICT (slug) DO NOTHING RETURNING id`,
+        [q.slug, q.title, q.detail || null, q.kind || null,
+         q.property_id || null, q.person_id || null]);
+      if (r.rows.length) { added++; continue; }
+      // Already there. Refresh the wording only while nobody has touched it by
+      // hand — an edit or an answer in the site is worth more than the file.
+      const upd = await db.query(
+        `UPDATE research_questions
+            SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6
+          WHERE slug=$1 AND edited_at IS NULL AND status='open'
+            AND (title IS DISTINCT FROM $2 OR detail IS DISTINCT FROM $3
+                 OR kind IS DISTINCT FROM $4 OR property_id IS DISTINCT FROM $5
+                 OR person_id IS DISTINCT FROM $6) RETURNING id`,
+        [q.slug, q.title, q.detail || null, q.kind || null,
+         q.property_id || null, q.person_id || null]);
+      if (upd.rows.length) refreshed++;
+    } catch (e) { console.warn('research question', q.slug, e.message); }
+  }
+  if (added || refreshed) console.log(`Research questions: ${added} added, ${refreshed} refreshed`);
+}
+
+app.get('/api/research-questions', async (req, res) => {
+  if (!db) return res.json({ questions: [] });
+  try {
+    const qs = await db.query(
+      `SELECT id, slug, title, detail, kind, property_id, person_id, status,
+              answer, answered_by, answered_at, created_by, created_at
+         FROM research_questions
+        ORDER BY (status = 'answered'), id`);
+    const cl = await db.query(
+      `SELECT question_id, username, note, started_at FROM research_claims ORDER BY started_at`);
+    const by = {};
+    for (const c of cl.rows) (by[c.question_id] = by[c.question_id] || []).push(c);
+    res.json({ questions: qs.rows.map(q => ({ ...q, claims: by[q.id] || [] })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/research-questions', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const title = String((req.body && req.body.title) || '').trim();
+  if (!title) return res.status(400).json({ error: 'A question needs a title' });
+  const who = (await getResearchKey(req.session)) || 'someone';
+  try {
+    const r = await db.query(
+      `INSERT INTO research_questions (title, detail, kind, property_id, person_id, created_by)
+       VALUES ($1,$2,$3,$4,$5,$6) RETURNING id`,
+      [title, (req.body.detail || '').trim() || null, req.body.kind || null,
+       parseInt(req.body.property_id, 10) || null, parseInt(req.body.person_id, 10) || null, who]);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/research-questions/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id)) return res.status(400).json({ error: 'Not a question number' });
+  const who = (await getResearchKey(req.session)) || 'someone';
+  const b = req.body || {};
+  try {
+    if (b.answer !== undefined) {
+      const answer = String(b.answer || '').trim();
+      if (!answer) {
+        // Reopening: the answer goes, the question comes back.
+        await db.query(
+          `UPDATE research_questions SET status='open', answer=NULL, answered_by=NULL,
+                  answered_at=NULL WHERE id=$1`, [id]);
+      } else {
+        await db.query(
+          `UPDATE research_questions SET status='answered', answer=$2, answered_by=$3,
+                  answered_at=NOW() WHERE id=$1`, [id, answer, who]);
+      }
+    }
+    const sets = [], vals = [id];
+    for (const [k, col] of [['title','title'],['detail','detail'],['kind','kind']]) {
+      if (b[k] !== undefined) { vals.push(String(b[k] || '').trim() || null); sets.push(`${col}=$${vals.length}`); }
+    }
+    if (sets.length) {
+      // Mark it edited so the seed file stops rewriting it underneath them.
+      await db.query(`UPDATE research_questions SET ${sets.join(', ')}, edited_at=NOW() WHERE id=$1`, vals);
+    }
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/research-questions/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query(`DELETE FROM research_questions WHERE id=$1`, [parseInt(req.params.id, 10)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/research-questions/:id/claim', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const who = await getResearchKey(req.session);
+  if (!who) return res.status(401).json({ error: 'Login required' });
+  try {
+    await db.query(
+      `INSERT INTO research_claims (question_id, username, note) VALUES ($1,$2,$3)
+       ON CONFLICT (question_id, username) DO UPDATE SET note=EXCLUDED.note`,
+      [parseInt(req.params.id, 10), who, (req.body && req.body.note || '').trim() || null]);
+    res.json({ ok: true, username: who });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/research-questions/:id/claim', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const who = await getResearchKey(req.session);
+  if (!who) return res.status(401).json({ error: 'Login required' });
+  try {
+    await db.query(`DELETE FROM research_claims WHERE question_id=$1 AND username=$2`,
+      [parseInt(req.params.id, 10), who]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 // ── Property research tracking ────────────────────────────────────────────────
 app.get('/api/property-research', async (req, res) => {
