@@ -1999,6 +1999,10 @@ app.get('/api/person-of-week', async (req, res) => {
 const gazetteCache = new Map(); // query -> { at, rows }
 const GAZETTE_TTL = 60 * 60 * 1000;
 
+// The Gazette's feed gives .../page/9047/data.pdf. Strip the data.* tail to get
+// the notice's own page, which is what a reader wants and what a citation needs.
+const gazettePage = u => String(u || '').replace(/\/data\.(pdf|htm|html|xml|json)(\?.*)?$/i, '');
+
 app.get('/api/gazette', async (req, res) => {
   const name = String(req.query.name || '').trim();
   if (name.length < 5) return res.json([]);
@@ -2020,11 +2024,15 @@ app.get('/api/gazette', async (req, res) => {
       const grab = re => ((e.match(re) || [])[1] || '').trim();
       const date = grab(/<published>(.*?)<\/published>/) || grab(/<updated>(.*?)<\/updated>/);
       const href = grab(/<link[^>]*href="(.*?)"/);
+      const abs = href.startsWith('http') ? href : 'https://www.thegazette.co.uk' + href;
       return {
         title: grab(/<title>([\s\S]*?)<\/title>/).replace(/\s+/g, ' '),
         date: date.slice(0, 10),
         year: parseInt(date.slice(0, 4), 10) || null,
-        link: href.startsWith('http') ? href : 'https://www.thegazette.co.uk' + href,
+        // The feed points at the raw PDF. Send people to the notice page
+        // instead: it shows the text in context with the rest of the issue,
+        // it is the citable address, and it does not force a download.
+        link: gazettePage(abs),
       };
     }).filter(x => x.link).sort((a, b) => (a.year || 9999) - (b.year || 9999)).slice(0, 10);
     gazetteCache.set(key, { at: Date.now(), rows });

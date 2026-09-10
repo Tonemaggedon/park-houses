@@ -2253,36 +2253,44 @@ async function loadNhle(p) {
   const ov = propOverrides[p.id] || {};
   const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
 
-  // Once someone has identified the right entry, show that instead of the guesses.
-  if (ov.list_entry) {
-    body.innerHTML =
+  // The chosen entry goes at the top — but the others stay. The list records a
+  // house, its walls and its gate piers as separate entries, so the neighbours
+  // are often the same building and are worth reading. Hiding them the moment
+  // one was picked meant a wrong choice could not be compared against anything.
+  const chosen = ov.list_entry ? (
       '<div class="nhle-row nhle-linked">'
       + '<a href="' + esc(ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry))
       + '" target="_blank" rel="noopener noreferrer">' + esc(ov.list_name || ('List entry ' + ov.list_entry)) + '</a>'
-      + '<div class="nhle-meta">Grade ' + esc(ov.list_grade || '—')
+      + '<div class="nhle-meta">Recorded as this property\u2019s entry · Grade ' + esc(ov.list_grade || '—')
       + (ov.list_date ? ' · listed ' + esc(ov.list_date) : '')
       + ' · entry ' + esc(ov.list_entry) + '</div>'
       + (canEdit ? '<button class="nhle-btn nhle-unlink" data-nhle-clear="1">Not this one</button>' : '')
-      + '</div>';
-    return;
-  }
+      + '</div>') : '';
 
   try {
     const rows = await fetch('/api/nhle?lat=' + p.lat + '&lng=' + p.lng + '&radius=120')
       .then(r => r.json());
-    if (!rows.length) { body.textContent = 'No list entries recorded within 120m.'; return; }
-    body.innerHTML = rows.map(e =>
-      '<div class="nhle-row">'
-      + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener noreferrer">' + esc(e.name) + '</a>'
-      + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
-      + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
-      + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
-                 + 'This is the one</button>' : '')
-      + '</div>').join('')
-      + (canEdit ? '<div class="nhle-note">The list records walls and gateways separately, so '
-                 + 'the nearest entry is often not the house.</div>' : '');
+    const others = rows.filter(e => String(e.entry) !== String(ov.list_entry || ''));
+    if (!chosen && !others.length) { body.textContent = 'No list entries recorded within 120m.'; return; }
+    body.innerHTML = chosen
+      + (chosen && others.length
+          ? '<div class="nhle-note">Also within 120m — the list often covers a house, its walls '
+            + 'and its gateways as separate entries:</div>' : '')
+      + others.map(e =>
+        '<div class="nhle-row">'
+        + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener noreferrer">' + esc(e.name) + '</a>'
+        + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
+        + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
+        + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
+                   + (chosen ? 'This one instead' : 'This is the one') + '</button>' : '')
+        + '</div>').join('')
+      + (canEdit && !chosen && others.length
+          ? '<div class="nhle-note">The list records walls and gateways separately, so '
+            + 'the nearest entry is often not the house.</div>' : '');
   } catch (err) {
-    body.textContent = 'Could not reach the list right now.';
+    // The chosen entry is held locally, so it survives the list being unreachable.
+    body.innerHTML = chosen || '';
+    if (!chosen) body.textContent = 'Could not reach the list right now.';
   }
 }
 
