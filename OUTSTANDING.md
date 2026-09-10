@@ -63,18 +63,35 @@ number, or creating as its own property the way Gartree Lodge was.
 no other census year at a numbered Huntingdon Drive address, so there is nothing to triangulate
 from. These need your knowledge or a source.
 
-- [ ] **Kenmore, Huntingdon Drive** — 6 records, 1921. Samuel Ritchie Jackson (52), wife
-      Margaret Emily, three children, one servant.
-- [ ] **Greendale, Huntingdon Drive** — 4 records, 1921. Joseph Spray (77), wife Martha,
-      daughter Jessie, one servant.
+**Solved — these now suggest themselves on `/unfiled`, outlined in green:**
+
+- [ ] **Kenmore → #152, 10 Huntingdon Drive.** 6 records. The house is recorded as Kenmare
+      House; the census spells it Kenmore. One click to file.
+- [ ] **Allendale → #50, 23 Cavendish Road East.** 3 records — William C Church (50), a servant
+      and a visitor. The house is recorded as Allandale; the census spells it Allendale. Parker
+      Woodward held it in 1911 and had moved to #51 by 1921, so Church took it on.
+
+**Strong lead, wants your say:**
+
+- [ ] **Gertrude House → #55, 33 Cavendish Road East (Redcliffe House)?** 9 records headed by
+      Frank Woodward (63). He held **#55 in 1911**, and **#55 has nobody recorded in 1921** —
+      so he most likely stayed put. That would make "Gertrude House" another name for 33
+      Cavendish Road East. Unlike Kenmore and Allendale this is not a spelling variant but two
+      genuinely different names, so I have not recorded it. Say the word and I will.
+
+**Still unknown — narrowed from ten houses to four:**
+
+Huntingdon Drive holds ten houses. #143 (Barton House) and #148 (Avoca) are occupied in 1921,
+#145 has six people, and #152 is Kenmore. That leaves **2, 4, 8 and 9 Huntingdon Drive** — the
+four with no name recorded and nobody in 1921 — for these three households. Nothing on the
+estate resembles any of the three names under any spelling.
+
+- [ ] **Greendale, Huntingdon Drive** — 4 records, 1921. Joseph Spray (77), wife Martha (77),
+      daughter Jessie (47), one servant. An elderly household.
 - [ ] **Brampton, Huntingdon Drive** — 3 records, 1921. Gertrude Margaret Dobrashian (34),
       a boarder and a servant.
-- [ ] **The Cottage, Huntingdon Drive** — 2 records, 1921. Sidney Richard Tann (42) and
-      wife Daisy.
-- [ ] **Allendale, Cavendish Road East** — 3 records.
-- [ ] **Gertrude House, Cavendish Road East** — 9 records. Frank Woodward as head. The address
-      reads "gertrude house /Gartree Cavendish Rd East", so it may be a muddle with Gartree —
-      but Gartree House already holds the Goddards in 1921, so it cannot simply be the same house.
+- [ ] **The Cottage, Huntingdon Drive** — 2 records, 1921. Sidney Richard Tann (42) and wife
+      Daisy. The name suggests the smallest of the four.
 
 Huntingdon Drive is recorded as plain numbers 1–10 with no names at all, so these four names
 belong to four of those ten.
