@@ -3331,11 +3331,20 @@ app.post('/api/census/reassign', requireContributor, async (req, res) => {
       if (target !== null && !Number.isInteger(target)) {
         return res.status(400).json({ error: `"${raw}" is not a property number` });
       }
+      // Unfiling a household that came out of a misfiled address leaves it with
+      // no address at all, which drops it into the "no address recorded" heap on
+      // the unfiled page — the least useful place in the record. A move may
+      // carry the address off the schedule instead, so the group arrives named.
+      const addr = target === null && typeof m.address === 'string' && m.address.trim()
+        ? m.address.trim() : null;
       await db.query(
         `UPDATE census_entries
             SET property_id = $1,
-                unresolved_address = CASE WHEN $1::int IS NULL THEN unresolved_address ELSE NULL END
-          WHERE id = $2`, [target, entryId]);
+                unresolved_address = CASE
+                  WHEN $1::int IS NOT NULL THEN NULL
+                  WHEN $3::text IS NOT NULL THEN $3
+                  ELSE unresolved_address END
+          WHERE id = $2`, [target, entryId, addr]);
       if (target === null) unfiled++; else filed++;
       // Keep the resident link in step with where the record now sits.
       if (target !== null) {

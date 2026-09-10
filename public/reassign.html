@@ -53,6 +53,9 @@
     font-family:inherit; font-size:.85rem; text-align:center; }
   .dest.set { border-color:var(--green); background:#f2f7ef; font-weight:700; }
   .dest.unfile { border-color:#c8a86a; background:#fbf4e2; font-weight:700; }
+  .unaddr { display:none; width:200px; margin-left:6px; padding:4px 8px; border:1px solid #c8a86a;
+    border-radius:4px; font-family:inherit; font-size:.8rem; background:#fbf4e2; color:var(--ink); }
+  .unaddr.open { display:inline-block; }
   .destname { display:block; font-size:.72rem; color:var(--faint); margin-top:2px;
     max-width:190px; }
   .destname.bad { color:var(--red); }
@@ -99,6 +102,10 @@
     <strong>0</strong> (or a dash), not blank. There is an <strong>Unfile</strong> button on each
     household for the same thing. Unfiled records go back to the unresolved queue, which is what
     you want when a household plainly does not belong here but the right house is not yet known.</p>
+  <p class="lede"><strong>Unfile it under an address if the schedule gives one.</strong> Pressing
+    Unfile opens a box for it. Records unfiled with an address arrive on the unresolved page as a
+    named group, with houses on that street offered against them; records unfiled without one land
+    in the heap marked <em>no address recorded</em>, which is the hardest place to get out of.</p>
 
   <div class="pick">
     Property <input id="prop" type="number" placeholder="e.g. 310">
@@ -189,6 +196,8 @@ async function load() {
             <span class="destname" data-forhh="${i}"></span>
             <button type="button" data-apply="${i}">Apply</button>
             <button type="button" data-unfile="${i}" title="Send this household back to the unresolved queue">Unfile</button>
+            <input class="unaddr" data-unaddr="${i}" placeholder="under what address?"
+                   aria-label="Address to record on these records when they are unfiled">
           </span>
         </div>
         <table><thead><tr>
@@ -284,6 +293,10 @@ document.addEventListener('click', e => {
   const un = e.target.closest('[data-unfile]');
   if (un) {
     document.querySelectorAll(`.dest[data-hh="${un.dataset.unfile}"]`).forEach(inp => { inp.value = '0'; });
+    // Offer somewhere to put the address off the schedule, so the household
+    // lands on the unfiled page as a named group rather than in the heap.
+    const a = document.querySelector(`[data-unaddr="${un.dataset.unfile}"]`);
+    if (a) { a.classList.add('open'); a.focus(); }
     return refresh();
   }
 });
@@ -294,7 +307,13 @@ document.getElementById('save').addEventListener('click', async () => {
   document.querySelectorAll('.dest').forEach(i => {
     const d = parseDest(i.value);
     if (d.skip || d.bad) return;
-    moves.push({ entryId: Number(i.dataset.entry), propertyId: d.propertyId });
+    const mv = { entryId: Number(i.dataset.entry), propertyId: d.propertyId };
+    if (d.propertyId === null) {
+      const a = document.querySelector(`[data-unaddr="${i.dataset.hh}"]`);
+      const v = a ? a.value.trim() : '';
+      if (v) mv.address = v;
+    }
+    moves.push(mv);
   });
   if (!moves.length) return;
   const btn = document.getElementById('save'), msg = document.getElementById('msg');
