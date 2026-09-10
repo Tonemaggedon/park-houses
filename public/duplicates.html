@@ -91,12 +91,55 @@
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
   <div class="note">Two people of one name both recorded in 1911 are usually two people, and are
-    not listed here — with one exception. Nobody is in two households in the same year, so where
-    the birth year matches exactly and the two sit at different properties, one entry is wrong.
-    Those are shown first.</div>
+    not listed here — with two exceptions. Nobody is in two households in the same year, so where
+    the birth year matches and the two sit at different properties, one entry is wrong. And where
+    they sit at the <em>same</em> property in the same year, born the same year, that is one
+    household entered twice from two transcriptions of one page. Both are shown first.</div>
+
+  <details class="add" id="manualBox" hidden style="margin-top:26px;border-top:1px solid var(--rule);padding-top:16px">
+    <summary style="cursor:pointer;font-size:1rem;font-weight:600">Merge two people by number</summary>
+    <p class="note" style="margin-top:8px;border:0;padding:0">For a pair this page cannot find —
+      most often because the surname itself is mis-transcribed, so the two never sit together in
+      the same group. Check both on the People page first: the merge cannot be undone.</p>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px">
+      <label style="font-size:.8rem;color:var(--faint)">keep
+        <input id="mKeep" type="number" placeholder="#" style="width:92px;padding:5px 8px;border:1px solid var(--rule);border-radius:4px;font-family:inherit;font-size:.85rem"></label>
+      <span style="color:var(--faint)">←</span>
+      <label style="font-size:.8rem;color:var(--faint)">merge in and delete
+        <input id="mDrop" type="number" placeholder="#" style="width:92px;padding:5px 8px;border:1px solid var(--rule);border-radius:4px;font-family:inherit;font-size:.85rem"></label>
+      <button id="mGo" style="font-family:inherit;font-size:.82rem;border:none;border-radius:5px;padding:6px 16px;cursor:pointer;background:var(--green);color:#f2ecd8;font-weight:700">Merge</button>
+      <span id="mMsg" style="font-size:.82rem;color:var(--soft)"></span>
+    </div>
+  </details>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const go = document.getElementById('mGo');
+  if (!go) return;
+  go.addEventListener('click', async () => {
+    const keep = parseInt(document.getElementById('mKeep').value, 10);
+    const drop = parseInt(document.getElementById('mDrop').value, 10);
+    const msg = document.getElementById('mMsg');
+    if (!Number.isInteger(keep) || !Number.isInteger(drop)) { msg.textContent = 'Two person numbers are needed.'; return; }
+    if (keep === drop) { msg.textContent = 'Those are the same person.'; return; }
+    if (!confirm(`Keep #${keep} and merge #${drop} into it? This cannot be undone.`)) return;
+    go.disabled = true; msg.textContent = 'Merging…';
+    try {
+      const res = await fetch('/api/admin/merge-people', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ keep_id: keep, delete_id: drop }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+      msg.textContent = `Merged — #${drop} is now part of #${keep}.`;
+      document.getElementById('mKeep').value = ''; document.getElementById('mDrop').value = '';
+      load();
+    } catch (err) { msg.textContent = 'Could not merge those: ' + err.message; }
+    finally { go.disabled = false; }
+  });
+});
+
 function esc(v){ if(v===null||v===undefined) return '';
   return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
@@ -146,9 +189,10 @@ async function load() {
       + (shared ? ` · ${shared} also share a property` : '')
       + (d.dismissedCount ? ` · ${d.dismissedCount} marked as different people and hidden` : '');
     if (!canEdit) { box.innerHTML = '<div class="empty">Sign in as a contributor to merge these.</div>'; return; }
+    document.getElementById('manualBox').hidden = false;
 
     box.innerHTML = d.pairs.map((pr, i) => `
-      <div class="pair${pr.sameYearTwice || pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
+      <div class="pair${pr.sameYearTwice || pr.doubleImport || pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
         <div class="why">${pr.reasons.map(r =>
           `<span class="tag${/property|households/.test(r) ? ' hot'
             : /share the surname/.test(r) && pr.surnameShared >= 6 ? ' cool' : ''}">${esc(r)}</span>`).join('')}

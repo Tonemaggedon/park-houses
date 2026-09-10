@@ -3189,15 +3189,28 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           // A common name makes the coincidence ordinary. Two Smiths in one year
           // at two addresses is unremarkable; two Hanishes is not.
           const commonName = share >= 8 || (share >= 4 && shareFore >= 25);
+          const sharedProp = a.props.some(x => b.props.includes(x));
           const sameYearTwice = overlap.length > 0
             && a.born_year === b.born_year
-            && !a.props.some(x => b.props.includes(x))
+            && !sharedProp
             && !commonName;
-          if (overlap.length && !sameYearTwice) continue;
-          const sharedProp = a.props.some(x => b.props.includes(x));
+          // The same household imported twice, from two transcriptions of one
+          // page: one person entered as "Ada Jessop" and again as "Ada Mary
+          // Jessop", same house, same year, same birth year. The rule here used
+          // to skip exactly this — sharing a house and a year was read as proof
+          // of two real people — which made a double-imported household the one
+          // kind of duplicate the page could never see.
+          const doubleImport = overlap.length > 0
+            && sharedProp
+            && Math.abs(a.born_year - b.born_year) <= 1
+            && !commonName;
+          if (overlap.length && !sameYearTwice && !doubleImport) continue;
           const reasons = [];
           if (sameYearTwice) {
             reasons.push(`in two households in ${overlap.join(' and ')} — nobody can be`);
+          }
+          if (doubleImport) {
+            reasons.push(`both in the same house in ${overlap.join(' and ')} — one household entered twice`);
           }
           reasons.push(share === 1
             ? 'the only one of that surname'
@@ -3215,7 +3228,7 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           const isDismissed = dismissedKey.has(`${lo}:${hi}`);
           if (isDismissed && !showDismissed) continue;
           pairs.push({
-            sameYearTwice, surnameShared: share, forenameShared: shareFore,
+            sameYearTwice, doubleImport, surnameShared: share, forenameShared: shareFore,
             commonName,
             dismissed: isDismissed,
             note: isDismissed
@@ -4169,6 +4182,22 @@ app.post('/api/admin/merge-people', requireContributor, async (req, res) => {
 
     // Reassign all related records
     await client.query('UPDATE census_entries    SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Merging a person who was imported twice leaves them with two records of
+    // the same census night in the same house — and the crowding page would go
+    // on counting both. Nobody is in one house twice in one year, so collapse
+    // them, keeping the fuller row.
+    await client.query(`
+      DELETE FROM census_entries WHERE id IN (
+        SELECT id FROM (
+          SELECT id, ROW_NUMBER() OVER (
+            PARTITION BY person_id, census_year, COALESCE(property_id, -1)
+            ORDER BY (occupation_at_census IS NOT NULL)::int
+                   + (birth_place IS NOT NULL)::int
+                   + (relationship IS NOT NULL)::int
+                   + (age_at_census IS NOT NULL)::int
+                   + (marital_status IS NOT NULL)::int DESC, id) AS rn
+            FROM census_entries WHERE person_id=$1
+        ) t WHERE rn > 1)`, [keepId]);
     await client.query('UPDATE occupations       SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
     await client.query('UPDATE people_places     SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
     await client.query('UPDATE person_media      SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
