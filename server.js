@@ -1449,10 +1449,21 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
     const files = fs.readdirSync(path.join(__dirname, 'data'))
       .filter(f => /^people_.*\.json$/.test(f));
     const report = [];
+    // A dry run inserts nothing, so without this it cannot see the people an
+    // earlier file in the same run would have created, and reports them as new
+    // twice. Remember what it decided to add and treat those as present.
+    const pending = new Set();
+    const pkey = (fn, ln, by) =>
+      `${String(fn || '').trim().toLowerCase()}|${String(ln || '').trim().toLowerCase()}|${by ?? ''}`;
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
       let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0;
       const noSuchId = [];
+      // A preview that says "20 would be added" without saying who is a preview
+      // nobody can check. Name them, capped so a large file stays readable.
+      const addedNames = [], censusNames = [];
+      const NAME_CAP = 24;
+      const nameOf = q => `${q.first_name} ${q.last_name}`.trim();
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
         // A person the record already holds can be named by number instead. The
@@ -1515,7 +1526,17 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             }
           }
         }
-        else if (dryRun) { added++; }   // no id yet, but still count the links below
+        else if (dryRun) {
+          // Would this file be creating somebody an earlier file already made?
+          const seen = pending.has(pkey(person.first_name, person.last_name,
+                                        byYear ? person.born_year : ''));
+          if (seen) { already++; }
+          else {
+            added++; addedNames.push(nameOf(person));
+            pending.add(pkey(person.first_name, person.last_name, ''));
+            if (person.born_year) pending.add(pkey(person.first_name, person.last_name, person.born_year));
+          }
+        }
         else {
           const r = await db.query(
             `INSERT INTO people (first_name,last_name,known_as,title,postnominals,sex,
@@ -1525,7 +1546,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
              person.postnominals || null, person.sex || null, person.born_date || null,
              person.born_year || null, person.born_place || null,
              person.died_year || null, person.bio || null, person.wikipedia_url || null]);
-          id = r.rows[0].id; added++;
+          id = r.rows[0].id; added++; addedNames.push(nameOf(person));
           await logChange('person', id, req, 'create', 'import', null, file);
         }
         for (const propId of (person.properties || [])) {
@@ -1545,8 +1566,9 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         // can be written before knowing what number anybody has.
         for (const rel of (person.relationships || [])) {
           if (!rel || !rel.to || !rel.type) continue;
-          if (id === null) { rels++; continue; }             // person is new in this dry run
           // The other end can be given by number too, for the same reason as above.
+          // Look it up before bailing out on a person who has no id yet, or a dry
+          // run counts relationships whose far end does not exist.
           const other = Number.isInteger(rel.to.id)
             ? await db.query(`SELECT id FROM people WHERE id=$1`, [rel.to.id])
             : await db.query(
@@ -1555,6 +1577,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
                 [String(rel.to.first_name || '').trim(), String(rel.to.last_name || '').trim()]);
           if (other.rows.length !== 1) { relsSkipped++; continue; }   // ambiguous or absent
           const otherId = other.rows[0].id;
+          if (id === null) { rels++; continue; }   // new in this dry run: far end checked, id unknown
           if (otherId === id) { relsSkipped++; continue; }
           const dup = await db.query(
             `SELECT 1 FROM people_relationships
@@ -1584,7 +1607,10 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         // property so running the import twice does not double the record.
         for (const c of (person.census || [])) {
           if (!c.census_year) continue;
-          if (id === null) { census++; continue; }   // person is new in this dry run
+          // A person who does not exist yet has no census record either, so every
+          // one of theirs counts — and wants naming, or a dry run of an entirely
+          // new household lists nobody at all.
+          if (id === null) { census++; censusNames.push(`${nameOf(person)} ${c.census_year}`); continue; }
           const dup = await db.query(
             `SELECT 1 FROM census_entries
               WHERE person_id=$1 AND census_year=$2
@@ -1592,6 +1618,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             [id, c.census_year, c.property_id || null]);
           if (dup.rows.length) continue;
           census++;
+          censusNames.push(`${nameOf(person)} ${c.census_year}`);
           if (dryRun) continue;
           await db.query(
             `INSERT INTO census_entries
@@ -1624,8 +1651,12 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
              o.employer || null, o.notes || null]);
         }
       }
+      const trim = list => list.length > NAME_CAP
+        ? list.slice(0, NAME_CAP).concat(`and ${list.length - NAME_CAP} more`) : list;
       report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
                     census, occupations: occs, relationships: rels, relationshipsSkipped: relsSkipped,
+                    ...(addedNames.length ? { addedNames: trim(addedNames) } : {}),
+                    ...(censusNames.length ? { censusNames: trim(censusNames) } : {}),
                     ...(noSuchId.length ? { noSuchPerson: noSuchId } : {}) });
     }
     res.json({ ok: true, dryRun, report });
