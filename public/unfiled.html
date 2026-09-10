@@ -57,6 +57,11 @@
   .hh-bar button { font-family:inherit; font-size:.78rem; border-radius:4px; padding:4px 11px;
     cursor:pointer; border:1px solid var(--green); background:var(--green); color:#f2ecd8; }
   .hh-bar button:disabled { opacity:.45; cursor:default; }
+  .rowin { width:64px; padding:2px 5px; border:1px solid var(--rule); border-radius:3px;
+    font-family:inherit; font-size:.76rem; }
+  .rowin.set { border-color:#9ab88a; background:#f4f9f0; }
+  .rowdest { font-size:.72rem; color:var(--faint); white-space:nowrap; }
+  .rowdest.bad { color:var(--red); }
   .hh table { border-collapse:collapse; width:100%; font-size:.8rem; }
   .hh td { padding:3px 11px; border-top:1px solid #f2ece0; }
   .hh td.n { text-align:right; color:var(--faint); font-variant-numeric:tabular-nums; }
@@ -190,6 +195,7 @@ async function load() {
           <input type="number" placeholder="or a number" data-in="${i}">
           <span class="dest" data-dest="${i}"></span>
           <button class="go" data-file="${i}" disabled>File all ${g.count}</button>
+          <button data-rowsgo="${i}" disabled>File the numbered rows</button>
         </div>
         ${households(g.entries).map((h, j) => `
           <div class="hh">
@@ -205,6 +211,10 @@ async function load() {
               <td><a href="/people?person=${e.person_id}" target="_blank">${esc(e.name)}</a></td>
               <td>${esc(e.relationship || '')}</td>
               <td class="n">${e.year}</td>
+              <td class="n"><input class="rowin" type="number" placeholder="to #"
+                    data-rowin="${e.id}" data-rowg="${i}"
+                    aria-label="Property for ${esc(e.name)}"></td>
+              <td class="rowdest" data-rowdest="${e.id}"></td>
             </tr>`).join('')}</table>
           </div>`).join('')}
       </div>`).join('');
@@ -237,14 +247,60 @@ function setHhDest(k, val) {
   dest.textContent = '→ ' + propNames[n]; dest.className = 'dest ok'; btn.disabled = false;
 }
 
+// A household block is split on the head, and some schedules do not mark one —
+// the Wrights sat inside the Dobsons' block for want of a "Head" against
+// Bernard Swanwick Wright. So every row can also be sent somewhere on its own.
+function refreshRows(gi) {
+  let n = 0;
+  document.querySelectorAll(`.rowin[data-rowg="${gi}"]`).forEach(inp => {
+    const lbl = document.querySelector(`[data-rowdest="${inp.dataset.rowin}"]`);
+    const v = parseInt(inp.value, 10);
+    inp.classList.toggle('set', Number.isInteger(v) && !!propNames[v]);
+    if (!lbl) return;
+    if (!Number.isInteger(v)) { lbl.textContent = ''; lbl.className = 'rowdest'; return; }
+    if (!propNames[v]) { lbl.textContent = `no #${v}`; lbl.className = 'rowdest bad'; return; }
+    lbl.textContent = '→ ' + propNames[v]; lbl.className = 'rowdest'; n++;
+  });
+  const btn = document.querySelector(`[data-rowsgo="${gi}"]`);
+  if (btn) { btn.disabled = !n; btn.textContent = n ? `File the ${n} numbered row${n === 1 ? '' : 's'}` : 'File the numbered rows'; }
+}
+
 document.addEventListener('input', e => {
   if (e.target.dataset.in !== undefined) setDest(e.target.dataset.in, e.target.value);
   if (e.target.dataset.hhin !== undefined) setHhDest(e.target.dataset.hhin, e.target.value);
+  if (e.target.dataset.rowin !== undefined) refreshRows(e.target.dataset.rowg);
 });
 
 document.addEventListener('click', async e => {
   const pick = e.target.closest('[data-pick]');
   if (pick) return setDest(pick.dataset.g, pick.dataset.pick);
+
+  // Just the rows somebody has put a number against.
+  const rowsGo = e.target.closest('[data-rowsgo]');
+  if (rowsGo) {
+    const gi = rowsGo.dataset.rowsgo;
+    const moves = [];
+    document.querySelectorAll(`.rowin[data-rowg="${gi}"]`).forEach(inp => {
+      const v = parseInt(inp.value, 10);
+      if (Number.isInteger(v) && propNames[v]) moves.push({ entryId: Number(inp.dataset.rowin), propertyId: v });
+    });
+    if (!moves.length) return;
+    if (!confirm(`File ${moves.length} record${moves.length === 1 ? '' : 's'} to the properties named against them?`)) return;
+    rowsGo.disabled = true; rowsGo.textContent = 'Filing…';
+    try {
+      const res = await fetch('/api/census/reassign', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ moves }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+      load();
+    } catch (err) {
+      rowsGo.disabled = false; rowsGo.textContent = 'File the numbered rows';
+      alert('Could not file those: ' + err.message);
+    }
+    return;
+  }
 
   // One household out of a group, rather than the whole address at once.
   const hh = e.target.closest('[data-hhgo]');

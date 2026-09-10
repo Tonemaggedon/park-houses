@@ -1,0 +1,32 @@
+{
+  "note": "Everything else on the 1921 Dobson household was already in the record — birth years, birth places and census occupations all match the return. The one thing the census tables have no room for is the employer column, and here it names the family firm. Also fills Bernard Swanwick Wright's birth place, which his census entry carries but his person record does not.",
+  "source": "1921 census, the Dobson household — employer column",
+  "people": [
+    {
+      "id": 2300,
+      "first_name": "John George",
+      "last_name": "Dobson",
+      "occupations": [
+        { "occupation": "Cotton doubler", "employer": "Dobson & Allsop Ltd, cotton doublers",
+          "to_year": 1921,
+          "notes": "Returned in 1921 as a retired cotton doubler, aged 63. His son John Ignatius was working for Dobson & Allsop Ltd in the same trade, so the firm carries the family name." }
+      ]
+    },
+    {
+      "id": 2302,
+      "first_name": "John Ignatius",
+      "last_name": "Dobson",
+      "occupations": [
+        { "occupation": "Cotton doubler", "employer": "Dobson & Allsop Ltd, cotton doublers",
+          "from_year": 1921,
+          "notes": "Named as his employer on the 1921 return, where the firm is written \"Cotton Doblers Dobson & Allsop Ltd\"." }
+      ]
+    },
+    {
+      "id": 2308,
+      "first_name": "Bernard Swanwick",
+      "last_name": "Wright",
+      "born_place": "Nottingham, Nottinghamshire, England"
+    }
+  ]
+}
