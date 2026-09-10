@@ -660,6 +660,27 @@ async function dbInit() {
       set_by TEXT,
       set_at TIMESTAMPTZ DEFAULT NOW()
     )`);
+    // Set aside is per record, not per address: one household on a street can be
+    // placeable while the rest are not. Anything set aside by address before
+    // this is expanded to its records, and the address rows go.
+    await db.query(`CREATE TABLE IF NOT EXISTS census_set_aside (
+      entry_id INTEGER PRIMARY KEY REFERENCES census_entries(id) ON DELETE CASCADE,
+      note TEXT,
+      set_by TEXT,
+      set_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    try {
+      const moved = await db.query(`
+        INSERT INTO census_set_aside (entry_id, note, set_by)
+        SELECT c.id, a.note, a.set_by
+          FROM unfiled_set_aside a
+          JOIN census_entries c ON c.unresolved_address = a.address AND c.property_id IS NULL
+         ON CONFLICT (entry_id) DO NOTHING`);
+      if (moved.rowCount) {
+        await db.query(`DELETE FROM unfiled_set_aside`);
+        console.log(`Set aside: ${moved.rowCount} record(s) moved from address to record level`);
+      }
+    } catch (e) { console.warn('set-aside migration:', e.message); }
     await seedResearchQuestions();
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
@@ -3362,8 +3383,8 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       byAddr.get(key).push(e);
     }
     const aside = new Map((await db.query(
-      `SELECT address, note, set_by, set_at FROM unfiled_set_aside`)).rows
-        .map(r => [r.address, r]));
+      `SELECT entry_id, note, set_by FROM census_set_aside`)).rows
+        .map(r => [r.entry_id, r]));
 
     const groups = [...byAddr.entries()].map(([addr, entries]) => {
       const s = addr === '\u0000none' ? [] : suggest(addr);
@@ -3392,14 +3413,14 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       const strong = s.length && s[0].score >= 10
                      && (s.length === 1 || s[0].score > s[1].score)
                      && households === 1;
-      const setAside = aside.get(addr === '\u0000none' ? '' : addr) || null;
+      const asideCount = entries.filter(e => aside.has(e.id)).length;
       return {
         address: addr === '\u0000none' ? null : addr,
         count: entries.length,
         households,
-        setAside: !!setAside,
-        setAsideNote: setAside ? (setAside.note || null) : null,
-        setAsideBy: setAside ? (setAside.set_by || null) : null,
+        asideCount,
+        setAside: asideCount === entries.length && entries.length > 0,
+        setAsideBy: (aside.get((entries.find(e => aside.has(e.id)) || {}).id) || {}).set_by || null,
         years: [...new Set(entries.map(e => e.census_year))].sort(),
         suggestions: s,
         confident: !!strong,
@@ -3407,6 +3428,7 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
           id: e.id, person_id: e.person_id, year: e.census_year,
           name: [e.first_name, e.last_name].filter(Boolean).join(' '),
           relationship: e.relationship,
+          setAside: aside.has(e.id),
         })),
       };
     }).sort((a, b) => b.count - a.count);
@@ -3450,20 +3472,23 @@ app.post('/api/census/crowding/confirm', requireContributor, async (req, res) =>
 // deleted; the records stay exactly where they are and stay searchable.
 app.post('/api/census/unfiled-groups/set-aside', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
-  const address = String((req.body && req.body.address) || '').trim();
-  if (!address) return res.status(400).json({ error: 'an address is required' });
+  const ids = Array.isArray(req.body && req.body.entryIds)
+    ? req.body.entryIds.map(n => parseInt(n, 10)).filter(Number.isInteger) : [];
+  if (!ids.length) return res.status(400).json({ error: 'no records given' });
+  if (ids.length > 2000) return res.status(400).json({ error: 'too many at once' });
   const on = !(req.body && req.body.on === false);
   const who = (await getResearchKey(req.session)) || null;
   try {
     if (!on) {
-      await db.query(`DELETE FROM unfiled_set_aside WHERE address=$1`, [address]);
-      return res.json({ ok: true, setAside: false });
+      await db.query(`DELETE FROM census_set_aside WHERE entry_id = ANY($1::int[])`, [ids]);
+      return res.json({ ok: true, setAside: false, count: ids.length });
     }
     await db.query(
-      `INSERT INTO unfiled_set_aside (address, note, set_by) VALUES ($1,$2,$3)
-       ON CONFLICT (address) DO UPDATE SET note=EXCLUDED.note, set_by=EXCLUDED.set_by, set_at=NOW()`,
-      [address, (req.body && req.body.note) || null, who]);
-    res.json({ ok: true, setAside: true });
+      `INSERT INTO census_set_aside (entry_id, note, set_by)
+       SELECT id, $2, $3 FROM unnest($1::int[]) AS t(id)
+       ON CONFLICT (entry_id) DO UPDATE SET note=EXCLUDED.note, set_by=EXCLUDED.set_by, set_at=NOW()`,
+      [ids, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, setAside: true, count: ids.length });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

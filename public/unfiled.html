@@ -47,6 +47,7 @@
   .dest.ok { color:var(--green); } .dest.bad { color:var(--red); }
 
   .hh { margin-top:10px; border:1px solid var(--rule); border-radius:6px; overflow:hidden; }
+  .hh.aside { opacity:.68; border-style:dashed; }
   .hh-bar { background:#f8f5ec; padding:7px 11px; display:flex; gap:8px; align-items:center;
     flex-wrap:wrap; font-size:.82rem; }
   .hh-bar .who-t { font-weight:700; }
@@ -152,6 +153,8 @@ function households(entries) {
   }
   for (const h of out) {
     h.title = h.head ? h.head.name + "'s household" : 'No head recorded';
+    h.someAside = h.members.some(m => m.setAside);
+    h.allAside = h.members.every(m => m.setAside);
   }
   return out;
 }
@@ -199,9 +202,10 @@ async function load() {
           ${g.years.join(', ')}${g.households > 1
             ? ` · <strong>${g.households} households</strong> — these do not all belong to one house`
             : ''}</div>
-        ${g.setAside ? `<div class="asidenote">Set aside — no house name or number on the return${
-          g.setAsideBy ? ', by ' + esc(g.setAsideBy) : ''}.${
-          g.setAsideNote ? ' ' + esc(g.setAsideNote) : ''}</div>` : ''}
+        ${g.asideCount ? `<div class="asidenote">${g.setAside
+          ? 'Set aside — no house name or number on the return'
+          : `${g.asideCount} of these set aside`}${
+          g.setAsideBy ? ', by ' + esc(g.setAsideBy) : ''}.</div>` : ''}
         ${g.suggestions.length ? `<div class="sugg">
           ${g.suggestions.map((s, j) => `<button data-pick="${s.id}" data-g="${i}"
               class="${j === 0 && g.confident ? 'top' : ''}">#${s.id} ${esc(s.label)}</button>`).join('')}
@@ -214,17 +218,21 @@ async function load() {
           <button data-rowsgo="${i}" disabled>File the numbered rows</button>
           <button data-aside="${i}" data-asideon="${g.setAside ? '0' : '1'}"
             title="The return gave no house name or number, so the census cannot place these">${
-            g.setAside ? 'Bring it back' : 'Set aside'}</button>
+            g.setAside ? 'Bring all back' : 'Set all aside'}</button>
         </div>
         ${households(g.entries).map((h, j) => `
-          <div class="hh">
+          <div class="hh${h.allAside ? ' aside' : ''}">
             <div class="hh-bar">
               <span class="who-t">${esc(h.title)}</span>
-              <span class="n">${h.members.length} ${h.members.length === 1 ? 'person' : 'people'} · ${h.year}</span>
+              <span class="n">${h.members.length} ${h.members.length === 1 ? 'person' : 'people'} · ${h.year}${
+                h.allAside ? ' · set aside' : (h.someAside ? ` · ${h.members.filter(m => m.setAside).length} set aside` : '')}</span>
               <span class="spacer"></span>
               <input type="number" placeholder="to #" data-hhin="${i}-${j}">
               <span class="dest" data-hhdest="${i}-${j}"></span>
               <button data-hhgo="${i}-${j}" disabled>File these ${h.members.length}</button>
+              <button data-hhaside="${i}-${j}" data-hhasideon="${h.allAside ? '0' : '1'}"
+                title="No house name or number on the return for this household">${
+                h.allAside ? 'Bring back' : 'Set aside'}</button>
             </div>
             <table>${h.members.map(e => `<tr>
               <td><a href="/people?person=${e.person_id}" target="_blank">${esc(e.name)}</a></td>
@@ -300,24 +308,36 @@ document.addEventListener('click', async e => {
   const pick = e.target.closest('[data-pick]');
   if (pick) return setDest(pick.dataset.g, pick.dataset.pick);
 
-  const aside = e.target.closest('[data-aside]');
-  if (aside) {
-    const g = window._groups[aside.dataset.aside];
-    const on = aside.dataset.asideon === '1';
-    if (!g || !g.address) { alert('A group with no address at all cannot be set aside — it has nothing to key on.'); return; }
-    if (on && !confirm(`Set aside "${g.address}"? Nothing moves and nothing is deleted — the `
-        + `${g.count} record${g.count === 1 ? '' : 's'} stay exactly where they are, out of the `
-        + `queue until a source other than the census turns up.`)) return;
-    aside.disabled = true;
+  // Set aside, either a whole address or one household out of it.
+  const asideBtn = e.target.closest('[data-aside], [data-hhaside]');
+  if (asideBtn) {
+    const perHh = asideBtn.dataset.hhaside !== undefined;
+    let members, what, on;
+    if (perHh) {
+      const [gi, hi] = asideBtn.dataset.hhaside.split('-').map(Number);
+      const block = households(window._groups[gi].entries)[hi];
+      if (!block) return;
+      members = block.members; what = `${block.title}, ${block.year}`;
+      on = asideBtn.dataset.hhasideon === '1';
+    } else {
+      const g = window._groups[asideBtn.dataset.aside];
+      if (!g) return;
+      members = g.entries; what = g.address || 'this group';
+      on = asideBtn.dataset.asideon === '1';
+    }
+    if (on && !confirm(`Set aside ${what}? Nothing moves and nothing is deleted — the `
+        + `${members.length} record${members.length === 1 ? '' : 's'} stay exactly where they `
+        + `are, out of the queue until a source other than the census turns up.`)) return;
+    asideBtn.disabled = true;
     try {
       const res = await fetch('/api/census/unfiled-groups/set-aside', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address: g.address, on }),
+        body: JSON.stringify({ entryIds: members.map(m => m.id), on }),
       });
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
       load();
-    } catch (err) { aside.disabled = false; alert('Could not save that: ' + err.message); }
+    } catch (err) { asideBtn.disabled = false; alert('Could not save that: ' + err.message); }
     return;
   }
 
