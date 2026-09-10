@@ -1,0 +1,696 @@
+{
+  "note": "Labels on Dougal de Havilland's Park Map (Fourth Edition, 2004) that match no property in the record. Extracted from the PDF's text layer, which draws the map's rotated labels a few characters at a time \u2014 so some are glued together or split oddly. Positions are in PDF points on the original page, not map coordinates.",
+  "source": "The Park Map, Fourth Edition \u2014 Dougal de Havilland, donated to NPRA",
+  "labels": [
+    {
+      "x": 398.6,
+      "y": 292.5,
+      "label": "Arlington House Formerly Holmedale",
+      "kind": "house"
+    },
+    {
+      "x": 431.0,
+      "y": 498.9,
+      "label": "The Old Coach House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 151.5,
+      "y": 468.9,
+      "label": "Hard Courts",
+      "kind": "house"
+    },
+    {
+      "x": 371.6,
+      "y": 508.0,
+      "label": "Boot's",
+      "kind": "house"
+    },
+    {
+      "x": 190.3,
+      "y": 486.8,
+      "label": "Grass Courts",
+      "kind": "house"
+    },
+    {
+      "x": 336.0,
+      "y": 356.1,
+      "label": "QUEENANNE\u00d5SBOWLINGGREENColin Hannay",
+      "kind": "house"
+    },
+    {
+      "x": 280.3,
+      "y": 421.8,
+      "label": "Potomac Mews",
+      "kind": "subdivision"
+    },
+    {
+      "x": 444.5,
+      "y": 478.2,
+      "label": "The South House",
+      "kind": "house"
+    },
+    {
+      "x": 133.4,
+      "y": 472.7,
+      "label": "Court View",
+      "kind": "house"
+    },
+    {
+      "x": 346.5,
+      "y": 576.9,
+      "label": "The Corner Ho",
+      "kind": "house"
+    },
+    {
+      "x": 353.6,
+      "y": 382.5,
+      "label": "The Coach House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 261.8,
+      "y": 518.5,
+      "label": "The Lodge",
+      "kind": "subdivision"
+    },
+    {
+      "x": 268.2,
+      "y": 440.3,
+      "label": "House Penrhyn",
+      "kind": "house"
+    },
+    {
+      "x": 175.1,
+      "y": 390.1,
+      "label": "Green-mantle",
+      "kind": "house"
+    },
+    {
+      "x": 188.3,
+      "y": 390.1,
+      "label": "Charnwood",
+      "kind": "house"
+    },
+    {
+      "x": 112.8,
+      "y": 338.7,
+      "label": "Derby House Lacemaker Ho",
+      "kind": "house"
+    },
+    {
+      "x": 137.7,
+      "y": 437.5,
+      "label": "The Fairy House",
+      "kind": "house"
+    },
+    {
+      "x": 149.6,
+      "y": 602.0,
+      "label": "Newcastle House",
+      "kind": "house"
+    },
+    {
+      "x": 203.0,
+      "y": 596.3,
+      "label": "The Garden House14acb",
+      "kind": "subdivision"
+    },
+    {
+      "x": 267.3,
+      "y": 584.2,
+      "label": "Idle Rocksbcb",
+      "kind": "house"
+    },
+    {
+      "x": 276.8,
+      "y": 591.7,
+      "label": "Maredo Tree Tops",
+      "kind": "house"
+    },
+    {
+      "x": 236.3,
+      "y": 615.8,
+      "label": "Abbot House The Brown House14b",
+      "kind": "house"
+    },
+    {
+      "x": 261.7,
+      "y": 633.7,
+      "label": "The Studio House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 444.8,
+      "y": 738.3,
+      "label": "Castle Rock",
+      "kind": "house"
+    },
+    {
+      "x": 491.8,
+      "y": 784.0,
+      "label": "Coach House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 444.8,
+      "y": 756.2,
+      "label": "Barbican House",
+      "kind": "house"
+    },
+    {
+      "x": 494.2,
+      "y": 734.7,
+      "label": "Mews Cottage",
+      "kind": "subdivision"
+    },
+    {
+      "x": 494.9,
+      "y": 707.3,
+      "label": "Warwick House",
+      "kind": "house"
+    },
+    {
+      "x": 494.5,
+      "y": 668.3,
+      "label": "Morisco",
+      "kind": "house"
+    },
+    {
+      "x": 460.6,
+      "y": 666.3,
+      "label": "The Stables",
+      "kind": "subdivision"
+    },
+    {
+      "x": 371.9,
+      "y": 660.6,
+      "label": "The Hunting Lodgenfb",
+      "kind": "subdivision"
+    },
+    {
+      "x": 343.9,
+      "y": 647.2,
+      "label": "The Magpies",
+      "kind": "house"
+    },
+    {
+      "x": 390.5,
+      "y": 555.8,
+      "label": "Ashley Bungalow",
+      "kind": "subdivision"
+    },
+    {
+      "x": 544.0,
+      "y": 549.4,
+      "label": "Maria Crt",
+      "kind": "house"
+    },
+    {
+      "x": 387.3,
+      "y": 259.5,
+      "label": "The Propatulum",
+      "kind": "house"
+    },
+    {
+      "x": 442.9,
+      "y": 351.3,
+      "label": "Clumber Lodgejsc",
+      "kind": "subdivision"
+    },
+    {
+      "x": 361.3,
+      "y": 332.4,
+      "label": "Ashdown",
+      "kind": "house"
+    },
+    {
+      "x": 262.0,
+      "y": 581.1,
+      "label": "Evergreen GT99&01",
+      "kind": "house"
+    },
+    {
+      "x": 106.2,
+      "y": 489.1,
+      "label": "Holmesdale",
+      "kind": "house"
+    },
+    {
+      "x": 460.5,
+      "y": 521.2,
+      "label": "Severalofthesehousesby James Wright",
+      "kind": "person or note"
+    },
+    {
+      "x": 174.0,
+      "y": 403.3,
+      "label": "Belwood",
+      "kind": "house"
+    },
+    {
+      "x": 125.6,
+      "y": 610.9,
+      "label": "Tunnelto Derby Rd",
+      "kind": "person or note"
+    },
+    {
+      "x": 533.4,
+      "y": 473.1,
+      "label": "Casadel Sol",
+      "kind": "house"
+    },
+    {
+      "x": 173.9,
+      "y": 584.3,
+      "label": "The Garden Apt",
+      "kind": "subdivision"
+    },
+    {
+      "x": 239.9,
+      "y": 227.5,
+      "label": "Mandalay",
+      "kind": "house"
+    },
+    {
+      "x": 169.9,
+      "y": 568.6,
+      "label": "TOTUNNEL",
+      "kind": "house"
+    },
+    {
+      "x": 289.4,
+      "y": 267.9,
+      "label": "Hamilton Mews",
+      "kind": "subdivision"
+    },
+    {
+      "x": 305.1,
+      "y": 267.9,
+      "label": "Journey's End",
+      "kind": "house"
+    },
+    {
+      "x": 325.5,
+      "y": 303.2,
+      "label": "Peveril Mews",
+      "kind": "subdivision"
+    },
+    {
+      "x": 264.6,
+      "y": 406.8,
+      "label": "The Blue House",
+      "kind": "house"
+    },
+    {
+      "x": 294.4,
+      "y": 226.0,
+      "label": "The Croft",
+      "kind": "house"
+    },
+    {
+      "x": 280.4,
+      "y": 406.9,
+      "label": "The Coach Ho",
+      "kind": "subdivision"
+    },
+    {
+      "x": 220.3,
+      "y": 606.6,
+      "label": "White House Richmond House14D",
+      "kind": "house"
+    },
+    {
+      "x": 310.8,
+      "y": 245.0,
+      "label": "Reveille",
+      "kind": "house"
+    },
+    {
+      "x": 62.8,
+      "y": 394.4,
+      "label": "The Old Drill Hall",
+      "kind": "house"
+    },
+    {
+      "x": 528.2,
+      "y": 417.3,
+      "label": "The Triangle",
+      "kind": "house"
+    },
+    {
+      "x": 523.6,
+      "y": 498.8,
+      "label": "Weathervane Hine",
+      "kind": "house"
+    },
+    {
+      "x": 299.4,
+      "y": 226.5,
+      "label": "Pelham Cottages",
+      "kind": "subdivision"
+    },
+    {
+      "x": 485.1,
+      "y": 552.0,
+      "label": "Rutland House",
+      "kind": "house"
+    },
+    {
+      "x": 485.7,
+      "y": 336.2,
+      "label": "Hardwick View",
+      "kind": "house"
+    },
+    {
+      "x": 538.0,
+      "y": 353.1,
+      "label": "Cedar Mews",
+      "kind": "subdivision"
+    },
+    {
+      "x": 425.2,
+      "y": 413.0,
+      "label": "Col Eric Baker",
+      "kind": "person or note"
+    },
+    {
+      "x": 257.6,
+      "y": 267.2,
+      "label": "Holmlea",
+      "kind": "house"
+    },
+    {
+      "x": 251.1,
+      "y": 450.0,
+      "label": "Tunnel Lodge",
+      "kind": "subdivision"
+    },
+    {
+      "x": 298.7,
+      "y": 426.9,
+      "label": "Lanloft",
+      "kind": "house"
+    },
+    {
+      "x": 463.9,
+      "y": 274.7,
+      "label": "The Stables2a",
+      "kind": "subdivision"
+    },
+    {
+      "x": 429.3,
+      "y": 736.3,
+      "label": "Fothergill's First Housesin The Park",
+      "kind": "house"
+    },
+    {
+      "x": 485.6,
+      "y": 474.3,
+      "label": "The Studio William House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 358.6,
+      "y": 448.7,
+      "label": "The Penthouse",
+      "kind": "subdivision"
+    },
+    {
+      "x": 348.3,
+      "y": 754.1,
+      "label": "King Chas St",
+      "kind": "house"
+    },
+    {
+      "x": 204.9,
+      "y": 643.1,
+      "label": "The Garden Flat",
+      "kind": "subdivision"
+    },
+    {
+      "x": 209.4,
+      "y": 649.2,
+      "label": "The Penthouseand Flat1",
+      "kind": "subdivision"
+    },
+    {
+      "x": 309.0,
+      "y": 314.3,
+      "label": "Alexander House",
+      "kind": "house"
+    },
+    {
+      "x": 276.9,
+      "y": 631.4,
+      "label": "NRGalloway",
+      "kind": "person or note"
+    },
+    {
+      "x": 187.0,
+      "y": 408.7,
+      "label": "Hazelwood",
+      "kind": "house"
+    },
+    {
+      "x": 212.9,
+      "y": 380.1,
+      "label": "Yorke Mews The Lodge",
+      "kind": "subdivision"
+    },
+    {
+      "x": 486.5,
+      "y": 739.1,
+      "label": "The Mews House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 388.7,
+      "y": 384.0,
+      "label": "The Gazebo",
+      "kind": "house"
+    },
+    {
+      "x": 311.4,
+      "y": 279.9,
+      "label": "Hardwick House",
+      "kind": "house"
+    },
+    {
+      "x": 569.5,
+      "y": 703.9,
+      "label": "Tinker\u00d5s Leen",
+      "kind": "house"
+    },
+    {
+      "x": 454.3,
+      "y": 646.4,
+      "label": "Castleview Flat",
+      "kind": "subdivision"
+    },
+    {
+      "x": 457.5,
+      "y": 703.4,
+      "label": "Hamilton View",
+      "kind": "house"
+    },
+    {
+      "x": 420.1,
+      "y": 542.0,
+      "label": "Original Coach House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 386.5,
+      "y": 750.3,
+      "label": "Hine House",
+      "kind": "house"
+    },
+    {
+      "x": 532.4,
+      "y": 348.0,
+      "label": "Cedar Ho",
+      "kind": "house"
+    },
+    {
+      "x": 126.4,
+      "y": 333.6,
+      "label": "The Corner House",
+      "kind": "house"
+    },
+    {
+      "x": 118.5,
+      "y": 340.1,
+      "label": "French&Co.Solicitors",
+      "kind": "house"
+    },
+    {
+      "x": 100.5,
+      "y": 538.9,
+      "label": "Residential Home",
+      "kind": "person or note"
+    },
+    {
+      "x": 226.7,
+      "y": 292.8,
+      "label": "Pelham Lodge1-13",
+      "kind": "subdivision"
+    },
+    {
+      "x": 283.0,
+      "y": 270.0,
+      "label": "Haddon GT98House-10apts",
+      "kind": "house"
+    },
+    {
+      "x": 480.3,
+      "y": 729.8,
+      "label": "Ivy Lodge",
+      "kind": "subdivision"
+    },
+    {
+      "x": 487.1,
+      "y": 721.3,
+      "label": "Ivy Nook",
+      "kind": "house"
+    },
+    {
+      "x": 540.7,
+      "y": 442.2,
+      "label": "DUNCROFT",
+      "kind": "house"
+    },
+    {
+      "x": 363.9,
+      "y": 749.1,
+      "label": "Royal Standard House",
+      "kind": "house"
+    },
+    {
+      "x": 545.0,
+      "y": 612.7,
+      "label": "Old Oscroft\u00d5s Vauxhall Show-rooms",
+      "kind": "person or note"
+    },
+    {
+      "x": 114.5,
+      "y": 370.6,
+      "label": "The Atrium",
+      "kind": "house"
+    },
+    {
+      "x": 354.3,
+      "y": 528.4,
+      "label": "The Judges\u00d5residence",
+      "kind": "house"
+    },
+    {
+      "x": 331.4,
+      "y": 425.5,
+      "label": "STONNAL",
+      "kind": "house"
+    },
+    {
+      "x": 508.2,
+      "y": 455.2,
+      "label": "West Lodge East Lodge",
+      "kind": "subdivision"
+    },
+    {
+      "x": 153.5,
+      "y": 396.8,
+      "label": "Capt.Athelstan",
+      "kind": "person or note"
+    },
+    {
+      "x": 451.4,
+      "y": 500.8,
+      "label": "DAUNTLEY",
+      "kind": "house"
+    },
+    {
+      "x": 393.3,
+      "y": 313.8,
+      "label": "Rear Car Park",
+      "kind": "person or note"
+    },
+    {
+      "x": 343.9,
+      "y": 461.6,
+      "label": "Coach Ho.",
+      "kind": "subdivision"
+    },
+    {
+      "x": 503.1,
+      "y": 453.6,
+      "label": "Glenroy",
+      "kind": "house"
+    },
+    {
+      "x": 237.6,
+      "y": 466.2,
+      "label": "TUNNELROAD",
+      "kind": "house"
+    },
+    {
+      "x": 408.5,
+      "y": 690.3,
+      "label": "Fothergill House",
+      "kind": "house"
+    },
+    {
+      "x": 331.7,
+      "y": 231.7,
+      "label": "Allegedlyknownas Barrack Yard",
+      "kind": "person or note"
+    },
+    {
+      "x": 156.3,
+      "y": 421.8,
+      "label": "The Rubican",
+      "kind": "house"
+    },
+    {
+      "x": 510.4,
+      "y": 376.3,
+      "label": "Pronounced\"Fines\"",
+      "kind": "house"
+    },
+    {
+      "x": 209.5,
+      "y": 582.7,
+      "label": "School Playgroundaccessedbytunnel",
+      "kind": "person or note"
+    },
+    {
+      "x": 421.9,
+      "y": 311.7,
+      "label": "Wm Robinson Paper Hangerlivedhere",
+      "kind": "person or note"
+    },
+    {
+      "x": 492.4,
+      "y": 447.2,
+      "label": "Sir Wm Blainlivedhere",
+      "kind": "person or note"
+    },
+    {
+      "x": 463.4,
+      "y": 636.2,
+      "label": "Kenilworth Coach House",
+      "kind": "subdivision"
+    },
+    {
+      "x": 162.6,
+      "y": 414.3,
+      "label": "Fantasque House",
+      "kind": "house"
+    },
+    {
+      "x": 414.3,
+      "y": 435.1,
+      "label": "Jesse Boot",
+      "kind": "person or note"
+    }
+  ]
+}

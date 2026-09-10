@@ -1,0 +1,294 @@
+{
+  "note": "Architect suggestions read from the colour key on Dougal de Havilland's Park Map (Fourth Edition, 2004). NOT facts \u2014 the fill colour was sampled around each house label in a 150dpi render and matched to the key.",
+  "reliability": "Checked against the 11 properties where the record already names an architect: 8 agreed, 3 did not. All eight agreements were T C Hine, so that figure flatters itself. Two known failures: yellow double-yellow-lines beside a house read as the 1940-1970 yellow (Felixstowe, a Victorian house, came out as 1940-1970), and the Hine pale green is close enough to off-white to over-match. Treat every row as a prompt to check, not an answer.",
+  "key": {
+    "Peter Robinson": "light blue fill",
+    "T C Hine": "pale green fill",
+    "Fothergill Watson": "pink fill",
+    "circa 1940-1970": "yellow fill",
+    "circa post 1970": "white fill, magenta border"
+  },
+  "source": "The Park Map, Fourth Edition \u2014 Dougal de Havilland, donated to NPRA",
+  "suggestions": [
+    {
+      "property_id": 54,
+      "address": "31 Cavendish Road East",
+      "map_label": "Castledene",
+      "suggests": "T C Hine",
+      "pixels_matched": 39
+    },
+    {
+      "property_id": 55,
+      "address": "33 Cavendish Road East",
+      "map_label": "RedcliffeHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 80
+    },
+    {
+      "property_id": 56,
+      "address": "Cavendish House, Cavendish Road East",
+      "map_label": "CavendishHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 131
+    },
+    {
+      "property_id": 57,
+      "address": "Elmhurst, Cavendish Road East",
+      "map_label": "Elmhurst",
+      "suggests": "T C Hine",
+      "pixels_matched": 139
+    },
+    {
+      "property_id": 58,
+      "address": "Overdale, Cavendish Road East",
+      "map_label": "Overdale1-2-3",
+      "suggests": "T C Hine",
+      "pixels_matched": 137
+    },
+    {
+      "property_id": 64,
+      "address": "Grove House, Clare Valley",
+      "map_label": "GroveHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 79
+    },
+    {
+      "property_id": 65,
+      "address": "Ribble Lodge, Clare Valley",
+      "map_label": "(TheBungalow)",
+      "suggests": "T C Hine",
+      "pixels_matched": 26
+    },
+    {
+      "property_id": 67,
+      "address": "The Spinney, Clare Valley",
+      "map_label": "TheSpinney",
+      "suggests": "T C Hine",
+      "pixels_matched": 68
+    },
+    {
+      "property_id": 81,
+      "address": "Adam House, Clumber Road East",
+      "map_label": "AdamHouse1-3",
+      "suggests": "circa 1940-1970",
+      "pixels_matched": 43
+    },
+    {
+      "property_id": 82,
+      "address": "Edale House, Clumber Road East",
+      "map_label": "EdaleHouse",
+      "suggests": "Fothergill Watson",
+      "pixels_matched": 51
+    },
+    {
+      "property_id": 83,
+      "address": "Jelenice, Clumber Road East",
+      "map_label": "Jelenice",
+      "suggests": "T C Hine",
+      "pixels_matched": 34
+    },
+    {
+      "property_id": 85,
+      "address": "Westwood, Clumber Road East",
+      "map_label": "Westwood1904",
+      "suggests": "T C Hine",
+      "pixels_matched": 54
+    },
+    {
+      "property_id": 107,
+      "address": "2 Duke William Mount",
+      "map_label": "Selsoe/",
+      "suggests": "T C Hine",
+      "pixels_matched": 186
+    },
+    {
+      "property_id": 143,
+      "address": "1 Huntingdon Drive",
+      "map_label": "BartonHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 155
+    },
+    {
+      "property_id": 148,
+      "address": "6 Huntingdon Drive",
+      "map_label": "Avoca",
+      "suggests": "T C Hine",
+      "pixels_matched": 20
+    },
+    {
+      "property_id": 151,
+      "address": "9 Huntingdon Drive",
+      "map_label": "Brampton",
+      "suggests": "T C Hine",
+      "pixels_matched": 20
+    },
+    {
+      "property_id": 153,
+      "address": "1 Kenilworth Road",
+      "map_label": "Iveston",
+      "suggests": "T C Hine",
+      "pixels_matched": 38
+    },
+    {
+      "property_id": 155,
+      "address": "3 Kenilworth Road",
+      "map_label": "KenilworthHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 28
+    },
+    {
+      "property_id": 157,
+      "address": "1 Lenton Avenue",
+      "map_label": "Glenelg",
+      "suggests": "T C Hine",
+      "pixels_matched": 93
+    },
+    {
+      "property_id": 162,
+      "address": "11 Lenton Avenue",
+      "map_label": "Fernleigh",
+      "suggests": "circa post 1970",
+      "pixels_matched": 63
+    },
+    {
+      "property_id": 172,
+      "address": "31 Lenton Avenue",
+      "map_label": "Greylands",
+      "suggests": "T C Hine",
+      "pixels_matched": 72
+    },
+    {
+      "property_id": 173,
+      "address": "33 Lenton Avenue",
+      "map_label": "Newlands",
+      "suggests": "T C Hine",
+      "pixels_matched": 46
+    },
+    {
+      "property_id": 183,
+      "address": "9 Lenton Road",
+      "map_label": "FernLodge",
+      "suggests": "T C Hine",
+      "pixels_matched": 82
+    },
+    {
+      "property_id": 202,
+      "address": "6 Maxtoke Road",
+      "map_label": "6StoweHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 263
+    },
+    {
+      "property_id": 206,
+      "address": "Castlethorpe, Newcastle Circus",
+      "map_label": "1-2Castlethorpe",
+      "suggests": "T C Hine",
+      "pixels_matched": 40
+    },
+    {
+      "property_id": 207,
+      "address": "Newcastle Court, Newcastle Circus",
+      "map_label": "NewcastleCourt",
+      "suggests": "T C Hine",
+      "pixels_matched": 106
+    },
+    {
+      "property_id": 228,
+      "address": "2 North Road",
+      "map_label": "Walton'sHotel",
+      "suggests": "Peter Robinson",
+      "pixels_matched": 42
+    },
+    {
+      "property_id": 230,
+      "address": "7 North Road",
+      "map_label": "Claremont1-10",
+      "suggests": "Fothergill Watson",
+      "pixels_matched": 28
+    },
+    {
+      "property_id": 239,
+      "address": "Clumber House, Park Drive",
+      "map_label": "ClumberHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 68
+    },
+    {
+      "property_id": 258,
+      "address": "1 Park Valley",
+      "map_label": "ArundelHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 153
+    },
+    {
+      "property_id": 296,
+      "address": "11 Peveril Drive",
+      "map_label": "DudleyLodge",
+      "suggests": "T C Hine",
+      "pixels_matched": 34
+    },
+    {
+      "property_id": 297,
+      "address": "12 Peveril Drive",
+      "map_label": "Parkside",
+      "suggests": "circa 1940-1970",
+      "pixels_matched": 93
+    },
+    {
+      "property_id": 298,
+      "address": "Ferndene, Hamilton Drive",
+      "map_label": "Ferndene",
+      "suggests": "T C Hine",
+      "pixels_matched": 50
+    },
+    {
+      "property_id": 304,
+      "address": "5 South Road",
+      "map_label": "Gardenhurst",
+      "suggests": "T C Hine",
+      "pixels_matched": 82
+    },
+    {
+      "property_id": 309,
+      "address": "4 Tattershall Drive",
+      "map_label": "4StIves",
+      "suggests": "T C Hine",
+      "pixels_matched": 61
+    },
+    {
+      "property_id": 348,
+      "address": "9 Western Terrace",
+      "map_label": "HuntingdonHouse",
+      "suggests": "T C Hine",
+      "pixels_matched": 54
+    },
+    {
+      "property_id": 390,
+      "address": "Sunnyside, Park Terrace",
+      "map_label": "Sunnyside",
+      "suggests": "circa 1940-1970",
+      "pixels_matched": 37
+    },
+    {
+      "property_id": 393,
+      "address": "Fairlawn, Duke William Mount",
+      "map_label": "Fairlawn",
+      "suggests": "circa post 1970",
+      "pixels_matched": 138
+    },
+    {
+      "property_id": 394,
+      "address": "Felixstowe, Clumber Road West",
+      "map_label": "\u00d2Felixstowe\u00d3",
+      "suggests": "circa 1940-1970",
+      "pixels_matched": 171
+    },
+    {
+      "property_id": 397,
+      "address": "North Lodge, North Road",
+      "map_label": "\"NorthLodge\"",
+      "suggests": "Peter Robinson",
+      "pixels_matched": 44
+    }
+  ]
+}
