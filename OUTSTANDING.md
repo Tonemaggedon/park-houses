@@ -253,14 +253,8 @@ lane's return filed on number 10.
       Only the **Derrys** (630–634, plus the son being imported) belong at number 10. The
       other three schedules — **Elizabeth Baker and the Smiths** (635–637), the **Blythes**
       with their boarder (638–643) and the **Hinds** (644–646), twelve people — were at
-      **Barrack Yard, Barrack Lane**, and want unfiling under that address until the yard is
-      found. Press Unfile on each of the three and type the address in the box.
-- [ ] **Barrack Yard is not in the record, and twelve people lived there in 1911.** Three
-      households: Baker and the Smiths, the Blythes with a boarder, and the Hinds. Three
-      households makes it a yard of cottages rather than a single house. Dougal's map notes
-      "Allegedly known as Barrack Yard" at the **southern end of Barrack Lane**, around Pelham
-      Cottages and Reveille, by the pedestrian access to Harlaxton Drive — his own word is
-      *allegedly*. Pelham Cottages is not in the record either. On `/research`.
+      **Barrack Yard, Barrack Lane**, which is now **#410**. Send each of the three households
+      to **410** with its "send all to" box. No need to unfile them.
 
 Tools: **Dashboard → Admin tools → Move a household to another property** for a whole
 household, or the **property picker on each census record** on a person's page for one-offs.
@@ -287,6 +281,21 @@ household, or the **property picker on each census record** on a person's page f
       were filed. Everything after the 9 Cavendish block — **880–901**, the Brewster, Hadden,
       McCaith and Walker households — is unfiled, and it is the continuation up the same
       street. Settle those and the two strays at #25 above should fall out with them.
+
+---
+
+## 5b. When to create a property
+
+**A house name on its own is not enough. Create a property only where there is census data
+behind it** — a household returned at that address. That is how Gartree Lodge, The Cottage on
+Tunnel Road, Gees Lodge, Broxtowe House and Barrack Yard all came in: each had people living
+at it on a return, filed against the wrong house.
+
+Names with no household behind them — Belwood, Pelham Cottages, Reveille, Burnham House, The
+Magpies, the rest of the far side of Huntingdon Drive, and the 171 unmatched labels on Dougal's
+map — stay as questions on `/research` until a record turns up. A name on a map is evidence
+that something was called something. It is not evidence of who lived there, which is what this
+record is for.
 
 ---
 
