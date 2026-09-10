@@ -5073,6 +5073,7 @@ app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'u
 app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'duplicates.html')));
 app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'archive.html')));
 app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
+app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
