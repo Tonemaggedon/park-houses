@@ -284,6 +284,24 @@ household, or the **property picker on each census record** on a person's page f
 
 ---
 
+## 5. A standing caution: the index is not the page
+
+**Findmypast's index gets addresses wrong, and it has done so repeatedly.** The Enfield
+household is indexed as 6 Park Valley; the original return says Broxtowe House — and 6 Park
+Valley is not even a candidate, being Stuart Cottage with a listed description of its own. The
+1 / 1a Hamilton Drive muddle was the same thing. A. Hagues reports many more.
+
+That matters here because a good part of this record's census addresses came from index
+downloads rather than from the page. So:
+
+- A household that looks misfiled may never have been at the address the record gives it.
+- Enumeration **order** is still trustworthy where the address is not — the index preserves
+  the book's sequence even when it mis-reads the line. Every house placed today, from Gees
+  Lodge to Barrack Yard, was placed on order rather than on the index's address.
+- Where a name and an index address disagree, **the page wins**.
+
+---
+
 ## 5a. House names recorded from the crescent walk (10 Sep 2026)
 
 Eleven names went straight into `prev_house_name`, where the site actually reads them:
