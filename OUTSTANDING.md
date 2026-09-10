@@ -159,7 +159,26 @@ A house showing twenty-odd in one year is usually several households filed again
       (#27)** hold no 1911 record at all, so they are the obvious candidates to check against
       the original. Both heads are lace manufacturers. `/reassign?prop=25&year=1911` already
       shows the three blocks separately with a "send all to" box on each.
-- [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. Separately, its **1911
+- [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. **Solved by the schedule
+      header.** Three schedules: the **Clark** household (2055–2059, five people, the real
+      19 Park Terrace), then **nine resident doctors under Dr John Kneebone** (2060–2068),
+      then the **Carr** household (2069–2075, seven people). The 1921 schedule for the middle
+      one gives its postal address as **"Broxtow House, The Park, Nottingham"** — registration
+      district 430, sub-district 6, enumeration district 66. **Broxtow House is in none of the
+      405 properties, and on none of Dougal's map labels.** The import runs along the street —
+      16, 17, then these three, then Sunnyside — and **20 Park Terrace (#257) holds no 1921
+      record at all**, so it is the first candidate for one of the two strays. Sunnyside (#390)
+      holds two schedules of its own in the same run, which may bear on where the third goes.
+      `/reassign?prop=379&year=1921` already shows the three blocks separately.
+- [ ] **The nine at Broxtow House are worth a page of their own.** Aged 26–33, all surgeons or
+      physicians, none related, born Dorset, Aberdeen, Kent, Yorkshire, Hertfordshire, London,
+      Surrey, Perthshire and South Australia — a residents' house for junior hospital doctors,
+      not a household. Nottingham General Hospital stands on the edge of The Park, and its own
+      history records it acquiring houses in The Park and Park Terrace as doctors' residences
+      — but dates that to **1969**, so this pushes the practice back nearly fifty years.
+      **Five of the nine were women**: Dora Mason, Olive Sharp, Gwennon Mary Griffiths,
+      Elizabeth Mary Ashby, Dorothy Jean Gallie. In 1921 that is remarkable.
+- [ ] **#379 — 19 Park Terrace**, continued. Its **1911
       household is now prepared** in `data/people_1911_19_park_terrace.json` — the house held
       no 1911 record at all. Run **Import people**: William Froggatt Clark and his wife are
       already in the record from 1921 as **#1836** and **#1837**, so the file names them by
