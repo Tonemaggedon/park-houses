@@ -284,6 +284,43 @@ household, or the **property picker on each census record** on a person's page f
 
 ---
 
+## 5a. House names recorded from the crescent walk (10 Sep 2026)
+
+Eleven names went straight into `prev_house_name`, where the site actually reads them:
+
+| No. | Name | | No. | Name |
+|---|---|---|---|---|
+| 1 | Carisbrooke House ✓ | | 15 | Flixton |
+| 3 | Cavendish Lodge ✓ | | 17 | Pendower |
+| 5 | Blantyre House | | 19 | Normandon Lodge |
+| 7 | Jardine House | | 20 | Castlemount (three flats, 2020) |
+| 10 | Charnwood ✓ | | 22 | Ravenscourt |
+| 12 | Hazlewood | | 24 | Thorsmore |
+
+✓ = confirmed independently by that house's own listed-building description, which was already
+in the record and had never been carried across to the name field. 9 (Peveril House), 11
+(Gleadthorpe) and 14 (Park House) were already held. **22 and 24 are one property record
+(#36)**, so it now carries both names.
+
+Five things from the walk had no property to attach to and are questions on `/research`
+rather than new records, per the rule below:
+
+- **Yorke Mews** — the map puts it beside Yorke House, 6 North Road (#229), with "formerly
+  Yorke Cottage" and The Coach House. A mews of that house, not a house on the crescent.
+- **16 Crescent Lodge**, and **18** — the record holds 16a and 18a but not 16 or 18, though
+  number 20's own description names "Nos.16, 18" as part of a group of four.
+- **8** — no house of that number, but an old door with 8 on it at the back of the house below.
+- **6** — missing.
+- **Western House School, 1874–1937** — given as 30 Western Terrace, but the record holds
+  Western Terrace as 1 to 11 only.
+
+- [ ] **Haddon House (#37) and Hardwicke House (#398) carry no number.** The walk offers 4 and
+      2, both with a query, and that part of the walk is headed *North Road* while the record
+      places both on Cavendish Crescent North — and 2 North Road is already Waltons Hotel
+      (#228). Recorded as a queried suggestion in each property's sources; neither moved.
+
+---
+
 ## 5b. When to create a property
 
 **A house name on its own is not enough. Create a property only where there is census data
