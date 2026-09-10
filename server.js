@@ -3647,7 +3647,8 @@ app.get('/api/census/crowding', async (req, res) => {
        WHERE property_id IS NULL GROUP BY census_year ORDER BY census_year`);
 
     const okRows = (await db.query(
-      `SELECT property_id, census_year, note FROM crowding_reviewed`)).rows;
+      `SELECT property_id, census_year, note, reviewed_by, reviewed_at
+         FROM crowding_reviewed ORDER BY reviewed_at DESC NULLS LAST`)).rows;
     const okKey = new Set(okRows.map(o => `${o.property_id}:${o.census_year}`));
     const confirmed = req.query.confirmed === '1';
 
@@ -3657,6 +3658,15 @@ app.get('/api/census/crowding', async (req, res) => {
       median: Number(all.rows[0] && all.rows[0].median) || null,
       p95: Number(all.rows[0] && all.rows[0].p95) || null,
       unfiled: unfiled.rows.map(u => ({ year: u.census_year, count: Number(u.n) })),
+      // The most recent judgements, newest first and regardless of the size
+      // threshold. Pressing "This is correct" on the wrong row is easy and was
+      // impossible to undo once the row fell below the threshold — or once you
+      // had forgotten which row it was.
+      recentlyConfirmed: okRows.slice(0, 12).map(o => ({
+        property_id: o.property_id, census_year: o.census_year,
+        note: o.note || null, reviewed_by: o.reviewed_by || null,
+        reviewed_at: o.reviewed_at || null,
+      })),
       rows: r.rows
         .filter(x => confirmed || !okKey.has(`${x.property_id}:${x.census_year}`))
         .map(x => ({
