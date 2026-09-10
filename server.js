@@ -443,6 +443,24 @@ async function dbInit() {
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_gazette_unique_idx
                       ON person_gazette(person_id, url)`);
 
+    // Documents about the estate as a whole rather than one person or house:
+    // maps, deeds, newsletters, photographs of the place itself.
+    await db.query(`CREATE TABLE IF NOT EXISTS archive_documents (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      description TEXT,
+      url TEXT NOT NULL,
+      filename TEXT,
+      kind TEXT,                  -- map | plan | photograph | document | newsletter
+      dated TEXT,                 -- free text: "2003", "c.1880", "Fourth Edition, 2004"
+      credit TEXT,                -- who made it, who gave it
+      source TEXT,                -- where it came from
+      added_by TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS archive_documents_kind_idx
+                      ON archive_documents(kind)`);
+
     // "Not the same person" has to be remembered, or a pair that has already been
     // judged is offered again every time the page is opened. Stored lowest id
     // first so the pair is one row whichever way round it is sent.
@@ -2925,6 +2943,68 @@ app.post('/api/people/duplicates/dismiss', requireContributor, async (req, res) 
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── The archive ───────────────────────────────────────────────────────────────
+// Things about the estate itself, which had nowhere to live: a person could hold
+// photographs and documents, and a property could, but the place as a whole
+// could not.
+app.get('/api/archive', async (req, res) => {
+  if (!db) return res.json([]);
+  try {
+    const r = await db.query(
+      `SELECT id, title, description, url, filename, kind, dated, credit, source, created_at
+         FROM archive_documents ORDER BY created_at DESC`);
+    res.json(r.rows);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/archive', requireContributor, (req, res) => {
+  multer({ storage: multer.memoryStorage(), limits: { fileSize: 40 * 1024 * 1024 } })
+    .single('file')(req, res, async (err) => {
+    if (err) return res.status(400).json({ error: err.message });
+    if (!db) return res.status(503).json({ error: 'DB not available' });
+    if (!req.file) return res.status(400).json({ error: 'No file' });
+    const title = (req.body.title || '').trim();
+    if (!title) return res.status(400).json({ error: 'A title is required' });
+    const stamped = `archive-${Date.now()}-${(req.file.originalname || 'file')
+      .replace(/[^a-z0-9._-]/gi, '_')}`;
+    let url;
+    try { url = await uploadMedia(req.file.buffer, stamped, req.file.mimetype); }
+    catch (e) { return res.status(500).json({ error: 'Upload failed: ' + e.message }); }
+    const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+    try {
+      const r = await db.query(
+        `INSERT INTO archive_documents (title, description, url, filename, kind, dated,
+                                        credit, source, added_by)
+              VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
+        [title, req.body.description || null, url, req.file.originalname || null,
+         req.body.kind || null, req.body.dated || null, req.body.credit || null,
+         req.body.source || null, who]);
+      res.json({ ok: true, document: r.rows[0] });
+    } catch (e) { res.status(500).json({ error: e.message }); }
+  });
+});
+
+app.patch('/api/archive/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const fields = ['title', 'description', 'kind', 'dated', 'credit', 'source'];
+  const given = fields.filter(f => req.body[f] !== undefined);
+  if (!given.length) return res.status(400).json({ error: 'nothing to change' });
+  try {
+    await db.query(
+      `UPDATE archive_documents SET ${given.map((f, i) => `${f}=$${i + 2}`).join(', ')} WHERE id=$1`,
+      [parseInt(req.params.id, 10), ...given.map(f => req.body[f] || null)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/archive/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    await db.query(`DELETE FROM archive_documents WHERE id=$1`, [parseInt(req.params.id, 10)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/people/duplicates — the same person imported twice. The 1911 and
 // 1921 spreadsheets were loaded separately and name people differently: one
 // holds "Helena Brownsword Dowson", the other "Helena Dowson". They match on
@@ -4704,6 +4784,7 @@ app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', '
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
 app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'unfiled.html')));
 app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'duplicates.html')));
+app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'archive.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 

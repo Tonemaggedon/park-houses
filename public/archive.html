@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Park Archive — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:960px; margin:0 auto; padding:24px 20px 90px; }
+
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:72ch; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;
+    margin-top:20px; }
+  .doc { background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    overflow:hidden; display:flex; flex-direction:column; }
+  .doc .thumb { aspect-ratio:4/3; background:#f2ece0; display:flex; align-items:center;
+    justify-content:center; border-bottom:1px solid var(--rule); overflow:hidden; }
+  .doc .thumb img { width:100%; height:100%; object-fit:cover; }
+  .doc .thumb .ph { font-size:2.4rem; color:var(--faint); }
+  .doc .body { padding:11px 13px; flex:1 1 auto; }
+  .doc h3 { margin:0 0 3px; font-size:1rem; }
+  .doc h3 a { color:var(--ink); text-decoration:none; }
+  .doc h3 a:hover { text-decoration:underline; }
+  .doc .meta { font-size:.74rem; color:var(--faint); }
+  .doc .desc { font-size:.82rem; color:var(--soft); margin-top:6px; }
+  .doc .credit { font-size:.74rem; color:var(--faint); font-style:italic; margin-top:6px; }
+  .doc .acts { padding:9px 13px; border-top:1px solid #f2ece0; display:flex; gap:8px;
+    align-items:center; }
+  .doc .acts a { font-size:.78rem; color:#2a5a8a; text-decoration:none; }
+  .doc .acts a:hover { text-decoration:underline; }
+  .kind { display:inline-block; border:1px solid var(--rule); border-radius:9px; padding:0 7px;
+    font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--soft);
+    background:#f6f2e6; }
+
+  details.add { margin-top:26px; border-top:1px solid var(--rule); padding-top:16px; }
+  details.add summary { cursor:pointer; font-size:1rem; font-weight:600; }
+  .form { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:12px; max-width:680px; }
+  .form label { font-size:.74rem; color:var(--faint); }
+  .form input, .form select, .form textarea { width:100%; padding:6px 9px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.85rem; background:#fff; color:var(--ink); }
+  .form .wide { grid-column:1/-1; }
+  .form textarea { min-height:62px; resize:vertical; }
+  .form button { font-family:inherit; font-size:.85rem; border:none; border-radius:5px;
+    padding:7px 18px; cursor:pointer; background:var(--green); color:#f2ecd8; font-weight:700; }
+  .form button:disabled { opacity:.5; cursor:default; }
+  .msg { font-size:.8rem; color:var(--soft); }
+  .msg.bad { color:var(--red); }
+
+  .empty { color:var(--faint); font-style:italic; padding:26px 0; }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:24px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/census">📜 Census</a>
+  <a href="/archive" class="active">🗄 Archive</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>The Park archive</h2>
+  <p class="lede">Maps, plans, deeds and photographs of the estate itself. A person could already
+    hold documents, and so could a house — the place as a whole could not, so anything about The
+    Park at large had nowhere to go.</p>
+  <div id="list"><div class="empty">Loading…</div></div>
+
+  <details class="add" id="addBox" hidden>
+    <summary>Add something to the archive</summary>
+    <div class="form">
+      <div class="wide"><label for="f_title">Title *</label>
+        <input id="f_title" placeholder="e.g. The Park Map, Fourth Edition"></div>
+      <div><label for="f_kind">What is it</label>
+        <select id="f_kind">
+          <option value="">— choose —</option>
+          <option>map</option><option>plan</option><option>photograph</option>
+          <option>document</option><option>newsletter</option>
+        </select></div>
+      <div><label for="f_dated">Date or edition</label>
+        <input id="f_dated" placeholder="e.g. 2004, or c.1880"></div>
+      <div class="wide"><label for="f_desc">Description</label>
+        <textarea id="f_desc" placeholder="What it shows, and anything worth knowing about it"></textarea></div>
+      <div><label for="f_credit">Who made it</label>
+        <input id="f_credit" placeholder="e.g. Dougal de Havilland"></div>
+      <div><label for="f_source">Where it came from</label>
+        <input id="f_source" placeholder="e.g. donated to NPRA"></div>
+      <div class="wide"><label for="f_file">File *</label>
+        <input id="f_file" type="file"></div>
+      <div class="wide" style="display:flex;gap:10px;align-items:center">
+        <button id="f_go">Add to the archive</button>
+        <span class="msg" id="f_msg"></span>
+      </div>
+    </div>
+  </details>
+
+  <div class="note">Files go to the same permanent store as photographs, so they survive a deploy.
+    Up to 40MB each.</div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false, isAdmin = false;
+const ICON = { map:'🗺', plan:'📐', photograph:'📷', document:'📄', newsletter:'📰' };
+const isImage = u => /\.(jpe?g|png|gif|webp|avif)(\?|$)/i.test(u || '');
+
+async function init() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    isAdmin = !!(me.isAdmin || (me.user && me.user.role === 'admin'));
+    canEdit = !!(isAdmin || (me.user && me.user.role === 'contributor'));
+  } catch (e) {}
+  if (canEdit) document.getElementById('addBox').hidden = false;
+  load();
+}
+
+async function load() {
+  const box = document.getElementById('list');
+  try {
+    const docs = await fetch('/api/archive').then(r => r.json());
+    if (docs.error) throw new Error(docs.error);
+    if (!docs.length) {
+      box.innerHTML = '<div class="empty">Nothing in the archive yet.</div>';
+      return;
+    }
+    box.innerHTML = '<div class="grid">' + docs.map(d => `
+      <div class="doc">
+        <a class="thumb" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">
+          ${isImage(d.url)
+            ? `<img src="${esc(d.url)}" alt="${esc(d.title)}" loading="lazy">`
+            : `<span class="ph">${ICON[d.kind] || '📄'}</span>`}
+        </a>
+        <div class="body">
+          <h3><a href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">${esc(d.title)}</a></h3>
+          <div class="meta">
+            ${d.kind ? `<span class="kind">${esc(d.kind)}</span> ` : ''}${esc(d.dated || '')}
+          </div>
+          ${d.description ? `<div class="desc">${esc(d.description)}</div>` : ''}
+          ${d.credit || d.source
+            ? `<div class="credit">${[d.credit, d.source].filter(Boolean).map(esc).join(' · ')}</div>` : ''}
+        </div>
+        <div class="acts">
+          <a href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">Open</a>
+          ${isAdmin ? `<a href="#" data-del="${d.id}" style="color:var(--red);margin-left:auto">Remove</a>` : ''}
+        </div>
+      </div>`).join('') + '</div>';
+  } catch (e) {
+    box.innerHTML = `<div class="empty" style="color:var(--red)">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+document.getElementById('f_go').addEventListener('click', async () => {
+  const g = id => document.getElementById(id);
+  const msg = g('f_msg'), btn = g('f_go');
+  const file = g('f_file').files[0];
+  if (!g('f_title').value.trim()) { msg.className = 'msg bad'; msg.textContent = 'A title is needed.'; return; }
+  if (!file) { msg.className = 'msg bad'; msg.textContent = 'Choose a file.'; return; }
+  const fd = new FormData();
+  fd.append('file', file);
+  for (const [k, id] of [['title','f_title'],['description','f_desc'],['kind','f_kind'],
+                         ['dated','f_dated'],['credit','f_credit'],['source','f_source']]) {
+    fd.append(k, g(id).value.trim());
+  }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Uploading…';
+  try {
+    const res = await fetch('/api/archive', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    msg.textContent = 'Added.';
+    ['f_title','f_desc','f_dated','f_credit','f_source'].forEach(id => g(id).value = '');
+    g('f_file').value = ''; g('f_kind').value = '';
+    load();
+  } catch (err) {
+    msg.className = 'msg bad'; msg.textContent = 'Could not add that: ' + err.message;
+  } finally { btn.disabled = false; }
+});
+
+document.addEventListener('click', async e => {
+  const del = e.target.closest('[data-del]');
+  if (!del) return;
+  e.preventDefault();
+  if (!confirm('Remove this from the archive? The file itself is not deleted.')) return;
+  try {
+    const res = await fetch('/api/archive/' + del.dataset.del, { method: 'DELETE' });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    load();
+  } catch (err) { alert('Could not remove that: ' + err.message); }
+});
+
+init();
+</script>
+</body>
+</html>
