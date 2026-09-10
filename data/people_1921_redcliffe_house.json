@@ -1,0 +1,37 @@
+{
+  "note": "People on a census return who have no record of that year. Emma Woodward is on the 1921 return for Redcliffe House beside her husband Frank, and had no 1921 entry at all \u2014 found by checking the household against the return.",
+  "people": [
+    {
+      "first_name": "Emma",
+      "last_name": "Woodward",
+      "sex": "F",
+      "born_year": 1858,
+      "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [
+        55
+      ],
+      "census": [
+        {
+          "census_year": 1921,
+          "property_id": 55,
+          "address": "Redcliffe House, 33 Cavendish Road East",
+          "relationship": "Wife",
+          "age_at_census": 62,
+          "occupation_at_census": "Home Duties",
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1921 census, Redcliffe House \u2014 transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "Frank",
+            "last_name": "Woodward"
+          },
+          "type": "spouse_of",
+          "notes": "Recorded as his wife on the 1921 return for Redcliffe House."
+        }
+      ]
+    }
+  ]
+}

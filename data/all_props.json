@@ -2219,13 +2219,14 @@
   "no": "9",
   "address": "9 Huntingdon Drive",
   "desc": "Original brick boundary wall to Huntingdon Drive now completely removed and replaced with large flat roofed double carport and open car park area c1980. In single household use. Three storeys including attic plus basement. Part rendered and part red brick facades with white painted rendered areas mainly at first floor level. Original brick facades to ground floor areas, now partly rendered or painted. Brick quoins to rendered areas at first floor level and corbelled brick stop detail at abutment with render at first floor storey height level. Pair of flat roofed, single storey canted window bays at ground floor level facing the garden with canted oriel windows on timber brackets at first floor level. Single door in each ground floor bay with access to garden via stepped platform. Original clay plain tiles and ridge tiles to gabled roof replaced with non-matching type. Painted wood bargeboards to gables with projecting wood eaves and fascias. Original dormer window overlooking garden, with \u2018Venetian like\u2019 semicircular arched head to central casement. Original red brick chimney stacks completely altered and rendered. Original c.i. rainwater fittings replaced. Combination of sash and casement windows with prominent box shaped oriel window over main entrance doorway, with projecting flat roof and supported on single wood bracket. Glazing bars and leaded lattice lights to some casements. A number of alterations to doors and windows. Original main entrance doorway with twin circular glazed apertures, overlight, and projecting flat roofed canopy, supported on wooden brackets. Original brick boundary wall and copings adjacent to Tattershall Drive.\n\n",
-  "history": "One of a number of similar Edwardian houses on Huntingdon Drive c1906-8, probably by Lawrence Bright & Son Architects. Later Arts and Crafts with Art Nouveau details. ",
+  "history": "One of a number of similar Edwardian houses on Huntingdon Drive c1906-8, probably by Lawrence Bright & Son Architects. Later Arts and Crafts with Art Nouveau details. Recorded as Brampton in the 1921 census \u2014 the Gertrude Margaret Dobrashian household.",
   "architect": "Lawrence Bright & Son",
   "style": "Edwardian",
   "date_built": "1906",
   "listed": "No",
   "lat": 52.9511165,
-  "lng": -1.1588626
+  "lng": -1.1588626,
+  "prev_house_name": "Brampton"
  },
  {
   "id": 152,
@@ -6019,6 +6020,25 @@
    "existence": "Gartree House's own building description: \"Part of original carriage and stable building at bottom of garden adjacent to Tattershall Drive converted into separate dwelling\"",
    "position": "Provisional \u2014 at the Tattershall Drive end of Gartree House's garden, 28m short of 4 Tattershall Drive (#309) along the line between them. Wants placing by hand.",
    "residents": "1921 census, via 5 Tattershall Drive where the household was first filed"
+  }
+ },
+ {
+  "id": 405,
+  "name": "The Cottage",
+  "street": "Huntingdon Drive",
+  "no": "14",
+  "address": "The Cottage, 14 Huntingdon Drive",
+  "desc": "",
+  "history": "Recorded as The Cottage, Huntingdon Drive in the 1921 census, holding Sidney Richard Tann, a chiropodist of 42, and his wife Daisy. Numbered 14 by the owner, though the road is otherwise recorded only as far as 10 and the house may no longer stand.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9512173,
+  "lng": -1.1584471,
+  "sources": {
+   "existence": "1921 census, address \"Huntingdon Drive (The Cottage)\"; number given by A. Hagues",
+   "position": "Provisional and probably wrong \u2014 placed at the far end of the recorded Huntingdon Drive houses. Wants placing by hand, if the house can be located at all.",
+   "residents": "1921 census, 2 people"
   }
  }
 ]

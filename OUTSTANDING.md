@@ -71,13 +71,17 @@ from. These need your knowledge or a source.
       and a visitor. The house is recorded as Allandale; the census spells it Allendale. Parker
       Woodward held it in 1911 and had moved to #51 by 1921, so Church took it on.
 
-**Strong lead, wants your say:**
+- [x] ~~Gertrude House~~ → **#55, 33 Cavendish Road East (Redcliffe House)**. Confirmed
+      against the return. Recorded, so it suggests itself on `/unfiled`.
 
-- [ ] **Gertrude House → #55, 33 Cavendish Road East (Redcliffe House)?** 9 records headed by
-      Frank Woodward (63). He held **#55 in 1911**, and **#55 has nobody recorded in 1921** —
-      so he most likely stayed put. That would make "Gertrude House" another name for 33
-      Cavendish Road East. Unlike Kenmore and Allendale this is not a spelling variant but two
-      genuinely different names, so I have not recorded it. Say the word and I will.
+**Two faults that household turned up, both needing you:**
+
+- [ ] **File 8 of those 9 records to #55 — not Arthur Oscar Hanish.** The return does not have
+      him at Redcliffe House. Simplest is to file all 9, then merge him on `/duplicates`, which
+      reunites him at 5 Tattershall Drive where he belongs.
+- [ ] **Emma Woodward, Frank's wife, had no 1921 record at all.** Prepared in
+      `data/people_1921_redcliffe_house.json` — run **Import people** and she goes in at #55
+      as Wife, aged 62, with the marriage recorded.
 
 **Still unknown — narrowed from ten houses to four:**
 
@@ -86,12 +90,14 @@ Huntingdon Drive holds ten houses. #143 (Barton House) and #148 (Avoca) are occu
 four with no name recorded and nobody in 1921 — for these three households. Nothing on the
 estate resembles any of the three names under any spelling.
 
+- [x] ~~Brampton~~ → **#151, 9 Huntingdon Drive**. Recorded; suggests itself on `/unfiled`.
+- [x] ~~The Cottage~~ → **#405, 14 Huntingdon Drive**, created census-only. The road is
+      otherwise recorded only as far as 10 and the house may no longer stand, so the position
+      is a guess at the far end and wants placing by hand — if it can be located at all.
+- [x] ~~5 Huntingdon Drive is Napier House~~ — already recorded as such.
 - [ ] **Greendale, Huntingdon Drive** — 4 records, 1921. Joseph Spray (77), wife Martha (77),
-      daughter Jessie (47), one servant. An elderly household.
-- [ ] **Brampton, Huntingdon Drive** — 3 records, 1921. Gertrude Margaret Dobrashian (34),
-      a boarder and a servant.
-- [ ] **The Cottage, Huntingdon Drive** — 2 records, 1921. Sidney Richard Tann (42) and wife
-      Daisy. The name suggests the smallest of the four.
+      daughter Jessie (47), one servant. An elderly household. The last one unplaced; the
+      unnamed houses left are 2, 4 and 8.
 
 Huntingdon Drive is recorded as plain numbers 1–10 with no names at all, so these four names
 belong to four of those ten.
