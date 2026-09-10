@@ -241,11 +241,29 @@ still want a human.
 
 The full list of 21 is on the page, and it recalculates as you fix things.
 
-Not every one is wrong: 10 Barrack Lane holds 17 people under only 6 surnames in 1911, which
-is plausibly one family with staff. A boarding house or a school will show here legitimately.
+A boarding house, a school or a large staff will show here legitimately, so not every one is
+wrong. **But 10 Barrack Lane is not the example I gave it as.** I described its 17 people under
+6 surnames in 1911 as "plausibly one family with staff". It is **four schedules** — the Derrys,
+Elizabeth Baker with the Smiths, the Blythes with a boarder, and the Hinds — and **every one of
+the other seventeen cottages on Barrack Lane holds no 1911 record at all**. That is the whole
+lane's return filed on number 10.
+
+- [ ] **#7 — 10 Barrack Lane, 1911.** Four schedules to split across a lane of eighteen
+      cottages, all of them empty in the record. `/reassign?prop=7&year=1911`.
 
 Tools: **Dashboard → Admin tools → Move a household to another property** for a whole
 household, or the **property picker on each census record** on a person's page for one-offs.
+
+### Spellings the census gets wrong
+
+- [ ] **Derry, not Denny — 10 Barrack Lane, 1911.** The transcription spells the household
+      **Denny** for five of the six and **Derry** for the head. The record has them as Derry
+      throughout and A. Hagues confirms Derry is right: George (65, jobbing gardener), Sarah
+      (58), George (18), Elizabeth (26), Annie (15) and Mabel Sarah (7). Worth remembering
+      when searching, because a lookup on Denny will find none of them.
+- [ ] **George Derry the son had no record at all.** Prepared in
+      `data/people_1911_10_barrack_lane.json` — run **Import people** and he goes in at #7 as
+      Son, aged 18, a worker, with both parents recorded.
 
 ### Records filed against no property at all
 

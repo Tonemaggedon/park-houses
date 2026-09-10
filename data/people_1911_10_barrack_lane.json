@@ -1,0 +1,33 @@
+{
+  "note": "George Derry the son, 18, is on the 1911 return for 10 Barrack Lane and has no record at all — the household holds his father, mother, two sisters and a niece but not him. His father is also George Derry, so this file matches on the birth year as well as the name: without that the son's census record would be hung on the father, who is #480. The transcription spells the family Denny for five of the six and Derry for the head; the record has them as Derry throughout, which A. Hagues confirms is right.",
+  "people": [
+    {
+      "first_name": "George",
+      "last_name": "Derry",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1893,
+      "born_place": "Nottingham, Nottinghamshire",
+      "properties": [7],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 7,
+          "address": "10 Barrack Lane",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 18,
+          "occupation_at_census": "Worker",
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1911 census, 10 Barrack Lane — transcribed by A. Hagues; recorded on the return as Denny"
+        }
+      ],
+      "relationships": [
+        { "to": { "id": 480 }, "type": "child_of",
+          "notes": "Recorded as his son on the 1911 return for 10 Barrack Lane." },
+        { "to": { "id": 481 }, "type": "child_of",
+          "notes": "Recorded as a son of the household on the 1911 return for 10 Barrack Lane." }
+      ]
+    }
+  ]
+}

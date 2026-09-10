@@ -1461,10 +1461,23 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         // about to be corrected by hand, would quietly become a second record.
         // An id says which person is meant and survives the rename either way.
         const byId = Number.isInteger(person.id);
+        // A son named after his father is the other half of the same problem.
+        // Matching on the name alone would hang the son's census record on the
+        // father, and there is no way to ask for a new person of an existing
+        // name without making the import add another one every time it runs.
+        // Matching on the birth year as well distinguishes them and stays
+        // idempotent: the first run creates him, later runs find him.
+        const byYear = !byId && person.match_born_year === true && person.born_year;
         const found = byId
           ? await db.query(
               `SELECT id, born_date, born_year, born_place, sex FROM people WHERE id=$1`,
               [person.id])
+          : byYear
+          ? await db.query(
+              `SELECT id, born_date, born_year, born_place, sex FROM people
+                WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)
+                  AND born_year=$3`,
+              [person.first_name, person.last_name, person.born_year])
           : await db.query(
               `SELECT id, born_date, born_year, born_place, sex FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
