@@ -306,7 +306,9 @@ Five things from the walk had no property to attach to and are questions on `/re
 rather than new records, per the rule below:
 
 - **Yorke Mews** — the map puts it beside Yorke House, 6 North Road (#229), with "formerly
-  Yorke Cottage" and The Coach House. A mews of that house, not a house on the crescent.
+  Yorke Cottage" and The Coach House. A mews of that house, not a house on the crescent. The
+  street headings in the walk mark where the side roads join the crescent; only Yorke Mews
+  actually belongs to one of them.
 - **16 Crescent Lodge**, and **18** — the record holds 16a and 18a but not 16 or 18, though
   number 20's own description names "Nos.16, 18" as part of a group of four.
 - **8** — no house of that number, but an old door with 8 on it at the back of the house below.
@@ -314,10 +316,11 @@ rather than new records, per the rule below:
 - **Western House School, 1874–1937** — given as 30 Western Terrace, but the record holds
   Western Terrace as 1 to 11 only.
 
-- [ ] **Haddon House (#37) and Hardwicke House (#398) carry no number.** The walk offers 4 and
-      2, both with a query, and that part of the walk is headed *North Road* while the record
-      places both on Cavendish Crescent North — and 2 North Road is already Waltons Hotel
-      (#228). Recorded as a queried suggestion in each property's sources; neither moved.
+- [ ] **Haddon House (#37) and Hardwicke House (#398) carry no number.** Both are on
+      Cavendish Crescent North, confirmed, and both are already in the record. The walk offers
+      **4** and **2** for their numbers, with the owner's own query against them; the crescent
+      has neither number recorded, so both are free. Held as a suggestion in each property's
+      sources until confirmed.
 
 ---
 
