@@ -1,0 +1,24 @@
+{
+  "note": "Arthur William Carr (#1850) is already in the record with a bio and a Wikipedia link, but with no occupations against him at all. He is named by number: several Arthur Carrs are possible, and this is the one recorded at 19 Park Terrace in the 1921 census, born Mickleham, Surrey — transcribed on the return as Michelham.",
+  "people": [
+    {
+      "id": 1850,
+      "first_name": "Arthur",
+      "last_name": "Carr",
+      "occupations": [
+        {
+          "occupation": "Nottinghamshire Cricket Captain",
+          "from_year": 1919,
+          "to_year": 1934,
+          "notes": "Given the county captaincy in 1919, nine years after his first-class debut for Nottinghamshire while still at school. He led the county to a dominant position in the championship, and was sacked in 1934 over his part in Bodyline, never playing first-class cricket again."
+        },
+        {
+          "occupation": "England Cricket Captain",
+          "from_year": 1926,
+          "to_year": 1929,
+          "notes": "Not a continuous tenure. Captain for the 1926 Ashes, where he put Australia in at Leeds and dropped Charlie Macartney at slip in the first over; he fell ill during the fourth Test and was replaced by Percy Chapman for the fifth. He captained England twice more, in his final two Tests against South Africa in 1929. Eleven Tests in all."
+        }
+      ]
+    }
+  ]
+}

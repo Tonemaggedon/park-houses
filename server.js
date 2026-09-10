@@ -1451,7 +1451,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
     const report = [];
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0;
+      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0;
       const noSuchId = [];
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
@@ -1590,9 +1590,29 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
              c.occupation_at_census || null, c.birth_place || null,
              c.marital_status || null, c.source || null]);
         }
+        // What a person did, as against what one census night caught them doing.
+        // Keyed on the title and the year it started, so a second run does not
+        // stack the same job twice and two spells of the same job stay separate.
+        for (const o of (person.occupations || [])) {
+          if (!o || !o.occupation) continue;
+          if (id === null) { occs++; continue; }
+          const dup = await db.query(
+            `SELECT 1 FROM occupations
+              WHERE person_id=$1 AND LOWER(occupation)=LOWER($2)
+                AND from_year IS NOT DISTINCT FROM $3`,
+            [id, o.occupation, o.from_year ?? null]);
+          if (dup.rows.length) continue;
+          occs++;
+          if (dryRun) continue;
+          await db.query(
+            `INSERT INTO occupations (person_id, occupation, from_year, to_year, employer, notes)
+             VALUES ($1,$2,$3,$4,$5,$6)`,
+            [id, o.occupation, o.from_year ?? null, o.to_year ?? null,
+             o.employer || null, o.notes || null]);
+        }
       }
       report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
-                    census, relationships: rels, relationshipsSkipped: relsSkipped,
+                    census, occupations: occs, relationships: rels, relationshipsSkipped: relsSkipped,
                     ...(noSuchId.length ? { noSuchPerson: noSuchId } : {}) });
     }
     res.json({ ok: true, dryRun, report });
