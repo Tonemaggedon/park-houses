@@ -1,13 +1,13 @@
 {
-  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. The house is demolished and the record held only its 1911 household, the Dowsons, so this is the earlier family. Schedule 178 on a page that runs Clumber Crescent, 6 Clumber Road, Felixstowe, Clumber Road — which is what places it at #394. Servant birthplaces are deliberately omitted: see the source note on each.",
+  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. **The surname is Dowson.** It is written with a looped capital that can be read as Morrison, but the head is Benjamin Dowson, solicitor, born at Geldeston in Norfolk on 11 September 1836 and living at Felixstowe in The Park — which matches the age, the profession, the birthplace and the house on this schedule. The record already holds William Enfield Dowson and Helena Brownsword Dowson at the same house in 1911, so this is the same family ten years earlier. Servant birthplaces are deliberately omitted: see the source note on each.",
   "source": "1901 census, schedule 178, Felixstowe",
   "people": [
     {
       "first_name": "Benjamin",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "M",
-      "born_year": 1837,
+      "born_year": 1836,
       "born_place": "Geldeston, Norfolk",
       "properties": [
         394
@@ -22,13 +22,16 @@
           "age_at_census": 64,
           "occupation_at_census": "Solicitor",
           "birth_place": "Geldeston, Norfolk",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Returned as \"Benjm\". The surname is read as Dorrison; the capital is looped and could be taken for an M, so Morrison is possible. Employer."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page. The surname is written with a looped capital and can be read as Morrison; it is recorded as Dowson because the 1901 Contemporary Biographies of Nottinghamshire gives Benjamin Dowson, solicitor, born at Geldeston, Norfolk on 11 September 1836 — sixty-four at this census — with his residence at Felixstowe, The Park. Employer."
         }
-      ]
+      ],
+      "born_date": "11 September 1836",
+      "known_as": "Benjamin Dowson",
+      "bio": "Solicitor, of Felixstowe in The Park. Born at Geldeston in Norfolk on 11 September 1836, the son of Septimus Dowson of Geldeston. He set up in practice on his own account in 1870, and from 1874 the firm was Dowson and Wright. He also kept a house at Overbank, Upper Broughton, near Melton Mowbray."
     },
     {
       "first_name": "Alice",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "F",
       "born_year": 1845,
@@ -45,13 +48,13 @@
           "marital_status": "Married",
           "age_at_census": 56,
           "birth_place": "Prestbury, Cheshire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page"
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
         }
       ]
     },
     {
       "first_name": "Alice M",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "F",
       "born_year": 1871,
@@ -68,13 +71,13 @@
           "marital_status": "Single",
           "age_at_census": 30,
           "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page"
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
         }
       ]
     },
     {
       "first_name": "Bernard W",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "M",
       "born_year": 1874,
@@ -92,13 +95,13 @@
           "age_at_census": 27,
           "occupation_at_census": "Solicitor",
           "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — He and Alexander are both returned as 27."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Alexander are both returned as 27."
         }
       ]
     },
     {
       "first_name": "Alexander",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "M",
       "born_year": 1874,
@@ -116,13 +119,13 @@
           "age_at_census": 27,
           "occupation_at_census": "Cotton spinner",
           "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — He and Bernard W are both returned as 27."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Bernard W are both returned as 27."
         }
       ]
     },
     {
       "first_name": "Gerard S",
-      "last_name": "Dorrison",
+      "last_name": "Dowson",
       "match_born_year": true,
       "sex": "M",
       "born_year": 1875,
@@ -140,7 +143,7 @@
           "age_at_census": 26,
           "occupation_at_census": "Clerk, corn merchant",
           "birth_place": "Knutsford, Cheshire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Worker. His birthplace is Cheshire where his elder siblings' is Nottingham — read as written."
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — Worker. His birthplace is Cheshire where his elder siblings' is Nottingham — read as written."
         }
       ]
     },
