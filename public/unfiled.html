@@ -46,6 +46,21 @@
   .dest { font-size:.78rem; color:var(--faint); }
   .dest.ok { color:var(--green); } .dest.bad { color:var(--red); }
 
+  .hh { margin-top:10px; border:1px solid var(--rule); border-radius:6px; overflow:hidden; }
+  .hh-bar { background:#f8f5ec; padding:7px 11px; display:flex; gap:8px; align-items:center;
+    flex-wrap:wrap; font-size:.82rem; }
+  .hh-bar .who-t { font-weight:700; }
+  .hh-bar .n { color:var(--faint); font-size:.76rem; }
+  .hh-bar .spacer { flex:1 1 auto; }
+  .hh-bar input { width:110px; padding:4px 8px; border:1px solid var(--rule); border-radius:4px;
+    font-family:inherit; font-size:.8rem; }
+  .hh-bar button { font-family:inherit; font-size:.78rem; border-radius:4px; padding:4px 11px;
+    cursor:pointer; border:1px solid var(--green); background:var(--green); color:#f2ecd8; }
+  .hh-bar button:disabled { opacity:.45; cursor:default; }
+  .hh table { border-collapse:collapse; width:100%; font-size:.8rem; }
+  .hh td { padding:3px 11px; border-top:1px solid #f2ece0; }
+  .hh td.n { text-align:right; color:var(--faint); font-variant-numeric:tabular-nums; }
+
   details.who { margin-top:8px; }
   details.who summary { cursor:pointer; font-size:.78rem; color:var(--soft); }
   details.who table { border-collapse:collapse; width:100%; font-size:.8rem; margin-top:6px; }
@@ -83,7 +98,10 @@
   <p class="lede">Where a house name appears in the text and the group holds one household, the
     match is offered outlined in green. A street alone is only a street. And a group holding
     several households is flagged as such: a house name in the text evidences one of them, not
-    all of them, so those want splitting before filing.</p>
+    all of them.</p>
+  <p class="lede"><strong>Each household can be filed on its own.</strong> Every block below has
+    its own box and button, so a street holding six different houses is six decisions rather
+    than one wrong one. "File all" is only right when the group really is one household.</p>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
   <div class="note">Nothing here is applied for you. Filing a group also links each person to the
@@ -96,6 +114,29 @@ function esc(v){ if(v===null||v===undefined) return '';
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 let propNames = {}, canEdit = false;
+
+// A group can hold several households, and until now the only button filed all
+// of them to one house. Split on the head — some imports put the schedule number
+// in the relationship column, so a bare "1" marks a head as surely as the word.
+const isHead = e => {
+  const r = (e.relationship || '').trim();
+  return /^head$/i.test(r) || /^\d+$/.test(r);
+};
+function households(entries) {
+  const sorted = entries.slice().sort((a, b) => (a.year - b.year) || (a.id - b.id));
+  const out = []; let cur = null;
+  for (const e of sorted) {
+    if (!cur || isHead(e) || e.year !== cur.year) {
+      cur = { head: null, year: e.year, members: [] }; out.push(cur);
+    }
+    if (isHead(e)) cur.head = e;
+    cur.members.push(e);
+  }
+  for (const h of out) {
+    h.title = h.head ? h.head.name + "'s household" : 'No head recorded';
+  }
+  return out;
+}
 
 const label = p => {
   const no = (p.no || '').trim(), nm = (p.name || '').trim();
@@ -150,14 +191,22 @@ async function load() {
           <span class="dest" data-dest="${i}"></span>
           <button class="go" data-file="${i}" disabled>File all ${g.count}</button>
         </div>
-        <details class="who">
-          <summary>Who these are</summary>
-          <table>${g.entries.map(e => `<tr>
-            <td><a href="/people?person=${e.person_id}" target="_blank">${esc(e.name)}</a></td>
-            <td>${esc(e.relationship || '')}</td>
-            <td class="n">${e.year}</td>
-          </tr>`).join('')}</table>
-        </details>
+        ${households(g.entries).map((h, j) => `
+          <div class="hh">
+            <div class="hh-bar">
+              <span class="who-t">${esc(h.title)}</span>
+              <span class="n">${h.members.length} ${h.members.length === 1 ? 'person' : 'people'} · ${h.year}</span>
+              <span class="spacer"></span>
+              <input type="number" placeholder="to #" data-hhin="${i}-${j}">
+              <span class="dest" data-hhdest="${i}-${j}"></span>
+              <button data-hhgo="${i}-${j}" disabled>File these ${h.members.length}</button>
+            </div>
+            <table>${h.members.map(e => `<tr>
+              <td><a href="/people?person=${e.person_id}" target="_blank">${esc(e.name)}</a></td>
+              <td>${esc(e.relationship || '')}</td>
+              <td class="n">${e.year}</td>
+            </tr>`).join('')}</table>
+          </div>`).join('')}
       </div>`).join('');
 
     window._groups = d.groups;
@@ -178,13 +227,51 @@ function setDest(i, val) {
   dest.textContent = '→ ' + propNames[n]; dest.className = 'dest ok'; btn.disabled = false;
 }
 
+function setHhDest(k, val) {
+  const dest = document.querySelector(`[data-hhdest="${k}"]`);
+  const btn = document.querySelector(`[data-hhgo="${k}"]`);
+  if (!dest || !btn) return;
+  const n = parseInt(val, 10);
+  if (!Number.isInteger(n)) { dest.textContent = ''; dest.className = 'dest'; btn.disabled = true; return; }
+  if (!propNames[n]) { dest.textContent = `no property #${n}`; dest.className = 'dest bad'; btn.disabled = true; return; }
+  dest.textContent = '→ ' + propNames[n]; dest.className = 'dest ok'; btn.disabled = false;
+}
+
 document.addEventListener('input', e => {
   if (e.target.dataset.in !== undefined) setDest(e.target.dataset.in, e.target.value);
+  if (e.target.dataset.hhin !== undefined) setHhDest(e.target.dataset.hhin, e.target.value);
 });
 
 document.addEventListener('click', async e => {
   const pick = e.target.closest('[data-pick]');
   if (pick) return setDest(pick.dataset.g, pick.dataset.pick);
+
+  // One household out of a group, rather than the whole address at once.
+  const hh = e.target.closest('[data-hhgo]');
+  if (hh) {
+    const [gi, hi] = hh.dataset.hhgo.split('-').map(Number);
+    const group = window._groups[gi];
+    const block = households(group.entries)[hi];
+    const target = parseInt(document.querySelector(`[data-hhin="${hh.dataset.hhgo}"]`).value, 10);
+    if (!block || !Number.isInteger(target) || !propNames[target]) return;
+    if (!confirm(`File ${block.members.length} record`
+               + `${block.members.length === 1 ? '' : 's'} — ${block.title}, ${block.year} — `
+               + `to ${propNames[target]}?`)) return;
+    hh.disabled = true; hh.textContent = 'Filing…';
+    try {
+      const res = await fetch('/api/census/reassign', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ moves: block.members.map(x => ({ entryId: x.id, propertyId: target })) }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+      load();
+    } catch (err) {
+      hh.disabled = false; hh.textContent = `File these ${block.members.length}`;
+      alert('Could not file those: ' + err.message);
+    }
+    return;
+  }
 
   const file = e.target.closest('[data-file]');
   if (!file) return;
