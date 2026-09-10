@@ -3342,7 +3342,11 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
         const y = e.census_year || 0;
         if (!perYear.has(y)) perYear.set(y, { heads: 0, wives: 0 });
         const t = perYear.get(y), rel = (e.relationship || '').trim();
-        if (/^head$/i.test(rel)) t.heads++;
+        // Some imports put the schedule number in the relationship column, so a
+        // household head arrives as a bare "1" rather than "Head". Three of the
+        // six households under "Cavendish Crescent North" are marked that way,
+        // and without this the group reported two households instead of six.
+        if (/^head$/i.test(rel) || /^\d+$/.test(rel)) t.heads++;
         if (/^wife$/i.test(rel)) t.wives++;
       }
       const households = Math.max(1,

@@ -156,14 +156,20 @@ async function init() {
 // Households are recoverable from the order records were entered: each Head
 // begins one. The API sorts by relationship, which scatters them, so sort back
 // to entry id first.
+// Some imports put the schedule number in the relationship column, so a head
+// arrives as a bare "1" rather than "Head". Without this a page of several
+// households reads as one long block with nothing to split it on.
+const isHead = e => {
+  const r = (e.relationship || '').trim();
+  return /^head$/i.test(r) || /^\d+$/.test(r);
+};
+
 function households(rows) {
   const sorted = rows.slice().sort((a, b) => a.id - b.id);
   const out = []; let cur = null;
   for (const e of sorted) {
-    if ((e.relationship || '').toLowerCase() === 'head' || !cur) {
-      cur = { head: null, members: [] }; out.push(cur);
-    }
-    if ((e.relationship || '').toLowerCase() === 'head') cur.head = e;
+    if (isHead(e) || !cur) { cur = { head: null, members: [] }; out.push(cur); }
+    if (isHead(e)) cur.head = e;
     cur.members.push(e);
   }
   return out;
