@@ -284,6 +284,24 @@ household, or the **property picker on each census record** on a person's page f
 
 ---
 
+## 4b. Felixstowe, 1901
+
+- [ ] **The Dorrison household is prepared** in `data/people_1901_felixstowe.json` — eleven
+      people at Felixstowe, Clumber Road West (#394), none of them in the record. Benjamin
+      Dorrison, a solicitor of 64, his wife Alice, three sons, a daughter and five servants.
+      The house is demolished and the record held only its 1911 household, the Dowsons, so
+      this is the family before them. Run **Import people**.
+- [ ] **Read the servants' birthplaces off the original.** Dry Doddington in Lincolnshire, and
+      Wollaton and Cossall in Nottinghamshire, are on the page against the five servants, but
+      the column could not be aligned to the rows from the photograph, so none was recorded
+      rather than guess. Four birthplaces for five servants, so one row also carries a ditto
+      or a blank.
+- [ ] **Check the surname.** Read as **Dorrison**; the capital is looped and Morrison is
+      possible. Also *Emily J Dunstwater*, a hard hand, and *Harrie Butler*, which may be
+      Harriet abbreviated. Bernard W and Alexander are both returned as 27.
+
+---
+
 ## 5. A standing caution: the index is not the page
 
 **Findmypast's index gets addresses wrong, and it has done so repeatedly.** The Enfield

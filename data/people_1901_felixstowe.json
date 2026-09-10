@@ -1,0 +1,255 @@
+{
+  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. The house is demolished and the record held only its 1911 household, the Dowsons, so this is the earlier family. Schedule 178 on a page that runs Clumber Crescent, 6 Clumber Road, Felixstowe, Clumber Road — which is what places it at #394. Servant birthplaces are deliberately omitted: see the source note on each.",
+  "source": "1901 census, schedule 178, Felixstowe",
+  "people": [
+    {
+      "first_name": "Benjamin",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1837,
+      "born_place": "Geldeston, Norfolk",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 64,
+          "occupation_at_census": "Solicitor",
+          "birth_place": "Geldeston, Norfolk",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Returned as \"Benjm\". The surname is read as Dorrison; the capital is looped and could be taken for an M, so Morrison is possible. Employer."
+        }
+      ]
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1845,
+      "born_place": "Prestbury, Cheshire",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 56,
+          "birth_place": "Prestbury, Cheshire",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Alice M",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1871,
+      "born_place": "Nottingham",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 30,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Bernard W",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1874,
+      "born_place": "Nottingham",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "occupation_at_census": "Solicitor",
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — He and Alexander are both returned as 27."
+        }
+      ]
+    },
+    {
+      "first_name": "Alexander",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1874,
+      "born_place": "Nottingham",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "occupation_at_census": "Cotton spinner",
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — He and Bernard W are both returned as 27."
+        }
+      ]
+    },
+    {
+      "first_name": "Gerard S",
+      "last_name": "Dorrison",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1875,
+      "born_place": "Knutsford, Cheshire",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 26,
+          "occupation_at_census": "Clerk, corn merchant",
+          "birth_place": "Knutsford, Cheshire",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Worker. His birthplace is Cheshire where his elder siblings' is Nottingham — read as written."
+        }
+      ]
+    },
+    {
+      "first_name": "Emily J",
+      "last_name": "Dunstwater",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1849,
+      "born_place": "Croxton Kerrial, Leicestershire",
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Servant",
+          "age_at_census": 52,
+          "occupation_at_census": "Nurse (domestic), certified",
+          "birth_place": "Croxton Kerrial, Leicestershire",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Surname uncertain — Dunstwater is the best reading of a difficult hand."
+        }
+      ]
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Rook",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1862,
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Servant",
+          "age_at_census": 39,
+          "occupation_at_census": "Cook (domestic)",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+        }
+      ]
+    },
+    {
+      "first_name": "Kate",
+      "last_name": "Towers",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1869,
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Servant",
+          "age_at_census": 32,
+          "occupation_at_census": "Parlourmaid",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+        }
+      ]
+    },
+    {
+      "first_name": "Harrie",
+      "last_name": "Butler",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1880,
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Servant",
+          "age_at_census": 21,
+          "occupation_at_census": "Housemaid",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Forename read as Harrie; may be Harriet abbreviated. The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+        }
+      ]
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Grayson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1879,
+      "properties": [
+        394
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 394,
+          "address": "Felixstowe, Clumber Road West",
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "occupation_at_census": "Housemaid",
+          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page The birthplace column could not be aligned to the servants' rows with confidence from the photograph — Dry Doddington in Lincolnshire, Wollaton and Cossall in Nottinghamshire are on the page against these five, but which belongs to whom is not settled, so none is recorded here. Wants reading off the original."
+        }
+      ]
+    }
+  ]
+}
