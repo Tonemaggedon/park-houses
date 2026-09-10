@@ -2948,6 +2948,14 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
 
     const key = v => String(v || '').toLowerCase().replace(/[^a-z]/g, '');
     const firstWord = v => key(String(v || '').trim().split(/\s+/)[0]);
+    // How common a name is changes what a coincidence means. Two Hanishes born
+    // the same year are almost certainly one person; two Smiths may well be two.
+    const surnameCount = new Map(), forenameCount = new Map();
+    for (const p of r.rows) {
+      const sn = key(p.last_name), fn = firstWord(p.first_name);
+      surnameCount.set(sn, (surnameCount.get(sn) || 0) + 1);
+      forenameCount.set(fn, (forenameCount.get(fn) || 0) + 1);
+    }
     const buckets = new Map();
     for (const p of r.rows) {
       const k = key(p.last_name) + '|' + firstWord(p.first_name);
@@ -2975,15 +2983,25 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           // nobody is in two households in the same year, so an exact birth year
           // and no property in common is one person entered twice — which is how
           // Arthur Oscar Hanish came to be a boarder in two houses in 1921.
+          const sn = key(a.last_name), fn = firstWord(a.first_name);
+          const share = surnameCount.get(sn) || 1;
+          const shareFore = forenameCount.get(fn) || 1;
+          // A common name makes the coincidence ordinary. Two Smiths in one year
+          // at two addresses is unremarkable; two Hanishes is not.
+          const commonName = share >= 8 || (share >= 4 && shareFore >= 25);
           const sameYearTwice = overlap.length > 0
             && a.born_year === b.born_year
-            && !a.props.some(x => b.props.includes(x));
+            && !a.props.some(x => b.props.includes(x))
+            && !commonName;
           if (overlap.length && !sameYearTwice) continue;
           const sharedProp = a.props.some(x => b.props.includes(x));
           const reasons = [];
           if (sameYearTwice) {
             reasons.push(`in two households in ${overlap.join(' and ')} — nobody can be`);
           }
+          reasons.push(share === 1
+            ? 'the only one of that surname'
+            : `${share} people share the surname`);
           if (a.born_year === b.born_year) reasons.push('same birth year');
           else reasons.push(`birth years ${a.born_year} and ${b.born_year}`);
           if (sharedProp) reasons.push('same property');
@@ -2997,7 +3015,8 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           const isDismissed = dismissedKey.has(`${lo}:${hi}`);
           if (isDismissed && !showDismissed) continue;
           pairs.push({
-            sameYearTwice,
+            sameYearTwice, surnameShared: share, forenameShared: shareFore,
+            commonName,
             dismissed: isDismissed,
             note: isDismissed
               ? (dismissedRows.find(d => d.person_a_id === lo && d.person_b_id === hi) || {}).note || null
@@ -3016,6 +3035,7 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
     }
     pairs.sort((x, y) => (y.sameYearTwice - x.sameYearTwice)
                       || (y.sharedProperty - x.sharedProperty)
+                      || (x.surnameShared - y.surnameShared)
                       || x.people[0].name.localeCompare(y.people[0].name));
     res.json({ total: pairs.length, dismissedCount: dismissedRows.length, pairs });
   } catch (e) { res.status(500).json({ error: e.message }); }

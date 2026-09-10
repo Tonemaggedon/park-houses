@@ -31,6 +31,8 @@
   .why .tag { display:inline-block; border:1px solid var(--rule); border-radius:9px;
     padding:0 7px; margin-right:4px; background:#f6f2e6; }
   .why .tag.hot { border-color:#9ab88a; background:#eef5e8; color:var(--green); }
+  .why .tag.cool { border-color:#d8c49a; background:#fbf4e2; color:#8a6a2a; }
+  .why em { font-size:.72rem; color:#8a6a2a; font-style:italic; }
 
   .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   @media (max-width:640px) { .two { grid-template-columns:1fr; } }
@@ -148,7 +150,9 @@ async function load() {
     box.innerHTML = d.pairs.map((pr, i) => `
       <div class="pair${pr.sameYearTwice || pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
         <div class="why">${pr.reasons.map(r =>
-          `<span class="tag${/property|households/.test(r) ? ' hot' : ''}">${esc(r)}</span>`).join('')}</div>
+          `<span class="tag${/property|households/.test(r) ? ' hot'
+            : /share the surname/.test(r) && pr.surnameShared >= 6 ? ' cool' : ''}">${esc(r)}</span>`).join('')}
+          ${pr.surnameShared >= 6 ? '<em>a common name here — the coincidence means less</em>' : ''}</div>
         <div class="two">
           ${pr.people.map(p => `
             <div class="rec${p.id === pr.suggestKeep ? ' keep' : ''}" data-rec="${p.id}">
