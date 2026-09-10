@@ -199,8 +199,14 @@ still want a human.
       **Radford** household with two servants (2574–2578). The 1921 schedule header for the
       Drinkwaters gives their postal address as **"Gees Lodge, Tunnel Rd"** — Albert
       Drinkwater was a police constable of 36. **Gees Lodge is now #408**; send 2569–2571
-      there on `/reassign?prop=84&year=1921`. Penrhyn House was divided into flats, so some of
-      the rest may genuinely belong, but four households is worth going through.
+      there on `/reassign?prop=84&year=1921`. The **Shepherds** (2572–2573) were at **The
+      Cottage, Tunnel Road — now #409**; send those two there. That leaves the Houltons and
+      the Radfords, and Penrhyn House was divided into flats, so one or both may genuinely
+      belong. Three of the four schedules under this one address were somewhere else.
+- [ ] **Two houses are called The Cottage** — #405 at 14 Huntingdon Drive and #409 on Tunnel
+      Road, 400 m apart. Same hazard as the two Peveril Houses: a census address reading only
+      "The Cottage" can be filed against either. Both records now say so. Automatic matching
+      on Dougal's map had put *both* of that map's "Cottage" labels against #405.
 - [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. **Solved by the schedule
       header.** Three schedules: the **Clark** household (2055–2059, five people, the real
       19 Park Terrace), then **nine resident doctors under Dr John Kneebone** (2060–2068),

@@ -6029,7 +6029,7 @@
   "no": "14",
   "address": "The Cottage, 14 Huntingdon Drive",
   "desc": "",
-  "history": "Recorded as The Cottage, Huntingdon Drive in the 1921 census, holding Sidney Richard Tann, a chiropodist of 42, and his wife Daisy. Dougal de Havilland's map confirms the number: it is drawn and labelled \"14 The Cottage\" on the north-east side of Huntingdon Drive, in the run that carries on past number 10 \u2014 11 Burnham House, 13 The Magpies, 14 The Cottage, 15 The Coach House, The Hunting Lodge, 17, and 18 The Round House, formerly The Spiral. The numbering runs up one side of the road and back down the other, which puts The Cottage roughly opposite number 6.",
+  "history": "Recorded as The Cottage, Huntingdon Drive in the 1921 census, holding Sidney Richard Tann, a chiropodist of 42, and his wife Daisy. Dougal de Havilland's map confirms the number: it is drawn and labelled \"14 The Cottage\" on the north-east side of Huntingdon Drive, in the run that carries on past number 10 \u2014 11 Burnham House, 13 The Magpies, 14 The Cottage, 15 The Coach House, The Hunting Lodge, 17, and 18 The Round House, formerly The Spiral. The numbering runs up one side of the road and back down the other, which puts The Cottage roughly opposite number 6. Not to be confused with The Cottage on Tunnel Road (#409), a different house 400 metres away, where the Shepherds lived in 1921. A census address reading only \"The Cottage\" could belong to either.",
   "date_built": "",
   "listed": "No",
   "census_only": true,
@@ -6098,6 +6098,26 @@
    "name": "The reading of the first word is not certain \u2014 the hand's capitals are loose enough that Gees could be taken for Cees or Lees. Recorded as Gees.",
    "position": "Read off the modern map against eight houses in the same frame whose positions are already known \u2014 Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel, so the placement is as good as the reading of the building outline, not a guess at the end of a street. Unlike Dougal's map, which is a diagram and cannot place anything. Placed on the southern of the two buildings, the one the modern map labels Tunnel Lodge. Owner's judgement (A. Hagues) that this pair is the only place it can be.",
    "residents": "1921 census, 3 people \u2014 first filed at Penrhyn House with three other schedules under the same address"
+  }
+ },
+ {
+  "id": 409,
+  "name": "The Cottage",
+  "street": "Tunnel Road",
+  "no": "The Cottage",
+  "address": "The Cottage, Tunnel Road",
+  "desc": "",
+  "history": "In 1921 the house of Mary Anne Shepherd, a widow of 72, and her daughter Mabel, 46, who worked in lace patterns. Their household was filed against Penrhyn House along with three others; the census gives their address as The Cottage, Tunnel Road. It still stands and is still named The Cottage on the modern map, beside The Coach House and a little east of Gladstone House.\n\nNot to be confused with The Cottage at 14 Huntingdon Drive (#405), which is a different house 400 metres away. A census address reading only \"The Cottage\" could belong to either.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.952148,
+  "lng": -1.1641802,
+  "sources": {
+   "existence": "1921 census, the Shepherd household's address \u2014 via Penrhyn House, where the schedule had been filed. Named The Cottage on the modern map, and labelled The Cottage on Dougal de Havilland's map beside The Coach House.",
+   "position": "Read off the modern map against eight houses in the same frame whose positions are already known \u2014 Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel. Placed on the building the modern map labels The Cottage.",
+   "residents": "1921 census, 2 people \u2014 first filed at Penrhyn House with three other schedules under the same address",
+   "caution": "There are two houses called The Cottage in The Park: this one and #405 at 14 Huntingdon Drive. Automatic matching on Dougal's map put both of that map's \"Cottage\" labels against #405, which was wrong for this one."
   }
  }
 ]
