@@ -6029,15 +6029,15 @@
   "no": "14",
   "address": "The Cottage, 14 Huntingdon Drive",
   "desc": "",
-  "history": "Recorded as The Cottage, Huntingdon Drive in the 1921 census, holding Sidney Richard Tann, a chiropodist of 42, and his wife Daisy. Numbered 14 by the owner, though the road is otherwise recorded only as far as 10 and the house may no longer stand.",
+  "history": "Recorded as The Cottage, Huntingdon Drive in the 1921 census, holding Sidney Richard Tann, a chiropodist of 42, and his wife Daisy. Dougal de Havilland's map confirms the number: it is drawn and labelled \"14 The Cottage\" on the north-east side of Huntingdon Drive, in the run that carries on past number 10 \u2014 11 Burnham House, 13 The Magpies, 14 The Cottage, 15 The Coach House, The Hunting Lodge, 17, and 18 The Round House, formerly The Spiral. The numbering runs up one side of the road and back down the other, which puts The Cottage roughly opposite number 6.",
   "date_built": "",
   "listed": "No",
   "census_only": true,
-  "lat": 52.9512173,
-  "lng": -1.1584471,
+  "lat": 52.9507528,
+  "lng": -1.1585889,
   "sources": {
-   "existence": "1921 census, address \"Huntingdon Drive (The Cottage)\"; number given by A. Hagues",
-   "position": "Provisional and probably wrong \u2014 placed at the far end of the recorded Huntingdon Drive houses. Wants placing by hand, if the house can be located at all.",
+   "existence": "1921 census, address \"Huntingdon Drive (The Cottage)\". The number 14 was given by A. Hagues and is confirmed by Dougal de Havilland's map of The Park, which labels the house \"14 The Cottage\".",
+   "position": "Provisional. Dougal's map is a diagram rather than a survey \u2014 checked against 70 houses whose positions are known, it is out by a median of about 60 metres, so it settles which house and in what order but not where. Placed instead by the road itself: opposite number 6, on the north-east side, 25 metres off the line between 1 and 10. Wants placing by hand.",
    "residents": "1921 census, 2 people"
   }
  },
@@ -6059,6 +6059,26 @@
    "street": "Provisional. The enumerator's round runs 16, 17, then 19 Park Terrace, then this household, then one more, then Sunnyside \u2014 so the house stands on or immediately off Park Terrace. The schedule itself gives only \"The Park\".",
    "position": "Provisional and unverified \u2014 placed on the line between 19 Park Terrace and Sunnyside, where the enumerator's round puts it. 20 Park Terrace (#257) holds no 1921 record at all and is the obvious candidate for this house or for the household after it. Wants placing by hand, or by someone who can walk it.",
    "residents": "1921 census, 9 people \u2014 first filed at 19 Park Terrace with two other schedules under the same address"
+  }
+ },
+ {
+  "id": 407,
+  "name": "Penrhyn Cottage",
+  "street": "Cavendish Road East",
+  "no": "Penrhyn Cottage",
+  "address": "Penrhyn Cottage, Cavendish Road East",
+  "desc": "",
+  "history": "A separate building at the bottom of the garden of Penrhyn House (#84), addressed on Cavendish Road East rather than with the house it belonged to. The Park holds a number of these \u2014 a coach house or cottage at the foot of a garden, taking its address from the road the garden backs onto. Gartree Lodge is the same arrangement. Dougal de Havilland's map draws it as its own building between Penrhyn House and the Cavendish Road East frontage, beside Tunnel Lodge, towards the Tunnel Road end.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.952463,
+  "lng": -1.162995,
+  "sources": {
+   "existence": "Dougal de Havilland's map of The Park, labelled \"Penrhyn Cott\"; and the OS 1:1250 sheet SK 5539 NE, cited on Cedar Lodge (#400) as \"beside Penrhyn Cottage at the Tunnel Road end of the crescent\".",
+   "relationship": "Owner knowledge (A. Hagues): at the bottom of the garden of Penrhyn House, sitting on Cavendish Road East.",
+   "position": "Provisional and unverified \u2014 between Penrhyn House and the Cavendish Road East frontage, near numbers 23 to 27. Dougal's map is a diagram rather than a survey and cannot be used to place it. Wants placing by hand.",
+   "caution": "The Cedar Lodge note puts it at the Tunnel Road end of Clumber Crescent North, which is the same corner reached from the other side. Recorded on Cavendish Road East on the owner's word; a corner plot can honestly be described either way."
   }
  }
 ]

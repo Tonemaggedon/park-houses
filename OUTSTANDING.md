@@ -94,16 +94,23 @@ four with no name recorded and nobody in 1921 — for these three households. No
 estate resembles any of the three names under any spelling.
 
 - [x] ~~Brampton~~ → **#151, 9 Huntingdon Drive**. Recorded; suggests itself on `/unfiled`.
-- [x] ~~The Cottage~~ → **#405, 14 Huntingdon Drive**, created census-only. The road is
-      otherwise recorded only as far as 10 and the house may no longer stand, so the position
-      is a guess at the far end and wants placing by hand — if it can be located at all.
+- [x] ~~The Cottage~~ → **#405, 14 Huntingdon Drive**, created census-only. **The number is
+      confirmed**: Dougal's map labels it "14 The Cottage" on the north-east side of the road.
+      My note that the road stopped at 10 and the house might be gone was wrong on both counts.
+      Position moved to opposite number 6, still provisional.
 - [x] ~~5 Huntingdon Drive is Napier House~~ — already recorded as such.
 - [ ] **Greendale, Huntingdon Drive** — 4 records, 1921. Joseph Spray (77), wife Martha (77),
-      daughter Jessie (47), one servant. An elderly household. The last one unplaced; the
-      unnamed houses left are 2, 4 and 8.
+      daughter Jessie (47), one servant. An elderly household. The last one unplaced. The
+      unnamed numbers are 2, 4 and 8 — **but the road does not stop at 10**, so Greendale may
+      not be among them at all.
 
-Huntingdon Drive is recorded as plain numbers 1–10 with no names at all, so these four names
-belong to four of those ten.
+- [ ] **Huntingdon Drive runs past number 10 and the record does not.** Dougal's map draws a
+      second run on the north-east side, numbered back down the other way: **11 Burnham House,
+      13 The Magpies, 14 The Cottage, 15 The Coach House, The Hunting Lodge, 17, and 18 The
+      Round House (formerly The Spiral)**, with Birchwood beyond. Only The Cottage is in the
+      record, and only because a census household carried its name. If these are houses rather
+      than flats and coach houses, **the record is missing half a street** — and Greendale is
+      as likely to be one of them as to be 2, 4 or 8. On `/research`.
 
 ---
 
@@ -171,6 +178,14 @@ A house showing twenty-odd in one year is usually several households filed again
       (#27)** hold no 1911 record at all, so they are the obvious candidates to check against
       the original. Both heads are lace manufacturers. `/reassign?prop=25&year=1911` already
       shows the three blocks separately with a "send all to" box on each.
+
+### Dougal's map is a diagram, not a survey
+
+Measured against the 70 houses on it whose positions are known, the map is out by a **median
+of about 60 metres**, and fitting it locally rather than globally makes it worse, not better.
+So it settles **which** house and **in what order** — which is how The Cottage and Broxtowe
+House were placed on their streets — but it cannot be used to set a coordinate. Positions
+still want a human.
 - [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. **Solved by the schedule
       header.** Three schedules: the **Clark** household (2055–2059, five people, the real
       19 Park Terrace), then **nine resident doctors under Dr John Kneebone** (2060–2068),
@@ -267,8 +282,12 @@ Other gaps, for reference rather than action:
 - [ ] **The Hermitage (#392)** — my coordinate and your placement are **48m apart**.
       Yours is on the map; this is only a note that they disagree.
 - [ ] **Belwood** and **Dudley Lodge** — visible on your OS sheets, no records exist.
-- [ ] **Penrhyn Cottage** — the site has *Penrhyn House* (#84). Same building under
-      two names, or two buildings?
+- [x] ~~Penrhyn Cottage~~ — **two buildings.** Created as **#407, Penrhyn Cottage,
+      Cavendish Road East**, census-only. It stands at the bottom of the garden of Penrhyn
+      House (#84) and takes its address from the road the garden backs onto — the Gartree
+      Lodge arrangement. Dougal's map draws it as its own building beside Tunnel Lodge.
+      Position provisional. Answered by A. Hagues; still open on `/research` until somebody
+      presses the button.
 
 ---
 
