@@ -651,6 +651,15 @@ async function dbInit() {
       started_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_research_claim ON research_claims(question_id, username)`);
+    // Addresses the census itself cannot resolve — the return gave no house
+    // name and no number, so no amount of census review will place them. They
+    // are set aside rather than left in the queue looking like work.
+    await db.query(`CREATE TABLE IF NOT EXISTS unfiled_set_aside (
+      address TEXT PRIMARY KEY,
+      note TEXT,
+      set_by TEXT,
+      set_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
     await seedResearchQuestions();
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
@@ -3352,6 +3361,10 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       if (!byAddr.has(key)) byAddr.set(key, []);
       byAddr.get(key).push(e);
     }
+    const aside = new Map((await db.query(
+      `SELECT address, note, set_by, set_at FROM unfiled_set_aside`)).rows
+        .map(r => [r.address, r]));
+
     const groups = [...byAddr.entries()].map(([addr, entries]) => {
       const s = addr === '\u0000none' ? [] : suggest(addr);
       // One address string can hold several households — the Dowsons and two
@@ -3379,10 +3392,14 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       const strong = s.length && s[0].score >= 10
                      && (s.length === 1 || s[0].score > s[1].score)
                      && households === 1;
+      const setAside = aside.get(addr === '\u0000none' ? '' : addr) || null;
       return {
         address: addr === '\u0000none' ? null : addr,
         count: entries.length,
         households,
+        setAside: !!setAside,
+        setAsideNote: setAside ? (setAside.note || null) : null,
+        setAsideBy: setAside ? (setAside.set_by || null) : null,
         years: [...new Set(entries.map(e => e.census_year))].sort(),
         suggestions: s,
         confident: !!strong,
@@ -3428,6 +3445,28 @@ app.post('/api/census/crowding/confirm', requireContributor, async (req, res) =>
 // POST /api/census/reassign — send each census record to the property named
 // against it. One address holding several households is untangled a line at a
 // time, which no single "move everyone" action can do.
+// An address the census cannot resolve — no house name, no number on the
+// return — is set aside rather than left in the queue. Nothing is moved or
+// deleted; the records stay exactly where they are and stay searchable.
+app.post('/api/census/unfiled-groups/set-aside', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const address = String((req.body && req.body.address) || '').trim();
+  if (!address) return res.status(400).json({ error: 'an address is required' });
+  const on = !(req.body && req.body.on === false);
+  const who = (await getResearchKey(req.session)) || null;
+  try {
+    if (!on) {
+      await db.query(`DELETE FROM unfiled_set_aside WHERE address=$1`, [address]);
+      return res.json({ ok: true, setAside: false });
+    }
+    await db.query(
+      `INSERT INTO unfiled_set_aside (address, note, set_by) VALUES ($1,$2,$3)
+       ON CONFLICT (address) DO UPDATE SET note=EXCLUDED.note, set_by=EXCLUDED.set_by, set_at=NOW()`,
+      [address, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, setAside: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post('/api/census/reassign', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   const moves = Array.isArray(req.body && req.body.moves) ? req.body.moves : null;
