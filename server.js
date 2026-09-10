@@ -3200,10 +3200,17 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           // to skip exactly this — sharing a house and a year was read as proof
           // of two real people — which made a double-imported household the one
           // kind of duplicate the page could never see.
+          // Deliberately not guarded by commonName. That guard is for the case
+          // below, where two people of one name sit in different houses and a
+          // common name makes the coincidence ordinary. Here they are in the
+          // same house on the same night with the same birth year, and no
+          // household holds two people of one forename and surname born the
+          // same year — least of all a large family, which is exactly what a
+          // common surname means. Fourteen Jessops is why the page could not
+          // see the five Jessop duplicates.
           const doubleImport = overlap.length > 0
             && sharedProp
-            && Math.abs(a.born_year - b.born_year) <= 1
-            && !commonName;
+            && Math.abs(a.born_year - b.born_year) <= 1;
           if (overlap.length && !sameYearTwice && !doubleImport) continue;
           const reasons = [];
           if (sameYearTwice) {
