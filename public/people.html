@@ -1257,7 +1257,7 @@ async function showAddRelationship(personId) {
     const choice = prompt('Multiple matches:\n' + matches.map((m,i)=>`${i+1}. ${m.first_name} ${m.last_name} (${m.born_year||'?'})`).join('\n') + '\n\nEnter number:');
     chosen = matches[parseInt(choice)-1] || matches[0];
   }
-  const relType = prompt(`Relationship type for ${chosen.first_name} ${chosen.last_name}:\n(e.g. spouse_of, parent_of, child_of, sibling_of)`, 'spouse_of');
+  const relType = prompt(`Relationship type for ${chosen.first_name} ${chosen.last_name}:\n(e.g. spouse_of, parent_of, child_of, sibling_of, cousin_of)`, 'spouse_of');
   if (!relType) return;
   const res = await fetch(`/api/person/${personId}/relationship`, {
     method:'POST', headers:{'Content-Type':'application/json'},
@@ -1499,6 +1499,12 @@ function humaniseRelType(type, isA) {
     'employee_of': isA ? 'Employee' : 'Employer',
     'grandparent_of': isA ? 'Grandchild' : 'Grandparent',
     'grandchild_of': isA ? 'Grandparent' : 'Grandchild',
+    'cousin_of': 'Cousin',
+    'aunt_of': isA ? 'Niece or nephew' : 'Aunt',
+    'uncle_of': isA ? 'Niece or nephew' : 'Uncle',
+    'niece_of': isA ? 'Aunt or uncle' : 'Niece',
+    'nephew_of': isA ? 'Aunt or uncle' : 'Nephew',
+    'in_law_of': 'In-law',
   };
   return map[type] || type;
 }
