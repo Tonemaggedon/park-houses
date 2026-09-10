@@ -6068,17 +6068,36 @@
   "no": "Penrhyn Cottage",
   "address": "Penrhyn Cottage, Cavendish Road East",
   "desc": "",
-  "history": "A separate building at the bottom of the garden of Penrhyn House (#84), addressed on Cavendish Road East rather than with the house it belonged to. The Park holds a number of these \u2014 a coach house or cottage at the foot of a garden, taking its address from the road the garden backs onto. Gartree Lodge is the same arrangement. Dougal de Havilland's map draws it as its own building between Penrhyn House and the Cavendish Road East frontage, beside Tunnel Lodge, towards the Tunnel Road end.",
+  "history": "A separate building at the bottom of the garden of Penrhyn House (#84), addressed on Cavendish Road East rather than with the house it belonged to. The Park holds a number of these \u2014 a coach house or cottage at the foot of a garden, taking its address from the road the garden backs onto; Gartree Lodge is the same arrangement. It still stands, and is still named Penrhyn Cottage on the modern map. It is the northern of two small buildings between Penrhyn House and the road, the southern one now called Tunnel Lodge; both appear on the OS sheet as separate footprints.",
   "date_built": "",
   "listed": "No",
   "census_only": true,
-  "lat": 52.952463,
-  "lng": -1.162995,
+  "lat": 52.9525446,
+  "lng": -1.1633651,
   "sources": {
-   "existence": "Dougal de Havilland's map of The Park, labelled \"Penrhyn Cott\"; and the OS 1:1250 sheet SK 5539 NE, cited on Cedar Lodge (#400) as \"beside Penrhyn Cottage at the Tunnel Road end of the crescent\".",
+   "existence": "Named as Penrhyn Cottage on the modern map and drawn as a separate footprint on the OS 1:1250 sheet SK 5539 NE; cited on Cedar Lodge (#400) as \"beside Penrhyn Cottage at the Tunnel Road end of the crescent\". Labelled \"Penrhyn Cott\" on Dougal de Havilland's map.",
    "relationship": "Owner knowledge (A. Hagues): at the bottom of the garden of Penrhyn House, sitting on Cavendish Road East.",
-   "position": "Provisional and unverified \u2014 between Penrhyn House and the Cavendish Road East frontage, near numbers 23 to 27. Dougal's map is a diagram rather than a survey and cannot be used to place it. Wants placing by hand.",
-   "caution": "The Cedar Lodge note puts it at the Tunnel Road end of Clumber Crescent North, which is the same corner reached from the other side. Recorded on Cavendish Road East on the owner's word; a corner plot can honestly be described either way."
+   "position": "Read off the modern map against eight houses in the same frame whose positions are already known \u2014 Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel, so the placement is as good as the reading of the building outline, not a guess at the end of a street. Unlike Dougal's map, which is a diagram and cannot place anything. Placed on the northern of the two buildings, the one the modern map labels Penrhyn Cottage. My first placement was 26 m east of this and has been corrected."
+  }
+ },
+ {
+  "id": 408,
+  "name": "Gees Lodge",
+  "street": "Tunnel Road",
+  "no": "Gees Lodge",
+  "address": "Gees Lodge, Tunnel Road",
+  "desc": "",
+  "history": "In 1921 the house of Albert Drinkwater, a police constable of 36, with his wife Ada and their son Harold, aged 10. Their census schedule gives the postal address in the enumerator's hand as \"Gees Lodge, Tunnel Rd, The Park, Nottingham\", but the household was filed against Penrhyn House along with three others, which is how it came to be found.\n\nIt is one of the two small buildings standing between Penrhyn House's garden and the road by the mouth of the Park Tunnel. The northern is still called Penrhyn Cottage (#407); the southern is now called Tunnel Lodge, and is the more likely of the two to be Gees Lodge \u2014 a lodge on Tunnel Road, by the tunnel. Which of the pair it is has not been settled.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9524234,
+  "lng": -1.1633655,
+  "sources": {
+   "existence": "1921 census schedule header, in the enumerator's hand: \"Name of person responsible for making the return: Mr Albert Drinkwater. Postal Address: Gees Lodge, Tunnel Rd, The Park, Nottingham.\" Registration district 430, sub-district 6, enumeration district 16.",
+   "name": "The reading of the first word is not certain \u2014 the hand's capitals are loose enough that Gees could be taken for Cees or Lees. Recorded as Gees.",
+   "position": "Read off the modern map against eight houses in the same frame whose positions are already known \u2014 Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel, so the placement is as good as the reading of the building outline, not a guess at the end of a street. Unlike Dougal's map, which is a diagram and cannot place anything. Placed on the southern of the two buildings, the one the modern map labels Tunnel Lodge. Owner's judgement (A. Hagues) that this pair is the only place it can be.",
+   "residents": "1921 census, 3 people \u2014 first filed at Penrhyn House with three other schedules under the same address"
   }
  }
 ]

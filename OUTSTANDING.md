@@ -179,6 +179,13 @@ A house showing twenty-odd in one year is usually several households filed again
       the original. Both heads are lace manufacturers. `/reassign?prop=25&year=1911` already
       shows the three blocks separately with a "send all to" box on each.
 
+### The modern map, by contrast, can be read to the metre
+
+Reading a screenshot of the modern map against eight houses in the same frame whose positions
+are already known — Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road
+East — those eight fit to **within a fifth of a metre** at 0.18 m per pixel. So a building
+visible on it can be placed properly, which is how Penrhyn Cottage and Gees Lodge were done.
+
 ### Dougal's map is a diagram, not a survey
 
 Measured against the 70 houses on it whose positions are known, the map is out by a **median
@@ -186,6 +193,14 @@ of about 60 metres**, and fitting it locally rather than globally makes it worse
 So it settles **which** house and **in what order** — which is how The Cottage and Broxtowe
 House were placed on their streets — but it cannot be used to set a coordinate. Positions
 still want a human.
+- [ ] **#84 — Penrhyn House** — 14 people, **7 surnames**, 1921. **Four schedules under one
+      address**, in enumerator order: the **Houlton** household (2565–2568), the
+      **Drinkwater** household (2569–2571), the **Shepherd** household (2572–2573), and the
+      **Radford** household with two servants (2574–2578). The 1921 schedule header for the
+      Drinkwaters gives their postal address as **"Gees Lodge, Tunnel Rd"** — Albert
+      Drinkwater was a police constable of 36. **Gees Lodge is now #408**; send 2569–2571
+      there on `/reassign?prop=84&year=1921`. Penrhyn House was divided into flats, so some of
+      the rest may genuinely belong, but four households is worth going through.
 - [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921. **Solved by the schedule
       header.** Three schedules: the **Clark** household (2055–2059, five people, the real
       19 Park Terrace), then **nine resident doctors under Dr John Kneebone** (2060–2068),
@@ -286,8 +301,13 @@ Other gaps, for reference rather than action:
       Cavendish Road East**, census-only. It stands at the bottom of the garden of Penrhyn
       House (#84) and takes its address from the road the garden backs onto — the Gartree
       Lodge arrangement. Dougal's map draws it as its own building beside Tunnel Lodge.
-      Position provisional. Answered by A. Hagues; still open on `/research` until somebody
-      presses the button.
+      **Position corrected** from the modern map — 26 m from my first guess. Answered by
+      A. Hagues; still open on `/research` until somebody presses the button.
+- [ ] **Gees Lodge (#408), Tunnel Road** — created census-only from the Drinkwaters' schedule
+      header. It is one of the two small buildings by the mouth of the Park Tunnel; the
+      northern is Penrhyn Cottage, the southern is now Tunnel Lodge, and Gees Lodge is
+      recorded on the southern one as the likelier. **Which of the pair, and whether the name
+      really reads Gees**, is on `/research`.
 
 ---
 
