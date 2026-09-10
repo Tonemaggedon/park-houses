@@ -772,7 +772,7 @@ const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done
   + (d.report || []).map(x => {
       const n = v => v || 0;
       const work = n(x.added) + n(x.propertyLinks) + n(x.census) + n(x.occupations)
-                 + n(x.enriched) + n(x.relationships);
+                 + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships);
       // Four zeros beside "already present" reads like a failure when it means
       // the opposite. Say plainly that there is nothing left to do.
       if (!work) {
@@ -788,6 +788,7 @@ const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done
       if (x.propertyLinks) bits.push(`${x.propertyLinks} property link${x.propertyLinks === 1 ? '' : 's'}`);
       if (x.census) bits.push(`${x.census} census record${x.census === 1 ? '' : 's'}`);
       if (x.occupations) bits.push(`${x.occupations} occupation${x.occupations === 1 ? '' : 's'}`);
+      if (x.occupationsFilled) bits.push(`${x.occupationsFilled} occupation${x.occupationsFilled === 1 ? '' : 's'} filled out`);
       if (x.enriched) bits.push(`${x.enriched} filled out`);
       if (x.relationships) bits.push(`${x.relationships} relationship${x.relationships === 1 ? '' : 's'}`);
       return `${x.file}: ${bits.join(', ')}`

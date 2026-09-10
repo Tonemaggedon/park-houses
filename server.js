@@ -1457,7 +1457,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       `${String(fn || '').trim().toLowerCase()}|${String(ln || '').trim().toLowerCase()}|${by ?? ''}`;
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0;
+      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0, occsFilled = 0;
       const noSuchId = [];
       // A preview that says "20 would be added" without saying who is a preview
       // nobody can check. Name them, capped so a large file stays readable.
@@ -1642,11 +1642,30 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           if (!o || !o.occupation) continue;
           if (id === null) { occs++; continue; }
           const dup = await db.query(
-            `SELECT 1 FROM occupations
+            `SELECT id, employer, notes, to_year FROM occupations
               WHERE person_id=$1 AND LOWER(occupation)=LOWER($2)
                 AND from_year IS NOT DISTINCT FROM $3`,
             [id, o.occupation, o.from_year ?? null]);
-          if (dup.rows.length) continue;
+          if (dup.rows.length) {
+            // Already there — but the file may carry what the row lacks. The
+            // employer especially: it comes from a census column the occupation
+            // table was never filled from, so on an existing job it is usually
+            // the only new thing there is, and skipping the row threw it away.
+            // Blanks only; nobody's entered value is overwritten.
+            const have = dup.rows[0], fills = [];
+            if (!have.employer && o.employer) fills.push(['employer', o.employer]);
+            if (!have.notes && o.notes) fills.push(['notes', o.notes]);
+            if (have.to_year == null && o.to_year != null) fills.push(['to_year', o.to_year]);
+            if (fills.length) {
+              occsFilled++;
+              if (!dryRun) {
+                await db.query(
+                  `UPDATE occupations SET ${fills.map((f, k) => `${f[0]}=$${k + 2}`).join(', ')} WHERE id=$1`,
+                  [have.id, ...fills.map(f => f[1])]);
+              }
+            }
+            continue;
+          }
           occs++;
           if (dryRun) continue;
           await db.query(
@@ -1659,7 +1678,8 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       const trim = list => list.length > NAME_CAP
         ? list.slice(0, NAME_CAP).concat(`and ${list.length - NAME_CAP} more`) : list;
       report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
-                    census, occupations: occs, relationships: rels, relationshipsSkipped: relsSkipped,
+                    census, occupations: occs, occupationsFilled: occsFilled,
+                    relationships: rels, relationshipsSkipped: relsSkipped,
                     ...(addedNames.length ? { addedNames: trim(addedNames) } : {}),
                     ...(censusNames.length ? { censusNames: trim(censusNames) } : {}),
                     ...(noSuchId.length ? { noSuchPerson: noSuchId } : {}) });
