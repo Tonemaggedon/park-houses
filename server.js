@@ -2970,9 +2970,20 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           if (!a.born_year || !b.born_year) continue;
           if (Math.abs(a.born_year - b.born_year) > 2) continue;
           const ya = new Set(a.years), yb = new Set(b.years);
-          if ([...ya].some(y => yb.has(y))) continue;   // both in one year: two real people
+          const overlap = [...ya].filter(y => yb.has(y));
+          // Sharing a census year usually means two real people of one name. But
+          // nobody is in two households in the same year, so an exact birth year
+          // and no property in common is one person entered twice — which is how
+          // Arthur Oscar Hanish came to be a boarder in two houses in 1921.
+          const sameYearTwice = overlap.length > 0
+            && a.born_year === b.born_year
+            && !a.props.some(x => b.props.includes(x));
+          if (overlap.length && !sameYearTwice) continue;
           const sharedProp = a.props.some(x => b.props.includes(x));
           const reasons = [];
+          if (sameYearTwice) {
+            reasons.push(`in two households in ${overlap.join(' and ')} — nobody can be`);
+          }
           if (a.born_year === b.born_year) reasons.push('same birth year');
           else reasons.push(`birth years ${a.born_year} and ${b.born_year}`);
           if (sharedProp) reasons.push('same property');
@@ -2986,6 +2997,7 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
           const isDismissed = dismissedKey.has(`${lo}:${hi}`);
           if (isDismissed && !showDismissed) continue;
           pairs.push({
+            sameYearTwice,
             dismissed: isDismissed,
             note: isDismissed
               ? (dismissedRows.find(d => d.person_a_id === lo && d.person_b_id === hi) || {}).note || null
@@ -3002,7 +3014,8 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
         }
       }
     }
-    pairs.sort((x, y) => (y.sharedProperty - x.sharedProperty)
+    pairs.sort((x, y) => (y.sameYearTwice - x.sameYearTwice)
+                      || (y.sharedProperty - x.sharedProperty)
                       || x.people[0].name.localeCompare(y.people[0].name));
     res.json({ total: pairs.length, dismissedCount: dismissedRows.length, pairs });
   } catch (e) { res.status(500).json({ error: e.message }); }

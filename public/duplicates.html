@@ -88,9 +88,10 @@
   </div>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
-  <div class="note">Never appearing in the same census year is the strongest part of this: two
-    people of the same name who were both recorded in 1911 are two people, and are not listed
-    here. A pair that shares a property as well is more likely still.</div>
+  <div class="note">Two people of one name both recorded in 1911 are usually two people, and are
+    not listed here — with one exception. Nobody is in two households in the same year, so where
+    the birth year matches exactly and the two sit at different properties, one entry is wrong.
+    Those are shown first.</div>
 </div>
 
 <script>
@@ -145,9 +146,9 @@ async function load() {
     if (!canEdit) { box.innerHTML = '<div class="empty">Sign in as a contributor to merge these.</div>'; return; }
 
     box.innerHTML = d.pairs.map((pr, i) => `
-      <div class="pair${pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
+      <div class="pair${pr.sameYearTwice || pr.sharedProperty ? ' strong' : ''}" data-i="${i}">
         <div class="why">${pr.reasons.map(r =>
-          `<span class="tag${/property/.test(r) ? ' hot' : ''}">${esc(r)}</span>`).join('')}</div>
+          `<span class="tag${/property|households/.test(r) ? ' hot' : ''}">${esc(r)}</span>`).join('')}</div>
         <div class="two">
           ${pr.people.map(p => `
             <div class="rec${p.id === pr.suggestKeep ? ' keep' : ''}" data-rec="${p.id}">
