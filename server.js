@@ -2773,7 +2773,11 @@ app.get('/api/census/:year', async (req, res, next) => {
                  WHERE ce.census_year=$1`;
     const params = [year];
     if (propId) { params.push(propId); query += ` AND ce.property_id=$${params.length}`; }
-    query += ' ORDER BY ce.property_id, ce.relationship';
+    // Entry id is import order, which is the enumerator's own order: each schedule
+    // runs head, family, servants, then the next house. Ordering by relationship
+    // sorted that into "all the daughters, all the servants" and lost the household
+    // boundaries — the one thing that makes a crowded address readable.
+    query += ' ORDER BY ce.property_id, ce.id';
     const r = await db.query(query, params);
     res.json(r.rows);
   } catch(e) { res.status(500).json({ error: e.message }); }

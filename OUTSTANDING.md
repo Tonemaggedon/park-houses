@@ -144,7 +144,18 @@ A house showing twenty-odd in one year is usually several households filed again
 
 - [ ] **#227 — 39 Newcastle Drive (Priests House)** — 27 people, **22 surnames**, 1921
 - [ ] **#310 — 5 Tattershall Drive** — 26 people, **16 surnames**, 1921
-- [ ] **#25 — 9 Cavendish Crescent North** — 22 people, **14 surnames**, 1911
+- [ ] **#25 — 9 Cavendish Crescent North (Peveril House)** — 22 people, **14 surnames**, 1911.
+      **Solved, needs the clicks.** Three census schedules sit under one address. In import
+      order — which is the enumerator's own order, running 1 → 3 → 5 → 7 → 9 up the crescent —
+      they are: four servants with **no head** (entries 858–861), then the **Weinberg**
+      household of 9 (862–870), then the **Smith** household of 9 (871–879). Weston Fulford
+      Marriott Weston-Webb held the lease on Peveril House from at least 1911 and signed the
+      schedule without being there on the night, which is why the first one is servants alone.
+      **Only those four belong at #25.** Where the other two go is not proven: the schedules
+      immediately after them run on up the crescent, and **10 (#26)** and **11, Gleadthorpe
+      (#27)** hold no 1911 record at all, so they are the obvious candidates to check against
+      the original. Both heads are lace manufacturers. `/reassign?prop=25&year=1911` already
+      shows the three blocks separately with a "send all to" box on each.
 - [ ] **#379 — 19 Park Terrace** — 21 people, **17 surnames**, 1921
 - [ ] **#85 — Westwood, Clumber Road East** — 20 people, **13 surnames**, 1921
 - [ ] **#201 — Gladstone House, Lincoln Circus** — 16 people, 12 surnames, 1921
@@ -165,6 +176,11 @@ household, or the **property picker on each census record** on a person's page f
       They are invisible on the map, invisible on `/crowding`, and are the other half of the
       same problem: the Pembertons' three 1921 records were among them. The Unresolved Census
       page is where these get assigned.
+- [ ] **The rest of Cavendish Crescent North in 1911 is sitting in that queue.** The 1911
+      import ran street by street: entries 826–901 are the whole crescent, but only 837–879
+      were filed. Everything after the 9 Cavendish block — **880–901**, the Brewster, Hadden,
+      McCaith and Walker households — is unfiled, and it is the continuation up the same
+      street. Settle those and the two strays at #25 above should fall out with them.
 
 ---
 
