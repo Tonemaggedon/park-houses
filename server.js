@@ -3035,10 +3035,20 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       if (!a) return [];
       const out = [];
       for (const pr of props) {
-        const nm = addrNorm(pr.name), st = addrNorm(pr.street);
+        const st = addrNorm(pr.street);
         const no = String(pr.no || '').trim();
+        // Every name the house is known by, not just its current one. Kenmare
+        // House is recorded in the census as Kenmore; without the former names
+        // it could never be suggested.
+        const names = [pr.name, pr.house_name, ...String(pr.prev_house_name || '').split('\n')]
+          .map(addrNorm).filter(n => n && n.length > 3);
         let score = 0, why = [];
-        if (nm && nm.length > 3 && a.includes(nm)) { score += 10; why.push('house name'); }
+        const hit = names.find(n => a.includes(n));
+        if (hit) {
+          score += 10;
+          why.push(addrNorm(pr.name) === hit || addrNorm(pr.house_name) === hit
+                   ? 'house name' : 'former name');
+        }
         if (st && a.includes(st)) { score += 4; why.push('street'); }
         // House codes like "PeD1" or "SR1" carry the number after the letters.
         const m = a.match(/^[a-z]{0,4}(\d+)\b/);
