@@ -4911,14 +4911,18 @@
   "name": "",
   "street": "The Ropewalk",
   "no": "30",
+  "prev_house_name": "Western House",
   "address": "30 The Ropewalk",
   "desc": "Form and character of original house completely lost due to over intensive late 20c development with extensive alterations and additions to road and garden fronts and to roof. Original garden area converted into car park with enlarged opening for vehicular access through boundary wall adjacent to Park Terrace. Original yard area and boundary wall on road front adjacent to The Ropewalk completely altered by infilling with additional accommodation up to boundary. Little external evidence of original house.\n\n",
-  "history": "Originally, detached house c1831-34. One of a group of houses on The Ropewalk which were amongst the first to be developed in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace, (now named Park Terrace), and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select \u2018residential plan\u2019 in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned with impending loss of The Park as an area of common recreational use. Building now converted into multiple flats. ",
+  "history": "Originally, detached house c1831-34. One of a group of houses on The Ropewalk which were amongst the first to be developed in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace, (now named Park Terrace), and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select \u2018residential plan\u2019 in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned with impending loss of The Park as an area of common recreational use. Building now converted into multiple flats.\n\nWestern House, and from 1874 to 1937 Western House School \u2014 a private girls' school. On the night of the 1891 census the house held Louisa Clark, 59, unmarried, Principal of a Private School, born in the parish of St Mary, Nottingham, with three resident governesses: Jesse Batten, 28, teaching English, from Ely; Leonie Matussiere, 27, teaching French, born at Strasbourg \u2014 German territory in 1891, Alsace having been annexed in 1871; and Mary E Milne, 24, teaching English, from Glasgow. The enumerator bracketed the house name under the number, as \"30 Ropewalk (Western House)\".",
   "converted": "Flats",
   "date_built": "1831",
   "listed": "No",
   "lat": 52.9545154,
-  "lng": -1.1595217
+  "lng": -1.1595217,
+  "sources": {
+   "names": "1891 census, schedule 195: \"30 Ropewalk (Western House)\". The school's dates, 1874 to 1937, from A. Hagues; first recorded on a walk as 30 Western Terrace, corrected to The Ropewalk against the census."
+  }
  },
  {
   "id": 328,

@@ -313,8 +313,12 @@ rather than new records, per the rule below:
   number 20's own description names "Nos.16, 18" as part of a group of four.
 - **8** — no house of that number, but an old door with 8 on it at the back of the house below.
 - **6** — missing.
-- **Western House School, 1874–1937** — given as 30 Western Terrace, but the record holds
-  Western Terrace as 1 to 11 only.
+- **Western House School, 1874–1937** — **found.** Not Western Terrace at all: the 1891 census
+  names it as "30 Ropewalk (Western House)", which is **#327, 30 The Ropewalk**, already in the
+  record and previously nameless. Western House is now recorded as its former name, and the
+  principal and her three governesses are prepared in
+  `data/people_1891_western_house.json` — run **Import people**. The page totals 5 males and
+  26 females, so the boarding pupils are on that schedule too and are still to come.
 
 - [ ] **Haddon House (#37) and Hardwicke House (#398) carry no number.** Both are on
       Cavendish Crescent North, confirmed, and both are already in the record. The walk offers

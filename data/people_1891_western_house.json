@@ -1,0 +1,110 @@
+{
+  "note": "Western House School at 30 The Ropewalk (#327) on the night of the 1891 census — the principal and her three resident governesses, none of whom were in the record. Transcribed by A. Hagues from schedule 195, enumerator's book. The page totals 5 males and 26 females, so the pupils are on it too and are not in this file.",
+  "source": "1891 census, schedule 195, 30 Ropewalk (Western House)",
+  "people": [
+    {
+      "first_name": "Louisa",
+      "last_name": "Clark",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1832,
+      "born_place": "Nottingham, Nottinghamshire",
+      "properties": [327],
+      "occupations": [
+        { "occupation": "Principal of a private school", "employer": "Western House School",
+          "notes": "Returned in 1891 as Principal of a Private School at Western House, 30 The Ropewalk. The school ran from 1874 to 1937." }
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 327,
+          "address": "30 Ropewalk (Western House)",
+          "relationship": "Head",
+          "marital_status": "Single",
+          "age_at_census": 59,
+          "occupation_at_census": "Principal of Private School",
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1891 census, schedule 195, 30 Ropewalk (Western House) — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Jesse",
+      "last_name": "Batten",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1863,
+      "born_place": "Ely, Cambridgeshire",
+      "properties": [327],
+      "occupations": [
+        { "occupation": "Teacher of English", "employer": "Western House School",
+          "notes": "Resident governess at Western House, 30 The Ropewalk, in 1891." }
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 327,
+          "address": "30 Ropewalk (Western House)",
+          "relationship": "Governess",
+          "marital_status": "Single",
+          "age_at_census": 28,
+          "occupation_at_census": "Teacher of English",
+          "birth_place": "Ely, Cambridgeshire",
+          "source": "1891 census, schedule 195, 30 Ropewalk (Western House) — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Leonie",
+      "last_name": "Matussiere",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1864,
+      "born_place": "Strasbourg, Germany",
+      "properties": [327],
+      "occupations": [
+        { "occupation": "Teacher of French", "employer": "Western House School",
+          "notes": "Resident governess at Western House, 30 The Ropewalk, in 1891." }
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 327,
+          "address": "30 Ropewalk (Western House)",
+          "relationship": "Governess",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "occupation_at_census": "Teacher of French",
+          "birth_place": "Strasbourg, Germany",
+          "source": "1891 census, schedule 195 — the return gives \"Germany, Strasbourg\"; Alsace was German territory from 1871 to 1918. Surname read from the hand and not certain. Transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary E",
+      "last_name": "Milne",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1867,
+      "born_place": "Glasgow, Scotland",
+      "properties": [327],
+      "occupations": [
+        { "occupation": "Teacher of English", "employer": "Western House School",
+          "notes": "Resident governess at Western House, 30 The Ropewalk, in 1891." }
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 327,
+          "address": "30 Ropewalk (Western House)",
+          "relationship": "Governess",
+          "marital_status": "Single",
+          "age_at_census": 24,
+          "occupation_at_census": "Teacher of English",
+          "birth_place": "Glasgow, Scotland",
+          "source": "1891 census, schedule 195 — her age is struck through on the return and 24 is the best reading. Transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}
