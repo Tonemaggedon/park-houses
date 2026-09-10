@@ -315,10 +315,19 @@ rather than new records, per the rule below:
 - **6** — missing.
 - **Western House School, 1874–1937** — **found.** Not Western Terrace at all: the 1891 census
   names it as "30 Ropewalk (Western House)", which is **#327, 30 The Ropewalk**, already in the
-  record and previously nameless. Western House is now recorded as its former name, and the
-  principal and her three governesses are prepared in
-  `data/people_1891_western_house.json` — run **Import people**. The page totals 5 males and
-  26 females, so the boarding pupils are on that schedule too and are still to come.
+  record and previously nameless. Western House is now its recorded former name.
+
+  Two households are prepared and go in on one **Import people** run:
+  `data/people_1891_western_house.json` — Louisa Clark and her three governesses, 1891;
+  `data/people_1911_ropewalk_school.json` — **twenty people in 1911**, run by Annie and
+  Florence Green, sisters from Beverley, with six teachers, four servants and eight boarders.
+
+  **Check the address on the 1911 file before running it.** The page transcribed carries no
+  address; #327 is inferred from the run of work, not read off the return. One line to change
+  if it is wrong.
+
+  Once it is in, **#327 will appear on `/crowding`** — twenty people under fifteen surnames.
+  That is the page working, not a fault: press *This is correct*.
 
 - [ ] **Haddon House (#37) and Hardwicke House (#398) carry no number.** Both are on
       Cavendish Crescent North, confirmed, and both are already in the record. The walk offers

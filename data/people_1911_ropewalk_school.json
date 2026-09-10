@@ -1,0 +1,587 @@
+{
+  "note": "The private girls' school at 30 The Ropewalk (#327) on the night of the 1911 census — twenty people, none of whom were in the record. Two principals, six teachers, four servants and eight boarding pupils. In 1891 the same house was Western House School under Louisa Clark; by 1911 it is run by Annie and Florence Green, sisters from Beverley, and the return does not give the school a name. THE ADDRESS IS AN INFERENCE: the page itself carries no address in the part transcribed, and #327 is assumed from the sequence of work rather than read off the return. Check it before running the import.",
+  "source": "1911 census, a private girls' school",
+  "people": [
+    {
+      "first_name": "Annie",
+      "last_name": "Green",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1862,
+      "born_place": "Beverley, Yorkshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Principal, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Head",
+          "marital_status": "Single",
+          "age_at_census": 49,
+          "occupation_at_census": "Principal, private school",
+          "birth_place": "Beverley, Yorkshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Green",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1864,
+      "born_place": "Beverley, Yorkshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Principal, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Head",
+          "marital_status": "Single",
+          "age_at_census": 47,
+          "occupation_at_census": "Principal, private school",
+          "birth_place": "Beverley, Yorkshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Ada Lydia",
+      "last_name": "Scragg",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1877,
+      "born_place": "London",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 34,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "London",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — Surname read as Scragg from the double descender in the hand; transcribed elsewhere as Scraffs."
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Jamison",
+      "last_name": "Mackie",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1866,
+      "born_place": "Insch, Aberdeenshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 45,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "Insch, Aberdeenshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Alice Margaret",
+      "last_name": "Watkins",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1872,
+      "born_place": "Burnfoot, Stirling",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 39,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "Burnfoot, Stirling",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — The return gives the county as Stirling; transcribed elsewhere as Sterling."
+        }
+      ]
+    },
+    {
+      "first_name": "Constance Hilda",
+      "last_name": "Edwards",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1884,
+      "born_place": "Didsbury, Cheshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "Didsbury, Cheshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Mary",
+      "last_name": "Bott",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1890,
+      "born_place": "Blankney, Lincolnshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 21,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "Blankney, Lincolnshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — Forename read as Mary; transcribed elsewhere as May. Birthplace read as Blankney, a Lincolnshire village."
+        }
+      ]
+    },
+    {
+      "first_name": "Janet",
+      "last_name": "Green",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1891,
+      "born_place": "Howden, Yorkshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Mistress, secondary school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Teacher",
+          "marital_status": "Single",
+          "age_at_census": 20,
+          "occupation_at_census": "Mistress, secondary school",
+          "birth_place": "Howden, Yorkshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Wright",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1890,
+      "born_place": "East Kirkby, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Housemaid, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 21,
+          "occupation_at_census": "Housemaid, private school",
+          "birth_place": "East Kirkby, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Marion Boyd",
+      "last_name": "Paton",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1895,
+      "born_place": "Ilkeston, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "marital_status": "Single",
+          "age_at_census": 16,
+          "occupation_at_census": "Student",
+          "birth_place": "Ilkeston, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — The return gives the county as Nottinghamshire; Ilkeston is in Derbyshire. Recorded as written."
+        }
+      ]
+    },
+    {
+      "first_name": "Georgia Mary",
+      "last_name": "Singleton",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1896,
+      "born_place": "Churchtown, Lancashire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "marital_status": "Single",
+          "age_at_census": 15,
+          "occupation_at_census": "Student",
+          "birth_place": "Churchtown, Lancashire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Sheldon",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1896,
+      "born_place": "Collingham, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "marital_status": "Single",
+          "age_at_census": 15,
+          "occupation_at_census": "Student",
+          "birth_place": "Collingham, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Doris",
+      "last_name": "Fletcher",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1898,
+      "born_place": "Heanor, Derbyshire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "age_at_census": 13,
+          "occupation_at_census": "Student",
+          "birth_place": "Heanor, Derbyshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Janet Martha",
+      "last_name": "Murchie",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1899,
+      "born_place": "Much Wenlock, Shropshire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "age_at_census": 12,
+          "occupation_at_census": "Student",
+          "birth_place": "Much Wenlock, Shropshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Doris Mary",
+      "last_name": "Murchie",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1901,
+      "born_place": "Bangkok, Siam",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "age_at_census": 10,
+          "occupation_at_census": "Student",
+          "birth_place": "Bangkok, Siam",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Muriel",
+      "last_name": "Mellowes",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1902,
+      "born_place": "Sheffield, Yorkshire",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Student",
+          "age_at_census": 9,
+          "occupation_at_census": "Student",
+          "birth_place": "Sheffield, Yorkshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Phyllis Kathleen",
+      "last_name": "Murchie",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1903,
+      "born_place": "Bangkok, Siam",
+      "properties": [
+        327
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "age_at_census": 8,
+          "birth_place": "Bangkok, Siam",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — Returned with no relationship and no occupation against her, unlike the other students."
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Jane",
+      "last_name": "Abbott",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1868,
+      "born_place": "Brinsley, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Cook, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Servant",
+          "marital_status": "Married",
+          "age_at_census": 43,
+          "occupation_at_census": "Cook, private school",
+          "birth_place": "Brinsley, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page — The fertility columns give 23 years married, 3 children born, 2 living, 1 died."
+        }
+      ]
+    },
+    {
+      "first_name": "Ida",
+      "last_name": "Mann",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1894,
+      "born_place": "Eastwood, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Housemaid, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 17,
+          "occupation_at_census": "Housemaid, private school",
+          "birth_place": "Eastwood, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Alice",
+      "last_name": "Wright",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1894,
+      "born_place": "East Kirkby, Nottinghamshire",
+      "properties": [
+        327
+      ],
+      "occupations": [
+        {
+          "occupation": "Kitchenmaid, private school",
+          "employer": "Private school, 30 The Ropewalk",
+          "from_year": 1911,
+          "to_year": 1911,
+          "notes": "Recorded on the 1911 census at the school."
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 327,
+          "address": "Western House, 30 The Ropewalk",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 17,
+          "occupation_at_census": "Kitchenmaid, private school",
+          "birth_place": "East Kirkby, Nottinghamshire",
+          "source": "1911 census, the household of a private girls' school — transcribed by A. Hagues, checked against the enumerator's page"
+        }
+      ]
+    }
+  ]
+}
