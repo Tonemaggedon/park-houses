@@ -12,13 +12,6 @@
   * { box-sizing:border-box; }
   body { margin:0; background:var(--paper); color:var(--ink);
     font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
-  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
-  header.site h1 { margin:0; font-size:1.16rem; letter-spacing:.01em; }
-  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
-  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
-  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
-  nav a:hover { background:rgba(255,255,255,.12); }
-  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
   .wrap { max-width:1080px; margin:0 auto; padding:26px 20px 70px; }
 
   h2 { font-size:1.28rem; margin:0 0 4px; letter-spacing:-.01em; }
@@ -81,18 +74,7 @@
 </style>
 </head>
 <body>
-<header class="site">
-  <h1>Nottingham Park Houses</h1>
-  <div class="sub">The Park Conservation Trust — Historical Record</div>
-</header>
-<nav>
-  <a href="/">🗺 Map</a>
-  <a href="/people">👤 People</a>
-  <a href="/significant" class="active">★ Notable</a>
-  <a href="/architects">🏛 Architects</a>
-  <a href="/census">📜 Census</a>
-  <a href="/dashboard">📊 Dashboard</a>
-</nav>
+<script src="/site-nav.js"></script>
 
 <div class="wrap">
   <div id="potw"></div>

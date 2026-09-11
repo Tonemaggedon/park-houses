@@ -46,7 +46,8 @@
   }
   .toolbar .info { color: #90c090; font-size: 0.78rem; margin-left: auto; }
 
-  .layout { display: flex; height: calc(100vh - 100px); }
+  /* The shared bar reports its own height; 42px is the toolbar below it. */
+  .layout { display: flex; height: calc(100vh - var(--site-nav-h, 84px) - 42px); }
 
   #map { flex: 1; }
 
@@ -433,17 +434,10 @@
 </head>
 <body>
 
-<header>
-  <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
-  <nav>
-    <a href="/dashboard" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">📊 Dashboard</a>
+<script src="/site-nav.js"></script>
+<!-- The map's own controls; site-nav.js moves them into the right of the shared bar. -->
+<div id="navExtra" hidden>
     <button onclick="focusSearch()">🔍 Search</button>
-    <a href="/people" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">👤 People</a>
-    <a href="/significant" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">★ Notable</a>
-    <a href="/family-tree" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">🌳 Trees</a>
-    <a href="/stats" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">📈 Insights</a>
-    <a href="/origins" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">🌍 Origins</a>
-    <a href="/watchlist" id="watchlistNavLink" style="display:none;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#e8dfc8;padding:5px 13px;border-radius:4px;font-size:0.8rem;text-decoration:none;transition:background 0.2s;font-family:Georgia,serif">⭐ Watchlist</a>
     <button class="primary" onclick="addDataClick()">+ Add Data</button>
     <button id="adminNavBtn" onclick="handleAdminNavClick()" style="display:none">&#9881; Admin</button>
     <div id="userNavArea" style="display:flex;align-items:center;gap:8px">
@@ -453,8 +447,7 @@
         <span id="userName" style="font-size:0.8rem;color:#e8dfc8;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
       </div>
     </div>
-  </nav>
-</header>
+</div>
 
 <!-- Admin toolbar (only visible when logged in) -->
 <div class="admin-bar" id="adminBar">

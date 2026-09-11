@@ -188,19 +188,7 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
 </style>
 </head>
 <body>
-
-<header>
-  <div>
-    <h1>Nottingham Park Houses <span>The Park Conservation Trust — Historical Record</span></h1>
-  </div>
-  <nav>
-    <a href="/">🗺 Map</a>
-    <a href="/people">👤 People</a>
-    <a href="/significant">★ Notable</a>
-    <a href="/stats">📈 Insights</a>
-    <a href="/origins" class="active">🌍 Origins</a>
-  </nav>
-</header>
+<script src="/site-nav.js"></script>
 
 <div class="layout">
 
@@ -266,12 +254,10 @@ nav a.active { background: #4a7c5a; border-color: #3a6a4a; }
       <h3>⚠ Unresolved Places</h3>
       <div class="unknown-list" id="unknownList"></div>
       <p class="unknown-note">
-        These places couldn't be geocoded automatically.<br>
-        Look them up at <a href="https://www.latlong.net" target="_blank">latlong.net</a> or
-        <a href="https://visionofbritain.org.uk/place/" target="_blank">visionofbritain.org.uk</a>,
-        then run:<br>
-        <code style="font-size:0.65rem;color:#c8b888">UPDATE geocode_cache SET lat=?, lng=?, status='manual' WHERE place_text='?';</code><br>
-        then re-run <code style="font-size:0.65rem;color:#c8b888">geocode_birth_places.py</code>.
+        These places couldn't be placed automatically. An admin can try a corrected spelling
+        on the <a href="/admin/birthplaces">Birthplaces</a> page; anything still not found can be
+        positioned by hand in <code style="font-size:0.65rem;color:#c8b888">data/geocode_manual.json</code>,
+        which the site loads when it starts.
       </p>
     </div>
   </div>

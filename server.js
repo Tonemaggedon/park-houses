@@ -712,6 +712,7 @@ async function dbInit() {
       }
     } catch (e) { console.warn('set-aside migration:', e.message); }
     await seedResearchQuestions();
+    await seedGeocodeManual();
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
       await db.query(`DELETE FROM people_relationships WHERE id IN (
@@ -5516,6 +5517,42 @@ app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'publ
 
 // ── The working list ──────────────────────────────────────────────────────────
 // Written into data/tasks.json so a deploy carries it, ticked off in the site.
+// Birth places the geocoder could not place, positioned by hand in
+// data/geocode_manual.json so they show on the Origins map. Never overwrites a
+// place the geocoder found, or one somebody placed by hand in the database. Rows
+// from the file carry its name in corrected_from, so correcting the file
+// corrects them.
+async function seedGeocodeManual() {
+  const SRC = 'data/geocode_manual.json';
+  const file = path.join(__dirname, 'data', 'geocode_manual.json');
+  if (!fs.existsSync(file)) return;
+  let doc;
+  try { doc = JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch (e) { console.warn('geocode_manual.json is not valid JSON:', e.message); return; }
+  let placed = 0;
+  for (const p of (doc.places || [])) {
+    const lat = Number(p.lat), lng = Number(p.lng);
+    if (!p.place_text || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+    try {
+      const r = await db.query(
+        `INSERT INTO geocode_cache (place_text, lat, lng, formatted_address, status, corrected_from)
+         VALUES ($1,$2,$3,$4,'manual',$5)
+         ON CONFLICT (place_text) DO UPDATE
+           SET lat=EXCLUDED.lat, lng=EXCLUDED.lng, formatted_address=EXCLUDED.formatted_address,
+               status='manual', corrected_from=EXCLUDED.corrected_from, queried_at=NOW()
+         WHERE geocode_cache.status NOT IN ('found','manual')
+            OR (geocode_cache.corrected_from = EXCLUDED.corrected_from
+                AND (geocode_cache.lat IS DISTINCT FROM EXCLUDED.lat
+                     OR geocode_cache.lng IS DISTINCT FROM EXCLUDED.lng
+                     OR geocode_cache.formatted_address IS DISTINCT FROM EXCLUDED.formatted_address))
+         RETURNING place_text`,
+        [p.place_text.trim(), lat, lng, p.label || null, SRC]);
+      if (r.rows.length) placed++;
+    } catch (e) { console.warn('geocode seed', p.place_text, e.message); }
+  }
+  if (placed) console.log(`Geocode: ${placed} birth place(s) placed by hand from ${SRC}`);
+}
+
 async function seedTasks() {
   const file = path.join(__dirname, 'data', 'tasks.json');
   if (!fs.existsSync(file)) return;
