@@ -1116,15 +1116,15 @@ function renderPanel() {
       '<div class="section"><h3>Architectural Description ' + descEditBtn + '</h3>' +
       '<div class="desc">' + (displayDesc || '<span style=\'color:#999;font-style:italic\'>No description recorded.</span>') + '</div></div>' +
       srcSection +
-      (p.lat != null ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
+      ((p._lat || p.lat) != null ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
         + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '')
-      + (p.lat != null ? '<div class="section" id="plaqueSection" style="display:none"><h3>Plaques nearby</h3>'
+      + ((p._lat || p.lat) != null ? '<div class="section" id="plaqueSection" style="display:none"><h3>Plaques nearby</h3>'
         + '<div id="plaqueBody" style="font-size:0.78rem;color:#8a7a5a"></div></div>' : '')
       + ((p.house_name || p.prev_house_name)
         ? '<div class="section" id="gazSection"><h3>The Gazette</h3>'
           + '<div id="gazBody" style="font-size:0.78rem;color:#8a7a5a">Searching the official record…</div></div>' : '');
-    if (p.lat != null) loadNhle(p);
-    if (p.lat != null) loadPlaques(p);
+    if ((p._lat || p.lat) != null) loadNhle(p);
+    if ((p._lat || p.lat) != null) loadPlaques(p);
     if (p.house_name || p.prev_house_name) loadGazette(p);
   }
     else if (curTab === 'photos') {
@@ -2271,10 +2271,19 @@ async function loadNhle(p) {
       + '</div>') : '';
 
   try {
-    const rows = await fetch('/api/nhle?lat=' + p.lat + '&lng=' + p.lng + '&radius=120')
-      .then(r => r.json());
+    // Asked by property, so the server uses the hand-placed position and leaves
+    // out entries another house has claimed and ones dismissed here.
+    const rows = await fetch('/api/nhle?property=' + p.id + '&radius=120').then(r => r.json());
     const others = rows.filter(e => String(e.entry) !== String(ov.list_entry || ''));
-    if (!chosen && !others.length) { body.textContent = 'No list entries recorded within 120m.'; return; }
+    const nDismissed = (ov.nhle_dismissed || []).length;
+    const undo = (canEdit && nDismissed)
+      ? '<div class="nhle-note">' + nDismissed + ' suggestion' + (nDismissed > 1 ? 's' : '')
+        + ' dismissed for this house. <button class="nhle-btn nhle-unlink" data-nhle-undismiss="1">Bring '
+        + (nDismissed > 1 ? 'them' : 'it') + ' back</button></div>' : '';
+    if (!chosen && !others.length) {
+      body.innerHTML = '<div>No list entries within 120m that are not already another house\u2019s.</div>' + undo;
+      return;
+    }
     body.innerHTML = chosen
       + (chosen && others.length
           ? '<div class="nhle-note">Also within 120m — the list often covers a house, its walls '
@@ -2285,11 +2294,14 @@ async function loadNhle(p) {
         + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
         + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
         + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
-                   + (chosen ? 'This one instead' : 'This is the one') + '</button>' : '')
+                   + (chosen ? 'This one instead' : 'This is the one') + '</button>'
+                   + ' <button class="nhle-btn nhle-unlink" data-nhle-dismiss="' + esc(e.entry) + '">'
+                   + 'Not this house</button>' : '')
         + '</div>').join('')
       + (canEdit && !chosen && others.length
           ? '<div class="nhle-note">The list records walls and gateways separately, so '
-            + 'the nearest entry is often not the house.</div>' : '');
+            + 'the nearest entry is often not the house.</div>' : '')
+      + undo;
   } catch (err) {
     // The chosen entry is held locally, so it survives the list being unreachable.
     body.innerHTML = chosen || '';
@@ -2305,8 +2317,7 @@ async function loadPlaques(p) {
   const sec = document.getElementById('plaqueSection');
   if (!body || !sec) return;
   try {
-    const rows = await fetch('/api/plaques?lat=' + p.lat + '&lng=' + p.lng + '&radius=250')
-      .then(r => r.json());
+    const rows = await fetch('/api/plaques?property=' + p.id + '&radius=250').then(r => r.json());
     if (!rows.length) return;
     sec.style.display = '';
     body.innerHTML = rows.map(e =>
@@ -2314,7 +2325,8 @@ async function loadPlaques(p) {
       + '<a href="' + esc(e.uri || '#') + '" target="_blank" rel="noopener noreferrer" '
       + 'style="color:#2a5a8a;text-decoration:none">'
       + esc(e.people.join(' and ') || e.title || 'Plaque') + '</a>'
-      + '<div style="color:#8a7a5a;font-size:0.72rem">' + esc(e.distance) + 'm'
+      + '<div style="color:#8a7a5a;font-size:0.72rem">'
+      + (e.atThisHouse ? '<b style="color:#2f4d27">On this house</b>' : esc(e.distance) + 'm')
       + (e.colour ? ' · ' + esc(e.colour) : '') + (e.address ? ' · ' + esc(e.address) : '') + '</div>'
       + (e.inscription ? '<div style="color:#6a5c44;font-size:0.74rem;margin-top:3px">'
           + esc(e.inscription.length > 180 ? e.inscription.slice(0, 180) + '…' : e.inscription)
@@ -2322,7 +2334,8 @@ async function loadPlaques(p) {
       + '</div>').join('')
       + '<div style="color:#8a7a5a;font-size:0.7rem;margin-top:6px;font-style:italic">'
       + 'From <a href="https://openplaques.org/" target="_blank" rel="noopener noreferrer" '
-      + 'style="color:#8a7a5a">Open Plaques</a>. Nearby, not necessarily this house.</div>';
+      + 'style="color:#8a7a5a">Open Plaques</a>. Placed by the address on the plaque where it names '
+      + 'a house in the record; otherwise nearby, not necessarily this house.</div>';
   } catch (err) { /* a plaque is a bonus; never break the panel over one */ }
 }
 
@@ -2379,6 +2392,26 @@ async function loadGazette(p) {
 // ── PANEL CLICK DELEGATION ────────────────────────────────────────────────────
 // Use data-edit attributes so no onclick handlers are injected into innerHTML
 document.getElementById('panelBody').addEventListener('click', async function(e) {
+  const nhleDismiss = e.target.closest('[data-nhle-dismiss]');
+  const nhleUndismiss = e.target.closest('[data-nhle-undismiss]');
+  if (nhleDismiss || nhleUndismiss) {
+    const btn = nhleDismiss || nhleUndismiss;
+    btn.disabled = true;
+    const ov = propOverrides[curProp.id] || {};
+    const list = nhleDismiss
+      ? [...new Set([...(ov.nhle_dismissed || []).map(String), String(nhleDismiss.dataset.nhleDismiss)])]
+      : [];
+    try {
+      const res = await fetch('/api/property/' + curProp.id, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nhle_dismissed: list }),
+      });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || ('HTTP ' + res.status));
+      propOverrides[curProp.id] = (await res.json()).data;
+      loadNhle(curProp);
+    } catch (err) { btn.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
   const nhleBtn = e.target.closest('[data-nhle]');
   const nhleClear = e.target.closest('[data-nhle-clear]');
   if (nhleBtn || nhleClear) {

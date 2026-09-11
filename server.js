@@ -2342,9 +2342,40 @@ async function readNhleLive() {
   return nhleLive;
 }
 
+// Where a property actually is: a hand placement beats the imported position.
+// The panels were searching around the imported one, which for a hand-placed
+// house can be hundreds of metres out — 21 Lenton Road's is 400m away, so the
+// plaque on its own front wall never showed.
+async function propertyPosition(id) {
+  const coords = await loadCoords();
+  const c = coords[id] || coords[String(id)];
+  if (c && c.lat != null) return { lat: Number(c.lat), lng: Number(c.lng) };
+  try {
+    const p = JSON.parse(readAllPropsCached().body).find(x => x.id === Number(id));
+    if (p && p.lat != null) return { lat: Number(p.lat), lng: Number(p.lng) };
+  } catch (e) {}
+  return null;
+}
+
 app.get('/api/nhle', async (req, res) => {
-  const entries = (await readNhleLive()) || readNhle();
-  const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  let entries = (await readNhleLive()) || readNhle();
+  let lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  const propId = parseInt(req.query.property, 10);
+  if (Number.isInteger(propId)) {
+    const here = await propertyPosition(propId);
+    if (here) { lat = here.lat; lng = here.lng; }
+    // An entry already recorded as another property's is not a suggestion for
+    // this one, and one this property has been told is not its own stays gone.
+    const ovs = await loadProps();
+    const taken = new Set();
+    for (const [id, ov] of Object.entries(ovs)) {
+      if (ov && ov.list_entry && Number(id) !== propId) taken.add(String(ov.list_entry));
+    }
+    const mine = ovs[propId] || ovs[String(propId)] || {};
+    const dismissed = new Set((mine.nhle_dismissed || []).map(String));
+    entries = entries.filter(e => String(e.entry) === String(mine.list_entry || '')
+      || (!taken.has(String(e.entry)) && !dismissed.has(String(e.entry))));
+  }
   if (!isFinite(lat) || !isFinite(lng)) return res.json(entries);
   const radius = Math.min(parseFloat(req.query.radius) || 120, 1000);
   const m = (a, b) => Math.hypot(
@@ -2389,16 +2420,55 @@ async function readPlaques() {
   return plaqueCache || [];
 }
 
-app.get('/api/plaques', async (req, res) => {
+// Open Plaques' own pins are placed by hand and are often a street out; its
+// address field is more reliable. Where the address names a house this record
+// holds — "21 Lenton Road", "Adam House, Clumber Road East" — the plaque is
+// put on that house, and says so.
+async function placedPlaques() {
   const all = await readPlaques();
-  const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  let props = [];
+  try { props = JSON.parse(readAllPropsCached().body); } catch (e) {}
+  const coords = await loadCoords();
+  const norm = v => ' ' + String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() + ' ';
+  const keys = [];
+  for (const p of props) {
+    const street = norm(p.street).trim();
+    if (!street) continue;
+    const no = String(p.no || '').trim().toLowerCase();
+    if (/^\d+[a-z]?$/.test(no)) keys.push({ p, key: norm(no + ' ' + street), how: 'number' });
+    for (const n of [p.name, p.house_name, ...String(p.prev_house_name || '').split('\n')]) {
+      const k = norm(n).trim();
+      if (k.length > 5) keys.push({ p, key: ' ' + k + ' ', street, how: 'name' });
+    }
+  }
+  return all.map(pl => {
+    const a = norm(pl.address);
+    const hit = keys.find(k => a.includes(k.key)
+      && (k.how === 'number' || a.includes(' ' + k.street + ' ') || a.includes(' the park ')));
+    if (!hit) return pl;
+    const c = coords[hit.p.id] || coords[String(hit.p.id)];
+    const lat = c ? Number(c.lat) : (hit.p.lat != null ? Number(hit.p.lat) : pl.lat);
+    const lng = c ? Number(c.lng) : (hit.p.lng != null ? Number(hit.p.lng) : pl.lng);
+    return { ...pl, property_id: hit.p.id, lat, lng, feed_lat: pl.lat, feed_lng: pl.lng };
+  });
+}
+
+app.get('/api/plaques', async (req, res) => {
+  const all = await placedPlaques();
+  let lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  const propId = parseInt(req.query.property, 10);
+  if (Number.isInteger(propId)) {
+    const here = await propertyPosition(propId);
+    if (here) { lat = here.lat; lng = here.lng; }
+  }
   if (!isFinite(lat) || !isFinite(lng)) return res.json(all);
   const radius = Math.min(parseFloat(req.query.radius) || 120, 2000);
   const m = p => Math.hypot(
     (p.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (p.lat - lat) * 110540);
-  res.json(all.map(p => ({ ...p, distance: Math.round(m(p)) }))
-              .filter(p => p.distance <= radius)
-              .sort((a, b) => a.distance - b.distance).slice(0, 8));
+  res.json(all.map(p => ({ ...p, distance: Math.round(m(p)),
+                           atThisHouse: Number.isInteger(propId) && p.property_id === propId }))
+              .filter(p => p.atThisHouse || p.distance <= radius)
+              .sort((a, b) => (b.atThisHouse - a.atThisHouse) || (a.distance - b.distance)).slice(0, 8));
 });
 
 // ── OpenStreetMap building outlines ───────────────────────────────────────────
