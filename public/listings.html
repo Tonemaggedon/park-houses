@@ -52,6 +52,8 @@
   button.act.ghost { background:var(--card); color:var(--soft); border-color:var(--rule); }
   button.act:disabled { opacity:.5; cursor:default; }
   .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:6px; }
+  .note input.num { font-family:inherit; font-style:normal; font-size:.78rem; padding:2px 7px;
+    border:1px solid var(--rule); border-radius:4px; width:120px; margin:0 4px; }
   .empty { color:var(--faint); font-style:italic; padding:26px 0; }
   .err { color:var(--red); }
   a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
@@ -115,7 +117,8 @@ function alsoRow(h, e) {
   return `<div class="entry" style="border:0;padding-top:3px">
     <div class="nm"><a href="${esc(e.link)}" target="_blank" rel="noopener noreferrer">${esc(e.name || ('List entry ' + e.entry))}</a></div>
     <div class="d">Grade ${esc(e.grade || '—')}${e.listed ? ' · listed ' + esc(e.listed) : ''}${
-      e.distance != null ? ' · ' + esc(e.distance) + 'm' : ''} · entry ${esc(e.entry)}</div>
+      e.distance != null ? ' · ' + esc(e.distance) + 'm' : ''} · entry ${esc(e.entry)}${
+      (e.heldBy || []).length ? ' · shared with #' + e.heldBy.map(esc).join(', #') : ''}</div>
     <div class="btns">${e.fromFile
       ? '<span class="note" style="margin:0">recorded in the record’s own data</span>'
       : `<button class="act ghost" data-unalso="${esc(h.id)}" data-entry="${esc(e.entry)}">Remove</button>`}</div>
@@ -146,6 +149,10 @@ function card(h) {
     ${h.suggestions.map(e => entryRow(h, e)).join('')}
     ${h.dismissed.length ? `<div class="note">${h.dismissed.length} dismissed for this house.
       <button class="act ghost" data-undismiss="${esc(h.id)}">Bring ${h.dismissed.length > 1 ? 'them' : 'it'} back</button></div>` : ''}
+    <div class="note">Joint entry, or one too far off to be suggested? Add it by number:
+      <input class="num" type="text" inputmode="numeric" data-addnum="${esc(h.id)}"
+        placeholder="e.g. 1247219" aria-label="List entry number for ${esc(h.address)}">
+      <button class="act ghost" data-addgo="${esc(h.id)}">Add</button></div>
   </div>`;
 }
 
@@ -245,6 +252,27 @@ function recount() {
   t.chosen = houses.filter(h => h.chosen).length;
   t.dismissed = houses.reduce((n, h) => n + h.dismissed.length, 0);
 }
+
+// An entry another house already holds is not offered here — but a joint entry
+// belongs to both, so it can be added by its number.
+document.addEventListener('click', async e => {
+  const go = e.target.closest('[data-addgo]');
+  if (!go) return;
+  const id = Number(go.dataset.addgo);
+  const h = houses.find(x => x.id === id);
+  const box = document.querySelector(`[data-addnum="${id}"]`);
+  const entry = (box.value || '').replace(/\D+/g, '');
+  if (!h || !entry) { box.focus(); return; }
+  go.disabled = true;
+  try {
+    const kept = (h.also || []).filter(a => !a.fromFile).map(a => String(a.entry));
+    await save(id, { list_entries: [...new Set([...kept, entry])] });
+    load();
+  } catch (err) {
+    go.disabled = false;
+    alert('Could not save that: ' + err.message);
+  }
+});
 
 document.addEventListener('click', e => {
   const f = e.target.closest('[data-filter]');

@@ -2503,8 +2503,14 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
     let props = [];
     try { props = JSON.parse(readAllPropsCached().body); } catch (e) {}
     const taken = new Map();
+    // An entry can belong to two houses — 1247219 is "numbers 119 and 121 and
+    // attached boundary wall and railings" — so who holds it is a list.
+    const holders = new Map();
     for (const p of props) {
-      for (const e of recordedEntries(ovs[p.id] || ovs[String(p.id)], p)) taken.set(e, p.id);
+      for (const e of recordedEntries(ovs[p.id] || ovs[String(p.id)], p)) {
+        taken.set(e, p.id);
+        holders.set(e, [...(holders.get(e) || []), p.id]);
+      }
     }
     for (const [id, ov] of Object.entries(ovs)) {
       for (const e of recordedEntries(ov, null)) if (!taken.has(e)) taken.set(e, Number(id));
@@ -2532,6 +2538,7 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
             listed: e ? e.listed : null, distance: e ? away(e) : null,
             link: e ? e.link : 'https://historicengland.org.uk/listing/the-list/list-entry/' + id,
             fromFile: fromFile.has(id),
+            heldBy: (holders.get(id) || []).filter(x => x !== p.id),
           };
         });
       let suggestions = [];
@@ -2551,6 +2558,7 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
           entry: ov.list_entry, name: ov.list_name || null, grade: ov.list_grade || null,
           listed: ov.list_date || null,
           link: ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry),
+          heldBy: (holders.get(String(ov.list_entry)) || []).filter(x => x !== p.id),
         } : null,
         also, dismissed, suggestions,
       };
