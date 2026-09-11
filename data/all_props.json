@@ -5466,7 +5466,13 @@
   "listed": "Yes",
   "house_name": "Huntingdon House",
   "lat": 52.9544277,
-  "lng": -1.1658478
+  "lng": -1.1658478,
+  "nhle_also": [
+   "1255256"
+  ],
+  "sources": {
+   "nhle_also": "7 to 10 Western Terrace are one list entry (1255256, Grade II) covering the whole row, so it is recorded against each of them."
+  }
  },
  {
   "id": 349,
@@ -5484,7 +5490,13 @@
   "architect": "T.C. Hine",
   "converted": "Flats",
   "style": "Regency classic",
-  "date_built": "1840"
+  "date_built": "1840",
+  "nhle_also": [
+   "1255256"
+  ],
+  "sources": {
+   "nhle_also": "7 to 10 Western Terrace are one list entry (1255256, Grade II) covering the whole row, so it is recorded against each of them."
+  }
  },
  {
   "id": 350,
