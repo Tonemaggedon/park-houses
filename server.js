@@ -2561,6 +2561,17 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
           heldBy: (holders.get(String(ov.list_entry)) || []).filter(x => x !== p.id),
         } : null,
         also, dismissed, suggestions,
+        // Named, not just counted: "three dismissed here" tells nobody which
+        // three, and a dismissal made in error cannot be found again.
+        dismissedEntries: dismissed.map(id => {
+          const e = byEntry.get(id);
+          return {
+            entry: id, name: e ? e.name : null, grade: e ? e.grade : null,
+            listed: e ? e.listed : null, distance: e ? away(e) : null,
+            link: e ? e.link : 'https://historicengland.org.uk/listing/the-list/list-entry/' + id,
+            heldBy: (holders.get(id) || []).filter(x => x !== p.id),
+          };
+        }),
       };
     });
     res.json({

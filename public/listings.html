@@ -45,6 +45,10 @@
   .chosen { background:var(--tint); border-radius:5px; padding:7px 10px; margin-top:7px; }
   .chosen .tag { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--green);
     font-weight:700; }
+  .gone-box { background:#f7f4ec; border-radius:5px; padding:7px 10px; margin-top:7px; }
+  .gone-box .tag { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);
+    font-weight:700; }
+  .gone-box .nm a { color:var(--soft); }
 
   button.act { font-family:inherit; font-size:.76rem; border-radius:4px; padding:3px 11px;
     cursor:pointer; border:1px solid var(--green); background:var(--green); color:#f2ecd8;
@@ -147,8 +151,20 @@ function card(h) {
         ${h.also.map(e => alsoRow(h, e)).join('')}
       </div>` : ''}
     ${h.suggestions.map(e => entryRow(h, e)).join('')}
-    ${h.dismissed.length ? `<div class="note">${h.dismissed.length} dismissed for this house.
-      <button class="act ghost" data-undismiss="${esc(h.id)}">Bring ${h.dismissed.length > 1 ? 'them' : 'it'} back</button></div>` : ''}
+    ${h.dismissed.length ? `<div class="gone-box">
+        <div class="tag">Dismissed for this house</div>
+        ${(h.dismissedEntries || h.dismissed.map(entry => ({ entry }))).map(e => `
+          <div class="entry" style="border:0;padding-top:3px">
+            <div class="nm"><a href="${esc(e.link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + e.entry))}"
+              target="_blank" rel="noopener noreferrer">${esc(e.name || ('List entry ' + e.entry))}</a></div>
+            <div class="d">${e.grade ? 'Grade ' + esc(e.grade) : ''}${e.listed ? ' · listed ' + esc(e.listed) : ''}${
+              e.distance != null ? ' · ' + esc(e.distance) + 'm' : ''} · entry ${esc(e.entry)}${
+              (e.heldBy || []).length ? ' · recorded at #' + e.heldBy.map(esc).join(', #') : ''}</div>
+            <div class="btns">
+              <button class="act ghost" data-undismiss-one="${esc(h.id)}" data-entry="${esc(e.entry)}">Bring back</button>
+            </div>
+          </div>`).join('')}
+      </div>` : ''}
     <div class="note">Joint entry, or one too far off to be suggested? Add it by number:
       <input class="num" type="text" inputmode="numeric" data-addnum="${esc(h.id)}"
         placeholder="e.g. 1247219" aria-label="List entry number for ${esc(h.address)}">
@@ -179,10 +195,11 @@ async function save(id, fields) {
 }
 
 document.addEventListener('click', async e => {
-  const btn = e.target.closest('[data-choose],[data-dismiss],[data-clear],[data-undismiss],[data-also],[data-unalso]');
+  const btn = e.target.closest('[data-choose],[data-dismiss],[data-clear],[data-undismiss],[data-undismiss-one],[data-also],[data-unalso]');
   if (!btn) return;
   const id = Number(btn.dataset.choose || btn.dataset.dismiss || btn.dataset.clear
-                    || btn.dataset.undismiss || btn.dataset.also || btn.dataset.unalso);
+                    || btn.dataset.undismiss || btn.dataset.undismissOne
+                    || btn.dataset.also || btn.dataset.unalso);
   const h = houses.find(x => x.id === id);
   if (!h) return;
   const entryId = btn.dataset.entry;
@@ -230,6 +247,12 @@ document.addEventListener('click', async e => {
                        list_date: null, list_link: null });
       h.chosen = null;
       load();  // that entry is a suggestion again, here and elsewhere
+      return;
+    } else if (btn.dataset.undismissOne) {
+      const kept = h.dismissed.map(String).filter(x => x !== String(entryId));
+      await save(id, { nhle_dismissed: kept });
+      h.dismissed = kept;
+      load();   // it is a suggestion again
       return;
     } else if (btn.dataset.undismiss) {
       await save(id, { nhle_dismissed: [] });
