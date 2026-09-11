@@ -164,8 +164,8 @@
     {
       "slug": "sr1-duke-william",
       "area": "Unfiled census — the rest",
-      "title": "Check whether SR1 South Rd and Duke William Mount can be set aside",
-      "detail": "22 and 14 records. Both have the shape of the Peveril Drive groups — a code and a street. If the returns are as blank, they belong in the set-aside section.",
+      "title": "Check whether Duke William Mount can be set aside",
+      "detail": "14 records with the shape of the Peveril Drive groups. SR1 South Rd was listed here too, but part of it turns out to be a double import of 3 South Road — see that task instead.",
       "size": "a look at the return",
       "link": "/unfiled"
     },
@@ -448,6 +448,30 @@
       "detail": "Entry 562 files him at #49 in 1901 with no relationship and no age, but he is not on the Jessop schedule — the page runs Zebedee Jessop, his four children and three servants, and ends. Probably misfiled from another address.",
       "size": "a look at the return",
       "link": "/reassign?prop=49&year=1901"
+    },
+    {
+      "slug": "import-weinberg-4-north-road",
+      "area": "Do these first",
+      "title": "Run Import people for Harry Judah Weinberg of 4 North Road",
+      "detail": "From the 1929 Gazette notice of his estate. One new person, linked to the new property 4 North Road (#412), with his date of death, his occupation and the notice written into his story. The preview should say 1 would be added, 1 property link, 1 occupation.",
+      "size": "one click",
+      "link": "/dashboard"
+    },
+    {
+      "slug": "place-4-north-road",
+      "area": "Houses and names",
+      "title": "Place 4 North Road by hand",
+      "detail": "Created from the Weinberg Gazette notice and put provisionally between 2 North Road (the Walton Hotel) and 8. OpenStreetMap has no 4 at all, so it may have been absorbed into a neighbour or renumbered.",
+      "size": "one drag",
+      "link": "/?id=412"
+    },
+    {
+      "slug": "sr1-south-rd-is-a-double-import",
+      "area": "Merges the page cannot find",
+      "title": "Don't set aside \"SR1 South Rd\" — part of it is 3 South Road entered twice",
+      "detail": "Four of its seventeen records are the McCraith household already filed at 3 South Road in 1911, imported a second time with the surname spelt McCaith. Douglas McCraith (#186) is in both, so he has two 1911 records — remove entry 889. Then merge by number: keep 185, merge in 728 (Maria Elizabeth); keep 189, merge in 731 (Kenneth York); keep 1343, merge in 732 (Violet Muriel). The other households in the group — Frederick Brewster, and Joseph and Sarah Walker — are not at 3 South Road and still need a house.",
+      "size": "five clicks",
+      "link": "/duplicates"
     }
   ]
 }

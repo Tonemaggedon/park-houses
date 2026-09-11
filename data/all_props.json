@@ -6216,5 +6216,23 @@
    "position": "Provisional. 16 and 16a are the same building, so this sits a few metres along the frontage from 16a (#31) to keep both clickable on the map rather than to claim a separate plot. Wants placing by hand if the two parts front differently.",
    "relationship": "16a (#31) is the flat made from the former kitchen and butler's quarters of this house."
   }
+ },
+ {
+  "id": 412,
+  "name": "",
+  "street": "North Road",
+  "no": "4",
+  "address": "4 North Road",
+  "desc": "",
+  "history": "The last home of Harry Judah Weinberg, merchant, who died on 1 July 1923. His will was proved at Nottingham on 18 September 1923; his executors were John Leo Lewenz, Douglas McCraith \u2014 both already in this record \u2014 and Thomas Galland Mellors, and the notice to his creditors was issued by Maples and McCraith, Douglas McCraith's firm, in September 1929. The Weinberg name is already in The Park: Mehir Weinberg, shipping merchant and lace manufacturer, lived at Hardwicke House until his death in 1911, and Heattie, Edward and Helene Weinberg were at 1 Holles Crescent that year.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.954,
+  "lng": -1.16652,
+  "sources": {
+   "existence": "The London Gazette, notice under the Trustee Act 1925 dated 7 September 1929: \"Harry Judah Weinberg, late of 4, North Road, The Park, in the city of Nottingham, Merchant\". Found by A. Hagues from Douglas McCraith's Gazette entries. The first house in the record created from a documentary address rather than a census return.",
+   "position": "Provisional. OpenStreetMap numbers 2 North Road (the Walton Hotel) and 8, but has no 4; placed between the two on the even side. It may since have been absorbed into a neighbour or renumbered. Wants placing by hand."
+  }
  }
 ]

@@ -1599,13 +1599,17 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         }
         else {
           const r = await db.query(
+            // died_date and died_place too: a Gazette or probate notice gives an
+            // exact date of death and nothing else, and the importer used to drop it.
             `INSERT INTO people (first_name,last_name,known_as,title,postnominals,sex,
-                                 born_date,born_year,born_place,died_year,bio,wikipedia_url)
-             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING id`,
+                                 born_date,born_year,born_place,died_date,died_year,died_place,
+                                 bio,wikipedia_url)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING id`,
             [person.first_name, person.last_name, person.known_as || null, person.title || null,
              person.postnominals || null, person.sex || null, person.born_date || null,
              person.born_year || null, person.born_place || null,
-             person.died_year || null, person.bio || null, person.wikipedia_url || null]);
+             person.died_date || null, person.died_year || null, person.died_place || null,
+             person.bio || null, person.wikipedia_url || null]);
           id = r.rows[0].id; added++; addedNames.push(nameOf(person));
           await logChange('person', id, req, 'create', 'import', null, file);
         }
