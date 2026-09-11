@@ -157,7 +157,7 @@
       "slug": "allchurch-household",
       "area": "Unfiled census — the rest",
       "title": "Place the Allchurch household",
-      "detail": "Nine people under \"Felixstowe see 1911 Clumber Rd West\" — William J Allchurch, 37, his wife Mabel, two small children and five servants including a sick nurse. Note the surname is Allchurch for him and Achurch for the rest; they will need reconciling.",
+      "detail": "Nine people — William J Allchurch, 37, his wife Mabel, two small children and five servants including a sick nurse — unfiled under \"Felixstowe see 1911 Clumber Rd West\". Nothing confirms them at Felixstowe in 1921, so take that label off: Change label on the group, leave it empty, Save. The surname is Allchurch for him and Achurch for the rest and will need reconciling.",
       "size": "research",
       "link": "/unfiled"
     },
@@ -477,7 +477,7 @@
       "slug": "import-mccraith-family",
       "area": "Do these first",
       "title": "Run Import people for the McCraith family",
-      "detail": "Bernard McCraith's death on 26 January 1919 as a Major in the Royal Engineers, with his service, burial and memorials; and Lady McCraith's maiden name, Dickinson, and title. The family links were already there. Fills blanks only — nothing you entered by hand is touched. The preview should say 2 already present, 1 occupation, 2 filled out.",
+      "detail": "Bernard McCraith's death on 26 January 1919 as a Major in the Royal Engineers; Lady McCraith's maiden name, Dickinson; and from the report of his will, Sir James's death at Ellenborough House in 1928, his estate, his story and his directorships. Fills blanks only — nothing entered by hand is touched.",
       "size": "one click",
       "link": "/dashboard"
     },
@@ -496,6 +496,38 @@
       "detail": "The record already links Malcolm (#188), a steam engineer born about 1882, as a son of Sir James and Lady McCraith, and he is at 3 South Road with them in 1891 and 1901. But Wikipedia names their children as Douglas, Bernard, Kenneth York and Violet Muriel only. Either the article misses him or he is a nephew, and the link wants checking.",
       "size": "research",
       "link": "/people?person=188"
+    },
+    {
+      "slug": "import-1921-mccraith-clumber",
+      "area": "Do these first",
+      "title": "Run Import people for Sir James McCraith's 1921 household",
+      "detail": "Eleven people on Clumber Crescent South, none with a 1921 record before: Sir James, Lady McCraith, Kenneth York and Violet Muriel, their old nurse Isabella Richardson, two visitors and four servants. Ten are already in the record and are joined by number; only the visitor Catherine Wood is new. They arrive unplaced under \"Clumber Crescent South\". The preview should say 1 would be added, 10 already present, 11 census records.",
+      "size": "one click",
+      "link": "/dashboard"
+    },
+    {
+      "slug": "mccraith-1921-house",
+      "area": "Unfiled census — the rest",
+      "title": "Which house on Clumber Crescent South were the McCraiths in, in 1921?",
+      "detail": "Sir James McCraith's household of eleven is on Clumber Crescent South in 1921 but the number is not known. Every property on the crescent — 3, 5, 7, 9 (Gwedon) and Clumber Court — is empty in 1921, so all five are candidates; the Jardines held 9 in 1911. It was not permanent: the report of his will has him back at Ellenborough House, 3 South Road, when he died in July 1928.",
+      "size": "research",
+      "link": "/unfiled"
+    },
+    {
+      "slug": "merge-isabella-richardson",
+      "area": "Merges the page cannot find",
+      "title": "Merge Isabella / Isabelle Richardson, the McCraiths' nurse",
+      "detail": "One woman, born in Ireland about 1854, with the McCraiths at 3 South Road from 1891 and on Clumber Crescent South in 1921. Held twice — Isabella (#193) for 1891 and 1901, Isabelle (#733) for 1911. Keep 193, merge in 733.",
+      "size": "one click",
+      "link": "/duplicates"
+    },
+    {
+      "slug": "south-road-3-1911-two-heads",
+      "area": "Crowded houses",
+      "title": "3 South Road in 1911 now holds the Brewster household too",
+      "detail": "Frederick Brewster, 77, and his three servants were filed to 3 South Road along with the McCraiths, so the house has two heads that year. Brewster's schedule came in the same run but was a household of its own; worth checking it belongs there.",
+      "size": "a look at the return",
+      "link": "/reassign?prop=302&year=1911"
     }
   ]
 }

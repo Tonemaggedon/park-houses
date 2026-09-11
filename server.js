@@ -1541,16 +1541,16 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         const byYear = !byId && person.match_born_year === true && person.born_year;
         const found = byId
           ? await db.query(
-              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people WHERE id=$1`,
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url, bio FROM people WHERE id=$1`,
               [person.id])
           : byYear
           ? await db.query(
-              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url, bio FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)
                   AND born_year=$3`,
               [person.first_name, person.last_name, person.born_year])
           : await db.query(
-              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url, bio FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
               [person.first_name, person.last_name]);
         if (byId && !found.rows.length) {
@@ -1586,6 +1586,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           if (!have.title       && person.title)       fills.push(['title',       person.title]);
           if (!have.postnominals && person.postnominals) fills.push(['postnominals', person.postnominals]);
           if (!have.wikipedia_url && person.wikipedia_url) fills.push(['wikipedia_url', person.wikipedia_url]);
+          if (!have.bio && person.bio) fills.push(['bio', person.bio]);
           if (fills.length) {
             enriched++;
             if (!dryRun) {
@@ -3845,6 +3846,25 @@ app.post('/api/census/unfiled-groups/set-aside', requireContributor, async (req,
        ON CONFLICT (entry_id) DO UPDATE SET note=EXCLUDED.note, set_by=EXCLUDED.set_by, set_at=NOW()`,
       [ids, (req.body && req.body.note) || null, who]);
     res.json({ ok: true, setAside: true, count: ids.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Change the address an unfiled group sits under, or take it off. The label is
+// only ever a guess from a transcription — "Felixstowe see 1911 Clumber Rd W" for
+// a household nobody can place at Felixstowe — and a wrong one keeps suggesting a
+// house. Only unfiled records are touched; a filed record has no label to change.
+app.post('/api/census/unfiled-groups/relabel', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const ids = Array.isArray(req.body && req.body.entryIds)
+    ? req.body.entryIds.map(n => parseInt(n, 10)).filter(Number.isInteger) : [];
+  if (!ids.length) return res.status(400).json({ error: 'no records given' });
+  if (ids.length > 2000) return res.status(400).json({ error: 'too many at once' });
+  const label = String((req.body && req.body.address) || '').trim() || null;
+  try {
+    const r = await db.query(
+      `UPDATE census_entries SET unresolved_address = $2
+        WHERE id = ANY($1::int[]) AND property_id IS NULL`, [ids, label]);
+    res.json({ ok: true, changed: r.rowCount, address: label });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

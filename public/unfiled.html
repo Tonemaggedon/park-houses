@@ -227,6 +227,12 @@ async function load() {
           <button data-aside="${i}" data-asideon="${g.setAside ? '0' : '1'}"
             title="The return gave no house name or number, so the census cannot place these">${
             g.setAside ? 'Bring all back' : 'Set all aside'}</button>
+          <button data-relabel="g-${i}" title="Change or remove the address these records sit under">Change label</button>
+          <span class="relabel" data-relabelbox="g-${i}" hidden>
+            <input type="text" data-relabelin="g-${i}" value="${esc(g.address || '')}"
+              placeholder="new label — or leave empty to remove it" style="width:260px">
+            <button data-relabelgo="g-${i}">Save label</button>
+          </span>
         </div>
         ${households(g.entries).map((h, j) => `
           <div class="hh${h.allAside ? ' aside' : ''}">
@@ -241,6 +247,12 @@ async function load() {
               <button data-hhaside="${i}-${j}" data-hhasideon="${h.allAside ? '0' : '1'}"
                 title="No house name or number on the return for this household">${
                 h.allAside ? 'Bring back' : 'Set aside'}</button>
+              <button data-relabel="h-${i}-${j}" title="Change or remove the address this household sits under">Change label</button>
+              <span class="relabel" data-relabelbox="h-${i}-${j}" hidden>
+                <input type="text" data-relabelin="h-${i}-${j}" value="${esc(g.address || '')}"
+                  placeholder="new label — or empty to remove" style="width:220px">
+                <button data-relabelgo="h-${i}-${j}">Save</button>
+              </span>
             </div>
             <table>${h.members.map(e => `<tr>
               <td><a href="/people?person=${e.person_id}" target="_blank">${esc(e.name)}</a></td>
@@ -317,6 +329,37 @@ document.addEventListener('click', async e => {
   if (pick) return setDest(pick.dataset.g, pick.dataset.pick);
 
   // Set aside, either a whole address or one household out of it.
+  // Change or take off the label an unfiled group or household sits under.
+  const rel = e.target.closest('[data-relabel]');
+  if (rel) {
+    const box = document.querySelector(`[data-relabelbox="${rel.dataset.relabel}"]`);
+    if (box) { box.hidden = !box.hidden; if (!box.hidden) box.querySelector('input').focus(); }
+    return;
+  }
+  const relGo = e.target.closest('[data-relabelgo]');
+  if (relGo) {
+    const key = relGo.dataset.relabelgo;
+    const parts = key.split('-');
+    const g = window._groups[parts[1]];
+    if (!g) return;
+    const entries = parts[0] === 'g' ? g.entries : (households(g.entries)[parts[2]] || { members: [] }).members;
+    const label = document.querySelector(`[data-relabelin="${key}"]`).value.trim();
+    relGo.disabled = true; relGo.textContent = 'Saving…';
+    try {
+      const res = await fetch('/api/census/unfiled-groups/relabel', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entryIds: entries.map(x => x.id), address: label }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+      load();
+    } catch (err) {
+      relGo.disabled = false; relGo.textContent = 'Save';
+      alert('Could not change that label: ' + err.message);
+    }
+    return;
+  }
+
   const asideBtn = e.target.closest('[data-aside], [data-hhaside]');
   if (asideBtn) {
     const perHh = asideBtn.dataset.hhaside !== undefined;

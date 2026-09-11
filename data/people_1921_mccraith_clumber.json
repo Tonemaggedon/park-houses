@@ -1,0 +1,209 @@
+{
+  "note": "Sir James William McCraith's household in 1921, somewhere on Clumber Crescent South. None of the eleven had a 1921 record. Four of the family and six of the others were already people in the record — five of the servants with no census entry at all, the same lost-row pattern as Elizabeth Mary Phillips — so they are linked by number. Filed unplaced under \"Clumber Crescent South\" until the house is known: every property on the crescent is empty in 1921, so it is one of 3, 5, 7, 9 or Clumber Court.",
+  "source": "1921 census, transcribed by A. Hagues",
+  "people": [
+    {
+      "id": 140,
+      "first_name": "James William",
+      "last_name": "McCraith",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Head",
+          "age_at_census": 68,
+          "occupation_at_census": "Knight, solicitor",
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues — Returned as \"Knight Solicitor\", employer. Knighted January 1918."
+        }
+      ],
+      "occupations": [
+        {
+          "occupation": "Solicitor",
+          "employer": "Maples and McCraith",
+          "to_year": 1921,
+          "notes": "Returned in 1921 as \"Knight Solicitor\", an employer — the firm he founded with Samuel Maples."
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "first_name": "Maria Elizabeth",
+      "last_name": "McCraith",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Wife",
+          "age_at_census": 65,
+          "occupation_at_census": "House duties",
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "first_name": "Kenneth York",
+      "last_name": "McCraith",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Son",
+          "age_at_census": 30,
+          "occupation_at_census": "Manager, lace warehouse",
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues — Returned as Kenneth Yorke; employer Birks Manufacturing Co Ltd, of which his uncle Sir John Tom McCraith had been a director."
+        }
+      ],
+      "occupations": [
+        {
+          "occupation": "Manager, lace warehouse",
+          "employer": "Birks Manufacturing Co Ltd",
+          "from_year": 1921,
+          "to_year": 1921,
+          "notes": "His employer on the 1921 return. His uncle Sir John Tom McCraith had been a director of the company."
+        }
+      ]
+    },
+    {
+      "id": 1343,
+      "first_name": "Violet Muriel",
+      "last_name": "McCraith",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Daughter",
+          "age_at_census": 29,
+          "birth_place": "Nottingham, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Catherine",
+      "last_name": "Wood",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1892,
+      "born_place": "Warwick, Warwickshire",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Visitor",
+          "age_at_census": 28,
+          "birth_place": "Warwick, Warwickshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues — Her second name is transcribed \"Hasc?que\" and could not be read."
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "first_name": "Isabella",
+      "last_name": "Richardson",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Nurse",
+          "age_at_census": 66,
+          "birth_place": "Ireland",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues — The McCraiths' nurse since at least 1891. The record also holds her as Isabelle Richardson (#733) for 1911."
+        }
+      ],
+      "born_place": "Ireland"
+    },
+    {
+      "id": 1345,
+      "first_name": "Katherine",
+      "last_name": "Owen",
+      "sex": "F",
+      "born_place": "Wales",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Cook",
+          "age_at_census": 32,
+          "occupation_at_census": "Cook, domestic servant",
+          "birth_place": "Wales",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 1346,
+      "first_name": "Emma",
+      "last_name": "Sellars",
+      "sex": "F",
+      "born_place": "Spalding, Lincolnshire",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Parlourmaid",
+          "age_at_census": 31,
+          "occupation_at_census": "Parlourmaid",
+          "birth_place": "Spalding, Lincolnshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 1347,
+      "first_name": "Annie Beatrice",
+      "last_name": "Hincks",
+      "sex": "F",
+      "born_place": "Warwickshire",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Kitchenmaid",
+          "age_at_census": 21,
+          "occupation_at_census": "Kitchenmaid",
+          "birth_place": "Warwickshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 1348,
+      "first_name": "Annie Sarah",
+      "last_name": "Kidd",
+      "sex": "F",
+      "born_place": "Carrington, Nottinghamshire",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Visitor",
+          "age_at_census": 60,
+          "birth_place": "Carrington, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 1349,
+      "first_name": "Florence",
+      "last_name": "Pottinger",
+      "sex": "F",
+      "born_place": "Ollerton, Nottinghamshire",
+      "census": [
+        {
+          "census_year": 1921,
+          "unresolved_address": "Clumber Crescent South",
+          "relationship": "Housemaid",
+          "age_at_census": 36,
+          "occupation_at_census": "Housemaid",
+          "birth_place": "Ollerton, Nottinghamshire",
+          "source": "1921 census, the McCraith household, Clumber Crescent South — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}

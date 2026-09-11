@@ -1,5 +1,5 @@
 {
-  "note": "The McCraiths of The Park, after A. Hagues found three of them were knights. Their titles, JP, Wikipedia links and the family links were already in the record; this adds only what was still missing — Bernard's war death and service, and Lady McCraith's maiden name — from the Nottinghamshire Roll of Honour and the Wikipedia article on Sir James William McCraith. Fills blanks only.",
+  "note": "The McCraiths of The Park, after A. Hagues found three of them were knights. Their titles, JP, Wikipedia links and the family links were already in the record; this adds only what was still missing — Bernard's war death and service, and Lady McCraith's maiden name — from the Nottinghamshire Roll of Honour and the Wikipedia article on Sir James William McCraith. Fills blanks only; and Sir James's own death at Ellenborough House in 1928 and his estate, from a newspaper report of his will found by A. Hagues.",
   "source": "Nottinghamshire County Council Roll of Honour; Wikipedia, 'James William McCraith'",
   "people": [
     {
@@ -25,6 +25,26 @@
       "last_name": "McCraith",
       "maiden_name": "Dickinson",
       "title": "Lady"
+    },
+    {
+      "id": 140,
+      "first_name": "James William",
+      "last_name": "McCraith",
+      "died_place": "Ellenborough House, The Park, Nottingham",
+      "bio": "Solicitor, head of Maples and McCraith of the Pavement, Nottingham — the firm he founded with Samuel Maples, to whom he had been articled — and a founder member of the Nottingham Incorporated Law Society, its president in 1891. A Justice of the Peace from 1892, he was knighted in January 1918. He was Chairman of the Nottingham Central Conservative Association, and a director of the Coliseum Syndicate Ltd and of St Augustine's Parade Hippodrome, Bristol, Ltd.\n\nHe married Maria Elizabeth Dickinson in 1876. In 1921 the household was on Clumber Crescent South, but by his death he was back at Ellenborough House, 3 South Road, where the family had lived since at least 1891. He died there on 9 July 1928, aged 75, leaving a gross estate of £151,442, with net personalty of £149,624. His second son, Major Bernard McCraith, had died on active service in 1919.",
+      "occupations": [
+        {
+          "occupation": "Director",
+          "employer": "Coliseum Syndicate Ltd; St Augustine's Parade Hippodrome, Bristol, Ltd",
+          "to_year": 1928,
+          "notes": "Named in the report of his will, 1928."
+        },
+        {
+          "occupation": "Chairman, Nottingham Central Conservative Association",
+          "to_year": 1928,
+          "notes": "Named in the report of his will, 1928."
+        }
+      ]
     }
   ]
 }
