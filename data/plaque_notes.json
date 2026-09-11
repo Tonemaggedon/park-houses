@@ -1,0 +1,11 @@
+{
+  "note": "What this record knows about a plaque that the Open Plaques feed does not, keyed by Open Plaques id. Merged into the feed when plaques are served. A landmark is a plaque that is not on a house: shown for what it is, never as though it belonged to the houses around it.",
+  "plaques": {
+    "2032": {
+      "landmark": true,
+      "setting": "A round plaque set into a recessed brick pier on the bridge, Tunnel Road",
+      "note": "It marks the tree felled here by W. E. Gladstone on 11 May 1875, when he was in the city reviewing the plans for Castle Park. He was 65, and the tree was 1.65 metres across; he took 50 minutes. The plaque is not on a house, nor particularly near one — the nearest house in the record is 88 metres away.",
+      "source": "A. Hagues, with photograph, 11 September 2026. Position confirmed: OpenStreetMap records a memorial at exactly the feed's point, 12 metres off Tunnel Road."
+    }
+  }
+}

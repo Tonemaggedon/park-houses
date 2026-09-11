@@ -2441,7 +2441,16 @@ async function placedPlaques() {
       if (k.length > 5) keys.push({ p, key: ' ' + k + ' ', street, how: 'name' });
     }
   }
-  return all.map(pl => {
+  // What the record knows that the feed does not — above all, that a plaque is
+  // a landmark and not on any house.
+  let notes = {};
+  try { notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'plaque_notes.json'), 'utf8')).plaques || {}; }
+  catch (e) {}
+  return all.map(raw => {
+    const n = notes[String(raw.id)];
+    const pl = n ? { ...raw, landmark: !!n.landmark, setting: n.setting || null,
+                     note: n.note || null, note_source: n.source || null } : raw;
+    if (pl.landmark) return pl;
     const a = norm(pl.address);
     const hit = keys.find(k => a.includes(k.key)
       && (k.how === 'number' || a.includes(' ' + k.street + ' ') || a.includes(' the park ')));

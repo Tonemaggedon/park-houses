@@ -2326,11 +2326,16 @@ async function loadPlaques(p) {
       + 'style="color:#2a5a8a;text-decoration:none">'
       + esc(e.people.join(' and ') || e.title || 'Plaque') + '</a>'
       + '<div style="color:#8a7a5a;font-size:0.72rem">'
-      + (e.atThisHouse ? '<b style="color:#2f4d27">On this house</b>' : esc(e.distance) + 'm')
-      + (e.colour ? ' · ' + esc(e.colour) : '') + (e.address ? ' · ' + esc(e.address) : '') + '</div>'
+      + (e.atThisHouse ? '<b style="color:#2f4d27">On this house</b>'
+         : e.landmark ? esc(e.distance) + 'm · <b style="color:#6a5c44">landmark, not on a house</b>'
+         : esc(e.distance) + 'm')
+      + (e.colour ? ' · ' + esc(e.colour) : '')
+      + (e.landmark && e.setting ? '' : (e.address ? ' · ' + esc(e.address) : '')) + '</div>'
+      + (e.setting ? '<div style="color:#8a7a5a;font-size:0.72rem;font-style:italic">' + esc(e.setting) + '</div>' : '')
       + (e.inscription ? '<div style="color:#6a5c44;font-size:0.74rem;margin-top:3px">'
           + esc(e.inscription.length > 180 ? e.inscription.slice(0, 180) + '…' : e.inscription)
           + '</div>' : '')
+      + (e.note ? '<div style="color:#4a3e28;font-size:0.74rem;margin-top:3px">' + esc(e.note) + '</div>' : '')
       + '</div>').join('')
       + '<div style="color:#8a7a5a;font-size:0.7rem;margin-top:6px;font-style:italic">'
       + 'From <a href="https://openplaques.org/" target="_blank" rel="noopener noreferrer" '
