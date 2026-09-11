@@ -2455,7 +2455,9 @@ app.get('/api/nhle', async (req, res) => {
       || (!taken.has(String(e.entry)) && !dismissed.has(String(e.entry))));
   }
   if (!isFinite(lat) || !isFinite(lng)) return res.json(entries);
-  const radius = Math.min(parseFloat(req.query.radius) || 120, 1000);
+  // 30m: the list entry for a house sits on the house. At 120m every house in a
+  // street was offered every neighbour's walls and gate piers.
+  const radius = Math.min(parseFloat(req.query.radius) || 30, 1000);
   const m = (a, b) => Math.hypot(
     (a.lng - b.lng) * Math.cos(lat * Math.PI / 180) * 111320,
     (a.lat - b.lat) * 110540);
