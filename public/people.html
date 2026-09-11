@@ -872,7 +872,7 @@ function renderProfile(p) {
           ${o.employer ? `<div class="occ-employer">${o.employer}</div>` : ''}
           ${o.notes ? `<div class="occ-notes">${esc(o.notes)}</div>` : ''}
         </div>
-        ${canEditOcc && o.id ? `<button onclick="event.stopPropagation();deleteOccupation(${o.id},${p.id})" title="Remove occupation" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
+        ${canEditOcc && o.id ? `<button onclick="event.stopPropagation();deleteOccupation(${o.id},${p.id},this)" title="Remove occupation" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
       </div>`).join('')}</div>` : `<p class="section-empty">No occupation records.</p>`}
     </div>
     <div id="occ-form-${p.id}" style="display:none;margin-top:10px;background:#f8f4ec;border-radius:6px;padding:12px;border:1px solid #d8c890">
@@ -925,7 +925,7 @@ function renderProfile(p) {
             <span class="census-occ">${ce.occupation_at_census||'—'}${ce.age_at_census ? ` (aged ${ce.age_at_census})` : ''}</span>
             ${ce.property_id ? `<a class="census-prop" href="/?id=${ce.property_id}" title="Open on map">${ce.property_name || 'Property ' + ce.property_id} ↗</a>` : ce.address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#2a1a4a" title="Address outside The Park">${esc(ce.address)}</span>` : ce.unresolved_address ? `<span class="census-prop" style="cursor:default;background:#e8e0f0;color:#5a3a7a" title="Unresolved census address">${ce.unresolved_address} (unresolved)</span>` : ''}
             ${canEditCensus && ce.id ? `<button onclick="event.stopPropagation();toggleCensusEdit(${ce.id})" title="Edit this census entry" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#5a7a5a;font-size:0.8rem;padding:0 4px;line-height:1;flex-shrink:0">✎</button>` : ''}
-            ${canEditCensus && ce.id ? `<button onclick="event.stopPropagation();deleteCensusEntry(${ce.id},${p.id})" title="Delete this census entry" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
+            ${canEditCensus && ce.id ? `<button onclick="event.stopPropagation();deleteCensusEntry(${ce.id},${p.id},this)" title="Delete this census entry" style="background:none;border:none;cursor:pointer;color:#c04040;font-size:0.8rem;padding:0 2px;line-height:1;flex-shrink:0">✕</button>` : ''}
           </div>
           ${canEditCensus && ce.id ? `<div id="ce-edit-${ce.id}" style="display:none;margin:4px 0 8px 0;background:#f8f4ec;border-radius:5px;padding:8px;border:1px solid #d8c890">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px">
@@ -1343,25 +1343,45 @@ async function submitCensus(personId) {
   } catch(e) { get(`cf-err-${personId}`).textContent = '✗ ' + e.message; }
 }
 
-async function deleteCensusEntry(entryId, personId) {
-  if (!confirm('Delete this census entry?')) return;
-  try {
-    const res = await fetch(`/api/census-entry/${entryId}`, { method: 'DELETE' }).then(r => r.json());
-    if (res.ok) {
-      openProfile(personId); // Refresh profile
-    } else {
-      alert('Error deleting entry: ' + (res.error || 'Unknown error'));
+// Small removals confirm on the button itself — first click turns the ✕ into
+// "Remove?", a second click within a few seconds does it. A browser that has
+// been shown enough confirm() dialogs lets the user tick "don't show again",
+// after which confirm() returns false at once and the ✕ silently does nothing.
+function armButton(btn) {
+  if (!btn || btn.dataset.armed === '1') return true;
+  btn.dataset.armed = '1';
+  const was = btn.textContent;
+  btn.textContent = 'Remove?';
+  btn.style.fontSize = '0.72rem';
+  btn.style.fontWeight = 'bold';
+  setTimeout(() => {
+    if (btn.isConnected && btn.dataset.armed === '1') {
+      btn.dataset.armed = ''; btn.textContent = was; btn.style.fontSize = '0.8rem'; btn.style.fontWeight = '';
     }
-  } catch(e) { alert('Error: ' + e.message); }
+  }, 4000);
+  return false;
 }
 
-async function deleteOccupation(occId, personId) {
-  if (!confirm('Remove this occupation?')) return;
+async function removeThing(btn, url, personId) {
+  if (btn && !armButton(btn)) return;
+  if (btn) { btn.disabled = true; btn.textContent = '…'; }
   try {
-    const res = await fetch(`/api/occupation/${occId}`, { method: 'DELETE' }).then(r => r.json());
-    if (res.ok) { openProfile(personId); }
-    else { alert('Error: ' + (res.error || 'Unknown error')); }
-  } catch(e) { alert('Error: ' + e.message); }
+    const res = await fetch(url, { method: 'DELETE' });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || ('HTTP ' + res.status));
+    openProfile(personId);
+  } catch (e) {
+    if (btn) { btn.disabled = false; btn.dataset.armed = ''; btn.textContent = '✕'; }
+    alert('Could not remove that: ' + e.message);
+  }
+}
+
+function deleteCensusEntry(entryId, personId, btn) {
+  return removeThing(btn, `/api/census-entry/${entryId}`, personId);
+}
+
+function deleteOccupation(occId, personId, btn) {
+  return removeThing(btn, `/api/occupation/${occId}`, personId);
 }
 
 // Property list for the census-record property picker. Sorted by street then
