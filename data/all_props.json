@@ -5918,10 +5918,18 @@
   "no": "53",
   "address": "53 Park Row",
   "desc": "",
-  "history": "",
+  "history": "A Grade II listed house at the Park Row entrance to The Park, beside East Lodge, which is listed with it. In 1921 it held Peter Morrison Maccoll, a house governess and secretary of 47, with his wife Ada Eleanor, their daughter Nancy Mary and a servant.",
   "date_built": "",
-  "listed": "No",
-  "census_only": true
+  "listed": "Yes",
+  "census_only": true,
+  "listed_grade": "II",
+  "lat": 52.9517312,
+  "lng": -1.1565842,
+  "sources": {
+   "existence": "In the record from the 1921 census, address \"Tower House, Park Row\".",
+   "listing": "Historic England list entry 1254871, TOWER HOUSE, Grade II, listed 30 November 1995 \u2014 2 metres from the position below.",
+   "position": "OpenStreetMap building way/168974350, tagged Tower House, 53 Park Row, Grade II. A survey, not a guess."
+  }
  },
  {
   "id": 396,
