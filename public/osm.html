@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Positions Against OpenStreetMap — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --amber:#8a6a2a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:1000px; margin:0 auto; padding:24px 20px 80px; }
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:72ch; }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
+    margin:14px 0 10px; }
+  .ctrl { font-size:.82rem; color:var(--soft); margin:8px 0 14px; }
+  .ctrl input { width:64px; padding:4px 8px; border:1px solid var(--rule); border-radius:4px;
+    font-family:inherit; font-size:.82rem; }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.86rem; }
+  th { text-align:left; font-size:.7rem; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--faint); font-weight:600; padding:6px 10px; border-bottom:1px solid var(--rule);
+    white-space:nowrap; }
+  td { padding:7px 10px; border-bottom:1px solid #efe9dc; vertical-align:top; }
+  tr:hover td { background:#fdfbf5; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .far { color:var(--red); font-weight:700; }
+  .mid { color:var(--amber); }
+  a { color:#2a5a8a; text-decoration:none; } a:hover { text-decoration:underline; }
+  .how { font-size:.74rem; color:var(--faint); }
+  button.use { font-family:inherit; font-size:.74rem; border:1px solid var(--rule); background:#fff;
+    color:var(--soft); border-radius:4px; padding:3px 9px; cursor:pointer; white-space:nowrap; }
+  button.use:hover { border-color:var(--accent); }
+  button.use:disabled { opacity:.5; cursor:default; }
+  h3.sec { font-size:.72rem; letter-spacing:.11em; text-transform:uppercase; color:var(--faint);
+    margin:34px 0 8px; border-top:1px solid var(--rule); padding-top:16px; }
+  .orph { columns:2; column-gap:26px; font-size:.85rem; }
+  .orph div { break-inside:avoid; margin:2px 0; color:var(--soft); }
+  .orph b { color:var(--ink); font-weight:600; }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:24px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  .empty { color:var(--faint); font-style:italic; padding:26px 0; }
+  @media (max-width:700px){ .orph { columns:1; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/tasks">✔ The list</a>
+  <a href="/research">❓ Open questions</a>
+  <a href="/osm" class="active">📍 Positions</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>Positions against OpenStreetMap</h2>
+  <p class="lede">A good many of this record's positions were reasoned rather than surveyed —
+    placed from the enumerator's round, or from a house name on a map that is a diagram and not
+    a survey. OpenStreetMap holds a real outline and often a real address for every building in
+    The Park. Where the two disagree by more than a few metres, one of them is wrong.</p>
+  <p class="lede"><strong>OpenStreetMap is not gospel either.</strong> Its numbering can be
+    wrong, and a house split into flats may carry a number that belongs to its neighbour. This
+    flags what is worth looking at, not what to change.</p>
+
+  <div class="ctrl">Show disagreements of at least
+    <input id="min" type="number" min="0" max="500" value="20"> metres</div>
+  <div class="bar" id="bar">Asking OpenStreetMap… this can take half a minute the first time.</div>
+  <div id="list"></div>
+
+  <div id="orphWrap" hidden>
+    <h3 class="sec">Named buildings the record does not hold</h3>
+    <p class="lede">Buildings OpenStreetMap has a name for that matches nothing here. Some are
+      blocks of flats built on demolished plots, some are the modern name of a house we hold
+      under an older one, and some are houses the record is missing.</p>
+    <div class="orph" id="orph"></div>
+  </div>
+
+  <div class="note">Building data © OpenStreetMap contributors, under the Open Database
+    Licence. Fetched once a day and held.</div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+let data = null, isAdmin = false;
+
+async function init() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    isAdmin = !!(me.isAdmin || (me.user && me.user.role === 'admin'));
+  } catch (e) {}
+  load();
+}
+
+async function load() {
+  const bar = document.getElementById('bar');
+  try {
+    data = await fetch('/api/osm-audit').then(r => r.json());
+    if (data.error) throw new Error(data.error);
+    render();
+  } catch (e) {
+    bar.textContent = '';
+    document.getElementById('list').innerHTML =
+      `<div class="empty" style="color:var(--red)">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+function render() {
+  const min = parseInt(document.getElementById('min').value, 10) || 0;
+  const rows = (data.rows || []).filter(r => r.distance !== null && r.distance >= min);
+  const unplaced = (data.rows || []).filter(r => r.distance === null);
+  const all = (data.rows || []).filter(r => r.distance !== null).map(r => r.distance).sort((a, b) => a - b);
+  const med = all.length ? all[Math.floor(all.length / 2)] : 0;
+
+  document.getElementById('bar').textContent =
+    `${data.buildings} buildings in OpenStreetMap · ${data.matched} matched to a property · `
+    + `median disagreement ${med}m · ${rows.length} at or above ${min}m`
+    + (unplaced.length ? ` · ${unplaced.length} with no position at all` : '');
+
+  const cell = r => {
+    const o = r.osm;
+    return esc(o.name || [o.number, o.street].filter(Boolean).join(' ') || o.id);
+  };
+  document.getElementById('list').innerHTML = rows.length ? '<div class="scroll"><table><thead><tr>'
+    + '<th>Apart</th><th>Property</th><th>Matched on</th><th>OpenStreetMap has</th><th></th>'
+    + '</tr></thead><tbody>'
+    + rows.map(r => `<tr>
+        <td class="n ${r.distance >= 60 ? 'far' : r.distance >= 25 ? 'mid' : ''}">${r.distance}m</td>
+        <td><a href="/?id=${r.property_id}" target="_blank">#${r.property_id} ${esc(r.label)}</a>
+          ${r.provisional ? '<span class="how"> · marked provisional</span>' : ''}</td>
+        <td class="how">${esc(r.how)}</td>
+        <td>${cell(r)}<span class="how"> · ${r.osm.lat.toFixed(5)}, ${r.osm.lng.toFixed(5)}</span></td>
+        <td>${isAdmin ? `<button class="use" data-use="${r.property_id}"
+              data-lat="${r.osm.lat}" data-lng="${r.osm.lng}">Use this position</button>` : ''}</td>
+      </tr>`).join('') + '</tbody></table></div>'
+    : '<div class="empty">Nothing at or above that distance.</div>';
+
+  const orph = data.orphans || [];
+  document.getElementById('orphWrap').hidden = !orph.length;
+  document.getElementById('orph').innerHTML = orph.map(o =>
+    `<div><b>${esc(o.name)}</b>${o.number || o.street
+      ? ' — ' + esc([o.number, o.street].filter(Boolean).join(' ')) : ''}</div>`).join('');
+}
+
+document.getElementById('min').addEventListener('input', () => { if (data) render(); });
+
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-use]');
+  if (!btn) return;
+  if (!confirm('Move this property to the OpenStreetMap building’s position?')) return;
+  btn.disabled = true; btn.textContent = 'Saving…';
+  try {
+    const res = await fetch('/api/coords/' + btn.dataset.use, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lat: Number(btn.dataset.lat), lng: Number(btn.dataset.lng) }),
+    });
+    const d = await res.json();
+    if (!res.ok || d.error) throw new Error(d.error || ('HTTP ' + res.status));
+    btn.textContent = 'Moved';
+    load();
+  } catch (err) { btn.disabled = false; btn.textContent = 'Use this position'; alert('Could not save: ' + err.message); }
+});
+
+init();
+</script>
+</body>
+</html>

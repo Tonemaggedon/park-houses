@@ -2307,6 +2307,171 @@ app.get('/api/nhle', (req, res) => {
     .slice(0, 12));
 });
 
+// ── Open Plaques ──────────────────────────────────────────────────────────────
+// Commemorative plaques, from the open data at openplaques.org. Fetched once and
+// held, because the list for a city changes about as often as the plaques do.
+let plaqueCache = null, plaqueAt = 0;
+const PLAQUE_TTL = 12 * 60 * 60 * 1000;
+async function readPlaques() {
+  if (plaqueCache && Date.now() - plaqueAt < PLAQUE_TTL) return plaqueCache;
+  try {
+    const r = await fetch('https://openplaques.org/places/gb/areas/nottingham/plaques.json', {
+      headers: { 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!r.ok) return plaqueCache || [];
+    const raw = await r.json();
+    const list = Array.isArray(raw) ? raw : (raw.plaques || []);
+    plaqueCache = list
+      .filter(p => p.latitude && p.longitude)
+      .map(p => ({
+        id: p.id, inscription: p.inscription || null, title: p.title || null,
+        address: p.address || null, colour: p.colour_name || null,
+        erected: p.erected_at || null, uri: p.uri || null,
+        lat: Number(p.latitude), lng: Number(p.longitude),
+        // subjects comes back as a plain string, not the array the shape suggests.
+        people: typeof p.subjects === 'string'
+          ? p.subjects.split(/\s+and\s+|,\s*/).map(x => x.trim()).filter(Boolean)
+          : (Array.isArray(p.subjects) ? p.subjects.map(x => x && x.name).filter(Boolean) : []),
+      }));
+    plaqueAt = Date.now();
+  } catch (e) { console.warn('plaques:', e.message); }
+  return plaqueCache || [];
+}
+
+app.get('/api/plaques', async (req, res) => {
+  const all = await readPlaques();
+  const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  if (!isFinite(lat) || !isFinite(lng)) return res.json(all);
+  const radius = Math.min(parseFloat(req.query.radius) || 120, 2000);
+  const m = p => Math.hypot(
+    (p.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (p.lat - lat) * 110540);
+  res.json(all.map(p => ({ ...p, distance: Math.round(m(p)) }))
+              .filter(p => p.distance <= radius)
+              .sort((a, b) => a.distance - b.distance).slice(0, 8));
+});
+
+// ── OpenStreetMap building outlines ───────────────────────────────────────────
+// Overpass knows the footprint and often the address of every building in The
+// Park. That is a survey, which is what a good many of this record's positions
+// are not: houses created from a census address are placed by reasoning about
+// the enumerator's round and marked provisional. This is how they get fixed.
+let osmCache = null, osmAt = 0;
+const OSM_TTL = 24 * 60 * 60 * 1000;
+const PARK_BBOX = [52.9475, -1.1720, 52.9560, -1.1545];   // s, w, n, e
+async function readOsmBuildings() {
+  if (osmCache && Date.now() - osmAt < OSM_TTL) return osmCache;
+  const [s, w, n, e] = PARK_BBOX;
+  const q = `[out:json][timeout:40];(way["building"](${s},${w},${n},${e});` +
+            `relation["building"](${s},${w},${n},${e}););out tags center;`;
+  try {
+    const r = await fetch('https://overpass-api.de/api/interpreter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded',
+                 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+      body: 'data=' + encodeURIComponent(q),
+      signal: AbortSignal.timeout(60000),
+    });
+    if (!r.ok) return osmCache || [];
+    const d = await r.json();
+    osmCache = (d.elements || []).filter(el => el.center).map(el => ({
+      id: el.type + '/' + el.id,
+      lat: el.center.lat, lng: el.center.lon,
+      name: (el.tags && (el.tags.name || el.tags['addr:housename'])) || null,
+      number: (el.tags && el.tags['addr:housenumber']) || null,
+      street: (el.tags && el.tags['addr:street']) || null,
+      building: (el.tags && el.tags.building) || null,
+    }));
+    osmAt = Date.now();
+  } catch (err) { console.warn('overpass:', err.message); }
+  return osmCache || [];
+}
+
+app.get('/api/osm-buildings', async (req, res) => {
+  const all = await readOsmBuildings();
+  const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
+  if (!isFinite(lat) || !isFinite(lng)) {
+    return res.json({ count: all.length, named: all.filter(b => b.name || b.number).length });
+  }
+  const radius = Math.min(parseFloat(req.query.radius) || 60, 500);
+  const m = b => Math.hypot(
+    (b.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (b.lat - lat) * 110540);
+  res.json(all.map(b => ({ ...b, distance: Math.round(m(b)) }))
+              .filter(b => b.distance <= radius)
+              .sort((a, b) => a.distance - b.distance).slice(0, 10));
+});
+
+// Match the record's houses to the buildings OpenStreetMap holds, and report
+// where they disagree. A good many positions here were reasoned rather than
+// surveyed — placed from the enumerator's round and marked provisional — and
+// this is the only cheap way to find the ones that are simply wrong.
+app.get('/api/osm-audit', requireContributor, async (req, res) => {
+  try {
+    const buildings = await readOsmBuildings();
+    if (!buildings.length) return res.json({ error: 'OpenStreetMap did not answer; try again in a minute', rows: [], orphans: [] });
+    const props = JSON.parse(readAllPropsCached().body);
+    const coords = await loadCoords();
+    const norm = v => String(v || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
+    const numKey = v => String(v || '').toLowerCase().replace(/\s/g, '');
+
+    const byAddr = new Map(), byName = new Map();
+    for (const b of buildings) {
+      if (b.street && b.number) {
+        const k = norm(b.street) + '|' + numKey(b.number);
+        if (!byAddr.has(k)) byAddr.set(k, b);
+      }
+      if (b.name) {
+        const k = norm(b.name);
+        if (!byName.has(k)) byName.set(k, b);
+      }
+    }
+    const claimed = new Set();
+    const metres = (a, b) => Math.hypot(
+      (a.lng - b.lng) * Math.cos(a.lat * Math.PI / 180) * 111320, (a.lat - b.lat) * 110540);
+
+    const rows = [];
+    for (const p of props) {
+      const c = coords[p.id];
+      const here = c ? { lat: Number(c.lat), lng: Number(c.lng) }
+                     : (p.lat != null ? { lat: Number(p.lat), lng: Number(p.lng) } : null);
+      const names = [p.name, p.house_name, ...String(p.prev_house_name || '').split('\n')]
+        .map(norm).filter(Boolean);
+      let hit = null, how = null;
+      if (p.street && p.no) {
+        hit = byAddr.get(norm(p.street) + '|' + numKey(p.no)) || null;
+        if (hit) how = 'number and street';
+      }
+      if (!hit) {
+        for (const n of names) { if (byName.has(n)) { hit = byName.get(n); how = 'house name'; break; } }
+      }
+      if (!hit) continue;
+      claimed.add(hit.id);
+      rows.push({
+        property_id: p.id,
+        label: [(p.no || '').trim(), p.street].filter(Boolean).join(' ')
+             + (p.name ? ` (${p.name})` : ''),
+        how, osm: hit,
+        placed: !!c,
+        distance: here ? Math.round(metres(here, hit)) : null,
+        provisional: !!(p.sources && /provisional/i.test(JSON.stringify(p.sources))),
+      });
+    }
+    rows.sort((a, b) => (b.distance === null ? 1e9 : b.distance) - (a.distance === null ? 1e9 : a.distance));
+
+    // Buildings OpenStreetMap has a name for that the record does not.
+    const recordNames = new Set();
+    for (const p of props) for (const n of [p.name, p.house_name, ...String(p.prev_house_name || '').split('\n')])
+      if (norm(n)) recordNames.add(norm(n));
+    const orphans = buildings
+      .filter(b => b.name && !claimed.has(b.id) && !recordNames.has(norm(b.name)))
+      .filter(b => !/^(flats?|garages?|shed|outbuilding)$/i.test(b.name))
+      .map(b => ({ name: b.name, number: b.number, street: b.street, lat: b.lat, lng: b.lng }))
+      .sort((a, b) => String(a.street || '').localeCompare(String(b.street || '')));
+
+    res.json({ buildings: buildings.length, matched: rows.length, rows, orphans });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Stats API ─────────────────────────────────────────────────────────────────
 app.get('/api/stats', async (req, res) => {
   try {
@@ -5096,6 +5261,7 @@ app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'a
 app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
+app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
