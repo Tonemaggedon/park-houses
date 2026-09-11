@@ -164,11 +164,19 @@ const isHead = e => {
   return /^head$/i.test(r) || /^\d+$/.test(r);
 };
 
+// A second wife in one block is a second household — nobody has two. Some
+// schedules give no other break: a household whose head was away is returned
+// with the wife marked Wife rather than Head, and it would otherwise sit
+// inside the household above it.
+const isWife = e => /^wife$/i.test((e.relationship || '').trim());
+
 function households(rows) {
   const sorted = rows.slice().sort((a, b) => a.id - b.id);
   const out = []; let cur = null;
   for (const e of sorted) {
-    if (isHead(e) || !cur) { cur = { head: null, members: [] }; out.push(cur); }
+    if (!cur || isHead(e) || (isWife(e) && cur.members.some(isWife))) {
+      cur = { head: null, members: [] }; out.push(cur);
+    }
     if (isHead(e)) cur.head = e;
     cur.members.push(e);
   }
