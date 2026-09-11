@@ -3556,7 +3556,7 @@
   "lat": 52.9503097,
   "lng": -1.1608421,
   "sources": {
-   "names": "Park Lodge \u2014 OpenStreetMap building way/132204665 carries the house name Park Lodge at 9 Park Drive, now divided into flats, from Nottingham City Council's open planning data; Dougal de Havilland's map labels it Park Lodge too, beside Clumber House. Not to be confused with the Park Lodge on Tattershall Drive, which is not in the record."
+   "names": "Park Lodge \u2014 OpenStreetMap building way/132204665 carries the house name Park Lodge at 9 Park Drive, now divided into flats, from Nottingham City Council's open planning data; Dougal de Havilland's map labels it Park Lodge too, beside Clumber House. There are two others of the name \u2014 Park Lodge on Park Row (#413) and a lodge on Tattershall Drive not in the record."
   }
  },
  {
@@ -6245,6 +6245,24 @@
   "sources": {
    "existence": "The London Gazette, notice under the Trustee Act 1925 dated 7 September 1929: \"Harry Judah Weinberg, late of 4, North Road, The Park, in the city of Nottingham, Merchant\". Found by A. Hagues from Douglas McCraith's Gazette entries. The first house in the record created from a documentary address rather than a census return.",
    "position": "Provisional. OpenStreetMap numbers 2 North Road (the Walton Hotel) and 8, but has no 4; placed between the two on the even side. It may since have been absorbed into a neighbour or renumbered. Wants placing by hand."
+  }
+ },
+ {
+  "id": 413,
+  "name": "Park Lodge",
+  "street": "Park Row",
+  "no": "Park Lodge",
+  "address": "Park Lodge, Park Row",
+  "desc": "",
+  "history": "The lodge at the Park Row entrance to The Park. In 1921 it was the home of John Stubbing, 66, returned as an attendant, with his housekeeper Elizabeth Gunn, 54. Their household was first found filed with Tower House next door. There are two other houses called Park Lodge in The Park \u2014 9 Park Drive, and a lodge on Tattershall Drive \u2014 so a census address reading only \"Park Lodge\" can belong to any of the three.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9516792,
+  "lng": -1.1566848,
+  "sources": {
+   "existence": "1921 census, the Stubbing household's address \"Park Lodge, Park Row\", read by A. Hagues from the return.",
+   "position": "Provisional. Placed on the building OpenStreetMap calls East Lodge (way/243988957), the Grade II lodge on Park Row seven metres from Tower House \u2014 the only lodge on Park Row. That it was called Park Lodge in 1921 is likely, not proven; Historic England's list entry 1270628 could not be read to check."
   }
  }
 ]

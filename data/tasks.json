@@ -533,7 +533,7 @@
       "slug": "tower-house-file-maccolls",
       "area": "Do these first",
       "title": "File the Maccoll household to Tower House, 53 Park Row",
-      "detail": "Tower House (#395) was already in the record but had no position, so it never appeared on the map. It is now placed from OpenStreetMap and marked Grade II. On /unfiled, the group \"tower house park row Park Row\" holds Peter Morrison Maccoll, his wife, daughter and a servant — send that household to 395. On the property's Historic England panel, \"This is the one\" on TOWER HOUSE links its list entry.",
+      "detail": "Tower House (#395) was already in the record but had no position, so it never appeared on the map. It is now placed from OpenStreetMap and marked Grade II. On /unfiled, the group \"tower house park row Park Row\" holds Peter Morrison Maccoll, his wife, daughter and a servant — send that household to 395 (the Stubbing household in the same group goes to Park Lodge, #413). On the property's Historic England panel, \"This is the one\" on TOWER HOUSE links its list entry.",
       "size": "two clicks",
       "link": "/unfiled"
     },
@@ -564,9 +564,9 @@
     {
       "slug": "park-lodge-stubbing",
       "area": "Houses and names",
-      "title": "Which Park Lodge were John Stubbing and Elizabeth Gunn at?",
-      "detail": "Their 1921 return says Park Lodge. There are two. Park Lodge, 9 Park Drive, is already in the record (#237) and now carries the name, from OpenStreetMap and Dougal's map. The other is the Park Lodge on Tattershall Drive by the tennis ground, which is not in the record. If the return gives a street, that settles it: 9 Park Drive means filing them to 237; Tattershall Drive means creating the lodge.",
-      "size": "a look at the return",
+      "title": "File John Stubbing and Elizabeth Gunn to Park Lodge, Park Row",
+      "detail": "Their 1921 return reads Park Lodge, Park Row — a third Park Lodge, not 9 Park Drive or the one on Tattershall Drive. It is now in the record as #413, placed provisionally on the lodge OpenStreetMap calls East Lodge, beside Tower House. On /unfiled, in the group \"tower house park row Park Row\", send the Stubbing household to 413 and the Maccolls to 395.",
+      "size": "one click",
       "link": "/unfiled"
     }
   ]
