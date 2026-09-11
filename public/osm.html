@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Positions Against OpenStreetMap — Nottingham Park Houses</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
   :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
           --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
@@ -49,6 +51,16 @@
   .orph b { color:var(--ink); font-weight:600; }
   .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:24px;
     border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  #map { height:380px; border:1px solid var(--rule); border-radius:8px; margin:6px 0 16px;
+    background:#eee; }
+  .maphint { font-size:.78rem; color:var(--faint); font-style:italic; margin:-10px 0 16px; }
+  tr.sel td { background:#eef3e8 !important; }
+  .dismiss { font-family:inherit; font-size:.7rem; border:1px solid var(--rule); background:#fff;
+    color:var(--faint); border-radius:3px; padding:1px 6px; cursor:pointer; margin-left:6px; }
+  .dismiss:hover { border-color:var(--red); color:var(--red); }
+  .orph div { display:flex; align-items:baseline; gap:4px; }
+  .orph .nm { cursor:pointer; }
+  .orph .nm:hover b { text-decoration:underline; }
   .empty { color:var(--faint); font-style:italic; padding:26px 0; }
   @media (max-width:700px){ .orph { columns:1; } }
 </style>
@@ -79,6 +91,10 @@
   <div class="ctrl">Show disagreements of at least
     <input id="min" type="number" min="0" max="500" value="20"> metres</div>
   <div class="bar" id="bar">Asking OpenStreetMap… this can take half a minute the first time.</div>
+  <div id="map"></div>
+  <p class="maphint">Click any row below, or any name in the list at the foot of the page, to see
+    it here. <strong>Red</strong> is where the record has it; <strong>green</strong> is the
+    building OpenStreetMap holds.</p>
   <div id="list"></div>
 
   <div id="orphWrap" hidden>
@@ -97,12 +113,13 @@
 function esc(v){ if(v===null||v===undefined) return '';
   return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-let data = null, isAdmin = false;
+let data = null, isAdmin = false, canEdit = false;
 
 async function init() {
   try {
     const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
     isAdmin = !!(me.isAdmin || (me.user && me.user.role === 'admin'));
+    canEdit = !!(isAdmin || (me.user && me.user.role === 'contributor'));
   } catch (e) {}
   load();
 }
@@ -139,7 +156,7 @@ function render() {
   document.getElementById('list').innerHTML = rows.length ? '<div class="scroll"><table><thead><tr>'
     + '<th>Apart</th><th>Property</th><th>Matched on</th><th>OpenStreetMap has</th><th></th>'
     + '</tr></thead><tbody>'
-    + rows.map(r => `<tr>
+    + rows.map(r => `<tr data-row="${r.property_id}" style="cursor:pointer">
         <td class="n ${r.distance >= 60 ? 'far' : r.distance >= 25 ? 'mid' : ''}">${r.distance}m</td>
         <td><a href="/?id=${r.property_id}" target="_blank">#${r.property_id} ${esc(r.label)}</a>
           ${r.provisional ? '<span class="how"> · marked provisional</span>' : ''}</td>
@@ -153,13 +170,88 @@ function render() {
   const orph = data.orphans || [];
   document.getElementById('orphWrap').hidden = !orph.length;
   document.getElementById('orph').innerHTML = orph.map(o =>
-    `<div><b>${esc(o.name)}</b>${o.number || o.street
-      ? ' — ' + esc([o.number, o.street].filter(Boolean).join(' ')) : ''}</div>`).join('');
+    `<div><span class="nm" data-lat="${o.lat}" data-lng="${o.lng}" data-name="${esc(o.name)}"
+        ><b>${esc(o.name)}</b>${o.number || o.street
+        ? ' — ' + esc([o.number, o.street].filter(Boolean).join(' ')) : ''}</span>${
+      canEdit ? `<button class="dismiss" data-dismiss="${esc(o.id)}" data-dname="${esc(o.name)}"
+        title="Not a house this record wants">not wanted</button>` : ''}</div>`).join('');
 }
+
+// ── The map ───────────────────────────────────────────────────────────────────
+let map = null, layer = null;
+function ensureMap() {
+  if (map) return map;
+  map = L.map('map', { scrollWheelZoom: true }).setView([52.9515, -1.1619], 16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  layer = L.layerGroup().addTo(map);
+  return map;
+}
+const dot = (colour, label) => L.divIcon({
+  className: '', iconSize: [16, 16], iconAnchor: [8, 8],
+  html: `<div title="${label}" style="width:14px;height:14px;border-radius:50%;background:${colour};`
+      + `border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.4)"></div>`,
+});
+
+function showPair(r) {
+  // The container is laid out after the map is constructed in the same tick, so
+  // Leaflet measures it as nothing and fitBounds lands on zoom 0 — the whole
+  // world, with two pins somewhere in the middle of it.
+  ensureMap(); map.invalidateSize(); layer.clearLayers();
+  const o = r.osm;
+  const oName = o.name || [o.number, o.street].filter(Boolean).join(' ') || 'OpenStreetMap building';
+  L.marker([o.lat, o.lng], { icon: dot('#2f7d32', oName) })
+    .bindPopup(`<b>OpenStreetMap</b><br>${oName}`).addTo(layer);
+  const here = r.here;
+  if (here) {
+    L.marker([here.lat, here.lng], { icon: dot('#a3341f', r.label) })
+      .bindPopup(`<b>The record has it here</b><br>${r.label}`).addTo(layer);
+    L.polyline([[here.lat, here.lng], [o.lat, o.lng]],
+      { color: '#a3341f', weight: 2, dashArray: '4,4' }).addTo(layer);
+    map.fitBounds(L.latLngBounds([[here.lat, here.lng], [o.lat, o.lng]]),
+                  { padding: [40, 40], maxZoom: 18 });
+  } else {
+    map.setView([o.lat, o.lng], 18);
+  }
+}
+
+function showOne(lat, lng, label) {
+  ensureMap(); map.invalidateSize(); layer.clearLayers();
+  L.marker([lat, lng], { icon: dot('#2f7d32', label) }).bindPopup(`<b>${label}</b>`).addTo(layer);
+  map.setView([lat, lng], 18);
+}
+
+document.addEventListener('click', e => {
+  const row = e.target.closest('tr[data-row]');
+  if (row && !e.target.closest('button')) {
+    document.querySelectorAll('tr.sel').forEach(x => x.classList.remove('sel'));
+    row.classList.add('sel');
+    const r = (data.rows || []).find(x => String(x.property_id) === row.dataset.row);
+    if (r) showPair(r);
+    return;
+  }
+  const nm = e.target.closest('.orph .nm');
+  if (nm) showOne(Number(nm.dataset.lat), Number(nm.dataset.lng), nm.dataset.name);
+});
 
 document.getElementById('min').addEventListener('input', () => { if (data) render(); });
 
 document.addEventListener('click', async e => {
+  const dis = e.target.closest('[data-dismiss]');
+  if (dis) {
+    dis.disabled = true;
+    try {
+      const res = await fetch('/api/osm-dismiss', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ osm_id: dis.dataset.dismiss, name: dis.dataset.dname }),
+      });
+      const d = await res.json();
+      if (!res.ok || d.error) throw new Error(d.error || ('HTTP ' + res.status));
+      dis.closest('div').remove();
+    } catch (err) { dis.disabled = false; alert('Could not dismiss that: ' + err.message); }
+    return;
+  }
   const btn = e.target.closest('[data-use]');
   if (!btn) return;
   if (!confirm('Move this property to the OpenStreetMap building’s position?')) return;

@@ -684,6 +684,15 @@ async function dbInit() {
     )`);
     await seedTasks();
 
+    // Buildings OpenStreetMap names that the record deliberately does not want —
+    // blocks of flats on demolished plots, garages, an estate agent's office.
+    await db.query(`CREATE TABLE IF NOT EXISTS osm_dismissed (
+      osm_id TEXT PRIMARY KEY,
+      name TEXT,
+      note TEXT,
+      set_by TEXT,
+      set_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
     await db.query(`CREATE TABLE IF NOT EXISTS census_set_aside (
       entry_id INTEGER PRIMARY KEY REFERENCES census_entries(id) ON DELETE CASCADE,
       note TEXT,
@@ -2491,7 +2500,7 @@ app.get('/api/osm-audit', requireContributor, async (req, res) => {
         property_id: p.id,
         label: [(p.no || '').trim(), p.street].filter(Boolean).join(' ')
              + (p.name ? ` (${p.name})` : ''),
-        how, osm: hit,
+        how, osm: hit, here,
         placed: !!c,
         distance: here ? Math.round(metres(here, hit)) : null,
         provisional: !!(p.sources && /provisional/i.test(JSON.stringify(p.sources))),
@@ -2503,13 +2512,41 @@ app.get('/api/osm-audit', requireContributor, async (req, res) => {
     const recordNames = new Set();
     for (const p of props) for (const n of [p.name, p.house_name, ...String(p.prev_house_name || '').split('\n')])
       if (norm(n)) recordNames.add(norm(n));
+    let dismissed = new Set();
+    if (db) {
+      try { dismissed = new Set((await db.query('SELECT osm_id FROM osm_dismissed')).rows.map(r => r.osm_id)); }
+      catch (e) {}
+    }
     const orphans = buildings
       .filter(b => b.name && !claimed.has(b.id) && !recordNames.has(norm(b.name)))
       .filter(b => !/^(flats?|garages?|shed|outbuilding)$/i.test(b.name))
-      .map(b => ({ name: b.name, number: b.number, street: b.street, lat: b.lat, lng: b.lng }))
+      .filter(b => !dismissed.has(b.id))
+      .map(b => ({ id: b.id, name: b.name, number: b.number, street: b.street, lat: b.lat, lng: b.lng }))
       .sort((a, b) => String(a.street || '').localeCompare(String(b.street || '')));
 
-    res.json({ buildings: buildings.length, matched: rows.length, rows, orphans });
+    res.json({ buildings: buildings.length, matched: rows.length, rows, orphans,
+               dismissedCount: dismissed.size });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Put a named building out of the orphan list for good — it is not a house this
+// record wants, and saying so once should stop it being offered again.
+app.post('/api/osm-dismiss', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  const id = String((req.body && req.body.osm_id) || '').trim();
+  if (!id) return res.status(400).json({ error: 'an OpenStreetMap id is required' });
+  const on = !(req.body && req.body.on === false);
+  const who = (await getResearchKey(req.session)) || null;
+  try {
+    if (!on) {
+      await db.query('DELETE FROM osm_dismissed WHERE osm_id=$1', [id]);
+      return res.json({ ok: true, dismissed: false });
+    }
+    await db.query(
+      `INSERT INTO osm_dismissed (osm_id, name, note, set_by) VALUES ($1,$2,$3,$4)
+       ON CONFLICT (osm_id) DO UPDATE SET note=EXCLUDED.note, set_by=EXCLUDED.set_by, set_at=NOW()`,
+      [id, (req.body && req.body.name) || null, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, dismissed: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
