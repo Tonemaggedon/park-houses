@@ -764,11 +764,23 @@ function renderProfile(p) {
   const diedYr = parseInt(p.died_year) || parseInt((p.died_date||'').match(/\d{4}/)?.[0]);
   const ageAtDeath = (bornYr && diedYr && diedYr > bornYr) ? (diedYr - bornYr) : null;
   if (p.born_date || p.born_year) dates.push(`b. ${p.born_date || p.born_year}${p.born_place ? ', '+p.born_place : ''}`);
-  if (p.died_date || p.died_year) dates.push(`d. ${p.died_date || p.died_year}${p.died_place ? ', '+p.died_place : ''}${ageAtDeath ? ` (aged ${ageAtDeath})` : ''}`
-    // The probate calendars from 1858 give the address at death and the value of
-    // the estate — the one source that reaches the years between censuses.
-    + (diedYr && p.last_name ? ` <a href="https://probatesearch.service.gov.uk/search-results?surname=${encodeURIComponent(p.last_name)}&yearOfDeath=${diedYr}&page=1" target="_blank" rel="noopener noreferrer" style="font-size:0.72rem;color:#2a5a8a;white-space:nowrap">probate ↗</a>` : ''));
-  document.getElementById('paneDates').textContent = dates.join('  ·  ');
+  if (p.died_date || p.died_year) dates.push(`d. ${p.died_date || p.died_year}${p.died_place ? ', '+p.died_place : ''}${ageAtDeath ? ` (aged ${ageAtDeath})` : ''}`);
+  const paneDates = document.getElementById('paneDates');
+  paneDates.textContent = dates.join('  ·  ');
+  // The probate calendars from 1858 give the address at death and the value of
+  // the estate — the one source that reaches the years between censuses. Built
+  // as an element rather than markup, because this line is set with textContent
+  // and an <a> written into it comes out as the text of itself.
+  if (diedYr && p.last_name) {
+    const a = document.createElement('a');
+    a.href = 'https://probatesearch.service.gov.uk/search-results?surname='
+           + encodeURIComponent(p.last_name) + '&yearOfDeath=' + diedYr + '&page=1';
+    a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.textContent = 'probate ↗';
+    a.title = 'Search the probate calendars for ' + p.last_name + ', ' + diedYr;
+    a.style.cssText = 'font-size:0.72rem;color:#9fd0a0;white-space:nowrap;margin-left:8px';
+    paneDates.appendChild(a);
+  }
 
   const avatar = document.getElementById('paneAvatar');
   if (p.photo_url) {
