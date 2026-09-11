@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Tools — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --tint:#f6f2e6; --accent:#5a3a1a;
+          --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:940px; margin:0 auto; padding:24px 20px 90px; }
+
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:70ch; }
+  .toc { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 0; }
+  .toc a { font-size:.78rem; color:var(--soft); text-decoration:none; border:1px solid var(--rule);
+    border-radius:12px; padding:2px 11px; background:var(--card); }
+  .toc a:hover { border-color:var(--green); color:var(--green); }
+
+  h3.area { font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--faint);
+    margin:32px 0 4px; border-top:1px solid var(--rule); padding-top:14px; scroll-margin-top:12px; }
+  .area-note { font-size:.82rem; color:var(--soft); margin:0 0 10px; max-width:70ch; }
+  .area-note a { color:#2a5a8a; }
+
+  .tool { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    padding:12px 15px; margin-bottom:9px; display:grid;
+    grid-template-columns:minmax(0,1fr) auto; gap:4px 20px; align-items:start; }
+  .tool h4 { margin:0; font-size:1rem; }
+  .tool p { margin:3px 0 0; font-size:.85rem; color:var(--soft); max-width:66ch; }
+  .tool p code { background:var(--tint); padding:0 4px; border-radius:3px; font-size:.9em; }
+  .tool-btns { display:flex; gap:7px; padding-top:1px; }
+  .tool .fields, .tool .result { grid-column:1 / -1; }
+  @media (max-width:640px) { .tool { grid-template-columns:1fr; } }
+
+  .btn { font-family:inherit; font-size:.84rem; font-weight:700; border-radius:5px; padding:6px 16px;
+    cursor:pointer; border:1px solid var(--green); background:var(--green); color:#f2ecd8;
+    white-space:nowrap; }
+  .btn:hover { background:#3d6333; border-color:#3d6333; }
+  .btn.ghost { background:var(--card); color:var(--green); }
+  .btn.ghost:hover { background:#eef3ea; }
+  .btn.danger { background:var(--red); border-color:var(--red); }
+  .btn.danger:hover { background:#8a2a18; }
+  .btn:disabled { opacity:.55; cursor:default; }
+
+  .fields { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; margin-top:8px;
+    padding:10px 11px; background:var(--tint); border-radius:5px; }
+  .fields label { font-size:.72rem; color:var(--faint); display:flex; flex-direction:column; gap:3px; }
+  .fields label.check { flex-direction:row; align-items:center; gap:6px; font-size:.8rem;
+    color:var(--soft); padding-bottom:6px; }
+  .fields input[type=number], .fields input[type=text] { padding:5px 8px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.85rem; background:var(--card); color:var(--ink); }
+  .fields .grow { flex:1 1 220px; }
+  .fields .grow input { width:100%; }
+
+  .result { margin-top:8px; padding:9px 12px; background:var(--tint); border-left:3px solid var(--green);
+    border-radius:0 4px 4px 0; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.76rem;
+    white-space:pre-wrap; max-height:440px; overflow:auto; color:var(--ink); }
+  .result.bad { border-left-color:var(--red); color:var(--red); }
+  .result a { color:#2a5a8a; }
+
+  .gate { background:var(--card); border:1px solid var(--rule); border-radius:7px; padding:16px 18px;
+    margin-top:22px; color:var(--soft); }
+  .gate a { color:#2a5a8a; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/unfiled">📥 Unfiled</a>
+  <a href="/research">❓ Open questions</a>
+  <a href="/tasks">✔ The list</a>
+  <a href="/dashboard">📊 Dashboard</a>
+  <a href="/admin" class="active">🛠 Admin tools</a>
+</nav>
+
+<div class="wrap">
+  <h2>Admin tools</h2>
+  <p class="lede">Jobs that change many records at once. Where a tool has a <strong>Preview</strong>,
+    it shows exactly what would happen and changes nothing — the other button does the work.
+    Each result appears under the tool you ran.</p>
+
+  <div id="gate" class="gate" hidden>These tools are for the site admin. Sign in as admin on the
+    <a href="/">map page</a>, then come back here.</div>
+
+  <div id="tools" hidden>
+    <div class="toc">
+      <a href="#bring-in">Bring files in</a>
+      <a href="#move">Move records</a>
+      <a href="#fill">Fill gaps from the census</a>
+      <a href="#clean">Clean up after imports</a>
+      <a href="#gazette">The Gazette</a>
+    </div>
+
+    <h3 class="area" id="bring-in">Bring files in</h3>
+    <p class="area-note">Files prepared in <code>data/</code> and pushed to the site. Both are safe
+      to run twice — neither makes a duplicate.</p>
+
+    <article class="tool">
+      <div>
+        <h4>Import people</h4>
+        <p>Adds the people, census records, occupations and relationships in the prepared
+          <code>people_*.json</code> files, and links them to their houses. Matches on person number
+          or name, and only fills blanks on anyone already in the record.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnPeoplePreview">Preview</button>
+        <button class="btn" id="btnPeopleRun">Import</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Import bibliographies</h4>
+        <p>Loads each prepared works list onto the person who wrote them.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn" id="btnImportWorks">Import</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <h3 class="area" id="move">Move records</h3>
+    <p class="area-note">For a few people at a time, <a href="/reassign">Split a House's Census</a>
+      and <a href="/unfiled">Unfiled records</a> are quicker. This is for a whole house's worth.</p>
+
+    <article class="tool">
+      <div>
+        <h4>Move a household to another property</h4>
+        <p>Moves every census record from one property to another, and the resident links with
+          them. Leave <em>to</em> blank to unfile them instead, back to the unfiled queue. Give person
+          numbers to move one household out of a house holding several.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnMovePreview">Preview</button>
+        <button class="btn" id="btnMoveRun">Move</button>
+      </div>
+      <div class="fields">
+        <label>From property #
+          <input id="mvFrom" type="number" style="width:110px"></label>
+        <label>To property # <span>(blank unfiles)</span>
+          <input id="mvTo" type="number" style="width:150px"></label>
+        <label>Census year <span>(blank for all)</span>
+          <input id="mvYear" type="number" style="width:130px"></label>
+        <label class="grow">Only these people <span>(person numbers)</span>
+          <input id="mvPeople" type="text" placeholder="e.g. 2226, 2227"></label>
+        <label class="check"><input id="mvUnfiled" type="checkbox" checked> Also their unfiled records</label>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <h3 class="area" id="fill">Fill gaps from the census</h3>
+    <p class="area-note">The census records often know more than the person records do. These copy
+      it across — never overwriting anything already filled in.</p>
+
+    <article class="tool">
+      <div>
+        <h4>Date occupations from the census</h4>
+        <p>Gives an undated occupation the years of the person's own census records that name it —
+          "Nurse" dated from an 1891 return saying "Nurse (domestic)".</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnOccYearsPreview">Preview</button>
+        <button class="btn" id="btnOccYearsRun">Date them</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Copy census occupations onto people</h4>
+        <p>So they show on the People page, the group chips and the occupation filter.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnBackfillPreview">Preview</button>
+        <button class="btn" id="btnBackfillRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Copy birth places onto people</h4>
+        <p>Fills a blank birth place from the census. Anyone whose census records disagree with each
+          other is left alone and listed for you to settle.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnBirthPreview">Preview</button>
+        <button class="btn" id="btnBirthRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <h3 class="area" id="clean">Clean up after imports</h3>
+    <p class="area-note">Pasted spreadsheets sometimes slip a column or bring their headings with
+      them. These find the damage.</p>
+
+    <article class="tool">
+      <div>
+        <h4>Find rows that are not people</h4>
+        <p>Lists records whose name is a column heading, or blank. Deletes nothing — each links to
+          its record, where the delete button is.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnStrayRows">Check</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Clear occupations that are not occupations</h4>
+        <p>A sex, a relationship ("Servant", "wife") or a dash left in the occupation field, skewing
+          the counts. Preview names every one before anything is cleared.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnCleanOccPreview">Preview</button>
+        <button class="btn danger" id="btnCleanOccRun">Clear</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Recover the slipped source column</h4>
+        <p>Where "Married, Female" landed in the source field: the sex fills a blank on the person,
+          the marital status moves to its own column, and only then is the source cleared.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnSourcePreview">Preview</button>
+        <button class="btn" id="btnSourceRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Remove duplicate resident links</h4>
+        <p>The same person linked to the same house twice. Keeps one of each.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnDedupePreview">Preview</button>
+        <button class="btn" id="btnDedupeRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <h3 class="area" id="gazette">The Gazette</h3>
+    <p class="area-note">Finds go to <a href="/gazette-review">Gazette review</a> as suggestions to
+      confirm or dismiss, never straight onto a person.</p>
+
+    <article class="tool">
+      <div>
+        <h4>Extract Gazette references</h4>
+        <p>Turns London Gazette links written into biographies into proper citations with issue and page.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnGazettePreview">Preview</button>
+        <button class="btn" id="btnGazetteRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
+        <h4>Search The Gazette for honours</h4>
+        <p>Searches only people whose entry already suggests an honour or public office — a national
+          search returns a namesake for most residents. Hits are filtered to their lifetime. Takes a
+          few minutes; running it again picks up where it stopped.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnSweepPreview">Preview</button>
+        <button class="btn" id="btnSweepRun">Search</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+  </div>
+</div>
+
+<script>
+function esc(v) {
+  if (v === null || v === undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+fetch('/api/me').then(r => r.json()).then(d => {
+  document.getElementById(d && d.isAdmin ? 'tools' : 'gate').hidden = false;
+}).catch(() => { document.getElementById('gate').hidden = false; });
+
+// Each tool reports under itself, not in one box at the foot of the page.
+const resultFor = btn => btn.closest('.tool').querySelector('.result');
+const on = (id, fn) => document.getElementById(id)?.addEventListener('click', fn);
+
+async function runAdminJob(btn, url, body, describe) {
+  const out = resultFor(btn);
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Working…';
+  out.hidden = false; out.className = 'result'; out.textContent = 'Working…';
+  try {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                 body: JSON.stringify(body || {}) });
+    const data = await r.json();
+    if (!r.ok || data.error) throw new Error(data.error || ('HTTP ' + r.status));
+    out.textContent = describe(data);
+  } catch (err) {
+    out.className = 'result bad';
+    out.textContent = 'Failed: ' + err.message;
+  } finally { btn.disabled = false; btn.textContent = label; }
+}
+
+// ── Bring files in ──
+const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + (d.report || []).map(x => {
+      const n = v => v || 0;
+      const work = n(x.added) + n(x.propertyLinks) + n(x.census) + n(x.occupations)
+                 + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships);
+      // Four zeros beside "already present" reads like a failure when it means
+      // the opposite. Say plainly that there is nothing left to do.
+      if (!work) {
+        return `${x.file}: nothing left to do`
+          + (x.alreadyPresent
+              ? (x.alreadyPresent === 1 ? ' — the one person in it is already in the record.'
+                                        : ` — all ${x.alreadyPresent} are already in the record.`)
+              : ' — the file adds nothing.')
+          + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
+      }
+      const bits = [`${x.added} ${d.dryRun ? 'would be added' : 'added'}`];
+      if (x.alreadyPresent) bits.push(`${x.alreadyPresent} already present`);
+      if (x.propertyLinks) bits.push(`${x.propertyLinks} property link${x.propertyLinks === 1 ? '' : 's'}`);
+      if (x.census) bits.push(`${x.census} census record${x.census === 1 ? '' : 's'}`);
+      if (x.occupations) bits.push(`${x.occupations} occupation${x.occupations === 1 ? '' : 's'}`);
+      if (x.occupationsFilled) bits.push(`${x.occupationsFilled} occupation${x.occupationsFilled === 1 ? '' : 's'} filled out`);
+      if (x.enriched) bits.push(`${x.enriched} filled out`);
+      if (x.relationships) bits.push(`${x.relationships} relationship${x.relationships === 1 ? '' : 's'}`);
+      return `${x.file}: ${bits.join(', ')}`
+        // Who, not just how many — a preview naming nobody cannot be checked.
+        + (x.addedNames ? `\n  people: ${x.addedNames.join(', ')}` : '')
+        // When every census record belongs to a person being created, the line
+        // above already names them and this one just says it twice.
+        + (x.censusNames && x.census !== x.added ? `\n  census: ${x.censusNames.join(', ')}` : '')
+        + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
+    }).join('\n')
+  + ((d.report || []).length ? '' : 'No people files found in data/.');
+
+on('btnPeoplePreview', e => runAdminJob(e.target, '/api/admin/import-people', { dryRun: true }, describePeople));
+on('btnPeopleRun', e => runAdminJob(e.target, '/api/admin/import-people', {}, describePeople));
+
+on('btnImportWorks', async e => {
+  const btn = e.target, out = resultFor(btn);
+  btn.disabled = true; btn.textContent = 'Importing…';
+  out.hidden = false; out.className = 'result'; out.textContent = 'Working…';
+  try {
+    const r = await fetch('/api/admin/import-works', { method: 'POST' });
+    const data = await r.json();
+    if (!r.ok || data.error) throw new Error(data.error || ('HTTP ' + r.status));
+    out.textContent = (data.report || []).map(x =>
+      x.skipped ? `${x.file}: skipped — ${x.skipped}`
+                : `${x.file}: ${x.added} added, ${x.alreadyPresent} already recorded`
+    ).join('\n') || 'No bibliography files found in data/.';
+  } catch (err) {
+    out.className = 'result bad';
+    out.textContent = 'Could not import: ' + err.message;
+  } finally { btn.disabled = false; btn.textContent = 'Import'; }
+});
+
+// ── Move records ──
+function _moveBody(dryRun) {
+  const num = id => { const v = document.getElementById(id).value.trim(); return v === '' ? null : parseInt(v, 10); };
+  const ids = document.getElementById('mvPeople').value.split(/[^0-9]+/).filter(Boolean).map(Number);
+  return { from: num('mvFrom'), to: num('mvTo'), year: num('mvYear'), personIds: ids,
+           includeUnfiled: document.getElementById('mvUnfiled').checked, dryRun };
+}
+const describeMove = d => {
+  if (!d.entries.length) return 'Nothing to move — no census records found at that property.';
+  const head = (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.entries.length} census record${d.entries.length === 1 ? '' : 's'} across `
+    + `${d.people} ${d.people === 1 ? 'person' : 'people'}, and ${d.links} resident link`
+    + `${d.links === 1 ? '' : 's'}, ${d.dryRun ? (d.unfile ? 'would be unfiled' : 'would move') : (d.unfile ? 'unfiled' : 'moved')} `
+    + `from #${d.from}` + (d.unfile ? '' : ` to #${d.to}`)
+    + (d.year ? ` for ${d.year}` : '') + ':\n';
+  return head + d.entries.map(e => `  ${e.year}  ${e.name}${e.wasUnfiled ? '  (was unfiled)' : ''}`).join('\n');
+};
+on('btnMovePreview', e => runAdminJob(e.target, '/api/admin/move-residents', _moveBody(true), describeMove));
+on('btnMoveRun', e => {
+  const b = _moveBody(false);
+  const who = b.personIds.length ? `${b.personIds.length} selected people` : 'every census record';
+  const dest = (b.to === null || b.to === undefined || Number.isNaN(b.to))
+    ? 'back to unfiled (no property)' : `to #${b.to}`;
+  if (!confirm(`Move ${who} from property #${b.from} ${dest}` + (b.year ? ` for ${b.year}` : '') + '?')) return;
+  runAdminJob(e.target, '/api/admin/move-residents', b, describeMove);
+});
+
+// ── Fill gaps from the census ──
+const describeOccYears = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.yearless} occupation${d.yearless === 1 ? '' : 's'} with no year. `
+  + `${d.dated} ${d.dryRun ? 'can be' : 'were'} dated from the person's own census records; `
+  + `${d.undatable} ${d.undatable === 1 ? 'has' : 'have'} no census record that names ${d.undatable === 1 ? 'it' : 'them'} and stay${d.undatable === 1 ? 's' : ''} undated.`
+  + (d.examples && d.examples.length ? '\n\n' + d.examples.map(x =>
+      `  ${x.name} — ${x.occupation}: ${x.from}${x.to ? '–' + x.to : ''}${x.how === 'same wording' ? '' : '  (' + x.how + ')'}`).join('\n')
+      + (d.dated > d.examples.length ? `\n  …and ${d.dated - d.examples.length} more` : '') : '')
+  + (d.undatableExamples && d.undatableExamples.length
+      ? '\n\nStaying undated, for example:\n' + d.undatableExamples.map(x => '  ' + x).join('\n') : '');
+on('btnOccYearsPreview', e => runAdminJob(e.target, '/api/admin/fill-occupation-years', { dryRun: true }, describeOccYears));
+on('btnOccYearsRun', e => runAdminJob(e.target, '/api/admin/fill-occupation-years', {}, describeOccYears));
+
+const describeBackfill = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.added} occupation${d.added === 1 ? '' : 's'} ${d.dryRun ? 'would be added' : 'added'} `
+  + `across ${d.peopleAffected} people.\n`
+  + `${d.alreadyHad} already recorded, ${d.skipped} skipped as not an occupation, `
+  + `from ${d.candidates} census entries.`;
+on('btnBackfillPreview', e => runAdminJob(e.target, '/api/admin/backfill-occupations', { dryRun: true }, describeBackfill));
+on('btnBackfillRun', e => runAdminJob(e.target, '/api/admin/backfill-occupations', {}, describeBackfill));
+
+const describeBirth = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.filled} ${d.dryRun ? 'would gain' : 'gained'} a birth place`
+  + (d.conflicted ? `, ${d.conflicted} left alone because their census entries disagree` : '')
+  + '.\n'
+  + (d.sample.length ? '\n' + d.sample.map(x => `  ${x.name} — ${x.place}`).join('\n') : '')
+  + (d.conflicts.length ? '\n\nDisagreeing, for you to settle:\n'
+      + d.conflicts.map(x => `  ${x.name} — ${x.places.join(' / ')}`).join('\n') : '');
+on('btnBirthPreview', e => runAdminJob(e.target, '/api/admin/backfill-birthplaces', { dryRun: true }, describeBirth));
+on('btnBirthRun', e => runAdminJob(e.target, '/api/admin/backfill-birthplaces', {}, describeBirth));
+
+// ── Clean up after imports ──
+on('btnStrayRows', async e => {
+  const btn = e.target, out = resultFor(btn);
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Checking…';
+  out.hidden = false; out.className = 'result'; out.textContent = 'Checking…';
+  try {
+    const r = await fetch('/api/admin/stray-rows');
+    const d = await r.json();
+    if (!r.ok || d.error) throw new Error(d.error || ('HTTP ' + r.status));
+    if (!d.strays.length) {
+      out.textContent = `Checked ${d.scanned} people. None of them is a header row.`;
+    } else {
+      out.innerHTML = `Checked ${d.scanned} people. `
+        + `${d.strays.length} ${d.strays.length === 1 ? 'record is' : 'records are'} not a person:\n`
+        + d.strays.map(p => {
+            const nm = [p.first_name, p.last_name].filter(Boolean).join(' ').trim() || '(no name)';
+            const ce = Number(p.census_entries);
+            return `  <a href="/people?person=${encodeURIComponent(p.id)}" target="_blank">#${esc(p.id)} ${esc(nm)}</a>`
+              + (ce ? ` — ${ce} census ${ce === 1 ? 'entry' : 'entries'} attached, check before deleting` : '');
+          }).join('\n');
+    }
+  } catch (err) {
+    out.className = 'result bad';
+    out.textContent = 'Failed: ' + err.message;
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
+
+const describeCleanOcc = d => {
+  if (!d.censusCleared && !d.peopleCleared) return 'Nothing to clear — every occupation looks like one.';
+  const line = r => `  ${r.year ? r.year + '  ' : ''}${r.name} — "${r.value}"`;
+  return (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.censusCleared} census record${d.censusCleared === 1 ? '' : 's'} and `
+    + `${d.peopleCleared} occupation${d.peopleCleared === 1 ? '' : 's'} on people `
+    + `${d.dryRun ? 'would be cleared' : 'cleared'}.\n`
+    + (d.people.length ? '\nOn people (these show in the filter):\n' + d.people.map(line).join('\n') : '')
+    + (d.census.length ? '\n\nOn census records:\n' + d.census.map(line).join('\n') : '');
+};
+on('btnCleanOccPreview', e => runAdminJob(e.target, '/api/admin/clean-occupations', { dryRun: true }, describeCleanOcc));
+on('btnCleanOccRun', e => {
+  if (!confirm('Clear every occupation value that is not an occupation?')) return;
+  runAdminJob(e.target, '/api/admin/clean-occupations', {}, describeCleanOcc);
+});
+
+const describeSource = d =>
+  !d.entries ? 'Nothing to recover — every source field looks like a source.'
+  : (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.entries} entr${d.entries === 1 ? 'y' : 'ies'} ${d.dryRun ? 'would be' : 'were'} cleared. `
+    + `${d.maritalRecovered} marital status${d.maritalRecovered === 1 ? '' : 'es'} kept, `
+    + `${d.sexRecovered} ${d.sexRecovered === 1 ? 'person gains' : 'people gain'} a sex.\n\n`
+    + d.sample.map(x => `  ${x.year}  ${x.name} — "${x.was}"`
+        + (x.setSex ? ` → sex ${x.setSex}` : '')
+        + (x.setMarital ? `, ${x.setMarital}` : '')).join('\n');
+on('btnSourcePreview', e => runAdminJob(e.target, '/api/admin/recover-source-column', { dryRun: true }, describeSource));
+on('btnSourceRun', e => runAdminJob(e.target, '/api/admin/recover-source-column', {}, describeSource));
+
+const describeDedupe = d =>
+  !d.pairs ? 'No duplicate links. Nobody is linked to the same property twice.'
+  : (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.extraRows} extra link${d.extraRows === 1 ? '' : 's'} across ${d.pairs} `
+    + `person-and-property pair${d.pairs === 1 ? '' : 's'} ${d.dryRun ? 'would be removed' : 'removed'}.\n`
+    + d.sample.map(x => `  ${x.name} at property ${x.property_id} — ${x.copies} copies`).join('\n');
+on('btnDedupePreview', e => runAdminJob(e.target, '/api/admin/dedupe-resident-links', { dryRun: true }, describeDedupe));
+on('btnDedupeRun', e => runAdminJob(e.target, '/api/admin/dedupe-resident-links', {}, describeDedupe));
+
+// ── The Gazette ──
+const describeGazette = d =>
+  (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.linksFound} link${d.linksFound === 1 ? '' : 's'} found in ${d.peopleWithLinks} biographies. `
+  + `${d.added} ${d.dryRun ? 'would be recorded' : 'recorded'}, ${d.alreadyRecorded} already there.`;
+on('btnGazettePreview', e => runAdminJob(e.target, '/api/admin/extract-gazette', { dryRun: true }, describeGazette));
+on('btnGazetteRun', e => runAdminJob(e.target, '/api/admin/extract-gazette', {}, describeGazette));
+
+const describeSweep = d => d.dryRun
+  ? `Preview — nothing searched yet.\n${d.wouldSearch} people carry an honours signal, including: `
+    + d.names.join(', ') + '…'
+  : `Done.\nSearched ${d.searched} people. ${d.plausibleHits} notices fell within their lifetime; `
+    + `${d.added} recorded as suggestions, ${d.alreadyRecorded} already there.\n`
+    + `Open each person to confirm or dismiss them.`;
+on('btnSweepPreview', e => runAdminJob(e.target, '/api/admin/gazette-sweep', { dryRun: true }, describeSweep));
+
+// The sweep runs a few people at a time, because each one is a search against an
+// external service and a whole run takes minutes — long enough for the host to
+// cut the request off, which is what returned a 502.
+on('btnSweepRun', async e => {
+  const btn = e.target, out = resultFor(btn);
+  const label = btn.textContent;
+  btn.disabled = true;
+  out.hidden = false; out.className = 'result';
+  let offset = 0, total = null, added = 0, already = 0, hits = 0, slices = 0;
+  try {
+    do {
+      btn.textContent = total ? `Searching ${offset}/${total}…` : 'Searching…';
+      out.textContent = total
+        ? `Searched ${offset} of ${total} people. ${added} suggestions recorded so far…`
+        : 'Starting…';
+      const r = await fetch('/api/admin/gazette-sweep', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ offset, batch: 6 }),
+      });
+      const d = await r.json();
+      if (!r.ok || d.error) throw new Error(d.error || ('HTTP ' + r.status));
+      offset = d.offset; total = d.total;
+      added += d.added; already += d.alreadyRecorded; hits += d.plausibleHits;
+      if (++slices > 200) throw new Error('stopped after 200 slices');
+      if (d.done) break;
+    } while (true);
+    out.textContent = `Done.\nSearched ${total} people. ${hits} notices fell within their `
+      + `lifetime; ${added} recorded as suggestions, ${already} already there.\n`
+      + `Open each person to confirm or dismiss them.`;
+  } catch (err) {
+    out.className = 'result bad';
+    out.textContent = `Stopped after ${offset} of ${total || '?'} people: ${err.message}\n`
+      + `${added} suggestions were recorded before it stopped — running it again picks up `
+      + `where it left off.`;
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
+</script>
+</body>
+</html>
