@@ -3545,6 +3545,7 @@
   "name": "",
   "street": "Park Drive",
   "no": "9",
+  "prev_house_name": "Park Lodge",
   "address": "9 Park Drive",
   "desc": "Red brick with ashlar dressings and hipped and gabled roof. Two storeys plus basement and attics. Original side extension and single storey front wing adjacent to Newcastle Circus. Original glazed porch to main entrance now demolished. Row of flat roofed garages added, early/mid 20c, at bottom of garden adjacent to Clumber Crescent South. Single storey flat roofed red brick extension also added adjacent to Park Drive. Originally, large glasshouse between houses, facing the garden. Single storey bow window bay adjacent to main entrance. Two storey flat roofed canted window bay and three storey rectangular window bay with shaped gable overlooking garden. Two storey, flat roofed canted window bay facing Newcastle Circus. Corbelled and bull nose brick detail at eaves and gable verges. Nailhead moulding detail at eaves. Corbelled brick band course at first floor level with sawtooth detail. Stonework features include moulded, pointed arch former porch doorway within, originally, gabled section of coursed rubble stone boundary wall; window surrounds with straight and round arched heads and splay reveals plus hoodmoulds, bosses and shaft mullions with floriated capitals. Also, gable kneelers and copings to gabled dormers. Part of the stonework now painted. Slate roof with gables and gabled dormers. Clay ridge and hip tiles. Flat roofed dormer windows added. Brick relief patterning to original red brick chimney stacks with some alterations and partial rebuilding. Half glazed and panelled main entrance door. Combination of plain and glazing bar sash windows with a number of alterations and added casements. Also numerous new or enlarged door and window openings. Red brick boundary wall with coursed rubble stone plinth enclosing garden adjacent to Park Drive and Clumber Crescent South. Blue brick plinth stretchers and band course with saddleback copings to garden wall. Brick boundary wall adjacent to Newcastle Circus. Original boundary wall breached and garages added at bottom of garden adjacent to Clumber Crescent South.\n\n",
   "history": "One of a pair of houses c1870-75 (with 6 South Road), possibly by architects Hine & Son. Now converted into flats. ",
@@ -3553,7 +3554,10 @@
   "date_built": "1870",
   "listed": "No",
   "lat": 52.9503097,
-  "lng": -1.1608421
+  "lng": -1.1608421,
+  "sources": {
+   "names": "Park Lodge \u2014 OpenStreetMap building way/132204665 carries the house name Park Lodge at 9 Park Drive, now divided into flats, from Nottingham City Council's open planning data; Dougal de Havilland's map labels it Park Lodge too, beside Clumber House. Not to be confused with the Park Lodge on Tattershall Drive, which is not in the record."
+  }
  },
  {
   "id": 238,

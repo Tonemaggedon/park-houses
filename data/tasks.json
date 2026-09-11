@@ -236,10 +236,10 @@
     {
       "slug": "greendale",
       "area": "Houses and names",
-      "title": "Find Greendale on Huntingdon Drive",
-      "detail": "Joseph Spray, 77, his wife Martha, daughter Jessie and a servant, 1921. The unnamed numbers are 2, 4 and 8 — but the road runs past 10, so it may not be among them.",
-      "size": "research",
-      "link": "/research"
+      "title": "Find Greendale on Huntingdon Drive — probably 4",
+      "detail": "Joseph, Martha and Jessie Spray are already linked as residents of 4 Huntingdon Drive (#146) from 1911, and their 1921 household is unfiled as \"Huntingdon Drive (Greendale)\". 4 has no name and no 1921 household, so it fits. Their 1911 census schedule is not in the record; if it reads Greendale or 4 Huntingdon Drive, file the four to 146 and record Greendale as its name.",
+      "size": "a look at the return",
+      "link": "/unfiled"
     },
     {
       "slug": "huntingdon-far-side",
@@ -540,8 +540,32 @@
     {
       "slug": "east-lodge-stubbing",
       "area": "Houses and names",
-      "title": "Were John Stubbing and Elizabeth Gunn at East Lodge?",
-      "detail": "The same unfiled group carries a second household: John Stubbing, 66, head, returned as an Attendant, with Elizabeth Gunn, 54, his housekeeper. The label says Tower House, but a separate household headed by an attendant fits the lodge beside it — East Lodge, Grade II, seven metres away and not in the record. If the return says East Lodge, that is a house to create; if it says Tower House, the two households shared it.",
+      "title": "(Superseded) John Stubbing's return says Park Lodge, not East Lodge",
+      "detail": "See \"Which Park Lodge were John Stubbing and Elizabeth Gunn at?\" — tick this one off.",
+      "size": "a look at the return",
+      "link": "/unfiled"
+    },
+    {
+      "slug": "merge-louisa-pacey",
+      "area": "Merges the page cannot find",
+      "title": "Merge Louisa Pacey / Paecy, the Sprays' servant for twenty years",
+      "detail": "Both born 1872. Louisa Pacey (#2432) is the Spray household's servant at 14 Cavendish Crescent North in 1901; Louisa Paecy (#2101) is still with them at Greendale in 1921. Keep 2432, merge in 2101.",
+      "size": "one click",
+      "link": "/duplicates"
+    },
+    {
+      "slug": "merge-sissie-jessie-spray",
+      "area": "Merges the page cannot find",
+      "title": "Merge Sissie and Jessie Spray",
+      "detail": "Both born 1874, both the Sprays' daughter: \"Sissie\" (#2431) at 14 Cavendish Crescent North in 1901, Jessie (#2100) at Greendale in 1921. Sissie is a pet name for Jessie. Keep 2100, merge in 2431.",
+      "size": "one click",
+      "link": "/duplicates"
+    },
+    {
+      "slug": "park-lodge-stubbing",
+      "area": "Houses and names",
+      "title": "Which Park Lodge were John Stubbing and Elizabeth Gunn at?",
+      "detail": "Their 1921 return says Park Lodge. There are two. Park Lodge, 9 Park Drive, is already in the record (#237) and now carries the name, from OpenStreetMap and Dougal's map. The other is the Park Lodge on Tattershall Drive by the tennis ground, which is not in the record. If the return gives a street, that settles it: 9 Park Drive means filing them to 237; Tattershall Drive means creating the lodge.",
       "size": "a look at the return",
       "link": "/unfiled"
     }
