@@ -3890,6 +3890,7 @@
   "name": "",
   "street": "Park Valley",
   "no": "1",
+  "prev_house_name": "Arundel Lodge",
   "address": "1 Park Valley",
   "desc": "Large detached two storey house plus basement and attics, c1870. Plans by Leslie Harris for flat conversion scheme c1925. House remains converted for use as flats. In prominent position at eastern entry to The Park at junction of Lenton Road and Park Valley. Possibly by Hine & Evans architects. Substantial part of original garden area now lost to separate residential development adjacent to Huntingdon Drive c1970. Late 19c/early 20c pitched roof extensions and additions adjacent to Park Valley boundary plus single storey, pitched roof extension abutting north facing facade. Coursed rubble stone basement storey and boundary wall, red brick facades with ashlar dressings and hipped slate roof with dormers. Full height canted window bay facing garden with gabled dormer above. To the right, two storey bow window bay with ornamental stonework balustrade. Three storey canted window bay with hipped slate roof overlooking Lenton Road. Prominent stone fronted main entrance porch on Park Valley with pitched glazed roof and pair of moulded, pointed arch ashlar entrance door openings. Moulded brick and terracotta band at eaves and first floor storey height level. Extensive use of coursed rubble stone walls to basement and entrance porch with arched door and window openings, plus decorative ashlar details at window openings including lintels, shaft pilasters and sills. Most of the stonework has remained unpainted. Hipped slate roof with original brick dormers plus gabled dormer with ashlar dressings, clay ridge tiles and terracotta finials. Prominent red brick chimney stacks with brick relief patterning and corbelled caps. Original pots missing or replaced. Some original c.i. fittings with additional later pipework to service flat conversions. Original windows mainly plain or single glazing bar sashes. A number of window alterations and additions including flat roofed dormers to attics. Pair of shaped, panelled outer main entrance doors to porch. Prominent original coursed rubble stone boundary walls to Park Valley and Lenton Road. Remnants of original stone boundary wall and outbuildings form part of later, predominantly, brick extension adjacent to entrance porch/passageway on Park Valley.\n\n",
   "history": "Also known as Arundel House. ",
@@ -3898,7 +3899,10 @@
   "listed": "No",
   "house_name": "Arundel House",
   "lat": 52.9504291,
-  "lng": -1.1565319
+  "lng": -1.1565319,
+  "sources": {
+   "land_registry": "Arundel Lodge, 1 Park Valley \u2014 HM Land Registry price paid data, which records house names alongside numbers for sales since 1995 \u2014 a modern name, so not necessarily the historic one."
+  }
  },
  {
   "id": 259,
@@ -4253,6 +4257,7 @@
   "name": "",
   "street": "Pelham Crescent",
   "no": "13",
+  "prev_house_name": "Castle House",
   "address": "13 Pelham Crescent",
   "desc": "Large part of original garden area to side of house separately developed c1972 into single dwelling. Two storey original house plus attic and basement. Originally red brick facades (?) now rendered and painted with stone dressings. Gabled slate roof. Original single storey rear extension with 20c additions. Plans by Evans, Clark and Woollatt Architects for alterations to house plus garage c1920-23 for Dudley Forman. Single storey, flat roofed canted window bay on garden front. Glazing bar sash windows generally in singles and pairs. Prominent window group with semicircular arched heads and moulded cornices on side and garden elevations. Venetian style window opening to main gable on road and garden fronts. Semicircular arched heads to windows in gabled dormers. A number of window alterations, additions or replacements. Moulded stone surrounds to door and window openings now painted, plus sill bands, brackets and string courses. Originally full length decorative band at eaves on side elevation, now rendered over. Alterations to openings at ground floor level with 20c additions. Double pitched slate roof with symmetrical gable and gabled dormer arrangement on road and garden fronts. Bargeboards to gables. Part of roof now re-slated. Side wall and central chimney stacks, now altered, rendered or painted. Original pots replaced. Original rainwater fittings replaced and further pipework added. Roof windows added. Original brick/stone boundary wall with gate piers to Pelham Crescent plus original coal house outbuilding now largely replaced by later development, garage and vehicular gates. Original brick/stone boundary wall and gate piers to Cavendish Crescent North survive with render patching to some areas of brickwork.\n\n",
   "history": "One of a group of houses in pairs c1868-70 by John Loverseed. Nos.11 and 13 Pelham Crescent were mortgaged by John Loverseed to Robert Knight in March 1868. Layout plan of The Park Estate, by Hine & Evans 1855-56, anticipated a sweeping crescent linking North Road to Lenton Avenue. However, continued use of nearby Barracks until c1870 resulted in Pelham Crescent becoming a cul-de-sac. In single household use. ",
@@ -4261,7 +4266,10 @@
   "date_built": "1868",
   "listed": "No",
   "lat": 52.9534809,
-  "lng": -1.1681342
+  "lng": -1.1681342,
+  "sources": {
+   "land_registry": "Castle House, 13 Pelham Crescent \u2014 HM Land Registry price paid data, which records house names alongside numbers for sales since 1995 \u2014 a modern name, so not necessarily the historic one."
+  }
  },
  {
   "id": 283,
@@ -5972,6 +5980,7 @@
   "name": "Hardwicke House",
   "street": "Cavendish Crescent North",
   "no": "Hardwicke House",
+  "prev_house_name": "Hardwick House",
   "address": "Hardwicke House, Cavendish Crescent North",
   "desc": "",
   "history": "",
@@ -5985,7 +5994,8 @@
   "sources": {
    "position": "OpenStreetMap building footprint, corroborated by OS 1:1250 SK 5539 NE",
    "house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953 (spelt Hardwicke; OS 1:1250 SK 5639 NW, boundaries Dec 1970 spells it Hardwick)",
-   "number": "Hardwicke House is on Cavendish Crescent North \u2014 confirmed by A. Hagues \u2014 but carries no number in the record. The walk of 10 Sep 2026 offers **2**, with the owner's own query against it. The crescent has no 2 recorded, so the number is free. Not applied until confirmed."
+   "number": "Hardwicke House is on Cavendish Crescent North \u2014 confirmed by A. Hagues \u2014 but carries no number in the record. The walk of 10 Sep 2026 offers **2**, with the owner's own query against it. The crescent has no 2 recorded, so the number is free. Not applied until confirmed.",
+   "land_registry": "Recorded by Land Registry as Hardwick House, without the final e \u2014 HM Land Registry price paid data, which records house names alongside numbers for sales since 1995 \u2014 a modern name, so not necessarily the historic one. Kept as a second spelling so a census address written that way still matches."
   }
  },
  {

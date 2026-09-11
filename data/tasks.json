@@ -245,7 +245,7 @@
       "slug": "huntingdon-far-side",
       "area": "Houses and names",
       "title": "Decide whether the far side of Huntingdon Drive should be in the record",
-      "detail": "11 Burnham House, 13 The Magpies, 15 The Coach House, The Hunting Lodge, 17, 18 The Round House and Birchwood are all on Dougal's map and none are in the record. Only create them where a census household turns up — that is the rule.",
+      "detail": "11 Burnham House, 13 The Magpies, 15 The Coach House, The Hunting Lodge, 17, 18 The Round House and Birchwood are on Dougal's map and none are in the record. HM Land Registry now confirms The Hunting Lodge, The Round House, Birchwood and Swan House on Huntingdon Drive, and The Cottage at 14. Only create them where a census household turns up — that is the rule.",
       "size": "research",
       "link": "/research"
     },
@@ -568,6 +568,14 @@
       "detail": "Their 1921 return reads Park Lodge, Park Row — a third Park Lodge, not 9 Park Drive or the one on Tattershall Drive. It is now in the record as #413, placed provisionally on the lodge OpenStreetMap calls East Lodge, beside Tower House. On /unfiled, in the group \"tower house park row Park Row\", send the Stubbing household to 413 and the Maccolls to 395.",
       "size": "one click",
       "link": "/unfiled"
+    },
+    {
+      "slug": "land-registry-names",
+      "area": "Houses and names",
+      "title": "Work through the house names from Land Registry",
+      "detail": "A sweep of HM Land Registry's price paid data across all 44 streets found 797 addresses with a name. Three attached to houses already in the record and are now recorded: Arundel Lodge (1 Park Valley), Castle House (13 Pelham Crescent), and Hardwick House as a second spelling of Hardwicke House. The rest are on /research as nine questions, grouped by street. Belwood is on Tattershall Drive.",
+      "size": "research",
+      "link": "/research"
     }
   ]
 }

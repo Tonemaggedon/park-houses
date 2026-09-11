@@ -38,8 +38,8 @@
     {
       "slug": "belwood-where",
       "kind": "house-name",
-      "title": "Where is Belwood?",
-      "detail": "Belwood appears as a label on Dougal de Havilland's map of The Park and on the OS sheets, but no property of that name is in the record and no census household carries it. Which building is it, and is the name still in use?"
+      "title": "Where is Belwood? — Land Registry says Tattershall Drive",
+      "detail": "Belwood appears on Dougal de Havilland's map and on the OS sheets but was never placed. HM Land Registry's price paid data holds a house called Belwood on Tattershall Drive, with no number. Which house on Tattershall Drive is it, and has anyone been found living there on a census return?"
     },
     {
       "slug": "penrhyn-cottage-or-house",
@@ -159,6 +159,60 @@
       "kind": "house-name",
       "title": "Which house on Cavendish Crescent North was called Kentmere?",
       "detail": "In 1911 William Wing, a solicitor of 47, lived at \"Kentmere, Cavendish Crescent North\" with his wife Sara, sons Henry (an automobile engineer) and Richard (an articled clerk), a cook and a housemaid. The name is in the record under no house, and turns up on neither OpenStreetMap nor Dougal de Havilland's map. The enumerator reached the Wings straight after 4 Peveril Drive and before William Bradshaw and 3 Cavendish Crescent North, so Kentmere is at the North Road end of the crescent — most likely 1, now Carisbrooke House, which holds nobody in 1911. Names on this crescent changed: 10 was formerly Charnwood. A directory for about 1910, or a deed, would name it."
+    },
+    {
+      "slug": "lr-tattershall-drive",
+      "kind": "house-name",
+      "title": "Which houses on Tattershall Drive are Belwood, Ellington and The Lodge?",
+      "detail": "Land Registry holds three named houses on Tattershall Drive with no number: Belwood, Ellington and The Lodge. That puts Belwood — on Dougal's map and the OS sheets but never placed — on Tattershall Drive at last. Ellington is probably Ellington House (#312), already in the record. The Lodge may be the lodge beside the tennis ground, which OpenStreetMap calls Park Lodge. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-cavendish-crescent-north",
+      "kind": "house-name",
+      "title": "Which number on Cavendish Crescent North is Journeys End?",
+      "detail": "Land Registry holds a house called Journeys End on Cavendish Crescent North with no number. Dougal's map labels Journey's End beside Hamilton Mews and Hardwick House. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-park-drive",
+      "kind": "house-name",
+      "title": "Titchfield Park Lodge and Ashley Bungalow, Park Drive",
+      "detail": "Land Registry holds two named houses on Park Drive with no number: Titchfield Park Lodge and Ashley Bungalow. Ashley Bungalow is presumably in the grounds of Ashley House (#238). Titchfield Park Lodge would make a fourth lodge of that name in The Park. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-park-terrace",
+      "kind": "house-name",
+      "title": "Abbot House, Laneham House, Richmond House, Studio House and Fairview, Park Terrace",
+      "detail": "Land Registry holds Abbot House, Laneham House, Richmond House and Studio House on Park Terrace with no number, and Fairview at 14b — a number the record does not hold (it has 14). Dougal's map places The Studio House near Sunnyside. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-peveril-drive",
+      "kind": "house-name",
+      "title": "Rock Cottage and Hamilton View, Peveril Drive",
+      "detail": "Land Registry holds Rock Cottage and Hamilton View on Peveril Drive with no number. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-western-terrace",
+      "kind": "house-name",
+      "title": "One Degree West, Park View, The Atrium and The Corner House, Western Terrace",
+      "detail": "Land Registry holds four named houses on Western Terrace with no number. One Degree West is the 2003 house Dougal's map says was named for its longitude. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-coach-houses",
+      "kind": "building",
+      "title": "The coach houses, stables and lodges Land Registry names",
+      "detail": "Land Registry holds outbuildings sold as houses in their own right: The Coach House on Cavendish Road East, Kenilworth Road, Newcastle Circus, North Road and Tunnel Road; The Stables on Kenilworth Road; Mews Cottage on Hope Drive; Edale Lodge on Clumber Road East, beside Edale House (#82); and Tunnel Lodge on Tunnel Road, which is where Gees Lodge (#408) is provisionally placed. These are the Gartree Lodge kind of building — each is worth checking for a census household that was filed at the big house. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-numbers-not-held",
+      "kind": "place",
+      "title": "Named houses at numbers the record does not hold",
+      "detail": "Land Registry pairs a name with a number for houses whose number is not in the record: Beech Lodge, 8 Clumber Crescent South; The Mews House, 1, and Ashdown, 7, Clumber Road West; Hardwick View, 11 Hardwick Road; Lenton View, 11a, and Cedar Mews, 1b, Lenton Avenue; West Park Lodge, 36 Lenton Road, with East Park Lodge beside it; and Park View House, 58, and Carrick House, 64, The Ropewalk. Most will be later infill or subdivisions. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
+    },
+    {
+      "slug": "lr-others",
+      "kind": "house-name",
+      "title": "Other named houses: Clare Valley, Lenton Avenue, North Road, Park Ravine, Newcastle Drive",
+      "detail": "Land Registry also holds Evergreen, Maredo and Tree Tops on Clare Valley (Dougal's map dates those to 1967-8); The Propatulum on Lenton Avenue; Lacemakers House on North Road; Terrace House on Park Ravine; The Tower House on Newcastle Drive; and One & A Half on Hamilton Drive. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it."
     }
   ]
 }
