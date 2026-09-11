@@ -1656,10 +1656,11 @@
   "lat": 52.9547083,
   "lng": -1.1556839,
   "nhle_also": [
-   "1270995"
+   "1270995",
+   "1270851"
   ],
   "sources": {
-   "nhle_also": "Derby Terrace and attached railings is one list entry (1270995, Grade II) covering the whole terrace, so it is recorded against every house on it. Derby House also has an entry of its own (1270828)."
+   "nhle_also": "Numbers 145 And 147 And Attached Railings (entry 1270851, Grade II) is one list entry covering 145 and 147 Derby Road, so it is recorded against both houses."
   }
  },
  {
@@ -2270,8 +2271,12 @@
   "lat": 52.9511327,
   "lng": -1.1588212,
   "sources": {
-   "names": "Greendale \u2014 Joseph Spray's own biography gives his address as \"Greendale, Huntingdon Drive, The Park\", and Companies House records put Greendale at 4 Huntingdon Drive (both found by A. Hagues). The Spray household is returned at Greendale in the 1921 census."
-  }
+   "names": "Greendale \u2014 Joseph Spray's own biography gives his address as \"Greendale, Huntingdon Drive, The Park\", and Companies House records put Greendale at 4 Huntingdon Drive (both found by A. Hagues). The Spray household is returned at Greendale in the 1921 census.",
+   "nhle_also": "Numbers 3 And 4 And Attached External Corridors (entry 1270776, Grade II) is one list entry covering 3 and 4 Huntingdon Drive, so it is recorded against both houses."
+  },
+  "nhle_also": [
+   "1270776"
+  ]
  },
  {
   "id": 147,
@@ -3705,7 +3710,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9522869,
-  "lng": -1.1587099
+  "lng": -1.1587099,
+  "nhle_also": [
+   "1254800"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 1 And 2 And Attached Area Railings (entry 1254800, Grade II) is one list entry covering 1 and 2 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 242,
@@ -3721,7 +3732,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9526342,
-  "lng": -1.1588593
+  "lng": -1.1588593,
+  "nhle_also": [
+   "1254800"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 1 And 2 And Attached Area Railings (entry 1254800, Grade II) is one list entry covering 1 and 2 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 243,
@@ -3753,7 +3770,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9525993,
-  "lng": -1.1583685
+  "lng": -1.1583685,
+  "nhle_also": [
+   "1270567"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 3 And 4 And Attached Area Railings (entry 1270567, Grade II) is one list entry covering 3 and 4 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 245,
@@ -3769,7 +3792,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9521307,
-  "lng": -1.1581969
+  "lng": -1.1581969,
+  "nhle_also": [
+   "1270629"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 5 And 6 And Attached Area Railings (entry 1270629, Grade II) is one list entry covering 5 and 6 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 246,
@@ -3785,7 +3814,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.952593,
-  "lng": -1.1582663
+  "lng": -1.1582663,
+  "nhle_also": [
+   "1270629"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 5 And 6 And Attached Area Railings (entry 1270629, Grade II) is one list entry covering 5 and 6 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 247,
@@ -3803,7 +3838,13 @@
   "architect": "P.F. Robinson",
   "listed_grade": "II",
   "style": "Regency        William Patterson",
-  "date_built": "1829"
+  "date_built": "1829",
+  "nhle_also": [
+   "1254902"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 7 And 8 And Attached Area Railings (entry 1254902, Grade II) is one list entry covering 7 and 8 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 248,
@@ -3819,7 +3860,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9526405,
-  "lng": -1.158418
+  "lng": -1.158418,
+  "nhle_also": [
+   "1254902"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 7 And 8 And Attached Area Railings (entry 1254902, Grade II) is one list entry covering 7 and 8 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 249,
@@ -3835,7 +3882,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9526414,
-  "lng": -1.1591496
+  "lng": -1.1591496,
+  "nhle_also": [
+   "1254801"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 9 And 10 And Attached Area Railings (entry 1254801, Grade II) is one list entry covering 9 and 10 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 250,
@@ -3851,7 +3904,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9524758,
-  "lng": -1.1582818
+  "lng": -1.1582818,
+  "nhle_also": [
+   "1254801"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 9 And 10 And Attached Area Railings (entry 1254801, Grade II) is one list entry covering 9 and 10 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 251,
@@ -3867,7 +3926,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9521509,
-  "lng": -1.1582852
+  "lng": -1.1582852,
+  "nhle_also": [
+   "1254905"
+  ],
+  "sources": {
+   "nhle_also": "11 And 12, Park Terrace (entry 1254905, Grade II) is one list entry covering 11 and 12 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 252,
@@ -3883,7 +3948,13 @@
   "date_built": "1829",
   "listed": "Yes",
   "lat": 52.9521598,
-  "lng": -1.1582463
+  "lng": -1.1582463,
+  "nhle_also": [
+   "1254905"
+  ],
+  "sources": {
+   "nhle_also": "11 And 12, Park Terrace (entry 1254905, Grade II) is one list entry covering 11 and 12 Park Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 253,
@@ -4070,7 +4141,13 @@
   "date_built": "1830",
   "listed": "No",
   "lat": 52.9504768,
-  "lng": -1.1569292
+  "lng": -1.1569292,
+  "nhle_also": [
+   "1059026"
+  ],
+  "sources": {
+   "nhle_also": "8 And 10, Park Valley (entry 1059026, Grade II) is one list entry covering 8 and 10 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 265,
@@ -4099,7 +4176,13 @@
   "date_built": "1830",
   "listed": "No",
   "lat": 52.9508871,
-  "lng": -1.1566402
+  "lng": -1.1566402,
+  "nhle_also": [
+   "1059026"
+  ],
+  "sources": {
+   "nhle_also": "8 And 10, Park Valley (entry 1059026, Grade II) is one list entry covering 8 and 10 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 267,
@@ -4144,7 +4227,13 @@
   "date_built": "1838",
   "listed": "Yes",
   "lat": 52.9507805,
-  "lng": -1.15667
+  "lng": -1.15667,
+  "nhle_also": [
+   "1344950"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 17 And 19 And Attached Area Railings (entry 1344950, Grade II) is one list entry covering 17 and 19 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 270,
@@ -4160,7 +4249,13 @@
   "date_built": "1838",
   "listed": "Yes",
   "lat": 52.9507191,
-  "lng": -1.156516
+  "lng": -1.156516,
+  "nhle_also": [
+   "1344950"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 17 And 19 And Attached Area Railings (entry 1344950, Grade II) is one list entry covering 17 and 19 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 271,
@@ -4175,7 +4270,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9509685,
-  "lng": -1.1573983
+  "lng": -1.1573983,
+  "nhle_also": [
+   "1059028"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 21 And 23 And Attached Area Balustrades And Gate Piers (entry 1059028, Grade II) is one list entry covering 21 and 23 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 272,
@@ -4190,7 +4291,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9506799,
-  "lng": -1.1565168
+  "lng": -1.1565168,
+  "nhle_also": [
+   "1059028"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 21 And 23 And Attached Area Balustrades And Gate Piers (entry 1059028, Grade II) is one list entry covering 21 and 23 Park Valley, so it is recorded against both houses."
+  }
  },
  {
   "id": 273,
@@ -5234,7 +5341,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9546882,
-  "lng": -1.1658673
+  "lng": -1.1658673,
+  "nhle_also": [
+   "1255254"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 3 And 4 And Attached Railings And Wall (entry 1255254, Grade II) is one list entry covering 3 and 4 Western Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 343,
@@ -5250,7 +5363,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9547255,
-  "lng": -1.1664853
+  "lng": -1.1664853,
+  "nhle_also": [
+   "1255254"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 3 And 4 And Attached Railings And Wall (entry 1255254, Grade II) is one list entry covering 3 and 4 Western Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 344,
@@ -5266,7 +5385,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9546677,
-  "lng": -1.1666332
+  "lng": -1.1666332,
+  "nhle_also": [
+   "1255255"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 5 And 6 And Attached Boundary Wall (entry 1255255, Grade II) is one list entry covering 5 and 6 Western Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 345,
@@ -5283,7 +5408,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9547075,
-  "lng": -1.1659344
+  "lng": -1.1659344,
+  "nhle_also": [
+   "1255255"
+  ],
+  "sources": {
+   "nhle_also": "Numbers 5 And 6 And Attached Boundary Wall (entry 1255255, Grade II) is one list entry covering 5 and 6 Western Terrace, so it is recorded against both houses."
+  }
  },
  {
   "id": 346,
