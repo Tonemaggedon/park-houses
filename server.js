@@ -663,6 +663,27 @@ async function dbInit() {
     // Set aside is per record, not per address: one household on a street can be
     // placeable while the rest are not. Anything set aside by address before
     // this is expanded to its records, and the address rows go.
+    // The working list, tickable and shared, seeded from data/tasks.json. Same
+    // rule as the research questions: a slug keys it, so a redeploy neither
+    // duplicates a task nor un-ticks one.
+    await db.query(`CREATE TABLE IF NOT EXISTS tasks (
+      id SERIAL PRIMARY KEY,
+      slug TEXT UNIQUE,
+      area TEXT,
+      title TEXT NOT NULL,
+      detail TEXT,
+      size TEXT,
+      link TEXT,
+      sort_order INTEGER DEFAULT 100,
+      done BOOLEAN DEFAULT FALSE,
+      done_by TEXT,
+      done_at TIMESTAMPTZ,
+      created_by TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      edited_at TIMESTAMPTZ
+    )`);
+    await seedTasks();
+
     await db.query(`CREATE TABLE IF NOT EXISTS census_set_aside (
       entry_id INTEGER PRIMARY KEY REFERENCES census_entries(id) ON DELETE CASCADE,
       note TEXT,
@@ -5074,8 +5095,95 @@ app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'archive.html')));
 app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
+app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
+
+// ── The working list ──────────────────────────────────────────────────────────
+// Written into data/tasks.json so a deploy carries it, ticked off in the site.
+async function seedTasks() {
+  const file = path.join(__dirname, 'data', 'tasks.json');
+  if (!fs.existsSync(file)) return;
+  let doc;
+  try { doc = JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch (e) { console.warn('tasks.json is not valid JSON:', e.message); return; }
+  let added = 0, refreshed = 0;
+  for (const [i, t] of (doc.tasks || []).entries()) {
+    if (!t.slug || !t.title) continue;
+    try {
+      const r = await db.query(
+        `INSERT INTO tasks (slug, area, title, detail, size, link, sort_order, created_by)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,'seed') ON CONFLICT (slug) DO NOTHING RETURNING id`,
+        [t.slug, t.area || null, t.title, t.detail || null, t.size || null, t.link || null, i]);
+      if (r.rows.length) { added++; continue; }
+      // Refresh the wording only while nobody has ticked or edited it.
+      const upd = await db.query(
+        `UPDATE tasks SET area=$2, title=$3, detail=$4, size=$5, link=$6, sort_order=$7
+          WHERE slug=$1 AND done=FALSE AND edited_at IS NULL
+            AND (area IS DISTINCT FROM $2 OR title IS DISTINCT FROM $3
+                 OR detail IS DISTINCT FROM $4 OR size IS DISTINCT FROM $5
+                 OR link IS DISTINCT FROM $6 OR sort_order IS DISTINCT FROM $7) RETURNING id`,
+        [t.slug, t.area || null, t.title, t.detail || null, t.size || null, t.link || null, i]);
+      if (upd.rows.length) refreshed++;
+    } catch (e) { console.warn('task', t.slug, e.message); }
+  }
+  if (added || refreshed) console.log(`Tasks: ${added} added, ${refreshed} refreshed`);
+}
+
+app.get('/api/tasks', async (req, res) => {
+  if (!db) return res.json({ tasks: [] });
+  try {
+    const r = await db.query(
+      `SELECT id, slug, area, title, detail, size, link, done, done_by, done_at, created_by
+         FROM tasks ORDER BY done, sort_order, id`);
+    res.json({ tasks: r.rows });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/tasks', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const title = String((req.body && req.body.title) || '').trim();
+  if (!title) return res.status(400).json({ error: 'A task needs a title' });
+  const who = (await getResearchKey(req.session)) || 'someone';
+  try {
+    const r = await db.query(
+      `INSERT INTO tasks (area, title, detail, size, link, created_by, sort_order)
+       VALUES ($1,$2,$3,$4,$5,$6,999) RETURNING id`,
+      [req.body.area || null, title, (req.body.detail || '').trim() || null,
+       req.body.size || null, (req.body.link || '').trim() || null, who]);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/tasks/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id)) return res.status(400).json({ error: 'Not a task number' });
+  const who = (await getResearchKey(req.session)) || 'someone';
+  const b = req.body || {};
+  try {
+    if (b.done !== undefined) {
+      await db.query(
+        b.done ? `UPDATE tasks SET done=TRUE, done_by=$2, done_at=NOW() WHERE id=$1`
+               : `UPDATE tasks SET done=FALSE, done_by=NULL, done_at=NULL WHERE id=$1`,
+        b.done ? [id, who] : [id]);
+    }
+    const sets = [], vals = [id];
+    for (const k of ['title', 'detail', 'area', 'size', 'link']) {
+      if (b[k] !== undefined) { vals.push(String(b[k] || '').trim() || null); sets.push(`${k}=$${vals.length}`); }
+    }
+    if (sets.length) await db.query(`UPDATE tasks SET ${sets.join(', ')}, edited_at=NOW() WHERE id=$1`, vals);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/tasks/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query(`DELETE FROM tasks WHERE id=$1`, [parseInt(req.params.id, 10)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 // ── Research questions ────────────────────────────────────────────────────────
 // The record has questions in it that no amount of reading will settle: which

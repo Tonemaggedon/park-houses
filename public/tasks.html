@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Working List — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  header.site { background:#25401f; color:#f2ecd8; padding:11px 20px; }
+  header.site h1 { margin:0; font-size:1.16rem; }
+  header.site .sub { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:#b9c9a8; }
+  nav { background:#2f4d27; padding:7px 20px; display:flex; gap:5px; flex-wrap:wrap; }
+  nav a { color:#e8e2cf; text-decoration:none; font-size:.8rem; padding:4px 11px; border-radius:4px; }
+  nav a:hover { background:rgba(255,255,255,.12); }
+  nav a.active { background:#f2ecd8; color:#25401f; font-weight:600; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 20px 90px; }
+
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 8px; max-width:70ch; }
+
+  .prog { margin:16px 0 6px; }
+  .prog .track { height:9px; background:#e8e2d2; border-radius:5px; overflow:hidden; }
+  .prog .fill { height:100%; background:var(--green); width:0; transition:width .3s; }
+  .prog .lbl { font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint);
+    margin-top:6px; }
+  .ctrl { font-size:.82rem; color:var(--soft); margin:8px 0 4px; }
+
+  h3.area { font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--faint);
+    margin:30px 0 8px; border-top:1px solid var(--rule); padding-top:14px; }
+  h3.area .n { text-transform:none; letter-spacing:0; font-size:.78rem; }
+
+  .task { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    padding:10px 13px; margin-bottom:8px; display:flex; gap:11px; align-items:flex-start; }
+  .task.done { background:#f6f5ef; border-color:#ded8c6; }
+  .task input[type=checkbox] { margin-top:4px; width:17px; height:17px; flex:0 0 auto; cursor:pointer; }
+  .task .body { flex:1 1 auto; min-width:0; }
+  .task .t { font-size:.95rem; font-weight:600; }
+  .task.done .t { font-weight:400; color:var(--faint); text-decoration:line-through; }
+  .task .d { font-size:.84rem; color:var(--soft); margin-top:3px; max-width:68ch; }
+  .task.done .d { display:none; }
+  .task .m { font-size:.74rem; color:var(--faint); margin-top:5px; }
+  .task .m a { color:#2a5a8a; text-decoration:none; }
+  .task .m a:hover { text-decoration:underline; }
+  .size { display:inline-block; border:1px solid var(--rule); border-radius:9px; padding:0 7px;
+    font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:var(--soft);
+    background:#f6f2e6; margin-right:7px; }
+
+  details.add { margin-top:30px; border-top:1px solid var(--rule); padding-top:16px; }
+  details.add summary { cursor:pointer; font-size:1rem; font-weight:600; }
+  .form { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:12px; max-width:660px; }
+  .form label { font-size:.74rem; color:var(--faint); }
+  .form input, .form select, .form textarea { width:100%; padding:6px 9px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.85rem; background:#fff; color:var(--ink); }
+  .form .wide { grid-column:1/-1; }
+  .form textarea { min-height:60px; resize:vertical; }
+  .form button { font-family:inherit; font-size:.85rem; border:none; border-radius:5px;
+    padding:7px 18px; cursor:pointer; background:var(--green); color:#f2ecd8; font-weight:700; }
+  .msg { font-size:.8rem; color:var(--soft); } .msg.bad { color:var(--red); }
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>Nottingham Park Houses</h1>
+  <div class="sub">The Park Conservation Trust — Historical Record</div>
+</header>
+<nav>
+  <a href="/">🗺 Map</a>
+  <a href="/people">👤 People</a>
+  <a href="/unfiled">📥 Unfiled</a>
+  <a href="/research">❓ Open questions</a>
+  <a href="/tasks" class="active">✔ The list</a>
+  <a href="/dashboard">📊 Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <h2>The working list</h2>
+  <p class="lede">Everything known to be outstanding, broken into pieces small enough to
+    finish. Most are one or two clicks; the ones marked <em>research</em> need a source the
+    record doesn't have yet, and the ones marked <em>ongoing</em> are worked down rather than
+    finished.</p>
+  <p class="lede">Tick one and it stays ticked, with your name against it.</p>
+
+  <div class="prog">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="lbl" id="lbl">Loading…</div>
+  </div>
+  <div class="ctrl">
+    <label><input id="showDone" type="checkbox"> show the ones already done</label>
+  </div>
+
+  <div id="list"><div class="empty">Loading…</div></div>
+
+  <details class="add" id="addBox" hidden>
+    <summary>Add something to the list</summary>
+    <div class="form">
+      <div class="wide"><label for="f_title">The task *</label>
+        <input id="f_title" placeholder="Short, and finishable"></div>
+      <div class="wide"><label for="f_detail">What it involves</label>
+        <textarea id="f_detail"></textarea></div>
+      <div><label for="f_area">Which group</label><input id="f_area" list="areas" placeholder="e.g. Crowded houses"><datalist id="areas"></datalist></div>
+      <div><label for="f_size">How big</label>
+        <input id="f_size" list="sizes" placeholder="one click"><datalist id="sizes">
+          <option>one click</option><option>two clicks</option><option>one decision</option>
+          <option>a look at the return</option><option>research</option><option>transcription</option>
+          <option>ongoing</option></datalist></div>
+      <div class="wide"><label for="f_link">A page it starts on</label>
+        <input id="f_link" placeholder="/unfiled"></div>
+      <div class="wide" style="display:flex;gap:10px;align-items:center">
+        <button id="f_go">Add it</button><span class="msg" id="f_msg"></span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false, isAdmin = false, tasks = [];
+
+const when = t => { if (!t) return ''; const d = new Date(t);
+  return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day:'numeric', month:'short' }); };
+
+async function init() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    isAdmin = !!(me.isAdmin || (me.user && me.user.role === 'admin'));
+    canEdit = !!(isAdmin || (me.user && me.user.role === 'contributor'));
+  } catch (e) {}
+  if (canEdit) document.getElementById('addBox').hidden = false;
+  load();
+}
+
+function render() {
+  const showDone = document.getElementById('showDone').checked;
+  const done = tasks.filter(t => t.done).length;
+  const pct = tasks.length ? Math.round(done / tasks.length * 100) : 0;
+  document.getElementById('fill').style.width = pct + '%';
+  document.getElementById('lbl').textContent =
+    `${done} of ${tasks.length} done · ${tasks.length - done} to go`;
+
+  const areas = [];
+  for (const t of tasks) if (!areas.includes(t.area || 'Everything else')) areas.push(t.area || 'Everything else');
+  document.getElementById('areas').innerHTML = areas.map(a => `<option>${esc(a)}</option>`).join('');
+
+  const box = document.getElementById('list');
+  box.innerHTML = areas.map(area => {
+    const inArea = tasks.filter(t => (t.area || 'Everything else') === area);
+    const shown = inArea.filter(t => showDone || !t.done);
+    if (!shown.length) return '';
+    const left = inArea.filter(t => !t.done).length;
+    return `<h3 class="area">${esc(area)} <span class="n">— ${left} left of ${inArea.length}</span></h3>`
+      + shown.map(t => `
+        <div class="task${t.done ? ' done' : ''}">
+          <input type="checkbox" data-tick="${t.id}"${t.done ? ' checked' : ''}
+            ${canEdit ? '' : ' disabled'} aria-label="${esc(t.title)}">
+          <div class="body">
+            <div class="t">${esc(t.title)}</div>
+            ${t.detail ? `<div class="d">${esc(t.detail)}</div>` : ''}
+            <div class="m">${t.size ? `<span class="size">${esc(t.size)}</span>` : ''}${
+              t.link ? `<a href="${esc(t.link)}">${esc(t.link)}</a>` : ''}${
+              t.done && t.done_by ? ` · done by ${esc(t.done_by)}${when(t.done_at) ? ', ' + when(t.done_at) : ''}` : ''}${
+              isAdmin ? ` · <a href="#" data-del="${t.id}" style="color:var(--red)">remove</a>` : ''}</div>
+          </div>
+        </div>`).join('');
+  }).join('') || '<div class="empty">Nothing left on the list.</div>';
+}
+
+async function load() {
+  try {
+    const d = await fetch('/api/tasks').then(r => r.json());
+    if (d.error) throw new Error(d.error);
+    tasks = d.tasks || [];
+    render();
+  } catch (e) {
+    document.getElementById('lbl').textContent = '';
+    document.getElementById('list').innerHTML =
+      `<div class="empty" style="color:var(--red)">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+document.getElementById('showDone').addEventListener('change', render);
+
+document.addEventListener('change', async e => {
+  const box = e.target.closest('[data-tick]');
+  if (!box) return;
+  const id = box.dataset.tick, done = box.checked;
+  box.disabled = true;
+  try {
+    const res = await fetch('/api/tasks/' + id, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ done }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    const t = tasks.find(x => String(x.id) === String(id));
+    if (t) { t.done = done; t.done_at = done ? new Date().toISOString() : null; }
+    render();
+  } catch (err) { box.checked = !done; alert('Could not save that: ' + err.message); }
+  finally { box.disabled = false; }
+});
+
+document.addEventListener('click', async e => {
+  const del = e.target.closest('[data-del]');
+  if (!del) return;
+  e.preventDefault();
+  if (!confirm('Remove this from the list for good?')) return;
+  try {
+    const res = await fetch('/api/tasks/' + del.dataset.del, { method: 'DELETE' });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    load();
+  } catch (err) { alert('Could not remove it: ' + err.message); }
+});
+
+document.getElementById('f_go').addEventListener('click', async () => {
+  const g = id => document.getElementById(id);
+  const msg = g('f_msg'), btn = g('f_go');
+  if (!g('f_title').value.trim()) { msg.className = 'msg bad'; msg.textContent = 'It needs a title.'; return; }
+  btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Adding…';
+  try {
+    const res = await fetch('/api/tasks', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: g('f_title').value.trim(), detail: g('f_detail').value.trim(),
+                             area: g('f_area').value.trim(), size: g('f_size').value.trim(),
+                             link: g('f_link').value.trim() }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    msg.textContent = 'Added.';
+    ['f_title','f_detail','f_link'].forEach(id => g(id).value = '');
+    load();
+  } catch (err) { msg.className = 'msg bad'; msg.textContent = 'Could not add it: ' + err.message; }
+  finally { btn.disabled = false; }
+});
+
+init();
+</script>
+</body>
+</html>
