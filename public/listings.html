@@ -67,9 +67,10 @@
     whole estate can be settled here rather than one house at a time on the map. Each entry links
     to its record on the Historic England site.</p>
   <p class="lede">The list records a house, its boundary walls and its gate piers as separate
-    entries, so the nearest one is often not the house. Choosing an entry also marks the house as
-    listed, and takes that entry out of every other house's suggestions. Dismissing removes it from
-    this house only.</p>
+    entries, so the nearest one is often not the house — and a house can hold several. <strong>This
+    is the one</strong> records the house's own entry and marks it as listed; <strong>Also this
+    house</strong> adds the others, as many as belong to it. Either takes that entry out of every
+    other house's suggestions. <strong>Not this house</strong> dismisses it here only.</p>
   <div class="bar" id="bar">Loading…</div>
   <div class="controls" id="controls" hidden>
     <button data-filter="todo" class="on">To review</button>
@@ -101,9 +102,23 @@ function entryRow(h, e) {
     <div class="nm"><a href="${esc(e.link)}" target="_blank" rel="noopener noreferrer">${esc(e.name)}</a></div>
     <div class="d">Grade ${esc(e.grade || '—')}${e.listed ? ' · listed ' + esc(e.listed) : ''} · ${esc(e.distance)}m · entry ${esc(e.entry)}</div>
     <div class="btns">
-      <button class="act" data-choose="${esc(h.id)}" data-entry="${esc(e.entry)}">This is the one</button>
+      <button class="act" data-choose="${esc(h.id)}" data-entry="${esc(e.entry)}">${h.chosen ? 'This one instead' : 'This is the one'}</button>
+      <button class="act ghost" data-also="${esc(h.id)}" data-entry="${esc(e.entry)}">Also this house</button>
       <button class="act ghost" data-dismiss="${esc(h.id)}" data-entry="${esc(e.entry)}">Not this house</button>
     </div>
+  </div>`;
+}
+
+// A house can hold several entries — the house, its gateway, its boundary wall.
+// These are the extras it holds besides its main one.
+function alsoRow(h, e) {
+  return `<div class="entry" style="border:0;padding-top:3px">
+    <div class="nm"><a href="${esc(e.link)}" target="_blank" rel="noopener noreferrer">${esc(e.name || ('List entry ' + e.entry))}</a></div>
+    <div class="d">Grade ${esc(e.grade || '—')}${e.listed ? ' · listed ' + esc(e.listed) : ''}${
+      e.distance != null ? ' · ' + esc(e.distance) + 'm' : ''} · entry ${esc(e.entry)}</div>
+    <div class="btns">${e.fromFile
+      ? '<span class="note" style="margin:0">recorded in the record’s own data</span>'
+      : `<button class="act ghost" data-unalso="${esc(h.id)}" data-entry="${esc(e.entry)}">Remove</button>`}</div>
   </div>`;
 }
 
@@ -123,6 +138,10 @@ function card(h) {
           <div class="d">Grade ${esc(h.chosen.grade || '—')}${h.chosen.listed ? ' · listed ' + esc(h.chosen.listed) : ''} · entry ${esc(h.chosen.entry)}</div>
           <div class="btns"><button class="act ghost" data-clear="${esc(h.id)}">Not this one</button></div>
         </div>
+      </div>` : ''}
+    ${(h.also || []).length ? `<div class="chosen">
+        <div class="tag">Also listed here</div>
+        ${h.also.map(e => alsoRow(h, e)).join('')}
       </div>` : ''}
     ${h.suggestions.map(e => entryRow(h, e)).join('')}
     ${h.dismissed.length ? `<div class="note">${h.dismissed.length} dismissed for this house.
@@ -153,9 +172,10 @@ async function save(id, fields) {
 }
 
 document.addEventListener('click', async e => {
-  const btn = e.target.closest('[data-choose],[data-dismiss],[data-clear],[data-undismiss]');
+  const btn = e.target.closest('[data-choose],[data-dismiss],[data-clear],[data-undismiss],[data-also],[data-unalso]');
   if (!btn) return;
-  const id = Number(btn.dataset.choose || btn.dataset.dismiss || btn.dataset.clear || btn.dataset.undismiss);
+  const id = Number(btn.dataset.choose || btn.dataset.dismiss || btn.dataset.clear
+                    || btn.dataset.undismiss || btn.dataset.also || btn.dataset.unalso);
   const h = houses.find(x => x.id === id);
   if (!h) return;
   const entryId = btn.dataset.entry;
@@ -175,6 +195,24 @@ document.addEventListener('click', async e => {
         if (other.id === id) continue;
         other.suggestions = other.suggestions.filter(s => String(s.entry) !== String(entryId));
       }
+    } else if (btn.dataset.also && found) {
+      // Extras are kept as bare entry numbers; only the ones held in the
+      // database can be sent back, the rest are recorded in the data file.
+      const kept = (h.also || []).filter(a => !a.fromFile).map(a => String(a.entry));
+      await save(id, { list_entries: [...new Set([...kept, String(entryId)])] });
+      h.also = [...(h.also || []), { ...found, fromFile: false }];
+      h.suggestions = h.suggestions.filter(s => String(s.entry) !== String(entryId));
+      for (const other of houses) {
+        if (other.id === id) continue;
+        other.suggestions = other.suggestions.filter(s => String(s.entry) !== String(entryId));
+      }
+    } else if (btn.dataset.unalso) {
+      const kept = (h.also || []).filter(a => !a.fromFile && String(a.entry) !== String(entryId))
+        .map(a => String(a.entry));
+      await save(id, { list_entries: kept });
+      h.also = (h.also || []).filter(a => String(a.entry) !== String(entryId));
+      load();   // it becomes a suggestion again, here and for the neighbours
+      return;
     } else if (btn.dataset.dismiss) {
       const list = [...new Set([...h.dismissed.map(String), String(entryId)])];
       await save(id, { nhle_dismissed: list });

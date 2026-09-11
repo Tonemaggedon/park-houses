@@ -2477,6 +2477,21 @@ async function propertyPosition(id) {
   return null;
 }
 
+// Every list entry recorded against a house. The list covers a house, its
+// gateway and its boundary wall as separate entries — 14 Cavendish Crescent
+// North holds Park House and the gateway and wall in front of it — so a house
+// often holds several. The extras are kept as bare entry numbers: the name and
+// grade are read from the list itself, so nothing recorded here goes stale.
+// list_entries holds the ones added from the site, nhle_also the ones recorded
+// in all_props.json.
+function recordedEntries(ov, row) {
+  return new Set([
+    ...(ov && ov.list_entry ? [String(ov.list_entry)] : []),
+    ...((ov && ov.list_entries) || []).map(String),
+    ...((row && row.nhle_also) || []).map(String),
+  ]);
+}
+
 // Every house's suggestions in one request. The map asks house by house, which
 // is four hundred requests to work through the estate, and the answer is the
 // same list of entries measured against four hundred positions.
@@ -2488,9 +2503,13 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
     let props = [];
     try { props = JSON.parse(readAllPropsCached().body); } catch (e) {}
     const taken = new Map();
-    for (const [id, ov] of Object.entries(ovs)) {
-      if (ov && ov.list_entry) taken.set(String(ov.list_entry), Number(id));
+    for (const p of props) {
+      for (const e of recordedEntries(ovs[p.id] || ovs[String(p.id)], p)) taken.set(e, p.id);
     }
+    for (const [id, ov] of Object.entries(ovs)) {
+      for (const e of recordedEntries(ov, null)) if (!taken.has(e)) taken.set(e, Number(id));
+    }
+    const byEntry = new Map(entries.map(e => [String(e.entry), e]));
     const out = props.map(p => {
       const c = coords[p.id] || coords[String(p.id)];
       const lat = c && c.lat != null ? Number(c.lat) : (p.lat != null ? Number(p.lat) : null);
@@ -2498,14 +2517,28 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
       const ov = ovs[p.id] || ovs[String(p.id)] || {};
       const dismissed = (ov.nhle_dismissed || []).map(String);
       const gone = new Set(dismissed);
-      const always = new Set([String(ov.list_entry || ''), ...((p.nhle_extra) || []).map(String)]);
+      const recorded = recordedEntries(ov, p);
+      const fromFile = new Set(((p.nhle_also) || []).map(String));
+      const always = new Set([...recorded, ...((p.nhle_extra) || []).map(String)]);
+      const away = e => (lat == null || lng == null || e.lat == null) ? null : Math.round(Math.hypot(
+        (e.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (e.lat - lat) * 110540));
+      // The extras this house holds besides its main entry, named from the list.
+      const also = [...recorded]
+        .filter(id => id !== String(ov.list_entry || ''))
+        .map(id => {
+          const e = byEntry.get(id);
+          return {
+            entry: id, name: e ? e.name : null, grade: e ? e.grade : null,
+            listed: e ? e.listed : null, distance: e ? away(e) : null,
+            link: e ? e.link : 'https://historicengland.org.uk/listing/the-list/list-entry/' + id,
+            fromFile: fromFile.has(id),
+          };
+        });
       let suggestions = [];
       if (lat != null && lng != null) {
-        const away = e => Math.round(Math.hypot(
-          (e.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (e.lat - lat) * 110540));
         suggestions = entries.map(e => ({ ...e, distance: away(e) }))
           .filter(e => (e.distance <= radius || always.has(String(e.entry)))
-            && String(e.entry) !== String(ov.list_entry || '')
+            && !recorded.has(String(e.entry))
             && !gone.has(String(e.entry))
             && !(taken.has(String(e.entry)) && taken.get(String(e.entry)) !== p.id))
           .sort((a, b) => a.distance - b.distance)
@@ -2519,7 +2552,7 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
           listed: ov.list_date || null,
           link: ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry),
         } : null,
-        dismissed, suggestions,
+        also, dismissed, suggestions,
       };
     });
     res.json({
@@ -2539,7 +2572,7 @@ app.get('/api/nhle/review', requireContributor, async (req, res) => {
 
 app.get('/api/nhle', async (req, res) => {
   let entries = (await readNhleLive()) || readNhle();
-  let always = new Set();
+  let always = new Set(), mineRecorded = new Set(), mineFromFile = new Set();
   let lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
   const propId = parseInt(req.query.property, 10);
   if (Number.isInteger(propId)) {
@@ -2548,19 +2581,27 @@ app.get('/api/nhle', async (req, res) => {
     // An entry already recorded as another property's is not a suggestion for
     // this one, and one this property has been told is not its own stays gone.
     const ovs = await loadProps();
+    let props = [];
+    try { props = JSON.parse(readAllPropsCached().body); } catch (e) {}
     const taken = new Set();
+    for (const p of props) {
+      if (p.id === propId) continue;
+      for (const e of recordedEntries(ovs[p.id] || ovs[String(p.id)], p)) taken.add(e);
+    }
     for (const [id, ov] of Object.entries(ovs)) {
-      if (ov && ov.list_entry && Number(id) !== propId) taken.add(String(ov.list_entry));
+      if (Number(id) === propId) continue;
+      for (const e of recordedEntries(ov, null)) taken.add(e);
     }
     const mine = ovs[propId] || ovs[String(propId)] || {};
     const dismissed = new Set((mine.nhle_dismissed || []).map(String));
-    // Entries this house always shows, however far off: its own recorded entry,
-    // and any named in nhle_extra in all_props.json. The list's points do not
-    // always sit on the building they describe, so a house can want an entry
-    // that falls outside the radius.
-    let row = null;
-    try { row = JSON.parse(readAllPropsCached().body).find(p => p.id === propId) || null; } catch (e) {}
-    always = new Set([String(mine.list_entry || ''), ...((row && row.nhle_extra) || []).map(String)]);
+    const row = props.find(p => p.id === propId) || null;
+    mineRecorded = recordedEntries(mine, row);
+    mineFromFile = new Set(((row && row.nhle_also) || []).map(String));
+    // Entries this house always shows, however far off: the ones recorded
+    // against it, and any named in nhle_extra in all_props.json. The list's
+    // points do not always sit on the building they describe, so a house can
+    // want an entry that falls outside the radius.
+    always = new Set([...mineRecorded, ...((row && row.nhle_extra) || []).map(String)]);
     entries = entries.filter(e => always.has(String(e.entry))
       || (!taken.has(String(e.entry)) && !dismissed.has(String(e.entry))));
   }
@@ -2572,7 +2613,9 @@ app.get('/api/nhle', async (req, res) => {
     (a.lng - b.lng) * Math.cos(lat * Math.PI / 180) * 111320,
     (a.lat - b.lat) * 110540);
   res.json(entries
-    .map(e => ({ ...e, distance: Math.round(m(e, { lat, lng })) }))
+    .map(e => ({ ...e, distance: Math.round(m(e, { lat, lng })),
+                 recorded: mineRecorded.has(String(e.entry)),
+                 fromFile: mineFromFile.has(String(e.entry)) }))
     .filter(e => e.distance <= radius || always.has(String(e.entry)))
     .sort((a, b) => a.distance - b.distance)
     .slice(0, 12));

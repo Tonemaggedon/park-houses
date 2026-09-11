@@ -2267,18 +2267,33 @@ async function loadNhle(p) {
     // Asked by property, so the server uses the hand-placed position and leaves
     // out entries another house has claimed and ones dismissed here.
     const rows = await fetch('/api/nhle?property=' + p.id + '&radius=40').then(r => r.json());
-    const others = rows.filter(e => String(e.entry) !== String(ov.list_entry || ''));
+    // A house can hold several entries — itself, its gateway, its boundary wall.
+    // The extras it already holds are shown apart from the suggestions.
+    const also = rows.filter(e => e.recorded && String(e.entry) !== String(ov.list_entry || ''));
+    const others = rows.filter(e => !e.recorded && String(e.entry) !== String(ov.list_entry || ''));
+    const alsoBlock = also.length
+      ? '<div class="nhle-note">Also listed here:</div>'
+        + also.map(e =>
+          '<div class="nhle-row nhle-linked">'
+          + '<a href="' + esc(e.link) + '" target="_blank" rel="noopener noreferrer">' + esc(e.name) + '</a>'
+          + '<div class="nhle-meta">Grade ' + esc(e.grade) + ' · listed ' + esc(e.listed || '—')
+          + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
+          + (canEdit && !e.fromFile
+              ? '<button class="nhle-btn nhle-unlink" data-nhle-unalso="' + esc(e.entry) + '">Remove</button>'
+              : '')
+          + '</div>').join('')
+      : '';
     const nDismissed = (ov.nhle_dismissed || []).length;
     const undo = (canEdit && nDismissed)
       ? '<div class="nhle-note">' + nDismissed + ' suggestion' + (nDismissed > 1 ? 's' : '')
         + ' dismissed for this house. <button class="nhle-btn nhle-unlink" data-nhle-undismiss="1">Bring '
         + (nDismissed > 1 ? 'them' : 'it') + ' back</button></div>' : '';
-    if (!chosen && !others.length) {
+    if (!chosen && !also.length && !others.length) {
       body.innerHTML = '<div>No list entries within 40m that are not already another house\u2019s.</div>' + undo;
       return;
     }
-    body.innerHTML = chosen
-      + (chosen && others.length
+    body.innerHTML = chosen + alsoBlock
+      + ((chosen || also.length) && others.length
           ? '<div class="nhle-note">Also within 40m — the list often covers a house, its walls '
             + 'and its gateways as separate entries:</div>' : '')
       + others.map(e =>
@@ -2288,6 +2303,8 @@ async function loadNhle(p) {
         + ' · ' + esc(e.distance) + 'm · entry ' + esc(e.entry) + '</div>'
         + (canEdit ? '<button class="nhle-btn" data-nhle="' + esc(JSON.stringify(e)) + '">'
                    + (chosen ? 'This one instead' : 'This is the one') + '</button>'
+                   + ' <button class="nhle-btn nhle-unlink" data-nhle-also="' + esc(e.entry) + '">'
+                   + 'Also this house</button>'
                    + ' <button class="nhle-btn nhle-unlink" data-nhle-dismiss="' + esc(e.entry) + '">'
                    + 'Not this house</button>' : '')
         + '</div>').join('')
@@ -2390,6 +2407,27 @@ async function loadGazette(p) {
 // ── PANEL CLICK DELEGATION ────────────────────────────────────────────────────
 // Use data-edit attributes so no onclick handlers are injected into innerHTML
 document.getElementById('panelBody').addEventListener('click', async function(e) {
+  // A house holding more than one entry: the house, its gateway, its wall.
+  const nhleAlso = e.target.closest('[data-nhle-also]');
+  const nhleUnalso = e.target.closest('[data-nhle-unalso]');
+  if (nhleAlso || nhleUnalso) {
+    const btn = nhleAlso || nhleUnalso;
+    btn.disabled = true;
+    const ov = propOverrides[curProp.id] || {};
+    const held = (ov.list_entries || []).map(String);
+    const entry = String((nhleAlso || nhleUnalso).dataset[nhleAlso ? 'nhleAlso' : 'nhleUnalso']);
+    const list = nhleAlso ? [...new Set([...held, entry])] : held.filter(x => x !== entry);
+    try {
+      const res = await fetch('/api/property/' + curProp.id, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ list_entries: list }),
+      });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || ('HTTP ' + res.status));
+      propOverrides[curProp.id] = (await res.json()).data;
+      loadNhle(curProp);
+    } catch (err) { btn.disabled = false; alert('Could not save that: ' + err.message); }
+    return;
+  }
   const nhleDismiss = e.target.closest('[data-nhle-dismiss]');
   const nhleUndismiss = e.target.closest('[data-nhle-undismiss]');
   if (nhleDismiss || nhleUndismiss) {
