@@ -1,5 +1,5 @@
 {
- "note": "Birth places the automatic geocoder could not place, positioned by hand so they appear on the Origins map. Loaded into geocode_cache at start-up with status 'manual'. Never overwrites a place the geocoder found, or one somebody placed by hand in the database; a place from this file is refreshed if its entry here changes. Positions are the town or village centre as it stands now. Where the census text is ambiguous the note says which place was chosen. Left out on purpose: 'Burnfoot, Stirling' (several Burnfoots, none certainly in Stirlingshire) and 'Churchtown, Lancashire' (Churchtown by Garstang or Churchtown in Southport, both Lancashire at the time).",
+ "note": "Birth places the automatic geocoder could not place, positioned by hand so they appear on the Origins map. Loaded into geocode_cache at start-up with status 'manual'. Never overwrites a place the geocoder found, or one somebody placed by hand in the database; a place from this file is refreshed if its entry here changes. Positions are the town or village centre as it stands now. Where the census text is ambiguous the note says which place was chosen.",
  "places": [
   {"place_text": "Nottingham", "lat": 52.9548, "lng": -1.1581, "label": "Nottingham, England"},
   {"place_text": "Kirklington", "lat": 53.1043, "lng": -0.9937, "label": "Kirklington, Nottinghamshire", "note": "Taken as the Nottinghamshire village near Southwell; there are others of the name in Yorkshire and Cumberland."},
@@ -32,6 +32,8 @@
   {"place_text": "Plumtree, Nottinghamshire", "lat": 52.8865, "lng": -1.0935, "label": "Plumtree, Nottinghamshire"},
   {"place_text": "Prestbury, Cheshire", "lat": 53.2890, "lng": -2.1500, "label": "Prestbury, Cheshire"},
   {"place_text": "Strasbourg, Germany", "lat": 48.5734, "lng": 7.7521, "label": "Strasbourg, France", "note": "German between 1871 and 1918, when the census recorded it; French now."},
-  {"place_text": "Wales", "lat": 52.3000, "lng": -3.7000, "label": "Wales (country only)", "note": "No town given; placed in the middle of Wales."}
+  {"place_text": "Wales", "lat": 52.3000, "lng": -3.7000, "label": "Wales (country only)", "note": "No town given; placed in the middle of Wales."},
+  {"place_text": "Churchtown, Lancashire", "lat": 53.6630, "lng": -2.9650, "label": "Churchtown, Southport, Merseyside", "note": "The Churchtown in Southport, Lancashire at the time and Merseyside now — identified by A. Hagues, not the Churchtown by Garstang."},
+  {"place_text": "Burnfoot, Stirling", "lat": 55.4150, "lng": -2.8700, "label": "Burnfoot, by Roberton, Scottish Borders (approximate)", "note": "Identified by A. Hagues as the hamlet on the Borthwick Water near Roberton, west of Hawick, though the census gives Stirling. Placed to within a mile or two."}
  ]
 }
