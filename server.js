@@ -1455,6 +1455,54 @@ app.get('/api/person/:id/gazette', async (req, res) => {
 // all read the occupations table — saw about a third of what the census holds.
 // This copies them across, dated to the census year. Idempotent: a person who
 // already has that occupation is left alone.
+// POST /api/admin/fill-occupation-years — an occupation with no year beside a
+// census record that names it is undated only because the row came in before the
+// census did. Matched on the person's own records: the same wording, or the
+// census wording with a qualifier added ("Nurse" and "Nurse (domestic)"). A
+// looser match would date "Servant" from "Domestic Servant", so it stops there.
+app.post('/api/admin/fill-occupation-years', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const bare = (await db.query(
+      `SELECT o.id, o.person_id, o.occupation, p.first_name, p.last_name
+         FROM occupations o JOIN people p ON p.id = o.person_id
+        WHERE o.from_year IS NULL AND o.occupation IS NOT NULL AND TRIM(o.occupation) <> ''`)).rows;
+    const census = (await db.query(
+      `SELECT person_id, census_year, TRIM(occupation_at_census) AS occ
+         FROM census_entries
+        WHERE occupation_at_census IS NOT NULL AND TRIM(occupation_at_census) <> ''
+          AND person_id = ANY($1::int[])`, [[...new Set(bare.map(b => b.person_id))]])).rows;
+    const byPerson = new Map();
+    for (const c of census) (byPerson.get(c.person_id) || byPerson.set(c.person_id, []).get(c.person_id)).push(c);
+    const norm = v => String(v || '').toLowerCase().replace(/\s+/g, ' ').trim();
+    const dated = [], undatable = [];
+    for (const o of bare) {
+      const want = norm(o.occupation);
+      const rows = byPerson.get(o.person_id) || [];
+      let hits = rows.filter(c => norm(c.occ) === want), how = 'same wording';
+      if (!hits.length) {
+        hits = rows.filter(c => { const n = norm(c.occ); return n.startsWith(want + ' (') || n.startsWith(want + ','); });
+        how = 'census adds a qualifier';
+      }
+      const name = `${o.first_name} ${o.last_name}`.trim();
+      if (!hits.length) { undatable.push(`${name} — ${o.occupation}`); continue; }
+      const years = hits.map(h => h.census_year).sort((a, b) => a - b);
+      const from = years[0], to = years[years.length - 1];
+      dated.push({ name, occupation: o.occupation, from, to: to !== from ? to : null, how });
+      if (!dryRun) {
+        await db.query(
+          `UPDATE occupations SET from_year=$1, to_year=COALESCE(to_year, $2), source=COALESCE(source, $3)
+            WHERE id=$4 AND from_year IS NULL`,
+          [from, to !== from ? to : null, from + ' census', o.id]);
+      }
+    }
+    res.json({ ok: true, dryRun, yearless: bare.length, dated: dated.length,
+               undatable: undatable.length, examples: dated.slice(0, 40),
+               undatableExamples: undatable.slice(0, 25) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post('/api/admin/backfill-occupations', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const dryRun = req.body && req.body.dryRun === true;
@@ -1481,9 +1529,19 @@ app.post('/api/admin/backfill-occupations', requireAdmin, async (req, res) => {
       const key = row.person_id + '|' + row.occupation.toLowerCase();
       if (accountedFor.has(key)) { alreadyHad++; continue; }
       const existing = await db.query(
-        `SELECT 1 FROM occupations WHERE person_id=$1 AND LOWER(TRIM(occupation))=LOWER($2)`,
+        `SELECT id, from_year FROM occupations WHERE person_id=$1 AND LOWER(TRIM(occupation))=LOWER($2)`,
         [row.person_id, row.occupation]);
-      if (existing.rows.length) { alreadyHad++; accountedFor.add(key); continue; }
+      if (existing.rows.length) {
+        // Already there — but an earlier import often wrote it with no year, and
+        // skipping it left "Domestic Servant" undated beside an 1891 return that
+        // says exactly that. Give a yearless row the census year it came from.
+        const bare = existing.rows.find(r => r.from_year == null);
+        if (bare && !dryRun) {
+          await db.query(`UPDATE occupations SET from_year=$1, source=COALESCE(source, $2) WHERE id=$3`,
+            [row.census_year, row.census_year + ' census', bare.id]);
+        }
+        alreadyHad++; accountedFor.add(key); continue;
+      }
       accountedFor.add(key);
       if (!dryRun) {
         await db.query(

@@ -277,6 +277,19 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
         <button id="btnPeopleRun" class="admin-btn">Import</button>
       </div>
     </div>
+    <div class="admin-tool">
+      <div>
+        <div class="admin-tool-name">Date occupations from the census</div>
+        <div class="admin-tool-desc">Occupations brought in from the early seed files arrived with
+          no year — "Domestic Servant" undated beside an 1891 return that says exactly that. Gives
+          each one the years of the person's own census records that name it, the same wording or
+          the census wording with a qualifier ("Nurse" and "Nurse (domestic)"). Never overwrites a year.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="btnOccYearsPreview" class="admin-btn" style="background:#5a5a4a">Preview</button>
+        <button id="btnOccYearsRun" class="admin-btn">Date them</button>
+      </div>
+    </div>
     <div id="adminToolsResult" class="admin-tool-result" hidden></div>
   </div>
 
@@ -914,6 +927,20 @@ document.getElementById('btnStrayRows')?.addEventListener('click', async e => {
     out.textContent = 'Failed: ' + err.message;
   } finally { btn.disabled = false; btn.textContent = label; }
 });
+
+const describeOccYears = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+  + `${d.yearless} occupation${d.yearless === 1 ? '' : 's'} with no year. `
+  + `${d.dated} ${d.dryRun ? 'can be' : 'were'} dated from the person's own census records; `
+  + `${d.undatable} ${d.undatable === 1 ? 'has' : 'have'} no census record that names ${d.undatable === 1 ? 'it' : 'them'} and stay${d.undatable === 1 ? 's' : ''} undated.`
+  + (d.examples && d.examples.length ? '\n\n' + d.examples.map(x =>
+      `  ${x.name} — ${x.occupation}: ${x.from}${x.to ? '–' + x.to : ''}${x.how === 'same wording' ? '' : '  (' + x.how + ')'}`).join('\n')
+      + (d.dated > d.examples.length ? `\n  …and ${d.dated - d.examples.length} more` : '') : '')
+  + (d.undatableExamples && d.undatableExamples.length
+      ? '\n\nStaying undated, for example:\n' + d.undatableExamples.map(x => '  ' + x).join('\n') : '');
+document.getElementById('btnOccYearsPreview')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/fill-occupation-years', { dryRun: true }, describeOccYears));
+document.getElementById('btnOccYearsRun')?.addEventListener('click', e =>
+  runAdminJob(e.target, '/api/admin/fill-occupation-years', {}, describeOccYears));
 
 document.getElementById('btnPeoplePreview')?.addEventListener('click', e =>
   runAdminJob(e.target, '/api/admin/import-people', { dryRun: true }, describePeople));
