@@ -63,6 +63,13 @@
   .rowin.set { border-color:#9ab88a; background:#f4f9f0; }
   .rowdest { font-size:.72rem; color:var(--faint); white-space:nowrap; }
   .rowdest.bad { color:var(--red); }
+  .rowtools { text-align:right; white-space:nowrap; }
+  .rowtools button, .rowbox button { font-family:inherit; font-size:.72rem; border:1px solid var(--rule);
+    background:#fff; border-radius:3px; padding:1px 8px; cursor:pointer; }
+  .rowbox td { background:#fbf9f3; }
+  .rowbox label { font-size:.74rem; color:var(--faint); margin-right:10px; }
+  .rowbox input { font-family:inherit; font-size:.8rem; padding:2px 6px; border:1px solid var(--rule);
+    border-radius:3px; width:200px; }
   .hh table { border-collapse:collapse; width:100%; font-size:.8rem; }
   .hh td { padding:3px 11px; border-top:1px solid #f2ece0; }
   .hh td.n { text-align:right; color:var(--faint); font-variant-numeric:tabular-nums; }
@@ -157,7 +164,25 @@ function households(entries) {
     if (isHead(e)) cur.head = e;
     cur.members.push(e);
   }
+  // Entry order is import order, not schedule order. Bernard Swanwick Wright's
+  // record was added after his daughter's and his two servants', so they made a
+  // headless block of their own ahead of him. Where a year has exactly one head,
+  // the headless rows in that year belong to that household — which is how the
+  // server counts households too, so the page and the count agree.
+  for (const y of new Set(out.map(h => h.year))) {
+    const blocks = out.filter(h => h.year === y);
+    const headed = blocks.filter(h => h.head);
+    if (headed.length !== 1) continue;
+    const home = headed[0];
+    for (const b of blocks) {
+      if (b.head) continue;
+      if (b.members.some(isWife) && home.members.some(isWife)) continue;
+      home.members.push(...b.members); b.merged = true;
+    }
+  }
+  for (let k = out.length - 1; k >= 0; k--) if (out[k].merged) out.splice(k, 1);
   for (const h of out) {
+    h.members.sort((a, b) => (isHead(b) - isHead(a)) || (a.id - b.id));
     const wife = h.members.find(isWife);
     h.title = h.head ? h.head.name + "'s household"
             : (wife ? wife.name + "'s household — no head on the return" : 'No head recorded');
@@ -262,11 +287,27 @@ async function load() {
                     data-rowin="${e.id}" data-rowg="${i}"
                     aria-label="Property for ${esc(e.name)}"></td>
               <td class="rowdest" data-rowdest="${e.id}"></td>
-            </tr>`).join('')}</table>
+              <td class="rowtools"><button data-rowedit="${e.id}"
+                    title="Change this person's relationship, or move just this record to another label">Edit</button></td>
+            </tr>
+            <tr class="rowbox" data-rowbox="${e.id}" hidden><td colspan="6">
+              <label>Relationship <input type="text" data-rowrel="${e.id}" value="${esc(e.relationship || '')}"
+                placeholder="Head, Daughter, Servant…"></label>
+              <label>Label <input type="text" list="labelList" data-rowlabel="${e.id}" value="${esc(g.address || '')}"
+                placeholder="empty removes the label"></label>
+              <button data-rowsave="${e.id}" data-rowrelwas="${esc(e.relationship || '')}"
+                data-rowlabelwas="${esc(g.address || '')}">Save</button>
+            </td></tr>`).join('')}</table>
           </div>`).join('')}
       </div>`;
 
     window._groups = d.groups;
+    // Every label in use, offered when moving one record, so a household is
+    // gathered under exactly the same words rather than a near-miss typing.
+    let dl = document.getElementById('labelList');
+    if (!dl) { dl = document.createElement('datalist'); dl.id = 'labelList'; document.body.appendChild(dl); }
+    dl.innerHTML = [...new Set(d.groups.map(g => g.address).filter(Boolean))].sort()
+      .map(a => `<option value="${esc(a)}">`).join('');
     const open = d.groups.map((g, i) => [g, i]).filter(([g]) => !g.setAside);
     const aside = d.groups.map((g, i) => [g, i]).filter(([g]) => g.setAside);
     box.innerHTML = open.length ? open.map(([g, i]) => render(g, i)).join('')
@@ -356,6 +397,48 @@ document.addEventListener('click', async e => {
     } catch (err) {
       relGo.disabled = false; relGo.textContent = 'Save';
       alert('Could not change that label: ' + err.message);
+    }
+    return;
+  }
+
+  // One record on its own: fill a missing relationship, or move it to another
+  // label without taking the rest of its household with it.
+  const rowEdit = e.target.closest('[data-rowedit]');
+  if (rowEdit) {
+    const box = document.querySelector(`[data-rowbox="${rowEdit.dataset.rowedit}"]`);
+    if (box) { box.hidden = !box.hidden; if (!box.hidden) box.querySelector('input').focus(); }
+    return;
+  }
+  const rowSave = e.target.closest('[data-rowsave]');
+  if (rowSave) {
+    const id = Number(rowSave.dataset.rowsave);
+    const rel = document.querySelector(`[data-rowrel="${id}"]`).value.trim();
+    const lbl = document.querySelector(`[data-rowlabel="${id}"]`).value.trim();
+    const relChanged = !!rel && rel !== rowSave.dataset.rowrelwas;
+    const lblChanged = lbl !== rowSave.dataset.rowlabelwas;
+    if (!relChanged && !lblChanged) { rowSave.closest('[data-rowbox]').hidden = true; return; }
+    rowSave.disabled = true; rowSave.textContent = 'Saving…';
+    try {
+      if (relChanged) {
+        const r1 = await fetch(`/api/census-entry/${id}`, {
+          method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ relationship: rel }),
+        });
+        const d1 = await r1.json();
+        if (!r1.ok || d1.error) throw new Error(d1.error || ('HTTP ' + r1.status));
+      }
+      if (lblChanged) {
+        const r2 = await fetch('/api/census/unfiled-groups/relabel', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ entryIds: [id], address: lbl }),
+        });
+        const d2 = await r2.json();
+        if (!r2.ok || d2.error) throw new Error(d2.error || ('HTTP ' + r2.status));
+      }
+      load();
+    } catch (err) {
+      rowSave.disabled = false; rowSave.textContent = 'Save';
+      alert('Could not save that: ' + err.message);
     }
     return;
   }
