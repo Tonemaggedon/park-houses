@@ -472,6 +472,30 @@
       "detail": "Four of its seventeen records are the McCraith household already filed at 3 South Road in 1911, imported a second time with the surname spelt McCaith. Douglas McCraith (#186) is in both, so he has two 1911 records — remove entry 889. Then merge by number: keep 185, merge in 728 (Maria Elizabeth); keep 189, merge in 731 (Kenneth York); keep 1343, merge in 732 (Violet Muriel). The other households in the group — Frederick Brewster, and Joseph and Sarah Walker — are not at 3 South Road and still need a house.",
       "size": "five clicks",
       "link": "/duplicates"
+    },
+    {
+      "slug": "import-mccraith-family",
+      "area": "Do these first",
+      "title": "Run Import people for the McCraith family",
+      "detail": "Bernard McCraith's death on 26 January 1919 as a Major in the Royal Engineers, with his service, burial and memorials; and Lady McCraith's maiden name, Dickinson, and title. The family links were already there. Fills blanks only — nothing you entered by hand is touched. The preview should say 2 already present, 1 occupation, 2 filled out.",
+      "size": "one click",
+      "link": "/dashboard"
+    },
+    {
+      "slug": "mccraith-1911-widow",
+      "area": "People and records",
+      "title": "Lady McCraith is returned as \"Head (widow)\" in 1911 — but Sir James lived until 1928",
+      "detail": "Her 1911 record at 3 South Road reads Head (widow), with Douglas, Bernard and Kenneth. Sir James William McCraith did not die until 9 July 1928, and he has no 1911 or 1921 census record in the record at all. Either he was away on census night and \"widow\" is a transcription slip, or his record for those years is filed somewhere else.",
+      "size": "a look at the return",
+      "link": "/people?person=185"
+    },
+    {
+      "slug": "malcolm-mccraith",
+      "area": "People and records",
+      "title": "Is Malcolm McCraith really Sir James's son?",
+      "detail": "The record already links Malcolm (#188), a steam engineer born about 1882, as a son of Sir James and Lady McCraith, and he is at 3 South Road with them in 1891 and 1901. But Wikipedia names their children as Douglas, Bernard, Kenneth York and Violet Muriel only. Either the article misses him or he is a nephew, and the link wants checking.",
+      "size": "research",
+      "link": "/people?person=188"
     }
   ]
 }

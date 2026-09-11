@@ -1,0 +1,30 @@
+{
+  "note": "The McCraiths of The Park, after A. Hagues found three of them were knights. Their titles, JP, Wikipedia links and the family links were already in the record; this adds only what was still missing — Bernard's war death and service, and Lady McCraith's maiden name — from the Nottinghamshire Roll of Honour and the Wikipedia article on Sir James William McCraith. Fills blanks only.",
+  "source": "Nottinghamshire County Council Roll of Honour; Wikipedia, 'James William McCraith'",
+  "people": [
+    {
+      "id": 187,
+      "first_name": "Bernard",
+      "last_name": "McCraith",
+      "died_date": "26 January 1919",
+      "died_year": 1919,
+      "died_place": "No. 30 General Hospital, near Boulogne, France",
+      "occupations": [
+        {
+          "occupation": "Major, Royal Engineers",
+          "employer": "2nd North Midland Field Company, Royal Engineers",
+          "from_year": 1914,
+          "to_year": 1919,
+          "notes": "Volunteered on the outbreak of war and was gazetted Second Lieutenant in September 1914; Lieutenant, then Captain in December 1915, Major in June 1916. Served in France and Flanders from February 1915, was severely wounded and invalided home that April, rejoined in November 1916, and in 1917 was second in command at a base park near Calais. Died of pneumonia, probably after influenza, on 26 January 1919; buried at Les Baraques Military Cemetery, Sangatte. Remembered at St Thomas's and St Mary's churches in Nottingham, on the Notts Amateur Cricket Club and Nottinghamshire Freemasons war memorials, and on the family headstone in the Church (Rock) Cemetery."
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "first_name": "Maria Elizabeth",
+      "last_name": "McCraith",
+      "maiden_name": "Dickinson",
+      "title": "Lady"
+    }
+  ]
+}

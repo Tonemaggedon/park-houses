@@ -1541,16 +1541,16 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         const byYear = !byId && person.match_born_year === true && person.born_year;
         const found = byId
           ? await db.query(
-              `SELECT id, born_date, born_year, born_place, sex FROM people WHERE id=$1`,
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people WHERE id=$1`,
               [person.id])
           : byYear
           ? await db.query(
-              `SELECT id, born_date, born_year, born_place, sex FROM people
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)
                   AND born_year=$3`,
               [person.first_name, person.last_name, person.born_year])
           : await db.query(
-              `SELECT id, born_date, born_year, born_place, sex FROM people
+              `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
               [person.first_name, person.last_name]);
         if (byId && !found.rows.length) {
@@ -1577,6 +1577,15 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           if (!have.born_year  && person.born_year)  fills.push(['born_year',  person.born_year]);
           if (!have.born_place && person.born_place) fills.push(['born_place', person.born_place]);
           if (!have.sex        && person.sex)        fills.push(['sex',        person.sex]);
+          // A death found later — a roll of honour, a probate notice — fills in
+          // a person already in the record, never over what is there.
+          if (!have.died_date  && person.died_date)  fills.push(['died_date',  person.died_date]);
+          if (!have.died_year  && person.died_year)  fills.push(['died_year',  person.died_year]);
+          if (!have.died_place && person.died_place) fills.push(['died_place', person.died_place]);
+          if (!have.maiden_name && person.maiden_name) fills.push(['maiden_name', person.maiden_name]);
+          if (!have.title       && person.title)       fills.push(['title',       person.title]);
+          if (!have.postnominals && person.postnominals) fills.push(['postnominals', person.postnominals]);
+          if (!have.wikipedia_url && person.wikipedia_url) fills.push(['wikipedia_url', person.wikipedia_url]);
           if (fills.length) {
             enriched++;
             if (!dryRun) {
