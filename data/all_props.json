@@ -5431,7 +5431,13 @@
   "date_built": "1845",
   "listed": "Yes",
   "lat": 52.9543253,
-  "lng": -1.1661254
+  "lng": -1.1661254,
+  "nhle_also": [
+   "1255256"
+  ],
+  "sources": {
+   "nhle_also": "7 to 10 Western Terrace are one list entry (1255256, Grade II) covering the whole row, so it is recorded against each of them."
+  }
  },
  {
   "id": 347,
@@ -6485,20 +6491,24 @@
  },
  {
   "id": 413,
-  "name": "Park Lodge",
+  "name": "East Lodge",
   "street": "Park Row",
-  "no": "Park Lodge",
-  "address": "Park Lodge, Park Row",
+  "no": "East Lodge",
+  "address": "East Lodge, Park Row",
   "desc": "",
-  "history": "The lodge at the Park Row entrance to The Park. In 1921 it was the home of John Stubbing, 66, returned as an attendant, with his housekeeper Elizabeth Gunn, 54. Their household was first found filed with Tower House next door. There are two other houses called Park Lodge in The Park \u2014 9 Park Drive, and a lodge on Tattershall Drive \u2014 so a census address reading only \"Park Lodge\" can belong to any of the three.",
+  "history": "The lodge at the Park Row entrance to The Park. In 1921 it was the home of John Stubbing, 66, returned as an attendant, with his housekeeper Elizabeth Gunn, 54. Their household was first found filed with Tower House next door. There are two other houses called Park Lodge in The Park \u2014 9 Park Drive, and a lodge on Tattershall Drive \u2014 so a census address reading only \"Park Lodge\" can belong to any of the three. Historic England lists the building as East Lodge (entry 1270628, Grade II), three metres from where this record places it, which settles what it is called now. Park Lodge is the name the 1921 census gave it, and the name the Stubbing household was found under.",
   "date_built": "",
-  "listed": "No",
+  "listed": "Yes",
   "census_only": true,
   "lat": 52.9516792,
   "lng": -1.1566848,
   "sources": {
    "existence": "1921 census, the Stubbing household's address \"Park Lodge, Park Row\", read by A. Hagues from the return.",
-   "position": "Provisional. Placed on the building OpenStreetMap calls East Lodge (way/243988957), the Grade II lodge on Park Row seven metres from Tower House \u2014 the only lodge on Park Row. That it was called Park Lodge in 1921 is likely, not proven; Historic England's list entry 1270628 could not be read to check."
-  }
+   "position": "Provisional. Placed on the building OpenStreetMap calls East Lodge (way/243988957), the Grade II lodge on Park Row seven metres from Tower House \u2014 the only lodge on Park Row. That it was called Park Lodge in 1921 is likely, not proven; Historic England's list entry 1270628 could not be read to check.",
+   "house_name": "Recorded as East Lodge from Historic England's list entry 1270628, three metres away, and from OpenStreetMap, which names the building the same. Kept as a former name: Park Lodge, the address on the 1921 return \u2014 the name the census knew it by, not necessarily a name it ever bore officially.",
+   "listed": "Grade II, list entry 1270628, listed 30 November 1995."
+  },
+  "prev_house_name": "Park Lodge",
+  "listedGrade": "II"
  }
 ]
