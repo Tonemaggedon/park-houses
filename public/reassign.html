@@ -332,8 +332,18 @@ document.getElementById('save').addEventListener('click', async () => {
     if (d.skip || d.bad) return;
     const mv = { entryId: Number(i.dataset.entry), propertyId: d.propertyId };
     if (d.propertyId === null) {
-      const a = document.querySelector(`[data-unaddr="${i.dataset.hh}"]`);
-      const v = a ? a.value.trim() : '';
+      // Its own household's box first. But a household's boundary is not always
+      // where the schedule put it — two of the nine doctors at 19 Park Terrace
+      // are listed before their head and fall in the household above — so a row
+      // with nothing in its own box takes the address from any other box on the
+      // page rather than being unfiled with no address at all.
+      const own = document.querySelector(`[data-unaddr="${i.dataset.hh}"]`);
+      let v = own ? own.value.trim() : '';
+      if (!v) {
+        const any = [...document.querySelectorAll('[data-unaddr]')]
+          .map(x => x.value.trim()).find(Boolean);
+        v = any || '';
+      }
       if (v) mv.address = v;
     }
     moves.push(mv);
