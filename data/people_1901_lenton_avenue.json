@@ -1,0 +1,541 @@
+{
+  "note": "The four Lenton Avenue households on the 1901 page that ends with the Jessops at 25 Cavendish Crescent South. None of Lenton Avenue's 1901 households was in the record. Three heads are domestic coachmen and two more coachmen and a groom board with them — a row of coachmen's houses serving the big houses of the Park. The Blythes and the Sims are linked by number to their 1911 records; everyone else is new. The Jessop household on the same page was already complete in the record and is not repeated here.",
+  "source": "1901 census, schedules 150–153, Lenton Avenue",
+  "people": [
+    {
+      "first_name": "Henry",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1855,
+      "born_place": "Carlton le Moorland",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 46,
+          "occupation_at_census": "Gardener",
+          "birth_place": "Carlton le Moorland",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page — Worker. The county above his birthplace is cramped into the column heading; Carlton le Moorland is in Lincolnshire."
+        }
+      ]
+    },
+    {
+      "first_name": "Phoebe",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1854,
+      "born_place": "Kirklington",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 47,
+          "birth_place": "Kirklington",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Henry C",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1879,
+      "born_place": "Kirklington",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "occupation_at_census": "Stone mason",
+          "birth_place": "Kirklington",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page — Birthplace given by ditto marks under his mother's."
+        }
+      ]
+    },
+    {
+      "first_name": "Arthur J",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1881,
+      "born_place": "Kirklington",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 20,
+          "birth_place": "Kirklington",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page — Birthplace by ditto. His occupation is written beneath his brother's and is not legible from the photograph — possibly joiner."
+        }
+      ]
+    },
+    {
+      "first_name": "Mary",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1883,
+      "born_place": "New Lenton, Nottingham",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 18,
+          "occupation_at_census": "Lace warehouse hand",
+          "birth_place": "New Lenton, Nottingham",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Frederick",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1889,
+      "born_place": "New Lenton, Nottingham",
+      "properties": [
+        369
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 369,
+          "address": "8 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 12,
+          "birth_place": "New Lenton, Nottingham",
+          "source": "1901 census, schedule 150, 8 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "id": 488,
+      "first_name": "Joseph",
+      "last_name": "Blythe",
+      "sex": "M",
+      "born_year": 1859,
+      "born_place": "Cherry Willingham, Lincolnshire",
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 42,
+          "occupation_at_census": "Coachman (domestic)",
+          "birth_place": "Cherry Willingham, Lincolnshire",
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page — Worker. The same Joseph Blythe as at Barrack Yard in 1911, by then a sexton."
+        }
+      ]
+    },
+    {
+      "id": 489,
+      "first_name": "Annie E",
+      "last_name": "Blythe",
+      "sex": "F",
+      "born_year": 1863,
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 38,
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page — Born in Yorkshire; the town is not legible from the photograph."
+        }
+      ]
+    },
+    {
+      "id": 492,
+      "first_name": "Arthur E",
+      "last_name": "Blythe",
+      "sex": "M",
+      "born_year": 1894,
+      "born_place": "Nottingham",
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 7,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "id": 490,
+      "first_name": "Marjorie P",
+      "last_name": "Blythe",
+      "sex": "F",
+      "born_year": 1896,
+      "born_place": "Nottingham",
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Daughter",
+          "age_at_census": 5,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "id": 491,
+      "first_name": "Kathleen N",
+      "last_name": "Blythe",
+      "sex": "F",
+      "born_year": 1899,
+      "born_place": "Nottingham",
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Daughter",
+          "age_at_census": 2,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Walter",
+      "last_name": "Crapper",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1853,
+      "born_place": "Hillsborough, Yorkshire",
+      "properties": [
+        368
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 368,
+          "address": "6 Lenton Avenue",
+          "relationship": "Boarder",
+          "marital_status": "Widower",
+          "age_at_census": 48,
+          "occupation_at_census": "Coachman (domestic)",
+          "birth_place": "Hillsborough, Yorkshire",
+          "source": "1901 census, schedule 151, 6 Lenton Avenue — transcribed from the enumerator's page — Worker."
+        }
+      ]
+    },
+    {
+      "id": 2497,
+      "first_name": "Arthur",
+      "last_name": "Sims",
+      "sex": "M",
+      "born_year": 1851,
+      "born_place": "Duffield, Derbyshire",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 50,
+          "occupation_at_census": "Coachman (domestic)",
+          "birth_place": "Duffield, Derbyshire",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "id": 2498,
+      "first_name": "Sarah",
+      "last_name": "Sims",
+      "sex": "F",
+      "born_year": 1848,
+      "born_place": "Wellingore, Lincolnshire",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 53,
+          "birth_place": "Wellingore, Lincolnshire",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "John",
+      "last_name": "Sims",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1881,
+      "born_place": "Nottingham",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 20,
+          "occupation_at_census": "Joiner and carpenter",
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "id": 2499,
+      "first_name": "Gerty",
+      "last_name": "Sims",
+      "sex": "F",
+      "born_year": 1887,
+      "born_place": "Nottingham",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 14,
+          "occupation_at_census": "Dressmaker's apprentice",
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page — Returned as 14 here, which puts her birth about 1886; her 1911 record gives 1890. Linked as the same person on the household and the name."
+        }
+      ]
+    },
+    {
+      "id": 2500,
+      "first_name": "Arthur",
+      "last_name": "Sims",
+      "sex": "M",
+      "born_year": 1893,
+      "born_place": "Nottingham",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Son",
+          "age_at_census": 8,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "Ernest",
+      "last_name": "Gill",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1883,
+      "born_place": "Plumtree, Nottinghamshire",
+      "properties": [
+        367
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 367,
+          "address": "4 Lenton Avenue",
+          "relationship": "Boarder",
+          "marital_status": "Single",
+          "age_at_census": 18,
+          "occupation_at_census": "Groom",
+          "birth_place": "Plumtree, Nottinghamshire",
+          "source": "1901 census, schedule 152, 4 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "George Samuel",
+      "last_name": "Elmore",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1858,
+      "born_place": "Heckington, Lincolnshire",
+      "properties": [
+        366
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 366,
+          "address": "2 Lenton Avenue",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 43,
+          "occupation_at_census": "Coachman (domestic)",
+          "birth_place": "Heckington, Lincolnshire",
+          "source": "1901 census, schedule 153, 2 Lenton Avenue — transcribed from the enumerator's page — Returned as \"Geo Saml\"."
+        }
+      ]
+    },
+    {
+      "first_name": "Charlotte",
+      "last_name": "Elmore",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1861,
+      "born_place": "Boston, Lincolnshire",
+      "properties": [
+        366
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 366,
+          "address": "2 Lenton Avenue",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 40,
+          "birth_place": "Boston, Lincolnshire",
+          "source": "1901 census, schedule 153, 2 Lenton Avenue — transcribed from the enumerator's page"
+        }
+      ]
+    },
+    {
+      "first_name": "John William",
+      "last_name": "Elmore",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1885,
+      "born_place": "Nottingham",
+      "properties": [
+        366
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 366,
+          "address": "2 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 16,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 153, 2 Lenton Avenue — transcribed from the enumerator's page — Returned as \"Jno Wm\"."
+        }
+      ]
+    },
+    {
+      "first_name": "George Henry",
+      "last_name": "Elmore",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1886,
+      "born_place": "Nottingham",
+      "properties": [
+        366
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 366,
+          "address": "2 Lenton Avenue",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 15,
+          "birth_place": "Nottingham",
+          "source": "1901 census, schedule 153, 2 Lenton Avenue — transcribed from the enumerator's page — Returned as \"Geo Hy\"."
+        }
+      ]
+    },
+    {
+      "first_name": "John",
+      "last_name": "Fox",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1873,
+      "born_place": "Magdalen, Norfolk",
+      "properties": [
+        366
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 366,
+          "address": "2 Lenton Avenue",
+          "relationship": "Boarder",
+          "marital_status": "Single",
+          "age_at_census": 28,
+          "occupation_at_census": "Coachman (domestic)",
+          "birth_place": "Magdalen, Norfolk",
+          "source": "1901 census, schedule 153, 2 Lenton Avenue — transcribed from the enumerator's page — Returned as \"Jno\"."
+        }
+      ]
+    }
+  ]
+}
