@@ -2292,8 +2292,49 @@ function readNhle() {
   return nhleCache;
 }
 
-app.get('/api/nhle', (req, res) => {
-  const entries = readNhle();
+// The list itself, live from Historic England's own feed, falling back to the
+// snapshot in data/nhle.json when they cannot be reached. The snapshot was 101
+// entries against their 120 for the same ground, so it had drifted.
+let nhleLive = null, nhleLiveAt = 0;
+const NHLE_TTL = 12 * 60 * 60 * 1000;
+const NHLE_URL = 'https://services-eu1.arcgis.com/ZOdPfBS3aqqDYPUQ/arcgis/rest/services/'
+  + 'National_Heritage_List_for_England_NHLE_v02_VIEW/FeatureServer/0/query';
+async function readNhleLive() {
+  if (nhleLive && Date.now() - nhleLiveAt < NHLE_TTL) return nhleLive;
+  const [s, w, n, e] = PARK_BBOX;
+  const q = new URLSearchParams({
+    where: '1=1',
+    geometry: JSON.stringify({ xmin: w, ymin: s, xmax: e, ymax: n, spatialReference: { wkid: 4326 } }),
+    geometryType: 'esriGeometryEnvelope', inSR: '4326',
+    spatialRel: 'esriSpatialRelIntersects', outFields: '*',
+    returnGeometry: 'true', outSR: '4326', f: 'json',
+  });
+  try {
+    const r = await fetch(NHLE_URL + '?' + q.toString(), {
+      headers: { 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+      signal: AbortSignal.timeout(20000),
+    });
+    if (!r.ok) return nhleLive;
+    const d = await r.json();
+    if (d.error || !Array.isArray(d.features)) return nhleLive;
+    nhleLive = d.features.filter(f => f.geometry && f.geometry.points && f.geometry.points[0])
+      .map(f => {
+        const a = f.attributes, pt = f.geometry.points[0];
+        return {
+          entry: a.ListEntry, name: a.Name, grade: a.Grade,
+          listed: a.ListDate ? new Date(a.ListDate).toISOString().slice(0, 10) : null,
+          ngr: a.NGR || null,
+          link: a.hyperlink || ('https://historicengland.org.uk/listing/the-list/list-entry/' + a.ListEntry),
+          lat: pt[1], lng: pt[0],
+        };
+      });
+    nhleLiveAt = Date.now();
+  } catch (err) { console.warn('nhle live:', err.message); }
+  return nhleLive;
+}
+
+app.get('/api/nhle', async (req, res) => {
+  const entries = (await readNhleLive()) || readNhle();
   const lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
   if (!isFinite(lat) || !isFinite(lng)) return res.json(entries);
   const radius = Math.min(parseFloat(req.query.radius) || 120, 1000);

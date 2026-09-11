@@ -1118,10 +1118,13 @@ function renderPanel() {
       srcSection +
       (p.lat != null ? '<div class="section" id="nhleSection"><h3>Historic England</h3>'
         + '<div id="nhleBody" style="font-size:0.78rem;color:#8a7a5a">Looking up nearby list entries…</div></div>' : '')
+      + (p.lat != null ? '<div class="section" id="plaqueSection" style="display:none"><h3>Plaques nearby</h3>'
+        + '<div id="plaqueBody" style="font-size:0.78rem;color:#8a7a5a"></div></div>' : '')
       + ((p.house_name || p.prev_house_name)
         ? '<div class="section" id="gazSection"><h3>The Gazette</h3>'
           + '<div id="gazBody" style="font-size:0.78rem;color:#8a7a5a">Searching the official record…</div></div>' : '');
     if (p.lat != null) loadNhle(p);
+    if (p.lat != null) loadPlaques(p);
     if (p.house_name || p.prev_house_name) loadGazette(p);
   }
     else if (curTab === 'photos') {
@@ -2292,6 +2295,35 @@ async function loadNhle(p) {
     body.innerHTML = chosen || '';
     if (!chosen) body.textContent = 'Could not reach the list right now.';
   }
+}
+
+// Commemorative plaques within a couple of hundred metres, from Open Plaques.
+// The section stays hidden unless there is something to show — most houses have
+// nothing near them and an empty panel on every property is just noise.
+async function loadPlaques(p) {
+  const body = document.getElementById('plaqueBody');
+  const sec = document.getElementById('plaqueSection');
+  if (!body || !sec) return;
+  try {
+    const rows = await fetch('/api/plaques?lat=' + p.lat + '&lng=' + p.lng + '&radius=250')
+      .then(r => r.json());
+    if (!rows.length) return;
+    sec.style.display = '';
+    body.innerHTML = rows.map(e =>
+      '<div style="padding:5px 0;border-bottom:1px solid #f0e8d0">'
+      + '<a href="' + esc(e.uri || '#') + '" target="_blank" rel="noopener noreferrer" '
+      + 'style="color:#2a5a8a;text-decoration:none">'
+      + esc(e.people.join(' and ') || e.title || 'Plaque') + '</a>'
+      + '<div style="color:#8a7a5a;font-size:0.72rem">' + esc(e.distance) + 'm'
+      + (e.colour ? ' · ' + esc(e.colour) : '') + (e.address ? ' · ' + esc(e.address) : '') + '</div>'
+      + (e.inscription ? '<div style="color:#6a5c44;font-size:0.74rem;margin-top:3px">'
+          + esc(e.inscription.length > 180 ? e.inscription.slice(0, 180) + '…' : e.inscription)
+          + '</div>' : '')
+      + '</div>').join('')
+      + '<div style="color:#8a7a5a;font-size:0.7rem;margin-top:6px;font-style:italic">'
+      + 'From <a href="https://openplaques.org/" target="_blank" rel="noopener noreferrer" '
+      + 'style="color:#8a7a5a">Open Plaques</a>. Nearby, not necessarily this house.</div>';
+  } catch (err) { /* a plaque is a bonus; never break the panel over one */ }
 }
 
 // Record which list entry actually belongs to this property, or clear it.
