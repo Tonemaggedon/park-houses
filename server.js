@@ -712,7 +712,6 @@ async function dbInit() {
       }
     } catch (e) { console.warn('set-aside migration:', e.message); }
     await seedResearchQuestions();
-    await seedGeocodeManual();
     // Deduplicate relationships and add unique constraint (non-fatal)
     try {
       await db.query(`DELETE FROM people_relationships WHERE id IN (
@@ -752,6 +751,12 @@ async function dbInit() {
       corrected_from    TEXT,
       queried_at        TIMESTAMPTZ DEFAULT NOW()
     )`);
+    // A table made by an older version keeps its old columns — CREATE TABLE IF NOT
+    // EXISTS never adds one — so make sure the ones written to are there.
+    for (const col of ['formatted_address TEXT', 'corrected_from TEXT', 'queried_at TIMESTAMPTZ DEFAULT NOW()']) {
+      await db.query(`ALTER TABLE geocode_cache ADD COLUMN IF NOT EXISTS ${col}`).catch(e => console.warn('geocode_cache column:', e.message));
+    }
+    await seedGeocodeManual();
     // Gate House and North Lodge are separate properties — no migration needed
     // Fix Huntingdon Drive 1921 — split into correct households by house name
     const hdFixes = [
@@ -5529,7 +5534,7 @@ async function seedGeocodeManual() {
   let doc;
   try { doc = JSON.parse(fs.readFileSync(file, 'utf8')); }
   catch (e) { console.warn('geocode_manual.json is not valid JSON:', e.message); return; }
-  let placed = 0;
+  let placed = 0, failed = 0, firstError = null;
   for (const p of (doc.places || [])) {
     const lat = Number(p.lat), lng = Number(p.lng);
     if (!p.place_text || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
@@ -5548,9 +5553,10 @@ async function seedGeocodeManual() {
          RETURNING place_text`,
         [p.place_text.trim(), lat, lng, p.label || null, SRC]);
       if (r.rows.length) placed++;
-    } catch (e) { console.warn('geocode seed', p.place_text, e.message); }
+    } catch (e) { failed++; if (!firstError) firstError = `${p.place_text}: ${e.message}`; }
   }
   if (placed) console.log(`Geocode: ${placed} birth place(s) placed by hand from ${SRC}`);
+  if (failed) console.warn(`Geocode: ${failed} place(s) from ${SRC} could not be saved — first: ${firstError}`);
 }
 
 async function seedTasks() {
