@@ -31,7 +31,8 @@
     ['/duplicates', '👥', 'Duplicate people'],
     ['/crowding', '⚠', 'Crowded houses'],
     ['/osm', '📍', 'Positions vs OpenStreetMap'],
-    ['/gazette-review', '📰', 'Gazette review'],
+    ['/listings', '🏛', 'Listed buildings'],
+    ['/gazette-review', '📰', 'Gazette by person'],
     ['/wikidata-review', '🔗', 'Wikidata review'],
     ['/name-sex', '⚥', 'Forename sex'],
   ];

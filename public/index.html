@@ -2266,7 +2266,7 @@ async function loadNhle(p) {
   try {
     // Asked by property, so the server uses the hand-placed position and leaves
     // out entries another house has claimed and ones dismissed here.
-    const rows = await fetch('/api/nhle?property=' + p.id + '&radius=30').then(r => r.json());
+    const rows = await fetch('/api/nhle?property=' + p.id + '&radius=40').then(r => r.json());
     const others = rows.filter(e => String(e.entry) !== String(ov.list_entry || ''));
     const nDismissed = (ov.nhle_dismissed || []).length;
     const undo = (canEdit && nDismissed)
@@ -2274,12 +2274,12 @@ async function loadNhle(p) {
         + ' dismissed for this house. <button class="nhle-btn nhle-unlink" data-nhle-undismiss="1">Bring '
         + (nDismissed > 1 ? 'them' : 'it') + ' back</button></div>' : '';
     if (!chosen && !others.length) {
-      body.innerHTML = '<div>No list entries within 30m that are not already another house\u2019s.</div>' + undo;
+      body.innerHTML = '<div>No list entries within 40m that are not already another house\u2019s.</div>' + undo;
       return;
     }
     body.innerHTML = chosen
       + (chosen && others.length
-          ? '<div class="nhle-note">Also within 30m — the list often covers a house, its walls '
+          ? '<div class="nhle-note">Also within 40m — the list often covers a house, its walls '
             + 'and its gateways as separate entries:</div>' : '')
       + others.map(e =>
         '<div class="nhle-row">'

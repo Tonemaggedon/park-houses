@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listed Buildings to Review — Nottingham Park Houses</title>
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --tint:#f6f2e6; --accent:#5a3a1a;
+          --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.45; }
+  .wrap { max-width:1000px; margin:0 auto; padding:22px 20px 90px; }
+
+  h2 { font-size:1.28rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.88rem; margin:0 0 6px; max-width:74ch; }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
+    margin:14px 0 10px; }
+  .controls { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+  .controls button { font-family:inherit; font-size:.78rem; border:1px solid var(--rule);
+    background:var(--card); color:var(--soft); border-radius:14px; padding:3px 12px; cursor:pointer; }
+  .controls button.on { border-color:var(--green); background:#eef3ea; color:var(--green); font-weight:700; }
+  .controls input { font-family:inherit; font-size:.82rem; padding:4px 9px; border:1px solid var(--rule);
+    border-radius:4px; background:var(--card); color:var(--ink); min-width:190px; margin-left:auto; }
+
+  .house { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    padding:12px 15px; margin-bottom:10px; }
+  .house.settled { background:#f8f6ef; }
+  .addr { font-size:1rem; font-weight:700; }
+  .addr a { color:var(--ink); text-decoration:none; }
+  .addr a:hover { text-decoration:underline; }
+  .addr .num { color:var(--faint); font-weight:400; font-size:.82rem; margin-left:6px; }
+  .meta { font-size:.76rem; color:var(--faint); margin-top:2px; }
+
+  .entry { display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;
+    border-top:1px solid #f2ece0; padding:7px 0 6px; }
+  .entry:first-of-type { border-top:0; margin-top:5px; }
+  .entry .nm { font-size:.86rem; flex:1 1 300px; min-width:0; }
+  .entry .nm a { color:#2a5a8a; text-decoration:none; }
+  .entry .nm a:hover { text-decoration:underline; }
+  .entry .d { font-size:.76rem; color:var(--faint); white-space:nowrap;
+    font-variant-numeric:tabular-nums; }
+  .entry .btns { display:flex; gap:6px; }
+  .chosen { background:var(--tint); border-radius:5px; padding:7px 10px; margin-top:7px; }
+  .chosen .tag { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--green);
+    font-weight:700; }
+
+  button.act { font-family:inherit; font-size:.76rem; border-radius:4px; padding:3px 11px;
+    cursor:pointer; border:1px solid var(--green); background:var(--green); color:#f2ecd8;
+    white-space:nowrap; }
+  button.act.ghost { background:var(--card); color:var(--soft); border-color:var(--rule); }
+  button.act:disabled { opacity:.5; cursor:default; }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:6px; }
+  .empty { color:var(--faint); font-style:italic; padding:26px 0; }
+  .err { color:var(--red); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+
+<div class="wrap">
+  <h2>Listed buildings to review</h2>
+  <p class="lede">Every house beside the National Heritage List entries within 40m of it, so the
+    whole estate can be settled here rather than one house at a time on the map. Each entry links
+    to its record on the Historic England site.</p>
+  <p class="lede">The list records a house, its boundary walls and its gate piers as separate
+    entries, so the nearest one is often not the house. Choosing an entry also marks the house as
+    listed, and takes that entry out of every other house's suggestions. Dismissing removes it from
+    this house only.</p>
+  <div class="bar" id="bar">Loading…</div>
+  <div class="controls" id="controls" hidden>
+    <button data-filter="todo" class="on">To review</button>
+    <button data-filter="chosen">Entry recorded</button>
+    <button data-filter="dismissed">Dismissed here</button>
+    <button data-filter="all">Every house</button>
+    <input id="q" type="search" placeholder="Find a house or street…" aria-label="Find a house">
+  </div>
+  <div id="list"><div class="empty">Loading…</div></div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let houses = [], filter = 'todo', query = '';
+
+const shown = () => houses.filter(h => {
+  if (query && !(h.address + ' ' + h.street).toLowerCase().includes(query)) return false;
+  if (filter === 'todo') return h.suggestions.length && !h.chosen;
+  if (filter === 'chosen') return !!h.chosen;
+  if (filter === 'dismissed') return h.dismissed.length > 0;
+  return true;
+});
+
+function entryRow(h, e) {
+  return `<div class="entry">
+    <div class="nm"><a href="${esc(e.link)}" target="_blank" rel="noopener noreferrer">${esc(e.name)}</a></div>
+    <div class="d">Grade ${esc(e.grade || '—')}${e.listed ? ' · listed ' + esc(e.listed) : ''} · ${esc(e.distance)}m · entry ${esc(e.entry)}</div>
+    <div class="btns">
+      <button class="act" data-choose="${esc(h.id)}" data-entry="${esc(e.entry)}">This is the one</button>
+      <button class="act ghost" data-dismiss="${esc(h.id)}" data-entry="${esc(e.entry)}">Not this house</button>
+    </div>
+  </div>`;
+}
+
+function card(h) {
+  const settled = !h.suggestions.length;
+  return `<div class="house${settled ? ' settled' : ''}" data-house="${esc(h.id)}">
+    <div class="addr"><a href="/?prop=${esc(h.id)}" target="_blank">${esc(h.address)}</a>
+      <span class="num">#${esc(h.id)}</span></div>
+    <div class="meta">${h.hasPosition ? '' : 'No position on the map — nothing can be measured. '}${
+      h.listed ? 'Recorded as listed: ' + esc(h.listed) + '. ' : ''}${
+      h.suggestions.length ? h.suggestions.length + ' within 40m' : 'Nothing within 40m'}${
+      h.dismissed.length ? ' · ' + h.dismissed.length + ' dismissed here' : ''}</div>
+    ${h.chosen ? `<div class="chosen">
+        <div class="tag">This house's entry</div>
+        <div class="entry" style="border:0;padding-top:3px">
+          <div class="nm"><a href="${esc(h.chosen.link)}" target="_blank" rel="noopener noreferrer">${esc(h.chosen.name || ('List entry ' + h.chosen.entry))}</a></div>
+          <div class="d">Grade ${esc(h.chosen.grade || '—')}${h.chosen.listed ? ' · listed ' + esc(h.chosen.listed) : ''} · entry ${esc(h.chosen.entry)}</div>
+          <div class="btns"><button class="act ghost" data-clear="${esc(h.id)}">Not this one</button></div>
+        </div>
+      </div>` : ''}
+    ${h.suggestions.map(e => entryRow(h, e)).join('')}
+    ${h.dismissed.length ? `<div class="note">${h.dismissed.length} dismissed for this house.
+      <button class="act ghost" data-undismiss="${esc(h.id)}">Bring ${h.dismissed.length > 1 ? 'them' : 'it'} back</button></div>` : ''}
+  </div>`;
+}
+
+function render() {
+  const box = document.getElementById('list');
+  const list = shown();
+  box.innerHTML = list.length ? list.map(card).join('')
+    : '<div class="empty">Nothing matches. Every house in this view has been settled.</div>';
+  const t = window._totals || {};
+  document.getElementById('bar').textContent =
+    `${t.suggestions} suggestion${t.suggestions === 1 ? '' : 's'} across `
+    + `${t.withSuggestions} house${t.withSuggestions === 1 ? '' : 's'} · `
+    + `${t.chosen} house${t.chosen === 1 ? '' : 's'} with an entry recorded · `
+    + `${t.dismissed} dismissed · ${t.noPosition} not placed on the map · showing ${list.length}`;
+}
+
+async function save(id, fields) {
+  const res = await fetch('/api/property/' + id, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+  return data.data || {};
+}
+
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-choose],[data-dismiss],[data-clear],[data-undismiss]');
+  if (!btn) return;
+  const id = Number(btn.dataset.choose || btn.dataset.dismiss || btn.dataset.clear || btn.dataset.undismiss);
+  const h = houses.find(x => x.id === id);
+  if (!h) return;
+  const entryId = btn.dataset.entry;
+  const found = h.suggestions.find(s => String(s.entry) === String(entryId));
+  btn.disabled = true;
+  try {
+    if (btn.dataset.choose && found) {
+      // Being on the list is what "listed" means, so recording the entry records that too.
+      await save(id, { list_entry: found.entry, list_name: found.name, list_grade: found.grade,
+                       list_date: found.listed || null, list_link: found.link,
+                       listed: 'Yes', listedGrade: found.grade });
+      h.chosen = { entry: found.entry, name: found.name, grade: found.grade,
+                   listed: found.listed || null, link: found.link };
+      h.suggestions = h.suggestions.filter(s => String(s.entry) !== String(entryId));
+      // An entry belongs to one house, so it stops being a suggestion everywhere else.
+      for (const other of houses) {
+        if (other.id === id) continue;
+        other.suggestions = other.suggestions.filter(s => String(s.entry) !== String(entryId));
+      }
+    } else if (btn.dataset.dismiss) {
+      const list = [...new Set([...h.dismissed.map(String), String(entryId)])];
+      await save(id, { nhle_dismissed: list });
+      h.dismissed = list;
+      h.suggestions = h.suggestions.filter(s => String(s.entry) !== String(entryId));
+    } else if (btn.dataset.clear) {
+      await save(id, { list_entry: null, list_name: null, list_grade: null,
+                       list_date: null, list_link: null });
+      h.chosen = null;
+      load();  // that entry is a suggestion again, here and elsewhere
+      return;
+    } else if (btn.dataset.undismiss) {
+      await save(id, { nhle_dismissed: [] });
+      h.dismissed = [];
+      load();
+      return;
+    }
+    recount();
+    render();
+  } catch (err) {
+    btn.disabled = false;
+    alert('Could not save that: ' + err.message);
+  }
+});
+
+function recount() {
+  const t = window._totals;
+  t.withSuggestions = houses.filter(h => h.suggestions.length).length;
+  t.suggestions = houses.reduce((n, h) => n + h.suggestions.length, 0);
+  t.chosen = houses.filter(h => h.chosen).length;
+  t.dismissed = houses.reduce((n, h) => n + h.dismissed.length, 0);
+}
+
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-filter]');
+  if (!f) return;
+  filter = f.dataset.filter;
+  document.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('on', b === f));
+  render();
+});
+document.addEventListener('input', e => {
+  if (e.target.id !== 'q') return;
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+async function load() {
+  const box = document.getElementById('list'), bar = document.getElementById('bar');
+  try {
+    const d = await fetch('/api/nhle/review').then(r => r.json());
+    if (d.error) throw new Error(d.error);
+    houses = d.properties || [];
+    window._totals = d.totals || {};
+    document.getElementById('controls').hidden = false;
+    render();
+  } catch (err) {
+    bar.textContent = '';
+    box.innerHTML = `<div class="empty err">Could not load: ${esc(err.message)}. `
+      + `Sign in as a contributor to review these.</div>`;
+  }
+}
+load();
+</script>
+</body>
+</html>

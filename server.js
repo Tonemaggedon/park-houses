@@ -1433,9 +1433,51 @@ app.get('/api/gazette/pending', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Every notice with the person it was found against, whatever has been decided
+// about it. The review page works through the backlog and can take a decision
+// back, which needs the confirmed and dismissed ones as well as the new.
+app.get('/api/gazette/review', requireContributor, async (req, res) => {
+  if (!db) return res.json({ people: [], totals: { suggested: 0, confirmed: 0, dismissed: 0 } });
+  try {
+    const r = await db.query(`
+      SELECT g.id, g.url, g.gazette, g.issue, g.page, g.supplement, g.title, g.notice_date,
+             COALESCE(g.status,'confirmed') AS status,
+             p.id AS person_id, p.first_name, p.last_name, p.known_as, p.title AS person_title,
+             p.postnominals, p.born_year, p.died_year, p.bio
+        FROM person_gazette g
+        JOIN people p ON p.id = g.person_id
+       ORDER BY p.last_name, p.first_name, g.notice_date NULLS LAST`);
+    const people = [], byPerson = new Map();
+    const totals = { suggested: 0, confirmed: 0, dismissed: 0 };
+    for (const row of r.rows) {
+      if (!byPerson.has(row.person_id)) {
+        const bio = (row.bio || '').replace(/\s+/g, ' ').trim();
+        const person = {
+          id: row.person_id, first_name: row.first_name, last_name: row.last_name,
+          known_as: row.known_as, title: row.person_title, postnominals: row.postnominals,
+          born_year: row.born_year, died_year: row.died_year,
+          bio: bio.length > 260 ? bio.slice(0, 260) + '…' : bio,
+          notices: [],
+        };
+        byPerson.set(row.person_id, person);
+        people.push(person);
+      }
+      byPerson.get(row.person_id).notices.push({
+        id: row.id, url: row.url, gazette: row.gazette, issue: row.issue, page: row.page,
+        supplement: row.supplement, title: row.title, notice_date: row.notice_date,
+        status: row.status,
+      });
+      if (totals[row.status] !== undefined) totals[row.status]++;
+    }
+    res.json({ people, totals });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post('/api/person/:personId/gazette/:refId', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
-  const status = req.body && req.body.status === 'confirmed' ? 'confirmed' : 'dismissed';
+  // "suggested" puts a notice back in the queue, so a decision can be undone.
+  const wanted = String((req.body && req.body.status) || '');
+  const status = ['confirmed', 'dismissed', 'suggested'].includes(wanted) ? wanted : 'dismissed';
   try {
     await db.query(`UPDATE person_gazette SET status=$3 WHERE id=$1 AND person_id=$2`,
       [parseInt(req.params.refId, 10), parseInt(req.params.personId, 10), status]);
@@ -2435,8 +2477,69 @@ async function propertyPosition(id) {
   return null;
 }
 
+// Every house's suggestions in one request. The map asks house by house, which
+// is four hundred requests to work through the estate, and the answer is the
+// same list of entries measured against four hundred positions.
+app.get('/api/nhle/review', requireContributor, async (req, res) => {
+  try {
+    const entries = (await readNhleLive()) || readNhle();
+    const radius = Math.min(parseFloat(req.query.radius) || 40, 1000);
+    const [coords, ovs] = await Promise.all([loadCoords(), loadProps()]);
+    let props = [];
+    try { props = JSON.parse(readAllPropsCached().body); } catch (e) {}
+    const taken = new Map();
+    for (const [id, ov] of Object.entries(ovs)) {
+      if (ov && ov.list_entry) taken.set(String(ov.list_entry), Number(id));
+    }
+    const out = props.map(p => {
+      const c = coords[p.id] || coords[String(p.id)];
+      const lat = c && c.lat != null ? Number(c.lat) : (p.lat != null ? Number(p.lat) : null);
+      const lng = c && c.lng != null ? Number(c.lng) : (p.lng != null ? Number(p.lng) : null);
+      const ov = ovs[p.id] || ovs[String(p.id)] || {};
+      const dismissed = (ov.nhle_dismissed || []).map(String);
+      const gone = new Set(dismissed);
+      const always = new Set([String(ov.list_entry || ''), ...((p.nhle_extra) || []).map(String)]);
+      let suggestions = [];
+      if (lat != null && lng != null) {
+        const away = e => Math.round(Math.hypot(
+          (e.lng - lng) * Math.cos(lat * Math.PI / 180) * 111320, (e.lat - lat) * 110540));
+        suggestions = entries.map(e => ({ ...e, distance: away(e) }))
+          .filter(e => (e.distance <= radius || always.has(String(e.entry)))
+            && String(e.entry) !== String(ov.list_entry || '')
+            && !gone.has(String(e.entry))
+            && !(taken.has(String(e.entry)) && taken.get(String(e.entry)) !== p.id))
+          .sort((a, b) => a.distance - b.distance)
+          .slice(0, 12);
+      }
+      return {
+        id: p.id, address: p.address || p.name || ('Property ' + p.id), street: p.street || '',
+        listed: p.listed || null, hasPosition: lat != null, placedByHand: !!(c && c.lat != null),
+        chosen: ov.list_entry ? {
+          entry: ov.list_entry, name: ov.list_name || null, grade: ov.list_grade || null,
+          listed: ov.list_date || null,
+          link: ov.list_link || ('https://historicengland.org.uk/listing/the-list/list-entry/' + ov.list_entry),
+        } : null,
+        dismissed, suggestions,
+      };
+    });
+    res.json({
+      radius,
+      properties: out,
+      totals: {
+        properties: out.length,
+        withSuggestions: out.filter(p => p.suggestions.length).length,
+        suggestions: out.reduce((n, p) => n + p.suggestions.length, 0),
+        chosen: out.filter(p => p.chosen).length,
+        dismissed: out.reduce((n, p) => n + p.dismissed.length, 0),
+        noPosition: out.filter(p => !p.hasPosition).length,
+      },
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.get('/api/nhle', async (req, res) => {
   let entries = (await readNhleLive()) || readNhle();
+  let always = new Set();
   let lat = parseFloat(req.query.lat), lng = parseFloat(req.query.lng);
   const propId = parseInt(req.query.property, 10);
   if (Number.isInteger(propId)) {
@@ -2451,19 +2554,26 @@ app.get('/api/nhle', async (req, res) => {
     }
     const mine = ovs[propId] || ovs[String(propId)] || {};
     const dismissed = new Set((mine.nhle_dismissed || []).map(String));
-    entries = entries.filter(e => String(e.entry) === String(mine.list_entry || '')
+    // Entries this house always shows, however far off: its own recorded entry,
+    // and any named in nhle_extra in all_props.json. The list's points do not
+    // always sit on the building they describe, so a house can want an entry
+    // that falls outside the radius.
+    let row = null;
+    try { row = JSON.parse(readAllPropsCached().body).find(p => p.id === propId) || null; } catch (e) {}
+    always = new Set([String(mine.list_entry || ''), ...((row && row.nhle_extra) || []).map(String)]);
+    entries = entries.filter(e => always.has(String(e.entry))
       || (!taken.has(String(e.entry)) && !dismissed.has(String(e.entry))));
   }
   if (!isFinite(lat) || !isFinite(lng)) return res.json(entries);
-  // 30m: the list entry for a house sits on the house. At 120m every house in a
-  // street was offered every neighbour's walls and gate piers.
-  const radius = Math.min(parseFloat(req.query.radius) || 30, 1000);
+  // 40m: the list entry for a house sits on or near the house. At 120m every
+  // house in a street was offered every neighbour's walls and gate piers.
+  const radius = Math.min(parseFloat(req.query.radius) || 40, 1000);
   const m = (a, b) => Math.hypot(
     (a.lng - b.lng) * Math.cos(lat * Math.PI / 180) * 111320,
     (a.lat - b.lat) * 110540);
   res.json(entries
     .map(e => ({ ...e, distance: Math.round(m(e, { lat, lng })) }))
-    .filter(e => e.distance <= radius)
+    .filter(e => e.distance <= radius || always.has(String(e.entry)))
     .sort((a, b) => a.distance - b.distance)
     .slice(0, 12));
 });
@@ -5519,6 +5629,7 @@ app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/listings', (req, res) => res.sendFile(path.join(__dirname, 'public', 'listings.html')));
 app.get('/architects/:type/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/architects/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 
