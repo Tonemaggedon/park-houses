@@ -1,0 +1,46 @@
+{
+ "note": "All three Andrews are already in the record, filed at 15 Lenton Avenue on the 1911 census, with nothing but their names and ages. This fills them out. One thing it cannot do: Henry's birth year is held as 1884, worked from his age on census night, and the account gives 18 November 1883. The importer fills blanks and never overwrites, and it refuses a birth date whose year contradicts the year already recorded — so change the year to 1883 on his person page first, and the date will then take.",
+ "source": "A. Hagues, from an account of the family; the 1911 census for the household itself",
+ "people": [
+  {
+   "id": 2505,
+   "born_date": "18 November 1883",
+   "born_place": "East London, Eastern Cape, South Africa",
+   "died_date": "22 November 1918",
+   "died_year": 1918,
+   "sex": "M",
+   "bio": "Lieutenant-Commander Henry Godfrey Andrews, R.N.V.R., R.N.D., was born at East London in the Eastern Cape on 18 November 1883 and schooled in England. He trained as a mechanical engineer at Lowestoft, worked in Westminster and Swindon, and by 1904 was assistant borough electrical engineer to Bournemouth Corporation, where he met Dorothy Agnes, an artist, who became his wife. Their daughter Joan arrived in 1908, the year the family took 15 Lenton Avenue and he joined Goddard, Massey and Warner, gas and water engineers of Traffic Street, by the station. They left for Canada in 1912.\n\nHe enlisted within weeks of the war beginning, joining the Royal Navy in October 1914, and was at Gallipoli in 1915, where a field promotion made him Lieutenant-Commander before he was badly wounded. January 1918 took him to France as second in command of the Nelson Battalion, through the German spring offensive; he was gassed, caught trench fever, and was sent home. He never got his strength back. Influenza killed him on 22 November 1918, eleven days after the armistice. He was thirty-five.",
+   "occupations": [
+    {"occupation": "Assistant borough electrical engineer", "employer": "Bournemouth Corporation",
+     "from_year": 1904, "to_year": 1908},
+    {"occupation": "Engineer", "employer": "Goddard, Massey and Warner, gas and water engineers, Traffic Street",
+     "from_year": 1908, "to_year": 1912,
+     "notes": "The firm he joined on moving to The Park."},
+    {"occupation": "Lieutenant-Commander, Royal Naval Volunteer Reserve, Royal Naval Division",
+     "from_year": 1914, "to_year": 1918,
+     "notes": "Promoted in the field at Gallipoli in 1915; second in command of the Nelson Battalion in France from January 1918."}
+   ]
+  },
+  {
+   "id": 2506,
+   "sex": "F",
+   "bio": "Dorothy Agnes Andrews, an artist, met her husband Henry at Bournemouth, where he was the borough's assistant electrical engineer. The couple were at 15 Lenton Avenue from 1908, where the 1911 census found them with their daughter Joan, and left for Canada in 1912. Henry died of influenza in November 1918, a fortnight after the war ended.",
+   "occupations": [
+    {"occupation": "Artist"}
+   ],
+   "relationships": [
+    {"relationship": "spouse_of", "to": {"id": 2505}}
+   ]
+  },
+  {
+   "id": 2507,
+   "sex": "F",
+   "born_year": 1908,
+   "bio": "Joan Godfrey Andrews was born in 1908, the year her parents moved into 15 Lenton Avenue, and was two when the 1911 census recorded the household. The family emigrated to Canada in 1912; her father died of influenza in 1918, when she was ten.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"id": 2505}},
+    {"relationship": "child_of", "to": {"id": 2506}}
+   ]
+  }
+ ]
+}

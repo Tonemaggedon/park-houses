@@ -624,6 +624,38 @@
       "link": "/admin",
       "title": "Run Import people for the Fishers of 1 Duke William Mount",
       "detail": "The family the house was built for, from the family account: Horace Arthur Fisher, Sarah Kate née Thackeray, and their six children. The house holds nobody at all in the record, so these are its first people. The preview should say 8 added, 8 property links, 1 marriage and twelve parent links. No census entries are created — there is no return behind this."
+    },
+    {
+      "slug": "import-andrews-lenton-avenue",
+      "area": "People",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Fix Henry Andrews's birth year, then run Import people for the Andrews family",
+      "detail": "His record says 1884, taken from his age in 1911; the family account gives 18 November 1883. Change the year on his person page first — the importer will not accept a birth date that contradicts a year already held — then run the import. It fills all three: his South African birth, his engineering posts at Bournemouth and at Goddard, Massey and Warner, his service and his death in November 1918; Dorothy as an artist; Joan's birth year and the family links."
+    },
+    {
+      "slug": "lenton-avenue-1901",
+      "area": "Census",
+      "size": "an afternoon",
+      "link": "/census",
+      "title": "Find the 1901 census for Lenton Avenue — twenty of twenty-four houses have none",
+      "detail": "The record holds 1901 for four houses on the street, all on the even side: 2, 4, 6 and 8. Every odd-numbered house from 1 to 33, and 10, 12 and 14 besides, has nothing for that year. Several hold a single year only — 1 and 19 and 25 and 27 and 29 have 1911 alone, while 5 and 17 have 1921 alone. 17 is Dundee House, and 15 is where the Andrews family were living from 1908, so 1901 there would name whoever preceded them."
+    },
+    {
+      "slug": "carver-daughters-29-lenton-road",
+      "area": "Census",
+      "size": "a few minutes",
+      "link": "/census",
+      "title": "Two Carver daughters are missing from 29 Lenton Road",
+      "detail": "An account of the family names Frederick and Annie Carver with three daughters — Gertrude, Mary and Annie. The record holds the parents and Annie Florence from the 1911 census, but no Gertrude and no Mary. Either they had left home by 1911 or they were missed in transcription, so the return is worth re-reading; the 1901 page would show all three while they were still at home. Frederick directed Adams, Page and Cullen in the Lace Market and represented the trade abroad, at Brussels in 1891 and the Paris Exhibition of 1900."
+    },
+    {
+      "slug": "import-carver-wills-wright",
+      "area": "People",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for Carver, Wills and Wright",
+      "detail": "Fills out Frederick Carver, who is already at 29 Lenton Road from the 1911 census — his directorship of Adams, Page and Cullen and his trade missions to Brussels and Paris — and creates two men the record does not hold: Stephen Wills, whom Arundel House was built for in 1870, and William Wright, first occupant of 29 Lenton Road. Neither gets a census entry; both are linked to their house as residents, since the evidence is an account. Preview should say 2 added, 2 property links, 1 filled out, 4 occupations."
     }
   ]
 }

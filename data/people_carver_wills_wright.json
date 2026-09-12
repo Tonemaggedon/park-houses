@@ -1,0 +1,50 @@
+{
+ "note": "Three men named in accounts of two houses. Frederick Carver (#864) is already in the record from the 1911 census at 29 Lenton Road, so this only fills out what he did. Stephen Wills and William Wright are new, and neither has a census entry here — each is linked to the house he is named with, as a resident rather than a household, because the evidence is an account and not a return. Nothing is created for the Carver daughters Gertrude and Mary: a name alone, with no year and no return behind it, would be a record that could never be checked.",
+ "source": "A. Hagues, from accounts of 1 Park Valley and 29 Lenton Road; the 1911 census for Frederick Carver's own entry",
+ "people": [
+  {
+   "id": 864,
+   "bio": "Frederick Carver was a director of Adams, Page and Cullen, whose Lace Market warehouse — now part of Nottingham College — was another T. C. Hine building. He spoke for the British trade abroad more than once, at the Congress of Brussels in 1891 and the Paris Exhibition of 1900. The 1911 census found him at 29 Lenton Road with his wife Annie and their daughter Annie Florence; an account of the family names two more daughters, Gertrude and Mary, who are not on that return.",
+   "occupations": [
+    {
+     "occupation": "Director",
+     "employer": "Adams, Page and Cullen, Lace Market",
+     "notes": "The firm's warehouse was designed by T. C. Hine and is now part of Nottingham College."
+    },
+    {
+     "occupation": "Trade delegate",
+     "notes": "Represented the United Kingdom at the Congress of Brussels, 1891, and the Paris Exhibition of 1900."
+    }
+   ]
+  },
+  {
+   "first_name": "Stephen",
+   "last_name": "Wills",
+   "sex": "M",
+   "properties": [
+    258
+   ],
+   "bio": "Stephen Wills, a lace manufacturer, was the man Arundel House was built for: T. C. Hine designed it for him in 1870, on the corner of Lenton Road and Park Valley at the Castle entrance to the estate. No census in the record reaches back to his occupancy — the house's earliest household here is 1921 — so he is recorded from an account of the house rather than from a return.",
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Wright",
+   "sex": "M",
+   "properties": [
+    194
+   ],
+   "bio": "William Wright, a Nottingham lace manufacturer with works in New Radford, was the first occupant of 29 Lenton Road, the house built about 1859-60 and since divided into three flats. The record's censuses for the house begin in 1911, by which time the Carvers were there, so Wright comes from an account of the house rather than from a return.",
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "notes": "Premises in New Radford."
+    }
+   ]
+  }
+ ]
+}
