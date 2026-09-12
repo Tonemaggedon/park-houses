@@ -6226,6 +6226,21 @@ app.get('/family-tree', (req, res) => res.sendFile(path.join(__dirname, 'public'
 app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public', 'architects.html')));
 app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
 app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
+// The estate's own story, before any of the houses. Served from a file rather
+// than the database: it is a written account, not something the record gathers.
+app.get('/api/history', (req, res) => {
+  try {
+    const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'park_history.json'), 'utf8'));
+    const entries = (doc.entries || [])
+      .filter(e => e && Number.isFinite(Number(e.year)) && e.text)
+      .map(e => ({ year: Number(e.year), text: e.text,
+                   ...(e.incomplete ? { incomplete: true, why: e.why || null } : {}) }))
+      .sort((a, b) => a.year - b.year);
+    res.json({ entries, credit: doc.credit || null, source: doc.source || null });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.get('/history', (req, res) => res.sendFile(path.join(__dirname, 'public', 'history.html')));
+
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
 app.get('/name-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-review.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));

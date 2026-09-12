@@ -744,6 +744,14 @@
       "link": "/duplicates",
       "title": "Forty duplicate people to merge, and why they appeared",
       "detail": "My fault, twice over. The 1901 files were written with the forenames as the enumerator abbreviated them — Geo. Parr, Constance M. Smith, Ada M. Read — and the importer matches names letter for letter, so it made a second record of everybody the record already held under a fuller spelling. That happened on the first run, and the twenty-two it produced sat inside a count I read as new arrivals. Then merging the abbreviated spellings away meant the files could no longer find their own people, so the next run created ten of them again with fresh numbers. The record went from 2755 to 2798; three of those forty-three are real — Edward Strutt, John Pickard Becher and James Murchie. The rest want merging on this page, keeping the fuller, older record each time. Both 1901 files now address those people by number instead of by name, so no later run can repeat it, and a merge now leaves an alias behind so a spelling merged away still finds the person it belongs to. One is deliberately left alone: Annie F. Carver, born 1871 on this return, against Annie Florence Carver born 1865 — six years apart, too far for the record to join them on its own. That one wants deciding by eye."
+    },
+    {
+      "slug": "history-truncated-entries",
+      "area": "Research",
+      "size": "half an hour with the map",
+      "link": "/history",
+      "title": "13 entries on the estate history stop mid-sentence",
+      "detail": "The new history page is retold from the concise history printed on Douglas de Havilland's Park Map, Fourth Edition. The transcript came out of the map's PDF text layer, and wherever the printed column wrapped, the rest of the sentence was lost — so 13 of the 34 entries break off. They are shown unfinished, with a red ellipsis and a note, rather than completed from guesswork. The gaps: 1068, what the enclosed woodland was for; 1642, the civil war itself; 1702, garbled beyond reading; 1714, a few words after the recreated dukedom; 1776, the Duke's full title; 1792, where the Cavalry Barracks stood; 1795, what became of the widowed Duchess; 1801, the 1821 population; 1807, what the marriage brought the estate; 1822, who resented the development; 1834, the sentence about the fifty houses; 1875, what the Corporation did with the restored mansion; and 1986, almost certainly the Nottingham Park Estate Act but the map's words stop short. Reading them off the printed map would close all of them. One more thing to settle while you are at it: the record spells him Dougal de Havilland in two data files and their filenames, and A. Hagues writes Douglas. The page uses Douglas."
     }
   ]
 }

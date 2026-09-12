@@ -19,6 +19,7 @@
     ['/family-tree', '🌳', 'Family trees'],
     ['/stats', '📈', 'Insights'],
     ['/origins', '🌍', 'Origins'],
+    ['/history', '⏳', 'Estate history'],
     ['/archive', '🗄', 'Archive'],
     ['/research', '❓', 'Open questions'],
     ['/dashboard', '📊', 'Dashboard'],
