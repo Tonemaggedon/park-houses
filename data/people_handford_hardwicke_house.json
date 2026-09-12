@@ -1,6 +1,6 @@
 {
- "note": "Henry Handford of Hardwicke House, filled out from Munk's Roll, with his wife's parentage and her father added. ONE THING THIS FILE CANNOT DO: Munk's Roll gives his birth as 1855, and the record holds 1856, worked back from his age on the 1901 census night. The importer fills blanks and never writes over what is there, so the year will not change from here — alter it by hand on his person page if you want the authority's year rather than the census's. His death, 24 June 1928, goes in cleanly because the field is empty. Everyone is named as well as numbered, since the importer skips an entry with no first and last name before it ever reads the number.",
- "source": "Munk's Roll (Lives of the Fellows of the Royal College of Physicians), the entry by G. H. Brown, drawing on his obituaries in the Lancet and the British Medical Journal, 1928. Reworded, not reproduced. The 1901 census for the household itself.",
+ "note": "Henry Handford of Hardwicke House, filled out from Munk's Roll, with his wife's parentage and her father added. ONE THING THIS FILE CANNOT DO: Munk's Roll gives his birth as 1855, and the record holds 1856, worked back from his age on the 1901 census night. The importer fills blanks and never writes over what is there, so the year will not change from here — alter it by hand on his person page if you want the authority's year rather than the census's. His death, 24 June 1928, goes in cleanly because the field is empty. Extended after the first writing with an account of the two sons, both killed at the Hohenzollern Redoubt on 15 October 1915, their half-sister Gertrude and her husband Major Becher, who was mortally wounded in the same attack. Everyone is named as well as numbered, since the importer skips an entry with no first and last name before it ever reads the number.",
+ "source": "Munk's Roll (Lives of the Fellows of the Royal College of Physicians), the entry by G. H. Brown, drawing on his obituaries in the Lancet and the British Medical Journal, 1928. Reworded, not reproduced. The 1901 census for the household itself. The sons, Major Becher and the Southwell connection from an account of the Handford brothers drawing on the Western Daily Press of 22 October 1915, the Nottinghamshire county council minutes of July 1915, Frank H. Jacob's History of the General Hospital near Nottingham (1951), and the memorial window in Southwell Minster. Reworded, not reproduced.",
  "people": [
   {
    "id": 3060,
@@ -10,7 +10,7 @@
    "died_date": "24 June 1928",
    "died_year": 1928,
    "postnominals": "M.D., M.R.C.S., D.P.H., F.R.C.P.",
-   "bio": "Henry Handford was a physician of standing in Nottingham for close on fifty years, and the 1901 census finds him at Hardwicke House on Cavendish Crescent North with a household of eleven.\n\nHe was a doctor's son, born at Atherstone in Warwickshire where his father Thomas practised, and he trained at Edinburgh, taking his M.B., C.M. in 1878 with high distinction before going on to Paris and Vienna. A spell as medical tutor at Queen's College, Birmingham, came next, and then Nottingham, where he was appointed physician to the General Hospital and served until 1906. Pathology and diseases of the heart were where his particular gift lay. He became a Fellow of the Royal College of Physicians in 1899, and held the M.D., the M.R.C.S. and a Cambridge D.P.H.\n\nLeaving the hospital in 1906 did not mean leaving the work. He became medical officer of health for the county and held that for twenty years, retiring in 1926 — so his career divides neatly into two halves, the first at a patient's bedside and the second over the drains, the water and the reporting of infectious disease across the whole of Nottinghamshire. In the Great War he served as a major in the sanitary branch of the Royal Army Medical Corps, which was the same public health work carried into uniform.\n\nHe married a daughter of Edward Strutt, first Baron Belper. They had two sons, and both were at home in 1901: Henry B. S. and Everard J. S., aged seven and five. The household that night also held his wife's three daughters by her first marriage, all born at Bedale in Yorkshire and carrying the name Gale, and five servants. He died on 24 June 1928, and the Lancet and the British Medical Journal both marked it.",
+   "bio": "Henry Handford was a physician of standing in Nottingham for close on fifty years, and the 1901 census finds him at Hardwicke House on Cavendish Crescent North with a household of eleven.\n\nHe was a doctor's son, born at Atherstone in Warwickshire where his father Thomas practised, and he trained at Edinburgh, taking his M.B., C.M. in 1878 with high distinction before going on to Paris and Vienna. A spell as medical tutor at Queen's College, Birmingham, came next, and then Nottingham, where he was appointed physician to the General Hospital and served until 1906. Pathology and diseases of the heart were where his particular gift lay. He became a Fellow of the Royal College of Physicians in 1899, and held the M.D., the M.R.C.S. and a Cambridge D.P.H.\n\nLeaving the hospital in 1906 did not mean leaving the work. He became medical officer of health for the county and held that for twenty years, retiring in 1926 — so his career divides neatly into two halves, the first at a patient's bedside and the second over the drains, the water and the reporting of infectious disease across the whole of Nottinghamshire. In the Great War he served as a major in the sanitary branch of the Royal Army Medical Corps, which was the same public health work carried into uniform.\n\nHe married a daughter of Edward Strutt, first Baron Belper. They had two sons, and both were at home in 1901: Henry B. S. and Everard J. S., aged seven and five. The household that night also held his wife's three daughters by her first marriage, all born at Bedale in Yorkshire and carrying the name Gale, and five servants. Then the war took both his sons on the same morning. Basil and Everard were killed within hours of each other at the Hohenzollern Redoubt on 15 October 1915, and his step-daughter's husband was mortally wounded in the same attack. The hospital's own history, written a generation later, put it plainly: that day was a very sad day for Dr Handford. He went on with the county work until 1926 and died on 24 June 1928, and the Lancet and the British Medical Journal both marked it.",
    "occupations": [
     {
      "occupation": "Medical tutor",
@@ -30,6 +30,10 @@
      "notes": "Twenty years, to his retirement."
     },
     {
+     "occupation": "Chief Tuberculosis Officer for Nottinghamshire",
+     "notes": "Held with the medical officer of health post. The county minutes of July 1915 record him mobilised for military service at the camps in the county and at Cannock Chase, and frequently absent on that duty."
+    },
+    {
      "occupation": "Major, Royal Army Medical Corps",
      "from_year": 1914,
      "to_year": 1918,
@@ -37,9 +41,30 @@
     }
    ],
    "relationships": [
-    { "type": "spouse_of", "to": { "id": 3061, "first_name": "Mary E.", "last_name": "Handford" } },
-    { "type": "parent_of", "to": { "id": 3065, "first_name": "Henry B. S.", "last_name": "Handford" } },
-    { "type": "parent_of", "to": { "id": 3066, "first_name": "Everard J. S.", "last_name": "Handford" } }
+    {
+     "type": "spouse_of",
+     "to": {
+      "id": 3061,
+      "first_name": "Mary E.",
+      "last_name": "Handford"
+     }
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3065,
+      "first_name": "Henry B. S.",
+      "last_name": "Handford"
+     }
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3066,
+      "first_name": "Everard J. S.",
+      "last_name": "Handford"
+     }
+    }
    ]
   },
   {
@@ -47,12 +72,40 @@
    "first_name": "Mary E.",
    "last_name": "Handford",
    "maiden_name": "Strutt",
-   "bio": "Mary E. Handford was a daughter of Edward Strutt, first Baron Belper, and married Henry Handford, physician to the Nottingham General Hospital and later medical officer of health for the county. She was born in 1854 at St George's in London.\n\nHardwicke House held eleven people on census night in 1901: the couple, their two young sons Henry and Everard, her three grown daughters by an earlier marriage — Gertrude, Sybil and Dorothy Gale, all born at Bedale in the North Riding — and five servants, two of them Plowman sisters from Huntingdonshire. Which of Lord Belper's daughters she was, and whom she married first, the record does not yet say; that she was one of them comes from her husband's entry in Munk's Roll rather than from any return here.",
+   "bio": "Mary E. Handford was a daughter of Edward Strutt, first Baron Belper, and married Henry Handford, physician to the Nottingham General Hospital and later medical officer of health for the county. She was born in 1854 at St George's in London.\n\nHardwicke House held eleven people on census night in 1901: the couple, their two young sons Henry and Everard, her three grown daughters by an earlier marriage — Gertrude, Sybil and Dorothy Gale, all born at Bedale in the North Riding — and five servants, two of them Plowman sisters from Huntingdonshire. The newspapers called her the Hon. Mrs Handford, which fits a peer's daughter. By 1915 the family were at Elmfield in Southwell, so The Park holds them only for the years around 1901.\n\nWhich Lord Belper was her father is worth setting down carefully, because the accounts disagree. An account of her sons gives him as Henry Strutt, first Baron Belper. That cannot be right as it stands: the barony was created in 1856 for Edward Strutt, and Henry was his son and the second baron, born in 1840 — fourteen years before Mary. Munk's Roll says only \"a daughter of the first Lord Belper\", which points to Edward, and the arithmetic agrees. Her father is recorded here as Edward, with the disagreement noted rather than hidden. Which of his daughters she was, and who the Gale was she married first, neither source says.",
    "relationships": [
-    { "type": "spouse_of", "to": { "id": 3060, "first_name": "Henry", "last_name": "Handford" } },
-    { "type": "parent_of", "to": { "id": 3062, "first_name": "Sybil Aug.", "last_name": "Gale" } },
-    { "type": "parent_of", "to": { "id": 3063, "first_name": "Dorothy", "last_name": "Gale" } },
-    { "type": "parent_of", "to": { "id": 3064, "first_name": "Gertrude J.", "last_name": "Gale" } }
+    {
+     "type": "spouse_of",
+     "to": {
+      "id": 3060,
+      "first_name": "Henry",
+      "last_name": "Handford"
+     }
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3062,
+      "first_name": "Sybil Aug.",
+      "last_name": "Gale"
+     }
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3063,
+      "first_name": "Dorothy",
+      "last_name": "Gale"
+     }
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3064,
+      "first_name": "Gertrude J.",
+      "last_name": "Gale"
+     }
+    }
    ]
   },
   {
@@ -66,12 +119,129 @@
    "wikipedia_url": "https://en.wikipedia.org/wiki/Edward_Strutt,_1st_Baron_Belper",
    "bio": "Edward Strutt, first Baron Belper (1801–1880), politician and Fellow of the Royal Society, of the Derbyshire cotton-spinning family. He is in this record as a father-in-law rather than a resident: he never lived in The Park, and died before the house in question was returned. His daughter married Henry Handford, the physician at Hardwicke House on Cavendish Crescent North, and was keeping that household in 1901. Munk's Roll names her only as a daughter of the first Lord Belper, so which of them she was is not settled here.",
    "occupations": [
-    { "occupation": "Politician" }
+    {
+     "occupation": "Politician"
+    }
    ],
    "relationships": [
-    { "type": "parent_of",
-      "to": { "id": 3061, "first_name": "Mary E.", "last_name": "Handford" },
-      "notes": "From Munk's Roll, which names Handford's wife as a daughter of the first Lord Belper without giving her forename." }
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 3061,
+      "first_name": "Mary E.",
+      "last_name": "Handford"
+     },
+     "notes": "From Munk's Roll, which names Handford's wife as a daughter of the first Lord Belper without giving her forename."
+    }
+   ]
+  },
+  {
+   "id": 3065,
+   "first_name": "Henry B. S.",
+   "last_name": "Handford",
+   "known_as": "Basil",
+   "died_date": "15 October 1915",
+   "died_year": 1915,
+   "sex": "M",
+   "bio": "Captain Henry Basil Strutt Handford, of the 1/8th Battalion, Nottinghamshire and Derbyshire Regiment — the Sherwood Foresters — was the elder son of Dr Henry Handford and his wife, and was seven years old when the 1901 census found the family at Hardwicke House. The household later moved to Elmfield in Southwell.\n\nHe was schooled at Rugby, where he was a well-known athlete, played for Nottingham Rugby Football Club, and read law at Trinity College, Cambridge. He and his younger brother Everard both volunteered as soon as war was declared, and both took commissions in the same battalion. It crossed to France on 25 February 1915 and spent that spring and summer rotating through the line in the Ypres salient before moving south in September for the Battle of Loos.\n\nOn 15 October 1915 the battalion attacked the Hohenzollern Redoubt. Both brothers were killed there — Basil at twenty-one, Everard at twenty. Neither body was recovered, and they are commemorated on the Loos Memorial to the missing. A window in Southwell Minster remembers them together, with the verse from the second book of Samuel: lovely and pleasant in their lives, and in their death they were not divided. Their brother-in-law, Major John Pickard Becher, was mortally wounded in the same attack. The newspapers and the memorial both give the date as 14 October; the battalion's own account gives the 15th.",
+   "occupations": [
+    {
+     "occupation": "Captain, 1/8th Battalion, Sherwood Foresters",
+     "from_year": 1914,
+     "to_year": 1915,
+     "notes": "Nottinghamshire and Derbyshire Regiment (Territorial). To France 25 February 1915."
+    }
+   ],
+   "relationships": [
+    {
+     "type": "sibling_of",
+     "to": {
+      "id": 3066,
+      "first_name": "Everard J. S.",
+      "last_name": "Handford"
+     }
+    }
+   ]
+  },
+  {
+   "id": 3066,
+   "first_name": "Everard J. S.",
+   "last_name": "Handford",
+   "died_date": "15 October 1915",
+   "died_year": 1915,
+   "sex": "M",
+   "bio": "Lieutenant Everard Francis Sale Handford, of the 1/8th Battalion, Sherwood Foresters, was the younger son of Dr Henry Handford and was five when the 1901 census recorded the family at Hardwicke House. Like his brother he went to Rugby School and played for Nottingham Rugby Football Club, and he meant to follow Basil to Trinity College, Cambridge. The war came first, and both brothers volunteered at once into the same battalion.\n\nHe was killed beside his brother in the attack on the Hohenzollern Redoubt on 15 October 1915, aged twenty. Neither body was recovered and both are named on the Loos Memorial. The Western Daily Press, reporting the deaths that October, called him a second lieutenant; the memorial window in Southwell Minster gives him as lieutenant.\n\nTwo brothers in one battalion, lost in one morning, is the plainest argument against the practice of letting them serve together.",
+   "occupations": [
+    {
+     "occupation": "Lieutenant, 1/8th Battalion, Sherwood Foresters",
+     "from_year": 1914,
+     "to_year": 1915,
+     "notes": "Given as second lieutenant in the press at the time, lieutenant on the Southwell Minster window."
+    }
+   ],
+   "relationships": [
+    {
+     "type": "sibling_of",
+     "to": {
+      "id": 3065,
+      "first_name": "Henry B. S.",
+      "last_name": "Handford"
+     }
+    }
+   ]
+  },
+  {
+   "id": 3064,
+   "first_name": "Gertrude J.",
+   "last_name": "Gale",
+   "known_as": "Gertrude Veronica",
+   "sex": "F",
+   "bio": "Gertrude Veronica Gale was the eldest of the three daughters Mary Handford brought to Hardwicke House from her first marriage, and was twenty-seven when the 1901 census recorded the household. She married John Pickard Becher, and was widowed by the same attack that killed her two half-brothers: Major Becher was mortally wounded at the Hohenzollern Redoubt on 15 October 1915 and died on 1 January 1916.",
+   "relationships": [
+    {
+     "type": "sibling_of",
+     "to": {
+      "id": 3065,
+      "first_name": "Henry B. S.",
+      "last_name": "Handford"
+     },
+     "notes": "Half-brother: her mother's son by Dr Handford."
+    },
+    {
+     "type": "sibling_of",
+     "to": {
+      "id": 3066,
+      "first_name": "Everard J. S.",
+      "last_name": "Handford"
+     },
+     "notes": "Half-brother: her mother's son by Dr Handford."
+    }
+   ]
+  },
+  {
+   "first_name": "John Pickard",
+   "last_name": "Becher",
+   "sex": "M",
+   "postnominals": "D.S.O.",
+   "died_date": "1 January 1916",
+   "died_year": 1916,
+   "bio": "Major John Pickard Becher, D.S.O., married Gertrude Veronica Gale, step-daughter of Dr Henry Handford of Hardwicke House. He was mortally wounded in the attack on the Hohenzollern Redoubt on 15 October 1915 — the same action that killed his wife's two half-brothers, Basil and Everard Handford — and died on 1 January 1916. He is here as a son-in-law of the house rather than a resident of it: no census in this record places him in The Park.",
+   "occupations": [
+    {
+     "occupation": "Major",
+     "to_year": 1916,
+     "notes": "D.S.O. Mortally wounded at the Hohenzollern Redoubt, 15 October 1915."
+    }
+   ],
+   "relationships": [
+    {
+     "type": "spouse_of",
+     "to": {
+      "id": 3064,
+      "first_name": "Gertrude J.",
+      "last_name": "Gale"
+     }
+    }
    ]
   }
  ]
