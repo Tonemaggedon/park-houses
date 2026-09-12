@@ -246,6 +246,20 @@
       <div class="result" hidden></div>
     </article>
 
+    <article class="tool">
+      <div>
+        <h4>Remove census rows a second import left behind</h4>
+        <p>Somebody with two records for one census year — one filed to a house,
+           one still sitting on the unfiled page under a house name. Removes the
+           houseless copy. People genuinely waiting to be placed are left alone.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnCensusDupePreview">Preview</button>
+        <button class="btn" id="btnCensusDupeRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
     <h3 class="area" id="gazette">The Gazette</h3>
     <p class="area-note">Finds go to <a href="/gazette-review">Gazette review</a> as suggestions to
       confirm or dismiss, never straight onto a person.</p>
@@ -501,6 +515,16 @@ const describeDedupe = d =>
     + d.sample.map(x => `  ${x.name} at property ${x.property_id} — ${x.copies} copies`).join('\n');
 on('btnDedupePreview', e => runAdminJob(e.target, '/api/admin/dedupe-resident-links', { dryRun: true }, describeDedupe));
 on('btnDedupeRun', e => runAdminJob(e.target, '/api/admin/dedupe-resident-links', {}, describeDedupe));
+
+const describeCensusDupe = d =>
+  !d.rows ? 'Nothing to remove. Nobody has a houseless record for a year they are already filed in.'
+  : (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.rows} record${d.rows === 1 ? '' : 's'} across ${d.houses} address${d.houses === 1 ? '' : 'es'} `
+    + `${d.dryRun ? 'would be removed' : 'removed'}.\n`
+    + d.sample.map(x => `  ${x.year}  ${x.name} — "${x.address}", already filed at property ${x.filed_at}`).join('\n')
+    + (d.rows > d.sample.length ? `\n  …and ${d.rows - d.sample.length} more` : '');
+on('btnCensusDupePreview', e => runAdminJob(e.target, '/api/admin/dedupe-census-rows', { dryRun: true }, describeCensusDupe));
+on('btnCensusDupeRun', e => runAdminJob(e.target, '/api/admin/dedupe-census-rows', {}, describeCensusDupe));
 
 // ── The Gazette ──
 const describeGazette = d =>

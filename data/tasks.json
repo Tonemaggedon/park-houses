@@ -672,6 +672,22 @@
       "link": "/admin",
       "title": "Run Import people for the 1901 census of Lenton Road, the crescents and Western Terrace",
       "detail": "Nineteen households — 126 people — for houses the record can already name, filed straight to their properties with nothing left over on /unfiled: Cliff House, Fern Lodge, 13, 15, Oakhurst, 25, 29 and Rock House on Lenton Road; 9, 11, 15, 17 and 19 Pelham Crescent; 10 Western Terrace and Lincoln Villa; and Carisbrooke House, Cavendish Lodge, Hardwicke House and Haddon House on Cavendish Crescent North. Houses that already hold a 1901 household are deliberately left out, so nothing doubles up. Two of these answer questions already on this list: Carisbrooke House gives William Bradshaw a 1901 to set beside his 1911, and 29 Lenton Road gives the Carvers the year their family account claimed and the record lacked — though only Annie F. is at home of the three daughters it names. Worth a look at /duplicates afterwards, for her and for Sarah Spray. The households whose house name the record cannot place stay out of the database, parked in data/1901_unnumbered_houses.json."
+    },
+    {
+      "slug": "remove-reimported-census-rows",
+      "area": "Do these first",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Clear the thirteen census records the second Lenton Avenue import left behind",
+      "detail": "Running the 1901 Lenton Avenue file a second time entered Clumber Lodge and Newlands all over again, because it looked for a match under the house name it could not find rather than under the person and the year — and by then you had placed both households. Thirteen people now hold two records for 1901: the filed one, and a houseless copy back on the unfiled page. The five at Clumber Lodge are filed at property 166, the eight at Newlands at property 173. Admin now has “Remove census rows a second import left behind” — preview it, then run it. It only takes the houseless copy, and only where the same person already holds a record for that year with a house on it, so anyone genuinely waiting to be placed is left alone. The importer itself no longer does this."
+    },
+    {
+      "slug": "ethel-johnson-two-houses-1901",
+      "area": "Census",
+      "size": "a few minutes",
+      "link": "/person/26",
+      "title": "Ethel Johnson is in two houses on the same census night",
+      "detail": "Ethel Johnson (#26) holds two filed records for 1901: one at Lenton House, property 193, which the record has had for a long while, and one at Newlands, property 173, which the 1901 Lenton Avenue import added. She cannot have been in both on the night. The likelihood is that they are two women of the same name and the import hung the Newlands servant on the Ethel Johnson already in the record, in which case the Newlands record wants lifting onto a new person of her own. Worth reading both returns before deciding which is which. Removing the houseless copies does not touch this — both of these have a house on them."
     }
   ]
 }

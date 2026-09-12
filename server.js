@@ -1791,11 +1791,19 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           // one of theirs counts — and wants naming, or a dry run of an entirely
           // new household lists nobody at all.
           if (id === null) { census++; censusNames.push(`${nameOf(person)} ${c.census_year}`); continue; }
+          // A row the file leaves without a house matches any record of that
+          // person in that year, filed or not. Matching on the house alone let a
+          // second run enter a household again the moment somebody had placed
+          // it: the file still says Clumber Lodge, the record now says number
+          // 21, the two no longer meet, and everyone in the house gets a second
+          // census entry sitting back on the unfiled page.
           const dup = await db.query(
-            `SELECT 1 FROM census_entries
-              WHERE person_id=$1 AND census_year=$2
-                AND property_id IS NOT DISTINCT FROM $3`,
-            [id, c.census_year, c.property_id || null]);
+            c.property_id
+              ? `SELECT 1 FROM census_entries
+                  WHERE person_id=$1 AND census_year=$2
+                    AND property_id IS NOT DISTINCT FROM $3`
+              : `SELECT 1 FROM census_entries WHERE person_id=$1 AND census_year=$2`,
+            c.property_id ? [id, c.census_year, c.property_id] : [id, c.census_year]);
           if (dup.rows.length) continue;
           census++;
           censusNames.push(`${nameOf(person)} ${c.census_year}`);
@@ -4283,6 +4291,46 @@ app.post('/api/admin/dedupe-resident-links', requireAdmin, async (req, res) => {
       sample: dupes.slice(0, 12).map(d => ({
         person_id: d.person_id, property_id: d.property_id, copies: Number(d.n),
         name: [d.first_name, d.last_name].filter(Boolean).join(' '),
+      })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/admin/dedupe-census-rows — the wreckage of an import file run twice.
+// A file that enters a household by house name leaves its people without a
+// house, waiting on the unfiled page. Once somebody places them, a second run of
+// the same file used to enter the household all over again, because it looked
+// for a match under the house it could not find rather than under the person and
+// the year. The importer no longer does that; this clears what it left behind.
+// Only the houseless copy goes, and only where the same person already holds a
+// record for that year with a house on it, so nothing still waiting to be placed
+// is touched.
+app.post('/api/admin/dedupe-census-rows', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  try {
+    const rows = (await db.query(`
+      SELECT c.id, c.census_year, c.unresolved_address, c.person_id,
+             p.first_name, p.last_name, MIN(f.property_id) AS filed_at
+        FROM census_entries c
+        JOIN people p ON p.id = c.person_id
+        JOIN census_entries f ON f.person_id = c.person_id
+                            AND f.census_year = c.census_year
+                            AND f.property_id IS NOT NULL
+       WHERE c.property_id IS NULL
+       GROUP BY c.id, c.census_year, c.unresolved_address, c.person_id,
+                p.first_name, p.last_name
+       ORDER BY c.unresolved_address NULLS LAST, p.last_name, p.first_name`)).rows;
+    if (!dryRun && rows.length) {
+      await db.query(`DELETE FROM census_entries WHERE id = ANY($1::int[])`,
+        [rows.map(r => r.id)]);
+    }
+    const houses = [...new Set(rows.map(r => r.unresolved_address || 'no address recorded'))];
+    res.json({ ok: true, dryRun, rows: rows.length, houses: houses.length,
+      sample: rows.slice(0, 20).map(r => ({
+        entry_id: r.id, year: r.census_year,
+        name: [r.first_name, r.last_name].filter(Boolean).join(' '),
+        address: r.unresolved_address || 'no address recorded',
+        filed_at: r.filed_at,
       })) });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
