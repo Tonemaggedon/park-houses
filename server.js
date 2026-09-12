@@ -4335,6 +4335,93 @@ app.post('/api/admin/dedupe-census-rows', requireAdmin, async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// POST /api/admin/split-census-row — one census record that belongs to someone
+// else of the same name. An import matching on a name alone can hang a servant
+// on the daughter of the house: the same two words, forty years between them,
+// and the record then holds one woman who was in two houses on the same night.
+// This lifts the record onto a person of her own and takes with it what came
+// off the same line of the return — the age, the birthplace, the occupation,
+// and the link to the house. Where the wrong birthplace was written into the
+// original's empty field by that same import, it goes back to empty.
+app.post('/api/admin/split-census-row', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const entryId = parseInt(req.body && req.body.entry_id, 10);
+  const dryRun = req.body && req.body.dryRun === true;
+  if (!entryId) return res.status(400).json({ error: 'A census record number is needed' });
+  const client = await db.connect();
+  try {
+    await client.query('BEGIN');
+    const q = await client.query(`
+      SELECT c.*, p.first_name, p.last_name, p.sex,
+             p.born_year AS person_born_year, p.born_place AS person_born_place
+        FROM census_entries c JOIN people p ON p.id = c.person_id
+       WHERE c.id = $1`, [entryId]);
+    if (!q.rows.length) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: `No census record numbered ${entryId}` });
+    }
+    const row = q.rows[0];
+    // The year this record says she was born, against the year recorded for the
+    // person it is presently attached to. The gap is the reason to split.
+    const impliedBorn = (row.age_at_census != null && row.census_year)
+      ? row.census_year - Number(row.age_at_census) : null;
+    // Only where the import wrote this record's birthplace into an empty field
+    // on a person the record says was born years apart.
+    const clearsBornPlace = !!(row.birth_place && row.person_born_place === row.birth_place
+      && impliedBorn && row.person_born_year && Math.abs(impliedBorn - row.person_born_year) > 3);
+    const plan = {
+      entry_id: entryId, year: row.census_year, property_id: row.property_id,
+      name: [row.first_name, row.last_name].filter(Boolean).join(' '),
+      from_person: row.person_id, relationship: row.relationship || null,
+      age: row.age_at_census, born_year: impliedBorn,
+      born_place: row.birth_place || null, occupation: row.occupation_at_census || null,
+      from_person_born_year: row.person_born_year, clears_born_place: clearsBornPlace,
+    };
+    if (dryRun) { await client.query('ROLLBACK'); return res.json({ ok: true, dryRun: true, plan }); }
+    const ins = await client.query(
+      `INSERT INTO people (first_name, last_name, sex, born_year, born_place)
+       VALUES ($1,$2,$3,$4,$5) RETURNING id`,
+      [row.first_name, row.last_name, row.sex || null, impliedBorn, row.birth_place || null]);
+    const newId = ins.rows[0].id;
+    await client.query('UPDATE census_entries SET person_id=$1 WHERE id=$2', [newId, entryId]);
+    // The occupation the import wrote from this very line goes with it. The
+    // census says "Lady's maid (domestic)" where the occupation reads "Lady's
+    // maid", so the qualifier in brackets is set aside for the comparison.
+    let movedOccupations = 0;
+    if (row.occupation_at_census) {
+      const bare = row.occupation_at_census.replace(/\s*\([^)]*\)\s*$/, '').trim();
+      const o = await client.query(
+        `UPDATE occupations SET person_id=$1
+          WHERE person_id=$2 AND from_year=$3 AND to_year=$3
+            AND LOWER(occupation) = LOWER($4) RETURNING id`,
+        [newId, row.person_id, row.census_year, bare]);
+      movedOccupations = o.rowCount;
+    }
+    if (clearsBornPlace) {
+      await client.query('UPDATE people SET born_place=NULL WHERE id=$1', [row.person_id]);
+    }
+    // The link to the house moves too, but only when the person it is leaving
+    // has no other record of being there — somebody may live in a house for
+    // years and appear in it on a night that was never in doubt.
+    let movedLinks = 0;
+    if (row.property_id) {
+      try {
+        const l = await client.query(
+          `UPDATE property_residents SET person_id=$1
+            WHERE person_id=$2 AND property_id=$3
+              AND NOT EXISTS (SELECT 1 FROM census_entries c
+                               WHERE c.person_id=$2 AND c.property_id=$3 AND c.id<>$4)
+            RETURNING id`, [newId, row.person_id, row.property_id, entryId]);
+        movedLinks = l.rowCount;
+      } catch (_) {}
+    }
+    await client.query('COMMIT');
+    await logChange('person', newId, req, 'create', 'person', plan.name, null);
+    res.json({ ok: true, dryRun: false, plan, new_person_id: newId, movedOccupations, movedLinks });
+  } catch (e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }
+  finally { client.release(); }
+});
+
 // POST /api/admin/clean-occupations — values in the occupation field that are
 // not occupations. A slipped column in an import leaves a sex or a relationship
 // there; a spreadsheet's "none" placeholder leaves a dash. They are few, but

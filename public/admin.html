@@ -260,6 +260,23 @@
       <div class="result" hidden></div>
     </article>
 
+    <article class="tool">
+      <div>
+        <h4>This census record is somebody else of the same name</h4>
+        <p>Lifts one census record onto a person of its own, with the age,
+           birthplace and occupation off the same line of the return. Use it
+           where an import has hung a servant on somebody who merely shares her
+           name. The record number is on the person's page.</p>
+        <p><input id="splitEntryId" type="number" inputmode="numeric"
+                  placeholder="Census record number" style="max-width:16rem"></p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnSplitPreview">Preview</button>
+        <button class="btn" id="btnSplitRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
     <h3 class="area" id="gazette">The Gazette</h3>
     <p class="area-note">Finds go to <a href="/gazette-review">Gazette review</a> as suggestions to
       confirm or dismiss, never straight onto a person.</p>
@@ -525,6 +542,25 @@ const describeCensusDupe = d =>
     + (d.rows > d.sample.length ? `\n  …and ${d.rows - d.sample.length} more` : '');
 on('btnCensusDupePreview', e => runAdminJob(e.target, '/api/admin/dedupe-census-rows', { dryRun: true }, describeCensusDupe));
 on('btnCensusDupeRun', e => runAdminJob(e.target, '/api/admin/dedupe-census-rows', {}, describeCensusDupe));
+
+const _splitBody = dryRun => ({ entry_id: Number(document.getElementById('splitEntryId').value), dryRun });
+const describeSplit = d => {
+  const p = d.plan || {};
+  const born = p.born_year ? `born ${p.born_year}` : 'no age given';
+  const head = d.dryRun
+    ? `Preview — nothing changed.\nCensus record ${p.entry_id} would move to a ${p.name} of her own.\n`
+    : `Done.\nCensus record ${p.entry_id} now belongs to ${p.name}, person ${d.new_person_id}.\n`;
+  return head
+    + `  ${p.year}, property ${p.property_id ?? '—'}, ${p.relationship || 'no relationship given'}`
+    + `, aged ${p.age ?? '—'} — so ${born}`
+    + (p.born_place ? `, ${p.born_place}` : '') + '\n'
+    + `  Leaving person ${p.from_person}, recorded as born ${p.from_person_born_year ?? '—'}\n`
+    + (p.occupation ? `  Occupation off the same line: ${p.occupation}\n` : '')
+    + (p.clears_born_place ? `  Their birthplace goes back to empty — this record had filled it.\n` : '')
+    + (d.dryRun ? '' : `  ${d.movedOccupations} occupation(s) and ${d.movedLinks} house link(s) moved with it.`);
+};
+on('btnSplitPreview', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(true), describeSplit));
+on('btnSplitRun', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(false), describeSplit));
 
 // ── The Gazette ──
 const describeGazette = d =>
