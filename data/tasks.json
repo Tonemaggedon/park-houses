@@ -600,6 +600,22 @@
       "detail": "Fills her story and gives her occupation its full form — the 1921 return breaks off at \"Principal Of Schoo\". She is already in the record at 1 Western Terrace, so the preview should say nothing added, 1 filled out, 1 occupation. Her forename stays \"A Marion\" as the census has it; if you want \"Ada\" on the record, change it on her person page.",
       "size": "one click",
       "link": "/admin"
+    },
+    {
+      "slug": "file-birkin-lincoln-house",
+      "area": "Census",
+      "size": "one click",
+      "link": "/unfiled",
+      "title": "Decide whether Lincoln Circus 3 is Lincoln House, and file the Birkins",
+      "detail": "On /unfiled, the group \"Lincoln Circus 3\" holds Harry Laurence Birkin, his wife Olive and six servants — eight records, 1921. The Birkin family account puts Major Harry Birkin at Lincoln House, Lincoln Circus (#403), which stands empty in the record. If you are satisfied that is the same house, file the household to 403; the identification rests on the account, not on the return, which gives only a number."
+    },
+    {
+      "slug": "palmer-lincoln-circus-duplicates",
+      "area": "People",
+      "size": "a few minutes",
+      "link": "/unfiled",
+      "title": "Check the two Lincoln Circus 2 records against the Palmers at Gladstone House",
+      "detail": "Edward and Alice Palmer appear unfiled under \"Lincoln Circus 2\" for 1921, and both are already filed at Gladstone House for 1921. Almost certainly the same two records twice. Compare them on /duplicates or on their person pages, then remove whichever copy is the stray — and note that this makes Lincoln Circus 2 the census's name for Gladstone House."
     }
   ]
 }

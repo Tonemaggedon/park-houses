@@ -3190,7 +3190,8 @@
   "lng": -1.1646425,
   "sources": {
    "prev_house_name": "OS 1:1250 SK 5639 NW, surveyed Sept 1953; Newcastle Court by OS 1:1250 SK 5639 NW, revised Dec 1967",
-   "hospital": "The Birkin family account, given by A. Hagues: Claire Birkin (n\u00e9e Lloyd Howell) converted the house into an auxiliary hospital for officers during the First World War."
+   "hospital": "The Birkin family account, given by A. Hagues: Claire Birkin (n\u00e9e Lloyd Howell) converted the house into an auxiliary hospital for officers during the First World War.",
+   "house_name": "Newcastle Court was formerly The Elms, which the house's own description has already said in prose; recorded as a former name so a search or a census address written that way finds it. Note that Land Registry also holds a house called The Elms at 54 Park Terrace \u2014 a different house."
   }
  },
  {
@@ -5430,7 +5431,7 @@
   "no": "7",
   "address": "7 Western Terrace",
   "desc": "Three storeys plus basement and attics. Originally, main house and garden with side and rear wing enclosing entrance courtyard. Various alterations and additions including flat roofed side extension below pedimented gable plus storey added to rear wing adjacent to Western Terrace. Part of lower garden area adjacent to Pelham Crescent, originally shared with no.8, separately developed c1970 for residential use with loss of substantial section of original brick boundary wall. Painted stucco with stucco dressings and gabled and hipped slate roofs. Alterations to central chimney stack including replacement of original pots. Originally, rusticated lower storey to main front overlooking garden with first floor sill band, eaves cornice and balustrade. Cornice removed and balustrade replaced by parapet. Main front of nos. 7 and 8 has projecting centre with giant pilasters between sill band, former cornice level and central pediment. Pairs of glazing bar sash windows on each floor, some with pediments and moulded surrounds. Pedimented gable facing North Road plus various alterations, extensions and irregular fenestration including oriel window bay at ground floor level with segment arch canopy. Plain rear wing adjacent to Western Terrace with loss of detail, particularly to eaves cornice. Original wall separating entrance courtyards of nos. 7 and 8 now replaced by railings. Original boundary wall adjacent to Western Terrace now removed and entrance courtyard area used for car parking.\n\n",
-  "history": "One of a group of four early houses linked in pairs, c1845-50, possibly by architect T.C. Hine. Houses completed a few years before Hine was appointed Surveyor to Newcastle Estate by 5th Duke of Newcastle and proceeded to prepare road plan of The Park c1855-56 which, apart from minor variations, survives to this day. House, now converted into flats is Grade II Listed. Regency Classic style. Auckland House School, a private boarding and day school for girls, was briefly here. The only household the record holds at the house is the Hopewells in 1921 \u2014 a traveller, his wife, a niece and two boarders \u2014 so the school's years at this address fall outside that.",
+  "history": "One of a group of four early houses linked in pairs, c1845-50, possibly by architect T.C. Hine. Houses completed a few years before Hine was appointed Surveyor to Newcastle Estate by 5th Duke of Newcastle and proceeded to prepare road plan of The Park c1855-56 which, apart from minor variations, survives to this day. House, now converted into flats is Grade II Listed. Regency Classic style. Auckland House School, a private boarding and day school for girls, was briefly here. The only household the record holds at the house is the Hopewells in 1921 \u2014 a traveller, his wife, a niece and two boarders \u2014 so the school's years at this address fall outside that. Earlier still it was Thornleigh Boarding and Day School for Girls, run by Miss E Leigh around 1900 \u2014 so the house held two girls' schools, Thornleigh at the turn of the century and Auckland House at some point beside it.",
   "architect": "T.C. Hine",
   "converted": "Flats",
   "listed_grade": "II",
@@ -5444,7 +5445,8 @@
   ],
   "sources": {
    "nhle_also": "7 to 10 Western Terrace are one list entry (1255256, Grade II) covering the whole row, so it is recorded against each of them.",
-   "school": "Auckland House School, a private boarding and day school for girls, was briefly at 7 Western Terrace \u2014 from A. Hagues. No dates yet, and nothing in the record's own censuses shows it."
+   "school": "Two girls' schools, both from A. Hagues: Thornleigh Boarding and Day School for Girls, run by Miss E Leigh about 1900, and Auckland House School, a private boarding and day school for girls, briefly. Neither is dated by anything in the record's own censuses yet.",
+   "architect": "Built in linked pairs c1845-50 to designs by T. C. Hine, following the style set on Derby Road, Park Terrace and Park Valley by P. F. Robinson, Hine's predecessor as Surveyor to the Park Estate \u2014 from A. Hagues. The house's own description has carried this as \"possibly by architect T.C. Hine\"; the attribution is firmer than that hedge."
   }
  },
  {
@@ -6292,10 +6294,10 @@
  },
  {
   "id": 402,
-  "name": "St Hellier",
+  "name": "St Helier",
   "street": "Clumber Road East",
-  "no": "St Hellier",
-  "address": "St Hellier, Clumber Road East",
+  "no": "St Helier",
+  "address": "St Helier, Clumber Road East",
   "desc": "",
   "history": "",
   "date_built": "",
@@ -6304,7 +6306,11 @@
   "demolished": true,
   "demolished_notes": "House demolished. Approximate position shown.",
   "lat": 52.9505,
-  "lng": -1.1638
+  "lng": -1.1638,
+  "prev_house_name": "St Hellier",
+  "sources": {
+   "house_name": "St Helier, after the Jersey town \u2014 Florence Boot was from Jersey, and a Jersey barrister was staying in the house on census night 1911. Corrected from St Hellier by A. Hagues; the old spelling is kept as a former name so a census address written that way still matches. The 1921 return writes it \"St Heliers\" in one employer column and \"St Helens\" in two others."
+  }
  },
  {
   "id": 403,
