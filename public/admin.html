@@ -277,6 +277,23 @@
       <div class="result" hidden></div>
     </article>
 
+    <article class="tool">
+      <div>
+        <h4>Join up people entered under a census short form</h4>
+        <p>“Geo. Parr” beside George Parr, “Elizth Wareham” beside Elizabeth —
+           one person entered twice because a transcription kept the
+           enumerator's abbreviations. Pairs only where the surname and the
+           expanded forename agree and the birth years are within two, keeps the
+           fuller record, and leaves anything dismissed on the duplicates page
+           alone.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnAbbrevPreview">Preview</button>
+        <button class="btn" id="btnAbbrevRun">Run</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
     <h3 class="area" id="gazette">The Gazette</h3>
     <p class="area-note">Finds go to <a href="/gazette-review">Gazette review</a> as suggestions to
       confirm or dismiss, never straight onto a person.</p>
@@ -561,6 +578,20 @@ const describeSplit = d => {
 };
 on('btnSplitPreview', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(true), describeSplit));
 on('btnSplitRun', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(false), describeSplit));
+
+const describeAbbrev = d => {
+  const pairs = d.pairs || [];
+  if (!pairs.length) return 'Nobody new is entered twice under a census short form.';
+  const yrs = y => (y && y.length) ? y.join(', ') : 'no census';
+  return (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${pairs.length} pair${pairs.length === 1 ? '' : 's'} `
+    + (d.dryRun ? 'would be joined, keeping the fuller record' : `joined — ${d.merged} merged`) + '.\n'
+    + pairs.map(p => `  keep #${p.keep_id} ${p.keep} (${yrs(p.keep_years)})`
+        + `\n    absorbing #${p.drop_id} ${p.drop} (${yrs(p.drop_years)})`
+        + ` — born ${p.born}, ${p.why}`).join('\n');
+};
+on('btnAbbrevPreview', e => runAdminJob(e.target, '/api/admin/merge-abbreviated-names', { dryRun: true }, describeAbbrev));
+on('btnAbbrevRun', e => runAdminJob(e.target, '/api/admin/merge-abbreviated-names', {}, describeAbbrev));
 
 // ── The Gazette ──
 const describeGazette = d =>

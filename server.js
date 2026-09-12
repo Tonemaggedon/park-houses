@@ -3813,7 +3813,12 @@ app.get('/api/people/duplicates', requireContributor, async (req, res) => {
          AND COALESCE(TRIM(p.first_name), '') <> ''`);
 
     const key = v => String(v || '').toLowerCase().replace(/[^a-z]/g, '');
-    const firstWord = v => key(String(v || '').trim().split(/\s+/)[0]);
+    // An enumerator writes "Geo. Hy. Parr" where the record holds George Henry
+    // Parr, and letter-for-letter those are two different men — which is how a
+    // transcription made straight off the page came to enter eleven people the
+    // record already had, none of them visible here. Expanding the short forms
+    // first puts both spellings in the same bucket.
+    const firstWord = v => expandForename(key(String(v || '').trim().split(/\s+/)[0]));
     // How common a name is changes what a coincidence means. Two Hanishes born
     // the same year are almost certainly one person; two Smiths may well be two.
     const surnameCount = new Map(), forenameCount = new Map();
@@ -5013,6 +5018,232 @@ app.delete('/api/person/:id', requireAdmin, async (req, res) => {
     res.json({ ok: true, deleted: personId, name });
   } catch(e) { await client.query('ROLLBACK'); res.status(500).json({ error: e.message }); }
   finally { client.release(); }
+});
+
+// The short forms a census enumerator uses, against the names the record keeps.
+// Only forms that are unambiguous in a Victorian return belong here: "Jas." is
+// always James, but "Al." could be Albert or Alfred and is left alone.
+const FORENAME_ABBR = {
+  geo: 'george', chas: 'charles', wm: 'william', jno: 'john', jas: 'james',
+  thos: 'thomas', fredk: 'frederick', edwd: 'edward', richd: 'richard',
+  robt: 'robert', saml: 'samuel', benjn: 'benjamin', danl: 'daniel',
+  josh: 'joseph', jos: 'joseph', elizth: 'elizabeth', eliz: 'elizabeth',
+  margt: 'margaret', catharine: 'catherine', cathe: 'catherine',
+  hy: 'henry', alexr: 'alexander', matw: 'matthew', andw: 'andrew',
+  chris: 'christopher', nichs: 'nicholas', phil: 'philip', sarh: 'sarah',
+};
+const expandForename = w => FORENAME_ABBR[w] || w;
+
+// The body of a merge, so the one-pair route and the bulk tool below run the
+// same proven steps rather than two drifting copies of them. Caller owns the
+// transaction.
+async function mergePeopleInto(client, keepId, deleteId) {
+  // Fill biographical gaps on the kept person from the deleted person
+  await client.query(`
+    UPDATE people SET
+      known_as       = COALESCE(known_as,       (SELECT known_as       FROM people WHERE id=$2)),
+      born_date      = COALESCE(born_date,      (SELECT born_date      FROM people WHERE id=$2)),
+      born_year      = COALESCE(born_year,      (SELECT born_year      FROM people WHERE id=$2)),
+      born_place     = COALESCE(born_place,     (SELECT born_place     FROM people WHERE id=$2)),
+      died_date      = COALESCE(died_date,      (SELECT died_date      FROM people WHERE id=$2)),
+      died_year      = COALESCE(died_year,      (SELECT died_year      FROM people WHERE id=$2)),
+      died_place     = COALESCE(died_place,     (SELECT died_place     FROM people WHERE id=$2)),
+      photo_url      = COALESCE(photo_url,      (SELECT photo_url      FROM people WHERE id=$2)),
+      wikipedia_url  = COALESCE(wikipedia_url,  (SELECT wikipedia_url  FROM people WHERE id=$2)),
+      grave_location = COALESCE(grave_location, (SELECT grave_location FROM people WHERE id=$2)),
+      grave_number   = COALESCE(grave_number,   (SELECT grave_number   FROM people WHERE id=$2)),
+      bio = CASE
+        WHEN bio IS NULL THEN (SELECT bio FROM people WHERE id=$2)
+        WHEN (SELECT bio FROM people WHERE id=$2) IS NULL THEN bio
+        ELSE bio || E'\n\n' || (SELECT bio FROM people WHERE id=$2)
+      END
+    WHERE id=$1
+  `, [keepId, deleteId]);
+
+  await client.query('UPDATE census_entries    SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+  // Merging a person who was imported twice leaves them with two records of
+  // the same census night in the same house — and the crowding page would go
+  // on counting both. Nobody is in one house twice in one year, so collapse
+  // them, keeping the fuller row.
+  await client.query(`
+    DELETE FROM census_entries WHERE id IN (
+      SELECT id FROM (
+        SELECT id, ROW_NUMBER() OVER (
+          PARTITION BY person_id, census_year, COALESCE(property_id, -1)
+          ORDER BY (occupation_at_census IS NOT NULL)::int
+                 + (birth_place IS NOT NULL)::int
+                 + (relationship IS NOT NULL)::int
+                 + (age_at_census IS NOT NULL)::int
+                 + (marital_status IS NOT NULL)::int DESC, id) AS rn
+          FROM census_entries WHERE person_id=$1
+      ) t WHERE rn > 1)`, [keepId]);
+  await client.query('UPDATE occupations       SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+  await client.query('UPDATE people_places     SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+  await client.query('UPDATE person_media      SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+  await client.query('UPDATE person_links      SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+  await client.query('UPDATE bibliography      SET author_person_id=$1 WHERE author_person_id=$2', [keepId, deleteId]);
+  try {
+    await client.query('UPDATE property_residents SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
+    // Both records were linked to the same house, so the merge leaves the link
+    // sitting there twice. Collapse it rather than leave work for the tool that
+    // clears duplicate links.
+    await client.query(`
+      DELETE FROM property_residents WHERE id IN (
+        SELECT id FROM (
+          SELECT id, ROW_NUMBER() OVER (PARTITION BY person_id, property_id ORDER BY id) AS rn
+            FROM property_residents WHERE person_id=$1
+        ) t WHERE rn > 1)`, [keepId]);
+  } catch(_) {}
+  // The same job entered from two spellings of one name is one job.
+  await client.query(`
+    DELETE FROM occupations WHERE id IN (
+      SELECT id FROM (
+        SELECT id, ROW_NUMBER() OVER (
+          PARTITION BY person_id, LOWER(occupation), from_year, to_year
+          ORDER BY (employer IS NOT NULL)::int + (notes IS NOT NULL)::int DESC, id) AS rn
+          FROM occupations WHERE person_id=$1
+      ) t WHERE rn > 1)`, [keepId]);
+
+  // Relationships: drop conflicts first, then reassign, then clean up
+  await client.query(`DELETE FROM people_relationships WHERE person_a_id=$2 AND (person_b_id, relationship) IN (SELECT person_b_id, relationship FROM people_relationships WHERE person_a_id=$1)`, [keepId, deleteId]);
+  await client.query(`DELETE FROM people_relationships WHERE person_b_id=$2 AND (person_a_id, relationship) IN (SELECT person_a_id, relationship FROM people_relationships WHERE person_b_id=$1)`, [keepId, deleteId]);
+  await client.query('UPDATE people_relationships SET person_a_id=$1 WHERE person_a_id=$2', [keepId, deleteId]);
+  await client.query('UPDATE people_relationships SET person_b_id=$1 WHERE person_b_id=$2', [keepId, deleteId]);
+  await client.query('DELETE FROM people_relationships WHERE person_a_id=person_b_id');
+  await client.query(`DELETE FROM people_relationships WHERE id IN (
+    SELECT a.id FROM people_relationships a
+    JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id
+      AND a.relationship=b.relationship AND a.id > b.id
+  )`);
+
+  await client.query('DELETE FROM people WHERE id=$1', [deleteId]);
+}
+
+// POST /api/admin/merge-abbreviated-names — the same person entered twice
+// because a transcription kept the enumerator's short forms. "Geo. Parr" beside
+// George Parr, both born 1846, the new record holding one census year and the
+// older one everything else. The two are paired only where the surname matches,
+// the first forename matches once the short form is expanded, and the birth
+// years are within two — and never where somebody has already said on the
+// duplicates page that they are two different people. The fuller record is the
+// one kept.
+app.post('/api/admin/merge-abbreviated-names', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  // Which records count as new. An import that has just run is the only thing
+  // that makes these pairs, so the tool looks no further back than the first
+  // person it created — everything older is the duplicates page's business.
+  const sinceId = Number.isFinite(Number(req.body && req.body.since_id))
+    && Number(req.body.since_id) > 0 ? Number(req.body.since_id) : 2900;
+  try {
+    const people = (await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.born_year, p.bio IS NOT NULL AS has_bio,
+             p.wikipedia_url, p.photo_url,
+             (SELECT COUNT(*) FROM census_entries c WHERE c.person_id = p.id) AS entries,
+             (SELECT COUNT(*) FROM occupations o WHERE o.person_id = p.id) AS occupations,
+             (SELECT COUNT(*) FROM people_relationships r
+               WHERE r.person_a_id = p.id OR r.person_b_id = p.id) AS relationships,
+             ARRAY(SELECT DISTINCT c.census_year FROM census_entries c
+                    WHERE c.person_id = p.id AND c.census_year IS NOT NULL ORDER BY 1) AS years
+        FROM people p
+       WHERE COALESCE(TRIM(p.first_name),'') <> '' AND COALESCE(TRIM(p.last_name),'') <> ''`)).rows;
+    const dismissed = new Set((await db.query(
+      `SELECT person_a_id, person_b_id FROM duplicate_dismissed`)).rows
+      .map(d => `${d.person_a_id}:${d.person_b_id}`));
+
+    const norm = v => String(v || '').toLowerCase().replace(/[^a-z]/g, '');
+    const rawWords = v => String(v || '').trim().split(/\s+/).map(norm).filter(Boolean);
+    const forenames = v => rawWords(v).map(expandForename);
+    const buckets = new Map();
+    for (const p of people) {
+      const f = forenames(p.first_name);
+      if (!f.length || !norm(p.last_name)) continue;
+      const k = norm(p.last_name) + '|' + f[0];
+      if (!buckets.has(k)) buckets.set(k, []);
+      buckets.get(k).push(p);
+    }
+    // Two spellings of one name, or two people. Every forename must agree once
+    // the short forms are expanded, treating a lone initial as standing for the
+    // name beside it: "Catharine L." answers to Catherine Lucy. Anything that
+    // disagrees on a name in the middle is two people and is left alone.
+    const howAlike = (a, b) => {
+      const fa = forenames(a), fb = forenames(b);
+      if (!fa.length || !fb.length || fa[0] !== fb[0]) return null;
+      for (let i = 0; i < Math.min(fa.length, fb.length); i++) {
+        const x = fa[i], y = fb[i];
+        if (x === y) continue;
+        if (x.length === 1 && y.startsWith(x)) continue;
+        if (y.length === 1 && x.startsWith(y)) continue;
+        return null;
+      }
+      const same = rawWords(a).join(' ') === rawWords(b).join(' ');
+      if (same) return 'the same spelling entered twice';
+      if (fa.join(' ') === fb.join(' ')) return 'a short form written out';
+      return 'an initial against the name it stands for';
+    };
+    // The fuller record is the one to keep — and fullness is what is actually
+    // on it. An abbreviated name is not made fuller by having more words in it,
+    // which is why the occupations, the bio and the relationships count and a
+    // bare initial counts against.
+    const weight = p => (p.years.length * 4) + Number(p.entries)
+      + (Number(p.occupations) * 3) + (Number(p.relationships) * 2)
+      + (p.wikipedia_url ? 3 : 0) + (p.photo_url ? 3 : 0) + (p.has_bio ? 3 : 0)
+      + rawWords(p.first_name).reduce((n, w) => n + (w.length > 1 ? (expandForename(w) === w ? 2 : 1) : -1), 0);
+    const pairs = [];
+    const spoken = new Set();
+    for (const list of buckets.values()) {
+      if (list.length < 2) continue;
+      for (let i = 0; i < list.length; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+          const a = list[i], b = list[j];
+          if (!a.born_year || !b.born_year) continue;
+          // Ages on a census night are rounded, and a birth year worked back
+          // from one is rounded with them; three years is as far as that
+          // stretches before it is somebody else.
+          if (Math.abs(a.born_year - b.born_year) > 3) continue;
+          // Only pairs an import could have made. Two people who have both been
+          // in the record for years and merely share a name are not this tool's
+          // to judge — they belong on the duplicates page, where a person
+          // decides. Elizabeth Phillips at two different houses is exactly the
+          // pair that must not be swept up here.
+          if (a.id < sinceId && b.id < sinceId) continue;
+          const why = howAlike(a.first_name, b.first_name);
+          if (!why) continue;
+          const lo = Math.min(a.id, b.id), hi = Math.max(a.id, b.id);
+          if (dismissed.has(`${lo}:${hi}`)) continue;
+          if (spoken.has(a.id) || spoken.has(b.id)) continue; // one pair per person per run
+          const [keep, drop] = weight(a) >= weight(b) ? [a, b] : [b, a];
+          spoken.add(a.id); spoken.add(b.id);
+          pairs.push({
+            keep_id: keep.id, drop_id: drop.id,
+            keep: [keep.first_name, keep.last_name].filter(Boolean).join(' '),
+            drop: [drop.first_name, drop.last_name].filter(Boolean).join(' '),
+            born: keep.born_year === drop.born_year ? keep.born_year
+              : `${drop.born_year} and ${keep.born_year}`,
+            keep_years: keep.years, drop_years: drop.years, why,
+          });
+        }
+      }
+    }
+    pairs.sort((x, y) => x.keep.localeCompare(y.keep));
+    if (dryRun) return res.json({ ok: true, dryRun, merged: 0, pairs });
+    const client = await db.connect();
+    let merged = 0;
+    try {
+      for (const p of pairs) {
+        await client.query('BEGIN');
+        await mergePeopleInto(client, p.keep_id, p.drop_id);
+        await client.query('COMMIT');
+        merged++;
+        await logChange('person', p.keep_id, req, 'merge', 'person',
+          `${p.drop} (#${p.drop_id})`, `${p.keep} (#${p.keep_id})`);
+      }
+    } catch (e) {
+      await client.query('ROLLBACK');
+      return res.status(500).json({ error: e.message, merged, pairs });
+    } finally { client.release(); }
+    res.json({ ok: true, dryRun, merged, pairs });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 // ── Merge two people (contributors+): keep one, absorb all data from the other ──
