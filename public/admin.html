@@ -311,38 +311,50 @@ async function runAdminJob(btn, url, body, describe) {
 }
 
 // ── Bring files in ──
-const describePeople = d => (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
-  + (d.report || []).map(x => {
-      const n = v => v || 0;
-      const work = n(x.added) + n(x.propertyLinks) + n(x.census) + n(x.occupations)
-                 + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships);
-      // Four zeros beside "already present" reads like a failure when it means
-      // the opposite. Say plainly that there is nothing left to do.
-      if (!work) {
-        return `${x.file}: nothing left to do`
-          + (x.alreadyPresent
-              ? (x.alreadyPresent === 1 ? ' — the one person in it is already in the record.'
-                                        : ` — all ${x.alreadyPresent} are already in the record.`)
-              : ' — the file adds nothing.')
-          + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
-      }
-      const bits = [`${x.added} ${d.dryRun ? 'would be added' : 'added'}`];
-      if (x.alreadyPresent) bits.push(`${x.alreadyPresent} already present`);
-      if (x.propertyLinks) bits.push(`${x.propertyLinks} property link${x.propertyLinks === 1 ? '' : 's'}`);
-      if (x.census) bits.push(`${x.census} census record${x.census === 1 ? '' : 's'}`);
-      if (x.occupations) bits.push(`${x.occupations} occupation${x.occupations === 1 ? '' : 's'}`);
-      if (x.occupationsFilled) bits.push(`${x.occupationsFilled} occupation${x.occupationsFilled === 1 ? '' : 's'} filled out`);
-      if (x.enriched) bits.push(`${x.enriched} filled out`);
-      if (x.relationships) bits.push(`${x.relationships} relationship${x.relationships === 1 ? '' : 's'}`);
-      return `${x.file}: ${bits.join(', ')}`
-        // Who, not just how many — a preview naming nobody cannot be checked.
-        + (x.addedNames ? `\n  people: ${x.addedNames.join(', ')}` : '')
-        // When every census record belongs to a person being created, the line
-        // above already names them and this one just says it twice.
-        + (x.censusNames && x.census !== x.added ? `\n  census: ${x.censusNames.join(', ')}` : '')
-        + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
-    }).join('\n')
-  + ((d.report || []).length ? '' : 'No people files found in data/.');
+// Every file is read on every run, and once the record has caught up most of
+// them have nothing to say. Listing all two dozen buries the one or two that
+// did something, so the ones that changed the record come first and the rest
+// are counted on a single line at the foot.
+const describePeople = d => {
+  const report = d.report || [];
+  if (!report.length) return 'No people files found in data/.';
+  const n = v => v || 0;
+  const workDone = x => n(x.added) + n(x.propertyLinks) + n(x.census) + n(x.occupations)
+                      + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships);
+  const shortName = x => x.file.replace(/^people_/, '').replace(/\.json$/, '');
+  const line = x => {
+    // A file that only fills people out adds nobody, and the server leaves the
+    // count off entirely — so saying "undefined added" was the first thing the
+    // eye landed on. Lead with the addition only when there was one.
+    const bits = n(x.added) ? [`${x.added} ${d.dryRun ? 'would be added' : 'added'}`] : [];
+    if (x.alreadyPresent) bits.push(`${x.alreadyPresent} already present`);
+    if (x.propertyLinks) bits.push(`${x.propertyLinks} property link${x.propertyLinks === 1 ? '' : 's'}`);
+    if (x.census) bits.push(`${x.census} census record${x.census === 1 ? '' : 's'}`);
+    if (x.occupations) bits.push(`${x.occupations} occupation${x.occupations === 1 ? '' : 's'}`);
+    if (x.occupationsFilled) bits.push(`${x.occupationsFilled} occupation${x.occupationsFilled === 1 ? '' : 's'} filled out`);
+    if (x.enriched) bits.push(`${x.enriched} filled out`);
+    if (x.relationships) bits.push(`${x.relationships} relationship${x.relationships === 1 ? '' : 's'}`);
+    return `${x.file}: ${bits.length ? bits.join(', ') : 'nothing changed'}`
+      // Who, not just how many — a preview naming nobody cannot be checked.
+      + (x.addedNames ? `\n  people: ${x.addedNames.join(', ')}` : '')
+      // When every census record belongs to a person being created, the line
+      // above already names them and this one just says it twice.
+      + (x.censusNames && x.census !== x.added ? `\n  census: ${x.censusNames.join(', ')}` : '')
+      + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
+  };
+  // A file that names a person the record has no number for is never quiet
+  // about it, however little else it did.
+  const changed = report.filter(x => workDone(x) || x.noSuchPerson);
+  const quiet = report.filter(x => !workDone(x) && !x.noSuchPerson);
+  return (d.dryRun ? 'Preview — nothing changed.\n\n' : 'Done.\n\n')
+    + (changed.length
+        ? changed.map(line).join('\n\n')
+        : 'Nothing to do: every file is already in the record.')
+    + (quiet.length
+        ? `\n\n─────\n${quiet.length} file${quiet.length === 1 ? '' : 's'} had nothing left to do: `
+          + quiet.map(shortName).join(', ') + '.'
+        : '');
+};
 
 on('btnPeoplePreview', e => runAdminJob(e.target, '/api/admin/import-people', { dryRun: true }, describePeople));
 on('btnPeopleRun', e => runAdminJob(e.target, '/api/admin/import-people', {}, describePeople));
