@@ -664,6 +664,14 @@
       "link": "/admin",
       "title": "Run Import people for the 1901 census of Lenton Avenue",
       "detail": "Seventeen households from numbers 5 to 31 and 10 to 14 — about ninety people — filed straight to their houses. This is the street that had 1901 for only four of its twenty-four houses. Numbers 2, 4, 6 and 8 are left out because they went in earlier. Two households are entered by house name and will land on /unfiled for you to place: Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which follows 31."
+    },
+    {
+      "slug": "import-1901-named-houses",
+      "area": "Census",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for the 1901 census of Lenton Road, the crescents and Western Terrace",
+      "detail": "Nineteen households — 126 people — for houses the record can already name, filed straight to their properties with nothing left over on /unfiled: Cliff House, Fern Lodge, 13, 15, Oakhurst, 25, 29 and Rock House on Lenton Road; 9, 11, 15, 17 and 19 Pelham Crescent; 10 Western Terrace and Lincoln Villa; and Carisbrooke House, Cavendish Lodge, Hardwicke House and Haddon House on Cavendish Crescent North. Houses that already hold a 1901 household are deliberately left out, so nothing doubles up. Two of these answer questions already on this list: Carisbrooke House gives William Bradshaw a 1901 to set beside his 1911, and 29 Lenton Road gives the Carvers the year their family account claimed and the record lacked — though only Annie F. is at home of the three daughters it names. Worth a look at /duplicates afterwards, for her and for Sarah Spray. The households whose house name the record cannot place stay out of the database, parked in data/1901_unnumbered_houses.json."
     }
   ]
 }
