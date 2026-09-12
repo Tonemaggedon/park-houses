@@ -63,8 +63,13 @@
   };
 
   const css = `
+/* No z-index on the bar itself, deliberately: a z-index here makes a stacking
+   context, and every page's overlays — the person card at 500, the merge box at
+   700 — would then be painted under the bar however high they set themselves.
+   The bar sits in the flow above the page, so it needs no lift; only the open
+   menu does, and it gets its own below. */
 .pnav{background:#25401f;color:#f2ecd8;font-family:Georgia,'Times New Roman',serif;line-height:1.3;
-  flex-shrink:0;position:relative;z-index:2000;text-align:left;font-size:16px}
+  flex-shrink:0;position:relative;text-align:left;font-size:16px}
 .pnav *{box-sizing:border-box;margin:0;padding:0;font-family:inherit;letter-spacing:normal}
 .pnav-top{display:flex;align-items:center;gap:12px;padding:8px 20px;min-height:50px}
 .pnav a.pnav-brand{color:#f2ecd8;text-decoration:none;display:block;background:none;border:0}
@@ -85,8 +90,10 @@
 .pnav-menu>summary::after{content:" \\25BE";font-size:.72rem}
 .pnav-menu>summary:hover,.pnav-menu[open]>summary{background:rgba(255,255,255,.12)}
 .pnav-menu>summary.is-here{background:#f2ecd8;color:#25401f;font-weight:600}
+/* The one part that must clear the page: high enough to beat the map's own
+   controls and any panel it opens over. It only exists while the menu is open. */
 .pnav-drop{position:absolute;right:0;top:calc(100% + 6px);background:#fffdf7;border:1px solid #d8ceb4;
-  border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.28);padding:5px;min-width:240px;z-index:2001}
+  border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.28);padding:5px;min-width:240px;z-index:9000}
 .pnav a.pnav-item{display:flex;gap:8px;align-items:center;color:#2a2418;text-decoration:none;font-size:.84rem;
   padding:6px 10px;border-radius:4px;white-space:nowrap;background:none;border:0}
 .pnav a.pnav-item:hover{background:#f0ead8}

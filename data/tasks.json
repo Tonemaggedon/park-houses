@@ -576,6 +576,14 @@
       "detail": "A sweep of HM Land Registry's price paid data across all 44 streets found 797 addresses with a name. Three attached to houses already in the record and are now recorded: Arundel Lodge (1 Park Valley), Castle House (13 Pelham Crescent), and Hardwick House as a second spelling of Hardwicke House. The rest are on /research as nine questions, grouped by street. Belwood is on Tattershall Drive.",
       "size": "research",
       "link": "/research"
+    },
+    {
+      "slug": "import-birkin-edale",
+      "area": "People",
+      "title": "Run Import people for Richard Leslie Birkin at Edale House",
+      "detail": "A brother of Charles Wilfred Birkin of Newcastle Court, living at Edale House, Clumber Road East in 1911 — from the family account, not a census return, so he is linked to the house as a resident rather than given a census entry. The preview should say 1 would be added, 1 property link, 1 relationship.",
+      "size": "one click",
+      "link": "/admin"
     }
   ]
 }

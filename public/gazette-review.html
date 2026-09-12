@@ -163,10 +163,12 @@ document.addEventListener('click', async e => {
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
-    if (totals[n.status] !== undefined) totals[n.status]--;
+    // Read the list back rather than trusting the click. A save that failed
+    // quietly used to look like success until the next refresh brought the
+    // notice back; now the screen always shows what the record actually holds.
     n.status = btn.dataset.act;
-    if (totals[n.status] !== undefined) totals[n.status]++;
     render();
+    await load();
   } catch (err) {
     row.querySelectorAll('button').forEach(b => b.disabled = false);
     alert('Could not save that: ' + err.message);
@@ -186,7 +188,7 @@ document.addEventListener('input', e => {
   render();
 });
 
-(async function load() {
+async function load() {
   const box = document.getElementById('list'), bar = document.getElementById('bar');
   try {
     const d = await fetch('/api/gazette/review').then(r => r.json());
@@ -200,7 +202,8 @@ document.addEventListener('input', e => {
     box.innerHTML = `<div class="empty err">Could not load: ${esc(err.message)}. `
       + `Sign in as a contributor to review these.</div>`;
   }
-})();
+}
+load();
 </script>
 </body>
 </html>

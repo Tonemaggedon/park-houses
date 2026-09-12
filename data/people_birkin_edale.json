@@ -1,0 +1,24 @@
+{
+ "note": "Richard Leslie Birkin is not in the record at all, though his brother Charles Wilfred (#64) is, at Newcastle Court, and another brother, Philip Austin (#684), is filed with his household at 5 Cavendish Crescent North — the house the family account calls Blanbyre and the record holds as Blantyre House (#23). This adds Richard and links him to Edale House, Clumber Road East (#82). It is a family account, not a census return: no census entry is created for him, so the house gains a resident rather than a household. If the 1911 page for Edale House turns up, import that too and the entry will attach to the same person.",
+ "source": "The Birkin family account, given by A. Hagues",
+ "people": [
+  {
+   "first_name": "Richard Leslie",
+   "last_name": "Birkin",
+   "sex": "M",
+   "properties": [
+    82
+   ],
+   "bio": "Richard Leslie Birkin, a brother of Lt.-Col. Charles Wilfred Birkin of Newcastle Court, lived at Edale House, Clumber Road East, in 1911. Their father was Sir Thomas Isaac Birkin, 1st Baronet, head of the lace manufacturer T. I. Birkin. Recorded from the family account rather than from a census return, so the year is what that account gives and nothing here is taken from the 1911 schedule.",
+   "relationships": [
+    {
+     "relationship": "sibling_of",
+     "to": {
+      "id": 64
+     },
+     "notes": "Brothers, sons of Sir Thomas Isaac Birkin."
+    }
+   ]
+  }
+ ]
+}
