@@ -35,6 +35,7 @@
     ['/gazette-review', '📰', 'Gazette by person'],
     ['/wikidata-review', '🔗', 'Wikidata review'],
     ['/name-sex', '⚥', 'Forename sex'],
+    ['/name-review', '✎', 'Names to check'],
   ];
   const MINE = [
     ['/watchlist', '⭐', 'My watchlist'],

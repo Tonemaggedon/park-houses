@@ -464,6 +464,20 @@ async function dbInit() {
     // "Not the same person" has to be remembered, or a pair that has already been
     // judged is offered again every time the page is opened. Stored lowest id
     // first so the pair is one row whichever way round it is sent.
+    // A name somebody has looked at and passed as right, so the name-check page
+    // stops raising it. Keyed on the person and the word, because a person may
+    // carry two odd-looking forenames and only one of them be a slip.
+    await db.query(`CREATE TABLE IF NOT EXISTS name_check_dismissed (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      word TEXT NOT NULL DEFAULT '',
+      note TEXT,
+      dismissed_by TEXT,
+      dismissed_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS name_check_dismissed_idx
+                      ON name_check_dismissed(person_id, word)`);
+
     await db.query(`CREATE TABLE IF NOT EXISTS duplicate_dismissed (
       id SERIAL PRIMARY KEY,
       person_a_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
@@ -1931,6 +1945,138 @@ app.post('/api/admin/import-works', requireAdmin, async (req, res) => {
 // person at a time — setting "Mary" once covers every Mary in the record.
 // Relationship evidence from the census is offered as a suggestion so the
 // obvious ones can be confirmed at a glance.
+// ── Names that do not look right ─────────────────────────────────────────────
+// Three kinds of fault, and they are not equally certain, so the page keeps them
+// apart. A question mark or a bracketed [Unknown] standing in for a forename is
+// simply a gap. A bare initial is a gap of a softer sort. A spelling one letter
+// from an ordinary name is a judgement, and the letter has to be one a pen or a
+// scanner actually confuses — Suganne for Suzanne is a z read as a g, whereas
+// Adam is not a misspelling of Ada and never should be offered as one.
+const NAME_CONFUSABLE = new Set([
+  'zg','gz','un','nu','ce','ec','li','il','ao','oa','sf','fs','hb','bh',
+  'tf','ft','rn','nr','vy','yv','mn','nm','ij','ji','cl','lc',
+]);
+let forenameListCache = null;
+function knownForenames() {
+  if (!forenameListCache) {
+    forenameListCache = new Set();
+    try {
+      const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'forenames.json'), 'utf8'));
+      for (const n of (doc.names || [])) forenameListCache.add(String(n).toLowerCase());
+    } catch (e) { /* the record's own names still serve */ }
+  }
+  return forenameListCache;
+}
+const nameWords = v => String(v || '').trim().split(/\s+/).filter(Boolean);
+const bareWord = w => w.replace(/[^A-Za-z]/g, '').toLowerCase();
+
+app.get('/api/names/check', async (req, res) => {
+  if (!db) return res.json({ groups: [], total: 0, dismissed: 0 });
+  try {
+    const people = (await db.query(`
+      SELECT p.id, p.first_name, p.last_name,
+             (SELECT COUNT(*) FROM census_entries c WHERE c.person_id = p.id) AS entries,
+             (SELECT STRING_AGG(DISTINCT c.census_year::text, ', ' ORDER BY c.census_year::text)
+                FROM census_entries c WHERE c.person_id = p.id) AS years
+        FROM people p
+       WHERE COALESCE(TRIM(p.last_name),'') <> '' OR COALESCE(TRIM(p.first_name),'') <> ''`)).rows;
+    const skipRows = (await db.query(`SELECT person_id, word FROM name_check_dismissed`)).rows;
+    const skip = new Set(skipRows.map(r => `${r.person_id}|${r.word}`));
+
+    // The record's own forenames are the first authority: one it holds several
+    // times over is taken as right. The list on disk fills the gap where the
+    // correct spelling happens to be rare here, or missing altogether.
+    const seen = new Map();
+    for (const p of people) {
+      for (const w of nameWords(p.first_name)) {
+        const b = bareWord(w);
+        if (b.length > 2) seen.set(b, (seen.get(b) || 0) + 1);
+      }
+    }
+    const known = knownForenames();
+    const isCommon = b => (seen.get(b) || 0) >= 6 || known.has(b);
+    const isRare = b => (seen.get(b) || 0) <= 2 && !known.has(b);
+
+    const gap = [], initial = [], spelling = [];
+    const where = p => {
+      const bits = [];
+      if (Number(p.entries)) bits.push(`${p.entries} census record${p.entries === '1' ? '' : 's'}`);
+      if (p.years) bits.push(p.years);
+      return bits.join(' · ');
+    };
+    for (const p of people) {
+      const full = [p.first_name, p.last_name].filter(Boolean).join(' ').trim();
+      const first = String(p.first_name || '').trim();
+      const row = { id: p.id, name: full, where: where(p) };
+
+      if (/[?]|\[unknown\]/i.test(full)) {
+        if (!skip.has(`${p.id}|`)) gap.push({ ...row, word: '' });
+        continue;
+      }
+      if (/[0-9@#£$%&*_/\\<>[\]{}|~^]/.test(full)) {
+        if (!skip.has(`${p.id}|`)) gap.push({ ...row, word: '' });
+        continue;
+      }
+      if (first && bareWord(first.split(/\s+/)[0]).length <= 1) {
+        if (!skip.has(`${p.id}|`)) initial.push({ ...row, word: '' });
+        continue;
+      }
+      for (const w of nameWords(first)) {
+        const b = bareWord(w);
+        if (b.length < 4 || !isRare(b)) continue;
+        if (skip.has(`${p.id}|${w}`)) continue;
+        let suggestion = null;
+        for (const cand of new Set([...seen.keys(), ...known])) {
+          if (cand.length !== b.length || !isCommon(cand)) continue;
+          let diff = -1, bad = false;
+          for (let i = 0; i < b.length; i++) {
+            if (b[i] === cand[i]) continue;
+            if (diff >= 0) { bad = true; break; }
+            diff = i;
+          }
+          if (bad || diff < 0) continue;
+          if (!NAME_CONFUSABLE.has(b[diff] + cand[diff])) continue;
+          suggestion = cand.charAt(0).toUpperCase() + cand.slice(1);
+          break;
+        }
+        if (suggestion) spelling.push({ ...row, word: w, suggestion });
+      }
+    }
+    const groups = [
+      { key: 'gap', title: 'No forename recorded',
+        why: 'The return gave a mark rather than a name, or the name was never read. '
+           + 'These want a look at the page itself.', people: gap },
+      { key: 'initial', title: 'Only an initial',
+        why: 'An initial stands where the forename should be. Often that is all the return '
+           + 'offers, in which case pass it as right.', people: initial },
+      { key: 'spelling', title: 'Reads like a slip of the pen',
+        why: 'A spelling the record holds once or twice, one letter away from an ordinary name, '
+           + 'and the letter is one that is easily misread. A judgement, not a certainty — some '
+           + 'of these will be perfectly good names.', people: spelling },
+    ].filter(g => g.people.length);
+    res.json({ groups, total: gap.length + initial.length + spelling.length,
+               dismissed: skipRows.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Passing a name as right. Remembered so it is not raised again.
+app.post('/api/names/check/dismiss', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.body && req.body.person_id, 10);
+  const word = String((req.body && req.body.word) || '');
+  if (!Number.isInteger(id)) return res.status(400).json({ error: 'a person id is required' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    await db.query(
+      `INSERT INTO name_check_dismissed (person_id, word, note, dismissed_by)
+            VALUES ($1,$2,$3,$4)
+       ON CONFLICT (person_id, word)
+       DO UPDATE SET note=EXCLUDED.note, dismissed_by=EXCLUDED.dismissed_by, dismissed_at=NOW()`,
+      [id, word, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, dismissed: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.get('/api/names/sex-queue', async (req, res) => {
   if (!db) return res.json({ names: [], remaining: 0, peopleRemaining: 0 });
   try {
@@ -6087,6 +6233,7 @@ app.get('/architects', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/significant', (req, res) => res.sendFile(path.join(__dirname, 'public', 'significant.html')));
 app.get('/gazette-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'gazette-review.html')));
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
+app.get('/name-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-review.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));

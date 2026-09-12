@@ -728,6 +728,14 @@
       "link": "/admin",
       "title": "Run Import people for Henry Handford, and change his birth year by hand",
       "detail": "Fills out Henry Handford at Hardwicke House from Munk's Roll: physician to the Nottingham General Hospital to 1906, then medical officer of health for the county for twenty years to 1926, F.R.C.P. 1899, a major in the sanitary branch of the R.A.M.C. in the war, died 24 June 1928. It gives his wife Mary her maiden name, Strutt, and creates one new person who never lived here — Edward Strutt, first Baron Belper, her father, who has a Wikipedia article of his own. It also links the couple, their two sons, and Mary to her three Gale daughters. Preview should say 1 added, 2 filled out, 5 occupations and 9 relationships, with no census. THE ONE THING IT CANNOT DO: Munk's Roll dates his birth to 1855 and the record holds 1856, taken from his age on census night. The importer fills blanks and never writes over what is there, so that year will not move from the file — change it on his person page if you want the authority's year."
+    },
+    {
+      "slug": "work-through-names-to-check",
+      "area": "People",
+      "size": "half an hour",
+      "link": "/name-review",
+      "title": "Twenty-six names in the record do not look right",
+      "detail": "A new page, Names to check, gathers them in three groups. Eight people have no forename at all — six carrying a question mark where the enumerator could not read it, and two entered as [Unknown]; those want the census page itself. Fifteen have only an initial, and most of those are probably right, because the return gave no more than an initial: pass them as right and they will not be raised again. Three read like a slip of the pen: Suganne Richardson at Grove House is almost certainly Suzanne, and Margaret Mand Marion Cooper is almost certainly Maud, a u read as an n. The third, Christine Nona Parr, is offered as Nora but Nona is a real name in its own right, given to a ninth child, so that one is likely a false alarm and worth passing as right. Nothing is ever changed for you — each row is a person to open and judge."
     }
   ]
 }
