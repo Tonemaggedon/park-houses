@@ -1,0 +1,98 @@
+{
+ "note": "The family 1 Duke William Mount (#106) was built for. The house holds nobody at all in the record — no census household has ever been filed there — so these eight are the first, and they come from a family account rather than a return. Horace and Sarah Kate are given what the account dates; the six children are created with names only, so that when a census page for the house turns up the entries attach to people already here instead of making second copies. No Thackeray was in the record before this.",
+ "source": "A. Hagues, from the Fisher family account",
+ "people": [
+  {
+   "first_name": "Horace Arthur",
+   "last_name": "Fisher",
+   "sex": "M",
+   "born_year": 1854,
+   "born_place": "Hyson Green, Nottingham",
+   "properties": [106],
+   "bio": "Horace Arthur Fisher, a lace industrialist, was the man 1 Duke William Mount was built for. Born in Hyson Green in 1854, he married Sarah Kate Thackeray in 1879 — the eldest daughter of John Thackeray, of another prominent Nottingham lace manufacturing family — and the couple moved into the house after the birth of their first child, James, in 1883. They had six children: James, Sybil, Horace (known as Frank), Geoffrey, John and Florence. The family's own business stood on Short Hill, and later in Radford.",
+   "occupations": [
+    {"occupation": "Lace manufacturer", "notes": "The family business, on Short Hill and later in Radford."}
+   ]
+  },
+  {
+   "first_name": "Sarah Kate",
+   "last_name": "Fisher",
+   "maiden_name": "Thackeray",
+   "sex": "F",
+   "properties": [106],
+   "bio": "Sarah Kate Fisher, eldest daughter of John Thackeray of the Nottingham lace manufacturing family, married Horace Arthur Fisher in 1879 and moved with him into 1 Duke William Mount after their first child was born in 1883. Six children: James, Sybil, Horace (known as Frank), Geoffrey, John and Florence.",
+   "relationships": [
+    {"relationship": "spouse_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"},
+     "notes": "Married 1879."}
+   ]
+  },
+  {
+   "first_name": "James",
+   "last_name": "Fisher",
+   "sex": "M",
+   "born_year": 1883,
+   "properties": [106],
+   "bio": "The eldest child of Horace Arthur and Sarah Kate Fisher. The family moved into 1 Duke William Mount following his birth in 1883.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  },
+  {
+   "first_name": "Sybil",
+   "last_name": "Fisher",
+   "sex": "F",
+   "properties": [106],
+   "bio": "A daughter of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet — the family account names the six children without them.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  },
+  {
+   "first_name": "Horace",
+   "last_name": "Fisher",
+   "known_as": "Frank",
+   "sex": "M",
+   "properties": [106],
+   "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount, known as Frank — which is how he would be written on a return, so a census entry may name him Frank Fisher. No dates yet.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  },
+  {
+   "first_name": "Geoffrey",
+   "last_name": "Fisher",
+   "sex": "M",
+   "properties": [106],
+   "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Fisher",
+   "sex": "M",
+   "properties": [106],
+   "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount, named for his grandfather John Thackeray. No dates yet.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Fisher",
+   "sex": "F",
+   "properties": [106],
+   "bio": "A daughter of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet.",
+   "relationships": [
+    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+   ]
+  }
+ ]
+}

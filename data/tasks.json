@@ -616,6 +616,14 @@
       "link": "/unfiled",
       "title": "Check the two Lincoln Circus 2 records against the Palmers at Gladstone House",
       "detail": "Edward and Alice Palmer appear unfiled under \"Lincoln Circus 2\" for 1921, and both are already filed at Gladstone House for 1921. Almost certainly the same two records twice. Compare them on /duplicates or on their person pages, then remove whichever copy is the stray — and note that this makes Lincoln Circus 2 the census's name for Gladstone House."
+    },
+    {
+      "slug": "import-fisher-duke-william-mount",
+      "area": "People",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for the Fishers of 1 Duke William Mount",
+      "detail": "The family the house was built for, from the family account: Horace Arthur Fisher, Sarah Kate née Thackeray, and their six children. The house holds nobody at all in the record, so these are its first people. The preview should say 8 added, 8 property links, 1 marriage and twelve parent links. No census entries are created — there is no return behind this."
     }
   ]
 }
