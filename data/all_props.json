@@ -6351,10 +6351,10 @@
   "id": 404,
   "name": "Gartree Lodge",
   "street": "Tattershall Drive",
-  "no": "Gartree Lodge",
-  "address": "Gartree Lodge, Tattershall Drive",
+  "no": "17a",
+  "address": "17a Tattershall Drive",
   "desc": "",
-  "history": "The coach house and stable at the bottom of the garden of Gartree House, 29 Cavendish Road East, converted to a separate dwelling. The Park has a number of these: coach houses turned into cottages and given the name Lodge. It is addressed on Tattershall Drive, which the garden backs onto, rather than on Cavendish Road East with the house it belonged to. In 1921 it held John Raven Erwin Hatton, a chauffeur of 28, and his wife Evelyn, 22 \u2014 a chauffeur housed over the stables of the house he drove for. The enumerator counted it on the Tattershall Drive round, which is why the two of them were first recorded at 5 Tattershall Drive.",
+  "history": "The coach house and stable at the bottom of the garden of Gartree House, 29 Cavendish Road East, converted to a separate dwelling. The Park has a number of these: coach houses turned into cottages and given the name Lodge. It is addressed on Tattershall Drive, which the garden backs onto, rather than on Cavendish Road East with the house it belonged to. In 1921 it held John Raven Erwin Hatton, a chauffeur of 28, and his wife Evelyn, 22 \u2014 a chauffeur housed over the stables of the house he drove for. The enumerator counted it on the Tattershall Drive round, which is why the two of them were first recorded at 5 Tattershall Drive. It is 17a Tattershall Drive and goes by The Lodge now, which A. Hagues has confirmed on the ground. The record had carried it as Gartree Lodge with the name standing in for a number, and that is the name its origin explains, so it is kept as the former one. The Lodge that HM Land Registry holds on this street is therefore this house, not the lodge by the tennis ground.",
   "date_built": "",
   "listed": "No",
   "census_only": true,
@@ -6362,9 +6362,12 @@
   "lng": -1.1606591,
   "sources": {
    "existence": "Gartree House's own building description: \"Part of original carriage and stable building at bottom of garden adjacent to Tattershall Drive converted into separate dwelling\"",
-   "position": "Provisional \u2014 at the Tattershall Drive end of Gartree House's garden, 28m short of 4 Tattershall Drive (#309) along the line between them. Wants placing by hand.",
-   "residents": "1921 census, via 5 Tattershall Drive where the household was first filed"
-  }
+   "position": "Provisional \u2014 at the Tattershall Drive end of Gartree House's garden, 28m short of 4 Tattershall Drive (#309) along the line between them. Wants placing by hand. Still the provisional point: a number is not a coordinate, and nobody has fixed the position itself.",
+   "residents": "1921 census, via 5 Tattershall Drive where the household was first filed",
+   "number": "17a and the name The Lodge from A. Hagues, on the ground."
+  },
+  "house_name": "The Lodge",
+  "prev_house_name": "Gartree Lodge"
  },
  {
   "id": 405,
