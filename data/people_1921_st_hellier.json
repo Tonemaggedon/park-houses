@@ -1,0 +1,240 @@
+{
+ "note": "St Hellier, Clumber Road East (#402) ten years on. John Campbell Boot is head at 32; his father Sir Jesse, now 71 and retired, and his mother Lady Florence are down as visitors in their own son's house. Import the 1911 file first: the three Boots are matched by name, so they gain a second census entry rather than a second record. The other eight are new. Two details the return settles — Jesse's birth year is 1850, which the 1911 ages had as 1851, and the employer columns style him \"Bart\", the baronetcy of 1917, eight years before the barony.",
+ "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues",
+ "people": [
+  {
+   "first_name": "John Campbell",
+   "last_name": "Boot",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Head",
+     "age_at_census": 32,
+     "occupation_at_census": "Director, Boots Pure Drug Co",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Director Boots Pure Dray Co\", an employer. The housekeeper's employer column names him Capt J C Boot."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Director", "employer": "Boots Pure Drug Co", "from_year": 1921, "to_year": 1921,
+     "notes": "Returned on the 1921 census as \"Director Boots Pure Dray Co\", employer."}
+   ]
+  },
+  {
+   "first_name": "Jesse",
+   "last_name": "Boot",
+   "born_year": 1850,
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Father, visitor",
+     "age_at_census": 71,
+     "occupation_at_census": "Retired manufacturing chemist",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Retired (Manufacturing Chemist)\", a visitor in his son's house. Two of the staff give their employer as Sir Jesse Boot, one writing \"Bart\"."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Manufacturing chemist", "to_year": 1921,
+     "notes": "Retired by the 1921 census."}
+   ]
+  },
+  {
+   "first_name": "Florence Annie",
+   "last_name": "Boot",
+   "title": "Lady",
+   "born_year": 1863,
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Mother, visitor",
+     "age_at_census": 57,
+     "birth_place": "Jersey, Channel Islands",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Lady Florence Boot\", no occupation given."
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1883,
+   "born_place": "Manchester, Lancashire",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Housekeeper",
+     "age_at_census": 38,
+     "occupation_at_census": "Housekeeper",
+     "birth_place": "Manchester, Lancashire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — employer given as \"Capt J C Boot St Heliers Nottingham\"."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Housekeeper", "employer": "Capt J. C. Boot, St Hellier", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Bradley",
+   "sex": "F",
+   "born_year": 1873,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "age_at_census": 48,
+     "occupation_at_census": "Cook",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — no relationship to the head was given. Employer written \"St Helens Nottingham\", the house's own name misread."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Cook", "employer": "St Hellier, Clumber Road East", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Mabel",
+   "last_name": "Roberts",
+   "sex": "F",
+   "born_year": 1901,
+   "born_place": "Whitwell, Derbyshire",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Whitwell, Derbyshire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — employer given as private."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Domestic servant", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Hilda",
+   "last_name": "Hooker",
+   "sex": "F",
+   "born_year": 1898,
+   "born_place": "Suffolk",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Suffolk",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — employer written \"St Helens Nottingham\", the house's own name misread."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Domestic servant", "employer": "St Hellier, Clumber Road East", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Clifford",
+   "last_name": "Wightman",
+   "sex": "M",
+   "born_year": 1890,
+   "born_place": "East Bergholt, Suffolk",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Visitor",
+     "age_at_census": 31,
+     "occupation_at_census": "Personal attendant",
+     "birth_place": "East Bergholt, Suffolk",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — employer written \"Private St Jesse Boot Nr\", read as Sir Jesse Boot."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Personal attendant", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Albert Thomas",
+   "last_name": "Faulkner",
+   "sex": "M",
+   "born_year": 1891,
+   "born_place": "Brighton, Sussex",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Visitor",
+     "age_at_census": 29,
+     "occupation_at_census": "Chauffeur",
+     "birth_place": "Brighton, Sussex",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — the name is written \"Albert >Th Thomas\"; employer \"Private St Jesse Boot Nr\", read as Sir Jesse Boot."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Chauffeur", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921}
+   ]
+  },
+  {
+   "first_name": "Paul",
+   "last_name": "Lasausse",
+   "sex": "M",
+   "born_year": 1885,
+   "born_place": "Paris, France",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Visitor",
+     "age_at_census": 36,
+     "occupation_at_census": "Nurse (sick male)",
+     "birth_place": "Paris, France",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — employer written \"Sir Tene Boot Bart\", read as Sir Jesse Boot, baronet."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Nurse", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921,
+     "notes": "Returned as \"Nurse (Sick Male)\"."}
+   ]
+  },
+  {
+   "first_name": "Francis",
+   "last_name": "Forby",
+   "sex": "F",
+   "born_year": 1893,
+   "born_place": "Stow on the Wold, Gloucestershire",
+   "properties": [402],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 402,
+     "relationship": "Visitor",
+     "age_at_census": 28,
+     "occupation_at_census": "Certificated sick nurse",
+     "birth_place": "Stow on the Wold, Gloucestershire",
+     "source": "1921 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Certif Sick Nurse\", employer the London Hospital. Entered as Francis; Frances is the usual spelling for a woman."
+    }
+   ],
+   "occupations": [
+    {"occupation": "Certificated sick nurse", "employer": "London Hospital", "from_year": 1921, "to_year": 1921}
+   ]
+  }
+ ]
+}

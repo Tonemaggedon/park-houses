@@ -1,0 +1,430 @@
+{
+ "note": "Sir Jesse Boot's household at St Hellier, Clumber Road East (#402) on the 1911 census — thirteen people, none of whom were in the record at all. Each census entry is filed to #402 directly, and everyone is linked to the house as a resident. Occupations are given as the return has them, with the census wording kept in the source line where it differs from the plain form. Birth years come from the ages on the night, except for Jesse and Florence: the 1921 return states theirs outright as 1850 and 1863, which is better evidence than arithmetic from an age, so those are used here. The importer fills blanks only, so whichever file runs first sets them.",
+ "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues. The 1929 barony from the same, given with the table.",
+ "people": [
+  {
+   "first_name": "Jesse",
+   "last_name": "Boot",
+   "title": "Sir",
+   "sex": "M",
+   "born_year": 1850,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    402
+   ],
+   "bio": "Sir Jesse Boot, managing director of Boots, was living at St Hellier, Clumber Road East, on the 1911 census with his wife Florence, their three grown children and seven servants. In 1929 he and Florence were elevated to Baron and Lady Trent.",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 60,
+     "occupation_at_census": "Managing director",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Managing director managing director boot\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Managing director",
+     "employer": "Boots",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "As returned on the 1911 census."
+    }
+   ]
+  },
+  {
+   "first_name": "Florence Annie",
+   "last_name": "Boot",
+   "sex": "F",
+   "born_year": 1863,
+   "born_place": "Jersey",
+   "properties": [
+    402
+   ],
+   "bio": "Florence Annie Boot, born in Jersey, wife of Sir Jesse Boot. In 1929 she became Lady Trent.",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "birth_place": "Jersey",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — birthplace returned as \"Jersey Resident\", no occupation given."
+    }
+   ],
+   "relationships": [
+    {
+     "relationship": "spouse_of",
+     "to": {
+      "first_name": "Jesse",
+      "last_name": "Boot"
+     }
+    }
+   ]
+  },
+  {
+   "first_name": "John Campbell",
+   "last_name": "Boot",
+   "sex": "M",
+   "born_year": 1889,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Private secretary",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Private secretary",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "As returned on the 1911 census."
+    }
+   ],
+   "relationships": [
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Jesse",
+      "last_name": "Boot"
+     }
+    },
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Florence Annie",
+      "last_name": "Boot"
+     }
+    }
+   ]
+  },
+  {
+   "first_name": "Dorothy Florence",
+   "last_name": "Boot",
+   "sex": "F",
+   "born_year": 1890,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — no occupation given."
+    }
+   ],
+   "relationships": [
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Jesse",
+      "last_name": "Boot"
+     }
+    },
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Florence Annie",
+      "last_name": "Boot"
+     }
+    }
+   ]
+  },
+  {
+   "first_name": "Margery Amy",
+   "last_name": "Boot",
+   "sex": "F",
+   "born_year": 1892,
+   "born_place": "Sheffield, Yorkshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "birth_place": "Sheffield, Yorkshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — no occupation given."
+    }
+   ],
+   "relationships": [
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Jesse",
+      "last_name": "Boot"
+     }
+    },
+    {
+     "relationship": "child_of",
+     "to": {
+      "first_name": "Florence Annie",
+      "last_name": "Boot"
+     }
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Du Parcq",
+   "sex": "M",
+   "born_year": 1881,
+   "born_place": "Jersey",
+   "properties": [
+    402
+   ],
+   "bio": "A barrister of 30, born in Jersey, staying at St Hellier on census night 1911 — Florence Boot's own island, and the house's name.",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Barrister at law",
+     "birth_place": "Jersey",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — birthplace returned as \"Jersey Resident\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Barrister at law",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "As returned on the 1911 census."
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Wood",
+   "sex": "F",
+   "born_year": 1869,
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 42,
+     "occupation_at_census": "Lady's maid",
+     "birth_place": "Weeping St Nichols",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — birthplace returned as \"Weeping St Nichols\", a place not yet identified, so it is left exactly as written."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lady's maid",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "As returned on the 1911 census."
+    }
+   ]
+  },
+  {
+   "first_name": "George Atkinson",
+   "last_name": "Wilson",
+   "sex": "M",
+   "born_year": 1886,
+   "born_place": "Underbarrow, Westmorland",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Male nurse",
+     "birth_place": "Underbarrow, Westmorland",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — a male nurse in the household, which is worth noting beside a head of 60."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Male nurse",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "As returned on the 1911 census."
+    }
+   ]
+  },
+  {
+   "first_name": "Henry James",
+   "last_name": "Treble",
+   "sex": "M",
+   "born_year": 1882,
+   "born_place": "Battersea, London",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 29,
+     "occupation_at_census": "Valet",
+     "birth_place": "Battersea, London",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Valet domestic\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Valet",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "Returned on the 1911 census as \"Valet domestic\"."
+    }
+   ]
+  },
+  {
+   "first_name": "William George",
+   "last_name": "Griggs",
+   "sex": "M",
+   "born_year": 1882,
+   "born_place": "Willoughby, Nottinghamshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 29,
+     "occupation_at_census": "Footman",
+     "birth_place": "Willoughby, Nottinghamshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Footman domestic\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Footman",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "Returned on the 1911 census as \"Footman domestic\"."
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel Annie",
+   "last_name": "Taylor",
+   "sex": "F",
+   "born_year": 1889,
+   "born_place": "Compton, Nottinghamshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Under housemaid",
+     "birth_place": "Compton, Nottinghamshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Under housemaid domestic\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Under housemaid",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "Returned on the 1911 census as \"Under housemaid domestic\"."
+    }
+   ]
+  },
+  {
+   "first_name": "Agnes",
+   "last_name": "Adams",
+   "sex": "F",
+   "born_year": 1889,
+   "born_place": "Swadlincote, Derbyshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Kitchen maid",
+     "birth_place": "Swadlincote, Derbyshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Kitchen maid domestic\". Mary Adams, a scullery maid of 19 from the same town, is in the household too, so the two are very likely sisters."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Kitchen maid",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "Returned on the 1911 census as \"Kitchen maid domestic\"."
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Adams",
+   "sex": "F",
+   "born_year": 1892,
+   "born_place": "Swadlincote, Derbyshire",
+   "properties": [
+    402
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 402,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Scullery maid",
+     "birth_place": "Swadlincote, Derbyshire",
+     "source": "1911 census, St Hellier, Clumber Road East — transcribed by A. Hagues — returned as \"Senllery maid domestic\", read as scullery maid. Agnes Adams, a kitchen maid of 22 from the same town, is in the household too, so the two are very likely sisters."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Scullery maid",
+     "from_year": 1911,
+     "to_year": 1911,
+     "notes": "Returned on the 1911 census as \"Senllery maid domestic\"."
+    }
+   ]
+  }
+ ]
+}

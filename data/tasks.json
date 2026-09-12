@@ -584,6 +584,14 @@
       "detail": "A brother of Charles Wilfred Birkin of Newcastle Court, living at Edale House, Clumber Road East in 1911 — from the family account, not a census return, so he is linked to the house as a resident rather than given a census entry. The preview should say 1 would be added, 1 property link, 1 relationship.",
       "size": "one click",
       "link": "/admin"
+    },
+    {
+      "slug": "import-st-hellier-boots",
+      "area": "People",
+      "title": "Run Import people for the Boot households at St Hellier, 1911 and 1921",
+      "detail": "Two files, and the order matters: people_1911_st_hellier.json first, then people_1921_st_hellier.json. The 1911 file creates all thirteen — Sir Jesse Boot, his wife Florence, their three grown children, a visiting barrister from Jersey and seven servants — and files every entry at #402. The 1921 file matches the three Boots by name and adds eight more: John Campbell Boot is head by then, with his parents as visitors. Both run from Import people; preview each first.",
+      "size": "one click",
+      "link": "/admin"
     }
   ]
 }
