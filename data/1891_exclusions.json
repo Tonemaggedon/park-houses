@@ -1,118 +1,126 @@
 {
- "note": "Households from the 1891 census, transcribed by A. Hagues, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it. They fall into two quite different kinds, and the distinction matters.\n\nFIRST: numbered addresses on streets the record holds, at numbers it does not. Cavendish Road 1 to 19 against a record that begins at 23 Cavendish Road East; Pelham Crescent 2, 4 and 6 against a record whose Pelham Crescent starts at 1 and 3 and then jumps; Clumber Road numbered 3 to 32 against a record that knows Clumber Road only by house names. These look like real Park houses the record is missing rather than places outside it, and each is worth adding as a property once somebody confirms the house still stands.\n\nSECOND: house names with no number, which is the harder kind. Some may be houses the record holds under another name.\n\nNothing here is imported until an address is settled.",
- "source": "1891 census — transcribed by A. Hagues from the enumerators' pages",
+ "note": "1891 households from the nine census pages A. Hagues sent, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it.\n\nTHIS FILE WAS REWRITTEN. Its first version listed addresses that appear on no image — the whole of Pelham Crescent, Weston Lodge, 41 Lenton Road, Linde House on South Road, Parkmount on Park Drive, Pelham Cottages, Thorn Lea, and a Lincoln Villa at 11 Pelham Crescent. Those were written up in error and are struck. Every entry below has been checked against the image it came from.\n\nTwo kinds. First, numbered addresses on streets the record holds at numbers it does not — these look like real Park houses simply missing. Second, house names with no number.",
+ "source": "1891 census — nine enumerator's pages transcribed by A. Hagues, each entry checked against the image",
  "not_imported": true,
  "numbered_but_outside_the_record": [
   {
    "address": "3 Clumber Road",
    "head": "Richard Fitzhugh",
    "people": 6,
-   "note": "The Fitzhughs, whom the record already holds at 3 Cavendish Crescent South (#78) for 1891 — so this may simply be the enumerator's name for that street."
+   "image": "L16727_0",
+   "note": "The Fitzhughs, whom the record holds at 3 Cavendish Crescent South (#78) for 1891."
   },
   {
    "address": "5 Clumber Road",
    "head": "John Gamble",
-   "people": 5
+   "people": 5,
+   "image": "L16727_0"
   },
   {
    "address": "7 Clumber Road",
-   "head": "Jameson McCraith",
+   "head": "Jameston/Jameson McCraith",
    "people": 9,
-   "note": "The McCraiths, whom the record holds at 3 South Road (#302) for 1891. Same household, same four servants, same three-month-old Kenneth York. One of the two addresses is wrong."
+   "image": "L16727_0",
+   "note": "The McCraiths, whom the record holds at 3 South Road (#302) for 1891 — same household, same four servants, same three-month-old. One of the two addresses is wrong."
   },
   {
    "address": "9 Clumber Road",
    "head": "Henry Vickers",
-   "people": 7
+   "people": 7,
+   "image": "L16727_0 / L16848_0"
   },
   {
    "address": "15 Clumber Road (Clumber House)",
    "head": "William Godfrey Gregory",
    "people": 6,
-   "note": "The Gregorys, whom the record holds at Clumber House, PARK DRIVE (#239) for 1891. Two pages now head this household Clumber Road. The house description mentions access from Cavendish Crescent South, so it plainly has more than one frontage."
+   "image": "L16782_0",
+   "note": "The Gregorys, whom the record holds at Clumber House, PARK DRIVE (#239) for 1891. Two pages head this household Clumber Road."
   },
   {
    "address": "32 Clumber Road",
    "head": "William Michael Rook",
-   "people": 13
+   "people": 13,
+   "image": "L16848_4"
   },
   {
    "address": "4 Clumber Road",
    "head": "Benjamin Dowson",
-   "people": 8,
+   "people": 12,
+   "image": "L16848_2 / L16848_3",
    "note": "The Dowsons, whom the record holds at Felixstowe, Clumber Road West (#394)."
+  },
+  {
+   "address": "Clumber Road West",
+   "head": "Richard Challands",
+   "people": 11,
+   "image": "L16848_3",
+   "note": "Challands, whom the record holds at 7 Clumber Crescent South for 1911."
   },
   {
    "address": "11 Clumber Crescent",
    "head": "William Albert Brown",
-   "people": 5
+   "people": 5,
+   "image": "L16727_1"
   },
   {
    "address": "13 Clumber Crescent",
    "head": null,
    "people": 0,
+   "image": "L16727_1",
    "note": "Returned uninhabited."
   },
   {
    "address": "1 Cavendish Road",
    "head": "William Jackson Heslop",
-   "people": 5
+   "people": 5,
+   "image": "L16782_1"
   },
   {
    "address": "9 Cavendish Road",
    "head": "Frederic Wadsworth",
    "people": 7,
-   "note": "The Wadsworths, whom the record holds at Newlands, Lenton Avenue for 1901."
+   "image": "L16848_1",
+   "note": "The Wadsworths, whom the record places on Lenton Avenue in 1901."
   },
   {
    "address": "11 Cavendish Road",
    "head": "Walter Sampson",
    "people": 12,
-   "note": "The Sampsons, whom the record holds at 29 Lenton Avenue later."
+   "image": "L16848_1",
+   "note": "The Sampsons, whom the record places on Lenton Avenue later."
   },
   {
    "address": "13 Cavendish Road",
    "head": "John B Walker",
-   "people": 7
+   "people": 7,
+   "image": "L16848_1"
   },
   {
    "address": "15 Cavendish Road",
    "head": "Joseph Walker",
-   "people": 4
+   "people": 4,
+   "image": "L16848_1"
   },
   {
    "address": "17 Cavendish Road",
    "head": "Henry Crewdson",
    "people": 8,
-   "note": "Crewdson, whom the record holds at 25 Lenton Avenue for 1901 and 1911."
+   "image": "L16848_2",
+   "note": "Crewdson, whom the record places at 25 Lenton Avenue for 1901 and 1911."
   },
   {
    "address": "19 Cavendish Road",
    "head": "Sarah Guildford",
    "people": 4,
-   "note": "The Guilfords, whom the record holds at 23 Lenton Avenue. Spelt Guildford on this page."
+   "image": "L16848_2",
+   "note": "The Guilfords, whom the record places at 23 Lenton Avenue. Spelt Guildford here."
   },
   {
-   "address": "41 Lenton Road",
-   "head": "John Brodby Warren",
-   "people": 7
-  },
-  {
-   "address": "2 Pelham Crescent",
-   "head": "Edgar Herbert Sills",
-   "people": 5
-  },
-  {
-   "address": "4 Pelham Crescent",
-   "head": "Alfred Harriman Clarke",
-   "people": 7,
-   "note": "Clarke, whom the record holds at 9 Western Terrace for 1911."
-  },
-  {
-   "address": "6 Pelham Crescent",
-   "head": "Charles Henry Clarke",
-   "people": 5,
-   "note": "The Clarkes, whom the record holds at 10 Western Terrace for 1901. Catherine Clarke is returned as a lace manufacturer in her own right."
+   "address": "South Road (no number)",
+   "head": "Robert Evans",
+   "people": 12,
+   "image": "L16782_1",
+   "note": "Robert Evans the architect and JP (#405) with his son Robert (#406), both of whom carry Wikipedia links and neither of whom holds an 1891 in the record. Which South Road house is not given."
   }
  ],
  "house_names_with_no_number": [
@@ -120,65 +128,34 @@
    "name": "Burton House, Maxtoke Road",
    "head": "Elizabeth Sarah Waters",
    "people": 5,
-   "note": "The record has a Burton House at Newcastle Circus (#205). Either the same house addressed differently, or a second of the name."
+   "image": "L16727_1",
+   "note": "The record has a Burton House at Newcastle Circus (#205)."
   },
   {
    "name": "Maxtoke Road (unnamed)",
-   "head": "Adolph Keene",
+   "head": "Adolph Kease",
    "people": 6,
-   "note": "German householder living on his own means, Belgian wife. The record holds only 6 Maxtoke Road (Stowe House, #202)."
+   "image": "L16848_3",
+   "note": "Surname read as Kease on A. Hagues's reading, matching Frances Gwendoline Kease (#2404) at 5 Tattershall Drive in 1921. German, living on his own means, Belgian wife Marie. The record holds only 6 Maxtoke Road (Stowe House, #202)."
   },
   {
    "name": "Fairland, Newcastle Circus",
    "head": "Hannah Wilkins",
-   "people": 3
-  },
-  {
-   "name": "Linde House, South Road",
-   "head": "Julius Meyer",
-   "people": 11,
-   "note": "German commission merchant with a German governess. Reading of the house name uncertain — may be Lindo."
-  },
-  {
-   "name": "Parkmount, Park Drive",
-   "head": "Otto Homberger",
-   "people": 4,
-   "note": "Homberger, whom the record holds at Linden House, Clumber Road West (#605, #606) for 1911."
+   "people": 3,
+   "image": "L16727_1"
   },
   {
    "name": "Holly Bank, Cavendish Road",
    "head": "George Henry Drewry",
-   "people": 7
+   "people": 7,
+   "image": "L16848_2"
   },
   {
    "name": "Clumber Lodge, Cavendish Road",
    "head": "George Henry Buttrum",
    "people": 6,
-   "note": "IMPORTANT: Clumber Lodge is one of the two 1901 households still sitting unfiled from the Lenton Avenue import. This 1891 page puts a Clumber Lodge on Cavendish Road, which may settle where it is."
-  },
-  {
-   "name": "Weston Lodge, Lenton Road",
-   "head": "Charles Ingle Yorke",
-   "people": 4,
-   "note": "The record has Weston Lodge on Hardwick Road (#126)."
-  },
-  {
-   "name": "Pelham Cottages, Pelham Crescent",
-   "head": "several households",
-   "people": 12,
-   "note": "At least four households: the Pitts, Sarah Warriner, Elizabeth Baker a laundress, and Henry Alfred Pitts a coachman. The service cottages of the crescent, and the record holds no such address."
-  },
-  {
-   "name": "Thorn Lea, Pelham Crescent",
-   "head": "George Elmsley Coke",
-   "people": 8,
-   "note": "Returned twice — once with the Cokes, once with his wife's mother and sister, the Humbles. 10 Pelham Crescent (#279) may be it."
-  },
-  {
-   "name": "Lincoln Villa, 11 Pelham Crescent",
-   "head": "Joseph Bright",
-   "people": 11,
-   "note": "THE SHARPEST CONFLICT. The record holds Lincoln Villa as 11 WESTERN TERRACE (#350), and I filed the Brights there for 1901 this morning off a page that also called the house Lincoln Villa. Either the family moved and carried the name, or one of the two transcriptions has the street wrong."
+   "image": "L16848_2",
+   "note": "Clumber Lodge is one of the two 1901 households still sitting unfiled. This page puts a Clumber Lodge on Cavendish Road, which may settle where it is."
   }
  ]
 }
