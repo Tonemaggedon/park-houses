@@ -2279,6 +2279,40 @@ const WD_YEAR_TOLERANCE = 3;
 
 const wdNorm = v => String(v || '').toLowerCase().replace(/[^a-z ]/g, '').trim();
 
+// The furniture a peerage or a baronetcy leaves on the end of a name, which is
+// no part of what anybody was called in a census.
+const WD_TITLE_WORDS = new Set([
+  'st', 'nd', 'rd', 'th', 'bt', 'baronet', 'jr', 'sr', 'junior', 'senior',
+  'baron', 'baroness', 'earl', 'countess', 'count', 'viscount', 'viscountess',
+  'duke', 'duchess', 'marquess', 'marchioness', 'lord', 'lady', 'sir', 'dame',
+  'of', 'the',
+]);
+
+// Every surname an entry could answer to. "Jesse Boot, 1st Baron Trent" is one
+// man under two names: Boot to a census, Trent to Debrett. Indexed under the
+// last word alone he sits under "trent" and no search for Boot can reach him —
+// which is exactly why the sweep never found the most familiar name in the
+// record. Forty-five entries are built this way, so it is the rule rather than
+// the exception: Sir Ernest Jardine files under "baronet", and Albert Bingham
+// under "bt".
+function wdSurnames(name) {
+  const whole = wdNorm(name).split(' ').filter(Boolean);
+  if (whole.length < 2) return { first: null, surnames: [] };
+  const first = whole[0];
+  const out = new Set();
+  // The name as given, up to any comma — the family name in nearly every case.
+  const beforeComma = wdNorm(String(name || '').split(',')[0]).split(' ').filter(Boolean);
+  const plain = beforeComma.filter(w => !WD_TITLE_WORDS.has(w));
+  if (plain.length >= 2) out.add(plain[plain.length - 1]);
+  // And the whole name stripped of its titles, which catches the territorial
+  // half of a peerage — Trent, Belper, Middleton — since the record may hold
+  // either.
+  const stripped = whole.filter(w => !WD_TITLE_WORDS.has(w));
+  if (stripped.length >= 2) out.add(stripped[stripped.length - 1]);
+  if (!out.size) out.add(whole[whole.length - 1]);
+  return { first, surnames: [...out] };
+}
+
 // Surname -> entries, built once. The sweep compares every resident against the
 // whole pool, which is far too much work to do by scanning the list each time.
 let wikidataBySurname = null;
@@ -2286,11 +2320,12 @@ function wikidataIndex() {
   if (!wikidataBySurname) {
     wikidataBySurname = new Map();
     for (const p of readWikidata()) {
-      const parts = wdNorm(p.name).split(' ').filter(Boolean);
-      if (parts.length < 2) continue;
-      const surname = parts[parts.length - 1];
-      if (!wikidataBySurname.has(surname)) wikidataBySurname.set(surname, []);
-      wikidataBySurname.get(surname).push({ entry: p, firstPart: parts[0] });
+      const { first, surnames } = wdSurnames(p.name);
+      if (!first) continue;
+      for (const surname of surnames) {
+        if (!wikidataBySurname.has(surname)) wikidataBySurname.set(surname, []);
+        wikidataBySurname.get(surname).push({ entry: p, firstPart: first });
+      }
     }
   }
   return wikidataBySurname;
