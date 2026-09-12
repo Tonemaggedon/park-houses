@@ -1,0 +1,2679 @@
+{
+ "note": "Households from the 1901 census whose address is a house name with no number, where the record holds no property that answers to that name. They are parked here rather than imported: a name alone cannot be filed to a house, and creating a property for each would invent two dozen houses on the strength of a single return. This file is deliberately NOT named people_*.json, so the importer never reads it. When a name is matched to a house — by directory, deed, or the numbering on a later census — lift that household out of here into a proper import file. Lincoln Villa was in this file until the record turned out to hold it as 11 Western Terrace (#350); it has gone into the import instead.",
+ "source": "1901 census — transcribed by A. Hagues from the enumerators' pages",
+ "not_imported": true,
+ "already_unfiled_in_the_record": "Clumber Lodge and Newlands, both Lenton Avenue, went in with the Lenton Avenue import before this rule was made. They are in the record as unfiled 1901 records and can be set aside on /unfiled until their houses are known.",
+ "houses": [
+  {
+   "street": "Hamilton Drive",
+   "house": "Fairfield",
+   "schedule": 78,
+   "people": [
+    {
+     "name": "John H. Jackson",
+     "relation": "Head",
+     "condition": "m",
+     "age": 54,
+     "occupation": "Fruit salesman",
+     "born": "Mansfield, Notts"
+    },
+    {
+     "name": "Elizth Jackson",
+     "relation": "Wife",
+     "age": 54,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Herbert Jackson",
+     "relation": "Son",
+     "condition": "S",
+     "age": 20,
+     "occupation": "Clerk",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Chas. Jackson",
+     "relation": "Son",
+     "age": 18,
+     "occupation": "Shop assistant",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Elizth Jackson",
+     "relation": "Daughter",
+     "age": 21,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Nelly Jackson",
+     "relation": "Daughter",
+     "age": 14,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary [surname not given]",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "General servant (domestic)",
+     "born": "Pilsley, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "Oakleigh",
+   "schedule": 79,
+   "people": [
+    {
+     "name": "Ralph J. Horner",
+     "relation": "Head",
+     "condition": "m",
+     "age": 52,
+     "occupation": "Professor of music (own account, at home)",
+     "born": "Newport, Monmouthshire"
+    },
+    {
+     "name": "Marianne A. Horner",
+     "relation": "Wife",
+     "age": 53,
+     "born": "Newport, Monmouthshire"
+    },
+    {
+     "name": "Herbert C. Horner",
+     "relation": "Son",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Professor of music",
+     "born": "Camberwell, London"
+    },
+    {
+     "name": "Florence S. Horner",
+     "relation": "Daughter",
+     "age": 28,
+     "occupation": "Sick nurse",
+     "born": "Camberwell, London"
+    },
+    {
+     "name": "Ernest J. Horner",
+     "relation": "Son",
+     "age": 27,
+     "occupation": "Hosiery manufacturer's manager",
+     "born": "Camberwell, London"
+    },
+    {
+     "name": "Albert E. Horner",
+     "relation": "Son",
+     "age": 21,
+     "occupation": "Hosiery warehouseman",
+     "born": "Holloway, London"
+    },
+    {
+     "name": "Elizth Rowe",
+     "relation": "Sister-in-law",
+     "condition": "m",
+     "age": 51,
+     "born": "Birmingham, Warwickshire"
+    },
+    {
+     "name": "Chas. J. Rowe",
+     "relation": "Nephew",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Canadian cattle rancher",
+     "born": "Camberwell, London"
+    },
+    {
+     "name": "Mary H. Mason",
+     "relation": "Servant",
+     "age": 23,
+     "occupation": "General servant (domestic)",
+     "born": "Whittington, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "Glendale",
+   "schedule": 80,
+   "people": [
+    {
+     "name": "Jno. J. Roseblade",
+     "relation": "Head",
+     "condition": "Widower",
+     "age": 51,
+     "occupation": "Corn merchant's agent",
+     "born": "Islington, London"
+    },
+    {
+     "name": "Emily G. Roseblade",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 21,
+     "born": "Thrapston, Northamptonshire"
+    },
+    {
+     "name": "Alice M. Roseblade",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 18,
+     "occupation": "Assistant school teacher",
+     "born": "Islip, Northamptonshire"
+    },
+    {
+     "name": "May Vick",
+     "age": 13,
+     "born": "Burton-on-Trent, Staffordshire"
+    },
+    {
+     "name": "Emmanuel Simon",
+     "relation": "Boarder",
+     "age": 19,
+     "born": "France (French subject)"
+    },
+    {
+     "name": "Francis Guinguoin",
+     "relation": "Boarder",
+     "age": 18,
+     "born": "France"
+    },
+    {
+     "name": "Fanny M. Caunt",
+     "relation": "Servant",
+     "age": 29,
+     "occupation": "General servant (domestic)",
+     "born": "Leicester"
+    },
+    {
+     "name": "Agnes Kirk",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "General servant (domestic)",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "(unnamed, following Glendale)",
+   "people": [
+    {
+     "name": "Frank Hodson",
+     "relation": "Head",
+     "condition": "m",
+     "age": 47,
+     "occupation": "Builder and stone merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Hodson",
+     "relation": "Wife",
+     "age": 46,
+     "born": "London"
+    },
+    {
+     "name": "Frank Hodson",
+     "relation": "Son",
+     "condition": "S",
+     "age": 19,
+     "occupation": "Clerk",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Annie M. Hodson",
+     "relation": "Daughter",
+     "age": 17,
+     "occupation": "Pupil teacher",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Fredk Hodson",
+     "relation": "Son",
+     "age": 15,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frances M. Hodson",
+     "relation": "Daughter",
+     "age": 12,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Douglas H. Hodson",
+     "relation": "Son",
+     "age": 10,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ruby J. Hodson",
+     "relation": "Daughter",
+     "age": "12 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Sarah Bunning",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "General servant (domestic)",
+     "born": "Grantham, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "No 6",
+   "schedule": 6,
+   "people": [
+    {
+     "name": "Walter Woodward",
+     "relation": "Head",
+     "condition": "S",
+     "age": 44,
+     "occupation": "Timber merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Wm. J. Pearce",
+     "relation": "Visitor",
+     "condition": "m",
+     "age": 40,
+     "occupation": "Bank manager",
+     "born": "Lewisham, Kent"
+    },
+    {
+     "name": "Annie E. Pearce",
+     "relation": "Visitor",
+     "age": 40,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Scotney",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 38,
+     "occupation": "Housekeeper (domestic)",
+     "born": "Barrowby, Lincolnshire"
+    },
+    {
+     "name": "Mary A. Abbott",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Servant (domestic)",
+     "born": "Kirkby-in-Ashfield, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "No 7",
+   "schedule": 7,
+   "people": [
+    {
+     "name": "Florence Cockburn",
+     "relation": "Head",
+     "condition": "S",
+     "age": 34,
+     "born": "Rugby, Warwickshire"
+    },
+    {
+     "name": "Elizth Horsley",
+     "relation": "Aunt",
+     "age": 66,
+     "occupation": "Private means",
+     "born": "Alfreton, Derbyshire"
+    },
+    {
+     "name": "Herbert G. Neil",
+     "relation": "Nephew",
+     "age": 20,
+     "occupation": "Warehouseman (lace)",
+     "born": "Scotland"
+    },
+    {
+     "name": "James J. Wedgwood",
+     "relation": "Boarder",
+     "age": 17,
+     "occupation": "Chemical student",
+     "born": "London"
+    },
+    {
+     "name": "Emma Trevor",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "General servant (domestic)",
+     "born": "Swineshead, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "Beechwood",
+   "schedule": 85,
+   "note": "A boarding house: nine boarders, several foreign-born, and two servants.",
+   "people": [
+    {
+     "name": "Sarah Wilkinson",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 52,
+     "born": "Burnaston, Derbyshire"
+    },
+    {
+     "name": "Wm. Wilkinson",
+     "relation": "Son",
+     "condition": "S",
+     "age": 22,
+     "occupation": "Grocer's assistant",
+     "born": "Newark, Notts"
+    },
+    {
+     "name": "Stuart M. Wilkinson",
+     "relation": "Son",
+     "age": 17,
+     "occupation": "Grocer's warehouseman",
+     "born": "Newark, Notts"
+    },
+    {
+     "name": "Florence A. M. Wilkinson",
+     "relation": "Daughter",
+     "age": 26,
+     "born": "Newark, Notts"
+    },
+    {
+     "name": "Maybell M. Wilkinson",
+     "relation": "Daughter",
+     "age": 24,
+     "born": "Newark, Notts"
+    },
+    {
+     "name": "Alissimon Hopewell",
+     "relation": "Visitor",
+     "age": 36
+    },
+    {
+     "name": "Arthur H. Niblett",
+     "relation": "Boarder",
+     "condition": "S",
+     "age": 32,
+     "occupation": "Civil engineer",
+     "born": "Gloucester"
+    },
+    {
+     "name": "Geo. W. Sellars",
+     "relation": "Boarder",
+     "age": 33,
+     "occupation": "Warehouseman (lace)",
+     "born": "foreign subject, place struck about"
+    },
+    {
+     "name": "Fritz Emmerich",
+     "relation": "Boarder",
+     "age": 26,
+     "occupation": "Chemical manufacturer",
+     "born": "Switzerland"
+    },
+    {
+     "name": "Hugo Emmerich",
+     "relation": "Boarder",
+     "age": 20,
+     "occupation": "Warehouseman (lace)"
+    },
+    {
+     "name": "Henry Verenia",
+     "relation": "Boarder",
+     "age": 27,
+     "occupation": "Commercial traveller",
+     "born": "Curacao, Dutch West Indies"
+    },
+    {
+     "name": "Maurice Potter",
+     "relation": "Boarder",
+     "age": 43,
+     "occupation": "Merchant (employer)",
+     "born": "Skirbeck, Lincolnshire"
+    },
+    {
+     "name": "Mary Pearson",
+     "relation": "Boarder",
+     "age": 37,
+     "occupation": "Professional sick nurse (own account)",
+     "born": "Staffordshire"
+    },
+    {
+     "name": "Elizth Burrows",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Servant (domestic)",
+     "born": "South Kellington, Lincolnshire"
+    },
+    {
+     "name": "Florence Tett",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "Servant (domestic)",
+     "born": "Newark, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "house": "Douglas Ho",
+   "schedule": 86,
+   "people": [
+    {
+     "name": "Alice Clarke",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 47,
+     "occupation": "Private means",
+     "born": "Plumtree, Notts"
+    },
+    {
+     "name": "Ethel M. Naylor",
+     "relation": "Visitor",
+     "condition": "m",
+     "age": 22,
+     "born": "Camberwell, London"
+    },
+    {
+     "name": "Kathleen M. Naylor",
+     "relation": "Visitor",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary J. Morris",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 25,
+     "occupation": "Servant (domestic)",
+     "born": "Worksop, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Fishpond Drive",
+   "house": "Cavendish Ho",
+   "schedule": 101,
+   "people": [
+    {
+     "name": "Chas. O. Terry",
+     "relation": "Head",
+     "condition": "M",
+     "age": 45,
+     "occupation": "General insurance agent",
+     "born": "Aston, Warwickshire"
+    },
+    {
+     "name": "Caroline Terry",
+     "relation": "Wife",
+     "age": 44,
+     "born": "Wednesbury, Staffordshire"
+    },
+    {
+     "name": "Emily E. Hales",
+     "relation": "Niece",
+     "condition": "S",
+     "age": 17,
+     "occupation": "Lady help (domestic)",
+     "born": "Wednesbury, Staffordshire"
+    }
+   ]
+  },
+  {
+   "street": "Fishpond Drive",
+   "house": "Lea Hurst",
+   "schedule": 104,
+   "note": "A boarding house of young professional men.",
+   "people": [
+    {
+     "name": "Mary Metcalf",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 56,
+     "born": "London"
+    },
+    {
+     "name": "Henrietta Brewer",
+     "relation": "Visitor",
+     "age": 57,
+     "born": "Cambridge"
+    },
+    {
+     "name": "Frank Mortimer",
+     "relation": "Boarder",
+     "condition": "S",
+     "age": 44,
+     "occupation": "Leather merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Francis Suffield",
+     "relation": "Boarder",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Mechanical engineer",
+     "born": "Birmingham, Warwickshire"
+    },
+    {
+     "name": "Herbert Raithby",
+     "relation": "Boarder",
+     "condition": "M",
+     "age": 30,
+     "occupation": "Architect",
+     "born": "Bath"
+    },
+    {
+     "name": "Robt Appleby",
+     "relation": "Boarder",
+     "condition": "S",
+     "age": 19,
+     "occupation": "Bank clerk",
+     "born": "Retford, Notts"
+    },
+    {
+     "name": "Roland Thomas",
+     "relation": "Boarder",
+     "age": 23,
+     "occupation": "Mechanical engineer",
+     "born": "Wales"
+    },
+    {
+     "name": "Geo Kerr",
+     "relation": "Boarder",
+     "age": 26,
+     "occupation": "Bank clerk",
+     "born": "Warwickshire"
+    },
+    {
+     "name": "Florence Taylor",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Cook (domestic)",
+     "born": "Skegness, Lincolnshire"
+    },
+    {
+     "name": "Annie Green",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid (domestic)",
+     "born": "Farnsfield, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Fishpond Drive",
+   "house": "Holm Vale",
+   "schedule": 105,
+   "people": [
+    {
+     "name": "Willm E. Sisling",
+     "relation": "Head",
+     "condition": "M",
+     "age": 63,
+     "occupation": "Insurance manager",
+     "born": "New Basford, Nottingham"
+    },
+    {
+     "name": "Mary Ann Sisling",
+     "relation": "Wife",
+     "age": 64
+    },
+    {
+     "name": "Florence H. Sisling",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 34,
+     "occupation": "School teacher (own account, at home)"
+    },
+    {
+     "name": "Lilian G. Sisling",
+     "relation": "Daughter",
+     "age": 25,
+     "occupation": "Teacher of music (own account, at home)"
+    },
+    {
+     "name": "Edith Barnick",
+     "relation": "Servant",
+     "age": 27,
+     "occupation": "Servant (domestic)",
+     "born": "Lincoln"
+    }
+   ]
+  },
+  {
+   "street": "The Park",
+   "house": "The Hermitage",
+   "schedule": 106,
+   "people": [
+    {
+     "name": "Sarah Leavers",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 76,
+     "born": "Derby"
+    },
+    {
+     "name": "Sophia Robinson",
+     "relation": "Visitor",
+     "condition": "S",
+     "age": 72,
+     "born": "Kettering, Northamptonshire"
+    },
+    {
+     "name": "Thos. W. Woodford",
+     "relation": "Servant",
+     "condition": "M",
+     "age": 54,
+     "occupation": "Butler (domestic)",
+     "born": "Tarrant Monkton, Dorset"
+    },
+    {
+     "name": "Annie Bolland",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Cook",
+     "born": "Northallerton, Yorkshire"
+    },
+    {
+     "name": "Jane B. Graham",
+     "relation": "Servant",
+     "age": 60,
+     "occupation": "Housemaid",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frances Hallam",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "Housemaid",
+     "born": "Papplewick, Notts"
+    },
+    {
+     "name": "Alice Turner",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 20,
+     "occupation": "Kitchenmaid (domestic)",
+     "born": "Birmingham, Warwickshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Harpenden",
+   "schedule": 109,
+   "people": [
+    {
+     "name": "Sarah Pettifor",
+     "relation": "Head",
+     "condition": "S",
+     "age": 72,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Sumner",
+     "relation": "Servant",
+     "age": 34,
+     "occupation": "Servant (domestic)",
+     "born": "Rauceby, Lincolnshire"
+    },
+    {
+     "name": "Louisa Lloyd",
+     "relation": "Servant",
+     "age": 25,
+     "occupation": "Servant (domestic)",
+     "born": "Riddings, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Cleveden",
+   "people": [
+    {
+     "name": "Geo. Hy. Henry",
+     "relation": "Head",
+     "condition": "M",
+     "age": 58,
+     "occupation": "Hosiery manufacturer (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Samuel Henry",
+     "relation": "Son-in-law",
+     "condition": "M",
+     "age": 34,
+     "occupation": "Household stores keeper",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ida Rose Henry",
+     "relation": "Daughter",
+     "age": 32,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Fred Geo. Henry",
+     "relation": "Grandson",
+     "condition": "S",
+     "age": 6,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Margaret J. Henry",
+     "relation": "Daughter",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Cyril Marie Henry",
+     "age": "3 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Rebecca Kenell",
+     "relation": "Servant",
+     "age": 19,
+     "occupation": "Domestic",
+     "born": "Gotham, Notts"
+    },
+    {
+     "name": "Lizzie Durnford",
+     "relation": "Servant",
+     "age": 23,
+     "born": "Castle Bytham, Lincolnshire"
+    },
+    {
+     "name": "Amelia Clift",
+     "relation": "Servant",
+     "age": 20,
+     "born": "Hogsthorpe, Lincolnshire"
+    }
+   ],
+   "note": "Samuel and Ida Rose Henry are the couple who by 1911 were at 11 Lenton Avenue, Fernleigh, with Margaret and Frank."
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Leslie Hse",
+   "schedule": 119,
+   "people": [
+    {
+     "name": "Henry Clark",
+     "relation": "Head",
+     "condition": "M",
+     "age": 68,
+     "occupation": "Lace manufacturer (retired)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Clark",
+     "relation": "Wife",
+     "age": 54,
+     "born": "Keswick, Cumberland"
+    },
+    {
+     "name": "Fanny Clark",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 40,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Florence Clark",
+     "relation": "Daughter",
+     "age": 35,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Eleanor Clark",
+     "relation": "Daughter",
+     "age": 34,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Margaret Bird",
+     "relation": "Servant",
+     "condition": "Widow",
+     "age": 36,
+     "occupation": "Trained nurse",
+     "born": "Stourbridge, Staffordshire"
+    },
+    {
+     "name": "Emily Morton",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 35,
+     "occupation": "Servant (domestic)",
+     "born": "Stoke Heath, Staffordshire"
+    },
+    {
+     "name": "Asenath A. Cooper",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "Servant (domestic)",
+     "born": "Langworth, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Yeldersley Ho",
+   "people": [
+    {
+     "name": "Joseph W. Hickling",
+     "relation": "Head",
+     "condition": "M",
+     "age": 40,
+     "occupation": "Grocer and wine merchant (employer)",
+     "born": "Yeldersley, Derbyshire"
+    },
+    {
+     "name": "Kate T. Hickling",
+     "relation": "Wife",
+     "age": 35,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frieda M. Hickling",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 11,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Nora T. Hickling",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 9,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Geo. G. Hickling",
+     "relation": "Son",
+     "age": 7,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Francis J. Hickling",
+     "relation": "Son",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary E. Hunt",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "Cook (domestic)",
+     "born": "East Bridgford, Notts"
+    },
+    {
+     "name": "Ellen Art",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid",
+     "born": "Blackfriars, London"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Villa Vanely",
+   "schedule": 124,
+   "people": [
+    {
+     "name": "Henry B. Clayton",
+     "relation": "Head",
+     "condition": "M",
+     "age": 43,
+     "occupation": "Solicitor (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Ann Clayton",
+     "relation": "Wife",
+     "age": 42,
+     "born": "Butterwick, Lincolnshire"
+    },
+    {
+     "name": "Elizth Clayton",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 17,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frank Clayton",
+     "relation": "Son",
+     "age": 15,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Edwin Clayton",
+     "relation": "Son",
+     "age": 13,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Annie S. Clayton",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 12,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Clayton",
+     "relation": "Daughter",
+     "age": 9,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Charles Clayton",
+     "relation": "Son",
+     "age": 7,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Harry Clayton",
+     "relation": "Son",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Arthur Clayton",
+     "relation": "Son",
+     "age": 4,
+     "born": "Nottingham"
+    },
+    {
+     "name": "William Clayton",
+     "relation": "Son",
+     "age": "11 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Martha Carrington",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid (domestic)",
+     "born": "South Ormsby"
+    },
+    {
+     "name": "Edith Moore",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "General servant",
+     "born": "Staveley, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "Weston Lodge",
+   "schedule": 125,
+   "people": [
+    {
+     "name": "Wm. Edgar",
+     "relation": "Head",
+     "condition": "M",
+     "age": 37,
+     "occupation": "Builder's manager",
+     "born": "Stockwell, Surrey"
+    },
+    {
+     "name": "Alice Edgar",
+     "relation": "Wife",
+     "age": 34,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ronald Edgar",
+     "relation": "Son",
+     "condition": "S",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Muriel Edgar",
+     "relation": "Daughter",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Willm H. Edgar",
+     "relation": "Son",
+     "age": "6 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Edith Turner",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "Nurse (domestic)"
+    },
+    {
+     "name": "Alice A. Johnson",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "General servant",
+     "born": "Retford, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, schedule 126)",
+   "schedule": 126,
+   "people": [
+    {
+     "name": "Ellen M. Cowen",
+     "relation": "Head",
+     "condition": "S",
+     "age": 43,
+     "occupation": "Living on own means",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ann Mountain",
+     "relation": "Servant",
+     "age": 69,
+     "occupation": "Companion",
+     "born": "Boston, Lincolnshire"
+    },
+    {
+     "name": "Kate Hollis",
+     "relation": "Servant",
+     "age": 19,
+     "occupation": "General servant (domestic)",
+     "born": "Chilwell, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, schedule 127)",
+   "schedule": 127,
+   "people": [
+    {
+     "name": "Wm. Lewis",
+     "relation": "Head",
+     "condition": "Widower",
+     "age": 69,
+     "occupation": "Cork merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ellen T. Lewis",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 43
+    },
+    {
+     "name": "Frank B. Lewis",
+     "relation": "Son",
+     "age": 39,
+     "occupation": "City architect, Nottingham (own account)"
+    },
+    {
+     "name": "Elizth B. Lewis",
+     "relation": "Daughter",
+     "age": 35
+    },
+    {
+     "name": "Edith C. Lewis",
+     "relation": "Daughter",
+     "age": 29
+    },
+    {
+     "name": "Lucy B. Whyard",
+     "relation": "Servant",
+     "age": 17,
+     "occupation": "General servant (domestic)",
+     "born": "Alderton, Suffolk"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, schedule 128)",
+   "schedule": 128,
+   "people": [
+    {
+     "name": "Chas. B. Truman",
+     "relation": "Head",
+     "condition": "M",
+     "age": 69,
+     "occupation": "Wine merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Marian Truman",
+     "relation": "Wife",
+     "age": 64,
+     "born": "Romsey, Hampshire"
+    },
+    {
+     "name": "Alfd. C. M. Truman",
+     "relation": "Son",
+     "condition": "S",
+     "age": 36,
+     "occupation": "Wine merchant's assistant"
+    },
+    {
+     "name": "Marshall W. Truman",
+     "relation": "Son",
+     "age": 34,
+     "occupation": "Wine merchant's assistant"
+    },
+    {
+     "name": "Sarah D. Hartley",
+     "relation": "Visitor",
+     "age": 20,
+     "occupation": "Companion (domestic)",
+     "born": "Banbury, Oxfordshire"
+    },
+    {
+     "name": "Eliza A. Stevenson",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Cook (domestic)",
+     "born": "Hallam Fields, Derbyshire"
+    },
+    {
+     "name": "Gertrude Smith",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid (domestic)",
+     "born": "Risley, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, the Tomnroe household)",
+   "people": [
+    {
+     "name": "Chas. E. Tomnroe",
+     "relation": "Head",
+     "condition": "M",
+     "age": 43,
+     "occupation": "Bank clerk",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary D. Tomnroe",
+     "relation": "Wife",
+     "age": 50,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Geoffrey C. Tomnroe",
+     "relation": "Son",
+     "condition": "S",
+     "age": 6,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary E. Carlisle",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid (domestic)",
+     "born": "Bilborough, Notts"
+    },
+    {
+     "name": "Mary A. Cross",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Cook",
+     "born": "Selston, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, the Williams household)",
+   "people": [
+    {
+     "name": "Louisa H. Williams",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 65,
+     "born": "Maida Vale, London"
+    },
+    {
+     "name": "Ellen M. Williams",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 40,
+     "born": "Birkenhead, Cheshire"
+    },
+    {
+     "name": "Arthur P. Williams",
+     "relation": "Son",
+     "age": 36,
+     "occupation": "Lace merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alice M. Williams",
+     "relation": "Daughter",
+     "age": 33,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Fredk H. Williams",
+     "relation": "Son",
+     "age": 31,
+     "occupation": "Lace manufacturer (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alfred P. Williams",
+     "relation": "Son",
+     "age": 27,
+     "occupation": "Cigar merchant (own account)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ethelwyn V. Williams",
+     "relation": "Daughter",
+     "age": 18,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frances Ruth Kirk",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "Housemaid (domestic)",
+     "born": "Eastwood, Notts"
+    },
+    {
+     "name": "Florence Bent",
+     "relation": "Servant",
+     "age": 26,
+     "occupation": "Cook",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, the Hickling household)",
+   "people": [
+    {
+     "name": "George Hickling",
+     "relation": "Head",
+     "condition": "Widower",
+     "age": 67,
+     "occupation": "Lace dresser (employer)",
+     "born": "Eastwood, Notts"
+    },
+    {
+     "name": "Sarah E. Duffin",
+     "relation": "Step-daughter",
+     "condition": "S",
+     "age": 44,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Chas. D. McMillan",
+     "relation": "Step-grandson",
+     "age": 10
+    },
+    {
+     "name": "Fanny Cook",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "Housemaid (domestic)",
+     "born": "Cambridgeshire"
+    },
+    {
+     "name": "Mary Tomlison",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "Cook",
+     "born": "Sudbrooke, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, schedule 225)",
+   "schedule": 225,
+   "people": [
+    {
+     "name": "Joseph Newbold",
+     "relation": "Head",
+     "condition": "M",
+     "age": 41,
+     "occupation": "Coachman",
+     "born": "Derbyshire"
+    },
+    {
+     "name": "Lisetta Newbold",
+     "relation": "Wife",
+     "age": 42,
+     "born": "Melbourne, Derbyshire"
+    },
+    {
+     "name": "Elsie E. Newbold",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 9
+    },
+    {
+     "name": "Doris Newbold",
+     "relation": "Daughter",
+     "age": 1,
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "house": "(unnamed, schedule 248)",
+   "schedule": 248,
+   "people": [
+    {
+     "name": "Wm. Carter",
+     "relation": "Head",
+     "condition": "m",
+     "age": 58,
+     "occupation": "Timber yard foreman",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary A. Carter",
+     "relation": "Wife",
+     "age": 57
+    },
+    {
+     "name": "Mary A. Carter",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Music teacher (own account, at home)"
+    },
+    {
+     "name": "Sarah A. Carter",
+     "relation": "Daughter",
+     "age": 27,
+     "occupation": "Machinist, ladies' shirts"
+    },
+    {
+     "name": "Elizth Carter",
+     "relation": "Daughter",
+     "age": 19,
+     "occupation": "Machinist, jackets and capes"
+    },
+    {
+     "name": "Thos. Carter",
+     "relation": "Son",
+     "age": 17,
+     "occupation": "Warehouseman"
+    }
+   ]
+  },
+  {
+   "street": "Clumber Road",
+   "house": "Gardenwood",
+   "schedule": 181,
+   "people": [
+    {
+     "name": "Francis R. Ellis",
+     "relation": "Head",
+     "condition": "m",
+     "age": 45,
+     "occupation": "Colliery director (employer)",
+     "born": "Leicester"
+    },
+    {
+     "name": "Katharine A. Ellis",
+     "relation": "Wife",
+     "age": 42,
+     "born": "Bakewell, Derbyshire"
+    },
+    {
+     "name": "Alice M. Ellis",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 14,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Christabel M. Ellis",
+     "relation": "Daughter",
+     "age": 13,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ellen Knifton",
+     "relation": "Servant",
+     "age": 33,
+     "occupation": "Sewing maid (domestic)",
+     "born": "Wymeswold, Leicestershire"
+    },
+    {
+     "name": "Rose H. Louth",
+     "relation": "Servant",
+     "age": 24,
+     "occupation": "Cook",
+     "born": "Aslackby, Lincolnshire"
+    },
+    {
+     "name": "Elizth R. Burton",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Housemaid",
+     "born": "Alfreton, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Clumber Road",
+   "house": "(unnamed, schedule 180)",
+   "schedule": 180,
+   "people": [
+    {
+     "name": "Richd Challands",
+     "relation": "Head",
+     "condition": "m",
+     "age": 59,
+     "occupation": "Retired lace manufacturer",
+     "born": "Bottesford, Leicestershire"
+    },
+    {
+     "name": "Sarah E. Challands",
+     "relation": "Wife",
+     "age": 55,
+     "born": "Gamston, Notts"
+    },
+    {
+     "name": "Emma Challands",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 32,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Beatrice M. Challands",
+     "relation": "Daughter",
+     "age": 31,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Kate E. Challands",
+     "relation": "Daughter",
+     "age": 25,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Nora Challands",
+     "relation": "Daughter",
+     "age": 23,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Elizabeth Emery",
+     "relation": "Servant",
+     "age": 35,
+     "occupation": "Cook (domestic)",
+     "born": "Fenton, Huntingdonshire"
+    },
+    {
+     "name": "Isobel Lynam",
+     "relation": "Servant",
+     "condition": "m",
+     "age": 36,
+     "occupation": "Housemaid (domestic)",
+     "born": "Loughborough, Leicestershire"
+    },
+    {
+     "name": "Maud Gunn",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 19,
+     "occupation": "Housemaid (domestic)",
+     "born": "Collingham, Notts"
+    }
+   ]
+  },
+  {
+   "street": "South Road",
+   "house": "(unnamed, schedule 182)",
+   "schedule": 182,
+   "people": [
+    {
+     "name": "Elizth Lynam",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 71,
+     "occupation": "Living on own means",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Amelia A. Lynam",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 44,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Louisa Betts",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "Cook (domestic)",
+     "born": "Barnack, Northamptonshire"
+    },
+    {
+     "name": "Ethel H. Hewitt",
+     "relation": "Servant",
+     "age": 26,
+     "occupation": "General servant",
+     "born": "Notts (town not known)"
+    }
+   ]
+  },
+  {
+   "street": "Newcastle Circus",
+   "house": "(unnamed, schedule 183)",
+   "schedule": 183,
+   "people": [
+    {
+     "name": "Malcolm J. R. Dunstan",
+     "relation": "Head",
+     "condition": "m",
+     "age": 37,
+     "occupation": "Director of education",
+     "born": "Chester, Cheshire"
+    },
+    {
+     "name": "Edith R. Dunstan",
+     "relation": "Wife",
+     "age": 37,
+     "born": "Ipswich, Suffolk"
+    },
+    {
+     "name": "Eric C. Dunstan",
+     "relation": "Son",
+     "condition": "S",
+     "age": 6,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Joan M. Dunstan",
+     "relation": "Daughter",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Hester M. Dunstan",
+     "relation": "Daughter",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Gertrude Herrod",
+     "relation": "Servant",
+     "age": 23,
+     "occupation": "Cook (domestic)",
+     "born": "Sutton-on-Trent, Notts"
+    },
+    {
+     "name": "Lucy Ogden",
+     "relation": "Servant",
+     "age": 19,
+     "occupation": "Housemaid",
+     "born": "Digby, Lincolnshire"
+    },
+    {
+     "name": "Sarah A. Hart",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 27,
+     "occupation": "Nurse (domestic)",
+     "born": "Sutton-on-Trent, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Newcastle Circus",
+   "house": "St John's",
+   "schedule": 184,
+   "people": [
+    {
+     "name": "Mary Brownsword",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 65,
+     "born": "Melbourne, Derbyshire"
+    },
+    {
+     "name": "Arthur Brownsword",
+     "relation": "Son",
+     "condition": "S",
+     "age": 31,
+     "occupation": "Lace manufacturer (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Emma Hudson",
+     "relation": "Servant",
+     "condition": "Widow",
+     "age": 49,
+     "occupation": "Sick nurse (domestic)",
+     "born": "Barking, Essex"
+    },
+    {
+     "name": "Sarah J. Mason",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 43,
+     "occupation": "Housemaid (domestic)",
+     "born": "Walsall, Staffordshire"
+    },
+    {
+     "name": "Jane Howell",
+     "relation": "Servant",
+     "age": 24,
+     "occupation": "Cook",
+     "born": "Radcliffe-on-Trent, Notts"
+    },
+    {
+     "name": "Mary Ann Hurst",
+     "relation": "Servant",
+     "age": 23,
+     "occupation": "Housemaid",
+     "born": "Plumtree, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Maxtoke Road",
+   "house": "Burton House",
+   "schedule": 185,
+   "people": [
+    {
+     "name": "Elizth A. Watson",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 65,
+     "occupation": "Living on own means",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Florence M. Bearder",
+     "relation": "Companion",
+     "condition": "S",
+     "age": 33,
+     "occupation": "Companion (domestic)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Emma Clarke",
+     "relation": "Servant",
+     "age": 48,
+     "occupation": "Cook (domestic)",
+     "born": "Market Bosworth, Leicestershire"
+    },
+    {
+     "name": "Mary Ann Ward",
+     "relation": "Servant",
+     "age": 41,
+     "occupation": "Housemaid",
+     "born": "Normanton-on-Soar, Notts"
+    },
+    {
+     "name": "Mary A. J. Burnett",
+     "relation": "Servant",
+     "age": 32,
+     "occupation": "Parlourmaid",
+     "born": "Chapel St Leonards, Lincolnshire"
+    },
+    {
+     "name": "Annie Jackson",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "Housemaid",
+     "born": "Worksop, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Lincoln Circus",
+   "house": "The Cottage",
+   "schedule": 188,
+   "note": "Edward Palmer, gardener — the same couple returned in 1921 under \"Lincoln Circus 2\", which is very likely this cottage rather than Gladstone House.",
+   "people": [
+    {
+     "name": "Edward Palmer",
+     "relation": "Head",
+     "condition": "m",
+     "age": 40,
+     "occupation": "Gardener (domestic)",
+     "born": "Scotland"
+    },
+    {
+     "name": "Alice Palmer",
+     "relation": "Wife",
+     "age": 41,
+     "born": "Williamthorpe, Derbyshire"
+    },
+    {
+     "name": "William E. Palmer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 13,
+     "born": "Wollaton, Notts"
+    },
+    {
+     "name": "Chas. Hy. Palmer",
+     "relation": "Son",
+     "age": 11,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alfred E. Palmer",
+     "relation": "Son",
+     "age": 9,
+     "born": "Nottingham"
+    },
+    {
+     "name": "George A. Palmer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 7,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary H. Palmer",
+     "relation": "Daughter",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Janet F. Graham",
+     "relation": "Visitor",
+     "age": 18,
+     "occupation": "Haberdasher's assistant",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Cavendish Crescent North",
+   "house": "(unnamed, schedule 192)",
+   "schedule": 192,
+   "people": [
+    {
+     "name": "Donley Scott Ransom",
+     "relation": "Head",
+     "condition": "m",
+     "age": 38,
+     "occupation": "Solicitor",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Helen M. Ransom",
+     "relation": "Wife",
+     "age": 27,
+     "born": "Basford, Nottingham"
+    },
+    {
+     "name": "Helen J. Ransom",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Elizth Ransom",
+     "relation": "Daughter",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ethel Bertha Ransom",
+     "relation": "Niece",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ruth Ransom",
+     "relation": "Daughter",
+     "age": "6 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary E. Wilford",
+     "relation": "Servant",
+     "age": 25,
+     "occupation": "Cook (domestic)",
+     "born": "Scalford, Leicestershire"
+    },
+    {
+     "name": "Margaret A. Packham",
+     "relation": "Servant",
+     "age": 23,
+     "occupation": "Nurse",
+     "born": "Thames Ditton, Surrey"
+    },
+    {
+     "name": "Lizzie Staples",
+     "relation": "Servant",
+     "age": 20,
+     "occupation": "Assistant parlourmaid",
+     "born": "Arnold, Notts"
+    },
+    {
+     "name": "Alice Dorman",
+     "relation": "Servant",
+     "age": 33,
+     "occupation": "Nurse",
+     "born": "Billinghay, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Pelham Crescent",
+   "house": "Kentmere",
+   "schedule": 196,
+   "note": "This is the Kentmere the 1911 census puts on Cavendish Crescent North. Pelham Crescent runs into that crescent, so it is very likely a corner house addressed both ways.",
+   "people": [
+    {
+     "name": "William Wing",
+     "relation": "Head",
+     "condition": "m",
+     "age": 37,
+     "occupation": "Solicitor (employer)",
+     "born": "Nottinghamshire"
+    },
+    {
+     "name": "Sarah W. Wing",
+     "relation": "Wife",
+     "age": 37,
+     "born": "Sedgley, Staffordshire"
+    },
+    {
+     "name": "Henry Wing",
+     "relation": "Son",
+     "condition": "S",
+     "age": 11,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Richard Wing",
+     "relation": "Son",
+     "age": 8,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Maud Randeris",
+     "relation": "Servant",
+     "age": 24,
+     "occupation": "Cook (domestic)",
+     "born": "Lincoln"
+    },
+    {
+     "name": "Kate Lansdall",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "Housemaid"
+    }
+   ]
+  },
+  {
+   "street": "Pelham Crescent",
+   "house": "(unnamed, schedule 197)",
+   "schedule": 197,
+   "people": [
+    {
+     "name": "Julia Meyer",
+     "relation": "Wife",
+     "condition": "m",
+     "age": 33,
+     "born": "Russia"
+    },
+    {
+     "name": "Emma Radford",
+     "relation": "Servant",
+     "age": 37,
+     "occupation": "General servant (domestic)",
+     "born": "Leeds, Yorkshire"
+    },
+    {
+     "name": "Wm. Hy. Radford",
+     "relation": "Servant",
+     "age": 40,
+     "occupation": "Coachman",
+     "born": "Colston, Leicestershire"
+    },
+    {
+     "name": "May Radford",
+     "relation": "Servant's child",
+     "condition": "S",
+     "age": 7,
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "North Road",
+   "house": "The Lodge",
+   "schedule": 220,
+   "people": [
+    {
+     "name": "Herbert Barlow",
+     "relation": "Head",
+     "condition": "m",
+     "age": 27,
+     "occupation": "Coachman (domestic)",
+     "born": "Headon-cum-Upton, Notts"
+    },
+    {
+     "name": "Mary Barlow",
+     "relation": "Wife",
+     "age": 23,
+     "born": "Sawley, Leicestershire"
+    },
+    {
+     "name": "Phyllis M. Barlow",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 2,
+     "born": "Loughborough, Leicestershire"
+    }
+   ]
+  },
+  {
+   "street": "North Road",
+   "house": "(unnamed, schedule 221)",
+   "schedule": 221,
+   "people": [
+    {
+     "name": "Elizth A. Need",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 60,
+     "born": "Balderton, Notts"
+    },
+    {
+     "name": "Elizth Preston",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 45,
+     "occupation": "Housekeeper (domestic)",
+     "born": "Edwalton, Notts"
+    },
+    {
+     "name": "Rebecca Sims",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 22,
+     "occupation": "General servant",
+     "born": "Nuthall"
+    }
+   ]
+  },
+  {
+   "street": "Park Drive",
+   "house": "Park Mount",
+   "schedule": 222,
+   "note": "Otto Homberger — the family whose marriage splits the Dowson household at Felixstowe in 1901.",
+   "people": [
+    {
+     "name": "Otto Homberger",
+     "relation": "Head",
+     "condition": "M",
+     "age": 49,
+     "occupation": "Lace merchant (employer)",
+     "born": "Germany (British subject)"
+    },
+    {
+     "name": "Kate A. Homberger",
+     "relation": "Wife",
+     "age": 36,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Emma Jadlands",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Cook (domestic)",
+     "born": "Louth, Lincolnshire"
+    },
+    {
+     "name": "Louisa Waterfall",
+     "relation": "Servant",
+     "age": 25,
+     "occupation": "Parlourmaid",
+     "born": "Stockton, Durham"
+    },
+    {
+     "name": "Maria Upton",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "Housemaid",
+     "born": "Bingham, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Park Ravine",
+   "house": "(unnamed, schedule 244)",
+   "schedule": 244,
+   "people": [
+    {
+     "name": "Edward Nelson",
+     "relation": "Head",
+     "condition": "m",
+     "age": 37,
+     "occupation": "[struck out] (employer)",
+     "born": "Germany (British subject)"
+    },
+    {
+     "name": "Gertrude M. Nelson",
+     "relation": "Wife",
+     "age": 28
+    },
+    {
+     "name": "Sidney E. Nelson",
+     "relation": "Son",
+     "condition": "S",
+     "age": "10 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alice R. Spalton",
+     "relation": "Servant",
+     "age": 27,
+     "occupation": "Cook (domestic)",
+     "born": "Bottesford, Leicestershire"
+    },
+    {
+     "name": "Mary Goodman",
+     "relation": "Servant",
+     "age": 26,
+     "occupation": "Housemaid",
+     "born": "Hoby, Leicestershire"
+    },
+    {
+     "name": "Isabella Prentice",
+     "relation": "Servant",
+     "age": 25,
+     "occupation": "Nurse",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Park Ravine",
+   "house": "(unnamed, schedule 246)",
+   "schedule": 246,
+   "people": [
+    {
+     "name": "Walter S. Buckoll",
+     "relation": "Head",
+     "condition": "m",
+     "age": 49,
+     "occupation": "Fruit and potato merchant (employer)",
+     "born": "Bulwell, Notts"
+    },
+    {
+     "name": "Mary A. Buckoll",
+     "relation": "Wife",
+     "age": 47,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Edgar S. Buckoll",
+     "relation": "Son",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Salesman, greengrocery",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Jessie A. Buckoll",
+     "relation": "Daughter",
+     "age": 23,
+     "occupation": "General servant (domestic)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Eliza Claringburn",
+     "relation": "Visitor",
+     "condition": "Widow",
+     "age": 50,
+     "born": "Oakham, Rutland"
+    },
+    {
+     "name": "Martha Stanton",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 25,
+     "born": "Great Gonerby"
+    }
+   ]
+  },
+  {
+   "street": "Park Ravine",
+   "house": "(unnamed, schedule 247)",
+   "schedule": 247,
+   "people": [
+    {
+     "name": "Fredk J. Ashworth",
+     "relation": "Head",
+     "condition": "m",
+     "age": 28,
+     "occupation": "[struck out] (employer)",
+     "born": "Beeston, Notts"
+    },
+    {
+     "name": "Blanche I. Ashworth",
+     "relation": "Wife",
+     "age": 27,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Leslie F. H. Ashworth",
+     "relation": "Son",
+     "condition": "S",
+     "age": 1
+    },
+    {
+     "name": "Edith B. W. Ashworth",
+     "relation": "Daughter",
+     "age": "under 1 month"
+    },
+    {
+     "name": "M. Sneath",
+     "relation": "Servant",
+     "age": 34,
+     "occupation": "Monthly nurse",
+     "born": "Somerby, Lincolnshire"
+    },
+    {
+     "name": "Harriet Whyles",
+     "relation": "Servant",
+     "age": 23,
+     "occupation": "Cook (domestic)",
+     "born": "Spalding Marsh, Lincolnshire"
+    },
+    {
+     "name": "Ann E. Hart",
+     "relation": "Servant",
+     "age": 14,
+     "occupation": "Housemaid",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Dudley Lodge",
+   "schedule": 229,
+   "people": [
+    {
+     "name": "Elizabeth Hartshorn",
+     "relation": "Head",
+     "condition": "Widow",
+     "age": 71,
+     "occupation": "Living on own means",
+     "born": "France (British subject)"
+    },
+    {
+     "name": "Frances Smedley",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 29,
+     "occupation": "Housekeeper (domestic)",
+     "born": "Stanley, Derbyshire"
+    },
+    {
+     "name": "Maggie E. Smith",
+     "relation": "Servant",
+     "age": 17,
+     "occupation": "Housemaid",
+     "born": "Basford, Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Harlech House",
+   "schedule": 230,
+   "people": [
+    {
+     "name": "Wm. Watson",
+     "relation": "Head",
+     "condition": "M",
+     "age": 52,
+     "occupation": "Commercial traveller",
+     "born": "Rockland St Mary, Norfolk"
+    },
+    {
+     "name": "Dorothy A. Watson",
+     "relation": "Wife",
+     "age": 50,
+     "born": "Little Saxham, Suffolk"
+    },
+    {
+     "name": "Florence K. Watson",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 25,
+     "born": "King's Lynn, Norfolk"
+    },
+    {
+     "name": "Annie Houlden",
+     "relation": "Servant",
+     "age": 21,
+     "occupation": "General servant (domestic)",
+     "born": "Eckington, Derbyshire"
+    },
+    {
+     "name": "Marian Moore",
+     "relation": "Servant",
+     "age": 45,
+     "occupation": "Nurse (domestic)",
+     "born": "Oxford Street, London"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Homebush",
+   "schedule": 231,
+   "people": [
+    {
+     "name": "Edward Sanderson",
+     "relation": "Head",
+     "condition": "Widower",
+     "age": 49,
+     "occupation": "Shipping and forwarding agent (employer)",
+     "born": "London S.E."
+    },
+    {
+     "name": "Lily A. Sanderson",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 22,
+     "born": "Beeston, Notts"
+    },
+    {
+     "name": "Chas. Ed. Sanderson",
+     "relation": "Son",
+     "age": 21,
+     "occupation": "Shipping clerk",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Thos. E. Sanderson",
+     "relation": "Son",
+     "age": 19,
+     "occupation": "Insurance clerk",
+     "born": "London S.E."
+    },
+    {
+     "name": "Emma Murfitt",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "General servant (domestic)",
+     "born": "Jacksdale, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Thorndale",
+   "schedule": 232,
+   "people": [
+    {
+     "name": "Henry Towle",
+     "relation": "Head",
+     "condition": "M",
+     "age": 53,
+     "occupation": "Station master, Midland Railway",
+     "born": "Thringstone, Leicestershire"
+    },
+    {
+     "name": "Hannah Towle",
+     "relation": "Wife",
+     "age": 50,
+     "born": "Matlock Green, Derbyshire"
+    },
+    {
+     "name": "Adeline Pearce",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 17,
+     "occupation": "General servant (domestic)",
+     "born": "Scarcliffe, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Castle Rd House",
+   "schedule": 233,
+   "people": [
+    {
+     "name": "Edward E. Lloyd",
+     "relation": "Head",
+     "condition": "M",
+     "age": 58,
+     "occupation": "Commercial traveller, lead trade",
+     "born": "Liverpool, Lancashire"
+    },
+    {
+     "name": "Hannah S. Lloyd",
+     "relation": "Wife",
+     "age": 50,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Jno. A. Lloyd",
+     "relation": "Son",
+     "condition": "S",
+     "age": 19,
+     "occupation": "Mechanical engineer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ada Harrison",
+     "relation": "Servant",
+     "age": 17,
+     "occupation": "Cook (domestic)",
+     "born": "Cropwell Butler, Notts"
+    },
+    {
+     "name": "Florence Peck",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Housemaid",
+     "born": "Eaton, Leicestershire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "Sunnyside",
+   "schedule": 235,
+   "people": [
+    {
+     "name": "Herbert Norrell",
+     "relation": "Head",
+     "condition": "M",
+     "age": 29,
+     "occupation": "Railway contractor (employer)",
+     "born": "Idle, Yorkshire"
+    },
+    {
+     "name": "Emily Norrell",
+     "relation": "Wife",
+     "age": 33,
+     "born": "Northampton"
+    },
+    {
+     "name": "Louisa Norrell",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Thos. J. D. Norrell",
+     "relation": "Son",
+     "age": "4 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frances M. Exton",
+     "relation": "Servant",
+     "age": 18,
+     "occupation": "Nurse (domestic)",
+     "born": "Spalding, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "(unnamed, schedule 236)",
+   "schedule": 236,
+   "people": [
+    {
+     "name": "Francis Budd",
+     "relation": "Head",
+     "condition": "m",
+     "age": 47,
+     "occupation": "Wine merchant (own account)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Betsey Budd",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 44,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Annie E. Weston",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 27,
+     "occupation": "Domestic servant",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "(unnamed, schedule 237)",
+   "schedule": 237,
+   "people": [
+    {
+     "name": "John C. Wright",
+     "relation": "Head",
+     "condition": "M",
+     "age": 36,
+     "occupation": "Commercial traveller",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Florence S. Wright",
+     "relation": "Wife",
+     "age": 35,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Dorothy F. D. Wright",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 10,
+     "born": "Arnold, Notts"
+    },
+    {
+     "name": "Rachael M. Wright",
+     "relation": "Daughter",
+     "age": 8,
+     "born": "Arnold, Notts"
+    },
+    {
+     "name": "John O. Wright",
+     "relation": "Son",
+     "age": 7,
+     "born": "Arnold, Notts"
+    },
+    {
+     "name": "Frances M. H. Churchill",
+     "relation": "Daughter",
+     "age": 5,
+     "born": "Arnold, Notts",
+     "note": "Entered as a daughter but under a different surname."
+    },
+    {
+     "name": "Helen Hullin",
+     "relation": "Servant",
+     "age": 16,
+     "occupation": "General servant (domestic)",
+     "born": "Burton-on-Trent, Staffordshire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "(unnamed, schedule 238)",
+   "schedule": 238,
+   "people": [
+    {
+     "name": "Tom King",
+     "relation": "Head",
+     "condition": "M",
+     "age": 37,
+     "occupation": "Part director of a limited company, provision merchants (employer)",
+     "born": "Grantham"
+    },
+    {
+     "name": "Daisy King",
+     "relation": "Wife",
+     "age": 37,
+     "born": "Aylesbury, Buckinghamshire"
+    },
+    {
+     "name": "Harold T. King",
+     "relation": "Son",
+     "condition": "S",
+     "age": 14,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Cyril H. King",
+     "relation": "Son",
+     "condition": "S",
+     "age": 7,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Chas. S. King",
+     "relation": "Son",
+     "condition": "S",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alexr Livingstone",
+     "relation": "Visitor",
+     "condition": "m",
+     "age": 43,
+     "occupation": "Evangelist",
+     "born": "Scotland"
+    },
+    {
+     "name": "Mary J. Stokes",
+     "relation": "Servant",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Domestic servant",
+     "born": "Riddings, Derbyshire"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "house": "(unnamed, schedule 240)",
+   "schedule": 240,
+   "people": [
+    {
+     "name": "Albert Ley",
+     "relation": "Head",
+     "condition": "m",
+     "age": 30,
+     "occupation": "Engine cotton waste manufacturer and merchant (employer)",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ada G. Ley",
+     "relation": "Wife",
+     "age": 29
+    },
+    {
+     "name": "Albert W. J. Ley",
+     "relation": "Son",
+     "condition": "S",
+     "age": 5
+    },
+    {
+     "name": "Jno. E. V. Ley",
+     "relation": "Son",
+     "age": 3
+    },
+    {
+     "name": "Eliza Denvey",
+     "relation": "Servant",
+     "age": 22,
+     "occupation": "General servant (domestic)",
+     "born": "Kimberley, Notts"
+    }
+   ]
+  },
+  {
+   "street": "Park Dale",
+   "house": "(unnamed, schedule 228)",
+   "schedule": 228,
+   "people": [
+    {
+     "name": "Fredk J. Elborough",
+     "relation": "Head",
+     "condition": "m",
+     "age": 47,
+     "occupation": "Engineer and colliery oil merchant (own account)",
+     "born": "Mitcham, Surrey"
+    },
+    {
+     "name": "Ellen Elborough",
+     "relation": "Wife",
+     "age": 36,
+     "born": "Sussex"
+    },
+    {
+     "name": "Ethel C. Elborough",
+     "relation": "Daughter",
+     "condition": "S",
+     "age": 11,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Dolly E. Elborough",
+     "relation": "Daughter",
+     "age": 7,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Marjorie J. Elborough",
+     "relation": "Daughter",
+     "age": 5
+    },
+    {
+     "name": "Ethel D. Elborough",
+     "relation": "Daughter",
+     "age": 4
+    },
+    {
+     "name": "Elizth Plowright",
+     "relation": "Visitor",
+     "age": 23,
+     "born": "Hawton, Notts"
+    },
+    {
+     "name": "Harriet Gent",
+     "relation": "Servant",
+     "age": 24,
+     "occupation": "General servant (domestic)",
+     "born": "Charlton, Staffordshire"
+    }
+   ]
+  }
+ ]
+}
