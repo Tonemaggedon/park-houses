@@ -1745,7 +1745,13 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         // Relationships to other people, named rather than given as ids so a file
         // can be written before knowing what number anybody has.
         for (const rel of (person.relationships || [])) {
-          if (!rel || !rel.to || !rel.type) continue;
+          if (!rel || !rel.to) continue;
+          // "relationship" is the obvious word for this and four files were
+          // written with it, so twenty-four links were dropped on the floor
+          // without a word while the report said those files had nothing left to
+          // do. Take either spelling, and say so when a block names neither.
+          const relType = rel.type || rel.relationship;
+          if (!relType) { relsSkipped++; continue; }
           // The other end can be given by number too, for the same reason as above.
           // Look it up before bailing out on a person who has no id yet, or a dry
           // run counts relationships whose far end does not exist.
@@ -1762,19 +1768,19 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           const dup = await db.query(
             `SELECT 1 FROM people_relationships
               WHERE person_a_id=$1 AND person_b_id=$2 AND relationship=$3`,
-            [id, otherId, rel.type]);
+            [id, otherId, relType]);
           if (dup.rows.length) continue;
           rels++;
           if (dryRun) continue;
           await db.query(
             `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
                   VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-            [id, otherId, rel.type, rel.notes || null]);
+            [id, otherId, relType, rel.notes || null]);
           // Record it both ways where the word is its own opposite.
           if (rel.reciprocal !== false) {
             const back = { spouse_of:'spouse_of', sibling_of:'sibling_of', cousin_of:'cousin_of',
                            parent_of:'child_of', child_of:'parent_of',
-                           employer_of:'employee_of', employee_of:'employer_of' }[rel.type];
+                           employer_of:'employee_of', employee_of:'employer_of' }[relType];
             if (back) {
               await db.query(
                 `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)

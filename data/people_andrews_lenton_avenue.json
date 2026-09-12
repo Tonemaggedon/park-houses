@@ -47,7 +47,7 @@
    ],
    "relationships": [
     {
-     "relationship": "spouse_of",
+     "type": "spouse_of",
      "to": {
       "id": 2505
      }
@@ -63,13 +63,13 @@
    "bio": "Joan Godfrey Andrews was born in 1908, the year her parents moved into 15 Lenton Avenue, and was two when the 1911 census recorded the household. The family emigrated to Canada in 1912; her father died of influenza in 1918, when she was ten.",
    "relationships": [
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "id": 2505
      }
     },
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "id": 2506
      }

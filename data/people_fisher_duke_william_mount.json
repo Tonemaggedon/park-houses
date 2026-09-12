@@ -22,7 +22,7 @@
    "properties": [106],
    "bio": "Sarah Kate Fisher, eldest daughter of John Thackeray of the Nottingham lace manufacturing family, married Horace Arthur Fisher in 1879 and moved with him into 1 Duke William Mount after their first child was born in 1883. Six children: James, Sybil, Horace (known as Frank), Geoffrey, John and Florence.",
    "relationships": [
-    {"relationship": "spouse_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"},
+    {"type": "spouse_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"},
      "notes": "Married 1879."}
    ]
   },
@@ -34,8 +34,8 @@
    "properties": [106],
    "bio": "The eldest child of Horace Arthur and Sarah Kate Fisher. The family moved into 1 Duke William Mount following his birth in 1883.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   },
   {
@@ -45,8 +45,8 @@
    "properties": [106],
    "bio": "A daughter of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet — the family account names the six children without them.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   },
   {
@@ -57,8 +57,8 @@
    "properties": [106],
    "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount, known as Frank — which is how he would be written on a return, so a census entry may name him Frank Fisher. No dates yet.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   },
   {
@@ -68,8 +68,8 @@
    "properties": [106],
    "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   },
   {
@@ -79,8 +79,8 @@
    "properties": [106],
    "bio": "A son of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount, named for his grandfather John Thackeray. No dates yet.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   },
   {
@@ -90,8 +90,8 @@
    "properties": [106],
    "bio": "A daughter of Horace Arthur and Sarah Kate Fisher of 1 Duke William Mount. No dates yet.",
    "relationships": [
-    {"relationship": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
-    {"relationship": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
+    {"type": "child_of", "to": {"first_name": "Horace Arthur", "last_name": "Fisher"}},
+    {"type": "child_of", "to": {"first_name": "Sarah Kate", "last_name": "Fisher"}}
    ]
   }
  ]

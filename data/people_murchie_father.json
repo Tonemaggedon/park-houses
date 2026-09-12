@@ -1,0 +1,68 @@
+{
+ "note": "James Murchie, put in as the father of the three Murchie girls boarding at the school on The Ropewalk in 1911. He gets no census record and no property: he was never a resident of The Park, and the evidence for him is an account rather than a return. The link to the girls is a strong inference, not a proven fact, and the bios say so. Doris Mary and Phyllis Kathleen were born at Bangkok in 1901 and 1903, Janet Martha at Much Wenlock in 1899 between them; this James Murchie was running an engineering firm's Bangkok operation across exactly those years and had family ties in England. Nothing contradicts it and nothing yet proves it — no certificate or return in the record names him as their father. The daughters are given by record number as well as name, so a later run cannot hang these on anyone else. The relationship key is \"type\", which is what the importer actually reads — a file using \"relationship\" has its links silently skipped.",
+ "source": "Stapleford and District Local History Society, https://staplefordlocalhistory.org.uk/?page_id=3579 — reworded, not reproduced",
+ "people": [
+  {
+   "first_name": "James",
+   "last_name": "Murchie",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1865,
+   "died_year": 1929,
+   "bio": "James Murchie was an engineer whose working life ran from the Yorkshire ironstone to the Gulf of Siam. Born in 1865, he was apprenticed in the iron ore trade in the North Riding, where the 1881 census finds him at sixteen. He left for Singapore in 1891 to work for J. M. Lyon, and when that firm failed he moved to Howarth Erskine Ltd, who designed and built in iron and steel. They sent him to Bangkok as their representative and general manager, in charge of a workforce of some six hundred, and he rose to a seat on the board. By 1912 he was back in London trading on his own account as James Murchie & Co. Ltd., engineers and merchants, from an address in Victoria Street. He died in 1929.\n\nHe is here as a father rather than a resident. Three Murchie sisters were boarding at the private girls' school at 30 The Ropewalk on the night of the 1911 census, and two of them — Doris Mary and Phyllis Kathleen — were born at Bangkok, in 1901 and 1903, with Janet Martha born at Much Wenlock in 1899 between the two. A man managing a Bangkok works across precisely those years, with a wife evidently coming home to Shropshire for one confinement, answers that pattern well. It should be said plainly that this is inference: no census return or certificate in this record names him as their father, and the case rests on the coincidence of the place and the years.",
+   "occupations": [
+    {
+     "occupation": "Apprentice, iron ore industry",
+     "from_year": 1881,
+     "notes": "In the North Riding of Yorkshire, where the 1881 census records him at sixteen."
+    },
+    {
+     "occupation": "Employee",
+     "employer": "J. M. Lyon, Singapore",
+     "from_year": 1891,
+     "notes": "He went out to Singapore in 1891; the firm later went into liquidation."
+    },
+    {
+     "occupation": "Representative and general manager, later director",
+     "employer": "Howarth Erskine Ltd, Bangkok",
+     "notes": "Structural engineers in iron and steel. The Bangkok works employed about six hundred men."
+    },
+    {
+     "occupation": "Engineer and merchant",
+     "employer": "James Murchie & Co. Ltd., Victoria Street, London",
+     "from_year": 1912,
+     "notes": "Trading on his own account by 1912."
+    }
+   ],
+   "relationships": [
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 2791,
+      "first_name": "Janet Martha",
+      "last_name": "Murchie"
+     },
+     "notes": "Inferred from the Bangkok and Much Wenlock birthplaces against his years running the Bangkok works; no return names him as her father."
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 2792,
+      "first_name": "Doris Mary",
+      "last_name": "Murchie"
+     },
+     "notes": "Inferred from the Bangkok and Much Wenlock birthplaces against his years running the Bangkok works; no return names him as her father."
+    },
+    {
+     "type": "parent_of",
+     "to": {
+      "id": 2794,
+      "first_name": "Phyllis Kathleen",
+      "last_name": "Murchie"
+     },
+     "notes": "Inferred from the Bangkok and Much Wenlock birthplaces against his years running the Bangkok works; no return names him as her father."
+    }
+   ]
+  }
+ ]
+}

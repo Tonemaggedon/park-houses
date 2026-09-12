@@ -704,6 +704,22 @@
       "link": "/street/tattershall-drive",
       "title": "Not one house on Tattershall Drive holds a census household",
       "detail": "All eight properties the record keeps on Tattershall Drive — numbers 1 to 5, Carnoustie Lodge, Ellington House and Gartree Lodge — have no census entry in any year. The residents they do carry, the Bonds at Lynwood, Arthur Hanish at number 5, the Hills at Ellington, the Hattons at Gartree Lodge, all come from accounts rather than returns, with no year attached to any of them. The street is numbered, so the returns should be findable. This also bears on Belwood, now placed at the Tennis Drive corner by the name on its door and by sharing Ellington's postcode: it stays a name rather than a property until a household is found in it, and the enumerator's round along this street is where that would show up."
+    },
+    {
+      "slug": "import-murchie-father",
+      "area": "People",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for James Murchie, father of the Bangkok girls",
+      "detail": "Creates one person: James Murchie, 1865 to 1929, the engineer who managed Howarth Erskine's Bangkok works and later traded on his own account from Victoria Street. He gets no census record and no house — he never lived in The Park — and is linked as parent to the three Murchie sisters boarding at the school on The Ropewalk in 1911. Preview should say 1 added, 4 occupations, 3 relationships, and no census. Worth knowing that the fatherhood is an inference rather than a proven fact: two of the girls were born at Bangkok in the years he was running the works there, and the third at Much Wenlock between them, but nothing in the record names him as their father. The bio says so in as many words."
+    },
+    {
+      "slug": "reimport-dropped-relationships",
+      "area": "Do these first",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Twenty-four family links never went in — run Import people again",
+      "detail": "The importer reads the key \"type\" on a relationship block, and four files were written with the more obvious word, \"relationship\". Those blocks were skipped without a murmur, and because a skipped link counts as no work, the report said each of those files had nothing left to do. Jesse and Florence Boot, Henry Godfrey Andrews and his family, the Birkins and the Fishers of 1 Duke William Mount all show no relationships at all in the record as a result. The four files now use the key the importer reads, and the importer now takes either word and reports a block that names neither, so it cannot happen quietly again. Running Import people puts the twenty-four links in — the same run also brings in James Murchie. Preview first: it should report the relationships rather than nothing."
     }
   ]
 }

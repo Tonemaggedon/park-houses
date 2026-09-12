@@ -12,7 +12,7 @@
    "bio": "Richard Leslie Birkin, a brother of Lt.-Col. Charles Wilfred Birkin of Newcastle Court, lived at Edale House, Clumber Road East, in 1911. Their father was Sir Thomas Isaac Birkin, 1st Baronet, head of the lace manufacturer T. I. Birkin. Recorded from the family account rather than from a census return, so the year is what that account gives and nothing here is taken from the 1911 schedule.",
    "relationships": [
     {
-     "relationship": "sibling_of",
+     "type": "sibling_of",
      "to": {
       "id": 64
      },

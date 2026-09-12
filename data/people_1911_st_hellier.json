@@ -58,7 +58,7 @@
    ],
    "relationships": [
     {
-     "relationship": "spouse_of",
+     "type": "spouse_of",
      "to": {
       "first_name": "Jesse",
       "last_name": "Boot"
@@ -97,14 +97,14 @@
    ],
    "relationships": [
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Jesse",
       "last_name": "Boot"
      }
     },
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Florence Annie",
       "last_name": "Boot"
@@ -134,14 +134,14 @@
    ],
    "relationships": [
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Jesse",
       "last_name": "Boot"
      }
     },
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Florence Annie",
       "last_name": "Boot"
@@ -171,14 +171,14 @@
    ],
    "relationships": [
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Jesse",
       "last_name": "Boot"
      }
     },
     {
-     "relationship": "child_of",
+     "type": "child_of",
      "to": {
       "first_name": "Florence Annie",
       "last_name": "Boot"
