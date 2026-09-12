@@ -1,9 +1,11 @@
 {
- "note": "A. Marion Churley (#1156) is already in the record, filed at 1 Western Terrace on the 1921 census as \"Principal Of Schoo\" — the return runs out mid-word. This fills her story and gives the occupation its full form. Her first name is left as the census has it: the importer fills blanks and never overwrites, so changing \"A Marion\" to \"Ada Marion\" is a person-page edit, not something this file should do quietly.",
+ "note": "A. Marion Churley (#1156) is already in the record, filed at 1 Western Terrace on the 1921 census as \"Principal Of Schoo\" — the return runs out mid-word. This fills her story and gives the occupation its full form. Her first name is left as the census has it: the importer fills blanks and never overwrites, so changing \"A Marion\" to \"Ada Marion\" is a person-page edit, not something this file should do quietly. The people here are named as well as numbered: the importer skips any entry without a first and last name before it ever reads the number, so an id on its own was silently ignored. The id still decides which person is meant.",
  "source": "A. Hagues, from the history of Broadgate School; the 1921 census for the entry itself",
  "people": [
   {
    "id": 1156,
+   "first_name": "A Marion",
+   "last_name": "Churley",
    "bio": "Miss Ada Churley, recorded on the 1921 census at 1 Western Terrace as the principal of a school, ran Broadgate School there. The school occupied 1 and 2 Western Terrace from 1921 until it closed on 4 March 1997 — seventy-six years in the same two houses, which is longer than any household the record holds.",
    "occupations": [
     {

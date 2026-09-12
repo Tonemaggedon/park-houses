@@ -1,9 +1,11 @@
 {
- "note": "Three men named in accounts of two houses. Frederick Carver (#864) is already in the record from the 1911 census at 29 Lenton Road, so this only fills out what he did. Stephen Wills and William Wright are new, and neither has a census entry here — each is linked to the house he is named with, as a resident rather than a household, because the evidence is an account and not a return. Nothing is created for the Carver daughters Gertrude and Mary: a name alone, with no year and no return behind it, would be a record that could never be checked.",
+ "note": "Three men named in accounts of two houses. Frederick Carver (#864) is already in the record from the 1911 census at 29 Lenton Road, so this only fills out what he did. Stephen Wills and William Wright are new, and neither has a census entry here — each is linked to the house he is named with, as a resident rather than a household, because the evidence is an account and not a return. Nothing is created for the Carver daughters Gertrude and Mary: a name alone, with no year and no return behind it, would be a record that could never be checked. The people here are named as well as numbered: the importer skips any entry without a first and last name before it ever reads the number, so an id on its own was silently ignored. The id still decides which person is meant.",
  "source": "A. Hagues, from accounts of 1 Park Valley and 29 Lenton Road; the 1911 census for Frederick Carver's own entry",
  "people": [
   {
    "id": 864,
+   "first_name": "Frederick",
+   "last_name": "Carver",
    "bio": "Frederick Carver was a director of Adams, Page and Cullen, whose Lace Market warehouse — now part of Nottingham College — was another T. C. Hine building. He spoke for the British trade abroad more than once, at the Congress of Brussels in 1891 and the Paris Exhibition of 1900. The 1911 census found him at 29 Lenton Road with his wife Annie and their daughter Annie Florence; an account of the family names two more daughters, Gertrude and Mary, who are not on that return.",
    "occupations": [
     {
