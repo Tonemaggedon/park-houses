@@ -720,6 +720,14 @@
       "link": "/admin",
       "title": "Twenty-four family links never went in — run Import people again",
       "detail": "The importer reads the key \"type\" on a relationship block, and four files were written with the more obvious word, \"relationship\". Those blocks were skipped without a murmur, and because a skipped link counts as no work, the report said each of those files had nothing left to do. Jesse and Florence Boot, Henry Godfrey Andrews and his family, the Birkins and the Fishers of 1 Duke William Mount all show no relationships at all in the record as a result. The four files now use the key the importer reads, and the importer now takes either word and reports a block that names neither, so it cannot happen quietly again. Running Import people puts the twenty-four links in — the same run also brings in James Murchie. Preview first: it should report the relationships rather than nothing."
+    },
+    {
+      "slug": "import-handford-hardwicke",
+      "area": "People",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for Henry Handford, and change his birth year by hand",
+      "detail": "Fills out Henry Handford at Hardwicke House from Munk's Roll: physician to the Nottingham General Hospital to 1906, then medical officer of health for the county for twenty years to 1926, F.R.C.P. 1899, a major in the sanitary branch of the R.A.M.C. in the war, died 24 June 1928. It gives his wife Mary her maiden name, Strutt, and creates one new person who never lived here — Edward Strutt, first Baron Belper, her father, who has a Wikipedia article of his own. It also links the couple, their two sons, and Mary to her three Gale daughters. Preview should say 1 added, 2 filled out, 5 occupations and 9 relationships, with no census. THE ONE THING IT CANNOT DO: Munk's Roll dates his birth to 1855 and the record holds 1856, taken from his age on census night. The importer fills blanks and never writes over what is there, so that year will not move from the file — change it on his person page if you want the authority's year."
     }
   ]
 }

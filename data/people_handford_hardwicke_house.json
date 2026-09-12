@@ -1,0 +1,78 @@
+{
+ "note": "Henry Handford of Hardwicke House, filled out from Munk's Roll, with his wife's parentage and her father added. ONE THING THIS FILE CANNOT DO: Munk's Roll gives his birth as 1855, and the record holds 1856, worked back from his age on the 1901 census night. The importer fills blanks and never writes over what is there, so the year will not change from here — alter it by hand on his person page if you want the authority's year rather than the census's. His death, 24 June 1928, goes in cleanly because the field is empty. Everyone is named as well as numbered, since the importer skips an entry with no first and last name before it ever reads the number.",
+ "source": "Munk's Roll (Lives of the Fellows of the Royal College of Physicians), the entry by G. H. Brown, drawing on his obituaries in the Lancet and the British Medical Journal, 1928. Reworded, not reproduced. The 1901 census for the household itself.",
+ "people": [
+  {
+   "id": 3060,
+   "first_name": "Henry",
+   "last_name": "Handford",
+   "born_year": 1855,
+   "died_date": "24 June 1928",
+   "died_year": 1928,
+   "postnominals": "M.D., M.R.C.S., D.P.H., F.R.C.P.",
+   "bio": "Henry Handford was a physician of standing in Nottingham for close on fifty years, and the 1901 census finds him at Hardwicke House on Cavendish Crescent North with a household of eleven.\n\nHe was a doctor's son, born at Atherstone in Warwickshire where his father Thomas practised, and he trained at Edinburgh, taking his M.B., C.M. in 1878 with high distinction before going on to Paris and Vienna. A spell as medical tutor at Queen's College, Birmingham, came next, and then Nottingham, where he was appointed physician to the General Hospital and served until 1906. Pathology and diseases of the heart were where his particular gift lay. He became a Fellow of the Royal College of Physicians in 1899, and held the M.D., the M.R.C.S. and a Cambridge D.P.H.\n\nLeaving the hospital in 1906 did not mean leaving the work. He became medical officer of health for the county and held that for twenty years, retiring in 1926 — so his career divides neatly into two halves, the first at a patient's bedside and the second over the drains, the water and the reporting of infectious disease across the whole of Nottinghamshire. In the Great War he served as a major in the sanitary branch of the Royal Army Medical Corps, which was the same public health work carried into uniform.\n\nHe married a daughter of Edward Strutt, first Baron Belper. They had two sons, and both were at home in 1901: Henry B. S. and Everard J. S., aged seven and five. The household that night also held his wife's three daughters by her first marriage, all born at Bedale in Yorkshire and carrying the name Gale, and five servants. He died on 24 June 1928, and the Lancet and the British Medical Journal both marked it.",
+   "occupations": [
+    {
+     "occupation": "Medical tutor",
+     "employer": "Queen's College, Birmingham",
+     "notes": "Before he settled in Nottingham."
+    },
+    {
+     "occupation": "Physician",
+     "employer": "Nottingham General Hospital",
+     "to_year": 1906,
+     "notes": "Noted for pathology and for diseases of the heart."
+    },
+    {
+     "occupation": "Medical officer of health for Nottinghamshire",
+     "from_year": 1906,
+     "to_year": 1926,
+     "notes": "Twenty years, to his retirement."
+    },
+    {
+     "occupation": "Major, Royal Army Medical Corps",
+     "from_year": 1914,
+     "to_year": 1918,
+     "notes": "In the sanitary branch — his public health work in uniform."
+    }
+   ],
+   "relationships": [
+    { "type": "spouse_of", "to": { "id": 3061, "first_name": "Mary E.", "last_name": "Handford" } },
+    { "type": "parent_of", "to": { "id": 3065, "first_name": "Henry B. S.", "last_name": "Handford" } },
+    { "type": "parent_of", "to": { "id": 3066, "first_name": "Everard J. S.", "last_name": "Handford" } }
+   ]
+  },
+  {
+   "id": 3061,
+   "first_name": "Mary E.",
+   "last_name": "Handford",
+   "maiden_name": "Strutt",
+   "bio": "Mary E. Handford was a daughter of Edward Strutt, first Baron Belper, and married Henry Handford, physician to the Nottingham General Hospital and later medical officer of health for the county. She was born in 1854 at St George's in London.\n\nHardwicke House held eleven people on census night in 1901: the couple, their two young sons Henry and Everard, her three grown daughters by an earlier marriage — Gertrude, Sybil and Dorothy Gale, all born at Bedale in the North Riding — and five servants, two of them Plowman sisters from Huntingdonshire. Which of Lord Belper's daughters she was, and whom she married first, the record does not yet say; that she was one of them comes from her husband's entry in Munk's Roll rather than from any return here.",
+   "relationships": [
+    { "type": "spouse_of", "to": { "id": 3060, "first_name": "Henry", "last_name": "Handford" } },
+    { "type": "parent_of", "to": { "id": 3062, "first_name": "Sybil Aug.", "last_name": "Gale" } },
+    { "type": "parent_of", "to": { "id": 3063, "first_name": "Dorothy", "last_name": "Gale" } },
+    { "type": "parent_of", "to": { "id": 3064, "first_name": "Gertrude J.", "last_name": "Gale" } }
+   ]
+  },
+  {
+   "first_name": "Edward",
+   "last_name": "Strutt",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1801,
+   "died_year": 1880,
+   "title": "1st Baron Belper",
+   "wikipedia_url": "https://en.wikipedia.org/wiki/Edward_Strutt,_1st_Baron_Belper",
+   "bio": "Edward Strutt, first Baron Belper (1801–1880), politician and Fellow of the Royal Society, of the Derbyshire cotton-spinning family. He is in this record as a father-in-law rather than a resident: he never lived in The Park, and died before the house in question was returned. His daughter married Henry Handford, the physician at Hardwicke House on Cavendish Crescent North, and was keeping that household in 1901. Munk's Roll names her only as a daughter of the first Lord Belper, so which of them she was is not settled here.",
+   "occupations": [
+    { "occupation": "Politician" }
+   ],
+   "relationships": [
+    { "type": "parent_of",
+      "to": { "id": 3061, "first_name": "Mary E.", "last_name": "Handford" },
+      "notes": "From Munk's Roll, which names Handford's wife as a daughter of the first Lord Belper without giving her forename." }
+   ]
+  }
+ ]
+}
