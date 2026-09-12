@@ -656,6 +656,14 @@
       "link": "/admin",
       "title": "Run Import people for Carver, Wills and Wright",
       "detail": "Fills out Frederick Carver, who is already at 29 Lenton Road from the 1911 census — his directorship of Adams, Page and Cullen and his trade missions to Brussels and Paris — and creates two men the record does not hold: Stephen Wills, whom Arundel House was built for in 1870, and William Wright, first occupant of 29 Lenton Road. Neither gets a census entry; both are linked to their house as residents, since the evidence is an account. Preview should say 2 added, 2 property links, 1 filled out, 4 occupations."
+    },
+    {
+      "slug": "import-1901-lenton-avenue-odd",
+      "area": "Census",
+      "size": "one click",
+      "link": "/admin",
+      "title": "Run Import people for the 1901 census of Lenton Avenue",
+      "detail": "Seventeen households from numbers 5 to 31 and 10 to 14 — about ninety people — filed straight to their houses. This is the street that had 1901 for only four of its twenty-four houses. Numbers 2, 4, 6 and 8 are left out because they went in earlier. Two households are entered by house name and will land on /unfiled for you to place: Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which follows 31."
     }
   ]
 }
