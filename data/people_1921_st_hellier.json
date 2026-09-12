@@ -5,7 +5,9 @@
   {
    "first_name": "John Campbell",
    "last_name": "Boot",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -18,15 +20,23 @@
     }
    ],
    "occupations": [
-    {"occupation": "Director", "employer": "Boots Pure Drug Co", "from_year": 1921, "to_year": 1921,
-     "notes": "Returned on the 1921 census as \"Director Boots Pure Dray Co\", employer."}
-   ]
+    {
+     "occupation": "Director",
+     "employer": "Boots Pure Drug Co",
+     "from_year": 1921,
+     "to_year": 1921,
+     "notes": "Returned on the 1921 census as \"Director Boots Pure Dray Co\", employer."
+    }
+   ],
+   "id": 2842
   },
   {
    "first_name": "Jesse",
    "last_name": "Boot",
    "born_year": 1850,
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -39,16 +49,22 @@
     }
    ],
    "occupations": [
-    {"occupation": "Manufacturing chemist", "to_year": 1921,
-     "notes": "Retired by the 1921 census."}
-   ]
+    {
+     "occupation": "Manufacturing chemist",
+     "to_year": 1921,
+     "notes": "Retired by the 1921 census."
+    }
+   ],
+   "id": 2840
   },
   {
    "first_name": "Florence Annie",
    "last_name": "Boot",
    "title": "Lady",
    "born_year": 1863,
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -58,7 +74,8 @@
      "birth_place": "Jersey, Channel Islands",
      "source": "1921 census, St Helier, Clumber Road East — transcribed by A. Hagues — returned as \"Lady Florence Boot\", no occupation given."
     }
-   ]
+   ],
+   "id": 2841
   },
   {
    "first_name": "Jane",
@@ -66,7 +83,9 @@
    "sex": "F",
    "born_year": 1883,
    "born_place": "Manchester, Lancashire",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -79,7 +98,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Housekeeper", "employer": "Capt J. C. Boot, St Helier", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Housekeeper",
+     "employer": "Capt J. C. Boot, St Helier",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -88,7 +112,9 @@
    "sex": "F",
    "born_year": 1873,
    "born_place": "Nottingham, Nottinghamshire",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -100,7 +126,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Cook", "employer": "St Helier, Clumber Road East", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Cook",
+     "employer": "St Helier, Clumber Road East",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -109,7 +140,9 @@
    "sex": "F",
    "born_year": 1901,
    "born_place": "Whitwell, Derbyshire",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -122,7 +155,11 @@
     }
    ],
    "occupations": [
-    {"occupation": "Domestic servant", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Domestic servant",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -131,7 +168,9 @@
    "sex": "F",
    "born_year": 1898,
    "born_place": "Suffolk",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -144,7 +183,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Domestic servant", "employer": "St Helier, Clumber Road East", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Domestic servant",
+     "employer": "St Helier, Clumber Road East",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -153,7 +197,9 @@
    "sex": "M",
    "born_year": 1890,
    "born_place": "East Bergholt, Suffolk",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -166,7 +212,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Personal attendant", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Personal attendant",
+     "employer": "Sir Jesse Boot",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -175,7 +226,9 @@
    "sex": "M",
    "born_year": 1891,
    "born_place": "Brighton, Sussex",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -188,7 +241,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Chauffeur", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Chauffeur",
+     "employer": "Sir Jesse Boot",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   },
   {
@@ -197,7 +255,9 @@
    "sex": "M",
    "born_year": 1885,
    "born_place": "Paris, France",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -210,8 +270,13 @@
     }
    ],
    "occupations": [
-    {"occupation": "Nurse", "employer": "Sir Jesse Boot", "from_year": 1921, "to_year": 1921,
-     "notes": "Returned as \"Nurse (Sick Male)\"."}
+    {
+     "occupation": "Nurse",
+     "employer": "Sir Jesse Boot",
+     "from_year": 1921,
+     "to_year": 1921,
+     "notes": "Returned as \"Nurse (Sick Male)\"."
+    }
    ]
   },
   {
@@ -220,7 +285,9 @@
    "sex": "F",
    "born_year": 1893,
    "born_place": "Stow on the Wold, Gloucestershire",
-   "properties": [402],
+   "properties": [
+    402
+   ],
    "census": [
     {
      "census_year": 1921,
@@ -233,7 +300,12 @@
     }
    ],
    "occupations": [
-    {"occupation": "Certificated sick nurse", "employer": "London Hospital", "from_year": 1921, "to_year": 1921}
+    {
+     "occupation": "Certificated sick nurse",
+     "employer": "London Hospital",
+     "from_year": 1921,
+     "to_year": 1921
+    }
    ]
   }
  ]
