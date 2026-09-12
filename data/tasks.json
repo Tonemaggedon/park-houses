@@ -736,6 +736,14 @@
       "link": "/name-review",
       "title": "Twenty-six names in the record do not look right",
       "detail": "A new page, Names to check, gathers them in three groups. Eight people have no forename at all — six carrying a question mark where the enumerator could not read it, and two entered as [Unknown]; those want the census page itself. Fifteen have only an initial, and most of those are probably right, because the return gave no more than an initial: pass them as right and they will not be raised again. Three read like a slip of the pen: Suganne Richardson at Grove House is almost certainly Suzanne, and Margaret Mand Marion Cooper is almost certainly Maud, a u read as an n. The third, Christine Nona Parr, is offered as Nora but Nona is a real name in its own right, given to a ninth child, so that one is likely a false alarm and worth passing as right. Nothing is ever changed for you — each row is a person to open and judge."
+    },
+    {
+      "slug": "duplicates-from-the-abbreviated-names",
+      "area": "Do these first",
+      "size": "half an hour",
+      "link": "/duplicates",
+      "title": "Forty duplicate people to merge, and why they appeared",
+      "detail": "My fault, twice over. The 1901 files were written with the forenames as the enumerator abbreviated them — Geo. Parr, Constance M. Smith, Ada M. Read — and the importer matches names letter for letter, so it made a second record of everybody the record already held under a fuller spelling. That happened on the first run, and the twenty-two it produced sat inside a count I read as new arrivals. Then merging the abbreviated spellings away meant the files could no longer find their own people, so the next run created ten of them again with fresh numbers. The record went from 2755 to 2798; three of those forty-three are real — Edward Strutt, John Pickard Becher and James Murchie. The rest want merging on this page, keeping the fuller, older record each time. Both 1901 files now address those people by number instead of by name, so no later run can repeat it, and a merge now leaves an alias behind so a spelling merged away still finds the person it belongs to. One is deliberately left alone: Annie F. Carver, born 1871 on this return, against Annie Florence Carver born 1865 — six years apart, too far for the record to join them on its own. That one wants deciding by eye."
     }
   ]
 }

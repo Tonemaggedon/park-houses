@@ -464,6 +464,25 @@ async function dbInit() {
     // "Not the same person" has to be remembered, or a pair that has already been
     // judged is offered again every time the page is opened. Stored lowest id
     // first so the pair is one row whichever way round it is sent.
+    // The names a person used to be filed under, left behind by a merge. An
+    // import file written from a census keeps the enumerator's spelling — Geo.
+    // Parr, Elizth Wareham — and the importer matches names letter for letter.
+    // Merge that spelling away and the next run finds nobody of that name and
+    // makes the person all over again, which is how ten of them came back with
+    // new numbers after a single afternoon's tidying. An alias lets the old
+    // spelling still find the person it belongs to.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_alias (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      first_name TEXT NOT NULL,
+      last_name TEXT NOT NULL,
+      born_year INTEGER,
+      made_by TEXT,
+      made_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_alias_name_idx
+                      ON person_alias(LOWER(TRIM(first_name)), LOWER(TRIM(last_name)))`);
+
     // A name somebody has looked at and passed as right, so the name-check page
     // stops raising it. Keyed on the person and the word, because a person may
     // carry two odd-looking forenames and only one of them be a slip.
@@ -1673,6 +1692,21 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
               `SELECT id, born_date, born_year, born_place, sex, died_date, died_year, died_place, maiden_name, title, postnominals, wikipedia_url, bio FROM people
                 WHERE LOWER(first_name)=LOWER($1) AND LOWER(last_name)=LOWER($2)`,
               [person.first_name, person.last_name]);
+        // Nobody of that name — but the name may have been merged away since the
+        // file was written, in which case an alias says who it became. Without
+        // this the importer makes the person again, and a merge and an import
+        // undo each other for ever.
+        if (!byId && !found.rows.length) {
+          const alias = await db.query(
+            `SELECT p.id, p.born_date, p.born_year, p.born_place, p.sex, p.died_date, p.died_year,
+                    p.died_place, p.maiden_name, p.title, p.postnominals, p.wikipedia_url, p.bio
+               FROM person_alias a JOIN people p ON p.id = a.person_id
+              WHERE LOWER(TRIM(a.first_name))=LOWER($1) AND LOWER(TRIM(a.last_name))=LOWER($2)
+                AND ($3::int IS NULL OR a.born_year IS NULL OR ABS(a.born_year - $3::int) <= 2)`,
+            [String(person.first_name).trim(), String(person.last_name).trim(),
+             person.born_year || null]);
+          if (alias.rows.length === 1) { found.rows = alias.rows; }
+        }
         if (byId && !found.rows.length) {
           // Never fall back to creating one: the file asked for a specific
           // person, and inventing another is the mistake it was avoiding.
@@ -5302,6 +5336,26 @@ async function mergePeopleInto(client, keepId, deleteId) {
     JOIN people_relationships b ON a.person_a_id=b.person_a_id AND a.person_b_id=b.person_b_id
       AND a.relationship=b.relationship AND a.id > b.id
   )`);
+
+  // Remember what the absorbed person was called, so a file still written in
+  // that spelling finds the keeper instead of making the person again. Only
+  // where the spellings actually differ: an alias pointing a name at itself
+  // says nothing. If that name has been merged away before, the older alias
+  // stands — it was recorded closer to the event.
+  await client.query(`
+    INSERT INTO person_alias (person_id, first_name, last_name, born_year, made_by)
+    SELECT $1, p.first_name, p.last_name, p.born_year, 'merge'
+      FROM people p
+     WHERE p.id = $2
+       AND COALESCE(TRIM(p.first_name),'') <> ''
+       AND COALESCE(TRIM(p.last_name),'') <> ''
+       AND NOT EXISTS (
+         SELECT 1 FROM people k WHERE k.id = $1
+            AND LOWER(TRIM(k.first_name)) = LOWER(TRIM(p.first_name))
+            AND LOWER(TRIM(k.last_name))  = LOWER(TRIM(p.last_name)))
+    ON CONFLICT DO NOTHING`, [keepId, deleteId]);
+  // An alias that pointed at the absorbed person now points at the keeper.
+  await client.query('UPDATE person_alias SET person_id=$1 WHERE person_id=$2', [keepId, deleteId]);
 
   await client.query('DELETE FROM people WHERE id=$1', [deleteId]);
 }

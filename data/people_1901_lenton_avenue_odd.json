@@ -1,305 +1,2730 @@
 {
- "note": "The 1901 census for Lenton Avenue, numbers 5 to 31 and 10 to 14, transcribed by A. Hagues from the enumerator's pages. Surnames are filled in from the head of household wherever the relationship column makes it certain — wife, son, daughter, and children entered under ditto marks — and are left alone for servants, boarders and visitors, who carry their own. Birthplaces are given in full: county abbreviations expanded, and New Radford written as Radford, Nottingham. Numbers 2, 4, 6 and 8 are deliberately absent: the Thompson, Blythe, Sims and Elmore households went in from an earlier file and would only double up. Two houses are entered by name with no number — Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which falls after 31 — so they are left unfiled for a decision rather than guessed onto a number.",
+ "note": "The 1901 census for Lenton Avenue, numbers 5 to 31 and 10 to 14, transcribed by A. Hagues from the enumerator's pages. Surnames are filled in from the head of household wherever the relationship column makes it certain — wife, son, daughter, and children entered under ditto marks — and are left alone for servants, boarders and visitors, who carry their own. Birthplaces are given in full: county abbreviations expanded, and New Radford written as Radford, Nottingham. Numbers 2, 4, 6 and 8 are deliberately absent: the Thompson, Blythe, Sims and Elmore households went in from an earlier file and would only double up. Two houses are entered by name with no number — Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which falls after 31 — so they are left unfiled for a decision rather than guessed onto a number. Entries that collided with somebody the record already held under a fuller forename — Alice May Parr against Alice Mary, Constance Marjorie Smith against Constance M. — now carry that person's number. The importer matches names letter for letter and was making a second record of each of them on every run; a number matches whatever the spelling, survives a merge, and cannot mint a new person.",
  "source": "1901 census, Lenton Avenue — transcribed by A. Hagues",
  "people": [
-  {"first_name": "Henry R.", "last_name": "Thorpe", "sex": "M", "born_year": 1836, "born_place": "Nottingham", "properties": [159],
-   "census": [{"census_year": 1901, "property_id": 159, "relationship": "Head", "marital_status": "Single", "age_at_census": 65, "occupation_at_census": "Solicitor (retired)", "birth_place": "Nottingham (St Mary's)", "source": "1901 census, 5 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Solicitor", "to_year": 1901, "notes": "Returned as retired in 1901."}]},
-  {"first_name": "Jane", "last_name": "Barker", "sex": "F", "born_year": 1841, "born_place": "Normanton-on-Soar, Nottinghamshire", "properties": [159],
-   "census": [{"census_year": 1901, "property_id": 159, "relationship": "Servant", "age_at_census": 60, "occupation_at_census": "Housekeeper (domestic)", "birth_place": "Normanton-on-Soar, Nottinghamshire", "source": "1901 census, 5 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housekeeper", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Albert W.", "last_name": "Shelton", "sex": "M", "born_year": 1863, "born_place": "Nottingham", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Head", "marital_status": "Married", "age_at_census": 38, "occupation_at_census": "Estate agent", "birth_place": "Nottingham", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — returned as an employer."}],
-   "occupations": [{"occupation": "Estate agent", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Elizabeth", "last_name": "Shelton", "sex": "F", "born_year": 1855, "born_place": "Hyson Green, Nottingham", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Wife", "marital_status": "Married", "age_at_census": 46, "birth_place": "Hyson Green, Nottingham", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Winifred M.", "last_name": "Shelton", "sex": "F", "born_year": 1887, "born_place": "Nottingham", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 14, "birth_place": "Nottingham", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Charles William", "last_name": "Shelton", "sex": "M", "born_year": 1890, "born_place": "Nottingham", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Son", "marital_status": "Single", "age_at_census": 11, "birth_place": "Nottingham", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — written \"Chas. Wm.\""}]},
-  {"first_name": "Florence", "last_name": "Green", "sex": "F", "born_year": 1873, "born_place": "Felsted, Essex", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "Housemaid (domestic)", "birth_place": "Felsted, Essex", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — written \"Felstead\"."}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Katherine", "last_name": "Hill", "sex": "F", "born_year": 1876, "born_place": "Scottlethorpe, Lincolnshire", "properties": [160],
-   "census": [{"census_year": 1901, "property_id": 160, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Cook", "birth_place": "Scottlethorpe, Lincolnshire", "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Alfred P.", "last_name": "Wood", "sex": "M", "born_year": 1845, "born_place": "Kennington, London", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Head", "marital_status": "Widower", "age_at_census": 56, "occupation_at_census": "Colliery agent", "birth_place": "Kennington, London", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — working at home."}],
-   "occupations": [{"occupation": "Colliery agent", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alfred", "last_name": "Wood", "sex": "M", "born_year": 1875, "born_place": "Beeston, Nottinghamshire", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Son", "marital_status": "Single", "age_at_census": 26, "birth_place": "Beeston, Nottinghamshire", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — the younger Alfred, of the same name as his father."}]},
-  {"first_name": "Percy", "last_name": "Wood", "sex": "M", "born_year": 1875, "born_place": "Beeston, Nottinghamshire", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Son", "marital_status": "Single", "age_at_census": 26, "occupation_at_census": "Solicitor", "birth_place": "Beeston, Nottinghamshire", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — both sons are entered as 26."}],
-   "occupations": [{"occupation": "Solicitor", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Elsie", "last_name": "Wood", "sex": "F", "born_year": 1880, "born_place": "Beeston, Nottinghamshire", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Daughter", "age_at_census": 21, "birth_place": "Beeston, Nottinghamshire", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Sydney", "last_name": "Wood", "sex": "M", "born_year": 1894, "born_place": "Nottingham", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Son", "age_at_census": 7, "birth_place": "Nottingham", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Mary", "last_name": "Hayes", "sex": "F", "born_year": 1870, "born_place": "Sutton-on-Trent, Nottinghamshire", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "Cook (domestic)", "birth_place": "Sutton-on-Trent, Nottinghamshire", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alice M.", "last_name": "Ellis", "sex": "F", "born_year": 1877, "born_place": "Lincoln", "properties": [161],
-   "census": [{"census_year": 1901, "property_id": 161, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Housemaid", "birth_place": "Lincoln", "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Robert", "last_name": "Davis", "sex": "M", "born_year": 1835, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Head", "marital_status": "Married", "age_at_census": 66, "occupation_at_census": "Lace manufacturer", "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue (Fernleigh) — transcribed by A. Hagues — an employer."}],
-   "occupations": [{"occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Charlotte", "last_name": "Davis", "sex": "F", "born_year": 1845, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Wife", "marital_status": "Married", "age_at_census": 56, "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Constance E.", "last_name": "Davis", "sex": "F", "born_year": 1869, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 32, "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Thomas F.", "last_name": "Davis", "sex": "M", "born_year": 1871, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Son", "marital_status": "Single", "age_at_census": 30, "occupation_at_census": "Lace dresser", "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Lace dresser", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Ellen E.", "last_name": "Davis", "sex": "F", "born_year": 1874, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Daughter", "age_at_census": 27, "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Bernard F.", "last_name": "Davis", "sex": "M", "born_year": 1880, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Son", "age_at_census": 21, "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Winifred M.", "last_name": "Davis", "sex": "F", "born_year": 1882, "born_place": "Nottingham", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Daughter", "age_at_census": 19, "birth_place": "Nottingham", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Elizabeth", "last_name": "Jackson", "sex": "F", "born_year": 1881, "born_place": "Croft, Lincolnshire", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "Housemaid (domestic)", "birth_place": "Croft, Lincolnshire", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Blanche", "last_name": "Weldon", "sex": "F", "born_year": 1882, "born_place": "Long Eaton, Derbyshire", "properties": [162],
-   "census": [{"census_year": 1901, "property_id": 162, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Cook", "birth_place": "Long Eaton, Derbyshire", "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues — the page strikes out Derbyshire and writes Nottinghamshire; Long Eaton is in Derbyshire, so the correction on the page is the error."}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Gustave A.", "last_name": "Throsheim", "sex": "M", "born_year": 1855, "born_place": "Germany", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Head", "marital_status": "Married", "age_at_census": 46, "occupation_at_census": "Lace merchant", "birth_place": "Germany (British subject)", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — surname uncertain, read as Throsheim; an employer, and a naturalised British subject."}],
-   "occupations": [{"occupation": "Lace merchant", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Caroline H.", "last_name": "Throsheim", "sex": "F", "born_year": 1859, "born_place": "Colwick, Nottinghamshire", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Wife", "marital_status": "Married", "age_at_census": 42, "birth_place": "Colwick, Nottinghamshire", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Katharine", "last_name": "Throsheim", "sex": "F", "born_year": 1899, "born_place": "Nottingham", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Daughter", "age_at_census": 2, "birth_place": "Nottingham", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Horace", "last_name": "Rodd", "sex": "M", "born_year": 1861, "born_place": "Colwick, Nottinghamshire", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Visitor", "marital_status": "Married", "age_at_census": 40, "birth_place": "Colwick, Nottinghamshire", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — born in the same village as the wife of the house."}]},
-  {"first_name": "Alice", "last_name": "Venles", "sex": "F", "born_year": 1872, "born_place": "East Bridgford, Nottinghamshire", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Servant", "marital_status": "Single", "age_at_census": 29, "occupation_at_census": "Cook (domestic)", "birth_place": "East Bridgford, Nottinghamshire", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — surname uncertain."}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Harriett A.", "last_name": "Taylor", "sex": "F", "born_year": 1879, "born_place": "Kirton, Lincolnshire", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Housemaid", "birth_place": "Kirton, Lincolnshire", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Thirza", "last_name": "Trevor", "sex": "F", "born_year": 1879, "born_place": "Nottingham", "properties": [163],
-   "census": [{"census_year": 1901, "property_id": 163, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Nurse", "birth_place": "Nottingham", "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Nurse", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Susan", "last_name": "Sparrow", "sex": "F", "born_year": 1847, "born_place": "Wednesbury, Staffordshire", "properties": [164],
-   "census": [{"census_year": 1901, "property_id": 164, "relationship": "Head", "marital_status": "Widow", "age_at_census": 54, "birth_place": "Wednesbury, Staffordshire", "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Reginald George", "last_name": "Sparrow", "sex": "M", "born_year": 1877, "born_place": "Nottingham", "properties": [164],
-   "census": [{"census_year": 1901, "property_id": 164, "relationship": "Son", "marital_status": "Single", "age_at_census": 24, "occupation_at_census": "Decorator, painter", "birth_place": "Nottingham", "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues — written \"Regd. Geo.\"; an employer at 24."}],
-   "occupations": [{"occupation": "Decorator and painter", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Kate", "last_name": "Radd", "sex": "F", "born_year": 1869, "born_place": "Newborough, Northamptonshire", "properties": [164],
-   "census": [{"census_year": 1901, "property_id": 164, "relationship": "Servant", "age_at_census": 32, "occupation_at_census": "Cook (domestic)", "birth_place": "Newborough, Northamptonshire", "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Elizabeth", "last_name": "Bingham", "sex": "F", "born_year": 1859, "born_place": "Shireoaks, Nottinghamshire", "properties": [164],
-   "census": [{"census_year": 1901, "property_id": 164, "relationship": "Servant", "age_at_census": 42, "occupation_at_census": "Servant", "birth_place": "Shireoaks, Nottinghamshire", "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Domestic servant", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Jean", "last_name": "Paton", "sex": "F", "born_year": 1825, "born_place": "Scotland", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Head", "marital_status": "Widow", "age_at_census": 76, "birth_place": "Scotland", "source": "1901 census, 17 Lenton Avenue (Dundee House) — transcribed by A. Hagues"}]},
-  {"first_name": "John McC.", "last_name": "Paton", "sex": "M", "born_year": 1853, "born_place": "Wednesbury, Staffordshire", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Son", "marital_status": "Single", "age_at_census": 48, "occupation_at_census": "Mechanical engineer", "birth_place": "Wednesbury, Staffordshire", "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues — written \"Jno. McC.\""}],
-   "occupations": [{"occupation": "Mechanical engineer", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Margaret A. D.", "last_name": "Paton", "sex": "F", "born_year": 1863, "born_place": "Newport, Shropshire", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Daughter", "age_at_census": 38, "birth_place": "Newport, Shropshire", "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Beatrice C.", "last_name": "Paton", "sex": "F", "born_year": 1868, "born_place": "Atherstone, Warwickshire", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Daughter", "age_at_census": 33, "birth_place": "Atherstone, Warwickshire", "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ruth F.", "last_name": "Thompson", "sex": "F", "born_year": 1877, "born_place": "Farnsfield, Nottinghamshire", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "Housemaid (domestic)", "birth_place": "Farnsfield, Nottinghamshire", "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Kate E.", "last_name": "Harvey", "sex": "F", "born_year": 1876, "born_place": "Flintham, Nottinghamshire", "properties": [165],
-   "census": [{"census_year": 1901, "property_id": 165, "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Cook", "birth_place": "Flintham, Nottinghamshire", "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Selina", "last_name": "Buckingham", "sex": "F", "born_year": 1836, "born_place": "Nottingham",
-   "census": [{"census_year": 1901, "unresolved_address": "Clumber Lodge, Lenton Avenue", "relationship": "Head", "marital_status": "Widow", "age_at_census": 65, "occupation_at_census": "Living on own means", "birth_place": "Nottingham", "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues — entered by name with no number, between 17 and 21 in the enumerator's round."}]},
-  {"first_name": "Vincent C.", "last_name": "Buckingham", "sex": "M", "born_year": 1868, "born_place": "Witney, Oxfordshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Clumber Lodge, Lenton Avenue", "relationship": "Son", "marital_status": "Single", "age_at_census": 33, "birth_place": "Witney, Oxfordshire", "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Lily", "last_name": "Buckingham", "sex": "F", "born_year": 1873, "born_place": "Witney, Oxfordshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Clumber Lodge, Lenton Avenue", "relationship": "Daughter", "age_at_census": 28, "birth_place": "Witney, Oxfordshire", "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Harriett", "last_name": "Eaton", "sex": "F", "born_year": 1880, "born_place": "West Hallam, Derbyshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Clumber Lodge, Lenton Avenue", "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Cook (domestic)", "birth_place": "West Hallam, Derbyshire", "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Lizzie", "last_name": "Bradbury", "sex": "F", "born_year": 1883, "born_place": "Burton-on-Trent, Staffordshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Clumber Lodge, Lenton Avenue", "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Housemaid", "birth_place": "Burton-on-Trent, Staffordshire", "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "William", "last_name": "Robinson", "sex": "M", "born_year": 1851, "born_place": "Nottingham", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Head", "marital_status": "Married", "age_at_census": 50, "occupation_at_census": "Wallpaper and stationery merchant", "birth_place": "Nottingham", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues — an employer."}],
-   "occupations": [{"occupation": "Wallpaper and stationery merchant", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Harriet", "last_name": "Robinson", "sex": "F", "born_year": 1869, "born_place": "Harby, Leicestershire", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Wife", "marital_status": "Married", "age_at_census": 32, "birth_place": "Harby, Leicestershire", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Lisle N.", "last_name": "Robinson", "sex": "M", "born_year": 1891, "born_place": "West Bridgford, Nottinghamshire", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Son", "marital_status": "Single", "age_at_census": 10, "birth_place": "West Bridgford, Nottinghamshire", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "May Kate", "last_name": "Robinson", "sex": "F", "born_year": 1897, "born_place": "Nottingham", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 4, "birth_place": "Nottingham", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Madge", "last_name": "Robinson", "sex": "F", "born_year": 1898, "born_place": "Nottingham", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Daughter", "age_at_census": 3, "birth_place": "Nottingham", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Minnie B.", "last_name": "Robinson", "sex": "F", "born_year": 1900, "born_place": "Nottingham", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Daughter", "age_at_census": 1, "birth_place": "Nottingham", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Minnie P.", "last_name": "Barker", "sex": "F", "born_year": 1876, "born_place": "Harby, Leicestershire", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Sister-in-law", "age_at_census": 25, "birth_place": "Harby, Leicestershire", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues — born in the same village as the wife of the house."}]},
-  {"first_name": "Ethel M.", "last_name": "Hardstaff", "sex": "F", "born_year": 1879, "born_place": "Hucknall Torkard, Nottinghamshire", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Servant", "age_at_census": 22, "occupation_at_census": "Nurse (domestic)", "birth_place": "Hucknall Torkard, Nottinghamshire", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Nurse", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Rose E.", "last_name": "Moulds", "sex": "F", "born_year": 1883, "born_place": "Harby, Leicestershire", "properties": [167],
-   "census": [{"census_year": 1901, "property_id": 167, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Servant", "birth_place": "Harby, Leicestershire", "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Domestic servant", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Sarah", "last_name": "Guilford", "sex": "F", "born_year": 1836, "born_place": "Nottingham", "properties": [168],
-   "census": [{"census_year": 1901, "property_id": 168, "relationship": "Head", "marital_status": "Single", "age_at_census": 65, "occupation_at_census": "Living on own means", "birth_place": "Nottingham", "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Hannah", "last_name": "Guilford", "sex": "F", "born_year": 1840, "born_place": "Nottingham", "properties": [168],
-   "census": [{"census_year": 1901, "property_id": 168, "relationship": "Sister", "age_at_census": 61, "birth_place": "Nottingham", "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ellen", "last_name": "Appleyard", "sex": "F", "born_year": 1869, "born_place": "Fishlake, Yorkshire", "properties": [168],
-   "census": [{"census_year": 1901, "property_id": 168, "relationship": "Servant", "age_at_census": 32, "occupation_at_census": "Cook (domestic)", "birth_place": "Fishlake, Yorkshire", "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Edith", "last_name": "Carter", "sex": "F", "born_year": 1875, "born_place": "Kirkby, Nottinghamshire", "properties": [168],
-   "census": [{"census_year": 1901, "property_id": 168, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Housemaid", "birth_place": "Kirkby, Nottinghamshire", "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Henry", "last_name": "Crendson", "sex": "M", "born_year": 1853, "born_place": "Kendal, Westmorland", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Head", "marital_status": "Married", "age_at_census": 48, "occupation_at_census": "Solicitor", "birth_place": "Kendal, Westmorland", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues — surname uncertain, read as Crendson; an employer."}],
-   "occupations": [{"occupation": "Solicitor", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Margaret C.", "last_name": "Crendson", "sex": "F", "born_year": 1854, "born_place": "Scotland", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Wife", "marital_status": "Married", "age_at_census": 47, "birth_place": "Scotland", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Dorothea M. L.", "last_name": "Crendson", "sex": "F", "born_year": 1887, "born_place": "Bristol", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 14, "birth_place": "Bristol", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Henry A. F.", "last_name": "Crendson", "sex": "M", "born_year": 1898, "born_place": "Scotland", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Son", "age_at_census": 3, "birth_place": "Scotland", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Sarah A.", "last_name": "Turrill", "sex": "F", "born_year": 1867, "born_place": "Melton Mowbray, Leicestershire", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Servant", "age_at_census": 34, "occupation_at_census": "Nurse (domestic)", "birth_place": "Melton Mowbray, Leicestershire", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Nurse", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alice A.", "last_name": "Doughty", "sex": "F", "born_year": 1875, "born_place": "North Hykeham, Lincolnshire", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "Parlourmaid", "birth_place": "North Hykeham, Lincolnshire", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Parlourmaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Ada A.", "last_name": "Meade", "sex": "F", "born_year": 1868, "born_place": "Bayswater, London", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Servant", "age_at_census": 33, "occupation_at_census": "Cook", "birth_place": "Bayswater, London", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Maggie", "last_name": "Hind", "sex": "F", "born_year": 1882, "born_place": "Worksop, Nottinghamshire", "properties": [169],
-   "census": [{"census_year": 1901, "property_id": 169, "relationship": "Servant", "age_at_census": 19, "occupation_at_census": "Housemaid", "birth_place": "Worksop, Nottinghamshire", "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Joseph", "last_name": "Walker", "sex": "M", "born_year": 1830, "born_place": "Kirby Bellars, Leicestershire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Head", "marital_status": "Married", "age_at_census": 71, "occupation_at_census": "Estate agent and surveyor", "birth_place": "Kirby Bellars, Leicestershire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — an employer at 71."}],
-   "occupations": [{"occupation": "Estate agent and surveyor", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Sarah", "last_name": "Walker", "sex": "F", "born_year": 1844, "born_place": "Flawford, Nottinghamshire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Wife", "marital_status": "Married", "age_at_census": 57, "birth_place": "Flawford, Nottinghamshire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Gertrude", "last_name": "Richardson", "sex": "F", "born_year": 1875, "born_place": "Nottinghamshire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Daughter", "age_at_census": 26, "birth_place": "Nottinghamshire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — a married daughter living at home, so she keeps her husband's surname rather than her father's."}]},
-  {"first_name": "William Henry", "last_name": "Richardson", "sex": "M", "born_year": 1872, "born_place": "Quarndon, Derbyshire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Son-in-law", "age_at_census": 29, "occupation_at_census": "Leather merchant", "birth_place": "Quarndon, Derbyshire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — written \"Wm. Hy.\"; an employer."}],
-   "occupations": [{"occupation": "Leather merchant", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alice Jane", "last_name": "Weller", "sex": "F", "born_year": 1863, "born_place": "Alvaston, Derbyshire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Visitor", "marital_status": "Married", "age_at_census": 38, "occupation_at_census": "Monthly nurse", "birth_place": "Alvaston, Derbyshire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — a monthly nurse on her own account, which usually means a birth in the house."}],
-   "occupations": [{"occupation": "Monthly nurse", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Charlotte", "last_name": "Colles", "sex": "F", "born_year": 1861, "born_place": "Carlton, Nottinghamshire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Servant", "marital_status": "Single", "age_at_census": 40, "occupation_at_census": "Cook (domestic)", "birth_place": "Carlton, Nottinghamshire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — surname uncertain."}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Louisa", "last_name": "Williamson", "sex": "F", "born_year": 1883, "born_place": "Wigan, Lancashire", "properties": [170],
-   "census": [{"census_year": 1901, "property_id": 170, "relationship": "Servant", "age_at_census": 18, "occupation_at_census": "Housemaid", "birth_place": "Wigan, Lancashire", "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Walter", "last_name": "Sampson", "sex": "M", "born_year": 1847, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Head", "marital_status": "Married", "age_at_census": 54, "occupation_at_census": "Lace manufacturer", "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — an employer."}],
-   "occupations": [{"occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "May S.", "last_name": "Sampson", "sex": "F", "born_year": 1844, "born_place": "Old Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Wife", "marital_status": "Married", "age_at_census": 57, "birth_place": "Old Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Albert E.", "last_name": "Sampson", "sex": "M", "born_year": 1875, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Son", "marital_status": "Single", "age_at_census": 26, "occupation_at_census": "Lace warehouseman", "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Lace warehouseman", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "May", "last_name": "Sampson", "sex": "F", "born_year": 1877, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Daughter", "age_at_census": 24, "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — mother and daughter are both May."}]},
-  {"first_name": "Percy", "last_name": "Sampson", "sex": "M", "born_year": 1878, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Son", "age_at_census": 23, "occupation_at_census": "Lace manufacturer", "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — working for his father."}],
-   "occupations": [{"occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Flora", "last_name": "Sampson", "sex": "F", "born_year": 1881, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Daughter", "age_at_census": 20, "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Effie", "last_name": "Sampson", "sex": "F", "born_year": 1885, "born_place": "New Lenton, Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 16, "birth_place": "New Lenton, Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Florence", "last_name": "Hancock", "sex": "F", "born_year": 1880, "born_place": "Stourbridge, Worcestershire", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "Housemaid (domestic)", "birth_place": "Stourbridge, Worcestershire", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Emma", "last_name": "Allen", "sex": "F", "born_year": 1867, "born_place": "Nottingham", "properties": [171],
-   "census": [{"census_year": 1901, "property_id": 171, "relationship": "Servant", "age_at_census": 34, "occupation_at_census": "Cook", "birth_place": "Nottingham", "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "William H.", "last_name": "Bradwell", "sex": "M", "born_year": 1868, "born_place": "Southwell, Nottinghamshire", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Head", "marital_status": "Married", "age_at_census": 33, "occupation_at_census": "Auctioneer", "birth_place": "Southwell, Nottinghamshire", "source": "1901 census, 31 Lenton Avenue (Greylands) — transcribed by A. Hagues — an employer."}],
-   "occupations": [{"occupation": "Auctioneer", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Carrie", "last_name": "Bradwell", "sex": "F", "born_year": 1869, "born_place": "Nottingham", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Wife", "marital_status": "Married", "age_at_census": 32, "birth_place": "Nottingham", "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Joyce M.", "last_name": "Bradwell", "sex": "F", "born_year": 1893, "born_place": "Nottingham", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 8, "birth_place": "Nottingham", "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Doris K.", "last_name": "Bradwell", "sex": "F", "born_year": 1897, "born_place": "Nottingham", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Daughter", "age_at_census": 4, "birth_place": "Nottingham", "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ellen", "last_name": "Winter", "sex": "F", "born_year": 1870, "born_place": "Hougham, Lincolnshire", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Servant", "age_at_census": 31, "occupation_at_census": "Cook (domestic)", "birth_place": "Hougham, Lincolnshire", "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues — almost certainly sister to Carrie Winter, the housemaid, who was born in the same village."}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Carrie", "last_name": "Winter", "sex": "F", "born_year": 1872, "born_place": "Hougham, Lincolnshire", "properties": [172],
-   "census": [{"census_year": 1901, "property_id": 172, "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "Housemaid", "birth_place": "Hougham, Lincolnshire", "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Frederic", "last_name": "Wadsworth", "sex": "M", "born_year": 1838, "born_place": "Nottingham",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Head", "marital_status": "Married", "age_at_census": 63, "occupation_at_census": "Solicitor", "birth_place": "Nottingham", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — entered by name with no number, after 31 in the enumerator's round; an employer."}],
-   "occupations": [{"occupation": "Solicitor", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Ellen Fox", "last_name": "Wadsworth", "sex": "F", "born_year": 1845, "born_place": "Kendal, Westmorland",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Wife", "marital_status": "Married", "age_at_census": 56, "birth_place": "Kendal, Westmorland", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ellen B.", "last_name": "Wadsworth", "sex": "F", "born_year": 1869, "born_place": "Nottingham",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Daughter", "marital_status": "Single", "age_at_census": 32, "birth_place": "Nottingham", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Frederick A.", "last_name": "Wadsworth", "sex": "M", "born_year": 1872, "born_place": "Nottingham",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Son", "age_at_census": 29, "occupation_at_census": "Solicitor", "birth_place": "Nottingham", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — written \"Fredk A.\"; in practice with his father, by the look of it."}],
-   "occupations": [{"occupation": "Solicitor", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Mary L.", "last_name": "Wadsworth", "sex": "F", "born_year": 1879, "born_place": "Nottingham",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Daughter", "age_at_census": 22, "birth_place": "Nottingham", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ethel", "last_name": "Johnson", "sex": "F", "born_year": 1878, "born_place": "Buckminster, Leicestershire",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Lady's maid (domestic)", "birth_place": "Buckminster, Leicestershire", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Lady's maid", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Mary", "last_name": "Higgs", "sex": "F", "born_year": 1876, "born_place": "Staffordshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "Cook", "birth_place": "Staffordshire", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — the place after the county is unclear."}],
-   "occupations": [{"occupation": "Cook", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alice", "last_name": "Savage", "sex": "F", "born_year": 1878, "born_place": "Skipton, Yorkshire",
-   "census": [{"census_year": 1901, "unresolved_address": "Newlands, Lenton Avenue", "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "Housemaid", "birth_place": "Skipton, Yorkshire", "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Housemaid", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Helen M.", "last_name": "Parkin", "sex": "F", "born_year": 1871, "born_place": "Nottingham", "properties": [372],
-   "census": [{"census_year": 1901, "property_id": 372, "relationship": "Head", "marital_status": "Single", "age_at_census": 30, "occupation_at_census": "Living on own means", "birth_place": "Nottingham", "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues — three unmarried sisters keeping house together, two of them teaching."}]},
-  {"first_name": "Margaret A.", "last_name": "Parkin", "sex": "F", "born_year": 1878, "born_place": "Ramsgate, Kent", "properties": [372],
-   "census": [{"census_year": 1901, "property_id": 372, "relationship": "Sister", "age_at_census": 23, "occupation_at_census": "Governess, private school", "birth_place": "Ramsgate, Kent", "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Governess", "employer": "A private school", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Katharine J.", "last_name": "Parkin", "sex": "F", "born_year": 1882, "born_place": "Arnold, Nottinghamshire", "properties": [372],
-   "census": [{"census_year": 1901, "property_id": 372, "relationship": "Sister", "age_at_census": 19, "occupation_at_census": "Pupil teacher (School Board)", "birth_place": "Arnold, Nottinghamshire", "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues — returned as \"S.B.\", the School Board."}],
-   "occupations": [{"occupation": "Pupil teacher", "employer": "School Board", "from_year": 1901, "to_year": 1901}]},
-
-  {"first_name": "Henry", "last_name": "Rawson", "sex": "M", "born_year": 1853, "born_place": "Southwell, Nottinghamshire", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Head", "marital_status": "Married", "age_at_census": 48, "occupation_at_census": "Gardener", "birth_place": "Southwell, Nottinghamshire", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Gardener", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Elizabeth", "last_name": "Rawson", "sex": "F", "born_year": 1855, "born_place": "Blidworth, Nottinghamshire", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Wife", "marital_status": "Married", "age_at_census": 46, "birth_place": "Blidworth, Nottinghamshire", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ernest H.", "last_name": "Rawson", "sex": "M", "born_year": 1885, "born_place": "Nottingham", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Son", "marital_status": "Single", "age_at_census": 16, "occupation_at_census": "Lace warehouseman", "birth_place": "Nottingham", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Lace warehouseman", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Edith H.", "last_name": "Rawson", "sex": "F", "born_year": 1882, "born_place": "Nottingham", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Daughter", "age_at_census": 19, "birth_place": "Nottingham", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Mabel", "last_name": "Rawson", "sex": "F", "born_year": 1891, "born_place": "Nottingham", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Daughter", "age_at_census": 10, "birth_place": "Nottingham", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Ethel", "last_name": "Rawson", "sex": "F", "born_year": 1895, "born_place": "Nottingham", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Daughter", "age_at_census": 6, "birth_place": "Nottingham", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}]},
-  {"first_name": "Alice M.", "last_name": "Rawson", "sex": "F", "born_year": 1900, "born_place": "Nottingham", "properties": [371],
-   "census": [{"census_year": 1901, "property_id": 371, "relationship": "Daughter", "age_at_census": 1, "birth_place": "Nottingham", "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"}]},
-
-  {"first_name": "John", "last_name": "Kirk", "sex": "M", "born_year": 1842, "born_place": "Arnold, Nottinghamshire", "properties": [370],
-   "census": [{"census_year": 1901, "property_id": 370, "relationship": "Head", "marital_status": "Widower", "age_at_census": 59, "occupation_at_census": "Coachman (domestic)", "birth_place": "Arnold, Nottinghamshire", "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Coachman", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Alice", "last_name": "Kirk", "sex": "F", "born_year": 1876, "born_place": "Radford, Nottingham", "properties": [370],
-   "census": [{"census_year": 1901, "property_id": 370, "relationship": "Daughter", "marital_status": "Single", "age_at_census": 25, "birth_place": "Radford, Nottingham", "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues — the page writes New Radford."}]},
-  {"first_name": "Annie", "last_name": "Kirk", "sex": "F", "born_year": 1879, "born_place": "Radford, Nottingham", "properties": [370],
-   "census": [{"census_year": 1901, "property_id": 370, "relationship": "Daughter", "age_at_census": 22, "occupation_at_census": "Plain lace net mender", "birth_place": "Radford, Nottingham", "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Lace net mender", "from_year": 1901, "to_year": 1901}]},
-  {"first_name": "Arthur", "last_name": "Kirk", "sex": "M", "born_year": 1882, "born_place": "Radford, Nottingham", "properties": [370],
-   "census": [{"census_year": 1901, "property_id": 370, "relationship": "Son", "age_at_census": 19, "occupation_at_census": "Sorting and telegraph clerk", "birth_place": "Radford, Nottingham", "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"}],
-   "occupations": [{"occupation": "Sorting and telegraph clerk", "from_year": 1901, "to_year": 1901}]}
+  {
+   "first_name": "Henry R.",
+   "last_name": "Thorpe",
+   "sex": "M",
+   "born_year": 1836,
+   "born_place": "Nottingham",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 159,
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 65,
+     "occupation_at_census": "Solicitor (retired)",
+     "birth_place": "Nottingham (St Mary's)",
+     "source": "1901 census, 5 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Solicitor",
+     "to_year": 1901,
+     "notes": "Returned as retired in 1901."
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Barker",
+   "sex": "F",
+   "born_year": 1841,
+   "born_place": "Normanton-on-Soar, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 159,
+     "relationship": "Servant",
+     "age_at_census": 60,
+     "occupation_at_census": "Housekeeper (domestic)",
+     "birth_place": "Normanton-on-Soar, Nottinghamshire",
+     "source": "1901 census, 5 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housekeeper",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Albert W.",
+   "last_name": "Shelton",
+   "sex": "M",
+   "born_year": 1863,
+   "born_place": "Nottingham",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Estate agent",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — returned as an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Estate agent",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Shelton",
+   "sex": "F",
+   "born_year": 1855,
+   "born_place": "Hyson Green, Nottingham",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "birth_place": "Hyson Green, Nottingham",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Winifred M.",
+   "last_name": "Shelton",
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Nottingham",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles William",
+   "last_name": "Shelton",
+   "sex": "M",
+   "born_year": 1890,
+   "born_place": "Nottingham",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 11,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — written \"Chas. Wm.\""
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Green",
+   "sex": "F",
+   "born_year": 1873,
+   "born_place": "Felsted, Essex",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Servant",
+     "age_at_census": 28,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Felsted, Essex",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues — written \"Felstead\"."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Katherine",
+   "last_name": "Hill",
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Scottlethorpe, Lincolnshire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 160,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Cook",
+     "birth_place": "Scottlethorpe, Lincolnshire",
+     "source": "1901 census, 7 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alfred P.",
+   "last_name": "Wood",
+   "sex": "M",
+   "born_year": 1845,
+   "born_place": "Kennington, London",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 56,
+     "occupation_at_census": "Colliery agent",
+     "birth_place": "Kennington, London",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — working at home."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Colliery agent",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alfred",
+   "last_name": "Wood",
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "Beeston, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "birth_place": "Beeston, Nottinghamshire",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — the younger Alfred, of the same name as his father."
+    }
+   ]
+  },
+  {
+   "first_name": "Percy",
+   "last_name": "Wood",
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "Beeston, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Beeston, Nottinghamshire",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues — both sons are entered as 26."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Solicitor",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Elsie",
+   "last_name": "Wood",
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "Beeston, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Daughter",
+     "age_at_census": 21,
+     "birth_place": "Beeston, Nottinghamshire",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sydney",
+   "last_name": "Wood",
+   "sex": "M",
+   "born_year": 1894,
+   "born_place": "Nottingham",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Son",
+     "age_at_census": 7,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Hayes",
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Sutton-on-Trent, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Sutton-on-Trent, Nottinghamshire",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alice M.",
+   "last_name": "Ellis",
+   "sex": "F",
+   "born_year": 1877,
+   "born_place": "Lincoln",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 161,
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Lincoln",
+     "source": "1901 census, 9 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Robert",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1835,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 66,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue (Fernleigh) — transcribed by A. Hagues — an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1845,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance E.",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 32,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas F.",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1871,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Lace dresser",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace dresser",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen E.",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1874,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Daughter",
+     "age_at_census": 27,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard F.",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1880,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Son",
+     "age_at_census": 21,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Winifred M.",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1882,
+   "born_place": "Nottingham",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Daughter",
+     "age_at_census": 19,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Jackson",
+   "sex": "F",
+   "born_year": 1881,
+   "born_place": "Croft, Lincolnshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Croft, Lincolnshire",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Blanche",
+   "last_name": "Weldon",
+   "sex": "F",
+   "born_year": 1882,
+   "born_place": "Long Eaton, Derbyshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 162,
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Cook",
+     "birth_place": "Long Eaton, Derbyshire",
+     "source": "1901 census, 11 Lenton Avenue — transcribed by A. Hagues — the page strikes out Derbyshire and writes Nottinghamshire; Long Eaton is in Derbyshire, so the correction on the page is the error."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Gustave A.",
+   "last_name": "Throsheim",
+   "sex": "M",
+   "born_year": 1855,
+   "born_place": "Germany",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Lace merchant",
+     "birth_place": "Germany (British subject)",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — surname uncertain, read as Throsheim; an employer, and a naturalised British subject."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace merchant",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline H.",
+   "last_name": "Throsheim",
+   "sex": "F",
+   "born_year": 1859,
+   "born_place": "Colwick, Nottinghamshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "birth_place": "Colwick, Nottinghamshire",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Katharine",
+   "last_name": "Throsheim",
+   "sex": "F",
+   "born_year": 1899,
+   "born_place": "Nottingham",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Daughter",
+     "age_at_census": 2,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Horace",
+   "last_name": "Rodd",
+   "sex": "M",
+   "born_year": 1861,
+   "born_place": "Colwick, Nottinghamshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Visitor",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "birth_place": "Colwick, Nottinghamshire",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — born in the same village as the wife of the house."
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Venles",
+   "sex": "F",
+   "born_year": 1872,
+   "born_place": "East Bridgford, Nottinghamshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 29,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues — surname uncertain."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett A.",
+   "last_name": "Taylor",
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Kirton, Lincolnshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Kirton, Lincolnshire",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Thirza",
+   "last_name": "Trevor",
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Nottingham",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 163,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 13 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Nurse",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Susan",
+   "last_name": "Sparrow",
+   "sex": "F",
+   "born_year": 1847,
+   "born_place": "Wednesbury, Staffordshire",
+   "properties": [
+    164
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 164,
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 54,
+     "birth_place": "Wednesbury, Staffordshire",
+     "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Reginald George",
+   "last_name": "Sparrow",
+   "sex": "M",
+   "born_year": 1877,
+   "born_place": "Nottingham",
+   "properties": [
+    164
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 164,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Decorator, painter",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues — written \"Regd. Geo.\"; an employer at 24."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Decorator and painter",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Radd",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Newborough, Northamptonshire",
+   "properties": [
+    164
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 164,
+     "relationship": "Servant",
+     "age_at_census": 32,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Newborough, Northamptonshire",
+     "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Bingham",
+   "sex": "F",
+   "born_year": 1859,
+   "born_place": "Shireoaks, Nottinghamshire",
+   "properties": [
+    164
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 164,
+     "relationship": "Servant",
+     "age_at_census": 42,
+     "occupation_at_census": "Servant",
+     "birth_place": "Shireoaks, Nottinghamshire",
+     "source": "1901 census, 15 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Domestic servant",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Jean",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1825,
+   "born_place": "Scotland",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 76,
+     "birth_place": "Scotland",
+     "source": "1901 census, 17 Lenton Avenue (Dundee House) — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John McC.",
+   "last_name": "Paton",
+   "sex": "M",
+   "born_year": 1853,
+   "born_place": "Wednesbury, Staffordshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 48,
+     "occupation_at_census": "Mechanical engineer",
+     "birth_place": "Wednesbury, Staffordshire",
+     "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues — written \"Jno. McC.\""
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Mechanical engineer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret A. D.",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1863,
+   "born_place": "Newport, Shropshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Daughter",
+     "age_at_census": 38,
+     "birth_place": "Newport, Shropshire",
+     "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Beatrice C.",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1868,
+   "born_place": "Atherstone, Warwickshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Daughter",
+     "age_at_census": 33,
+     "birth_place": "Atherstone, Warwickshire",
+     "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ruth F.",
+   "last_name": "Thompson",
+   "sex": "F",
+   "born_year": 1877,
+   "born_place": "Farnsfield, Nottinghamshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Farnsfield, Nottinghamshire",
+     "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Kate E.",
+   "last_name": "Harvey",
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Flintham, Nottinghamshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 165,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Cook",
+     "birth_place": "Flintham, Nottinghamshire",
+     "source": "1901 census, 17 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Selina",
+   "last_name": "Buckingham",
+   "sex": "F",
+   "born_year": 1836,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 65,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham",
+     "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues — entered by name with no number, between 17 and 21 in the enumerator's round."
+    }
+   ]
+  },
+  {
+   "first_name": "Vincent C.",
+   "last_name": "Buckingham",
+   "sex": "M",
+   "born_year": 1868,
+   "born_place": "Witney, Oxfordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 33,
+     "birth_place": "Witney, Oxfordshire",
+     "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lily",
+   "last_name": "Buckingham",
+   "sex": "F",
+   "born_year": 1873,
+   "born_place": "Witney, Oxfordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 28,
+     "birth_place": "Witney, Oxfordshire",
+     "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Eaton",
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "West Hallam, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "West Hallam, Derbyshire",
+     "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Bradbury",
+   "sex": "F",
+   "born_year": 1883,
+   "born_place": "Burton-on-Trent, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Burton-on-Trent, Staffordshire",
+     "source": "1901 census, Clumber Lodge, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Robinson",
+   "sex": "M",
+   "born_year": 1851,
+   "born_place": "Nottingham",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 50,
+     "occupation_at_census": "Wallpaper and stationery merchant",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues — an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Wallpaper and stationery merchant",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Harriet",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Harby, Leicestershire",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 32,
+     "birth_place": "Harby, Leicestershire",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lisle N.",
+   "last_name": "Robinson",
+   "sex": "M",
+   "born_year": 1891,
+   "born_place": "West Bridgford, Nottinghamshire",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 10,
+     "birth_place": "West Bridgford, Nottinghamshire",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "May Kate",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1897,
+   "born_place": "Nottingham",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 4,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Madge",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1898,
+   "born_place": "Nottingham",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Daughter",
+     "age_at_census": 3,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Minnie B.",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1900,
+   "born_place": "Nottingham",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Daughter",
+     "age_at_census": 1,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Minnie P.",
+   "last_name": "Barker",
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Harby, Leicestershire",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Sister-in-law",
+     "age_at_census": 25,
+     "birth_place": "Harby, Leicestershire",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues — born in the same village as the wife of the house."
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel M.",
+   "last_name": "Hardstaff",
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Hucknall Torkard, Nottinghamshire",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Nurse (domestic)",
+     "birth_place": "Hucknall Torkard, Nottinghamshire",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Nurse",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "id": 943
+  },
+  {
+   "first_name": "Rose E.",
+   "last_name": "Moulds",
+   "sex": "F",
+   "born_year": 1883,
+   "born_place": "Harby, Leicestershire",
+   "properties": [
+    167
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 167,
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "Servant",
+     "birth_place": "Harby, Leicestershire",
+     "source": "1901 census, 21 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Domestic servant",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Guilford",
+   "sex": "F",
+   "born_year": 1836,
+   "born_place": "Nottingham",
+   "properties": [
+    168
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 168,
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 65,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Guilford",
+   "sex": "F",
+   "born_year": 1840,
+   "born_place": "Nottingham",
+   "properties": [
+    168
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 168,
+     "relationship": "Sister",
+     "age_at_census": 61,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Appleyard",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Fishlake, Yorkshire",
+   "properties": [
+    168
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 168,
+     "relationship": "Servant",
+     "age_at_census": 32,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Fishlake, Yorkshire",
+     "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Carter",
+   "sex": "F",
+   "born_year": 1875,
+   "born_place": "Kirkby, Nottinghamshire",
+   "properties": [
+    168
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 168,
+     "relationship": "Servant",
+     "age_at_census": 26,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Kirkby, Nottinghamshire",
+     "source": "1901 census, 23 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Crendson",
+   "sex": "M",
+   "born_year": 1853,
+   "born_place": "Kendal, Westmorland",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Kendal, Westmorland",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues — surname uncertain, read as Crendson; an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Solicitor",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret C.",
+   "last_name": "Crendson",
+   "sex": "F",
+   "born_year": 1854,
+   "born_place": "Scotland",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "birth_place": "Scotland",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Dorothea M. L.",
+   "last_name": "Crendson",
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Bristol",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "birth_place": "Bristol",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry A. F.",
+   "last_name": "Crendson",
+   "sex": "M",
+   "born_year": 1898,
+   "born_place": "Scotland",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Scotland",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah A.",
+   "last_name": "Turrill",
+   "sex": "F",
+   "born_year": 1867,
+   "born_place": "Melton Mowbray, Leicestershire",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Servant",
+     "age_at_census": 34,
+     "occupation_at_census": "Nurse (domestic)",
+     "birth_place": "Melton Mowbray, Leicestershire",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Nurse",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alice A.",
+   "last_name": "Doughty",
+   "sex": "F",
+   "born_year": 1875,
+   "born_place": "North Hykeham, Lincolnshire",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Servant",
+     "age_at_census": 26,
+     "occupation_at_census": "Parlourmaid",
+     "birth_place": "North Hykeham, Lincolnshire",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Parlourmaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Ada A.",
+   "last_name": "Meade",
+   "sex": "F",
+   "born_year": 1868,
+   "born_place": "Bayswater, London",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Servant",
+     "age_at_census": 33,
+     "occupation_at_census": "Cook",
+     "birth_place": "Bayswater, London",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Maggie",
+   "last_name": "Hind",
+   "sex": "F",
+   "born_year": 1882,
+   "born_place": "Worksop, Nottinghamshire",
+   "properties": [
+    169
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 169,
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Worksop, Nottinghamshire",
+     "source": "1901 census, 25 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1830,
+   "born_place": "Kirby Bellars, Leicestershire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 71,
+     "occupation_at_census": "Estate agent and surveyor",
+     "birth_place": "Kirby Bellars, Leicestershire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — an employer at 71."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Estate agent and surveyor",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Walker",
+   "sex": "F",
+   "born_year": 1844,
+   "born_place": "Flawford, Nottinghamshire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "birth_place": "Flawford, Nottinghamshire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Richardson",
+   "sex": "F",
+   "born_year": 1875,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Daughter",
+     "age_at_census": 26,
+     "birth_place": "Nottinghamshire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — a married daughter living at home, so she keeps her husband's surname rather than her father's."
+    }
+   ]
+  },
+  {
+   "first_name": "William Henry",
+   "last_name": "Richardson",
+   "sex": "M",
+   "born_year": 1872,
+   "born_place": "Quarndon, Derbyshire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Son-in-law",
+     "age_at_census": 29,
+     "occupation_at_census": "Leather merchant",
+     "birth_place": "Quarndon, Derbyshire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — written \"Wm. Hy.\"; an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Leather merchant",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alice Jane",
+   "last_name": "Weller",
+   "sex": "F",
+   "born_year": 1863,
+   "born_place": "Alvaston, Derbyshire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Visitor",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Monthly nurse",
+     "birth_place": "Alvaston, Derbyshire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — a monthly nurse on her own account, which usually means a birth in the house."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Monthly nurse",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Colles",
+   "sex": "F",
+   "born_year": 1861,
+   "born_place": "Carlton, Nottinghamshire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 40,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Carlton, Nottinghamshire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues — surname uncertain."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Williamson",
+   "sex": "F",
+   "born_year": 1883,
+   "born_place": "Wigan, Lancashire",
+   "properties": [
+    170
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 170,
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Wigan, Lancashire",
+     "source": "1901 census, 27 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Walter",
+   "last_name": "Sampson",
+   "sex": "M",
+   "born_year": 1847,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "May S.",
+   "last_name": "Sampson",
+   "sex": "F",
+   "born_year": 1844,
+   "born_place": "Old Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "birth_place": "Old Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Albert E.",
+   "last_name": "Sampson",
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Lace warehouseman",
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace warehouseman",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "May",
+   "last_name": "Sampson",
+   "sex": "F",
+   "born_year": 1877,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Daughter",
+     "age_at_census": 24,
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — mother and daughter are both May."
+    }
+   ]
+  },
+  {
+   "first_name": "Percy",
+   "last_name": "Sampson",
+   "sex": "M",
+   "born_year": 1878,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Son",
+     "age_at_census": 23,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues — working for his father."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Flora",
+   "last_name": "Sampson",
+   "sex": "F",
+   "born_year": 1881,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Daughter",
+     "age_at_census": 20,
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Effie",
+   "last_name": "Sampson",
+   "sex": "F",
+   "born_year": 1885,
+   "born_place": "New Lenton, Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "birth_place": "New Lenton, Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Hancock",
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "Stourbridge, Worcestershire",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Stourbridge, Worcestershire",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Allen",
+   "sex": "F",
+   "born_year": 1867,
+   "born_place": "Nottingham",
+   "properties": [
+    171
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 171,
+     "relationship": "Servant",
+     "age_at_census": 34,
+     "occupation_at_census": "Cook",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 29 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "William H.",
+   "last_name": "Bradwell",
+   "sex": "M",
+   "born_year": 1868,
+   "born_place": "Southwell, Nottinghamshire",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "occupation_at_census": "Auctioneer",
+     "birth_place": "Southwell, Nottinghamshire",
+     "source": "1901 census, 31 Lenton Avenue (Greylands) — transcribed by A. Hagues — an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Auctioneer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "id": 778
+  },
+  {
+   "first_name": "Carrie",
+   "last_name": "Bradwell",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Nottingham",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 32,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "id": 779
+  },
+  {
+   "first_name": "Joyce M.",
+   "last_name": "Bradwell",
+   "sex": "F",
+   "born_year": 1893,
+   "born_place": "Nottingham",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 8,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "id": 1387
+  },
+  {
+   "first_name": "Doris K.",
+   "last_name": "Bradwell",
+   "sex": "F",
+   "born_year": 1897,
+   "born_place": "Nottingham",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "id": 780
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Winter",
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Hougham, Lincolnshire",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Hougham, Lincolnshire",
+     "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues — almost certainly sister to Carrie Winter, the housemaid, who was born in the same village."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Carrie",
+   "last_name": "Winter",
+   "sex": "F",
+   "born_year": 1872,
+   "born_place": "Hougham, Lincolnshire",
+   "properties": [
+    172
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 172,
+     "relationship": "Servant",
+     "age_at_census": 29,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Hougham, Lincolnshire",
+     "source": "1901 census, 31 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Frederic",
+   "last_name": "Wadsworth",
+   "sex": "M",
+   "born_year": 1838,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 63,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — entered by name with no number, after 31 in the enumerator's round; an employer."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Solicitor",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen Fox",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1845,
+   "born_place": "Kendal, Westmorland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Kendal, Westmorland",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen B.",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 32,
+     "birth_place": "Nottingham",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick A.",
+   "last_name": "Wadsworth",
+   "sex": "M",
+   "born_year": 1872,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 29,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — written \"Fredk A.\"; in practice with his father, by the look of it."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Solicitor",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Mary L.",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 22,
+     "birth_place": "Nottingham",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel",
+   "last_name": "Johnson",
+   "sex": "F",
+   "born_year": 1878,
+   "born_place": "Buckminster, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Lady's maid (domestic)",
+     "birth_place": "Buckminster, Leicestershire",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lady's maid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Higgs",
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Cook",
+     "birth_place": "Staffordshire",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues — the place after the county is unclear."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Cook",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Savage",
+   "sex": "F",
+   "born_year": 1878,
+   "born_place": "Skipton, Yorkshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newlands, Lenton Avenue",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Skipton, Yorkshire",
+     "source": "1901 census, Newlands, Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Housemaid",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Helen M.",
+   "last_name": "Parkin",
+   "sex": "F",
+   "born_year": 1871,
+   "born_place": "Nottingham",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 372,
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues — three unmarried sisters keeping house together, two of them teaching."
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret A.",
+   "last_name": "Parkin",
+   "sex": "F",
+   "born_year": 1878,
+   "born_place": "Ramsgate, Kent",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 372,
+     "relationship": "Sister",
+     "age_at_census": 23,
+     "occupation_at_census": "Governess, private school",
+     "birth_place": "Ramsgate, Kent",
+     "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Governess",
+     "employer": "A private school",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Katharine J.",
+   "last_name": "Parkin",
+   "sex": "F",
+   "born_year": 1882,
+   "born_place": "Arnold, Nottinghamshire",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 372,
+     "relationship": "Sister",
+     "age_at_census": 19,
+     "occupation_at_census": "Pupil teacher (School Board)",
+     "birth_place": "Arnold, Nottinghamshire",
+     "source": "1901 census, 14 Lenton Avenue — transcribed by A. Hagues — returned as \"S.B.\", the School Board."
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Pupil teacher",
+     "employer": "School Board",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Rawson",
+   "sex": "M",
+   "born_year": 1853,
+   "born_place": "Southwell, Nottinghamshire",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Gardener",
+     "birth_place": "Southwell, Nottinghamshire",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Gardener",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Rawson",
+   "sex": "F",
+   "born_year": 1855,
+   "born_place": "Blidworth, Nottinghamshire",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "birth_place": "Blidworth, Nottinghamshire",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ernest H.",
+   "last_name": "Rawson",
+   "sex": "M",
+   "born_year": 1885,
+   "born_place": "Nottingham",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Lace warehouseman",
+     "birth_place": "Nottingham",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace warehouseman",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Edith H.",
+   "last_name": "Rawson",
+   "sex": "F",
+   "born_year": 1882,
+   "born_place": "Nottingham",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Daughter",
+     "age_at_census": 19,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel",
+   "last_name": "Rawson",
+   "sex": "F",
+   "born_year": 1891,
+   "born_place": "Nottingham",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel",
+   "last_name": "Rawson",
+   "sex": "F",
+   "born_year": 1895,
+   "born_place": "Nottingham",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice M.",
+   "last_name": "Rawson",
+   "sex": "F",
+   "born_year": 1900,
+   "born_place": "Nottingham",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 371,
+     "relationship": "Daughter",
+     "age_at_census": 1,
+     "birth_place": "Nottingham",
+     "source": "1901 census, 12 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "id": 2473
+  },
+  {
+   "first_name": "John",
+   "last_name": "Kirk",
+   "sex": "M",
+   "born_year": 1842,
+   "born_place": "Arnold, Nottinghamshire",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 370,
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 59,
+     "occupation_at_census": "Coachman (domestic)",
+     "birth_place": "Arnold, Nottinghamshire",
+     "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Coachman",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "id": 2474
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Kirk",
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Radford, Nottingham",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 370,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "birth_place": "Radford, Nottingham",
+     "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues — the page writes New Radford."
+    }
+   ],
+   "id": 2475
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Kirk",
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Radford, Nottingham",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 370,
+     "relationship": "Daughter",
+     "age_at_census": 22,
+     "occupation_at_census": "Plain lace net mender",
+     "birth_place": "Radford, Nottingham",
+     "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Lace net mender",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur",
+   "last_name": "Kirk",
+   "sex": "M",
+   "born_year": 1882,
+   "born_place": "Radford, Nottingham",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 370,
+     "relationship": "Son",
+     "age_at_census": 19,
+     "occupation_at_census": "Sorting and telegraph clerk",
+     "birth_place": "Radford, Nottingham",
+     "source": "1901 census, 10 Lenton Avenue — transcribed by A. Hagues"
+    }
+   ],
+   "occupations": [
+    {
+     "occupation": "Sorting and telegraph clerk",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ]
+  }
  ]
 }
