@@ -592,6 +592,14 @@
       "detail": "Two files, and the order matters: people_1911_st_hellier.json first, then people_1921_st_hellier.json. The 1911 file creates all thirteen — Sir Jesse Boot, his wife Florence, their three grown children, a visiting barrister from Jersey and seven servants — and files every entry at #402. The 1921 file matches the three Boots by name and adds eight more: John Campbell Boot is head by then, with his parents as visitors. Both run from Import people; preview each first.",
       "size": "one click",
       "link": "/admin"
+    },
+    {
+      "slug": "import-broadgate-churley",
+      "area": "People",
+      "title": "Run Import people for Ada Churley of Broadgate School",
+      "detail": "Fills her story and gives her occupation its full form — the 1921 return breaks off at \"Principal Of Schoo\". She is already in the record at 1 Western Terrace, so the preview should say nothing added, 1 filled out, 1 occupation. Her forename stays \"A Marion\" as the census has it; if you want \"Ada\" on the record, change it on her person page.",
+      "size": "one click",
+      "link": "/admin"
     }
   ]
 }
