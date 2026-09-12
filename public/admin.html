@@ -388,7 +388,16 @@ const describePeople = d => {
       // When every census record belongs to a person being created, the line
       // above already names them and this one just says it twice.
       + (x.censusNames && x.census !== x.added ? `\n  census: ${x.censusNames.join(', ')}` : '')
-      + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '');
+      + (x.noSuchPerson ? `\n  ⚠ no person of that number: ${x.noSuchPerson.join(', ')}` : '')
+      // What the file asked for and did not get. Four faults today were silent
+      // in exactly this way: a relationship written under the wrong key, a far
+      // end that names nobody, a link to a person who is their own far end.
+      // Twenty-four family links sat undone for weeks while the report said
+      // those files had nothing left to do.
+      + (x.relationshipsSkipped
+          ? `\n  ⚠ ${x.relationshipsSkipped} relationship${x.relationshipsSkipped === 1 ? '' : 's'} `
+            + `could not be made — the far end names nobody, or names two people, or the block gives no type`
+          : '');
   };
   // A file that names a person the record has no number for is never quiet
   // about it, however little else it did.
