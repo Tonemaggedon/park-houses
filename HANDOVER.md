@@ -7,7 +7,7 @@ Properties, residents, census returns, and the sources behind them.
 - **Repo:** https://github.com/Tonemaggedon/park-houses (branch `main`)
 - **Local:** `/Users/antonyhagues/Claude Projects/park-houses`
 - **Host:** Railway — auto-deploys on push to `main`
-- **Last verified:** 8 September 2026
+- **Last verified:** 13 September 2026
 
 ---
 
@@ -52,10 +52,11 @@ production.
 
 ## Shape of the thing
 
-- `server.js` — the whole backend. ~4,400 lines, 158 endpoints, Express 5.
-- `public/*.html` — one file per page, no build step, no framework. Plain HTML/CSS/JS.
+- `server.js` — the whole backend. ~7,650 lines, 222 endpoints, Express 5.
+- `public/*.html` — 34 files, one per page, no build step, no framework. Plain HTML/CSS/JS.
+- `public/img/` — one asset: a 2400px render of Dougal's map, shown on `/map-review`.
 - `data/*.json` — seed and reference data. `all_props.json` is the property list
-  (403 properties, including demolished ones).
+  (413 properties, including demolished ones). 77 files in all.
 
 ### Two sources of truth for property positions — read this before touching coordinates
 
@@ -99,8 +100,14 @@ failed here before — a payload still fired through a local variable. Inline `o
 | Search The Gazette for honours | Sliced search (6 at a time — the whole run times out). |
 | Import people | Adds people prepared in `data/`, matched by name. |
 | Find rows that are not people | Lists header rows and blanks that survived an import. |
+| Remove duplicate census rows | Cleans rows a re-run created before the dedupe was fixed. |
+| Split a conflated person | Lifts a census record off the wrong person onto a new one. |
+| Merge abbreviated names | Joins "Geo. Parr" to George Parr, keeping the fuller record. |
+| Medal index cards | Searches The National Archives (WO 372) for people with a rank, a corps, or a war-period death. |
 
-Review queues: `/gazette-review`, `/name-sex`, `/census/unresolved`.
+Review queues — every one of these suggests and never assigns:
+`/gazette-review`, `/wikidata-review`, `/name-sex`, `/name-review`, `/census/unresolved`,
+`/duplicates`, `/map-review` (Dougal's map), `/medals-review` (WO 372 medal cards).
 
 ---
 

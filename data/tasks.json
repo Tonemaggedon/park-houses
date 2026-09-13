@@ -760,6 +760,54 @@
       "link": "/history",
       "title": "The estate history is whole, and he is Dougal",
       "detail": "Both halves of this are settled by A. Hagues. The thirteen truncated entries are closed: he read the rest off the printed map, and all 34 are now whole — the royal hunting ground at 1068, the civil war and Charles's execution at 1642, the Cavalry Barracks at the Park's north-west corner at 1792, Hine's appointment and his rival Fothergill Watson at 1851, and the roll of residents at 1887. And the spelling is Dougal, not Douglas: the data filenames were right, and it was the history page's credit that was wrong. That is now corrected, so nothing here is outstanding — the task is left only so it can be ticked by the person who answered it rather than closed on his behalf."
+    },
+    {
+      "slug": "hine-link-man-to-buildings",
+      "area": "People and records",
+      "size": "a decision, then a job",
+      "link": "/architects",
+      "title": "T. C. Hine is person #468 and is attached to nothing",
+      "detail": "The record names a Hine as architect on 112 properties — 50 T.C. Hine, 42 Hine & Evans, 18 Hine & Son, 2 George Hine — but every one of those is a line of text on a property, not a link to a person. Thomas C Hine is #468, born 1814, occupation Architect, with no properties against him at all and one unresolved 1891 census row. The architects page lists \"T.C. Hine\" and \"Hine & Son\" side by side as though both were people.\n\nTwo ways to mend it, and they are different jobs. Populate architect_works for #468, as was done by hand for Robert Evans Sr (43 works) and Jr (21) — that gives him a works list on his own page but repeats what the property text already says. Or wire the architect text on each property to a person, with Hine & Evans and Hine & Son as firms: there is an architect_firms table and a firm_members table already in the schema for exactly that, and both are unused.\n\nWorth knowing before starting: nothing in server.js reads data/seed-architect-works-*.json. The two Evans files were loaded through POST /api/architect-works by hand. A seed file written now would sit there unread unless a seeder is built."
+    },
+    {
+      "slug": "hine-where-he-lived",
+      "area": "People and records",
+      "size": "one edit, and a question",
+      "link": "/people",
+      "title": "T. C. Hine lived at 25 Regent Street — it is only in an unfiled census row",
+      "detail": "His own 1891 return gives **25 Regent Street, St Mary, Nottingham** — Head, aged 77, Architect. It sits on the unfiled page because the address is outside The Park, so nobody has seen it. The Gazette corroborates it independently: patent notices of 1854 and 1857 name \"Thomas Chambers Hine, of Regent-street\". Two sources, three decades apart.\n\nIt should be on his record properly rather than only in a census row nothing can file.\n\nAlso found, and worth having: the London Gazette of 2 October 1855 records the dissolution of **Edward Gripper and Co., Brick and Tile Makers at Mapperley in the parish of Basford** — John Green Hine, Edward Gripper the younger and Thomas Chambers Hine — as regards Hine, from 10 September 1855. Signed Thomas C. Hine. An architect with a stake in a brickworks.\n\nNot found: the 1849 dissolution. The 1848-51 window holds 45 Hine notices and not one pairs him with Nottingham; \"T. C. Hine\" returns nothing at all. If the 1849 date comes from a source naming the firm or the partner, that would give something searchable."
+    },
+    {
+      "slug": "george-hine-1871-park-valley",
+      "area": "Census",
+      "size": "one import",
+      "link": "/unfiled",
+      "title": "George T. Hine, architect, is in the 1871 census and not in the record",
+      "detail": "Park Valley, schedule 55 in 1871: **George T. Hine, Head, married, 29, Architect and Surveyor**, born Nottingham, with his wife Florence A., 29, born Bristol, and Ann Marriott, general servant, 20, of Hose in Leicestershire. He is T. C. Hine's son — the \"helped by son George\" that Dougal's own key names — and the record holds no George Hine at all, though two properties name him as their architect.\n\n1871 schedule numbers are the enumerator's, not house numbers, so this cannot be filed to a property without more work: Park Valley has no number 55. It wants importing unfiled, like the Cavendish Crescent households."
+    },
+    {
+      "slug": "medal-card-confirmed-twice",
+      "area": "The site itself",
+      "size": "a fix and a decision",
+      "link": "/medals-review",
+      "title": "One medal card is confirmed against two different men",
+      "detail": "WO 372/8/242563 is confirmed against **both** Henry Handford (#3060) and his son Henry Basil Strutt Handford (#3065). A medal index card belongs to one man, so one of those two confirmations is wrong.\n\nThe sweep offers a card to every person whose name it fits, which is right for suggesting — father and son share a forename — but nothing warns when the same reference is offered twice, and nothing stops both being confirmed. The card gives a rank of Lieutenant, which fits the son, who was a Captain in the 1/8th Sherwood Foresters and died in 1915; the father was a Major in the Royal Army Medical Corps.\n\nTwo things wanted: the page should flag a reference already confirmed elsewhere, and this particular pair needs settling by hand."
+    },
+    {
+      "slug": "reupload-dougals-map",
+      "area": "People and records",
+      "size": "one upload",
+      "link": "/archive",
+      "title": "Re-upload Dougal's map so the archive link opens the PDF",
+      "detail": "The map is in the archive but the link does nothing. Cloudinary filed it under its image type, which the account will not deliver as a PDF — the URL returns 401 with an empty GIF. That is now fixed for future uploads: anything that is not an image goes up as a raw file. But the delivery type of an asset already in Cloudinary cannot be changed, so this one needs uploading again.\n\nMeanwhile the archive card shows page one rendered as an image, and a \"View page\" link at 2400px, so the map is at least visible. The same fault affected documents attached to a person — .pdf, .doc, .docx, .txt — though only this one document exists so far."
+    },
+    {
+      "slug": "castle-grove-1871-page",
+      "area": "Census",
+      "size": "one page",
+      "link": "/census",
+      "title": "The 1871 Castle Grove page is missing from what was sent",
+      "detail": "Four 1871 pages came through and are transcribable — Lenton Road 31-33, and Park Valley 42-48, 49-53 and 53-58. The Castle Grove run, schedules 34 to 39, appeared in an earlier message and is not among them, so the 1871 sequence has a hole in it between Lenton Road 33 and Park Valley 42.\n\nWhat is on the missing page, from the earlier sighting: Castle Grove Lodge with Thomas Marriott, coachman; John Brown, town councillor and wine merchant; 2 Castle Grove with Frederic Dobson, lace dresser; Henry Carey, lace manufacturer; Hannah Simons; and a further household at 39. None of it should be entered from that sighting alone."
     }
   ]
 }

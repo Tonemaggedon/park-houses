@@ -1,7 +1,7 @@
 # Outstanding — Nottingham Park Houses
 
 A working tick list. Tick items off as you go (`- [ ]` → `- [x]`).
-Last checked against the live site: **10 September 2026**.
+Last checked against the live site: **13 September 2026**.
 
 **To see this list, just ask me for "the list"** — or "what's outstanding". I will read this file, check it against the live site, and show you what is left.
 
@@ -117,7 +117,7 @@ estate resembles any of the three names under any spelling.
 ## 3b. Open questions — `/research`
 
 The questions in the record that no amount of reading will settle: which house a name belongs
-to, whether a building still stands, what a colour on a map meant. **14 are seeded** from
+to, whether a building still stands, what a colour on a map meant. **45 are seeded** from
 `data/research_questions.json`, and a contributor presses *I'm looking into this* to put their
 name against one so two people don't spend the same Saturday on the same gatepost. Answers are
 recorded on the page — including "walked the road, found nothing", which saves the next person
@@ -406,14 +406,26 @@ Other gaps, for reference rather than action:
 
 ## 7. Offered, not yet started
 
-- [ ] **Backfill `born_place` onto people from census entries.** Only 511 person
-      records hold a birth place while the census entries behind them hold far
-      more — the same shape as the occupations gap that was backfilled on
-      8 September. Likely to triple the coverage. Ask and I will build it.
-- [ ] **Look for Sir Frank and Sir Harold Bowden.** The Gazette sweep found them;
-      there are no Bowdens at all among the 2,550 people. Harold is named in
-      William Henry Raven's biography (#295), so a check under variant spellings
-      may be worth ten minutes.
+- [ ] **T. C. Hine is person #468 and is attached to nothing.** 112 properties name a
+      Hine as architect — 50 T.C. Hine, 42 Hine & Evans, 18 Hine & Son, 2 George Hine —
+      but each is a line of text on a property, not a link to a person. The architects
+      page lists "T.C. Hine" and "Hine & Son" side by side as though both were people.
+      Two ways to mend it: populate `architect_works` for #468 as was done by hand for
+      Robert Evans Sr (43 works) and Jr (21); or wire the text to people and firms, for
+      which `architect_firms` and `firm_members` already exist unused. **Nothing in
+      `server.js` reads `data/seed-architect-works-*.json`** — the Evans files were
+      POSTed by hand, so a seed file written now would sit unread.
+- [ ] **George T. Hine is in the 1871 census and not in the record.** Park Valley
+      schedule 55: George T. Hine, 29, Architect and Surveyor, with Florence A., 29,
+      born Bristol, and a servant. T. C. Hine's son. 1871 schedules are not house
+      numbers, so it wants importing unfiled.
+- [ ] **The 1871 Castle Grove page is missing.** Four pages are transcribable — Lenton
+      Road 31–33 and Park Valley 42–48, 49–53, 53–58. Schedules 34–39 are not among
+      them, leaving a hole in the sequence.
+- [ ] **Re-upload Dougal's map.** Cloudinary filed the PDF under its image type, which
+      the account will not deliver — the link returns 401. Fixed for future uploads
+      (non-images now go up as raw), but an asset already stored cannot be re-typed.
+      The archive shows page one as an image meanwhile.
 - [ ] **The next 1939 Register page.** The transcribed page ended at 1 South Road,
       schedule 234. Arthur Black is schedule 237 at 3 South Road, so schedules
       235–236 are still missing between them.
@@ -465,6 +477,13 @@ Other gaps, for reference rather than action:
       checks explicitly, but older duplicates may already exist. A constraint cannot simply be
       added without first finding and clearing any. Ask and I will write the cleanup.
 
+- [ ] **One medal card is confirmed against two different men.** WO 372/8/242563 is
+      confirmed against both Henry Handford (#3060) and his son Henry Basil Strutt
+      Handford (#3065). A card belongs to one man. The sweep rightly offers a card to
+      everyone whose name fits, but nothing warns that a reference is already confirmed
+      elsewhere and nothing stops both being kept. The card's rank of Lieutenant fits
+      the son; the father was a Major, RAMC.
+
 - [ ] **Search: "it either works, hangs or shuts the page".** I could not reproduce it. Map
       search worst case 79ms over 403 properties, People 72ms over 2,550, the census page 43ms
       for a whole word, and the server under a second. No memory leak across 60 rebuilds.
@@ -476,6 +495,38 @@ Other gaps, for reference rather than action:
 ---
 
 ## Recently closed
+
+**13 September**
+
+- [x] The estate history rebuilt from four sources — 34 entries to 66, with the
+      University of Nottingham archive, Wikipedia and the Estate's own history beside
+      Dougal's map. Six dates follow the archive where it disagrees, each keeping the
+      map's own date visible. Two of those want a second look and are on `/research`.
+- [x] Park Rates, the gas lamp referendum and the Nottingham Park Estate Act 1990 —
+      1986 was doing the work of three events. The Act is cited to legislation.gov.uk.
+- [x] `/map-review` built and worked through: all 40 architect suggestions judged
+      (29 kept, 11 dismissed), 6 labels dismissed. An accepted suggestion is written as
+      the map's reading, cited to the map, and never over the record's own architect.
+- [x] Dougal's map itself shown beside the labels, after six failed attempts to derive
+      a position from the PDF's text layer. The coordinate on each row is gone.
+- [x] `/medals-review` built — The National Archives WO 372 medal cards. 20 decisions,
+      0 pending. Bernard McCraith's Royal Engineers card and Becher's 8th Battalion
+      Sherwood Foresters major among them.
+- [x] The medal sweep no longer offers cards to men who died before the war: Henry
+      Farmer, d.1891, had been offered four dated 1914–20. Seed 42 people to 31, queue
+      41 cards to 18.
+- [x] Uploaded PDFs could not be opened at all — Cloudinary filed them as images.
+      Non-images now go up as raw files.
+- [x] The Bayley Hospital placed at Lenton Abbey, outside The Park — so none of the
+      Derby Road numbers this record holds is it.
+- [x] Lenton Avenue even side 1891 imported; Cavendish Crescent 1891 prepared unfiled,
+      because the record holds a North and a South at 1, 3, 5, 7, 9 and 15.
+- [x] `/name-review` gained an initials matcher: "G W Widdowson" against George
+      Widdowson, on a shared house, trade or birth year.
+- [x] He is **Dougal** de Havilland, not Douglas. The data filenames were right; the
+      page credit was wrong.
+
+**Earlier**
 
 - [x] Person 1414, a spreadsheet header row filed as a resident — deleted, and the
       import now refuses header rows. A check on the dashboard confirms no others.
