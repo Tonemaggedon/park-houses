@@ -35,6 +35,7 @@
     ['/listings', '🏛', 'Listed buildings'],
     ['/gazette-review', '📰', 'Gazette by person'],
     ['/wikidata-review', '🔗', 'Wikidata review'],
+    ['/map-review', '🗺', "Dougal's map"],
     ['/name-sex', '⚥', 'Forename sex'],
     ['/name-review', '✎', 'Names to check'],
   ];

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dougal's Map — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --wash:#f6f2e6; --warnbg:#fbeeea; --okbg:#eef5ef; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 20px 80px; }
+
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:68ch; }
+  .progress { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
+    margin:14px 0 6px; }
+
+  .tabs { display:flex; gap:6px; margin:16px 0 4px; flex-wrap:wrap; }
+  .tabs button { font-family:inherit; font-size:.82rem; border-radius:4px; padding:6px 13px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  .tabs button.on { background:var(--green); color:#f2ecd8; border-color:var(--green); }
+
+  h3.grp { font-size:1rem; margin:24px 0 2px; }
+  .why { font-size:.8rem; color:var(--faint); font-style:italic; margin:0 0 10px; max-width:72ch; }
+
+  .row { display:flex; align-items:flex-start; gap:11px; background:var(--card);
+    border:1px solid var(--rule); border-radius:6px; padding:9px 12px; margin-bottom:7px; }
+  .row.warn { border-color:#e3c3bb; background:var(--warnbg); }
+  .row.gone { opacity:0; transform:translateY(-4px); transition:opacity .18s, transform .18s; }
+  .what { flex:1 1 auto; min-width:0; }
+  .nm { font-size:.97rem; font-weight:600; word-break:break-word; }
+  .nm a { color:inherit; text-decoration:none; border-bottom:1px solid var(--rule); }
+  .meta { font-size:.75rem; color:var(--faint); margin-top:2px; }
+  .verdict { display:inline-block; border-radius:10px; padding:0 8px; font-size:.7rem;
+    letter-spacing:.04em; text-transform:uppercase; margin-right:6px; }
+  .v-new { background:var(--okbg); color:var(--green); }
+  .v-contradicts { background:#f6dcd5; color:var(--red); }
+  .v-agrees, .v-same-firm-family { background:var(--wash); color:var(--soft); }
+  .px { font-variant-numeric:tabular-nums; }
+  .px.weak { color:var(--red); font-weight:700; }
+  .acts { display:flex; gap:6px; flex:0 0 auto; }
+  button.act { font-family:inherit; font-size:.76rem; border-radius:4px; padding:5px 11px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button.keep { background:var(--okbg); color:var(--green); border-color:#cfe0d3; }
+  button.act:disabled { opacity:.45; cursor:default; }
+  .said { font-size:.74rem; color:var(--faint); font-style:italic; }
+
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  .err { color:var(--red); }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:26px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  .keybox { font-size:.76rem; color:var(--soft); background:var(--wash);
+    border:1px solid var(--rule); border-radius:6px; padding:9px 12px; margin:10px 0 0; }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+
+<div class="wrap">
+  <h2>Dougal's map</h2>
+  <p class="lede">Two things were mined off <b>The Park Map, Fourth Edition</b>: names printed on it
+    that match no property in the record, and the architect each house's fill colour points to.
+    Neither is evidence. This page puts each one beside what the record already holds, so it can be
+    judged rather than imported.</p>
+  <p class="lede">Nothing here changes the record. Keeping a row marks it worth acting on; passing it
+    says it is not, and neither is offered again.</p>
+
+  <div class="progress" id="bar">Loading…</div>
+  <div class="tabs" id="tabs"></div>
+  <div id="list"><div class="empty">Loading…</div></div>
+
+  <div class="note" id="foot"></div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let DATA = null, canEdit = false, tab = 'architects';
+
+const TABS = [
+  ['architects', 'Architect suggestions'],
+  ['house',      'House names'],
+  ['subdivision','Coach houses and flats'],
+  ['person or note','Notes and people'],
+  ['decided',    'Already decided'],
+];
+
+// The map's colour is weak evidence at the best of times, and weaker the fewer
+// pixels it matched. Under 40 is not worth contradicting a named architect over.
+const WEAK = 40;
+
+const VERDICT_TEXT = {
+  'new': 'the record names no architect',
+  'agrees': 'agrees with the record',
+  'same-firm-family': 'a Hine, but the record names the firm',
+  'contradicts': 'the record names someone else',
+};
+
+function rowHTML(kind, key, title, metaBits, opts) {
+  const o = opts || {};
+  const d = o.decision;
+  return `<div class="row${o.warn ? ' warn' : ''}" data-kind="${esc(kind)}" data-key="${esc(key)}">
+    <div class="what">
+      <div class="nm">${o.href ? `<a href="${esc(o.href)}">${esc(title)}</a>` : esc(title)}</div>
+      <div class="meta">${metaBits.filter(Boolean).join(' &middot; ')}</div>
+      ${d ? `<div class="said">${esc(d.status === 'kept' ? 'kept' : 'passed')}${d.decided_by ? ' by ' + esc(d.decided_by) : ''}</div>` : ''}
+    </div>
+    <div class="acts">${
+      !canEdit ? '' :
+      d ? `<button class="act" data-do="reset">Undo</button>`
+        : `<button class="act keep" data-do="kept">Worth following</button>
+           <button class="act" data-do="dismissed">Not useful</button>`
+    }</div>
+  </div>`;
+}
+
+function render() {
+  const box = document.getElementById('list');
+  const d = DATA;
+  if (!d) return;
+
+  document.getElementById('tabs').innerHTML = TABS.map(([k, label]) => {
+    let n = 0;
+    if (k === 'architects') n = d.suggestions.filter(s => !s.decision).length;
+    else if (k === 'decided') n = d.suggestions.filter(s => s.decision).length
+                                 + d.labels.filter(l => l.decision).length;
+    else n = d.labels.filter(l => l.kind === k && !l.decision).length;
+    return `<button data-tab="${esc(k)}" class="${k === tab ? 'on' : ''}">${esc(label)} (${n})</button>`;
+  }).join('');
+
+  let html = '';
+
+  if (tab === 'architects') {
+    const left = d.suggestions.filter(s => !s.decision);
+    if (!left.length) html = '<div class="empty">Every suggestion has been judged.</div>';
+    const groups = [
+      ['new', 'The record names no architect', 'These are the only rows that could add anything. Even so the colour is a prompt: check the house before believing it.'],
+      ['contradicts', 'The map disagrees with the record', 'The record already names a different architect. The map is very unlikely to be right against a named source — especially where few pixels matched.'],
+      ['same-firm-family', 'A Hine, but which Hine', 'The map has one green for Hine, so it cannot tell T. C. Hine from Hine & Son, Hine & Evans or George Hine. The record is more precise than the map here.'],
+      ['agrees', 'Agrees with the record', 'Nothing to do — kept only so the count adds up.'],
+    ];
+    for (const [v, title, why] of groups) {
+      const rows = left.filter(s => s.verdict === v);
+      if (!rows.length) continue;
+      html += `<h3 class="grp">${esc(title)} <span class="meta">(${rows.length})</span></h3>`
+            + `<p class="why">${esc(why)}</p>`;
+      for (const s of rows) {
+        const weak = (s.pixels_matched || 0) < WEAK;
+        html += rowHTML('architect', String(s.property_id), s.address || ('Property ' + s.property_id), [
+          `<span class="verdict v-${esc(s.verdict)}">${esc(VERDICT_TEXT[s.verdict] || s.verdict)}</span>`,
+          `map says <b>${esc(s.suggests)}</b>`,
+          s.record_architect ? `record says <b>${esc(s.record_architect)}</b>` : '',
+          `<span class="px${weak ? ' weak' : ''}">${esc(s.pixels_matched)} px</span>`,
+          s.map_label ? `labelled &ldquo;${esc(s.map_label)}&rdquo;` : '',
+        ], { href: '/?property=' + s.property_id, decision: s.decision,
+             warn: v === 'contradicts' && weak });
+      }
+    }
+  } else if (tab === 'decided') {
+    const rows = [
+      ...d.suggestions.filter(s => s.decision).map(s => rowHTML('architect', String(s.property_id),
+          s.address || ('Property ' + s.property_id),
+          [`map says <b>${esc(s.suggests)}</b>`], { decision: s.decision })),
+      ...d.labels.filter(l => l.decision).map(l => rowHTML('label', l.label, l.label,
+          [esc(l.kind)], { decision: l.decision })),
+    ];
+    html = rows.length ? rows.join('') : '<div class="empty">Nothing decided yet.</div>';
+  } else {
+    const rows = d.labels.filter(l => l.kind === tab && !l.decision);
+    const why = tab === 'house'
+      ? 'Names printed on the map with no property behind them. Some are earlier names of houses the record already holds — the richest seam here — some are subdivisions, and some are not houses at all but tennis courts, a bowling green or a note the map draws in the same style.'
+      : tab === 'subdivision'
+      ? 'Coach houses, lodges, mews and flats. Under this record’s rule none becomes a property until a census household is found at it, so these are leads for where to look rather than houses to create.'
+      : 'Notes and people the map prints across the plan. Not addresses, but several name a resident or an event worth chasing.';
+    html = `<p class="why">${esc(why)}</p>`
+         + (rows.length ? rows.map(l => rowHTML('label', l.label, l.label,
+             [esc(l.kind), `at ${Math.round(l.x)}, ${Math.round(l.y)} on the sheet`],
+             { decision: l.decision })).join('')
+           : '<div class="empty">Nothing left in this group.</div>');
+  }
+
+  box.innerHTML = html;
+}
+
+async function load() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+  } catch (e) {}
+  try {
+    DATA = await fetch('/api/map-review').then(r => r.json());
+    if (DATA.error) throw new Error(DATA.error);
+    const c = DATA.counts;
+    document.getElementById('bar').textContent =
+      `${c.labelsLeft} of ${c.labels} labels and ${c.suggestionsLeft} of ${c.suggestions} architect `
+      + `suggestions still to judge — ${c.adds} of those would add an architect the record lacks, `
+      + `${c.contradicts} contradict one it already names`;
+    document.getElementById('foot').innerHTML =
+      (DATA.reliability ? `<b>How far the colours can be trusted.</b> ${esc(DATA.reliability)}<br><br>` : '')
+      + (DATA.key ? `The map’s own key: ` + Object.entries(DATA.key)
+            .map(([k, v]) => `${esc(k)} — ${esc(v)}`).join('; ') + '.<br><br>' : '')
+      + `Label text comes from the map’s PDF layer, which draws rotated names a few characters at `
+      + `a time; some arrive glued together or with an apostrophe turned into another character. They `
+      + `are shown exactly as extracted rather than tidied, so nothing is invented.`;
+    render();
+  } catch (e) {
+    document.getElementById('bar').textContent = '';
+    document.getElementById('list').innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-tab]');
+  if (t) { tab = t.dataset.tab; render(); return; }
+  const btn = e.target.closest('[data-do]');
+  if (!btn) return;
+  const row = btn.closest('.row');
+  row.querySelectorAll('button').forEach(b => b.disabled = true);
+  try {
+    const res = await fetch('/api/map-review/decide', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: row.dataset.kind, item_key: row.dataset.key,
+                             status: btn.dataset.do }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    await load();
+  } catch (err) {
+    row.querySelectorAll('button').forEach(b => b.disabled = false);
+    alert('Could not save that: ' + err.message);
+  }
+});
+
+load();
+</script>
+</body>
+</html>

@@ -497,6 +497,23 @@ async function dbInit() {
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS name_check_dismissed_idx
                       ON name_check_dismissed(person_id, word)`);
 
+    // Decisions on what was mined off Dougal de Havilland's Park Map — the
+    // labels that match no property, and the architect the fill colour suggests.
+    // Neither is evidence on its own, so nothing from the map reaches the record
+    // without somebody saying so here. Keyed on kind plus the item, so a label's
+    // own text and a property's number each identify their own row.
+    await db.query(`CREATE TABLE IF NOT EXISTS map_review (
+      id SERIAL PRIMARY KEY,
+      kind TEXT NOT NULL,                        -- label | architect
+      item_key TEXT NOT NULL,                    -- the label's text, or the property id
+      status TEXT NOT NULL DEFAULT 'suggested',  -- kept | dismissed
+      note TEXT,
+      decided_by TEXT,
+      decided_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS map_review_idx
+                      ON map_review(kind, item_key)`);
+
     await db.query(`CREATE TABLE IF NOT EXISTS duplicate_dismissed (
       id SERIAL PRIMARY KEY,
       person_a_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
@@ -6353,6 +6370,96 @@ app.get('/history', (req, res) => res.sendFile(path.join(__dirname, 'public', 'h
 
 app.get('/name-sex', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-sex.html')));
 app.get('/name-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'name-review.html')));
+// ── Dougal's map, as two queues to work down ─────────────────────────────────
+// Everything mined off the Park Map is a prompt, never a fact. The labels are
+// house names the record cannot place; the architects are a fill colour sampled
+// around a label and matched to the map's key, which the file that holds them
+// says plainly is unreliable. So this route judges nothing — it lays each row
+// beside what the record already holds and leaves the deciding to a person.
+const ARCH_NORM = s => String(s || '').toLowerCase().replace(/[^a-z]/g, '');
+app.get('/api/map-review', async (req, res) => {
+  try {
+    const read = f => JSON.parse(fs.readFileSync(path.join(__dirname, 'data', f), 'utf8'));
+    let labels = [], arch = { suggestions: [] };
+    try { labels = (read('map_dougal_unmatched.json').labels || []); } catch (e) {}
+    try { arch = read('map_dougal_architects.json'); } catch (e) {}
+    const props = {};
+    try {
+      for (const p of JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'))) props[p.id] = p;
+    } catch (e) {}
+
+    const decided = new Map();
+    if (db) {
+      const r = await db.query(`SELECT kind, item_key, status, note, decided_by, decided_at FROM map_review`);
+      for (const d of r.rows) decided.set(`${d.kind}|${d.item_key}`, d);
+    }
+    const decisionFor = (kind, key) => decided.get(`${kind}|${key}`) || null;
+
+    // A suggestion that merely repeats what the record already says is not worth
+    // anybody's time; one that contradicts a named architect on a handful of
+    // pixels is worth a warning rather than a button.
+    const suggestions = (arch.suggestions || []).map(s => {
+      const have = (props[s.property_id] || {}).architect || null;
+      const a = ARCH_NORM(have), b = ARCH_NORM(s.suggests);
+      const verdict = !have ? 'new'
+        : a === b ? 'agrees'
+        : (a.includes('hine') && b.includes('hine')) ? 'same-firm-family'
+        : 'contradicts';
+      return { ...s, record_architect: have, verdict,
+               decision: decisionFor('architect', String(s.property_id)) };
+    }).sort((x, y) => (x.pixels_matched || 0) - (y.pixels_matched || 0));
+
+    const lab = labels.map(l => ({ ...l, decision: decisionFor('label', l.label) }));
+    const count = (arr, k) => arr.filter(k).length;
+    res.json({
+      labels: lab,
+      suggestions,
+      key: arch.key || null,
+      reliability: arch.reliability || null,
+      counts: {
+        labels: lab.length,
+        labelsLeft: count(lab, l => !l.decision),
+        houses: count(lab, l => l.kind === 'house'),
+        subdivisions: count(lab, l => l.kind === 'subdivision'),
+        notes: count(lab, l => l.kind === 'person or note'),
+        suggestions: suggestions.length,
+        suggestionsLeft: count(suggestions, s => !s.decision),
+        contradicts: count(suggestions, s => s.verdict === 'contradicts'),
+        adds: count(suggestions, s => s.verdict === 'new'),
+      },
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Keeping a row means it is worth acting on; dismissing means it is not. Either
+// way it stops being offered, and either can be undone with 'reset'.
+app.post('/api/map-review/decide', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const kind = String((req.body && req.body.kind) || '');
+  const key = String((req.body && req.body.item_key) || '');
+  const asked = req.body && req.body.status;
+  const status = asked === 'kept' ? 'kept' : asked === 'reset' ? 'reset' : 'dismissed';
+  if (!['label', 'architect'].includes(kind) || !key) {
+    return res.status(400).json({ error: 'kind must be label or architect, and item_key is required' });
+  }
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (status === 'reset') {
+      await db.query(`DELETE FROM map_review WHERE kind=$1 AND item_key=$2`, [kind, key]);
+      return res.json({ ok: true, status });
+    }
+    await db.query(
+      `INSERT INTO map_review (kind, item_key, status, note, decided_by)
+            VALUES ($1,$2,$3,$4,$5)
+       ON CONFLICT (kind, item_key)
+       DO UPDATE SET status=EXCLUDED.status, note=EXCLUDED.note,
+                     decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
+      [kind, key, status, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, status });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/map-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'map-review.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
