@@ -112,6 +112,13 @@ function esc(v){ if(v===null||v===undefined) return '';
 let canEdit = false, isAdmin = false;
 const ICON = { map:'🗺', plan:'📐', photograph:'📷', document:'📄', newsletter:'📰' };
 const isImage = u => /\.(jpe?g|png|gif|webp|avif)(\?|$)/i.test(u || '');
+// A PDF that Cloudinary filed as an image will not be delivered as a PDF, but
+// it will render page one as a JPEG. That gives a thumbnail for documents
+// uploaded before non-images were sent as raw, and a preview for any PDF since.
+const pdfPreview = u => /^https:\/\/res\.cloudinary\.com\/.*\/image\/upload\//.test(u || '')
+  && /\.pdf(\?|$)/i.test(u || '')
+  ? u.replace('/image/upload/', '/image/upload/pg_1,w_600/').replace(/\.pdf(\?|$)/i, '.jpg')
+  : null;
 
 async function init() {
   try {
@@ -134,10 +141,12 @@ async function load() {
     }
     box.innerHTML = '<div class="grid">' + docs.map(d => `
       <div class="doc">
-        <a class="thumb" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">
+        <a class="thumb" href="${esc(pdfPreview(d.url) || d.url)}" target="_blank" rel="noopener noreferrer">
           ${isImage(d.url)
             ? `<img src="${esc(d.url)}" alt="${esc(d.title)}" loading="lazy">`
-            : `<span class="ph">${ICON[d.kind] || '📄'}</span>`}
+            : pdfPreview(d.url)
+              ? `<img src="${esc(pdfPreview(d.url))}" alt="${esc(d.title)}" loading="lazy">`
+              : `<span class="ph">${ICON[d.kind] || '📄'}</span>`}
         </a>
         <div class="body">
           <h3><a href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">${esc(d.title)}</a></h3>
@@ -150,6 +159,10 @@ async function load() {
         </div>
         <div class="acts">
           <a href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">Open</a>
+          ${pdfPreview(d.url) ? `<a href="${esc(pdfPreview(d.url).replace('w_600','w_2400'))}"
+            target="_blank" rel="noopener noreferrer" title="This PDF was uploaded before non-images
+            were stored as raw files, so it cannot be delivered as a PDF. This is page one as an
+            image. Re-upload it to restore the document itself.">View page</a>` : ''}
           ${isAdmin ? `<a href="#" data-del="${d.id}" style="color:var(--red);margin-left:auto">Remove</a>` : ''}
         </div>
       </div>`).join('') + '</div>';
