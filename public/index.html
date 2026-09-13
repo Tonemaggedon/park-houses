@@ -1080,6 +1080,18 @@ function renderPanel() {
     if (displayDate) detailRows += '<div class="row"><span class="lbl">Date</span><span class="val">c.' + displayDate + '</span></div>';
     if (isListed) detailRows += '<div class="row"><span class="lbl">Listed Building</span><span class="val"><span class="chip listed">&#9733; Grade ' + (displayGrade||'II') + ' Listed</span></span></div>';
     if (displayArch) detailRows += '<div class="row"><span class="lbl">Architect</span><span class="val" style="color:#2a5a8a;font-weight:500">' + displayArch + '</span></div>';
+    // Accepted off Dougal's map: the map's reading, shown as the map's and never
+    // in place of the record's own. Where the record names somebody else the row
+    // says so, because a fill colour sampled off a render is not a source.
+    const mapArch = ov.map_architect;
+    if (mapArch && mapArch.architect) {
+      detailRows += '<div class="row"><span class="lbl">On Dougal\'s map</span><span class="val">'
+        + esc(mapArch.architect)
+        + '<small style="display:block;color:#8a7a5a;font-size:0.72rem;font-weight:400">'
+        + esc(mapArch.evidence || '')
+        + (displayArch ? ' — the record names a different architect above; the map is a fill colour, not a source' : '')
+        + '</small></span></div>';
+    }
     if (displayBuilder) detailRows += '<div class="row"><span class="lbl">Builder</span><span class="val" style="color:#8a4a2a;font-weight:500">' + displayBuilder + '</span></div>';
     if (displayBuiltFor) detailRows += '<div class="row"><span class="lbl">Built For</span><span class="val">' + displayBuiltFor + '</span></div>';
     if (displayConverted) detailRows += '<div class="row"><span class="lbl">Converted</span><span class="val">' + displayConverted + '</span></div>';
