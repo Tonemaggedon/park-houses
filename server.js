@@ -6332,7 +6332,14 @@ app.get('/api/history', (req, res) => {
     const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'park_history.json'), 'utf8'));
     const entries = (doc.entries || [])
       .filter(e => e && Number.isFinite(Number(e.year)) && e.text)
+      // year_label carries a date the source gives loosely ("1980s") while year
+      // still orders the entry; source and link belong to the entries that did
+      // not come off the map, so the page can credit and cite them.
       .map(e => ({ year: Number(e.year), text: e.text,
+                   ...(e.year_label ? { year_label: String(e.year_label) } : {}),
+                   ...(e.source ? { source: String(e.source) } : {}),
+                   ...(e.link ? { link: String(e.link),
+                                  link_title: e.link_title ? String(e.link_title) : null } : {}),
                    ...(e.incomplete ? { incomplete: true, why: e.why || null } : {}) }))
       .sort((a, b) => a.year - b.year);
     res.json({ entries, credit: doc.credit || null, source: doc.source || null });

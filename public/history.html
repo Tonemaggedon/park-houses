@@ -31,6 +31,12 @@
   .ev.part .tx::after { content:'…'; color:var(--gap); font-weight:700; }
   .why { display:block; margin-top:3px; font-size:.76rem; color:var(--gap);
     background:var(--gapbg); border-radius:4px; padding:4px 8px; font-style:italic; }
+  /* A citation sits under the entry it supports, quiet enough not to compete
+     with the sentence but plainly a link out to the source itself. */
+  .cite { display:block; margin-top:4px; font-size:.78rem; color:var(--accent);
+    text-decoration:none; border-bottom:1px solid var(--rule); width:fit-content; }
+  .cite:hover { border-color:var(--accent); }
+  .cite::before { content:'↗ '; }
 
   .src { margin-top:34px; border-top:1px solid var(--rule); padding-top:14px;
     font-size:.82rem; color:var(--faint); max-width:66ch; }
@@ -88,10 +94,14 @@ const ERAS = [
       if (!inEra.length) continue;
       html += `<div class="era">${esc(title)}</div><ol class="tl">`;
       for (const e of inEra) {
+        // year_label shows a date the source gives loosely — "1980s" — while the
+        // year itself still places the entry in the right era and order.
         html += `<li class="ev${e.incomplete ? ' part' : ''}">`
-             +  `<div class="yr">${esc(e.year)}</div>`
+             +  `<div class="yr">${esc(e.year_label || e.year)}</div>`
              +  `<div class="tx">${esc(e.text)}`
              +  (e.incomplete && e.why ? `<span class="why">${esc(e.why)}</span>` : '')
+             +  (e.link ? `<a class="cite" href="${esc(e.link)}" target="_blank" rel="noopener">`
+                        + `${esc(e.link_title || e.link)}</a>` : '')
              +  `</div></li>`;
       }
       html += '</ol>';
@@ -99,11 +109,18 @@ const ERAS = [
     box.innerHTML = html;
 
     const short = events.filter(e => e.incomplete).length;
+    // Entries the map did not supply carry their own source, and the note below
+    // says so rather than crediting everything to Dougal.
+    const contributors = [...new Set(events.map(e => e.source).filter(Boolean))];
+    const byOthers = events.filter(e => e.source).length;
     document.getElementById('src').innerHTML =
       `Retold in this record's own words from the concise history printed on <b>The Park Map, `
       + `Fourth Edition</b>, designed by <b>${esc(d.credit || 'Dougal de Havilland')}</b> and given `
       + `by him to the Nottingham Park Residents' Association. The facts are his; the sentences are `
       + `this record's, because reproducing his prose is a different thing from drawing on his work.`
+      + (byOthers ? ` <br><br>${byOthers} later ${byOthers === 1 ? 'entry comes' : 'entries come'} `
+                    + `from <b>${esc(contributors.join(', '))}</b> rather than from the map — the `
+                    + `estate's passage out of Oxford University's hands, and what followed it.` : '')
       + (short ? ` <br><br>${short} of the ${events.length} entries are incomplete, where the map's `
                  + `column wrapped and the transcript lost the rest. They want reading off the `
                  + `original.` : '');
