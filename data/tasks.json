@@ -748,10 +748,10 @@
     {
       "slug": "history-truncated-entries",
       "area": "Research",
-      "size": "half an hour with the map",
+      "size": "a decision",
       "link": "/history",
-      "title": "13 entries on the estate history stop mid-sentence",
-      "detail": "The new history page is retold from the concise history printed on Douglas de Havilland's Park Map, Fourth Edition. The transcript came out of the map's PDF text layer, and wherever the printed column wrapped, the rest of the sentence was lost — so 13 of the 34 entries break off. They are shown unfinished, with a red ellipsis and a note, rather than completed from guesswork. The gaps: 1068, what the enclosed woodland was for; 1642, the civil war itself; 1702, garbled beyond reading; 1714, a few words after the recreated dukedom; 1776, the Duke's full title; 1792, where the Cavalry Barracks stood; 1795, what became of the widowed Duchess; 1801, the 1821 population; 1807, what the marriage brought the estate; 1822, who resented the development; 1834, the sentence about the fifty houses; 1875, what the Corporation did with the restored mansion; and 1986, almost certainly the Nottingham Park Estate Act but the map's words stop short. Reading them off the printed map would close all of them. One more thing to settle while you are at it: the record spells him Dougal de Havilland in two data files and their filenames, and A. Hagues writes Douglas. The page uses Douglas."
+      "title": "Dougal or Douglas de Havilland in the data files",
+      "detail": "The thirteen truncated entries on the estate history are closed. A. Hagues read the rest off the printed map, and all 34 entries are now whole — the civil war and Charles's execution at 1642, the royal hunting ground at 1068, the Cavalry Barracks at the Park's north-west corner at 1792, Hine's appointment and his rival Fothergill Watson at 1851, and the roll of residents at 1887. What is left is the spelling. The record calls him Dougal de Havilland in two data files and their filenames — history_park_map_dougal.json and map_dougal_architects.json — while A. Hagues writes Douglas, and the history page credits Douglas. Renaming the files touches whatever reads them, so it wants doing deliberately rather than in passing."
     }
   ]
 }
