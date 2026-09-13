@@ -60,6 +60,14 @@
     border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
   .keybox { font-size:.76rem; color:var(--soft); background:var(--wash);
     border:1px solid var(--rule); border-radius:6px; padding:9px 12px; margin:10px 0 0; }
+  /* The sheet, above the list it belongs to. Collapsible, because once a reader
+     knows the map they will want the list back. */
+  .mapbox { border:1px solid var(--rule); border-radius:7px; background:var(--card);
+    margin:0 0 14px; padding:8px 11px; }
+  .mapbox > summary { cursor:pointer; font-size:.86rem; color:var(--soft); }
+  .mapbox img { display:block; width:100%; height:auto; margin-top:9px;
+    border:1px solid var(--rule); border-radius:4px; }
+  .mapnote { font-size:.76rem; color:var(--faint); margin:7px 0 2px; max-width:72ch; }
   a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 </style>
 </head>
@@ -100,6 +108,20 @@ const TABS = [
 // The map's colour is weak evidence at the best of times, and weaker the fewer
 // pixels it matched. Under 40 is not worth contradicting a named architect over.
 const WEAK = 40;
+
+// Shown above the label lists so the name and the sheet are on one screen.
+// Open in a new tab for the full 2400px, which is legible down to house names.
+const MAP_PANEL = `
+  <details class="mapbox" open>
+    <summary>The map itself — find the name on it</summary>
+    <a href="/img/dougal-park-map.jpg" target="_blank" rel="noopener">
+      <img src="/img/dougal-park-map.jpg" alt="The Park Map, Fourth Edition, by Dougal de Havilland" loading="lazy">
+    </a>
+    <p class="mapnote">The Park Map, Fourth Edition, by <b>Dougal de Havilland</b>, given by him to the
+      Nottingham Park Residents' Association. Click to open it full size in a new tab, then zoom.
+      The labels below are printed somewhere on this sheet; the record cannot say where, so finding
+      the name by eye is the way to place it.</p>
+  </details>`;
 
 const VERDICT_TEXT = {
   'new': 'the record names no architect',
@@ -194,10 +216,15 @@ function render() {
       : tab === 'subdivision'
       ? 'Coach houses, lodges, mews and flats. Under this record’s rule none becomes a property until a census household is found at it, so these are leads for where to look rather than houses to create.'
       : 'Notes and people the map prints across the plan. Not addresses, but several name a resident or an event worth chasing.';
-    html = `<p class="why">${esc(why)}</p>`
+    // The map itself, beside the list. Six attempts at deriving a position from
+    // the PDF's text layer all failed — the sheet's labels are rotated and
+    // interleaved, and every method produced confident nonsense — so the honest
+    // answer is to show the map and let a reader find the name on it. The x,y
+    // that used to sit on each row was a coordinate on Dougal's page, not a
+    // place, and it helped nobody.
+    html = `<p class="why">${esc(why)}</p>` + MAP_PANEL
          + (rows.length ? rows.map(l => rowHTML('label', l.label, l.label,
-             [esc(l.kind), `at ${Math.round(l.x)}, ${Math.round(l.y)} on the sheet`],
-             { decision: l.decision })).join('')
+             [esc(l.kind)], { decision: l.decision })).join('')
            : '<div class="empty">Nothing left in this group.</div>');
   }
 
