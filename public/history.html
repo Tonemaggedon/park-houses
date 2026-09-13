@@ -37,6 +37,14 @@
     text-decoration:none; border-bottom:1px solid var(--rule); width:fit-content; }
   .cite:hover { border-color:var(--accent); }
   .cite::before { content:'↗ '; }
+  /* Who an entry came from, if not the map. Quiet — attribution, not emphasis.
+     Block, not inline: inline it butts straight against the closing full stop. */
+  .from { display:block; margin-top:4px; font-size:.7rem; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--faint); }
+  /* A date followed from another source keeps the map's own date visible, so a
+     reader can see what was changed rather than take the new date on trust. */
+  .corr { display:block; margin-top:4px; font-size:.76rem; color:var(--soft);
+    border-left:2px solid var(--rule); padding:2px 0 2px 8px; font-style:italic; }
 
   .src { margin-top:34px; border-top:1px solid var(--rule); padding-top:14px;
     font-size:.82rem; color:var(--faint); max-width:66ch; }
@@ -100,6 +108,8 @@ const ERAS = [
              +  `<div class="yr">${esc(e.year_label || e.year)}</div>`
              +  `<div class="tx">${esc(e.text)}`
              +  (e.incomplete && e.why ? `<span class="why">${esc(e.why)}</span>` : '')
+             +  (e.corrected ? `<span class="corr">${esc(e.corrected)}</span>` : '')
+             +  (e.source ? `<span class="from">${esc(e.source)}</span>` : '')
              +  (e.link ? `<a class="cite" href="${esc(e.link)}" target="_blank" rel="noopener">`
                         + `${esc(e.link_title || e.link)}</a>` : '')
              +  `</div></li>`;
@@ -109,18 +119,29 @@ const ERAS = [
     box.innerHTML = html;
 
     const short = events.filter(e => e.incomplete).length;
-    // Entries the map did not supply carry their own source, and the note below
-    // says so rather than crediting everything to Dougal.
-    const contributors = [...new Set(events.map(e => e.source).filter(Boolean))];
-    const byOthers = events.filter(e => e.source).length;
+    // The page is no longer one source's, so the note names each rather than
+    // crediting the map with everything on it.
+    const fromMap = events.filter(e => !e.source).length;
+    const others = [...new Set(events.map(e => e.source).filter(Boolean))];
+    const corrected = events.filter(e => e.corrected).length;
+    const linkFor = n => (d.sources && d.sources[n])
+      ? `<a href="${esc(d.sources[n])}" target="_blank" rel="noopener">${esc(n)}</a>`
+      : `<b>${esc(n)}</b>`;
     document.getElementById('src').innerHTML =
-      `Retold in this record's own words from the concise history printed on <b>The Park Map, `
-      + `Fourth Edition</b>, designed by <b>${esc(d.credit || 'Dougal de Havilland')}</b> and given `
-      + `by him to the Nottingham Park Residents' Association. The facts are his; the sentences are `
-      + `this record's, because reproducing his prose is a different thing from drawing on his work.`
-      + (byOthers ? ` <br><br>${byOthers} later ${byOthers === 1 ? 'entry comes' : 'entries come'} `
-                    + `from <b>${esc(contributors.join(', '))}</b> rather than from the map — the `
-                    + `estate's passage out of Oxford University's hands, and what followed it.` : '')
+      `${fromMap} of these ${events.length} entries are retold in this record's own words from the `
+      + `concise history printed on <b>The Park Map, Fourth Edition</b>, designed by `
+      + `<b>${esc(d.credit || 'Dougal de Havilland')}</b> and given by him to the Nottingham Park `
+      + `Residents' Association. Those facts are his; the sentences are this record's, because `
+      + `reproducing his prose is a different thing from drawing on his work.`
+      + (others.length ? ` <br><br>The rest come from ${others.map(linkFor).join(', ')}, and are `
+                        + `retold on the same terms. Each says beneath it where it came from.` : '')
+      + (corrected ? ` <br><br>Where the map and the University's archive disagree on a date the `
+                     + `archive is followed, because they hold the Newcastle family papers — and the `
+                     + `map's own date stays beside the entry, so nothing is quietly overwritten. `
+                     + `${corrected} dates are changed that way. Two want a second look: the castle `
+                     + `at 1087, where 1068 is the conventional date and William the Conqueror died `
+                     + `in 1087; and the sale to Oxford at 1939, where the map and the Estate's own `
+                     + `history both say 1938.` : '')
       + (short ? ` <br><br>${short} of the ${events.length} entries are incomplete, where the map's `
                  + `column wrapped and the transcript lost the rest. They want reading off the `
                  + `original.` : '');

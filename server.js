@@ -6338,11 +6338,15 @@ app.get('/api/history', (req, res) => {
       .map(e => ({ year: Number(e.year), text: e.text,
                    ...(e.year_label ? { year_label: String(e.year_label) } : {}),
                    ...(e.source ? { source: String(e.source) } : {}),
+                   // What the map said, where another source has been followed
+                   // instead — so a changed date shows its working.
+                   ...(e.corrected ? { corrected: String(e.corrected) } : {}),
                    ...(e.link ? { link: String(e.link),
                                   link_title: e.link_title ? String(e.link_title) : null } : {}),
                    ...(e.incomplete ? { incomplete: true, why: e.why || null } : {}) }))
       .sort((a, b) => a.year - b.year);
-    res.json({ entries, credit: doc.credit || null, source: doc.source || null });
+    res.json({ entries, credit: doc.credit || null, source: doc.source || null,
+               sources: doc.sources && typeof doc.sources === 'object' ? doc.sources : null });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 app.get('/history', (req, res) => res.sendFile(path.join(__dirname, 'public', 'history.html')));
