@@ -25,7 +25,7 @@
   h3.grp { font-size:1rem; margin:22px 0 2px; }
   .why { font-size:.8rem; color:var(--faint); font-style:italic; margin:0 0 8px; max-width:70ch; }
 
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:8px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:8px; }
   .row { display:flex; align-items:center; gap:9px; background:var(--card);
     border:1px solid var(--rule); border-radius:6px; padding:8px 11px; }
   .row.gone { opacity:0; transform:translateY(-4px); transition:opacity .18s, transform .18s; }
@@ -36,6 +36,13 @@
   .ct { font-size:.72rem; color:var(--faint); }
   .sug { font-size:.78rem; color:var(--flag); }
   .sug b { font-weight:700; }
+  /* A suggested match carries two things the eye wants apart: who it might be,
+     and why this record thinks so. The name reads as a name; the reasons sit
+     quieter beside it, because they are evidence and not a verdict. */
+  .mt { font-size:.78rem; color:var(--flag); margin-top:3px; }
+  .mt a { color:inherit; font-weight:700; text-decoration:none; border-bottom:1px solid currentColor; }
+  .mt .wy { color:var(--faint); font-weight:400; }
+  .mt .wy::before { content:' · '; }
   .btns { display:flex; gap:5px; flex:0 0 auto; }
   button { font-family:inherit; font-size:.8rem; border-radius:4px; padding:5px 11px;
     cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
@@ -59,7 +66,9 @@
   <h2>Names to check</h2>
   <p class="lede">Names in the record that do not look right — a question mark where a forename
     should be, a bare initial, or a spelling one slip of the pen away from an ordinary name.
-    Nothing here is changed automatically: each row is a person to open and judge.</p>
+    Where an initial looks like the short form of somebody the record already holds, that person
+    is named beside it. Nothing here is changed automatically: each row is a person to open
+    and judge.</p>
   <p class="lede">If a name is correct as it stands, say so and it will not be raised again.</p>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
@@ -107,6 +116,10 @@ async function load() {
             <div class="nm"><a href="/person/${p.id}">${esc(p.name)}</a></div>
             <div class="ct">${esc(p.where||'')}</div>
             ${p.suggestion ? `<div class="sug">reads like <b>${esc(p.suggestion)}</b></div>` : ''}
+            ${(p.matches||[]).map(m => `<div class="mt">may be
+              <a href="/person/${m.id}">${esc(m.name)}</a>
+              <span class="wy">${esc(m.why.join(' · '))}</span>
+              ${m.where ? `<span class="wy">${esc(m.where)}</span>` : ''}</div>`).join('')}
           </div>
           <div class="btns">
             ${canEdit ? `<button class="keep" data-keep="1">Name is right</button>` : ''}

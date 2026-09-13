@@ -2007,15 +2007,40 @@ const bareWord = w => w.replace(/[^A-Za-z]/g, '').toLowerCase();
 app.get('/api/names/check', async (req, res) => {
   if (!db) return res.json({ groups: [], total: 0, dismissed: 0 });
   try {
+    // Birth year, houses and trades come back too: a name that is only an
+    // initial is judged against the people around it, and those three are what
+    // say whether "G W Widdowson" is the George Widdowson at the same address.
     const people = (await db.query(`
-      SELECT p.id, p.first_name, p.last_name,
+      SELECT p.id, p.first_name, p.last_name, p.born_year,
              (SELECT COUNT(*) FROM census_entries c WHERE c.person_id = p.id) AS entries,
              (SELECT STRING_AGG(DISTINCT c.census_year::text, ', ' ORDER BY c.census_year::text)
-                FROM census_entries c WHERE c.person_id = p.id) AS years
+                FROM census_entries c WHERE c.person_id = p.id) AS years,
+             (SELECT ARRAY_AGG(DISTINCT pid) FROM (
+                SELECT ce.property_id AS pid FROM census_entries ce
+                 WHERE ce.person_id = p.id AND ce.property_id IS NOT NULL
+                UNION
+                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id = p.id
+              ) props) AS property_ids,
+             (SELECT ARRAY_AGG(DISTINCT LOWER(TRIM(job))) FROM (
+                SELECT o.occupation AS job FROM occupations o
+                 WHERE o.person_id = p.id AND COALESCE(TRIM(o.occupation),'') <> ''
+                UNION
+                SELECT c.occupation_at_census AS job FROM census_entries c
+                 WHERE c.person_id = p.id AND COALESCE(TRIM(c.occupation_at_census),'') <> ''
+              ) jobs) AS trades
         FROM people p
        WHERE COALESCE(TRIM(p.last_name),'') <> '' OR COALESCE(TRIM(p.first_name),'') <> ''`)).rows;
     const skipRows = (await db.query(`SELECT person_id, word FROM name_check_dismissed`)).rows;
     const skip = new Set(skipRows.map(r => `${r.person_id}|${r.word}`));
+    // Pairs somebody has already weighed on the duplicates page and said are two
+    // different people. Suggesting one here would be putting that same question
+    // a second time, so they are left out.
+    const notTheSame = new Set();
+    for (const d of (await db.query(
+      `SELECT person_a_id, person_b_id FROM duplicate_dismissed`)).rows) {
+      notTheSame.add(`${d.person_a_id}:${d.person_b_id}`);
+      notTheSame.add(`${d.person_b_id}:${d.person_a_id}`);
+    }
 
     // The record's own forenames are the first authority: one it holds several
     // times over is taken as right. The list on disk fills the gap where the
@@ -2031,7 +2056,57 @@ app.get('/api/names/check', async (req, res) => {
     const isCommon = b => (seen.get(b) || 0) >= 6 || known.has(b);
     const isRare = b => (seen.get(b) || 0) <= 2 && !known.has(b);
 
-    const gap = [], initial = [], spelling = [];
+    // A name that is nothing but initials, against the people who might be it
+    // written out. The surname has to match, and every initial has to answer to
+    // the forename standing in the same place — "G W" fits George William, and
+    // fits George on its own, but never George Herbert. That only narrows the
+    // field. What makes a pair worth putting up is something else the two share,
+    // and any one of a house, a trade or a birth year will do: the record holds
+    // plenty of unrelated Smiths whose initials happen to line up.
+    const bySurname = new Map();
+    for (const p of people) {
+      const s = bareWord(String(p.last_name || ''));
+      if (!s) continue;
+      if (!bySurname.has(s)) bySurname.set(s, []);
+      bySurname.get(s).push(p);
+    }
+    const foreWords = v => nameWords(v).map(bareWord).filter(Boolean);
+    const isInitialLed = p => {
+      const f = foreWords(p.first_name);
+      return f.length > 0 && f[0].length <= 1;
+    };
+    // Does `full` spell out `short`? Only where the two are compared at all —
+    // an initial with nothing opposite it neither agrees nor disagrees.
+    const initialsFit = (short, full) => {
+      const a = foreWords(short.first_name), b = foreWords(full.first_name);
+      if (!a.length || !b.length) return false;
+      if (b[0].length <= 1) return false;   // two sets of initials spell out nothing
+      let compared = 0;
+      for (let i = 0; i < Math.min(a.length, b.length); i++) {
+        if (a[i][0] !== b[i][0]) return false;
+        compared++;
+      }
+      return compared > 0;
+    };
+    // What the two have in common, in the words the page will show. Any one of
+    // these is enough; all three is as strong as this check gets.
+    const sharedWith = (a, b) => {
+      const why = [];
+      const houses = new Set((a.property_ids || []).filter(x => x != null));
+      const house = (b.property_ids || []).find(x => x != null && houses.has(x));
+      if (house != null) why.push(propName(house));
+      const trades = new Set((a.trades || []).filter(Boolean));
+      const trade = (b.trades || []).find(x => x && trades.has(x));
+      if (trade) why.push(trade);
+      if (a.born_year && b.born_year && Math.abs(a.born_year - b.born_year) <= 3) {
+        why.push(a.born_year === b.born_year
+          ? `both born ${a.born_year}`
+          : `born ${a.born_year} and ${b.born_year}`);
+      }
+      return why;
+    };
+
+    const gap = [], initial = [], initialMatch = [], spelling = [];
     const where = p => {
       const bits = [];
       if (Number(p.entries)) bits.push(`${p.entries} census record${p.entries === '1' ? '' : 's'}`);
@@ -2051,8 +2126,25 @@ app.get('/api/names/check', async (req, res) => {
         if (!skip.has(`${p.id}|`)) gap.push({ ...row, word: '' });
         continue;
       }
-      if (first && bareWord(first.split(/\s+/)[0]).length <= 1) {
-        if (!skip.has(`${p.id}|`)) initial.push({ ...row, word: '' });
+      if (first && isInitialLed(p)) {
+        if (!skip.has(`${p.id}|`)) {
+          const found = [];
+          for (const cand of (bySurname.get(bareWord(String(p.last_name || ''))) || [])) {
+            if (cand.id === p.id || !initialsFit(p, cand)) continue;
+            if (notTheSame.has(`${p.id}:${cand.id}`)) continue;
+            const why = sharedWith(p, cand);
+            if (!why.length) continue;
+            found.push({
+              id: cand.id,
+              name: [cand.first_name, cand.last_name].filter(Boolean).join(' ').trim(),
+              where: where(cand), why,
+            });
+          }
+          // The one with most in common goes first.
+          found.sort((x, y) => y.why.length - x.why.length);
+          if (found.length) initialMatch.push({ ...row, word: '', matches: found });
+          else initial.push({ ...row, word: '' });
+        }
         continue;
       }
       for (const w of nameWords(first)) {
@@ -2080,15 +2172,22 @@ app.get('/api/names/check', async (req, res) => {
       { key: 'gap', title: 'No forename recorded',
         why: 'The return gave a mark rather than a name, or the name was never read. '
            + 'These want a look at the page itself.', people: gap },
+      { key: 'initial-match', title: 'An initial, and someone it may be short for',
+        why: 'The forename is only an initial, and the record holds someone of the same surname '
+           + 'whose name it fits, sharing a house, a trade or a birth year with it. Very often '
+           + 'one person entered twice. Nothing is merged from here — open the two and, if they '
+           + 'are the same, merge them on the duplicates page.', people: initialMatch },
       { key: 'initial', title: 'Only an initial',
-        why: 'An initial stands where the forename should be. Often that is all the return '
-           + 'offers, in which case pass it as right.', people: initial },
+        why: 'An initial stands where the forename should be, and nobody else in the record '
+           + 'answers to it. Often that is all the return offers, in which case pass it as right.',
+        people: initial },
       { key: 'spelling', title: 'Reads like a slip of the pen',
         why: 'A spelling the record holds once or twice, one letter away from an ordinary name, '
            + 'and the letter is one that is easily misread. A judgement, not a certainty — some '
            + 'of these will be perfectly good names.', people: spelling },
     ].filter(g => g.people.length);
-    res.json({ groups, total: gap.length + initial.length + spelling.length,
+    res.json({ groups,
+               total: gap.length + initial.length + initialMatch.length + spelling.length,
                dismissed: skipRows.length });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
