@@ -323,6 +323,20 @@
       </div>
       <div class="result" hidden></div>
     </article>
+
+    <article class="tool">
+      <h3>Medal index cards</h3>
+      <p>Searches The National Archives for First World War medal cards (series WO 372) against
+        people the record holds with a rank, a corps, or a death in a war period. A card gives no
+        birth year, so nothing is written to anybody — each one is offered on the
+        <a href="/medals-review">Medal cards</a> page to confirm or pass. Preview first: it shows
+        who would be searched without searching anybody.</p>
+      <div class="row">
+        <button class="btn ghost" id="btnMedalsPreview">Preview</button>
+        <button class="btn" id="btnMedalsRun">Search</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
   </div>
 </div>
 
@@ -617,6 +631,54 @@ const describeSweep = d => d.dryRun
     + `${d.added} recorded as suggestions, ${d.alreadyRecorded} already there.\n`
     + `Open each person to confirm or dismiss them.`;
 on('btnSweepPreview', e => runAdminJob(e.target, '/api/admin/gazette-sweep', { dryRun: true }, describeSweep));
+
+const describeMedals = d => d.dryRun
+  ? `Preview — nothing searched yet.\n${d.wouldSearch} people carry a rank, a corps or a death in `
+    + `a war period, including: ` + d.names.join(', ') + '…'
+  : `Done.\nSearched ${d.searched} people. ${d.offered} cards answered to a name; ${d.added} `
+    + `recorded as suggestions, ${d.alreadyRecorded} already there.\n`
+    + `${d.surnamesTooCommon} surnames were skipped as too common to narrow.\n`
+    + `Judge them on the Medal cards page.`;
+on('btnMedalsPreview', e => runAdminJob(e.target, '/api/admin/medals-sweep', { dryRun: true }, describeMedals));
+
+// Each person is a round trip to The National Archives, so the run goes a few at
+// a time and comes back for the next slice — the same reason the gazette sweep
+// does, and the same 502 if it does not.
+on('btnMedalsRun', async e => {
+  const btn = e.target, out = resultFor(btn);
+  const label = btn.textContent;
+  btn.disabled = true;
+  out.hidden = false; out.className = 'result';
+  let offset = 0, total = null, added = 0, already = 0, offered = 0, common = 0, slices = 0;
+  try {
+    do {
+      btn.textContent = total ? `Searching ${offset}/${total}…` : 'Searching…';
+      out.textContent = total
+        ? `Searched ${offset} of ${total} people. ${added} cards recorded so far…`
+        : 'Starting…';
+      const r = await fetch('/api/admin/medals-sweep', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ offset, batch: 5 }),
+      });
+      const d = await r.json();
+      if (!r.ok || d.error) throw new Error(d.error || ('HTTP ' + r.status));
+      offset = d.offset; total = d.total;
+      added += d.added; already += d.alreadyRecorded;
+      offered += d.offered; common += d.surnamesTooCommon;
+      if (++slices > 200) throw new Error('stopped after 200 slices');
+      if (d.done) break;
+    } while (true);
+    out.textContent = `Done.\nSearched ${total} people. ${offered} cards answered to a name; `
+      + `${added} recorded as suggestions, ${already} already there.\n`
+      + `${common} surnames were skipped as too common to narrow.\n`
+      + `Judge them on the Medal cards page.`;
+  } catch (err) {
+    out.className = 'result err';
+    out.textContent = 'Failed: ' + err.message;
+  } finally {
+    btn.disabled = false; btn.textContent = label;
+  }
+});
 
 // The sweep runs a few people at a time, because each one is a search against an
 // external service and a whole run takes minutes — long enough for the host to

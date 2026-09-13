@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medal Cards — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --wash:#f6f2e6; --okbg:#eef5ef; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 20px 80px; }
+
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:70ch; }
+  .progress { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
+    margin:14px 0 18px; }
+
+  .person { background:var(--card); border:1px solid var(--rule); border-radius:7px;
+    padding:15px 17px; margin-bottom:13px; }
+  .person h3 { margin:0 0 1px; font-size:1.04rem; }
+  .person h3 a { color:var(--ink); text-decoration:none; }
+  .person h3 a:hover { text-decoration:underline; }
+  .dates { color:var(--faint); font-size:.79rem; }
+  .occ { font-size:.81rem; color:var(--soft); margin-top:4px; }
+
+  .card { border-top:1px solid #efe9dc; margin-top:10px; padding-top:10px; }
+  .ref { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; }
+  .ref a { color:#2a5a8a; text-decoration:none; }
+  .ref a:hover { text-decoration:underline; }
+  .cardline { font-size:.9rem; margin-top:2px; }
+  .conf { display:inline-block; border-radius:10px; padding:0 8px; font-size:.7rem;
+    letter-spacing:.04em; text-transform:uppercase; background:var(--wash); color:var(--soft);
+    margin-right:6px; }
+  .conf.weak { background:#f6dcd5; color:var(--red); }
+  .acts { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+  button { font-family:inherit; font-size:.77rem; border-radius:4px; padding:5px 12px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button.yes { background:var(--green); color:#f2ecd8; border-color:var(--green); }
+  button:disabled { opacity:.45; cursor:default; }
+  .said { font-size:.75rem; color:var(--faint); font-style:italic; }
+
+  .empty { color:var(--faint); font-style:italic; padding:26px 0; }
+  .err { color:var(--red); }
+  .note { font-size:.77rem; color:var(--faint); font-style:italic; margin-top:26px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:72ch; }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+
+<div class="wrap">
+  <h2>Medal cards</h2>
+  <p class="lede">First World War medal index cards held at The National Archives in series
+    <b>WO 372</b>, matched against the people this record already holds. A card gives a surname,
+    forenames, a rank and a corps — and no birth year at all, so it can suggest a person but
+    never identify one.</p>
+  <p class="lede">Nothing is written to anybody here. Confirming records the card against the
+    person; passing it says this is not them, and neither is offered again.</p>
+
+  <div class="progress" id="bar">Loading…</div>
+  <div id="list"><div class="empty">Loading…</div></div>
+
+  <div class="note">
+    Searched by surname against Discovery, The National Archives' catalogue API. Its own series
+    filter is ignored by the service, so every result's reference is checked to begin
+    <code>WO 372/</code> before it is offered — an unchecked search returns nurses' service files
+    and Chancery suits alongside the cards. A surname returning more than two thousand cards is
+    skipped rather than guessed at: nothing on a card could narrow it.
+  </div>
+</div>
+
+<script>
+function esc(v){ if(v===null||v===undefined) return '';
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let canEdit = false;
+
+async function load() {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+  } catch (e) {}
+
+  const bar = document.getElementById('bar'), box = document.getElementById('list');
+  try {
+    const d = await fetch('/api/medals/pending').then(r => r.json());
+    if (d.error) throw new Error(d.error);
+    const people = d.people || [];
+    if (!people.length) {
+      bar.textContent = '';
+      box.innerHTML = `<div class="empty">No medal cards suggested yet. An admin runs the sweep
+        from the admin page; it searches a few people at a time, because each one is a round trip
+        to The National Archives.</div>`;
+      return;
+    }
+    bar.textContent = `${d.total} card${d.total === 1 ? '' : 's'} to judge across `
+      + `${people.length} ${people.length === 1 ? 'person' : 'people'}`
+      + (d.decided ? ` · ${d.decided} already settled` : '');
+
+    box.innerHTML = people.map(p => {
+      const pending = p.cards.filter(c => c.status === 'suggested');
+      const settled = p.cards.filter(c => c.status !== 'suggested');
+      return `<div class="person">
+        <h3><a href="/person/${p.person_id}">${esc([p.first_name, p.last_name].filter(Boolean).join(' '))}</a></h3>
+        <div class="dates">${esc(p.born_year || '?')} – ${esc(p.died_year || '?')}</div>
+        ${p.occupations ? `<div class="occ">${esc(p.occupations)}</div>` : ''}
+        ${[...pending, ...settled].map(c => `
+          <div class="card" data-person="${p.person_id}" data-ref="${esc(c.reference)}">
+            <div class="ref"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.reference)}</a></div>
+            <div class="cardline">
+              ${c.confidence ? `<span class="conf${/initials/.test(c.confidence) ? ' weak' : ''}">`
+                             + `matched on ${esc(c.confidence)}</span>` : ''}
+              ${c.rank ? `<b>${esc(c.rank)}</b>` : '<span class="conf weak">no rank on the card</span>'}
+              ${c.corps ? ` &middot; ${esc(c.corps)}` : ''}
+              ${c.regiment_no ? ` &middot; no. ${esc(c.regiment_no)}` : ''}
+              ${c.covering_dates ? ` &middot; ${esc(c.covering_dates)}` : ''}
+            </div>
+            <div class="acts">${
+              !canEdit ? '' :
+              c.status === 'suggested'
+                ? `<button class="yes" data-do="confirmed">This is them</button>
+                   <button data-do="dismissed">Not them</button>`
+                : `<span class="said">${esc(c.status === 'confirmed' ? 'confirmed' : 'passed')}</span>
+                   <button data-do="reset">Undo</button>`
+            }</div>
+          </div>`).join('')}
+      </div>`;
+    }).join('');
+
+    if (!canEdit) {
+      const n = document.createElement('div');
+      n.className = 'empty';
+      n.textContent = 'Sign in as a contributor to judge these.';
+      box.appendChild(n);
+    }
+  } catch (e) {
+    bar.textContent = '';
+    box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-do]');
+  if (!btn) return;
+  const card = btn.closest('.card');
+  card.querySelectorAll('button').forEach(b => b.disabled = true);
+  try {
+    const res = await fetch(`/api/person/${card.dataset.person}/medal`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reference: card.dataset.ref, status: btn.dataset.do }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+    await load();
+  } catch (err) {
+    card.querySelectorAll('button').forEach(b => b.disabled = false);
+    alert('Could not save that: ' + err.message);
+  }
+});
+
+load();
+</script>
+</body>
+</html>
