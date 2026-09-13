@@ -1,0 +1,175 @@
+{
+  "note": "Cavendish Crescent in 1891, from the pages A. Hagues sent. Deliberately filed WITHOUT a property, so every household lands on the unfiled page for him to place — because the record holds a Cavendish Crescent North AND a South at 1, 3, 5, 7, 9 and 15, and the census pages say only 'Cavendish Crescent'.\n\nThe two image sets are two different sides of the street, and the numbers prove it: L16782 runs 15, 13, 7, 5, 3, 1 and L16848_4 runs 5, 7, 9. Both contain a 5 and a 7, and two households cannot share an address. So the side is one decision per page, not nine decisions per household — and each address below names its page so the two number 5s and two number 7s stay apart on the unfiled page instead of merging into one group.\n\nThe one piece of evidence bearing on which side is which: Alfred Goater and the two Barnett visitors, at Cavendish Lodge on the L16848 page, are already in the record at 3 Cavendish Crescent NORTH (#22) for 1901. That points to L16848 being the north side, but it is a pointer and not a proof, and nothing here assumes it.\n\nTWO HOUSEHOLDS ARE DELIBERATELY ABSENT. 9 Cavendish Crescent, the Thomas Bayley household, is already complete in the record for 1891 — Thomas (#1), Annie (#2), Hester Theodora (#9), Muriel Katherine (filed under Huskinson, #6) and the servants Whysall (#16), Murden (#17), Watson (#18), Johnson (#19), Stevenson (#20), Simpson (#21), Dannicliffe (#22) and Shipmore (#23). Importing it would duplicate twelve people. Note that it sits at property #9, which resolves to 14 Barrack Lane — a misfiling worth correcting, but a reassignment rather than an import. And Cavendish Lodge's three people are bound by id below so their 1891 is added to the people already held, not created afresh.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, enumerator's pages transcribed by A. Hagues from images L16782_0, L16782_1 and L16848_4. Every person below appears on one of those three images.",
+  "people": [
+
+    { "first_name": "John", "last_name": "Manning", "born_year": 1825, "born_place": "Leicester",
+      "occupations": [ { "occupation": "Magistrate" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Head", "age_at_census": 66, "occupation_at_census": "Magistrate", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Anna Mary Manning", "type": "spouse_of" } ] },
+
+    { "first_name": "Anna Mary", "last_name": "Manning", "born_year": 1830,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Wife", "age_at_census": 61, "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Smith Fowler", "last_name": "Manning", "born_year": 1863,
+      "occupations": [ { "occupation": "Wholesale grocer" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Son", "age_at_census": 28, "occupation_at_census": "Wholesale grocer", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "John Manning", "type": "child_of" }, { "name": "Anna Mary Manning", "type": "child_of" } ] },
+
+    { "first_name": "Edward Laurence", "last_name": "Manning", "born_year": 1865,
+      "occupations": [ { "occupation": "Solicitor" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Son", "age_at_census": 26, "occupation_at_census": "Solicitor", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "John Manning", "type": "child_of" }, { "name": "Anna Mary Manning", "type": "child_of" } ] },
+
+    { "first_name": "Fanny", "last_name": "Stinson", "born_year": 1867, "born_place": "Newark, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Elizabeth", "last_name": "Bonnett", "born_year": 1866,
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Jane Ruda", "last_name": "Sturditch", "born_year": 1866, "born_place": "Torquay, Devon",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Francis Wm", "last_name": "Caunt", "born_year": 1875, "born_place": "Balderton, Nottinghamshire",
+      "occupations": [ { "occupation": "Footman" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "1 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "Footman", "source": "1891 census, image L16782_0 — surname confirmed by A. Hagues" } ] },
+
+    { "first_name": "John Bateman", "last_name": "Hutchinson", "born_year": 1828, "born_place": "Gedney, Lincolnshire",
+      "occupations": [ { "occupation": "Corn miller" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "3 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Head", "age_at_census": 63, "occupation_at_census": "Corn miller", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Margaret Hutchinson", "type": "sibling_of" } ] },
+
+    { "first_name": "Margaret", "last_name": "Hutchinson", "born_year": 1845, "born_place": "Gedney, Lincolnshire",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "3 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Sister", "age_at_census": 46, "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Mary Ann", "last_name": "Harrison", "born_year": 1862, "born_place": "Horncastle, Lincolnshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "3 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Sarah", "last_name": "Gifford", "born_year": 1861, "born_place": "Oadby, Leicestershire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "3 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 30, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Robert", "last_name": "Hutchinson", "born_year": 1831, "born_place": "Gedney, Lincolnshire",
+      "occupations": [ { "occupation": "Corn miller" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Head", "age_at_census": 60, "occupation_at_census": "Corn miller", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Catherine Hutchinson", "type": "spouse_of" } ] },
+
+    { "first_name": "Catherine", "last_name": "Hutchinson", "born_year": 1842, "born_place": "Mansfield, Nottinghamshire",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Wife", "age_at_census": 49, "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Robert", "last_name": "Hutchinson Jr", "born_year": 1874,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Son", "age_at_census": 17, "occupation_at_census": "Scholar", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Robert Hutchinson", "type": "child_of" }, { "name": "Catherine Hutchinson", "type": "child_of" } ] },
+
+    { "first_name": "Dorothy", "last_name": "Hutchinson", "born_year": 1880,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Daughter", "age_at_census": 11, "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Robert Hutchinson", "type": "child_of" }, { "name": "Catherine Hutchinson", "type": "child_of" } ] },
+
+    { "first_name": "Sarah", "last_name": "Hutchinson", "born_year": 1883,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Daughter", "age_at_census": 8, "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "Robert Hutchinson", "type": "child_of" }, { "name": "Catherine Hutchinson", "type": "child_of" } ] },
+
+    { "first_name": "Mary", "last_name": "Gowln", "born_year": 1863, "born_place": "Walton-on-Trent, Derbyshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 28, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0 — surname confirmed by A. Hagues" } ] },
+
+    { "first_name": "Mary Jane", "last_name": "Watkin", "born_year": 1865, "born_place": "Hockerton, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Elizabeth", "last_name": "Wilson", "born_year": 1871, "born_place": "Buckwood",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Emily Louisa", "last_name": "Gibson", "born_year": 1847,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "7 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Head", "age_at_census": 44, "marital_status": "Widow", "source": "1891 census, image L16782_0" } ],
+      "relationships": [ { "name": "George Middleton Gibson", "type": "parent_of" } ] },
+
+    { "first_name": "George Middleton", "last_name": "Gibson", "born_year": 1881,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "7 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Son", "age_at_census": 10, "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Lizzie", "last_name": "Crow", "born_year": 1871, "born_place": "Hough-on-the-Hill, Lincolnshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "7 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 20, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Sarah", "last_name": "Wallis", "born_year": 1868, "born_place": "Morton",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "7 Cavendish Crescent (north or south not settled — page L16782_0)", "relationship": "Servant", "age_at_census": 23, "occupation_at_census": "General servant", "source": "1891 census, image L16782_0" } ] },
+
+    { "first_name": "Roby Eddington", "last_name": "Thorpe", "born_year": 1840,
+      "occupations": [ { "occupation": "Solicitor" }, { "occupation": "Farmer" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Head", "age_at_census": 51, "occupation_at_census": "Solicitor and farmer", "source": "1891 census, image L16782_1" } ],
+      "relationships": [ { "name": "Nelly Thorpe", "type": "spouse_of" } ] },
+
+    { "first_name": "Nelly", "last_name": "Thorpe", "born_year": 1845, "born_place": "Leicester",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Wife", "age_at_census": 46, "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Dorothea Mary Roby", "last_name": "Thorpe", "born_year": 1876,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Daughter", "age_at_census": 15, "source": "1891 census, image L16782_1" } ],
+      "relationships": [ { "name": "Roby Eddington Thorpe", "type": "child_of" }, { "name": "Nelly Thorpe", "type": "child_of" } ] },
+
+    { "first_name": "Mary", "last_name": "Mundella", "born_year": 1833, "born_place": "Leicester",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Visitor", "age_at_census": 58, "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Ellen", "last_name": "Savinge", "born_year": 1862, "born_place": "Dunham-on-Trent, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 29, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Selina", "last_name": "Draycott", "born_year": 1866, "born_place": "Seagrave, Leicestershire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 25, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Emma", "last_name": "Bussenhart", "born_year": 1870, "born_place": "France",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Grace", "last_name": "Leech", "born_year": 1875, "born_place": "Dunham-on-Trent, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "13 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Norman", "last_name": "Bell", "born_year": 1885,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "15 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Son", "age_at_census": 6, "occupation_at_census": "Scholar", "source": "1891 census, image L16782_1 — the head of this household is on a page not sent" } ] },
+
+    { "first_name": "Ada", "last_name": "Tomblin", "born_year": 1867, "born_place": "Alfreton, Derbyshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "15 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 24, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Sarah", "last_name": "McKechnie", "born_year": 1870, "born_place": "Sheffield, Yorkshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "15 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 21, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Elizabeth", "last_name": "Tomblin", "born_year": 1875, "born_place": "Burton-on-Trent, Staffordshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "15 Cavendish Crescent (north or south not settled — page L16782_1)", "relationship": "Servant", "age_at_census": 16, "occupation_at_census": "General servant", "source": "1891 census, image L16782_1" } ] },
+
+    { "first_name": "Henry Edward", "last_name": "Hunt", "born_year": 1836,
+      "occupations": [ { "occupation": "Solicitor" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Head", "age_at_census": 55, "occupation_at_census": "Solicitor", "source": "1891 census, image L16848_4" } ],
+      "relationships": [ { "name": "Marion Hunt", "type": "spouse_of" } ] },
+
+    { "first_name": "Marion", "last_name": "Hunt", "born_year": 1838,
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Wife", "age_at_census": 53, "source": "1891 census, image L16848_4" } ] },
+
+    { "first_name": "Julia", "last_name": "Hardy", "born_year": 1865, "born_place": "Selston, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Servant", "age_at_census": 26, "occupation_at_census": "General servant", "source": "1891 census, image L16848_4" } ] },
+
+    { "first_name": "Elizabeth", "last_name": "Lawton", "born_year": 1864, "born_place": "Orston, Nottinghamshire",
+      "occupations": [ { "occupation": "Domestic servant" } ],
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "5 Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Servant", "age_at_census": 27, "occupation_at_census": "General servant", "source": "1891 census, image L16848_4" } ] },
+
+    { "id": 3057, "first_name": "Alfred", "last_name": "Goater",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "Cavendish Lodge, Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Head", "age_at_census": 70, "occupation_at_census": "Printer and lithographer", "source": "1891 census, image L16848_4" } ] },
+
+    { "id": 3058, "first_name": "E.", "last_name": "Barnett",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "Cavendish Lodge, Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Visitor", "age_at_census": 63, "marital_status": "Widow", "source": "1891 census, image L16848_4 — written Ellen on this page, E. in the record" } ] },
+
+    { "id": 3059, "first_name": "Mary Lewis", "last_name": "Barnett",
+      "census_entries": [ { "census_year": 1891, "unresolved_address": "Cavendish Lodge, Cavendish Crescent (north or south not settled — page L16848_4)", "relationship": "Visitor", "age_at_census": 40, "source": "1891 census, image L16848_4" } ] }
+
+  ]
+}
