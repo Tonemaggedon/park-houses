@@ -746,6 +746,14 @@
       "detail": "My fault, twice over. The 1901 files were written with the forenames as the enumerator abbreviated them — Geo. Parr, Constance M. Smith, Ada M. Read — and the importer matches names letter for letter, so it made a second record of everybody the record already held under a fuller spelling. That happened on the first run, and the twenty-two it produced sat inside a count I read as new arrivals. Then merging the abbreviated spellings away meant the files could no longer find their own people, so the next run created ten of them again with fresh numbers. The record went from 2755 to 2798; three of those forty-three are real — Edward Strutt, John Pickard Becher and James Murchie. The rest want merging on this page, keeping the fuller, older record each time. Both 1901 files now address those people by number instead of by name, so no later run can repeat it, and a merge now leaves an alias behind so a spelling merged away still finds the person it belongs to. One is deliberately left alone: Annie F. Carver, born 1871 on this return, against Annie Florence Carver born 1865 — six years apart, too far for the record to join them on its own. That one wants deciding by eye."
     },
     {
+      "slug": "newcastle-circus-empty-properties",
+      "area": "Census",
+      "size": "two houses to account for",
+      "title": "Two Newcastle Circus houses hold no census records at all",
+      "detail": "2 Newcastle Circus (#203) and Mevell House, 7 Newcastle Circus (#204) carry no census household in any year — not 1881, 1891, 1901, 1911, 1921 or 1939. Every other house on the Circus holds something: Burton House (#205) has 1911 and 1921, Castlethorpe (#206) runs from 1881 to 1939, and Newcastle Court (#207) from 1881 to 1921. Two empty houses in a row on one short street is more likely a filing gap than six decades of genuinely empty buildings. There are two unplaced 1891 households from the pages A. Hagues sent that were headed Newcastle Circus and cannot be matched to a property: Hannah Wilkins at \"Fairland\", and the Francis Newman Ellis household — a colliery owner with four children, two visiting Hoyles and three servants — headed with no house name at all. Either could belong at #203 or #204. What would settle it is knowing whether Fairland is a former name of either house, and whether Mevell House went by another name in 1891. Nothing is filed there on a guess.",
+      "link": "/research"
+    },
+    {
       "slug": "history-truncated-entries",
       "area": "Research",
       "size": "done — ready to tick",
