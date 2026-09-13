@@ -519,6 +519,35 @@ async function dbInit() {
     // read, while item_key keeps the raw text so the row still matches its file.
     await db.query(`ALTER TABLE map_review ADD COLUMN IF NOT EXISTS renamed_to TEXT`);
 
+    // Medal index cards at The National Archives (series WO 372), against the
+    // people this record holds. A card carries no birth year, so it can never
+    // identify a person on its own — surname, forename, rank and corps together
+    // are the most it offers. Every row here is a suggestion until somebody
+    // says otherwise, and confirming records the card rather than rewriting
+    // anything the record already holds about the person.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_medal (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      reference TEXT NOT NULL,        -- e.g. WO 372/12/201640
+      discovery_id TEXT,              -- The National Archives' own record id
+      title TEXT,
+      card_rank TEXT,
+      card_corps TEXT,
+      regiment_no TEXT,
+      covering_dates TEXT,
+      -- Why this card was offered at all: a full forename is worth having, bare
+      -- initials are nearly worthless. Without it the page cannot show the one
+      -- thing that most decides whether a card is the right man.
+      confidence TEXT,
+      status TEXT NOT NULL DEFAULT 'suggested',  -- confirmed | dismissed
+      decided_by TEXT,
+      decided_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`ALTER TABLE person_medal ADD COLUMN IF NOT EXISTS confidence TEXT`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_medal_person_idx ON person_medal(person_id)`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS person_medal_unique_idx
+                      ON person_medal(person_id, reference)`);
+
     await db.query(`CREATE TABLE IF NOT EXISTS duplicate_dismissed (
       id SERIAL PRIMARY KEY,
       person_a_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
@@ -6498,6 +6527,220 @@ app.post('/api/map-review/decide', requireContributor, async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Medal index cards (The National Archives, series WO 372) ─────────────────
+// A medal card carries no birth year. Surname, forename, rank and corps are the
+// whole of it, so a card can suggest a person but never identify one — which is
+// why nothing here is written to anybody without being confirmed by hand.
+//
+// Who is worth searching: a rank or a corps in what the record already holds,
+// or a death in a war period. Deliberately NOT "general" and not a bare
+// "private" — this record is full of Cooks General, General Servants and ladies
+// of Private Means, and a loose rule sweeps in twenty of them for every soldier.
+const MEDAL_RANK = new RegExp('\\b(' + [
+  'major', 'captain', 'lieutenant', 'lieut', 'colonel', 'brigadier', 'admiral', 'commander',
+  'sergeant', 'serjeant', 'corporal', 'gunner', 'sapper', 'trooper', 'rifleman', 'fusilier',
+  'pioneer', 'royal engineers', 'royal navy', 'royal artillery', 'royal garrison artillery',
+  'royal field artillery', 'royal flying corps', 'royal marines', 'air force', 'regiment',
+  'foresters', 'hussars', 'lancers', 'yeomanry', 'rifles', 'artillery', 'infantry',
+  'voluntary aid detachment', 'red cross', 'army officer', 'army medical',
+].join('|') + ')\\b', 'i');
+const inWar = y => !!y && ((y >= 1914 && y <= 1921) || (y >= 1939 && y <= 1948));
+const MEDAL_TITLE = /Medal card of ([^,.]+),\s*([^.]*?)\.(?:\s*Corps:\s*([^.]+)\.)?(?:\s*Regiment No:\s*([^.]+)\.)?(?:\s*Rank:\s*([^.]+)\.)?/;
+
+// A surname that returns thousands of cards cannot be narrowed by anything the
+// card offers, so it is reported as too common rather than guessed at.
+const MEDAL_TOO_COMMON = 2000;
+
+async function medalSearch(surname) {
+  const r = await fetch('https://discovery.nationalarchives.gov.uk/API/search/records?sps.searchQuery='
+      + encodeURIComponent(`${surname} AND WO 372`) + '&sps.resultsPageSize=50', {
+    headers: { Accept: 'application/json', 'User-Agent': 'NottinghamParkHouses/1.0 (conservation record)' },
+    signal: AbortSignal.timeout(20000),
+  });
+  if (!r.ok) return { total: 0, cards: [] };
+  const d = await r.json();
+  // Discovery ignores its own series filter, so every row's reference is checked
+  // here rather than trusted — an unchecked search returns nurses' files and
+  // Chancery suits alongside the medal cards.
+  const cards = (d.records || [])
+    .filter(x => String(x.reference || '').startsWith('WO 372/'))
+    .map(x => {
+      const m = MEDAL_TITLE.exec(x.title || '');
+      const g = i => ((m && m[i]) || '').trim() || null;
+      return { reference: x.reference, discovery_id: x.id, title: x.title,
+               surname: g(1), forenames: g(2), corps: g(3), regiment_no: g(4), rank: g(5),
+               covering_dates: x.coveringDates || null };
+    });
+  return { total: Number(d.count) || 0, cards };
+}
+
+const initialsOf = v => String(v || '').trim().split(/\s+/).map(w => (w[0] || '').toUpperCase()).filter(Boolean);
+
+// How well a card answers to a person. A full forename is worth having; bare
+// initials are not, unless the surname is rare enough that little else could
+// be meant — and even then it is offered, never asserted.
+// Could this person have served at all? WO 372 covers the First World War, so
+// anybody dead before it started cannot hold a card — and the sweep offered
+// Henry Farmer, who died in 1891, four of them. A man who died during the war
+// obviously can, so only a death before 1914 rules him out. Someone born too
+// late to serve is out for the same reason at the other end.
+function couldHaveServed(person) {
+  if (person.died_year && person.died_year < 1914) return false;
+  // Both bounds are about THIS series, which is the First World War only. They
+  // are not a judgement that the person never served: Charles Lloyd Birkin, born
+  // 1907 and recorded a Captain, was a Second World War officer and is excluded
+  // here for the right answer by the wrong reason. If a second war source is
+  // ever added it needs its own dates, not these.
+  if (person.born_year && person.born_year > 1901) return false;   // under 14 at the Armistice
+  if (person.born_year && person.born_year < 1845) return false;   // over 69 in 1914
+  return true;
+}
+
+// A death inside the war years is the weakest reason to search, and on its own
+// it is often no reason at all — a lady's maid, a child and a woman returned as
+// doing unpaid domestic duties all died between 1914 and 1921 and none of them
+// is a soldier. Where the only signal is the date, an occupation that plainly
+// belongs to the household rather than the services rules the person out.
+const NOT_SERVICE = new RegExp('\\b(' + [
+  'maid', 'cook', 'servant', 'domestic', 'housekeeper', 'charwoman', 'laundry',
+  'governess', 'nursemaid', 'child', 'scholar', 'unpaid domestic',
+].join('|') + ')\\b', 'i');
+
+function medalConfidence(person, card) {
+  const pf = String(person.first_name || '').trim().toLowerCase();
+  const cf = String(card.forenames || '').trim().toLowerCase();
+  if (!pf || !cf) return null;
+  const pWords = pf.split(/\s+/), cWords = cf.split(/\s+/);
+  const corroborates = MEDAL_RANK.test([card.rank, card.corps].filter(Boolean).join(' '))
+    && MEDAL_RANK.test(String(person.occupations || '').replace(/\|/g, ' '));
+  if (cf === pf) return corroborates ? 'forename and service' : 'forename exactly';
+  if (cWords[0] === pWords[0] && cWords.length > 1 && pWords.length > 1) return 'forename and a middle name';
+  if (cWords[0] === pWords[0]) return 'first forename';
+  // Initials alone were half the queue and worth almost nothing: "R H S" answers
+  // to a great many men and the card carries no birth year to separate them. Kept
+  // only where the card's own service corroborates a rank the record already
+  // holds for this person — otherwise it is noise wearing the shape of evidence.
+  const ci = initialsOf(card.forenames).join(''), pi = initialsOf(person.first_name).join('');
+  if (ci && (ci === pi || pi.startsWith(ci))) {
+    return corroborates ? 'initials, and the service agrees' : null;
+  }
+  return null;
+}
+
+app.post('/api/admin/medals-sweep', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = req.body && req.body.dryRun === true;
+  const batch = Math.min(parseInt(req.body && req.body.batch, 10) || 5, 15);
+  const offset = Math.max(parseInt(req.body && req.body.offset, 10) || 0, 0);
+  try {
+    const all = (await db.query(`
+      SELECT p.id, p.first_name, p.last_name, p.born_year, p.died_year,
+             COALESCE((SELECT STRING_AGG(o.occupation, ' | ') FROM occupations o
+                        WHERE o.person_id = p.id), '') AS occupations,
+             ARRAY(SELECT m.reference FROM person_medal m WHERE m.person_id = p.id) AS decided
+        FROM people p
+       WHERE COALESCE(TRIM(p.last_name),'') <> '' AND COALESCE(TRIM(p.first_name),'') <> ''
+       ORDER BY p.last_name, p.first_name`)).rows
+      // Worth searching, AND able to have served at all. The second half was
+      // written and left uncalled on the first pass, which is why the sweep
+      // offered Henry Farmer — dead in 1891 — four cards dated 1914 to 1920.
+      .filter(p => {
+        if (!couldHaveServed(p)) return false;
+        if (MEDAL_RANK.test(p.occupations)) return true;          // a rank or a corps: always worth it
+        return inWar(p.died_year) && !NOT_SERVICE.test(p.occupations);
+      });
+
+    if (dryRun) {
+      return res.json({ ok: true, dryRun: true, wouldSearch: all.length,
+        names: all.slice(0, 20).map(p => `${p.first_name} ${p.last_name}`) });
+    }
+    const slice = all.slice(offset, offset + batch);
+    let searched = 0, added = 0, already = 0, tooCommon = 0, offered = 0;
+    for (const person of slice) {
+      searched++;
+      let found;
+      try { found = await medalSearch(person.last_name); }
+      catch (e) { continue; }                       // one failed search must not stop the sweep
+      if (found.total > MEDAL_TOO_COMMON) { tooCommon++; continue; }
+      const decided = new Set(person.decided || []);
+      for (const card of found.cards) {
+        const confidence = medalConfidence(person, card);
+        if (!confidence) continue;
+        offered++;
+        if (decided.has(card.reference)) { already++; continue; }
+        const r = await db.query(
+          `INSERT INTO person_medal
+             (person_id, reference, discovery_id, title, card_rank, card_corps,
+              regiment_no, covering_dates, confidence, status)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'suggested')
+           ON CONFLICT (person_id, reference) DO NOTHING RETURNING id`,
+          [person.id, card.reference, card.discovery_id, card.title,
+           card.rank, card.corps, card.regiment_no, card.covering_dates, confidence]);
+        if (r.rows.length) added++; else already++;
+      }
+      await new Promise(r => setTimeout(r, 400));   // be a good neighbour
+    }
+    const next = offset + slice.length;
+    res.json({ ok: true, searched, offered, added, alreadyRecorded: already,
+               surnamesTooCommon: tooCommon, offset: next, total: all.length,
+               done: next >= all.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/medals/pending', async (req, res) => {
+  if (!db) return res.json({ people: [], total: 0 });
+  try {
+    const r = await db.query(`
+      SELECT m.id, m.reference, m.discovery_id, m.title, m.card_rank, m.card_corps,
+             m.regiment_no, m.covering_dates, m.confidence, m.status,
+             p.id AS person_id, p.first_name, p.last_name, p.born_year, p.died_year,
+             COALESCE((SELECT STRING_AGG(o.occupation, ' | ') FROM occupations o
+                        WHERE o.person_id = p.id), '') AS occupations
+        FROM person_medal m JOIN people p ON p.id = m.person_id
+       ORDER BY m.status, p.last_name, p.first_name, m.reference`);
+    const byPerson = new Map();
+    for (const row of r.rows) {
+      if (!byPerson.has(row.person_id)) byPerson.set(row.person_id, {
+        person_id: row.person_id, first_name: row.first_name, last_name: row.last_name,
+        born_year: row.born_year, died_year: row.died_year, occupations: row.occupations,
+        cards: [],
+      });
+      byPerson.get(row.person_id).cards.push({
+        id: row.id, reference: row.reference, discovery_id: row.discovery_id,
+        title: row.title, rank: row.card_rank, corps: row.card_corps,
+        regiment_no: row.regiment_no, covering_dates: row.covering_dates,
+        confidence: row.confidence, status: row.status,
+        url: `https://discovery.nationalarchives.gov.uk/details/r/${row.discovery_id}`,
+      });
+    }
+    const people = [...byPerson.values()];
+    res.json({ people,
+      total: r.rows.filter(x => x.status === 'suggested').length,
+      decided: r.rows.filter(x => x.status !== 'suggested').length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/person/:id/medal', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const personId = parseInt(req.params.id, 10);
+  const reference = String((req.body && req.body.reference) || '').trim();
+  const asked = req.body && req.body.status;
+  const status = asked === 'confirmed' ? 'confirmed' : asked === 'reset' ? 'reset' : 'dismissed';
+  if (!personId || !reference) return res.status(400).json({ error: 'person and reference required' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (status === 'reset') {
+      await db.query(`UPDATE person_medal SET status='suggested', decided_by=NULL, decided_at=NOW()
+                       WHERE person_id=$1 AND reference=$2`, [personId, reference]);
+      return res.json({ ok: true, status });
+    }
+    await db.query(`UPDATE person_medal SET status=$3, decided_by=$4, decided_at=NOW()
+                     WHERE person_id=$1 AND reference=$2`, [personId, reference, status, who]);
+    res.json({ ok: true, status });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/medals-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'medals-review.html')));
 app.get('/map-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'map-review.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
