@@ -1,5 +1,5 @@
 {
- "note": "1891 households from the nine census pages A. Hagues sent, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it.\n\nTHIS FILE WAS REWRITTEN. Its first version listed addresses that appear on no image — the whole of Pelham Crescent, Weston Lodge, 41 Lenton Road, Linde House on South Road, Parkmount on Park Drive, Pelham Cottages, Thorn Lea, and a Lincoln Villa at 11 Pelham Crescent. Those were written up in error and are struck. Every entry below has been checked against the image it came from.\n\nTwo kinds. First, numbered addresses on streets the record holds at numbers it does not — these look like real Park houses simply missing. Second, house names with no number.\n\nTWO RESOLVED by A. Hagues: 7 Clumber Road is 3 South Road (Ellenborough House, #302) and 15 Clumber Road is Clumber House, Park Drive (#239). Both are now recorded as former addresses on those properties, and both households are importable. The remaining numbered Clumber Road entries are still unplaced.",
+ "note": "1891 households from the nine census pages A. Hagues sent, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it.\n\nTHIS FILE WAS REWRITTEN. Its first version listed addresses that appear on no image — the whole of Pelham Crescent, Weston Lodge, 41 Lenton Road, Linde House on South Road, Parkmount on Park Drive, Pelham Cottages, Thorn Lea, and a Lincoln Villa at 11 Pelham Crescent. Those were written up in error and are struck. Every entry below has been checked against the image it came from.\n\nTwo kinds. First, numbered addresses on streets the record holds at numbers it does not — these look like real Park houses simply missing. Second, house names with no number.\n\nTWO RESOLVED by A. Hagues: 7 Clumber Road is 3 South Road (Ellenborough House, #302) and 15 Clumber Road is Clumber House, Park Drive (#239). Both are now recorded as former addresses on those properties, and both households are importable. The remaining numbered Clumber Road entries are still unplaced.\n\nRESOLVED SINCE, and recorded here so they are not re-opened: the household headed Newcastle Circus \"THE ELMS\" (Elizabeth Lynum, widow, 61, with Amelia Ann, Helena Gertrude, Mabel Winifred, Eliza Thorne and Emma Louisa Skeggs, image L16848_3) is the household the record already holds at Newcastle Court, Newcastle Circus (#207) for 1891 — that property carries The Elms as a former name. The record spells the family Lynam where this transcription read Lynum, which is a question about the hand and not an unplaced household. The Brownswords headed plainly Newcastle Circus (image L16727_1) are likewise already held, at Castlethorpe (#206) for 1891.\n\nIMPORTED SINCE: the even side of Lenton Avenue, 4 to 14 (image L16848_0), is now in data/people_1891_lenton_avenue_even.json. It never belonged on this sheet — the record holds those six houses as #367 to #372 — and it is named here only so the nine pages can be accounted for household by household.\n\nSTILL UNPLACED on Newcastle Circus: Hannah Wilkins at \"Fairland\", and the Francis Newman Ellis household headed with no house name at all. The free properties are 2 Newcastle Circus (#203), Mevell House (#204) and Burton House (#205) — but this page puts Burton House on Maxtoke Road, which contradicts #205, so none of the three is assigned here.",
  "source": "1891 census — nine enumerator's pages transcribed by A. Hagues, each entry checked against the image",
  "not_imported": true,
  "numbered_but_outside_the_record": [
@@ -115,7 +115,7 @@
    "head": "Elizabeth Sarah Waters",
    "people": 5,
    "image": "L16727_1",
-   "note": "The record has a Burton House at Newcastle Circus (#205)."
+   "note": "The record has a Burton House at Newcastle Circus (#205), but this page heads the household Maxtoke Road. The two disagree, so it is not filed to #205."
   },
   {
    "name": "Maxtoke Road (unnamed)",
@@ -128,7 +128,8 @@
    "name": "Fairland, Newcastle Circus",
    "head": "Hannah Wilkins",
    "people": 3,
-   "image": "L16727_1"
+   "image": "L16727_1",
+   "note": "\"Fairland\", a name the record holds nowhere. One of two Newcastle Circus households on these pages that cannot be placed; #203, #204 and #205 are free but unproven."
   },
   {
    "name": "Holly Bank, Cavendish Road",
