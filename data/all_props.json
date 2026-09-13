@@ -3689,13 +3689,14 @@
   "no": "",
   "address": "Clumber House, Park Drive",
   "desc": "Two storeys plus basement and attic storey. Red brick with ashlar dressings and gabled slate roof. Part of original garden area developed into separate two storey dwelling c1970-80, replacing large glasshouse. Original coach house with main access from Cavendish Crescent South converted into separate dwelling, c1970. Late 20c conservatory added to west facade. Moulded stone surround with segmental pediment to prominent main entrance doorway flanked by single sidelights. Stone steps at main entrance with pedestals and plant vases. Pair of shallow projecting gabled bays on main garden front with two storey canted stone window bay to left and tripartite window/door openings with steps to right hand bay. Venetian window opening to each gable at attic storey level. Later single window openings on garden front. Gabled road front to Clumber Crescent South with original single storey hipped roof extensions. Moulded stone surrounds to door and window openings with transoms and mullions to staircase hall window. Also, moulded cornices to canted bay plus plinths, gable kneelers and copings. Stonework now painted. Bullnose and dentil brickwork details at eaves and gable verges. Small section of brickwork now rendered and painted. Double pitched slate roof with gables on all fronts. Gabled dormer window to attic storey directly above main entrance doorway. Red brick side wall chimney stacks aligned with gable ridges. Stacks partly altered. Roof windows added. Original rainwater fittings replaced and further pipework added. Plain and glazing bar sash windows to original openings. Leaded lights to staircase window. Round arched heads to openings at attic storey level. Half glazed main entrance outer door with raised and fielded panels, plus overlight. Some alterations to doors and windows. Prominent boundary walls with gate piers. Red brick boundary wall to Clumber Crescent South plus single gated opening with square brick piers and stone caps. Coursed rubble stone plinth to boundary walls on Park Drive and Cavendish Crescent South topped by red brick garden walls with blue brick banding and saddleback copings. Square brick piers with stone plinths and moulded stone caps to main gated opening on Park Drive.\n\n",
-  "history": "Detached house c1870-75, now converted into flats. ",
+  "history": "Detached house c1870-75, now converted into flats. The 1891 census heads this household Clumber Road rather than Park Drive, once plainly and once as 15 Clumber Road, with \"Clumber House\" written beneath. A. Hagues has settled it: the house is Clumber House on Park Drive, and 15 Clumber Road is kept as a former name. The record holds no other numbered Clumber Road address, so the numbering the enumerator used has since gone out of use.",
   "converted": "Flats",
   "date_built": "1870",
   "listed": "No",
   "house_name": "Clumber House",
   "lat": 52.9504123,
-  "lng": -1.1608192
+  "lng": -1.1608192,
+  "prev_house_name": "15 Clumber Road"
  },
  {
   "id": 240,
@@ -4776,7 +4777,7 @@
   "no": "3",
   "address": "3 South Road",
   "desc": "Alterations and substantial side extension plus single storey hipped roof extension on North front also by Watson Fothergill for James McCraith c1881-98. Nottingham\u2019s most flamboyant Victorian architect, the building emplifies Fothergill\u2019s idiosyncratic interpretation of the Domestic Revival style, with ornamental brickwork and stonework, complex roof forms, soaring chimney stacks and half-timbered gables, towers and turrets. Two and three storeys plus basement and attics. Red brick with blue brick and ashlar dressings, timber framing with brick nogging plus slate roofs in various forms with tall brick stacks. Plinth, decorative brick banding and string courses generally. Round stair turret facing Clumber Crescent South with stepped windows and conical roof. To right, gabled bay with ground floor hipped roof extension, plus two storey lean\u2013to extension and tower with pyramidal roof. Three storey square tower to main entrance front facing South Road with timber framed upper storey and pyramidal roof with small raking dormers. To left of tower, main entrance bay topped with jettied timber framed gable. Three storey canted window bay to right on garden front with timber framed gable at attic level. To left, canted wooden bay window at ground floor level with timber framed first floor plus canted window bay above with crenallated parapet. Canted dormer window above parapet. To left again on garden front, gabled bay with glazed wood framed canopy at ground floor level. Further left, two storey extension with canted bay, timber framed first floor, separate small hipped roofs to five light window and hipped main roof. Clay ridge tiles and finials. Iron cresting to main tower ridge. Mainly casement windows including a number of cross frames. Half glazed, panelled main entrance door with overlights. Red brick stacks with shaped, corbelled and moulded brick details and mainly \u2018louvre\u2019 pots. Red brick boundary wall encloses house and garden to north, south and east. Gateways with square brick piers and stone plinths and caps. Coursed rubble stone plinth to some sections of boundary wall. Blue brick plinth course and moulded brick copings, stepped in some areas.\n\n",
-  "history": "Large detached house c1880-81 by architect Watson Fothergill. Also known as Ellenborough House. House, garden wall and gateways are Grade II Listed. Now converted into flats. ",
+  "history": "Large detached house c1880-81 by architect Watson Fothergill. Also known as Ellenborough House. House, garden wall and gateways are Grade II Listed. Now converted into flats. The 1891 enumerator headed the McCraith household here 7 Clumber Road. It is the same house and the same household \u2014 wife, both boys, the three-month-old Kenneth York and all four servants agree with the record \u2014 so 7 Clumber Road is kept as a former address rather than treated as a second property. The head is written Jameston McCraith on the page, which is the enumerator running James Wm together.",
   "architect": "Watson Fothergill",
   "converted": "Flats",
   "listed_grade": "II",
@@ -4784,7 +4785,8 @@
   "listed": "Yes",
   "house_name": "Ellenborough House",
   "lat": 52.9496105,
-  "lng": -1.1633428
+  "lng": -1.1633428,
+  "prev_house_name": "7 Clumber Road"
  },
  {
   "id": 303,

@@ -1,5 +1,5 @@
 {
- "note": "1891 households from the nine census pages A. Hagues sent, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it.\n\nTHIS FILE WAS REWRITTEN. Its first version listed addresses that appear on no image — the whole of Pelham Crescent, Weston Lodge, 41 Lenton Road, Linde House on South Road, Parkmount on Park Drive, Pelham Cottages, Thorn Lea, and a Lincoln Villa at 11 Pelham Crescent. Those were written up in error and are struck. Every entry below has been checked against the image it came from.\n\nTwo kinds. First, numbered addresses on streets the record holds at numbers it does not — these look like real Park houses simply missing. Second, house names with no number.",
+ "note": "1891 households from the nine census pages A. Hagues sent, whose address this record cannot place. Deliberately NOT named people_*.json, so the importer never reads it.\n\nTHIS FILE WAS REWRITTEN. Its first version listed addresses that appear on no image — the whole of Pelham Crescent, Weston Lodge, 41 Lenton Road, Linde House on South Road, Parkmount on Park Drive, Pelham Cottages, Thorn Lea, and a Lincoln Villa at 11 Pelham Crescent. Those were written up in error and are struck. Every entry below has been checked against the image it came from.\n\nTwo kinds. First, numbered addresses on streets the record holds at numbers it does not — these look like real Park houses simply missing. Second, house names with no number.\n\nTWO RESOLVED by A. Hagues: 7 Clumber Road is 3 South Road (Ellenborough House, #302) and 15 Clumber Road is Clumber House, Park Drive (#239). Both are now recorded as former addresses on those properties, and both households are importable. The remaining numbered Clumber Road entries are still unplaced.",
  "source": "1891 census — nine enumerator's pages transcribed by A. Hagues, each entry checked against the image",
  "not_imported": true,
  "numbered_but_outside_the_record": [
@@ -17,24 +17,10 @@
    "image": "L16727_0"
   },
   {
-   "address": "7 Clumber Road",
-   "head": "Jameston/Jameson McCraith",
-   "people": 9,
-   "image": "L16727_0",
-   "note": "The McCraiths, whom the record holds at 3 South Road (#302) for 1891 — same household, same four servants, same three-month-old. One of the two addresses is wrong."
-  },
-  {
    "address": "9 Clumber Road",
    "head": "Henry Vickers",
    "people": 7,
    "image": "L16727_0 / L16848_0"
-  },
-  {
-   "address": "15 Clumber Road (Clumber House)",
-   "head": "William Godfrey Gregory",
-   "people": 6,
-   "image": "L16782_0",
-   "note": "The Gregorys, whom the record holds at Clumber House, PARK DRIVE (#239) for 1891. Two pages head this household Clumber Road."
   },
   {
    "address": "32 Clumber Road",
