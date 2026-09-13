@@ -513,6 +513,11 @@ async function dbInit() {
     )`);
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS map_review_idx
                       ON map_review(kind, item_key)`);
+    // A label kept under a corrected spelling. The map's PDF layer glues words
+    // together and turns apostrophes into other characters, so the name as
+    // extracted is often not the name as printed — this holds what it should
+    // read, while item_key keeps the raw text so the row still matches its file.
+    await db.query(`ALTER TABLE map_review ADD COLUMN IF NOT EXISTS renamed_to TEXT`);
 
     await db.query(`CREATE TABLE IF NOT EXISTS duplicate_dismissed (
       id SERIAL PRIMARY KEY,
@@ -6390,9 +6395,13 @@ app.get('/api/map-review', async (req, res) => {
 
     const decided = new Map();
     if (db) {
-      const r = await db.query(`SELECT kind, item_key, status, note, decided_by, decided_at FROM map_review`);
+      const r = await db.query(
+        `SELECT kind, item_key, status, note, renamed_to, decided_by, decided_at FROM map_review`);
       for (const d of r.rows) decided.set(`${d.kind}|${d.item_key}`, d);
     }
+    // What has already been brought in, so a row is not offered twice.
+    let overrides = {};
+    try { overrides = await loadProps(); } catch (e) {}
     const decisionFor = (kind, key) => decided.get(`${kind}|${key}`) || null;
 
     // A suggestion that merely repeats what the record already says is not worth
@@ -6406,6 +6415,7 @@ app.get('/api/map-review', async (req, res) => {
         : (a.includes('hine') && b.includes('hine')) ? 'same-firm-family'
         : 'contradicts';
       return { ...s, record_architect: have, verdict,
+               already_brought_in: !!(overrides[s.property_id] || {}).map_architect,
                decision: decisionFor('architect', String(s.property_id)) };
     }).sort((x, y) => (x.pixels_matched || 0) - (y.pixels_matched || 0));
 
@@ -6443,19 +6453,48 @@ app.post('/api/map-review/decide', requireContributor, async (req, res) => {
     return res.status(400).json({ error: 'kind must be label or architect, and item_key is required' });
   }
   const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  const renamed = String((req.body && req.body.renamed_to) || '').trim() || null;
   try {
     if (status === 'reset') {
       await db.query(`DELETE FROM map_review WHERE kind=$1 AND item_key=$2`, [kind, key]);
+      // Undoing an architect also takes back what accepting it wrote. Only the
+      // map's own entry is removed — the property's architect was never touched.
+      if (kind === 'architect') {
+        const pid = parseInt(key, 10);
+        const cur = await loadProp(pid);
+        if (cur && cur.map_architect) await saveProp(pid, { map_architect: null }, who);
+      }
       return res.json({ ok: true, status });
     }
     await db.query(
-      `INSERT INTO map_review (kind, item_key, status, note, decided_by)
-            VALUES ($1,$2,$3,$4,$5)
+      `INSERT INTO map_review (kind, item_key, status, note, renamed_to, decided_by)
+            VALUES ($1,$2,$3,$4,$5,$6)
        ON CONFLICT (kind, item_key)
        DO UPDATE SET status=EXCLUDED.status, note=EXCLUDED.note,
+                     renamed_to=EXCLUDED.renamed_to,
                      decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
-      [kind, key, status, (req.body && req.body.note) || null, who]);
-    res.json({ ok: true, status });
+      [kind, key, status, (req.body && req.body.note) || null, renamed, who]);
+
+    // Accepting an architect brings the map's reading in as the map's reading:
+    // written under its own key, named to its source, and never over the top of
+    // the architect the record already holds. The property page can then show
+    // both and let a reader weigh them.
+    if (kind === 'architect' && status === 'kept') {
+      const pid = parseInt(key, 10);
+      const said = String((req.body && req.body.architect) || '').trim();
+      if (pid && said) {
+        await saveProp(pid, {
+          map_architect: {
+            architect: said,
+            source: "Dougal de Havilland's Park Map, Fourth Edition",
+            evidence: String((req.body && req.body.evidence) || '') || null,
+            accepted_by: who,
+            accepted_at: new Date().toISOString(),
+          },
+        }, who);
+      }
+    }
+    res.json({ ok: true, status, renamed_to: renamed });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

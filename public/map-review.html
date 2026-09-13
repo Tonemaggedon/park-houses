@@ -50,6 +50,9 @@
   button.keep { background:var(--okbg); color:var(--green); border-color:#cfe0d3; }
   button.act:disabled { opacity:.45; cursor:default; }
   .said { font-size:.74rem; color:var(--faint); font-style:italic; }
+  /* A corrected reading sits above the raw text it replaces, because the raw
+     text stays the row's key and has to remain visible. */
+  .renamed { font-size:.82rem; color:var(--green); margin-top:1px; }
 
   .empty { color:var(--faint); font-style:italic; padding:24px 0; }
   .err { color:var(--red); }
@@ -108,17 +111,24 @@ const VERDICT_TEXT = {
 function rowHTML(kind, key, title, metaBits, opts) {
   const o = opts || {};
   const d = o.decision;
-  return `<div class="row${o.warn ? ' warn' : ''}" data-kind="${esc(kind)}" data-key="${esc(key)}">
+  return `<div class="row${o.warn ? ' warn' : ''}" data-kind="${esc(kind)}" data-key="${esc(key)}"
+       ${o.arch ? `data-arch="${esc(o.arch)}"` : ''} ${o.ev ? `data-ev="${esc(o.ev)}"` : ''}>
     <div class="what">
       <div class="nm">${o.href ? `<a href="${esc(o.href)}">${esc(title)}</a>` : esc(title)}</div>
+      ${d && d.renamed_to ? `<div class="renamed">reads <b>${esc(d.renamed_to)}</b></div>` : ''}
       <div class="meta">${metaBits.filter(Boolean).join(' &middot; ')}</div>
-      ${d ? `<div class="said">${esc(d.status === 'kept' ? 'kept' : 'passed')}${d.decided_by ? ' by ' + esc(d.decided_by) : ''}</div>` : ''}
+      ${o.broughtIn ? `<div class="said">already brought in as the map's reading</div>` : ''}
+      ${d ? `<div class="said">${esc(d.status === 'kept' ? (d.renamed_to ? 'accepted, renamed' : 'accepted') : 'rejected')}${d.decided_by ? ' by ' + esc(d.decided_by) : ''}</div>` : ''}
     </div>
     <div class="acts">${
       !canEdit ? '' :
       d ? `<button class="act" data-do="reset">Undo</button>`
-        : `<button class="act keep" data-do="kept">Worth following</button>
-           <button class="act" data-do="dismissed">Not useful</button>`
+        : (kind === 'architect'
+            ? `<button class="act keep" data-do="kept">Bring in as the map's</button>
+               <button class="act" data-do="dismissed">Reject</button>`
+            : `<button class="act keep" data-do="kept">Accept</button>
+               <button class="act" data-do="rename">Rename…</button>
+               <button class="act" data-do="dismissed">Reject</button>`)
     }</div>
   </div>`;
 }
@@ -162,7 +172,10 @@ function render() {
           `<span class="px${weak ? ' weak' : ''}">${esc(s.pixels_matched)} px</span>`,
           s.map_label ? `labelled &ldquo;${esc(s.map_label)}&rdquo;` : '',
         ], { href: '/?property=' + s.property_id, decision: s.decision,
-             warn: v === 'contradicts' && weak });
+             warn: v === 'contradicts' && weak,
+             arch: s.suggests, broughtIn: s.already_brought_in,
+             ev: `${s.suggests} — ${s.pixels_matched} px of the key's fill sampled around the label`
+                 + (s.map_label ? ` "${s.map_label}"` : '') });
       }
     }
   } else if (tab === 'decided') {
@@ -224,12 +237,33 @@ document.addEventListener('click', async e => {
   const btn = e.target.closest('[data-do]');
   if (!btn) return;
   const row = btn.closest('.row');
+  const act = btn.dataset.do;
+
+  // Rename is an accept under a corrected spelling: the raw text stays the key,
+  // so the row still matches the file it came from, and the reading is kept
+  // beside it. Cancelling must leave the row untouched, not reject it.
+  let renamed_to = null;
+  if (act === 'rename') {
+    const suggested = row.dataset.key;
+    renamed_to = (window.prompt('What should this label read?', suggested) || '').trim();
+    if (!renamed_to || renamed_to === suggested) return;
+  }
+
+  // Accepting an architect carries the reading and the evidence for it, so the
+  // property keeps a note of why the map thought so, not just what it said.
+  const body = { kind: row.dataset.kind, item_key: row.dataset.key,
+                 status: act === 'rename' ? 'kept' : act };
+  if (renamed_to) body.renamed_to = renamed_to;
+  if (row.dataset.kind === 'architect' && body.status === 'kept') {
+    body.architect = row.dataset.arch || '';
+    body.evidence = row.dataset.ev || '';
+  }
+
   row.querySelectorAll('button').forEach(b => b.disabled = true);
   try {
     const res = await fetch('/api/map-review/decide', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ kind: row.dataset.kind, item_key: row.dataset.key,
-                             status: btn.dataset.do }),
+      body: JSON.stringify(body),
     });
     const data = await res.json();
     if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
