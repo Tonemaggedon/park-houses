@@ -184,9 +184,15 @@ async function uploadPhoto(buf, filename, contentType) {
 // host with an ephemeral filesystem that fallback does not survive a deploy.
 async function uploadMedia(buf, filename, contentType) {
   if (cloudinary) {
+    // "auto" files a PDF under Cloudinary's image type, and most accounts refuse
+    // to deliver PDFs that way — the link comes back 401 with an empty GIF, so
+    // the document looks uploaded and simply will not open. Anything that is not
+    // an image goes up as raw, which is delivered as the file itself.
+    const isImage = /^image\//.test(contentType || '');
     return new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
-        { resource_type: 'auto', folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''),
+        { resource_type: isImage ? 'image' : 'raw',
+          folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''),
           use_filename: true, unique_filename: false },
         (error, result) => {
           if (error) return reject(new Error(error.message || JSON.stringify(error)));
