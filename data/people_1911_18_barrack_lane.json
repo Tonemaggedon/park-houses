@@ -1,0 +1,88 @@
+{
+  "note": "The Holroyd household on the 1911 return, transcribed by A. Hagues, which heads it Harlaxton House, 18 Barrack Lane. Filed at 18 Barrack Lane (#11), as the return says. Wright's Directory of Nottingham does not agree: its 1910-11, 1913-14 and 1915-16 volumes each print \"20 Holroyd James, house agent\", between Glenroy (F. W. Pare, no number) and 28 Simpson, so the directory has him next door. Neither house has any other census household in the record, so nothing here settles which is right; it is left as an open question, and Harlaxton House is not added as a house name until it is. No Holroyd was in the record before this file.",
+  "source": "1911 census, Harlaxton House, 18 Barrack Lane, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11 (Leicester Special Collections id 165758), 1913-14 printed page 14 (id 166408), 1915-16 (id 347693).",
+  "people": [
+    {
+      "first_name": "James", "last_name": "Holroyd", "match_born_year": true, "sex": "M",
+      "born_year": 1865, "born_place": "Radford, Nottingham",
+      "occupations": [{ "occupation": "Estate agent", "from_year": 1911, "to_year": 1911 }],
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 46,
+                   "occupation_at_census": "Estate agent", "birth_place": "Radford, Nottingham",
+                   "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues; Wright's Directory 1910-16 prints him at 20" }],
+      "relationships": [{ "to": { "first_name": "Lizzy", "last_name": "Holroyd" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Lizzy", "last_name": "Holroyd", "match_born_year": true, "sex": "F",
+      "born_year": 1861, "born_place": "Nottingham",
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 50,
+                   "birth_place": "Nottingham", "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Alice Muriel", "last_name": "Holroyd", "match_born_year": true, "sex": "F",
+      "born_year": 1889, "born_place": "Nottingham",
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 22,
+                   "birth_place": "Nottingham", "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James", "last_name": "Holroyd" }, "type": "child_of" },
+                        { "to": { "first_name": "Lizzy", "last_name": "Holroyd" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Gwendoline Lizzy", "last_name": "Holroyd", "match_born_year": true, "sex": "F",
+      "born_year": 1892, "born_place": "Nottingham",
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 19,
+                   "birth_place": "Nottingham", "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James", "last_name": "Holroyd" }, "type": "child_of" },
+                        { "to": { "first_name": "Lizzy", "last_name": "Holroyd" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "William Norman", "last_name": "Holroyd", "match_born_year": true, "sex": "M",
+      "born_year": 1894, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Estate clerk", "from_year": 1911, "to_year": 1911 }],
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "Estate clerk", "birth_place": "Nottingham",
+                   "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James", "last_name": "Holroyd" }, "type": "child_of" },
+                        { "to": { "first_name": "Lizzy", "last_name": "Holroyd" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "James Ivor", "last_name": "Holroyd", "match_born_year": true, "sex": "M",
+      "born_year": 1897, "born_place": "Nottingham",
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 14,
+                   "occupation_at_census": "At school", "birth_place": "Nottingham",
+                   "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James", "last_name": "Holroyd" }, "type": "child_of" },
+                        { "to": { "first_name": "Lizzy", "last_name": "Holroyd" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Eliza", "last_name": "Kirk", "match_born_year": true, "sex": "F",
+      "born_year": 1884, "born_place": "Greasley, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Domestic servant", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Greasley, Nottinghamshire",
+                   "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Hare", "match_born_year": true, "sex": "F",
+      "born_year": 1888, "born_place": "Horsegate, Lincolnshire",
+      "occupations": [{ "occupation": "Cook and general servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [11],
+      "census": [{ "census_year": 1911, "property_id": 11, "address": "Harlaxton House, 18 Barrack Lane",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Cook and general servant, domestic", "birth_place": "Horsegate, Lincolnshire",
+                   "source": "1911 census, Harlaxton House, 18 Barrack Lane — transcribed by A. Hagues" }]
+    }
+  ]
+}
