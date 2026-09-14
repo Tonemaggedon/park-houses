@@ -4453,6 +4453,24 @@ async function directoryCheck() {
     if (!byStreet.has(st)) byStreet.set(st, []);
     byStreet.get(st).push(pr);
   }
+  // A house the record files under one street and also numbers on another —
+  // "1 Clinton Terrace (127 Derby Road)" — is findable by either. The directories
+  // print Clinton Terrace by its Derby Road numbers.
+  const alsoOn = new Map();
+  for (const pr of props) {
+    const m = String(pr.address || '').match(/\((\d+[a-z]?)\s+([A-Za-z][A-Za-z ]+?)\)\s*$/);
+    if (!m) continue;
+    const st = m[2].trim().replace(/\b\w/g, c => c.toUpperCase());
+    if (!alsoOn.has(st)) alsoOn.set(st, []);
+    alsoOn.get(st).push({ ...pr, no: m[1] });
+    // …and on its own street too: 1894-95 heads the block "Clinton terrace" but
+    // still prints the Derby Road numbers against it.
+    const own = (pr.street || '').trim();
+    if (own && own !== st) {
+      if (!alsoOn.has(own)) alsoOn.set(own, []);
+      alsoOn.get(own).push({ ...pr, no: m[1] });
+    }
+  }
   // Everyone filed at a house, by house and census year.
   const census = new Map();
   if (db) {
@@ -4468,7 +4486,7 @@ async function directoryCheck() {
   }
   const rows = [];
   for (const e of (doc.entries || [])) {
-    const onStreet = byStreet.get(e.street) || [];
+    const onStreet = [...(byStreet.get(e.street) || []), ...(alsoOn.get(e.street) || [])];
     const placed = directoryHouse(e, onStreet);
     const years = DIR_CENSUS[e.year] || [];
     const row = { volume: e.volume, year: e.year, street: e.street, page: e.page, record: e.record,

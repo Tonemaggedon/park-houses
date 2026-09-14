@@ -107,7 +107,28 @@ failed here before — a payload still fired through a local variable. Inline `o
 
 Review queues — every one of these suggests and never assigns:
 `/gazette-review`, `/wikidata-review`, `/name-sex`, `/name-review`, `/census/unresolved`,
-`/duplicates`, `/map-review` (Dougal's map), `/medals-review` (WO 372 medal cards).
+`/duplicates`, `/map-review` (Dougal's map), `/medals-review` (WO 372 medal cards),
+`/directory-check` (Wright's Directory by street).
+
+### Trade directories
+
+`data/directory_park_entries.json` holds every householder Wright's Directory of Nottingham
+prints on a Park street in 1894-95, 1898-99, 1910-11, 1913-14 and 1915-16. `read_from_scans`
+names the volumes transcribed from the page images at Leicester Special Collections; any other
+volume is the older machine reading of the page text and is marked as such on the pages.
+Three places read it:
+
+- `/unfiled` — each unfiled head of household is looked up by surname in the directory years
+  nearest its census; a match on the street the return names becomes a suggestion.
+- `/directory-check` (`/api/directory/street-check`) — every entry placed on a house by its
+  printed number or a house name the record knows (including a second address such as
+  "1 Clinton Terrace (127 Derby Road)"), then set beside the nearest census: agrees / elsewhere /
+  new / different / unplaced.
+- Each house's timeline (`/api/property/:id/directory`).
+
+Derby Road, Lenton Road and Park Row run well past The Park; only the numbers and house names
+the record has on them are kept. Rebuild with the scripts in `scripts/directories/` (see its
+README).
 
 ---
 

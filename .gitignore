@@ -3,3 +3,9 @@ node_modules/
 .DS_Store
 cookies.txt
 *.cookies
+
+# Trade-directory working files
+scripts/directories/dirscans/
+scripts/directories/dir_pages/
+scripts/directories/dir_headers.json
+scripts/directories/__pycache__/

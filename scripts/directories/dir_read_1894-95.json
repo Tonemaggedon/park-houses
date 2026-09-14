@@ -1,0 +1,7802 @@
+{
+ "volume": "1894-95",
+ "streets": [
+  {
+   "street": "Cavendish Crescent North",
+   "directory_heading": "Cavendish crescent north, C. (Tunnel road, Park).",
+   "heading_note": "(Tunnel road, Park)",
+   "side_unclear": false,
+   "pages": [
+    44
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Gleadthorpe",
+     "name": "Jno. M'Connell",
+     "occupation": "whs mgr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wm. Hy. Radford",
+     "occupation": "engineer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Flixton",
+     "name": "Sir Samuel G. Johnson, Kt.",
+     "occupation": "town clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Pendower",
+     "name": "Mrs. Margaret Allen",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Normanton lodge",
+     "name": "William Fry",
+     "occupation": "of W. Ball & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "North road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Carisbrook hse",
+     "name": "Mr. Wm. Bradshaw; Miss M. Bradshaw",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Cavendish lodge",
+     "name": "Mr. Alfred Goater",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Hy. Edw. Hunt",
+     "occupation": "of H. & Williams",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Hy. A. Cursham",
+     "occupation": "insurance mgr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mr. Thomas Bayley",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Lenton avenue [Cross over",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Hardwicke house",
+     "name": "Henry Handford, M.R.C.P, Lond",
+     "occupation": "physician",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "George Warriner",
+     "occupation": "grdnr and florist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Haddon house",
+     "name": "John Smith",
+     "occupation": "of E. Smith & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "North road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Frederick Wm. Goddard",
+     "occupation": "lace mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Hazlewood",
+     "name": "Thomas Page",
+     "occupation": "firm of Jonathan Page",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Crescent lodge",
+     "name": "James Smith",
+     "occupation": "of E. Smith & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "James Forman",
+     "occupation": "of T. Forman & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Rose Bell",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Cavendish Crescent South",
+   "directory_heading": "Cavendish Crescent south, C. (Park drive).",
+   "heading_note": "(Park drive)",
+   "side_unclear": false,
+   "pages": [
+    44
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "John Manning, Esq, J.P",
+     "occupation": "of S. Fowler & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "3",
+     "house_name": "Kirkstall lodge",
+     "name": "John B. Hutchinson",
+     "occupation": "of J. & R. Hutchinson",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Rbt. Hutchinson",
+     "occupation": "of J. & R. Htchsn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mrs. Emily L. Gibson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "William J. Heslop",
+     "occupation": "mngng dirctr of Nottingham Manufacturing Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "South road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Wltr. S. Hunt",
+     "occupation": "of Ht, Moody & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "17",
+     "house_name": null,
+     "name": "William A. Blain, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "19",
+     "house_name": null,
+     "name": "Alfred and Alfred George Page",
+     "occupation": "of J. Page & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "21",
+     "house_name": "Albert villa",
+     "name": "Mrs. M. A. Allen",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "23",
+     "house_name": "Holyrood house",
+     "name": "Mr. Jas. Cloak",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": "25",
+     "house_name": null,
+     "name": "Z. Jessop",
+     "occupation": "of Jessop & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Cavendish Road East",
+   "directory_heading": "Cavendish road east, C.",
+   "heading_note": "no locality bracket printed",
+   "side_unclear": false,
+   "pages": [
+    44
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Elmhurst",
+     "name": "Arthur Alfred Dawson",
+     "occupation": "of T. Herbert & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Overdale",
+     "name": "Mr. Edward Hardy",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Cavendish house",
+     "name": "Charles Sudbury",
+     "occupation": "of C. & F. Sudbury",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "R. H. Speed (solicitor); William H. Speed",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Parker Woodward",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Allandale",
+     "name": "Bjn. North",
+     "occupation": "whlsl drgst",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Tunnel road [Cross over",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wall Letter Box cleared 5, 8-15, 9-45, 12-45, 4-30, 7, 9; Sunday 5 a.m., 7 p.m.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 44,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Clare Valley",
+   "directory_heading": "Clare valley (Tattershall dv), C.",
+   "heading_note": "(Tattershall dv)",
+   "side_unclear": false,
+   "pages": [
+    47
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Elmsdale",
+     "name": "Ar. Lewis",
+     "occupation": "of L. & Grundy",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 47,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rev. L. Wilkins, M.A",
+     "occupation": "vicar St. James'",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 47,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rev. George Hill, M.A.",
+     "occupation": "Bapt.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 47,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Ivydene",
+     "name": "Frederick F. Cleaver",
+     "occupation": "of Cleaver & Walker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 47,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Fred Pearson",
+     "occupation": "of F. Pearson & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 47,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Clumber Crescent South",
+   "directory_heading": "Clumber Crescent south, C.",
+   "heading_note": "no locality bracket printed",
+   "side_unclear": false,
+   "pages": [
+    48
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John M. Perry",
+     "occupation": "of J. M. P. & Co",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John T. Perry",
+     "occupation": "of Thorpe & Perry",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl",
+     "note": "printed on the same line as John M. Perry, separated by a semicolon"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wm. A. Brown",
+     "occupation": "wine & spirit mcht",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rd. FitzHugh, Esq, J.P.",
+     "occupation": "chemist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Clumber Road East",
+   "directory_heading": "Clumber road east, C.",
+   "heading_note": "no locality bracket printed",
+   "side_unclear": false,
+   "pages": [
+    48
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Penrhyn house",
+     "name": "Marcus Lewis",
+     "occupation": "of H. & M. Lewis",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Edale hse",
+     "name": "S. Thompson",
+     "occupation": "silk mcht",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Brightlands",
+     "name": "Sml. Bourne",
+     "occupation": "cttn dblr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Clumber Road West",
+   "directory_heading": "Clumber road west, C.",
+   "heading_note": "no locality bracket printed",
+   "side_unclear": false,
+   "pages": [
+    48
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Benjamin Dowson",
+     "occupation": "of D. & Wright",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl",
+     "note": "surname could read Dowsou in the scan; Dowson assumed"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wm. Mchl. Rook",
+     "occupation": "of Skinner & R.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mr. Richard Challands",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 48,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Castle Grove",
+   "directory_heading": "Castle grove (Lenton rd, Pk), C.",
+   "heading_note": "(Lenton rd, Pk)",
+   "side_unclear": false,
+   "pages": [
+    43
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. M. A. Dobson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. C. Forman; Arthur Forman",
+     "occupation": "of T. Forman & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Hannah Simons",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Frederick Goddard",
+     "occupation": "of Goddard, Massey and Warner",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John G. Good",
+     "occupation": "corn merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Joseph Madeley",
+     "occupation": "lodge keeper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 43,
+     "tile": "tr"
+    }
+   ]
+  },
+  {
+   "street": "Derby Road",
+   "directory_heading": "Derby rd (Top of Chapel bar), Mk.",
+   "heading_note": "(Top of Chapel bar); listing runs out along the odd side to Lenton/Radford and back along the even side to Upper Parliament street",
+   "side_unclear": false,
+   "pages": [
+    56,
+    57,
+    58
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Free Church street",
+     "name": "Richard Howell",
+     "occupation": "joiner and cabinet maker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "italic prefix is a side street, not a house name"
+    },
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Bass, Ratcliffe & Gretton, Limtd",
+     "occupation": "brewers (Brtn); R. S. Radford, agt",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Nottm. Furnishing Co. (Albert Cahn and H. M. Bernstein)",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "3A",
+     "house_name": null,
+     "name": "Edm. Shortland",
+     "occupation": "café & dining rms",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Church Extn Association sale shop",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mrs. Louisa Coxon",
+     "occupation": "dyer & cleaner",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Fred Henry & Son",
+     "occupation": "ironmongers and house furnishers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Benjamin Blundell",
+     "occupation": "v, Three Horse Shoes Hotel",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Albert square",
+     "name": "Samuel Smith",
+     "occupation": "livery stable keeper and hack master",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "italic prefix is a side place"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Back entrance to Albert hall",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "THOS. OBEE",
+     "occupation": "wardrobe dlr",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "17-23",
+     "house_name": "Albert Hall buildings",
+     "name": "J. Harker & Co, Public Benefit Boot and Shoe Co.",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl"
+    },
+    {
+     "no": "1",
+     "house_name": "North Circus st",
+     "name": "Charles Vernon Taylor, M.D",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "number 1 is North Circus st numbering, not Derby road"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "ALBERT HALL, J. G. Hickling, sec",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "'...' line under North Circus st"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Frank Vowles, L.D.S",
+     "occupation": "dental srgn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "'...' line under North Circus st"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Miss Elizabeth Hogan, aprtmnts; Miss Margaret Taylor",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "'...' line under North Circus st"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "ST. BARNABAS' PRESBYTERY, Rt. Rev. Edward Bagshawe, Bishop; Revs. Edw. B. Douglass (Canon), John R. Kane, Francis French, and Joseph Donohoe",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "bl",
+     "note": "'...' line under North Circus st"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "ST. BARNABAS' CATHEDRAL (CATH)",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "25-9",
+     "house_name": null,
+     "name": "Diocesan College (Cath) of Our Lady and St. Hugh, Rev. Jno. A. Wineham, Rector",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "31",
+     "house_name": null,
+     "name": "Edgar Truman",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "33",
+     "house_name": null,
+     "name": "Mrs. Eliza S. Wallis",
+     "occupation": "apartments",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "35",
+     "house_name": null,
+     "name": "Edmund Paul",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "37",
+     "house_name": null,
+     "name": "Chas. Binnersley",
+     "occupation": "frutr & florist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "39",
+     "house_name": null,
+     "name": "Louis Simon",
+     "occupation": "painter, &c.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Thomas H. Spencer",
+     "occupation": "sculptor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "41",
+     "house_name": null,
+     "name": "William Mason",
+     "occupation": "joiner & builder",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Sarah Mason",
+     "occupation": "news agent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr",
+     "note": "'...' line, same house as 41"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "BAPTIST CHPL, Rev. G. Hill, M.A.",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Upper College street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "47",
+     "house_name": null,
+     "name": "Wm. Henry Truman",
+     "occupation": "upholsterer and furniture dealer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "49-51",
+     "house_name": null,
+     "name": "Henry Gunthorpe",
+     "occupation": "printer, sign and ticket writer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "53",
+     "house_name": null,
+     "name": "Mrs. Emma Prince",
+     "occupation": "umbrlla mkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "55",
+     "house_name": null,
+     "name": "Albert Smith",
+     "occupation": "baker and confr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "59",
+     "house_name": null,
+     "name": "Thomas R. Tebby",
+     "occupation": "music dealer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "59A",
+     "house_name": null,
+     "name": "Mrs. Ellen Muggleston",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "61",
+     "house_name": null,
+     "name": "Chs. Edw. Wilkinson",
+     "occupation": "wrhsemn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "63",
+     "house_name": null,
+     "name": "Mr. Edwin Hewitt",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "63A",
+     "house_name": null,
+     "name": "Joseph Slater",
+     "occupation": "dairyman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "65-7",
+     "house_name": null,
+     "name": "S. Elliott",
+     "occupation": "bhs, Hand & Heart",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "69",
+     "house_name": null,
+     "name": "Wm. Sanderson",
+     "occupation": "sign & tckt wrtr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "71",
+     "house_name": null,
+     "name": "Mrs. Eliza Bessant",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "73",
+     "house_name": null,
+     "name": "Jas. Searcy",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "75",
+     "house_name": null,
+     "name": "Samuel Warren",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr",
+     "note": "same printed line as 73"
+    },
+    {
+     "no": "77",
+     "house_name": null,
+     "name": "George Allsopp",
+     "occupation": "clock & wtch rpr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "79",
+     "house_name": null,
+     "name": "Mrs. Emma Morris",
+     "occupation": "waterproof maker and repairer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "81",
+     "house_name": null,
+     "name": "Joshua Hardy",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "tr"
+    },
+    {
+     "no": "83-5",
+     "house_name": null,
+     "name": "Frank Henry Chambers",
+     "occupation": "tbcnst and cigar manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "87-9",
+     "house_name": null,
+     "name": "Ellis Ward",
+     "occupation": "mantle warehsmn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "91",
+     "house_name": null,
+     "name": "W. E. Woodliffe",
+     "occupation": "fish & game dlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "93",
+     "house_name": null,
+     "name": "C. Hall & Sons",
+     "occupation": "ironmongers, &c.",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "95",
+     "house_name": null,
+     "name": "G. Hill & Co",
+     "occupation": "boot makers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "97",
+     "house_name": null,
+     "name": "Mason Brs. (Sam & Edm.)",
+     "occupation": "btchrs",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "99",
+     "house_name": null,
+     "name": "Mrs. Annie Collins",
+     "occupation": "dining and refreshment house",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "101",
+     "house_name": null,
+     "name": "Samuel Airs",
+     "occupation": "upholsterer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "101A",
+     "house_name": null,
+     "name": "Good Sills",
+     "occupation": "bhs, West End Vlts",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "103",
+     "house_name": null,
+     "name": "Harry Bradley",
+     "occupation": "tripe dresser",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "105",
+     "house_name": null,
+     "name": "Chas. H. Wentworth (late Palethorpe)",
+     "occupation": "cab proprtr, hay, straw, &c. dealer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "109",
+     "house_name": null,
+     "name": "Samuel Drake",
+     "occupation": "mnumntl mason",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "111",
+     "house_name": null,
+     "name": "Henry Cresswell",
+     "occupation": "bootmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "The Ropewalk  C.",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "115",
+     "house_name": null,
+     "name": "Mrs. Jane Chatwin",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": "Newcastle terrace",
+     "name": "Harry Hirsch",
+     "occupation": "of Heymann & Alexander",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "italic prefix Newcastle terrace, no number"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Newcastle drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "117",
+     "house_name": "Clinton villa",
+     "name": "John Edmund Berrey",
+     "occupation": "lace manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "119",
+     "house_name": "Clinton terrace",
+     "name": "Arthur Goddard",
+     "occupation": "dentist's assistant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "Clinton terrace prefix; number is Derby road numbering"
+    },
+    {
+     "no": "121",
+     "house_name": null,
+     "name": "John Towle",
+     "occupation": "warehouseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "125",
+     "house_name": null,
+     "name": "Fdk. B. Harris (solicitor)",
+     "occupation": "at Public offices",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "129",
+     "house_name": null,
+     "name": "Claude Hollins",
+     "occupation": "of W. H. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "131",
+     "house_name": null,
+     "name": "Mrs. Elizabeth J. Butt",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "133",
+     "house_name": null,
+     "name": "Mrs. Susannah Starey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "135",
+     "house_name": null,
+     "name": "Miss Mary E. Hardstaff",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": "139",
+     "house_name": null,
+     "name": "Miss L. Adcock",
+     "occupation": "boarding and day school",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "'...' line under Clinton terrace"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Derby terrace, 9 ... 2: seven lines (p56 br to p57 tl) with Derby terrace's own numbering, recorded under street 'Derby Terrace', not here",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "North road, Park",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "PILLAR LETTER Box, cleared 5, 9, 10-45, 12-45, 2, 4, 5-15, 6-25, 7-25, 10, 10-55; Sundays 5 a.m. and 7-10 p.m.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "North Lodge",
+     "name": "Mr. Thomas Need",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Barrack lane: four lines (George Derry; John Thomas Johnson; Rock cottage, A. Browne; Mr. Edwin Gordon) recorded under street 'Barrack Lane', not here",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "159",
+     "house_name": "Rock terrace",
+     "name": "Miss Charlotte Elizabeth Isaacs",
+     "occupation": "shopkeeper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "Rock terrace prefix; number is Derby road numbering"
+    },
+    {
+     "no": "161",
+     "house_name": null,
+     "name": "Mrs. Sarah Ann Johnson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Rock terrace"
+    },
+    {
+     "no": "163",
+     "house_name": null,
+     "name": "Joseph Holmes",
+     "occupation": "gardener, &c.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Rock terrace"
+    },
+    {
+     "no": "165",
+     "house_name": null,
+     "name": "Thomas Wisburge",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Rock terrace"
+    },
+    {
+     "no": "167",
+     "house_name": null,
+     "name": "Geo. Scrimshaw",
+     "occupation": "warehseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Rock terrace"
+    },
+    {
+     "no": "169",
+     "house_name": null,
+     "name": "Harry Garton",
+     "occupation": "bootmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Rock terrace"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mills lane",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "221",
+     "house_name": "Holly cttg",
+     "name": "Chpr. James Lewis",
+     "occupation": "thread agent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "printed 'Lenton sands, 221 Holly cttg'"
+    },
+    {
+     "no": "223",
+     "house_name": null,
+     "name": "Henry Moss",
+     "occupation": "traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": "225",
+     "house_name": null,
+     "name": "John Hallam",
+     "occupation": "clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": "1",
+     "house_name": "Willoughby st",
+     "name": "John Thos. Hardy",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "number 1 is Willoughby st numbering"
+    },
+    {
+     "no": "227",
+     "house_name": "Lenton sands",
+     "name": "Jph. Wilson",
+     "occupation": "first",
+     "kind": "resident",
+     "side": null,
+     "unsure": true,
+     "page": 57,
+     "tile": "tl",
+     "note": "occupation printed 'first' as read; meaning unclear"
+    },
+    {
+     "no": "229",
+     "house_name": null,
+     "name": "Chas. Armstead",
+     "occupation": "mchn hldr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": "231",
+     "house_name": null,
+     "name": "Fdk. Billyeald",
+     "occupation": "warehseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": "233",
+     "house_name": null,
+     "name": "Harry Billyeald",
+     "occupation": "warehseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": "235",
+     "house_name": null,
+     "name": "Robert Burton",
+     "occupation": "machinist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Lenton sands"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Lenton boulevard",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "LENTON RECREATION GROUND",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Gregory street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William H. Hutchinson",
+     "occupation": "maltster",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Lenton firs",
+     "name": "Wm. Lambert, Esq, J.P",
+     "occupation": "of W. J. & T. Lambert & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Lenton hall",
+     "name": "Frdk. Wright, Esq, J.P",
+     "occupation": "of I. C. Wright & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "West Hill house",
+     "name": "Samuel H. Sands, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Lenton abbey",
+     "name": "Miss Kate Bayley",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Lenton eaves",
+     "name": "Mr. John Piggin",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Lenton fields",
+     "name": "Wm. G. Forster",
+     "occupation": "of Beeston Brewery Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "line ends '[Cross over'"
+    },
+    {
+     "no": null,
+     "house_name": "Wollaton Hall lodge",
+     "name": "John Burns",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "James Watkinson",
+     "occupation": "engine waste dlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Mills",
+     "occupation": "v, Rose and Crown",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Radford marsh",
+     "name": "Charles Critchlow",
+     "occupation": "farmer and miller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "James Pearson",
+     "occupation": "coal dealer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "'...' line under Radford marsh"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Brown",
+     "occupation": "v, Three Wheat Sheaves",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Marshall",
+     "occupation": "of Marshall Bros.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Marshall Bros",
+     "occupation": "wheelwrights and wagon builders",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "MIDLAND RAILWAY STATION, Chas. Smith",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Railway wharf",
+     "name": "Wm. Pearson",
+     "occupation": "coal merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "'...' line"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Faraday road and Horsefair close",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "1",
+     "house_name": "Butt houses",
+     "name": "H. Grundy",
+     "occupation": "coal dlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "Butt houses numbering"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "William Barlow",
+     "occupation": "p.c.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "'...' line under Butt houses"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "GREGORY FOOTBALL GROUND",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Radford Boulevard gardens",
+     "name": "Wm. Ledger",
+     "occupation": "cooper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "188",
+     "house_name": null,
+     "name": "Geo. Topham",
+     "occupation": "florist & seedsman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Arundel st",
+     "name": "E. H. Fraser",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "italic prefix is a side street"
+    },
+    {
+     "no": "5",
+     "house_name": "Brunel terace",
+     "name": "Mr. M. Dann",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "Brunel terrace numbering"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "William Henry Hutton",
+     "occupation": "of Ransom & Hutton",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "'...' line under Brunel terrace"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Edward James Smith",
+     "occupation": "of E. J. Smith & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Brunel terrace"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Wm. C. Bearder",
+     "occupation": "at T. Adams & Co.'s",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Brunel terrace"
+    },
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Mrs. Emma Ashwell",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Brunel terrace"
+    },
+    {
+     "no": "176",
+     "house_name": null,
+     "name": "Wm. Jas. Baker",
+     "occupation": "of Meats & B.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Uphill house",
+     "name": "W. W. Miller",
+     "occupation": "of Miller Bros.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "printed 'Wellington square, Uphill house'"
+    },
+    {
+     "no": "172",
+     "house_name": null,
+     "name": "PARK HILL CONGREGATIONAL CHURCH, Rev. W. Crosbie, M.A.",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "170",
+     "house_name": null,
+     "name": "Wm. Marshall",
+     "occupation": "draper's asstnt",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "12",
+     "house_name": "Hermon st",
+     "name": "Mrs. Elizabeth Ash",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "Hermon st numbering"
+    },
+    {
+     "no": "1",
+     "house_name": "Park Hill terrace",
+     "name": "John Moore",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "Park Hill terrace numbering"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Miss Fny. Brown",
+     "occupation": "wrhse overlkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Park Hill terrace"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "William Hall",
+     "occupation": "warehouseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Park Hill terrace"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Benjamin Carver",
+     "occupation": "cigar mcht",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "'...' line under Park Hill terrace"
+    },
+    {
+     "no": "164",
+     "house_name": null,
+     "name": "Henry Maplethorpe",
+     "occupation": "fruiterer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "162",
+     "house_name": null,
+     "name": "John Thomas Goodwin",
+     "occupation": "baker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "160",
+     "house_name": null,
+     "name": "William James Simms",
+     "occupation": "decorator",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "1",
+     "house_name": "Park hill",
+     "name": "Mrs. Elizabeth Bussey; Mrs. Mary Goodwin",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl",
+     "note": "Park hill numbering"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "SION HILL FACTORY (West entrance), Edn. Burrows, Isc. Allen, and Geo. Burley, machine holders",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "156",
+     "house_name": null,
+     "name": "Thomas Ely",
+     "occupation": "clerk of works",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "154",
+     "house_name": null,
+     "name": "Miss L. Hollingworth",
+     "occupation": "drssmkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "SION HILL FACTORY (East entrance), John Taylor, Charles Armstead, Wm. Morley, and Geo. Wright, mchn hldrs; James R. Hancock, machine builder",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Elliott street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "152",
+     "house_name": null,
+     "name": "John Thomas Barlow",
+     "occupation": "baker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "150",
+     "house_name": null,
+     "name": "John Stevens",
+     "occupation": "curtain dresser",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "148",
+     "house_name": null,
+     "name": "Mrs. Sarah Morrell",
+     "occupation": "beer retailer, confectioner and shopkeeper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "146",
+     "house_name": null,
+     "name": "William Ackland",
+     "occupation": "hosiery and corset mfr, and Berlin wool dlr; Miss A. Ackland, mllnr & drssmkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "144",
+     "house_name": null,
+     "name": "Fdk. Bellamy",
+     "occupation": "plmbr & gasfitter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "St. Helen's street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "142",
+     "house_name": null,
+     "name": "Edw. Hickton",
+     "occupation": "bhs, Gardnrs' Rest",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "140",
+     "house_name": null,
+     "name": "Charles Hames",
+     "occupation": "bootmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "138A",
+     "house_name": null,
+     "name": "Edmund Farnsworth",
+     "occupation": "painter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "136",
+     "house_name": null,
+     "name": "Mrs. Mary Ann Smith",
+     "occupation": "tobcnst",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Ledger",
+     "occupation": "cooper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "134",
+     "house_name": null,
+     "name": "Thomas Jackson",
+     "occupation": "milk dealer; Mrs. Laura Jackson, mllnr, dressmaker and register office keeper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Alfreton road  Mk.",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "11",
+     "house_name": "Cemetery cottages",
+     "name": "Miss Frances Whittington",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "Cemetery cottages numbering"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "GENERAL CEMETERY, entrance & office, Rev. E. A. Simms, chaplain",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl",
+     "note": "'...' line under Cemetery cottages"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Barnes & Metcalf (Wm,)",
+     "occupation": "shirt and collar dressers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "TOWN WEIGHING MACHINE, George Henry Cresswell, clerk",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wollaton street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "128",
+     "house_name": null,
+     "name": "Edn. Cheshire Patchitt",
+     "occupation": "chymist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "BRANCH POST, TELEGRAPH AND MONEY ORDER OFFICE. Box cleared 8-50, 10-35, 12-35, 1-50, 3-50, 5-5, 6-20, 7-40, 9, week-days only.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "M.R. Parcels Receiving Office",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "124",
+     "house_name": null,
+     "name": "Robert Pullman",
+     "occupation": "draper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "LAMBLEY'S HOSPITALS",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "116",
+     "house_name": null,
+     "name": "John Edward Morris",
+     "occupation": "tobaccnst",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "114",
+     "house_name": null,
+     "name": "Mrs. Louisa Hines",
+     "occupation": "hard confr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Goodhead's yard",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "110A",
+     "house_name": null,
+     "name": "A. Roughton",
+     "occupation": "fent warehsman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "bl"
+    },
+    {
+     "no": "108-110",
+     "house_name": null,
+     "name": "Lnrd. Tidswell",
+     "occupation": "coach bldr",
+     "kind": "resident",
+     "side": null,
+     "unsure": true,
+     "page": 57,
+     "tile": "bl",
+     "note": "forename abbreviation smudged; read as Lnrd."
+    },
+    {
+     "no": "106",
+     "house_name": null,
+     "name": "John T. Gant",
+     "occupation": "hosier",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "104",
+     "house_name": null,
+     "name": "Fdk. Walter Dance",
+     "occupation": "tobacconist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "102",
+     "house_name": null,
+     "name": "Derby Bank of Furniture, Henry H. Coster, manager",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "100",
+     "house_name": null,
+     "name": "Wm. Hy. Truman",
+     "occupation": "furniture dlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "98",
+     "house_name": null,
+     "name": "Wm. Parnham",
+     "occupation": "v, Milton's Head",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "96",
+     "house_name": null,
+     "name": "Thos. James",
+     "occupation": "fishmngr & grngrcr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "94",
+     "house_name": null,
+     "name": "Albert Sansom",
+     "occupation": "brushmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "92",
+     "house_name": null,
+     "name": "George E. S. Allsopp",
+     "occupation": "watchmkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "90",
+     "house_name": null,
+     "name": "Mrs. Mary Ann Wilson",
+     "occupation": "news agent, general dlr & register office",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "88",
+     "house_name": null,
+     "name": "Mrs. Catherine Marshall",
+     "occupation": "dyer and tailoress",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Catherine Hall",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr",
+     "note": "'...' line, same house as 88"
+    },
+    {
+     "no": "86",
+     "house_name": null,
+     "name": "Miss Elizabeth Cliffe",
+     "occupation": "hard confr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Pope's place",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "84",
+     "house_name": null,
+     "name": "Miss Louisa Thornhill",
+     "occupation": "milliner",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "82",
+     "house_name": null,
+     "name": "Mrs. Elizabeth Barber",
+     "occupation": "fancy draper and ladies' outfitter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "80",
+     "house_name": null,
+     "name": "Knitted Hosiery Co, Edwin Westmoreland, manager",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "78",
+     "house_name": null,
+     "name": "James Fredk. Merriman",
+     "occupation": "hatter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "76",
+     "house_name": null,
+     "name": "Hy. Carnelley",
+     "occupation": "boot & shoemaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "74",
+     "house_name": null,
+     "name": "Mrs. E. Kelsall",
+     "occupation": "servants' registry office",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "72",
+     "house_name": null,
+     "name": "David Brener",
+     "occupation": "hosiery dealer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Derby street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "58 & 60",
+     "house_name": null,
+     "name": "Robert Pullman",
+     "occupation": "draper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "56",
+     "house_name": null,
+     "name": "Eland Bros",
+     "occupation": "corn and potatoe mchts, and hay and corn dealers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "52-4",
+     "house_name": null,
+     "name": "Baumfield & Harrington, fancy drapers; Fdk. Thos. Elborough, coml trvlr; Mrs. Eln. Elborough",
+     "occupation": "of Baumfield & Harrington",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tr"
+    },
+    {
+     "no": "48-50",
+     "house_name": null,
+     "name": "S. SMITH",
+     "occupation": "boot & shoe manufacturers & repairers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "LABRAY'S HOSPITALS",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "8",
+     "house_name": "Vernon st",
+     "name": "Mrs. Mrgrt. McDonnell",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br",
+     "note": "Vernon st numbering"
+    },
+    {
+     "no": "40-44",
+     "house_name": null,
+     "name": "Matthews & Co",
+     "occupation": "clthrs & outftrs",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "38",
+     "house_name": null,
+     "name": "Mrs. Annie Walker",
+     "occupation": "bhs, Three Horse Shoes",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "36",
+     "house_name": null,
+     "name": "T. Bott & Son",
+     "occupation": "ironmongers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "34",
+     "house_name": null,
+     "name": "A. Healey",
+     "occupation": "hosier and outfitter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "32",
+     "house_name": null,
+     "name": "John Y. Newing",
+     "occupation": "hairdresser",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "L. & N. W. Parcels Receiving office",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "30",
+     "house_name": null,
+     "name": "Joseph George Gibbons",
+     "occupation": "butcher",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "28",
+     "house_name": null,
+     "name": "Josiah L. Page",
+     "occupation": "fruiterer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Shepperson street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "24-6",
+     "house_name": null,
+     "name": "Joseph Henry Thraves",
+     "occupation": "draper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "22",
+     "house_name": null,
+     "name": "Thos. Martin",
+     "occupation": "cabinet mkr, &c.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "20",
+     "house_name": null,
+     "name": "H. P. Tyler",
+     "occupation": "boot & shoe factor; Mrs. H. Kennedy, manageress",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "18B",
+     "house_name": null,
+     "name": "Boot (Mrs. Sarah) & Co",
+     "occupation": "hard confectioners",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "18A",
+     "house_name": null,
+     "name": "Albert Furnishing Warehouse, Joseph R. Turton, manager",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "18",
+     "house_name": null,
+     "name": "Sale, Sons & Co",
+     "occupation": "grocers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "16",
+     "house_name": null,
+     "name": "Leivers Bros",
+     "occupation": "provision merchnts",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "14",
+     "house_name": null,
+     "name": "Peter Inglis",
+     "occupation": "corn and seed dlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "12",
+     "house_name": "Albert Hotel",
+     "name": "Miss E. Sharp",
+     "occupation": "manageress",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Globe street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Mason and Radford",
+     "occupation": "chemists",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John S. Radford",
+     "occupation": "of Mason & Rdfd",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Benj. Baumfield",
+     "occupation": "tlr & wlln drpr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "Thomas Mansell",
+     "occupation": "tobacconist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Granger & Taylor, jewellers and wtchmkrs; Ths. Taylor",
+     "occupation": "of G. & T.",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Mr. Jonah Samuel",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "S. and M. Samuel",
+     "occupation": "pawnbrokers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Toll street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "12A",
+     "house_name": null,
+     "name": "M. Marshall and Son",
+     "occupation": "painters",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "br"
+    },
+    {
+     "no": "10A",
+     "house_name": null,
+     "name": "W. Baker & Co",
+     "occupation": "photographers",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Poynton street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": "8A",
+     "house_name": null,
+     "name": "Valentine Rose",
+     "occupation": "boot maker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": "6A",
+     "house_name": null,
+     "name": "G. H. Pochin",
+     "occupation": "auctioneer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": "4A",
+     "house_name": null,
+     "name": "Henry Clay",
+     "occupation": "bhs, The Hut",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": "2A",
+     "house_name": null,
+     "name": "ST. GEORGE'S HALL AND SPIRIT VAULTS, J. Brown & Co.",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Upper Parliament street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 58,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Derby Terrace",
+   "directory_heading": "Derby terrace (italic sub-line inside the Derby rd listing)",
+   "heading_note": "no heading of its own; printed as 'Derby terrace, 9 ...' with '...' lines, between Clinton terrace (139 Derby rd) and North road, Park",
+   "side_unclear": false,
+   "pages": [
+    56,
+    57
+   ],
+   "entries": [
+    {
+     "no": "9",
+     "house_name": "Derby terrace",
+     "name": "John Fras. Townsend",
+     "occupation": "warehouseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br",
+     "note": "house_name here is the terrace prefix"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Mrs. Mary Richards",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "John Jenkinson (wine mcht); Mrs. S. A. Jenkinson",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "George Smith",
+     "occupation": "haircutter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Fras. Seal",
+     "occupation": "of T. C. Seal & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Miss Blanch Lasalle",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Mr. Henry Rhodes",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Barrack Lane",
+   "directory_heading": "Barrack lane (italic sub-line inside the Derby rd listing)",
+   "heading_note": "no heading of its own; printed 'Barrack lane, George Derry ...' with '...' lines, after North road, Park and North Lodge, before Rock terrace (159 Derby rd)",
+   "side_unclear": false,
+   "pages": [
+    57
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "George Derry",
+     "occupation": "jobbing gardener",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Thomas Johnson",
+     "occupation": "jbg gdnr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Rock cottage",
+     "name": "A. Browne",
+     "occupation": "of M. Browne & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mr. Edwin Gordon",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 57,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Clinton Terrace",
+   "directory_heading": "Clinton terrace (italic sub-line inside the Derby rd listing)",
+   "heading_note": "no heading of its own; numbers are Derby road numbers. These lines are ALSO in the Derby Road entries (duplicated on purpose)",
+   "side_unclear": false,
+   "pages": [
+    56
+   ],
+   "entries": [
+    {
+     "no": "119",
+     "house_name": "Clinton terrace",
+     "name": "Arthur Goddard",
+     "occupation": "dentist's assistant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "121",
+     "house_name": null,
+     "name": "John Towle",
+     "occupation": "warehouseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "125",
+     "house_name": null,
+     "name": "Fdk. B. Harris (solicitor)",
+     "occupation": "at Public offices",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "129",
+     "house_name": null,
+     "name": "Claude Hollins",
+     "occupation": "of W. H. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "131",
+     "house_name": null,
+     "name": "Mrs. Elizabeth J. Butt",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "133",
+     "house_name": null,
+     "name": "Mrs. Susannah Starey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "135",
+     "house_name": null,
+     "name": "Miss Mary E. Hardstaff",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    },
+    {
+     "no": "139",
+     "house_name": null,
+     "name": "Miss L. Adcock",
+     "occupation": "boarding and day school",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Duke William Mount",
+   "directory_heading": "Duke William Mount. C.",
+   "heading_note": "no locality bracket printed",
+   "side_unclear": false,
+   "pages": [
+    59
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Newcastle Circus",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 59,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Fair lawn",
+     "name": "Horace Arthur Fisher",
+     "occupation": "firm of J. Fisher",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 59,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wm. P. Payne",
+     "occupation": "rating surveyor, M.R.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 59,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Henry Vickers",
+     "occupation": "bldr and contrctr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 59,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mr. William Hickling",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 59,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Fish Pond Drive",
+   "directory_heading": "Fishpond drive, Park. C.",
+   "heading_note": "Park",
+   "side_unclear": false,
+   "pages": [
+    61
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Wm. Taylor",
+     "occupation": "of J. Taylor & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Mr. Arthur Oakey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Frederick Walker",
+     "occupation": "corn merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "John Rogers",
+     "occupation": "insurance inspector",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Samuel Parr",
+     "occupation": "ærated water mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "George G. Robinson",
+     "occupation": "grocer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "John Massey",
+     "occupation": "commercial trvllr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    },
+    {
+     "no": "15",
+     "house_name": "South lodge",
+     "name": "Frederick D. Mordle",
+     "occupation": "starch manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 61,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Hamilton Drive",
+   "directory_heading": "Hamilton drive (Peveril drv), C.",
+   "heading_note": "(Peveril drv)",
+   "side_unclear": false,
+   "pages": [
+    70
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Thorndale",
+     "name": "Henry Towle",
+     "occupation": "M.R. station master",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Harry Foster",
+     "occupation": "of Foster, Cooper & F.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Ferndene",
+     "name": "Rev. Wm. Addis, M.A.",
+     "occupation": "Unitarian",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Manoah Knee",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Henry Taylor",
+     "occupation": "of Taylor Bros.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Mawer",
+     "occupation": "stable foreman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William P. Broadley",
+     "occupation": "grocer's mgr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": "Oakleigh",
+     "name": "D. M. F. Gaskin",
+     "occupation": "Corporation water engineer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": "Glendale",
+     "name": "John T. Roseblade",
+     "occupation": "corn merchant's traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": "Ivyhyrst",
+     "name": "Jno. Ths. Hovey",
+     "occupation": "lace agt",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "William Wing",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mrs. Ann Cockburn; William H. Heaton",
+     "occupation": "professor at University",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Robt. Evans, jun",
+     "occupation": "of Evans & Jolley",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "M. J. R. Dunstan",
+     "occupation": "technical instructor of agriculture",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "10",
+     "house_name": "Douglas house",
+     "name": "Alfred Clarke",
+     "occupation": "civil engineer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    },
+    {
+     "no": "11",
+     "house_name": "Holme vale",
+     "name": "William E. Sisling",
+     "occupation": "insurance secretary",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 70,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Hope Drive",
+   "directory_heading": "Hope drive (Peveril drive, Park)",
+   "heading_note": "(Peveril drive, Park)",
+   "side_unclear": false,
+   "pages": [
+    76
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Richard Franks",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Fredk. Wm. Cobb",
+     "occupation": "upholstr's mgr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Mrs. Ellen Staynes",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Max Hunge",
+     "occupation": "foreign correspondent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mrs. Eliza Farnsworth",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "William Gunn",
+     "occupation": "of Gunn & Moore, and professional cricketer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Mrs. Charlotte Smith",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "John Edmund Jackson",
+     "occupation": "jeweller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Horace P. Buttrum",
+     "occupation": "warehseman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "17",
+     "house_name": null,
+     "name": "Henry Spencer",
+     "occupation": "of H. Spr. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Spencer & Co's steam bakery",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Elizabeth S. Blake",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "St. John's Vicarage",
+     "name": "Rev. J. Trevaskis, M.A.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl",
+     "note": "line ends '[Cross over'"
+    },
+    {
+     "no": "28",
+     "house_name": null,
+     "name": "Charles O. Terry",
+     "occupation": "insurnc broker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "26",
+     "house_name": null,
+     "name": "Thomas Hickling",
+     "occupation": "insurance agt",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "24",
+     "house_name": null,
+     "name": "Frederick Wm. Neale",
+     "occupation": "bank clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "22",
+     "house_name": null,
+     "name": "Walter Woodward",
+     "occupation": "of Nottingham Mills Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "20",
+     "house_name": null,
+     "name": "Henry Frederick Cooper",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "18",
+     "house_name": null,
+     "name": "William Warner",
+     "occupation": "of Goddard, Massey & Warner",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "16",
+     "house_name": null,
+     "name": "Chs. Knowles",
+     "occupation": "of Nixon, Kn. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "14",
+     "house_name": null,
+     "name": "Rev. Clement Brewin, B.A",
+     "occupation": "curate St. John's",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "12",
+     "house_name": null,
+     "name": "Walter O. Hickson",
+     "occupation": "insur agent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Horace Claydon",
+     "occupation": "clerk G.N.R.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "William B. Nixon",
+     "occupation": "of Nixon, Knowles & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Charles Lighting",
+     "occupation": "yarn agent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 76,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Holles Crescent",
+   "directory_heading": "Holles Crescent (Park).",
+   "heading_note": "(Park)",
+   "side_unclear": false,
+   "pages": [
+    75
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Tattershall drive and Park drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 75,
+     "tile": "br"
+    },
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "James B. Gayton",
+     "occupation": "commission agt",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 75,
+     "tile": "br"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Arthur Harry Dexter",
+     "occupation": "cigar manufacturer's manager",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 75,
+     "tile": "br"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Mr. Edward Smith",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 75,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Road",
+   "directory_heading": "Lenton road (Castle place & road, park), C.",
+   "heading_note": "(Castle place & road, park)",
+   "side_unclear": false,
+   "pages": [
+    84
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "CASTLE LODGE, Robert Bradberry, kpr; Miss E. Bradberry, drssmkr",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "R.H. RIFLES ORDERLY ROOM",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Duke of Newcastle's Estate Office, Joel Haslam, agent",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "CASTLE GROUNDS. MUSEUM & ART GALLERY, G. H. Wallis, curator",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Castle grove",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Henry Pyatt",
+     "occupation": "professional vocalist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Rt. C Brown",
+     "occupation": "of J. Brown & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "5",
+     "house_name": "Castle bnk",
+     "name": "Misses L. M. & C. Woods",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Miss Rachel Hutchinson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Ogle drive and Peveril drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "PILLAR LETTER BOX, cleared 5, 9, 10-45, 12-45, 2, 3-55, 5-10, 6-40, 7-30, 10-10, 10-55; Sunday 5 a.m, 7-15 p.m.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "9",
+     "house_name": "Fern lodge",
+     "name": "Mrs. A. M. Renshaw",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Mr. William Martin",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "John P. Cox, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Hy. A. Brownsword",
+     "occupation": "mchn hldr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "17",
+     "house_name": "Oakhyrst",
+     "name": "Edw. P. Davis",
+     "occupation": "ironmstr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "19",
+     "house_name": null,
+     "name": "Arthur Phelps",
+     "occupation": "lace manufactr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park ravine",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "21",
+     "house_name": "Ravine house",
+     "name": "Warren Bowers",
+     "occupation": "of Bowers & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "23",
+     "house_name": null,
+     "name": "William E. Dobson, Esq, J.P",
+     "occupation": "of W. & E. Dobson",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "25",
+     "house_name": null,
+     "name": "Mr. Joshua S. and Misses H. M. and R. Hopkins",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": "27",
+     "house_name": "Lenton house",
+     "name": "Samuel White Johnson",
+     "occupation": "loco supt M.R. Derby",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "PILLAR LETTER BOX, cleared 5, 8-55, 10-40, 12-40, 1-55, 3-50, 5-5, 6-35, 7-25, 10-5, 10-50; Sunday, 5 a.m, 7-15 p.m.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "29",
+     "house_name": null,
+     "name": "Frederick Carver, Esq, J.P",
+     "occupation": "director of T. Adams & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "31",
+     "house_name": "Leslie house",
+     "name": "Hy. Clark",
+     "occupation": "lace mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Hermitage walk",
+     "name": "John W. Leavers, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl",
+     "note": "italic prefix is the side turning Hermitage walk, not a house name"
+    },
+    {
+     "no": "33",
+     "house_name": "Cliff hse",
+     "name": "Geo. Parr",
+     "occupation": "of P. & Butlin",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "35",
+     "house_name": null,
+     "name": "Mr. McCraith's prvt bowling grn",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "37",
+     "house_name": null,
+     "name": "Mr. Charles Shaw",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "43",
+     "house_name": null,
+     "name": "Geo. Hicking",
+     "occupation": "of G. & W. N. H.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "45",
+     "house_name": null,
+     "name": "Chs. H. Williams",
+     "occupation": "of Green & W.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "47",
+     "house_name": null,
+     "name": "Mr. John Warren; John C. Warren (solicitor)",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Cross over    Lenton avenue",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William S. Birkin",
+     "occupation": "of Birkin Bros.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Hardwick road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Weston lodge",
+     "name": "Chas. I. Yorke",
+     "occupation": "valuer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Miss Ellen M. Cowan",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "William Lewis",
+     "occupation": "cork cutter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Charles B. Truman",
+     "occupation": "of C. B. & W. H. Truman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Chas. Edw. Townroe",
+     "occupation": "bank clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park drive and Tattershall drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Huntingdon drive",
+     "name": "John Ashworth",
+     "occupation": "of Ashworth, Kirk & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl",
+     "note": "italic prefix is the side turning Huntingdon drive"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John W. Shepherd",
+     "occupation": "of Seddon, Shepherd & Co. (Grimsby)",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl",
+     "note": "'...' line under Huntingdon drive"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park valley",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Hopkinson & Co",
+     "occupation": "wholesale druggists",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "King Charles street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Hermitage Walk",
+   "directory_heading": "Hermitage walk (italic sub-line inside the Lenton road listing)",
+   "heading_note": "no heading of its own; duplicated from Lenton Road",
+   "side_unclear": false,
+   "pages": [
+    84
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John W. Leavers, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Huntingdon Drive",
+   "directory_heading": "Huntingdon drive (italic sub-line inside the Lenton road listing)",
+   "heading_note": "no heading of its own; duplicated from Lenton Road; no heading 'Huntingdon drive' before Huntingdon st on p77",
+   "side_unclear": false,
+   "pages": [
+    84
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Ashworth",
+     "occupation": "of Ashworth, Kirk & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John W. Shepherd",
+     "occupation": "of Seddon, Shepherd & Co. (Grimsby)",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Kenilworth Road",
+   "directory_heading": "Kenilworth rd (Peveril dv, Park)",
+   "heading_note": "(Peveril dv, Park)",
+   "side_unclear": false,
+   "pages": [
+    80
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William F. H. Thompson",
+     "occupation": "ins sec",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 80,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Alfred Marshall",
+     "occupation": "insurance managr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 80,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Henry Lewis",
+     "occupation": "of H. & M. Lewis",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 80,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Elizabeth Weaver",
+     "occupation": "of E. C. Weaver & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 80,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Lenton Avenue",
+   "directory_heading": "Lenton avnu (Lentonrd, park), C.",
+   "heading_note": "(Lenton rd, park)",
+   "side_unclear": false,
+   "pages": [
+    83
+   ],
+   "entries": [
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Wm. Bowers",
+     "occupation": "of Kentora Bry Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl",
+     "note": "'Kentora' as printed; possibly a misprint"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Henry Roby Thorpe",
+     "occupation": "official recvr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Alf. P. Wood",
+     "occupation": "of Bestwood Cllry Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Rbt. Davis",
+     "occupation": "director of T. Adams & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "Samuel Lowater",
+     "occupation": "hosiery mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Thos. F. Leman",
+     "occupation": "of L. & Sands",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Maxtoke road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "23",
+     "house_name": null,
+     "name": "Misses Sarah & Hannah Guilford",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "25",
+     "house_name": "Holme dale",
+     "name": "Hy. Crewdson (solr)",
+     "occupation": "of Watson, Wadsworth & Ward",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "27",
+     "house_name": null,
+     "name": "J. Walker",
+     "occupation": "of Shouler & Walker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "29",
+     "house_name": "Malvern house",
+     "name": "John B. Walker, Esq, J.P",
+     "occupation": "of J. B. Walker & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "31",
+     "house_name": null,
+     "name": "Wltr. Sampson",
+     "occupation": "of T. & W. S.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": "33",
+     "house_name": "Newlands",
+     "name": "Frederick Wadsworth",
+     "occupation": "of Watson, Wadsworth & Ward",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Cavendish road and Alexander road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 83,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Maxtoke Road",
+   "directory_heading": "Maxtoke rd (Lenton avn, Pk), C.",
+   "heading_note": "(Lenton avn, Pk)",
+   "side_unclear": false,
+   "pages": [
+    95
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Selina Buckingham; Vincent C. Buckingham",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 95,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mr. Adolphus Hesse",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 95,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": "Burton house",
+     "name": "Mrs. Elzh. A. Watson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 95,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John M. C. Paton",
+     "occupation": "managing dirctr of Manlove, Alliott & Co",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 95,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Lincoln Circus",
+   "directory_heading": "Lincoln circus (Tunnel rd Pk), C.",
+   "heading_note": "(Tunnel rd Pk)",
+   "side_unclear": false,
+   "pages": [
+    84
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Gladstone house",
+     "name": "Mrs. Clara Gee",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Small",
+     "occupation": "of J. & R. Morley",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Miss Florence Small",
+     "occupation": "artist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 84,
+     "tile": "bl",
+     "note": "printed on continuation of William Small's line after a semicolon"
+    }
+   ]
+  },
+  {
+   "street": "Newcastle Circus",
+   "directory_heading": "Newcastle circus (South rd), C.",
+   "heading_note": "(South rd)",
+   "side_unclear": false,
+   "pages": [
+    101
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Pickard",
+     "occupation": "of Simons & Pickard",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "St. John's",
+     "name": "Mrs. Mary Brownsword",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Maxtoke rd",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "PILLAR LETTER BOX, cleared 5, 8-50, 10-35, 12-35, 1-50, 3-50, 5-5, 6-15, 7-15, 9-50, 10-45; Sunday 5 a.m, 7 p.m.",
+     "occupation": null,
+     "kind": "note",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Mrs. Elizabeth Lynam",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Newcastle Drive",
+   "directory_heading": "Newcastle drive (Park), C.",
+   "heading_note": "(Park)",
+   "side_unclear": false,
+   "pages": [
+    101
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "William T. Cartwright",
+     "occupation": "of Freeth, Rawson & Cartwright",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Henry Stevens",
+     "occupation": "inspector Local Government Board",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Ths. Hill, Esq, J.P",
+     "occupation": "of J. & R. Morley",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "John K. Wright",
+     "occupation": "of Dowson & W.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "Mr. George B. Kidd",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 101,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Newcastle Terrace",
+   "directory_heading": "Newcastle terrace (italic sub-line inside the Derby rd listing)",
+   "heading_note": "no heading of its own (p101 goes Newcastle drive -> Newcastle st); duplicated from Derby Road",
+   "side_unclear": false,
+   "pages": [
+    56
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Harry Hirsch",
+     "occupation": "of Heymann & Alexander",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 56,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "North Road",
+   "directory_heading": "North road (Derby road), C.",
+   "heading_note": "(Derby road); cross street Western terrace and Newcastle drive fits The Park",
+   "side_unclear": false,
+   "pages": [
+    103
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Western terrace and Newcastle drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "David Clark",
+     "occupation": "tailors cutter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John L. Mann",
+     "occupation": "of Mann & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Jcb. Weinberg",
+     "occupation": "of Simon, May & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Claremont",
+     "name": "Geo. Sparrow",
+     "occupation": "of S. & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rbt. W. Smith",
+     "occupation": "of Dunnicliff & Sm.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Western terrace",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "North lodge",
+     "name": "Mr. Thomas Need",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 103,
+     "tile": "tr"
+    }
+   ]
+  },
+  {
+   "street": "Park Drive",
+   "directory_heading": "Park drive (Lenton rd, Park), C.",
+   "heading_note": "(Lenton rd, Park)",
+   "side_unclear": false,
+   "pages": [
+    106
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "William Barrett",
+     "occupation": "coml traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Henry James Mellers",
+     "occupation": "lace mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Holles crescent & Cavendish crescent",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Clumber hse",
+     "name": "Wm. G. Gregory",
+     "occupation": "mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Park mount",
+     "name": "Otto Homberger",
+     "occupation": "of Homberger & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Newcastle Circus",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Havanna house",
+     "name": "Richard I. Dexter",
+     "occupation": "cigar manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Ashley house",
+     "name": "Alfred Cleaver",
+     "occupation": "of A. Cleaver & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "Mrs. C. Bolton; Miss E. E. Place",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": "4",
+     "house_name": "St. Brycedale",
+     "name": "James B. Black",
+     "occupation": "insurance superintendent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Mrs. Ellen E. Franks; Arthur Henry Franks",
+     "occupation": "of J. Franks & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "tr"
+    }
+   ]
+  },
+  {
+   "street": "Park Ravine",
+   "directory_heading": "Park ravine (Lenton rd, Park), C.",
+   "heading_note": "(Lenton rd, Park)",
+   "side_unclear": false,
+   "pages": [
+    106
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Alfred Wilson",
+     "occupation": "of Wn. & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Harley",
+     "occupation": "wine merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 106,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Park Row",
+   "directory_heading": "Park row (Chapel Bar), Mk.",
+   "heading_note": "(Chapel Bar)",
+   "side_unclear": false,
+   "pages": [
+    107
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Thos. K. Pendred, of P. & Murden; Mrs. Ann Murden",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Woolley & Co",
+     "occupation": "pianfrt & music dlrs",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Miss E. Woolley",
+     "occupation": "professor of music",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Chs. Bell Taylor",
+     "occupation": "ophthalmic surgn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park place",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Sparrow & Son",
+     "occupation": "painters & dcrtrs",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "12",
+     "house_name": null,
+     "name": "NOTTINGHAM BOTANIC INSTUTE, Thomas Leonard, manager",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Michael C. Collins, M.R.C.PH, London",
+     "occupation": "physician",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "17",
+     "house_name": null,
+     "name": "Jessop & Son's employés",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "21",
+     "house_name": null,
+     "name": "Robert Nickolds",
+     "occupation": "at A. Goater's",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "23",
+     "house_name": null,
+     "name": "Frederick Clements",
+     "occupation": "painter",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "25",
+     "house_name": null,
+     "name": "G. H. Goater",
+     "occupation": "lithographer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "29",
+     "house_name": null,
+     "name": "Mrs. Mary Jane Cuttress, aptmts; Misses M. Farmer, F. Franks and N. Waterall",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "31",
+     "house_name": null,
+     "name": "Mrs. Eliza Sherratt",
+     "occupation": "apartments",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Arthur Watton",
+     "occupation": "coml traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl",
+     "note": "'...' line, same house as 31"
+    },
+    {
+     "no": "33",
+     "house_name": null,
+     "name": "Mrs. Elizabeth Simons",
+     "occupation": "dressmkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "35",
+     "house_name": null,
+     "name": "Charles Hy. Richards",
+     "occupation": "printer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "37",
+     "house_name": null,
+     "name": "Miss P. Hallott",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Geo. Hy. Hallott",
+     "occupation": "dentist's asst",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": "39",
+     "house_name": null,
+     "name": "Miss Claire Cullen, music tchr; Jas. Jph. Hunt (solicitor); Edw. Henry Harris",
+     "occupation": "outfitter's manager",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Cumberland place",
+     "name": "Mr. T. Beecroft",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tl",
+     "note": "italic prefix is a side place"
+    },
+    {
+     "no": "41",
+     "house_name": null,
+     "name": "John Taylor",
+     "occupation": "clk at public offices",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "43",
+     "house_name": null,
+     "name": "Mrs. Mary Hanning; David Snapper",
+     "occupation": "stuff merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "45",
+     "house_name": null,
+     "name": "A. W. D. Ewart",
+     "occupation": "travelling drpr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "47",
+     "house_name": null,
+     "name": "Mrs. Ellen Swanwick",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "49",
+     "house_name": null,
+     "name": "Harry Cox",
+     "occupation": "of A. Cox & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Postern street",
+     "name": "GENERAL HOSPITAL",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl",
+     "note": "italic prefix is a side street"
+    },
+    {
+     "no": "51",
+     "house_name": "Clyde hse",
+     "name": "Thomas Keyworth, clk; Chs. C. Cooper",
+     "occupation": "County Finance clk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Park lodge",
+     "name": "J. Stubbings",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Broxtowe house",
+     "name": "Alfred Bradley",
+     "occupation": "of M. G. & A. Bradley",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Park terrace and the Ropewalk",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "WATERWORKS RESERVOIR",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "32",
+     "house_name": null,
+     "name": "E. T. Gilmer",
+     "occupation": "profssr of dancing",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "30",
+     "house_name": null,
+     "name": "Mrs. M. A. Hickling",
+     "occupation": "apartments",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Regent street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "28",
+     "house_name": null,
+     "name": "Edw. Parry, C.E.",
+     "occupation": "surveyor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "26",
+     "house_name": null,
+     "name": "STH NOTTS YEOMANRY ORDERLY ROOM, John Atkinson, regimental sergeans major",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "24",
+     "house_name": null,
+     "name": "Jph. G. Spendlove",
+     "occupation": "at J. Spendlv's",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "22",
+     "house_name": null,
+     "name": "Ralph J. Horner",
+     "occupation": "prfssr of music",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Herbert Horner",
+     "occupation": "violin teacher",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "20",
+     "house_name": null,
+     "name": "Mr. Samuel Edward Wright",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "East Circus street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "18",
+     "house_name": null,
+     "name": "Donald Stewart, M.D",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "ST. THOMAS' CHURCH, Rev. Martin Reed, M.A.",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Mr. Harry Shailer",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "bl"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Dns. Hutchinson & Co",
+     "occupation": "coal mchts",
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "Mr. Mallet's, hsptl private patients",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Thomas Charles Mallet",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "G. W. Bellaby, L.D.S.; Fred Bellaby, L.D.S. & M.R.C.S.",
+     "occupation": "dental surgeons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    }
+   ]
+  },
+  {
+   "street": "Park Terrace",
+   "directory_heading": "Park terrace (Park row), Mk.",
+   "heading_note": "(Park row)",
+   "side_unclear": false,
+   "pages": [
+    107
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Miss Mary E. Patterson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Edward M. C. Harvey",
+     "occupation": "barrister",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Mr. Charles Bradley",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "John Wm. Lamb",
+     "occupation": "of Lamb & Lee",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Job E. Sanby",
+     "occupation": "of Midland Lace Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "Mrs. Ann Mallet",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mrs. Thomasine Ensor",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Mrs. Catherine Turner",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Hbt. Chas. Butlin",
+     "occupation": "of Parr & B.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Miss M. Clarke; Henry G. Jalland",
+     "occupation": "of Jalland & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Wm. F. Clark",
+     "occupation": "of Nottm Mills Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "12",
+     "house_name": null,
+     "name": "Henry Wing, Esq, J.P.",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "Mrs. A. Baily-Browne",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "14",
+     "house_name": null,
+     "name": "Mr. William Gibson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "15",
+     "house_name": "Italian villas",
+     "name": "Joseph F. Youngman",
+     "occupation": "Bank clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr"
+    },
+    {
+     "no": "16",
+     "house_name": null,
+     "name": "Wm. F. Bromley",
+     "occupation": "stock brkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr",
+     "note": "'...' line under Italian villas"
+    },
+    {
+     "no": "17",
+     "house_name": null,
+     "name": "John Brewster",
+     "occupation": "solicitor",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "tr",
+     "note": "'...' line under Italian villas"
+    }
+   ]
+  },
+  {
+   "street": "Park Valley",
+   "directory_heading": "Park valley (Lenton rd, Park), C.",
+   "heading_note": "(Lenton rd, Park)",
+   "side_unclear": false,
+   "pages": [
+    107
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": "Arundel house",
+     "name": "Charles H. Preston",
+     "occupation": "registrar, &c.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "3",
+     "house_name": "Claxby house",
+     "name": "Walter Wadsworth",
+     "occupation": "director of T. Adams & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Frederick Pearson",
+     "occupation": "of F. P. & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mr. Alfred Wilson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Mr. Charles & Miss M. A. Cullen",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Alf. Dawson",
+     "occupation": "of T. Herbert & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "Thos. Hopkinson",
+     "occupation": "whlsle chemist",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "John Tom McCraith, Esq, J.P.",
+     "occupation": "commission agent",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "17",
+     "house_name": "Brooklyn house",
+     "name": "J. H. Runge",
+     "occupation": "lace manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "19",
+     "house_name": null,
+     "name": "Ernest Jardine",
+     "occupation": "ironfounder's mgr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "21",
+     "house_name": null,
+     "name": "Fdk. Brewster",
+     "occupation": "clk to tax comsnrs",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "23",
+     "house_name": null,
+     "name": "Miss Harriet Hackett",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "25",
+     "house_name": null,
+     "name": "John Langham",
+     "occupation": "of D. New & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br",
+     "note": "line ends '[Cross over'"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Edward Francis",
+     "occupation": "Board Schl mstr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "8",
+     "house_name": "Ivy house",
+     "name": "Edmund J. Dalton",
+     "occupation": "at Smith's Bank",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "6",
+     "house_name": "Stuart cottage",
+     "name": "Miss M. Enfield",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "4",
+     "house_name": "Holly Hyrst",
+     "name": "Harry Wyles",
+     "occupation": "solr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "George D. Laing",
+     "occupation": "of McKergow, Laing & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 107,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "Pelham Crescent",
+   "directory_heading": "Pelham crscnt (North rd, Pk), C.",
+   "heading_note": "(North rd, Pk)",
+   "side_unclear": false,
+   "pages": [
+    110
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Paul Meyer",
+     "occupation": "of Simon, May & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Wm. W. Lewis",
+     "occupation": "of Lewis & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "H. Flersheim",
+     "occupation": "of Flersheim & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Mr. Andrew Lawson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Miss Catherine L. Adams",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Mrs. Recha Kohn",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "13",
+     "house_name": null,
+     "name": "Edward Goldschmidt",
+     "occupation": "silk mcht",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "15",
+     "house_name": null,
+     "name": "Frederick James Bradley",
+     "occupation": "of T. Bayley & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "17",
+     "house_name": null,
+     "name": "John William Davy",
+     "occupation": "of I. & I. C. Wright & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": "19",
+     "house_name": null,
+     "name": "Herbert O. Taylor",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Holm lea",
+     "name": "Sir Samuel G. Johnson, Kt.",
+     "occupation": "town clerk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr",
+     "note": "also listed at Flixton, Cavendish Crescent North, p44"
+    },
+    {
+     "no": null,
+     "house_name": "Avenue",
+     "name": "Charles J. Mee's nurseries",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr",
+     "note": "italic 'Avenue' prefix; may be a place name rather than a house"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Barrack lane",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Pelham lodge",
+     "name": "Mr. Ar. W. Loverseed",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Thomas Mann",
+     "occupation": "box manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Henry Hill",
+     "occupation": "of Balm, Hill & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "John Henry Brown",
+     "occupation": "of J. Brown & Co. (wine merchant)",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 110,
+     "tile": "tr"
+    }
+   ]
+  },
+  {
+   "street": "Peveril Drive",
+   "directory_heading": "Peveril drive (Lenton road), C.",
+   "heading_note": "(Lenton road)",
+   "side_unclear": false,
+   "pages": [
+    111
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": "Peveril house",
+     "name": "Mrs. M. A. Wade; Miss M. A. Wade",
+     "occupation": "hosier",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Ivanhoe lodge",
+     "name": "Alfred Kirk",
+     "occupation": "of W. J. & T. Lambert & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Kenilworth road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Redcliffe villa",
+     "name": "Frank Woodward",
+     "occupation": "lace manufacturer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rd. Edwards",
+     "occupation": "of Drewry & Edwards",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Fdk. William Snook",
+     "occupation": "of Snook & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Dudley lodge",
+     "name": "Mrs. Elzh. Hartshorn",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Hamilton drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": "Ferndale",
+     "name": "Edw. E. Lloyd",
+     "occupation": "coml trvlr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Albt. Ths. Morley",
+     "occupation": "of Wilkins & M.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Samuel Henry",
+     "occupation": "of F. Henry & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Wm. H. Bradwell",
+     "occupation": "of Bradll. & Son",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Hope drive",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "tr"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Mr. Thomas William Robinson",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "br"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Tom King",
+     "occupation": "of Buckoll, King & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 111,
+     "tile": "br"
+    }
+   ]
+  },
+  {
+   "street": "The Ropewalk",
+   "directory_heading": "The Ropewalk (Derby rd), C.",
+   "heading_note": "(Derby rd)",
+   "side_unclear": false,
+   "pages": [
+    123,
+    124
+   ],
+   "entries": [
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Walter H. des Forges",
+     "occupation": "merchant",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "William A. Patterson, Esq, J.P.",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Benjamin Brooke",
+     "occupation": "bank director",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "12",
+     "house_name": null,
+     "name": "Benjamin Walker",
+     "occupation": "of B. W. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "14",
+     "house_name": null,
+     "name": "Jno. Feilmann",
+     "occupation": "of J. Flmn & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "18",
+     "house_name": null,
+     "name": "Mrs. Sarah Eames",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "22",
+     "house_name": null,
+     "name": "George Kenrick",
+     "occupation": "farmer",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Newcastle drive and Park terrace",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "24",
+     "house_name": null,
+     "name": "C. E. Willoughby",
+     "occupation": "lace dresser",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "26",
+     "house_name": null,
+     "name": "Edw. Schilling",
+     "occupation": "of Meyrick, S. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "28",
+     "house_name": null,
+     "name": "James T. Ward, of Watson, Wadsworth & W.; Wm. S. Ward",
+     "occupation": "bnk clk",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "30",
+     "house_name": null,
+     "name": "Mrs. Louisa Clark",
+     "occupation": "Western house school (boarding & day)",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "32",
+     "house_name": null,
+     "name": "John Hy. Jacoby",
+     "occupation": "of M. Jcby. & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "34",
+     "house_name": "Madeira",
+     "name": "Mrs. Jane Goodall",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "36",
+     "house_name": null,
+     "name": "Mr. George Newham Berrey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "38",
+     "house_name": null,
+     "name": "Mrs. Ann Wadsworth",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "40",
+     "house_name": "Rauceby house",
+     "name": "Mr. Thos. Shaw; Mrs. M. Shaw",
+     "occupation": "profr of dancing",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "42",
+     "house_name": null,
+     "name": "Lewis W. Marshall, M.D",
+     "occupation": "surgeon",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "48",
+     "house_name": "Trent leigh",
+     "name": "Mr. Henry Carey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "52",
+     "house_name": null,
+     "name": "Mrs. S. Sykes",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "54",
+     "house_name": null,
+     "name": "Mr. Philip James Bailey",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 123,
+     "tile": "br"
+    },
+    {
+     "no": "56",
+     "house_name": null,
+     "name": "Thos. Hardstaff",
+     "occupation": "perambucot mfr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": "58",
+     "house_name": null,
+     "name": "Henry Edward Thornton, Esq, J.P",
+     "occupation": "of Samuel Smith & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": "60",
+     "house_name": null,
+     "name": "Mr. Edwin Bagshaw",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl",
+     "note": "line ends '[Cross over, Mk.'"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Thomas Edson",
+     "occupation": "joiner and builder",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "GOSPEL MEETING ROOM",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Joseph Raynor",
+     "occupation": "monumental mason",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "PARK WATER WKS, G. Lane, engnr",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": "2",
+     "house_name": "Cottage terrace",
+     "name": "Miss Elizabeth Moore",
+     "occupation": "dressmaker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl",
+     "note": "Cottage terrace numbering"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Junius Holroyd",
+     "occupation": "jnr & cabt mkr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl",
+     "note": "'...' line under Cottage terrace"
+    },
+    {
+     "no": "7",
+     "house_name": null,
+     "name": "Charles Lisser",
+     "occupation": "of Liepmann & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Mr. George R. Cowen; Edward Cowen",
+     "occupation": "of G. R. Cowen & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Joseph Littlewood, Esq, J.P",
+     "occupation": "srgn",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Regent street and Upper College street",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "HIGHER GRADE BOARD SCHOOL (Girls'), Miss Frances Cartwright",
+     "occupation": null,
+     "kind": "business",
+     "side": null,
+     "unsure": false,
+     "page": 124,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "South Road",
+   "directory_heading": "South road (Lenton rd, Park), C.",
+   "heading_note": "(Lenton rd, Park)",
+   "side_unclear": false,
+   "pages": [
+    136
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Roby L. Thorpe",
+     "occupation": "of Thorpe & Perry",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Ellenborough house",
+     "name": "James William McCraith",
+     "occupation": "of Maples & McCraith",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Gardenhurst",
+     "name": "Francis N. Ellis",
+     "occupation": "colliery manager",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Newcastle circus",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Julius Meyrick",
+     "occupation": "of M. Schilling & Co.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": "Parkhurst",
+     "name": "Mrs. Sarah A. Gamble",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rbt. Evans, Esq, J.P",
+     "occupation": "of E. & Jolley",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 136,
+     "tile": "bl"
+    }
+   ]
+  },
+  {
+   "street": "Tattershall Drive",
+   "directory_heading": "Tattershall drive (Lenton road, Park), C.",
+   "heading_note": "(Lenton road, Park)",
+   "side_unclear": false,
+   "pages": [
+    140
+   ],
+   "entries": [
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William H. Truman",
+     "occupation": "of C. B. & W. H. Truman",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Jcb. S. Stower",
+     "occupation": "commercial traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Edw. C. Bretland",
+     "occupation": "of Bretland Bros.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Rev. R. Baldwin Brindley",
+     "occupation": "Congl",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Alfred Andrew",
+     "occupation": "commercial traveller",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Whitehouse",
+     "occupation": "mchn holdr",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Clare valley",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": "Elmsdale",
+     "name": "Ar. Lewis",
+     "occupation": "of Lws. & Grundy",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl",
+     "note": "same person/house as Clare Valley's first entry, p47"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "Chs. Fdk. Dobson",
+     "occupation": "of W. E. & F. Dbsn.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "William Marriott",
+     "occupation": "stockbroker",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 140,
+     "tile": "tl"
+    }
+   ]
+  },
+  {
+   "street": "Western Terrace",
+   "directory_heading": "Western terrace (Park), C.",
+   "heading_note": "(Park)",
+   "side_unclear": false,
+   "pages": [
+    147
+   ],
+   "entries": [
+    {
+     "no": "1",
+     "house_name": null,
+     "name": "Mrs. Sarah Loverseed",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "2",
+     "house_name": null,
+     "name": "Mr. Edwin G. Loverseed",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "3",
+     "house_name": null,
+     "name": "Henry Joseph Griffin",
+     "occupation": "draper",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "4",
+     "house_name": null,
+     "name": "Mrs. Maria Bell",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "5",
+     "house_name": null,
+     "name": "Mr. George Shepperley",
+     "occupation": null,
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "6",
+     "house_name": null,
+     "name": "Jas. B. Alliott",
+     "occupation": "managing director of Manlove, Alliott & Co, Ltd.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": null,
+     "house_name": null,
+     "name": "North road",
+     "occupation": null,
+     "kind": "cross_street",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "7",
+     "house_name": "Thorn lea",
+     "name": "George E. Coke",
+     "occupation": "of Coke, Mills & Coke",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "8",
+     "house_name": null,
+     "name": "Edgar H. Hill",
+     "occupation": "of Balm, Hill & Sons",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "bl"
+    },
+    {
+     "no": "9",
+     "house_name": null,
+     "name": "Alf. H. Clarke",
+     "occupation": "of C. H. & A. H. C.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "tr"
+    },
+    {
+     "no": "10",
+     "house_name": null,
+     "name": "Chs. Hy. Clarke",
+     "occupation": "of C. H. & A. H. C.",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "tr"
+    },
+    {
+     "no": "11",
+     "house_name": null,
+     "name": "Jph. Bright",
+     "occupation": "of J. & A. Bright",
+     "kind": "resident",
+     "side": null,
+     "unsure": false,
+     "page": 147,
+     "tile": "tr"
+    }
+   ]
+  }
+ ],
+ "not_found": [
+  {
+   "street": "Clifton Terrace",
+   "checked_pages": [
+    47,
+    48
+   ]
+  },
+  {
+   "street": "Tunnel Road",
+   "checked_pages": [
+    140,
+    141
+   ]
+  },
+  {
+   "street": "Albury Square",
+   "checked_pages": [
+    19,
+    20
+   ]
+  },
+  {
+   "street": "Hardwick Road",
+   "checked_pages": [
+    70,
+    71
+   ]
+  },
+  {
+   "street": "Clumber Crescent North",
+   "checked_pages": [
+    47,
+    48
+   ]
+  }
+ ],
+ "notes": "Several Park streets have no heading of their own in 1894-95 and appear only as italic sub-lines inside another street's listing: Derby Terrace (own numbers 2-9), Barrack Lane and Clinton Terrace (Derby road numbers 119-139) inside Derby rd; Newcastle Terrace (one line, no number) inside Derby rd; Hermitage Walk and Huntingdon Drive inside Lenton road. Those lines appear both under Derby Road/Lenton Road and under the sub-street (Clinton Terrace, Newcastle Terrace, Hermitage Walk and Huntingdon Drive are listed twice on purpose; Derby Terrace and Barrack Lane appear only as 'note' placeholders in Derby Road). Derby Road runs out along the odd side from Chapel bar to Lenton/Radford and back along the even side; italic prefixes such as Rock terrace, Lenton sands, Brunel terrace, Park Hill terrace and Cemetery cottages carry their own numbering, noted per entry. Clumber Crescent North, Albury Square, Hardwick Road and Tunnel Road have no listing. Sir Samuel G. Johnson appears at both Flixton (Cavendish Cres N) and Holm lea (Pelham Crescent); Ar. Lewis of Elmsdale appears under both Clare Valley and Tattershall Drive. Page numbers are scan numbers (printed page = scan - 17)."
+}
