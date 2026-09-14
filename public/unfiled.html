@@ -32,6 +32,13 @@
   .sugg button:hover { border-color:var(--accent); }
   .sugg button.top { border-color:#9ab88a; background:#eef5e8; font-weight:700; }
   .sugg .why { font-size:.7rem; color:var(--faint); }
+  /* Directory evidence sits under the suggestions: what a trade directory printed
+     for this household's head, linked to the page itself, so it can be checked. */
+  .dir { margin:6px 0 2px; padding:6px 9px; border-left:2px solid var(--rule); font-size:.78rem; }
+  .dir-h { font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); margin-bottom:3px; }
+  .dir-row { margin:2px 0; line-height:1.45; }
+  .dir-row a { color:inherit; }
+  .dir-row button { font-size:.72rem; padding:1px 7px; margin-left:4px; }
   .act { margin-top:10px; display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
   .act input { width:150px; padding:5px 9px; border:1px solid var(--rule); border-radius:4px;
     font-family:inherit; font-size:.84rem; }
@@ -225,9 +232,19 @@ async function load() {
           : `${g.asideCount} of these set aside`}${
           g.setAsideBy ? ', by ' + esc(g.setAsideBy) : ''}.</div>` : ''}
         ${g.suggestions.length ? `<div class="sugg">
-          ${g.suggestions.map((s, j) => `<button data-pick="${s.id}" data-g="${i}"
+          ${g.suggestions.map((s, j) => `<button data-pick="${s.id}" data-g="${i}" title="${esc(s.why)}"
               class="${j === 0 && g.confident ? 'top' : ''}">#${s.id} ${esc(s.label)}</button>`).join('')}
           <span class="why">${esc(g.suggestions[0].why)}</span>
+        </div>` : ''}
+        ${(g.directory || []).length ? `<div class="dir">
+          <div class="dir-h">In the trade directories</div>
+          ${g.directory.map(m => `<div class="dir-row">${esc(m.head)} (${Number(m.year)}) —
+            <a href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${Number(m.record)}"
+               target="_blank" rel="noopener">${esc(m.label)}</a>
+            ${m.property_id
+              ? `<button data-pick="${Number(m.property_id)}" data-g="${i}">file at #${Number(m.property_id)}</button>`
+              : '<span class="why">no house in the record to match it to</span>'}
+          </div>`).join('')}
         </div>` : ''}
         <div class="act">
           <input type="number" placeholder="or a number" data-in="${i}">

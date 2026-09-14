@@ -4353,6 +4353,64 @@ const STREET_WORDS = { rd:'road', st:'street', dr:'drive', cres:'crescent', ave:
 const addrNorm = v => String(v || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ')
   .split(/\s+/).filter(Boolean).map(w => STREET_WORDS[w] || w).join(' ');
 
+// ── Trade directories as evidence for unfiled households ─────────────────────
+// data/directory_park_entries.json holds every occupant Wright's Directory of
+// Nottingham prints on The Park's streets, read out of Leicester University's
+// OCR. A census household with no house number is matched against it by
+// surname — the one thing that survives the OCR — in the directory years
+// nearest its census. A match suggests a house; it never files one.
+let dirEntriesCache = null;
+function directoryEntries() {
+  const file = path.join(__dirname, 'data', 'directory_park_entries.json');
+  try {
+    const mtime = fs.statSync(file).mtimeMs;
+    if (!dirEntriesCache || dirEntriesCache.mtime !== mtime) {
+      const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+      const bySurname = new Map();
+      for (const e of (doc.entries || [])) {
+        const k = dirNorm(e.surname);
+        if (k.length < 3) continue;
+        if (!bySurname.has(k)) bySurname.set(k, []);
+        bySurname.get(k).push(e);
+      }
+      dirEntriesCache = { mtime, bySurname };
+    }
+    return dirEntriesCache.bySurname;
+  } catch (e) { return new Map(); }
+}
+const dirNorm = v => String(v || '').toLowerCase().replace(/[^a-z]/g, '');
+function editDistance(a, b) {
+  if (Math.abs(a.length - b.length) > 2) return 99;
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+// Which directory years can speak for a census year, nearest first.
+const DIR_YEARS = { 1881: [1894], 1891: [1894, 1898], 1901: [1898, 1894, 1910],
+                    1911: [1910, 1913, 1915], 1921: [1915, 1913] };
+function directoryMatches(surname, forename, censusYear) {
+  const years = DIR_YEARS[censusYear];
+  const key = dirNorm(surname);
+  if (!years || key.length < 3) return [];
+  const idx = directoryEntries();
+  const out = [];
+  for (const [k, list] of idx) {
+    const close = k === key || (key.length >= 5 && editDistance(k, key) <= 1)
+                  || (k.length >= 6 && key.startsWith(k));        // "Hutchin-" broken at a line end
+    if (!close) continue;
+    for (const e of list) {
+      if (!years.includes(e.year)) continue;
+      const fi = dirNorm(forename)[0], ei = dirNorm(e.forename)[0];
+      if (fi && ei && fi !== ei) continue;                          // initials disagree: someone else
+      out.push({ ...e, exact: k === key, gap: Math.abs(e.year - censusYear) });
+    }
+  }
+  return out.sort((a, b) => a.gap - b.gap || b.exact - a.exact);
+}
+
 app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
@@ -4408,6 +4466,73 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
 
     const groups = [...byAddr.entries()].map(([addr, entries]) => {
       const s = addr === '\u0000none' ? [] : suggest(addr);
+      // Directory evidence for each head of household in the group.
+      const directory = [];
+      const seenEvidence = new Set();
+      // Does the return's own address name the directory entry's street? A match on
+      // another street is somebody else of the same name — a John Smith on Park Row
+      // is not the John Smith of Haddon House — so it is shown, never suggested.
+      const returnAddress = addr === '\u0000none' ? '' : addr;
+      const streetAgrees = street => {
+        const a = addrNorm(returnAddress);
+        if (!a) return null;
+        const base = addrNorm(String(street).replace(/\b(north|south|east|west)\b/gi, ''));
+        if (base && a.includes(base)) return true;
+        const first = addrNorm(String(street).split(/\s+/)[0]);
+        return first.length >= 5 && a.includes(first);
+      };
+      const heads = entries.filter(e => /^head$/i.test((e.relationship || '').trim())
+                                     || /^\d+$/.test((e.relationship || '').trim()));
+      for (const h of heads) {
+        for (const m of directoryMatches(h.last_name, h.first_name, h.census_year).slice(0, 4)) {
+          const onStreet = props.filter(pr => (pr.street || '') === m.street);
+          let prop = null, how = '';
+          if (m.no != null) {
+            prop = onStreet.find(pr => String(pr.no || '').trim() === String(m.no))
+                || onStreet.find(pr => parseInt(pr.no, 10) === m.no);
+            if (prop) how = 'number';
+          }
+          if (!prop && m.house_name) {
+            const hn = addrNorm(m.house_name);
+            prop = onStreet.find(pr => [pr.name, pr.house_name, ...String(pr.prev_house_name || '').split('\n')]
+              .map(addrNorm).filter(Boolean).some(n => n === hn || (hn.length >= 6 && editDistance(n, hn) <= 2)));
+            if (prop) how = 'house name';
+          }
+          const label = `Wright's ${m.volume}: ${m.no != null ? m.no + (m.inferred ? '?' : '') + ' ' : ''}${m.street}`
+                      + `${m.house_name ? ' (' + m.house_name + ')' : ''} — ${String(m.text).slice(0, 70)}`;
+          const agrees = streetAgrees(m.street);
+          // Somebody of the same name on a street the return doesn't mention is noise.
+          if (agrees === false) continue;
+          // The directory settles which street ("Cavendish" north or south) and the
+          // return supplies the number the OCR lost.
+          const returnNo = (returnAddress.match(/^\s*(\d+)\b/) || [])[1];
+          if (!prop && agrees && returnNo) {
+            prop = onStreet.find(pr => String(pr.no || '').trim() === returnNo);
+            if (prop) how = 'street from the directory, number from the return';
+          }
+          const ek = [m.volume, m.street, m.no, m.text].join('|');
+          if (seenEvidence.has(ek)) continue;
+          seenEvidence.add(ek);
+          directory.push({ head: [h.first_name, h.last_name].filter(Boolean).join(' '), year: h.census_year,
+                           volume: m.volume, page: m.page, record: m.record, street: m.street, no: m.no,
+                           inferred: m.inferred, house_name: m.house_name, text: m.text,
+                           property_id: prop ? prop.id : null, label });
+          if (!prop) continue;
+          if (agrees === null) {
+            // Nothing on the return to check the street against: only a full forename will do.
+            const hf = dirNorm(h.first_name), mf = dirNorm(m.forename);
+            if (!(mf.length >= 3 && hf.startsWith(mf))) continue;
+          }
+          const score = (m.gap <= 4 ? 20 : m.gap <= 10 ? 14 : 8) - (m.exact ? 0 : 3) - (m.inferred ? 2 : 0)
+                      - (how.startsWith('street from') ? 4 : 0);
+          const have = s.find(x => x.id === prop.id);
+          if (have) { have.score += score; have.why = have.why + ' + ' + label; }
+          else s.push({ id: prop.id, label: prop.address || prop.name || prop.street, street: prop.street,
+                        score, why: label, fromDirectory: how });
+        }
+      }
+      s.sort((x, y) => y.score - x.score || x.id - y.id);
+      s.splice(6);
       // One address string can hold several households — the Dowsons and two
       // neighbours all arrived under "Felixstowe see 1911 Clumber rd W". A
       // house name in the text then evidences one of them, not all of them, so
@@ -4443,6 +4568,7 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
         setAsideBy: (aside.get((entries.find(e => aside.has(e.id)) || {}).id) || {}).set_by || null,
         years: [...new Set(entries.map(e => e.census_year))].sort(),
         suggestions: s,
+        directory,
         confident: !!strong,
         entries: entries.map(e => ({
           id: e.id, person_id: e.person_id, year: e.census_year,
