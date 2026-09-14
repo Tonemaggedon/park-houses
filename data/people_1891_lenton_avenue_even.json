@@ -4,113 +4,113 @@
   "people": [
 
     { "id": 2497, "first_name": "Arthur", "last_name": "Sims",
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Head", "age_at_census": 40, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Head", "age_at_census": 40, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ] },
 
     { "id": 2498, "first_name": "Sarah", "last_name": "Sims",
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Wife", "age_at_census": 43, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Wife", "age_at_census": 43, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Frederick", "last_name": "Sims", "born_year": 1876,
       "occupations": [ { "occupation": "Clerk in a lace warehouse" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Son", "age_at_census": 15, "occupation_at_census": "Clerk in lace warehouse", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Arthur Sims", "type": "child_of" }, { "name": "Sarah Sims", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Son", "age_at_census": 15, "occupation_at_census": "Clerk in lace warehouse", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "id": 2497 }, "type": "child_of" }, { "to": { "id": 2498 }, "type": "child_of" } ] },
 
     { "first_name": "Gertrude", "last_name": "Sims", "born_year": 1877,
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Arthur Sims", "type": "child_of" }, { "name": "Sarah Sims", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "id": 2497 }, "type": "child_of" }, { "to": { "id": 2498 }, "type": "child_of" } ] },
 
     { "first_name": "John Henry", "last_name": "Sims", "born_year": 1882,
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Son", "age_at_census": 9, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Arthur Sims", "type": "child_of" }, { "name": "Sarah Sims", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Son", "age_at_census": 9, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "id": 2497 }, "type": "child_of" }, { "to": { "id": 2498 }, "type": "child_of" } ] },
 
     { "first_name": "Andrew", "last_name": "Brookes", "born_year": 1873, "born_place": "Duffield, Derbyshire",
       "occupations": [ { "occupation": "Groom" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 367, "relationship": "Lodger", "age_at_census": 18, "occupation_at_census": "Groom", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 367, "relationship": "Lodger", "age_at_census": 18, "occupation_at_census": "Groom", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Joseph", "last_name": "Drake", "born_year": 1852, "born_place": "Kinoulton, Nottinghamshire",
       "occupations": [ { "occupation": "Coachman" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 368, "relationship": "Head", "age_at_census": 39, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Martha Drake", "type": "spouse_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 368, "relationship": "Head", "age_at_census": 39, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "Martha", "last_name": "Drake" }, "type": "spouse_of" } ] },
 
     { "first_name": "Martha", "last_name": "Drake", "born_year": 1853, "born_place": "South Normanton, Derbyshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 368, "relationship": "Wife", "age_at_census": 38, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 368, "relationship": "Wife", "age_at_census": 38, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "William", "last_name": "Bell", "born_year": 1851, "born_place": "Bothamsall, Nottinghamshire",
       "occupations": [ { "occupation": "Coachman" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 369, "relationship": "Head", "age_at_census": 40, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Mary Bell", "type": "spouse_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 369, "relationship": "Head", "age_at_census": 40, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "Mary", "last_name": "Bell" }, "type": "spouse_of" } ] },
 
     { "first_name": "Mary", "last_name": "Bell", "born_year": 1847, "born_place": "Kirkby-in-Ashfield, Nottinghamshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 369, "relationship": "Wife", "age_at_census": 44, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 369, "relationship": "Wife", "age_at_census": 44, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Annie", "last_name": "Bell", "born_year": 1875, "born_place": "Wirksworth, Derbyshire",
       "occupations": [ { "occupation": "Dressroom hand" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 16, "occupation_at_census": "Dressroom hand", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "William Bell", "type": "child_of" }, { "name": "Mary Bell", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 16, "occupation_at_census": "Dressroom hand", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "William", "last_name": "Bell" }, "type": "child_of" }, { "to": { "first_name": "Mary", "last_name": "Bell" }, "type": "child_of" } ] },
 
     { "first_name": "Nellie", "last_name": "Bell", "born_year": 1877, "born_place": "Heeley, Yorkshire",
       "occupations": [ { "occupation": "Errand girl" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": "Errand girl", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "William Bell", "type": "child_of" }, { "name": "Mary Bell", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": "Errand girl", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "William", "last_name": "Bell" }, "type": "child_of" }, { "to": { "first_name": "Mary", "last_name": "Bell" }, "type": "child_of" } ] },
 
     { "first_name": "Florence", "last_name": "Bell", "born_year": 1881,
-      "census_entries": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "William Bell", "type": "child_of" }, { "name": "Mary Bell", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 369, "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "William", "last_name": "Bell" }, "type": "child_of" }, { "to": { "first_name": "Mary", "last_name": "Bell" }, "type": "child_of" } ] },
 
     { "first_name": "Reuben", "last_name": "Thompson", "born_year": 1844, "born_place": "Radford, Nottingham",
       "occupations": [ { "occupation": "Coachman" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Head", "age_at_census": 47, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Martha Thompson", "type": "spouse_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Head", "age_at_census": 47, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "Martha", "last_name": "Thompson" }, "type": "spouse_of" } ] },
 
     { "first_name": "Martha", "last_name": "Thompson", "born_year": 1854, "born_place": "Radcliffe, Nottinghamshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Wife", "age_at_census": 37, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Wife", "age_at_census": 37, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "James Henry", "last_name": "Thompson", "born_year": 1865, "born_place": "Wooton Roberts",
       "occupations": [ { "occupation": "Printer and compositor" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Son", "age_at_census": 26, "occupation_at_census": "Printer and compositor", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Son", "age_at_census": 26, "occupation_at_census": "Printer and compositor", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "George", "last_name": "Upton", "born_year": 1871, "born_place": "Rotherham, Yorkshire",
       "occupations": [ { "occupation": "Furniture apprentice" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 20, "occupation_at_census": "Furniture apprentice", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 20, "occupation_at_census": "Furniture apprentice", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Frederick Wm", "last_name": "Upton", "born_year": 1876, "born_place": "Wath-on-Dearne, Yorkshire",
       "occupations": [ { "occupation": "Grocer's apprentice" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 15, "occupation_at_census": "Grocer's apprentice", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 15, "occupation_at_census": "Grocer's apprentice", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Frank", "last_name": "Upton", "born_year": 1878,
-      "census_entries": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 13, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 370, "relationship": "Boarder", "age_at_census": 13, "occupation_at_census": "Scholar", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Beecroft", "last_name": "Brown", "born_year": 1816, "born_place": "Bingham, Nottinghamshire",
       "occupations": [ { "occupation": "Coachman" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 371, "relationship": "Head", "age_at_census": 75, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 371, "relationship": "Head", "age_at_census": 75, "occupation_at_census": "Coachman", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Mary", "last_name": "Key", "born_year": 1813, "born_place": "Farnsfield, Nottinghamshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 371, "relationship": null, "age_at_census": 78, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 371, "relationship": null, "age_at_census": 78, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Minnie", "last_name": "Key", "born_place": "New Lenton, Nottingham",
-      "census_entries": [ { "census_year": 1891, "property_id": 371, "relationship": "Daughter", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ] },
+      "census": [ { "census_year": 1891, "property_id": 371, "relationship": "Daughter", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ] },
 
     { "first_name": "Eleanor", "last_name": "Marshall", "born_year": 1861, "born_place": "Bottesford, Leicestershire",
       "occupations": [ { "occupation": "Lace warehouse girl" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 371, "relationship": "Boarder", "age_at_census": 30, "occupation_at_census": "Lace warehouse girl", "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 371, "relationship": "Boarder", "age_at_census": 30, "occupation_at_census": "Lace warehouse girl", "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "Elizabeth Key", "last_name": "Maude", "born_place": "Farnsfield, Nottinghamshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 371, "relationship": "Visitor", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ] },
+      "census": [ { "census_year": 1891, "property_id": 371, "relationship": "Visitor", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ] },
 
     { "first_name": "William", "last_name": "Hyde", "born_year": 1855, "born_place": "Arnold, Nottinghamshire",
       "occupations": [ { "occupation": "Bookkeeper and insurance agent" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 372, "relationship": "Head", "age_at_census": 36, "occupation_at_census": "Bookkeeper and insurance agent", "source": "1891 census, image L16848_0" } ],
-      "relationships": [ { "name": "Mary Elizabeth Hyde", "type": "spouse_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 372, "relationship": "Head", "age_at_census": 36, "occupation_at_census": "Bookkeeper and insurance agent", "source": "1891 census, image L16848_0" } ],
+      "relationships": [ { "to": { "first_name": "Mary Elizabeth", "last_name": "Hyde" }, "type": "spouse_of" } ] },
 
     { "first_name": "Mary Elizabeth", "last_name": "Hyde", "born_year": 1855, "born_place": "Stapleford, Nottinghamshire",
-      "census_entries": [ { "census_year": 1891, "property_id": 372, "relationship": "Wife", "age_at_census": 36, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
+      "census": [ { "census_year": 1891, "property_id": 372, "relationship": "Wife", "age_at_census": 36, "occupation_at_census": null, "source": "1891 census, image L16848_0" } ] },
 
     { "first_name": "John Stuart", "last_name": "Hyde",
-      "census_entries": [ { "census_year": 1891, "property_id": 372, "relationship": "Son", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ],
-      "relationships": [ { "name": "William Hyde", "type": "child_of" }, { "name": "Mary Elizabeth Hyde", "type": "child_of" } ] },
+      "census": [ { "census_year": 1891, "property_id": 372, "relationship": "Son", "occupation_at_census": null, "source": "1891 census, image L16848_0 — the page gives no age" } ],
+      "relationships": [ { "to": { "first_name": "William", "last_name": "Hyde" }, "type": "child_of" }, { "to": { "first_name": "Mary Elizabeth", "last_name": "Hyde" }, "type": "child_of" } ] },
 
     { "first_name": "Ellen", "last_name": "Holmes", "born_year": 1830, "born_place": "Birmingham, Warwickshire",
       "occupations": [ { "occupation": "Monthly and sick nurse" } ],
-      "census_entries": [ { "census_year": 1891, "property_id": 372, "relationship": "Nurse", "age_at_census": 61, "occupation_at_census": "Monthly and sick nurse", "source": "1891 census, image L16848_0" } ] }
+      "census": [ { "census_year": 1891, "property_id": 372, "relationship": "Nurse", "age_at_census": 61, "occupation_at_census": "Monthly and sick nurse", "source": "1891 census, image L16848_0" } ] }
 
   ]
 }
