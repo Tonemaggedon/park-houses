@@ -1720,6 +1720,47 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       const addedNames = [], censusNames = [];
       const NAME_CAP = 24;
       const nameOf = q => `${q.first_name} ${q.last_name}`.trim();
+      // Family links are made person by person in file order, so a husband listed
+      // before his wife looked for her before she existed and the link was lost
+      // until the file was imported a second time. A link whose far end is a
+      // person further down this same file is held back and retried once every
+      // person in the file has been made.
+      const normName = v => String(v || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      const fileNames = new Set((doc.people || []).map(q => normName(`${q.first_name || ''} ${q.last_name || ''}`)));
+      const targetKey = t => normName(t.name ? t.name : `${t.first_name || ''} ${t.last_name || ''}`);
+      const deferred = [];
+      const findTarget = t => Number.isInteger(t.id)
+        ? db.query(`SELECT id FROM people WHERE id=$1`, [t.id])
+        : t.name
+        ? db.query(`SELECT id FROM people
+                     WHERE LOWER(TRIM(first_name) || ' ' || TRIM(last_name)) = LOWER($1)`,
+                   [String(t.name).trim().replace(/\s+/g, ' ')])
+        : db.query(`SELECT id FROM people WHERE LOWER(TRIM(first_name))=LOWER($1)
+                                         AND LOWER(TRIM(last_name))=LOWER($2)`,
+                   [String(t.first_name || '').trim(), String(t.last_name || '').trim()]);
+      // Write one link, and its mirror where the word has an opposite. True when
+      // it is new; a dry run counts it without writing.
+      const writeLink = async (a, b, relType, rel) => {
+        const dup = await db.query(
+          `SELECT 1 FROM people_relationships
+            WHERE person_a_id=$1 AND person_b_id=$2 AND relationship=$3`, [a, b, relType]);
+        if (dup.rows.length) return false;
+        if (dryRun) return true;
+        await db.query(
+          `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
+                VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`, [a, b, relType, rel.notes || null]);
+        if (rel.reciprocal !== false) {
+          const back = { spouse_of:'spouse_of', sibling_of:'sibling_of', cousin_of:'cousin_of',
+                         parent_of:'child_of', child_of:'parent_of',
+                         employer_of:'employee_of', employee_of:'employer_of' }[relType];
+          if (back) {
+            await db.query(
+              `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
+                    VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`, [b, a, back, rel.notes || null]);
+          }
+        }
+        return true;
+      };
       for (const person of (doc.people || [])) {
         if (!person.first_name || !person.last_name) continue;
         // A person the record already holds can be named by number instead. The
@@ -1850,7 +1891,13 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         // Relationships to other people, named rather than given as ids so a file
         // can be written before knowing what number anybody has.
         for (const rel of (person.relationships || [])) {
-          if (!rel || !rel.to) continue;
+          if (!rel) continue;
+          // The far end is "to" in a people file and a bare "name" in the seed
+          // files. Taking only "to" dropped all 36 links in two 1891 files, and
+          // silently: the missing "to" skipped before any counter was touched.
+          // Take either, and count a block that gives neither.
+          const target = rel.to || (rel.name ? { name: String(rel.name) } : null);
+          if (!target) { relsSkipped++; continue; }
           // "relationship" is the obvious word for this and four files were
           // written with it, so twenty-four links were dropped on the floor
           // without a word while the report said those files had nothing left to
@@ -1860,43 +1907,25 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           // The other end can be given by number too, for the same reason as above.
           // Look it up before bailing out on a person who has no id yet, or a dry
           // run counts relationships whose far end does not exist.
-          const other = Number.isInteger(rel.to.id)
-            ? await db.query(`SELECT id FROM people WHERE id=$1`, [rel.to.id])
-            : await db.query(
-                `SELECT id FROM people WHERE LOWER(TRIM(first_name))=LOWER($1)
-                                         AND LOWER(TRIM(last_name))=LOWER($2)`,
-                [String(rel.to.first_name || '').trim(), String(rel.to.last_name || '').trim()]);
+          const other = await findTarget(target);
+          // Not there yet, but named further down this file: hold it back rather
+          // than lose it. A preview counts it, since the far end will exist.
+          if (!other.rows.length && !Number.isInteger(target.id) && fileNames.has(targetKey(target))) {
+            if (dryRun || id === null) { rels++; continue; }
+            deferred.push({ id, target, relType, rel });
+            continue;
+          }
           if (other.rows.length !== 1) { relsSkipped++; continue; }   // ambiguous or absent
           const otherId = other.rows[0].id;
           if (id === null) { rels++; continue; }   // new in this dry run: far end checked, id unknown
           if (otherId === id) { relsSkipped++; continue; }
-          const dup = await db.query(
-            `SELECT 1 FROM people_relationships
-              WHERE person_a_id=$1 AND person_b_id=$2 AND relationship=$3`,
-            [id, otherId, relType]);
-          if (dup.rows.length) continue;
-          rels++;
-          if (dryRun) continue;
-          await db.query(
-            `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
-                  VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-            [id, otherId, relType, rel.notes || null]);
-          // Record it both ways where the word is its own opposite.
-          if (rel.reciprocal !== false) {
-            const back = { spouse_of:'spouse_of', sibling_of:'sibling_of', cousin_of:'cousin_of',
-                           parent_of:'child_of', child_of:'parent_of',
-                           employer_of:'employee_of', employee_of:'employer_of' }[relType];
-            if (back) {
-              await db.query(
-                `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
-                      VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-                [otherId, id, back, rel.notes || null]);
-            }
-          }
+          if (await writeLink(id, otherId, relType, rel)) rels++;
         }
         // Census (and 1939 Register) appearances. Keyed on person, year and
         // property so running the import twice does not double the record.
-        for (const c of (person.census || [])) {
+        // "census_entries" is what the seed files call this, and two 1891 files
+        // were written that way: 71 census rows read as none at all.
+        for (const c of (person.census || person.census_entries || [])) {
           if (!c.census_year) continue;
           // A person who does not exist yet has no census record either, so every
           // one of theirs counts — and wants naming, or a dry run of an entirely
@@ -1973,6 +2002,12 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             [id, o.occupation, o.from_year ?? null, o.to_year ?? null,
              o.employer || null, o.notes || null]);
         }
+      }
+      // The links held back above, now that everyone in the file exists.
+      for (const d of deferred) {
+        const other = await findTarget(d.target);
+        if (other.rows.length !== 1 || other.rows[0].id === d.id) { relsSkipped++; continue; }
+        if (await writeLink(d.id, other.rows[0].id, d.relType, d.rel)) rels++;
       }
       const trim = list => list.length > NAME_CAP
         ? list.slice(0, NAME_CAP).concat(`and ${list.length - NAME_CAP} more`) : list;
