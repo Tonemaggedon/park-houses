@@ -38,6 +38,7 @@
     ['/map-review', '🗺', "Dougal's map"],
     ['/directory-check', '📒', 'Directories by street'],
     ['/directory-people', '🔎', 'Directories by surname'],
+    ['/directory-watch', '🧵', 'Architects & lace makers'],
     ['/medals-review', '🎖', 'Medal cards'],
     ['/name-sex', '⚥', 'Forename sex'],
     ['/name-review', '✎', 'Names to check'],

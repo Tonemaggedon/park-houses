@@ -126,6 +126,17 @@ Three places read it:
   new / different / unplaced.
 - Each house's timeline (`/api/property/:id/directory`).
 
+- `/directory-people` (`/api/directory/people-check`) — the same lines matched to census
+  people anywhere in The Park, grouped by surname, with each person's census and directory
+  sightings in date order. Forenames and any middle initial must agree; servants, visitors
+  and boarders are never matched. Same person / Not them decisions live in
+  `directory_person_review` and change nothing else.
+- `/directory-watch` (`/api/directory/watch`, `data/directory_watch.json`) — architects and lace
+  makers followed through their own alphabetical entries in every Wright's Nottingham volume
+  (1858–1915-16), wherever they lived, flagging the first address in The Park. Built from
+  the page text by `scripts/directories/dir_watch.py`; rerun it after adding architects or
+  lace makers to the record.
+
 Derby Road, Lenton Road and Park Row run well past The Park; only the numbers and house names
 the record has on them are kept. Rebuild with the scripts in `scripts/directories/` (see its
 README).

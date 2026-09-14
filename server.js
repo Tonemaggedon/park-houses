@@ -4702,6 +4702,16 @@ app.post('/api/directory/people-check/decide', requireContributor, async (req, r
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// Architects and lace makers traced through every Wright's Nottingham volume,
+// built by scripts/directories/dir_watch.py — where each lived, and when an
+// address first falls in The Park.
+app.get('/api/directory/watch', (req, res) => {
+  try {
+    const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'directory_watch.json'), 'utf8'));
+    res.json(doc);
+  } catch (e) { res.status(404).json({ error: 'The watch list has not been built yet' }); }
+});
+
 app.get('/api/directory/street-check', async (req, res) => {
   try {
     const { rows, props, doc } = await directoryCheck();
@@ -7232,6 +7242,7 @@ app.get('/medals-review', (req, res) => res.sendFile(path.join(__dirname, 'publi
 app.get('/map-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'map-review.html')));
 app.get('/directory-check', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-check.html')));
 app.get('/directory-people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-people.html')));
+app.get('/directory-watch', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-watch.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
