@@ -69,6 +69,11 @@ def main():
         done.append(vol)
         for st in d.get('streets', []):
             street = st['street'] if st['street'] in STREETS else None
+            # A reader who transcribed a same-named road elsewhere says so in heading_note.
+            note = st.get('heading_note') or ''
+            if re.search(r'\bnot (in )?the Park\b', note, re.I) and not re.search(r"\bis (in )?the Park\b|the Park's", note, re.I):
+                print(f'  {vol}: {st["street"]} is not The Park\'s ({(st.get("heading_note") or "")[:60]}) — skipped')
+                continue
             if not street:
                 print(f'  {vol}: "{st["street"]}" is not a site street name — skipped')
                 continue
@@ -77,7 +82,8 @@ def main():
                     continue
                 # Terraces printed as a sub-list inside another street's listing.
                 # Readers marked these with `group`, or with `side` when the sub-heading names a street.
-                sub = (e.get('group') or '').strip() or (e.get('side') or '').strip()
+                sub = (e.get('group') or '').strip() or (e.get('side') or '').strip() \
+                      or ((e.get('house_name') or '').strip() if street in LONG else '')
                 grp = next((g for g in STREETS if g != street and sub.lower().startswith(g.lower())), None)
                 e_street = grp or street
                 if e.get('group') and not grp:
