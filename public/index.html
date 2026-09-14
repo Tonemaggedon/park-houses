@@ -1277,7 +1277,10 @@ async function renderTimeline(p, body) {
   body.innerHTML = '<div style="padding:20px;color:#8a7a5a;font-size:0.82rem">Loading timeline…</div>';
   const ov = propOverrides[p.id] || {};
   const builtYear = ov.built || p.built;
-  const data = await fetch(`/api/property/${p.id}/timeline`).then(r=>r.json()).catch(()=>({residents:[],censusEntries:[]}));
+  const [data, dir] = await Promise.all([
+    fetch(`/api/property/${p.id}/timeline`).then(r=>r.json()).catch(()=>({residents:[],censusEntries:[]})),
+    fetch(`/api/property/${p.id}/directory`).then(r=>r.json()).catch(()=>({entries:[]})),
+  ]);
 
   // Group census entries by year
   const byCensus = {};
@@ -1299,6 +1302,22 @@ async function renderTimeline(p, body) {
   Object.entries(byCensus).forEach(([yr, entries]) => {
     events.push({ year: parseInt(yr), type:'census', label:`${yr} Census`, entries });
   });
+  // Wright's Directory: who it prints at this house, one event per volume, with
+  // whether the nearest census agrees. Evidence beside the census, never a filing.
+  const byVolume = {};
+  (dir.entries||[]).forEach(e => { (byVolume[e.volume] = byVolume[e.volume] || []).push(e); });
+  const verdictNote = { agrees:'census agrees', different:'census has another household', new:'not in the census record',
+                        elsewhere:'census files this name at another house', business:'', unread:'' };
+  Object.entries(byVolume).forEach(([vol, list]) => {
+    events.push({ year: list[0].year, type:'directory', label:`Wright's Directory ${esc(vol)}`,
+      sub: list.map(e => {
+        const who = [e.house_name ? `<i>${esc(e.house_name)}</i>` : '', esc(e.name || e.text), e.occupation ? esc(e.occupation) : '']
+          .filter(Boolean).join(', ');
+        const note = verdictNote[e.verdict] ? ` <span style="color:#8a7a5a">· ${verdictNote[e.verdict]}${e.unsure ? ' · reading unsure' : ''}</span>` : '';
+        const pg = e.record ? ` <a href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${e.record}" target="_blank" rel="noopener" style="color:#8a7a5a;font-size:0.7rem">p.${esc(e.page)}</a>` : '';
+        return who + note + pg;
+      }).join('<br>') });
+  });
   events.sort((a,b) => (a.year||9999)-(b.year||9999));
 
   if (!events.length) {
@@ -1307,8 +1326,8 @@ async function renderTimeline(p, body) {
   }
 
   const canEdit = isAdmin || (currentUser && currentUser.role === 'contributor');
-  const icons = { built:'🏗️', resident:'👤', census:'📋' };
-  const dotColors = { built:'#c8b87a', resident:'#4caf82', census:'#5b9bd5' };
+  const icons = { built:'🏗️', resident:'👤', census:'📋', directory:'📒' };
+  const dotColors = { built:'#c8b87a', resident:'#4caf82', census:'#5b9bd5', directory:'#a07a4a' };
   let html = '<div style="padding:14px 16px">';
   events.forEach((ev, i) => {
     const isLast = i === events.length - 1;

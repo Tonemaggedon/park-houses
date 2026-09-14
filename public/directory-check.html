@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directories by Street — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --amber:#8a5a10; --wash:#f6f2e6; --warnbg:#fbeeea; --okbg:#eef5ef; --newbg:#eef1f8; --blue:#2a4a7a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.55; }
+  .wrap { max-width:1060px; margin:0 auto; padding:24px 20px 80px; }
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:72ch; }
+  .key { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.78rem; color:var(--soft); margin:12px 0; }
+  .pill { display:inline-block; border-radius:10px; padding:0 8px; font-size:.68rem;
+    letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; font-family:ui-sans-serif,system-ui,sans-serif; }
+  .v-agrees { background:var(--okbg); color:var(--green); }
+  .v-elsewhere { background:#f6dcd5; color:var(--red); }
+  .v-new { background:var(--newbg); color:var(--blue); }
+  .v-different { background:#f7ecd6; color:var(--amber); }
+  .v-unplaced, .v-unread, .v-business { background:var(--wash); color:var(--faint); }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0 8px; }
+  select, .bar button { font-family:inherit; font-size:.85rem; padding:5px 9px; border:1px solid var(--rule);
+    border-radius:4px; background:#fff; color:var(--ink); }
+  .bar button.on { background:var(--green); color:#f2ecd8; border-color:var(--green); }
+  .totals { font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint); }
+  .streets { display:flex; flex-wrap:wrap; gap:5px; margin:8px 0 18px; }
+  .streets button { font-family:inherit; font-size:.78rem; border:1px solid var(--rule); background:#fff;
+    color:var(--soft); border-radius:14px; padding:3px 10px; cursor:pointer; }
+  .streets button.on { background:var(--accent); color:#f6efdd; border-color:var(--accent); }
+  .streets button .n { color:var(--red); font-weight:700; margin-left:4px; }
+  .streets button.on .n { color:#ffd9cc; }
+  .tablewrap { overflow-x:auto; border:1px solid var(--rule); border-radius:6px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; min-width:760px; font-size:.84rem; }
+  th, td { text-align:left; vertical-align:top; padding:7px 9px; border-bottom:1px solid var(--rule); }
+  th { font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--faint); font-weight:normal;
+    background:var(--wash); position:sticky; top:0; }
+  td.house { width:150px; font-weight:600; }
+  td.house a { color:inherit; text-decoration:none; border-bottom:1px solid var(--rule); }
+  .ent { margin-bottom:6px; }
+  .ent:last-child { margin-bottom:0; }
+  .ent .who { display:block; }
+  .ent .cen { display:block; font-size:.74rem; color:var(--faint); }
+  .ent .cen a { color:var(--soft); }
+  .ent a.pg { font-size:.7rem; color:var(--faint); text-decoration:none; border-bottom:1px dotted var(--rule); }
+  .unsure { color:var(--amber); font-size:.72rem; font-style:italic; }
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  h3 { font-size:1rem; margin:22px 0 6px; }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:26px;
+    border-top:1px solid var(--rule); padding-top:12px; max-width:78ch; }
+  .err { color:var(--red); }
+  a:focus-visible, button:focus-visible, select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Directories by street</h2>
+  <p class="lede">Every householder Wright's Directory of Nottingham prints on The Park's streets, put on a house
+    wherever the directory's own number or house name says which, and set beside who the census has there in the
+    nearest census year. Nothing here changes the record.</p>
+  <div class="key">
+    <span><span class="pill v-agrees">agrees</span> same surname at this house in the nearest census</span>
+    <span><span class="pill v-elsewhere">elsewhere</span> the census files that surname at another house on the street — a misfiling or a move</span>
+    <span><span class="pill v-new">new</span> no census household here in those years — a name the record lacks</span>
+    <span><span class="pill v-different">different</span> the census has somebody else here — the house changed hands</span>
+    <span><span class="pill v-unplaced">unplaced</span> no number or house name to put it on a house</span>
+  </div>
+  <div class="bar">
+    <label>Show <select id="show">
+      <option value="issues">Worth a look (elsewhere, new, different)</option>
+      <option value="all">Everything</option>
+    </select></label>
+    <span class="totals" id="totals">Loading…</span>
+  </div>
+  <div class="streets" id="streets"></div>
+  <div id="out"><div class="empty">Loading…</div></div>
+  <div class="note" id="foot"></div>
+</div>
+<script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ISSUE = new Set(['elsewhere', 'new', 'different']);
+let data = null, street = null;
+const params = new URLSearchParams(location.search);
+
+function entryHtml(e) {
+  const who = [e.no ? `<b>${esc(e.no)}</b>` : '', e.house_name ? `<i>${esc(e.house_name)}</i>` : '',
+               esc(e.name || e.text), e.occupation ? `<span style="color:var(--soft)">${esc(e.occupation)}</span>` : '']
+               .filter(Boolean).join(', ');
+  let cen = '';
+  if (e.census && e.census.length) {
+    const label = { agrees: 'census:', elsewhere: 'census has', different: 'census has' }[e.verdict] || 'census:';
+    cen = `<span class="cen">${label} ` + e.census.map(c =>
+      `<a href="/people?person=${c.person_id}">${esc(c.name)}</a> ${c.year}${c.label ? ` at <a href="/?id=${c.property_id}">${esc(c.label)}</a>` : ''}`).join('; ') + '</span>';
+  }
+  const pg = e.record ? ` <a class="pg" target="_blank" rel="noopener" href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${e.record}">p.${esc(e.page)}</a>` : '';
+  return `<div class="ent"><span class="pill v-${e.verdict}">${esc(e.verdict)}</span> <span class="who">${who}${pg}
+    ${e.unsure ? '<span class="unsure"> — reader unsure</span>' : ''}${e.from_scan ? '' : '<span class="unsure"> — machine-read text</span>'}</span>${cen}</div>`;
+}
+
+function render() {
+  const show = document.getElementById('show').value;
+  const keep = e => show === 'all' || ISSUE.has(e.verdict);
+  const issues = s => Object.entries(s.counts).filter(([k]) => ISSUE.has(k)).reduce((n, [, v]) => n + v, 0);
+  document.getElementById('streets').innerHTML = data.streets.map(s =>
+    `<button data-st="${esc(s.street)}" class="${s.street === street ? 'on' : ''}">${esc(s.street)}${issues(s) ? `<span class="n">${issues(s)}</span>` : ''}</button>`).join('');
+  const s = data.streets.find(x => x.street === street);
+  if (!s) { document.getElementById('out').innerHTML = '<div class="empty">Pick a street.</div>'; return; }
+  const vols = data.volumes;
+  const houses = s.houses.map(h => ({ ...h, shown: h.entries.filter(keep) })).filter(h => show === 'all' || h.shown.length);
+  let html = '';
+  if (houses.length) {
+    html += `<div class="tablewrap"><table><thead><tr><th>House</th>${vols.map(v => `<th>${esc(v)}</th>`).join('')}</tr></thead><tbody>`
+      + houses.map(h => `<tr><td class="house"><a href="/?id=${h.id}">${esc(h.label)}</a></td>`
+        + vols.map(v => `<td>${h.shown.filter(e => e.volume === v).map(entryHtml).join('')}</td>`).join('') + '</tr>').join('')
+      + '</tbody></table></div>';
+  } else html += '<div class="empty">Nothing here needs a look.</div>';
+  const un = s.unplaced.filter(e => show === 'all' || ISSUE.has(e.verdict) || e.verdict === 'unplaced');
+  if (un.length) {
+    html += `<h3>Not placed on a house (${un.length})</h3><p class="lede">No printed number or house name the record knows.
+      The directory prints the street in walking order, so the neighbours either side often settle it.</p>`
+      + vols.map(v => {
+          const list = un.filter(e => e.volume === v);
+          return list.length ? `<h3 style="font-size:.9rem">${esc(v)}</h3>` + list.map(entryHtml).join('') : '';
+        }).join('');
+  }
+  document.getElementById('out').innerHTML = html;
+}
+
+document.getElementById('streets').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-st]'); if (!b) return;
+  street = b.dataset.st;
+  history.replaceState(null, '', '?street=' + encodeURIComponent(street));
+  render();
+});
+document.getElementById('show').addEventListener('change', render);
+
+fetch('/api/directory/street-check').then(r => r.json()).then(d => {
+  if (d.error) throw new Error(d.error);
+  data = d;
+  const t = d.totals;
+  document.getElementById('totals').textContent = Object.entries(t).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${v} ${k}`).join(' · ');
+  street = params.get('street') || (d.streets.find(s => Object.keys(s.counts).some(k => ISSUE.has(k))) || d.streets[0] || {}).street;
+  document.getElementById('foot').textContent = (d.note || '') + ' Source: ' + (d.source || '');
+  render();
+}).catch(e => { document.getElementById('out').innerHTML = `<div class="empty err">Could not load the directories: ${esc(e.message)}</div>`; });
+</script>
+</body>
+</html>

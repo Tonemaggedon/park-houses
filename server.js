@@ -4373,7 +4373,7 @@ function directoryEntries() {
         if (!bySurname.has(k)) bySurname.set(k, []);
         bySurname.get(k).push(e);
       }
-      dirEntriesCache = { mtime, bySurname };
+      dirEntriesCache = { mtime, bySurname, doc };
     }
     return dirEntriesCache.bySurname;
   } catch (e) { return new Map(); }
@@ -4410,6 +4410,136 @@ function directoryMatches(surname, forename, censusYear) {
   }
   return out.sort((a, b) => a.gap - b.gap || b.exact - a.exact);
 }
+
+// ── Trade directories, street by street ──────────────────────────────────────
+// Each directory line is put on a house only where the directory itself says
+// which — its printed number on that street, or a house name the record knows
+// the house by. Then it is set beside the census: the same surname at the house
+// in the nearest census agrees; the surname at another house on the street is
+// worth a look (a misfiled household, or a move); a house the census has no
+// household for in those years gains a name the record lacks.
+const DIR_CENSUS = { 1894: [1891, 1901], 1898: [1901, 1891], 1910: [1911], 1913: [1911, 1921], 1915: [1921, 1911] };
+function directoryDoc() { directoryEntries(); return (dirEntriesCache && dirEntriesCache.doc) || { entries: [] }; }
+function directoryHouse(e, onStreet) {
+  if (e.no != null) {
+    const want = String(e.no_printed || e.no).trim().toLowerCase();
+    const hit = onStreet.find(pr => String(pr.no || '').trim().toLowerCase() === want)
+             || onStreet.find(pr => String(pr.no || '').trim() === String(e.no));
+    if (hit) return { prop: hit, how: 'number' };
+  }
+  if (e.house_name) {
+    const hn = addrNorm(e.house_name).replace(/\b(house|hse|villa|lodge|cottage)\b/g, '').trim();
+    if (hn.length >= 4) {
+      const hit = onStreet.find(pr => [pr.name, pr.house_name, ...String(pr.prev_house_name || '').split('\n')]
+        .map(n => addrNorm(n).replace(/\b(house|hse|villa|lodge|cottage)\b/g, '').trim()).filter(n => n.length >= 4)
+        .some(n => n === hn || (hn.length >= 6 && editDistance(n, hn) <= 2)));
+      if (hit) return { prop: hit, how: 'house name' };
+    }
+  }
+  return null;
+}
+const sameSurname = (a, b) => {
+  const x = dirNorm(a), y = dirNorm(b);
+  return x.length >= 3 && y.length >= 3 && (x === y || (x.length >= 5 && editDistance(x, y) <= 1));
+};
+async function directoryCheck() {
+  const doc = directoryDoc();
+  let props = [];
+  try { props = JSON.parse(readAllPropsCached().body); } catch (e) { props = []; }
+  if (!Array.isArray(props)) props = [];
+  const byStreet = new Map();
+  for (const pr of props) {
+    const st = (pr.street || '').trim();
+    if (!byStreet.has(st)) byStreet.set(st, []);
+    byStreet.get(st).push(pr);
+  }
+  // Everyone filed at a house, by house and census year.
+  const census = new Map();
+  if (db) {
+    const r = await db.query(`
+      SELECT c.property_id, c.census_year, c.relationship, p.id AS person_id, p.first_name, p.last_name
+        FROM census_entries c JOIN people p ON p.id = c.person_id
+       WHERE c.property_id IS NOT NULL AND c.census_year IS NOT NULL`);
+    for (const row of r.rows) {
+      const k = row.property_id + '|' + row.census_year;
+      if (!census.has(k)) census.set(k, []);
+      census.get(k).push(row);
+    }
+  }
+  const rows = [];
+  for (const e of (doc.entries || [])) {
+    const onStreet = byStreet.get(e.street) || [];
+    const placed = directoryHouse(e, onStreet);
+    const years = DIR_CENSUS[e.year] || [];
+    const row = { volume: e.volume, year: e.year, street: e.street, page: e.page, record: e.record,
+                  no: e.no_printed || (e.no != null ? String(e.no) : null), house_name: e.house_name || null,
+                  name: e.name || null, occupation: e.occupation || null, text: e.text, kind: e.kind || 'resident',
+                  unsure: !!e.unsure, from_scan: (doc.read_from_scans || []).includes(e.volume),
+                  property_id: placed ? placed.prop.id : null, placed_by: placed ? placed.how : null,
+                  verdict: null, census: [] };
+    if (row.kind === 'business') row.verdict = 'business';
+    else if (!e.surname) row.verdict = 'unread';
+    else {
+      const here = placed ? years.flatMap(y => (census.get(placed.prop.id + '|' + y) || []).map(c => ({ ...c, y }))) : [];
+      const match = here.filter(c => sameSurname(c.last_name, e.surname));
+      if (match.length) {
+        row.verdict = 'agrees';
+        row.census = match.map(c => ({ person_id: c.person_id, name: [c.first_name, c.last_name].filter(Boolean).join(' '),
+                                       year: c.y, relationship: c.relationship }));
+      } else {
+        const elsewhere = [];
+        for (const pr of onStreet) {
+          if (placed && pr.id === placed.prop.id) continue;
+          for (const y of years) for (const c of (census.get(pr.id + '|' + y) || []))
+            if (sameSurname(c.last_name, e.surname)
+                && (!e.forename || !c.first_name || dirNorm(c.first_name)[0] === dirNorm(e.forename)[0]))
+              elsewhere.push({ person_id: c.person_id, name: [c.first_name, c.last_name].filter(Boolean).join(' '),
+                               year: y, property_id: pr.id, label: pr.address || pr.name });
+        }
+        if (elsewhere.length) { row.verdict = 'elsewhere'; row.census = elsewhere.slice(0, 6); }
+        else if (!placed) row.verdict = 'unplaced';
+        else if (here.length) {
+          row.verdict = 'different';
+          const heads = here.filter(c => /^head$/i.test((c.relationship || '').trim()));
+          row.census = (heads.length ? heads : here.slice(0, 2)).map(c => ({ person_id: c.person_id,
+            name: [c.first_name, c.last_name].filter(Boolean).join(' '), year: c.y, relationship: c.relationship }));
+        } else row.verdict = 'new';
+      }
+    }
+    rows.push(row);
+  }
+  return { rows, props: byStreet, doc };
+}
+
+app.get('/api/directory/street-check', async (req, res) => {
+  try {
+    const { rows, props, doc } = await directoryCheck();
+    const streets = [...new Set(rows.map(r => r.street))].sort().map(street => {
+      const mine = rows.filter(r => r.street === street);
+      const houses = (props.get(street) || []).map(pr => ({ id: pr.id, no: pr.no || null, name: pr.name || null,
+        label: pr.address || [pr.no, pr.street].filter(Boolean).join(' ') || pr.name,
+        entries: mine.filter(r => r.property_id === pr.id) }))
+        .sort((a, b) => (parseInt(a.no, 10) || 9999) - (parseInt(b.no, 10) || 9999) || String(a.label).localeCompare(String(b.label)));
+      const counts = {};
+      for (const r of mine) counts[r.verdict] = (counts[r.verdict] || 0) + 1;
+      return { street, counts, houses, unplaced: mine.filter(r => r.property_id == null) };
+    });
+    const totals = {};
+    for (const r of rows) totals[r.verdict] = (totals[r.verdict] || 0) + 1;
+    res.json({ note: doc.note, source: doc.source, read_from_scans: doc.read_from_scans || [],
+               volumes: [...new Set(rows.map(r => r.volume))].sort(), totals, streets });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/property/:id/directory', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (!id) return res.status(400).json({ error: 'invalid id' });
+  try {
+    const { rows, doc } = await directoryCheck();
+    res.json({ source: doc.source, entries: rows.filter(r => r.property_id === id)
+      .sort((a, b) => a.year - b.year) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
@@ -6909,6 +7039,7 @@ app.post('/api/person/:id/medal', requireContributor, async (req, res) => {
 
 app.get('/medals-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'medals-review.html')));
 app.get('/map-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'map-review.html')));
+app.get('/directory-check', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-check.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));
