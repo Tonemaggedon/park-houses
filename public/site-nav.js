@@ -37,6 +37,7 @@
     ['/wikidata-review', '🔗', 'Wikidata review'],
     ['/map-review', '🗺', "Dougal's map"],
     ['/directory-check', '📒', 'Directories by street'],
+    ['/directory-people', '🔎', 'Directories by surname'],
     ['/medals-review', '🎖', 'Medal cards'],
     ['/name-sex', '⚥', 'Forename sex'],
     ['/name-review', '✎', 'Names to check'],

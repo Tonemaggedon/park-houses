@@ -525,6 +525,21 @@ async function dbInit() {
     // read, while item_key keeps the raw text so the row still matches its file.
     await db.query(`ALTER TABLE map_review ADD COLUMN IF NOT EXISTS renamed_to TEXT`);
 
+    // A directory line judged to be (kept) or not to be (dismissed) a census
+    // person. Keyed on the line and the person, so a line can be passed for one
+    // namesake and kept for another. Nothing else in the record changes.
+    await db.query(`CREATE TABLE IF NOT EXISTS directory_person_review (
+      id SERIAL PRIMARY KEY,
+      line_key TEXT NOT NULL,
+      person_id INTEGER NOT NULL,
+      status TEXT NOT NULL,                      -- kept | dismissed
+      note TEXT,
+      decided_by TEXT,
+      decided_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS directory_person_review_idx
+                      ON directory_person_review(line_key, person_id)`);
+
     // Medal index cards at The National Archives (series WO 372), against the
     // people this record holds. A card carries no birth year, so it can never
     // identify a person on its own — surname, forename, rank and corps together
@@ -4473,11 +4488,14 @@ async function directoryCheck() {
   }
   // Everyone filed at a house, by house and census year.
   const census = new Map();
+  let censusRows = [];
   if (db) {
     const r = await db.query(`
-      SELECT c.property_id, c.census_year, c.relationship, p.id AS person_id, p.first_name, p.last_name
+      SELECT c.property_id, c.census_year, c.relationship, c.age_at_census, c.occupation_at_census,
+             p.id AS person_id, p.first_name, p.last_name, p.born_year
         FROM census_entries c JOIN people p ON p.id = c.person_id
        WHERE c.property_id IS NOT NULL AND c.census_year IS NOT NULL`);
+    censusRows = r.rows;
     for (const row of r.rows) {
       const k = row.property_id + '|' + row.census_year;
       if (!census.has(k)) census.set(k, []);
@@ -4493,6 +4511,7 @@ async function directoryCheck() {
                   no: e.no_printed || (e.no != null ? String(e.no) : null), house_name: e.house_name || null,
                   name: e.name || null, occupation: e.occupation || null, text: e.text, kind: e.kind || 'resident',
                   unsure: !!e.unsure, from_scan: (doc.read_from_scans || []).includes(e.volume),
+                  surname: e.surname || null, forename: e.forename || null,
                   property_id: placed ? placed.prop.id : null, placed_by: placed ? placed.how : null,
                   verdict: null, census: [] };
     if (row.kind === 'business') row.verdict = 'business';
@@ -4526,8 +4545,162 @@ async function directoryCheck() {
     }
     rows.push(row);
   }
-  return { rows, props: byStreet, doc };
+  return { rows, props: byStreet, doc, censusRows, propsById: new Map(props.map(pr => [pr.id, pr])) };
 }
+
+// ── Directories and census, person by person, grouped by surname ─────────────
+// Every directory line is matched to the census people it could be — anywhere in
+// The Park, not just at the house it is printed against — and each person's census
+// and directory sightings are laid end to end. Guards keep namesakes apart: the
+// forenames must agree, a middle initial on both sides must agree, and servants,
+// visitors and boarders are never a directory householder.
+const surnameKey = v => dirNorm(v).replace(/^mac/, 'mc').replace(/^mc/, 'm');
+const lineKey = r => [r.volume, r.street, r.page, r.text].join('|');
+function forenameTokens(r) {
+  const words = String(r.name || '').replace(/\(.*?\)/g, ' ').split(',')[0]
+    .replace(/\b(Mr|Mrs|Miss|Misses|Messrs|Dr|Rev|Revd|Sir|Lady|Capt|Col|Major|Ald|Prof|Esq|jun|junr|sen|senr|J\.?P|M\.?D|B\.?A|M\.?A|Kt)\b\.?/gi, ' ')
+    .split(/[\s.]+/).filter(Boolean);
+  const sk = surnameKey(r.surname);
+  const i = words.findIndex(w => surnameKey(w) === sk || (sk.length >= 5 && editDistance(surnameKey(w), sk) <= 1));
+  if (i < 0) return [];
+  return (i === 0 ? words.slice(1) : words.slice(0, i)).map(w => dirNorm(w)).filter(Boolean);
+}
+const ABBR = { jno: 'john', wm: 'william', thos: 'thomas', ths: 'thomas', jas: 'james', geo: 'george', chas: 'charles',
+  hy: 'henry', edw: 'edward', edwd: 'edward', rd: 'richard', richd: 'richard', robt: 'robert', rbt: 'robert', rt: 'robert',
+  saml: 'samuel', sml: 'samuel', jos: 'joseph', jph: 'joseph', benj: 'benjamin', fredk: 'frederick', fdk: 'frederick',
+  frdk: 'frederick', alfd: 'alfred', albt: 'albert', arth: 'arthur', ar: 'arthur', danl: 'daniel', eliz: 'elizabeth',
+  elzh: 'elizabeth', wltr: 'walter', fras: 'francis', frs: 'francis', hn: 'hannah', ernst: 'ernest', herbt: 'herbert' };
+function namesAgree(dirTokens, censusFirst) {
+  const c = String(censusFirst || '').split(/[\s.]+/).map(dirNorm).filter(Boolean);
+  if (!c.length || c[0] === '' || /^\?|unknown/i.test(censusFirst || '')) return false;
+  if (!dirTokens.length) return null;                       // "Mrs. Allen": surname only
+  const d = dirTokens.map(t => ABBR[t] || t);
+  const fits = (a, b) => a.length === 1 || b.length === 1 ? a[0] === b[0]
+    : a.startsWith(b.slice(0, 4)) || b.startsWith(a.slice(0, 4));
+  if (!fits(d[0], c[0])) return false;
+  // Middle names: where both sides give one, they must agree.
+  if (d[1] && c[1] && !fits(d[1], c[1])) return false;
+  return true;
+}
+const NOT_HOUSEHOLDER = /servant|visitor|boarder|lodger|nurse|cook|maid|groom|coachman|gardener|governess|butler|footman|patient|inmate|pupil|apprentice|assistant/i;
+
+app.get('/api/directory/people-check', async (req, res) => {
+  try {
+    const { rows, censusRows, propsById, doc } = await directoryCheck();
+    const label = id => { const pr = propsById.get(id); return pr ? (pr.address || [pr.no, pr.street].filter(Boolean).join(' ') || pr.name) : String(id); };
+    const decisions = new Map();
+    if (db) for (const d of (await db.query(`SELECT line_key, person_id, status, note, decided_by FROM directory_person_review`)).rows)
+      decisions.set(d.line_key + '#' + d.person_id, d);
+
+    // Surname groups, with close spellings (Hutchinson / Hutchison) joined.
+    const keys = new Set();
+    for (const c of censusRows) if (surnameKey(c.last_name).length >= 3) keys.add(surnameKey(c.last_name));
+    for (const r of rows) if (r.surname && surnameKey(r.surname).length >= 3) keys.add(surnameKey(r.surname));
+    const parent = new Map([...keys].map(k => [k, k]));
+    const find = k => { while (parent.get(k) !== k) k = parent.get(k); return k; };
+    const byLen = [...keys].sort();
+    for (let i = 0; i < byLen.length; i++) for (let j = i + 1; j < byLen.length; j++) {
+      const a = byLen[i], b = byLen[j];
+      if (a.slice(0, 2) !== b.slice(0, 2)) break;
+      if (a.length >= 6 && b.length >= 6 && editDistance(a, b) <= 1) parent.set(find(a), find(b));
+    }
+    const groups = new Map();
+    const group = k => { const g = find(k); if (!groups.has(g)) groups.set(g, { spellings: new Set(), people: new Map(), lines: [] }); return groups.get(g); };
+
+    for (const c of censusRows) {
+      const k = surnameKey(c.last_name); if (k.length < 3) continue;
+      const g = group(k); g.spellings.add(c.last_name);
+      if (!g.people.has(c.person_id)) g.people.set(c.person_id, { person_id: c.person_id,
+        name: [c.first_name, c.last_name].filter(Boolean).join(' '), first_name: c.first_name, born_year: c.born_year, sightings: [] });
+      g.people.get(c.person_id).sightings.push({ year: c.census_year, kind: 'census', property_id: c.property_id,
+        label: label(c.property_id), relationship: c.relationship, age: c.age_at_census, occupation: c.occupation_at_census });
+    }
+    const YEARS = { 1894: [1891, 1901], 1898: [1901, 1891], 1910: [1911], 1913: [1911, 1921], 1915: [1921, 1911] };
+    for (const r of rows) {
+      if (r.kind === 'business' || !r.surname) continue;
+      const k = surnameKey(r.surname); if (k.length < 3) continue;
+      const g = group(k); g.spellings.add(r.surname);
+      const toks = forenameTokens(r);
+      const years = YEARS[r.year] || [];
+      const cands = [];
+      for (const p of g.people.values()) {
+        const near = p.sightings.filter(x => years.includes(x.year));
+        if (!near.length) continue;
+        const householder = near.filter(x => !NOT_HOUSEHOLDER.test(x.relationship || ''));
+        if (!householder.length) continue;
+        const agree = namesAgree(toks, p.first_name);
+        if (agree === false) continue;
+        const houses = [...new Set(householder.map(x => x.property_id))];
+        let how;
+        if (r.property_id && houses.includes(r.property_id)) how = 'same house';
+        else if (!r.property_id) {
+          const onStreet = householder.filter(x => (propsById.get(x.property_id) || {}).street === r.street);
+          how = onStreet.length ? 'places this line' : 'another street';
+        } else {
+          const onStreet = householder.some(x => (propsById.get(x.property_id) || {}).street === r.street);
+          how = onStreet ? 'another house on the street' : 'another street';
+        }
+        const dec = decisions.get(lineKey(r) + '#' + p.person_id);
+        cands.push({ person_id: p.person_id, how, surname_only: agree === null,
+          census: householder.map(x => ({ year: x.year, label: x.label, property_id: x.property_id, relationship: x.relationship })),
+          decision: dec ? dec.status : null, decided_by: dec ? dec.decided_by : null });
+      }
+      // A surname-only line ("Mrs. Allen") is only offered where it is the one person it could be.
+      const named = cands.filter(c => !c.surname_only);
+      const offered = named.length ? named : (cands.length === 1 ? cands : []);
+      const line = { key: lineKey(r), volume: r.volume, year: r.year, street: r.street, no: r.no, house_name: r.house_name,
+        name: r.name, occupation: r.occupation, page: r.page, record: r.record, unsure: r.unsure,
+        property_id: r.property_id, label: r.property_id ? label(r.property_id) : null, candidates: offered };
+      g.lines.push(line);
+      for (const c of offered) {
+        if (c.decision === 'dismissed') continue;
+        g.people.get(c.person_id).sightings.push({ year: r.year, kind: 'directory', property_id: r.property_id,
+          label: line.label || r.street + ' (no number)', how: c.how, decision: c.decision, line_key: line.key });
+      }
+    }
+
+    const out = [];
+    for (const g of groups.values()) {
+      if (!g.lines.length) continue;
+      const people = [...g.people.values()].filter(p => p.sightings.some(x => x.kind === 'directory'))
+        .map(p => ({ ...p, sightings: p.sightings.sort((a, b) => a.year - b.year || (a.kind === 'census' ? -1 : 1)),
+                     houses: [...new Set(p.sightings.map(x => x.property_id).filter(Boolean))].length }));
+      const counts = { same: 0, look: 0, places: 0, directory_only: 0, decided: 0 };
+      for (const l of g.lines) {
+        const open = l.candidates.filter(c => !c.decision);
+        if (l.candidates.length && l.candidates.every(c => c.decision)) counts.decided++;
+        if (!l.candidates.length) counts.directory_only++;
+        else if (open.some(c => c.how === 'another street' || c.how === 'another house on the street')) counts.look++;
+        else if (open.some(c => c.how === 'places this line')) counts.places++;
+        else if (l.candidates.some(c => c.how === 'same house')) counts.same++;
+      }
+      out.push({ surname: [...g.spellings].sort((a, b) => a.localeCompare(b))[0], spellings: [...g.spellings].sort(),
+                 counts, people, lines: g.lines.sort((a, b) => a.year - b.year) });
+    }
+    out.sort((a, b) => b.counts.look - a.counts.look || b.counts.places - a.counts.places || a.surname.localeCompare(b.surname));
+    const totals = out.reduce((t, g) => { for (const k in g.counts) t[k] = (t[k] || 0) + g.counts[k]; return t; }, {});
+    res.json({ source: doc.source, totals, surnames: out });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/directory/people-check/decide', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const key = String((req.body && req.body.line_key) || '');
+  const pid = parseInt(req.body && req.body.person_id, 10);
+  const asked = req.body && req.body.status;
+  if (!key || !pid || !['kept', 'dismissed', 'reset'].includes(asked))
+    return res.status(400).json({ error: 'line_key, person_id and a status of kept, dismissed or reset are required' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (asked === 'reset') await db.query(`DELETE FROM directory_person_review WHERE line_key=$1 AND person_id=$2`, [key, pid]);
+    else await db.query(
+      `INSERT INTO directory_person_review (line_key, person_id, status, note, decided_by) VALUES ($1,$2,$3,$4,$5)
+       ON CONFLICT (line_key, person_id) DO UPDATE SET status=EXCLUDED.status, note=EXCLUDED.note,
+         decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
+      [key, pid, asked, (req.body && req.body.note) || null, who]);
+    res.json({ ok: true, status: asked });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 app.get('/api/directory/street-check', async (req, res) => {
   try {
@@ -7058,6 +7231,7 @@ app.post('/api/person/:id/medal', requireContributor, async (req, res) => {
 app.get('/medals-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'medals-review.html')));
 app.get('/map-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'map-review.html')));
 app.get('/directory-check', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-check.html')));
+app.get('/directory-people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'directory-people.html')));
 app.get('/wikidata-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'wikidata-review.html')));
 app.get('/crowding', (req, res) => res.sendFile(path.join(__dirname, 'public', 'crowding.html')));
 app.get('/reassign', (req, res) => res.sendFile(path.join(__dirname, 'public', 'reassign.html')));

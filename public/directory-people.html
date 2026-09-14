@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directories by Surname — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --amber:#8a5a10; --wash:#f6f2e6; --okbg:#eef5ef; --newbg:#eef1f8; --blue:#2a4a7a; --warnbg:#f6dcd5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.55; }
+  .wrap { max-width:1000px; margin:0 auto; padding:24px 20px 80px; }
+  h2 { font-size:1.3rem; margin:0 0 4px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:74ch; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0 10px; }
+  .bar input, .bar select { font-family:inherit; font-size:.88rem; padding:6px 9px; border:1px solid var(--rule);
+    border-radius:4px; background:#fff; color:var(--ink); }
+  .bar input { flex:1 1 200px; min-width:0; }
+  .totals { font-family:ui-monospace,Menlo,monospace; font-size:.76rem; color:var(--faint); margin-bottom:12px; }
+  .pill { display:inline-block; border-radius:10px; padding:0 8px; font-size:.68rem; letter-spacing:.04em;
+    text-transform:uppercase; white-space:nowrap; font-family:ui-sans-serif,system-ui,sans-serif; }
+  .p-same { background:var(--okbg); color:var(--green); }
+  .p-look { background:var(--warnbg); color:var(--red); }
+  .p-places { background:var(--newbg); color:var(--blue); }
+  .p-only { background:var(--wash); color:var(--faint); }
+  details.sn { background:var(--card); border:1px solid var(--rule); border-radius:6px; margin-bottom:8px; }
+  details.sn > summary { cursor:pointer; padding:9px 12px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:baseline; list-style:none; }
+  details.sn > summary::-webkit-details-marker { display:none; }
+  .sname { font-size:1.02rem; font-weight:600; }
+  .vars { font-size:.76rem; color:var(--faint); }
+  .body { padding:2px 12px 12px; border-top:1px solid var(--rule); }
+  h4 { font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:normal; margin:12px 0 6px; }
+  .person { margin:0 0 10px; }
+  .person .who { font-weight:600; font-size:.92rem; }
+  .person .who a { color:inherit; text-decoration:none; border-bottom:1px solid var(--rule); }
+  .moved { font-size:.72rem; color:var(--amber); margin-left:6px; }
+  .trail { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+  .sight { font-size:.74rem; border:1px solid var(--rule); border-radius:4px; padding:1px 6px; background:var(--paper);
+    font-variant-numeric:tabular-nums; }
+  .sight.c { border-color:#c9d7e6; background:#f3f7fb; }
+  .sight.d { border-color:#e2d3b8; background:#fbf6ec; }
+  .sight.d.kept { border-color:#b9d3bf; background:var(--okbg); }
+  .sight b { font-weight:600; }
+  .line { border-top:1px dashed var(--rule); padding:7px 0; font-size:.84rem; }
+  .line:first-of-type { border-top:0; }
+  .line .dl a.pg { font-size:.7rem; color:var(--faint); text-decoration:none; border-bottom:1px dotted var(--rule); }
+  .cand { display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; margin:4px 0 0 14px; font-size:.8rem; color:var(--soft); }
+  .cand a { color:var(--soft); }
+  button.act { font-family:inherit; font-size:.74rem; border-radius:4px; padding:3px 9px; cursor:pointer;
+    border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button.keep { background:var(--okbg); color:var(--green); border-color:#cfe0d3; }
+  .said { font-size:.72rem; color:var(--faint); font-style:italic; }
+  .unsure { color:var(--amber); font-size:.72rem; font-style:italic; }
+  .empty { color:var(--faint); font-style:italic; padding:24px 0; }
+  .more { font-family:inherit; font-size:.85rem; margin:10px 0; padding:6px 12px; border:1px solid var(--rule); background:#fff; border-radius:4px; cursor:pointer; }
+  .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:26px; border-top:1px solid var(--rule); padding-top:12px; max-width:78ch; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Directories by surname</h2>
+  <p class="lede">Each surname in The Park, with everyone of that name in the census and every line Wright's Directory
+    prints for it — anywhere in The Park, not just at one house. Each person's census and directory sightings are laid
+    end to end, so a move, a misfiling or a missing household shows up across streets.</p>
+  <p class="lede">Forenames must agree, a middle initial on both sides must agree, and servants, visitors and boarders
+    are never matched to a directory householder. <b>Same person</b> keeps a match; <b>Not them</b> passes it. Nothing
+    else in the record changes.</p>
+  <div class="bar">
+    <input id="q" type="search" placeholder="Surname, e.g. Holroyd" aria-label="Find a surname">
+    <select id="show" aria-label="Show">
+      <option value="look">Needs a look — another house or another street</option>
+      <option value="places">Places an unplaced directory line</option>
+      <option value="same">Lines up</option>
+      <option value="only">Directory only — nobody of the name in the census</option>
+      <option value="all">Every surname</option>
+    </select>
+  </div>
+  <div class="totals" id="totals">Loading…</div>
+  <div id="out"><div class="empty">Loading…</div></div>
+  <div class="note" id="foot"></div>
+</div>
+<script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let data = null, shown = 60;
+const HOW = { 'same house': ['p-same', 'same house'], 'places this line': ['p-places', 'places this line'],
+  'another house on the street': ['p-look', 'another house on the street'], 'another street': ['p-look', 'another street'] };
+
+function trail(p) {
+  const houses = new Set(p.sightings.map(x => x.property_id).filter(Boolean));
+  return `<div class="person"><span class="who"><a href="/people?person=${p.person_id}">${esc(p.name)}</a></span>
+    ${p.born_year ? `<span class="vars"> b. ${esc(p.born_year)}</span>` : ''}${houses.size > 1 ? `<span class="moved">${houses.size} houses</span>` : ''}
+    <div class="trail">${p.sightings.map(x => `<span class="sight ${x.kind === 'census' ? 'c' : 'd'}${x.decision === 'kept' ? ' kept' : ''}"
+      title="${x.kind === 'census' ? 'Census' + (x.relationship ? ' · ' + esc(x.relationship) : '') : 'Wright\'s Directory · ' + esc(x.how)}">
+      <b>${esc(x.year)}</b> ${x.kind === 'census' ? 'census' : 'dir'} · ${x.property_id ? `<a href="/?id=${x.property_id}" style="color:inherit">${esc(x.label)}</a>` : esc(x.label)}</span>`).join('')}</div></div>`;
+}
+
+function lineHtml(l) {
+  const where = [l.no, l.street].filter(Boolean).join(' ') + (l.house_name ? ` (${esc(l.house_name)})` : '');
+  const pg = l.record ? ` <a class="pg" target="_blank" rel="noopener" href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${l.record}">p.${esc(l.page)}</a>` : '';
+  const cands = l.candidates.length ? l.candidates.map(c => {
+    const [cls, txt] = HOW[c.how] || ['p-only', c.how];
+    const cen = c.census.map(x => `${x.year} ${esc(x.relationship || '')} at <a href="/?id=${x.property_id}">${esc(x.label)}</a>`).join('; ');
+    const acts = c.decision
+      ? `<span class="said">${c.decision === 'kept' ? 'kept as the same person' : 'passed — not them'}${c.decided_by ? ' by ' + esc(c.decided_by) : ''}</span>
+         <button class="act" data-key="${esc(l.key)}" data-pid="${c.person_id}" data-status="reset">Undo</button>`
+      : `<button class="act keep" data-key="${esc(l.key)}" data-pid="${c.person_id}" data-status="kept">Same person</button>
+         <button class="act" data-key="${esc(l.key)}" data-pid="${c.person_id}" data-status="dismissed">Not them</button>`;
+    return `<div class="cand"><span class="pill ${cls}">${txt}</span><span>census: ${cen}${c.surname_only ? ' <span class="unsure">(surname only)</span>' : ''}</span>${acts}</div>`;
+  }).join('') : '<div class="cand"><span class="pill p-only">directory only</span><span>nobody of the name in the census near then</span></div>';
+  return `<div class="line"><span class="dl"><b>${esc(l.volume)}</b> ${esc(where)}${l.label && !l.no ? '' : ''} — ${esc(l.name)}${l.occupation ? ', ' + esc(l.occupation) : ''}${pg}
+    ${l.unsure ? '<span class="unsure"> — reading unsure</span>' : ''}</span>${cands}</div>`;
+}
+
+function matches(g, show) {
+  if (show === 'all') return true;
+  return { look: g.counts.look, places: g.counts.places, same: g.counts.same, only: g.counts.directory_only }[show] > 0;
+}
+
+function render() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const show = document.getElementById('show').value;
+  const list = data.surnames.filter(g => q ? g.spellings.some(s => s.toLowerCase().includes(q)) : matches(g, show));
+  const part = list.slice(0, shown);
+  document.getElementById('out').innerHTML = part.length ? part.map(g => `<details class="sn"${list.length === 1 ? ' open' : ''}>
+    <summary><span class="sname">${esc(g.surname)}</span>${g.spellings.length > 1 ? `<span class="vars">also ${esc(g.spellings.filter(s => s !== g.surname).join(', '))}</span>` : ''}
+      ${g.counts.look ? `<span class="pill p-look">${g.counts.look} to look at</span>` : ''}
+      ${g.counts.places ? `<span class="pill p-places">${g.counts.places} placed</span>` : ''}
+      ${g.counts.same ? `<span class="pill p-same">${g.counts.same} line up</span>` : ''}
+      ${g.counts.directory_only ? `<span class="pill p-only">${g.counts.directory_only} directory only</span>` : ''}</summary>
+    <div class="body">
+      ${g.people.length ? `<h4>People, census and directory in order</h4>${g.people.map(trail).join('')}` : ''}
+      <h4>Directory lines</h4>${g.lines.map(lineHtml).join('')}
+    </div></details>`).join('')
+    + (list.length > shown ? `<button class="more" id="more">Show more (${list.length - shown} left)</button>` : '')
+    : '<div class="empty">No surname matches.</div>';
+}
+
+document.getElementById('q').addEventListener('input', () => { shown = 60; render(); });
+document.getElementById('show').addEventListener('change', () => { shown = 60; render(); });
+document.getElementById('out').addEventListener('click', async ev => {
+  if (ev.target.id === 'more') { shown += 60; render(); return; }
+  const b = ev.target.closest('button[data-status]'); if (!b) return;
+  b.disabled = true;
+  const r = await fetch('/api/directory/people-check/decide', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ line_key: b.dataset.key, person_id: +b.dataset.pid, status: b.dataset.status }) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { b.disabled = false; alert(j.error || 'Sign in as a contributor to record a decision.'); return; }
+  for (const g of data.surnames) for (const l of g.lines) if (l.key === b.dataset.key)
+    for (const c of l.candidates) if (c.person_id === +b.dataset.pid) c.decision = b.dataset.status === 'reset' ? null : b.dataset.status;
+  const open = [...document.querySelectorAll('details.sn[open] .sname')].map(x => x.textContent);
+  render();
+  document.querySelectorAll('details.sn').forEach(d => { if (open.includes(d.querySelector('.sname').textContent)) d.open = true; });
+});
+
+const params = new URLSearchParams(location.search);
+fetch('/api/directory/people-check').then(r => r.json()).then(d => {
+  if (d.error) throw new Error(d.error);
+  data = d;
+  const t = d.totals;
+  document.getElementById('totals').textContent = `${d.surnames.length} surnames · ${t.look || 0} lines to look at · ${t.places || 0} placed by their person · ${t.same || 0} line up · ${t.directory_only || 0} directory only`;
+  document.getElementById('foot').textContent = 'Source: ' + (d.source || '');
+  if (params.get('surname')) document.getElementById('q').value = params.get('surname');
+  render();
+}).catch(e => { document.getElementById('out').innerHTML = `<div class="empty">Could not load: ${esc(e.message)}</div>`; });
+</script>
+</body>
+</html>
