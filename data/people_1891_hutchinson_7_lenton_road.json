@@ -1,0 +1,41 @@
+{
+  "note": "The household of Miss Rachael Procter Hutchinson on the 1891 return, transcribed by A. Hagues and placed at 7 Lenton Road (#180) from Wright's Directory of Nottingham, which prints 'Miss Rachel Hutchinson' at 7 Lenton Road in 1894-95 and 1898-99, and 'Hutchinson Miss Rachel Procter' there in 1910-11, 1913-14 and 1915-16. The year is taken as 1891 from the page this transcription came with; the ages fit it. None of the four was in the record, and 7 Lenton Road held no census before 1921. The census spells her Rachael, the directory Rachel. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Lenton Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 84 (Leicester Special Collections id 164590); 1898-99, page 92 (id 165268); 1910-11, page 123 (id 165799).",
+  "people": [
+    {
+      "first_name": "Rachael Procter", "last_name": "Hutchinson", "match_born_year": true, "sex": "F", "born_year": 1839, "born_place": "Gedney, Lincolnshire",
+      "occupations": [{ "occupation": "Living on own means", "from_year": 1891, "to_year": 1891 }],
+      "properties": [180],
+      "census": [{ "census_year": 1891, "property_id": 180, "address": "7 Lenton Road",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 52,
+                   "occupation_at_census": "Living on own means", "birth_place": "Gedney, Lincolnshire",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues as Rachael P Hutchinson; 7 by Wright's Directory" }]
+    },
+    {
+      "first_name": "Amy Sarah", "last_name": "Hutchinson", "match_born_year": true, "sex": "F", "born_year": 1875, "born_place": "Darlington, Durham",
+      "properties": [180],
+      "census": [{ "census_year": 1891, "property_id": 180, "address": "7 Lenton Road",
+                   "relationship": "Niece", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "Scholar", "birth_place": "Darlington, Durham",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Adelaide", "last_name": "Davis", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "London",
+      "occupations": [{ "occupation": "Cook, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "properties": [180],
+      "census": [{ "census_year": 1891, "property_id": 180, "address": "7 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "Cook, domestic servant", "birth_place": "London",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ethel", "last_name": "Jaynes", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Mickleover, Derbyshire",
+      "occupations": [{ "occupation": "Housemaid, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "properties": [180],
+      "census": [{ "census_year": 1891, "property_id": 180, "address": "7 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Mickleover, Derbyshire",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    }
+  ]
+}
