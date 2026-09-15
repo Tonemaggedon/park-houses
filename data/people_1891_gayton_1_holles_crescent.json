@@ -1,0 +1,143 @@
+{
+  "note": "The Gayton household at 1 Holles Crescent (#127) on the 1891 return, schedule 178, transcribed by A. Hagues. None of the fourteen was in the record, and 1 Holles Crescent held no 1891 census. Wright's Directory of Nottingham prints 'James B. Gayton, commission agent' at 1 Holles Crescent in 1894-95 and 1898-99, with Mr. Edward Smith at number 5 both years.\n\nTwo ages in the transcription break the enumerator's order, which runs from eldest to youngest: William Warren is transcribed 18 but listed after Charles Sydney (15) as a scholar, and Edith Lilian is transcribed 8 but listed last, after Hilda Mary (4), with no occupation. They are entered here as 13 and 2, the ages the order and the page support, with the transcribed ages noted on each record; check them against the image. Mary Partridge's birthplace is Casthorpe, Lincolnshire on the image. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 1 Holles Crescent, schedule 178, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 75 (Leicester Special Collections id 164581); 1898-99, page 83 (id 165259).",
+  "people": [
+    {
+      "first_name": "James Bennett", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1833, "born_place": "Dunstable, Bedfordshire",
+      "occupations": [{ "occupation": "Lace manufacturer's agent", "from_year": 1891, "to_year": 1899, "notes": "1891 census; 'commission agent' in Wright's Directory 1894-95 and 1898-99" }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 58,
+                   "occupation_at_census": "Lace manufacturer's agent", "birth_place": "Dunstable, Bedfordshire",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Sarah Ann", "last_name": "Gayton", "match_born_year": true, "sex": "F", "born_year": 1846, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 45, "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Robert Alexander", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1865, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Lace warehouseman", "from_year": 1891, "to_year": 1891 }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Lace warehouseman", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Annie Isabella", "last_name": "Gayton", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 23, "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "John Briggs", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1871, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Hosier's apprentice", "from_year": 1891, "to_year": 1891 }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 20,
+                   "occupation_at_census": "Hosier's apprentice", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Elizabeth Beatrice", "last_name": "Gayton", "match_born_year": true, "sex": "F", "born_year": 1874, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Pupil teacher", "from_year": 1891, "to_year": 1891 }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "School pupil teacher", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Charles Sydney", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1876, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Engineer and tool maker's apprentice", "from_year": 1891, "to_year": 1891 }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "Engineer and tool maker's apprentice", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "William Warren", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1878, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 13,
+                   "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues as aged 18; entered as 13 from his place after Charles Sydney (15)" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Ernest James", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1881, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 10,
+                   "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Frederick Thomas", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1883, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 8,
+                   "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Walter Stanley", "last_name": "Gayton", "match_born_year": true, "sex": "M", "born_year": 1885, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 6,
+                   "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Hilda Mary", "last_name": "Gayton", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 4, "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Edith Lilian", "last_name": "Gayton", "match_born_year": true, "sex": "F", "born_year": 1889, "born_place": "Nottingham",
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 2, "birth_place": "Nottingham",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues as aged 8; entered as 2 from her place after Hilda Mary (4)" }],
+      "relationships": [{ "to": { "first_name": "James Bennett", "last_name": "Gayton" }, "type": "child_of" },
+                        { "to": { "first_name": "Sarah Ann", "last_name": "Gayton" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Partridge", "match_born_year": true, "sex": "F", "born_year": 1856, "born_place": "Casthorpe, Lincolnshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [127],
+      "census": [{ "census_year": 1891, "property_id": 127, "address": "1 Holles Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 35,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Casthorpe, Lincolnshire",
+                   "source": "1891 census, 1 Holles Crescent, schedule 178 — transcribed by A. Hagues; town from the image" }]
+    }
+  ]
+}

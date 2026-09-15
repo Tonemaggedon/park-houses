@@ -1,0 +1,47 @@
+{
+  "note": "The Allen household at 3 Park Drive (#234) on the 1891 return, schedule 180, transcribed by A. Hagues. Margaret King Allen (#207) and Florence Margaret (#220) already had 1891 records there, and Herbert Edward (#212) was held only for 1881; all three are bound by number, so Herbert gains 1891 and the existing records gain only what they lacked. The two servants, Elizabeth Wild and Martha Mantle, are new. Wright's Directory of Nottingham has Mrs. Margaret Allen at Pendower, Cavendish Crescent North from 1894-95; the record files her there in 1901 and at 18 and 18a Cavendish Crescent North in 1911. Martha Mantle's birthplace is transcribed Willenhall, Derbyshire. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 3 Park Drive, schedule 180, transcribed by A. Hagues.",
+  "people": [
+    {
+      "id": 207, "first_name": "Margaret King", "last_name": "Allen", "sex": "F", "born_place": "Oxford",
+      "census": [{ "census_year": 1891, "property_id": 234, "address": "3 Park Drive",
+                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 49,
+                   "occupation_at_census": "Living on own means", "birth_place": "Oxford",
+                   "source": "1891 census, 3 Park Drive, schedule 180 — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 212, "first_name": "Herbert Edward", "last_name": "Allen", "sex": "M", "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Fire engineer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "property_id": 234, "address": "3 Park Drive",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Fire engineer", "birth_place": "Nottingham",
+                   "source": "1891 census, 3 Park Drive, schedule 180 — transcribed by A. Hagues as Herbert Edwd" }],
+      "relationships": [{ "to": { "id": 207 }, "type": "child_of" }]
+    },
+    {
+      "id": 220, "first_name": "Florence Margaret", "last_name": "Allen", "sex": "F", "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "property_id": 234, "address": "3 Park Drive",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 19, "birth_place": "Nottingham",
+                   "source": "1891 census, 3 Park Drive, schedule 180 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 207 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Wild", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Pinxton, Derbyshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [234],
+      "census": [{ "census_year": 1891, "property_id": 234, "address": "3 Park Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Pinxton, Derbyshire",
+                   "source": "1891 census, 3 Park Drive, schedule 180 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Martha", "last_name": "Mantle", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Willenhall",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [234],
+      "census": [{ "census_year": 1891, "property_id": 234, "address": "3 Park Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 20,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Willenhall",
+                   "source": "1891 census, 3 Park Drive, schedule 180 — transcribed by A. Hagues; transcribed Willenhall, Derbyshire" }]
+    }
+  ]
+}
