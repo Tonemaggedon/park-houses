@@ -67,6 +67,12 @@
   .worked { display:block; font-size:.74rem; color:var(--green); }
   .worked button { font-family:inherit; font-size:.7rem; border:0; background:none; color:var(--faint); text-decoration:underline; cursor:pointer; padding:0 2px; }
   .ent.done .who { color:var(--faint); }
+  .chips { display:flex; flex-wrap:wrap; gap:3px; margin:3px 0 1px; }
+  .chip { font-size:.7rem; border:1px solid #e3c9c0; background:#fbf1ee; color:var(--red); border-radius:10px; padding:0 7px;
+    font-variant-numeric:tabular-nums; display:inline-flex; align-items:center; gap:3px; }
+  .chip button { border:0; background:none; color:var(--faint); cursor:pointer; font-size:.78rem; padding:0 1px; line-height:1; }
+  .years { display:flex; flex-wrap:wrap; gap:6px; flex-basis:100%; font-size:.78rem; }
+  .years label { display:inline-flex; align-items:center; gap:3px; }
   a:focus-visible, button:focus-visible, select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 </style>
 </head>
@@ -88,6 +94,7 @@
     <label>Show <select id="show">
       <option value="open">Not yet worked (elsewhere, new, different, unplaced)</option>
       <option value="worked">Worked</option>
+      <option value="searched">Searched the census, not found</option>
       <option value="all">Everything</option>
     </select></label>
     <span class="totals" id="totals">Loading…</span>
@@ -114,7 +121,24 @@ function workedHtml(e) {
     ${canEdit ? `<button data-act="reset" data-key="${esc(e.key)}">undo</button>` : ''}</span>`;
 }
 
+const CENSUS = [1841, 1851, 1861, 1871, 1881, 1891, 1901, 1911, 1921, 1939];
+function chipsHtml(e) {
+  if (!e.searches || !e.searches.length) return '';
+  return `<div class="chips">${e.searches.map(x => `<span class="chip" title="${esc((x.note ? x.note + ' — ' : '') + (x.searched_by || '') + (x.searched_at ? ', ' + new Date(x.searched_at).toLocaleDateString('en-GB') : ''))}">✗ ${esc(x.year)} not found${x.searched_by ? ' · ' + esc(x.searched_by) : ''}
+    ${canEdit ? `<button data-act="unsearch" data-key="${esc(e.key)}" data-year="${esc(x.year)}" aria-label="Take back the ${esc(x.year)} search">×</button>` : ''}</span>`).join('')}</div>`;
+}
+function searchFormHtml(e) {
+  const done = new Set((e.searches || []).map(x => x.year));
+  const near = new Set(e.census_years || []);
+  return `<div class="form" data-form="search" data-key="${esc(e.key)}">
+    <span class="years">${CENSUS.filter(y => !done.has(y)).map(y => `<label><input type="checkbox" value="${y}"${near.has(y) ? ' checked' : ''}> ${y}</label>`).join('')}</span>
+    <input placeholder="Note (optional), e.g. searched Park and Lenton, no Lewis" data-f="note" aria-label="Note">
+    <button data-act="save">Not found</button><button data-act="cancel">Cancel</button>
+    <span class="hint">Each ticked year is saved as its own search, so nobody checks that return again.</span></div>`;
+}
+
 function formHtml(e, kind) {
+  if (kind === 'search') return searchFormHtml(e);
   if (kind === 'linked') return `<div class="form" data-form="linked" data-key="${esc(e.key)}">
     <input list="people-list" placeholder="Person in the record — type a name" data-f="who" aria-label="Person">
     <input placeholder="Note (optional), e.g. census has him at Overdale in 1911" data-f="note" aria-label="Note">
@@ -141,19 +165,24 @@ function entryHtml(e) {
       `<a href="/people?person=${c.person_id}">${esc(c.name)}</a> ${c.year}${c.label ? ` at <a href="/?id=${c.property_id}">${esc(c.label)}</a>` : ''}`).join('; ') + '</span>';
   }
   const pg = e.record ? ` <a class="pg" target="_blank" rel="noopener" href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${e.record}">p.${esc(e.page)}</a>` : '';
-  let tail = '';
-  if (e.review) tail = workedHtml(e);
-  else if (canEdit && e.key) tail = openForm && openForm.key === e.key ? formHtml(e, openForm.kind)
+  let tail = chipsHtml(e);
+  if (openForm && openForm.key === e.key && openForm.kind === 'search') tail += searchFormHtml(e);
+  else if (e.review) tail += workedHtml(e) + (canEdit ? `<div class="acts"><button data-act="search" data-key="${esc(e.key)}">Not in census…</button></div>` : '');
+  else if (canEdit && e.key) tail += openForm && openForm.key === e.key ? formHtml(e, openForm.kind)
     : `<div class="acts">${e.property_id ? `<button class="ok" data-act="confirmed" data-key="${esc(e.key)}" title="The directory is right: this person was at this house">Right</button>` : ''}
         <button data-act="linked" data-key="${esc(e.key)}" title="This line is a person already in the record">Link to person…</button>
         <button data-act="moved" data-key="${esc(e.key)}" title="This line belongs to another house">${e.property_id ? 'Move' : 'Place'} to house…</button>
-        <button data-act="dismissed" data-key="${esc(e.key)}" title="Not worth keeping: a misreading, a business, not The Park">Dismiss</button></div>`;
-  return `<div class="ent${e.review ? ' done' : ''}"><span class="pill v-${e.review ? 'worked' : e.verdict}">${e.review ? 'worked' : esc(e.verdict)}</span> <span class="who">${who}${pg}
+        <button data-act="dismissed" data-key="${esc(e.key)}" title="Not worth keeping: a misreading, a business, not The Park">Dismiss</button>
+        <button data-act="search" data-key="${esc(e.key)}" title="Record census years searched where this person could not be found">Not in census…</button></div>`;
+  const worked = e.review || (e.searches && e.searches.length);
+  return `<div class="ent${worked ? ' done' : ''}"><span class="pill v-${worked ? 'worked' : e.verdict}">${e.review ? 'worked' : worked ? 'searched' : esc(e.verdict)}</span> <span class="who">${who}${pg}
     ${e.unsure ? '<span class="unsure"> — reader unsure</span>' : ''}${e.from_scan ? '' : '<span class="unsure"> — machine-read text</span>'}</span>${cen}${tail}</div>`;
 }
 
 function keepFor(show) {
-  return e => show === 'all' || (show === 'worked' ? !!e.review : !e.review && ISSUE.has(e.verdict));
+  const searched = e => !!(e.searches && e.searches.length);
+  return e => show === 'all' || (show === 'worked' ? (!!e.review || searched(e))
+    : show === 'searched' ? searched(e) : !e.review && !searched(e) && ISSUE.has(e.verdict));
 }
 
 function render() {
@@ -209,6 +238,12 @@ function findEntry(key) {
   return null;
 }
 
+async function postJSON(url, body) {
+  const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || 'Could not save — are you signed in as a contributor?');
+  return j;
+}
 async function send(key, body) {
   const r = await fetch('/api/directory/line-review', { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ line_key: key, ...body }) });
@@ -232,6 +267,12 @@ document.getElementById('out').addEventListener('click', async ev => {
   const key = b.dataset.key || (formEl && formEl.dataset.key);
   try {
     if (act === 'cancel') { openForm = null; render(); return; }
+    if (act === 'search') { openForm = { key, kind: 'search' }; render(); return; }
+    if (act === 'unsearch') {
+      b.disabled = true;
+      await postJSON('/api/directory/census-search', { line_key: key, census_years: [+b.dataset.year], status: 'reset' });
+      await reload(); render(); return;
+    }
     if (act === 'linked' || act === 'moved' || act === 'dismissed') {
       if (act !== 'dismissed') await loadPickers();
       openForm = { key, kind: act }; render(); return;
@@ -241,6 +282,13 @@ document.getElementById('out').addEventListener('click', async ev => {
     else if (act === 'reset') await send(key, { status: 'reset' });
     else if (act === 'save') {
       const kind = formEl.dataset.form;
+      if (kind === 'search') {
+        const years = [...formEl.querySelectorAll('input[type=checkbox]:checked')].map(x => +x.value);
+        if (!years.length) { b.disabled = false; alert('Tick at least one census year.'); return; }
+        await postJSON('/api/directory/census-search', { line_key: key, census_years: years,
+          note: (formEl.querySelector('[data-f="note"]') || {}).value || '' });
+        openForm = null; await reload(); render(); return;
+      }
       const val = f => (formEl.querySelector(`[data-f="${f}"]`) || {}).value || '';
       const body = { status: kind, note: val('note') };
       if (kind === 'linked') { body.person_id = idFrom(val('who')); body.property_id = (findEntry(key) || {}).property_id || null; }

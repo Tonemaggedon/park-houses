@@ -55,6 +55,12 @@
     border:1px solid var(--rule); background:#fff; color:var(--soft); }
   button.keep { background:var(--okbg); color:var(--green); border-color:#cfe0d3; }
   .said { font-size:.72rem; color:var(--faint); font-style:italic; }
+  .chips { display:flex; flex-wrap:wrap; gap:3px; margin:3px 0 0 14px; }
+  .chip { font-size:.7rem; border:1px solid #e3c9c0; background:#fbf1ee; color:var(--red); border-radius:10px; padding:0 7px; display:inline-flex; gap:3px; align-items:center; }
+  .chip button { border:0; background:none; color:var(--faint); cursor:pointer; font-size:.78rem; padding:0 1px; }
+  .sform { display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin:4px 0 0 14px; padding:6px; background:var(--wash); border:1px solid var(--rule); border-radius:5px; font-size:.78rem; }
+  .sform input[type=text] { font-family:inherit; font-size:.8rem; padding:3px 6px; border:1px solid var(--rule); border-radius:4px; flex:1 1 180px; min-width:0; }
+  .sform label { display:inline-flex; gap:3px; align-items:center; }
   .unsure { color:var(--amber); font-size:.72rem; font-style:italic; }
   .empty { color:var(--faint); font-style:italic; padding:24px 0; }
   .more { font-family:inherit; font-size:.85rem; margin:10px 0; padding:6px 12px; border:1px solid var(--rule); background:#fff; border-radius:4px; cursor:pointer; }
@@ -88,7 +94,19 @@
 </div>
 <script>
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let data = null, shown = 60;
+let data = null, shown = 60, canEdit = false, searchOpen = null;
+const CENSUS = [1841, 1851, 1861, 1871, 1881, 1891, 1901, 1911, 1921, 1939];
+function searchBits(l) {
+  const chips = (l.searches || []).length ? `<div class="chips">${l.searches.map(x => `<span class="chip" title="${esc((x.note ? x.note + ' — ' : '') + (x.searched_by || ''))}">✗ ${esc(x.year)} not found${x.searched_by ? ' · ' + esc(x.searched_by) : ''}${canEdit ? `<button data-sact="unsearch" data-key="${esc(l.key)}" data-year="${esc(x.year)}" aria-label="Take back the ${esc(x.year)} search">×</button>` : ''}</span>`).join('')}</div>` : '';
+  if (!canEdit) return chips;
+  if (searchOpen === l.key) {
+    const done = new Set((l.searches || []).map(x => x.year)), near = new Set(l.census_years || []);
+    return chips + `<div class="sform" data-key="${esc(l.key)}">${CENSUS.filter(y => !done.has(y)).map(y => `<label><input type="checkbox" value="${y}"${near.has(y) ? ' checked' : ''}> ${y}</label>`).join('')}
+      <input type="text" placeholder="Note (optional)" data-f="note" aria-label="Note">
+      <button class="act" data-sact="save" data-key="${esc(l.key)}">Not found</button><button class="act" data-sact="cancel">Cancel</button></div>`;
+  }
+  return chips + `<div class="chips"><button class="act" data-sact="open" data-key="${esc(l.key)}" title="Record census years searched where this person could not be found">Not in census…</button></div>`;
+}
 const HOW = { 'same house': ['p-same', 'same house'], 'places this line': ['p-places', 'places this line'],
   'another house on the street': ['p-look', 'another house on the street'], 'another street': ['p-look', 'another street'] };
 
@@ -115,7 +133,7 @@ function lineHtml(l) {
     return `<div class="cand"><span class="pill ${cls}">${txt}</span><span>census: ${cen}${c.surname_only ? ' <span class="unsure">(surname only)</span>' : ''}</span>${acts}</div>`;
   }).join('') : '<div class="cand"><span class="pill p-only">directory only</span><span>nobody of the name in the census near then</span></div>';
   return `<div class="line"><span class="dl"><b>${esc(l.volume)}</b> ${esc(where)}${l.label && !l.no ? '' : ''} — ${esc(l.name)}${l.occupation ? ', ' + esc(l.occupation) : ''}${pg}
-    ${l.unsure ? '<span class="unsure"> — reading unsure</span>' : ''}</span>${cands}</div>`;
+    ${l.unsure ? '<span class="unsure"> — reading unsure</span>' : ''}</span>${cands}${searchBits(l)}</div>`;
 }
 
 function matches(g, show) {
@@ -144,8 +162,37 @@ function render() {
 
 document.getElementById('q').addEventListener('input', () => { shown = 60; render(); });
 document.getElementById('show').addEventListener('change', () => { shown = 60; render(); });
+function keepOpen(fn) {
+  const open = [...document.querySelectorAll('details.sn[open] .sname')].map(x => x.textContent);
+  fn();
+  document.querySelectorAll('details.sn').forEach(d => { if (open.includes(d.querySelector('.sname').textContent)) d.open = true; });
+}
 document.getElementById('out').addEventListener('click', async ev => {
   if (ev.target.id === 'more') { shown += 60; render(); return; }
+  const sb = ev.target.closest('button[data-sact]');
+  if (sb) {
+    const act = sb.dataset.sact, key = sb.dataset.key;
+    if (act === 'open') { searchOpen = key; keepOpen(render); return; }
+    if (act === 'cancel') { searchOpen = null; keepOpen(render); return; }
+    let body;
+    if (act === 'unsearch') body = { line_key: key, census_years: [+sb.dataset.year], status: 'reset' };
+    else {
+      const f = sb.closest('.sform');
+      const years = [...f.querySelectorAll('input[type=checkbox]:checked')].map(x => +x.value);
+      if (!years.length) { alert('Tick at least one census year.'); return; }
+      body = { line_key: key, census_years: years, note: (f.querySelector('[data-f="note"]') || {}).value || '' };
+    }
+    sb.disabled = true;
+    const r = await fetch('/api/directory/census-search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { sb.disabled = false; alert(j.error || 'Sign in as a contributor to record a search.'); return; }
+    for (const g of data.surnames) for (const l of g.lines) if (l.key === key) {
+      const others = (l.searches || []).filter(x => !body.census_years.includes(x.year));
+      l.searches = act === 'unsearch' ? others
+        : [...others, ...body.census_years.map(y => ({ year: y, note: body.note, searched_by: 'you' }))].sort((a, b) => a.year - b.year);
+    }
+    searchOpen = null; keepOpen(render); return;
+  }
   const b = ev.target.closest('button[data-status]'); if (!b) return;
   b.disabled = true;
   const r = await fetch('/api/directory/people-check/decide', { method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -160,6 +207,10 @@ document.getElementById('out').addEventListener('click', async ev => {
 });
 
 const params = new URLSearchParams(location.search);
+fetch('/api/me').then(r => r.json()).then(me => {
+  canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+  if (data) keepOpen(render);
+}).catch(() => {});
 fetch('/api/directory/people-check').then(r => r.json()).then(d => {
   if (d.error) throw new Error(d.error);
   data = d;

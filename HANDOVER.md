@@ -132,6 +132,10 @@ Three places read it:
   `status: reset` undoes) and never edit the line or anyone's census records. A moved line is
   placed on its new house everywhere; a link also counts as "same person" on the surname page.
   "Not yet worked" hides everything already decided.
+- Census searches: "Not in census…" on both directory pages records each census year a line was
+  searched for and not found — one row per line and year in `directory_census_search`
+  (`POST /api/directory/census-search` with `census_years`, `status: reset` takes a year back).
+  A searched line counts as worked; "Searched the census, not found" lists them.
 - `/directory-people` (`/api/directory/people-check`) — the same lines matched to census
   people anywhere in The Park, grouped by surname, with each person's census and directory
   sightings in date order. Forenames and any middle initial must agree; servants, visitors

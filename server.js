@@ -542,6 +542,20 @@ async function dbInit() {
     // A directory line worked by hand: confirmed where it is, linked to a person
     // already in the record, moved to the house it really belongs to, or
     // dismissed. One row per line; the line itself is never edited.
+    // A directory line searched for in a census year and not found there. One row
+    // per line and year, so each search stands on its own and nobody checks the
+    // same return twice.
+    await db.query(`CREATE TABLE IF NOT EXISTS directory_census_search (
+      id SERIAL PRIMARY KEY,
+      line_key TEXT NOT NULL,
+      census_year INTEGER NOT NULL,
+      result TEXT NOT NULL DEFAULT 'not_found',
+      note TEXT,
+      searched_by TEXT,
+      searched_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS directory_census_search_idx
+                      ON directory_census_search(line_key, census_year)`);
     await db.query(`CREATE TABLE IF NOT EXISTS directory_line_review (
       line_key TEXT PRIMARY KEY,
       status TEXT NOT NULL,                      -- confirmed | linked | moved | dismissed
@@ -4529,11 +4543,22 @@ async function directoryCheck() {
       property_label: x.property_id && propById.get(x.property_id)
         ? (propById.get(x.property_id).address || propById.get(x.property_id).name) : null });
   }
+  const searches = new Map();
+  if (db) {
+    const sr = await db.query(`SELECT line_key, census_year, result, note, searched_by, searched_at
+                                 FROM directory_census_search ORDER BY census_year`);
+    for (const x of sr.rows) {
+      if (!searches.has(x.line_key)) searches.set(x.line_key, []);
+      searches.get(x.line_key).push({ year: x.census_year, result: x.result, note: x.note,
+                                      searched_by: x.searched_by, searched_at: x.searched_at });
+    }
+  }
   const rows = [];
   for (const e of (doc.entries || [])) {
     const onStreet = [...(byStreet.get(e.street) || []), ...(alsoOn.get(e.street) || [])];
     const key = [e.volume, e.street, e.page, e.text].join('|');
     const review = reviews.get(key) || null;
+    const censusSearches = searches.get(key) || [];
     let placed = directoryHouse(e, onStreet);
     // A reviewer who moved the line to another house wins over the printed number.
     if (review && review.property_id && propById.get(review.property_id))
@@ -4544,6 +4569,7 @@ async function directoryCheck() {
                   name: e.name || null, occupation: e.occupation || null, text: e.text, kind: e.kind || 'resident',
                   unsure: !!e.unsure, from_scan: (doc.read_from_scans || []).includes(e.volume),
                   surname: e.surname || null, forename: e.forename || null, key, review,
+                  searches: censusSearches, census_years: DIR_CENSUS[e.year] || [],
                   property_id: placed ? placed.prop.id : null, placed_by: placed ? placed.how : null,
                   verdict: null, census: [] };
     if (row.kind === 'business') row.verdict = 'business';
@@ -4697,6 +4723,7 @@ app.get('/api/directory/people-check', async (req, res) => {
       }
       const line = { key: lineKey(r), volume: r.volume, year: r.year, street: r.street, no: r.no, house_name: r.house_name,
         name: r.name, occupation: r.occupation, page: r.page, record: r.record, unsure: r.unsure, review: r.review,
+        searches: r.searches, census_years: r.census_years,
         property_id: r.property_id, label: r.property_id ? label(r.property_id) : null, candidates: offered };
       g.lines.push(line);
       for (const c of offered) {
@@ -4727,6 +4754,30 @@ app.get('/api/directory/people-check', async (req, res) => {
     out.sort((a, b) => b.counts.look - a.counts.look || b.counts.places - a.counts.places || a.surname.localeCompare(b.surname));
     const totals = out.reduce((t, g) => { for (const k in g.counts) t[k] = (t[k] || 0) + g.counts[k]; return t; }, {});
     res.json({ source: doc.source, totals, surnames: out });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// "Searched the census for this line and not found": one row per census year,
+// so 1911 and 1921 are separate searches with their own note, searcher and date.
+app.post('/api/directory/census-search', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const key = String(b.line_key || '');
+  const years = [...new Set((Array.isArray(b.census_years) ? b.census_years : [b.census_year])
+    .map(y => parseInt(y, 10)).filter(y => y >= 1841 && y <= 1951))];
+  if (!key || !years.length) return res.status(400).json({ error: 'line_key and at least one census year are required' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (b.status === 'reset') {
+      await db.query(`DELETE FROM directory_census_search WHERE line_key=$1 AND census_year = ANY($2::int[])`, [key, years]);
+      return res.json({ ok: true, removed: years });
+    }
+    for (const y of years) await db.query(
+      `INSERT INTO directory_census_search (line_key, census_year, result, note, searched_by) VALUES ($1,$2,'not_found',$3,$4)
+       ON CONFLICT (line_key, census_year) DO UPDATE SET note=COALESCE(EXCLUDED.note, directory_census_search.note),
+         searched_by=EXCLUDED.searched_by, searched_at=NOW()`,
+      [key, y, String(b.note || '').trim() || null, who]);
+    res.json({ ok: true, years });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -4805,13 +4856,14 @@ app.get('/api/directory/street-check', async (req, res) => {
         .sort((a, b) => (parseInt(a.no, 10) || 9999) - (parseInt(b.no, 10) || 9999) || String(a.label).localeCompare(String(b.label)));
       const counts = {};
       for (const r of mine) counts[r.verdict] = (counts[r.verdict] || 0) + 1;
-      const open_issues = mine.filter(r => !r.review && (['elsewhere', 'new', 'different', 'unplaced'].includes(r.verdict))).length;
-      const worked = mine.filter(r => r.review).length;
+      const open_issues = mine.filter(r => !r.review && !r.searches.length && (['elsewhere', 'new', 'different', 'unplaced'].includes(r.verdict))).length;
+      const worked = mine.filter(r => r.review || r.searches.length).length;
       return { street, counts, open_issues, worked, houses, unplaced: mine.filter(r => r.property_id == null) };
     });
     const totals = {};
     for (const r of rows) totals[r.verdict] = (totals[r.verdict] || 0) + 1;
-    totals.worked = rows.filter(r => r.review).length;
+    totals.worked = rows.filter(r => r.review || r.searches.length).length;
+    totals.searched = rows.filter(r => r.searches.length).length;
     res.json({ note: doc.note, source: doc.source, read_from_scans: doc.read_from_scans || [],
                volumes: [...new Set(rows.map(r => r.volume))].sort(), totals, streets });
   } catch (e) { res.status(500).json({ error: e.message }); }
