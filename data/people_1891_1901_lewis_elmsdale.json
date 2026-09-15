@@ -1,0 +1,126 @@
+{
+  "note": "The household of Arthur Lewis, iron merchant, on the 1891 return (schedule 146) and the 1901 return (schedule 50, Clare Valley), transcribed by A. Hagues. None of them was in the record. Wright's Directory of Nottingham names their house: 'Elmsdale, Ar. Lewis, of Lewis & Grundy' is printed under Clare Valley in 1894-95 and under Tattershall Drive in 1898-99, so Elmsdale most likely stands on the corner of the two. The record has no house of that name, and neither return gives a number, so both years are added unfiled under Elmsdale until it is identified; by 1910-11 Elmsdale, Tattershall Drive was the Misses Goddard's, and Arthur Lewis, of Lewis & Grundy, was on Castle Grove. The 1891 schedule's street is 'do', carried from the page before; the next schedule, 147, begins Tattershall Drive.\n\nThe transcription's 'Turnstolen' (4 in 1891) is Gwendolen, the 'Gwndoln' of 1901, aged 14; she, Arthur, Margaret and Kathleen are each one person with two census records. The 1901 son is written Stafford on the image and 'Strafford' in the transcription. Margaret's ages disagree by three years between the returns (30 in 1891, 37 in 1901); her birth year is taken from 1891. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 and 1901 censuses, transcribed by A. Hagues from the enumerators' pages (1901: RG 13/3165). Directory evidence: Wright's Directory of Nottingham 1894-95, page 47 (Leicester Special Collections id 164553); 1898-99, page 149 (id 165325); 1910-11, pages 64 and 195 (ids 165740, 165871).",
+  "people": [
+    {
+      "first_name": "Arthur", "last_name": "Lewis", "match_born_year": true, "sex": "M",
+      "born_year": 1860, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Iron merchant", "from_year": 1891, "to_year": 1911, "employer": "Lewis & Grundy",
+                        "notes": "1891 and 1901 censuses; Wright's Directory 1894-95 to 1910-11" }],
+      "census": [
+        { "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Head", "marital_status": "Married", "age_at_census": 31,
+          "occupation_at_census": "Iron merchant", "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, schedule 146 (street 'do') — transcribed by A. Hagues" },
+        { "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Head", "marital_status": "Married", "age_at_census": 41,
+          "occupation_at_census": "Iron merchant", "birth_place": "Nottingham",
+          "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "first_name": "Margaret", "last_name": "Lewis", "match_born_year": true, "sex": "F",
+      "born_year": 1861, "born_place": "West Bromwich, Staffordshire",
+      "census": [
+        { "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Wife", "marital_status": "Married", "age_at_census": 30, "birth_place": "West Bromwich, Staffordshire",
+          "source": "1891 census, schedule 146 — transcribed by A. Hagues" },
+        { "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Wife", "marital_status": "Married", "age_at_census": 37, "birth_place": "Staffordshire",
+          "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues" }
+      ],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Lewis" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Cyril", "last_name": "Lewis", "match_born_year": true, "sex": "M",
+      "born_year": 1886, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Son", "age_at_census": 5, "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, schedule 146 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Lewis" }, "type": "child_of" },
+                        { "to": { "first_name": "Margaret", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Gwendolen", "last_name": "Lewis", "match_born_year": true, "sex": "F",
+      "born_year": 1887, "born_place": "Standard Hill, Nottingham",
+      "census": [
+        { "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Daughter", "age_at_census": 4, "birth_place": "Standard Hill, Nottingham",
+          "source": "1891 census, schedule 146 — transcribed by A. Hagues as Turnstolen" },
+        { "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Daughter", "marital_status": "Single", "age_at_census": 14, "birth_place": "Nottingham",
+          "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues as Gwndoln" }
+      ],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Lewis" }, "type": "child_of" },
+                        { "to": { "first_name": "Margaret", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Kathleen", "last_name": "Lewis", "match_born_year": true, "sex": "F",
+      "born_year": 1889, "born_place": "Standard Hill, Nottingham",
+      "census": [
+        { "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Daughter", "age_at_census": 2, "birth_place": "Standard Hill, Nottingham",
+          "source": "1891 census, schedule 146 — transcribed by A. Hagues" },
+        { "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+          "relationship": "Daughter", "marital_status": "Single", "age_at_census": 12, "birth_place": "Nottingham",
+          "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues" }
+      ],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Lewis" }, "type": "child_of" },
+                        { "to": { "first_name": "Margaret", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Stafford", "last_name": "Lewis", "match_born_year": true, "sex": "M",
+      "born_year": 1894, "born_place": "Nottingham",
+      "census": [{ "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 7, "birth_place": "Nottingham",
+                   "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues as Strafford" }],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Lewis" }, "type": "child_of" },
+                        { "to": { "first_name": "Margaret", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Emma", "last_name": "Warren", "match_born_year": true, "sex": "F",
+      "born_year": 1865, "born_place": "Milford, Derbyshire",
+      "occupations": [{ "occupation": "Nurse, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Nurse, domestic servant", "birth_place": "Milford, Derbyshire",
+                   "source": "1891 census, schedule 146 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Julia", "last_name": "Tathell", "match_born_year": true, "sex": "F",
+      "born_year": 1865, "born_place": "Cambridge",
+      "occupations": [{ "occupation": "General domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "General domestic servant", "birth_place": "Cambridge",
+                   "source": "1891 census, schedule 146 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Susan", "last_name": "Tathell", "match_born_year": true, "sex": "F",
+      "born_year": 1878, "born_place": "Awsworth, Nottinghamshire",
+      "occupations": [{ "occupation": "Scholar", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Visitor", "marital_status": "Single", "age_at_census": 13,
+                   "occupation_at_census": "Scholar", "birth_place": "Awsworth, Nottinghamshire",
+                   "source": "1891 census, schedule 146 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "R", "last_name": "Butterworth", "match_born_year": true, "sex": "F",
+      "born_year": 1870, "born_place": "Grantham, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 31,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Grantham, Lincolnshire",
+                   "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Anne", "last_name": "Thacker", "match_born_year": true, "sex": "F",
+      "born_year": 1884, "born_place": "Ashby de la Zouch, Leicestershire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory) - Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Ashby de la Zouch, Leicestershire",
+                   "source": "1901 census, Clare Valley, schedule 50 — transcribed by A. Hagues; birthplace from the image" }]
+    }
+  ]
+}
