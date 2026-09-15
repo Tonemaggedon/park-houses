@@ -1,0 +1,48 @@
+{
+  "note": "The Thompson household at Gleadthorpe, 11 Cavendish Crescent North (#27), on the 1911 return, transcribed by A. Hagues. Gleadthorpe held no 1911 census. Sidney (#1357) and Mary Esther (#1358) were already in the record from 1921 at 2 South Road and are bound by number, so they gain 1911; the three servants are new. The transcription gives Sidney as female, an indexing slip for the head of the household, and he is recorded as male. Wright's Directory of Nottingham prints 'Gleadthorpe, Thompson Sidney (yarn merchant)' on Cavendish Crescent North in 1910-11 and 1913-14, then has him at 25 Lenton Road in 1915-16; in 1898-99 he was a silk throwster at 6 The Ropewalk. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, Gleadthorpe, Cavendish Crescent North, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11, page 65 (Leicester Special Collections id 165741); 1913-14, page 75 (id 166431).",
+  "people": [
+    {
+      "id": 1357, "first_name": "Sidney", "last_name": "Thompson", "sex": "M", "born_year": 1859, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Yarn merchant", "from_year": 1910, "to_year": 1921, "notes": "Wright's Directory 1910-11 and 1913-14; 1911 and 1921 censuses" }],
+      "census": [{ "census_year": 1911, "property_id": 27, "address": "Gleadthorpe, Cavendish Crescent North",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 52,
+                   "occupation_at_census": "Yarn merchant, dealer", "birth_place": "Nottingham",
+                   "source": "1911 census, Gleadthorpe — transcribed by A. Hagues; sex transcribed as female" }]
+    },
+    {
+      "id": 1358, "first_name": "Mary Esther", "last_name": "Thompson", "sex": "F", "born_place": "Sheffield, Yorkshire",
+      "census": [{ "census_year": 1911, "property_id": 27, "address": "Gleadthorpe, Cavendish Crescent North",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 50, "birth_place": "Sheffield, Yorkshire",
+                   "source": "1911 census, Gleadthorpe — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1357 }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Alice", "last_name": "Baker", "match_born_year": true, "sex": "F", "born_year": 1885, "born_place": "Hallam Fields, Derbyshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [27],
+      "census": [{ "census_year": 1911, "property_id": 27, "address": "Gleadthorpe, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Hallam Fields, Derbyshire",
+                   "source": "1911 census, Gleadthorpe — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Rose", "last_name": "Richardson", "match_born_year": true, "sex": "F", "born_year": 1889, "born_place": "Newark, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [27],
+      "census": [{ "census_year": 1911, "property_id": 27, "address": "Gleadthorpe, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Newark, Nottinghamshire",
+                   "source": "1911 census, Gleadthorpe — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Gertrude", "last_name": "Norris", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Sutton, Northamptonshire",
+      "occupations": [{ "occupation": "Under housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [27],
+      "census": [{ "census_year": 1911, "property_id": 27, "address": "Gleadthorpe, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Under housemaid, domestic", "birth_place": "Sutton, Northamptonshire",
+                   "source": "1911 census, Gleadthorpe — transcribed by A. Hagues" }]
+    }
+  ]
+}
