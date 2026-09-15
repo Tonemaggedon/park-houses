@@ -1,0 +1,163 @@
+{
+  "note": "Three 1891 households on Tattershall Drive, schedules 147, 148 and 149, from the enumerator's page and A. Hagues's transcriptions. The schedule after them, 150, is the Trumans at 1 Tattershall Drive. None of the eighteen was in the record, and no house on the drive holds an 1891 census record apart from the Trumans. The return gives no house numbers or names for these three, so each household is added unfiled under Tattershall Drive rather than guessed onto a house.\n\nWright's Directory of Nottingham prints 'William Marriott, stockbroker' on Tattershall Drive in 1894-95 and 1898-99, last in the street after Elmsdale and C. F. Dobson, without a number. It does not print John Flewitt Milnes or Frederick Hill on the drive in 1894-95 or later, so both had likely left by then; this Frederick Hill, lace manufacturer, is not Edgar Herbert Hill of Balm, Hill & Sons.\n\nDorothy Marriott Smith and Gladys Mary Marriott are William Marriott's granddaughters; the return does not say whose children they are, so they are linked to nobody. The Mary Jane Hill here is not the Mary J. Hill of Clare Valley in 1901. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Tattershall Drive, schedules 147-149, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 140 (Leicester Special Collections id 164646); 1898-99, page 149 (id 165325).",
+  "people": [
+    {
+      "first_name": "William", "last_name": "Marriott", "match_born_year": true, "sex": "M",
+      "born_year": 1826, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Stock and share broker", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 65,
+                   "occupation_at_census": "Stock and share broker", "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Maria W", "last_name": "Marriott", "match_born_year": true, "sex": "F",
+      "born_year": 1852, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 39, "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Marriott" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sarahann B", "last_name": "Marriott", "match_born_year": true, "sex": "F",
+      "born_year": 1856, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 35, "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Marriott" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Dorothy Marriott", "last_name": "Smith", "match_born_year": true, "sex": "F",
+      "born_year": 1883, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Granddaughter", "age_at_census": 8, "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Gladys Mary", "last_name": "Marriott", "match_born_year": true, "sex": "F",
+      "born_year": 1887, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Granddaughter", "age_at_census": 4, "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Lois", "last_name": "Kyle", "match_born_year": true, "sex": "F",
+      "born_year": 1874, "born_place": "South Normanton, Derbyshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Marriott household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "South Normanton, Derbyshire",
+                   "source": "1891 census, Tattershall Drive, schedule 147 — transcribed by A. Hagues" }]
+    },
+
+    {
+      "first_name": "John Flewitt", "last_name": "Milnes", "match_born_year": true, "sex": "M",
+      "born_year": 1823, "born_place": "Heage, Derbyshire",
+      "occupations": [{ "occupation": "Wine merchant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Milnes household",
+                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 68,
+                   "occupation_at_census": "Wine merchant", "birth_place": "Heage, Derbyshire",
+                   "source": "1891 census, Tattershall Drive, schedule 148 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Mabel", "last_name": "Milnes", "match_born_year": true, "sex": "F",
+      "born_year": 1862, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Milnes household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 29, "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 148 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "John Flewitt", "last_name": "Milnes" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "John", "last_name": "Milnes", "match_born_year": true, "sex": "M",
+      "born_year": 1864, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Wine merchant's clerk", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Milnes household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "Wine merchant's clerk", "birth_place": "Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 148 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "John Flewitt", "last_name": "Milnes" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Susan", "last_name": "Thorpe", "match_born_year": true, "sex": "F",
+      "born_year": 1868, "born_place": "Pinchbeck, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Milnes household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Cook, domestic servant", "birth_place": "Pinchbeck, Lincolnshire",
+                   "source": "1891 census, Tattershall Drive, schedule 148 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Hurlston", "match_born_year": true, "sex": "F",
+      "born_year": 1872, "born_place": "Worcestershire",
+      "occupations": [{ "occupation": "Housemaid, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Milnes household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Worcestershire",
+                   "source": "1891 census, Tattershall Drive, schedule 148 — transcribed by A. Hagues" }]
+    },
+
+    {
+      "first_name": "Fredrick", "last_name": "Hill", "match_born_year": true, "sex": "M",
+      "born_year": 1842, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 49,
+                   "occupation_at_census": "Lace manufacturer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues as Fredrick" }]
+    },
+    {
+      "first_name": "Mary Jane", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1851, "born_place": "London, Middlesex",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 40, "birth_place": "London, Middlesex",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Fredrick", "last_name": "Hill" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Dora", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1882, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Daughter", "age_at_census": 9, "occupation_at_census": "Scholar", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Fredrick", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary Jane", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary Maud", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1884, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Daughter", "age_at_census": 7, "occupation_at_census": "Scholar", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Fredrick", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary Jane", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Meriam", "last_name": "Lynes", "match_born_year": true, "sex": "F",
+      "born_year": 1866, "born_place": "Willoughby on the Wolds, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cook, domestic servant", "birth_place": "Willoughby on the Wolds, Nottinghamshire",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues; birthplace town from the image" }]
+    },
+    {
+      "first_name": "Lucy E", "last_name": "Wilcox", "match_born_year": true, "sex": "F",
+      "born_year": 1868, "born_place": "Spalding, Lincolnshire",
+      "occupations": [{ "occupation": "Nurse, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Nurse, domestic servant", "birth_place": "Spalding, Lincolnshire",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Starbuck", "match_born_year": true, "sex": "F",
+      "born_year": 1870, "born_place": "Harby, Leicestershire",
+      "occupations": [{ "occupation": "Housemaid, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Tattershall Drive (no number on the return) - Hill household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Harby, Leicestershire",
+                   "source": "1891 census, Tattershall Drive, schedule 149 — transcribed by A. Hagues" }]
+    }
+  ]
+}
