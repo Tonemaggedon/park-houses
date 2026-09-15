@@ -126,6 +126,12 @@ Three places read it:
   new / different / unplaced.
 - Each house's timeline (`/api/property/:id/directory`).
 
+- Working the lines: on `/directory-check` a contributor marks each line Right, Link to person
+  (a person already in the record), Move/Place to house, or Dismiss, with an optional note.
+  Decisions live in `directory_line_review` (one row per line, `POST /api/directory/line-review`,
+  `status: reset` undoes) and never edit the line or anyone's census records. A moved line is
+  placed on its new house everywhere; a link also counts as "same person" on the surname page.
+  "Not yet worked" hides everything already decided.
 - `/directory-people` (`/api/directory/people-check`) — the same lines matched to census
   people anywhere in The Park, grouped by surname, with each person's census and directory
   sightings in date order. Forenames and any middle initial must agree; servants, visitors

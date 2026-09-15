@@ -539,6 +539,18 @@ async function dbInit() {
     )`);
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS directory_person_review_idx
                       ON directory_person_review(line_key, person_id)`);
+    // A directory line worked by hand: confirmed where it is, linked to a person
+    // already in the record, moved to the house it really belongs to, or
+    // dismissed. One row per line; the line itself is never edited.
+    await db.query(`CREATE TABLE IF NOT EXISTS directory_line_review (
+      line_key TEXT PRIMARY KEY,
+      status TEXT NOT NULL,                      -- confirmed | linked | moved | dismissed
+      person_id INTEGER,
+      property_id INTEGER,
+      note TEXT,
+      decided_by TEXT,
+      decided_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
 
     // Medal index cards at The National Archives (series WO 372), against the
     // people this record holds. A card carries no birth year, so it can never
@@ -4502,16 +4514,36 @@ async function directoryCheck() {
       census.get(k).push(row);
     }
   }
+  const propById = new Map(props.map(pr => [pr.id, pr]));
+  const reviews = new Map();
+  if (db) {
+    const rv = await db.query(`
+      SELECT r.line_key, r.status, r.person_id, r.property_id, r.note, r.decided_by, r.decided_at,
+             p.first_name, p.last_name, p.born_year
+        FROM directory_line_review r LEFT JOIN people p ON p.id = r.person_id`);
+    for (const x of rv.rows) reviews.set(x.line_key, {
+      status: x.status, person_id: x.person_id, property_id: x.property_id, note: x.note,
+      decided_by: x.decided_by, decided_at: x.decided_at,
+      person_name: x.person_id ? [x.first_name, x.last_name].filter(Boolean).join(' ') : null,
+      person_born: x.born_year || null,
+      property_label: x.property_id && propById.get(x.property_id)
+        ? (propById.get(x.property_id).address || propById.get(x.property_id).name) : null });
+  }
   const rows = [];
   for (const e of (doc.entries || [])) {
     const onStreet = [...(byStreet.get(e.street) || []), ...(alsoOn.get(e.street) || [])];
-    const placed = directoryHouse(e, onStreet);
+    const key = [e.volume, e.street, e.page, e.text].join('|');
+    const review = reviews.get(key) || null;
+    let placed = directoryHouse(e, onStreet);
+    // A reviewer who moved the line to another house wins over the printed number.
+    if (review && review.property_id && propById.get(review.property_id))
+      placed = { prop: propById.get(review.property_id), how: 'reviewer' };
     const years = DIR_CENSUS[e.year] || [];
     const row = { volume: e.volume, year: e.year, street: e.street, page: e.page, record: e.record,
                   no: e.no_printed || (e.no != null ? String(e.no) : null), house_name: e.house_name || null,
                   name: e.name || null, occupation: e.occupation || null, text: e.text, kind: e.kind || 'resident',
                   unsure: !!e.unsure, from_scan: (doc.read_from_scans || []).includes(e.volume),
-                  surname: e.surname || null, forename: e.forename || null,
+                  surname: e.surname || null, forename: e.forename || null, key, review,
                   property_id: placed ? placed.prop.id : null, placed_by: placed ? placed.how : null,
                   verdict: null, census: [] };
     if (row.kind === 'business') row.verdict = 'business';
@@ -4647,13 +4679,28 @@ app.get('/api/directory/people-check', async (req, res) => {
       }
       // A surname-only line ("Mrs. Allen") is only offered where it is the one person it could be.
       const named = cands.filter(c => !c.surname_only);
-      const offered = named.length ? named : (cands.length === 1 ? cands : []);
+      let offered = named.length ? named : (cands.length === 1 ? cands : []);
+      // Worked on the street page: a link names the person outright, a dismissal closes the line.
+      const rv = r.review;
+      if (rv && rv.status === 'linked' && rv.person_id) {
+        const have = offered.find(c => c.person_id === rv.person_id);
+        if (have) have.decision = 'kept';
+        else {
+          const p = g.people.get(rv.person_id);
+          offered.push({ person_id: rv.person_id, how: 'linked by hand', surname_only: false, decision: 'kept',
+            decided_by: rv.decided_by, census: p ? p.sightings.filter(x => x.kind === 'census')
+              .map(x => ({ year: x.year, label: x.label, property_id: x.property_id, relationship: x.relationship })) : [] });
+        }
+        offered = offered.map(c => c.person_id === rv.person_id ? c : { ...c, decision: c.decision || 'dismissed' });
+      } else if (rv && rv.status === 'dismissed') {
+        offered = offered.map(c => ({ ...c, decision: c.decision || 'dismissed' }));
+      }
       const line = { key: lineKey(r), volume: r.volume, year: r.year, street: r.street, no: r.no, house_name: r.house_name,
-        name: r.name, occupation: r.occupation, page: r.page, record: r.record, unsure: r.unsure,
+        name: r.name, occupation: r.occupation, page: r.page, record: r.record, unsure: r.unsure, review: r.review,
         property_id: r.property_id, label: r.property_id ? label(r.property_id) : null, candidates: offered };
       g.lines.push(line);
       for (const c of offered) {
-        if (c.decision === 'dismissed') continue;
+        if (c.decision === 'dismissed' || !g.people.get(c.person_id)) continue;
         g.people.get(c.person_id).sightings.push({ year: r.year, kind: 'directory', property_id: r.property_id,
           label: line.label || r.street + ' (no number)', how: c.how, decision: c.decision, line_key: line.key });
       }
@@ -4680,6 +4727,41 @@ app.get('/api/directory/people-check', async (req, res) => {
     out.sort((a, b) => b.counts.look - a.counts.look || b.counts.places - a.counts.places || a.surname.localeCompare(b.surname));
     const totals = out.reduce((t, g) => { for (const k in g.counts) t[k] = (t[k] || 0) + g.counts[k]; return t; }, {});
     res.json({ source: doc.source, totals, surnames: out });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/directory/line-review', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const key = String(b.line_key || '');
+  const status = String(b.status || '');
+  const pid = b.person_id ? parseInt(b.person_id, 10) : null;
+  const prop = b.property_id ? parseInt(b.property_id, 10) : null;
+  if (!key || !['confirmed', 'linked', 'moved', 'dismissed', 'reset'].includes(status))
+    return res.status(400).json({ error: 'line_key and a status of confirmed, linked, moved, dismissed or reset are required' });
+  if (status === 'linked' && !pid) return res.status(400).json({ error: 'Choose the person this line is.' });
+  if (status === 'moved' && !prop) return res.status(400).json({ error: 'Choose the house this line belongs to.' });
+  const who = (req.session && (req.session.username || req.session.researchKey)) || null;
+  try {
+    if (status === 'reset') {
+      await db.query(`DELETE FROM directory_line_review WHERE line_key=$1`, [key]);
+      await db.query(`DELETE FROM directory_person_review WHERE line_key=$1`, [key]);
+      return res.json({ ok: true, status });
+    }
+    if (pid && !(await db.query(`SELECT 1 FROM people WHERE id=$1`, [pid])).rows.length)
+      return res.status(400).json({ error: 'No person #' + pid + ' in the record.' });
+    await db.query(
+      `INSERT INTO directory_line_review (line_key, status, person_id, property_id, note, decided_by)
+            VALUES ($1,$2,$3,$4,$5,$6)
+       ON CONFLICT (line_key) DO UPDATE SET status=EXCLUDED.status, person_id=EXCLUDED.person_id,
+         property_id=EXCLUDED.property_id, note=EXCLUDED.note, decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
+      [key, status, pid, prop, String(b.note || '').trim() || null, who]);
+    // A link is also the surname page's "same person".
+    if (pid) await db.query(
+      `INSERT INTO directory_person_review (line_key, person_id, status, note, decided_by) VALUES ($1,$2,'kept',$3,$4)
+       ON CONFLICT (line_key, person_id) DO UPDATE SET status='kept', decided_by=EXCLUDED.decided_by, decided_at=NOW()`,
+      [key, pid, String(b.note || '').trim() || null, who]);
+    res.json({ ok: true, status });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -4723,10 +4805,13 @@ app.get('/api/directory/street-check', async (req, res) => {
         .sort((a, b) => (parseInt(a.no, 10) || 9999) - (parseInt(b.no, 10) || 9999) || String(a.label).localeCompare(String(b.label)));
       const counts = {};
       for (const r of mine) counts[r.verdict] = (counts[r.verdict] || 0) + 1;
-      return { street, counts, houses, unplaced: mine.filter(r => r.property_id == null) };
+      const open_issues = mine.filter(r => !r.review && (['elsewhere', 'new', 'different', 'unplaced'].includes(r.verdict))).length;
+      const worked = mine.filter(r => r.review).length;
+      return { street, counts, open_issues, worked, houses, unplaced: mine.filter(r => r.property_id == null) };
     });
     const totals = {};
     for (const r of rows) totals[r.verdict] = (totals[r.verdict] || 0) + 1;
+    totals.worked = rows.filter(r => r.review).length;
     res.json({ note: doc.note, source: doc.source, read_from_scans: doc.read_from_scans || [],
                volumes: [...new Set(rows.map(r => r.volume))].sort(), totals, streets });
   } catch (e) { res.status(500).json({ error: e.message }); }

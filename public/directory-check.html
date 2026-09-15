@@ -55,6 +55,18 @@
   .note { font-size:.76rem; color:var(--faint); font-style:italic; margin-top:26px;
     border-top:1px solid var(--rule); padding-top:12px; max-width:78ch; }
   .err { color:var(--red); }
+  .v-worked { background:#e4eedf; color:var(--green); }
+  .acts { display:flex; flex-wrap:wrap; gap:4px; margin:3px 0 2px; }
+  .acts button, .form button { font-family:inherit; font-size:.72rem; border-radius:4px; padding:2px 8px; cursor:pointer;
+    border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  .acts button.ok { background:var(--okbg); color:var(--green); border-color:#cfe0d3; }
+  .form { display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin:4px 0; padding:6px; background:var(--wash);
+    border:1px solid var(--rule); border-radius:5px; }
+  .form input { font-family:inherit; font-size:.8rem; padding:3px 6px; border:1px solid var(--rule); border-radius:4px; min-width:0; flex:1 1 180px; }
+  .form .hint { font-size:.72rem; color:var(--faint); flex-basis:100%; }
+  .worked { display:block; font-size:.74rem; color:var(--green); }
+  .worked button { font-family:inherit; font-size:.7rem; border:0; background:none; color:var(--faint); text-decoration:underline; cursor:pointer; padding:0 2px; }
+  .ent.done .who { color:var(--faint); }
   a:focus-visible, button:focus-visible, select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 </style>
 </head>
@@ -74,7 +86,8 @@
   </div>
   <div class="bar">
     <label>Show <select id="show">
-      <option value="issues">Worth a look (elsewhere, new, different)</option>
+      <option value="open">Not yet worked (elsewhere, new, different, unplaced)</option>
+      <option value="worked">Worked</option>
       <option value="all">Everything</option>
     </select></label>
     <span class="totals" id="totals">Loading…</span>
@@ -82,12 +95,40 @@
   <div class="streets" id="streets"></div>
   <div id="out"><div class="empty">Loading…</div></div>
   <div class="note" id="foot"></div>
+  <datalist id="people-list"></datalist><datalist id="props-list"></datalist>
 </div>
 <script>
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const ISSUE = new Set(['elsewhere', 'new', 'different']);
-let data = null, street = null;
+const ISSUE = new Set(['elsewhere', 'new', 'different', 'unplaced']);
+let data = null, street = null, canEdit = false, people = null, props = null, openForm = null;
 const params = new URLSearchParams(location.search);
+const WORKED = { confirmed: 'confirmed as printed', linked: 'linked to', moved: 'moved to', dismissed: 'dismissed' };
+
+function workedHtml(e) {
+  const r = e.review;
+  const what = r.status === 'linked' ? `linked to <a href="/people?person=${r.person_id}">${esc(r.person_name || '#' + r.person_id)}</a>${r.person_born ? ' (b. ' + esc(r.person_born) + ')' : ''}`
+    : r.status === 'moved' ? `moved to <a href="/?id=${r.property_id}">${esc(r.property_label || '#' + r.property_id)}</a>`
+    : WORKED[r.status] || r.status;
+  const extra = r.status === 'linked' && r.property_id ? ` · filed at <a href="/?id=${r.property_id}">${esc(r.property_label || '#' + r.property_id)}</a>` : '';
+  return `<span class="worked">✓ ${what}${extra}${r.note ? ' — ' + esc(r.note) : ''}${r.decided_by ? ' · ' + esc(r.decided_by) : ''}
+    ${canEdit ? `<button data-act="reset" data-key="${esc(e.key)}">undo</button>` : ''}</span>`;
+}
+
+function formHtml(e, kind) {
+  if (kind === 'linked') return `<div class="form" data-form="linked" data-key="${esc(e.key)}">
+    <input list="people-list" placeholder="Person in the record — type a name" data-f="who" aria-label="Person">
+    <input placeholder="Note (optional), e.g. census has him at Overdale in 1911" data-f="note" aria-label="Note">
+    <button data-act="save">Link</button><button data-act="cancel">Cancel</button>
+    <span class="hint">The line stays at ${esc(e.property_id ? 'this house' : 'no house')}; the person's own census records are not changed.</span></div>`;
+  if (kind === 'moved') return `<div class="form" data-form="moved" data-key="${esc(e.key)}">
+    <input list="props-list" placeholder="House it belongs to — type an address" data-f="house" aria-label="House">
+    <input list="people-list" placeholder="Person (optional)" data-f="who" aria-label="Person">
+    <input placeholder="Note (optional)" data-f="note" aria-label="Note">
+    <button data-act="save">Move</button><button data-act="cancel">Cancel</button></div>`;
+  return `<div class="form" data-form="dismissed" data-key="${esc(e.key)}">
+    <input placeholder="Why (optional), e.g. not The Park's South Road" data-f="note" aria-label="Reason">
+    <button data-act="save">Dismiss</button><button data-act="cancel">Cancel</button></div>`;
+}
 
 function entryHtml(e) {
   const who = [e.no ? `<b>${esc(e.no)}</b>` : '', e.house_name ? `<i>${esc(e.house_name)}</i>` : '',
@@ -100,28 +141,38 @@ function entryHtml(e) {
       `<a href="/people?person=${c.person_id}">${esc(c.name)}</a> ${c.year}${c.label ? ` at <a href="/?id=${c.property_id}">${esc(c.label)}</a>` : ''}`).join('; ') + '</span>';
   }
   const pg = e.record ? ` <a class="pg" target="_blank" rel="noopener" href="https://specialcollections.le.ac.uk/digital/collection/p16445coll4/id/${e.record}">p.${esc(e.page)}</a>` : '';
-  return `<div class="ent"><span class="pill v-${e.verdict}">${esc(e.verdict)}</span> <span class="who">${who}${pg}
-    ${e.unsure ? '<span class="unsure"> — reader unsure</span>' : ''}${e.from_scan ? '' : '<span class="unsure"> — machine-read text</span>'}</span>${cen}</div>`;
+  let tail = '';
+  if (e.review) tail = workedHtml(e);
+  else if (canEdit && e.key) tail = openForm && openForm.key === e.key ? formHtml(e, openForm.kind)
+    : `<div class="acts">${e.property_id ? `<button class="ok" data-act="confirmed" data-key="${esc(e.key)}" title="The directory is right: this person was at this house">Right</button>` : ''}
+        <button data-act="linked" data-key="${esc(e.key)}" title="This line is a person already in the record">Link to person…</button>
+        <button data-act="moved" data-key="${esc(e.key)}" title="This line belongs to another house">${e.property_id ? 'Move' : 'Place'} to house…</button>
+        <button data-act="dismissed" data-key="${esc(e.key)}" title="Not worth keeping: a misreading, a business, not The Park">Dismiss</button></div>`;
+  return `<div class="ent${e.review ? ' done' : ''}"><span class="pill v-${e.review ? 'worked' : e.verdict}">${e.review ? 'worked' : esc(e.verdict)}</span> <span class="who">${who}${pg}
+    ${e.unsure ? '<span class="unsure"> — reader unsure</span>' : ''}${e.from_scan ? '' : '<span class="unsure"> — machine-read text</span>'}</span>${cen}${tail}</div>`;
+}
+
+function keepFor(show) {
+  return e => show === 'all' || (show === 'worked' ? !!e.review : !e.review && ISSUE.has(e.verdict));
 }
 
 function render() {
   const show = document.getElementById('show').value;
-  const keep = e => show === 'all' || ISSUE.has(e.verdict);
-  const issues = s => Object.entries(s.counts).filter(([k]) => ISSUE.has(k)).reduce((n, [, v]) => n + v, 0);
+  const keep = keepFor(show);
   document.getElementById('streets').innerHTML = data.streets.map(s =>
-    `<button data-st="${esc(s.street)}" class="${s.street === street ? 'on' : ''}">${esc(s.street)}${issues(s) ? `<span class="n">${issues(s)}</span>` : ''}</button>`).join('');
+    `<button data-st="${esc(s.street)}" class="${s.street === street ? 'on' : ''}">${esc(s.street)}${s.open_issues ? `<span class="n">${s.open_issues}</span>` : ''}</button>`).join('');
   const s = data.streets.find(x => x.street === street);
   if (!s) { document.getElementById('out').innerHTML = '<div class="empty">Pick a street.</div>'; return; }
   const vols = data.volumes;
   const houses = s.houses.map(h => ({ ...h, shown: h.entries.filter(keep) })).filter(h => show === 'all' || h.shown.length);
-  let html = '';
+  let html = canEdit ? '' : '<p class="lede"><i>Sign in as a contributor to work these lines.</i></p>';
   if (houses.length) {
     html += `<div class="tablewrap"><table><thead><tr><th>House</th>${vols.map(v => `<th>${esc(v)}</th>`).join('')}</tr></thead><tbody>`
       + houses.map(h => `<tr><td class="house"><a href="/?id=${h.id}">${esc(h.label)}</a></td>`
         + vols.map(v => `<td>${h.shown.filter(e => e.volume === v).map(entryHtml).join('')}</td>`).join('') + '</tr>').join('')
       + '</tbody></table></div>';
-  } else html += '<div class="empty">Nothing here needs a look.</div>';
-  const un = s.unplaced.filter(e => show === 'all' || ISSUE.has(e.verdict) || e.verdict === 'unplaced');
+  } else html += `<div class="empty">${show === 'worked' ? 'Nothing worked on this street yet.' : 'Nothing left to work on this street.'}</div>`;
+  const un = s.unplaced.filter(keep);
   if (un.length) {
     html += `<h3>Not placed on a house (${un.length})</h3><p class="lede">No printed number or house name the record knows.
       The directory prints the street in walking order, so the neighbours either side often settle it.</p>`
@@ -131,25 +182,94 @@ function render() {
         }).join('');
   }
   document.getElementById('out').innerHTML = html;
+  const f = document.querySelector('.form input');
+  if (f) f.focus();
 }
 
-document.getElementById('streets').addEventListener('click', ev => {
-  const b = ev.target.closest('[data-st]'); if (!b) return;
-  street = b.dataset.st;
-  history.replaceState(null, '', '?street=' + encodeURIComponent(street));
-  render();
-});
-document.getElementById('show').addEventListener('change', render);
+async function loadPickers() {
+  if (people && props) return;
+  const [pp, pr] = await Promise.all([
+    fetch('/api/people?limit=100000').then(r => r.json()).catch(() => []),
+    fetch('/api/all-props').then(r => r.json()).catch(() => []),
+  ]);
+  people = Array.isArray(pp) ? pp : (pp.people || []);
+  props = Array.isArray(pr) ? pr : (pr.properties || []);
+  document.getElementById('people-list').innerHTML = people.map(p =>
+    `<option value="${esc([p.first_name, p.last_name].filter(Boolean).join(' '))}${p.born_year ? ' b.' + p.born_year : ''} #${p.id}">${esc((p.property_names || []).slice(0, 2).join('; '))}</option>`).join('');
+  document.getElementById('props-list').innerHTML = props.map(p =>
+    `<option value="${esc(p.address || [p.no, p.street].filter(Boolean).join(' ') || p.name)} #${p.id}"></option>`).join('');
+}
+const idFrom = v => { const m = String(v || '').match(/#(\d+)\s*$/); return m ? +m[1] : null; };
 
-fetch('/api/directory/street-check').then(r => r.json()).then(d => {
+function findEntry(key) {
+  for (const s of data.streets) {
+    for (const h of s.houses) for (const e of h.entries) if (e.key === key) return e;
+    for (const e of s.unplaced) if (e.key === key) return e;
+  }
+  return null;
+}
+
+async function send(key, body) {
+  const r = await fetch('/api/directory/line-review', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ line_key: key, ...body }) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || 'Could not save — are you signed in as a contributor?');
+  return j;
+}
+
+async function reload() {
+  const d = await fetch('/api/directory/street-check').then(r => r.json());
   if (d.error) throw new Error(d.error);
   data = d;
   const t = d.totals;
   document.getElementById('totals').textContent = Object.entries(t).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${v} ${k}`).join(' · ');
-  street = params.get('street') || (d.streets.find(s => Object.keys(s.counts).some(k => ISSUE.has(k))) || d.streets[0] || {}).street;
-  document.getElementById('foot').textContent = (d.note || '') + ' Source: ' + (d.source || '');
+}
+
+document.getElementById('out').addEventListener('click', async ev => {
+  const b = ev.target.closest('button[data-act]'); if (!b) return;
+  const act = b.dataset.act;
+  const formEl = b.closest('.form');
+  const key = b.dataset.key || (formEl && formEl.dataset.key);
+  try {
+    if (act === 'cancel') { openForm = null; render(); return; }
+    if (act === 'linked' || act === 'moved' || act === 'dismissed') {
+      if (act !== 'dismissed') await loadPickers();
+      openForm = { key, kind: act }; render(); return;
+    }
+    b.disabled = true;
+    if (act === 'confirmed') await send(key, { status: 'confirmed', property_id: (findEntry(key) || {}).property_id || null });
+    else if (act === 'reset') await send(key, { status: 'reset' });
+    else if (act === 'save') {
+      const kind = formEl.dataset.form;
+      const val = f => (formEl.querySelector(`[data-f="${f}"]`) || {}).value || '';
+      const body = { status: kind, note: val('note') };
+      if (kind === 'linked') { body.person_id = idFrom(val('who')); body.property_id = (findEntry(key) || {}).property_id || null; }
+      if (kind === 'moved') { body.property_id = idFrom(val('house')); body.person_id = idFrom(val('who')); }
+      await send(key, body);
+      openForm = null;
+    }
+    await reload(); render();
+  } catch (e) { b.disabled = false; alert(e.message); }
+});
+
+document.getElementById('streets').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-st]'); if (!b) return;
+  street = b.dataset.st; openForm = null;
+  history.replaceState(null, '', '?street=' + encodeURIComponent(street));
   render();
-}).catch(e => { document.getElementById('out').innerHTML = `<div class="empty err">Could not load the directories: ${esc(e.message)}</div>`; });
+});
+document.getElementById('show').addEventListener('change', () => { openForm = null; render(); });
+
+(async () => {
+  try {
+    const me = await fetch('/api/me').then(r => r.json()).catch(() => ({}));
+    canEdit = !!(me.isAdmin || (me.user && (me.user.role === 'contributor' || me.user.role === 'admin')));
+    await reload();
+    street = params.get('street') || (data.streets.find(s => s.open_issues) || data.streets[0] || {}).street;
+    document.getElementById('foot').textContent = (data.note || '') + ' Source: ' + (data.source || '');
+    render();
+  } catch (e) { document.getElementById('out').innerHTML = `<div class="empty err">Could not load the directories: ${esc(e.message)}</div>`; }
+})();
 </script>
 </body>
 </html>
