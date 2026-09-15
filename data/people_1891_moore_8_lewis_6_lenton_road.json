@@ -1,0 +1,496 @@
+{
+  "note": "Two 1891 households from the Lenton Road page, transcribed by A. Hagues: schedule 181, 8 Lenton Road (#182), and schedule 182, 6 Lenton Road (#179). Neither house held an 1891 census record.\n\nThomas Moore, commercial traveller, born in Ireland, with his wife, son and two servants, is new to the record. Wright's Directory of Nottingham has Miss Ellen M. Cowan at 8 Lenton Road by 1894-95, so the Moores had moved on by then.\n\nWilliam Lewis, cork cutter, his wife Elizabeth, six grown children and two servants. William (#813), Ellen Frances (#814) and Elizabeth Beatrice (#816) were already in the record from 1911 at 6 Lenton Road and are bound by number, so they gain 1891 rather than being made again; the rest are new. The directory prints William Lewis, cork cutter, at 6 Lenton Road in 1894-95, 1898-99 and 1910-11. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 8 and 6 Lenton Road, schedules 181 and 182, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 84 (Leicester Special Collections id 164590); 1898-99, page 92 (id 165268); 1910-11, page 123 (id 165799).",
+  "people": [
+    {
+      "first_name": "Thomas",
+      "last_name": "Moore",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1840,
+      "born_place": "Ireland",
+      "occupations": [
+        {
+          "occupation": "Commercial traveller",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        182
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 182,
+          "address": "8 Lenton Road",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 51,
+          "occupation_at_census": "Commercial traveller",
+          "birth_place": "Ireland",
+          "source": "1891 census, 8 Lenton Road, schedule 181 — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Jane",
+      "last_name": "Moore",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1837,
+      "born_place": "Manchester, Lancashire",
+      "properties": [
+        182
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 182,
+          "address": "8 Lenton Road",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 54,
+          "birth_place": "Manchester, Lancashire",
+          "source": "1891 census, 8 Lenton Road, schedule 181 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "Thomas",
+            "last_name": "Moore"
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "George McDowell",
+      "last_name": "Moore",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1873,
+      "born_place": "Stoke on Trent, Staffordshire",
+      "occupations": [
+        {
+          "occupation": "Articled clerk (accountant)",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        182
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 182,
+          "address": "8 Lenton Road",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 18,
+          "occupation_at_census": "Accountant's articled clerk",
+          "birth_place": "Stoke on Trent, Staffordshire",
+          "source": "1891 census, 8 Lenton Road, schedule 181 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "Thomas",
+            "last_name": "Moore"
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Mary Jane",
+            "last_name": "Moore"
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Maud",
+      "last_name": "Croxall",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1871,
+      "born_place": "Church Gresley, Derbyshire",
+      "occupations": [
+        {
+          "occupation": "General servant, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        182
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 182,
+          "address": "8 Lenton Road",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 20,
+          "occupation_at_census": "General servant, domestic",
+          "birth_place": "Church Gresley, Derbyshire",
+          "source": "1891 census, 8 Lenton Road, schedule 181 — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Whatnall",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1870,
+      "born_place": "Hoby, Leicestershire",
+      "occupations": [
+        {
+          "occupation": "General servant, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        182
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 182,
+          "address": "8 Lenton Road",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 21,
+          "occupation_at_census": "General servant, domestic",
+          "birth_place": "Hoby, Leicestershire",
+          "source": "1891 census, 8 Lenton Road, schedule 181 — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 813,
+      "first_name": "William",
+      "last_name": "Lewis",
+      "sex": "M",
+      "born_year": 1832,
+      "born_place": "Nottingham",
+      "occupations": [
+        {
+          "occupation": "Cork cutter",
+          "from_year": 1891,
+          "to_year": 1911,
+          "notes": "1891 census; Wright's Directory 1894-95 to 1910-11"
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 59,
+          "occupation_at_census": "Cork cutter",
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Elizabeth",
+      "last_name": "Lewis",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1830,
+      "born_place": "Tewkesbury, Gloucestershire",
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 61,
+          "birth_place": "Tewkesbury, Gloucestershire",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "id": 814,
+      "first_name": "Ellen Frances",
+      "last_name": "Lewis",
+      "sex": "F",
+      "born_year": 1858,
+      "born_place": "Nottingham",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 33,
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues as Ellen Francis"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Walter Bickerton",
+      "last_name": "Lewis",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1864,
+      "born_place": "Nottingham",
+      "occupations": [
+        {
+          "occupation": "Cork cutter's assistant",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "occupation_at_census": "Cork cutter's assistant",
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "id": 816,
+      "first_name": "Elizabeth Beatrice",
+      "last_name": "Lewis",
+      "sex": "F",
+      "born_year": 1866,
+      "born_place": "Nottingham",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 25,
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Percy Enfield",
+      "last_name": "Lewis",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1867,
+      "born_place": "Nottingham",
+      "occupations": [
+        {
+          "occupation": "Yarn agent's assistant",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 24,
+          "occupation_at_census": "Yarn agent's assistant",
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Gertrude Mabel",
+      "last_name": "Lewis",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1869,
+      "born_place": "Nottingham",
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Constance",
+      "last_name": "Lewis",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1872,
+      "born_place": "Nottingham",
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 19,
+          "birth_place": "Nottingham",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 813
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Minnie",
+      "last_name": "Thompson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1869,
+      "born_place": "Ashby de la Zouch, Leicestershire",
+      "occupations": [
+        {
+          "occupation": "General servant, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "occupation_at_census": "General servant, domestic",
+          "birth_place": "Ashby de la Zouch, Leicestershire",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Stafford",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1869,
+      "born_place": "Milford, Derbyshire",
+      "occupations": [
+        {
+          "occupation": "General servant, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        179
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 179,
+          "address": "6 Lenton Road",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "occupation_at_census": "General servant, domestic",
+          "birth_place": "Milford, Derbyshire",
+          "source": "1891 census, 6 Lenton Road, schedule 182 — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}
