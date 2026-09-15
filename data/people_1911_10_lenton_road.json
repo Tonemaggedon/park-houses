@@ -1,0 +1,16 @@
+{
+  "note": "The Burton household at The Bungalow, 10 Lenton Road, on the 1911 return, transcribed again by A. Hagues. All ten were already in the record at 10 Lenton Road (#363), so every person here is bound by number and nothing new is created. The importer fills blanks only: this adds each birthplace and Jaqueline's birth year (1911, age 0 on the return). It cannot change a name or a value already held, so the differences between this transcription and the record are listed for correcting by hand: Clifford F / Clifford G (#906), Georgianna A / Georgina A (#908), Jaqueline G / Jaqueline F (#909), Gertrude B Keightley / Gertrude V Reightley (#913), and George A Burton (#904) is recorded as female. Wright's Directory of Nottingham confirms The Bungalow is number 10: 1910-11 lists George Anthony Burton, director of Joseph Burton & Sons, at 10 Lenton Road, and 1913-14 and 1915-16 print '10 The Bungalow'. By 1913-14 the Burtons are at 5 Cavendish Crescent North.",
+  "source": "1911 census, The Bungalow, Lenton Road, transcribed by A. Hagues. Wright's Directory of Nottingham 1910-11 (Leicester Special Collections id 165799), 1913-14 (id 166496), 1915-16 (id 347783).",
+  "people": [
+    { "id": 904, "first_name": "George A", "last_name": "Burton", "born_year": 1877, "born_place": "Nottingham, Nottinghamshire", "properties": [363] },
+    { "id": 905, "first_name": "Marie", "last_name": "Burton", "born_year": 1881, "born_place": "Hampstead, London", "properties": [363] },
+    { "id": 906, "first_name": "Clifford F", "last_name": "Burton", "born_year": 1904, "born_place": "Nottingham, Nottinghamshire", "properties": [363] },
+    { "id": 907, "first_name": "Ralph E", "last_name": "Burton", "born_year": 1906, "born_place": "Nottingham, Nottinghamshire", "properties": [363] },
+    { "id": 908, "first_name": "Georgianna A", "last_name": "Burton", "born_year": 1910, "born_place": "Nottingham, Nottinghamshire", "properties": [363] },
+    { "id": 909, "first_name": "Jaqueline G", "last_name": "Burton", "born_year": 1911, "born_place": "Nottingham, Nottinghamshire", "properties": [363] },
+    { "id": 910, "first_name": "Minnie A", "last_name": "Cooke", "born_year": 1887, "born_place": "Youlgreave, Derbyshire", "properties": [363] },
+    { "id": 911, "first_name": "Sibyl", "last_name": "Dickens", "born_year": 1892, "born_place": "North Luffenham, Rutland", "properties": [363] },
+    { "id": 912, "first_name": "Annie", "last_name": "Ingram", "born_year": 1871, "born_place": "Ashorne, Warwickshire", "properties": [363] },
+    { "id": 913, "first_name": "Gertrude B", "last_name": "Keightley", "born_year": 1886, "born_place": "Nottingham, Nottinghamshire", "properties": [363] }
+  ]
+}
