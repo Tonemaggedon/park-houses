@@ -1,0 +1,201 @@
+{
+  "note": "The McConnell household on the 1901 return, transcribed by A. Hagues, filed at Gleadthorpe, 11 Cavendish Crescent North (#27) on A. Hagues's reading, not Flixton as this file first had it. Wright's Directory of Nottingham 1894-95 prints 'Gleadthorpe, Jno. M'Connell, warehouse manager' on Cavendish Crescent North, and Flixton was Sir Samuel G. Johnson's then. The head is the record's '? McConnell' (#2836), bound by number so his 1901 census record goes on him and no second John McConnell is made; his forename still needs changing from '?' to John by hand, and the record still lists him as a resident of Flixton (#30), which wants removing. Gleadthorpe already holds a 1901 census record for William Henry Radford (#3200), engineer, as head with no age: the directories print him on the line after Gleadthorpe, a different house, so that record is probably misfiled; it is left as an open question rather than moved. Everyone else here is new to the record. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1901 census, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 44 (Leicester Special Collections id 164550); 1898-99, page 50 (id 165226); 1910-11, page 65 (id 165741).",
+  "people": [
+    {
+      "id": 2836,
+      "first_name": "?",
+      "last_name": "McConnell",
+      "sex": "M",
+      "born_year": 1864,
+      "born_place": "Nottinghamshire",
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 37,
+          "occupation_at_census": "Hosiery manager",
+          "birth_place": "Nottinghamshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues; the head is John McConnell"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "Lucy A",
+            "last_name": "McConnell"
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Lucy A",
+      "last_name": "McConnell",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1865,
+      "born_place": "Nottinghamshire",
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 36,
+          "birth_place": "Nottinghamshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 2836
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Norman Steele",
+      "last_name": "McConnell",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1896,
+      "born_place": "Nottinghamshire",
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Son",
+          "marital_status": "Single",
+          "age_at_census": 5,
+          "birth_place": "Nottinghamshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 2836
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Lucy A",
+            "last_name": "McConnell"
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Ruth",
+      "last_name": "Jackson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1879,
+      "born_place": "Lutton, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "Housemaid, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "occupation_at_census": "Housemaid, domestic",
+          "birth_place": "Lutton, Lincolnshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues; 'House m domestic' on the transcription"
+        }
+      ]
+    },
+    {
+      "first_name": "Eliza",
+      "last_name": "Wildbore",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1878,
+      "born_place": "Costock, Nottinghamshire",
+      "occupations": [
+        {
+          "occupation": "Nurse, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 23,
+          "occupation_at_census": "Nurse, domestic",
+          "birth_place": "Costock, Nottinghamshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Bertha",
+      "last_name": "Wont",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1876,
+      "born_place": "Leamington, Warwickshire",
+      "occupations": [
+        {
+          "occupation": "Cook, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "properties": [
+        27
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 27,
+          "address": "Gleadthorpe, Cavendish Crescent North",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 25,
+          "occupation_at_census": "Cook, domestic",
+          "birth_place": "Leamington, Warwickshire",
+          "source": "1901 census, Gleadthorpe, Cavendish Crescent North — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "note": "The Meyer household on the 1901 return, transcribed by A. Hagues: Julia Meyer, the head's wife (the head is not on the page sent), with a coachman and his family as servants. The return gives Pelham Crescent without a house number, so these are left unfiled under that address, not guessed onto a house. The evidence points to 1 Pelham Crescent (#274): Wright's Directory of Nottingham prints Paul Meyer, of Simon, May & Co., at 1 Pelham Crescent in 1894-95, 1910-11 and 1913-14, and the 1911 return has a coachman's household there, William Edward Radford (#534, b. 1862) with Emma (#535, b. 1863) and Hilda May (#536, b. 1894). This coachman is written William Hy, b. 1861 in Leicestershire, with Emma b. 1864 and May b. 1894, so they are very likely the same family ten years earlier. They are not bound to those records: William's middle name disagrees, and the return calls him single while Emma is married. All three are created new with their birth years, so /duplicates can put William and Emma beside #534 and #535 to merge. May will not appear there, because she is May here and Hilda May in 1911 (#536), so she wants merging by hand if she is the same girl. No family links are added, because the return does not say whose child May is. This William Hy Radford is not the engineer William Henry Radford (#3200) of Cavendish Crescent North.",
+  "source": "1901 census, Pelham Crescent, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95 (Leicester Special Collections id 164616), 1910-11 (id 165833), 1913-14 (id 166531).",
+  "people": [
+    {
+      "first_name": "Julia", "last_name": "Meyer", "match_born_year": true, "sex": "F",
+      "born_year": 1868, "born_place": "Russia",
+      "census": [{ "census_year": 1901, "unresolved_address": "Pelham Crescent (house not numbered on the return; 1 Pelham Crescent by Wright's Directory)",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 33, "birth_place": "Russia",
+                   "source": "1901 census, Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emma", "last_name": "Radford", "match_born_year": true, "sex": "F",
+      "born_year": 1864, "born_place": "Leeds, Yorkshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Pelham Crescent (house not numbered on the return; 1 Pelham Crescent by Wright's Directory)",
+                   "relationship": "Servant", "marital_status": "Married", "age_at_census": 37,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Leeds, Yorkshire",
+                   "source": "1901 census, Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "William Hy", "last_name": "Radford", "match_born_year": true, "sex": "M",
+      "born_year": 1861, "born_place": "Leicestershire",
+      "occupations": [{ "occupation": "Coachman", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Pelham Crescent (house not numbered on the return; 1 Pelham Crescent by Wright's Directory)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 40,
+                   "occupation_at_census": "Coachman", "birth_place": "Leicestershire",
+                   "source": "1901 census, Pelham Crescent — transcribed by A. Hagues; marital status as transcribed" }]
+    },
+    {
+      "first_name": "May", "last_name": "Radford", "match_born_year": true, "sex": "F",
+      "born_year": 1894, "born_place": "Nottinghamshire",
+      "census": [{ "census_year": 1901, "unresolved_address": "Pelham Crescent (house not numbered on the return; 1 Pelham Crescent by Wright's Directory)",
+                   "relationship": "Servant's child", "marital_status": "Single", "age_at_census": 7,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1901 census, Pelham Crescent — transcribed by A. Hagues" }]
+    }
+  ]
+}
