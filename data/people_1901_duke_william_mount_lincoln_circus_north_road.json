@@ -1,0 +1,183 @@
+{
+  "note": "The rest of the same 1901 enumerator's page as the Weinberg and Hunt households, transcribed from the image A. Hagues sent: schedules 132, 133, 134 and 136, and the cook at the top of the page who belongs to schedule 131, whose head is on the page before.\n\nOnly the Manns carry a house number. '5 North Road' is part of the record's 1 and 2 Albury Square / 3 and 5 North Road (#1), which holds no 1901 census, so they are filed there; Wright's Directory 1898-99 also prints '5 John L. Mann, of Mann & Co.' on North Road. The others give only a road, so they are added unfiled under the address the return gives:\n- 132, William Hickling, retired wine merchant, Duke William Mount. Wright's Directory 1894-95 and 1898-99 prints 'Mr. William Hickling' there without a number.\n- 133, William Small, hosiery manufacturer, Lincoln Circus. Wright's Directory prints William Small, of J. & R. Morley, and Miss Florence Small, artist, on Lincoln Circus in 1894-95 and 1898-99. He is already in the record as #2831, with notes only and no census, and is bound by number. The record also lists him as a resident of Flixton, 15 Cavendish Crescent North, which looks wrong and wants removing by hand. Miss F. Small (#2832) is not on this return.\n- 134, William Smith, lace manufacturer, at Claremont. The return writes 'Claremont Do' under Lincoln Circus, but Wright's Directory prints Claremont on North Road (George Sparrow in 1894-95, John Percy Smith in 1913-14), and the record has no house called Claremont, so it is left unfiled with both addresses stated.\n\nReadings to check against the image: Annie Smith's birthplace, written over (read here as Basford, Notts); Hannah Brown's age, 38 written over 34; Louisa Woolstenholmes's surname; Ellen Loach's surname. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1901 census, Duke William Mount, Lincoln Circus and North Road, schedules 131 (part), 132, 133, 134 and 136, from the enumerator's page sent by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, pages 59, 84 and 103 (Leicester Special Collections ids 164565, 164590, 164609); 1898-99, pages 65, 92 and 111 (ids 165241, 165268, 165287); 1913-14, page 165 (id 166521).",
+  "people": [
+    {
+      "first_name": "Ada", "last_name": "Weightman", "match_born_year": true, "sex": "F",
+      "born_year": 1878, "born_place": "Muskham, Newark",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Duke William Mount (schedule 131; the head of this household is on the previous page)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Muskham, Newark",
+                   "source": "1901 census, Duke William Mount, schedule 131 (continued at the top of the page)" }]
+    },
+
+    {
+      "first_name": "William", "last_name": "Hickling", "match_born_year": true, "sex": "M",
+      "born_year": 1827, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Retired wine merchant", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Duke William Mount (no number on the return) - Hickling household",
+                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 74,
+                   "occupation_at_census": "Retired wine merchant", "birth_place": "Nottingham",
+                   "source": "1901 census, Duke William Mount, schedule 132" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Munsey", "match_born_year": true, "sex": "F",
+      "born_year": 1864, "born_place": "Bedford",
+      "occupations": [{ "occupation": "Companion and housekeeper", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Duke William Mount (no number on the return) - Hickling household",
+                   "relationship": "Companion and housekeeper", "marital_status": "Single", "age_at_census": 37,
+                   "occupation_at_census": "Companion and housekeeper", "birth_place": "Bedford",
+                   "source": "1901 census, Duke William Mount, schedule 132; no relationship written" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Smith", "match_born_year": true, "sex": "F",
+      "born_year": 1848, "born_place": "Basford, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Duke William Mount (no number on the return) - Hickling household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 53,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Basford, Nottinghamshire",
+                   "source": "1901 census, Duke William Mount, schedule 132; birthplace written over, read as Basford" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Loach", "match_born_year": true, "sex": "F",
+      "born_year": 1873, "born_place": "Shelford, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Duke William Mount (no number on the return) - Hickling household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Shelford, Nottinghamshire",
+                   "source": "1901 census, Duke William Mount, schedule 132" }]
+    },
+
+    {
+      "id": 2831, "first_name": "William", "last_name": "Small", "sex": "M",
+      "born_year": 1831, "born_place": "St George in the East, London",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lincoln Circus (no house on the return) - Small household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 70,
+                   "occupation_at_census": "Hosiery manufacturer", "birth_place": "St George in the East, London",
+                   "source": "1901 census, Lincoln Circus, schedule 133" }],
+      "relationships": [{ "to": { "first_name": "Margaret L", "last_name": "Small" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Margaret L", "last_name": "Small", "match_born_year": true, "sex": "F",
+      "born_year": 1857, "born_place": "Kingsland, London",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lincoln Circus (no house on the return) - Small household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 44, "birth_place": "Kingsland, London",
+                   "source": "1901 census, Lincoln Circus, schedule 133" }]
+    },
+    {
+      "first_name": "Hannah", "last_name": "Brown", "match_born_year": true, "sex": "F",
+      "born_year": 1863, "born_place": "Hucknall Torkard, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lincoln Circus (no house on the return) - Small household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 38,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Hucknall Torkard, Nottinghamshire",
+                   "source": "1901 census, Lincoln Circus, schedule 133; age written 38 over 34" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Vallance", "match_born_year": true, "sex": "F",
+      "born_year": 1877, "born_place": "Mansfield, Nottinghamshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lincoln Circus (no house on the return) - Small household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Mansfield, Nottinghamshire",
+                   "source": "1901 census, Lincoln Circus, schedule 133" }]
+    },
+    {
+      "first_name": "Louisa", "last_name": "Woolstenholmes", "match_born_year": true, "sex": "F",
+      "born_year": 1873, "born_place": "Warboys, Huntingdonshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lincoln Circus (no house on the return) - Small household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Warboys, Huntingdonshire",
+                   "source": "1901 census, Lincoln Circus, schedule 133; surname as read" }]
+    },
+
+    {
+      "first_name": "William", "last_name": "Smith", "match_born_year": true, "sex": "M",
+      "born_year": 1822, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Claremont (Lincoln Circus on the return; Claremont is on North Road in Wright's Directory) - Smith household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 79,
+                   "occupation_at_census": "Lace manufacturer", "birth_place": "Nottingham",
+                   "source": "1901 census, Claremont, schedule 134" }]
+    },
+    {
+      "first_name": "Emily E", "last_name": "Smith", "match_born_year": true, "sex": "F",
+      "born_year": 1852, "born_place": "Nottingham",
+      "census": [{ "census_year": 1901, "unresolved_address": "Claremont (Lincoln Circus on the return; Claremont is on North Road in Wright's Directory) - Smith household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 49, "birth_place": "Nottingham",
+                   "source": "1901 census, Claremont, schedule 134" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Smith", "born_year": 1822 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Bessy", "last_name": "Walker", "match_born_year": true, "sex": "F",
+      "born_year": 1853, "born_place": "Ireland",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Claremont (Lincoln Circus on the return; Claremont is on North Road in Wright's Directory) - Smith household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 48,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Ireland",
+                   "source": "1901 census, Claremont, schedule 134" }]
+    },
+    {
+      "first_name": "Jessie", "last_name": "Blakey", "match_born_year": true, "sex": "F",
+      "born_year": 1877, "born_place": "Langton, Lincolnshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Claremont (Lincoln Circus on the return; Claremont is on North Road in Wright's Directory) - Smith household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Langton, Lincolnshire",
+                   "source": "1901 census, Claremont, schedule 134" }]
+    },
+    {
+      "first_name": "Maud", "last_name": "Proctor", "match_born_year": true, "sex": "F",
+      "born_year": 1878, "born_place": "Spalding, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Claremont (Lincoln Circus on the return; Claremont is on North Road in Wright's Directory) - Smith household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Spalding, Lincolnshire",
+                   "source": "1901 census, Claremont, schedule 134" }]
+    },
+
+    {
+      "first_name": "John L", "last_name": "Mann", "match_born_year": true, "sex": "M",
+      "born_year": 1864, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Fancy box maker", "from_year": 1901, "to_year": 1901 }],
+      "properties": [1],
+      "census": [{ "census_year": 1901, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 37,
+                   "occupation_at_census": "Fancy box maker", "birth_place": "Nottingham",
+                   "source": "1901 census, 5 North Road, schedule 136" }],
+      "relationships": [{ "to": { "first_name": "Alice", "last_name": "Mann" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Alice", "last_name": "Mann", "match_born_year": true, "sex": "F",
+      "born_year": 1871, "born_place": "London",
+      "properties": [1],
+      "census": [{ "census_year": 1901, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 30, "birth_place": "London",
+                   "source": "1901 census, 5 North Road, schedule 136" }]
+    },
+    {
+      "first_name": "Thomas", "last_name": "Mann", "match_born_year": true, "sex": "M",
+      "born_year": 1900, "born_place": "Nottingham",
+      "properties": [1],
+      "census": [{ "census_year": 1901, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Son", "marital_status": "Single", "birth_place": "Nottingham",
+                   "source": "1901 census, 5 North Road, schedule 136; aged 4 months" }],
+      "relationships": [
+        { "to": { "first_name": "John L", "last_name": "Mann" }, "type": "child_of" },
+        { "to": { "first_name": "Alice", "last_name": "Mann" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Edith", "last_name": "Ray", "match_born_year": true, "sex": "F",
+      "born_year": 1885, "born_place": "New Houghton, Derbyshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [1],
+      "census": [{ "census_year": 1901, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "New Houghton, Derbyshire",
+                   "source": "1901 census, 5 North Road, schedule 136" }]
+    }
+  ]
+}
