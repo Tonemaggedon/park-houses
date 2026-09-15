@@ -1,0 +1,58 @@
+{
+  "note": "The Wade household on the 1891 return, given as 'Peverill House, Lenton Road', transcribed by A. Hagues. Most of them were already in the record from 1901 at 9 Lenton Road, Fern Lodge (#183), and are bound by number so they gain 1891: Ann Wade (#2976), William Richard (#2977, 'William R.'), Mary Ann (#827, 'Mary Anne'), Ann's sister Jane Heather (#2978), and the shop assistant Mary Jane Leeke (#2979, 'Mary J. Leek', born 1858 at Hoxton, a glove and hosiery assistant there in 1901). Rosa Foster and Annie Phillips are new. The record also holds Mary Jane Leeks (#828, born 1858, a visitor at 9 Lenton Road in 1911), who is the same woman and wants merging with #2979.\n\nThe house is not settled, so the household is left unfiled naming both candidates. For Peveril House: the return, and Wright's Directory 1894-95, which prints 'Peveril house, Mrs. M. A. Wade; Miss M. A. Wade, hosier' under Peveril Drive; the record's Peveril House, Peveril Drive (#300) holds no census. For 9 Lenton Road: Wright's Directory 1898-99 prints '9 Fern lodge, Mrs. M. A. Wade; Miss M. A. Wade (hosier)' and 1910-11 'Wade Miss Mary Anne' at 9 Lenton Road, where the record files the family in 1901 and 1911. On the record's own map the two houses are about 30 m apart at the corner of Peveril Drive and Lenton Road, so this is either a move between neighbouring houses or one house under two names. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Peverill House, Lenton Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 111 (Leicester Special Collections id 164617); 1898-99, page 92 (id 165268); 1910-11, page 123 (id 165799).",
+  "people": [
+    {
+      "id": 2976, "first_name": "Ann", "last_name": "Wade", "sex": "F", "born_year": 1817, "born_place": "Bleasby, Nottinghamshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 74, "birth_place": "Bleasby, Nottinghamshire",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 2977, "first_name": "William Richard", "last_name": "Wade", "sex": "M", "born_year": 1842, "born_place": "Lenton, Nottinghamshire",
+      "occupations": [{ "occupation": "Builder", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 49,
+                   "occupation_at_census": "Builder", "birth_place": "Lenton, Nottinghamshire",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2976 }, "type": "child_of" }]
+    },
+    {
+      "id": 827, "first_name": "Mary Anne", "last_name": "Wade", "sex": "F", "born_year": 1849, "born_place": "Lenton, Nottinghamshire",
+      "occupations": [{ "occupation": "Glover and hosier", "from_year": 1891, "to_year": 1899, "notes": "1891 census; 'hosier' in Wright's Directory 1894-95 and 1898-99" }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 42,
+                   "occupation_at_census": "Glover and hosier", "birth_place": "Lenton, Nottinghamshire",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues as Mary Ann" }],
+      "relationships": [{ "to": { "id": 2976 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Rosa", "last_name": "Foster", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Bleasby, Nottinghamshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Granddaughter", "marital_status": "Single", "age_at_census": 15, "birth_place": "Bleasby, Nottinghamshire",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 2978, "first_name": "Jane", "last_name": "Heather", "sex": "F", "born_year": 1827, "born_place": "Epperstone, Nottinghamshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Sister", "marital_status": "Widowed", "age_at_census": 64, "birth_place": "Epperstone, Nottinghamshire",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2976 }, "type": "sibling_of", "notes": "Sister of the head on the 1891 return; 'Aunt' in the 1901 household." }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Phillips", "match_born_year": true, "sex": "F", "born_year": 1846, "born_place": "Shrewsbury",
+      "occupations": [{ "occupation": "Glover and hosier's assistant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Assistant", "marital_status": "Single", "age_at_census": 45,
+                   "occupation_at_census": "Glover and hosier's assistant", "birth_place": "Shrewsbury",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 2979, "first_name": "Mary Jane", "last_name": "Leeke", "sex": "F", "born_year": 1858, "born_place": "London",
+      "census": [{ "census_year": 1891, "unresolved_address": "Peverill House, Lenton Road (Peveril House, Peveril Drive, or 9 Lenton Road, Fern Lodge) - Wade household",
+                   "relationship": "Assistant", "marital_status": "Single", "age_at_census": 33,
+                   "occupation_at_census": "Glover and hosier's assistant", "birth_place": "London",
+                   "source": "1891 census, Peverill House, Lenton Road — transcribed by A. Hagues as Mary Jane Leeke" }]
+    }
+  ]
+}
