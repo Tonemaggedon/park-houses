@@ -1,0 +1,93 @@
+{
+  "note": "The household of Julius Meyer, commission merchant, born in Germany, at Lindo House, South Road, on the 1891 return, transcribed by A. Hagues. None of the eleven was in the record. The record has no house called Lindo House, and the return gives no number, so the household is added unfiled under the address the return gives.\n\nWright's Directory of Nottingham prints 'Julius Meyrick, of M. Schilling & Co.' on South Road in 1894-95 and 1898-99, without a number or house name, between Gardenhurst and Parkhurst. That is very likely the same man under an anglicised name, and is noted rather than joined. Of South Road's houses in the record, only number 3 (the McCraiths, Ellenborough House) holds an 1891 census. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Lindo House, South Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 136 (Leicester Special Collections id 164642); 1898-99, page 146 (id 165322).",
+  "people": [
+    {
+      "first_name": "Julius", "last_name": "Meyer", "match_born_year": true, "sex": "M", "born_year": 1841, "born_place": "Germany",
+      "occupations": [{ "occupation": "Commission merchant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 50,
+                   "occupation_at_census": "Commission merchant", "birth_place": "Germany",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues; 'Julius Meyrick, of M. Schilling & Co.' on South Road in Wright's Directory 1894-99" }]
+    },
+    {
+      "first_name": "Alice Ann", "last_name": "Meyer", "match_born_year": true, "sex": "F", "born_year": 1850, "born_place": "Eakring, Nottinghamshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 41, "birth_place": "Eakring, Nottinghamshire",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Constance Lilian", "last_name": "Meyer", "match_born_year": true, "sex": "F", "born_year": 1877, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Daughter", "age_at_census": 14, "birth_place": "Nottingham",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "child_of" },
+                        { "to": { "first_name": "Alice Ann", "last_name": "Meyer" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sidney Julius", "last_name": "Meyer", "match_born_year": true, "sex": "M", "born_year": 1879, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Son", "age_at_census": 12, "birth_place": "Nottingham",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "child_of" },
+                        { "to": { "first_name": "Alice Ann", "last_name": "Meyer" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Walter Henry", "last_name": "Meyer", "match_born_year": true, "sex": "M", "born_year": 1881, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Son", "age_at_census": 10, "birth_place": "Nottingham",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "child_of" },
+                        { "to": { "first_name": "Alice Ann", "last_name": "Meyer" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Reginald", "last_name": "Meyer", "match_born_year": true, "sex": "M", "born_year": 1883, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Son", "age_at_census": 8, "birth_place": "Nottingham",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "child_of" },
+                        { "to": { "first_name": "Alice Ann", "last_name": "Meyer" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Frederick Charles", "last_name": "Meyer", "match_born_year": true, "sex": "M", "born_year": 1884, "born_place": "Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Son", "age_at_census": 7, "birth_place": "Nottingham",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Julius", "last_name": "Meyer" }, "type": "child_of" },
+                        { "to": { "first_name": "Alice Ann", "last_name": "Meyer" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Emily", "last_name": "Fisher", "match_born_year": true, "sex": "F", "born_year": 1855, "born_place": "Germany",
+      "occupations": [{ "occupation": "Governess", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Governess", "marital_status": "Married", "age_at_census": 36,
+                   "occupation_at_census": "Governess", "birth_place": "Germany",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Lydia", "last_name": "Hazeldine", "match_born_year": true, "sex": "F", "born_year": 1855, "born_place": "Eastwood, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 36,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Eastwood, Nottinghamshire",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Minnie", "last_name": "Ingram", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Wilbarston, Northamptonshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Wilbarston, Northamptonshire",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Sarah Ann", "last_name": "Lager", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Griffydam, Leicestershire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Lindo House, South Road (no house of that name in the record) - Meyer household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Griffydam, Leicestershire",
+                   "source": "1891 census, Lindo House, South Road — transcribed by A. Hagues; surname as transcribed" }]
+    }
+  ]
+}
