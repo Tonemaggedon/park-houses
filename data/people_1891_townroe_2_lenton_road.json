@@ -1,0 +1,65 @@
+{
+  "note": "The Townroe household at 2 Lenton Road (#175) on the 1891 return, schedule 184, transcribed by A. Hagues. The enumerator wrote the name 'Tounroe'; Wright's Directory of Nottingham spells it Townroe, printing 'Chas. Edw. Townroe, bank clerk' at 2 Lenton Road in 1894-95 and 1898-99, and 'Townroe Charles E' at 12 Park Terrace in 1910-11 to 1915-16, so the directory's spelling is used. None of the six was in the record, and 2 Lenton Road held no 1891 census. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 2 Lenton Road, schedule 184, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 84 (Leicester Special Collections id 164590); 1898-99, page 92 (id 165268); 1910-11, page 154 (id 165830).",
+  "people": [
+    {
+      "first_name": "Charles Edward", "last_name": "Townroe", "match_born_year": true, "sex": "M",
+      "born_year": 1857, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Bank clerk", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 34,
+                   "occupation_at_census": "Banker's clerk", "birth_place": "Nottingham",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues; written Charles Edwd Tounroe" }]
+    },
+    {
+      "first_name": "Mary Daykene", "last_name": "Townroe", "match_born_year": true, "sex": "F",
+      "born_year": 1850, "born_place": "Nottingham",
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 41, "birth_place": "Nottingham",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues; written Tounroe" }],
+      "relationships": [{ "to": { "first_name": "Charles Edward", "last_name": "Townroe" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Bernard Stephen", "last_name": "Townroe", "match_born_year": true, "sex": "M",
+      "born_year": 1885, "born_place": "Nottingham",
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Son", "age_at_census": 6, "birth_place": "Nottingham",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues; written Tounroe" }],
+      "relationships": [{ "to": { "first_name": "Charles Edward", "last_name": "Townroe" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary Daykene", "last_name": "Townroe" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sybil Mary", "last_name": "Townroe", "match_born_year": true, "sex": "F",
+      "born_year": 1889, "born_place": "Nottingham",
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Daughter", "age_at_census": 2, "birth_place": "Nottingham",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues; written Tounroe" }],
+      "relationships": [{ "to": { "first_name": "Charles Edward", "last_name": "Townroe" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary Daykene", "last_name": "Townroe" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Julia", "last_name": "Kirk", "match_born_year": true, "sex": "F",
+      "born_year": 1863, "born_place": "Eastwood, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Eastwood, Nottinghamshire",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues; birthplace transcribed Eastwood End" }]
+    },
+    {
+      "first_name": "Mary Jane", "last_name": "Pickard", "match_born_year": true, "sex": "F",
+      "born_year": 1875, "born_place": "Bedworth, Warwickshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [175],
+      "census": [{ "census_year": 1891, "property_id": 175, "address": "2 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Bedworth, Warwickshire",
+                   "source": "1891 census, 2 Lenton Road, schedule 184 — transcribed by A. Hagues" }]
+    }
+  ]
+}
