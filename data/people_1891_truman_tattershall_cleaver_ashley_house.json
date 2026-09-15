@@ -1,0 +1,89 @@
+{
+  "note": "Two 1891 households from the page A. Hagues sent, from his transcription.\n\nSchedule 150, 1 Tattershall Drive (#306): William Henry Truman, wine merchant, his wife Catherine O., daughter Maud and servant Virginia Bennett. None was in the record, and 1 Tattershall Drive holds no 1891 census. Wright's Directory of Nottingham prints William H. Truman, of C. B. & W. H. Truman, on Tattershall Drive in 1894-95 and 1898-99, without a number; Charles B. Truman, of the same firm, was at 4 Lenton Road.\n\nSchedule 151, Ashley House, Park Drive (#238): the Cleaver household was already complete in the record for 1891 — Alfred (#82), Mary A. (#83), Robert C. (#84), Beatrice Mary (#210), the cook (#89) and Mary E. C. Hollis (#90) — so each is bound by number and this only fills the birthplaces and marital status the records lacked. Two differences are left for checking against the image, since an import never overwrites: the cook is 'Elizabeth Lowley' in the record and Cowley in this transcription; and Robert's occupation is 'Articled lawyers clerk' in the record and 'articled sawyers clerk' in the transcription, where lawyer's is surely right. Wright's Directory prints Alfred Cleaver, of A. Cleaver & Co., at Ashley House in 1894-95 and 1898-99. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 1 Tattershall Drive and Ashley House, Park Drive, schedules 150 and 151, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, pages 106 and 140 (Leicester Special Collections ids 164612, 164646); 1898-99, pages 114 and 149 (ids 165290, 165325).",
+  "people": [
+    {
+      "first_name": "William Henry", "last_name": "Truman", "match_born_year": true, "sex": "M",
+      "born_year": 1837, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Wine merchant", "from_year": 1891, "to_year": 1891, "employer": "C. B. & W. H. Truman" }],
+      "properties": [306],
+      "census": [{ "census_year": 1891, "property_id": 306, "address": "1 Tattershall Drive",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 54,
+                   "occupation_at_census": "Wine merchant", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 1 Tattershall Drive, schedule 150 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Catherine O", "last_name": "Truman" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Catherine O", "last_name": "Truman", "match_born_year": true, "sex": "F",
+      "born_year": 1849, "born_place": "Hampshire",
+      "properties": [306],
+      "census": [{ "census_year": 1891, "property_id": 306, "address": "1 Tattershall Drive",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 42, "birth_place": "Hampshire",
+                   "source": "1891 census, 1 Tattershall Drive, schedule 150 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Maud", "last_name": "Truman", "match_born_year": true, "sex": "F",
+      "born_year": 1871, "born_place": "Nottinghamshire",
+      "properties": [306],
+      "census": [{ "census_year": 1891, "property_id": 306, "address": "1 Tattershall Drive",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 20, "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 1 Tattershall Drive, schedule 150 — transcribed by A. Hagues" }],
+      "relationships": [
+        { "to": { "first_name": "William Henry", "last_name": "Truman" }, "type": "child_of" },
+        { "to": { "first_name": "Catherine O", "last_name": "Truman" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Virginia", "last_name": "Bennett", "match_born_year": true, "sex": "F",
+      "born_year": 1842, "born_place": "Boston, Lincolnshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [306],
+      "census": [{ "census_year": 1891, "property_id": 306, "address": "1 Tattershall Drive",
+                   "relationship": "Servant", "marital_status": "Married", "age_at_census": 49,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Boston, Lincolnshire",
+                   "source": "1891 census, 1 Tattershall Drive, schedule 150 — transcribed by A. Hagues" }]
+    },
+
+    {
+      "id": 82, "first_name": "Alfred", "last_name": "Cleaver", "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 57,
+                   "occupation_at_census": "Lace dresser", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 83, "first_name": "Mary A", "last_name": "Cleaver", "born_place": "Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 49, "birth_place": "Nottinghamshire",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 84, "first_name": "Robert C", "last_name": "Cleaver", "born_place": "Carlton, Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Articled lawyer's clerk", "birth_place": "Carlton, Nottinghamshire",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 210, "first_name": "Beatrice Mary", "last_name": "Cleaver", "born_place": "Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": "Scholar",
+                   "birth_place": "Nottinghamshire",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 89, "first_name": "Elizabeth", "last_name": "Lowley", "sex": "F", "born_year": 1860, "born_place": "Stanton Gate, Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 31,
+                   "occupation_at_census": "Cook, domestic servant", "birth_place": "Stanton Gate, Nottinghamshire",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues as Elizabeth Cowley" }]
+    },
+    {
+      "id": 90, "first_name": "Mary E C", "last_name": "Hollis", "born_place": "Peterborough",
+      "census": [{ "census_year": 1891, "property_id": 238, "address": "Ashley House, Park Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Peterborough",
+                   "source": "1891 census, Ashley House, Park Drive, schedule 151 — transcribed by A. Hagues" }]
+    }
+  ]
+}
