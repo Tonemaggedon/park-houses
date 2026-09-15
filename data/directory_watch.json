@@ -6,112 +6,12 @@
    "surname": "Evans",
    "forename": "Robert",
    "group": "architect",
-   "person_id": 856,
-   "born_year": 1863,
-   "died_year": null,
-   "properties": [
-    "Ravine House, 21 Lenton Road"
-   ],
-   "entries": [
-    {
-     "volume": "1894-95",
-     "page": 216,
-     "record": 164722,
-     "line": "Evans Robt, Esq, J.P, of E. cl: Jolley, h South rd,Park",
-     "park": "park",
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1894-95",
-     "page": 639,
-     "record": 165145,
-     "line": "Evans Mr. Robert William, 8 St. John street",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1898-99",
-     "page": 227,
-     "record": 165403,
-     "line": "Evans Robt, Esq, J.P, of E. ~Son, h South rd, Park",
-     "park": "park",
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1910-11",
-     "page": 191,
-     "record": 165867,
-     "line": "Evans Robert J.P. {E. & Son)",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1910-11",
-     "page": 294,
-     "record": 165970,
-     "line": "Evans Robert, 7 Fourilh avenue, Sherwood rise",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1910-11",
-     "page": 294,
-     "record": 165970,
-     "line": "Evans Robert J.P. (Evans k Son); h. South rd. Park",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1910-11",
-     "page": 294,
-     "record": 165970,
-     "line": "Evans Robt. jun. (Evans k Son); h. 21 LentoB rd. Park",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)",
-      "Robert Evans (b. 1832)"
-     ]
-    },
-    {
-     "volume": "1913-14",
-     "page": 304,
-     "record": 166660,
-     "line": "Evans Robert, tailoi'S' cutter, 74 Cedar road",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)"
-     ]
-    }
-   ],
-   "first_in_park": "1894-95"
-  },
-  {
-   "surname": "Evans",
-   "forename": "Robert",
-   "group": "architect",
    "person_id": 406,
    "born_year": 1863,
    "died_year": 1927,
    "properties": [
-    "Ravine House, 21 Lenton Road"
+    "Ravine House, 21 Lenton Road",
+    "2 South Road"
    ],
    "entries": [
     {
@@ -121,7 +21,6 @@
      "line": "Evans Robt, Esq, J.P, of E. cl: Jolley, h South rd,Park",
      "park": "park",
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -132,7 +31,6 @@
      "line": "Evans Mr. Robert William, 8 St. John street",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -143,7 +41,6 @@
      "line": "Evans Robt, Esq, J.P, of E. ~Son, h South rd, Park",
      "park": "park",
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -154,7 +51,6 @@
      "line": "Evans Robert J.P. {E. & Son)",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -165,7 +61,6 @@
      "line": "Evans Robert, 7 Fourilh avenue, Sherwood rise",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -176,7 +71,6 @@
      "line": "Evans Robert J.P. (Evans k Son); h. South rd. Park",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -187,7 +81,6 @@
      "line": "Evans Robt. jun. (Evans k Son); h. 21 LentoB rd. Park",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1832)"
      ]
     },
@@ -196,10 +89,7 @@
      "page": 304,
      "record": 166660,
      "line": "Evans Robert, tailoi'S' cutter, 74 Cedar road",
-     "park": null,
-     "shared_with": [
-      "Robert Evans (b. 1863)"
-     ]
+     "park": null
     }
    ],
    "first_in_park": "1894-95"
@@ -236,7 +126,6 @@
      "line": "Evans Robt, Esq, J.P, of E. cl: Jolley, h South rd,Park",
      "park": "park",
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -247,7 +136,6 @@
      "line": "Evans Mr. Robert William, 8 St. John street",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -258,7 +146,6 @@
      "line": "Evans Robt, Esq, J.P, of E. ~Son, h South rd, Park",
      "park": "park",
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -269,7 +156,6 @@
      "line": "Evans Robert J.P. {E. & Son)",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -280,7 +166,6 @@
      "line": "Evans Robert, 7 Fourilh avenue, Sherwood rise",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -291,7 +176,6 @@
      "line": "Evans Robert J.P. (Evans k Son); h. South rd. Park",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     },
@@ -302,7 +186,6 @@
      "line": "Evans Robt. jun. (Evans k Son); h. 21 LentoB rd. Park",
      "park": null,
      "shared_with": [
-      "Robert Evans (b. 1863)",
       "Robert Evans (b. 1863)"
      ]
     }
@@ -521,7 +404,7 @@
    "born_year": 1827,
    "died_year": 1901,
    "properties": [
-    "Ravine House, 21 Lenton Road"
+    "23 Lenton Road"
    ],
    "entries": [
     {
@@ -721,6 +604,34 @@
     }
    ],
    "first_in_park": "1913-14"
+  },
+  {
+   "surname": "Homberger",
+   "forename": "Otto",
+   "group": "lace",
+   "person_id": 605,
+   "born_year": 1852,
+   "died_year": null,
+   "properties": [
+    "Linden House, Clumber Road West (Linden House)"
+   ],
+   "entries": [
+    {
+     "volume": "1894-95",
+     "page": 241,
+     "record": 164747,
+     "line": "Homberger Otto, of Homberger ~ Co, h Park drive",
+     "park": "park drive"
+    },
+    {
+     "volume": "1913-14",
+     "page": 340,
+     "record": 166696,
+     "line": "Homberger Otto; vice-comul for Norway (Homberger &",
+     "park": null
+    }
+   ],
+   "first_in_park": "1894-95"
   },
   {
    "surname": "Jackson",
@@ -1616,6 +1527,28 @@
    "first_in_park": null
   },
   {
+   "surname": "Tarbotton",
+   "forename": "Harold Ogle",
+   "group": "architect",
+   "entries": [],
+   "first_in_park": null
+  },
+  {
+   "surname": "Tarbotton",
+   "forename": "Marriott Ogle",
+   "group": "architect",
+   "entries": [
+    {
+     "volume": "1862",
+     "page": 247,
+     "record": 163528,
+     "line": "Tarbotton Marriott Ogle",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
    "surname": "Walker",
    "forename": "Samuel Dutton",
    "group": "architect",
@@ -2388,7 +2321,7 @@
    "born_year": 1856,
    "died_year": null,
    "properties": [
-    "Overdale, Cavendish Road East (Overdale)"
+    "Elmhurst, Cavendish Road East (Elmhurst)"
    ],
    "entries": [
     {
@@ -2424,6 +2357,55 @@
      "page": 664,
      "record": 348305,
      "line": "Dawson .Arthur, Fern vil. Station rd",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
+   "surname": "Dobson",
+   "forename": "Alfred Thomas Carrick",
+   "group": "lace",
+   "person_id": 3452,
+   "born_year": 1859,
+   "died_year": 1932,
+   "properties": [
+    "23 Lenton Road"
+   ],
+   "entries": [
+    {
+     "volume": "1894-95",
+     "page": 212,
+     "record": 164718,
+     "line": "Dobson Alfred, oJ, W. E. d-. J. F. Dobson's, h 19",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 222,
+     "record": 165398,
+     "line": "Dobson Alfred Thomas, of W. E. Jc F. Dobson, h",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 289,
+     "record": 165965,
+     "line": "Dobson Alfred Thomas, director (W. E. & F. Dobson",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 298,
+     "record": 166654,
+     "line": "Dobson Alfred Thomas, director (W. E. & F. Dobson",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 302,
+     "record": 347943,
+     "line": "Dobson Alfred Thomas, director (W. E. & F. Dobson",
      "park": null
     }
    ],
@@ -2760,6 +2742,103 @@
    "first_in_park": null
   },
   {
+   "surname": "Gayton",
+   "forename": "James Bennett",
+   "group": "lace",
+   "person_id": 3376,
+   "born_year": 1833,
+   "died_year": null,
+   "properties": [
+    "1 Holles Crescent"
+   ],
+   "entries": [],
+   "first_in_park": null
+  },
+  {
+   "surname": "Goddard",
+   "forename": "Frederick William",
+   "group": "lace",
+   "person_id": 3285,
+   "born_year": null,
+   "died_year": null,
+   "properties": [
+    "10 Cavendish Crescent North"
+   ],
+   "entries": [
+    {
+     "volume": "1862",
+     "page": 90,
+     "record": 163371,
+     "line": "Goddard Frederick William, at H. Carrier~ Sons', house Mount pleasant, Mount st",
+     "park": null
+    },
+    {
+     "volume": "1862",
+     "page": 90,
+     "record": 163371,
+     "line": "Goddard Frederick, at Alfred Foundry, house Elm avenue",
+     "park": null
+    },
+    {
+     "volume": "1862",
+     "page": 221,
+     "record": 163502,
+     "line": "Goddard F., at tke Alfred Foundry",
+     "park": null
+    },
+    {
+     "volume": "1862",
+     "page": 245,
+     "record": 163526,
+     "line": "Goddard F. W., at H. Carrier~ Sons'",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 225,
+     "record": 164731,
+     "line": "Goddard Frederick, of Goddard, Massey th Warner,",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 225,
+     "record": 164731,
+     "line": "Goddard Frederick William, lace manufacturer, 12",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 237,
+     "record": 165413,
+     "line": "Goddard Frederick, of Goddard, Massey ~ Warner,",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 237,
+     "record": 165413,
+     "line": "Goddard Frederick William, lace manufacturer, 12",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 317,
+     "record": 166673,
+     "line": "Goddard Frederick William, 41 Burns street",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 320,
+     "record": 347961,
+     "line": "Goddard Frederick \"William, 41 Burns street",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
    "surname": "Goldstowe",
    "forename": "Jacob",
    "group": "lace",
@@ -2926,6 +3005,94 @@
      "park": null
     }
    ],
+   "first_in_park": null
+  },
+  {
+   "surname": "Hill",
+   "forename": "Fredrick",
+   "group": "lace",
+   "person_id": 3416,
+   "born_year": 1842,
+   "died_year": null,
+   "properties": [],
+   "entries": [
+    {
+     "volume": "1894-95",
+     "page": 238,
+     "record": 164744,
+     "line": "Hill Frederick (lace manufacturer), of Balm, Hill &:",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 238,
+     "record": 164744,
+     "line": "Hill Frederick, superintendent Norwich and London",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 597,
+     "record": 165103,
+     "line": "Hill Mr. Frederick, Moor lane",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 250,
+     "record": 165426,
+     "line": "Hill Frederick (lace manufacturer), of Balm, Hill",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 611,
+     "record": 166287,
+     "line": "Hill Fredk. insurance mgr. The Elms",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 335,
+     "record": 166691,
+     "line": "Hill Frederick, lace manufacturer (Balm, Hill & Sons",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 626,
+     "record": 166982,
+     "line": "Hill Frederick esq. Park house, South well Shacklock J. G. esq. Diamond avenue, East Kirk by,",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 339,
+     "record": 347980,
+     "line": "Hill Frederick, district manager Accident department,",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 339,
+     "record": 347980,
+     "line": "Hill Frederick, lace manufacturer (Balm, Hill & Sons",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
+   "surname": "Hunt",
+   "forename": "Walter S",
+   "group": "lace",
+   "person_id": 3203,
+   "born_year": 1858,
+   "died_year": null,
+   "properties": [
+    "20 Cavendish Crescent North"
+   ],
+   "entries": [],
    "first_in_park": null
   },
   {
@@ -3328,6 +3495,90 @@
    "first_in_park": null
   },
   {
+   "surname": "Radford",
+   "forename": "Alfred Charles",
+   "group": "lace",
+   "person_id": 1195,
+   "born_year": 1865,
+   "died_year": null,
+   "properties": [
+    "Gladstone House, Lincoln Circus (Gladstone House)"
+   ],
+   "entries": [
+    {
+     "volume": "1898-99",
+     "page": 408,
+     "record": 165584,
+     "line": "Radford Alfred Chas. & Co, Boule-vard",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 149,
+     "record": 165825,
+     "line": "Radford Alfred Chas. machine holdet",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 166,
+     "record": 165842,
+     "line": "Radford Alfred Charl~s. machin~t",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 513,
+     "record": 166189,
+     "line": "Radford Alfred Charles, Boulevard",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 90,
+     "record": 166446,
+     "line": "Radford Alfred Chas. machine holder",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 535,
+     "record": 166891,
+     "line": "Radford Alfred Chas. Croydon rd. R",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 91,
+     "record": 347732,
+     "line": "Radford Alfred Chas. embroidery mnfr",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 407,
+     "record": 348048,
+     "line": "Radford Alfred Charles, embroidery & lace manufac­turer,",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 512,
+     "record": 348153,
+     "line": "Radford Alfred Charles,Croydon rd.R",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 535,
+     "record": 348176,
+     "line": "Radford Alfred Chas. Croydon rd. R Clarke ~- H. & A. H. Wests factory,",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
    "surname": "Sampson",
    "forename": "Albert E",
    "group": "lace",
@@ -3365,6 +3616,155 @@
     "29 Lenton Avenue"
    ],
    "entries": [],
+   "first_in_park": null
+  },
+  {
+   "surname": "Smith",
+   "forename": "William",
+   "group": "lace",
+   "person_id": 3301,
+   "born_year": 1822,
+   "died_year": null,
+   "properties": [
+    "7 North Road (Claremont)",
+    "4 North Road"
+   ],
+   "common_name": true,
+   "entries": [
+    {
+     "volume": "1858",
+     "page": 104,
+     "record": 163030,
+     "line": "Smith William, and Co., lace manufacturers, King's place, Stoney street",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 300,
+     "record": 164806,
+     "line": "Smith W. B. & Co, lace mfrs, 6 Heathcote street",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 300,
+     "record": 164806,
+     "line": "Smith William, cabinet maker, upholsterer, and fur-niture",
+     "park": null
+    },
+    {
+     "volume": "1894-95",
+     "page": 573,
+     "record": 165079,
+     "line": "Smith William & Son (George), Wood Hy. & Sons (Dennis & Fred), :t:Yeomans Chas, and hosier, High st",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 315,
+     "record": 165491,
+     "line": "Smith W. B. & Co, lace mfrs, 46 High pavement",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 407,
+     "record": 166083,
+     "line": "Smith W. B. & Co. plain net finishers, 7 George street",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 407,
+     "record": 166083,
+     "line": "Smith Williarn, hosiers' assistant, 7 Barnslev terrace • Smith William, lace m~ker, 3 Mabel street",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith W. B. & Co. plain net finishers, 7 George street.",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith W. T. & Co. lace manufacturers, Mills buildings,",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith Willium, hosiers' assistant, 7 'Barnsley terrace",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith William, lace maker, 3 Mabel street;",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith William, lace warehouseman, 102 Port Arthur ;rd",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith William, net finisher (W. B. Smith & Co)",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith William B. net finisher (W. B. Smith & Co.); h .. -",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 429,
+     "record": 166785,
+     "line": "Smith William Herbert, lace manufacturer (J. W.",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 433,
+     "record": 348074,
+     "line": "Smith W. B. & Co. plain net finishers, 7 George !'treet.",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 433,
+     "record": 348074,
+     "line": "Smith W. T. & Co. lace manufacturers, Mills buildings,",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 433,
+     "record": 348074,
+     "line": "Smith William, lace warehou.~eman, ro2 ]:>ort Arthur rd",
+     "park": null
+    },
+    {
+     "volume": "1915-16",
+     "page": 434,
+     "record": 348075,
+     "line": "Smith William B. net finisher (W. B. Smith & Co.); h.",
+     "park": null
+    }
+   ],
    "first_in_park": null
   },
   {
@@ -3577,7 +3977,8 @@
    "born_year": 1866,
    "died_year": 1911,
    "properties": [
-    "Hardwicke House, Cavendish Crescent North (Hardwicke House)"
+    "Hardwicke House, Cavendish Crescent North (Hardwicke House)",
+    "4 North Road"
    ],
    "entries": [
     {
@@ -3677,6 +4078,48 @@
      "page": 543,
      "record": 348184,
      "line": "Williams Arthur Paton, Campion",
+     "park": null
+    }
+   ],
+   "first_in_park": null
+  },
+  {
+   "surname": "Williams",
+   "forename": "Frederick Howard",
+   "group": "lace",
+   "person_id": 3350,
+   "born_year": 1870,
+   "died_year": null,
+   "properties": [
+    "Ribble Lodge, Clare Valley (Ribble Lodge)"
+   ],
+   "entries": [
+    {
+     "volume": "1898-99",
+     "page": 342,
+     "record": 165518,
+     "line": "Williams Frederick Howard (lace manufacturer), of",
+     "park": null
+    },
+    {
+     "volume": "1898-99",
+     "page": 407,
+     "record": 165583,
+     "line": "Williams Fredk. H, 45 Lenton road",
+     "park": null
+    },
+    {
+     "volume": "1910-11",
+     "page": 441,
+     "record": 166117,
+     "line": "Williams Frederick Howard (Elliott, W. & Co.); h. The Williamson Mrs. Mary, 10 Peel terrace, Peel street",
+     "park": null
+    },
+    {
+     "volume": "1913-14",
+     "page": 466,
+     "record": 166822,
+     "line": "Williams Frederick Howard, lace manufacturer (Ellioti,",
      "park": null
     }
    ],
