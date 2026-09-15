@@ -1,0 +1,192 @@
+{
+  "note": "The household of Alfred Charles Radford, lace manufacturer (sewers and embroidery), at Gladstone House, Lincoln Circus (#201). Sent as 1921, but the ages fix it as the 1911 return: Alfred is 45 and Doris Mary 13 here, while the record's 1921 entries have them at 56 and 23. Alfred (#1195), Nellie (#1196) and Doris Mary (#1197) were in the record only for 1921, unfiled under 'Lincoln Circus 1', and are bound by number so they gain 1911; Leslie Stafford and the two servants are new.\n\nWright's Directory of Nottingham prints 'Gladstone house, Radford Alfd. Chas' on Lincoln Circus in 1910-11, 1913-14 and 1915-16. The record also files an 1911 household at Gladstone House: Edward Palmer, gardener, his family, and a cook, parlourmaid and housemaid. With the directory giving the house to the Radfords, and the Radfords' own servants being Nutt and Morley, that filing wants checking against its return; it is not moved here. Frances Lillian Nutt's birthplace is transcribed 'Jean, Staffordshire', which is not a place, and is kept as Staffordshire. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, Gladstone House, Lincoln Circus, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11, page 124 (Leicester Special Collections id 165800); 1913-14, page 141 (Leicester Special Collections id 166497); 1915-16, page 143 (Leicester Special Collections id 347784).",
+  "people": [
+    {
+      "id": 1195,
+      "first_name": "Alfred Charles",
+      "last_name": "Radford",
+      "sex": "M",
+      "born_place": "Beeston, Nottinghamshire",
+      "occupations": [
+        {
+          "occupation": "Lace manufacturer (sewers and embroidery)",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 45,
+          "occupation_at_census": "Lace manufacturer, sewers and embroidery",
+          "birth_place": "Beeston, Nottinghamshire",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues (sent as 1921)"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 1196
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "id": 1196,
+      "first_name": "Nellie",
+      "last_name": "Radford",
+      "sex": "F",
+      "born_place": "Leicester",
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 42,
+          "birth_place": "Leicester",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "id": 1197,
+      "first_name": "Doris Mary",
+      "last_name": "Radford",
+      "sex": "F",
+      "born_place": "Nottingham",
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Daughter",
+          "age_at_census": 13,
+          "occupation_at_census": "School",
+          "birth_place": "Nottingham",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 1195
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "id": 1196
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Leslie Stafford",
+      "last_name": "Radford",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1903,
+      "born_place": "Nottingham",
+      "properties": [
+        201
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Son",
+          "age_at_census": 8,
+          "occupation_at_census": "School",
+          "birth_place": "Nottingham",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 1195
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "id": 1196
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Frances Lillian",
+      "last_name": "Nutt",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1887,
+      "born_place": "Staffordshire",
+      "occupations": [
+        {
+          "occupation": "Housemaid, domestic",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "properties": [
+        201
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 24,
+          "occupation_at_census": "Housemaid, domestic",
+          "birth_place": "Staffordshire",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues; birthplace transcribed Jean, Staffordshire"
+        }
+      ]
+    },
+    {
+      "first_name": "Lydia",
+      "last_name": "Morley",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1886,
+      "born_place": "Grantham, Lincolnshire",
+      "occupations": [
+        {
+          "occupation": "Cook, domestic",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "properties": [
+        201
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 201,
+          "address": "Gladstone House, Lincoln Circus",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 25,
+          "occupation_at_census": "Cook, domestic",
+          "birth_place": "Grantham, Lincolnshire",
+          "source": "1911 census, Gladstone House, Lincoln Circus — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}
