@@ -1,0 +1,69 @@
+{
+  "note": "The McConnell household at Flixton, 15 Cavendish Crescent North (#30), on the 1901 return, transcribed by A. Hagues. The head is the record's '? McConnell' (#2836), already a resident of Flixton with the note 'Hosiery mgr 1901 census ? flixton' but no forename and no census record. He is bound here by number, so his 1901 census record is added to him and no second John McConnell is made. An import never renames anyone, so #2836's forename still needs changing from '?' to John by hand. Everyone else is new to the record. Wright's Directory of Nottingham fits: Flixton is Sir Samuel G. Johnson's in 1894-95 and 1898-99, and Harry Middleton Browne's from 1910-11, so the McConnells come between. In 1894-95 'Jno. M'Connell, warehouse manager' is at Gleadthorpe, also on Cavendish Crescent North. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1901 census, Flixton, Cavendish Crescent North, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 44 (Leicester Special Collections id 164550); 1898-99, page 50 (id 165226); 1910-11, page 65 (id 165741).",
+  "people": [
+    {
+      "id": 2836, "first_name": "?", "last_name": "McConnell", "sex": "M",
+      "born_year": 1864, "born_place": "Nottinghamshire",
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 37,
+                   "occupation_at_census": "Hosiery manager", "birth_place": "Nottinghamshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues; the head is John McConnell" }],
+      "relationships": [{ "to": { "first_name": "Lucy A", "last_name": "McConnell" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Lucy A", "last_name": "McConnell", "match_born_year": true, "sex": "F",
+      "born_year": 1865, "born_place": "Nottinghamshire",
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 36,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2836 }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Norman Steele", "last_name": "McConnell", "match_born_year": true, "sex": "M",
+      "born_year": 1896, "born_place": "Nottinghamshire",
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 5,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues" }],
+      "relationships": [
+        { "to": { "id": 2836 }, "type": "child_of" },
+        { "to": { "first_name": "Lucy A", "last_name": "McConnell" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ruth", "last_name": "Jackson", "match_born_year": true, "sex": "F",
+      "born_year": 1879, "born_place": "Lutton, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Lutton, Lincolnshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues; 'House m domestic' on the transcription" }]
+    },
+    {
+      "first_name": "Eliza", "last_name": "Wildbore", "match_born_year": true, "sex": "F",
+      "born_year": 1878, "born_place": "Costock, Nottinghamshire",
+      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Nurse, domestic", "birth_place": "Costock, Nottinghamshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Bertha", "last_name": "Wont", "match_born_year": true, "sex": "F",
+      "born_year": 1876, "born_place": "Leamington, Warwickshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [30],
+      "census": [{ "census_year": 1901, "property_id": 30, "address": "Flixton, Cavendish Crescent North",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Leamington, Warwickshire",
+                   "source": "1901 census, Flixton, Cavendish Crescent North — transcribed by A. Hagues" }]
+    }
+  ]
+}
