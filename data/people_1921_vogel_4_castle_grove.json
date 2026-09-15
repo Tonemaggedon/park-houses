@@ -1,0 +1,24 @@
+{
+  "note": "The Vogel household at 4 Castle Grove (#18) on the 1921 return, transcribed by A. Hagues. All four were already in the record there (#2083-#2086), so each is bound by number and this fills only what the records lacked: birthplaces on the people, the employers, and Alice Mary's occupation. Richard Ernest Wright's census birthplace is Nottingham in the record and Ruddington in this transcription; an import never overwrites, so that is left for checking. Wright's Directory of Nottingham prints 'Vogel Rudolf, director (Flersheim & Co. Limited)' at 23 Lenton Road in 1913-14 and 1915-16, before the move to Castle Grove.",
+  "source": "1921 census, 4 Castle Grove, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1913-14, page 140 (Leicester Special Collections id 166496); 1915-16, page 142 (id 347783).",
+  "people": [
+    {
+      "id": 2083, "first_name": "Rudolf", "last_name": "Vogel", "born_place": "Saxony, Germany",
+      "occupations": [{ "occupation": "Managing Director Of Limited Company Of Lace Manufacturers & Exporters", "employer": "Flersheim & Co. Ltd" }]
+    },
+    {
+      "id": 2084, "first_name": "Alice Mary", "last_name": "Vogel", "born_place": "Nottingham",
+      "census": [{ "census_year": 1921, "property_id": 18, "address": "4 Castle Grove",
+                   "relationship": "Wife", "occupation_at_census": "Home duties", "birth_place": "Nottingham",
+                   "source": "1921 census, 4 Castle Grove — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 2085, "first_name": "Richard Ernest", "last_name": "Wright", "born_place": "Ruddington, Nottinghamshire",
+      "occupations": [{ "occupation": "Domestic Servant", "employer": "Private" }]
+    },
+    {
+      "id": 2086, "first_name": "Veronica Agnes Victoria", "last_name": "Kelly", "born_place": "Bath, Somerset",
+      "occupations": [{ "occupation": "Domestic Service Trader", "employer": "Notts Education Committee" }]
+    }
+  ]
+}
