@@ -1754,11 +1754,11 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       `${String(fn || '').trim().toLowerCase()}|${String(ln || '').trim().toLowerCase()}|${by ?? ''}`;
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0, census = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0, occsFilled = 0;
+      let added = 0, already = 0, linked = 0, census = 0, censusFilled = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0, occsFilled = 0;
       const noSuchId = [];
       // A preview that says "20 would be added" without saying who is a preview
       // nobody can check. Name them, capped so a large file stays readable.
-      const addedNames = [], censusNames = [];
+      const addedNames = [], censusNames = [], censusFilledNames = [];
       const NAME_CAP = 24;
       const nameOf = q => `${q.first_name} ${q.last_name}`.trim();
       // Family links are made person by person in file order, so a husband listed
@@ -1980,12 +1980,40 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           // census entry sitting back on the unfiled page.
           const dup = await db.query(
             c.property_id
-              ? `SELECT 1 FROM census_entries
+              ? `SELECT id, relationship, age_at_census, occupation_at_census, birth_place, marital_status, address, source
+                   FROM census_entries
                   WHERE person_id=$1 AND census_year=$2
                     AND property_id IS NOT DISTINCT FROM $3`
-              : `SELECT 1 FROM census_entries WHERE person_id=$1 AND census_year=$2`,
+              : `SELECT id, relationship, age_at_census, occupation_at_census, birth_place, marital_status, address, source
+                   FROM census_entries WHERE person_id=$1 AND census_year=$2`,
             c.property_id ? [id, c.census_year, c.property_id] : [id, c.census_year]);
-          if (dup.rows.length) continue;
+          if (dup.rows.length) {
+            // The record is already there — but a household keyed in by hand often
+            // has only the names. Fill what it lacks from the file, never over a
+            // value somebody entered. An occupation that says only "Male" or
+            // "Female" is the sex typed into the wrong box, and counts as blank.
+            const have = dup.rows[0];
+            const blank = v => v === null || v === undefined || String(v).trim() === '';
+            const fills = [];
+            if (blank(have.relationship) && c.relationship) fills.push(['relationship', c.relationship]);
+            if (blank(have.age_at_census) && c.age_at_census != null && c.age_at_census !== '') fills.push(['age_at_census', c.age_at_census]);
+            if ((blank(have.occupation_at_census) || /^(male|female|m|f)$/i.test(String(have.occupation_at_census).trim()))
+                && c.occupation_at_census) fills.push(['occupation_at_census', c.occupation_at_census]);
+            if (!c.occupation_at_census && /^(male|female|m|f)$/i.test(String(have.occupation_at_census || '').trim()))
+              fills.push(['occupation_at_census', null]);
+            if (blank(have.birth_place) && c.birth_place) fills.push(['birth_place', c.birth_place]);
+            if (blank(have.marital_status) && c.marital_status) fills.push(['marital_status', c.marital_status]);
+            if (blank(have.address) && c.address) fills.push(['address', c.address]);
+            if (blank(have.source) && c.source) fills.push(['source', c.source]);
+            if (fills.length) {
+              censusFilled++;
+              censusFilledNames.push(`${nameOf(person)} ${c.census_year}: ${fills.map(f => f[0].replace(/_at_census|_/g, ' ').trim()).join(', ')}`);
+              if (!dryRun) await db.query(
+                `UPDATE census_entries SET ${fills.map((f, i) => `${f[0]}=$${i + 2}`).join(', ')} WHERE id=$1`,
+                [have.id, ...fills.map(f => f[1])]);
+            }
+            continue;
+          }
           census++;
           censusNames.push(`${nameOf(person)} ${c.census_year}`);
           if (dryRun) continue;
@@ -2053,10 +2081,11 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       const trim = list => list.length > NAME_CAP
         ? list.slice(0, NAME_CAP).concat(`and ${list.length - NAME_CAP} more`) : list;
       report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
-                    census, occupations: occs, occupationsFilled: occsFilled,
+                    census, censusFilled, occupations: occs, occupationsFilled: occsFilled,
                     relationships: rels, relationshipsSkipped: relsSkipped,
                     ...(addedNames.length ? { addedNames: trim(addedNames) } : {}),
                     ...(censusNames.length ? { censusNames: trim(censusNames) } : {}),
+                    ...(censusFilledNames.length ? { censusFilledNames: trim(censusFilledNames) } : {}),
                     ...(noSuchId.length ? { noSuchPerson: noSuchId } : {}) });
     }
     res.json({ ok: true, dryRun, report });

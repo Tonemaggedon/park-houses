@@ -1,0 +1,51 @@
+{
+  "note": "The North household at Allandale, 23 Cavendish Road East (#50), on the 1891 return, schedule 159, from the image A. Hagues sent. All five were already entered at #50 by hand, so each is bound by number and nothing new is made. This fills what the entries lacked: birth years, birthplaces and sex on the people, and relationship, age, occupation, marital status and birthplace on the census records (whose occupation held only 'Male' or 'Female'), plus the family links. It fills blanks only.\n\nThe cook's surname is not settled: the return reads 'Sarah Bott...', perhaps Bottoms or Bottomley, so #3290 stays 'Sarah ?' until it is read, and is not guessed here.\n\nWright's Directory of Nottingham has Benjamin North, wholesale druggist, at Allandale on Cavendish Road East in 1894-95 and 1898-99 (printed under Tunnel Road in 1898-99). This return names him an oil merchant. With the Norths at Allandale in 1891, the Woodward household also filed there for 1891 belongs at 25 Cavendish Road East, as its 1901, 1911 and 1921 records now are. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Cavendish Road East, schedule 159, from the enumerator's page sent by A. Hagues.",
+  "people": [
+    {
+      "id": 3286, "first_name": "Benjamin", "last_name": "North", "sex": "M",
+      "born_year": 1829, "born_place": "Wymeswold, Leicestershire",
+      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 62,
+                   "occupation_at_census": "Oil merchant", "birth_place": "Wymeswold, Leicestershire",
+                   "source": "1891 census, Cavendish Road East, schedule 159" }],
+      "relationships": [{ "to": { "id": 3287 }, "type": "spouse_of" }]
+    },
+    {
+      "id": 3287, "first_name": "Martha", "last_name": "North", "sex": "F",
+      "born_year": 1831, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 60,
+                   "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Cavendish Road East, schedule 159" }]
+    },
+    {
+      "id": 3288, "first_name": "Florence", "last_name": "North", "sex": "F",
+      "born_year": 1864, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 27,
+                   "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Cavendish Road East, schedule 159" }],
+      "relationships": [
+        { "to": { "id": 3286 }, "type": "child_of" },
+        { "to": { "id": 3287 }, "type": "child_of" }
+      ]
+    },
+    {
+      "id": 3289, "first_name": "Anna Maria", "last_name": "Caddow", "sex": "F",
+      "born_year": 1869, "born_place": "Belfast, Ireland",
+      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Belfast, Ireland",
+                   "source": "1891 census, Cavendish Road East, schedule 159; surname as read" }]
+    },
+    {
+      "id": 3290, "first_name": "Sarah", "last_name": "?", "sex": "F",
+      "born_year": 1868, "born_place": "St Peter, Nottingham",
+      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Cook", "birth_place": "St Peter, Nottingham",
+                   "source": "1891 census, Cavendish Road East, schedule 159; surname unread, begins 'Bott'" }]
+    }
+  ]
+}
