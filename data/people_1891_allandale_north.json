@@ -1,51 +1,147 @@
 {
-  "note": "The North household at Allandale, 23 Cavendish Road East (#50), on the 1891 return, schedule 159, from the image A. Hagues sent. All five were already entered at #50 by hand, so each is bound by number and nothing new is made. This fills what the entries lacked: birth years, birthplaces and sex on the people, and relationship, age, occupation, marital status and birthplace on the census records (whose occupation held only 'Male' or 'Female'), plus the family links. It fills blanks only.\n\nThe cook's surname is not settled: the return reads 'Sarah Bott...', perhaps Bottoms or Bottomley, so #3290 stays 'Sarah ?' until it is read, and is not guessed here.\n\nWright's Directory of Nottingham has Benjamin North, wholesale druggist, at Allandale on Cavendish Road East in 1894-95 and 1898-99 (printed under Tunnel Road in 1898-99). This return names him an oil merchant. With the Norths at Allandale in 1891, the Woodward household also filed there for 1891 belongs at 25 Cavendish Road East, as its 1901, 1911 and 1921 records now are. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "note": "The North household at Allandale, 23 Cavendish Road East (#50), on the 1891 return, schedule 159, from the image A. Hagues sent. All five were already entered at #50 by hand, so each is bound by number and nothing new is made. This fills what the entries lacked: birth years, birthplaces and sex on the people, and relationship, age, occupation, marital status and birthplace on the census records (whose occupation held only 'Male' or 'Female'), plus the family links. It fills blanks only.\n\nThe cook's surname is not settled: the return reads 'Sarah Bott...', perhaps Bottoms or Bottomley, so #3290 stays 'Sarah ?' until it is read, and is not guessed here.\n\nWright's Directory of Nottingham has Benjamin North, wholesale druggist, at Allandale on Cavendish Road East in 1894-95 and 1898-99 (printed under Tunnel Road in 1898-99). This return names him an oil merchant. With the Norths at Allandale in 1891, the Woodward household also filed there for 1891 belongs at 25 Cavendish Road East, as its 1901, 1911 and 1921 records now are. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.\n\nBenjamin North's trade and firm are from Wright's Directory of Nottingham: 1862 (id 163411), 1894-95 (ids 164777, 164876) and 1898-99 (ids 165461, 165562), and B. North & Co. employees in 1910-11, 1913-14 and 1915-16. The biography and occupations fill blanks only.\n\nThe Chemist and Druggist, 1901 (Internet Archive, Wellcome Library copy b19974760M1154), prints the B. North & Co. partnership notice. Fifty of the year's issues were searched for a lawsuit by a William Augustus McKown against the firm, reported in a summary A. Hagues passed on; none of them mentions McKown, so it is not in this record. The W. H. Bradwell of the notice is not linked to William Howard Bradwell (#778), an auctioneer.",
   "source": "1891 census, Cavendish Road East, schedule 159, from the enumerator's page sent by A. Hagues.",
   "people": [
     {
-      "id": 3286, "first_name": "Benjamin", "last_name": "North", "sex": "M",
-      "born_year": 1829, "born_place": "Wymeswold, Leicestershire",
-      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 62,
-                   "occupation_at_census": "Oil merchant", "birth_place": "Wymeswold, Leicestershire",
-                   "source": "1891 census, Cavendish Road East, schedule 159" }],
-      "relationships": [{ "to": { "id": 3287 }, "type": "spouse_of" }]
-    },
-    {
-      "id": 3287, "first_name": "Martha", "last_name": "North", "sex": "F",
-      "born_year": 1831, "born_place": "St Mary, Nottingham",
-      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 60,
-                   "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, Cavendish Road East, schedule 159" }]
-    },
-    {
-      "id": 3288, "first_name": "Florence", "last_name": "North", "sex": "F",
-      "born_year": 1864, "born_place": "St Mary, Nottingham",
-      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
-                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 27,
-                   "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, Cavendish Road East, schedule 159" }],
+      "id": 3286,
+      "first_name": "Benjamin",
+      "last_name": "North",
+      "sex": "M",
+      "born_year": 1829,
+      "born_place": "Wymeswold, Leicestershire",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 50,
+          "address": "Cavendish Road East",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 62,
+          "occupation_at_census": "Oil merchant",
+          "birth_place": "Wymeswold, Leicestershire",
+          "source": "1891 census, Cavendish Road East, schedule 159"
+        }
+      ],
       "relationships": [
-        { "to": { "id": 3286 }, "type": "child_of" },
-        { "to": { "id": 3287 }, "type": "child_of" }
+        {
+          "to": {
+            "id": 3287
+          },
+          "type": "spouse_of"
+        }
+      ],
+      "bio": "Wholesale druggist of Nottingham, of B. North & Co. Wright's Directory of Nottingham lists him at 22 St James's Street, with premises also at 8 Walnut Tree Lane, and in its 1894-95 trades section as a wholesale druggist, hop merchant and oil and colourman, which is why the 1891 census calls him an oil merchant. In 1862 he was working at James Wood's and living on North Sherwood Street; by 1891 he was at Allandale, Cavendish Road East, where the directories still place him in 1894-95 and 1898-99. By 1901 the firm was in other hands: a partnership notice printed in The Chemist and Druggist that year names J. W. Kiddier, F. Plumb, T. P. Gibson, C. Goodwin and W. H. Bradwell as trading 'under the style of B. North & Co., Nottingham, wholesale druggists and drysalters', dissolved as regards Goodwin. The firm still employed wholesale druggists in Nottingham in 1910-16. Born at Wymeswold, Leicestershire, about 1829.",
+      "occupations": [
+        {
+          "occupation": "Oil merchant",
+          "from_year": 1891,
+          "to_year": 1891,
+          "notes": "1891 census, Cavendish Road East"
+        },
+        {
+          "occupation": "Wholesale druggist, hop merchant, oil and colourman",
+          "from_year": 1894,
+          "to_year": 1899,
+          "employer": "B. North & Co., 22 St James's Street, Nottingham",
+          "notes": "Wright's Directory of Nottingham 1894-95 (trades, Leicester Special Collections id 164777) and 1898-99 (id 165461)"
+        }
       ]
     },
     {
-      "id": 3289, "first_name": "Anna Maria", "last_name": "Caddow", "sex": "F",
-      "born_year": 1869, "born_place": "Belfast, Ireland",
-      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
-                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Belfast, Ireland",
-                   "source": "1891 census, Cavendish Road East, schedule 159; surname as read" }]
+      "id": 3287,
+      "first_name": "Martha",
+      "last_name": "North",
+      "sex": "F",
+      "born_year": 1831,
+      "born_place": "St Mary, Nottingham",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 50,
+          "address": "Cavendish Road East",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 60,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, Cavendish Road East, schedule 159"
+        }
+      ]
     },
     {
-      "id": 3290, "first_name": "Sarah", "last_name": "?", "sex": "F",
-      "born_year": 1868, "born_place": "St Peter, Nottingham",
-      "census": [{ "census_year": 1891, "property_id": 50, "address": "Cavendish Road East",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
-                   "occupation_at_census": "Cook", "birth_place": "St Peter, Nottingham",
-                   "source": "1891 census, Cavendish Road East, schedule 159; surname unread, begins 'Bott'" }]
+      "id": 3288,
+      "first_name": "Florence",
+      "last_name": "North",
+      "sex": "F",
+      "born_year": 1864,
+      "born_place": "St Mary, Nottingham",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 50,
+          "address": "Cavendish Road East",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 27,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, Cavendish Road East, schedule 159"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 3286
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "id": 3287
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "id": 3289,
+      "first_name": "Anna Maria",
+      "last_name": "Caddow",
+      "sex": "F",
+      "born_year": 1869,
+      "born_place": "Belfast, Ireland",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 50,
+          "address": "Cavendish Road East",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "occupation_at_census": "Housemaid, domestic servant",
+          "birth_place": "Belfast, Ireland",
+          "source": "1891 census, Cavendish Road East, schedule 159; surname as read"
+        }
+      ]
+    },
+    {
+      "id": 3290,
+      "first_name": "Sarah",
+      "last_name": "?",
+      "sex": "F",
+      "born_year": 1868,
+      "born_place": "St Peter, Nottingham",
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 50,
+          "address": "Cavendish Road East",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 23,
+          "occupation_at_census": "Cook",
+          "birth_place": "St Peter, Nottingham",
+          "source": "1891 census, Cavendish Road East, schedule 159; surname unread, begins 'Bott'"
+        }
+      ]
     }
   ]
 }
