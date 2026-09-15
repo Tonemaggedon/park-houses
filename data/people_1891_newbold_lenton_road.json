@@ -1,0 +1,20 @@
+{
+  "note": "Joseph Newbold, coachman, and his wife Lisetta on the 1891 return, schedule 176, Lenton Road, with no number, transcribed by A. Hagues. Both were already in the record from 1911: Joseph (#914, coachman, head, 51) and Lizetta (#915), then with daughters Elsie Elizabeth and Doris, all under 'The Stables, Lenton Road' and still unfiled. They are bound by number, so each gains 1891 rather than being made again. The 1891 return gives no house either, so these records too are left unfiled under Lenton Road, naming The Stables so the two years group together; the daughters are not on this return. The enumerator wrote Lisetta; the 1911 record has Lizetta. Joseph's birthplace is written Swarkestone, Derbyshire on the image. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Lenton Road, schedule 176, transcribed by A. Hagues.",
+  "people": [
+    {
+      "id": 914, "first_name": "Joseph", "last_name": "Newbold", "sex": "M", "born_place": "Swarkestone, Derbyshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lenton Road (no number on the return; The Stables, Lenton Road in 1911) - Newbold household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 32,
+                   "occupation_at_census": "Coachman, domestic servant", "birth_place": "Swarkestone, Derbyshire",
+                   "source": "1891 census, Lenton Road, schedule 176 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 915 }, "type": "spouse_of" }]
+    },
+    {
+      "id": 915, "first_name": "Lizetta", "last_name": "Newbold", "sex": "F", "born_place": "Melbourne, Derbyshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Lenton Road (no number on the return; The Stables, Lenton Road in 1911) - Newbold household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 34, "birth_place": "Melbourne, Derbyshire",
+                   "source": "1891 census, Lenton Road, schedule 176 — transcribed by A. Hagues as Lisetta" }]
+    }
+  ]
+}

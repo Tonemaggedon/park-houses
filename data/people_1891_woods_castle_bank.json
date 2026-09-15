@@ -1,0 +1,39 @@
+{
+  "note": "The household of the Misses Woods on the 1891 return, transcribed by A. Hagues and given as Castle Rising. None of the four was in the record. Wright's Directory of Nottingham places the sisters at Castle Bank, not Castle Rising: 1894-95 prints '5 Castle bnk, Misses L. M. & C. Woods' on Lenton Road, and 1898-99 '5 Castle bnk, Miss Catherine Woods' — the record's Castle Bank, 5 Lenton Road (#178), which holds no 1891 census. In 1894-95 the directory has Robert C. Brown at 3 Lenton Road, the record's Castle Rising (#176). The two names are close and the house is not settled from here, so the household is added unfiled with both names, to be filed once the return's heading is checked.\n\nAlso noted: Castle Rising (#176) carries a build date of 1970 in the record, while its own history says built c1856-58 by T. C. Hine; the date looks wrong. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Lenton Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 84 (Leicester Special Collections id 164590); 1898-99, page 92 (id 165268).",
+  "people": [
+    {
+      "first_name": "Lucy Maria", "last_name": "Woods", "match_born_year": true, "sex": "F", "born_year": 1805, "born_place": "London",
+      "occupations": [{ "occupation": "Living on own means", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Castle Rising on the return; Castle Bank, 5 Lenton Road in Wright's Directory - Woods household",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 86,
+                   "occupation_at_census": "Living on own means", "birth_place": "London",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Catherine", "last_name": "Woods", "match_born_year": true, "sex": "F", "born_year": 1812, "born_place": "London",
+      "occupations": [{ "occupation": "Living on own means", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Castle Rising on the return; Castle Bank, 5 Lenton Road in Wright's Directory - Woods household",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 79,
+                   "occupation_at_census": "Living on own means", "birth_place": "London",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Lucy Maria", "last_name": "Woods" }, "type": "sibling_of" }]
+    },
+    {
+      "first_name": "Hannah E", "last_name": "Heath", "match_born_year": true, "sex": "F", "born_year": 1843, "born_place": "Lenton, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Castle Rising on the return; Castle Bank, 5 Lenton Road in Wright's Directory - Woods household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 48,
+                   "occupation_at_census": "Cook, domestic servant", "birth_place": "Lenton, Nottinghamshire",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Dawes", "match_born_year": true, "sex": "F", "born_year": 1858, "born_place": "Birchwood, Derbyshire",
+      "occupations": [{ "occupation": "Housemaid, domestic servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Castle Rising on the return; Castle Bank, 5 Lenton Road in Wright's Directory - Woods household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 33,
+                   "occupation_at_census": "Housemaid, domestic servant", "birth_place": "Birchwood, Derbyshire",
+                   "source": "1891 census, Lenton Road — transcribed by A. Hagues" }]
+    }
+  ]
+}

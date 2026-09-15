@@ -1,0 +1,33 @@
+{
+  "note": "Edward Smith, living on his own means, and his two servants at 5 Holles Crescent (#129) on the 1891 return, schedule 177, transcribed by A. Hagues. None of the three was in the record, and 5 Holles Crescent held no 1891 census. The next schedule, 178, is 1 Holles Crescent, with 3 Holles Crescent recorded as uninhabited between them. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 5 Holles Crescent, schedule 177, transcribed by A. Hagues.",
+  "people": [
+    {
+      "first_name": "Edward", "last_name": "Smith", "match_born_year": true, "sex": "M", "born_year": 1819, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Living on own means", "from_year": 1891, "to_year": 1891 }],
+      "properties": [129],
+      "census": [{ "census_year": 1891, "property_id": 129, "address": "5 Holles Crescent",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 72,
+                   "occupation_at_census": "Living on own means", "birth_place": "Nottingham",
+                   "source": "1891 census, 5 Holles Crescent, schedule 177 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Sarah", "last_name": "Harby", "match_born_year": true, "sex": "F", "born_year": 1851, "born_place": "Long Clawson, Leicestershire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [129],
+      "census": [{ "census_year": 1891, "property_id": 129, "address": "5 Holles Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 40,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Long Clawson, Leicestershire",
+                   "source": "1891 census, 5 Holles Crescent, schedule 177 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Evers", "match_born_year": true, "sex": "F", "born_year": 1864, "born_place": "Holbeck, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [129],
+      "census": [{ "census_year": 1891, "property_id": 129, "address": "5 Holles Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Holbeck, Nottinghamshire",
+                   "source": "1891 census, 5 Holles Crescent, schedule 177 — transcribed by A. Hagues" }]
+    }
+  ]
+}
