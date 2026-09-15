@@ -1,28 +1,319 @@
 {
-  "note": "Alfred Thomas Carrick Dobson, England footballer and lace manufacturer, and his son, from the account A. Hagues supplied (drawing on Douglas Lamming's An English Football Internationalist Who's Who, 1990, beeston-notts.co.uk, and the Nottingham newspapers it quotes), reworded here. Neither was in the record. Alfred is bound to his father, William Ebenezer Dobson (#411), by number.\n\nThe account also settles the family's house. Alfred was born at 23 Lenton Road in 1859; his father is there in 1871; the family, with Miss Augusta Stevens and five servants, in 1881; and Alfred, widowed, with his stepmother and son in 1901. (Its '73 Lenton Road' for 1891 must be a slip for 23.) The record files William Ebenezer's 1871, 1881 and 1891 households at Ravine House, 21 Lenton Road (#190), so those want moving to 23 Lenton Road (#191), which holds nothing before 1921; Wright's Directory also prints William E. Dobson at 23 in 1894-95 and 1898-99. No census records are added here: the account summarises the 1881 and 1901 households without the names and ages a census record needs.",
-  "source": "Account supplied by A. Hagues: Douglas Lamming, An English Football Internationalist Who's Who (Hatton Press, 1990), p.89; beeston-notts.co.uk; Nottingham Journal 16 February 1867, 25 and 29 October 1932; Nottingham Evening Post July 1878, 28 August 1880, 26 October 1932; Naval & Military Gazette 25 July 1883; probate calendar 1932.",
+  "note": "Alfred Thomas Carrick Dobson, England footballer and lace manufacturer, and his son, from the account A. Hagues supplied (drawing on Douglas Lamming's An English Football Internationalist Who's Who, 1990, beeston-notts.co.uk, and the Nottingham newspapers it quotes), reworded here. Neither was in the record. Alfred is bound to his father, William Ebenezer Dobson (#411), by number.\n\nThe account also settles the family's house. Alfred was born at 23 Lenton Road in 1859; his father is there in 1871; the family, with Miss Augusta Stevens and five servants, in 1881; and Alfred, widowed, with his stepmother and son in 1901. (Its '73 Lenton Road' for 1891 must be a slip for 23.) The record files William Ebenezer's 1871, 1881 and 1891 households at Ravine House, 21 Lenton Road (#190), so those want moving to 23 Lenton Road (#191), which holds nothing before 1921; Wright's Directory also prints William E. Dobson at 23 in 1894-95 and 1898-99. The 1901 household at 23 Lenton Road (#191), transcribed by A. Hagues, is added to this file so it lands on the people it creates: Alfred T. (head, widower, lace manufacturer), his stepmother Mary Jane (#415, bound by number), his half-brothers Richard and Theodore, his son (transcribed 'Alfred T', aged 7, the Alfred Frederick Ottobine born 1894), Augusta M. Stevens, boarder, whom he married in 1902, and three servants. 23 Lenton Road held no census before 1921.",
+  "source": "Account supplied by A. Hagues: Douglas Lamming, An English Football Internationalist Who's Who (Hatton Press, 1990), p.89; beeston-notts.co.uk; Nottingham Journal 16 February 1867, 25 and 29 October 1932; Nottingham Evening Post July 1878, 28 August 1880, 26 October 1932; Naval & Military Gazette 25 July 1883; probate calendar 1932. 1901 census, 23 Lenton Road, transcribed by A. Hagues.",
   "people": [
     {
-      "first_name": "Alfred Thomas Carrick", "last_name": "Dobson", "match_born_year": true, "sex": "M",
-      "born_date": "28 March 1859", "born_year": 1859, "born_place": "23 Lenton Road, The Park, Nottingham",
-      "died_date": "22 October 1932", "died_year": 1932, "died_place": "The Yews, High Road, Beeston, Nottinghamshire",
+      "first_name": "Alfred Thomas Carrick",
+      "last_name": "Dobson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_date": "28 March 1859",
+      "born_year": 1859,
+      "born_place": "23 Lenton Road, The Park, Nottingham",
+      "died_date": "22 October 1932",
+      "died_year": 1932,
+      "died_place": "The Yews, High Road, Beeston, Nottinghamshire",
       "bio": "Footballer, soldier and lace manufacturer, born at 23 Lenton Road in March 1859 to William Ebenezer Dobson and his first wife Sabina, née Pearson, and baptised at St Barnabas' in April that year. His mother died at Hastings in 1867.\n\nHe was commissioned second lieutenant in the Robin Hood Rifles (1st Nottinghamshire Rifle Volunteers) in 1878 and promoted lieutenant in 1880, resigning a later commission with the Somersetshire Light Infantry volunteers in 1883. A right-back for Notts County who also guested for the Corinthians, he won four England caps between February 1882, in the 13-0 win over Ireland in Belfast, and March 1884 against Wales at Wrexham, and played for the North; he was noted too as a cyclist, all despite poor eyesight. His brother Charley also played for England.\n\nHe married Louise Lucille Merme, a Swiss national, at Blackpool in 1891; their only son, Alfred Frederick Ottobine, was born in 1894, and Louise died in 1900. In 1901 he was a widowed lace manufacturer at 23 Lenton Road with his stepmother and son. In 1902 he married his stepsister, Augusta Martha Stevens, and they lived at The Yews, High Road, Beeston, where he stayed after her death in 1914; he married Lily Betsy Walker at Leicester in 1916. For twenty years he was a director of Wrights and Dobson Bros., dyers, bleachers and dressers.\n\nHe died at The Yews on 22 October 1932, aged 73. After a Requiem Mass at St Barnabas' Cathedral he was buried at the Nottingham General Cemetery. Probate went to Edward Lawrence Manning, Arthur Samuel Page and William Foster; his effects were valued at £36,979.",
       "occupations": [
-        { "occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1921, "notes": "1901, 1911 and 1921 censuses; retired by 1921" },
-        { "occupation": "Director", "employer": "Wrights and Dobson Bros., dyers, bleachers and dressers", "from_year": 1912, "to_year": 1932, "notes": "For twenty years to his death, Nottingham Evening Post, 26 October 1932" },
-        { "occupation": "Lieutenant, Robin Hood Rifles (1st Nottinghamshire Rifle Volunteers)", "from_year": 1878, "to_year": 1883 }
+        {
+          "occupation": "Lace manufacturer",
+          "from_year": 1901,
+          "to_year": 1921,
+          "notes": "1901, 1911 and 1921 censuses; retired by 1921"
+        },
+        {
+          "occupation": "Director",
+          "employer": "Wrights and Dobson Bros., dyers, bleachers and dressers",
+          "from_year": 1912,
+          "to_year": 1932,
+          "notes": "For twenty years to his death, Nottingham Evening Post, 26 October 1932"
+        },
+        {
+          "occupation": "Lieutenant, Robin Hood Rifles (1st Nottinghamshire Rifle Volunteers)",
+          "from_year": 1878,
+          "to_year": 1883
+        }
       ],
       "relationships": [
-        { "to": { "id": 411 }, "type": "child_of" }
+        {
+          "to": {
+            "id": 411
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Augusta Martha",
+            "last_name": "Stevens"
+          },
+          "type": "spouse_of",
+          "notes": "Married at Kingston at the end of 1902; she was his stepsister, a boarder in his household in 1901."
+        }
+      ],
+      "properties": [
+        191
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Head",
+          "age_at_census": 42,
+          "birth_place": "Nottingham",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues as Alfred T Dobson",
+          "marital_status": "Widowed",
+          "occupation_at_census": "Lace manufacturer"
+        }
       ]
     },
     {
-      "first_name": "Alfred Frederick Ottobine", "last_name": "Dobson", "match_born_year": true, "sex": "M",
-      "born_date": "1 February 1894", "born_year": 1894,
-      "died_date": "15 June 1915", "died_year": 1915, "died_place": "West Flanders, Belgium",
+      "first_name": "Alfred Frederick Ottobine",
+      "last_name": "Dobson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_date": "1 February 1894",
+      "born_year": 1894,
+      "died_date": "15 June 1915",
+      "died_year": 1915,
+      "died_place": "West Flanders, Belgium",
       "bio": "Only son of the footballer Alfred Thomas Carrick Dobson and his first wife Louise Lucille, née Merme. In 1901 he was living with his widowed father and step-grandmother at 23 Lenton Road. He died in West Flanders in June 1915, aged 21.",
       "relationships": [
-        { "to": { "first_name": "Alfred Thomas Carrick", "last_name": "Dobson" }, "type": "child_of" }
+        {
+          "to": {
+            "first_name": "Alfred Thomas Carrick",
+            "last_name": "Dobson"
+          },
+          "type": "child_of"
+        }
+      ],
+      "born_place": "Nottingham",
+      "properties": [
+        191
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Son",
+          "age_at_census": 7,
+          "birth_place": "Nottingham",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues as Alfred T Dobson, aged 7",
+          "marital_status": "Single"
+        }
+      ]
+    },
+    {
+      "id": 415,
+      "first_name": "Mary Jane",
+      "last_name": "Dobson",
+      "sex": "F",
+      "born_year": 1847,
+      "born_place": "Salisbury, Wiltshire",
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Stepmother",
+          "age_at_census": 54,
+          "birth_place": "Salisbury, Wiltshire",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues as Mary J Dobson",
+          "marital_status": "Widowed"
+        }
+      ]
+    },
+    {
+      "first_name": "Richard",
+      "last_name": "Dobson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1876,
+      "born_place": "Nottingham",
+      "properties": [
+        191
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Half-brother",
+          "age_at_census": 25,
+          "birth_place": "Nottingham",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues",
+          "marital_status": "Single"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 411
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "id": 415
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Theodore",
+      "last_name": "Dobson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1884,
+      "born_place": "Nottingham",
+      "properties": [
+        191
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Half-brother",
+          "age_at_census": 17,
+          "birth_place": "Nottingham",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues",
+          "marital_status": "Single"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "id": 411
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "id": 415
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Augusta Martha",
+      "last_name": "Stevens",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1866,
+      "born_place": "Nottingham",
+      "died_date": "18 August 1914",
+      "died_year": 1914,
+      "properties": [
+        191
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Boarder",
+          "age_at_census": 35,
+          "birth_place": "Nottingham",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues as Augusta M Stevens",
+          "marital_status": "Single"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Knight",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1881,
+      "born_place": "Carlton, Nottinghamshire",
+      "properties": [
+        191
+      ],
+      "occupations": [
+        {
+          "occupation": "Cook, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "birth_place": "Carlton, Nottinghamshire",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues",
+          "marital_status": "Single",
+          "occupation_at_census": "Cook, domestic"
+        }
+      ]
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Sharpe",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1881,
+      "born_place": "Newborough, Northamptonshire",
+      "properties": [
+        191
+      ],
+      "occupations": [
+        {
+          "occupation": "Housemaid, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Servant",
+          "age_at_census": 20,
+          "birth_place": "Newborough, Northamptonshire",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues",
+          "marital_status": "Single",
+          "occupation_at_census": "Housemaid, domestic"
+        }
+      ]
+    },
+    {
+      "first_name": "Fanny",
+      "last_name": "Blackwell",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1879,
+      "born_place": "Ashford, Derbyshire",
+      "properties": [
+        191
+      ],
+      "occupations": [
+        {
+          "occupation": "Housemaid, domestic",
+          "from_year": 1901,
+          "to_year": 1901
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1901,
+          "property_id": 191,
+          "address": "23 Lenton Road",
+          "relationship": "Servant",
+          "age_at_census": 22,
+          "birth_place": "Ashford, Derbyshire",
+          "source": "1901 census, 23 Lenton Road — transcribed by A. Hagues",
+          "marital_status": "Single",
+          "occupation_at_census": "Housemaid, domestic"
+        }
       ]
     }
   ]
