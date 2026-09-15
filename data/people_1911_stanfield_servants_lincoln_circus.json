@@ -1,0 +1,36 @@
+{
+  "note": "The three servants who kept Alfred William Stanfield's house on Lincoln Circus on the night of the 1911 census, transcribed by A. Hagues. Annie Elizabeth Tune signed the schedule for Mr Stanfield, so the head of the house was away and the servants were returned alone. All three (#595, #596, #597) are already in the record, wrongly filed at Gladstone House, which the directory gives to Alfred Charles Radford and whose own 1911 household had its own cook and housemaid; they are bound by number, so nothing here creates them again.\n\nTheir census rows are left without a house, so the import fills whatever the existing rows lack wherever those rows sit - at Gladstone House now, or unfiled once they are moved off it. The rows already hold relationship, age and occupation, so this adds marital status, birthplace and the source. Two of the transcribed ages differ by a year from the ages in the record (Wright 34 here against 35, Swaly 25 against 24); an import never overwrites, so the record keeps what it has and the difference is left for checking against the schedule.\n\nThe surname of Florence is transcribed Swaty here and Swaly in the record; the schedule will settle it, and the import does not change a name. Annie Elizabeth Tune's birthplace is transcribed 'Thorganley, Lincolnshire', which is not a Lincolnshire place; Thorganby, near Louth, is almost certainly meant, but it is recorded as transcribed rather than corrected. Stanfield's own house on Lincoln Circus is not named in any directory volume or in his obituary, so no property is given here.",
+  "source": "1911 census, Lincoln Circus, The Park (Stanfield household, head absent), transcribed by A. Hagues. Directory evidence for Stanfield on Lincoln Circus: Wright's Directory of Nottingham 1910-11, page 124 (Leicester Special Collections id 165800); 1913-14, page 141 (id 166497); 1915-16, page 143 (id 347784).",
+  "people": [
+    {
+      "id": 595, "first_name": "Annie Elizabeth", "last_name": "Tune", "sex": "F", "born_year": 1864,
+      "born_place": "Thorganley, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911, "notes": "signed the 1911 schedule for Mr Stanfield" }],
+      "census": [{ "census_year": 1911,
+                   "unresolved_address": "Lincoln Circus (house not named) - Stanfield household, head away on census night",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 47,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Thorganley, Lincolnshire",
+                   "source": "1911 census, Lincoln Circus - transcribed by A. Hagues; schedule signed by Annie Elizabeth Tune for Mr Stanfield" }]
+    },
+    {
+      "id": 596, "first_name": "Alice Ada", "last_name": "Wright", "sex": "F", "born_year": 1877,
+      "born_place": "Watford, Hertfordshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "census": [{ "census_year": 1911,
+                   "unresolved_address": "Lincoln Circus (house not named) - Stanfield household, head away on census night",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 34,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Watford, Hertfordshire",
+                   "source": "1911 census, Lincoln Circus - transcribed by A. Hagues" }]
+    },
+    {
+      "id": 597, "first_name": "Florence", "last_name": "Swaly", "sex": "F", "born_year": 1886,
+      "born_place": "Eastwood, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "census": [{ "census_year": 1911,
+                   "unresolved_address": "Lincoln Circus (house not named) - Stanfield household, head away on census night",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Eastwood, Nottinghamshire",
+                   "source": "1911 census, Lincoln Circus - transcribed by A. Hagues; surname transcribed Swaty" }]
+    }
+  ]
+}
