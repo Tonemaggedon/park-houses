@@ -1,0 +1,50 @@
+{
+  "note": "The household of Warren Bowers, tea dealer and wine merchant, at Ravine House, 21 Lenton Road (#190), on the 1891 return, transcribed by A. Hagues as Bowens. Wright's Directory of Nottingham prints '21 Ravine house, Warren Bowers, of Bowers & Son' on Lenton Road in 1894-95, so the directory's spelling is used here and the transcribed Bowens is noted on each record; check it against the image. None of the five was in the record.\n\nRavine House already holds an 1891 household in the record: William Ebenezer Dobson, his wife and daughter. Wright's Directory prints William E. Dobson, J.P., at 23 Lenton Road in 1894-95 and 1898-99, not 21, so that 1891 filing looks wrong and wants checking against the Dobsons' own return; it is not moved here. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Ravine House, Lenton Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 84 (Leicester Special Collections id 164590); 1898-99, page 92 (id 165268).",
+  "people": [
+    {
+      "first_name": "Warren", "last_name": "Bowers", "match_born_year": true, "sex": "M", "born_year": 1848, "born_place": "Leicester",
+      "occupations": [{ "occupation": "Tea dealer and wine merchant", "from_year": 1891, "to_year": 1895, "employer": "Bowers & Son", "notes": "1891 census; Wright's Directory 1894-95" }],
+      "properties": [190],
+      "census": [{ "census_year": 1891, "property_id": 190, "address": "Ravine House, 21 Lenton Road",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 43,
+                   "occupation_at_census": "Tea dealer and wine merchant", "birth_place": "Leicester",
+                   "source": "1891 census, Ravine House, Lenton Road — transcribed by A. Hagues as Warren Bowens" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Bowers", "match_born_year": true, "sex": "F", "born_year": 1848, "born_place": "Nottingham",
+      "properties": [190],
+      "census": [{ "census_year": 1891, "property_id": 190, "address": "Ravine House, 21 Lenton Road",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 43, "birth_place": "Nottingham",
+                   "source": "1891 census, Ravine House, Lenton Road — transcribed by A. Hagues as Bowens" }],
+      "relationships": [{ "to": { "first_name": "Warren", "last_name": "Bowers" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Herbert", "last_name": "Bowers", "match_born_year": true, "sex": "M", "born_year": 1877, "born_place": "Nottingham",
+      "properties": [190],
+      "census": [{ "census_year": 1891, "property_id": 190, "address": "Ravine House, 21 Lenton Road",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 14, "birth_place": "Nottingham",
+                   "source": "1891 census, Ravine House, Lenton Road — transcribed by A. Hagues as Bowens" }],
+      "relationships": [{ "to": { "first_name": "Warren", "last_name": "Bowers" }, "type": "child_of" },
+                        { "to": { "first_name": "Ellen", "last_name": "Bowers" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Simpson", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Normanton, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [190],
+      "census": [{ "census_year": 1891, "property_id": 190, "address": "Ravine House, 21 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 30,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Normanton, Nottinghamshire",
+                   "source": "1891 census, Ravine House, Lenton Road — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Matilda", "last_name": "Mills", "match_born_year": true, "sex": "F", "born_year": 1874, "born_place": "Stafford",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [190],
+      "census": [{ "census_year": 1891, "property_id": 190, "address": "Ravine House, 21 Lenton Road",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Stafford",
+                   "source": "1891 census, Ravine House, Lenton Road — transcribed by A. Hagues" }]
+    }
+  ]
+}
