@@ -1,0 +1,70 @@
+{
+  "note": "The household of Samuel George Johnson, town clerk of Nottingham and solicitor, at 17 Pelham Crescent (#286) on the 1891 return, transcribed by A. Hagues. 17 Pelham Crescent held no census before 1901, when the Laings were there. Samuel George Johnson (#2834) was already in the record, attached to Flixton, Cavendish Crescent North, with no census records; he is bound by number so he gains 1891. His sons, the three servants and the visitor are new; Ellen Wright here is not the record's Ellen Wright (#2991, born 1879).\n\nWright's Directory of Nottingham prints 'Holm lea, Sir Samuel G. Johnson, Kt.' on Pelham Crescent in 1894-95, without a number, and 'Flixton, Sir Samuel G. Johnson, Kt., town clerk' on Cavendish Crescent North in 1894-95 and 1898-99; Holm Lea is likely the name of 17 Pelham Crescent. The visitor, Alfred William Stanfield, barrister, is very likely the Alfred William Stanfield the directory prints on Lincoln Circus in 1910-11 to 1915-16; he is not joined to anything here. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 17 Pelham Crescent, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, pages 44 and 110 (Leicester Special Collections ids 164550, 164616); 1898-99, page 50 (id 165226). Stanfield on Lincoln Circus: 1910-11 page 124 (id 165800); 1913-14 page 141 (id 166497); 1915-16 page 143 (id 347784).",
+  "people": [
+    {
+      "id": 2834, "first_name": "Samuel George", "last_name": "Johnson", "sex": "M", "born_year": 1831, "born_place": "Bearsted, Kent",
+      "occupations": [{ "occupation": "Town clerk of Nottingham, solicitor", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 60,
+                   "occupation_at_census": "Town clerk, solicitor", "birth_place": "Bearsted, Kent",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "George Milton Sydney", "last_name": "Johnson", "match_born_year": true, "sex": "M", "born_year": 1858, "born_place": "Faversham, Kent",
+      "occupations": [{ "occupation": "Solicitor", "from_year": 1891, "to_year": 1891 }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 33,
+                   "occupation_at_census": "Solicitor", "birth_place": "Faversham, Kent",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2834 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Arthur Palmer", "last_name": "Johnson", "match_born_year": true, "sex": "M", "born_year": 1865, "born_place": "Faversham, Kent",
+      "occupations": [{ "occupation": "Articled clerk to a solicitor", "from_year": 1891, "to_year": 1891 }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Articled clerk to solicitor", "birth_place": "Faversham, Kent",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2834 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Alfred William", "last_name": "Stanfield", "match_born_year": true, "sex": "M", "born_year": 1836, "born_place": "Wakefield, Yorkshire",
+      "occupations": [{ "occupation": "Barrister", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Visitor", "marital_status": "Married", "age_at_census": 55,
+                   "occupation_at_census": "Barrister", "birth_place": "Wakefield, Yorkshire",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Anne Maria", "last_name": "Town", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Cambridgeshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 30,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Cambridgeshire",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Wright", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Collingham, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Collingham, Nottinghamshire",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emma", "last_name": "Lydell", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Loughborough, Leicestershire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [286],
+      "census": [{ "census_year": 1891, "property_id": 286, "address": "17 Pelham Crescent",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Loughborough, Leicestershire",
+                   "source": "1891 census, 17 Pelham Crescent — transcribed by A. Hagues" }]
+    }
+  ]
+}
