@@ -1,0 +1,35 @@
+{
+  "note": "The Williams household on the 1911 return, transcribed by A. Hagues. The return gives only Clare Valley; Wright's Directory of Nottingham 1910-11 prints 'The Bungalow, Williams Frederick Howard, lace manufacturer' on Clare Valley, and The Bungalow is the record's Ribble Lodge (#65), so on A. Hagues's decision they are filed there. Ribble Lodge held no census record for any year, and none of the three was in the record. By 1913-14 The Bungalow was Bernard Hardstaff's. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, Clare Valley, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11, page 69 (Leicester Special Collections id 165745).",
+  "people": [
+    {
+      "first_name": "Frederick Howard", "last_name": "Williams", "match_born_year": true, "sex": "M",
+      "born_year": 1870, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1910, "to_year": 1911, "notes": "Wright's Directory 1910-11; 1911 census" }],
+      "properties": [65],
+      "census": [{ "census_year": 1911, "property_id": 65, "address": "Clare Valley (The Bungalow)",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 41,
+                   "occupation_at_census": "Lace manufacturer", "birth_place": "Nottingham",
+                   "source": "1911 census, Clare Valley — transcribed by A. Hagues; The Bungalow by Wright's Directory 1910-11" }],
+      "relationships": [{ "to": { "first_name": "Nelly", "last_name": "Williams" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Nelly", "last_name": "Williams", "match_born_year": true, "sex": "F",
+      "born_year": 1873, "born_place": "Nottingham",
+      "properties": [65],
+      "census": [{ "census_year": 1911, "property_id": 65, "address": "Clare Valley (The Bungalow)",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 38, "birth_place": "Nottingham",
+                   "source": "1911 census, Clare Valley — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Mary Stake", "last_name": "Townsend", "match_born_year": true, "sex": "F",
+      "born_year": 1896, "born_place": "Whatton in the Vale, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [65],
+      "census": [{ "census_year": 1911, "property_id": 65, "address": "Clare Valley (The Bungalow)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Whatton in the Vale, Nottinghamshire",
+                   "source": "1911 census, Clare Valley — transcribed by A. Hagues" }]
+    }
+  ]
+}
