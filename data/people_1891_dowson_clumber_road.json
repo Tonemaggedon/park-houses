@@ -1,55 +1,97 @@
 {
-  "note": "The Dowson household on the 1891 return, schedule 36, '4 Clumber Road', from the image A. Hagues sent. The year is read from the family, since the strip carries no heading: the record's 1901 Dowsons at Felixstowe, Clumber Road West (#394) give Alice as born 1845 and the twins Bernard W. and Alexander as born 1874, which makes Alice 46 and the twins 17 in 1891, as written here. Benjamin (#2804), Alice (#2805), Bernard (#2807) and Alexander (#2808) are bound by number; Herbert Arthur, Hester Mary and Robert Manning are new.\n\nThe record has no numbered house on Clumber Road, so the household is left unfiled under the address the return gives, with Felixstowe named so the unfiled page offers it. Wright's Directory of Nottingham puts Benjamin Dowson, of Dowson & Wright, on Clumber Road West in 1894-95 and 1898-99, and Bernard Withers Dowson at Felixstowe in 1910-11 to 1915-16.\n\nReadings to check against the image: Benjamin's age (read 54), and the ages of Herbert Arthur (read 16), Hester Mary (read 20) and Robert Manning (read 19), which are faint; Alice's birthplace in Norfolk (read Guestwick) and Herbert Arthur's in Cheshire, which are not clear. The directories call Bernard 'Bernard Withers'; the return has Bernard William. Hester Mary is not the Alice M. of 1901, who is not on this page. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, 4 Clumber Road, schedule 36, from the enumerator's page sent by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 48 (Leicester Special Collections id 164554); 1898-99, page 54 (id 165230); 1910-11, page 71 (id 165747).",
+  "note": "The Dowson household on the 1891 return, schedule 36, '4 Clumber Road', from A. Hagues's full transcription, which replaces a first reading of the image that got the ages and birthplaces wrong. Benjamin (#2804), Alice (#2805), Bernard W. (#2807) and Alexander (#2808) were already in the record from 1901 at Felixstowe, Clumber Road West (#394), and are bound by number. Herbert Arthur, Hester Mary, Robert Manning, Felix and the four servants are new.\n\nThere are two pairs of twins: Robert Manning and Bernard William, 17, and Alexander and Felix, 13. That disagrees with the record's 1901 entry for Alexander (#2808), aged 27 and so born 1874, the twins' year; by this return he was born about 1878 and would have been 23 in 1901. The import fills blanks only and leaves #2808's birth year as it is, so the 1901 age wants checking against that return.\n\nThe record has no numbered house on Clumber Road, so the household is left unfiled under the address the return gives, with Felixstowe named so the unfiled page offers it. Wright's Directory of Nottingham puts Benjamin Dowson, of Dowson & Wright, on Clumber Road West in 1894-95 and 1898-99, Bernard Withers Dowson at Felixstowe from 1910-11, and Hubert A. Dowson, of Dowson & Wright, at Brightlands, Clumber Road East, in 1913-14 and 1915-16. The directories call Bernard 'Bernard Withers'; the return has Bernard William. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 4 Clumber Road, schedule 36, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 48 (Leicester Special Collections id 164554); 1898-99, page 54 (id 165230); 1910-11, page 71 (id 165747).",
   "people": [
     {
-      "id": 2804, "first_name": "Benjamin", "last_name": "Dowson", "sex": "M", "born_year": 1836, "born_place": "Tibshelf, Derbyshire",
+      "id": 2804, "first_name": "Benjamin", "last_name": "Dowson", "sex": "M", "born_year": 1837, "born_place": "Geldeston, Norfolk",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 54, "birth_place": "Tibshelf, Derbyshire",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; age faint, read 54" }],
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 54, "birth_place": "Geldeston, Norfolk",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }],
       "relationships": [{ "to": { "id": 2805 }, "type": "spouse_of" }]
     },
     {
-      "id": 2805, "first_name": "Alice", "last_name": "Dowson", "sex": "F", "born_year": 1845, "born_place": "Norfolk",
+      "id": 2805, "first_name": "Alice", "last_name": "Dowson", "sex": "F", "born_year": 1845, "born_place": "Cheshire",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 46, "birth_place": "Guestwick?, Norfolk",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; birthplace in Norfolk not clear" }]
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 46, "birth_place": "Cheshire",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }]
     },
     {
-      "first_name": "Herbert Arthur", "last_name": "Dowson", "match_born_year": true, "sex": "M", "born_year": 1875, "born_place": "Cheshire",
+      "first_name": "Herbert Arthur", "last_name": "Dowson", "match_born_year": true, "sex": "M", "born_year": 1866, "born_place": "Nottingham",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 16, "birth_place": "Cheshire",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; age faint, read 16; town in Cheshire not clear" }],
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 25, "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }],
       "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" }]
     },
     {
-      "first_name": "Hester Mary", "last_name": "Dowson", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Nottingham",
+      "first_name": "Hester Mary", "last_name": "Dowson", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Nottingham",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 20, "birth_place": "Nottingham",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; age faint, read 20" }],
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 23, "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }],
       "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" }]
     },
     {
-      "first_name": "Robert Manning", "last_name": "Dowson", "match_born_year": true, "sex": "M", "born_year": 1872, "born_place": "Nottingham",
+      "first_name": "Robert Manning", "last_name": "Dowson", "match_born_year": true, "sex": "M", "born_year": 1874, "born_place": "Nottingham",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 19, "birth_place": "Nottingham",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; age faint, read 19" }],
-      "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" }]
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 17, "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" },
+                        { "to": { "id": 2807 }, "type": "sibling_of", "notes": "Twins, both 17 on the 1891 return." }]
     },
     {
       "id": 2807, "first_name": "Bernard W", "last_name": "Dowson", "sex": "M", "born_year": 1874, "born_place": "Nottingham",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
                    "relationship": "Son", "marital_status": "Single", "age_at_census": 17, "birth_place": "Nottingham",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; written Bernard William, a twin" }],
-      "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" },
-                        { "to": { "id": 2808 }, "type": "sibling_of", "notes": "Twins, on the 1891 return." }]
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues; written Bernard William" }],
+      "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" }]
     },
     {
-      "id": 2808, "first_name": "Alexander", "last_name": "Dowson", "sex": "M", "born_year": 1874, "born_place": "Nottingham",
+      "id": 2808, "first_name": "Alexander", "last_name": "Dowson", "sex": "M", "born_place": "Nottingham",
       "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 17, "birth_place": "Nottingham",
-                   "source": "1891 census, 4 Clumber Road, schedule 36; marked twins" }],
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 13, "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues; aged 13, a twin of Felix, where the record's 1901 entry gives 27" }],
+      "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" },
+                        { "to": { "first_name": "Felix", "last_name": "Dowson" }, "type": "sibling_of", "notes": "Twins, both 13 on the 1891 return." }]
+    },
+    {
+      "first_name": "Felix", "last_name": "Dowson", "match_born_year": true, "sex": "M", "born_year": 1878, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Scholar", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 13,
+                   "occupation_at_census": "Scholar", "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }],
       "relationships": [{ "to": { "id": 2804 }, "type": "child_of" }, { "to": { "id": 2805 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary Ann", "last_name": "Price", "match_born_year": true, "sex": "F", "born_year": 1859, "born_place": "Knutsford, Cheshire",
+      "occupations": [{ "occupation": "General servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 32,
+                   "occupation_at_census": "General servant", "birth_place": "Knutsford, Cheshire",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emily", "last_name": "Drinkwater", "match_born_year": true, "sex": "F", "born_year": 1848, "born_place": "Birmingham, Warwickshire",
+      "occupations": [{ "occupation": "General servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 43,
+                   "occupation_at_census": "General servant", "birth_place": "Birmingham, Warwickshire",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Jane", "last_name": "Whitcomb", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Hereford",
+      "occupations": [{ "occupation": "General servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "General servant", "birth_place": "Hereford",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Selina", "last_name": "Hard", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Upper Broughton, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "4 Clumber Road (Felixstowe, Clumber Road West, by the 1901 census) - Dowson household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "General servant", "birth_place": "Upper Broughton, Nottinghamshire",
+                   "source": "1891 census, 4 Clumber Road, schedule 36 — transcribed by A. Hagues" }]
     }
   ]
 }
