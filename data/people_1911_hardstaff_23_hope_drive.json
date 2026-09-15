@@ -1,0 +1,51 @@
+{
+  "note": "The Hardstaff household at 23 Hope Drive (#362) on the 1911 return, transcribed by A. Hagues. All six were already in the record there (#1021-#1026), so each is bound by number and only the blanks are filled: Florence Betty's age and birth year, the birthplaces, marital status and occupations.\n\nLeft for checking against the image, since an import never overwrites: the maternity nurse is 'Elizabeth Bayro' in the record and 'Baiylo' in this transcription, born at Dawley, Shropshire; and the baby is 'Florence Betty' in the record, 'Florence Berty' here.\n\nWright's Directory of Nottingham has 'Hardstaff Bernard, perambulator manufacturer' at 23 Hope Drive in 1910-11, and at The Bungalow, Clare Valley (the record's Ribble Lodge, #65) in 1913-14 and 1915-16; the return calls him a commercial traveller, likely for the family business of Thomas Hardstaff, perambulator maker of The Ropewalk. The record files Bernard and Florence Beatrice at 23 Park Valley in 1921, which wants checking against that return: the directories never place them on Park Valley. Emily Goodman (#1026) is also the record's 1921 servant at Elmhurst, Cavendish Road East; the ages agree.",
+  "source": "1911 census, 23 Hope Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11, page 111 (Leicester Special Collections id 165787); 1913-14, page 80 (id 166436); 1915-16, page 82 (id 347723).",
+  "people": [
+    {
+      "id": 1021, "first_name": "Bernard", "last_name": "Hardstaff", "sex": "M", "born_year": 1872, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Commercial traveller", "from_year": 1911, "to_year": 1911 }],
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 39,
+                   "occupation_at_census": "Commercial traveller", "birth_place": "Nottingham",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1022 }, "type": "spouse_of" }]
+    },
+    {
+      "id": 1022, "first_name": "Florence Beatrice", "last_name": "Hardstaff", "sex": "F", "born_year": 1883, "born_place": "Daybrook, Nottinghamshire",
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 28, "birth_place": "Daybrook, Nottinghamshire",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues" }]
+    },
+    {
+      "id": 1023, "first_name": "Louisa Marjorie", "last_name": "Hardstaff", "sex": "F", "born_year": 1908, "born_place": "Nottingham",
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Daughter", "age_at_census": 3, "birth_place": "Nottingham",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1021 }, "type": "child_of" }, { "to": { "id": 1022 }, "type": "child_of" }]
+    },
+    {
+      "id": 1024, "first_name": "Florence Betty", "last_name": "Hardstaff", "sex": "F", "born_year": 1911, "born_place": "Nottingham",
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Daughter", "age_at_census": 0, "birth_place": "Nottingham",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues as Florence Berty, under one year" }],
+      "relationships": [{ "to": { "id": 1021 }, "type": "child_of" }, { "to": { "id": 1022 }, "type": "child_of" }]
+    },
+    {
+      "id": 1025, "first_name": "Elizabeth", "last_name": "Bayro", "sex": "F", "born_year": 1867, "born_place": "Dawley, Shropshire",
+      "occupations": [{ "occupation": "Maternity nurse", "from_year": 1911, "to_year": 1911 }],
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Nurse", "marital_status": "Single", "age_at_census": 44,
+                   "occupation_at_census": "Maternity nurse", "birth_place": "Dawley, Shropshire",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues as Elizabeth Baiylo" }]
+    },
+    {
+      "id": 1026, "first_name": "Emily", "last_name": "Goodman", "sex": "F", "born_year": 1891, "born_place": "Leeds",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "census": [{ "census_year": 1911, "property_id": 362, "address": "23 Hope Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 20,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Leeds",
+                   "source": "1911 census, 23 Hope Drive — transcribed by A. Hagues" }]
+    }
+  ]
+}
