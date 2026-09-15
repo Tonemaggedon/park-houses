@@ -1,0 +1,79 @@
+{
+  "note": "The household of the Rev. George Hill, Baptist minister, on the 1901 return, schedule 52, headed 'Lodge, Clare Valley', transcribed by A. Hagues. None of the eight was in the record. Wright's Directory of Nottingham prints 'Rev. George Hill, M.A. (Baptist)' on Clare Valley in 1898-99, without a house name. The record has no house called Clare Valley Lodge — the name the directory uses from 1910-11, when Alfred James Cooper lived there — and its only lodge on the road, Ribble Lodge, was The Bungalow, so the household is added unfiled under the address the return gives until the lodge is identified. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1901 census, Lodge, Clare Valley, schedule 52 (RG 13/3165), transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1898-99, page 53 (Leicester Special Collections id 165229); 1910-11, page 69 (id 165745).",
+  "people": [
+    {
+      "first_name": "George", "last_name": "Hill", "match_born_year": true, "sex": "M", "title": "Rev.",
+      "born_year": 1848, "born_place": "Worcestershire",
+      "occupations": [{ "occupation": "Baptist minister", "from_year": 1898, "to_year": 1901, "notes": "Wright's Directory 1898-99; 1901 census" }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 53,
+                   "occupation_at_census": "Baptist minister", "birth_place": "Worcestershire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Mary J", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1846, "born_place": "Leicestershire",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 55, "birth_place": "Leicestershire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Ethel", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1874, "born_place": "Oxford",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 27, "birth_place": "Oxford",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary J", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Eveline", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1876, "born_place": "Derby",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 25, "birth_place": "Derby",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary J", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Helen", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1878, "born_place": "Leeds, Yorkshire",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 23, "birth_place": "Leeds, Yorkshire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary J", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Clara", "last_name": "Hill", "match_born_year": true, "sex": "F",
+      "born_year": 1879, "born_place": "Leeds, Yorkshire",
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 22, "birth_place": "Leeds, Yorkshire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary J", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sydney", "last_name": "Hill", "match_born_year": true, "sex": "M",
+      "born_year": 1881, "born_place": "Leeds, Yorkshire",
+      "occupations": [{ "occupation": "Articled clerk (accountant)", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 20,
+                   "occupation_at_census": "Articled clerk (accountant)", "birth_place": "Leeds, Yorkshire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues as 'Articled clerk a c c'" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Hill" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary J", "last_name": "Hill" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Charlotte", "last_name": "Johnson", "match_born_year": true, "sex": "F",
+      "born_year": 1877, "born_place": "Claypole, Lincolnshire",
+      "occupations": [{ "occupation": "Servant, domestic", "from_year": 1901, "to_year": 1901 }],
+      "census": [{ "census_year": 1901, "unresolved_address": "Lodge, Clare Valley (no house of that name in the record) - Hill household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Servant, domestic", "birth_place": "Claypole, Lincolnshire",
+                   "source": "1901 census, Lodge, Clare Valley, schedule 52 — transcribed by A. Hagues" }]
+    }
+  ]
+}
