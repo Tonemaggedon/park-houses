@@ -1,0 +1,81 @@
+{
+  "note": "The Hollins household at 2 Clinton Terrace on the 1891 return, transcribed by A. Hagues. None of the seven was in the record, and 2 Clinton Terrace (#72) held no census household at all. Wright's Directory of Nottingham agrees on the house: 1894-95 lists Claude Hollins, of W. Hollins & Co., at 129 Derby Road, which is 2 Clinton Terrace's Derby Road number. By 1898-99 he is at 7 Cavendish Crescent North, a director of W. Hollins & Co. Ltd. William A. Hollins, a mixture yarn spinner at 5 Tattershall Drive in 1921, is likely family but is not linked here, because nothing on this return shows it. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 2 Clinton Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 56 (Leicester Special Collections id 164562); 1898-99, page 50 (id 165226).",
+  "people": [
+    {
+      "first_name": "Claude", "last_name": "Hollins", "match_born_year": true, "sex": "M",
+      "born_year": 1853, "born_place": "Lancashire",
+      "occupations": [{ "occupation": "Wool and cotton spinner", "from_year": 1891, "to_year": 1891 }],
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 38,
+                   "occupation_at_census": "Wool cotton spinner", "birth_place": "Lancashire",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }],
+      "relationships": [
+        { "to": { "first_name": "Clara Mary", "last_name": "Hollins" }, "type": "spouse_of" },
+        { "to": { "first_name": "Edith Marion", "last_name": "Hollins" }, "type": "sibling_of",
+          "notes": "Recorded as the head's sister on the 1891 return for 2 Clinton Terrace." }
+      ]
+    },
+    {
+      "first_name": "Clara Mary", "last_name": "Hollins", "match_born_year": true, "sex": "F",
+      "born_year": 1857, "born_place": "London, Middlesex",
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 34,
+                   "birth_place": "London, Middlesex",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Claude A H", "last_name": "Hollins", "match_born_year": true, "sex": "M",
+      "born_year": 1887, "born_place": "Standard Hill, Nottingham",
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Son", "age_at_census": 4, "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }],
+      "relationships": [
+        { "to": { "first_name": "Claude", "last_name": "Hollins" }, "type": "child_of" },
+        { "to": { "first_name": "Clara Mary", "last_name": "Hollins" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Edith Marion", "last_name": "Hollins", "match_born_year": true, "sex": "F",
+      "born_year": 1857, "born_place": "Lancashire",
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 34,
+                   "birth_place": "Lancashire",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Jane", "last_name": "Walshe", "match_born_year": true, "sex": "F",
+      "born_year": 1867, "born_place": "Ireland",
+      "occupations": [{ "occupation": "Parlour maid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Parlour maid, domestic", "birth_place": "Ireland",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emily J H", "last_name": "Aubrey", "match_born_year": true, "sex": "F",
+      "born_year": 1866, "born_place": "Camberwell, Surrey",
+      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Nurse, domestic", "birth_place": "Camberwell, Surrey",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ruth", "last_name": "Phillips", "match_born_year": true, "sex": "F",
+      "born_year": 1866, "born_place": "Peterborough, Huntingdonshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [72],
+      "census": [{ "census_year": 1891, "property_id": 72, "address": "2 Clinton Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Peterborough, Huntingdonshire",
+                   "source": "1891 census, 2 Clinton Terrace — transcribed by A. Hagues" }]
+    }
+  ]
+}
