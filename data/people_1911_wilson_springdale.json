@@ -1,0 +1,221 @@
+{
+  "note": "The Wilson household at Springdale, Clare Valley (#66), on the 1911 return, transcribed by A. Hagues. Springdale held no census record for any year. Wright's Directory of Nottingham prints 'Springdale, Wilson James Calvert, surveyor' on Clare Valley in 1910-11, 1913-14 and 1915-16.\n\nThe two visitors are Richardsons. Arthur Whitby Richardson, wholesale grocer, is already in the record (#1546, born 1888, at 3 Lenton Avenue in 1921) and is bound by number. Donald Hickling Richardson, bank clerk, born about 1893, is added new: the record's Donald S Richardson of Grove House, Clare Valley in 1921 is born 1888 with a different middle initial, so they are not joined on this evidence. Edith Wilson (#569, born 1884) of Western Terrace is a different woman from both Ediths here. The servant's surname is as transcribed, Wathing. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, Springdale, Clare Valley, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11, page 69 (Leicester Special Collections id 165745); 1913-14, page 80 (id 166436); 1915-16, page 82 (id 347723).",
+  "people": [
+    {
+      "first_name": "James Calvert",
+      "last_name": "Wilson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1862,
+      "born_place": "Huddersfield, Yorkshire",
+      "occupations": [
+        {
+          "occupation": "Land surveyor",
+          "from_year": 1910,
+          "to_year": 1916,
+          "notes": "1911 census; Wright's Directory 1910-16"
+        }
+      ],
+      "properties": [
+        66
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 49,
+          "occupation_at_census": "Land surveyor",
+          "birth_place": "Huddersfield, Yorkshire",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith",
+      "last_name": "Wilson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1862,
+      "born_place": "Huddersfield, Yorkshire",
+      "properties": [
+        66
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 49,
+          "birth_place": "Huddersfield, Yorkshire",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "James Calvert",
+            "last_name": "Wilson"
+          },
+          "type": "spouse_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Mary Dorothy",
+      "last_name": "Wilson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1892,
+      "born_place": "Burnley, Lancashire",
+      "properties": [
+        66
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 19,
+          "birth_place": "Burnley, Lancashire",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "James Calvert",
+            "last_name": "Wilson"
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Edith Lilian",
+      "last_name": "Wilson",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1895,
+      "born_place": "Burnley, Lancashire",
+      "properties": [
+        66
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 16,
+          "birth_place": "Burnley, Lancashire",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "James Calvert",
+            "last_name": "Wilson"
+          },
+          "type": "child_of"
+        }
+      ]
+    },
+    {
+      "first_name": "Florence Gertrude",
+      "last_name": "Wathing",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1894,
+      "born_place": "Sutton on Trent, Nottinghamshire",
+      "occupations": [
+        {
+          "occupation": "General servant, domestic",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "properties": [
+        66
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 17,
+          "occupation_at_census": "General servant, domestic",
+          "birth_place": "Sutton on Trent, Nottinghamshire",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues; surname as transcribed"
+        }
+      ]
+    },
+    {
+      "id": 1546,
+      "first_name": "Arthur Whitby",
+      "last_name": "Richardson",
+      "sex": "M",
+      "born_year": 1888,
+      "born_place": "Nottingham",
+      "occupations": [
+        {
+          "occupation": "Wholesale grocer",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Visitor",
+          "marital_status": "Single",
+          "age_at_census": 23,
+          "occupation_at_census": "Wholesale grocer",
+          "birth_place": "Nottingham",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ]
+    },
+    {
+      "first_name": "Donald Hickling",
+      "last_name": "Richardson",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1893,
+      "born_place": "Nottingham",
+      "occupations": [
+        {
+          "occupation": "Bank clerk",
+          "from_year": 1911,
+          "to_year": 1911
+        }
+      ],
+      "census": [
+        {
+          "census_year": 1911,
+          "property_id": 66,
+          "address": "Springdale, Clare Valley",
+          "relationship": "Visitor",
+          "marital_status": "Single",
+          "age_at_census": 18,
+          "occupation_at_census": "Bank clerk",
+          "birth_place": "Nottingham",
+          "source": "1911 census, Springdale, Clare Valley — transcribed by A. Hagues"
+        }
+      ]
+    }
+  ]
+}
