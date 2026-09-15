@@ -1,0 +1,129 @@
+{
+  "note": "The Wilkins household at 4 Clare Valley (#62) on the 1901 and 1911 returns, transcribed by A. Hagues. 4 Clare Valley held no census record for any year.\n\nThe mother is the record's E Jessie Wilkins (#1948, born 1870, held only in 1921). She is 'E J' on the 1901 transcription (wife, 30) and Jessie on the 1911 (widow, 41), which agree with each other and with her 1921 name, so all three are bound to #1948. Her husband Lawrence (the transcription reads 'Lawarince'), clergyman of the Church of England, is Wright's Directory's 'Rev. L. Wilkins, M.A., vicar of St. James'', on Clare Valley in 1894-95 and 1898-99; he had died by 1911. The directory has 'Mrs. Jessie Wilkins' on Clare Valley in 1910-11 and at 4 Clare Valley in 1913-14 and 1915-16.\n\nThe daughters are not joined across the two years. By age, Joyce (15 in 1911, born about 1896) would be Eleanor (5 in 1901) and Mary (14 in 1911, born about 1897) would be Jessie (4 in 1901), but neither pair shares a name, so they are left as separate records until a baptism or the returns themselves settle it; L. A. (6 in 1901) is not in the 1911 household. The 1911 servants' birthplace, transcribed 'Woodvilee, Staffs', is Woodville, Derbyshire.\n\nNot changed here: E Jessie Wilkins's 1921 record sits at 3 Clare Valley (#61) as a second household beside the Curshams, with Winifred M Waters as her boarder. With the directory keeping her at number 4 to 1915-16, it very likely belongs at 4 Clare Valley too. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1901 and 1911 censuses, 4 Clare Valley, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 47 (Leicester Special Collections id 164553); 1898-99, page 53 (id 165229); 1910-11, page 69 (id 165745); 1913-14, page 80 (id 166436); 1915-16, page 82 (id 347723).",
+  "people": [
+    {
+      "first_name": "Lawrence", "last_name": "Wilkins", "match_born_year": true, "sex": "M",
+      "born_year": 1862, "born_place": "Richmond, Yorkshire", "title": "Rev.",
+      "occupations": [{ "occupation": "Clergyman (Church of England), vicar of St James's", "from_year": 1894, "to_year": 1901,
+                        "notes": "Wright's Directory 1894-95 and 1898-99; 1901 census" }],
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 39,
+                   "occupation_at_census": "Clergyman (C of E)", "birth_place": "Richmond, Yorkshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues as Lawarince" }],
+      "relationships": [{ "to": { "id": 1948 }, "type": "spouse_of" }]
+    },
+    {
+      "id": 1948, "first_name": "E Jessie", "last_name": "Wilkins", "sex": "F", "born_place": "Nottingham",
+      "properties": [62],
+      "census": [
+        { "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+          "relationship": "Wife", "marital_status": "Married", "age_at_census": 30, "birth_place": "Nottinghamshire",
+          "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues as E J Wilkins" },
+        { "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+          "relationship": "Head", "marital_status": "Widowed", "age_at_census": 41,
+          "occupation_at_census": "Private means", "birth_place": "Nottingham",
+          "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues as Jessie Wilkins" }
+      ]
+    },
+    {
+      "first_name": "L A", "last_name": "Wilkins", "match_born_year": true, "sex": "M", "born_year": 1895, "born_place": "Nottinghamshire",
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 6, "birth_place": "Nottinghamshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Lawrence", "last_name": "Wilkins" }, "type": "child_of" }, { "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Eleanor", "last_name": "Wilkins", "match_born_year": true, "sex": "F", "born_year": 1896, "born_place": "Nottinghamshire",
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 5, "birth_place": "Nottinghamshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Lawrence", "last_name": "Wilkins" }, "type": "child_of" }, { "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Jessie", "last_name": "Wilkins", "match_born_year": true, "sex": "F", "born_year": 1897, "born_place": "Nottinghamshire",
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 4, "birth_place": "Nottinghamshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Lawrence", "last_name": "Wilkins" }, "type": "child_of" }, { "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Minnie", "last_name": "Lee", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Tutbury, Staffordshire",
+      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Nurse, domestic", "birth_place": "Tutbury, Staffordshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ida", "last_name": "Scott", "match_born_year": true, "sex": "F", "born_year": 1881, "born_place": "Mansfield, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 20,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Mansfield, Nottinghamshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ruth", "last_name": "Hallam", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Hoveringham, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
+      "properties": [62],
+      "census": [{ "census_year": 1901, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 14,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Hoveringham, Nottinghamshire",
+                   "source": "1901 census, 4 Clare Valley — transcribed by A. Hagues" }]
+    },
+
+    {
+      "first_name": "Joyce", "last_name": "Wilkins", "match_born_year": true, "sex": "F", "born_year": 1896, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "At school", "from_year": 1911, "to_year": 1911 }],
+      "properties": [62],
+      "census": [{ "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "School", "birth_place": "Nottingham",
+                   "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Wilkins", "match_born_year": true, "sex": "F", "born_year": 1897, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "At school", "from_year": 1911, "to_year": 1911 }],
+      "properties": [62],
+      "census": [{ "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Daughter", "age_at_census": 14,
+                   "occupation_at_census": "School", "birth_place": "Nottingham",
+                   "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Margaret", "last_name": "Wilkins", "match_born_year": true, "sex": "F", "born_year": 1902, "born_place": "Nottingham",
+      "properties": [62],
+      "census": [{ "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Daughter", "age_at_census": 9, "birth_place": "Nottingham",
+                   "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1948 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Mansfield", "match_born_year": true, "sex": "F", "born_year": 1884, "born_place": "Woodville, Derbyshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [62],
+      "census": [{ "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Woodville, Derbyshire",
+                   "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues; birthplace transcribed Woodvilee, Staffs" }]
+    },
+    {
+      "first_name": "Edith", "last_name": "Mansfield", "match_born_year": true, "sex": "F", "born_year": 1893, "born_place": "Woodville, Derbyshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [62],
+      "census": [{ "census_year": 1911, "property_id": 62, "address": "4 Clare Valley",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Woodville, Derbyshire",
+                   "source": "1911 census, 4 Clare Valley — transcribed by A. Hagues; birthplace transcribed Woodvilee, Staffs" }]
+    }
+  ]
+}
