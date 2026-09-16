@@ -1,0 +1,32 @@
+{
+  "note": "Fills only, for the household already filed at 6 Park Valley, Stuart Cottage (#262) on the 1921 return: Mary Enfield at 79, her brother Henry at 71, an artist, Jane Chaffer her companion at 78, and two servants. All five are bound by number, so nothing is created and nothing already entered is overwritten. Their census rows carried no address and no source, which left no record of why they sit where they do; this writes both on.\n\n**A. Hagues confirms the house: they are definitely at 6 Park Valley.** That matters beyond this household, because their 1921 schedule gives the address as **Broxtowe House** - the same name Dr Kneebone's schedule gives for his own house at the Park Terrace end of the estate, 230 metres away. Both cannot be one building, so the name was carried by two houses, or Stuart Cottage was also known as Broxtowe House. Since this household is now settled, the open question narrows to the other end: where Kneebone's Broxtowe House was. Findmypast indexes this household as 6 Park Valley, which agrees with the filing.\n\n**Worth adding to the property record:** Broxtowe House looks like a former or alternative name for 6 Park Valley (#262) and would be worth recording as one, which an import cannot do. Henry is returned as Mary's brother and they are linked as siblings here. See [[broxtowe-house-where]].",
+  "source": "1921 census, 6 Park Valley (Stuart Cottage), returned as Broxtowe House; house confirmed by A. Hagues.",
+  "people": [
+    {
+      "id": 1871, "first_name": "Mary", "last_name": "Enfield", "sex": "F",
+      "census": [{ "census_year": 1921, "property_id": 262, "address": "Broxtowe House, 6 Park Valley (Stuart Cottage)",
+                   "source": "1921 census, returned as Broxtowe House; the house confirmed as 6 Park Valley by A. Hagues" }]
+    },
+    {
+      "id": 1872, "first_name": "Henry", "last_name": "Enfield", "sex": "M",
+      "census": [{ "census_year": 1921, "property_id": 262, "address": "Broxtowe House, 6 Park Valley (Stuart Cottage)",
+                   "source": "1921 census, returned as Broxtowe House; the house confirmed as 6 Park Valley by A. Hagues" }],
+      "relationships": [{ "to": { "id": 1871 }, "type": "sibling_of" }]
+    },
+    {
+      "id": 1873, "first_name": "Jane", "last_name": "Chaffer", "sex": "F",
+      "census": [{ "census_year": 1921, "property_id": 262, "address": "Broxtowe House, 6 Park Valley (Stuart Cottage)",
+                   "source": "1921 census, returned as Broxtowe House; the house confirmed as 6 Park Valley by A. Hagues" }]
+    },
+    {
+      "id": 1874, "first_name": "Alice M", "last_name": "Frost", "sex": "F",
+      "census": [{ "census_year": 1921, "property_id": 262, "address": "Broxtowe House, 6 Park Valley (Stuart Cottage)",
+                   "source": "1921 census, returned as Broxtowe House; the house confirmed as 6 Park Valley by A. Hagues" }]
+    },
+    {
+      "id": 1875, "first_name": "Elizabeth A", "last_name": "Body", "sex": "F",
+      "census": [{ "census_year": 1921, "property_id": 262, "address": "Broxtowe House, 6 Park Valley (Stuart Cottage)",
+                   "source": "1921 census, returned as Broxtowe House; the house confirmed as 6 Park Valley by A. Hagues" }]
+    }
+  ]
+}
