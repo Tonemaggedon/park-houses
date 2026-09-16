@@ -20,6 +20,32 @@ app.use((req, res, next) => {
   next();
 });
 
+// ── Keep the site out of search results, for now ──────────────────────────────
+// The research questions were turning up in Google before the record is ready to
+// be read by strangers. This header goes on every response — pages, static files
+// and API JSON alike — so nothing needs adding to individual pages, and any page
+// added later is covered without being remembered about.
+//
+// Deliberately paired with a robots.txt that still allows crawling. Disallowing
+// the crawl would be the wrong tool: a crawler that is not allowed to fetch a
+// page never sees the noindex on it, so anything already listed stays listed.
+// Letting them fetch and read "noindex" is what removes the existing entries.
+// Once the results have cleared and the site is meant to be public, delete this
+// block; if the site should instead be hidden for good, that is when a
+// "Disallow: /" makes sense.
+app.use((req, res, next) => {
+  res.header('X-Robots-Tag', 'noindex, nofollow');
+  next();
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain').send(
+    '# Not ready to be indexed yet. Every response carries an X-Robots-Tag of\n' +
+    '# "noindex, nofollow"; crawling is left open so that header can be seen.\n' +
+    'User-agent: *\n' +
+    'Allow: /\n');
+});
+
 // ── Config ────────────────────────────────────────────────────────────────────
 const IS_PROD        = process.env.NODE_ENV === 'production';
 const ADMIN_USER     = process.env.ADMIN_USER || 'admin';
