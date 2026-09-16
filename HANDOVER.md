@@ -9,6 +9,13 @@ Properties, residents, census returns, and the sources behind them.
 - **Host:** Railway — auto-deploys on push to `main`
 - **Last verified:** 13 September 2026
 
+**Guides**
+
+- [docs/contributor-guide.md](docs/contributor-guide.md) — every page, what a contributor can do on
+  it, the research section, and the tools built in for reviewing a house. Start here for someone new.
+- [docs/what-claude-can-change.md](docs/what-claude-can-change.md) — which changes an import file can
+  make and which have to be done on the site, with the traps that have caught us.
+
 ---
 
 ## Security rules — these are not negotiable
