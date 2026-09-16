@@ -18,8 +18,8 @@ actions stay with a contributor signed in to the site.
 | Merge two people | You, on the site | Imports cannot delete or combine records |
 | Correct a name | You, on the site | An import never renames anybody |
 | Change a wrong value | You, on the site | An import never overwrites |
-| House names, dates, descriptions, coordinates | You, on the site | Imports do not touch property fields |
-| Create a new property | You, on the site | Same |
+| Create a new property, or set its base fields | Claude, in the repo | Properties live in `data/all_props.json` |
+| Edit a property through the site | You, on the site | Site edits go to a separate override layer |
 | Research questions | Claude, by data file | They live in `data/research_questions.json` |
 | Code, scripts, directory tooling | Claude, in the repo | Normal development, pushed to main |
 
@@ -65,13 +65,27 @@ counts as empty, since that is the sex written into the wrong column.
 - **Merge two records into one.**
 - **Rename anyone**, or correct a name that came in wrong.
 - **Change any value that is already filled in**, however plainly wrong it is.
-- **Anything about a property** — house name, former names, build date, description, history,
-  listing, coordinates — and creating a property that does not yet exist.
 - **Delete anything at all.**
 - **Upload photographs.**
 
 None of this is a permissions problem to be worked around: those endpoints need a contributor
 login, and Claude does not use anyone's credentials.
+
+## Properties are the exception, and they have two layers
+
+Property records are not in the database the way people are. The base record of every house lives
+in **`data/all_props.json`** in the repo, which is the file the map and the property list are served
+from. Claude can edit that file directly, so **creating a property and setting its base fields is
+something Claude can do** — The Cottage in the grounds of Lincoln House (#414) was added that way.
+
+Edits made through the site go somewhere else: a `property_data` table in production, or
+`data/property_overrides.json` when running on files. That store is keyed by property id and is read
+for a single property's detail, not for the list. So the two layers sit side by side rather than one
+overwriting the other, and a field edited on the site is held separately from the base record.
+
+The practical consequence: ask for a new property, or a correction to a base field, and Claude can do
+it in the repo. If a house has been edited on the site and the change does not appear, the override
+layer is the place to look.
 
 ## Five traps, all of which have bitten us
 

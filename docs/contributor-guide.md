@@ -136,6 +136,12 @@ suggestions, propose notable residents, and open, claim and answer research ques
 anything, run the bulk tools that change many records at once, manage users, and geocode
 birthplaces.
 
+**Properties are a special case.** The base record of every house lives in `data/all_props.json` in
+the repository, not in the database, and that file is what the map and the property list are served
+from. Edits made here on the site are kept separately, in an override store keyed by property id.
+So a new house, or a correction to a base field, can be made in the repository — while the editing
+you do on a property page is held alongside it rather than replacing it.
+
 See [what-claude-can-change.md](what-claude-can-change.md) for which of these can be done by an
 import file and which have to be done on the site.
 
