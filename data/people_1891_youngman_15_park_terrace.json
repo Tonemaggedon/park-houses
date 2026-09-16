@@ -1,0 +1,33 @@
+{
+  "note": "Joseph F Youngman, assistant bank manager, a single man keeping house with his elder sister and one young servant at 15 Park Terrace (#254) on the 1891 return, transcribed by A. Hagues. None of the three was in the record, and 15 Park Terrace held only 1921 (the Trumans), so 1891 is free.\n\n**The directory keeps him at the house through the decade.** Wright's Directory of Nottingham prints 'Italian villas, Joseph F. Youngman, Bank clerk' at 15 Park Terrace in 1894-95 and 'Italian villas, Jph. F. Youngman, assistant manager of bank' there in 1898-99. The 1898-99 description matches this return exactly; the 1894-95 volume calls him a bank clerk, a step below what the census gives him three years earlier, and that difference is left standing rather than smoothed over. By 1910-11 number 15 belongs to James H. Soames and then to Mrs Betty Truman, which fits the Trumans being there in 1921.\n\n**A probable later address, not joined here.** The same directories print 'Youngman Joseph Fletcher' at 38 The Ropewalk in 1910-11, 1913-14 and 1915-16. The distinctive name makes it very likely the same man, moved off Park Terrace, and it would give his middle name as Fletcher - but a directory line alone does not prove it, so nothing is added to his name and no Ropewalk address is recorded.\n\n**'Italian villas' is a group name, not one house.** The 1898-99 volume prints it against numbers 15, 16 and 17 of Park Terrace, each with a different householder: Youngman at 15, William F. Bromley at 16, John Thompson Brewster at 17. None of the three properties (#254, #255, #256) carries a house name in the record, and this file does not set one, but the name looks worth adding to all three as a former group name.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 15 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "Joseph F", "last_name": "Youngman", "match_born_year": true, "sex": "M", "born_year": 1851, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Assistant bank manager", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 (as bank clerk) and 1898-99" }],
+      "properties": [254],
+      "census": [{ "census_year": 1891, "property_id": 254, "address": "15 Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 40,
+                   "occupation_at_census": "Assistant bank manager", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 15 Park Terrace - transcribed by A. Hagues; at the same house, called Italian Villas, in Wright's Directory 1894-95 and 1898-99" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Youngman", "match_born_year": true, "sex": "F", "born_year": 1849, "born_place": "Nottinghamshire",
+      "properties": [254],
+      "census": [{ "census_year": 1891, "property_id": 254, "address": "15 Park Terrace",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 42,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 15 Park Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Joseph F", "last_name": "Youngman" }, "type": "sibling_of" }]
+    },
+    {
+      "first_name": "Alice", "last_name": "Congreave", "match_born_year": true, "sex": "F", "born_year": 1875, "born_place": "Bramcote, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [254],
+      "census": [{ "census_year": 1891, "property_id": 254, "address": "15 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "General servant", "birth_place": "Bramcote, Nottinghamshire",
+                   "source": "1891 census, 15 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}
