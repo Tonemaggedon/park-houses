@@ -1,0 +1,24 @@
+{
+  "note": "Henry Roby Thorpe, solicitor and official receiver in banking, a single man with his housekeeper, at 9 Park Terrace (#249) on the 1891 return, transcribed by A. Hagues. 9 Park Terrace held no census record at all before this.\n\n**Both of them are already in the record, ten years later and at another house.** Henry R. Thorpe (#2872, born 1836, solicitor) and Jane Barker (#2873, born 1841, housekeeper) are filed at 5 Lenton Avenue on the 1901 return - the same names, the same birth years, the same trades, and master and housekeeper together in both. Wright's Directory confirms the move and the man: 'Henry Roby Thorpe, official recvr' at 5 Lenton Avenue in 1894-95, and 'Hy. Roby Thorpe, (official receiver)' there in 1898-99. His census occupation here, solicitor and official receiver in banking, matches the directory's description exactly. So he left 9 Park Terrace for 5 Lenton Avenue between 1891 and 1894, and took Jane Barker with him. Both are bound by number, so this adds 1891 to the people already held.\n\n**A second Thorpe of the same family is not this man.** Wright's prints 'Roby L. Thorpe, of Thorpe & Perry' on South Road in 1894-95 and 1898-99, and the record holds Roby Eddington Thorpe (#3184, born 1840, solicitor), Nelly Thorpe (#3185) and Dorothea Mary Roby Thorpe (#3186) with 1891 censuses and no property. The shared Roby name and the shared profession suggest a connection, but nothing here establishes one, so no link is made and none of them is bound to Henry. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 9 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613) for 5 Lenton Avenue; 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "id": 2872, "first_name": "Henry R.", "last_name": "Thorpe", "sex": "M", "born_year": 1836, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Solicitor, official receiver in banking", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
+      "properties": [249],
+      "census": [{ "census_year": 1891, "property_id": 249, "address": "9 Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 55,
+                   "occupation_at_census": "Solicitor, official receiver in banking", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 9 Park Terrace - transcribed by A. Hagues; sent as Henry Roby Thorpe" }]
+    },
+    {
+      "id": 2873, "first_name": "Jane", "last_name": "Barker", "sex": "F", "born_year": 1841, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Housekeeper, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [249],
+      "census": [{ "census_year": 1891, "property_id": 249, "address": "9 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 50,
+                   "occupation_at_census": "Housekeeper, domestic", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 9 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

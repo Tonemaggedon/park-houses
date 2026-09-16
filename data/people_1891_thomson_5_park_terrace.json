@@ -1,0 +1,42 @@
+{
+  "note": "Two curates sharing 5 Park Terrace (#245) on the 1891 return, with a cook and a housemaid, transcribed by A. Hagues. None of the four was in the record, and 5 Park Terrace held only 1921, so 1891 is free.\n\nLeonard J W Thomson, 27, is curate of St Margaret's; Edward P Anderson, 27, returned as a lodger, is curate of St Thomas's and was born in Glasgow. Two curates of the same age keeping house together reads as shared clergy lodgings rather than a family household, and neither is joined to the other. Both had gone by 1894, when Wright's Directory prints Job E. Sanby of the Midland Lace Company at number 5; curates moved on quickly, so this is unsurprising.\n\nThe head's surname is entered as transcribed, Thomson without the p. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 5 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613).",
+  "people": [
+    {
+      "first_name": "Leonard J W", "last_name": "Thomson", "match_born_year": true, "sex": "M", "born_year": 1864, "born_place": "London, Middlesex",
+      "occupations": [{ "occupation": "Clerk in holy orders, curate of St Margaret's", "from_year": 1891, "to_year": 1891 }],
+      "properties": [245],
+      "census": [{ "census_year": 1891, "property_id": 245, "address": "5 Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "Clerk in holy orders, curate of St Margaret's", "birth_place": "London, Middlesex",
+                   "source": "1891 census, 5 Park Terrace - transcribed by A. Hagues; surname as transcribed" }]
+    },
+    {
+      "first_name": "Edward P", "last_name": "Anderson", "match_born_year": true, "sex": "M", "born_year": 1864, "born_place": "Glasgow, Scotland",
+      "occupations": [{ "occupation": "Clerk in holy orders, curate of St Thomas's", "from_year": 1891, "to_year": 1891 }],
+      "properties": [245],
+      "census": [{ "census_year": 1891, "property_id": 245, "address": "5 Park Terrace",
+                   "relationship": "Lodger", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "Clerk in holy orders, curate of St Thomas's", "birth_place": "Glasgow, Scotland",
+                   "source": "1891 census, 5 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Harriett E", "last_name": "Robbins", "match_born_year": true, "sex": "F", "born_year": 1860, "born_place": "Monmouthshire, Wales",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [245],
+      "census": [{ "census_year": 1891, "property_id": 245, "address": "5 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 31,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Monmouthshire, Wales",
+                   "source": "1891 census, 5 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Mary Ann", "last_name": "Rofe", "match_born_year": true, "sex": "F", "born_year": 1874, "born_place": "Upwell, Cambridgeshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [245],
+      "census": [{ "census_year": 1891, "property_id": 245, "address": "5 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Upwell, Cambridgeshire",
+                   "source": "1891 census, 5 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

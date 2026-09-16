@@ -1,0 +1,59 @@
+{
+  "note": "The household of Elizabeth Weaver, widow and wine merchant, with her two daughters, her sister and two servants at 2 Park Terrace (#242) on the 1891 return, transcribed by A. Hagues. None of the six was in the record, and 2 Park Terrace held only 1921, so 1891 is free.\n\nA widow carrying on a wine merchant's business in her own name is worth noticing; the return gives her the trade outright, not as a relict or an assistant. She had left the house by 1894, when Wright's Directory prints Edward M. C. Harvey, barrister, at number 2, and Samuel Lowater, hosiery manufacturer, there in 1898-99.\n\nAnn Bellanug is entered as transcribed. The surname is not a Nottinghamshire or Lincolnshire name in any form I can find, and it reads like an index rendering of something else; the schedule itself would settle it. She is returned as the head's sister while carrying a different surname, which would follow if Weaver is Elizabeth's married name and Bellanug something like her maiden one - but the return does not say so, and no maiden name is recorded on that guess. The two daughters are given no occupation on the return, so none is entered. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 2 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "Elizabeth", "last_name": "Weaver", "match_born_year": true, "sex": "F", "born_year": 1840, "born_place": "Great Ponton, Lincolnshire",
+      "occupations": [{ "occupation": "Wine merchant", "from_year": 1891, "to_year": 1891 }],
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 51,
+                   "occupation_at_census": "Wine merchant", "birth_place": "Great Ponton, Lincolnshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ethel", "last_name": "Weaver", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Nottinghamshire",
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 22,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Elizabeth", "last_name": "Weaver" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Nora", "last_name": "Weaver", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Nottinghamshire",
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 18,
+                   "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Elizabeth", "last_name": "Weaver" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Ann", "last_name": "Bellanug", "match_born_year": true, "sex": "F", "born_year": 1839, "born_place": "Lincolnshire",
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 52,
+                   "occupation_at_census": "Living on own means", "birth_place": "Lincolnshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues; surname as transcribed, and likely an index rendering" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "James", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Alice", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Ripley, Derbyshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [242],
+      "census": [{ "census_year": 1891, "property_id": 242, "address": "2 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Ripley, Derbyshire",
+                   "source": "1891 census, 2 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

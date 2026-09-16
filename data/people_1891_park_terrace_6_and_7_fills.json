@@ -1,0 +1,36 @@
+{
+  "note": "Fills only. Both these households were already in the record with their 1891 censuses - Ann Mallet and Hannah Sharratt at 6 Park Terrace (#246), and the Ensors with Isabella Shipman at 7 Park Terrace (#247) - but their census rows carry no marital status, no birthplace and no source, and the people carry no birthplace. A. Hagues has now transcribed both returns, and everyone here is bound by number, so nothing is created and nothing already entered is overwritten.\n\n**Where the transcription and the record differ, the record keeps what it has.** The transcription spells the head of number 6 Mallett with two t's against the record's Mallet, which is also the directory's spelling in 1894-95 and 1898-99; an import does not rename anybody, so it stays Mallet. Hannah Sharratt's age of 26 works back to about 1865 while her record says 1862; Frederic Rainford Ensor's age of 83 works back to about 1808 while his record says 1807 and gives him a death in 1892. Those are ordinary census rounding, and both records keep their years.\n\n**On the spelling of Mrs Ensor's name:** A. Hagues suspected Thomasina. The evidence runs the other way - the record has her as Thomasine across five censuses from 1861 to 1901, this 1891 transcription gives Thomasine, and Wright's Directory prints 'Mrs. Thomasine Ensor' at 7 Park Terrace in 1894-95. Nothing is changed. Frederic Rainford Ensor is on the lace makers' watch list (#125), and the 1858 directory prints 'Ensor F. R., Park terrace', so the family held number 7 for at least thirty-three years.",
+  "source": "1891 census, 6 and 7 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "id": 112, "first_name": "Ann", "last_name": "Mallet", "sex": "F", "born_place": "Arnold, Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 246, "address": "6 Park Terrace",
+                   "marital_status": "Widow", "birth_place": "Arnold, Nottinghamshire",
+                   "source": "1891 census, 6 Park Terrace - transcribed by A. Hagues; surname transcribed Mallett" }]
+    },
+    {
+      "id": 118, "first_name": "Hannah", "last_name": "Sharratt", "sex": "F", "born_place": "Whittington, Derbyshire",
+      "census": [{ "census_year": 1891, "property_id": 246, "address": "6 Park Terrace",
+                   "marital_status": "Single", "birth_place": "Whittington, Derbyshire",
+                   "source": "1891 census, 6 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "id": 125, "first_name": "Frederic Rainford", "last_name": "Ensor", "sex": "M", "born_place": "Somers Town, Middlesex",
+      "census": [{ "census_year": 1891, "property_id": 247, "address": "7 Park Terrace",
+                   "marital_status": "Married", "birth_place": "Somers Town, Middlesex",
+                   "source": "1891 census, 7 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "id": 126, "first_name": "Thomasine", "last_name": "Ensor", "sex": "F", "born_place": "Finchley, Middlesex",
+      "census": [{ "census_year": 1891, "property_id": 247, "address": "7 Park Terrace",
+                   "marital_status": "Married", "birth_place": "Finchley, Middlesex",
+                   "source": "1891 census, 7 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "id": 132, "first_name": "Isabella", "last_name": "Shipman", "sex": "F", "born_place": "Kneeton, Nottinghamshire",
+      "census": [{ "census_year": 1891, "property_id": 247, "address": "7 Park Terrace",
+                   "marital_status": "Single", "birth_place": "Kneeton, Nottinghamshire",
+                   "source": "1891 census, 7 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

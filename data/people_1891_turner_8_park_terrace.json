@@ -1,0 +1,41 @@
+{
+  "note": "The household of Catherine Turner, widow, living on her own means at the age of 94, with three servants at 8 Park Terrace (#248) on the 1891 return, transcribed by A. Hagues. None of the four was in the record, and 8 Park Terrace held only 1921 (the Goddards), so 1891 is free.\n\nWright's Directory of Nottingham prints 'Mrs. Catherine Turner' at 8 Park Terrace in 1894-95, so she was still there at about 97; she is gone from the 1898-99 volume, where number 8 is not printed at all. Two great ages stand in this household as the enumerator wrote them: the head at 94, born about 1797, and her housekeeper Ruth Hunter at 84, born about 1807, who had presumably been with her many years. Ages at the far end of life were often rounded or overstated on a return, so both want checking against a burial or probate record before they are relied on.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 8 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613).",
+  "people": [
+    {
+      "first_name": "Catherine", "last_name": "Turner", "match_born_year": true, "sex": "F", "born_year": 1797, "born_place": "Newcastle upon Tyne",
+      "properties": [248],
+      "census": [{ "census_year": 1891, "property_id": 248, "address": "8 Park Terrace",
+                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 94,
+                   "occupation_at_census": "Living on own means", "birth_place": "Newcastle upon Tyne",
+                   "source": "1891 census, 8 Park Terrace - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95" }]
+    },
+    {
+      "first_name": "Ruth", "last_name": "Hunter", "match_born_year": true, "sex": "F", "born_year": 1807, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Housekeeper, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [248],
+      "census": [{ "census_year": 1891, "property_id": 248, "address": "8 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 84,
+                   "occupation_at_census": "Housekeeper, domestic", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 8 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Hannah", "last_name": "Leighton", "match_born_year": true, "sex": "F", "born_year": 1853, "born_place": "Bollington, Cheshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [248],
+      "census": [{ "census_year": 1891, "property_id": 248, "address": "8 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 38,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Bollington, Cheshire",
+                   "source": "1891 census, 8 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Charlotte E", "last_name": "Belfield", "match_born_year": true, "sex": "F", "born_year": 1856, "born_place": "Beeston, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [248],
+      "census": [{ "census_year": 1891, "property_id": 248, "address": "8 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 35,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Beeston, Nottinghamshire",
+                   "source": "1891 census, 8 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}
