@@ -1,0 +1,58 @@
+{
+  "note": "The household of Alfred Bradley, cotton doubler, a single man keeping house with his niece, a visiting governess and three servants at **Broxtowe House, Park Terrace** (#406) on the 1891 return, transcribed by A. Hagues. None of the six was in the record, and Broxtowe House held no census at all, so this is the first household the house has ever carried.\n\n**It was first sent as 3 Park Terrace and corrected by A. Hagues.** The household follows number 1 in the enumerator's round, and a Bradley was expected at number 3, so the number was inferred; the return itself gives Broxtowe House, and the real 3 Park Terrace holds a different Bradley - Charles, a retired surgeon - who is the man Wright's Directory prints at number 3 in 1894-95 and 1898-99. So this file is filed by house name, as the return has it, and no number is given to it.\n\n**It also places the house.** In the 1891 walk Broxtowe House sits between 1 and 3 Park Terrace. That is the first positional evidence for the Park Terrace end of the house, and it should be weighed against the 1921 evidence in the open question on Broxtowe House, where Dr Kneebone's schedule falls between 19 Park Terrace and Sunnyside and the Enfields' falls out by Park Valley. Whether the 1891 house is the same Broxtowe House as either 1921 household is exactly what is unsettled, so nothing here is joined to them. The name appears nowhere in any directory volume, in any spelling.\n\nEleanor Jane Gill is the head's niece, so her mother was probably a Bradley sister; she is not the Alice Margaret Gill already in the record (#1817, born 1873, at 13 Park Terrace in 1921), and no link is made because the return does not name her parents. Alfred and Charles Bradley may well be brothers living a door or two apart, but nothing in the census or the directory says so, so no family link is made between them. Two servant surnames look like index renderings rather than settled spellings and are entered as transcribed: Martha Troobey and Sarah J Mauney. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Broxtowe House, Park Terrace, transcribed by A. Hagues (sent first as 3 Park Terrace, corrected by him to Broxtowe House).",
+  "people": [
+    {
+      "first_name": "Alfred", "last_name": "Bradley", "match_born_year": true, "sex": "M", "born_year": 1846, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Cotton doubler", "from_year": 1891, "to_year": 1891 }],
+      "properties": [406],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 45,
+                   "occupation_at_census": "Cotton doubler", "birth_place": "Nottingham",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Eleanor Jane", "last_name": "Gill", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Nottingham",
+      "properties": [406],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Niece", "marital_status": "Single", "age_at_census": 20,
+                   "birth_place": "Nottingham",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Margaret", "last_name": "Taylor", "match_born_year": true, "sex": "F", "born_year": 1854, "born_place": "Norwich, Norfolk",
+      "occupations": [{ "occupation": "Governess", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Visitor", "marital_status": "Single", "age_at_census": 37,
+                   "occupation_at_census": "Governess", "birth_place": "Norwich, Norfolk",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Sarah", "last_name": "Roberts", "match_born_year": true, "sex": "F", "born_year": 1847, "born_place": "Harrington, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [406],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 44,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Harrington, Lincolnshire",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues; occupation transcribed 'cook domesic'" }]
+    },
+    {
+      "first_name": "Martha", "last_name": "Troobey", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Woodlesford, Yorkshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [406],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Woodlesford, Yorkshire",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues; surname as transcribed" }]
+    },
+    {
+      "first_name": "Sarah J", "last_name": "Mauney", "match_born_year": true, "sex": "F", "born_year": 1864, "born_place": "Terrington, Norfolk",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [406],
+      "census": [{ "census_year": 1891, "property_id": 406, "address": "Broxtowe House, Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Terrington, Norfolk",
+                   "source": "1891 census, Broxtowe House, Park Terrace - transcribed by A. Hagues; surname as transcribed" }]
+    }
+  ]
+}
