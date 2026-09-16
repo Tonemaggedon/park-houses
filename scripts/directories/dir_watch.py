@@ -32,7 +32,13 @@ ARCH_NAMES = ['Thomas Chambers Hine', 'George Hine', 'Watson Fothergill', 'Lawre
               # Marriott Ogle Tarbotton is in the record at 6 South Road in 1881, but as borough surveyor
               # and engineer, so the occupation test above never catches him. His son Harold designed
               # Pattishall House for Frank Hawthorn Burn in 1908 and is not in the record at all.
-              'Marriott Ogle Tarbotton', 'Harold Ogle Tarbotton']
+              'Marriott Ogle Tarbotton', 'Harold Ogle Tarbotton',
+              # Born Stafford 1850; the directory prints him at 15 Newcastle Drive from
+              # 1898-99 to 1915-16, so he lived on the estate as well as building on it.
+              # The record already knows his later practice from two property notes —
+              # Bromley and Cartwright, and Bromley, Cartwright and Waumsley — but has
+              # never held the man.
+              'Albert Nelson Bromley']
 
 PARK = ['albury square', 'barrack lane', 'castle grove', 'cavendish crescent', 'cavendish cres', 'cavendish road',
         'cavendish rd', 'clare valley', 'clifton terrace', 'clinton terrace', 'clumber crescent', 'clumber cres',
