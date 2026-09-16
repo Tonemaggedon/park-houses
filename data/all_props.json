@@ -6568,7 +6568,10 @@
    "existence": "OS 1:1250 sheet, surveyed September 1953, which labels it The Cottage on the outbuildings of Lincoln House \u2014 identified by A. Hagues. The record held no property here.",
    "relationship": "Owner knowledge (A. Hagues): in the grounds of Lincoln House, and distinct from the cottage associated with Gladstone House (#409) and from Penrhyn Cottage (#407).",
    "position": "NOT SURVEYED \u2014 this carries Lincoln House's own approximate position, because Lincoln House is demolished and its position in this record is itself approximate. The 1953 sheet shows the cottage on the Clumber Crescent North frontage, north-west of the house, so this wants placing properly from that sheet or from OpenStreetMap before it is relied on.",
-   "street": "Addressed to Lincoln Circus after A. Hagues, and because the 1921 census returns the Palmers at 2 Lincoln Circus. The 1953 sheet draws it on the Clumber Crescent North frontage, and cottages of this kind usually take the road the garden backs onto, so the street may want revisiting."
-  }
+   "street": "Addressed to Lincoln Circus after A. Hagues, and because the 1921 census returns the Palmers at 2 Lincoln Circus. The 1953 sheet draws it on the Clumber Crescent North frontage, and cottages of this kind usually take the road the garden backs onto, so the street may want revisiting.",
+   "demolished": "Owner knowledge (A. Hagues) \u2014 gone, as Lincoln House is."
+  },
+  "demolished": true,
+  "demolished_notes": "Demolished, with Lincoln House itself (#403). Reported by A. Hagues. The cottage stood in the grounds on the Clumber Crescent North frontage and is drawn on the OS 1:1250 sheet surveyed September 1953, so it was standing then."
  }
 ]
