@@ -1,86 +1,318 @@
 {
-  "note": "The household of John Sylvester, baker, at **8 Pelham Terrace** on the 1891 return - the house now numbered **31 Newcastle Drive** (#223): himself, his wife, four daughters and three servants. Transcribed from the census image by Claude at A. Hagues's request. 31 Newcastle Drive held only 1921, so 1891 is free, and none of the nine was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 8 = 31. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**A reading to check, and it affects the address.** On the schedule the line '6 Pelham Terrace' carries a mark in the uninhabited column, and the number 8 with schedule 77 sits against the next line. I have read that as 6 standing empty and this household occupying 8, which is how these forms normally run - the address and schedule number on the head's line, an empty house noted on a line of its own. If instead the household is at 6, every person here moves to 33 Newcastle Drive (#224), which is also free. Worth a second look at the page.\n\nThe two Roberts servants are entered as the schedule has them: Eliza Roberts, and Elizabeth under a ditto for the surname. They are eleven years apart and may be sisters, but nothing says so. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "note": "The household of John Sylvester, baker, at **8 Pelham Terrace** on the 1891 return - the house now numbered **31 Newcastle Drive** (#223): himself, his wife, four daughters and three servants. Transcribed from the census image by Claude at A. Hagues's request. 31 Newcastle Drive held only 1921, so 1891 is free, and none of the nine was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 8 = 31. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**The address was queried and is settled at 8.** On the schedule the line for 6 Pelham Terrace carries the mark in the uninhabited column, and John Sylvester's name sits level with that line while his wife and children sit against the 8 below it - so the page reads as though the head might belong to either. A. Hagues has checked it: the household is at **8**, which the transcription gives for all nine of them, and the name straddling the line above is the enumerator's layout rather than a second address. 39 - 8 = 31, so the filing here stands.\n\n**6 Pelham Terrace stood empty that night**, which converts to **33 Newcastle Drive (#224)**. The record holds no census at all for that house, and an uninhabited return is a fact about it rather than an absence of one, so it is worth recording there as unoccupied in 1891.\n\nThe two Roberts servants are entered as the schedule has them: Eliza Roberts, and Elizabeth under a ditto for the surname. They are eleven years apart and may be sisters, but nothing says so. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
   "source": "1891 census, 8 Pelham Terrace (now 31 Newcastle Drive), read from the census image supplied by A. Hagues.",
   "people": [
     {
-      "first_name": "John", "last_name": "Sylvester", "match_born_year": true, "sex": "M", "born_year": 1836, "born_place": "St Mary, Nottingham",
-      "occupations": [{ "occupation": "Baker", "from_year": 1891, "to_year": 1891 }],
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 55,
-                   "occupation_at_census": "Baker", "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; returned as an employer" }]
+      "first_name": "John",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1836,
+      "born_place": "St Mary, Nottingham",
+      "occupations": [
+        {
+          "occupation": "Baker",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Head",
+          "marital_status": "Married",
+          "age_at_census": 55,
+          "occupation_at_census": "Baker",
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; returned as an employer"
+        }
+      ]
     },
     {
-      "first_name": "Mary", "last_name": "Sylvester", "match_born_year": true, "sex": "F", "born_year": 1847, "born_place": "St Mary, Nottingham",
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 44, "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }],
-      "relationships": [{ "to": { "first_name": "John", "last_name": "Sylvester" }, "type": "spouse_of" }]
+      "first_name": "Mary",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1847,
+      "born_place": "St Mary, Nottingham",
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Wife",
+          "marital_status": "Married",
+          "age_at_census": 44,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "John",
+            "last_name": "Sylvester"
+          },
+          "type": "spouse_of"
+        }
+      ]
     },
     {
-      "first_name": "Minnie", "last_name": "Sylvester", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "St Mary, Nottingham",
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 26, "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }],
-      "relationships": [{ "to": { "first_name": "John", "last_name": "Sylvester" }, "type": "child_of" },
-                        { "to": { "first_name": "Mary", "last_name": "Sylvester" }, "type": "child_of" }]
+      "first_name": "Minnie",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1865,
+      "born_place": "St Mary, Nottingham",
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 26,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "John",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Mary",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        }
+      ]
     },
     {
-      "first_name": "Florence", "last_name": "Sylvester", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "St Mary, Nottingham",
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 24, "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }],
-      "relationships": [{ "to": { "first_name": "John", "last_name": "Sylvester" }, "type": "child_of" },
-                        { "to": { "first_name": "Mary", "last_name": "Sylvester" }, "type": "child_of" }]
+      "first_name": "Florence",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1867,
+      "born_place": "St Mary, Nottingham",
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 24,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "John",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Mary",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        }
+      ]
     },
     {
-      "first_name": "Poppy", "last_name": "Sylvester", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "St Mary, Nottingham",
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 22, "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }],
-      "relationships": [{ "to": { "first_name": "John", "last_name": "Sylvester" }, "type": "child_of" },
-                        { "to": { "first_name": "Mary", "last_name": "Sylvester" }, "type": "child_of" }]
+      "first_name": "Poppy",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1869,
+      "born_place": "St Mary, Nottingham",
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Daughter",
+          "marital_status": "Single",
+          "age_at_census": 22,
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "John",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Mary",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        }
+      ]
     },
     {
-      "first_name": "Roberta Amy", "last_name": "Sylvester", "match_born_year": true, "sex": "F", "born_year": 1881, "born_place": "St Mary, Nottingham",
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": "Scholar", "birth_place": "St Mary, Nottingham",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }],
-      "relationships": [{ "to": { "first_name": "John", "last_name": "Sylvester" }, "type": "child_of" },
-                        { "to": { "first_name": "Mary", "last_name": "Sylvester" }, "type": "child_of" }]
+      "first_name": "Roberta Amy",
+      "last_name": "Sylvester",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1881,
+      "born_place": "St Mary, Nottingham",
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Daughter",
+          "age_at_census": 10,
+          "occupation_at_census": "Scholar",
+          "birth_place": "St Mary, Nottingham",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ],
+      "relationships": [
+        {
+          "to": {
+            "first_name": "John",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        },
+        {
+          "to": {
+            "first_name": "Mary",
+            "last_name": "Sylvester"
+          },
+          "type": "child_of"
+        }
+      ]
     },
     {
-      "first_name": "Eliza", "last_name": "Roberts", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Quorn, Leicestershire",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 30,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Quorn, Leicestershire",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude" }]
+      "first_name": "Eliza",
+      "last_name": "Roberts",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1861,
+      "born_place": "Quorn, Leicestershire",
+      "occupations": [
+        {
+          "occupation": "Housemaid, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 30,
+          "occupation_at_census": "Housemaid, domestic",
+          "birth_place": "Quorn, Leicestershire",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude"
+        }
+      ]
     },
     {
-      "first_name": "Elizabeth", "last_name": "Roberts", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Huntingdonshire",
-      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
-                   "occupation_at_census": "Cook, domestic", "birth_place": "Huntingdonshire",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; surname by ditto from Eliza Roberts above, birthplace read as Huntersdon and recorded as the county only" }]
+      "first_name": "Elizabeth",
+      "last_name": "Roberts",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1872,
+      "born_place": "Huntingdonshire",
+      "occupations": [
+        {
+          "occupation": "Cook, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 19,
+          "occupation_at_census": "Cook, domestic",
+          "birth_place": "Huntingdonshire",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; surname by ditto from Eliza Roberts above, birthplace read as Huntersdon and recorded as the county only"
+        }
+      ]
     },
     {
-      "first_name": "Ann", "last_name": "Philips", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Sheffield, Yorkshire",
-      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [223],
-      "census": [{ "census_year": 1891, "property_id": 223, "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
-                   "occupation_at_census": "Nurse, domestic", "birth_place": "Sheffield, Yorkshire",
-                   "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; surname as written, one l" }]
+      "first_name": "Ann",
+      "last_name": "Philips",
+      "match_born_year": true,
+      "sex": "F",
+      "born_year": 1863,
+      "born_place": "Sheffield, Yorkshire",
+      "occupations": [
+        {
+          "occupation": "Nurse, domestic",
+          "from_year": 1891,
+          "to_year": 1891
+        }
+      ],
+      "properties": [
+        223
+      ],
+      "census": [
+        {
+          "census_year": 1891,
+          "property_id": 223,
+          "address": "8 Pelham Terrace (now 31 Newcastle Drive)",
+          "relationship": "Servant",
+          "marital_status": "Single",
+          "age_at_census": 28,
+          "occupation_at_census": "Nurse, domestic",
+          "birth_place": "Sheffield, Yorkshire",
+          "source": "1891 census, 8 Pelham Terrace - read from the image by Claude; surname as written, one l"
+        }
+      ]
     }
   ]
 }
