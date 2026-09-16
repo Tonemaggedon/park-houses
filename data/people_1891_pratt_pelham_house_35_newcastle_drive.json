@@ -1,0 +1,68 @@
+{
+  "note": "The household of Edmund Pratt, lace manufacturer, at **4 Pelham Terrace** on the 1891 return - the house now numbered **35 Newcastle Drive** (#225), named **Pelham House** and built about 1860. Transcribed from the census image by Claude at A. Hagues's request; the readings are mine and the doubtful ones are flagged below. 35 Newcastle Drive held only 1921, so 1891 is free, and none of the seven was in the record.\n\n**The placement is by the conversion rule**, not by a source naming this house: Newcastle Drive was formerly Pelham Terrace, and 39 minus the Pelham Terrace number gives the Newcastle Drive number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 4 = 35. Two things support it beyond the arithmetic: 35 is the one house on this stretch that carries a name, Pelham House, which is what one would expect of the first substantial villa on a street called Pelham Terrace; and a lace manufacturer with a wife, three grown daughters and two servants fits a house of that size. It is still a conversion rather than a direct identification, so if the rule is ever disproved this household moves with a single reassign. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**Readings to check:** the housemaid's surname, which I read as Summ and which is probably incomplete; her age, read as 18; and Sarah Ann Franklin's birthplace, read as Raceby in Lincolnshire, which may be Ranceby or Rauceby. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 4 Pelham Terrace (now 35 Newcastle Drive, Pelham House), read from the census image supplied by A. Hagues.",
+  "people": [
+    {
+      "first_name": "Edmund", "last_name": "Pratt", "match_born_year": true, "sex": "M", "born_year": 1823, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1891, "to_year": 1891 }],
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 68,
+                   "occupation_at_census": "Lace manufacturer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude; returned as an employer" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Pratt", "match_born_year": true, "sex": "F", "born_year": 1828, "born_place": "St Mary, Nottingham",
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 63, "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "Edmund", "last_name": "Pratt" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Margaret", "last_name": "Pratt", "match_born_year": true, "sex": "F", "born_year": 1857, "born_place": "Beeston, Nottinghamshire",
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 34, "birth_place": "Beeston, Nottinghamshire",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "Edmund", "last_name": "Pratt" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary", "last_name": "Pratt" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Harriett E", "last_name": "Pratt", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Beeston, Nottinghamshire",
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 26, "birth_place": "Beeston, Nottinghamshire",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "Edmund", "last_name": "Pratt" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary", "last_name": "Pratt" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Gertrude L", "last_name": "Pratt", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Beeston, Nottinghamshire",
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 19, "birth_place": "Beeston, Nottinghamshire",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "Edmund", "last_name": "Pratt" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary", "last_name": "Pratt" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Summ", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Bingham, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Bingham, Nottinghamshire",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude; surname read as Summ and probably incomplete, age read as 18" }]
+    },
+    {
+      "first_name": "Sarah Ann", "last_name": "Franklin", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [225],
+      "census": [{ "census_year": 1891, "property_id": 225, "address": "4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Lincolnshire",
+                   "source": "1891 census, 4 Pelham Terrace - read from the image by Claude; birthplace read as Raceby, Lincolnshire, perhaps Rauceby, so only the county is recorded" }]
+    }
+  ]
+}

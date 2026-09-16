@@ -1,0 +1,69 @@
+{
+  "note": "The household of William Foster junior, cabinet maker and upholsterer, at **12 Pelham Terrace** on the 1891 return - the house now numbered **27 Newcastle Drive** (#221) and named Glendower. Transcribed from the census image by Claude at A. Hagues's request; he has not typed this one out, so the readings are mine and the doubtful ones are flagged below.\n\n**Why it is filed at 27 Newcastle Drive.** Four sources agree. The 1898-99 directory prints 'Glendower, William Foster, of Foster, Cooper & Foster' against the number 12. The 1913-14 and 1915-16 volumes print 'Foster William, (Foster, Cooper & Foster)' at 27 Newcastle Drive. The Park Houses map labels 27 Newcastle Drive Glendower, now subdivided as 27, 27B, 27C and 27D. And the record already holds Mary Foster, born 1846, at 27 Newcastle Drive on the 1921 return - the wife of this household, 45 here. Newcastle Drive was formerly Pelham Terrace, and this pairing is one of the two that fix the conversion at 39 minus the Pelham Terrace number. See [[newcastle-drive-pelham-terrace-numbers]]. 27 Newcastle Drive held only 1921, so 1891 is free. **Glendower is not recorded as a house name in the record and is worth adding to #221.**\n\n**Mary is bound; her son is not.** Mary Foster (#2194) matches on birth year exactly and is bound by number. William Henry, 25 here and so born about 1866, is almost certainly William Henry Foster (#113, born 1865), who is at 6 Park Terrace from 1901 and whom the directory prints there as 'Foster, Cooper & Foster' while his father is at 27 Newcastle Drive - father and son, two houses, one firm. The born years differ by one, so **/duplicates will not offer them and the merge must be done by hand** if you agree they are the same man.\n\n**Readings to check:** Mary Butler's age, which I read as 40, and her occupation, which I cannot make out at all and have left empty; Annie Agnes Fox's birthplace, read as Bellsow in Staffordshire; Sarah F Sherriff's age, read as 24, and her birthplace, read as Bollingbrook in Cheshire. Ages are as the enumerator wrote them.",
+  "source": "1891 census, 12 Pelham Terrace (now 27 Newcastle Drive), read from the census image supplied by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1898-99, page 109 (Leicester Special Collections id 165285); 1913-14, page 163 (id 166519); 1915-16, page 165 (id 347806).",
+  "people": [
+    {
+      "first_name": "William", "last_name": "Foster", "match_born_year": true, "sex": "M", "born_year": 1834, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Cabinet maker and upholsterer", "from_year": 1891, "to_year": 1916, "employer": "Foster, Cooper & Foster", "notes": "1891 census; Wright's Directory 1898-99 at Glendower, 1913-14 and 1915-16 at 27 Newcastle Drive" }],
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 57,
+                   "occupation_at_census": "Cabinet maker and upholsterer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude; returned as William Foster junior, an employer" }]
+    },
+    {
+      "id": 2194, "first_name": "Mary", "last_name": "Foster", "sex": "F", "born_year": 1846, "born_place": "St Mary, Nottingham",
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 45, "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Foster", "born_year": 1834 }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "William Henry", "last_name": "Foster", "match_born_year": true, "sex": "M", "born_year": 1866, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Cabinet maker and upholsterer", "from_year": 1891, "to_year": 1891 }],
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cabinet maker and upholsterer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude; very probably #113 of 6 Park Terrace, born 1865, to be merged by hand" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Foster", "born_year": 1834 }, "type": "child_of" },
+                        { "to": { "id": 2194 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Butler", "match_born_year": true, "sex": "F", "born_year": 1851, "born_place": "Radcliffe on Trent, Nottinghamshire",
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 40,
+                   "birth_place": "Radcliffe on Trent, Nottinghamshire",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude; age read as 40 and the occupation column illegible, both to check" }]
+    },
+    {
+      "first_name": "Annie Agnes", "last_name": "Fox", "match_born_year": true, "sex": "F", "born_year": 1859, "born_place": "Staffordshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 32,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Staffordshire",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude; birthplace read as Bellsow, Staffordshire, which I cannot verify, so only the county is recorded" }]
+    },
+    {
+      "first_name": "Annie M", "last_name": "Goodacre", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Grantham, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Grantham, Lincolnshire",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Sarah F", "last_name": "Sherriff", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Cheshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [221],
+      "census": [{ "census_year": 1891, "property_id": 221, "address": "12 Pelham Terrace (now 27 Newcastle Drive), Glendower",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Cheshire",
+                   "source": "1891 census, 12 Pelham Terrace - read from the image by Claude; age read as 24 and birthplace read as Bollingbrook, Cheshire, both to check" }]
+    }
+  ]
+}
