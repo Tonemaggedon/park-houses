@@ -1,0 +1,41 @@
+{
+  "note": "Job Samuel W Palethorpe, engraver, a widower of 60 with his daughter and two servants at **10 Pelham Terrace** on the 1891 return - the house now numbered **29 Newcastle Drive** (#222). Transcribed from the census image by Claude at A. Hagues's request. 29 Newcastle Drive held only 1921, so 1891 is free, and none of the four was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 10 = 29.\n\n**A directory line that looks like a contradiction but is not.** Wright's Directory 1898-99 prints 'Mr. Job S. Palethorpe' at '10 Pelham **Crescent**'. That volume runs an even-numbered Pelham Crescent section which is really a stretch of Pelham Terrace - the same section that gives Glendower at 12, the Foster house now proved to be 27 Newcastle Drive. The crescent's genuine even side is a different pair of houses of about 1870-75 by Barrack Lane, occupied by the Mellers and Levis in 1911. So the 1898-99 line is this same man at this same house, seven years on, under a mistaken heading, and it supports the number 10 rather than undermining it.\n\nHis occupation has a second word after 'Engraver' which is struck through on the schedule and which I cannot read; only Engraver is recorded. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 10 Pelham Terrace (now 29 Newcastle Drive), read from the census image supplied by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1898-99, page 109 (Leicester Special Collections id 165285).",
+  "people": [
+    {
+      "first_name": "Job Samuel W", "last_name": "Palethorpe", "match_born_year": true, "sex": "M", "born_year": 1831, "born_place": "St Nicholas, Nottingham",
+      "occupations": [{ "occupation": "Engraver", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1898-99, printed under a Pelham Crescent heading" }],
+      "properties": [222],
+      "census": [{ "census_year": 1891, "property_id": 222, "address": "10 Pelham Terrace (now 29 Newcastle Drive)",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 60,
+                   "occupation_at_census": "Engraver", "birth_place": "St Nicholas, Nottingham",
+                   "source": "1891 census, 10 Pelham Terrace - read from the image by Claude; returned as an employer, with a second word after Engraver struck through and illegible" }]
+    },
+    {
+      "first_name": "Clara", "last_name": "Palethorpe", "match_born_year": true, "sex": "F", "born_year": 1857, "born_place": "St Mary, Nottingham",
+      "properties": [222],
+      "census": [{ "census_year": 1891, "property_id": 222, "address": "10 Pelham Terrace (now 29 Newcastle Drive)",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 34, "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 10 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "Job Samuel W", "last_name": "Palethorpe" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sarah Ann", "last_name": "White", "match_born_year": true, "sex": "F", "born_year": 1849, "born_place": "Tuxford, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [222],
+      "census": [{ "census_year": 1891, "property_id": 222, "address": "10 Pelham Terrace (now 29 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 42,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Tuxford, Nottinghamshire",
+                   "source": "1891 census, 10 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Feather", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Retford, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [222],
+      "census": [{ "census_year": 1891, "property_id": 222, "address": "10 Pelham Terrace (now 29 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Retford, Nottinghamshire",
+                   "source": "1891 census, 10 Pelham Terrace - read from the image by Claude" }]
+    }
+  ]
+}

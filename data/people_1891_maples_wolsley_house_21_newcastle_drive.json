@@ -1,0 +1,43 @@
+{
+  "note": "Samuel Maples, solicitor, notary and under-sheriff, a single man of 77 with three servants at **18 Pelham Terrace, Wolsley House** on the 1891 return - the house now numbered **21 Newcastle Drive** (#218). Transcribed from the census image by Claude at A. Hagues's request. 21 Newcastle Drive held only 1921, so 1891 is free, and none of the four was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 18 = 21. The name Wolsley House appears nowhere in the record or in any cached directory page, so it does not yet corroborate the number; if it turns up against a Newcastle Drive house it will settle this one either way. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**He is in the older directories, which place him elsewhere earlier.** Wright's Nottingham Directory 1862, page 122, has 'Maples Samuel, solicitor, Willoughby Chambers, Low Pavement, house Park side', and page 251 of the same volume lists him within the Park Side street section; the 1858 volume has him as a solicitor at Middle Pavement, with a 'Maples Mrs., Park side' at page 298 who may be his mother, since he is single here. He does not appear in the Park sections of 1894-95 or later, which fits a man of 77 in 1891. His firm outlived him: Maples & McCraith is printed through 1915-16 as the practice of James William McCraith of Ellenborough House, South Road.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 18 Pelham Terrace, Wolsley House (now 21 Newcastle Drive), read from the census image supplied by A. Hagues. Directory evidence: Wright's Nottingham Directory 1862, pages 122 and 251 (Leicester Special Collections ids 163403, 163532); 1858, pages 169, 206 and 298 (ids 163095, 163132, 163224).",
+  "people": [
+    {
+      "first_name": "Samuel", "last_name": "Maples", "match_born_year": true, "sex": "M", "born_year": 1814, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Solicitor, notary and under-sheriff", "from_year": 1891, "to_year": 1891 },
+                      { "occupation": "Solicitor", "from_year": 1858, "to_year": 1862, "employer": "Willoughby Chambers, Low Pavement", "notes": "Wright's Nottingham Directory 1858 and 1862" }],
+      "properties": [218],
+      "census": [{ "census_year": 1891, "property_id": 218, "address": "18 Pelham Terrace, Wolsley House (now 21 Newcastle Drive)",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 77,
+                   "occupation_at_census": "Solicitor, notary, under-sheriff", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 18 Pelham Terrace - read from the image by Claude; returned as an employer" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Barson", "match_born_year": true, "sex": "F", "born_year": 1835, "born_place": "Loughborough, Leicestershire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [218],
+      "census": [{ "census_year": 1891, "property_id": 218, "address": "18 Pelham Terrace, Wolsley House (now 21 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 56,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Loughborough, Leicestershire",
+                   "source": "1891 census, 18 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Caroline", "last_name": "Dalby", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Bradmore, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [218],
+      "census": [{ "census_year": 1891, "property_id": 218, "address": "18 Pelham Terrace, Wolsley House (now 21 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Bradmore, Nottinghamshire",
+                   "source": "1891 census, 18 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Fuller", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Saham, Norfolk",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [218],
+      "census": [{ "census_year": 1891, "property_id": 218, "address": "18 Pelham Terrace, Wolsley House (now 21 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Saham, Norfolk",
+                   "source": "1891 census, 18 Pelham Terrace - read from the image by Claude" }]
+    }
+  ]
+}
