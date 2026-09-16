@@ -29,6 +29,7 @@
   .potw h3 a { color:var(--ink); text-decoration:none; }
   .potw h3 a:hover { text-decoration:underline; }
   .potw .dates { color:var(--faint); font-size:.86rem; margin-bottom:12px; }
+  .potw .note { font-size:1rem; color:var(--soft); font-style:italic; margin-bottom:9px; max-width:70ch; }
   .potw .bio { font-size:.94rem; color:#3c3428; max-width:70ch; }
   .potw .rotates { font-size:.72rem; color:var(--faint); font-style:italic; margin-top:14px; }
   .potw.has-portrait { display:flex; gap:22px; align-items:flex-start; }
@@ -166,10 +167,39 @@ async function load() {
   if (canEdit) loadCandidates();
 }
 
+// Biographies here often open with the source they were taken from — a bare year,
+// a directory ("1899 wrights", "1922 kellys"), a census transcription, a Gazette
+// extract. That belongs on a profile, where it is evidence, and reads as noise as
+// the first thing on this page. Some have also been pasted in twice over. So the
+// panel takes the prose: repeated sentences dropped, and any run of source text at
+// the front skipped. If a bio is nothing but source text it is shown as it stands,
+// which is better than showing nothing.
+// Biographies here often open with the source they were taken from — a bare year,
+// a directory ("1899 wrights"), a census transcription, a Gazette extract — and a
+// few have been pasted in twice over. The fix for the first is the curator's note
+// above, not surgery on the prose: two attempts at trimming the source off the
+// front each threw away real biography ("Henry Handford was a physician of
+// standing in Nottingham for close on fifty years") or left a mangled stub
+// ("Midland) Fd. Bde."), because there is no reliable line between a citation and
+// the sentence it opens. So the bio is shown as written, less any sentence
+// repeated verbatim, which is the one fault that is unambiguous.
+function bioProse(bio) {
+  const parts = String(bio || '').replace(/\s+/g, ' ').trim().split(/(?<=\.)\s+/).filter(Boolean);
+  const seen = new Set(), uniq = [];
+  for (const s of parts) {
+    const k = s.toLowerCase();
+    if (!seen.has(k)) { seen.add(k); uniq.push(s); }
+  }
+  return uniq.join(' ');
+}
+
 function renderPotw(p) {
   const el = document.getElementById('potw');
   if (!p) { el.innerHTML = ''; return; }
-  const bio = (p.bio || '').replace(/\s+/g,' ').trim();
+  // The curator's reason leads, because it says why this person is here at all;
+  // the biography follows as supporting detail.
+  const note = (p.significance_note || '').replace(/\s+/g, ' ').trim();
+  const bio = bioProse(p.bio);
   // A portrait is the whole point of featuring someone, so give it real size —
   // but the card has to read just as well for the many residents with no photo.
   const portrait = p.photo_url
@@ -183,6 +213,7 @@ function renderPotw(p) {
       <div class="eyebrow">Person of the week</div>
       <h3><a href="/people?person=${encodeURIComponent(p.id)}">${esc(nameOf(p))}</a></h3>
       <div class="dates">${esc(lifeOf(p))}${p.born_place ? ' · born ' + esc(p.born_place) : ''}</div>
+      ${note ? `<div class="note">${esc(note)}</div>` : ''}
       ${bio ? `<div class="bio">${esc(bio.slice(0,420))}${bio.length>420?'…':''}</div>` : ''}
       <div class="signals">${sigChips(p)}</div>
       <div class="rotates">Chosen from ${esc(p.of)} notable resident${p.of===1?'':'s'} — changes each week.</div>
