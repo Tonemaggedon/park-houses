@@ -1,0 +1,52 @@
+{
+  "note": "George Shepperley, pharmaceutical chemist and dentist, his wife, their grown son and two servants at **5 Western Terrace** (#344) on the 1891 return. Transcribed from the census image by Claude at A. Hagues's request. 5 Western Terrace held 1901 and 1921 but no 1891, so the year is free, and none of the five was in the record.\n\n**The number comes from the directory, not from the census.** The schedule gives the street only, as it does for the household next door; Wright's Directory 1894-95 prints 'Mr. George Shepperley' at 5 Western Terrace, three years later, and that is the only Shepperley on the street in any volume. The later volumes follow him off the terrace: 'Shepperley George, (chemist)' at 2 Derby Terrace in 1910-11, 1913-14 and 1915-16.\n\n**A neighbouring servant shares a surname.** Harriett Slaney, 27, is general servant here, and Alice Slaney, a widow of 58, is charwoman in the Allcock household on the next schedule. Two Slaneys in adjoining houses on the same page may well be mother and daughter, but nothing on the return says so and no link is made.\n\n**Readings to check:** Margaret Shepperley's age, read as 41 against her husband's 59; and the son's occupation, read as dentist student. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Western Terrace, schedule 73, read from the census image supplied by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607).",
+  "people": [
+    {
+      "first_name": "George", "last_name": "Shepperley", "match_born_year": true, "sex": "M", "born_year": 1832, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Pharmaceutical chemist and dentist", "from_year": 1891, "to_year": 1916, "notes": "1891 census; Wright's Directory 1894-95 at 5 Western Terrace, then 2 Derby Terrace 1910-11 to 1915-16 as chemist" }],
+      "properties": [344],
+      "census": [{ "census_year": 1891, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 59,
+                   "occupation_at_census": "Pharmaceutical chemist and dentist", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Western Terrace - read from the image by Claude; the number from Wright's Directory 1894-95, the schedule giving the street only; returned as an employer" }]
+    },
+    {
+      "first_name": "Margaret", "last_name": "Shepperley", "match_born_year": true, "sex": "F", "born_year": 1850, "born_place": "London",
+      "properties": [344],
+      "census": [{ "census_year": 1891, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 41, "birth_place": "London",
+                   "source": "1891 census, Western Terrace - read from the image by Claude; age read as 41, to check" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Shepperley" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "George Jos", "last_name": "Shepperley", "match_born_year": true, "sex": "M", "born_year": 1870, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Dentist student", "from_year": 1891, "to_year": 1891 }],
+      "properties": [344],
+      "census": [{ "census_year": 1891, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 21,
+                   "occupation_at_census": "Dentist student", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "George", "last_name": "Shepperley" }, "type": "child_of" },
+                        { "to": { "first_name": "Margaret", "last_name": "Shepperley" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Harriett", "last_name": "Slaney", "match_born_year": true, "sex": "F", "born_year": 1864, "born_place": "Warsop, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [344],
+      "census": [{ "census_year": 1891, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 27,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Warsop, Nottinghamshire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Emily", "last_name": "Middlebrook", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Loughborough, Leicestershire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [344],
+      "census": [{ "census_year": 1891, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Loughborough, Leicestershire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }]
+    }
+  ]
+}

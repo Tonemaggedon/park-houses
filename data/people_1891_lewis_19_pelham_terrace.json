@@ -1,0 +1,71 @@
+{
+  "note": "The household of James Winterbottom Lewis, hosiery manufacturer, a widower of 66 with five grown children and two servants at **19 Pelham Terrace** on the 1891 return. Transcribed from the census image by Claude at A. Hagues's request. None of the eight was in the record.\n\n**This household is left unfiled, deliberately.** The conversion that places the rest of this walk - Newcastle Drive number = 39 minus the Pelham Terrace number - works only for the even numbers. 39 - 19 = 20, an even number on a street numbered wholly in odds, so the arithmetic fails here. Newcastle Drive was made from two former roads, Lower Newcastle Terrace and Pelham Terrace, and the odd Pelham Terrace numbers may belong to the other of them or to the opposite side of the street. Until that is understood this household has no number to go to, so it sits under the address the return gives. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**A directory line that may or may not be this man.** Wright's 1898-99 prints 'James W. Lewis, dir of J. B. L. & Sons' at '2 Pelham Crescent', in the same even-numbered section that volume mislabels - the section that really covers Pelham Terrace. If that is this man, he moved from 19 to 2 between 1891 and 1898, and 2 would convert to 37 Newcastle Drive. If it is a different James W. Lewis of the same firm, it means nothing here. Two of his children in this house give their trade as hosiery manufacturing, so the family is certainly in that business, and J. B. Lewis & Sons also appears in the record through Herbert Lancashire at Castlethorpe. Nothing is joined on any of it.\n\n**Readings to check:** the eldest daughter's middle initial, which I read as B but which is unclear; and Edith Palin's birthplace, read as Gresham and given in the Lincolnshire column, though Gresham is in Norfolk. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 19 Pelham Terrace, read from the census image supplied by A. Hagues.",
+  "people": [
+    {
+      "first_name": "James Winterbottom", "last_name": "Lewis", "match_born_year": true, "sex": "M", "born_year": 1825, "born_place": "Tewkesbury, Gloucestershire",
+      "occupations": [{ "occupation": "Hosiery manufacturer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 66,
+                   "occupation_at_census": "Hosiery manufacturer", "birth_place": "Tewkesbury, Gloucestershire",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude; returned as an employer" }]
+    },
+    {
+      "first_name": "Edith B", "last_name": "Lewis", "match_born_year": true, "sex": "F", "born_year": 1862, "born_place": "Standard Hill, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 29, "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude; middle initial read as B and unclear" }],
+      "relationships": [{ "to": { "first_name": "James Winterbottom", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "James L", "last_name": "Lewis", "match_born_year": true, "sex": "M", "born_year": 1865, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Hosiery manufacturer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Hosiery manufacturer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude; returned as employed" }],
+      "relationships": [{ "to": { "first_name": "James Winterbottom", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "John Thorpe", "last_name": "Lewis", "match_born_year": true, "sex": "M", "born_year": 1868, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Railway engineer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Railway engineer", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude; returned as employed" }],
+      "relationships": [{ "to": { "first_name": "James Winterbottom", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Alice May", "last_name": "Lewis", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "St Mary, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 21, "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "James Winterbottom", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Frederick Wm", "last_name": "Lewis", "match_born_year": true, "sex": "M", "born_year": 1872, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Medical student", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Medical student", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "James Winterbottom", "last_name": "Lewis" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Edith", "last_name": "Palin", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Gresham",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Gresham",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude; birthplace read as Gresham in the Lincolnshire column, though Gresham is in Norfolk" }]
+    },
+    {
+      "first_name": "Mary Ann", "last_name": "Dawson", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Leverton Outgate, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "19 Pelham Terrace (odd number; the Newcastle Drive conversion covers the even numbers only) - Winterbottom Lewis household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Leverton Outgate, Lincolnshire",
+                   "source": "1891 census, 19 Pelham Terrace - read from the image by Claude" }]
+    }
+  ]
+}

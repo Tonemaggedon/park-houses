@@ -1,0 +1,22 @@
+{
+  "note": "Bernard Wilcockson, solicitor, a single man of 41 with one housemaid, at **Pelham Terrace (Tattershall Corner)** on the 1891 return - schedule 75, the house at which the enumerator's walk along Pelham Terrace begins. Transcribed from the census image by Claude at A. Hagues's request. Neither person was in the record.\n\n**Left unfiled, though the name points somewhere.** The record's **39 Newcastle Drive** (#227) is Priests House, and its former names are recorded as Tattershall Corner, Waveney House and Walton House - so the corner is the right place. But #227 was built in **1911**, twenty years after this return, so the house standing there now is not the one this household lived in. The name marks the corner rather than the building, and filing an 1891 household into a 1911 house would put people inside walls that did not exist. The conversion rule that places the rest of this walk gives no help either: the schedule carries no number for this house.\n\nThe return gives no number and the enumerator wrote the house name in brackets under the street, which is how a corner property with no number is usually handled. If a number or a firmer identification turns up - a rate book, or the 1901 return for the same corner - this household can be filed in one move. See [[newcastle-drive-pelham-terrace-numbers]].\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Pelham Terrace (Tattershall Corner), schedule 75, read from the census image supplied by A. Hagues.",
+  "people": [
+    {
+      "first_name": "Bernard", "last_name": "Wilcockson", "match_born_year": true, "sex": "M", "born_year": 1850, "born_place": "St Mary, Nottingham",
+      "occupations": [{ "occupation": "Solicitor", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Pelham Terrace (Tattershall Corner) - now the corner of Newcastle Drive; #227 carries the name but was built 1911 - Wilcockson household",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 41,
+                   "occupation_at_census": "Solicitor", "birth_place": "St Mary, Nottingham",
+                   "source": "1891 census, Pelham Terrace (Tattershall Corner) - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Annie Emily", "last_name": "Snowden", "match_born_year": true, "sex": "F", "born_year": 1859, "born_place": "Saxondale, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Pelham Terrace (Tattershall Corner) - now the corner of Newcastle Drive; #227 carries the name but was built 1911 - Wilcockson household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 32,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Saxondale, Nottinghamshire",
+                   "source": "1891 census, Pelham Terrace (Tattershall Corner) - read from the image by Claude" }]
+    }
+  ]
+}

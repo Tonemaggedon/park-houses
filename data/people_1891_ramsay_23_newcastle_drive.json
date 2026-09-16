@@ -1,0 +1,50 @@
+{
+  "note": "David Shaw Ramsay and his sister Wilhelmina, both single and living on their own means, with three servants at **16 Pelham Terrace** on the 1891 return - the house now numbered **23 Newcastle Drive** (#219). Transcribed from the census image by Claude at A. Hagues's request. 23 Newcastle Drive held only 1921, so 1891 is free, and none of the five was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 16 = 23. See [[newcastle-drive-pelham-terrace-numbers]].\n\nBoth Ramsays were born at Edinburgh. They are linked as brother and sister, which the return states outright.\n\n**Readings to check:** Wilhelmina's age, which I read as 76 against her brother's 66 - an elder sister by ten years is perfectly possible but the figure is worth a second look; and her middle initials, read as M A. John James Toaler, the fourteen-year-old page, is returned as born at South Shields with Northumberland given as the county, though South Shields is in Durham; both are recorded as written. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 16 Pelham Terrace (now 23 Newcastle Drive), read from the census image supplied by A. Hagues.",
+  "people": [
+    {
+      "first_name": "David Shaw", "last_name": "Ramsay", "match_born_year": true, "sex": "M", "born_year": 1825, "born_place": "Edinburgh, Scotland",
+      "properties": [219],
+      "census": [{ "census_year": 1891, "property_id": 219, "address": "16 Pelham Terrace (now 23 Newcastle Drive)",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 66,
+                   "occupation_at_census": "Living on own means", "birth_place": "Edinburgh, Scotland",
+                   "source": "1891 census, 16 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Wilhelmina M A", "last_name": "Ramsay", "match_born_year": true, "sex": "F", "born_year": 1815, "born_place": "Edinburgh, Scotland",
+      "properties": [219],
+      "census": [{ "census_year": 1891, "property_id": 219, "address": "16 Pelham Terrace (now 23 Newcastle Drive)",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 76,
+                   "occupation_at_census": "Living on own means", "birth_place": "Edinburgh, Scotland",
+                   "source": "1891 census, 16 Pelham Terrace - read from the image by Claude; age read as 76 and middle initials as M A, both to check" }],
+      "relationships": [{ "to": { "first_name": "David Shaw", "last_name": "Ramsay" }, "type": "sibling_of" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Rylatt", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Sibsey, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [219],
+      "census": [{ "census_year": 1891, "property_id": 219, "address": "16 Pelham Terrace (now 23 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Sibsey, Lincolnshire",
+                   "source": "1891 census, 16 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Sarah", "last_name": "Kirk", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Coningsby, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [219],
+      "census": [{ "census_year": 1891, "property_id": 219, "address": "16 Pelham Terrace (now 23 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Coningsby, Lincolnshire",
+                   "source": "1891 census, 16 Pelham Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "John James", "last_name": "Toaler", "match_born_year": true, "sex": "M", "born_year": 1877, "born_place": "South Shields",
+      "occupations": [{ "occupation": "Page, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [219],
+      "census": [{ "census_year": 1891, "property_id": 219, "address": "16 Pelham Terrace (now 23 Newcastle Drive)",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 14,
+                   "occupation_at_census": "Page, domestic", "birth_place": "South Shields",
+                   "source": "1891 census, 16 Pelham Terrace - read from the image by Claude; surname read as Toaler, county given as Northumberland though South Shields is in Durham" }]
+    }
+  ]
+}

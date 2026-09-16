@@ -1,0 +1,53 @@
+{
+  "note": "The household of James B Allcock, civil and manufacturing engineer, his wife, their infant son and three servants on **Western Terrace** on the 1891 return - schedule 74, next door to the Shepperleys. Transcribed from the census image by Claude at A. Hagues's request. None of the six was in the record.\n\n**Left unfiled, for want of a number.** The schedule gives the street without a number, as it does for the Shepperleys on schedule 73. The Shepperleys can be placed because Wright's Directory prints them at 5 Western Terrace three years later; no Allcock appears in any directory volume for any Park street, so there is nothing to convert the walk order into a number. Western Terrace runs from 1 to 11 in the record, and a household on the schedule immediately after number 5 might sit at 4 or 6, but the terrace is numbered along both sides and the enumerator's direction is not known from this page alone, so nothing is assumed. The rest of the page would settle it.\n\n**A neighbouring servant shares a surname.** Alice Slaney, a widow of 58 and charwoman here, sits next door to Harriett Slaney, 27, general servant to the Shepperleys. Mother and daughter is the obvious reading and no link is made on it.\n\n**Readings to check:** the cook's surname, which I read as Urmwood and cannot match to any known name, and her birthplace, read as Haleshall in Staffordshire, so only the county is recorded; and Eustace Alexander's age, which is written small in the male column and which I take to be under two. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Western Terrace, schedule 74, read from the census image supplied by A. Hagues.",
+  "people": [
+    {
+      "first_name": "James B", "last_name": "Allcock", "match_born_year": true, "sex": "M", "born_year": 1845, "born_place": "Lenton, Nottinghamshire",
+      "occupations": [{ "occupation": "Civil and manufacturing engineer", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 46,
+                   "occupation_at_census": "Civil and manufacturing engineer", "birth_place": "Lenton, Nottinghamshire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude; returned as an employer" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Allcock", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Leeds, Yorkshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 30, "birth_place": "Leeds, Yorkshire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }],
+      "relationships": [{ "to": { "first_name": "James B", "last_name": "Allcock" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Eustace Alexander", "last_name": "Allcock", "match_born_year": true, "sex": "M", "born_year": 1890, "born_place": "Standard Hill, Nottingham",
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Son", "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, Western Terrace - read from the image by Claude; age written small and taken to be under two, so no age is entered" }],
+      "relationships": [{ "to": { "first_name": "James B", "last_name": "Allcock" }, "type": "child_of" },
+                        { "to": { "first_name": "Elizabeth", "last_name": "Allcock" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Louisa", "last_name": "Urmwood", "match_born_year": true, "sex": "F", "born_year": 1859, "born_place": "Staffordshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 32,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Staffordshire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude; surname read as Urmwood and uncertain, birthplace read as Haleshall so only the county is recorded" }]
+    },
+    {
+      "first_name": "Mary E", "last_name": "Jones", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Buntingsdale, Shropshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Buntingsdale, Shropshire",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }]
+    },
+    {
+      "first_name": "Alice", "last_name": "Slaney", "match_born_year": true, "sex": "F", "born_year": 1833, "born_place": "Sneinton, Nottingham",
+      "occupations": [{ "occupation": "Charwoman", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Western Terrace, no number on the return (next door to the Shepperleys at number 5) - Allcock household",
+                   "relationship": "Servant", "marital_status": "Widow", "age_at_census": 58,
+                   "occupation_at_census": "Charwoman", "birth_place": "Sneinton, Nottingham",
+                   "source": "1891 census, Western Terrace - read from the image by Claude" }]
+    }
+  ]
+}
