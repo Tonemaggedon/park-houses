@@ -1,0 +1,54 @@
+{
+  "note": "Emma Taylor, a widow living on her own means, with her two grown daughters, a young visitor and two servants at 11 Newcastle Drive (#213) on the 1891 return, transcribed by A. Hagues. None of the six was in the record, and 11 Newcastle Drive held only 1921 (the Topham household), so 1891 is free.\n\nShe had left within seven years: Wright's Directory prints 'Miss Louisa H. Topham; Joseph R. Topham, of J. R. Tpm & Bro.' at number 11 in 1898-99, and Joseph R. Topham holds it through 1915-16 and is there on the 1921 return. There is no 1894-95 line for the number, so nothing places her after this census.\n\nSeveral Taylors are already in the record - at Castlethorpe, 9 Hamilton Drive, 43 Lenton Road and Fairlawn - and none matches this widow or her daughters on name and year together, so all three are created new. Kate Gladys King, the ten-year-old visitor from Bath, is joined to nobody: the return gives no relationship beyond visitor. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 11 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1898-99, page 109 (Leicester Special Collections id 165285).",
+  "people": [
+    {
+      "first_name": "Emma", "last_name": "Taylor", "match_born_year": true, "sex": "F", "born_year": 1848, "born_place": "Nottinghamshire",
+      "properties": [213],
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 43,
+                   "occupation_at_census": "Living on own means", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emma E", "last_name": "Taylor", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Nottinghamshire",
+      "properties": [213],
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 20, "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Emma", "last_name": "Taylor", "born_year": 1848 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Harriett E", "last_name": "Taylor", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Nottinghamshire",
+      "properties": [213],
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 19, "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Emma", "last_name": "Taylor", "born_year": 1848 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Kate Gladys", "last_name": "King", "match_born_year": true, "sex": "F", "born_year": 1881, "born_place": "Bath, Somerset",
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Visitor", "marital_status": "Single", "age_at_census": 10, "birth_place": "Bath, Somerset",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Rebecca Ann", "last_name": "Newman", "match_born_year": true, "sex": "F", "born_year": 1856, "born_place": "Hanley Castle, Worcestershire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [213],
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 35,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Hanley Castle, Worcestershire",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues; occupation transcribed 'cook domesic'" }]
+    },
+    {
+      "first_name": "Hannah", "last_name": "Bird", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Cumberland",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [213],
+      "census": [{ "census_year": 1891, "property_id": 213, "address": "11 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Cumberland",
+                   "source": "1891 census, 11 Newcastle Drive - transcribed by A. Hagues" }]
+    }
+  ]
+}

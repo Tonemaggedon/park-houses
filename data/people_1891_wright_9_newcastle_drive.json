@@ -1,0 +1,98 @@
+{
+  "note": "The household of John Kentish Wright, solicitor, at 9 Newcastle Drive (#212) on the 1891 return, transcribed by A. Hagues: himself, his wife Jessie, four children, his sister-in-law and four servants.\n\n**The family is already in the record at this same house, thirty years later.** John Kenish Wright (#2128, born 1848, solicitor), Jessie Kentish Wright (#2129, born 1852), Dorothea Kentish Wright (#2130, born 1884) and Ursula Kentish Wright (#2131, born 1891) are all filed at 9 Newcastle Drive on the 1921 return, each matching this return on birth year, so all four are bound by number and gain 1891. Wright's Directory fills the middle of the span: 'John K. Wright, of Dowson & W.' at number 9 in 1894-95 and 1898-99, and 'Wright John K., J.P., (Dowson & W)' there in 1910-11, 1913-14 and 1915-16. The family held the house from at least 1891 to 1921, confirmed by census at both ends and by the directory throughout - one of the longest continuous tenancies the record holds.\n\n**Two spellings want a hand.** The head's middle name is Kentish here, as it is for every child and for his wife, and as the directory's 'John K.' implies, but his record has it as **Kenish**; an import never renames, so that correction has to be made on the site. The daughter born in 1884 is Doratha on this transcription and Dorothea in the record, and the record's spelling stands.\n\nHarold and Oswald, the two sons, are new, as are Eveline A Windsor, the head's sister-in-law, and all four servants. The children are linked to both parents; Eveline Windsor is joined to nobody, since the importer carries only plain parent and child links and the return does not say whose sister she is - though being the wife's sister is the likelier reading. The firm 'Dowson & W.' is Dowson and Wright; the record holds Dowsons in the Park, but nothing here connects the partner to them. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 9 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285); 1910-11, page 145 (id 165821); 1913-14, page 163 (id 166519); 1915-16, page 166 (id 347807).",
+  "people": [
+    {
+      "id": 2128, "first_name": "John Kenish", "last_name": "Wright", "sex": "M", "born_year": 1848, "born_place": "Manchester, Lancashire",
+      "occupations": [{ "occupation": "Solicitor", "from_year": 1891, "to_year": 1916, "employer": "Dowson & Wright", "notes": "1891 census; Wright's Directory 1894-95 to 1915-16, latterly as J.P." }],
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 43,
+                   "occupation_at_census": "Solicitor", "birth_place": "Manchester, Lancashire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues as John Kentish Wright; the record spells the middle name Kenish" }]
+    },
+    {
+      "id": 2129, "first_name": "Jessie Kentish", "last_name": "Wright", "sex": "F", "born_year": 1852, "born_place": "Highgate, Middlesex",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 39, "birth_place": "Highgate, Middlesex",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2128 }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Harold Kentish", "last_name": "Wright", "match_born_year": true, "sex": "M", "born_year": 1879, "born_place": "Nottinghamshire",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Son", "age_at_census": 12, "occupation_at_census": "Scholar", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2128 }, "type": "child_of" }, { "to": { "id": 2129 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Oswald Kentish", "last_name": "Wright", "match_born_year": true, "sex": "M", "born_year": 1882, "born_place": "Nottinghamshire",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Son", "age_at_census": 9, "occupation_at_census": "Scholar", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "id": 2128 }, "type": "child_of" }, { "to": { "id": 2129 }, "type": "child_of" }]
+    },
+    {
+      "id": 2130, "first_name": "Dorothea Kentish", "last_name": "Wright", "sex": "F", "born_year": 1884, "born_place": "Standard Hill, Nottingham",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Daughter", "age_at_census": 7, "occupation_at_census": "Scholar", "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues as Doratha" }],
+      "relationships": [{ "to": { "id": 2128 }, "type": "child_of" }, { "to": { "id": 2129 }, "type": "child_of" }]
+    },
+    {
+      "id": 2131, "first_name": "Ursula Kentish", "last_name": "Wright", "sex": "F", "born_year": 1891, "born_place": "Standard Hill, Nottingham",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Daughter", "age_at_census": 0, "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues; under a year old" }],
+      "relationships": [{ "to": { "id": 2128 }, "type": "child_of" }, { "to": { "id": 2129 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Eveline A", "last_name": "Windsor", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Moseley, Warwickshire",
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Sister-in-law", "marital_status": "Single", "age_at_census": 26, "birth_place": "Moseley, Warwickshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues; sister-in-law of the head, so probably Jessie Kentish Wright's sister" }]
+    },
+    {
+      "first_name": "Jane", "last_name": "Price", "match_born_year": true, "sex": "F", "born_year": 1847, "born_place": "Bath, Somerset",
+      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Widow", "age_at_census": 44,
+                   "occupation_at_census": "Nurse, domestic", "birth_place": "Bath, Somerset",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Lewin", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Cotgrave, Nottinghamshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Cotgrave, Nottinghamshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ann", "last_name": "Bealey", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Addington, Cheshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Addington, Cheshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Jane", "last_name": "Scott", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Allington, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [212],
+      "census": [{ "census_year": 1891, "property_id": 212, "address": "9 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Allington, Lincolnshire",
+                   "source": "1891 census, 9 Newcastle Drive - transcribed by A. Hagues" }]
+    }
+  ]
+}

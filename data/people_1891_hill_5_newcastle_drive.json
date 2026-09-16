@@ -1,0 +1,61 @@
+{
+  "note": "Thomas Hill, hosiery manufacturer, a widower of 68, with his grown son and four servants at 5 Newcastle Drive (#210) on the 1891 return, transcribed by A. Hagues. None of the six was in the record, and 5 Newcastle Drive held only 1921 (the Gees and Rosenthals), so 1891 is free.\n\n**The directory names his firm.** Wright's prints 'Ths. Hill, Esq, J.P, of J. & R. Morley' at 5 Newcastle Drive in 1894-95 and 1898-99 - J. & R. Morley being the great London and Nottingham hosiery house - so his census trade and the directory agree, and he was a magistrate as well. He had gone by 1910-11, when Henry Gee is at number 5, and Mrs Clara Gee follows him.\n\n**The son's occupation is probably Merino, not Marine.** Charles Hill, 39, is returned as a 'marine spinner', which makes little sense in a landlocked hosiery family; merino spinning - worsted yarn for hosiery - fits both the trade and his father's firm, and the two words are easily confused in an index. It is entered as transcribed and flagged rather than corrected, because the schedule is the place to settle it.\n\nAmelia Shipman, the young general servant, was born at Kneeton in Nottinghamshire, as was Isabella Shipman (#132, born 1860), the Ensors' servant at 7 Park Terrace on this same 1891 return. Kneeton is a small place and the two may well be sisters, but nothing here says so and no link is made. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 5 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285).",
+  "people": [
+    {
+      "first_name": "Thomas", "last_name": "Hill", "match_born_year": true, "sex": "M", "born_year": 1823, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Hosiery manufacturer", "from_year": 1891, "to_year": 1899, "employer": "J. & R. Morley", "notes": "1891 census; Wright's Directory 1894-95 and 1898-99, which also gives him as J.P." }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 68,
+                   "occupation_at_census": "Hosiery manufacturer", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99" }]
+    },
+    {
+      "first_name": "Charles", "last_name": "Hill", "match_born_year": true, "sex": "M", "born_year": 1852, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Spinner", "from_year": 1891, "to_year": 1891, "notes": "returned as marine spinner, probably merino spinner" }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 39,
+                   "occupation_at_census": "Marine spinner", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues; occupation as transcribed, probably merino spinner" }],
+      "relationships": [{ "to": { "first_name": "Thomas", "last_name": "Hill", "born_year": 1823 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Rose", "last_name": "Fotherby", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Newark, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Newark, Nottinghamshire",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Elizabeth A", "last_name": "Burgiss", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Newark, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Newark, Nottinghamshire",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues; surname as transcribed" }]
+    },
+    {
+      "first_name": "Annie E", "last_name": "Bell", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Bawtry",
+      "occupations": [{ "occupation": "Chambermaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Chambermaid, domestic", "birth_place": "Bawtry",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues; birthplace given as Bawtry, Nottinghamshire, though Bawtry is in Yorkshire on the county line" }]
+    },
+    {
+      "first_name": "Amelia", "last_name": "Shipman", "match_born_year": true, "sex": "F", "born_year": 1875, "born_place": "Kneeton, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [210],
+      "census": [{ "census_year": 1891, "property_id": 210, "address": "5 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Kneeton, Nottinghamshire",
+                   "source": "1891 census, 5 Newcastle Drive - transcribed by A. Hagues" }]
+    }
+  ]
+}

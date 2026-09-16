@@ -1,0 +1,32 @@
+{
+  "note": "George Balderston Kidd, a widower living on his own means, with a cook and a housemaid at 13 Newcastle Drive (#214) on the 1891 return, transcribed by A. Hagues. None of the three was in the record, and 13 Newcastle Drive held only 1921, so 1891 is free.\n\n**He held the house for at least twenty-three years, and the directory gives him a degree.** Wright's prints 'Mr. George B. Kidd' at 13 Newcastle Drive in 1894-95 and 1898-99, then 'Kidd George Balderston LL.D' in 1910-11 and 'Kidd George Balderston LL.B' in 1913-14. The two degree letters disagree between volumes, so neither is entered on his record; it is noted so that whichever is right can be added from a better source.\n\nThe only Kidd in the record is Annie Sarah Kidd (#1348, born 1861), who has a 1921 census and no property; nothing connects her to this household, so no link is made. Annie M Newbod's surname is entered as transcribed and is probably Newbold - the record holds a Newbold family in the Park - but nothing here identifies her among them, so she is created as she is written. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 13 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285); 1910-11, page 145 (id 165821); 1913-14, page 163 (id 166519).",
+  "people": [
+    {
+      "first_name": "George Balderston", "last_name": "Kidd", "match_born_year": true, "sex": "M", "born_year": 1838, "born_place": "Sheffield, Yorkshire",
+      "properties": [214],
+      "census": [{ "census_year": 1891, "property_id": 214, "address": "13 Newcastle Drive",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 53,
+                   "occupation_at_census": "Living on own means", "birth_place": "Sheffield, Yorkshire",
+                   "source": "1891 census, 13 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 to 1913-14" }]
+    },
+    {
+      "first_name": "Sarah E", "last_name": "Thompson", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Alton, Staffordshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [214],
+      "census": [{ "census_year": 1891, "property_id": 214, "address": "13 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 30,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Alton, Staffordshire",
+                   "source": "1891 census, 13 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Annie M", "last_name": "Newbod", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Burton on Trent, Staffordshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [214],
+      "census": [{ "census_year": 1891, "property_id": 214, "address": "13 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Burton on Trent, Staffordshire",
+                   "source": "1891 census, 13 Newcastle Drive - transcribed by A. Hagues; surname as transcribed, probably Newbold" }]
+    }
+  ]
+}

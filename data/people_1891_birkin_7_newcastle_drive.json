@@ -1,0 +1,60 @@
+{
+  "note": "Richard Birkin, justice of the peace for Nottinghamshire, at 7 Newcastle Drive (#211) on the 1891 return with five servants and no family on the schedule, transcribed by A. Hagues. None of the six was in the record, and 7 Newcastle Drive held only 1921 (the Cartwrights, moved along from number 1), so 1891 is free.\n\n**The surname is entered as Birkin, not Berkin.** The transcription reads Berkin, which is an index rendering: the man is a justice of the peace born at New Basford, and Wright's Directory prints 'Mr. William Henry Acourt Birkin' at this same number 7 in 1898-99, so the house was a Birkin house within seven years of this return. His stated office, 'justice of peace for Nottingham shore', is the schedule reaching for Nottinghamshire.\n\n**He is not the Richard Birkin already in the record.** #2861 is Richard Leslie Birkin of Edale House, Clumber Road East, whom the directory styles Lieut.-Col. R. L. Birkin J.P., D.S.O. from 1910-11 - a later man of the same family, not this 62-year-old of 1891. Nothing binds them, and no family link is made to any of the Park's other Birkins: Charles Wilfred at Newcastle Court and Elm House, Philip Austen at 5 Cavendish Crescent North, Harry Laurence at Lincoln House, or the Thomas Isaac Birkin firm. The connections are very likely real and are worth tracing, but a shared surname in a lace dynasty is not evidence of a particular relationship.\n\nHe is returned as married with his wife absent from the schedule. Five servants for one man - housekeeper, cook, housemaid, kitchen maid and general servant - is a large establishment and fits a family house being kept up. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 7 Newcastle Drive, transcribed by A. Hagues (surname transcribed Berkin). Directory evidence: Wright's Directory of Nottingham 1898-99, page 109 (Leicester Special Collections id 165285).",
+  "people": [
+    {
+      "first_name": "Richard", "last_name": "Birkin", "match_born_year": true, "sex": "M", "born_year": 1829, "born_place": "New Basford, Nottinghamshire",
+      "occupations": [{ "occupation": "Justice of the peace for Nottinghamshire", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 62,
+                   "occupation_at_census": "Justice of the peace for Nottinghamshire", "birth_place": "New Basford, Nottinghamshire",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues as Richard Berkin; wife not on the schedule" }]
+    },
+    {
+      "first_name": "Minnie", "last_name": "Everett", "match_born_year": true, "sex": "F", "born_year": 1855, "born_place": "Runham, Norfolk",
+      "occupations": [{ "occupation": "Housekeeper, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 36,
+                   "occupation_at_census": "Housekeeper, domestic", "birth_place": "Runham, Norfolk",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Marion", "last_name": "Oakley", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Wilford, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Wilford, Nottinghamshire",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ada", "last_name": "Reavill", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Woodborough, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Woodborough, Nottinghamshire",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Agnes", "last_name": "Shortley", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Burton on Trent, Staffordshire",
+      "occupations": [{ "occupation": "Kitchen maid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
+                   "occupation_at_census": "Kitchen maid, domestic", "birth_place": "Burton on Trent, Staffordshire",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Jane", "last_name": "Page", "match_born_year": true, "sex": "F", "born_year": 1873, "born_place": "Kilburn, Derbyshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [211],
+      "census": [{ "census_year": 1891, "property_id": 211, "address": "7 Newcastle Drive",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Kilburn, Derbyshire",
+                   "source": "1891 census, 7 Newcastle Drive - transcribed by A. Hagues" }]
+    }
+  ]
+}
