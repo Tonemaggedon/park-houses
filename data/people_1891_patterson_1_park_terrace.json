@@ -1,0 +1,32 @@
+{
+  "note": "Mary Ely Patterson, single, living on her own means, with two servants at 1 Park Terrace (#241) on the 1891 return, transcribed by A. Hagues. None of the three was in the record, and 1 Park Terrace held only 1921 (the Cockburns), so 1891 is free and nothing is displaced. The only Pat(t)erson already in the record is Mary Jane Paterson (#1482, born 1886, at Lenton House in 1921), a different woman; no Emma Jarvis and no Emma Walker were there at all, so the two servants cannot bind to anyone by mistake.\n\n**The directory confirms the house and the length of her stay.** Wright's Directory of Nottingham prints her at number 1 Park Terrace in every volume held at Leicester: 'Miss Mary E. Patterson' in 1894-95 and 1898-99, and 'Patterson Miss Mary E' in 1910-11, 1913-14 and 1915-16. With this return she is at 1 Park Terrace from 1891 to at least 1916, some twenty-five years, and 'Miss' throughout agrees with the return calling her single.\n\nHer means of living is recorded against the census row only, not as an occupation, because living on own means is not a trade. Two other Pattersons are printed in the Park in these years - William A. Patterson, Esq, J.P., at 4 The Ropewalk in 1894-95, and Mrs Patterson at 25 Newcastle Drive in 1913-14 and 1915-16 - but nothing connects them to her, so no link is made. Both servants were born at Bourne in Lincolnshire, which is noted as it stands. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 1 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291); 1910-11, page 154 (id 165830); 1913-14, page 172 (id 166528); 1915-16, page 174 (id 347815).",
+  "people": [
+    {
+      "first_name": "Mary Ely", "last_name": "Patterson", "match_born_year": true, "sex": "F", "born_year": 1829, "born_place": "Derby, Derbyshire",
+      "properties": [241],
+      "census": [{ "census_year": 1891, "property_id": 241, "address": "1 Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 62,
+                   "occupation_at_census": "Living on own means", "birth_place": "Derby, Derbyshire",
+                   "source": "1891 census, 1 Park Terrace - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 to 1915-16" }]
+    },
+    {
+      "first_name": "Emma", "last_name": "Jarvis", "match_born_year": true, "sex": "F", "born_year": 1860, "born_place": "Bourne, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [241],
+      "census": [{ "census_year": 1891, "property_id": 241, "address": "1 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 31,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Bourne, Lincolnshire",
+                   "source": "1891 census, 1 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Emma", "last_name": "Walker", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Bourne, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [241],
+      "census": [{ "census_year": 1891, "property_id": 241, "address": "1 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Bourne, Lincolnshire",
+                   "source": "1891 census, 1 Park Terrace - transcribed by A. Hagues; occupation transcribed 'cook domesic'" }]
+    }
+  ]
+}
