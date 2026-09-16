@@ -490,6 +490,11 @@
     <option value="">All listings</option>
     <option value="listed">Listed buildings only</option>
   </select>
+  <select id="stateFilter" onchange="filterMarkers(document.getElementById('searchBox').value)" title="Show only houses that are gone, or only those still standing">
+    <option value="">Standing and lost</option>
+    <option value="demolished">Lost houses only</option>
+    <option value="standing">Standing only</option>
+  </select>
   <button onclick="resetFilters()">Reset</button>
   <button id="censusToggleBtn" onclick="censusMode ? closeCensusMode() : openCensusMode()" title="Filter map by census year" style="background:none;border:1px solid #4a6a4a;color:#8ab87a;border-radius:4px;padding:3px 9px;font-size:0.75rem;cursor:pointer;white-space:nowrap">📋 Census</button>
   <a id="contribUnresolvedBtn" href="/census/unresolved" title="Review unresolved census people" style="display:none;text-decoration:none;border:1px solid #8a6a1a;color:#c8a040;border-radius:4px;padding:3px 9px;font-size:0.75rem;white-space:nowrap">🔍 Unresolved</a>
@@ -912,6 +917,12 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
   Object.values(markers).forEach(m => map.removeLayer(m));
   markers = {};
   let count = 0;
+  // Read straight from the control rather than taking a fourth argument. Eleven
+  // call sites pass the other three positionally, nine of them the same
+  // three-line block, and adding a parameter to every one is how a path gets
+  // missed and a filter quietly stops applying from one route in.
+  const stateEl = document.getElementById('stateFilter');
+  const stateF = stateEl ? stateEl.value : '';
   props.forEach(p => {
     // Include the house name and any former name, so searching a historic name
     // ("Cuylerholme", "Brightlands") finds the property it is now recorded under.
@@ -932,6 +943,11 @@ function buildMarkers(filter = '', typeF = '', listedF = '') {
     }
     if (typeF && p.street !== typeF) return;
     if (listedF === 'listed' && !isListedProp(p)) return;
+    // Lost houses are the weakest positions in the record — most were placed
+    // approximately — so being able to show them alone is what makes working
+    // through them with drag-to-place practical.
+    if (stateF === 'demolished' && !p.demolished) return;
+    if (stateF === 'standing' && p.demolished) return;
 
     // Apply manual coord override if present
     const override = manualCoords && manualCoords[p.id];
@@ -1844,6 +1860,7 @@ function resetFilters() {
   document.getElementById('searchBox').value = '';
   document.getElementById('typeFilter').value = '';
   document.getElementById('listedFilter').value = '';
+  document.getElementById('stateFilter').value = '';
   if (censusMode) closeCensusMode();
   else buildMarkers('', '', '');
 }
