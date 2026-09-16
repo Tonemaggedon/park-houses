@@ -1,0 +1,33 @@
+{
+  "note": "The household of John William Lamb, hosiery manufacturer, a single man with a housekeeper and a housemaid, at 4 Park Terrace (#244) on the 1891 return, transcribed by A. Hagues. 4 Park Terrace held only 1921 (Mary Turnbell's household), so 1891 is free.\n\n**The head is already in the record.** John William Lamb (#2550) is there as a hosiery manufacturer born 1837, filed at Linden House, Clumber Road West, on the 1911 return - the same name, the same trade and the same birth year as this return gives. He is bound by number, so this adds 1891 to the man already held rather than making a second John William Lamb. The directory follows him across the estate: 'John Wm. Lamb, of Lamb & Lee' at 4 Park Terrace in 1894-95 and 1898-99, then 'The Lindens, Lamb John William' on Clumber Road West in 1910-11, 1913-14 and 1915-16. So he left Park Terrace for The Lindens somewhere between 1899 and 1910.\n\n**This settles the Park Terrace numbering for 1891.** The census run gives Patterson at 1, Bradley at 3 and Lamb at 4; Wright's 1894-95 gives Miss Mary E. Patterson at 1, Mr. Charles Bradley at 3 and John Wm. Lamb at 4. Three houses agree across both sources three years apart, so the numbers on these returns are not assumed - they are corroborated. At number 3 the 1891 head is Alfred Bradley and the directory's is Charles, two different men of the same surname, but the house itself is confirmed by its neighbours either side.\n\nHis existing record carries an undated occupation of 'Hosiery Manufacturer'; this file adds the same trade with the years the census and directories support, so the two may want merging by hand. Neither servant was in the record. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 4 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291); The Lindens, Clumber Road West 1910-11, page 71 (id 165747); 1913-14, page 82 (id 166438); 1915-16, page 83 (id 347724).",
+  "people": [
+    {
+      "id": 2550, "first_name": "John William", "last_name": "Lamb", "sex": "M", "born_year": 1837, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Hosiery manufacturer", "from_year": 1891, "to_year": 1916, "employer": "Lamb & Lee", "notes": "1891 and 1911 censuses; Wright's Directory 1894-95 to 1915-16" }],
+      "properties": [244],
+      "census": [{ "census_year": 1891, "property_id": 244, "address": "4 Park Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 54,
+                   "occupation_at_census": "Hosiery manufacturer", "birth_place": "Nottingham",
+                   "source": "1891 census, 4 Park Terrace - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99" }]
+    },
+    {
+      "first_name": "Julia", "last_name": "Rippin", "match_born_year": true, "sex": "F", "born_year": 1847, "born_place": "Wymondham, Leicestershire",
+      "occupations": [{ "occupation": "Housekeeper, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [244],
+      "census": [{ "census_year": 1891, "property_id": 244, "address": "4 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 44,
+                   "occupation_at_census": "Housekeeper, domestic", "birth_place": "Wymondham, Leicestershire",
+                   "source": "1891 census, 4 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Elizabeth", "last_name": "Price", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Gotham, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [244],
+      "census": [{ "census_year": 1891, "property_id": 244, "address": "4 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Gotham, Nottinghamshire",
+                   "source": "1891 census, 4 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}
