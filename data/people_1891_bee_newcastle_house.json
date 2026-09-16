@@ -1,0 +1,41 @@
+{
+  "note": "The household of Arthur Bee, butler, with his wife and two grown children at Newcastle House on the 1891 return, transcribed by A. Hagues, who marked the address with a query. None of the four was in the record, and no property in the record carries the name Newcastle House, so the household is added unfiled under the address the return gives.\n\n**The directory says where Newcastle House is, but not for this year.** Wright's Directory prints 'Newcastle house, Clark Wm. Froggatt, (Nottingham Mills Co)' on **Park Terrace** in 1910-11, 1913-14 and 1915-16, and the record already holds William Froggatt Clark as head of **19 Park Terrace (#379)** on both the 1911 and 1921 returns. Those two together make 19 Park Terrace the strong candidate for Newcastle House. It is not filed there, because the evidence is from 1910 onwards and this household is from 1891: a house name can move to a neighbouring building and a number can be re-cut, so nineteen years is too far to carry a placement without something from the 1891 end. The enumerator's walk on this page would settle it at once.\n\n**A butler as head is worth reading carefully.** Arthur Bee is 48 and a butler, his son a clerk in a lace warehouse and his daughter a dressmaker, and no employer's family is on the schedule with them. That usually means a separate dwelling on the grounds - a lodge, a coach house, or rooms over stables - rather than the principal house, or else a house standing empty of its owners with the butler's family in residence. Which it was affects what Newcastle House means here, so it is noted rather than assumed. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, Newcastle House, transcribed by A. Hagues (address queried by him). Directory evidence: Wright's Directory of Nottingham 1910-11, page 154 (Leicester Special Collections id 165830); 1913-14, page 172 (id 166528); 1915-16, page 174 (id 347815).",
+  "people": [
+    {
+      "first_name": "Arthur", "last_name": "Bee", "match_born_year": true, "sex": "M", "born_year": 1843, "born_place": "Southwell, Nottinghamshire",
+      "occupations": [{ "occupation": "Butler", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Newcastle House (no house of that name in the record; 19 Park Terrace the likely house) - Bee household",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 48,
+                   "occupation_at_census": "Butler", "birth_place": "Southwell, Nottinghamshire",
+                   "source": "1891 census, Newcastle House - transcribed by A. Hagues; address queried by him" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Bee", "match_born_year": true, "sex": "F", "born_year": 1844, "born_place": "Lenton, Nottinghamshire",
+      "census": [{ "census_year": 1891, "unresolved_address": "Newcastle House (no house of that name in the record; 19 Park Terrace the likely house) - Bee household",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 47, "birth_place": "Lenton, Nottinghamshire",
+                   "source": "1891 census, Newcastle House - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Bee" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Arthur Hy", "last_name": "Bee", "match_born_year": true, "sex": "M", "born_year": 1873, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Clerk in a lace warehouse", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Newcastle House (no house of that name in the record; 19 Park Terrace the likely house) - Bee household",
+                   "relationship": "Son", "marital_status": "Single", "age_at_census": 18,
+                   "occupation_at_census": "Clerk in lace warehouse", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, Newcastle House - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Bee" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary", "last_name": "Bee" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Mary Corner", "last_name": "Bee", "match_born_year": true, "sex": "F", "born_year": 1875, "born_place": "St Nicholas, Nottingham",
+      "occupations": [{ "occupation": "Dressmaker", "from_year": 1891, "to_year": 1891 }],
+      "census": [{ "census_year": 1891, "unresolved_address": "Newcastle House (no house of that name in the record; 19 Park Terrace the likely house) - Bee household",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 16,
+                   "occupation_at_census": "Dressmaker", "birth_place": "St Nicholas, Nottingham",
+                   "source": "1891 census, Newcastle House - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Arthur", "last_name": "Bee" }, "type": "child_of" },
+                        { "to": { "first_name": "Mary", "last_name": "Bee" }, "type": "child_of" }]
+    }
+  ]
+}
