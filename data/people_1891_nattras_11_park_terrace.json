@@ -1,0 +1,48 @@
+{
+  "note": "Mary Margaret Nattras, a widow living on her own means, with two infant grandchildren and two servants at 11 Park Terrace (#251) on the 1891 return, transcribed by A. Hagues. None of the five was in the record, and 11 Park Terrace held only 1921 (the Kirks), so 1891 is free.\n\nShe had left by 1894, when Wright's Directory prints William F. Clark of the Nottingham Mills Company at number 11; he is still there in 1898-99.\n\n**The two grandchildren carry a different surname from the head.** Dorothy W Radford, one year old, and William N Radford, under a year, were both born at Standard Hill, so one of Mrs Nattras's daughters had married a Radford. Neither parent is on the schedule. They are almost certainly brother and sister, but the return does not say so and no link is made between them, nor to their grandmother, because the importer carries only plain parent and child links and neither parent is present to carry one. No Radford born in 1890 or 1891 was in the record, so both are new and neither can bind to one of the many Radfords already held.\n\nThe head's surname is entered as transcribed, Nattras with one s; Nattrass is the commoner spelling and the schedule would settle it. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 11 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "Mary Margaret", "last_name": "Nattras", "match_born_year": true, "sex": "F", "born_year": 1834, "born_place": "Nottinghamshire",
+      "properties": [251],
+      "census": [{ "census_year": 1891, "property_id": 251, "address": "11 Park Terrace",
+                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 57,
+                   "occupation_at_census": "Living on own means", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 11 Park Terrace - transcribed by A. Hagues; surname as transcribed" }]
+    },
+    {
+      "first_name": "Dorothy W", "last_name": "Radford", "match_born_year": true, "sex": "F", "born_year": 1890, "born_place": "Standard Hill, Nottingham",
+      "properties": [251],
+      "census": [{ "census_year": 1891, "property_id": 251, "address": "11 Park Terrace",
+                   "relationship": "Granddaughter", "age_at_census": 1,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 11 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "William N", "last_name": "Radford", "match_born_year": true, "sex": "M", "born_year": 1891, "born_place": "Standard Hill, Nottingham",
+      "properties": [251],
+      "census": [{ "census_year": 1891, "property_id": 251, "address": "11 Park Terrace",
+                   "relationship": "Grandson", "age_at_census": 0,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 11 Park Terrace - transcribed by A. Hagues; under a year old" }]
+    },
+    {
+      "first_name": "Mary", "last_name": "Scotney", "match_born_year": true, "sex": "F", "born_year": 1862, "born_place": "Barrowby, Lincolnshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [251],
+      "census": [{ "census_year": 1891, "property_id": 251, "address": "11 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 29,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Barrowby, Lincolnshire",
+                   "source": "1891 census, 11 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Louisa J", "last_name": "Ostler", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [251],
+      "census": [{ "census_year": 1891, "property_id": 251, "address": "11 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Lincolnshire",
+                   "source": "1891 census, 11 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

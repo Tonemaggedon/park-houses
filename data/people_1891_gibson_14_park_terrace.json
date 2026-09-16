@@ -1,0 +1,43 @@
+{
+  "note": "William Gibson, magistrate for Nottingham, a widower of 79 living on his own means, with his married son, a cook and a housemaid at 14 Park Terrace (#253) on the 1891 return, transcribed by A. Hagues. None of the four was in the record, and 14 Park Terrace held only 1921, so 1891 is free.\n\nWright's Directory prints 'Mr. William Gibson' at 14 Park Terrace in 1894-95, so he was still there at about 82; by 1898-99 the house has passed to Tinsley Lindley, the barrister, whose family holds it through 1915-16.\n\n**The son's surname is entered as Gibson.** The transcription gives it as 'Gibson Junior', which is how an index carries the word the enumerator wrote to tell two men of the same name apart in one house, not a surname. He is William Gibson, 51, a solicitor, married, and returned as living in his father's household - his wife is not on the schedule, which is worth a look when the page is to hand. He is linked to his father as a child.\n\nEmily Louisa Gibson (#3180) and George Middleton Gibson (#3181) are already in the record at 7 Cavendish Crescent South in 1891, and the directory prints 'Mrs. Emily L. Gibson' there in 1894-95. Whether they belong to this family is not shown by anything here, so no link is made. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 14 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "William", "last_name": "Gibson", "match_born_year": true, "sex": "M", "born_year": 1812, "born_place": "Nottinghamshire",
+      "occupations": [{ "occupation": "Magistrate for Nottingham", "from_year": 1891, "to_year": 1895, "notes": "1891 census; Wright's Directory 1894-95" }],
+      "properties": [253],
+      "census": [{ "census_year": 1891, "property_id": 253, "address": "14 Park Terrace",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 79,
+                   "occupation_at_census": "Magistrate for Nottingham, living on own means", "birth_place": "Nottinghamshire",
+                   "source": "1891 census, 14 Park Terrace - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95" }]
+    },
+    {
+      "first_name": "William", "last_name": "Gibson", "match_born_year": true, "sex": "M", "born_year": 1840, "born_place": "St Nicholas, Nottingham",
+      "occupations": [{ "occupation": "Solicitor", "from_year": 1891, "to_year": 1891 }],
+      "properties": [253],
+      "census": [{ "census_year": 1891, "property_id": 253, "address": "14 Park Terrace",
+                   "relationship": "Son", "marital_status": "Married", "age_at_census": 51,
+                   "occupation_at_census": "Solicitor", "birth_place": "St Nicholas, Nottingham",
+                   "source": "1891 census, 14 Park Terrace - transcribed by A. Hagues; returned as William Gibson Junior, the Junior being the enumerator's way of telling father and son apart" }],
+      "relationships": [{ "to": { "first_name": "William", "last_name": "Gibson", "born_year": 1812 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Julia", "last_name": "Disney", "match_born_year": true, "sex": "F", "born_year": 1855, "born_place": "Keyworth, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [253],
+      "census": [{ "census_year": 1891, "property_id": 253, "address": "14 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 36,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Keyworth, Nottinghamshire",
+                   "source": "1891 census, 14 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Edith", "last_name": "Clarke", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "Watnall, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [253],
+      "census": [{ "census_year": 1891, "property_id": 253, "address": "14 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Watnall, Nottinghamshire",
+                   "source": "1891 census, 14 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

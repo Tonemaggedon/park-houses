@@ -1,0 +1,67 @@
+{
+  "note": "Henry Wing, magistrate for Nottingham and solicitor, a widower of 60, with his daughter, his married granddaughter and her infant son, his sister-in-law and two servants at 12 Park Terrace (#252) on the 1891 return, transcribed by A. Hagues. None of the seven was in the record, and 12 Park Terrace held **no census record at all** before this.\n\nWright's Directory prints 'Henry Wing, Esq, J.P., solicitor' at 12 Park Terrace in 1894-95 and 1898-99 - the census description exactly - so he held the house for at least eight years after this return. By 1910-11 it belongs to Charles E. Townroe, who is still there in 1915-16.\n\n**A lead on four people already in the record, unfiled.** The record holds William Wing (#668, born 1864, solicitor), Sara Whitehead Wing (#669), Henry Wing (#670, born 1890) and Richard Wing (#671) with 1911 censuses and **no property**. Wright's prints 'Kentmere, Wing William, solicitor (H. Wing & Son)' on Cavendish Crescent North in 1910-11 and 1913-14, 'Kentmere, Wing Henry' in 1913-14, and 'Kentmere, Wing Mrs. Sarah W' in 1915-16. The firm name H. Wing & Son points back to this Henry, and the household names match the unfiled four closely. That unfiled 1911 household looks as though it belongs at Kentmere, Cavendish Crescent North - but placing it is a separate decision on separate evidence, so nothing here is moved or joined, and none of the four is bound.\n\n**Relationships that the importer cannot carry are left in this note instead.** Constance Thomley is the head's granddaughter and Leslie Thomley his great-grandson; Sarah Ann Morris is his sister-in-law. Only the plain parent and child link is entered - Leslie to Constance, and Frances Mary Wing to her father - so the rest is recorded here rather than guessed into a shape the record does not hold. Constance is returned as married with her husband absent from the schedule. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 12 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "Henry", "last_name": "Wing", "match_born_year": true, "sex": "M", "born_year": 1831, "born_place": "Newark, Nottinghamshire",
+      "occupations": [{ "occupation": "Solicitor, magistrate for Nottingham", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 60,
+                   "occupation_at_census": "Magistrate for Nottingham, solicitor", "birth_place": "Newark, Nottinghamshire",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99" }]
+    },
+    {
+      "first_name": "Frances Mary", "last_name": "Wing", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Standard Hill, Nottingham",
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 25,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Wing", "born_year": 1831 }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Constance", "last_name": "Thomley", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Standard Hill, Nottingham",
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Granddaughter", "marital_status": "Married", "age_at_census": 26,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues; granddaughter of the head, husband not on the schedule" }]
+    },
+    {
+      "first_name": "Leslie", "last_name": "Thomley", "match_born_year": true, "sex": "M", "born_year": 1890, "born_place": "Standard Hill, Nottingham",
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Grandson", "age_at_census": 1,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues; returned as grandson, so great-grandson of the head" }],
+      "relationships": [{ "to": { "first_name": "Constance", "last_name": "Thomley" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Sarah Ann", "last_name": "Morris", "match_born_year": true, "sex": "F", "born_year": 1828, "born_place": "Standard Hill, Nottingham",
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Sister-in-law", "marital_status": "Single", "age_at_census": 63,
+                   "birth_place": "Standard Hill, Nottingham",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Bessie", "last_name": "Swain", "match_born_year": true, "sex": "F", "born_year": 1867, "born_place": "Selston, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Selston, Nottinghamshire",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Ellen", "last_name": "Francis", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Grantham, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [252],
+      "census": [{ "census_year": 1891, "property_id": 252, "address": "12 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Grantham, Lincolnshire",
+                   "source": "1891 census, 12 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

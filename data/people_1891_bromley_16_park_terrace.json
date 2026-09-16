@@ -1,0 +1,50 @@
+{
+  "note": "The household of William F Bromley, stock broker, his wife Maria and three servants at 16 Park Terrace (#255) on the 1891 return, transcribed by A. Hagues. None of the five was in the record, and 16 Park Terrace held only 1921 (the Eberlins), so 1891 is free.\n\n**This confirms the Italian Villas group from the census side.** Wright's Directory prints 'Wm. F. Bromley, stock brkr' at 16 Park Terrace in 1894-95 - his census trade exactly - and 'Italian villas, Wm. F. Bromley, of Bromley, Cunliffe & Co.' at the same number in 1898-99. With Joseph F Youngman at 15 in the same two volumes, both householders the directory names under 'Italian villas' are now confirmed at their numbers by the 1891 census as well. The third, John Thompson Brewster at 17, is still to come.\n\n**He stayed in the Park for another twenty-five years.** The directory follows him to 1 Tattershall Drive in 1910-11 and to Derby House, North Road in 1913-14 and 1915-16, always as 'Bromley, Cunliffe & Co'. None of those addresses is entered here, because a directory line alone does not place a household; they are noted so the later returns can be recognised when they turn up.\n\n**A different Bromley, worth watching.** Albert Nelson Bromley, architect, is printed at 15 Newcastle Drive in 1898-99, 1910-11, 1913-14 and 1915-16. He is not in the record and is not this man; he is noted because architects living in the Park are being collected.\n\nCharlotte and Susannah Walton were both born at Dordon in Warwickshire and are five years apart, so they are very likely sisters in service together, but the return does not say so and no link is made. Maria O Bromley was born in India, which the return gives without further detail. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 16 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291).",
+  "people": [
+    {
+      "first_name": "William F", "last_name": "Bromley", "match_born_year": true, "sex": "M", "born_year": 1845, "born_place": "Stafford, Staffordshire",
+      "occupations": [{ "occupation": "Stock broker", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99, the latter as Bromley, Cunliffe & Co." }],
+      "properties": [255],
+      "census": [{ "census_year": 1891, "property_id": 255, "address": "16 Park Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 46,
+                   "occupation_at_census": "Stock broker", "birth_place": "Stafford, Staffordshire",
+                   "source": "1891 census, 16 Park Terrace - transcribed by A. Hagues; at the same house, called Italian Villas, in Wright's Directory 1894-95 and 1898-99" }]
+    },
+    {
+      "first_name": "Maria O", "last_name": "Bromley", "match_born_year": true, "sex": "F", "born_year": 1842, "born_place": "India",
+      "properties": [255],
+      "census": [{ "census_year": 1891, "property_id": 255, "address": "16 Park Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 49, "birth_place": "India",
+                   "source": "1891 census, 16 Park Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "William F", "last_name": "Bromley" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Hannah", "last_name": "Prime", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Uttoxeter, Staffordshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [255],
+      "census": [{ "census_year": 1891, "property_id": 255, "address": "16 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Uttoxeter, Staffordshire",
+                   "source": "1891 census, 16 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Charlotte", "last_name": "Walton", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "Dordon, Warwickshire",
+      "occupations": [{ "occupation": "Parlourmaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [255],
+      "census": [{ "census_year": 1891, "property_id": 255, "address": "16 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
+                   "occupation_at_census": "Parlourmaid, domestic", "birth_place": "Dordon, Warwickshire",
+                   "source": "1891 census, 16 Park Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Susannah", "last_name": "Walton", "match_born_year": true, "sex": "F", "born_year": 1876, "born_place": "Dordon, Warwickshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
+      "properties": [255],
+      "census": [{ "census_year": 1891, "property_id": 255, "address": "16 Park Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 15,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Dordon, Warwickshire",
+                   "source": "1891 census, 16 Park Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}
