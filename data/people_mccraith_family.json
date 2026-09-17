@@ -1,49 +1,60 @@
 {
-  "note": "The McCraiths of The Park, after A. Hagues found three of them were knights. Their titles, JP, Wikipedia links and the family links were already in the record; this adds only what was still missing — Bernard's war death and service, and Lady McCraith's maiden name — from the Nottinghamshire Roll of Honour and the Wikipedia article on Sir James William McCraith. Fills blanks only; and Sir James's own death at Ellenborough House in 1928 and his estate, from a newspaper report of his will found by A. Hagues.",
-  "source": "Nottinghamshire County Council Roll of Honour; Wikipedia, 'James William McCraith'",
+  "note": "The McCraith family of Ellenborough House, 3 South Road, from a family account supplied by A. Hagues. Everyone is bound by number and **nothing is overwritten**: the importer fills blanks only, so this adds the deaths, the maiden names, the occupations and the three biographies that were missing, and leaves every biography already written exactly as it is.\n\n**Trimmed against the record before writing.** An earlier draft carried biographies for William (#138) and Sarah (#139) setting out the family's origins. Both already have fuller ones, and better sourced: they give the marriage at **Leicester in 1847** and Sarah's maiden name, **York** - which is where Kenneth **York** McCraith's middle name comes from, his grandmother's surname carried forward. Those two bios were dropped rather than left in the file to be silently skipped. Only the blank `maiden_name` on #139 is filled here. Maria Elizabeth's maiden name was likewise already recorded and is not repeated.\n\n**Where the family came from**, for the record: William McCraith was born in Scotland about 1825 and married Sarah York of Melton Mowbray at Leicester in 1847. Their eldest son John Tom was born at Leicester that year and James William at Nottingham in 1853, and the household was in The Park by 1871. Both sons were knighted - John Tom in 1904, James William in January 1918 - and both sat on Nottingham City Council as Conservatives. **Neither knighthood is mentioned in William's or Sarah's biography, and both want adding by hand.**\n\n**Five children of James William and Maria Elizabeth**: Douglas (1878), Bernard (1880), Malcolm (1882), Kenneth York (1890 or 1891) and Violet Muriel (1892), all born in Nottingham. The account has Douglas and Bernard christened together at Nottingham St Peter on 28 June 1880, which would put Douglas at two and a half at his own christening - possible, but the kind of detail worth checking against the parish register.\n\n**Malcolm's date of birth is contested within the account itself.** His Midland Railway staff record gives 7 February 1882 and the birth index agrees with a registration in the first quarter of that year, while his Canadian attestation gives 3 December 1882. The record holds 1882 and nothing here disturbs it.\n\n**Three people already have a biography, so this material cannot reach them by import and wants adding by hand:**\n- **Douglas (#186)** stops at 1911. Missing: his marriage to Phyllis Marguerite Lynam at the Chapel Royal, Savoy, on 15 September 1915, his brother Bernard being best man; their sons Patrick James Danvers (21 June 1916) and Anthony D'Ewes (6 April 1918); his knighthood in 1939; and Holme Lodge, Bingham, where he died on 16 September 1952.\n- **Kenneth York (#189)** stops at Cambridge. His later trade is added below as an occupation instead, which the importer can do.\n- **Bernard (#187)** opens 'b. 1881', which his own birth date field now contradicts at 2 May 1880.\n\n**Phyllis Marguerite is recorded as née Lynam** on A. Hagues's identification, and is linked to her husband here. The record already holds a Lynam family at Newcastle Court, Newcastle Circus, among them **Arthur D'E Lynam (#56)** - and Douglas's second son was named Anthony **D'Ewes**, the same uncommon name carried forward. No link is made between her and any individual Lynam, because nothing in hand names her father.",
+  "source": "A family account of the McCraiths of Ellenborough House supplied by A. Hagues, drawing on census returns, the birth index, a Midland Railway staff record, Canadian Expeditionary Force attestation and service papers, and probate records.",
   "people": [
     {
-      "id": 187,
-      "first_name": "Bernard",
+      "id": 139,
+      "first_name": "Sarah",
       "last_name": "McCraith",
-      "died_date": "26 January 1919",
-      "died_year": 1919,
-      "died_place": "No. 30 General Hospital, near Boulogne, France",
-      "occupations": [
-        {
-          "occupation": "Major, Royal Engineers",
-          "employer": "2nd North Midland Field Company, Royal Engineers",
-          "from_year": 1914,
-          "to_year": 1919,
-          "notes": "Volunteered on the outbreak of war and was gazetted Second Lieutenant in September 1914; Lieutenant, then Captain in December 1915, Major in June 1916. Served in France and Flanders from February 1915, was severely wounded and invalided home that April, rejoined in November 1916, and in 1917 was second in command at a base park near Calais. Died of pneumonia, probably after influenza, on 26 January 1919; buried at Les Baraques Military Cemetery, Sangatte. Remembered at St Thomas's and St Mary's churches in Nottingham, on the Notts Amateur Cricket Club and Nottinghamshire Freemasons war memorials, and on the family headstone in the Church (Rock) Cemetery."
-        }
-      ]
+      "maiden_name": "York"
     },
     {
       "id": 185,
       "first_name": "Maria Elizabeth",
       "last_name": "McCraith",
-      "maiden_name": "Dickinson",
-      "title": "Lady"
+      "died_date": "1932-05-03",
+      "died_year": 1932,
+      "died_place": "Old Mill House, Bleasby, Nottinghamshire",
+      "bio": "Daughter of Thomas and Elizabeth Dickinson, she married James William McCraith in 1876, the marriage registered at Nottingham, and they had five children. She kept house at Ellenborough House, 3 South Road, from the early 1880s, and is returned as head of the household on the 1911 census, her husband having signed the schedule but been away on the night. She became Lady McCraith on his knighthood in January 1918. Widowed in 1928, she left The Park for the Old Mill House at Bleasby, where her unmarried daughter Violet Muriel lived with her, and where she died on 3 May 1932."
     },
     {
-      "id": 140,
-      "first_name": "James William",
+      "id": 188,
+      "first_name": "Malcolm",
       "last_name": "McCraith",
-      "died_place": "Ellenborough House, The Park, Nottingham",
-      "bio": "Solicitor, head of Maples and McCraith of the Pavement, Nottingham — the firm he founded with Samuel Maples, to whom he had been articled — and a founder member of the Nottingham Incorporated Law Society, its president in 1891. A Justice of the Peace from 1892, he was knighted in January 1918. He was Chairman of the Nottingham Central Conservative Association, and a director of the Coliseum Syndicate Ltd and of St Augustine's Parade Hippodrome, Bristol, Ltd.\n\nHe married Maria Elizabeth Dickinson in 1876. In 1911 he signed the census schedule for Ellenborough House but was not at home on census night, which is why his wife is returned as head of the household and he has no 1911 record. In 1921 the household was on Clumber Crescent South, but by his death he was back at Ellenborough House, 3 South Road, where the family had lived since at least 1891. He died there on 9 July 1928, aged 75, leaving a gross estate of £151,442, with net personalty of £149,624. His second son, Major Bernard McCraith, had died on active service in 1919.",
+      "died_place": "At sea",
+      "bio": "Third son of James William and Maria Elizabeth McCraith, and an engineer. He was a pupil with the Midland Railway at Derby from 1 October 1900, leaving on 19 May 1904, and emigrated to Canada in 1910 to work as an engineer. In March 1915 he attested in the 30th Battalion of the Canadian Expeditionary Force at New Westminster, British Columbia, transferring to the 47th Battalion, which reached England at the end of that year, and was afterwards commissioned in the Army Service Corps. He served in Egypt, Palestine and Salonika, was in hospital more than half a dozen times, and faced two courts martial, for drunkenness and for absence without leave; he was promoted lieutenant nonetheless. He returned to England in June 1919 and, after demobilisation, went back to Canada that August. He lived on in British Columbia - probate describes him as of Vancouver and Savary Island - and died at sea on 31 August 1935. His date of birth is given as 7 February 1882 by his Midland Railway record and the birth index, and as 3 December 1882 by his Canadian attestation papers.",
       "occupations": [
-        {
-          "occupation": "Director",
-          "employer": "Coliseum Syndicate Ltd; St Augustine's Parade Hippodrome, Bristol, Ltd",
-          "to_year": 1928,
-          "notes": "Named in the report of his will, 1928."
-        },
-        {
-          "occupation": "Chairman, Nottingham Central Conservative Association",
-          "to_year": 1928,
-          "notes": "Named in the report of his will, 1928."
-        }
+        { "occupation": "Pupil engineer", "from_year": 1900, "to_year": 1904, "employer": "Midland Railway, Derby" },
+        { "occupation": "Engineer", "from_year": 1910, "to_year": 1915, "notes": "in British Columbia, Canada" },
+        { "occupation": "Lieutenant, Army Service Corps", "from_year": 1915, "to_year": 1919, "notes": "attested in the 30th Battalion, Canadian Expeditionary Force, at New Westminster in March 1915, transferring to the 47th; served in Egypt, Palestine and Salonika" }
+      ]
+    },
+    {
+      "id": 189,
+      "first_name": "Kenneth York",
+      "last_name": "McCraith",
+      "died_date": "1941-02-02",
+      "died_year": 1941,
+      "died_place": "Cockliffe, Arnold, Nottinghamshire",
+      "occupations": [
+        { "occupation": "Managing director", "from_year": 1932, "to_year": 1941, "employer": "Messrs F. Johnson, Reed Mills, Mansfield", "notes": "a hosiery manufacturer; the record already holds him managing a lace warehouse for Birks Manufacturing Co Ltd in 1921" }
+      ]
+    },
+    {
+      "id": 1343,
+      "first_name": "Violet Muriel",
+      "last_name": "McCraith",
+      "bio": "The only daughter of James William and Maria Elizabeth McCraith, born in Nottingham in 1892. She was at school at Ellenborough House on the 1911 census and still at home there on the 1921 return, and she did not marry. When her father died in 1928 she moved with her mother to the Old Mill House at Bleasby, and was living with her there at her mother's death in May 1932."
+    },
+    {
+      "id": 1219,
+      "first_name": "Phyllis Marguerite",
+      "last_name": "McCraith",
+      "maiden_name": "Lynam",
+      "bio": "She married Douglas McCraith, solicitor of Maples and McCraith and later Sir Douglas, at the Chapel Royal, Savoy, on 15 September 1915; his brother Bernard was best man. They had two sons, Patrick James Danvers, born 21 June 1916, and Anthony D'Ewes, born 6 April 1918. She is returned with her husband at Ashley House, Park Drive, on the 1921 census, and survived him when he died in 1952.",
+      "relationships": [
+        { "to": { "first_name": "Douglas", "last_name": "McCraith" }, "type": "spouse_of",
+          "notes": "married at the Chapel Royal, Savoy, 15 September 1915" }
       ]
     }
   ]
