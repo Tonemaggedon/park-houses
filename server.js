@@ -1780,7 +1780,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
       `${String(fn || '').trim().toLowerCase()}|${String(ln || '').trim().toLowerCase()}|${by ?? ''}`;
     for (const file of files) {
       const doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf8'));
-      let added = 0, already = 0, linked = 0, census = 0, censusFilled = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0, occsFilled = 0;
+      let added = 0, already = 0, linked = 0, census = 0, censusFilled = 0, enriched = 0, rels = 0, relsSkipped = 0, occs = 0, occsFilled = 0, bibs = 0;
       const noSuchId = [];
       // A preview that says "20 would be added" without saying who is a preview
       // nobody can check. Name them, capped so a large file stays readable.
@@ -2097,6 +2097,44 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             [id, o.occupation, o.from_year ?? null, o.to_year ?? null,
              o.employer || null, o.notes || null]);
         }
+        // Published work, keyed on the title and the year so a second run does
+        // not stack the same book twice. It is bound by person number, which is
+        // the reason this lives in the person importer at all: the other two
+        // ways into this table match an author by name, and the record holds a
+        // father and a son who share one — a bibliography loaded by name either
+        // lands on the wrong man or is refused outright. Note the table: the
+        // person page renders "bibliography", while data/works_*.json loads into
+        // "person_works", which nothing displays.
+        for (const w of (person.bibliography || person.works || [])) {
+          if (!w || !w.title) continue;
+          if (id === null) { bibs++; continue; }
+          const dup = await db.query(
+            `SELECT id, publisher, notes, url FROM bibliography
+              WHERE author_person_id=$1 AND LOWER(title)=LOWER($2)
+                AND year IS NOT DISTINCT FROM $3`,
+            [id, w.title, w.year ?? null]);
+          if (dup.rows.length) {
+            // Blanks only, as everywhere else in this importer: a note somebody
+            // wrote on the site is never replaced by the one in the file.
+            const have = dup.rows[0], fills = [];
+            if (!have.publisher && w.publisher) fills.push(['publisher', w.publisher]);
+            if (!have.notes && w.notes) fills.push(['notes', w.notes]);
+            if (!have.url && w.url) fills.push(['url', w.url]);
+            if (fills.length && !dryRun) {
+              await db.query(
+                `UPDATE bibliography SET ${fills.map((f, k) => `${f[0]}=$${k + 2}`).join(', ')} WHERE id=$1`,
+                [have.id, ...fills.map(f => f[1])]);
+            }
+            continue;
+          }
+          bibs++;
+          if (dryRun) continue;
+          await db.query(
+            `INSERT INTO bibliography (author_person_id, title, year, publisher, notes, url, property_id)
+             VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+            [id, w.title, w.year ?? null, w.publisher || null, w.notes || null,
+             w.url || null, w.property_id || null]);
+        }
       }
       // The links held back above, now that everyone in the file exists.
       for (const d of deferred) {
@@ -2108,6 +2146,7 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
         ? list.slice(0, NAME_CAP).concat(`and ${list.length - NAME_CAP} more`) : list;
       report.push({ file, added, alreadyPresent: already, enriched, propertyLinks: linked,
                     census, censusFilled, occupations: occs, occupationsFilled: occsFilled,
+                    bibliography: bibs,
                     relationships: rels, relationshipsSkipped: relsSkipped,
                     ...(addedNames.length ? { addedNames: trim(addedNames) } : {}),
                     ...(censusNames.length ? { censusNames: trim(censusNames) } : {}),

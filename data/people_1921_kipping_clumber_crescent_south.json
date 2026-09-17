@@ -20,6 +20,22 @@
         { "occupation": "Sir Jesse Boot Professor of Chemistry", "from_year": 1928, "to_year": 1936, "employer": "University College, Nottingham", "notes": "the first holder of the chair endowed by Sir Jesse Boot, later Baron Trent" },
         { "occupation": "Emeritus Professor of Chemistry", "from_year": 1936, "to_year": 1949, "employer": "University College, Nottingham" }
       ],
+      "bibliography": [
+        { "title": "Organic Chemistry", "year": 1894,
+          "notes": "Written with W. H. Perkin junior and known to generations of students as 'Perkin and Kipping'. New editions and revisions appeared for forty-five years; his son Frederic Barry Kipping took over as co-author on Perkin's death in 1928, and a final edition was published in 1950, the year after his own." },
+        { "title": "Organic derivatives of silicon. Triphenylsilicol and alkyloxysilicon chlorides", "year": 1901,
+          "notes": "Written with L. L. Lloyd, in the Transactions of the Chemical Society, volume 79, page 449. His first paper on silicon, and the beginning of the work that occupied the rest of his life." },
+        { "title": "Organic derivatives of silicon (the series, fifty-one parts)", "year": null,
+          "notes": "Fifty-one numbered parts published in the Transactions and then the Journal of the Chemical Society between 1907 and 1944, and fifty-seven papers on silicon chemistry in all between 1899 and 1944. He coined the word silicone in 1904 for the compounds he made, and thought them sticky messes of no particular use; within a few years of his death they were in production worldwide." },
+        { "title": "Ladenburg Memorial Lecture", "year": 1913,
+          "notes": "Transactions of the Chemical Society, volume 103, page 273." },
+        { "title": "Organic derivatives of silicon. Part L", "year": 1936,
+          "notes": "The fiftieth part, marked by a complimentary dinner on 11 January 1936 at which his staff and former students presented a record card designed by Dr N. W. Cusa and signed by all who attended." },
+        { "title": "The Bakerian Lecture: organic derivatives of silicon", "year": 1937,
+          "notes": "Proceedings of the Royal Society A, volume 159, page 139. Delivered in London on a hot summer day in 1936; Challenger's bibliography dates it 1936 and Thomas's reference 1937, the lecture and its publication falling either side of the year." },
+        { "title": "Organic derivatives of silicon. Part LI (and last)", "year": 1944,
+          "notes": "Written with J. T. Abrams, in the Journal of the Chemical Society, page 81. His final paper, which closed with an envoi thanking the Chemical Society for having published so much of his work over so long a period - an acknowledgment Challenger could recall from no other Fellow." }
+      ],
       "census": [
         { "census_year": 1921, "unresolved_address": "Clumber Crescent South",
           "relationship": "Head", "age_at_census": 57,

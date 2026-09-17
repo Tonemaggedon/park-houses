@@ -382,7 +382,8 @@ const describePeople = d => {
   if (!report.length) return 'No people files found in data/.';
   const n = v => v || 0;
   const workDone = x => n(x.added) + n(x.propertyLinks) + n(x.census) + n(x.occupations)
-                      + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships);
+                      + n(x.occupationsFilled) + n(x.enriched) + n(x.relationships)
+                      + n(x.bibliography);
   const shortName = x => x.file.replace(/^people_/, '').replace(/\.json$/, '');
   const line = x => {
     // A file that only fills people out adds nobody, and the server leaves the
@@ -394,6 +395,7 @@ const describePeople = d => {
     if (x.census) bits.push(`${x.census} census record${x.census === 1 ? '' : 's'}`);
     if (x.occupations) bits.push(`${x.occupations} occupation${x.occupations === 1 ? '' : 's'}`);
     if (x.occupationsFilled) bits.push(`${x.occupationsFilled} occupation${x.occupationsFilled === 1 ? '' : 's'} filled out`);
+    if (x.bibliography) bits.push(`${x.bibliography} published work${x.bibliography === 1 ? '' : 's'}`);
     if (x.enriched) bits.push(`${x.enriched} filled out`);
     if (x.relationships) bits.push(`${x.relationships} relationship${x.relationships === 1 ? '' : 's'}`);
     return `${x.file}: ${bits.length ? bits.join(', ') : 'nothing changed'}`
