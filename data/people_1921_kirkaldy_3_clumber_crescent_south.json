@@ -1,0 +1,89 @@
+{
+  "note": "The household at 3 Clumber Crescent South (#78) on the 1921 return, transcribed by A. Hagues. The five people on the schedule are bound by number and none of them is created; they were all in the record already and none carried a 1921 census row.\n\n**The house rests on a document, not on the order of the walk.** The Nottingham Evening Post of Monday 28 March 1932, reporting the will of Professor Adam Willis Kirkaldy, describes him as 'of 3, Linden-road, Didsbury, Manchester, formerly of 3, Clumber-crescent, The Park, Nottingham'. The notice does not say north or south, but the record holds only one numbered Clumber Crescent: the south crescent has 3, 5, 7 and 9, while Clumber Crescent North holds a single named property, Cedar Lodge, and no numbers at all. So the address in the will can only be this house. Richard FitzHugh is printed at number 3 in Wright's Directory for 1910-11, 1913-14 and 1915-16, and is returned there in 1891, 1901 and 1911; the Kirkaldys follow him.\n\n**The head was away on census night.** No row on this schedule is a head: the eldest is returned as Wife, then Daughter, then Son, then two servants. A. Hagues reports that the schedule was signed by Adam Willis Kirkaldy, the professor himself, so he was absent when the return was made - the same pattern as Alfred William Stanfield at Lincoln Circus in 1911, whose house was returned with only his servants in it. He is therefore **created here as a resident of the house with no census row**, because no census row exists for him.\n\n**Two men of the same name, and the import must not confuse them.** The record already holds Adam Willis Kirkaldy (#1338), born 1902-03, who is the son on this schedule. The father is a different man, born about 1867. He is matched on his birth year as well as his name, which is what keeps the two apart and lets the file be run twice without making him again. **If anything here is ever bound to #1338 by mistake, the father's life will land on the son's record.**\n\nFrom the will notice: he died on 29 December 1931 aged 64; he was for twelve years until shortly before his death professor of economics at University College, Nottingham, and previously professor of finance at Birmingham University; he was chairman of the Nottingham Chamber of Commerce in 1925 and 1926 and joined Nottingham City Council in 1927. His estate was 17,071 pounds gross with net personalty of 16,377 pounds. Probate went to his son Adam Willis Kirkaldy of Wetherby near Hull, to Patrick Henry Kirkaldy of Cricklewood, and to Thomas Austin Hamilton Baynes of Edgbaston. He left 100 pounds to the Working Men's College, London, for its endowment fund, and the residue in trust for his wife for life with remainder to his children Evelyn, Joan Hamilton Baynes and Adam Willis Kirkaldy.\n\n**Worth following.** Joan Kirkaldy, 22 here and born in Paris, is the Joan Hamilton Baynes of the will, so she married into the Baynes family of Edgbaston between 1921 and 1931; and the daughter Evelyn named in the will is not on this schedule. The professor and Frederick Stanley Kipping, professor of chemistry, were both at University College and both living on this short crescent - see [[kipping-mccraith-which-house]].\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1921 census, 3 Clumber Crescent South, transcribed by A. Hagues. House identified from 'Professor Kirkaldy's Will: bequest to Working Men's College', Nottingham Evening Post, Monday 28 March 1932, supplied by A. Hagues. Supporting: Wright's Directory of Nottingham 1910-11, 1913-14 and 1915-16, Clumber Crescent South number 3.",
+  "people": [
+    {
+      "first_name": "Adam Willis",
+      "last_name": "Kirkaldy",
+      "match_born_year": true,
+      "sex": "M",
+      "born_year": 1867,
+      "died_date": "1931-12-29",
+      "died_year": 1931,
+      "title": "Professor",
+      "postnominals": "M.A.",
+      "properties": [78],
+      "bio": "Professor of economics at University College, Nottingham, for twelve years until shortly before his death, and previously professor of finance at Birmingham University. He was chairman of the Nottingham Chamber of Commerce in 1925 and 1926 and became a member of Nottingham City Council in 1927. He lived at 3 Clumber Crescent South in The Park, and later at 3 Linden Road, Didsbury, Manchester, where he died on 29 December 1931 aged 64, leaving an estate of 17,071 pounds gross and 16,377 pounds net personalty. His will left 500 pounds to his wife, 100 pounds to each of his grandchildren, 100 pounds to his nephew John Francis Kirkaldy, and 100 pounds to the endowment fund of the Working Men's College in London, with the residue held in trust for his wife for life and then divided between his children Evelyn, Joan Hamilton Baynes and Adam Willis Kirkaldy. He was not at home on the night of the 1921 census, when his wife, daughter, son and two servants were returned without him, although he signed the schedule. He published steadily through his Nottingham years: Economics and Syndicalism and British Shipping: Its History, Organisation and Importance, both 1914; Labour, Finance, and the War, 1916; Wealth: Its Production and Distribution and The History and Economics of Transport, written with Alfred Dudley Evans, both 1920; British Finance During and After the War, 1914-21, with Alfred Herbert Gibson, about 1921; The Trade, Commerce and Shipping of the Empire, with Sir Charles Campbell McLeod, 1924; and The Romance of Trade: A Survey, Commercial and Economic, 1929. For the British Association for the Advancement of Science he prepared Industry and Finance: War Expedients and Reconstruction, 1918, and its supplementary volume. A further edition of The Romance of Trade, with Ikunosuke Hamabayashi, appeared in 1936, five years after his death.",
+      "occupations": [
+        { "occupation": "Professor of economics", "from_year": 1919, "to_year": 1931, "employer": "University College, Nottingham", "notes": "the 1932 will notice gives twelve years in the chair until shortly before his death; the start year is inferred from that and is approximate" },
+        { "occupation": "Professor of finance", "employer": "Birmingham University", "notes": "before the Nottingham chair, per the 1932 will notice; no years given" }
+      ]
+    },
+    {
+      "id": 1336,
+      "first_name": "Evelyn Frances",
+      "last_name": "Kirkaldy",
+      "properties": [78],
+      "census": [
+        { "census_year": 1921, "property_id": 78, "address": "3 Clumber Crescent South",
+          "relationship": "Wife", "age_at_census": 53,
+          "birth_place": "Poplar, London, England",
+          "source": "1921 census, 3 Clumber Crescent South - transcribed by A. Hagues; the schedule carries no head, her husband being away that night" }
+      ]
+    },
+    {
+      "id": 1337,
+      "first_name": "Joan",
+      "last_name": "Kirkaldy",
+      "properties": [78],
+      "census": [
+        { "census_year": 1921, "property_id": 78, "address": "3 Clumber Crescent South",
+          "relationship": "Daughter", "age_at_census": 22,
+          "birth_place": "Paris, France",
+          "source": "1921 census, 3 Clumber Crescent South - transcribed by A. Hagues; named in her father's 1932 will as Joan Hamilton Baynes, so married between 1921 and 1931" }
+      ]
+    },
+    {
+      "id": 1338,
+      "first_name": "Adam Willis",
+      "last_name": "Kirkaldy",
+      "properties": [78],
+      "census": [
+        { "census_year": 1921, "property_id": 78, "address": "3 Clumber Crescent South",
+          "relationship": "Son", "age_at_census": 18,
+          "birth_place": "Oxford, Oxfordshire, England",
+          "source": "1921 census, 3 Clumber Crescent South - transcribed by A. Hagues; the son, not his father of the same name, who was executor of the 1931 will and then of Wetherby near Hull" }
+      ]
+    },
+    {
+      "id": 1339,
+      "first_name": "Bertha Swell",
+      "last_name": "Baker",
+      "properties": [78],
+      "occupations": [
+        { "occupation": "Cook, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 78, "address": "3 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 30,
+          "occupation_at_census": "Cook, private", "birth_place": "Morton, Lincolnshire, England",
+          "source": "1921 census, 3 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1340,
+      "first_name": "Mildred",
+      "last_name": "Smith",
+      "properties": [78],
+      "occupations": [
+        { "occupation": "House parlourmaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 78, "address": "3 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 23,
+          "occupation_at_census": "House parlourmaid, private", "birth_place": "Holbrook, Suffolk, England",
+          "source": "1921 census, 3 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    }
+  ]
+}

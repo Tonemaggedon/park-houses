@@ -1,0 +1,151 @@
+{
+  "note": "The household of Sir Ernest Jardine at 9 Clumber Crescent South (#383) on the 1921 return, transcribed by A. Hagues. All ten are bound by number and none is created: every one of them was already in the record as a person, and not one of them carried a 1921 census row, so this adds the year and nothing else.\n\n**The house is certain, and a servant proves it.** Mary Evanson (#1319) is cook at 9 Clumber Crescent South on the 1911 return and cook in this household in 1921 - the same woman in the same kitchen ten years on. The family itself is at the house continuously: the Jardines are returned there in 1901 and 1911, Wright's Directory prints 'Jardine Ernest' on the crescent in 1910-11, 1913-14 and 1915-16, and the 1939 register still finds Ernest and John there. Nothing in this file rests on the order of the enumerator's walk.\n\n**Two O'Connells, a generation apart.** John Granfield O'Connell, 34, born at Napier in New Zealand, is returned as a visitor and gives his trade as managing director of Trent Concrete Ltd, concrete products manufacturers. With him is John Jardine O'Connell, aged 1, born in Nottingham - a child carrying the Jardine name as his middle name, staying in the Jardine house. That is the shape of a marriage between the families, but no schedule here says so and no relationship is written between them beyond what the return gives.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way; where the record already holds a birth year it is left alone, since an import fills blanks and never overwrites.",
+  "source": "1921 census, 9 Clumber Crescent South, transcribed by A. Hagues. Supporting: the 1901 and 1911 returns for the same house; Wright's Directory of Nottingham 1910-11, 1913-14 and 1915-16, Clumber Crescent South; the 1939 register.",
+  "people": [
+    {
+      "id": 1315,
+      "first_name": "Ernest",
+      "last_name": "Jardine",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Lace machine builder", "from_year": 1921, "to_year": 1921, "notes": "1921 census, returned as an employer" }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Head", "age_at_census": 61,
+          "occupation_at_census": "Lace machine builder", "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1316,
+      "first_name": "Ada Jane",
+      "last_name": "Jardine",
+      "properties": [383],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Wife", "age_at_census": 59,
+          "occupation_at_census": "Home duties", "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1317,
+      "first_name": "John Granfield",
+      "last_name": "O'Connell",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Managing director", "from_year": 1921, "to_year": 1921, "employer": "Trent Concrete Ltd, concrete products manufacturers", "notes": "1921 census, returned as a visitor at 9 Clumber Crescent South" }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Visitor", "age_at_census": 34,
+          "occupation_at_census": "Managing director, Trent Concrete Ltd, concrete products manufacturers",
+          "birth_place": "Napier, New Zealand",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1318,
+      "first_name": "John Jardine",
+      "last_name": "O'Connell",
+      "properties": [383],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Visitor", "age_at_census": 1,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues; a child of one carrying Jardine as a middle name, staying in the Jardine house" }
+      ]
+    },
+    {
+      "id": 1319,
+      "first_name": "Mary",
+      "last_name": "Evanson",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Cook, private", "from_year": 1911, "to_year": 1921, "notes": "cook at this house on both the 1911 and the 1921 returns" }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 62,
+          "occupation_at_census": "Cook, private", "birth_place": "Staffordshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues; cook at the same house in 1911, which fixes the household to this property" }
+      ]
+    },
+    {
+      "id": 1320,
+      "first_name": "Louisa Ellen",
+      "last_name": "Brewster",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Parlourmaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 35,
+          "occupation_at_census": "Parlourmaid, private", "birth_place": "Sutton on Sea, Lincolnshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1321,
+      "first_name": "Jane",
+      "last_name": "Marshall",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Housemaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 34,
+          "occupation_at_census": "Housemaid, private", "birth_place": "Ilkeston, Derbyshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1322,
+      "first_name": "Jane",
+      "last_name": "Rush",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Housemaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 38,
+          "occupation_at_census": "Housemaid, private", "birth_place": "Lincolnshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1323,
+      "first_name": "Jenny",
+      "last_name": "Topham",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Kitchenmaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Servant", "age_at_census": 21,
+          "occupation_at_census": "Kitchenmaid, private", "birth_place": "Manchester, Lancashire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 1324,
+      "first_name": "Lily",
+      "last_name": "Burten",
+      "properties": [383],
+      "occupations": [
+        { "occupation": "Nursemaid, private", "from_year": 1921, "to_year": 1921 }
+      ],
+      "census": [
+        { "census_year": 1921, "property_id": 383, "address": "9 Clumber Crescent South",
+          "relationship": "Visitor", "age_at_census": 15,
+          "occupation_at_census": "Nursemaid, private", "birth_place": "Thorpe, Nottinghamshire, England",
+          "source": "1921 census, 9 Clumber Crescent South - transcribed by A. Hagues; returned as a visitor but given a nursemaid's occupation, which fits the one-year-old O'Connell child in the house" }
+      ]
+    }
+  ]
+}
