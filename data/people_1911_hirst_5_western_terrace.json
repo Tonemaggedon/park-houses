@@ -1,0 +1,32 @@
+{
+  "note": "William H Hirst, lace net manufacturer, his wife Annie and one general servant at 5 Western Terrace (#344) on the 1911 return, transcribed by A. Hagues. 5 Western Terrace holds 1891, 1901 and 1921 but no 1911, so the year is free, and none of the three was in the record under this surname.\n\n**They are almost certainly the 'Mirst' couple already in the record, and that wants a hand.** The record holds **William K Mirst (#2214, born 1866)** and **Annie R Mirst (#2215, born 1867)** at 35 Newcastle Drive, Pelham House, on the 1921 return. This return gives William H Hirst, 44, and Annie R Hirst, 42 - the same pairing, the same initial R for her, birth years one and two out. Mirst is not a Nottinghamshire surname and Hirst is; an M read for an H is an ordinary misreading.\n\n**The directory settles the move independently.** Wright's prints 'Hirst William H' at 5 Western Terrace in 1910-11 and 1913-14, and then **'Hirst William H' at 35 Newcastle Drive in 1915-16** - which is Pelham House, the very address where the record has the Mirsts in 1921. So the man at this house moved to that house under the name Hirst, six years before the census that records him as Mirst.\n\nThey are **created new here rather than bound**, because an import can neither rename anybody nor merge two records: binding to #2214 and #2215 would file this household under a surname the schedule does not give. What is needed is a rename of those two records to Hirst and a merge with these, and both are things only the site can do. **/duplicates will not offer them either**, since the surnames differ - so it is a hand job, and this note is the flag for it.\n\nGertrude Sarah Kirk is new; she is not the Sarah Kirk (#3597, born 1873) at 23 Newcastle Drive in 1891. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, 5 Western Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11 and 1913-14, Western Terrace number 5; 1915-16, Newcastle Drive number 35.",
+  "people": [
+    {
+      "first_name": "William H", "last_name": "Hirst", "match_born_year": true, "sex": "M", "born_year": 1867, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Lace net manufacturer", "from_year": 1911, "to_year": 1916, "notes": "1911 census; Wright's Directory 1910-11 and 1913-14 at 5 Western Terrace, 1915-16 at 35 Newcastle Drive" }],
+      "properties": [344],
+      "census": [{ "census_year": 1911, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 44,
+                   "occupation_at_census": "Net manufacturer, lace", "birth_place": "Nottingham",
+                   "source": "1911 census, 5 Western Terrace - transcribed by A. Hagues; very probably William K Mirst (#2214) of Pelham House in 1921, the surname there being a misreading, to be renamed and merged by hand" }]
+    },
+    {
+      "first_name": "Annie R", "last_name": "Hirst", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Nottingham",
+      "properties": [344],
+      "census": [{ "census_year": 1911, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 42, "birth_place": "Nottingham",
+                   "source": "1911 census, 5 Western Terrace - transcribed by A. Hagues; very probably Annie R Mirst (#2215) of Pelham House in 1921, to be renamed and merged by hand" }],
+      "relationships": [{ "to": { "first_name": "William H", "last_name": "Hirst" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Gertrude Sarah", "last_name": "Kirk", "match_born_year": true, "sex": "F", "born_year": 1885, "born_place": "Eastwood, Nottinghamshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [344],
+      "census": [{ "census_year": 1911, "property_id": 344, "address": "5 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Eastwood, Nottinghamshire",
+                   "source": "1911 census, 5 Western Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

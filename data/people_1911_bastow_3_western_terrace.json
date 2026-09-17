@@ -1,0 +1,49 @@
+{
+  "note": "The household of Charles Ernest Bastow, ladies' mantle manufacturer, his wife Zella, their young niece and two servants at 3 Western Terrace (#342) on the 1911 return, transcribed by A. Hagues. 3 Western Terrace held only 1921, so 1911 is free, and none of the five was in the record.\n\nWright's Directory prints 'Bastow Charles Ernest, (mantle mfr)' at 3 Western Terrace in 1910-11 and 1913-14 - his census trade exactly, in the year of the census and three years after. He is gone from the 1915-16 volume, which prints no number 3 at all.\n\nFlorence Spencer, 13, is returned as their niece and was born at Coventry, so one of the Bastows had a sister or brother settled in Warwickshire; her parents are not on the schedule and no link is made beyond the niece relationship, which the importer cannot carry. She is not the Edith Spencer (#1115) or Gertrude Spencer (#2036) already in the record, both born much later. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, 3 Western Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11 and 1913-14, Western Terrace number 3.",
+  "people": [
+    {
+      "first_name": "Charles Ernest", "last_name": "Bastow", "match_born_year": true, "sex": "M", "born_year": 1865, "born_place": "Manchester, Lancashire",
+      "occupations": [{ "occupation": "Ladies' mantle manufacturer", "from_year": 1911, "to_year": 1914, "notes": "1911 census; Wright's Directory 1910-11 and 1913-14 at 3 Western Terrace" }],
+      "properties": [342],
+      "census": [{ "census_year": 1911, "property_id": 342, "address": "3 Western Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 46,
+                   "occupation_at_census": "Ladies mantle manufacturer", "birth_place": "Manchester, Lancashire",
+                   "source": "1911 census, 3 Western Terrace - transcribed by A. Hagues; at this number in Wright's Directory 1910-11 and 1913-14" }]
+    },
+    {
+      "first_name": "Zella", "last_name": "Bastow", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Nottingham",
+      "properties": [342],
+      "census": [{ "census_year": 1911, "property_id": 342, "address": "3 Western Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 46, "birth_place": "Nottingham",
+                   "source": "1911 census, 3 Western Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Charles Ernest", "last_name": "Bastow" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Florence", "last_name": "Spencer", "match_born_year": true, "sex": "F", "born_year": 1898, "born_place": "Coventry, Warwickshire",
+      "properties": [342],
+      "census": [{ "census_year": 1911, "property_id": 342, "address": "3 Western Terrace",
+                   "relationship": "Niece", "age_at_census": 13,
+                   "occupation_at_census": "School", "birth_place": "Coventry, Warwickshire",
+                   "source": "1911 census, 3 Western Terrace - transcribed by A. Hagues; niece of the head, her parents not on the schedule" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Laurence", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Sutton in Ashfield, Nottinghamshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [342],
+      "census": [{ "census_year": 1911, "property_id": 342, "address": "3 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 40,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Sutton in Ashfield, Nottinghamshire",
+                   "source": "1911 census, 3 Western Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Charlotte Alice", "last_name": "Hind", "match_born_year": true, "sex": "F", "born_year": 1894, "born_place": "Ollerton, Nottinghamshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [342],
+      "census": [{ "census_year": 1911, "property_id": 342, "address": "3 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 17,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Ollerton, Nottinghamshire",
+                   "source": "1911 census, 3 Western Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

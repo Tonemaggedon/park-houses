@@ -1,0 +1,50 @@
+{
+  "note": "John M C Paton, managing director, a single man keeping house with his two unmarried sisters and two servants at 1 Western Terrace (#340) on the 1911 return, transcribed by A. Hagues. 1 Western Terrace held only 1921, so 1911 is free.\n\n**The head is already in the record, at another house.** John McC. Paton (#2903, born 1853) is filed at Dundee House, 17 Lenton Avenue, on the 1901 return, and this return makes him 58 - the same year exactly. He is bound by number, so this adds 1911 and a move across the estate. The directory tracks him the whole way: 'John M. C. Paton, managing dirctr of Manlove, Alliott & Co' on Maxtoke Road in 1894-95 and 1898-99, then 'Paton John McClure Caldwell, managing director (Manlove, Alliott & Co.)' at 1 Western Terrace in 1910-11 and 1913-14 - which is where his initials come from, and worth having: **his full name is John McClure Caldwell Paton**.\n\n**His sisters outlive him in the house.** Annie and Ada are new to the record, and the 1915-16 directory prints number 1 as 'Paton Misses Ada & Annie' - the two of them holding it after their brother. Both were born at Newport in Shropshire, he at Wednesbury in Staffordshire, so the family came into Nottingham from the west.\n\nThe house before them was a Loverseed one: 'Mrs. Sarah Loverseed' is printed at 1 Western Terrace in 1894-95 and 1898-99, with Edwin G. Loverseed next door at 2, where his household still is in 1911. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, 1 Western Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1910-11 and 1913-14, Western Terrace number 1; 1915-16, number 1, as the Misses Ada and Annie Paton; 1894-95 and 1898-99, Maxtoke Road.",
+  "people": [
+    {
+      "id": 2903, "first_name": "John McC.", "last_name": "Paton", "sex": "M", "born_year": 1853, "born_place": "Wednesbury, Staffordshire",
+      "occupations": [{ "occupation": "Managing director", "from_year": 1911, "to_year": 1914, "employer": "Manlove, Alliott & Co.", "notes": "1911 census; Wright's Directory 1894-95 to 1913-14, which gives his full name as John McClure Caldwell Paton" }],
+      "properties": [340],
+      "census": [{ "census_year": 1911, "property_id": 340, "address": "1 Western Terrace",
+                   "relationship": "Head", "marital_status": "Single", "age_at_census": 58,
+                   "occupation_at_census": "Managing director", "birth_place": "Wednesbury, Staffordshire",
+                   "source": "1911 census, 1 Western Terrace - transcribed by A. Hagues as John M C Paton; printed at this number in Wright's Directory 1910-11 and 1913-14 as John McClure Caldwell Paton" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Paton", "match_born_year": true, "sex": "F", "born_year": 1857, "born_place": "Newport, Shropshire",
+      "properties": [340],
+      "census": [{ "census_year": 1911, "property_id": 340, "address": "1 Western Terrace",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 54, "birth_place": "Newport, Shropshire",
+                   "source": "1911 census, 1 Western Terrace - transcribed by A. Hagues; still at the house with her sister in Wright's Directory 1915-16" }],
+      "relationships": [{ "to": { "id": 2903 }, "type": "sibling_of" }]
+    },
+    {
+      "first_name": "Ada", "last_name": "Paton", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Newport, Shropshire",
+      "properties": [340],
+      "census": [{ "census_year": 1911, "property_id": 340, "address": "1 Western Terrace",
+                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 48, "birth_place": "Newport, Shropshire",
+                   "source": "1911 census, 1 Western Terrace - transcribed by A. Hagues; still at the house with her sister in Wright's Directory 1915-16" }],
+      "relationships": [{ "to": { "id": 2903 }, "type": "sibling_of" },
+                        { "to": { "first_name": "Annie", "last_name": "Paton" }, "type": "sibling_of" }]
+    },
+    {
+      "first_name": "Annie", "last_name": "Gale", "match_born_year": true, "sex": "F", "born_year": 1885, "born_place": "Haddon, Northamptonshire",
+      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [340],
+      "census": [{ "census_year": 1911, "property_id": 340, "address": "1 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 26,
+                   "occupation_at_census": "Cook, domestic", "birth_place": "Haddon, Northamptonshire",
+                   "source": "1911 census, 1 Western Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Gertrude", "last_name": "Veall", "match_born_year": true, "sex": "F", "born_year": 1890, "born_place": "Colsterworth, Lincolnshire",
+      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [340],
+      "census": [{ "census_year": 1911, "property_id": 340, "address": "1 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
+                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Colsterworth, Lincolnshire",
+                   "source": "1911 census, 1 Western Terrace - transcribed by A. Hagues" }]
+    }
+  ]
+}

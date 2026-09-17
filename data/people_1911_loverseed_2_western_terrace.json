@@ -1,0 +1,68 @@
+{
+  "note": "The household of Edwin Gauntley Loverseed, living on private means, his wife Jemima and their three grown daughters, with two servants, at 2 Western Terrace (#341) on the 1911 return, transcribed by A. Hagues. 2 Western Terrace holds no census record at all in the record, so nothing is displaced, and none of the seven was held.\n\n**He had the house for at least twenty-one years.** Wright's Directory prints 'Mr. Edwin G. Loverseed' at 2 Western Terrace in 1894-95 and 1898-99, and 'Loverseed Edwin Gauntley' at the same number in 1910-11, 1913-14 and 1915-16. With this return he is there from 1894 to 1916 without a break in the printed record - one of the longer tenancies the estate shows.\n\n**The family is worth following beyond this house.** 'Mrs. Sarah Loverseed' is printed next door at 1 Western Terrace in 1894-95 and 1898-99, and 'Pelham lodge, Mr. Ar. W. Loverseed' on Pelham Crescent in 1894-95. The record also notes 10 and 12 Pelham Crescent as 'one of a pair of houses c1870-75 possibly by John Loverseed' - so the name attaches to a builder or architect as well as to these households. Nothing here establishes how any of them are related, so no links are made; but if one family is behind both the houses and the building of them, this is the thread.\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1911 census, 2 Western Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95 and 1898-99, Western Terrace number 2; 1910-11, 1913-14 and 1915-16, same number.",
+  "people": [
+    {
+      "first_name": "Edwin Gauntley", "last_name": "Loverseed", "match_born_year": true, "sex": "M", "born_year": 1858, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "Private means", "from_year": 1911, "to_year": 1911 }],
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Head", "marital_status": "Married", "age_at_census": 53,
+                   "occupation_at_census": "Private means", "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues; at this number in Wright's Directory from 1894-95 to 1915-16" }]
+    },
+    {
+      "first_name": "Jemima Elizabeth", "last_name": "Loverseed", "match_born_year": true, "sex": "F", "born_year": 1861, "born_place": "Nottingham",
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 50, "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Edwin Gauntley", "last_name": "Loverseed" }, "type": "spouse_of" }]
+    },
+    {
+      "first_name": "Sarah Hilda", "last_name": "Loverseed", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Nottingham",
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 24, "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Edwin Gauntley", "last_name": "Loverseed" }, "type": "child_of" },
+                        { "to": { "first_name": "Jemima Elizabeth", "last_name": "Loverseed" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Constance Emma", "last_name": "Loverseed", "match_born_year": true, "sex": "F", "born_year": 1890, "born_place": "Nottingham",
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 21, "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Edwin Gauntley", "last_name": "Loverseed" }, "type": "child_of" },
+                        { "to": { "first_name": "Jemima Elizabeth", "last_name": "Loverseed" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Harriett Gladys", "last_name": "Loverseed", "match_born_year": true, "sex": "F", "born_year": 1893, "born_place": "Nottingham",
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Daughter", "marital_status": "Single", "age_at_census": 18, "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues" }],
+      "relationships": [{ "to": { "first_name": "Edwin Gauntley", "last_name": "Loverseed" }, "type": "child_of" },
+                        { "to": { "first_name": "Jemima Elizabeth", "last_name": "Loverseed" }, "type": "child_of" }]
+    },
+    {
+      "first_name": "Gladys Mable", "last_name": "Green", "match_born_year": true, "sex": "F", "born_year": 1889, "born_place": "Nottingham",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "Nottingham",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues" }]
+    },
+    {
+      "first_name": "Laura", "last_name": "Manden", "match_born_year": true, "sex": "F", "born_year": 1892, "born_place": "New Whittington, Derbyshire",
+      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1911, "to_year": 1911 }],
+      "properties": [341],
+      "census": [{ "census_year": 1911, "property_id": 341, "address": "2 Western Terrace",
+                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+                   "occupation_at_census": "General servant, domestic", "birth_place": "New Whittington, Derbyshire",
+                   "source": "1911 census, 2 Western Terrace - transcribed by A. Hagues; surname as transcribed, possibly Marsden or Mander" }]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "note": "Alice Mann, widow, cardboard box manufacturer, with her son Thomas at **5 North Road** on the 1911 return, transcribed by A. Hagues.\n\n**5 North Road is not a missing house.** The record has no property numbered 5 on North Road, and for a moment that looked like a gap. It is not: **#1** is a composite, addressed '1 and 2 Albury Square / 3 and 5 North Road', and both Manns are already in it for 1901. So the household is filed there, at the property that already holds them.\n\n**Both are bound by number, with the years a little out.** Alice Mann (#3307) is recorded as born 1871 and this return makes her 38, so about 1873; Thomas Mann (#3308) is recorded as born 1900 against a return making him 10, so about 1901. Two years and one year respectively. They are the same mother and son at the same property ten years apart, so they are bound rather than created again - but the discrepancies are noted here because an import never overwrites, and the record keeps its own years.\n\n**She is a widow by 1911.** The 1901 household at #1 included John L Mann (#3306, born 1864), and Wright's Directory prints 'John L. Mann, of Mann & Son' on North Road in 1894-95. He is absent here and she is returned a widow, so he died between the two returns - which is worth looking for, and would date itself. Her own trade, cardboard box manufacturer, is her own: she is the head and it is entered against her, not inherited as a relict's description. Ages are as the enumerator wrote them.",
+  "source": "1911 census, 5 North Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, North Road, for John L. Mann of Mann & Son.",
+  "people": [
+    {
+      "id": 3307, "first_name": "Alice", "last_name": "Mann", "sex": "F", "born_place": "Poplar, London",
+      "occupations": [{ "occupation": "Cardboard box manufacturer", "from_year": 1911, "to_year": 1911 }],
+      "properties": [1],
+      "census": [{ "census_year": 1911, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 38,
+                   "occupation_at_census": "Cardboard box manufacturer", "birth_place": "Poplar, London",
+                   "source": "1911 census, 5 North Road - transcribed by A. Hagues; age works back to about 1873 against the record's 1871" }]
+    },
+    {
+      "id": 3308, "first_name": "Thomas", "last_name": "Mann", "sex": "M", "born_place": "Nottingham",
+      "properties": [1],
+      "census": [{ "census_year": 1911, "property_id": 1, "address": "5 North Road",
+                   "relationship": "Son", "age_at_census": 10,
+                   "occupation_at_census": "School", "birth_place": "Nottingham",
+                   "source": "1911 census, 5 North Road - transcribed by A. Hagues as Thomas L; age works back to about 1901 against the record's 1900" }],
+      "relationships": [{ "to": { "id": 3307 }, "type": "child_of" }]
+    }
+  ]
+}
