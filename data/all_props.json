@@ -4691,9 +4691,8 @@
   "house_name": "Ivanhoe Lodge",
   "lat": 52.9494812,
   "lng": -1.1564209,
-  "prev_house_name": "Dudley Lodge",
   "sources": {
-   "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet; identified by owner"
+   "house_name": "Owner knowledge (A. Hagues): 11 Peveril Drive is Ivanhoe Lodge - 'I used to walk past it'. The former name Dudley Lodge, previously recorded here from the OS 1:1250 sheet, has been removed: Dudley Lodge is 12 Peveril Drive (#297), and the 1911 census key names Ivanhoe Lodge and Dudley Lodge as two separate households on the same page, so they cannot both be this house."
   }
  },
  {
@@ -4708,10 +4707,10 @@
   "listed": "No",
   "lat": 52.9494328,
   "lng": -1.1569873,
-  "house_name": "Parkdale",
-  "prev_house_name": "Parkside",
+  "house_name": "Dudley Lodge",
+  "prev_house_name": "Parkside\nParkdale",
   "sources": {
-   "house_name": "Owner knowledge (A. Hagues)",
+   "house_name": "Owner knowledge (A. Hagues): 12 Peveril Drive is Dudley Lodge. This corrects an earlier attribution, also his, which had it as Parkdale; Parkdale is #299, which he confirms and which the 1911 census supports - the household his 1911 key places at Park Dale (Woodward, Cole, Barker, Galpin) is already filed at #299. Parkdale is kept here as a former name only because it was recorded as this house's name until now, not because the house bore it.",
    "prev_house_name": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet; identified by owner"
   }
  },
@@ -5918,7 +5917,11 @@
   "listed": "No",
   "census_only": true,
   "lat": 52.9492521,
-  "lng": -1.1571819
+  "lng": -1.1571819,
+  "house_name": "Castle Rock",
+  "sources": {
+   "house_name": "Owner knowledge (A. Hagues): the 1911 census names a Castle Rock household on Peveril Drive, and the modern map shows 1 and 2 Castle Rock beside The Coach House. He judges the census Castle Rock to be the one now numbered 2, number 1 not having existed then, and identifies 5 Peveril Drive as the house. Not yet corroborated by a directory line or an OS sheet."
+  }
  },
  {
   "id": 377,
