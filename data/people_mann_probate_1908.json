@@ -1,0 +1,24 @@
+{
+  "note": "John L Mann (#3306) of 5 North Road, from a probate notice in the Nottingham Weekly Press of 1 May 1908, supplied by A. Hagues. He is bound by number, and everything here fills a blank: his record had no death date, no death year, no biography, and an occupation of 'Fancy box maker' with no firm and no years against it. His recorded birth year of 1864 and the notice's age of 44 at a death in March 1908 agree, so nothing conflicts.\n\n**His full name is John Loverseed Mann, and the middle name matters.** The record has him as John L. An import cannot rename anybody, so the full form is put in the biography and flagged here instead: **#3306 wants renaming to John Loverseed Mann on the site.** Loverseed as a middle name is the first hard link between the Manns and the Loverseeds, who until now were only neighbours in the directory - Edwin Gauntley Loverseed held 2 Western Terrace from 1894 to 1916, Sarah Loverseed had number 1 before the Patons, A. W. Loverseed was at Pelham Lodge, and 10 and 12 Pelham Crescent are recorded as 'possibly by John Loverseed'. A middle name is usually a mother's maiden name, so this is worth following.\n\n**His widow carried on the trade.** He died on 16 March 1908; on the 1911 return Alice Mann is head of the house at 5 North Road and gives her own occupation as cardboard box manufacturer. So the firm did not die with him, and her trade in 1911 is not a relict's description but the business continuing under her.\n\nThe executors, Harry Hamilton Turpin and Stephen Weston Turpin, estate agents of Nottingham, are not created: they are professionals acting in the estate, not residents, and neither is among the Turpins the record already holds at 22 Hope Drive and 5 Lenton Avenue. The estate was valued at £1,362 16s 5d gross, £568 7s 4d net personalty.",
+  "source": "Nottingham Weekly Press, 1 May 1908, 'Estate of Mr. J. L. Mann, of Nottingham' - supplied by A. Hagues.",
+  "people": [
+    {
+      "id": 3306,
+      "first_name": "John L",
+      "last_name": "Mann",
+      "sex": "M",
+      "died_date": "1908-03-16",
+      "died_year": 1908,
+      "bio": "John Loverseed Mann, cardboard box manufacturer, of 5 North Road in The Park, late of the firm of Thomas Mann and Co. of Postern Place. He was for many years a member of the Forest Football Club and the Nottingham Rowing Club, a familiar figure at Nottinghamshire county cricket matches, and known to a wide circle of sporting men. He died on 16 March 1908, aged 44, leaving an estate of £1,362 16s 5d gross, of which £568 7s 4d was net personalty; probate was granted to Harry Hamilton Turpin and Stephen Weston Turpin, estate agents of Nottingham. His widow Alice carried on the business, and is returned at the same house in 1911 as a cardboard box manufacturer in her own right.",
+      "occupations": [
+        {
+          "occupation": "Cardboard box manufacturer",
+          "from_year": 1901,
+          "to_year": 1908,
+          "employer": "Thomas Mann and Co., Postern Place",
+          "notes": "1901 census as fancy box maker; the 1908 probate notice gives the firm and the trade"
+        }
+      ]
+    }
+  ]
+}
