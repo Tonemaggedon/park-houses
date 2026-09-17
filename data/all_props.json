@@ -3511,15 +3511,18 @@
   "no": "2",
   "address": "2 North Road",
   "desc": "Two storeys plus basement. Stucco with hipped slate roofs and coped side wall chimney stacks. A number of single and two storey additions including early rear extensions facing Western Terrace plus early single storey side extension to right of house on Derby Road front adjacent to later large two storey gabled extension to former coach house building. Stone pilasters to doorway in boundary wall on North Road, originally with glazed canopy over stepped passageway to house entrance. Glazed canopy now removed and replaced with later central square porch flanked by chimney stacks. Above porch, single glazing bar sash window with moulded surround. Moulded eaves and parapet cornice. To left of main entrance front, two storey rear wing with three round arched glazing bar windows at ground floor level and two square headed glazing bar sashes. Central window opening on Derby Road front with later canopy above, flanked by two storey bow windows each with three glazing bar sashes on each floor. Central window on each bay altered to form French window. Glazing bar sash window in central position at first floor level. Moulded surrounds to windows with moulded cornice to ground floor. Two storey coach house with main access originally from Western Terrace, now altered and converted with garage doors plus glazing bar sashes above. A number of later door and window replacements and additions generally. Former estate lodge, also previously used as electricity substation, now detached basement to hotel. Possibly by T.C. Hine architect. Single storey building at Derby Road level, former lodge functions partly as retaining wall with roof used as garden/terrace by the hotel. Coursed rubble stone and ashlar walls. Plinth, moulded string course and coped parapet with eight pointed star roundels. Boarded windows. Projecting polygonal bay with three window openings plus door facing North Road. Derby Road front has central round arched window flanked to left by window opening and to right by two later door openings. To right of lodge on Derby Road front, stone and brick retaining walls with later garage openings. Brick/stone boundary wall to North Road and part of Western Terrace, now partly altered and rendered. Part of original garden area behind coach house now used for car parking.\n\n\n",
-  "history": "Detached house and coach house c1830-40 plus estate lodge at junction of North Road and Derby Road. House and lodge, also known as The Gate House, are Grade II Listed. Now converted into a Hotel. ",
+  "history": "Detached house and coach house c1830-40 plus estate lodge at junction of North Road and Derby Road. House and lodge, also known as The Gate House, are Grade II Listed. Now converted into a Hotel.\n\nGate House and North Lodge were held as two separate properties in this record until A. Hagues identified them as parts of this one. Their census households have been moved here and the two records removed: the nine people returned at Gate House in 1911 \u2014 Thomas and Emily Hallam, and Percy Lambe Huskinson's household with three servants \u2014 and the six returned at North Lodge in 1921, Percy Lambe and Muriel Katherine Huskinson again, with Augustine St George Randall and three servants. That the Huskinsons appear at both is the point: one couple, one house, two censuses.\n\nThe two former records carried positions of their own, about 100 metres north of this one \u2014 Gate House at 52.9542, -1.1663 and North Lodge at 52.9544, -1.1662 \u2014 and those are kept here because the merge would otherwise discard them. Dougal de Havilland's map labels this ground twice, as \"North Lodge\" and as \"Walton's Hotel\", both suggesting Peter Robinson.",
   "converted": "Hotel",
-  "prev_house_name": "Waltons Hotel",
+  "prev_house_name": "Waltons Hotel\nGate House\nNorth Lodge",
   "listed_grade": "II",
   "date_built": "1830",
   "listed": "Yes",
   "house_name": "The Gate House",
   "lat": 52.953301,
-  "lng": -1.1656959
+  "lng": -1.1656959,
+  "sources": {
+   "merged": "Gate House (#396) and North Lodge (#397) merged into this property on A. Hagues's identification. Former positions: Gate House 52.9542, -1.1663; North Lodge 52.9544, -1.1662."
+  }
  },
  {
   "id": 229,
@@ -6207,34 +6210,6 @@
    "listing": "Historic England list entry 1254871, TOWER HOUSE, Grade II, listed 30 November 1995 \u2014 2 metres from the position below.",
    "position": "OpenStreetMap building way/168974350, tagged Tower House, 53 Park Row, Grade II. A survey, not a guess."
   }
- },
- {
-  "id": 396,
-  "name": "Gate House",
-  "street": "North Road",
-  "no": "",
-  "address": "Gate House, North Road",
-  "desc": "",
-  "history": "",
-  "date_built": "",
-  "listed": "No",
-  "census_only": true,
-  "lat": 52.9542,
-  "lng": -1.1663
- },
- {
-  "id": 397,
-  "name": "North Lodge",
-  "street": "North Road",
-  "no": "",
-  "address": "North Lodge, North Road",
-  "desc": "",
-  "history": "",
-  "date_built": "",
-  "listed": "No",
-  "census_only": true,
-  "lat": 52.9544,
-  "lng": -1.1662
  },
  {
   "id": 398,
