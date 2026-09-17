@@ -38,7 +38,13 @@ ARCH_NAMES = ['Thomas Chambers Hine', 'George Hine', 'Watson Fothergill', 'Lawre
               # The record already knows his later practice from two property notes —
               # Bromley and Cartwright, and Bromley, Cartwright and Waumsley — but has
               # never held the man.
-              'Albert Nelson Bromley']
+              'Albert Nelson Bromley',
+              # Returned as a visitor in the Lewenz house at 7 Clumber Crescent South on the
+              # 1921 census, aged 54 and born in Belfast, giving his occupation as architect
+              # and employer. He is the household's only outsider and appears in no volume of
+              # the directory, so nothing yet connects him to a building on the estate — but an
+              # architect staying the night in a Park house is worth watching for.
+              'Herbert Hardy Wigglesworth']
 
 PARK = ['albury square', 'barrack lane', 'castle grove', 'cavendish crescent', 'cavendish cres', 'cavendish road',
         'cavendish rd', 'clare valley', 'clifton terrace', 'clinton terrace', 'clumber crescent', 'clumber cres',

@@ -1,0 +1,18 @@
+{
+  "note": "Florence Holland, mother-in-law in the Kipping household on Clumber Crescent South on the 1921 return, transcribed by A. Hagues. She is the eleventh member of that household and was deliberately held back from [[people_1921_kipping_clumber_crescent_south]] until the record could tell her apart from another woman of the same name.\n\n**Why she was held back.** The record's Florence Holland (#1329) had been made a composite of two different women. An import binds on an exact unique name, and with only one Florence Holland in the record the 1921 census row of a **maid of 39 at 23 Cavendish Crescent South** was hung on the **mother-in-law of 78 from Clumber Crescent South**. The row itself showed the join, carrying the maid's age beside the mother-in-law's Manchester birthplace, and the person record carried the mother-in-law's birth year beside the maid's Nottingham birthplace. The two have since been separated by hand on the site: **#1329 is now the mother-in-law**, born 1843 in Manchester, with no census row; the maid is a new person, born 1882 in Nottingham, holding the Holyrood House row. This file gives #1329 the census row that is actually hers.\n\n**The row is left unfiled on purpose.** The Kipping household's house is not settled - the crescent's five houses are 3, 5, 7, 9 and Clumber Court, and with Kirkaldy at 3, Lewenz at 7 and Jardine at 9, this household and the McCraith household divide 5 Clumber Crescent South and Clumber Court between them with nothing to say which is which. Her row therefore joins the other ten under the label the return gives. See [[kipping-mccraith-which-house]].\n\n**On the Duval descent.** Both published lives of Frederic Stanley Kipping say his wife Lily and her sisters were granddaughters of Charles Allen Duval, so their mother was a Duval who married into the Holland family - which is what a mother-in-law in this house should be. That is consistent with a Manchester birth but does not prove one: Duval was born at Beaumaris in Anglesey in 1810 and only settled in Manchester. Her parentage is not recorded here because no source in hand names her father. See [[holland-sisters-duval-line]].\n\nHer age is as the enumerator wrote it, so the birth year already held may be a year out either way; an import fills blanks and never overwrites, so nothing of hers is disturbed.",
+  "source": "1921 census, Clumber Crescent South, the Kipping household, transcribed by A. Hagues.",
+  "people": [
+    {
+      "id": 1329,
+      "first_name": "Florence",
+      "last_name": "Holland",
+      "sex": "F",
+      "census": [
+        { "census_year": 1921, "unresolved_address": "Clumber Crescent South",
+          "relationship": "Mother-in-law", "age_at_census": 78,
+          "birth_place": "Manchester, Lancashire, England",
+          "source": "1921 census, Clumber Crescent South - transcribed by A. Hagues; the eleventh member of the Kipping household, separated from the Holyrood House maid of the same name before this row was made" }
+      ]
+    }
+  ]
+}
