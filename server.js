@@ -2023,12 +2023,25 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
             const fills = [];
             if (blank(have.relationship) && c.relationship) fills.push(['relationship', c.relationship]);
             if (blank(have.age_at_census) && c.age_at_census != null && c.age_at_census !== '') fills.push(['age_at_census', c.age_at_census]);
-            if ((blank(have.occupation_at_census) || /^(male|female|m|f)$/i.test(String(have.occupation_at_census).trim()))
+            // A value that is not an occupation counts as blank, and the file's
+            // real one replaces it. This used to catch only "Male" and "Female",
+            // so a relationship left in the column — "Servant" against three
+            // women on a 1939 page whose true entry was "Unpaid Domestic Duties"
+            // — was treated as somebody's considered value and kept. The test is
+            // the same one the clean-up tool uses, so the two agree about what an
+            // occupation is instead of disagreeing quietly.
+            if ((blank(have.occupation_at_census) || isNotAnOccupation(have.occupation_at_census))
                 && c.occupation_at_census) fills.push(['occupation_at_census', c.occupation_at_census]);
-            if (!c.occupation_at_census && /^(male|female|m|f)$/i.test(String(have.occupation_at_census || '').trim()))
+            if (!c.occupation_at_census && !blank(have.occupation_at_census)
+                && isNotAnOccupation(have.occupation_at_census))
               fills.push(['occupation_at_census', null]);
             if (blank(have.birth_place) && c.birth_place) fills.push(['birth_place', c.birth_place]);
             if (blank(have.marital_status) && c.marital_status) fills.push(['marital_status', c.marital_status]);
+            // The 1939 Register has no relationship column and groups a house by
+            // its schedule number instead, so without this a register household
+            // cannot be held together at all.
+            if (have.census_household_num == null && c.census_household_num != null)
+              fills.push(['census_household_num', c.census_household_num]);
             if (blank(have.address) && c.address) fills.push(['address', c.address]);
             if (blank(have.source) && c.source) fills.push(['source', c.source]);
             if (fills.length) {
@@ -2046,8 +2059,9 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           await db.query(
             `INSERT INTO census_entries
                (person_id, property_id, address, unresolved_address, census_year, relationship,
-                age_at_census, occupation_at_census, birth_place, marital_status, source)
-             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+                age_at_census, occupation_at_census, birth_place, marital_status, source,
+                census_household_num)
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
             [id, c.property_id || null, c.address || null,
              // A record added without a house needs the address it was returned
              // under, or it lands in the "no address recorded" heap on the
@@ -2056,7 +2070,8 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
              c.census_year,
              c.relationship || null, c.age_at_census || null,
              c.occupation_at_census || null, c.birth_place || null,
-             c.marital_status || null, c.source || null]);
+             c.marital_status || null, c.source || null,
+             c.census_household_num ?? null]);
         }
         // What a person did, as against what one census night caught them doing.
         // Keyed on the title and the year it started, so a second run does not

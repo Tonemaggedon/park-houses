@@ -1,0 +1,83 @@
+{
+  "note": "Schedule 228 of the 1939 Register at 23 Cavendish Crescent South, Holyrood House (#48), transcribed by A. Hagues. All seven are bound by number; nobody is created and no census row is created, because the record already holds this household. What this file adds is the three columns the register carries that the record never had: the **schedule number**, the **marital status**, and the true **occupation** of three of the women.\n\n**It corrects an error in the record.** Anna Crick, Florence Verner and June Bannister are all entered in the record with an occupation of 'Servant'. The register does not say that: it gives all three, like Edith and Alice Wadsworth, as **Unpaid Domestic Duties**. 'Servant' is a relationship written into the occupation column, and until now the importer would not replace it - it treated only 'Male' and 'Female' as wrong enough to overwrite - so the three rows would have kept a value their source never contained. The importer's test now matches the one the clean-up tool uses, and the file's real value wins.\n\n**The 1939 Register is shaped unlike a census and the record should expect that.** It has **no relationship column at all**, which is why 43 of the record's 88 register rows carry none and why nothing here supplies one. A household is held together by its **schedule number** instead - 228 for this house - and the schedule sub numbers 1 to 7 give the order of the seven people on the page. There is no column in the record for a sub number, so the order is set down here and not imported: Frederick A, Edith F, Arthur D and Alice E M Wadsworth, then Anna Crick, Florence Verner and June Bannister.\n\n**Two names in the register carry brackets, and they mean different things.** *Anna (Hannah) Crck* is one woman under two forenames, with the surname mis-struck for Crick, which the record already has right. *Florence (E) Verner (Northern)* is the register's own later annotation: the sheets stayed in use for the health service for decades, and a woman's married surname was added to her entry as it changed. So Florence Verner married a Northern at some point after 1939. **Neither belongs in an import**: `known_as` is not a field the importer can fill on somebody who already exists, so Hannah wants adding to #2737 by hand, and the Northern marriage is a lead to follow rather than a fact to file.\n\nBirth dates, sex and birth years are already in the record from this same register and agree with it exactly, so nothing here touches them.",
+  "source": "1939 Register, schedule 228, 23 Cavendish Crescent South, Nottingham, transcribed by A. Hagues.",
+  "people": [
+    {
+      "id": 2733,
+      "first_name": "Frederick A",
+      "last_name": "Wadsworth",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Solicitor", "marital_status": "Married",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 2734,
+      "first_name": "Edith F",
+      "last_name": "Wadsworth",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Unpaid Domestic Duties", "marital_status": "Married",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 2735,
+      "first_name": "Arthur D",
+      "last_name": "Wadsworth",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Solicitor", "marital_status": "Married",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 2736,
+      "first_name": "Alice E M",
+      "last_name": "Wadsworth",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Unpaid Domestic Duties", "marital_status": "Married",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues" }
+      ]
+    },
+    {
+      "id": 2737,
+      "first_name": "Anna",
+      "last_name": "Crick",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Unpaid Domestic Duties", "marital_status": "Single",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues; the register gives her forename as Anna (Hannah) and mis-strikes the surname as Crck" }
+      ]
+    },
+    {
+      "id": 2738,
+      "first_name": "Florence E",
+      "last_name": "Verner",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Unpaid Domestic Duties", "marital_status": "Single",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues; her entry was later annotated Verner (Northern), a married surname added to the sheet after 1939" }
+      ]
+    },
+    {
+      "id": 2739,
+      "first_name": "June",
+      "last_name": "Bannister",
+      "census": [
+        { "census_year": 1939, "property_id": 48, "address": "23 Cavendish Crescent South",
+          "occupation_at_census": "Unpaid Domestic Duties", "marital_status": "Single",
+          "census_household_num": 228,
+          "source": "1939 Register, schedule 228 - transcribed by A. Hagues" }
+      ]
+    }
+  ]
+}
