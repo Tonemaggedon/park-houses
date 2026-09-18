@@ -27,6 +27,7 @@
   const WORK = [
     ['/tasks', '✔', 'The working list'],
     ['/unfiled', '📥', 'Unfiled records'],
+    ['/occupations', '🏷', 'Occupations to sort'],
     ['/census/unresolved', '🔍', 'Unresolved census'],
     ['/reassign', '↔', "Split a house's census"],
     ['/duplicates', '👥', 'Duplicate people'],
