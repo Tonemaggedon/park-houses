@@ -1,0 +1,216 @@
+{
+  "note": "The Mann household at 14 Pelham Crescent (#283) and the Loverseed household next door at 16 Pelham Crescent (#285) on the 1891 return, read from the enumerator's page by A. Hagues. Neither house held any 1891 record before this.\n\n**This answers how the Manns and the Loverseeds are connected: they were neighbours, and the Mann son carries the neighbour's name.** The record has known for some time that John L Mann of 5 North Road was really **John Loverseed Mann** - the 1908 probate notice gave the full form - and that a middle name of that kind is usually a mother's maiden name. Here he is seventeen years earlier, aged 27 and a cashier, in his father's house at number 14, with **Arthur Wellington Loverseed and his family at number 16, immediately adjacent**. See [[mann-loverseed-connection]].\n\n**What that does and does not settle.** It puts the two families side by side on one crescent in one year, which is a far stronger link than the directory's separate entries. It does **not** prove the descent: Mary Ann Mann's maiden name is not on this schedule, and nothing here says she was a Loverseed. Her marriage or her son's birth registration would give it outright. What can be said is that the name did not come from nowhere - the Loverseeds were next door.\n\n**A duplicate to merge before this is run.** The record holds this man twice: **#3306 John Loverseed Mann** (born 1864, died 1908, with the probate biography) and **#3689 John L Mann** (born 1864, same 1901 household). They are one person entered under a census short form. This file binds to **#3306**; the two want joining with the admin page's **Join up people entered under a census short form**, and #3306 still wants renaming to the full form.\n\n**Thomas Mann the father is created here.** He is not in the record at all, although Wright's Directory prints 'Thomas Mann, box manufacturer' on Pelham Crescent in 1894-95, and the firm John Loverseed Mann died as part of was **Thomas Mann and Co. of Postern Place** - so the son went into his father's trade and the father is the founder the probate notice names.\n\n**On the reading.** This is a handwritten page, not a printed transcription. The forenames and ages are clear; **Mary Thraves** the Manns' servant and **Esther Holland** the Loverseeds' are the two surnames I would most want checked against the image before they are relied on. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+  "source": "1891 census, 14 and 16 Pelham Crescent, read from the enumerator's page by A. Hagues.",
+  "people": [
+    {
+      "first_name": "Thomas", "last_name": "Mann", "match_born_year": true,
+      "sex": "M", "born_year": 1837, "born_place": "Nottingham, Nottinghamshire, England",
+      "occupations": [
+        { "occupation": "Cardboard box manufacturer", "from_year": 1891, "to_year": 1894,
+          "employer": "Thomas Mann and Co., Postern Place",
+          "notes": "1891 census; Wright's Directory 1894-95 prints 'Thomas Mann, box manufacturer' on Pelham Crescent. The firm is the one his son John Loverseed Mann was late of at his death in 1908" }
+      ],
+      "properties": [283],
+      "census": [
+        { "census_year": 1891, "property_id": 283, "address": "14 Pelham Crescent",
+          "relationship": "Head", "marital_status": "Married", "age_at_census": 54,
+          "occupation_at_census": "Cardboard box manufacturer",
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 14 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ]
+    },
+    {
+      "id": 551, "first_name": "Mary Ann", "last_name": "Mann",
+      "properties": [283],
+      "census": [
+        { "census_year": 1891, "property_id": 283, "address": "14 Pelham Crescent",
+          "relationship": "Wife", "marital_status": "Married", "age_at_census": 51,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 14 Pelham Crescent - read from the enumerator's page by A. Hagues; her maiden name is not given on this schedule and is the thing that would settle the Loverseed descent" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Thomas", "last_name": "Mann" }, "type": "spouse_of" }
+      ]
+    },
+    {
+      "id": 3306, "first_name": "John Loverseed", "last_name": "Mann",
+      "properties": [283],
+      "occupations": [
+        { "occupation": "Cashier", "from_year": 1891, "to_year": 1891, "notes": "1891 census, in his father's house at 14 Pelham Crescent" }
+      ],
+      "census": [
+        { "census_year": 1891, "property_id": 283, "address": "14 Pelham Crescent",
+          "relationship": "Son", "marital_status": "Single", "age_at_census": 27,
+          "occupation_at_census": "Cashier",
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 14 Pelham Crescent - read from the enumerator's page by A. Hagues; the Loverseeds are next door at number 16" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Thomas", "last_name": "Mann" }, "type": "child_of" },
+        { "to": { "first_name": "Mary Ann", "last_name": "Mann" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Nellie Annie", "last_name": "Mann", "match_born_year": true,
+      "sex": "F", "born_year": 1873, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [283],
+      "census": [
+        { "census_year": 1891, "property_id": 283, "address": "14 Pelham Crescent",
+          "relationship": "Daughter", "marital_status": "Single", "age_at_census": 18,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 14 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Thomas", "last_name": "Mann" }, "type": "child_of" },
+        { "to": { "first_name": "Mary Ann", "last_name": "Mann" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Mary", "last_name": "Thraves", "match_born_year": true,
+      "sex": "F", "born_year": 1872, "born_place": "Derby, Derbyshire, England",
+      "occupations": [ { "occupation": "Domestic servant", "from_year": 1891, "to_year": 1891 } ],
+      "properties": [283],
+      "census": [
+        { "census_year": 1891, "property_id": 283, "address": "14 Pelham Crescent",
+          "relationship": "Servant", "marital_status": "Single", "age_at_census": 19,
+          "occupation_at_census": "Domestic servant",
+          "birth_place": "Derby, Derbyshire, England",
+          "source": "1891 census, 14 Pelham Crescent - read from the enumerator's page by A. Hagues; surname as read, worth checking against the image" }
+      ]
+    },
+
+    {
+      "first_name": "Arthur Wellington", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "M", "born_year": 1854, "born_place": "Nottingham, Nottinghamshire, England",
+      "occupations": [
+        { "occupation": "Private means", "from_year": 1891, "to_year": 1891,
+          "notes": "1891 census, 'living on his own means'; very probably the 'A. W. Loverseed, Pelham lodge' printed on Pelham Crescent in Wright's Directory 1894-95" }
+      ],
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Head", "marital_status": "Married", "age_at_census": 37,
+          "occupation_at_census": "Private means",
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues; next door to the Manns at number 14" }
+      ]
+    },
+    {
+      "first_name": "Kate", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "F", "born_year": 1857, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Wife", "marital_status": "Married", "age_at_census": 34,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "spouse_of" }
+      ]
+    },
+    {
+      "first_name": "John Henry", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "M", "born_year": 1876, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Son", "marital_status": "Single", "age_at_census": 15,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ida Kate", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "F", "born_year": 1878, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Daughter", "marital_status": "Single", "age_at_census": 13,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ethel Laura", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "F", "born_year": 1881, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Daughter", "marital_status": "Single", "age_at_census": 10,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Arthur William", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "M", "born_year": 1883, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Son", "marital_status": "Single", "age_at_census": 8,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Aubrey Wellington", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "M", "born_year": 1885, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Son", "marital_status": "Single", "age_at_census": 6,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Ernest Harry", "last_name": "Loverseed", "match_born_year": true,
+      "sex": "M", "born_year": 1886, "born_place": "Nottingham, Nottinghamshire, England",
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Son", "marital_status": "Single", "age_at_census": 5,
+          "birth_place": "Nottingham, Nottinghamshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues" }
+      ],
+      "relationships": [
+        { "to": { "first_name": "Arthur Wellington", "last_name": "Loverseed" }, "type": "child_of" },
+        { "to": { "first_name": "Kate", "last_name": "Loverseed" }, "type": "child_of" }
+      ]
+    },
+    {
+      "first_name": "Esther", "last_name": "Holland", "match_born_year": true,
+      "sex": "F", "born_year": 1870, "born_place": "Derby, Derbyshire, England",
+      "occupations": [ { "occupation": "Domestic servant", "from_year": 1891, "to_year": 1891 } ],
+      "properties": [285],
+      "census": [
+        { "census_year": 1891, "property_id": 285, "address": "16 Pelham Crescent",
+          "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
+          "occupation_at_census": "Domestic servant",
+          "birth_place": "Derby, Derbyshire, England",
+          "source": "1891 census, 16 Pelham Crescent - read from the enumerator's page by A. Hagues; a third Holland in the record, and not to be confused with the two at 23 Cavendish Crescent South and with the Kippings" }
+      ]
+    }
+  ]
+}
