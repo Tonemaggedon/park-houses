@@ -1,0 +1,1711 @@
+{
+ "note": "Cavendish Crescent North read off the enumerators' pages for 1881 and 1891, transcribed by A. Hagues and checked by him line by line before import.\n\n**The record held nothing whatever for this street in 1881.** All six households on the enumerator's round - schedules 106 to 111, some forty-five people - are new. They run from Carisbrooke House under John G Woodward, through Alfred Goater the printer at Cavendish Lodge employing three hundred hands, James B Walker and Thomas Bayley, to John W Lewis the iron merchant at Hardwicke House, a Shetlander from Lerwick.\n\n**Four entries the record does hold for 1891 are single people standing for whole households.** Haddon House held only a 'Percy Smith', where the schedule gives seven including the lace manufacturer John Smith, his son, his daughter-in-law and a nine-month-old grandson. Hardwicke House held a '? Finley' with no forename: he is **John Finley Lewis**, a middle name mistaken for a surname, and the other five of his widowed mother's household were missing. The remaining two, at 17 and 10 Cavendish Crescent North, are fragments of the same kind.\n\n**A surname that would not read has been settled.** The two unmarried lace manufacturers at Carisbrooke House in 1891, brothers of 36 and 34, were set down on the working sheet as a placeholder. They are **Philps**.\n\n**Three servants were misread and are corrected here**: Harriett Leech, not Leush; Dinah Swaine, not Omah; Clara Lofty, not Softy. Thomas Bayley's household at schedule 109 is larger than first read - ten people, with four servants rather than one, among them a nursemaid of nineteen from Walberswick in Suffolk.\n\n**One household on this walk is not on this street.** Schedule 7 of 1891, Robert Wilkinson Smith's, is 1 Pelham Crescent, and is filed there rather than on the crescent the enumerator was working along.\n\n**Three 1881 households carry no house number** - schedules 108, 109 and 110 - and are left unfiled rather than guessed at from their place in the walk. Schedule 110, Thomas Walker the seed crusher's, heads the street 'Road North' and may not be on this crescent at all.",
+ "source": "1881 and 1891 census enumerators' pages for Cavendish Crescent North, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 312,
+   "first_name": "Frank",
+   "last_name": "Woodward",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Clerk to timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Caroline C",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John G",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3057,
+   "first_name": "Alfred",
+   "last_name": "Goater",
+   "properties": [
+    22
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 22,
+     "address": "3 Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 62,
+     "occupation_at_census": "Printer employing 300 hands",
+     "birth_place": "Ashby-de-la-Zouch, Leicestershire",
+     "census_household_num": 107,
+     "source": "1881 census, Cavendish Lodge (3 Cavendish Crescent North), schedule 107 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 365,
+   "first_name": "Mary",
+   "last_name": "Walker",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Collingham, Nottinghamshire",
+     "census_household_num": 108,
+     "source": "1881 census, Cavendish Crescent North, schedule 108 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "first_name": "Thomas",
+   "last_name": "Bayley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "occupation_at_census": "Leather merchant",
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "first_name": "Annie",
+   "last_name": "Bayley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Bayley"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "first_name": "Harold",
+   "last_name": "Bayley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 4,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Annie",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "first_name": "Maria",
+   "last_name": "Finch",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 40,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Twitshall, Norfolk",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "first_name": "Louisa",
+   "last_name": "Raven",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Cook",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Sneinton, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "first_name": "Emma",
+   "last_name": "Spalding",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Fulletby, Lincolnshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 713,
+   "first_name": "John",
+   "last_name": "Smith",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 55,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 711,
+   "first_name": "John Percy",
+   "last_name": "Smith",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Married",
+     "age_at_census": 23,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Smith"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 712,
+   "first_name": "Catherine",
+   "last_name": "Smith",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Daughter-in-law",
+     "marital_status": "Married",
+     "age_at_census": 24,
+     "birth_place": "Everton, Lincolnshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 714,
+   "first_name": "John Leslie",
+   "last_name": "Smith",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Grandson",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 2229,
+   "first_name": "Mildred",
+   "last_name": "Jacklin",
+   "properties": [
+    274
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 274,
+     "address": "1 Pelham Crescent",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Denby, Lincolnshire",
+     "census_household_num": 7,
+     "source": "1891 census, 1, Pelham Crescent, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John G",
+   "last_name": "Woodward",
+   "sex": "M",
+   "born_year": 1829,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "occupation_at_census": "Timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline C",
+   "last_name": "Woodward",
+   "sex": "F",
+   "born_year": 1821,
+   "match_born_year": true,
+   "born_place": "London",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 60,
+     "birth_place": "London",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John G",
+      "last_name": "Woodward"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Lewis H E",
+   "last_name": "de Vera",
+   "sex": "M",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Richmond, Surrey",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Step-son",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "Architect",
+     "birth_place": "Richmond, Surrey",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Walter",
+   "last_name": "Woodward",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Clerk to timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Caroline C",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John G",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel M",
+   "last_name": "Woodward",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Caroline C",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John G",
+      "last_name": "Woodward"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen",
+   "last_name": "Bensley",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Ilkeston, Derbyshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Ilkeston, Derbyshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Leech",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Huntingdon, Huntingdonshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Cook",
+     "birth_place": "Huntingdon, Huntingdonshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Cropwell Bishop, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Needlewoman",
+     "birth_place": "Cropwell Bishop, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1881 census, Carisbrooke House, Cavendish Crescent North, schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellie",
+   "last_name": "Barnett",
+   "sex": "F",
+   "born_year": 1827,
+   "match_born_year": true,
+   "born_place": "Lincoln",
+   "properties": [
+    22
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 22,
+     "address": "3 Cavendish Crescent North",
+     "relationship": "Sister",
+     "marital_status": "Widow",
+     "age_at_census": 54,
+     "birth_place": "Lincoln",
+     "census_household_num": 107,
+     "source": "1881 census, Cavendish Lodge (3 Cavendish Crescent North), schedule 107 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Barnett",
+   "sex": "F",
+   "born_year": 1850,
+   "match_born_year": true,
+   "born_place": "St Louis, U.S.A.",
+   "properties": [
+    22
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 22,
+     "address": "3 Cavendish Crescent North",
+     "relationship": "Niece",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "birth_place": "St Louis, U.S.A.",
+     "census_household_num": 107,
+     "source": "1881 census, Cavendish Lodge (3 Cavendish Crescent North), schedule 107 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Squires",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Cropwell Bishop, Nottinghamshire",
+   "properties": [
+    22
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 22,
+     "address": "3 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "General servant",
+     "birth_place": "Cropwell Bishop, Nottinghamshire",
+     "census_household_num": 107,
+     "source": "1881 census, Cavendish Lodge (3 Cavendish Crescent North), schedule 107 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James B",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1843,
+   "match_born_year": true,
+   "born_place": "Stretton, Staffordshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Stretton, Staffordshire",
+     "census_household_num": 108,
+     "source": "1881 census, Cavendish Crescent North, schedule 108 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Austen B",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 108,
+     "source": "1881 census, Cavendish Crescent North, schedule 108 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "James B",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Spencer L",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 108,
+     "source": "1881 census, Cavendish Crescent North, schedule 108 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "James B",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary J",
+   "last_name": "Ball",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Alfreton, Derbyshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Alfreton, Derbyshire",
+     "census_household_num": 108,
+     "source": "1881 census, Cavendish Crescent North, schedule 108 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Dennis",
+   "last_name": "Bayley",
+   "sex": "M",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Annie",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Muriel",
+   "last_name": "Bayley",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Annie",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Bayley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Dinah",
+   "last_name": "Swaine",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Hucknall, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Servant",
+     "birth_place": "Hucknall, Nottinghamshire",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Misthill",
+   "sex": "F",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Walberswick, Suffolk",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic nursemaid",
+     "birth_place": "Walberswick, Suffolk",
+     "census_household_num": 109,
+     "source": "1881 census, Cavendish Crescent North, schedule 109 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1820,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 61,
+     "occupation_at_census": "Seed crusher and manure merchant employing 45 men and 9 women",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Cashier",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "John W",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Merchant's clerk",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah E",
+   "last_name": "Walker",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Matthew",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Engineer's articled apprentice",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Walker"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah J",
+   "last_name": "Metcalf",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Tettenhall, Staffordshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "birth_place": "Tettenhall, Staffordshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Rush",
+   "sex": "F",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Upwell, Cambridgeshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Upwell, Cambridgeshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Scott",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Deeping St Nicholas, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Deeping St Nicholas, Lincolnshire",
+     "census_household_num": 110,
+     "source": "1881 census, Cavendish Crescent North, schedule 110 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "John W",
+   "last_name": "Lewis",
+   "sex": "M",
+   "born_year": 1829,
+   "match_born_year": true,
+   "born_place": "Lerwick, Shetland",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "occupation_at_census": "Iron merchant",
+     "birth_place": "Lerwick, Shetland",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth G",
+   "last_name": "Lewis",
+   "sex": "F",
+   "born_year": 1832,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 49,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 59,
+     "occupation_at_census": "Living on her own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John W",
+      "last_name": "Lewis"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur F",
+   "last_name": "Lewis",
+   "sex": "M",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Ironmonger",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Elizabeth G",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John W",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel M",
+   "last_name": "Lewis",
+   "sex": "F",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Elizabeth G",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John W",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "John F",
+   "last_name": "Lewis",
+   "sex": "M",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 13,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Elizabeth G",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John W",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara",
+   "last_name": "Lofty",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Little Downham, Cambridgeshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Little Downham, Cambridgeshire",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Gibson",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Newcastle on Tyne",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Newcastle on Tyne",
+     "census_household_num": 111,
+     "source": "1881 census, Hardwicke House, Cavendish Crescent North, schedule 111 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John Finley",
+   "last_name": "Lewis",
+   "sex": "M",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "Ironmonger",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Elizabeth G",
+      "last_name": "Lewis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Reddish",
+   "sex": "F",
+   "born_year": 1827,
+   "match_born_year": true,
+   "born_place": "Navenby, Lincolnshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Visitor",
+     "marital_status": "Widow",
+     "age_at_census": 64,
+     "occupation_at_census": "Living on her own means",
+     "birth_place": "Navenby, Lincolnshire",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Scotland",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Widow",
+     "age_at_census": 34,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Scotland",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Agnes",
+   "last_name": "Watterson",
+   "sex": "F",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Penrith, Cumberland",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Penrith, Cumberland",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Pickard",
+   "sex": "F",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Bedworth, Warwickshire",
+   "properties": [
+    398
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 398,
+     "address": "Hardwicke House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 44,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Bedworth, Warwickshire",
+     "census_household_num": 5,
+     "source": "1891 census, Hardwicke House, Cavendish Crescent North, schedule 5 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Cressey",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Brigg, Lincolnshire",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Brigg, Lincolnshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Esther",
+   "last_name": "Leeden",
+   "sex": "F",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Warboys, Huntingdonshire",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Warboys, Huntingdonshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline Clara",
+   "last_name": "Leeden",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Coates, Wisbech, Cambridgeshire",
+   "properties": [
+    37
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 37,
+     "address": "Haddon House, Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Coates, Wisbech, Cambridgeshire",
+     "census_household_num": 6,
+     "source": "1891 census, Haddon House, Cavendish Crescent North, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert Wilkinson",
+   "last_name": "Smith",
+   "sex": "M",
+   "born_year": 1822,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    274
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 274,
+     "address": "1 Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 69,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1891 census, 1, Pelham Crescent, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily Elizabeth",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1852,
+   "match_born_year": true,
+   "born_place": "Sneinton, Nottinghamshire",
+   "properties": [
+    274
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 274,
+     "address": "1 Pelham Crescent",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 39,
+     "birth_place": "Sneinton, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1891 census, 1, Pelham Crescent, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Robert Wilkinson",
+      "last_name": "Smith"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Anne",
+   "last_name": "Hudson",
+   "sex": "F",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Barlow, Derbyshire",
+   "properties": [
+    274
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 274,
+     "address": "1 Pelham Crescent",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Barlow, Derbyshire",
+     "census_household_num": 7,
+     "source": "1891 census, 1, Pelham Crescent, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles Edgar",
+   "last_name": "Philps",
+   "sex": "M",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 36,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 8,
+     "source": "1891 census, Carisbrooke House, Cavendish Crescent North, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas Edwin",
+   "last_name": "Philps",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Brother",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 8,
+     "source": "1891 census, Carisbrooke House, Cavendish Crescent North, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Ward",
+   "sex": "F",
+   "born_year": 1825,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Aunt",
+     "marital_status": "Single",
+     "age_at_census": 66,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 8,
+     "source": "1891 census, Carisbrooke House, Cavendish Crescent North, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Georgina",
+   "last_name": "Sharp",
+   "sex": "F",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Warwickshire",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Warwickshire",
+     "census_household_num": 8,
+     "source": "1891 census, Carisbrooke House, Cavendish Crescent North, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Turfitt",
+   "sex": "F",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Rutland",
+   "properties": [
+    21
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 21,
+     "address": "1 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Rutland",
+     "census_household_num": 8,
+     "source": "1891 census, Carisbrooke House, Cavendish Crescent North, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
