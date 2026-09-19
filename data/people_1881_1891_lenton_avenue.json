@@ -1,0 +1,5117 @@
+{
+ "note": "Lenton Avenue read off the enumerators' pages for 1881 and 1891, transcribed by A. Hagues and checked line by line before import.\n\n**The record held nothing whatever for 1881 on this street.** All seventeen 1881 households here are new - a hundred and six people, from William S Birkin at Glenelg on the corner to Frederick Wadsworth at Newlands, which is now 33.\n\n**The 1881 enumerator numbered almost nothing.** Eleven of the seventeen households on his 1881 round carry no house number at all, only the street. Those are left unfiled rather than guessed at from their position in his walk; the six he did number are filed. The 1891 enumerator numbered everything, so that year files almost completely.\n\n**One household in the record is one person short.** Reuben Thompson's at 10 Lenton Avenue holds five of its six - the coachman, his wife, and three working sons - and wants only young Fred Upton, a scholar, who is created here.\n\n**Four 1891 households are already complete in the record** - 14, 12, 6 and 4 Lenton Avenue - and are included only so that the columns the record has never carried for them, the marital status and the schedule number, can be filled in. Nothing about those people is changed.\n\nDundee House is 17 Lenton Avenue and Fernleigh is 11; both are filed by number under the names the record already keeps for them.",
+ "source": "1881 and 1891 census enumerators' pages for Lenton Avenue, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 1596,
+   "first_name": "Frederick",
+   "last_name": "Wadsworth",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 1649,
+   "first_name": "William",
+   "last_name": "Hall",
+   "properties": [
+    369
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 29,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Bothamsall, Nottinghamshire",
+     "census_household_num": 116,
+     "source": "1881 census, Lenton Avenue, schedule 116 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 369,
+     "address": "8 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "occupation_at_census": "Groom, coachman",
+     "birth_place": "Bothamsall, Nottinghamshire",
+     "census_household_num": 47,
+     "source": "1891 census, 8 Lenton Avenue, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 2479,
+   "first_name": "Sarah",
+   "last_name": "Guilford",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 45,
+     "occupation_at_census": "Dividend holder",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 118,
+     "source": "1881 census, Lenton Avenue, schedule 118 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2480,
+   "first_name": "Hannah",
+   "last_name": "Guilford",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 41,
+     "occupation_at_census": "Dividend holder",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 118,
+     "source": "1881 census, Lenton Avenue, schedule 118 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 3136,
+   "first_name": "Joseph",
+   "last_name": "Drake",
+   "properties": [
+    368
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 27,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Kinoulton, Nottinghamshire",
+     "census_household_num": 121,
+     "source": "1881 census, Lenton Avenue, schedule 121 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 368,
+     "address": "6 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Job coachman",
+     "birth_place": "Kinoulton, Nottinghamshire",
+     "census_household_num": 48,
+     "source": "1891 census, 6 Lenton Avenue, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3137,
+   "first_name": "Martha",
+   "last_name": "Drake",
+   "properties": [
+    368
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "birth_place": "South Normanton, Derbyshire",
+     "census_household_num": 121,
+     "source": "1881 census, Lenton Avenue, schedule 121 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 368,
+     "address": "6 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "birth_place": "South Normanton, Derbyshire",
+     "census_household_num": 48,
+     "source": "1891 census, 6 Lenton Avenue, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Drake"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 2497,
+   "first_name": "Arthur",
+   "last_name": "Sims",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 30,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Duffield, Derbyshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Duffield, Derbyshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 2498,
+   "first_name": "Sarah",
+   "last_name": "Sims",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "birth_place": "Wellington, Lincolnshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 43,
+     "birth_place": "Wellington, Lincolnshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 2882,
+   "first_name": "Robert",
+   "last_name": "Davis",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 2883,
+   "first_name": "Charlotte",
+   "last_name": "Davis",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 3154,
+   "first_name": "William",
+   "last_name": "Hyde",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 372,
+     "address": "14 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "occupation_at_census": "Bookkeeper and insurance agent",
+     "birth_place": "Arnold, Nottinghamshire",
+     "census_household_num": 44,
+     "source": "1891 census, 14 Lenton Avenue, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3155,
+   "first_name": "Mary Elizabeth",
+   "last_name": "Hyde",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 372,
+     "address": "14 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "birth_place": "Stapleford, Nottinghamshire",
+     "census_household_num": 44,
+     "source": "1891 census, 14 Lenton Avenue, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hyde"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 3156,
+   "first_name": "John Stuart",
+   "last_name": "Hyde",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 372,
+     "address": "14 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 44,
+     "source": "1891 census, 14 Lenton Avenue, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary Elizabeth",
+      "last_name": "Hyde"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hyde"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3157,
+   "first_name": "Ellen",
+   "last_name": "Holmes",
+   "properties": [
+    372
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 372,
+     "address": "14 Lenton Avenue",
+     "relationship": "Nurse",
+     "marital_status": "Married",
+     "age_at_census": 41,
+     "occupation_at_census": "Monthly and sick nurse",
+     "birth_place": "Birmingham",
+     "census_household_num": 44,
+     "source": "1891 census, 14 Lenton Avenue, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3149,
+   "first_name": "Beecroft",
+   "last_name": "Brown",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 371,
+     "address": "12 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 78,
+     "occupation_at_census": "Coachman, groom",
+     "birth_place": "Bingham, Nottinghamshire",
+     "census_household_num": 45,
+     "source": "1891 census, 12 Lenton Avenue, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3150,
+   "first_name": "Mary Key",
+   "last_name": "Brown",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 371,
+     "address": "12 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 78,
+     "birth_place": "Farnsfield, Nottinghamshire",
+     "census_household_num": 45,
+     "source": "1891 census, 12 Lenton Avenue, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Beecroft",
+      "last_name": "Brown"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 3151,
+   "first_name": "Minnie",
+   "last_name": "Brown",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 371,
+     "address": "12 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 12,
+     "birth_place": "New Lenton, Nottinghamshire",
+     "census_household_num": 45,
+     "source": "1891 census, 12 Lenton Avenue, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Beecroft",
+      "last_name": "Brown"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Mary Key",
+      "last_name": "Brown"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3152,
+   "first_name": "Eleanor",
+   "last_name": "Marshall",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 371,
+     "address": "12 Lenton Avenue",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Lace warehouse girl",
+     "birth_place": "Bottesford, Leicestershire",
+     "census_household_num": 45,
+     "source": "1891 census, 12 Lenton Avenue, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3153,
+   "first_name": "Elizabeth Key",
+   "last_name": "Maude",
+   "properties": [
+    371
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 371,
+     "address": "12 Lenton Avenue",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 40,
+     "birth_place": "Farnsfield, Nottinghamshire",
+     "census_household_num": 45,
+     "source": "1891 census, 12 Lenton Avenue, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3143,
+   "first_name": "Reuben",
+   "last_name": "Thompson",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "occupation_at_census": "Job coachman",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3144,
+   "first_name": "Martha",
+   "last_name": "Thompson",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "birth_place": "Radcliffe, Nottinghamshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Thompson"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 3145,
+   "first_name": "James Henry",
+   "last_name": "Thompson",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Printer and compositor",
+     "birth_place": "Hooton Roberts, Yorkshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Martha",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3146,
+   "first_name": "George",
+   "last_name": "Upton",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Basket wicker furniture apprentice",
+     "birth_place": "Rotherham, Yorkshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Martha",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3147,
+   "first_name": "Frederick Wm",
+   "last_name": "Upton",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Grocer's apprentice",
+     "birth_place": "Wath-on-Dearne, Yorkshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Martha",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3132,
+   "first_name": "Frederick",
+   "last_name": "Sims",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Clerk in lace warehouse",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3134,
+   "first_name": "John Henry",
+   "last_name": "Sims",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3133,
+   "first_name": "Gertrude",
+   "last_name": "Sims",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 3135,
+   "first_name": "Andrew",
+   "last_name": "Brookes",
+   "properties": [
+    367
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "relationship": "Lodger",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Groom",
+     "birth_place": "Duffield, Derbyshire",
+     "census_household_num": 49,
+     "source": "1891 census, 4 Lenton Avenue, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 2525,
+   "first_name": "Herbert",
+   "last_name": "Wood",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 17,
+     "occupation_at_census": "Accountant to pupil",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Alfred Peter",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Caroline",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 2878,
+   "first_name": "Alfred",
+   "last_name": "Wood",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Colliery apprentice",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Alfred Peter",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Caroline",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 2879,
+   "first_name": "Percy",
+   "last_name": "Wood",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 15,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Alfred Peter",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Caroline",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 2526,
+   "first_name": "Elsie",
+   "last_name": "Wood",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 11,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Alfred Peter",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Caroline",
+      "last_name": "Wood"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen F",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1846,
+   "match_born_year": true,
+   "born_place": "Kendal, Westmorland",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "birth_place": "Kendal, Westmorland",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Wadsworth"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen B",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Ellen F",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederic A",
+   "last_name": "Wadsworth",
+   "sex": "M",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 9,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Ellen F",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary L",
+   "last_name": "Wadsworth",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 3,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Ellen F",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Wadsworth"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Glover",
+   "sex": "F",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Kendal, Westmorland",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 40,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Kendal, Westmorland",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Matilda E",
+   "last_name": "Bramley",
+   "sex": "F",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "West Leake, Nottinghamshire",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "West Leake, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Turton",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Hucknall Torkard, Nottinghamshire",
+   "properties": [
+    173
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 173,
+     "address": "33 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Hucknall Torkard, Nottinghamshire",
+     "census_household_num": 112,
+     "source": "1881 census, Newlands, Lenton Avenue, schedule 112 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Thornley",
+   "sex": "M",
+   "born_year": 1835,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Lace manufacturer employing male and female, over 200 hands",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Betsey A",
+   "last_name": "Thornley",
+   "sex": "F",
+   "born_year": 1835,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Jemmina E",
+   "last_name": "Thornley",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Betsey A",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa A",
+   "last_name": "Thornley",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Betsey A",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "John B",
+   "last_name": "Thornley",
+   "sex": "M",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "occupation_at_census": "Designer and draughtsman",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Betsey A",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Floran A",
+   "last_name": "Thornley",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Betsey A",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry C",
+   "last_name": "Thornley",
+   "sex": "M",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Betsey A",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Joseph",
+      "last_name": "Thornley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances",
+   "last_name": "Piggins",
+   "sex": "F",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Spalding, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Spalding, Lincolnshire",
+     "census_household_num": 113,
+     "source": "1881 census, Lenton Avenue, schedule 113 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Reuben",
+   "last_name": "Peppercorn",
+   "sex": "M",
+   "born_year": 1850,
+   "match_born_year": true,
+   "born_place": "Reepham, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "occupation_at_census": "Butler",
+     "birth_place": "Reepham, Lincolnshire",
+     "census_household_num": 114,
+     "source": "1881 census, Lenton Avenue, schedule 114 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Peppercorn",
+   "sex": "F",
+   "born_year": 1849,
+   "match_born_year": true,
+   "born_place": "Wellingore, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 32,
+     "birth_place": "Wellingore, Lincolnshire",
+     "census_household_num": 114,
+     "source": "1881 census, Lenton Avenue, schedule 114 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Peppercorn"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Peppercorn",
+   "sex": "M",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Aisthorpe, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Aisthorpe, Lincolnshire",
+     "census_household_num": 114,
+     "source": "1881 census, Lenton Avenue, schedule 114 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Peppercorn"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Peppercorn"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Johanna",
+   "last_name": "McEwan",
+   "sex": "F",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Scotland",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Teacher",
+     "birth_place": "Scotland",
+     "census_household_num": 114,
+     "source": "1881 census, Lenton Avenue, schedule 114 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Maplethorpe",
+   "sex": "M",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Tattershall, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Gardener",
+     "birth_place": "Tattershall, Lincolnshire",
+     "census_household_num": 114,
+     "source": "1881 census, Lenton Avenue, schedule 114 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas C",
+   "last_name": "Moore",
+   "sex": "M",
+   "born_year": 1826,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 55,
+     "occupation_at_census": "Artist",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Moore",
+   "sex": "F",
+   "born_year": 1824,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Moore",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Dress maker",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Claude J S",
+   "last_name": "Moore",
+   "sex": "M",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Artist",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas C",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Reuben A",
+   "last_name": "Moore",
+   "sex": "M",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Pawnbroker's apprentice",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas C",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Moore",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 115,
+     "source": "1881 census, Lenton Avenue, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas C",
+      "last_name": "Moore"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Kirkby in Ashfield, Nottinghamshire",
+   "properties": [
+    369
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 369,
+     "address": "8 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 44,
+     "birth_place": "Kirkby in Ashfield, Nottinghamshire",
+     "census_household_num": 47,
+     "source": "1891 census, 8 Lenton Avenue, schedule 47 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "birth_place": "Kirkby in Ashfield, Nottinghamshire",
+     "census_household_num": 116,
+     "source": "1881 census, Lenton Avenue, schedule 116 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hall"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Totley, Derbyshire",
+   "properties": [
+    369
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 369,
+     "address": "8 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Dressroom hand",
+     "birth_place": "Totley, Derbyshire",
+     "census_household_num": 47,
+     "source": "1891 census, 8 Lenton Avenue, schedule 47 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Totley, Derbyshire",
+     "census_household_num": 116,
+     "source": "1881 census, Lenton Avenue, schedule 116 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Sheffield, Yorkshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "birth_place": "Sheffield, Yorkshire",
+     "census_household_num": 116,
+     "source": "1881 census, Lenton Avenue, schedule 116 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    369
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 116,
+     "source": "1881 census, Lenton Avenue, schedule 116 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 369,
+     "address": "8 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 47,
+     "source": "1891 census, 8 Lenton Avenue, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Cottee",
+   "sex": "M",
+   "born_year": 1824,
+   "match_born_year": true,
+   "born_place": "Radford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 117,
+     "source": "1881 census, Lenton Avenue, schedule 117 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary A",
+   "last_name": "Cottee",
+   "sex": "F",
+   "born_year": 1837,
+   "match_born_year": true,
+   "born_place": "Lenton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 44,
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 117,
+     "source": "1881 census, Lenton Avenue, schedule 117 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Cottee"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Tom",
+   "last_name": "Cottee",
+   "sex": "M",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Radford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Model maker",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 117,
+     "source": "1881 census, Lenton Avenue, schedule 117 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary A",
+      "last_name": "Cottee"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Thomas",
+      "last_name": "Cottee"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Lacey",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Radford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Adopted child",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 117,
+     "source": "1881 census, Lenton Avenue, schedule 117 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Lacey",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Radford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Visitor",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 117,
+     "source": "1881 census, Lenton Avenue, schedule 117 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan",
+   "last_name": "Wignill",
+   "sex": "F",
+   "born_year": 1826,
+   "match_born_year": true,
+   "born_place": "Holbeach, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 55,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Holbeach, Lincolnshire",
+     "census_household_num": 118,
+     "source": "1881 census, Lenton Avenue, schedule 118 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Watkinson",
+   "sex": "F",
+   "born_year": 1846,
+   "match_born_year": true,
+   "born_place": "Mansfield, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 35,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Mansfield, Nottinghamshire",
+     "census_household_num": 118,
+     "source": "1881 census, Lenton Avenue, schedule 118 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Heeley",
+   "sex": "M",
+   "born_year": 1846,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "occupation_at_census": "Solicitor and dyer employing 82 hands",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Matilda M",
+   "last_name": "Heeley",
+   "sex": "F",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Leaven Heath, Suffolk",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "birth_place": "Leaven Heath, Suffolk",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Harold M",
+   "last_name": "Heeley",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Ilkeston, Derbyshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Ilkeston, Derbyshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Matilda M",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard H",
+   "last_name": "Heeley",
+   "sex": "M",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Cossal, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossal, Nottinghamshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Matilda M",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen M",
+   "last_name": "Heeley",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Chesterfield, Derbyshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Chesterfield, Derbyshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Matilda M",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith M",
+   "last_name": "Heeley",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Hoveringham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Hoveringham, Nottinghamshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Matilda M",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Basil",
+   "last_name": "Heeley",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 1,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Matilda M",
+      "last_name": "Heeley"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine S",
+   "last_name": "Wright",
+   "sex": "F",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Hull, Yorkshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Hull, Yorkshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Dickin",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Edingale, Staffordshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Edingale, Staffordshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Girton",
+   "sex": "F",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Caunton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Caunton, Nottinghamshire",
+     "census_household_num": 119,
+     "source": "1881 census, Lenton Avenue, schedule 119 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Hind",
+   "sex": "M",
+   "born_year": 1825,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 56,
+     "occupation_at_census": "Tool maker employing 100 hands",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas W",
+   "last_name": "Hind",
+   "sex": "M",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "occupation_at_census": "Tool maker",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Hind"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara",
+   "last_name": "Hind",
+   "sex": "F",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Walsall, Staffordshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "birth_place": "Walsall, Staffordshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Hind"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah A",
+   "last_name": "Hind",
+   "sex": "F",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Hind"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "John Hy",
+   "last_name": "Hind",
+   "sex": "M",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Engineer's improver",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Hind"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan",
+   "last_name": "Johnson",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Bilsby, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Bilsby, Lincolnshire",
+     "census_household_num": 120,
+     "source": "1881 census, Lenton Avenue, schedule 120 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maud",
+   "last_name": "Sims",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Fred",
+   "last_name": "Sims",
+   "sex": "M",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Albert",
+   "last_name": "Sims",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 1,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Arthur",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Sims"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Ward",
+   "sex": "M",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Hainton, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Gardener",
+     "birth_place": "Hainton, Lincolnshire",
+     "census_household_num": 122,
+     "source": "1881 census, Lenton Avenue, schedule 122 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert F",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance E",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas F",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen E",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Noel C",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard F",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 1,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada L",
+   "last_name": "Furley",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Sister-in-law",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Johnson",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Ironville, Derbyshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Ironville, Derbyshire",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Agnes",
+   "last_name": "Moore",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "London",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "London",
+     "census_household_num": 123,
+     "source": "1881 census, 11 Lenton Avenue, schedule 123 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James W",
+   "last_name": "Allcock",
+   "sex": "M",
+   "born_year": 1832,
+   "match_born_year": true,
+   "born_place": "Broughton Sulney, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 49,
+     "occupation_at_census": "Provision merchant employing 5 men",
+     "birth_place": "Broughton Sulney, Nottinghamshire",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Allcock",
+   "sex": "F",
+   "born_year": 1825,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "James W",
+      "last_name": "Allcock"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "William R",
+   "last_name": "Simpson",
+   "sex": "M",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Fairfax, U.S.A.",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Nephew",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "birth_place": "Fairfax, U.S.A.",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary M",
+   "last_name": "Shephard",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Lincoln",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "birth_place": "Lincoln",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Astell",
+   "sex": "F",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Normanton",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "General servant",
+     "birth_place": "Normanton",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Sampson",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "General servant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 124,
+     "source": "1881 census, 9 Lenton Avenue, schedule 124 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles",
+   "last_name": "Barnes",
+   "sex": "M",
+   "born_year": 1823,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 58,
+     "occupation_at_census": "Lace dresser",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Barnes",
+   "sex": "F",
+   "born_year": 1828,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 53,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 60,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 55,
+     "source": "1891 census, 7 Lenton Avenue, schedule 55 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charles",
+      "last_name": "Barnes"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Copley",
+   "sex": "M",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Long Clawson, Leicestershire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Son-in-law",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "occupation_at_census": "Draper",
+     "birth_place": "Long Clawson, Leicestershire",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Copley",
+   "sex": "F",
+   "born_year": 1850,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Ann",
+      "last_name": "Barnes"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Charles",
+      "last_name": "Barnes"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie B",
+   "last_name": "Copley",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Granddaughter",
+     "age_at_census": 2,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Fowler",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Wimbotsham, Norfolk",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Wimbotsham, Norfolk",
+     "census_household_num": 125,
+     "source": "1881 census, 7 Lenton Avenue, schedule 125 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick",
+   "last_name": "Shepperson",
+   "sex": "M",
+   "born_year": 1836,
+   "match_born_year": true,
+   "born_place": "Bingham, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 45,
+     "occupation_at_census": "Retired confectioner",
+     "birth_place": "Bingham, Nottinghamshire",
+     "census_household_num": 126,
+     "source": "1881 census, 5 Lenton Avenue, schedule 126 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick J P",
+   "last_name": "Shepperson",
+   "sex": "M",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Grocer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 126,
+     "source": "1881 census, 5 Lenton Avenue, schedule 126 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Shepperson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara E",
+   "last_name": "Shepperson",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 126,
+     "source": "1881 census, 5 Lenton Avenue, schedule 126 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Frederick",
+      "last_name": "Shepperson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Julia",
+   "last_name": "Denman",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "General servant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 126,
+     "source": "1881 census, 5 Lenton Avenue, schedule 126 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Bowers",
+   "sex": "M",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Little Bowden, Northamptonshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "occupation_at_census": "Commercial traveller, tea trade",
+     "birth_place": "Little Bowden, Northamptonshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 49,
+     "occupation_at_census": "Hop bitter brewer",
+     "birth_place": "Little Bowden, Northamptonshire",
+     "census_household_num": 57,
+     "source": "1891 census, 3 Lenton Avenue, schedule 57 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Bowers",
+   "sex": "F",
+   "born_year": 1851,
+   "match_born_year": true,
+   "born_place": "Rugby, Warwickshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 30,
+     "birth_place": "Rugby, Warwickshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    },
+    {
+     "census_year": 1891,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "birth_place": "Rugby, Warwickshire",
+     "census_household_num": 57,
+     "source": "1891 census, 3 Lenton Avenue, schedule 57 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Bowers",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 57,
+     "source": "1891 census, 3 Lenton Avenue, schedule 57 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Marguerite E",
+   "last_name": "Bowers",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles Wm Harrison",
+   "last_name": "Bowers",
+   "sex": "M",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 4,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Chas Elkington",
+   "last_name": "Bowers",
+   "sex": "M",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Matilda",
+   "last_name": "Biginore",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "General servant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen C",
+   "last_name": "Stedman",
+   "sex": "F",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Ollerton, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Ollerton, Nottinghamshire",
+     "census_household_num": 127,
+     "source": "1881 census, 3 Lenton Avenue, schedule 127 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William S",
+   "last_name": "Birkin",
+   "sex": "M",
+   "born_year": 1836,
+   "match_born_year": true,
+   "born_place": "Basford, Nottinghamshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 45,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Basford, Nottinghamshire",
+     "census_household_num": 128,
+     "source": "1881 census, 1 Lenton Avenue (Glenelg), schedule 128 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa H",
+   "last_name": "Sculthorpe",
+   "sex": "F",
+   "born_year": 1823,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 58,
+     "occupation_at_census": "Housekeeper",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 128,
+     "source": "1881 census, 1 Lenton Avenue (Glenelg), schedule 128 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Seery",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Dublin",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Dublin",
+     "census_household_num": 128,
+     "source": "1881 census, 1 Lenton Avenue (Glenelg), schedule 128 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Simpson",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Stevenage, Hertfordshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Cook",
+     "birth_place": "Stevenage, Hertfordshire",
+     "census_household_num": 128,
+     "source": "1881 census, 1 Lenton Avenue (Glenelg), schedule 128 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fred",
+   "last_name": "Upton",
+   "sex": "M",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Wath-on-Dearne, Yorkshire",
+   "properties": [
+    370
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 13,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Wath-on-Dearne, Yorkshire",
+     "census_household_num": 46,
+     "source": "1891 census, 10 Lenton Avenue, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Martha",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Reuben",
+      "last_name": "Thompson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Nellie",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Heeley, Sheffield",
+   "properties": [
+    369
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 369,
+     "address": "8 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "occupation_at_census": "Errand girl",
+     "birth_place": "Heeley, Sheffield",
+     "census_household_num": 47,
+     "source": "1891 census, 8 Lenton Avenue, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Hall"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Dunn",
+   "sex": "M",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Farndon, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Coachman, domestic",
+     "birth_place": "Farndon, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1891 census, Lenton Avenue, schedule 50 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maryann",
+   "last_name": "Dunn",
+   "sex": "F",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Kendal, Westmorland",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "birth_place": "Kendal, Westmorland",
+     "census_household_num": 50,
+     "source": "1891 census, Lenton Avenue, schedule 50 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "George",
+      "last_name": "Dunn"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "George Victor",
+   "last_name": "Dunn",
+   "sex": "M",
+   "born_year": 1888,
+   "match_born_year": true,
+   "born_place": "Bulwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Bulwell, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1891 census, Lenton Avenue, schedule 50 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "George",
+      "last_name": "Dunn"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Maryann",
+      "last_name": "Dunn"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Hilda",
+   "last_name": "Dunn",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "Bulwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Bulwell, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1891 census, Lenton Avenue, schedule 50 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "George",
+      "last_name": "Dunn"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Maryann",
+      "last_name": "Dunn"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "John McClure Caldwell",
+   "last_name": "Paton",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Wednesbury, Staffordshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "occupation_at_census": "Mechanical engineer",
+     "birth_place": "Wednesbury, Staffordshire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1825,
+   "match_born_year": true,
+   "born_place": "Ayrshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Mother",
+     "marital_status": "Widow",
+     "age_at_census": 66,
+     "birth_place": "Ayrshire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Newport, Shropshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 35,
+     "birth_place": "Newport, Shropshire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret Ada Alsopp",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Newport, Shropshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "birth_place": "Newport, Shropshire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Beatrice Cunningham",
+   "last_name": "Paton",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Atherstone, Warwickshire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "birth_place": "Atherstone, Warwickshire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Brown",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Long Clawson, Leicestershire",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant",
+     "birth_place": "Long Clawson, Leicestershire",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Turfitt",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Stoke-on-Trent",
+   "properties": [
+    165
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 165,
+     "address": "Dundee House, 17 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "General servant",
+     "birth_place": "Stoke-on-Trent",
+     "census_household_num": 51,
+     "source": "1891 census, 17 Lenton Avenue (Dundee House), schedule 51 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Samuel",
+   "last_name": "Lowater",
+   "sex": "M",
+   "born_year": 1835,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 163,
+     "address": "13 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "occupation_at_census": "Hosiery manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 52,
+     "source": "1891 census, 13 Lenton Avenue, schedule 52 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza Jane",
+   "last_name": "Lowater",
+   "sex": "F",
+   "born_year": 1843,
+   "match_born_year": true,
+   "born_place": "High Wycombe, Buckinghamshire",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 163,
+     "address": "13 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "birth_place": "High Wycombe, Buckinghamshire",
+     "census_household_num": 52,
+     "source": "1891 census, 13 Lenton Avenue, schedule 52 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Samuel",
+      "last_name": "Lowater"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy Ann",
+   "last_name": "Sims",
+   "sex": "F",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Milborne Port, Dorset",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 163,
+     "address": "13 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Milborne Port, Dorset",
+     "census_household_num": 52,
+     "source": "1891 census, 13 Lenton Avenue, schedule 52 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Newton",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Easton, Rochester",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 163,
+     "address": "13 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Easton, Rochester",
+     "census_household_num": 52,
+     "source": "1891 census, 13 Lenton Avenue, schedule 52 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Christina",
+   "last_name": "Macdonald",
+   "sex": "F",
+   "born_year": 1849,
+   "match_born_year": true,
+   "born_place": "Scotland",
+   "properties": [
+    163
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 163,
+     "address": "13 Lenton Avenue",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 42,
+     "birth_place": "Scotland",
+     "census_household_num": 52,
+     "source": "1891 census, 13 Lenton Avenue, schedule 52 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas Furley",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Student",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen Elizabeth",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Noel Denholm",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "Student",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard Furley",
+   "last_name": "Davis",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 11,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Winifred Mary",
+   "last_name": "Davis",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 9,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Charlotte",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Robert",
+      "last_name": "Davis"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth Ann",
+   "last_name": "Furley",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Cox",
+   "sex": "F",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Hornsby, Lincolnshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Hornsby, Lincolnshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Jane",
+   "last_name": "Meredith",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Whatton, Nottinghamshire",
+   "properties": [
+    162
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Whatton, Nottinghamshire",
+     "census_household_num": 53,
+     "source": "1891 census, 11 Lenton Avenue (Fernleigh), schedule 53 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alfred Peter",
+   "last_name": "Wood",
+   "sex": "M",
+   "born_year": 1845,
+   "match_born_year": true,
+   "born_place": "Kennington, Surrey",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Colliery agent",
+     "birth_place": "Kennington, Surrey",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Wood",
+   "sex": "F",
+   "born_year": 1848,
+   "match_born_year": true,
+   "born_place": "Sneinton, Nottinghamshire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 43,
+     "birth_place": "Sneinton, Nottinghamshire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Alfred Peter",
+      "last_name": "Wood"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine",
+   "last_name": "Godwin",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Wardley, Rutland",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "General servant",
+     "birth_place": "Wardley, Rutland",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Stott",
+   "sex": "F",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Rochdale, Lancashire",
+   "properties": [
+    161
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 161,
+     "address": "9 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "General servant",
+     "birth_place": "Rochdale, Lancashire",
+     "census_household_num": 54,
+     "source": "1891 census, 9 Lenton Avenue, schedule 54 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Chambers",
+   "sex": "F",
+   "born_year": 1831,
+   "match_born_year": true,
+   "born_place": "Lincoln",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Nurse",
+     "marital_status": "Single",
+     "age_at_census": 60,
+     "occupation_at_census": "General servant",
+     "birth_place": "Lincoln",
+     "census_household_num": 55,
+     "source": "1891 census, 7 Lenton Avenue, schedule 55 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Short",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Ashbourne",
+   "properties": [
+    160
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 160,
+     "address": "7 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "General servant",
+     "birth_place": "Ashbourne",
+     "census_household_num": 55,
+     "source": "1891 census, 7 Lenton Avenue, schedule 55 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Shepperson",
+   "sex": "F",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Chatteris, Cambridgeshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Chatteris, Cambridgeshire",
+     "census_household_num": 56,
+     "source": "1891 census, 5 Lenton Avenue, schedule 56 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Shepperson",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 8,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 56,
+     "source": "1891 census, 5 Lenton Avenue, schedule 56 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan",
+   "last_name": "Stapleton",
+   "sex": "F",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Maxey, Northamptonshire",
+   "properties": [
+    159
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 159,
+     "address": "5 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic general servant",
+     "birth_place": "Maxey, Northamptonshire",
+     "census_household_num": 56,
+     "source": "1891 census, 5 Lenton Avenue, schedule 56 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ernest",
+   "last_name": "Bowers",
+   "sex": "M",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Son",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 57,
+     "source": "1891 census, 3 Lenton Avenue, schedule 57 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Mary",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William",
+      "last_name": "Bowers"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Hannah",
+   "last_name": "Shelton",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Newark, Nottinghamshire",
+   "properties": [
+    158
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant",
+     "birth_place": "Newark, Nottinghamshire",
+     "census_household_num": 57,
+     "source": "1891 census, 3 Lenton Avenue, schedule 57 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William Stone",
+   "last_name": "Birkin",
+   "sex": "M",
+   "born_year": 1836,
+   "match_born_year": true,
+   "born_place": "Basford, Nottinghamshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 55,
+     "birth_place": "Basford, Nottinghamshire",
+     "census_household_num": 58,
+     "source": "1891 census, 1 Lenton Avenue (Glenelg), schedule 58 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett Ann",
+   "last_name": "Birkin",
+   "sex": "F",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Kirk Langley, Derbyshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "birth_place": "Kirk Langley, Derbyshire",
+     "census_household_num": 58,
+     "source": "1891 census, 1 Lenton Avenue (Glenelg), schedule 58 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "William Stone",
+      "last_name": "Birkin"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Amy Nancy",
+   "last_name": "Birkin",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 58,
+     "source": "1891 census, 1 Lenton Avenue (Glenelg), schedule 58 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Harriett Ann",
+      "last_name": "Birkin"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "William Stone",
+      "last_name": "Birkin"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Short",
+   "sex": "F",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Clay Cross, Derbyshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Clay Cross, Derbyshire",
+     "census_household_num": 58,
+     "source": "1891 census, 1 Lenton Avenue (Glenelg), schedule 58 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Williamson",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Billinghay, Lincolnshire",
+   "properties": [
+    157
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 157,
+     "address": "1 Lenton Avenue",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic",
+     "birth_place": "Billinghay, Lincolnshire",
+     "census_household_num": 58,
+     "source": "1891 census, 1 Lenton Avenue (Glenelg), schedule 58 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
