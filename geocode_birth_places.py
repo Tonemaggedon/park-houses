@@ -16,9 +16,24 @@ ssl_ctx = ssl.create_default_context()
 ssl_ctx.check_hostname = False
 ssl_ctx.verify_mode = ssl.CERT_NONE
 
-DATABASE_URL  = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL)
+def database_url():
+    """Railway injects the internal host, which only resolves inside Railway's own
+    network. Run from a laptop it fails with "could not translate host name
+    postgres.railway.internal". The public URL is the one that works from here, so
+    prefer it and fall back to the internal one when running on Railway itself."""
+    for name in ('DATABASE_PUBLIC_URL', 'DATABASE_URL'):
+        v = os.environ.get(name)
+        if v and 'railway.internal' not in v:
+            return v
+    v = os.environ.get('DATABASE_URL')
+    if not v:
+        raise SystemExit('No DATABASE_URL. Run this with:  railway run python3 ' +
+                         os.path.basename(__file__))
+    return v
+
+
+conn = psycopg2.connect(database_url())
 cur  = conn.cursor()
 
 # Get all distinct birth places not yet in cache
