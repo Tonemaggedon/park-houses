@@ -1,5 +1,5 @@
 {
- "note": "Peveril Drive, Park Ravine and Park Dale read off the 1901 enumerator's page, transcribed by A. Hagues and checked by him line by line before import. Ninety-five people in seventeen households.\n\n**The record holds nothing at all for Peveril Drive in 1901.** It holds forty-one rows for 1911 and thirty-four for 1921, and nothing before either.\n\n**Five households file, and they file because the 1911 key already settled the house names.** Dudley Lodge is 12 Peveril Drive, Harlech House is 7, Park Dale is the unnumbered property of that name, and No 3 is numbered on the page itself - August R. von Renesse, a lace warehouse manager and a German subject, keeping house with his mother-in-law. Castle Rd House is filed at 5 Peveril Drive on the strength of the Castle Rock name recorded there, which is the least corroborated of the four names in that key; if it turns out wrong, this is the one to undo.\n\n**Ivanhoe stood empty on census night**, which fits the house the record holds at 11 Peveril Drive and explains a gap that would otherwise read as a missing schedule.\n\n**Two houses are deliberately left unfiled because their names clash with houses on other streets.** **Thorndale** - Henry Towle, a station master on the Midland Railway - is carried in the record as a former name of 24 Hamilton Drive. **Sunnyside** - Herbert Norrell, a railway contractor of 29 - is a property in its own right on Park Terrace. Neither is on Peveril Drive. Until it is known whether the name was used twice in The Park or the enumerator's round strayed, filing either would put a household in a house on the wrong street. **Homebush**, Edward Sanderson's, has no property in the record at all.\n\n**Four more households on the drive carry neither a name nor a number** and cannot be placed from this return: Francis Budd the wine merchant, John C. Wright, Tom King and Albert Ley.\n\n**The three Park Ravine households are unfiled for a plainer reason.** The record holds one house on that street, 2 Park Ravine, and nothing on the page says which of the three it is. One further house on Park Ravine was returned uninhabited.\n\n**Two occupations are gone.** Edward Nelson at Park Ravine and Fredk J. Ashworth both had theirs struck out on the page. Both are marked Employer, so both ran something, and what is missing is worth knowing rather than worth guessing.\n\n**One oddity is recorded rather than smoothed away.** At schedule 237, Frances M. H. Churchill, aged 5, is entered as a daughter of John C. Wright but under a different surname from the rest of the household, and born at Arnold like the three Wright children beside her.\n\n**The sex column on this schedule was not transcribed**, so it is worked out from the relationship and the forename. Schedules 239, 241, 242, 243 and 245 are not here; they were not on the pages read.",
+ "note": "Peveril Drive, Park Ravine and Park Dale read off the 1901 enumerator's page, transcribed by A. Hagues and checked by him line by line before import. Ninety-five people in seventeen households.\n\n**The record holds nothing at all for Peveril Drive in 1901.** It holds forty-one rows for 1911 and thirty-four for 1921, and nothing before either.\n\n**Five households file, and they file because the 1911 key already settled the house names.** Dudley Lodge is 12 Peveril Drive, Harlech House is 7, Park Dale is the unnumbered property of that name, and No 3 is numbered on the page itself - August R. von Renesse, a lace warehouse manager and a German subject, keeping house with his mother-in-law. Castle Rd House is filed at 5 Peveril Drive on the strength of the Castle Rock name recorded there, which is the least corroborated of the four names in that key; if it turns out wrong, this is the one to undo.\n\n**Ivanhoe stood empty on census night**, which fits the house the record holds at 11 Peveril Drive and explains a gap that would otherwise read as a missing schedule.\n\n**Two houses are deliberately left unfiled because their names clash with houses on other streets.** **Thorndale** - Henry Towle, a station master on the Midland Railway - is carried in the record as a former name of 24 Hamilton Drive. **Sunnyside** - Herbert Norrell, a railway contractor of 29 - is a property in its own right on Park Terrace. Neither is on Peveril Drive. Until it is known whether the name was used twice in The Park or the enumerator's round strayed, filing either would put a household in a house on the wrong street. **Homebush**, Edward Sanderson's, has no property in the record at all.\n\n**Four more households on the drive carry neither a name nor a number** and cannot be placed from this return: Francis Budd the wine merchant, John C. Wright, Tom King and Albert Ley.\n\n**The three Park Ravine households are unfiled for a plainer reason.** The record holds one house on that street, 2 Park Ravine, and nothing on the page says which of the three it is. One further house on Park Ravine was returned uninhabited.\n\n**Two occupations are gone.** Edward Nelson at Park Ravine and Fredk J. Ashworth both had theirs struck out on the page. Both are marked Employer, so both ran something, and what is missing is worth knowing rather than worth guessing.\n\n**One oddity is recorded rather than smoothed away.** At schedule 237, Frances M. H. Churchill, aged 5, is entered as a daughter of John C. Wright but under a different surname from the rest of the household, and born at Arnold like the three Wright children beside her.\n\n**The sex column on this schedule was not transcribed**, so it is worked out from the relationship and the forename. Schedules 239, 241, 242, 243 and 245 are not here; they were not on the pages read.\n\n**Everyone here was offered to the record by name before being created.** An earlier run of these files matched letter-for-letter and so made a second Henry Edward Hunt beside the one already held. The matching now expands the enumerator's short forms, treats a lone initial as standing for the name beside it, and allows for a surname spelt two ways, so a person already in the record is bound to rather than created again.",
  "source": "1901 census enumerator's page for Peveril Drive, Park Ravine, Park Dale and Lenton Road, Nottingham, transcribed by A. Hagues.",
  "people": [
   {
@@ -47,6 +47,71 @@
    ]
   },
   {
+   "id": 621,
+   "first_name": "Robt",
+   "last_name": "Turpin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Peveril Drive",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "Draper's apprentice",
+     "census_household_num": 226,
+     "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Isabella",
+      "last_name": "Turpin"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Turpin"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 1714,
+   "first_name": "Chas.",
+   "last_name": "Turpin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Peveril Drive",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 4,
+     "census_household_num": 226,
+     "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Isabella",
+      "last_name": "Turpin"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "John",
+      "last_name": "Turpin"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
    "id": 2463,
    "first_name": "Mary",
    "last_name": "Goulty",
@@ -61,6 +126,28 @@
      "birth_place": "Aslockton, Nottinghamshire",
      "census_household_num": 226,
      "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 933,
+   "first_name": "Fredk J.",
+   "last_name": "Elborough",
+   "properties": [
+    299
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 299,
+     "address": "Parkdale, Peveril Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "occupation_at_census": "Engineer and colliery oil merchant, own account",
+     "birth_place": "Mitcham, Surrey",
+     "census_household_num": 228,
+     "source": "1901 census, Park Dale, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
@@ -89,6 +176,58 @@
      "to": {
       "first_name": "Fredk J.",
       "last_name": "Elborough"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 645,
+   "first_name": "Edward E.",
+   "last_name": "Lloyd",
+   "properties": [
+    376
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 376,
+     "address": "5 Peveril Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 58,
+     "occupation_at_census": "Commercial traveller, lead trade",
+     "birth_place": "Liverpool, Lancashire",
+     "census_household_num": 233,
+     "source": "1901 census, Castle Rd House, Peveril Drive, schedule 233 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 646,
+   "first_name": "Hannah S.",
+   "last_name": "Lloyd",
+   "properties": [
+    376
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 376,
+     "address": "5 Peveril Drive",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 50,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 233,
+     "source": "1901 census, Castle Rd House, Peveril Drive, schedule 233 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Edward E.",
+      "last_name": "Lloyd"
      },
      "type": "spouse_of"
     }
@@ -200,41 +339,6 @@
    ]
   },
   {
-   "first_name": "Robt",
-   "last_name": "Turpin",
-   "sex": "M",
-   "born_year": 1886,
-   "match_born_year": true,
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Peveril Drive",
-     "relationship": "Son",
-     "marital_status": "Single",
-     "age_at_census": 15,
-     "occupation_at_census": "Draper's apprentice",
-     "census_household_num": 226,
-     "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ],
-   "relationships": [
-    {
-     "to": {
-      "first_name": "Isabella",
-      "last_name": "Turpin"
-     },
-     "type": "child_of"
-    },
-    {
-     "to": {
-      "first_name": "John",
-      "last_name": "Turpin"
-     },
-     "type": "child_of"
-    }
-   ]
-  },
-  {
    "first_name": "Kathleen",
    "last_name": "Turpin",
    "sex": "F",
@@ -247,40 +351,6 @@
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 10,
-     "census_household_num": 226,
-     "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ],
-   "relationships": [
-    {
-     "to": {
-      "first_name": "Isabella",
-      "last_name": "Turpin"
-     },
-     "type": "child_of"
-    },
-    {
-     "to": {
-      "first_name": "John",
-      "last_name": "Turpin"
-     },
-     "type": "child_of"
-    }
-   ]
-  },
-  {
-   "first_name": "Chas.",
-   "last_name": "Turpin",
-   "sex": "M",
-   "born_year": 1897,
-   "match_born_year": true,
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Peveril Drive",
-     "relationship": "Son",
-     "marital_status": "Single",
-     "age_at_census": 4,
      "census_household_num": 226,
      "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
@@ -320,31 +390,6 @@
      "birth_place": "North Collingham, Nottinghamshire",
      "census_household_num": 226,
      "source": "1901 census, Peveril Drive, schedule 226 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "first_name": "Fredk J.",
-   "last_name": "Elborough",
-   "sex": "M",
-   "born_year": 1854,
-   "match_born_year": true,
-   "born_place": "Mitcham, Surrey",
-   "properties": [
-    299
-   ],
-   "census": [
-    {
-     "census_year": 1901,
-     "property_id": 299,
-     "address": "Parkdale, Peveril Drive",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 47,
-     "occupation_at_census": "Engineer and colliery oil merchant, own account",
-     "birth_place": "Mitcham, Surrey",
-     "census_household_num": 228,
-     "source": "1901 census, Park Dale, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
@@ -688,7 +733,7 @@
    "sex": "F",
    "born_year": 1876,
    "match_born_year": true,
-   "born_place": "King's Lynn, Norfolk",
+   "born_place": "King’s Lynn, Norfolk",
    "properties": [
     293
    ],
@@ -700,7 +745,7 @@
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 25,
-     "birth_place": "King's Lynn, Norfolk",
+     "birth_place": "King’s Lynn, Norfolk",
      "census_household_num": 230,
      "source": "1901 census, Harlech House, Peveril Drive, schedule 230 - read from the enumerator's page by A. Hagues"
     }
@@ -969,64 +1014,6 @@
      "birth_place": "Scarcliffe, Derbyshire",
      "census_household_num": 232,
      "source": "1901 census, Thorndale, Peveril Drive, schedule 232 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "first_name": "Edward E.",
-   "last_name": "Lloyd",
-   "sex": "M",
-   "born_year": 1843,
-   "match_born_year": true,
-   "born_place": "Liverpool, Lancashire",
-   "properties": [
-    376
-   ],
-   "census": [
-    {
-     "census_year": 1901,
-     "property_id": 376,
-     "address": "5 Peveril Drive",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 58,
-     "occupation_at_census": "Commercial traveller, lead trade",
-     "birth_place": "Liverpool, Lancashire",
-     "census_household_num": 233,
-     "source": "1901 census, Castle Rd House, Peveril Drive, schedule 233 - read from the enumerator's page by A. Hagues"
-    }
-   ]
-  },
-  {
-   "first_name": "Hannah S.",
-   "last_name": "Lloyd",
-   "sex": "F",
-   "born_year": 1851,
-   "match_born_year": true,
-   "born_place": "Nottingham, Nottinghamshire",
-   "properties": [
-    376
-   ],
-   "census": [
-    {
-     "census_year": 1901,
-     "property_id": 376,
-     "address": "5 Peveril Drive",
-     "relationship": "Wife",
-     "marital_status": "Married",
-     "age_at_census": 50,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 233,
-     "source": "1901 census, Castle Rd House, Peveril Drive, schedule 233 - read from the enumerator's page by A. Hagues"
-    }
-   ],
-   "relationships": [
-    {
-     "to": {
-      "first_name": "Edward E.",
-      "last_name": "Lloyd"
-     },
-     "type": "spouse_of"
     }
    ]
   },
