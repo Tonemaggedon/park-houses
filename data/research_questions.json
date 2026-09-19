@@ -447,6 +447,30 @@
    "kind": "people",
    "title": "Henry Meade Brown, aged 56 in 1891, is entered as the son of a head aged 53",
    "detail": "**The 1891 schedule gives him as Son, aged 56, in a household whose head is 53.** The age has been checked against the page more than once and is what is written there.\n\nIt has been recorded unchanged rather than quietly corrected, because the contradiction is the interesting part. Either the enumerator wrote an age into the wrong line, or the relationship column is wrong and he is a brother or a lodger, or the head's own age is understated."
+  },
+  {
+   "slug": "peveril-drive-1901-house-names",
+   "kind": "house-name",
+   "title": "Peveril Drive in 1901 is given by house name, and may be the way back into the 1921 households",
+   "detail": "**The 1901 enumerator numbered almost nothing on Peveril Drive.** He wrote the houses up as Dudley Lodge, Harlech House, Homebush, Thorndale, Castle Rd House and Sunnyside, with only No 3 carrying a number - August R. von Renesse, a lace warehouse manager and a German subject, keeping house with his mother-in-law.\n\n**This is the same street whose 1921 households had to be set aside** because those returns gave neither a house name nor a number. The record holds nothing at all for Peveril Drive in 1901, forty-one rows for 1911 and thirty-four for 1921.\n\n**So the 1901 names are the lever.** A name that appears in 1901 and again in a directory of the 1910s, against a number, would place a 1921 household that currently cannot be placed at all. Henry Towle at Thorndale is promising - a station master on the Midland Railway is the sort of man the directories print."
+  },
+  {
+   "slug": "empty-houses-census-night-1901",
+   "kind": "building",
+   "title": "Six houses in The Park stood empty on census night 1901",
+   "detail": "**The 1901 enumerator marked six houses uninhabited** as he walked: **Blantyre** and **Peveril House** on Cavendish Crescent North, **Ivanhoe** on Peveril Drive, **Thorn Lea** on Pelham Crescent, one house on **Lincoln Circus**, and one on **Park Ravine**.\n\nThis is worth having written down because an empty house explains a gap that would otherwise look like a missing page. Thorn Lea in particular is a name the record does not hold against any property, and it held eight people in 1891 under George Elinsley Coke - so it emptied between the two censuses."
+  },
+  {
+   "slug": "churchill-daughter-different-surname",
+   "kind": "people",
+   "title": "Frances M. H. Churchill, aged 5, is entered as a daughter of John C. Wright but under another surname",
+   "detail": "**At schedule 237 on Peveril Drive in 1901**, John C. Wright, a commercial traveller of 36, is returned with his wife Florence and four children born at Arnold - Dorothy, Rachael and John, all surnamed Wright, and then Frances M. H. **Churchill**, aged 5, also given as Daughter and also born at Arnold.\n\nA stepchild, an adopted child, or a niece written into the wrong column. The birthplace matching the others makes a clerical slip less likely than a real family story."
+  },
+  {
+   "slug": "birthplace-counties-wrong",
+   "kind": "record",
+   "title": "Three birthplaces in the record carry the wrong county",
+   "detail": "**Long Eaton is written as Nottinghamshire.** It is in Derbyshire, just over the county line.\n\n**Heckington is given as Leicestershire.** It is in Lincolnshire.\n\n**Stourbridge appears twice, once as Staffordshire and once as Worcestershire.** It was in Worcestershire.\n\nThese matter more than they look, because birthplaces are geocoded for the Origins map and a wrong county sends the pin to the wrong place - or, where the name exists in both counties, to a village nobody in the record ever came from."
   }
  ]
 }
