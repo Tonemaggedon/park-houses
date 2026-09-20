@@ -1,0 +1,222 @@
+{
+ "note": "**Derby House on the 1921 census - the third household the record now holds for a property that had none.** Nine people, transcribed by A. Hagues.\n\n**Sarah Wilkinson is still keeping the boarding house at seventy-two**, twenty years after the 1901 return found her doing the same at Beechwood on Hamilton Drive, and ten after the 1911 one at this house. Four censuses and a register follow her and her daughters: Beechwood in 1901, Derby House in 1911, 1921 and 1939.\n\n**Two full names come out of this page.** The record holds the daughters as *Florence A.* and *Maybell*; here they are **Florence Allissinon May Wilkinson** and **Maybell Martina Wilkinson**. An import cannot rename anybody, so both want doing by hand.\n\n**Florence's middle name is worth a second look.** The 1901 reading of the Beechwood household ends with a visitor set down as *Alissimon Hopewell*, aged 36 - and the record holds an Alissimon Hopewell (#1143) born about 1864. That an unusual name should appear both as a visitor to the household and as the daughter's middle name is either a family connection or a misreading of one line against the other, and it is worth knowing which.\n\n**The daughters' lives move through the three returns.** Florence is a daily governess in 1911, a clerk to Nottingham Corporation here, and retired by 1939. Maybell is at home duties here and proprietress of the house by 1939, so it passed from mother to daughter somewhere in the eighteen years between.\n\n**Two of the household stay for eighteen years.** **William Moss**, a Sheffield-born solicitor of 58 boarding here in 1921, is still boarding in 1939 at 76. **William Alfred Bird**, a servant of 28 from Carlton, is a manservant in the same house in 1939 at 47. Neither is in the record yet; both are created here and will be found rather than made again when the 1939 household goes in.\n\n**The boarders are a professional set** - a retired clergyman of 77 from Hertford, a solicitor, a lace manufacturer, and a clerk of 27 born in Paris - which is the kind of house it had been since at least 1911.",
+ "source": "1921 census return for Derby House, 1 Derby Terrace, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 4244,
+   "first_name": "Sarah",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Head",
+     "age_at_census": 72,
+     "occupation_at_census": "Boarding house keeper",
+     "birth_place": "Burnaston, Derbyshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 4247,
+   "first_name": "Florence A.",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 47,
+     "occupation_at_census": "Clerk to Nottingham Corporation",
+     "birth_place": "Newark on Trent, Nottinghamshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; her name is given in full here as Florence Allissinon May Wilkinson, where the record holds only Florence A."
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Wilkinson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 4248,
+   "first_name": "Maybell",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 44,
+     "occupation_at_census": "Home duties",
+     "birth_place": "Newark on Trent, Nottinghamshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; her name is given in full here as Maybell Martina Wilkinson"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Sarah",
+      "last_name": "Wilkinson"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Nathaniel",
+   "last_name": "Keymer",
+   "sex": "M",
+   "born_year": 1844,
+   "match_born_year": true,
+   "born_place": "Hertford, Hertfordshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "age_at_census": 77,
+     "occupation_at_census": "Clerk in holy orders, retired",
+     "birth_place": "Hertford, Hertfordshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Perri",
+   "last_name": "Levy",
+   "sex": "M",
+   "born_year": 1893,
+   "match_born_year": true,
+   "born_place": "Paris, France",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "age_at_census": 27,
+     "occupation_at_census": "Clerk",
+     "birth_place": "Paris, France",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; his employer is given as Junior May Co"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Moss",
+   "sex": "M",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Sheffield, Yorkshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "age_at_census": 58,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Sheffield, Yorkshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; an employer in his own practice; he is still boarding in this house on the 1939 register, eighteen years later"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert Percy",
+   "last_name": "Goddard",
+   "sex": "M",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "age_at_census": 48,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page gives the trade as \"Lace Manufacturers\" and marks him an employer"
+    }
+   ]
+  },
+  {
+   "first_name": "William Alfred",
+   "last_name": "Bird",
+   "sex": "M",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Carlton, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "age_at_census": 28,
+     "occupation_at_census": "Servant, private",
+     "birth_place": "Carlton, Nottinghamshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; he is still in this house on the 1939 register, as a manservant"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Scott",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "East Leake, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "age_at_census": 29,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "East Leake, Nottinghamshire",
+     "source": "1921 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
