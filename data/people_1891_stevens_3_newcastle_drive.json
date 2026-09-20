@@ -1,120 +1,462 @@
 {
-  "note": "The household of Henry Stevens, general inspector to the Local Government Board, at 3 Newcastle Drive (#209) on the 1891 return, transcribed by A. Hagues: himself, his wife, seven children, his mother-in-law, a visiting governess and two servants - thirteen people. None was in the record, and 3 Newcastle Drive held only 1921, so 1891 is free.\n\nWright's Directory prints 'Henry Stevens, inspector Local Government Board' at 3 Newcastle Drive in 1894-95 and 1898-99, which is his census description exactly, so he held the house at least eight more years. By 1910-11 it has passed to Joseph Wesson and then to John Mackie.\n\n**The children's birthplaces track the family's moves.** The eldest was born at Liverpool in 1880, the next four at Southport between 1881 and 1887, and the youngest at Standard Hill, Nottingham, in 1891 - which fits an inspector moving with his district and reaching Nottingham between 1887 and 1891. Jane M B and Paul R B are both four and both born at Southport, so they are very likely twins, but the return does not say so and nothing is recorded on that reading. The children are linked to both parents; Mary Ann Halhed, the head's mother-in-law, is joined to nothing, because the importer carries only plain parent and child links and the return does not say which parent is her child. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, 3 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285).",
-  "people": [
+ "note": "The household of Henry Stevens, general inspector to the Local Government Board, at 3 Newcastle Drive (#209) on the 1891 return, transcribed by A. Hagues: himself, his wife, seven children, his mother-in-law, a visiting governess and two servants - thirteen people. None was in the record, and 3 Newcastle Drive held only 1921, so 1891 is free.\n\nWright's Directory prints 'Henry Stevens, inspector Local Government Board' at 3 Newcastle Drive in 1894-95 and 1898-99, which is his census description exactly, so he held the house at least eight more years. By 1910-11 it has passed to Joseph Wesson and then to John Mackie.\n\n**The children's birthplaces track the family's moves.** The eldest was born at Liverpool in 1880, the next four at Southport between 1881 and 1887, and the youngest at Standard Hill, Nottingham, in 1891 - which fits an inspector moving with his district and reaching Nottingham between 1887 and 1891. Jane M B and Paul R B are both four and both born at Southport, so they are very likely twins, but the return does not say so and nothing is recorded on that reading. The children are linked to both parents; Mary Ann Halhed, the head's mother-in-law, is joined to nothing, because the importer carries only plain parent and child links and the return does not say which parent is her child. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1891 census, 3 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285).",
+ "people": [
+  {
+   "first_name": "Henry",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1848,
+   "born_place": "Bradfield, Berkshire",
+   "occupations": [
     {
-      "first_name": "Henry", "last_name": "Stevens", "match_born_year": true, "sex": "M", "born_year": 1848, "born_place": "Bradfield, Berkshire",
-      "occupations": [{ "occupation": "General inspector, Local Government Board", "from_year": 1891, "to_year": 1899, "notes": "1891 census; Wright's Directory 1894-95 and 1898-99" }],
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 43,
-                   "occupation_at_census": "General inspector, local government", "birth_place": "Bradfield, Berkshire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99" }]
-    },
-    {
-      "first_name": "Ellen M P", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1849, "born_place": "London, Middlesex",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 42, "birth_place": "London, Middlesex",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "spouse_of" }]
-    },
-    {
-      "first_name": "Ellen H J", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1880, "born_place": "Liverpool, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 11, "occupation_at_census": "Scholar", "birth_place": "Liverpool, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Mary C H", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1881, "born_place": "Southport, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 10, "occupation_at_census": "Scholar", "birth_place": "Southport, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Henry J H", "last_name": "Stevens", "match_born_year": true, "sex": "M", "born_year": 1884, "born_place": "Southport, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Son", "age_at_census": 7, "occupation_at_census": "Scholar", "birth_place": "Southport, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Frances E M", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1885, "born_place": "Southport, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 6, "occupation_at_census": "Scholar", "birth_place": "Southport, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Jane M B", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Southport, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 4, "birth_place": "Southport, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; same age and birthplace as Paul R B, so very likely twins" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Paul R B", "last_name": "Stevens", "match_born_year": true, "sex": "M", "born_year": 1887, "born_place": "Southport, Lancashire",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Son", "age_at_census": 4, "birth_place": "Southport, Lancashire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; same age and birthplace as Jane M B, so very likely twins" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Ann C T", "last_name": "Stevens", "match_born_year": true, "sex": "F", "born_year": 1891, "born_place": "Standard Hill, Nottingham",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 0, "birth_place": "Standard Hill, Nottingham",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; under a year old" }],
-      "relationships": [{ "to": { "first_name": "Henry", "last_name": "Stevens", "born_year": 1848 }, "type": "child_of" },
-                        { "to": { "first_name": "Ellen M P", "last_name": "Stevens" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Mary Ann", "last_name": "Halhed", "match_born_year": true, "sex": "F", "born_year": 1819, "born_place": "South Hackney, Middlesex",
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Mother-in-law", "marital_status": "Widow", "age_at_census": 72,
-                   "occupation_at_census": "Living on own means", "birth_place": "South Hackney, Middlesex",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; mother-in-law of the head, so probably Ellen M P Stevens's mother" }]
-    },
-    {
-      "first_name": "Annie M", "last_name": "Bearder", "match_born_year": true, "sex": "F", "born_year": 1872, "born_place": "Nottinghamshire",
-      "occupations": [{ "occupation": "Governess", "from_year": 1891, "to_year": 1891 }],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Visitor", "marital_status": "Single", "age_at_census": 19,
-                   "occupation_at_census": "Governess", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Martha M M", "last_name": "Dilks", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Woolwich, Kent",
-      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
-                   "occupation_at_census": "Nurse, domestic", "birth_place": "Woolwich, Kent",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Catherine", "last_name": "Johnstone", "match_born_year": true, "sex": "F", "born_year": 1869, "born_place": "Scotland",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [209],
-      "census": [{ "census_year": 1891, "property_id": 209, "address": "3 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Scotland",
-                   "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues" }]
+     "occupation": "General inspector, Local Government Board",
+     "from_year": 1891,
+     "to_year": 1899,
+     "notes": "1891 census; Wright's Directory 1894-95 and 1898-99"
     }
-  ]
+   ],
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 43,
+     "occupation_at_census": "General inspector, local government",
+     "birth_place": "Bradfield, Berkshire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen M P",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1849,
+   "born_place": "London, Middlesex",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "birth_place": "London, Middlesex",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen H J",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "Liverpool, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 11,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Liverpool, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary C H",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1881,
+   "born_place": "Southport, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Southport, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry J H",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1884,
+   "born_place": "Southport, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Son",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Southport, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances E M",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1885,
+   "born_place": "Southport, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Southport, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane M B",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Southport, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "birth_place": "Southport, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; same age and birthplace as Paul R B, so very likely twins"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Paul R B",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1887,
+   "born_place": "Southport, Lancashire",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Son",
+     "age_at_census": 4,
+     "birth_place": "Southport, Lancashire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; same age and birthplace as Jane M B, so very likely twins"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann C T",
+   "last_name": "Stevens",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1891,
+   "born_place": "Standard Hill, Nottingham",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Standard Hill, Nottingham",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; under a year old"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Henry",
+      "last_name": "Stevens",
+      "born_year": 1848
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Ellen M P",
+      "last_name": "Stevens"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Halhed",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1819,
+   "born_place": "Hackney, London",
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Mother-in-law",
+     "marital_status": "Widow",
+     "age_at_census": 72,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Hackney, London",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues; mother-in-law of the head, so probably Ellen M P Stevens's mother"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie M",
+   "last_name": "Bearder",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1872,
+   "born_place": "Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "Governess",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Governess",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha M M",
+   "last_name": "Dilks",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1868,
+   "born_place": "Woolwich, Kent",
+   "occupations": [
+    {
+     "occupation": "Nurse, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Nurse, domestic",
+     "birth_place": "Woolwich, Kent",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine",
+   "last_name": "Johnstone",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Scotland",
+   "occupations": [
+    {
+     "occupation": "Housemaid, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    209
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 209,
+     "address": "3 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Scotland",
+     "source": "1891 census, 3 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
 }
