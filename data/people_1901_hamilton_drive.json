@@ -3,22 +3,6 @@
  "source": "1901 census enumerator's page for Hamilton Drive, Nottingham, transcribed by A. Hagues.",
  "people": [
   {
-   "id": 2889,
-   "first_name": "Elizabeth",
-   "last_name": "Jackson",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Fairfield",
-     "relationship": "Daughter",
-     "age_at_census": 21,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 78,
-     "source": "1901 census, Fairfield, schedule 78 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
    "id": 4099,
    "first_name": "Walter",
    "last_name": "Woodward",
@@ -385,7 +369,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 54,
@@ -406,7 +390,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Wife",
      "age_at_census": 54,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -425,7 +409,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 20,
@@ -446,7 +430,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 18,
      "occupation_at_census": "Shop Assistant",
@@ -466,7 +450,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 14,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -485,7 +469,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Fairfield",
+     "unresolved_address": "Fairfield, Hamilton Drive",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Gen Ser (Dom)",
@@ -505,7 +489,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 52,
@@ -526,7 +510,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Wife",
      "age_at_census": 53,
      "birth_place": "Newport, Monmouthshire",
@@ -545,7 +529,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 30,
@@ -566,7 +550,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 28,
      "occupation_at_census": "Sick Nurse (Worker)",
@@ -586,7 +570,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 27,
      "occupation_at_census": "Hosiery Manufr Manager (Worker)",
@@ -606,7 +590,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 21,
      "occupation_at_census": "Hosiery Manufr Warehouseman (Worker)",
@@ -626,7 +610,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Sister-in-law",
      "marital_status": "Married",
      "age_at_census": 51,
@@ -646,7 +630,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Nephew",
      "marital_status": "Single",
      "age_at_census": 23,
@@ -667,7 +651,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakleigh",
+     "unresolved_address": "Oakleigh, Hamilton Drive",
      "relationship": "Servant",
      "age_at_census": 23,
      "occupation_at_census": "Gen. Serv. dom",
@@ -687,7 +671,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Widower",
      "age_at_census": 51,
@@ -708,7 +692,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 21,
@@ -728,7 +712,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 18,
@@ -749,7 +733,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "age_at_census": 13,
      "birth_place": "Burton-on-Trent, Staffordshire",
      "census_household_num": 80,
@@ -767,7 +751,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Boarder",
      "age_at_census": 19,
      "birth_place": "France (French subject)",
@@ -786,7 +770,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Boarder",
      "age_at_census": 18,
      "birth_place": "France",
@@ -805,7 +789,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Servant",
      "age_at_census": 29,
      "occupation_at_census": "Gen Serv dom",
@@ -825,7 +809,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Glendale",
+     "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Servant",
      "age_at_census": 16,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -844,7 +828,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 47,
@@ -854,7 +838,7 @@
     },
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 19,
@@ -874,7 +858,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Wife",
      "age_at_census": 46,
      "birth_place": "London",
@@ -892,7 +876,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 17,
      "occupation_at_census": "Pupil Teacher (Worker)",
@@ -911,7 +895,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 15,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -929,7 +913,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 12,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -947,7 +931,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 10,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -965,7 +949,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 0,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -983,7 +967,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next schedule",
+     "unresolved_address": "Hamilton Drive",
      "relationship": "Servant",
      "age_at_census": 21,
      "occupation_at_census": "Gen (Dom) Serv",
@@ -1161,7 +1145,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Beechwood",
+     "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Widow",
      "age_at_census": 52,
@@ -1180,7 +1164,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Beechwood",
+     "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 22,
@@ -1200,7 +1184,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Beechwood",
+     "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Son",
      "age_at_census": 17,
      "occupation_at_census": "Grocer's Warehouseman",
@@ -1219,7 +1203,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Beechwood",
+     "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 26,
      "birth_place": "Newark, Nottinghamshire",
@@ -1237,7 +1221,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Beechwood",
+     "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Daughter",
      "age_at_census": 24,
      "birth_place": "Newark, Nottinghamshire",
@@ -1414,7 +1398,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Douglas Ho",
+     "unresolved_address": "Douglas House, Hamilton Drive",
      "relationship": "Head",
      "marital_status": "Widow",
      "age_at_census": 47,
@@ -1435,7 +1419,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Douglas Ho",
+     "unresolved_address": "Douglas House, Hamilton Drive",
      "relationship": "Visitor",
      "marital_status": "Married",
      "age_at_census": 22,
@@ -1455,7 +1439,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Douglas Ho",
+     "unresolved_address": "Douglas House, Hamilton Drive",
      "relationship": "Visitor",
      "age_at_census": 1,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1474,7 +1458,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Douglas Ho",
+     "unresolved_address": "Douglas House, Hamilton Drive",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 25,

@@ -1,5 +1,5 @@
 {
- "note": "Pelham Crescent on the 1901 census - what the existing files do not already hold.\n\n**Kentmere is here, and it answers a question.** Schedule 196 is headed *Pelham Crescent, \"Kentmere\"* and gives William Wing, solicitor, 37, with his wife Sarah, his sons Henry and Richard, and two servants. The Kentmere question had the house on Cavendish Crescent North from the 1911 return and could not place it; this schedule puts the same household on Pelham Crescent ten years earlier. The two crescents meet, so it is a corner house addressed both ways. See [[kentmere-ccn]].\n\n**Hermann E. Hersheim is at schedule 199** - the Flersheim family under yet another spelling, 73 and still a lace merchant, a German subject naturalised British, with Kathinka and their daughter Margaret. The spelling is left as the page has it rather than quietly corrected.\n\n**Households are unfiled unless the page numbers them.** Numbers 9, 11, 15, 17 and 19 are already filed by other files and are untouched here.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.",
+ "note": "Pelham Crescent on the 1901 census - what the existing files do not already hold.\n\n**Kentmere is here, and it answers a question.** Schedule 196 is headed *Pelham Crescent, \"Kentmere\"* and gives William Wing, solicitor, 37, with his wife Sarah, his sons Henry and Richard, and two servants. The Kentmere question had the house on Cavendish Crescent North from the 1911 return and could not place it; this schedule puts the same household on Pelham Crescent ten years earlier. The two crescents meet, so it is a corner house addressed both ways. See [[kentmere-ccn]].\n\n**Hermann E. Hersheim is at schedule 199** - the Flersheim family under yet another spelling, 73 and still a lace merchant, a German subject naturalised British, with Kathinka and their daughter Margaret. The spelling is left as the page has it rather than quietly corrected.\n\n**Households are unfiled unless the page numbers them.** Numbers 9, 11, 15, 17 and 19 are already filed by other files and are untouched here.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.\n\n**Some people were taken out of this file after it was first written.** They already had a 1901 census row in another file in data/ - in one case a whole household, the Dobsons of 23 Lenton Road, recorded there under fuller names and filed to the house. Keeping them here would have described the same census night twice.",
  "source": "1901 census enumerator's page for Pelham Crescent, Nottingham, transcribed by A. Hagues.",
  "people": [
   {
@@ -9,7 +9,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 37,
@@ -27,7 +27,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 11,
@@ -44,7 +44,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Son",
      "age_at_census": 8,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -77,7 +77,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "(continues)",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 23,
@@ -95,7 +95,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 11\")",
      "relationship": "Head",
      "marital_status": "Widow",
      "age_at_census": 67,
@@ -112,7 +112,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 13\")",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 73,
@@ -130,7 +130,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 13\")",
      "relationship": "Servant",
      "age_at_census": 27,
      "occupation_at_census": "General servant (domestic)",
@@ -147,48 +147,13 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 13\")",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "General servant (domestic)",
      "birth_place": "Oxford, Oxfordshire",
      "census_household_num": 203,
      "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 557,
-   "first_name": "Frederick J.",
-   "last_name": "Bradley",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "No 15",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 54,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 204,
-     "source": "1901 census, No 15, schedule 204 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 502,
-   "first_name": "George D.",
-   "last_name": "Laing",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "No 17",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 52,
-     "occupation_at_census": "Wine & Spirit Merchant (Employer)",
-     "birth_place": "Birmingham, Warwickshire",
-     "census_household_num": 205,
-     "source": "1901 census, No 17, schedule 205 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
    ]
   },
@@ -249,7 +214,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Head",
      "marital_status": "Single",
      "age_at_census": 59,
@@ -269,7 +234,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Wife",
      "age_at_census": 37,
      "birth_place": "Sedgley, Staffordshire",
@@ -288,7 +253,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Servant",
      "age_at_census": 24,
      "occupation_at_census": "Cook (domestic)",
@@ -308,7 +273,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "unresolved_address": "Pelham Crescent, Kentmere",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Housemaid",
@@ -609,7 +574,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 13\")",
      "relationship": "Wife",
      "age_at_census": 60,
      "birth_place": "Germany (British subject)",
@@ -628,7 +593,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Pelham Crescent (the page gives \"No 13\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 28,
@@ -989,7 +954,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Sister",
      "age_at_census": 49,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1007,7 +972,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 27,
      "occupation_at_census": "Cook (domestic)",
@@ -1026,7 +991,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Housemaid",
@@ -1045,7 +1010,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 68,
@@ -1065,7 +1030,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Wife",
      "age_at_census": 55,
      "birth_place": "Belgium (British subject)",
@@ -1083,7 +1048,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 32,
@@ -1102,7 +1067,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Daughter-in-law",
      "marital_status": "Married",
      "age_at_census": 27,
@@ -1121,7 +1086,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Grandson",
      "marital_status": "Single",
      "age_at_census": 1,
@@ -1140,7 +1105,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 42,
      "occupation_at_census": "Nurse (domestic)",
@@ -1159,7 +1124,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Cook",
@@ -1178,7 +1143,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 19,
      "occupation_at_census": "Housemaid",
@@ -1197,7 +1162,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Pelham Crescent",
      "relationship": "Servant",
      "age_at_census": 23,
      "occupation_at_census": "Nursemaid",

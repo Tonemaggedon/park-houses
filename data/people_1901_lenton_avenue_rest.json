@@ -1,5 +1,5 @@
 {
- "note": "Lenton Avenue on the 1901 census - what the two existing Lenton Avenue files do not already carry.\n\n**Seven households are wholly covered already** - numbers 5, 9, 15, 23, 10, 4 and 2 - and nothing here repeats them. The rest are part done: the existing files hold the heads and some servants, and what is added is mostly children and the servants who were missed.\n\n**One household is new outright and is not on this street at all.** The last schedule of the round is headed *\"No 25, Car [?] Crescent\"* - **Zebedee Jessop**, a draper of 73 born at Swineshead in Lincolnshire, with four grown children and three servants. The street name is unread on the page, and the household bears on the Jessop work already in the record. It is unfiled.\n\n**William Bowers's household at the head of the street is new** - eight people under a widowed hosiery turner of 58.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.",
+ "note": "Lenton Avenue on the 1901 census - what the two existing Lenton Avenue files do not already carry.\n\n**Seven households are wholly covered already** - numbers 5, 9, 15, 23, 10, 4 and 2 - and nothing here repeats them. The rest are part done: the existing files hold the heads and some servants, and what is added is mostly children and the servants who were missed.\n\n**One household is new outright and is not on this street at all.** The last schedule of the round is headed *\"No 25, Car [?] Crescent\"* - **Zebedee Jessop**, a draper of 73 born at Swineshead in Lincolnshire, with four grown children and three servants. The street name is unread on the page, and the household bears on the Jessop work already in the record. It is unfiled.\n\n**William Bowers's household at the head of the street is new** - eight people under a widowed hosiery turner of 58.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.\n\n**Some people were taken out of this file after it was first written.** They already had a 1901 census row in another file in data/ - in one case a whole household, the Dobsons of 23 Lenton Road, recorded there under fuller names and filed to the house. Keeping them here would have described the same census night twice.",
  "source": "1901 census enumerator's page for Lenton Avenue, Nottingham, transcribed by A. Hagues.",
  "people": [
   {
@@ -9,7 +9,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 24,
@@ -26,7 +26,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Son",
      "age_at_census": 17,
      "occupation_at_census": "assistant (Worker)",
@@ -42,7 +42,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Daughter",
      "age_at_census": 18,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -57,7 +57,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Daughter",
      "age_at_census": 30,
      "birth_place": "London",
@@ -72,7 +72,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Servant",
      "age_at_census": 27,
      "occupation_at_census": "Cook (dom)",
@@ -88,7 +88,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 7",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 7\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 14,
@@ -104,7 +104,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 13\")",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 46,
@@ -122,7 +122,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 13\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 2,
@@ -139,7 +139,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 13\")",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 29,
@@ -157,7 +157,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 13\")",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Nurse",
@@ -174,7 +174,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 17",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 17\")",
      "relationship": "Daughter",
      "age_at_census": 33,
      "birth_place": "Atherstone, Warwickshire",
@@ -190,7 +190,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25\")",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 48,
@@ -207,7 +207,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 27",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 27\")",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 40,
@@ -218,53 +218,18 @@
    ]
   },
   {
-   "id": 1236,
-   "first_name": "Albert",
-   "last_name": "Sampson",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "No 29",
-     "relationship": "Son",
-     "marital_status": "Single",
-     "age_at_census": 26,
-     "occupation_at_census": "Lace Warehouseman (Worker)",
-     "birth_place": "New Lenton, Nottinghamshire",
-     "census_household_num": 144,
-     "source": "1901 census, No 29, schedule 144 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
    "id": 4083,
    "first_name": "William Henry",
    "last_name": "Bradwell",
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 31, \"Greylands",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 31, Greylands\")",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 33,
      "occupation_at_census": "Auctioneer (Employer)",
      "birth_place": "Southwell, Nottinghamshire",
-     "census_household_num": 145,
-     "source": "1901 census, No 31, \"Greylands, schedule 145 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 1387,
-   "first_name": "Joyce M",
-   "last_name": "Bradwell",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "No 31, \"Greylands",
-     "relationship": "Daughter",
-     "marital_status": "Single",
-     "age_at_census": 8,
-     "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 145,
      "source": "1901 census, No 31, \"Greylands, schedule 145 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
@@ -277,7 +242,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 12",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 12\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 16,
@@ -295,7 +260,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 12",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 12\")",
      "relationship": "Daughter",
      "age_at_census": 19,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -311,7 +276,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Head",
      "marital_status": "Widower",
      "age_at_census": 73,
@@ -328,7 +293,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 44,
@@ -344,7 +309,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Daughter",
      "age_at_census": 38,
      "occupation_at_census": "Wood Carver (Worker)",
@@ -360,7 +325,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Son",
      "age_at_census": 33,
      "occupation_at_census": "Draper (Worker)",
@@ -376,7 +341,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Daughter",
      "age_at_census": 29,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -391,7 +356,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Servant",
      "age_at_census": 24,
      "occupation_at_census": "Cook (dom)",
@@ -407,7 +372,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Servant",
      "age_at_census": 25,
      "occupation_at_census": "Housemaid (dom)",
@@ -423,7 +388,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25, Car [?] Crescent",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25, Car Crescent\") - reading uncertain",
      "relationship": "Servant",
      "age_at_census": 15,
      "occupation_at_census": "Under",
@@ -442,7 +407,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Head",
      "marital_status": "Widower",
      "age_at_census": 58,
@@ -462,7 +427,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Daughter",
      "age_at_census": 26,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -480,7 +445,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "First schedule",
+     "unresolved_address": "Lenton Avenue",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Housemaid",
@@ -499,7 +464,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 7",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 7\")",
      "relationship": "Wife",
      "age_at_census": 46,
      "birth_place": "Hyson Green, Nottinghamshire",
@@ -517,7 +482,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 11\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 32,
@@ -537,7 +502,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 11\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 30,
@@ -558,7 +523,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 11\")",
      "relationship": "Daughter",
      "age_at_census": 27,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -577,7 +542,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 11\")",
      "relationship": "Son",
      "age_at_census": 21,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -596,7 +561,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 11",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 11\")",
      "relationship": "Daughter",
      "age_at_census": 19,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -615,7 +580,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 13\")",
      "relationship": "Wife",
      "age_at_census": 42,
      "birth_place": "Colwick, Nottinghamshire",
@@ -634,7 +599,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 17",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 17\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 48,
@@ -655,7 +620,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 17",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 17\")",
      "relationship": "Daughter",
      "age_at_census": 38,
      "birth_place": "Newport, Shropshire",
@@ -674,7 +639,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Clumber Lodge",
+     "unresolved_address": "Clumber Lodge, Lenton Avenue",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 33,
@@ -694,7 +659,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 21",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 21\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 10,
@@ -714,7 +679,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 21",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 21\")",
      "relationship": "Daughter",
      "age_at_census": 1,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -733,7 +698,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25\")",
      "relationship": "Wife",
      "age_at_census": 47,
      "birth_place": "Scotland",
@@ -751,7 +716,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 14,
@@ -770,7 +735,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 25",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 25\")",
      "relationship": "Son",
      "age_at_census": 3,
      "birth_place": "Scotland",
@@ -788,7 +753,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 31, \"Greylands",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 31, Greylands\")",
      "relationship": "Daughter",
      "age_at_census": 4,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -807,7 +772,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Newlands",
+     "unresolved_address": "Newlands, Lenton Avenue",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 32,
@@ -827,7 +792,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Newlands",
+     "unresolved_address": "Newlands, Lenton Avenue",
      "relationship": "Son",
      "age_at_census": 29,
      "occupation_at_census": "Solicitor",
@@ -847,7 +812,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Newlands",
+     "unresolved_address": "Newlands, Lenton Avenue",
      "relationship": "Daughter",
      "age_at_census": 22,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -866,7 +831,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 14",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 14\")",
      "relationship": "Sister",
      "age_at_census": 23,
      "occupation_at_census": "Governess, School, Private, worker",
@@ -886,7 +851,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 14",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 14\")",
      "relationship": "Sister",
      "age_at_census": 19,
      "occupation_at_census": "Pupil Teacher (S.B.)",
@@ -906,7 +871,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 12",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 12\")",
      "relationship": "Daughter",
      "age_at_census": 1,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -925,7 +890,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 8",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 8\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 22,
@@ -945,7 +910,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 8",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 8\")",
      "relationship": "Son",
      "age_at_census": 20,
      "occupation_at_census": "[trade unclear]",
@@ -964,7 +929,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 6",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 6\")",
      "relationship": "Wife",
      "age_at_census": 38,
      "birth_place": "Yorkshire",
@@ -982,7 +947,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 6",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 6\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 7,
@@ -1001,7 +966,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 6",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 6\")",
      "relationship": "Daughter",
      "age_at_census": 5,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1019,7 +984,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 6",
+     "unresolved_address": "Lenton Avenue (the page gives \"No 6\")",
      "relationship": "Daughter",
      "age_at_census": 2,
      "birth_place": "Nottingham, Nottinghamshire",

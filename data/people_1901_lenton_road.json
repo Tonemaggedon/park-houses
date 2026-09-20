@@ -1,43 +1,7 @@
 {
- "note": "Lenton Road on the 1901 census - the households the record and the existing import files did not already hold.\n\n**Nine whole households are new**: Harpenden, Cleveden, Ravine House, 23 Lenton Road, Leslie House, Yeldersley House, Villa Vanely, Weston Lodge, and the household of Louisa H. Williams, a widow of 65 with six grown children among them two lace manufacturers and a cigar merchant.\n\n**They are unfiled unless the page gives a number**, because the record keeps this street by number and the enumerator kept it by name - Harpenden, Cleveden, Ravine House, Leslie House, Rock House, Yeldersley House, Villa Vanely, Weston Lodge, Fern Lodge, Cliff House, Lenton House. Only a few carry numbers.\n\n**Eight houses here are already filed by other files** - 9, 13, 15, 17, 25 and 29 Lenton Road, Cliff House and Rock House - and nothing in this file touches them.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.",
+ "note": "Lenton Road on the 1901 census - the households the record and the existing import files did not already hold.\n\n**Nine whole households are new**: Harpenden, Cleveden, Ravine House, 23 Lenton Road, Leslie House, Yeldersley House, Villa Vanely, Weston Lodge, and the household of Louisa H. Williams, a widow of 65 with six grown children among them two lace manufacturers and a cigar merchant.\n\n**They are unfiled unless the page gives a number**, because the record keeps this street by number and the enumerator kept it by name - Harpenden, Cleveden, Ravine House, Leslie House, Rock House, Yeldersley House, Villa Vanely, Weston Lodge, Fern Lodge, Cliff House, Lenton House. Only a few carry numbers.\n\n**Eight houses here are already filed by other files** - 9, 13, 15, 17, 25 and 29 Lenton Road, Cliff House and Rock House - and nothing in this file touches them.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.\n\n**Some people were taken out of this file after it was first written.** They already had a 1901 census row in another file in data/ - in one case a whole household, the Dobsons of 23 Lenton Road, recorded there under fuller names and filed to the house. Keeping them here would have described the same census night twice.",
  "source": "1901 census enumerator's page for Lenton Road, Nottingham, transcribed by A. Hagues.",
  "people": [
-  {
-   "id": 871,
-   "first_name": "George",
-   "last_name": "Parr",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 55,
-     "occupation_at_census": "Solicitor (Own a/c)",
-     "birth_place": "Gotham, Nottinghamshire",
-     "census_household_num": 97,
-     "source": "1901 census, Cliff House, Lenton Rd, schedule 97 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 873,
-   "first_name": "George Henry",
-   "last_name": "Parr",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
-     "relationship": "Son",
-     "marital_status": "Single",
-     "age_at_census": 22,
-     "occupation_at_census": "Stockbroker Agent (Worker)",
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 97,
-     "source": "1901 census, Cliff House, Lenton Rd, schedule 97 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
   {
    "id": 2966,
    "first_name": "Christina",
@@ -45,41 +9,9 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
+     "unresolved_address": "Cliff House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 10,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 97,
-     "source": "1901 census, Cliff House, Lenton Rd, schedule 97 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 877,
-   "first_name": "Edgar",
-   "last_name": "Parr",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
-     "relationship": "Son",
-     "age_at_census": 8,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 97,
-     "source": "1901 census, Cliff House, Lenton Rd, schedule 97 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 1492,
-   "first_name": "Wilfred",
-   "last_name": "Parr",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
-     "relationship": "Son",
-     "age_at_census": 6,
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 97,
      "source": "1901 census, Cliff House, Lenton Rd, schedule 97 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
@@ -93,7 +25,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cliff House, Lenton Rd",
+     "unresolved_address": "Cliff House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 4,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -109,7 +41,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 15",
+     "unresolved_address": "Lenton Road (the page gives \"No 15\")",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 14,
@@ -126,7 +58,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 15",
+     "unresolved_address": "Lenton Road (the page gives \"No 15\")",
      "relationship": "Daughter",
      "age_at_census": 10,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -142,7 +74,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 15",
+     "unresolved_address": "Lenton Road (the page gives \"No 15\")",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 8,
@@ -159,7 +91,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Oakhurst",
+     "unresolved_address": "Oakhurst, Lenton Road",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 12,
@@ -175,7 +107,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 5,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -190,7 +122,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 21,
      "occupation_at_census": "Housemaid",
@@ -206,7 +138,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Nurse",
@@ -222,58 +154,11 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
+     "unresolved_address": "Lenton Road (the page gives \"23 Lenton Rd\")",
      "relationship": "Head",
      "marital_status": "Widower",
      "age_at_census": 42,
      "occupation_at_census": "Lace Manufacturer (Employer)",
-     "birth_place": "Nottingham, Nottinghamshire",
-     "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 415,
-   "first_name": "Mary J",
-   "last_name": "Dobson",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
-     "relationship": "Step-mother",
-     "marital_status": "Widow",
-     "age_at_census": 54,
-     "birth_place": "Salisbury, Wiltshire",
-     "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 3454,
-   "first_name": "Richard",
-   "last_name": "Dobson",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
-     "relationship": "Half-brother",
-     "marital_status": "Single",
-     "age_at_census": 25,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 3455,
-   "first_name": "Theodore",
-   "last_name": "Dobson",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
-     "relationship": "Half-brother",
-     "age_at_census": 17,
      "birth_place": "Nottingham, Nottinghamshire",
      "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
@@ -286,62 +171,11 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
+     "unresolved_address": "Lenton Road (the page gives \"23 Lenton Rd\")",
      "relationship": "Boarder",
      "age_at_census": 35,
      "birth_place": "Sutton-in-Ashfield, Nottinghamshire",
      "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 3457,
-   "first_name": "Edith",
-   "last_name": "Knight",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Lenton Road",
-     "relationship": "Servant",
-     "marital_status": "Single",
-     "age_at_census": 20,
-     "occupation_at_census": "Cook (dom)",
-     "birth_place": "Carlton, Nottinghamshire",
-     "census_household_num": 115,
-     "source": "1901 census, Lenton Road, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 3458,
-   "first_name": "Emily",
-   "last_name": "Sharpe",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Lenton Road",
-     "relationship": "Servant",
-     "age_at_census": 20,
-     "occupation_at_census": "Housemaid",
-     "birth_place": "Newborough, Northamptonshire",
-     "census_household_num": 115,
-     "source": "1901 census, Lenton Road, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "id": 3459,
-   "first_name": "Fanny",
-   "last_name": "Blackwell",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "Lenton Road",
-     "relationship": "Servant",
-     "age_at_census": 22,
-     "birth_place": "Ashford, Derbyshire",
-     "census_household_num": 115,
-     "source": "1901 census, Lenton Road, schedule 115 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
    ]
   },
@@ -352,7 +186,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 69,
@@ -370,7 +204,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Wife",
      "age_at_census": 69,
      "birth_place": "Sth Witham, Lincolnshire",
@@ -386,7 +220,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Son",
      "marital_status": "Married",
      "age_at_census": 38,
@@ -404,7 +238,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 47,
@@ -422,7 +256,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 29,
      "occupation_at_census": "Parlourmaid",
@@ -439,7 +273,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 16,
      "occupation_at_census": "Scullerymaid",
@@ -450,31 +284,13 @@
    ]
   },
   {
-   "id": 864,
-   "first_name": "Frederick",
-   "last_name": "Carver",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "No 29",
-     "relationship": "Head",
-     "marital_status": "Married",
-     "age_at_census": 64,
-     "occupation_at_census": "Lace Manufacturer (Employer)",
-     "birth_place": "Nottingham, Nottinghamshire",
-     "census_household_num": 118,
-     "source": "1901 census, No 29, schedule 118 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
    "id": 3007,
    "first_name": "Lucy",
    "last_name": "Levi",
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Rock Hse",
+     "unresolved_address": "Rock House, Lenton Road",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 11,
@@ -491,7 +307,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Head",
      "marital_status": "Widow",
      "age_at_census": 65,
@@ -507,7 +323,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 40,
@@ -523,7 +339,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Son",
      "age_at_census": 36,
      "occupation_at_census": "Lace Merchant (Employer)",
@@ -539,7 +355,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 33,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -554,7 +370,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Son",
      "age_at_census": 31,
      "occupation_at_census": "Lace Manufacturer (Employer)",
@@ -570,7 +386,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Son",
      "age_at_census": 27,
      "occupation_at_census": "Cigar Merchant (Own a/c)",
@@ -586,7 +402,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 18,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -601,7 +417,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 43,
@@ -618,7 +434,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Wife",
      "age_at_census": 42,
      "birth_place": "Butterwick, Lincolnshire",
@@ -633,7 +449,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 17,
@@ -649,7 +465,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 13,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -664,7 +480,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Daughter",
      "age_at_census": 9,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -680,7 +496,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 5,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -696,7 +512,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 4,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -712,7 +528,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 0,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -766,7 +582,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Harpenden",
+     "unresolved_address": "Harpenden, Lenton Road",
      "relationship": "Head",
      "marital_status": "Single",
      "age_at_census": 72,
@@ -786,7 +602,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Harpenden",
+     "unresolved_address": "Harpenden, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 34,
      "occupation_at_census": "Serv dom",
@@ -806,7 +622,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Harpenden",
+     "unresolved_address": "Harpenden, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 25,
      "birth_place": "Riddings, Derbyshire",
@@ -825,7 +641,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "No 13",
+     "unresolved_address": "Lenton Road (the page gives \"No 13\")",
      "relationship": "Wife",
      "age_at_census": 26,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -844,7 +660,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 58,
@@ -864,7 +680,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Son-in-law",
      "marital_status": "Married",
      "age_at_census": 34,
@@ -884,7 +700,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 32,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -902,7 +718,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Grandson",
      "marital_status": "Single",
      "age_at_census": 6,
@@ -921,7 +737,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Grand daughter",
      "age_at_census": 3,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -939,7 +755,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Grand daughter",
      "age_at_census": 0,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -957,7 +773,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 19,
      "occupation_at_census": "dom",
@@ -976,7 +792,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 23,
      "birth_place": "Castle Bytham, Lincolnshire",
@@ -994,7 +810,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Cleveden",
+     "unresolved_address": "Cleveden, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 20,
      "birth_place": "Hogsthorpe, Lincolnshire",
@@ -1012,7 +828,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 38,
@@ -1032,7 +848,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Wife",
      "age_at_census": 31,
      "birth_place": "Beeston, Nottinghamshire",
@@ -1050,7 +866,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 7,
@@ -1069,30 +885,12 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Ravine Ho",
+     "unresolved_address": "Ravine House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 24,
      "occupation_at_census": "Cook (dom) (Worker)",
      "birth_place": "Hanworth, Norfolk",
      "source": "1901 census, Ravine Ho - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
-    }
-   ]
-  },
-  {
-   "first_name": "Alfred T",
-   "last_name": "Dobson",
-   "sex": "M",
-   "born_year": 1894,
-   "match_born_year": true,
-   "born_place": "Nottingham, Nottinghamshire",
-   "census": [
-    {
-     "census_year": 1901,
-     "unresolved_address": "23 Lenton Rd",
-     "relationship": "Son",
-     "age_at_census": 7,
-     "birth_place": "Nottingham, Nottinghamshire",
-     "source": "1901 census, 23 Lenton Rd - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
    ]
   },
@@ -1106,7 +904,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton House",
+     "unresolved_address": "Lenton House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 20,
      "occupation_at_census": "Housemaid",
@@ -1126,7 +924,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 68,
@@ -1147,7 +945,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Wife",
      "age_at_census": 54,
      "birth_place": "Keswick, Cumberland",
@@ -1166,7 +964,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Daughter",
      "marital_status": "Single",
      "age_at_census": 40,
@@ -1186,7 +984,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 35,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1205,7 +1003,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 34,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1224,7 +1022,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Servant",
      "marital_status": "Widow",
      "age_at_census": 36,
@@ -1245,7 +1043,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Servant",
      "marital_status": "Single",
      "age_at_census": 35,
@@ -1266,7 +1064,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Leslie Hse",
+     "unresolved_address": "Leslie House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "birth_place": "Langworth, Lincolnshire",
@@ -1285,7 +1083,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 40,
@@ -1305,7 +1103,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Wife",
      "age_at_census": 35,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1323,7 +1121,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 11,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1341,7 +1139,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 9,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1359,7 +1157,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Son",
      "age_at_census": 7,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1377,7 +1175,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Son",
      "age_at_census": 3,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1395,7 +1193,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Cook (dom)",
@@ -1414,7 +1212,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Yeldersley Ho",
+     "unresolved_address": "Yeldersley House, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Housemaid",
@@ -1433,7 +1231,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 21,
      "occupation_at_census": "Housemaid (dom)",
@@ -1452,7 +1250,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Lenton Rd",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 26,
      "occupation_at_census": "Cook",
@@ -1471,7 +1269,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Lenton Road",
      "relationship": "Head",
      "marital_status": "Widower",
      "age_at_census": 67,
@@ -1491,7 +1289,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Lenton Road",
      "relationship": "Step-daughter",
      "marital_status": "Single",
      "age_at_census": 44,
@@ -1510,7 +1308,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Lenton Road",
      "relationship": "Step-grandson",
      "age_at_census": 10,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1528,7 +1326,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Housemaid (dom)",
@@ -1547,7 +1345,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Cook",
@@ -1566,7 +1364,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 15,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1584,7 +1382,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Son",
      "age_at_census": 7,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1603,7 +1401,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Housemaid (dom) (Worker)",
@@ -1623,7 +1421,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Villa Vanely\" [?]",
+     "unresolved_address": "Villa Vanely, Lenton Road (reading uncertain)",
      "relationship": "Servant",
      "age_at_census": 16,
      "occupation_at_census": "General Serv (Worker)",
@@ -1643,7 +1441,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 37,
@@ -1664,7 +1462,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Wife",
      "age_at_census": 34,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1683,7 +1481,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 5,
@@ -1703,7 +1501,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Daughter",
      "age_at_census": 3,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1722,7 +1520,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Son",
      "age_at_census": 0,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1741,7 +1539,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 21,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -1760,7 +1558,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Weston Lodge",
+     "unresolved_address": "Weston Lodge, Lenton Road",
      "relationship": "Servant",
      "age_at_census": 22,
      "occupation_at_census": "Gen Serv (Worker)",
@@ -2060,7 +1858,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next, Lenton Road",
+     "unresolved_address": "Lenton Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 43,
@@ -2080,7 +1878,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next, Lenton Road",
+     "unresolved_address": "Lenton Road",
      "relationship": "Wife",
      "age_at_census": 50,
      "birth_place": "Nottingham, Nottinghamshire",
@@ -2098,7 +1896,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next, Lenton Road",
+     "unresolved_address": "Lenton Road",
      "relationship": "Son",
      "marital_status": "Single",
      "age_at_census": 6,
@@ -2117,7 +1915,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next, Lenton Road",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Housemaid (dom)",
@@ -2136,7 +1934,7 @@
    "census": [
     {
      "census_year": 1901,
-     "unresolved_address": "Next, Lenton Road",
+     "unresolved_address": "Lenton Road",
      "relationship": "Servant",
      "age_at_census": 18,
      "occupation_at_census": "Cook",
