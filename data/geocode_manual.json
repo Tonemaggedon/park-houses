@@ -334,13 +334,6 @@
    "note": "It answered a street in Topeka, Kansas."
   },
   {
-   "place_text": "Wellington, Lincolnshire",
-   "lat": 52.7,
-   "lng": -2.515,
-   "label": "Wellington, Shropshire (uncertain)",
-   "note": "It answered Wellington, New Zealand. There is no Wellington in Lincolnshire; placed on the Shropshire town as the likeliest, but this one wants checking."
-  },
-  {
    "place_text": "Appleton, Cheshire",
    "lat": 53.355,
    "lng": -2.57,
@@ -493,6 +486,13 @@
    "lng": -0.5092,
    "label": "Yelden, Bedfordshire",
    "note": "Also spelt Yielden, which is how the maps usually have it; the geocoder found neither."
+  },
+  {
+   "place_text": "Willoughton, Lincolnshire",
+   "lat": 53.418,
+   "lng": -0.617,
+   "label": "Willoughton, Lincolnshire",
+   "note": "Read as Wellington on the schedule, which is why no such Lincolnshire place could be found. Identified by A. Hagues. A village north of Gainsborough."
   }
  ]
 }

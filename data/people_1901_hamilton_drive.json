@@ -1304,9 +1304,11 @@
      "age_at_census": 20,
      "census_household_num": 85,
      "source": "1901 census, Beechwood, Hamilton Drive, schedule 85 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled",
-     "occupation_at_census": "Warehouseman, lace"
+     "occupation_at_census": "Warehouseman, lace",
+     "birth_place": "Switzerland"
     }
-   ]
+   ],
+   "born_place": "Switzerland"
   },
   {
    "first_name": "Henry",
