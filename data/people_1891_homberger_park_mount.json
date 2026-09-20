@@ -1,37 +1,116 @@
 {
-  "note": "The household of Otto Homberger, lace merchant, born in Germany, at Park Mount, Park Drive, on the 1891 return, transcribed by A. Hagues. Otto (#605) and Kate Adelaide (#606, 'Kate A') were already in the record and are bound by number, so they gain 1891; the two servants are new. The record has no house called Park Mount, so the household is added unfiled under the address the return gives.\n\nWright's Directory of Nottingham prints 'Park mount, Otto Homberger, of Homberger & Co.' on Park Drive in every volume from 1894-95 to 1915-16, between Clumber House and the Newcastle Circus turning, which puts Park Mount on the odd side of Park Drive after number 3. The record files the Hombergers' 1911 household at Linden House (The Lindens), Clumber Road West, alongside John William Lamb's; but the directory has Lamb at The Lindens in 1910-11, 1913-14 and 1915-16 and Homberger at Park Mount throughout, so it is the Hombergers' 1911 filing that is wrong. On the record's map Linden House is 160-400 m from the Park Drive houses, so the two are not one house. Linden House's history note records Otto Homberger as 'of The Lindens', which may belong to a later date. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, Park Mount, Park Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 106 (Leicester Special Collections id 164612); 1898-99, page 114 (id 165290); 1910-11, pages 71 and 152 (ids 165747, 165828); 1913-14, page 171 (id 166527); 1915-16, page 173 (id 347814).",
-  "people": [
+ "note": "The household of Otto Homberger, lace merchant, born in Germany, at Park Mount, Park Drive, on the 1891 return, transcribed by A. Hagues. Otto (#605) and Kate Adelaide (#606, 'Kate A') were already in the record and are bound by number, so they gain 1891; the two servants are new. The record has no house called Park Mount, so the household is added unfiled under the address the return gives.\n\nWright's Directory of Nottingham prints 'Park mount, Otto Homberger, of Homberger & Co.' on Park Drive in every volume from 1894-95 to 1915-16, between Clumber House and the Newcastle Circus turning, which puts Park Mount on the odd side of Park Drive after number 3. The record files the Hombergers' 1911 household at Linden House (The Lindens), Clumber Road West, alongside John William Lamb's; but the directory has Lamb at The Lindens in 1910-11, 1913-14 and 1915-16 and Homberger at Park Mount throughout, so it is the Hombergers' 1911 filing that is wrong. On the record's map Linden House is 160-400 m from the Park Drive houses, so the two are not one house. Linden House's history note records Otto Homberger as 'of The Lindens', which may belong to a later date. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1891 census, Park Mount, Park Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 106 (Leicester Special Collections id 164612); 1898-99, page 114 (id 165290); 1910-11, pages 71 and 152 (ids 165747, 165828); 1913-14, page 171 (id 166527); 1915-16, page 173 (id 347814).",
+ "people": [
+  {
+   "id": 605,
+   "first_name": "Otto",
+   "last_name": "Homberger",
+   "sex": "M",
+   "born_year": 1852,
+   "born_place": "Germany",
+   "occupations": [
     {
-      "id": 605, "first_name": "Otto", "last_name": "Homberger", "sex": "M", "born_year": 1852, "born_place": "Germany",
-      "occupations": [{ "occupation": "Lace merchant", "from_year": 1891, "to_year": 1916, "employer": "Homberger & Co.", "notes": "1891 census; Wright's Directory 1894-95 to 1915-16" }],
-      "census": [{ "census_year": 1891, "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 39,
-                   "occupation_at_census": "Lace merchant", "birth_place": "Germany",
-                   "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "id": 606 }, "type": "spouse_of" }]
-    },
-    {
-      "id": 606, "first_name": "Kate Adelaide", "last_name": "Homberger", "sex": "F", "born_year": 1865, "born_place": "Nottingham",
-      "census": [{ "census_year": 1891, "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 26, "birth_place": "Nottingham",
-                   "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Hannah", "last_name": "Cotton", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "Clifton",
-      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
-      "census": [{ "census_year": 1891, "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
-                   "occupation_at_census": "General servant, domestic", "birth_place": "Clifton",
-                   "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Helen", "last_name": "Shawley", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "Sawtry, Huntingdonshire",
-      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
-      "census": [{ "census_year": 1891, "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
-                   "occupation_at_census": "General servant, domestic", "birth_place": "Sawtry, Huntingdonshire",
-                   "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues" }]
+     "occupation": "Lace merchant",
+     "from_year": 1891,
+     "to_year": 1916,
+     "employer": "Homberger & Co.",
+     "notes": "1891 census; Wright's Directory 1894-95 to 1915-16"
     }
-  ]
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Lace merchant",
+     "birth_place": "Germany",
+     "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 606
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "id": 606,
+   "first_name": "Kate Adelaide",
+   "last_name": "Homberger",
+   "sex": "F",
+   "born_year": 1865,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 26,
+     "birth_place": "Nottingham",
+     "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Cotton",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Clifton, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Clifton, Nottinghamshire",
+     "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen",
+   "last_name": "Shawley",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Sawtry, Huntingdonshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Park Mount, Park Drive (no house of that name in the record) - Homberger household",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Sawtry, Huntingdonshire",
+     "source": "1891 census, Park Mount, Park Drive — transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
 }
