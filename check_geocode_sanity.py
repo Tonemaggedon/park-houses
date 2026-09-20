@@ -18,8 +18,9 @@ Usage:
 import os, re, sys
 import psycopg2
 
-# Great Britain and Ireland, generously drawn: Scilly to Shetland, Kerry to Kent.
-UK = dict(lat=(49.8, 61.0), lng=(-11.0, 2.2))
+# Great Britain and Ireland. The eastern edge is drawn at Lowestoft rather
+# than out into the Channel, or Calais and Boulogne fall inside it.
+UK = dict(lat=(49.8, 61.0), lng=(-11.0, 1.8))
 
 # A birth place naming somewhere abroad is expected to sit abroad.
 ABROAD = re.compile(
@@ -30,8 +31,23 @@ ABROAD = re.compile(
     r'canada|ontario|quebec|australia|sydney|melbourne|new zealand|napier|'
     r'india|bombay|calcutta|madras|ceylon|china|shanghai|japan|siam|bangkok|'
     r'africa|cape|natal|johannesburg|egypt|malta|gibraltar|jamaica|barbados|'
-    r'curacao|d\.w\.i|west indies|brazil|argentina|chile|peru|mexico)\b', re.I)
+    r'curacao|d\.w\.i|west indies|brazil|argentina|chile|peru|mexico|'
+    r'yemen|aden|malaysia|selangor|kuala lumpur|singapore|ukraine|lithuania|latvia|'
+    r'estonia|finland|romania|bulgaria|serbia|croatia|slovenia|bohemia|moravia|'
+    r'channel islands|jersey|guernsey|alderney|sark|isle of man|'
+    r'new south wales|victoria, australia|tasmania|queensland)\b', re.I)
 
+
+# Boston is in Lincolnshire and Melbourne in Derbyshire before they are anywhere
+# else. Where the text names an English county or nation, take it at its word.
+HOME_COUNTY = re.compile(
+    r'\b(nottinghamshire|lincolnshire|derbyshire|leicestershire|yorkshire|lancashire|'
+    r'staffordshire|warwickshire|cheshire|shropshire|worcestershire|gloucestershire|'
+    r'northamptonshire|huntingdonshire|cambridgeshire|bedfordshire|buckinghamshire|'
+    r'hertfordshire|oxfordshire|berkshire|wiltshire|somerset|dorset|devon|cornwall|'
+    r'hampshire|surrey|sussex|kent|essex|suffolk|norfolk|rutland|durham|northumberland|'
+    r'cumberland|westmorland|middlesex|monmouthshire|england|scotland|wales|ireland)\b',
+    re.I)
 
 def database_url():
     for name in ('DATABASE_PUBLIC_URL', 'DATABASE_URL'):
@@ -61,7 +77,7 @@ offshore, far_north, suspicious = [], [], []
 for place, lat, lng, status, formatted, rows in cur.fetchall():
     lat, lng = float(lat), float(lng)
     inside = UK['lat'][0] <= lat <= UK['lat'][1] and UK['lng'][0] <= lng <= UK['lng'][1]
-    names_abroad = bool(ABROAD.search(place))
+    names_abroad = bool(ABROAD.search(place)) and not HOME_COUNTY.search(place)
     if not inside and not names_abroad:
         offshore.append((place, lat, lng, status, formatted, rows))
     elif inside and names_abroad:
