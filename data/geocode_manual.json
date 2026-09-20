@@ -269,6 +269,216 @@
    "lng": -2.9707,
    "label": "Dundee, Scotland",
    "note": "Forfarshire is the old name for Angus; the census gives both. Positioned on Dundee."
+  },
+  {
+   "place_text": "Lincoln",
+   "lat": 53.2307,
+   "lng": -0.5406,
+   "label": "Lincoln, Lincolnshire",
+   "note": "The geocoder answered Lincoln, Nebraska."
+  },
+  {
+   "place_text": "Brighton, Sussex",
+   "lat": 50.8225,
+   "lng": -0.1372,
+   "label": "Brighton, East Sussex",
+   "note": "It answered Brighton, New Jersey."
+  },
+  {
+   "place_text": "Chester, Cheshire",
+   "lat": 53.1906,
+   "lng": -2.8916,
+   "label": "Chester, Cheshire",
+   "note": "It answered Chesterfield County, Virginia."
+  },
+  {
+   "place_text": "Walpole, Norfolk",
+   "lat": 52.7167,
+   "lng": 0.2333,
+   "label": "Walpole, Norfolk",
+   "note": "It answered Walpole, Massachusetts."
+  },
+  {
+   "place_text": "Worcester",
+   "lat": 52.192,
+   "lng": -2.22,
+   "label": "Worcester, Worcestershire",
+   "note": "It answered Worcester, Massachusetts."
+  },
+  {
+   "place_text": "Acton, Middlesex",
+   "lat": 51.5087,
+   "lng": -0.273,
+   "label": "Acton, London",
+   "note": "It answered Acton, Massachusetts."
+  },
+  {
+   "place_text": "Cumberland",
+   "lat": 54.6,
+   "lng": -3.0,
+   "label": "Cumberland (county only)",
+   "note": "No town given. It answered Cumberland County, Pennsylvania."
+  },
+  {
+   "place_text": "Jersey",
+   "lat": 49.2144,
+   "lng": -2.1313,
+   "label": "Jersey, Channel Islands",
+   "note": "It answered Jersey County, Illinois."
+  },
+  {
+   "place_text": "London S.E.",
+   "lat": 51.48,
+   "lng": -0.05,
+   "label": "South-east London",
+   "note": "It answered a street in Topeka, Kansas."
+  },
+  {
+   "place_text": "Wellington, Lincolnshire",
+   "lat": 52.7,
+   "lng": -2.515,
+   "label": "Wellington, Shropshire (uncertain)",
+   "note": "It answered Wellington, New Zealand. There is no Wellington in Lincolnshire; placed on the Shropshire town as the likeliest, but this one wants checking."
+  },
+  {
+   "place_text": "Appleton, Cheshire",
+   "lat": 53.355,
+   "lng": -2.57,
+   "label": "Appleton, Cheshire",
+   "note": "It answered Cheshire County, New Hampshire."
+  },
+  {
+   "place_text": "Bedford",
+   "lat": 52.135,
+   "lng": -0.4667,
+   "label": "Bedford, Bedfordshire",
+   "note": "It answered Bedford County, Pennsylvania."
+  },
+  {
+   "place_text": "Clifton",
+   "lat": 52.906,
+   "lng": -1.177,
+   "label": "Clifton, Nottingham",
+   "note": "No county given. It answered Clifton, New Jersey. Taken as the Nottingham village, being on the estate’s doorstep; could be the Bristol suburb."
+  },
+  {
+   "place_text": "Darlington, Durham",
+   "lat": 54.5235,
+   "lng": -1.5597,
+   "label": "Darlington, County Durham",
+   "note": "It answered Darlington, Ontario."
+  },
+  {
+   "place_text": "Durham, Durham",
+   "lat": 54.7761,
+   "lng": -1.5733,
+   "label": "Durham, County Durham",
+   "note": "It answered Durham, North Carolina."
+  },
+  {
+   "place_text": "Enfield, Middlesex",
+   "lat": 51.6522,
+   "lng": -0.0808,
+   "label": "Enfield, London",
+   "note": "It answered a road in New Jersey."
+  },
+  {
+   "place_text": "Essex, Essex",
+   "lat": 51.75,
+   "lng": 0.47,
+   "label": "Essex (county only)",
+   "note": "It answered Essex County, New York."
+  },
+  {
+   "place_text": "Gresham",
+   "lat": 52.89,
+   "lng": 1.245,
+   "label": "Gresham, Norfolk",
+   "note": "It answered Gresham, Oregon."
+  },
+  {
+   "place_text": "Highgate, Middlesex",
+   "lat": 51.5716,
+   "lng": -0.145,
+   "label": "Highgate, London",
+   "note": "It answered Highgate, Jamaica."
+  },
+  {
+   "place_text": "Kew, Surrey",
+   "lat": 51.483,
+   "lng": -0.288,
+   "label": "Kew, London",
+   "note": "It answered Kew, British Columbia."
+  },
+  {
+   "place_text": "London City",
+   "lat": 51.5155,
+   "lng": -0.0922,
+   "label": "City of London",
+   "note": "It answered London, Ontario."
+  },
+  {
+   "place_text": "Penrith, Cumberland",
+   "lat": 54.664,
+   "lng": -2.753,
+   "label": "Penrith, Cumbria",
+   "note": "It answered a road in Portland, Maine."
+  },
+  {
+   "place_text": "Shirland",
+   "lat": 53.114,
+   "lng": -1.403,
+   "label": "Shirland, Derbyshire",
+   "note": "It answered Shirland, Illinois."
+  },
+  {
+   "place_text": "Stafford",
+   "lat": 52.807,
+   "lng": -2.117,
+   "label": "Stafford, Staffordshire",
+   "note": "It answered Stafford County, Virginia."
+  },
+  {
+   "place_text": "Stockton, Durham",
+   "lat": 54.57,
+   "lng": -1.319,
+   "label": "Stockton-on-Tees",
+   "note": "It answered Stockton Park, Ontario."
+  },
+  {
+   "place_text": "Sunderland, Durham",
+   "lat": 54.906,
+   "lng": -1.381,
+   "label": "Sunderland, Tyne and Wear",
+   "note": "It answered Sunderland, Ontario."
+  },
+  {
+   "place_text": "Sussex",
+   "lat": 50.94,
+   "lng": -0.3,
+   "label": "Sussex (county only)",
+   "note": "No town given. It answered Sussex County, Virginia."
+  },
+  {
+   "place_text": "Upton, Cheshire",
+   "lat": 53.22,
+   "lng": -2.89,
+   "label": "Upton, Chester",
+   "note": "It answered a brook in New Hampshire."
+  },
+  {
+   "place_text": "Uxbridge, Middlesex",
+   "lat": 51.546,
+   "lng": -0.478,
+   "label": "Uxbridge, London",
+   "note": "It answered a street in Lowell, Massachusetts."
+  },
+  {
+   "place_text": "Barnack, Northamptonshire",
+   "lat": 52.6297,
+   "lng": -0.409,
+   "label": "Barnack, Cambridgeshire",
+   "note": "A real place the geocoder could not find. In Northamptonshire when the census was taken, Cambridgeshire since 1965."
   }
  ]
 }
