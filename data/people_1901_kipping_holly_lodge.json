@@ -1,0 +1,202 @@
+{
+ "note": "The Kipping household on the 1901 census, read off the enumerator's page and transcribed by A. Hagues, who supplied the full schedule after finding my own transcription of this page began part way down it.\n\n**The record held no 1901 census rows for any Kipping at all** - only 1921. So this is their whole household on census night 1901, and it is the first time the family appears in the record before the war.\n\n**The house is Holly Lodge (#86) on A. Hagues's reading of the enumerator's round**, which runs Ernest Jardine, then 6 Clumber Road, then Hesse, then Felixstowe, and then this household. Felixstowe is #394 and Holly Lodge #86, both on Clumber Road West, so the next house along is Holly Lodge. **This is the one thing here that rests on inference rather than on the page**, and it is worth saying plainly that I cannot corroborate the order myself: schedules 150 to 179 are absent from the pages I have read, so the households said to precede this one are not in front of me. If the order is ever shown to be otherwise, the property is the thing to undo, and nothing else here changes.\n\n**Three of the seven are bound by number and three of those matter.** Frederic Stanley Kipping is #1325. His wife is written **Lilian** on this schedule where the record holds her as **Lily** - she is bound explicitly as #1326, because name matching would not join those two spellings and would make a second woman instead. Florence Holland is #1329 and not #3692: the record holds two women of that name, and the birth year separates them, this one born 1843 at Manchester and returned at 78 in 1921, the other born 1882 at Nottingham and a servant at 23 Cavendish Crescent South.\n\n**Four people are new, and one of them has been wanted.** **Cyril Kipping**, nine years old and born in Middlesex, is the son whose later life at Wednesbury A. Hagues had already found a source for and set aside until the boy existed in the record. **Frieda Kipping**, twelve and born in Scotland, is new as well, and her birthplace is worth noticing: it places the family in Scotland about 1889, between the Manchester of her father's youth and the Nottingham chair he took in 1897. The two servants, Emily Alice Bend and Ellen M Norman, are new. **Ellen Norman was born at Bridgwater in Somerset**, which is where Lily Kipping and her mother Florence Holland come from - a servant brought with the household rather than hired in Nottingham.\n\n**Frederick Barry Kipping is deliberately absent.** He is #1327 in the record, born 1901, and was not yet born when this schedule was written.\n\n**One reading is left as the enumerator made it.** The head's occupation is written 'Praffr of chemistry (teacher) school'. It is set down here as Professor of chemistry, with the page's own spelling recorded in the source, since the word is plainly meant and the record's occupations are not the place to preserve a clerk's slip.",
+ "source": "1901 census enumerator's page, Clumber Road West, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 1325,
+   "first_name": "Frederic Stanley",
+   "last_name": "Kipping",
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Professor of chemistry",
+     "birth_place": "Manchester, Lancashire, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues; the page writes his trade as 'Praffr of chemistry (teacher) school', the enumerator's attempt at professor"
+    }
+   ]
+  },
+  {
+   "id": 1326,
+   "first_name": "Lily",
+   "last_name": "Kipping",
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "birth_place": "Bridgwater, Somerset, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues; she is written Lilian on this schedule, where the record holds her as Lily"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Florence",
+      "last_name": "Holland"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Frieda",
+   "last_name": "Kipping",
+   "sex": "F",
+   "born_year": 1889,
+   "born_place": "Scotland",
+   "match_born_year": true,
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 12,
+     "birth_place": "Scotland",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Frederic Stanley",
+      "last_name": "Kipping"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Lily",
+      "last_name": "Kipping"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Cyril",
+   "last_name": "Kipping",
+   "sex": "M",
+   "born_year": 1892,
+   "born_place": "London, Middlesex, England",
+   "match_born_year": true,
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 9,
+     "birth_place": "London, Middlesex, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Frederic Stanley",
+      "last_name": "Kipping"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "first_name": "Lily",
+      "last_name": "Kipping"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 1329,
+   "first_name": "Florence",
+   "last_name": "Holland",
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Mother-in-law",
+     "marital_status": "Widow",
+     "age_at_census": 58,
+     "birth_place": "Manchester, Lancashire, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily Alice",
+   "last_name": "Bend",
+   "sex": "F",
+   "born_year": 1878,
+   "born_place": "Stamford, Lincolnshire, England",
+   "match_born_year": true,
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Stamford, Lincolnshire, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen M",
+   "last_name": "Norman",
+   "sex": "F",
+   "born_year": 1885,
+   "born_place": "Bridgwater, Somerset, England",
+   "match_born_year": true,
+   "properties": [
+    86
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 86,
+     "address": "Holly Lodge, Clumber Road West",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Bridgwater, Somerset, England",
+     "source": "1901 census, Clumber Road West, the household immediately before schedule 180 - transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
