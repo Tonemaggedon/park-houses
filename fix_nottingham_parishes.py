@@ -79,8 +79,11 @@ if APPLY:
     print(f'Changed {total} rows.')
     # The old spellings leave dead geocode_cache entries behind. Drop them so
     # nothing keeps pointing at a church, and so a re-run of the geocoder is clean.
+    # PARISH is anchored and only matches a spelling that names Nottingham
+    # beside the saint. Anything looser catches East Kirkby and West Bridgford,
+    # whose coordinates are right and must not be thrown away.
     cur.execute("SELECT place_text FROM geocode_cache")
-    dead = [p for (p,) in cur.fetchall() if PARISH.match(p or '')]
+    dead = [p for (p,) in cur.fetchall() if PARISH.fullmatch((p or '').strip())]
     for p in dead:
         cur.execute("DELETE FROM geocode_cache WHERE place_text=%s", (p,))
     conn.commit()
