@@ -479,6 +479,20 @@
    "lng": -0.409,
    "label": "Barnack, Cambridgeshire",
    "note": "A real place the geocoder could not find. In Northamptonshire when the census was taken, Cambridgeshire since 1965."
+  },
+  {
+   "place_text": "Upper Hackney, Derbyshire",
+   "lat": 53.1478,
+   "lng": -1.5647,
+   "label": "Upper Hackney, Darley Dale, Derbyshire",
+   "note": "A hamlet above Darley Dale near Matlock, too small for the geocoder to find. Nothing to do with Hackney in London."
+  },
+  {
+   "place_text": "Yelden, Bedfordshire",
+   "lat": 52.2769,
+   "lng": -0.5092,
+   "label": "Yelden, Bedfordshire",
+   "note": "Also spelt Yielden, which is how the maps usually have it; the geocoder found neither."
   }
  ]
 }
