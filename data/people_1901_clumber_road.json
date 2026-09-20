@@ -1,0 +1,305 @@
+{
+ "note": "Clumber Road on the 1901 census - two households, sixteen people - read from the enumerator's page and checked by A. Hagues. The Kipping household from the same stretch is in its own file, A. Hagues having supplied that schedule in full.\n\n**Both households are unfiled.** Schedule 180 is headed only \"Clumber Road\": Richard Challands, a retired lace manufacturer of 59 born at Bottesford, his wife, four grown daughters and three servants. Schedule 181 is headed **\"Gardenwood\"**, a name the record has never held on this street or any other, and gives Francis R. Ellis, a colliery director, his wife, two daughters and three servants.\n\nThe record keeps eleven properties on Clumber Road East and West between them, all named - Adam House, Edale House, Jelenice, Penrhyn House, Westwood, Holly Lodge, Linden House, Felixstowe, St Helier. Gardenwood is none of them.",
+ "source": "1901 census enumerator's page for Clumber Road, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 2579,
+   "first_name": "Richard",
+   "last_name": "Challands",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 59,
+     "occupation_at_census": "Retired Lace Manufacturer",
+     "birth_place": "Bottesford, Leicestershire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2580,
+   "first_name": "Sarah E.",
+   "last_name": "Challands",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Wife",
+     "age_at_census": 55,
+     "birth_place": "Gamston, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2581,
+   "first_name": "Emma",
+   "last_name": "Challands",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 32,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2582,
+   "first_name": "Beatrice M.",
+   "last_name": "Challands",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Daughter",
+     "age_at_census": 31,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2583,
+   "first_name": "Nora",
+   "last_name": "Challands",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Daughter",
+     "age_at_census": 23,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 759,
+   "first_name": "Elizabeth",
+   "last_name": "Emery",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Servant",
+     "age_at_census": 35,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Fenton, Huntingdonshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate E.",
+   "last_name": "Challands",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Daughter",
+     "age_at_census": 25,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Isobel",
+   "last_name": "Lynam",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Loughborough, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Servant",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Loughborough, Leicestershire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maud",
+   "last_name": "Gunn",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Collingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clumber Road",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Collingham, Nottinghamshire",
+     "census_household_num": 180,
+     "source": "1901 census, Clumber Road, schedule 180 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis R.",
+   "last_name": "Ellis",
+   "sex": "M",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Leicester",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 45,
+     "occupation_at_census": "Colliery Director (Employer)",
+     "birth_place": "Leicester",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Katharine A.",
+   "last_name": "Ellis",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Bakewell, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Wife",
+     "age_at_census": 42,
+     "birth_place": "Bakewell, Derbyshire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice M.",
+   "last_name": "Ellis",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Christabel M.",
+   "last_name": "Ellis",
+   "sex": "F",
+   "born_year": 1888,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Daughter",
+     "age_at_census": 13,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Knifton",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Wymeswold, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Servant",
+     "age_at_census": 33,
+     "occupation_at_census": "Sewing maid (domestic)",
+     "birth_place": "Wymeswold, Leicestershire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Rose H.",
+   "last_name": "Louth",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Aslackby, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Cook",
+     "birth_place": "Aslackby, Lincolnshire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizth R.",
+   "last_name": "Burton",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Alfreton, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Gardenwood\" [?]",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Alfreton, Derbyshire",
+     "census_household_num": 181,
+     "source": "1901 census, Gardenwood\" [?], schedule 181 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

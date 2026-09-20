@@ -1,0 +1,1210 @@
+{
+ "note": "Pelham Crescent on the 1901 census - what the existing files do not already hold.\n\n**Kentmere is here, and it answers a question.** Schedule 196 is headed *Pelham Crescent, \"Kentmere\"* and gives William Wing, solicitor, 37, with his wife Sarah, his sons Henry and Richard, and two servants. The Kentmere question had the house on Cavendish Crescent North from the 1911 return and could not place it; this schedule puts the same household on Pelham Crescent ten years earlier. The two crescents meet, so it is a corner house addressed both ways. See [[kentmere-ccn]].\n\n**Hermann E. Hersheim is at schedule 199** - the Flersheim family under yet another spelling, 73 and still a lace merchant, a German subject naturalised British, with Kathinka and their daughter Margaret. The spelling is left as the page has it rather than quietly corrected.\n\n**Households are unfiled unless the page numbers them.** Numbers 9, 11, 15, 17 and 19 are already filed by other files and are untouched here.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.",
+ "source": "1901 census enumerator's page for Pelham Crescent, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 668,
+   "first_name": "William",
+   "last_name": "Wing",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Solicitor (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 670,
+   "first_name": "Henry",
+   "last_name": "Wing",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 11,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 671,
+   "first_name": "Richard",
+   "last_name": "Wing",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 168,
+   "first_name": "Emma",
+   "last_name": "Wood",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 32,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Great Hale, Lincolnshire",
+     "census_household_num": 199,
+     "source": "1901 census, Pelham Crescent, schedule 199 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 169,
+   "first_name": "Charlotte",
+   "last_name": "Durrant",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "(continues)",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "North Rauceby, Lincolnshire",
+     "census_household_num": 199,
+     "source": "1901 census, (continues), schedule 199 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 3016,
+   "first_name": "Richard",
+   "last_name": "Kohn",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 11",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 67,
+     "birth_place": "Germany (German subject)",
+     "census_household_num": 202,
+     "source": "1901 census, No 11, schedule 202 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 171,
+   "first_name": "Edward",
+   "last_name": "Goldschmidt",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 13",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 73,
+     "occupation_at_census": "Silk Merchant (Employer)",
+     "birth_place": "Germany (British subject)",
+     "census_household_num": 203,
+     "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 182,
+   "first_name": "Pattie",
+   "last_name": "Russell",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 13",
+     "relationship": "Servant",
+     "age_at_census": 27,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Cambridge, Cambridgeshire",
+     "census_household_num": 203,
+     "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 183,
+   "first_name": "Ethel",
+   "last_name": "Crozier",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 13",
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Oxford, Oxfordshire",
+     "census_household_num": 203,
+     "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 557,
+   "first_name": "Frederick J.",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 15",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 204,
+     "source": "1901 census, No 15, schedule 204 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 502,
+   "first_name": "George D.",
+   "last_name": "Laing",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 17",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "occupation_at_census": "Wine & Spirit Merchant (Employer)",
+     "birth_place": "Birmingham, Warwickshire",
+     "census_household_num": 205,
+     "source": "1901 census, No 17, schedule 205 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 485,
+   "first_name": "Elizth",
+   "last_name": "Baker",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 71,
+     "birth_place": "Bradmore, Nottinghamshire",
+     "census_household_num": 207,
+     "source": "1901 census, Pelham Crescent, schedule 207 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 486,
+   "first_name": "Arthur W.",
+   "last_name": "Smith",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son-in-law",
+     "age_at_census": 32,
+     "occupation_at_census": "Cabinet Maker (Worker)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 207,
+     "source": "1901 census, Pelham Crescent, schedule 207 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 551,
+   "first_name": "Mary Ann",
+   "last_name": "Mann",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 211,
+     "source": "1901 census, Pelham Crescent, schedule 211 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 3726,
+   "first_name": "Henry",
+   "last_name": "Hill",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 59,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah W.",
+   "last_name": "Wing",
+   "sex": "F",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Sedgley, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Wife",
+     "age_at_census": 37,
+     "birth_place": "Sedgley, Staffordshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maud",
+   "last_name": "Randeris",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Lincoln, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Lincoln, Lincolnshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Lansdall",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Lincoln, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent, \"Kentmere",
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Lincoln, Lincolnshire",
+     "census_household_num": 196,
+     "source": "1901 census, Pelham Crescent, \"Kentmere, schedule 196 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William Henry",
+   "last_name": "Radford",
+   "sex": "M",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Colston, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 40,
+     "occupation_at_census": "Coachman",
+     "birth_place": "Colston, Leicestershire",
+     "census_household_num": 197,
+     "source": "1901 census, Pelham Crescent, schedule 197 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Wm. W.",
+   "last_name": "Lewis",
+   "sex": "M",
+   "born_year": 1829,
+   "match_born_year": true,
+   "born_place": "Tewkesbury, Gloucestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 72,
+     "occupation_at_census": "Hosiery Manufacturer (Employer)",
+     "birth_place": "Tewkesbury, Gloucestershire",
+     "census_household_num": 198,
+     "source": "1901 census, Pelham Crescent, schedule 198 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna R.",
+   "last_name": "Lewis",
+   "sex": "F",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Leicester",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "birth_place": "Leicester",
+     "census_household_num": 198,
+     "source": "1901 census, Pelham Crescent, schedule 198 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Fox",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Wessington, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Wessington, Derbyshire",
+     "census_household_num": 198,
+     "source": "1901 census, Pelham Crescent, schedule 198 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Roberts",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Broughton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Broughton, Nottinghamshire",
+     "census_household_num": 198,
+     "source": "1901 census, Pelham Crescent, schedule 198 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Hermann E.",
+   "last_name": "Hersheim",
+   "sex": "M",
+   "born_year": 1828,
+   "match_born_year": true,
+   "born_place": "Germany (British subject)",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "age_at_census": 73,
+     "occupation_at_census": "Lace Merchant (Employer)",
+     "birth_place": "Germany (British subject)",
+     "census_household_num": 199,
+     "source": "1901 census, Pelham Crescent, schedule 199 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Kathinka",
+   "last_name": "Hersheim",
+   "sex": "F",
+   "born_year": 1835,
+   "match_born_year": true,
+   "born_place": "Germany",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Wife",
+     "age_at_census": 66,
+     "birth_place": "Germany",
+     "census_household_num": 199,
+     "source": "1901 census, Pelham Crescent, schedule 199 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Hersheim",
+   "sex": "F",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Daughter",
+     "age_at_census": 28,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 199,
+     "source": "1901 census, Pelham Crescent, schedule 199 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Leman",
+   "sex": "M",
+   "born_year": 1842,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 59,
+     "occupation_at_census": "Chartered Accountant (Own a/c)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Chas. M.",
+   "last_name": "Leman",
+   "sex": "M",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert M.",
+   "last_name": "Leman",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son",
+     "age_at_census": 30,
+     "occupation_at_census": "Solicitor (Own a/c)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Gillott",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Heanor, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 30,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Heanor, Derbyshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada T.",
+   "last_name": "Gillott",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Greasley, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Greasley, Nottinghamshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie E.",
+   "last_name": "Ostick",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Toton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 15,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Toton, Nottinghamshire",
+     "census_household_num": 200,
+     "source": "1901 census, Pelham Crescent, schedule 200 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Julaire",
+   "last_name": "Goldschmidt",
+   "sex": "F",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Germany (British subject)",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 13",
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "birth_place": "Germany (British subject)",
+     "census_household_num": 203,
+     "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna",
+   "last_name": "Goldschmidt",
+   "sex": "F",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "No 13",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 203,
+     "source": "1901 census, No 13, schedule 203 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Daughter",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 207,
+     "source": "1901 census, Pelham Crescent, schedule 207 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Butters",
+   "sex": "M",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "occupation_at_census": "Nurseryman & Florist | Staffordshire (own a/c)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 208,
+     "source": "1901 census, Pelham Crescent, schedule 208 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan E.",
+   "last_name": "Butters",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Weymouth, Dorset",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Wife",
+     "age_at_census": 33,
+     "birth_place": "Weymouth, Dorset",
+     "census_household_num": 208,
+     "source": "1901 census, Pelham Crescent, schedule 208 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E.",
+   "last_name": "Butters",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Broughton, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 9,
+     "birth_place": "Broughton, Staffordshire",
+     "census_household_num": 208,
+     "source": "1901 census, Pelham Crescent, schedule 208 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Willm H.",
+   "last_name": "Butters",
+   "sex": "M",
+   "born_year": 1898,
+   "match_born_year": true,
+   "born_place": "Lenton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 208,
+     "source": "1901 census, Pelham Crescent, schedule 208 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Shaw",
+   "sex": "M",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Derby",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Boarder",
+     "age_at_census": 24,
+     "occupation_at_census": "Brush maker (general) (Worker)",
+     "birth_place": "Derby",
+     "census_household_num": 208,
+     "source": "1901 census, Pelham Crescent, schedule 208 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Percy F.",
+   "last_name": "Hawksley",
+   "sex": "M",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 22,
+     "occupation_at_census": "Band sawyer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 209,
+     "source": "1901 census, Pelham Crescent, schedule 209 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Amelia",
+   "last_name": "Hawksley",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Radford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Wife",
+     "age_at_census": 23,
+     "birth_place": "Radford, Nottinghamshire",
+     "census_household_num": 209,
+     "source": "1901 census, Pelham Crescent, schedule 209 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Wilfred",
+   "last_name": "Hawksley",
+   "sex": "M",
+   "born_year": 1899,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 2,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 209,
+     "source": "1901 census, Pelham Crescent, schedule 209 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Parr",
+   "sex": "F",
+   "born_year": 1830,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 71,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 210,
+     "source": "1901 census, Pelham Crescent, schedule 210 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Parr",
+   "sex": "M",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 41,
+     "occupation_at_census": "Mineral Water Manufacturer (retired) (own a/c)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 210,
+     "source": "1901 census, Pelham Crescent, schedule 210 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett Ada",
+   "last_name": "Parr",
+   "sex": "F",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Daughter",
+     "age_at_census": 38,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 210,
+     "source": "1901 census, Pelham Crescent, schedule 210 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Lawson",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Retford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Retford, Nottinghamshire",
+     "census_household_num": 210,
+     "source": "1901 census, Pelham Crescent, schedule 210 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel",
+   "last_name": "Holmes",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Riddings, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Riddings, Derbyshire",
+     "census_household_num": 210,
+     "source": "1901 census, Pelham Crescent, schedule 210 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Nelly Anne",
+   "last_name": "Carrington",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 211,
+     "source": "1901 census, Pelham Crescent, schedule 211 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Tom H.",
+   "last_name": "Carrington",
+   "sex": "M",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Grandson",
+     "marital_status": "Single",
+     "age_at_census": 9,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 211,
+     "source": "1901 census, Pelham Crescent, schedule 211 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lily",
+   "last_name": "Force",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Grimsby, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Pelham Crescent",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Grimsby, Lincolnshire",
+     "census_household_num": 211,
+     "source": "1901 census, Pelham Crescent, schedule 211 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Hill",
+   "sex": "F",
+   "born_year": 1852,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Sister",
+     "age_at_census": 49,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah E.",
+   "last_name": "Carnell",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Thoroton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 27,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Thoroton, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florrie",
+   "last_name": "Pridmore",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Elton, Huntingdonshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Elton, Huntingdonshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry E.",
+   "last_name": "Hablett",
+   "sex": "M",
+   "born_year": 1833,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 68,
+     "occupation_at_census": "Chartered Accountant (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret A.",
+   "last_name": "Hablett",
+   "sex": "F",
+   "born_year": 1846,
+   "match_born_year": true,
+   "born_place": "Belgium (British subject)",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Wife",
+     "age_at_census": 55,
+     "birth_place": "Belgium (British subject)",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret E.",
+   "last_name": "Hablett",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 32,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Oenara G.",
+   "last_name": "Hablett",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Dover, Kent",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Daughter-in-law",
+     "marital_status": "Married",
+     "age_at_census": 27,
+     "birth_place": "Dover, Kent",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Graham G.",
+   "last_name": "Hablett",
+   "sex": "M",
+   "born_year": 1900,
+   "match_born_year": true,
+   "born_place": "South Africa, Johannesburg",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Grandson",
+     "marital_status": "Single",
+     "age_at_census": 1,
+     "birth_place": "South Africa, Johannesburg",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Janet",
+   "last_name": "Bundy",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Scotland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 42,
+     "occupation_at_census": "Nurse (domestic)",
+     "birth_place": "Scotland",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizth",
+   "last_name": "Disney",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Keyworth, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Cook",
+     "birth_place": "Keyworth, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Polly",
+   "last_name": "Roberts",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Clay Cross, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Clay Cross, Derbyshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Weston",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Barton-under-Needwood, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Nursemaid",
+     "birth_place": "Barton-under-Needwood, Staffordshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

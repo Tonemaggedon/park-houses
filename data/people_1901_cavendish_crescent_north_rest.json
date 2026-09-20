@@ -1,0 +1,214 @@
+{
+ "note": "Cavendish Crescent North on the 1901 census - the little of this round the existing files do not hold.\n\n**Four households are covered already** - Hardwicke House, Haddon House, Cavendish Lodge and most of Carisbrooke House - and are not repeated.\n\n**What is new is one household and two empty houses.** Schedule 192 gives **Doyley Scott Ransom**, a solicitor of 38, his wife Helen, four small daughters including a niece and a baby of six months, and four servants. The page carries no house name or number, so it is unfiled.\n\n**Peveril House and Blantyre both stood empty on census night**, which is why the crescent looks thinner in 1901 than its property list suggests. They are recorded in [[empty-houses-census-night-1901]] and carry no household here.\n\n**Anyone already written into another 1901 file is left out of this one.** Most of these households are part done - the existing files hold the head and some of the servants but not the children, or the other way about - so the skipping is person by person rather than household by household, and what remains is only what no committed file already carries.",
+ "source": "1901 census enumerator's page for Cavendish Crescent North, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 2564,
+   "first_name": "Helen J.",
+   "last_name": "Ransom",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 3,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2565,
+   "first_name": "Elizth",
+   "last_name": "Ransom",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Daughter",
+     "age_at_census": 1,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Doyley Scott",
+   "last_name": "Ransom",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen M.",
+   "last_name": "Ransom",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Basford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Wife",
+     "age_at_census": 27,
+     "birth_place": "Basford, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel Bertha",
+   "last_name": "Ransom",
+   "sex": "F",
+   "born_year": 1900,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Niece",
+     "age_at_census": 1,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ruth",
+   "last_name": "Ransom",
+   "sex": "F",
+   "born_year": 1901,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E.",
+   "last_name": "Wilford",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Scalford, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Scalford, Leicestershire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret A.",
+   "last_name": "Packham",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Thames Ditton, Surrey",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Thames Ditton, Surrey",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Staples",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Arnold, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "Assistant Parlourmaid",
+     "birth_place": "Arnold, Nottinghamshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Dorman",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Billinghay, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North",
+     "relationship": "Servant",
+     "age_at_census": 33,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Billinghay, Lincolnshire",
+     "census_household_num": 192,
+     "source": "1901 census, Cavendish Crescent North, schedule 192 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Bradshaw",
+   "sex": "M",
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Carisbrooke Ho",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "occupation_at_census": "Retired Newspaper Proprietor (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 195,
+     "source": "1901 census, Carisbrooke Ho, schedule 195 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

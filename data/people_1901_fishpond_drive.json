@@ -1,0 +1,430 @@
+{
+ "note": "Fish Pond Drive on the 1901 census - five households, twenty-one people - read from the enumerator's page and checked by A. Hagues. The record holds nothing for this street in 1901.\n\n**All five are unfiled.** The record keeps five properties here - 2, 4, 6 and 11 Fish Pond Drive, and Glenmaye - and the enumerator named two houses, **Lea Hurst** and **Holm Vale**, neither of which the record has ever held.\n\n**One name is a clash rather than a gap, and must not be filed.** Schedule 101 is headed \"Cavendish Ho\". The record holds a **Cavendish House at #56, on Cavendish Road East** - a different street. Filing this household there would put it in the wrong house, as Thorndale and Sunnyside nearly were on Peveril Drive.\n\n**Lea Hurst is the household to place first.** Mary Metcalf, a widow of 56 from London, keeps six boarders - a leather merchant, two mechanical engineers, two bank clerks and an architect - with a visitor and two servants. Ten people in one house, and a lodging establishment of that size should be traceable in a directory.",
+ "source": "1901 census enumerator's page for Fish Pond Drive, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Charles. O.",
+   "last_name": "Terry",
+   "sex": "M",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Aston, Warwickshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fishpond Drive, \"Cavendish Ho",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 45,
+     "occupation_at_census": "Genl Insurance Agent (Worker)",
+     "birth_place": "Aston, Warwickshire",
+     "census_household_num": 101,
+     "source": "1901 census, Fishpond Drive, \"Cavendish Ho, schedule 101 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Terry",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Wednesbury, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fishpond Drive, \"Cavendish Ho",
+     "relationship": "Wife",
+     "age_at_census": 44,
+     "birth_place": "Wednesbury, Staffordshire",
+     "census_household_num": 101,
+     "source": "1901 census, Fishpond Drive, \"Cavendish Ho, schedule 101 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily E.",
+   "last_name": "Hales",
+   "sex": "F",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Lady Help, Dom",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fishpond Drive, \"Cavendish Ho",
+     "marital_status": "Single",
+     "age_at_census": 17,
+     "occupation_at_census": "neice",
+     "birth_place": "Lady Help, Dom",
+     "census_household_num": 101,
+     "source": "1901 census, Fishpond Drive, \"Cavendish Ho, schedule 101 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Kirkbride",
+   "sex": "M",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fish Pond Drive",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 102,
+     "source": "1901 census, Fish Pond Drive, schedule 102 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry",
+   "last_name": "Kirkbride",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fish Pond Drive",
+     "relationship": "Boarder",
+     "age_at_census": 30,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 102,
+     "source": "1901 census, Fish Pond Drive, schedule 102 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Edward L.",
+   "last_name": "Bond",
+   "sex": "M",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Ireland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Fish Pond Drive",
+     "relationship": "Boarder",
+     "age_at_census": 26,
+     "occupation_at_census": "Clergyman (Ch of E)",
+     "birth_place": "Ireland",
+     "census_household_num": 103,
+     "source": "1901 census, Fish Pond Drive, schedule 103 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Metcalf",
+   "sex": "F",
+   "born_year": 1845,
+   "match_born_year": true,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 56,
+     "birth_place": "London",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henrietta",
+   "last_name": "Brewer",
+   "sex": "F",
+   "born_year": 1844,
+   "match_born_year": true,
+   "born_place": "Cambridge",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Visitor",
+     "age_at_census": 57,
+     "birth_place": "Cambridge",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank",
+   "last_name": "Mortimer",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 44,
+     "occupation_at_census": "Leather Merchant (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis",
+   "last_name": "Suffield",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "War, Birmingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Mechanical Engr (Worker)",
+     "birth_place": "War, Birmingham",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Raithby",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Bath",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "marital_status": "Married",
+     "age_at_census": 30,
+     "occupation_at_census": "Architect (Worker)",
+     "birth_place": "Bath",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert",
+   "last_name": "Appleby",
+   "sex": "M",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Retford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Bank Clerk (Worker)",
+     "birth_place": "Retford, Nottinghamshire",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Roland",
+   "last_name": "Thomas",
+   "sex": "M",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Wales",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "age_at_census": 23,
+     "occupation_at_census": "Mechanical Engr (Worker)",
+     "birth_place": "Wales",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Kerr",
+   "sex": "M",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Warwickshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Boarder",
+     "age_at_census": 26,
+     "occupation_at_census": "Bank Clerk (Worker)",
+     "birth_place": "Warwickshire",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Taylor",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Skegness, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "Cook (dom)",
+     "birth_place": "Skegness, Lincolnshire",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Green",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Farnsfield, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Lea Hurst",
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "occupation_at_census": "Housemaid (dom)",
+     "birth_place": "Farnsfield, Nottinghamshire",
+     "census_household_num": 104,
+     "source": "1901 census, Lea Hurst, schedule 104 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William E.",
+   "last_name": "Sisling",
+   "sex": "M",
+   "born_year": 1838,
+   "match_born_year": true,
+   "born_place": "New Basford, Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Holm Vale",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 63,
+     "occupation_at_census": "Insurance Manager",
+     "birth_place": "New Basford, Nottingham",
+     "census_household_num": 105,
+     "source": "1901 census, Holm Vale, schedule 105 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Sisling",
+   "sex": "F",
+   "born_year": 1837,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Holm Vale",
+     "relationship": "Wife",
+     "age_at_census": 64,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 105,
+     "source": "1901 census, Holm Vale, schedule 105 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Sisling",
+   "sex": "F",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Holm Vale",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "occupation_at_census": "Teacher, School",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 105,
+     "source": "1901 census, Holm Vale, schedule 105 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lilian",
+   "last_name": "Sisling",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Holm Vale",
+     "relationship": "Daughter",
+     "age_at_census": 25,
+     "occupation_at_census": "Teacher (of music)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 105,
+     "source": "1901 census, Holm Vale, schedule 105 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Barnick",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Lincoln, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Holm Vale",
+     "relationship": "Servant",
+     "age_at_census": 27,
+     "occupation_at_census": "Serv (dom) (Worker)",
+     "birth_place": "Lincoln, Lincolnshire",
+     "census_household_num": 105,
+     "source": "1901 census, Holm Vale, schedule 105 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

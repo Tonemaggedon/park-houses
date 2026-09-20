@@ -1,0 +1,81 @@
+{
+ "note": "South Road on the 1901 census - one household of four, read from the enumerator's page and checked by A. Hagues.\n\nSchedule 182 gives neither a house name nor a number, so the household is unfiled: **Elizabeth Lynam**, a widow of 71 living on her own means, her daughter Amelia of 44, and two servants.\n\nThe surname is worth noting against [[lynam-or-lynum-newcastle-court]], which turns on how that name is spelt and where the family sat.",
+ "source": "1901 census enumerator's page for South Road, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 52,
+   "first_name": "Elizabeth",
+   "last_name": "Lynam",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "South Road",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 71,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 182,
+     "source": "1901 census, South Road, schedule 182 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "first_name": "Amelia A.",
+   "last_name": "Lynam",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "South Road",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 44,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 182,
+     "source": "1901 census, South Road, schedule 182 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Betts",
+   "sex": "F",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Barnack, Northamptonshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "South Road",
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Barnack, Northamptonshire",
+     "census_household_num": 182,
+     "source": "1901 census, South Road, schedule 182 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel H.",
+   "last_name": "Hewitt",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "South Road",
+     "relationship": "Servant",
+     "age_at_census": 26,
+     "occupation_at_census": "General servant | Notts (town not known)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 182,
+     "source": "1901 census, South Road, schedule 182 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

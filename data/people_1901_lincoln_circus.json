@@ -1,0 +1,177 @@
+{
+ "note": "Lincoln Circus on the 1901 census, read from the enumerator's page and checked by A. Hagues.\n\n**The Palmers are filed at The Cottage (#414), and this is the first schedule to name the house outright.** Schedule 188 is headed \"The Cottage, Lincoln Circus\" and gives Edward Palmer, a domestic gardener of 40 born in Scotland, his wife Alice, five children and a visitor. The record places the Palmers at The Cottage in 1911 and returns them at 2 Lincoln Circus in 1921 - the same family in the same house, ten years earlier, with the house named on the page instead of reasoned out. See [[lincoln-circus-numbers]].\n\n**One house on the circus stood empty on census night**, which is recorded in [[empty-houses-census-night-1901]] rather than here.",
+ "source": "1901 census enumerator's page for Lincoln Circus, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 598,
+   "first_name": "Edward",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "occupation_at_census": "Gardener (domestic) (Worker)",
+     "birth_place": "Scotland",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 599,
+   "first_name": "Alice",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Wife",
+     "age_at_census": 41,
+     "birth_place": "Williamthorpe, Derbyshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 600,
+   "first_name": "William E.",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 13,
+     "birth_place": "Wollaton, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 602,
+   "first_name": "Alfred E.",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Son",
+     "age_at_census": 9,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 603,
+   "first_name": "George A.",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 7,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 604,
+   "first_name": "Mary H.",
+   "last_name": "Palmer",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Chas. Hy.",
+   "last_name": "Palmer",
+   "sex": "M",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Son",
+     "age_at_census": 11,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Janet F.",
+   "last_name": "Graham",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    414
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 414,
+     "address": "The Cottage, Lincoln Circus",
+     "relationship": "Visitor",
+     "age_at_census": 18,
+     "occupation_at_census": "Haberdasher's Assistant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 188,
+     "source": "1901 census, The Cottage\", Lincoln Circus, schedule 188 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}

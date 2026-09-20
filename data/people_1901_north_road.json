@@ -1,0 +1,140 @@
+{
+ "note": "North Road on the 1901 census - two households, six people - read from the enumerator's page and checked by A. Hagues.\n\n**The lodge household is filed at 2 North Road (#228).** Schedule 220 is headed \"North Road (Lodge)\", and #228 carries **North Lodge** among its former names, alongside Gate House and Waltons Hotel. The household fits a lodge: Herbert Barlow, a domestic coachman of 27, his wife Mary and their two-year-old daughter Phyllis. This is an inference from a name rather than a number on the page, so if it proves wrong the property is the only thing to undo.\n\n**The second household is unfiled.** Schedule 221 carries no name and no number - Elizabeth A. Need, a widow of 60 born at Balderton, with a housekeeper and a general servant.",
+ "source": "1901 census enumerator's page for North Road, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Herbert",
+   "last_name": "Barlow",
+   "sex": "M",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Headon-cum-Upton, Nottinghamshire",
+   "properties": [
+    228
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 228,
+     "address": "2 North Road",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 27,
+     "occupation_at_census": "Coachman (domestic) (Worker)",
+     "birth_place": "Headon-cum-Upton, Nottinghamshire",
+     "census_household_num": 220,
+     "source": "1901 census, North Road (Lodge), schedule 220 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Barlow",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Sawley, Leicestershire",
+   "properties": [
+    228
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 228,
+     "address": "2 North Road",
+     "relationship": "Wife",
+     "age_at_census": 23,
+     "birth_place": "Sawley, Leicestershire",
+     "census_household_num": 220,
+     "source": "1901 census, North Road (Lodge), schedule 220 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Phyllis M.",
+   "last_name": "Barlow",
+   "sex": "F",
+   "born_year": 1899,
+   "match_born_year": true,
+   "born_place": "Loughborough, Leicestershire",
+   "properties": [
+    228
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 228,
+     "address": "2 North Road",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 2,
+     "birth_place": "Loughborough, Leicestershire",
+     "census_household_num": 220,
+     "source": "1901 census, North Road (Lodge), schedule 220 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth A",
+   "last_name": "Need",
+   "sex": "F",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Balderton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 60,
+     "birth_place": "Balderton, Nottinghamshire",
+     "census_household_num": 221,
+     "source": "1901 census, North Road, schedule 221 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Preston",
+   "sex": "F",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Edwalton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 45,
+     "occupation_at_census": "Housekeeper (domestic)",
+     "birth_place": "Edwalton, Nottinghamshire",
+     "census_household_num": 221,
+     "source": "1901 census, North Road, schedule 221 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Sims",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Nuthall, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant | Nuthall",
+     "birth_place": "Nuthall, Nottinghamshire",
+     "census_household_num": 221,
+     "source": "1901 census, North Road, schedule 221 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

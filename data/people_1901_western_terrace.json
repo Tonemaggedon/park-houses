@@ -1,0 +1,216 @@
+{
+ "note": "Western Terrace on the 1901 census - the two households the record did not already have.\n\n**Two of the four on this stretch are deliberately absent.** Charles Henry Clarke at 10 Western Terrace and Joseph Bright at Lincoln Villa are already in **people_1901_named_houses.json**, filed to #349 and #350. They are not repeated here, because importing both files would make every one of those fourteen people twice over.\n\n**What that settles, though, is worth writing down.** The record carries **Lincoln Villa as the house name of 11 Western Terrace (#350)**. The 1891 enumerator wrote that household up under *Pelham Crescent*, which is why the question about it had Lincoln Villa as a name with no property. Joseph Bright is head of it in both years, so the house did not move and the name was not reused - the 1891 schedule simply carried the wrong street at its head. See [[thorn-lea-and-lincoln-villa]].\n\n**The two households here are unfiled**, neither schedule carrying a name or a number: Edward Armitage, a lace manufacturer of 33, with his wife Margaret, a daughter, two young cousins and two servants; and Hubert A. Dowson, a solicitor of 35, with his wife Lina and two servants.\n\n**Thorn Lea stood empty on census night** and so has no household. It held eight in 1891 under George Elinsley Coke, so it emptied between the two censuses - see [[empty-houses-census-night-1901]].",
+ "source": "1901 census enumerator's page for Western Terrace, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Edward",
+   "last_name": "Armitage",
+   "sex": "M",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Armitage",
+   "sex": "F",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Wife",
+     "age_at_census": 31,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Eldwyth",
+   "last_name": "Armitage",
+   "sex": "F",
+   "born_year": 1898,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 3,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Violet",
+   "last_name": "Armitage",
+   "sex": "F",
+   "born_year": 1893,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Cousin",
+     "marital_status": "Single",
+     "age_at_census": 8,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Phyllis",
+   "last_name": "Armitage",
+   "sex": "F",
+   "born_year": 1894,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Cousin",
+     "age_at_census": 7,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Catharine M.",
+   "last_name": "Brown",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Scotland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Lady Help (domestic)",
+     "birth_place": "Scotland",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Adelaide S.",
+   "last_name": "Atkinson",
+   "sex": "F",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Leeds, Yorkshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Western Terrace",
+     "relationship": "Servant",
+     "age_at_census": 17,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Leeds, Yorkshire",
+     "source": "1901 census, Western Terrace - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Hubert A.",
+   "last_name": "Dowson",
+   "sex": "M",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "occupation_at_census": "Solicitor (own a/c)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lina M.",
+   "last_name": "Dowson",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Wife",
+     "age_at_census": 27,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Leah",
+   "last_name": "Haydock",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Bestwood, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Bestwood, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence M.",
+   "last_name": "Tomlin",
+   "sex": "F",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "New Basford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Next",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 17,
+     "occupation_at_census": "Parlour housemaid (domestic)",
+     "birth_place": "New Basford, Nottinghamshire",
+     "source": "1901 census, Next - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

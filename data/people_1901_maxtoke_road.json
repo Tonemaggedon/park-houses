@@ -1,0 +1,128 @@
+{
+ "note": "Maxtoke Road on the 1901 census - one household of six, read from the enumerator's page and checked by A. Hagues. The record holds nothing for this street in 1901.\n\n**It is unfiled, and for a reason worth recording.** Schedule 185 is headed \"Maxtoke Rd, Burton House\". The record holds exactly one property on Maxtoke Road - **#202, 6 Maxtoke Road, whose house name is Stowe House** - and it holds a **Burton House on Newcastle Circus (#205)**, a different street.\n\nSo the name on the page matches a house the record keeps somewhere else, and the house the record keeps here carries a different name. Filing this household at either would be a guess, and a guess of exactly the kind that has put households on the wrong street before. Elizabeth A. Watson, a widow of 65 living on her own means with a companion and four servants, waits until the two Burton Houses are told apart.",
+ "source": "1901 census enumerator's page for Maxtoke Road, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Elizabeth A.",
+   "last_name": "Watson",
+   "sex": "F",
+   "born_year": 1836,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 65,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence M.",
+   "last_name": "Bearder",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Companion",
+     "marital_status": "Single",
+     "age_at_census": 33,
+     "occupation_at_census": "Companion (domestic)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Clarke",
+   "sex": "F",
+   "born_year": 1853,
+   "match_born_year": true,
+   "born_place": "Market Bosworth, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Servant",
+     "age_at_census": 48,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Market Bosworth, Leicestershire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Ward",
+   "sex": "F",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Normanton-on-Soar, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Servant",
+     "age_at_census": 41,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Normanton-on-Soar, Nottinghamshire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary A. J.",
+   "last_name": "Burnett",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Chapel St Leonards, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Servant",
+     "age_at_census": 32,
+     "occupation_at_census": "Parlourmaid",
+     "birth_place": "Chapel St Leonards, Lincolnshire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Jackson",
+   "sex": "F",
+   "born_year": 1885,
+   "match_born_year": true,
+   "born_place": "Worksop, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Maxtoke Rd, \"Burton House",
+     "relationship": "Servant",
+     "age_at_census": 16,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Worksop, Nottinghamshire",
+     "census_household_num": 185,
+     "source": "1901 census, Maxtoke Rd, \"Burton House, schedule 185 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,496 @@
+{
+ "note": "Newcastle Circus on the 1901 census - three households, twenty-six people - read from the enumerator's page and checked by A. Hagues.\n\n**All three are unfiled.** The record keeps five properties on the circus - 2 Newcastle Circus, Mevell House at 7, Burton House, Castlethorpe and Newcastle Court - and two of the three schedules are headed by the street alone. The third is headed **\"St John's\"**, a name the record has never held anywhere. See [[1901-house-names-not-in-the-record]].\n\n**The St John's household bears on an open question.** It is **Mary Brownsword**, a widow of 65 born at Melbourne in Derbyshire, with her son Arthur, a lace manufacturer and employer of 31, and four servants. Arthur is already in the record as a cousin of Helena Brownsword Dowson, and this gives him a mother and shows her widowed by 1901 - which is the thread [[brownsword-one-family]] has been waiting on.\n\n**Charles Wilfred Birkin's household is the largest on the round here** - twelve people, his wife Clara born in New York, two young daughters, a visiting boy from Ireland and seven servants including two nurses.",
+ "source": "1901 census enumerator's page for Newcastle Circus, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 2464,
+   "first_name": "Lucy",
+   "last_name": "Ogden",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Digby, Lincolnshire",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 49,
+   "first_name": "Arthur",
+   "last_name": "Brownsword",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "first_name": "Chas. W.",
+   "last_name": "Birkin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 66,
+   "first_name": "Winifred M.",
+   "last_name": "Birkin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 6,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "first_name": "Violet H. M.",
+   "last_name": "Birkin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Daughter",
+     "age_at_census": 2,
+     "birth_place": "London",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 70,
+   "first_name": "Elizabeth. E.",
+   "last_name": "Homer",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Acomb, Yorkshire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 71,
+   "first_name": "Mary E.",
+   "last_name": "Harrison",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "occupation_at_census": "Kitchenmaid",
+     "birth_place": "York",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 73,
+   "first_name": "Betsy",
+   "last_name": "Osborne",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Parlourmaid",
+     "birth_place": "Clipsham, Rutland",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "first_name": "Ethel A.",
+   "last_name": "Oswin",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Scalford, Leicestershire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "first_name": "Kate",
+   "last_name": "Best",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Chesterfield, Derbyshire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Malcolm J. R.",
+   "last_name": "Dunstan",
+   "sex": "M",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Chester, Cheshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Director of Education",
+     "birth_place": "Chester, Cheshire",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith R.",
+   "last_name": "Dunstan",
+   "sex": "F",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Ipswich, Suffolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Wife",
+     "age_at_census": 37,
+     "birth_place": "Ipswich, Suffolk",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Eric C.",
+   "last_name": "Dunstan",
+   "sex": "M",
+   "born_year": 1895,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 6,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Joan M.",
+   "last_name": "Dunstan",
+   "sex": "F",
+   "born_year": 1896,
+   "match_born_year": true,
+   "born_place": "Orkney Isles",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "birth_place": "Orkney Isles",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Hester M.",
+   "last_name": "Dunstan",
+   "sex": "F",
+   "born_year": 1898,
+   "match_born_year": true,
+   "born_place": "Orkney Isles",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Daughter",
+     "age_at_census": 3,
+     "birth_place": "Orkney Isles",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Herrod",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Sutton-on-Trent, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Sutton-on-Trent, Nottinghamshire",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah A.",
+   "last_name": "Hart",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Sutton-on-Trent, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Nurse (domestic)",
+     "birth_place": "Sutton-on-Trent, Nottinghamshire",
+     "census_household_num": 183,
+     "source": "1901 census, Newcastle Circus, schedule 183 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Brownsword",
+   "sex": "F",
+   "born_year": 1836,
+   "match_born_year": true,
+   "born_place": "Melbourne, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 65,
+     "birth_place": "Melbourne, Derbyshire",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Hudson",
+   "sex": "F",
+   "born_year": 1852,
+   "match_born_year": true,
+   "born_place": "Barking, Essex",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Servant",
+     "marital_status": "Widow",
+     "age_at_census": 49,
+     "occupation_at_census": "Sick Nurse (domestic)",
+     "birth_place": "Barking, Essex",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah J.",
+   "last_name": "Mason",
+   "sex": "F",
+   "born_year": 1858,
+   "match_born_year": true,
+   "born_place": "Walsall, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 43,
+     "occupation_at_census": "Housemaid (domestic)",
+     "birth_place": "Walsall, Staffordshire",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Howell",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Radcliffe-on-Trent, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Cook",
+     "birth_place": "Radcliffe-on-Trent, Nottinghamshire",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Hurst",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Plumtree, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "St John's\" [?]",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Plumtree, Nottinghamshire",
+     "census_household_num": 184,
+     "source": "1901 census, St John's\" [?], schedule 184 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara L.",
+   "last_name": "Birkin",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "New York, U.S.A",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Wife",
+     "age_at_census": 29,
+     "birth_place": "New York, U.S.A",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Wellington",
+   "last_name": "Holden",
+   "sex": "F",
+   "born_year": 1893,
+   "match_born_year": true,
+   "born_place": "Ireland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Visitor",
+     "age_at_census": 8,
+     "birth_place": "Ireland",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Wilson",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Bolton, Lancashire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "occupation_at_census": "Nurse",
+     "birth_place": "Bolton, Lancashire",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Tulloch",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Orkney Isles",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Circus",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Orkney Isles",
+     "census_household_num": 186,
+     "source": "1901 census, Newcastle Circus, schedule 186 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

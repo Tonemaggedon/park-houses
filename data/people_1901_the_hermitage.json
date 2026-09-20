@@ -1,0 +1,177 @@
+{
+ "note": "The Hermitage on the 1901 census - one household of seven - read from the enumerator's page and checked by A. Hagues.\n\n**It is filed at The Hermitage (#392).** The enumerator headed the schedule \"The Hermitage (The Park)\", and the record holds exactly one house of that name, on Hermitage Walk. The household is Sarah Leavers, a widow of 76 born at Derby, a visitor of 72 from Kettering, and five servants - a butler, a cook, two housemaids and a kitchenmaid.\n\nA household kept at that scale by a widow living alone is the kind of establishment that fixes a house, and it bears on [[hermitage-position]], where the building's position in the record is still approximate.",
+ "source": "1901 census enumerator's page for The Hermitage, The Park, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Sarah",
+   "last_name": "Leavers",
+   "sex": "F",
+   "born_year": 1825,
+   "match_born_year": true,
+   "born_place": "Derby, Derbyshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 76,
+     "birth_place": "Derby, Derbyshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sophia",
+   "last_name": "Robinson",
+   "sex": "F",
+   "born_year": 1829,
+   "match_born_year": true,
+   "born_place": "Kettering, Northamptonshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 72,
+     "birth_place": "Kettering, Northamptonshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thos. W.",
+   "last_name": "Woodford",
+   "sex": "M",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Tarrant Monkton, Dorset",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Servant",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Butler (dom)",
+     "birth_place": "Tarrant Monkton, Dorset",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Bolland",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Northallerton, Yorkshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Cook",
+     "birth_place": "Northallerton, Yorkshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane B.",
+   "last_name": "Graham",
+   "sex": "F",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Servant",
+     "age_at_census": 60,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances",
+   "last_name": "Hallam",
+   "sex": "F",
+   "born_year": 1885,
+   "match_born_year": true,
+   "born_place": "Papplewick, Nottinghamshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Servant",
+     "age_at_census": 16,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Papplewick, Nottinghamshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Turner",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Birmingham, Warwickshire",
+   "properties": [
+    392
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 392,
+     "address": "The Hermitage, Hermitage Walk",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Kitchenmaid (dom) (Worker)",
+     "birth_place": "Birmingham, Warwickshire",
+     "census_household_num": 106,
+     "source": "1901 census, The Hermitage (The Park), schedule 106 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}

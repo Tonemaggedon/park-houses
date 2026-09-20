@@ -1,0 +1,104 @@
+{
+ "note": "Barrack Lane on the 1901 census - one household of six, read from the enumerator's page and checked by A. Hagues.\n\n**It is unfiled.** The record keeps nineteen properties on Barrack Lane, numbered 1 to 30 with Barrack Yard among them, and the schedule carries neither a name nor a number.\n\nThe household is **George Derry**, a jobbing gardener of 55 born at Bingham, his wife Sarah, and four children - two daughters of 16 and 14 both working as cigar makers, a son of 8 and a daughter of 6. Four of the six are already in the record, where the family is attached to 10 Barrack Lane; this row is left unfiled rather than filed there, because the page does not say so and the record's placing came from elsewhere.",
+ "source": "1901 census enumerator's page for Barrack Lane, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 480,
+   "first_name": "George",
+   "last_name": "Derry",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 55,
+     "occupation_at_census": "Jobbing Gardener (Worker)",
+     "birth_place": "Bingham, Nottinghamshire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 481,
+   "first_name": "Sarah",
+   "last_name": "Derry",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Wife",
+     "age_at_census": 48,
+     "birth_place": "Shepshed, Leicestershire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 482,
+   "first_name": "Elizabeth",
+   "last_name": "Derry",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Cigar Maker",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 2773,
+   "first_name": "George",
+   "last_name": "Derry",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 483,
+   "first_name": "Annie",
+   "last_name": "Derry",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Derry",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Barrack Lane",
+     "relationship": "Daughter",
+     "age_at_census": 14,
+     "occupation_at_census": "Cigar Maker",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1901 census, Barrack Lane - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}

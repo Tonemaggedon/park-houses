@@ -1,0 +1,342 @@
+{
+ "note": "Park Drive on the 1901 census - three households, seventeen people - read from the enumerator's page and checked by A. Hagues.\n\n**All three are unfiled.** The record keeps nine properties on Park Drive, numbered 1 to 9 with Ashley House and Clumber House among them. Schedule 222 is headed **\"Park Mount\"**, a name the record does not hold; the other two carry no name or number at all.\n\n**Park Mount is already under question**, and A. Hagues has said it may be resolvable on foot. Its household is **Otto Homberger**, a lace merchant of 49, a German subject naturalised British, with his wife Kate and three servants - the Kate Homberger whose marriage bears on the Dowson household at Felixstowe.\n\nHenry James Mellors, a lace manufacturer of 49 from Lenton, keeps the largest of the three with eight people.",
+ "source": "1901 census enumerator's page for Park Drive, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 605,
+   "first_name": "Otto",
+   "last_name": "Homberger",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive, \"Park Mount",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 49,
+     "occupation_at_census": "Lace Merchant (Employer)",
+     "birth_place": "Germany (British subject)",
+     "census_household_num": 222,
+     "source": "1901 census, Park Drive, \"Park Mount, schedule 222 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "id": 606,
+   "first_name": "Kate A.",
+   "last_name": "Homberger",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive, \"Park Mount",
+     "relationship": "Wife",
+     "age_at_census": 36,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 222,
+     "source": "1901 census, Park Drive, \"Park Mount, schedule 222 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Jadands",
+   "sex": "F",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Louth, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive, \"Park Mount",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Louth, Lincolnshire",
+     "census_household_num": 222,
+     "source": "1901 census, Park Drive, \"Park Mount, schedule 222 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Waterfall",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Stockton, Durham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive, \"Park Mount",
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "occupation_at_census": "Parlourmaid",
+     "birth_place": "Stockton, Durham",
+     "census_household_num": 222,
+     "source": "1901 census, Park Drive, \"Park Mount, schedule 222 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maria",
+   "last_name": "Upton",
+   "sex": "F",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Bingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive, \"Park Mount",
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Housemaid",
+     "birth_place": "Bingham, Nottinghamshire",
+     "census_household_num": 222,
+     "source": "1901 census, Park Drive, \"Park Mount, schedule 222 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry James",
+   "last_name": "Mellors",
+   "sex": "M",
+   "born_year": 1852,
+   "match_born_year": true,
+   "born_place": "Lenton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 49,
+     "occupation_at_census": "Lace Manufacturer (Employer)",
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Phoebe",
+   "last_name": "Mellors",
+   "sex": "F",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Heanor, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Wife",
+     "age_at_census": 47,
+     "birth_place": "Heanor, Derbyshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Mabel",
+   "last_name": "Mellors",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Eleanor M.",
+   "last_name": "Mellors",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Phoebe A. M.",
+   "last_name": "Mellors",
+   "sex": "F",
+   "born_year": 1896,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 5,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Norton",
+   "last_name": "Rollinshart",
+   "sex": "M",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Kirkby Lonsdale, Westmorland",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Visitor",
+     "age_at_census": 26,
+     "occupation_at_census": "Buyer, cycle works (Worker)",
+     "birth_place": "Kirkby Lonsdale, Westmorland",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy A.",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Ripley, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Ripley, Derbyshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Ellender",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Ilkeston, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Visitor",
+     "age_at_census": 23,
+     "occupation_at_census": "General servant (domestic)",
+     "birth_place": "Ilkeston, Derbyshire",
+     "census_household_num": 223,
+     "source": "1901 census, Park Drive, schedule 223 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Cunliffe",
+   "sex": "M",
+   "born_year": 1842,
+   "match_born_year": true,
+   "born_place": "Liverpool, Lancashire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 59,
+     "occupation_at_census": "Stock Broker (Employer)",
+     "birth_place": "Liverpool, Lancashire",
+     "census_household_num": 224,
+     "source": "1901 census, Park Drive, schedule 224 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Katharine M.",
+   "last_name": "Cunliffe",
+   "sex": "F",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Stafford, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Wife",
+     "age_at_census": 54,
+     "birth_place": "Stafford, Staffordshire",
+     "census_household_num": 224,
+     "source": "1901 census, Park Drive, schedule 224 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Bromley",
+   "sex": "F",
+   "born_year": 1819,
+   "match_born_year": true,
+   "born_place": "Stone, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Mother-in-law",
+     "marital_status": "Widow",
+     "age_at_census": 82,
+     "birth_place": "Stone, Staffordshire",
+     "census_household_num": 224,
+     "source": "1901 census, Park Drive, schedule 224 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Coates",
+   "sex": "F",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Sheffield, Yorkshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 42,
+     "occupation_at_census": "Cook (domestic)",
+     "birth_place": "Sheffield, Yorkshire",
+     "census_household_num": 224,
+     "source": "1901 census, Park Drive, schedule 224 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  }
+ ]
+}
