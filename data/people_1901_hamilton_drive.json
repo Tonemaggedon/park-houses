@@ -747,14 +747,14 @@
    "sex": "M",
    "born_year": 1882,
    "match_born_year": true,
-   "born_place": "France (French subject)",
+   "born_place": "France",
    "census": [
     {
      "census_year": 1901,
      "unresolved_address": "Glendale, Hamilton Drive",
      "relationship": "Boarder",
      "age_at_census": 19,
-     "birth_place": "France (French subject)",
+     "birth_place": "France",
      "census_household_num": 80,
      "source": "1901 census, Glendale, schedule 80 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }
@@ -1296,16 +1296,15 @@
    "sex": "M",
    "born_year": 1881,
    "match_born_year": true,
-   "born_place": "Warehouseman, Lace",
    "census": [
     {
      "census_year": 1901,
      "unresolved_address": "Beechwood, Hamilton Drive",
      "relationship": "Boarder",
      "age_at_census": 20,
-     "birth_place": "Warehouseman, Lace",
      "census_household_num": 85,
-     "source": "1901 census, Beechwood, Hamilton Drive, schedule 85 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1901 census, Beechwood, Hamilton Drive, schedule 85 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled",
+     "occupation_at_census": "Warehouseman, lace"
     }
    ]
   },
@@ -1355,7 +1354,7 @@
    "sex": "F",
    "born_year": 1881,
    "match_born_year": true,
-   "born_place": "S. Kellington, Lincolnshire",
+   "born_place": "South Elkington, Lincolnshire",
    "census": [
     {
      "census_year": 1901,
@@ -1363,7 +1362,7 @@
      "relationship": "Servant",
      "age_at_census": 20,
      "occupation_at_census": "Serv dom (Worker)",
-     "birth_place": "S. Kellington, Lincolnshire",
+     "birth_place": "South Elkington, Lincolnshire",
      "census_household_num": 85,
      "source": "1901 census, Beechwood, Hamilton Drive, schedule 85 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
     }

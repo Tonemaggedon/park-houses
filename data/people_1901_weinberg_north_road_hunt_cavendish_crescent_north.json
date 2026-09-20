@@ -1,108 +1,320 @@
 {
-  "note": "Two 1901 households from one enumerator's page, transcribed from the image A. Hagues sent. Neither schedule gives a house, so both are added unfiled under the address the return gives, with the directory evidence in the address so they can be filed with a click.\n\nSchedule 135, North Road: Adelheid Weinberg, widow, born in Schleswig-Holstein and naturalised British, with her sons Mehir and Harry, lace manufacturers and shipping merchants, and two servants. Mehir (#702) and Harry Judah (#2830) are already in the record and are bound by number. The house is almost certainly 4 North Road (#412): the next schedule on the page, 136, is headed '5 North Road'; Wright's Directory prints 'Mrs. Adelaide' and Harry J. Weinberg at 4 North Road in 1913-14 and 1915-16; and Harry's probate calls him 'late of 4 North Road'. In 1894-95 and 1898-99 the directory has Jacob Weinberg, of Simon, May & Co., on North Road without a number, likely her late husband. Mehir had moved to Hardwicke House by 1911.\n\nSchedule 137, Cavendish Crescent North: Walter S. Hunt, lace manufacturer, with his wife Susanne, her sister Emily Mottershal (the return says sister-in-law to the head, and both were born in Lincoln), Emily C. and Herbert Mottershal, niece and nephew, and two servants. Walter (#3203) is already in the record and is bound by number. The house is very likely Castlemount, 20 Cavendish Crescent North (#35): Wright's Directory 1898-99 prints 'Castle mount, Walter S. Hunt, of Hunt, Moody & Co.', and Castlemount holds no 1901 census record. In 1894-95 he was at 15 Cavendish Crescent South.\n\nReadings to check against the image: Mottershal (it may be Mottershead) and the servant Constance Herrick, whose surname runs off the bottom of the page. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1901 census, North Road and Cavendish Crescent North, schedules 135 and 137, from the enumerator's page sent by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, pages 44 and 103 (Leicester Special Collections ids 164550, 164609); 1898-99, pages 50 and 111 (ids 165226, 165287); 1913-14, page 165 (id 166521); 1915-16, page 168 (id 347809).",
-  "people": [
+ "note": "Two 1901 households from one enumerator's page, transcribed from the image A. Hagues sent. Neither schedule gives a house, so both are added unfiled under the address the return gives, with the directory evidence in the address so they can be filed with a click.\n\nSchedule 135, North Road: Adelheid Weinberg, widow, born in Schleswig-Holstein and naturalised British, with her sons Mehir and Harry, lace manufacturers and shipping merchants, and two servants. Mehir (#702) and Harry Judah (#2830) are already in the record and are bound by number. The house is almost certainly 4 North Road (#412): the next schedule on the page, 136, is headed '5 North Road'; Wright's Directory prints 'Mrs. Adelaide' and Harry J. Weinberg at 4 North Road in 1913-14 and 1915-16; and Harry's probate calls him 'late of 4 North Road'. In 1894-95 and 1898-99 the directory has Jacob Weinberg, of Simon, May & Co., on North Road without a number, likely her late husband. Mehir had moved to Hardwicke House by 1911.\n\nSchedule 137, Cavendish Crescent North: Walter S. Hunt, lace manufacturer, with his wife Susanne, her sister Emily Mottershal (the return says sister-in-law to the head, and both were born in Lincoln), Emily C. and Herbert Mottershal, niece and nephew, and two servants. Walter (#3203) is already in the record and is bound by number. The house is very likely Castlemount, 20 Cavendish Crescent North (#35): Wright's Directory 1898-99 prints 'Castle mount, Walter S. Hunt, of Hunt, Moody & Co.', and Castlemount holds no 1901 census record. In 1894-95 he was at 15 Cavendish Crescent South.\n\nReadings to check against the image: Mottershal (it may be Mottershead) and the servant Constance Herrick, whose surname runs off the bottom of the page. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1901 census, North Road and Cavendish Crescent North, schedules 135 and 137, from the enumerator's page sent by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, pages 44 and 103 (Leicester Special Collections ids 164550, 164609); 1898-99, pages 50 and 111 (ids 165226, 165287); 1913-14, page 165 (id 166521); 1915-16, page 168 (id 347809).",
+ "people": [
+  {
+   "first_name": "Adelheid",
+   "last_name": "Weinberg",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1831,
+   "born_place": "Schleswig-Holstein, Germany",
+   "census": [
     {
-      "first_name": "Adelheid", "last_name": "Weinberg", "match_born_year": true, "sex": "F",
-      "born_year": 1831, "born_place": "Schleswig-Holstein",
-      "census": [{ "census_year": 1901, "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
-                   "relationship": "Head", "marital_status": "Widowed", "age_at_census": 70,
-                   "occupation_at_census": "Living on own means", "birth_place": "Schleswig-Holstein (naturalised British subject)",
-                   "source": "1901 census, North Road, schedule 135" }]
-    },
-    {
-      "id": 702, "first_name": "Mehir", "last_name": "Weinberg", "sex": "M", "born_year": 1866, "born_place": "Nottingham",
-      "census": [{ "census_year": 1901, "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 35,
-                   "occupation_at_census": "Lace manufacturer and shipping merchant", "birth_place": "Nottingham",
-                   "source": "1901 census, North Road, schedule 135" }],
-      "relationships": [
-        { "to": { "first_name": "Adelheid", "last_name": "Weinberg" }, "type": "child_of" },
-        { "to": { "id": 2830 }, "type": "sibling_of" }
-      ]
-    },
-    {
-      "id": 2830, "first_name": "Harry Judah", "last_name": "Weinberg", "sex": "M", "born_year": 1875, "born_place": "Nottingham",
-      "census": [{ "census_year": 1901, "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 26,
-                   "occupation_at_census": "Lace manufacturer and shipping merchant", "birth_place": "Nottingham",
-                   "source": "1901 census, North Road, schedule 135; written Harry on the return" }],
-      "relationships": [{ "to": { "first_name": "Adelheid", "last_name": "Weinberg" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Bertha", "last_name": "Stern", "match_born_year": true, "sex": "F",
-      "born_year": 1876, "born_place": "Germany",
-      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
-      "census": [{ "census_year": 1901, "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
-                   "occupation_at_census": "Cook, domestic", "birth_place": "Germany (foreign subject)",
-                   "source": "1901 census, North Road, schedule 135" }]
-    },
-    {
-      "first_name": "Sarah F", "last_name": "Fletcher", "match_born_year": true, "sex": "F",
-      "born_year": 1880, "born_place": "Diseworth, Leicestershire",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
-      "census": [{ "census_year": 1901, "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Diseworth, Leicestershire",
-                   "source": "1901 census, North Road, schedule 135" }]
-    },
-    {
-      "id": 3203, "first_name": "Walter S", "last_name": "Hunt", "sex": "M", "born_year": 1858, "born_place": "Nottingham",
-      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1901, "to_year": 1901 }],
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 43,
-                   "occupation_at_census": "Lace manufacturer", "birth_place": "Nottingham",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137" }],
-      "relationships": [{ "to": { "first_name": "Susanne", "last_name": "Hunt" }, "type": "spouse_of" }]
-    },
-    {
-      "first_name": "Susanne", "last_name": "Hunt", "match_born_year": true, "sex": "F",
-      "born_year": 1862, "born_place": "Lincoln",
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 39, "birth_place": "Lincoln",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137" }],
-      "relationships": [{ "to": { "first_name": "Emily", "last_name": "Mottershal" }, "type": "sibling_of",
-                          "notes": "Emily is the head's sister-in-law on the 1901 return; both were born in Lincoln." }]
-    },
-    {
-      "first_name": "Emily", "last_name": "Mottershal", "match_born_year": true, "sex": "F",
-      "born_year": 1870, "born_place": "Lincoln",
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Sister-in-law", "marital_status": "Single", "age_at_census": 31, "birth_place": "Lincoln",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137; surname as read, possibly Mottershead" }]
-    },
-    {
-      "first_name": "Emily C", "last_name": "Mottershal", "match_born_year": true, "sex": "F",
-      "born_year": 1889, "born_place": "Nottingham",
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Niece", "marital_status": "Single", "age_at_census": 12, "birth_place": "Nottingham",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137" }]
-    },
-    {
-      "first_name": "Herbert", "last_name": "Mottershal", "match_born_year": true, "sex": "M",
-      "born_year": 1891, "born_place": "Nottingham",
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Nephew", "marital_status": "Single", "age_at_census": 10, "birth_place": "Nottingham",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137" }]
-    },
-    {
-      "first_name": "Emma", "last_name": "Roberts", "match_born_year": true, "sex": "F",
-      "born_year": 1867, "born_place": "Mold, Flintshire",
-      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1901, "to_year": 1901 }],
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Servant", "marital_status": "Married", "age_at_census": 34,
-                   "occupation_at_census": "Cook, domestic", "birth_place": "Mold, Flintshire",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137" }]
-    },
-    {
-      "first_name": "Constance", "last_name": "Herrick", "match_born_year": true, "sex": "F",
-      "born_year": 1879, "born_place": "Bulwell, Nottinghamshire",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1901, "to_year": 1901 }],
-      "census": [{ "census_year": 1901, "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 22,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Bulwell, Nottinghamshire",
-                   "source": "1901 census, Cavendish Crescent North, schedule 137; surname cut off at the foot of the page, read as Herrick" }]
+     "census_year": 1901,
+     "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 70,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Schleswig-Holstein, Germany",
+     "source": "1901 census, North Road, schedule 135"
     }
-  ]
+   ]
+  },
+  {
+   "id": 702,
+   "first_name": "Mehir",
+   "last_name": "Weinberg",
+   "sex": "M",
+   "born_year": 1866,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 35,
+     "occupation_at_census": "Lace manufacturer and shipping merchant",
+     "birth_place": "Nottingham",
+     "source": "1901 census, North Road, schedule 135"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Adelheid",
+      "last_name": "Weinberg"
+     },
+     "type": "child_of"
+    },
+    {
+     "to": {
+      "id": 2830
+     },
+     "type": "sibling_of"
+    }
+   ]
+  },
+  {
+   "id": 2830,
+   "first_name": "Harry Judah",
+   "last_name": "Weinberg",
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Lace manufacturer and shipping merchant",
+     "birth_place": "Nottingham",
+     "source": "1901 census, North Road, schedule 135; written Harry on the return"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Adelheid",
+      "last_name": "Weinberg"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Bertha",
+   "last_name": "Stern",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1876,
+   "born_place": "Germany",
+   "occupations": [
+    {
+     "occupation": "Cook, domestic",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Germany (foreign subject)",
+     "source": "1901 census, North Road, schedule 135"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah F",
+   "last_name": "Fletcher",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "Diseworth, Leicestershire",
+   "occupations": [
+    {
+     "occupation": "Housemaid, domestic",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "North Road (no number on the return; 4 North Road by Wright's Directory) - Weinberg household",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Diseworth, Leicestershire",
+     "source": "1901 census, North Road, schedule 135"
+    }
+   ]
+  },
+  {
+   "id": 3203,
+   "first_name": "Walter S",
+   "last_name": "Hunt",
+   "sex": "M",
+   "born_year": 1858,
+   "born_place": "Nottingham",
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 43,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "source": "1901 census, Cavendish Crescent North, schedule 137"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Susanne",
+      "last_name": "Hunt"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Susanne",
+   "last_name": "Hunt",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1862,
+   "born_place": "Lincoln",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "birth_place": "Lincoln",
+     "source": "1901 census, Cavendish Crescent North, schedule 137"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Emily",
+      "last_name": "Mottershal"
+     },
+     "type": "sibling_of",
+     "notes": "Emily is the head's sister-in-law on the 1901 return; both were born in Lincoln."
+    }
+   ]
+  },
+  {
+   "first_name": "Emily",
+   "last_name": "Mottershal",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Lincoln",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Sister-in-law",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "birth_place": "Lincoln",
+     "source": "1901 census, Cavendish Crescent North, schedule 137; surname as read, possibly Mottershead"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily C",
+   "last_name": "Mottershal",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1889,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Niece",
+     "marital_status": "Single",
+     "age_at_census": 12,
+     "birth_place": "Nottingham",
+     "source": "1901 census, Cavendish Crescent North, schedule 137"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Mottershal",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1891,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Nephew",
+     "marital_status": "Single",
+     "age_at_census": 10,
+     "birth_place": "Nottingham",
+     "source": "1901 census, Cavendish Crescent North, schedule 137"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Roberts",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1867,
+   "born_place": "Mold, Flintshire",
+   "occupations": [
+    {
+     "occupation": "Cook, domestic",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Servant",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Mold, Flintshire",
+     "source": "1901 census, Cavendish Crescent North, schedule 137"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance",
+   "last_name": "Herrick",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Bulwell, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "Housemaid, domestic",
+     "from_year": 1901,
+     "to_year": 1901
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Cavendish Crescent North (no house on the return; Castlemount by Wright's Directory) - Hunt household",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Bulwell, Nottinghamshire",
+     "source": "1901 census, Cavendish Crescent North, schedule 137; surname cut off at the foot of the page, read as Herrick"
+    }
+   ]
+  }
+ ]
 }

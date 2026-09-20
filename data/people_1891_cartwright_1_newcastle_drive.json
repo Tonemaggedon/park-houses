@@ -1,83 +1,286 @@
 {
-  "note": "The household of William Thomas Cartwright, solicitor, his wife, three children and four servants at 1 Newcastle Drive (#208) on the 1891 return, transcribed by A. Hagues. 1 Newcastle Drive held only 1921, so 1891 is free.\n\n**Two of them are already in the record, thirty years later and six doors along.** William Thomas Cartwright (#2151, born 1851, solicitor) and his daughter Margaret Helen (#2153, born 1886) are filed at **7 Newcastle Drive** on the 1921 return, both matching this return exactly on name and birth year, so both are bound by number and gain 1891. The directory shows the move: 'William T. Cartwright, of Freeth, Rawson & Cartwright' at 1 Newcastle Drive in 1894-95 and 1898-99, then 'Cartwright Wm. T., (Freeth, Rawson & C. & clerk to City Justices)' at 7 Newcastle Drive in 1910-11, 1913-14 and 1915-16. So the family moved from number 1 to number 7 between 1899 and 1910 and was still there in 1921.\n\nHis wife Mary J, born about 1846, and the children Annie and Cecil B are new; the Edith Mary Cartwright at 7 Newcastle Drive in 1921 (#2152, born 1876) is a different woman and no link is made. The record holds several other Cartwrights in the Park - at 7 Pelham Crescent and at Beech House, Park Ravine, including two more solicitors of the same firm - and they are very likely this man's sons and their families, but nothing here says so, so none of them is joined. All four servants are new. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, 1 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285); 7 Newcastle Drive 1910-11, page 145 (id 165821); 1913-14, page 163 (id 166519); 1915-16, page 165 (id 347806).",
-  "people": [
+ "note": "The household of William Thomas Cartwright, solicitor, his wife, three children and four servants at 1 Newcastle Drive (#208) on the 1891 return, transcribed by A. Hagues. 1 Newcastle Drive held only 1921, so 1891 is free.\n\n**Two of them are already in the record, thirty years later and six doors along.** William Thomas Cartwright (#2151, born 1851, solicitor) and his daughter Margaret Helen (#2153, born 1886) are filed at **7 Newcastle Drive** on the 1921 return, both matching this return exactly on name and birth year, so both are bound by number and gain 1891. The directory shows the move: 'William T. Cartwright, of Freeth, Rawson & Cartwright' at 1 Newcastle Drive in 1894-95 and 1898-99, then 'Cartwright Wm. T., (Freeth, Rawson & C. & clerk to City Justices)' at 7 Newcastle Drive in 1910-11, 1913-14 and 1915-16. So the family moved from number 1 to number 7 between 1899 and 1910 and was still there in 1921.\n\nHis wife Mary J, born about 1846, and the children Annie and Cecil B are new; the Edith Mary Cartwright at 7 Newcastle Drive in 1921 (#2152, born 1876) is a different woman and no link is made. The record holds several other Cartwrights in the Park - at 7 Pelham Crescent and at Beech House, Park Ravine, including two more solicitors of the same firm - and they are very likely this man's sons and their families, but nothing here says so, so none of them is joined. All four servants are new. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1891 census, 1 Newcastle Drive, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 101 (Leicester Special Collections id 164607); 1898-99, page 109 (id 165285); 7 Newcastle Drive 1910-11, page 145 (id 165821); 1913-14, page 163 (id 166519); 1915-16, page 165 (id 347806).",
+ "people": [
+  {
+   "id": 2151,
+   "first_name": "William Thomas",
+   "last_name": "Cartwright",
+   "sex": "M",
+   "born_year": 1851,
+   "born_place": "Loughborough, Leicestershire",
+   "occupations": [
     {
-      "id": 2151, "first_name": "William Thomas", "last_name": "Cartwright", "sex": "M", "born_year": 1851, "born_place": "Longborough, Leicestershire",
-      "occupations": [{ "occupation": "Solicitor", "from_year": 1891, "to_year": 1916, "employer": "Freeth, Rawson & Cartwright", "notes": "1891 census; Wright's Directory 1894-95 to 1915-16" }],
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Head", "marital_status": "Married", "age_at_census": 40,
-                   "occupation_at_census": "Solicitor", "birth_place": "Longborough, Leicestershire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99" }]
-    },
-    {
-      "first_name": "Mary J", "last_name": "Cartwright", "match_born_year": true, "sex": "F", "born_year": 1846, "born_place": "London, Middlesex",
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Wife", "marital_status": "Married", "age_at_census": 45, "birth_place": "London, Middlesex",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "id": 2151 }, "type": "spouse_of" }]
-    },
-    {
-      "first_name": "Annie", "last_name": "Cartwright", "match_born_year": true, "sex": "F", "born_year": 1877, "born_place": "Nottinghamshire",
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 14, "occupation_at_census": "Scholar", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "id": 2151 }, "type": "child_of" }]
-    },
-    {
-      "id": 2153, "first_name": "Margaret Helen", "last_name": "Cartwright", "sex": "F", "born_year": 1886, "born_place": "Nottinghamshire",
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Daughter", "age_at_census": 5, "occupation_at_census": "Scholar", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "id": 2151 }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Cecil B", "last_name": "Cartwright", "match_born_year": true, "sex": "M", "born_year": 1888, "born_place": "Nottinghamshire",
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Son", "age_at_census": 3, "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "id": 2151 }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Eliza", "last_name": "Rowlston", "match_born_year": true, "sex": "F", "born_year": 1866, "born_place": "Cotgrave, Nottinghamshire",
-      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 25,
-                   "occupation_at_census": "Nurse, domestic", "birth_place": "Cotgrave, Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Lucy", "last_name": "Brown", "match_born_year": true, "sex": "F", "born_year": 1871, "born_place": "Southwell, Nottinghamshire",
-      "occupations": [{ "occupation": "Nurse, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 20,
-                   "occupation_at_census": "Nurse, domestic", "birth_place": "Southwell, Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }]
-    },
-    {
-      "first_name": "Emma", "last_name": "Krikman", "match_born_year": true, "sex": "F", "born_year": 1868, "born_place": "Stragglethorpe, Nottinghamshire",
-      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 23,
-                   "occupation_at_census": "Cook, domestic", "birth_place": "Stragglethorpe, Nottinghamshire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues; surname as transcribed, probably Kirkman" }]
-    },
-    {
-      "first_name": "Esther", "last_name": "Houfton", "match_born_year": true, "sex": "F", "born_year": 1870, "born_place": "Wymeswold, Leicestershire",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [208],
-      "census": [{ "census_year": 1891, "property_id": 208, "address": "1 Newcastle Drive",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 21,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Wymeswold, Leicestershire",
-                   "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues" }]
+     "occupation": "Solicitor",
+     "from_year": 1891,
+     "to_year": 1916,
+     "employer": "Freeth, Rawson & Cartwright",
+     "notes": "1891 census; Wright's Directory 1894-95 to 1915-16"
     }
-  ]
+   ],
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Loughborough, Leicestershire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues; at the same house in Wright's Directory 1894-95 and 1898-99"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary J",
+   "last_name": "Cartwright",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1846,
+   "born_place": "London, Middlesex",
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 45,
+     "birth_place": "London, Middlesex",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 2151
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Cartwright",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1877,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 14,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 2151
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 2153,
+   "first_name": "Margaret Helen",
+   "last_name": "Cartwright",
+   "sex": "F",
+   "born_year": 1886,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 2151
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Cecil B",
+   "last_name": "Cartwright",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1888,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 2151
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Rowlston",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1866,
+   "born_place": "Cotgrave, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "Nurse, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Nurse, domestic",
+     "birth_place": "Cotgrave, Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Brown",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1871,
+   "born_place": "Southwell, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "Nurse, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 20,
+     "occupation_at_census": "Nurse, domestic",
+     "birth_place": "Southwell, Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Krikman",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1868,
+   "born_place": "Stragglethorpe, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "Cook, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Stragglethorpe, Nottinghamshire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues; surname as transcribed, probably Kirkman"
+    }
+   ]
+  },
+  {
+   "first_name": "Esther",
+   "last_name": "Houfton",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1870,
+   "born_place": "Wymeswold, Leicestershire",
+   "occupations": [
+    {
+     "occupation": "Housemaid, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    208
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 208,
+     "address": "1 Newcastle Drive",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 21,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Wymeswold, Leicestershire",
+     "source": "1891 census, 1 Newcastle Drive - transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
 }

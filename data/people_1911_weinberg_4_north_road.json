@@ -1,60 +1,197 @@
 {
-  "note": "The household of Adelheid Weinberg, widow, 80, at 4 North Road (#412) on the 1911 return, transcribed by A. Hagues: herself, her son Harry, her married daughter Yitta, her grandson Victor, and two servants. 4 North Road held only 1901, so 1911 is free.\n\n**Two of them are already in the record at this same house.** Adelheid (#3311) is bound by number — A. Hagues has merged the duplicate #3349 into her, so there is now one record, born 1831, matching the age given here exactly. Harry Judah Weinberg (#2830, born 1875) is bound too: this return makes him 37, so about 1874, one year out, but he is the same man in the same house in the same family ten years on, and the directory prints 'Weinberg Harry J., (Simon, May & Co)' at 4 North Road in 1913-14.\n\n**The directory holds the house for the family over twenty years.** 'Jcb. Weinberg, of Simon, May & Co.' is on North Road in 1894-95 and 1898-99, and 'Weinberg Mrs. Adelaide' is printed at number 4 in 1913-14 and 1915-16. Mehir Weinberg (#702), on the lace makers' watch list, is recorded at both Hardwicke House and 4 North Road, and the directory has him at Hardwick house on Cavendish Crescent North from 1910-11 — so the family held two houses at once, which is why his two properties are not a filing error.\n\n**Yitta and her son are new, and they are a find.** Yitta Levy Weinberg is returned under her maiden surname with 'Levy' as a middle name and her marital status as married, her husband absent; her son Victor Levy was born in Paris. No Levy of either appears in the record. Adelheid herself was born in Denmark. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1911 census, 4 North Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1913-14 and 1915-16, North Road number 4; 1894-95 and 1898-99, North Road, for Jacob Weinberg.",
-  "people": [
+ "note": "The household of Adelheid Weinberg, widow, 80, at 4 North Road (#412) on the 1911 return, transcribed by A. Hagues: herself, her son Harry, her married daughter Yitta, her grandson Victor, and two servants. 4 North Road held only 1901, so 1911 is free.\n\n**Two of them are already in the record at this same house.** Adelheid (#3311) is bound by number — A. Hagues has merged the duplicate #3349 into her, so there is now one record, born 1831, matching the age given here exactly. Harry Judah Weinberg (#2830, born 1875) is bound too: this return makes him 37, so about 1874, one year out, but he is the same man in the same house in the same family ten years on, and the directory prints 'Weinberg Harry J., (Simon, May & Co)' at 4 North Road in 1913-14.\n\n**The directory holds the house for the family over twenty years.** 'Jcb. Weinberg, of Simon, May & Co.' is on North Road in 1894-95 and 1898-99, and 'Weinberg Mrs. Adelaide' is printed at number 4 in 1913-14 and 1915-16. Mehir Weinberg (#702), on the lace makers' watch list, is recorded at both Hardwicke House and 4 North Road, and the directory has him at Hardwick house on Cavendish Crescent North from 1910-11 — so the family held two houses at once, which is why his two properties are not a filing error.\n\n**Yitta and her son are new, and they are a find.** Yitta Levy Weinberg is returned under her maiden surname with 'Levy' as a middle name and her marital status as married, her husband absent; her son Victor Levy was born in Paris. No Levy of either appears in the record. Adelheid herself was born in Denmark. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1911 census, 4 North Road, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1913-14 and 1915-16, North Road number 4; 1894-95 and 1898-99, North Road, for Jacob Weinberg.",
+ "people": [
+  {
+   "id": 3311,
+   "first_name": "Adelaide",
+   "last_name": "Weinberg",
+   "sex": "F",
+   "born_year": 1831,
+   "born_place": "Denmark",
+   "properties": [
+    412
+   ],
+   "census": [
     {
-      "id": 3311, "first_name": "Adelaide", "last_name": "Weinberg", "sex": "F", "born_year": 1831, "born_place": "Denmark",
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Head", "marital_status": "Widow", "age_at_census": 80,
-                   "occupation_at_census": "No occupation", "birth_place": "Denmark",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues; returned as Adelheid, and printed as Mrs. Adelaide Weinberg at this number in Wright's Directory 1913-14 and 1915-16" }]
-    },
-    {
-      "id": 2830, "first_name": "Harry Judah", "last_name": "Weinberg", "sex": "M", "born_year": 1875, "born_place": "Nottingham",
-      "occupations": [{ "occupation": "Lace manufacturer", "from_year": 1911, "to_year": 1914, "employer": "Simon, May & Co.", "notes": "1911 census; Wright's Directory 1913-14 at 4 North Road" }],
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Son", "marital_status": "Single", "age_at_census": 37,
-                   "occupation_at_census": "Lace manufacturer", "birth_place": "Nottingham",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues as Harry J; age works back to about 1874 against the record's 1875" }],
-      "relationships": [{ "to": { "id": 3311 }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Yitta Levy", "last_name": "Weinberg", "match_born_year": true, "sex": "F", "born_year": 1865, "born_place": "Nottingham",
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Daughter", "marital_status": "Married", "age_at_census": 46,
-                   "occupation_at_census": "No occupation", "birth_place": "Nottingham",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues; returned under her maiden surname with Levy as a middle name, her husband not on the schedule" }],
-      "relationships": [{ "to": { "id": 3311 }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Victor", "last_name": "Levy", "match_born_year": true, "sex": "M", "born_year": 1898, "born_place": "Paris, France",
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Grandson", "age_at_census": 13,
-                   "occupation_at_census": "No occupation", "birth_place": "Paris, France",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Yitta Levy", "last_name": "Weinberg" }, "type": "child_of" }]
-    },
-    {
-      "first_name": "Marie", "last_name": "Franks", "match_born_year": true, "sex": "F", "born_year": 1879, "born_place": "Plymouth, Devon",
-      "occupations": [{ "occupation": "Cook, domestic", "from_year": 1911, "to_year": 1911 }],
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 32,
-                   "occupation_at_census": "Cook, domestic", "birth_place": "Plymouth, Devon",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues; relationship column left blank, taken as servant from the occupation" }]
-    },
-    {
-      "first_name": "Gertrude", "last_name": "Skate", "match_born_year": true, "sex": "F", "born_year": 1887, "born_place": "Conghan",
-      "occupations": [{ "occupation": "Housemaid, domestic", "from_year": 1911, "to_year": 1911 }],
-      "properties": [412],
-      "census": [{ "census_year": 1911, "property_id": 412, "address": "4 North Road",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 24,
-                   "occupation_at_census": "Housemaid, domestic", "birth_place": "Conghan",
-                   "source": "1911 census, 4 North Road - transcribed by A. Hagues; birthplace transcribed Conghan, which I cannot match to a place, so it is entered as written" }]
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 80,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Denmark",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues; returned as Adelheid, and printed as Mrs. Adelaide Weinberg at this number in Wright's Directory 1913-14 and 1915-16"
     }
-  ]
+   ]
+  },
+  {
+   "id": 2830,
+   "first_name": "Harry Judah",
+   "last_name": "Weinberg",
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "Nottingham",
+   "occupations": [
+    {
+     "occupation": "Lace manufacturer",
+     "from_year": 1911,
+     "to_year": 1914,
+     "employer": "Simon, May & Co.",
+     "notes": "1911 census; Wright's Directory 1913-14 at 4 North Road"
+    }
+   ],
+   "properties": [
+    412
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 37,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues as Harry J; age works back to about 1874 against the record's 1875"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 3311
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Yitta Levy",
+   "last_name": "Weinberg",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1865,
+   "born_place": "Nottingham",
+   "properties": [
+    412
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Daughter",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues; returned under her maiden surname with Levy as a middle name, her husband not on the schedule"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 3311
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Victor",
+   "last_name": "Levy",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1898,
+   "born_place": "Paris, France",
+   "properties": [
+    412
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Grandson",
+     "age_at_census": 13,
+     "occupation_at_census": "No occupation",
+     "birth_place": "Paris, France",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Yitta Levy",
+      "last_name": "Weinberg"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Marie",
+   "last_name": "Franks",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1879,
+   "born_place": "Plymouth, Devon",
+   "occupations": [
+    {
+     "occupation": "Cook, domestic",
+     "from_year": 1911,
+     "to_year": 1911
+    }
+   ],
+   "properties": [
+    412
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 32,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Plymouth, Devon",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues; relationship column left blank, taken as servant from the occupation"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Skate",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Congham, Norfolk",
+   "occupations": [
+    {
+     "occupation": "Housemaid, domestic",
+     "from_year": 1911,
+     "to_year": 1911
+    }
+   ],
+   "properties": [
+    412
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 412,
+     "address": "4 North Road",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Congham, Norfolk",
+     "source": "1911 census, 4 North Road - transcribed by A. Hagues; birthplace transcribed Conghan, which I cannot match to a place, so it is entered as written"
+    }
+   ]
+  }
+ ]
 }

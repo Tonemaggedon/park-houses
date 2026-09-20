@@ -48,17 +48,16 @@
    "sex": "F",
    "born_year": 1884,
    "match_born_year": true,
-   "born_place": "Lady Help, Dom",
    "census": [
     {
      "census_year": 1901,
      "unresolved_address": "Fish Pond Drive, Cavendish House",
      "marital_status": "Single",
      "age_at_census": 17,
-     "occupation_at_census": "neice",
-     "birth_place": "Lady Help, Dom",
+     "occupation_at_census": "Lady help, domestic",
      "census_household_num": 101,
-     "source": "1901 census, Fishpond Drive, \"Cavendish Ho, schedule 101 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1901 census, Fishpond Drive, \"Cavendish Ho, schedule 101 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled",
+     "relationship": "Niece"
     }
    ]
   },
