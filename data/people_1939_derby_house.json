@@ -1,0 +1,204 @@
+{
+ "note": "**Derby House on the 1939 Register - the Wilkinsons still keeping it, twenty-eight years after the 1911 census.** Schedule 1, nine people, transcribed by A. Hagues.\n\n**The house passed from mother to daughter.** Sarah kept it in 1911; here the proprietress is **Mabell M Wilkinson**, born 25 August 1876 - the \"Maybell\" of 24 on the 1901 Beechwood page - and her sister **Florence**, born 4 June 1874, is retired in the same house. Three censuses and a register hold the same family: Beechwood in 1901, Derby House in 1911 and 1939.\n\n**Florence's birth date settles a discrepancy.** The 1901 page implies 1875 and the 1911 page 1881; the register gives 4 June 1874 outright, which is why she is bound by number in all three rather than created again.\n\n**Gertrude Mary Elizabeth Dainty (#1144) was already in the record** from the 1921 census, and is here as a companion help of 64.\n\n**The register is shaped unlike a census.** It has no relationship column at all, so none is supplied; the household is held together by its schedule number, and the sub numbers 1 to 9 give the order of the nine on the page, recorded in each source line. The birth dates are exact, which a census never gives.\n\n**Five of the nine are new to the record** - the solicitors William Moss and Herbert Hutchinson, Eric Walter Price a chartered accountant, and two manservants, William Alfred Bird and Frank John H Bletcher, the latter seventeen years old. Boarders of a professional kind, which is what the house had taken in since at least 1911.",
+ "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "George Edgar",
+   "last_name": "Wood-Hunt",
+   "sex": "M",
+   "born_year": 1911,
+   "born_date": "1911-10-15",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Cigarette packing machine supervisor",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 1"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Moss",
+   "sex": "M",
+   "born_year": 1863,
+   "born_date": "1863-06-17",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 76,
+     "occupation_at_census": "Solicitor",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 2"
+    }
+   ]
+  },
+  {
+   "first_name": "Eric Walter",
+   "last_name": "Price",
+   "sex": "M",
+   "born_year": 1896,
+   "born_date": "1896-03-26",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 43,
+     "occupation_at_census": "Chartered accountant",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 3"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Hutchinson",
+   "sex": "M",
+   "born_year": 1873,
+   "born_date": "1873-05-30",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 66,
+     "occupation_at_census": "Solicitor, retired",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 4"
+    }
+   ]
+  },
+  {
+   "first_name": "William Alfred",
+   "last_name": "Bird",
+   "sex": "M",
+   "born_year": 1892,
+   "born_date": "1892-09-15",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 47,
+     "occupation_at_census": "Manservant",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 5"
+    }
+   ]
+  },
+  {
+   "id": 4248,
+   "first_name": "Maybell",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 63,
+     "occupation_at_census": "Proprietress, boarding house",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 6"
+    }
+   ]
+  },
+  {
+   "id": 4247,
+   "first_name": "Florence A.",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 65,
+     "occupation_at_census": "Retired",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 7"
+    }
+   ]
+  },
+  {
+   "id": 1144,
+   "first_name": "Gertrude Mary Elizabeth",
+   "last_name": "Dainty",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 64,
+     "occupation_at_census": "Companion help",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 8"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank John H",
+   "last_name": "Bletcher",
+   "sex": "M",
+   "born_year": 1922,
+   "born_date": "1922-02-01",
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "marital_status": "Single",
+     "age_at_census": 17,
+     "occupation_at_census": "Manservant",
+     "census_household_num": 1,
+     "source": "1939 Register, schedule 1, Derby House, 1 Derby Terrace - transcribed by A. Hagues; sub number 9"
+    }
+   ]
+  }
+ ]
+}

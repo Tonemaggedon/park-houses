@@ -1,0 +1,316 @@
+{
+ "note": "**Derby House, 1 Derby Terrace, on the 1911 census - a boarding house of thirteen, and the first household the record has ever held at this property.** Transcribed by A. Hagues from the return.\n\n**Sarah Wilkinson is the same woman the 1901 census gives at Beechwood on Hamilton Drive** - 52 then and 62 here, a widow born at Burnaston in Derbyshire both times - and here her trade is written out: **boarding house keeper**. Her four servants are entered as cook, kitchen maid and housemaids *of the boarding house*, so there is no doubt what the establishment was.\n\n**That settles what the 1901 page was doing.** The Beechwood household had been read as two - Sarah with four children, and a separate group of nine that carried no head and began with somebody entered as a boarder. It is one household: she is the head and the nine are her lodgers. See [[1901-house-names-not-in-the-record]].\n\n**She moved between the censuses.** Beechwood is on Hamilton Drive and Derby House on Derby Terrace, so these are two premises rather than one renamed, and Beechwood still wants a number.\n\n**Florence's age is wrong on this page.** It gives 30, which would put her birth in 1881; the 1939 register gives her birth date as **4 June 1874**. She is bound by number to the Florence of the 1901 household rather than created again, on A. Hagues's reading that they are one woman.\n\n**Several readings on this page are doubtful and are left as questions rather than tidied away.** Arthur L Hicks's birthplace reads *\"Ludia Panjab (Resident)\"* and his occupation *\"Valmer\"* - the first is very likely India, Punjab, and the second is not a word. A St George Ranvall's occupation reads *\"Vaener\"*, and the surname itself is uncertain. Julia Moult is born at *\"Hollaton\"*, which is no Nottinghamshire village; Halloughton and Hoveringham are both nearer the sound of it. Where the page is merely misspelt - Draughtman, Driector, Kingston On Sour, Whiton - the word is written out properly and the original recorded in the source line.\n\n**One servant shares a name with somebody already in the record.** Julia Moult here was born about 1864; the Julia Moult the record holds (#1388) was born about 1872. Eight years apart, so a different woman, and she is created rather than bound.",
+ "source": "1911 census return for Derby House, 1 Derby Terrace, Nottingham, transcribed by A. Hagues.",
+ "people": [
+  {
+   "id": 4244,
+   "first_name": "Sarah",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 62,
+     "occupation_at_census": "Boarding house keeper",
+     "birth_place": "Burnaston, Derbyshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 4247,
+   "first_name": "Florence A.",
+   "last_name": "Wilkinson",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "occupation_at_census": "Daily governess",
+     "birth_place": "Newark, Nottinghamshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page gives her age as 30, which would make her born 1881; the 1939 register gives her birth date as 4 June 1874, so this age is understated by about seven years"
+    }
+   ]
+  },
+  {
+   "first_name": "Gillen",
+   "last_name": "Wacker",
+   "sex": "M",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 43,
+     "occupation_at_census": "Lace draughtsman",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page reads \"Lace Draughtman\""
+    }
+   ]
+  },
+  {
+   "first_name": "Charles J",
+   "last_name": "Bristowe",
+   "sex": "M",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "London",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 48,
+     "occupation_at_census": "Director of education",
+     "birth_place": "London",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page reads \"Driector of Education\""
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur L",
+   "last_name": "Hicks",
+   "sex": "M",
+   "born_year": 1885,
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "birth_place": "Ludia Panjab (reading uncertain)",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; birthplace read as \"Ludia Panjab (Resident)\" and occupation as \"Valmer\"; neither is legible with confidence, and the birthplace is very likely India, Punjab"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Beeby",
+   "sex": "M",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Kingston on Soar, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Stockbroker",
+     "birth_place": "Kingston on Soar, Nottinghamshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page reads \"Kingston On Sour\""
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret E",
+   "last_name": "Beeby",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Basford, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "birth_place": "Basford, Nottinghamshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "George",
+      "last_name": "Beeby"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "A St George",
+   "last_name": "Ranvall",
+   "sex": "M",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Derby",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "birth_place": "Derby",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; occupation read as \"Vaener\", which is not a word and wants another look; the surname is doubtful too"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Wiss",
+   "sex": "M",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Whitton, Yorkshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 47,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Whitton, Yorkshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; the page reads \"Whiton, Yorkshire\""
+    }
+   ]
+  },
+  {
+   "first_name": "Julia",
+   "last_name": "Moult",
+   "sex": "F",
+   "born_year": 1864,
+   "match_born_year": true,
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 47,
+     "occupation_at_census": "Cook, boarding house",
+     "birth_place": "Hollaton, Nottinghamshire (reading uncertain)",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues; birthplace read as \"Hollaton\"; there is no such Nottinghamshire village and it may be Halloughton or Hoveringham. She is not the Julia Moult already in the record (#1388, born about 1872)"
+    }
+   ]
+  },
+  {
+   "first_name": "Hettie",
+   "last_name": "Sowter",
+   "sex": "F",
+   "born_year": 1897,
+   "match_born_year": true,
+   "born_place": "Ironville, Derbyshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "occupation_at_census": "Kitchen maid, boarding house",
+     "birth_place": "Ironville, Derbyshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Nicholls",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Swineshead, Lincolnshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Housemaid, boarding house",
+     "birth_place": "Swineshead, Lincolnshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Wright",
+   "sex": "F",
+   "born_year": 1895,
+   "match_born_year": true,
+   "born_place": "Farndon, Nottinghamshire",
+   "properties": [
+    97
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 97,
+     "address": "Derby House, 1 Derby Terrace",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Housemaid, boarding house",
+     "birth_place": "Farndon, Nottinghamshire",
+     "source": "1911 census, Derby House, 1 Derby Terrace - transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
