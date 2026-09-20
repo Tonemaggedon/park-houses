@@ -62,7 +62,11 @@ for place, (lat, lng, label, note) in sorted(want.items()):
         absent.append(place)
         continue
     hlat, hlng, status = have[place]
-    if hlat is None or abs(float(hlat) - lat) > TOL or abs(float(hlng) - lng) > TOL:
+    # A place the geocoder failed on is in the cache with no position at all.
+    # Those are the ones this file exists to give one to, so they must survive
+    # the comparison rather than be arithmetic on None.
+    if hlat is None or hlng is None \
+       or abs(float(hlat) - lat) > TOL or abs(float(hlng) - lng) > TOL:
         disagree.append((place, hlat, hlng, status, lat, lng, label))
 
 print(f'{SRC} names {len(want)} places.')
@@ -73,7 +77,9 @@ if disagree:
     print('\nTHE CACHE WOULD BE OVERWRITTEN FOR THESE:')
     for place, hlat, hlng, status, lat, lng, label in disagree:
         print(f'   {place[:44]:<44} {status}')
-        print(f'   {"":<44} was  {float(hlat):>9.4f}, {float(hlng):>9.4f}')
+        was = (f'{float(hlat):>9.4f}, {float(hlng):>9.4f}'
+               if hlat is not None and hlng is not None else 'no position at all')
+        print(f'   {"":<44} was  {was}')
         print(f'   {"":<44} now  {lat:>9.4f}, {lng:>9.4f}   {label or ""}')
 
 if APPLY and disagree:
