@@ -88,7 +88,9 @@ if APPLY:
         cur.execute("DELETE FROM geocode_cache WHERE place_text=%s", (p,))
     conn.commit()
     print(f'Removed {len(dead)} stale geocode_cache entries for those spellings.')
-    print('\nNow run:  railway run python3 geocode_birth_places.py')
+    print('\nNow run, in this order:')
+    print('   railway run python3 apply_geocode_cache.py --apply   # positions rows from places already known')
+    print('   railway run python3 geocode_birth_places.py          # looks up what is left')
 else:
     print(f'{total} rows would change. Nothing has been written.')
     print('Run again with --apply to make the change.')
