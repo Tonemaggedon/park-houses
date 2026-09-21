@@ -180,8 +180,8 @@
   },
   {
    "schedule": 17,
-   "street": "Newcastle Drive [?]",
-   "house": "NOT GIVEN ON THE SCHEDULE - see the note",
+   "street": "Newcastle Drive",
+   "house": "Back of 5",
    "people": [
     {
      "name": "Charles Loder",
@@ -234,7 +234,89 @@
     "persons": 4
    },
    "signed_by": "Charlotte Loder",
-   "note": "**A COACHMAN'S HOUSEHOLD, AND THE SCHEDULE DOES NOT SAY WHOSE.** A householder's 1911 schedule carries no address - only the enumerator's book does - so this one cannot be placed from the paper itself. A. Hagues asks whether it is the back of 5 Newcastle Drive.\n\n**What is for it.** Charles Loder is a domestic coachman and a worker, not on his own account, so he was housed by an employer, and a coachman with a family is housed over the stables or in the coach house behind a large one. The 1901 round already has exactly this on the estate - *Peveril Drive, over stables*, John Langsdale, coachman, with two sons. And 5 Newcastle Drive in 1901 holds Thomas Hill, hosiery manufacturer, 78, with four servants: a household that kept a carriage.\n\n**What is against it.** The schedule numbers run 14 at 7 Newcastle Drive and 18 at 9, so schedule 17 falls BETWEEN 7 and 9 in the enumerator's walk, not beside 5. Unless he doubled back, the back premises this belongs to are 7's or 9's rather than 5's.\n\n**Nothing is filed until the enumerator's book line for schedule 17 is read.** That line gives the address in one word and settles it."
+   "note": "**SETTLED BY THE SCHEDULE COVER: *Back of 5 Newcastle Drive, The Park, Nottingham*.** The enumerator first wrote *Huntingdon Drive, The Park*, struck it through, and wrote the back of 5 underneath. So this is the coach house or stable flat behind **5 Newcastle Drive (#210)**, and A. Hagues had it right.\n\n**My reasoning against it was worthless.** I argued from the schedule numbers - 14 at number 7, 18 at number 9, so 17 must fall between them - and an enumerator numbering back premises does not walk in a straight line. An address written on the paper beats an inference from the order of the paper every time.\n\n**And the big house ties the two together.** 5 Newcastle Drive on the same night is Henry Gee's, and one of his four servants is **Fanny Charlotte Loder**, housemaid, 24, born Nottingham. Charles and Charlotte Loder are at the back with a son of 16. Fanny Charlotte is almost certainly their daughter: the coachman drives for the house, his wife keeps the coach house, and his daughter is in service in the front of the same property.\n\n**Charlotte reports three children born alive and three still living.** Charles Wood, 16, and Fanny Charlotte, 24, are two of them. The third is elsewhere. Stanley, eighteen months, is not one of the three, so he is a generation down - whose is not on the paper.",
+   "serves_property_id": 210
+  },
+  {
+   "schedule": 11,
+   "street": "Newcastle Drive",
+   "house": "5",
+   "property_id": 210,
+   "registration_district": "430",
+   "registration_sub_district": "1",
+   "enumeration_district": "11",
+   "postal_address_on_cover": "5 Newcastle Drive, The Park, Nottingham",
+   "people": [
+    {
+     "name": "Henry Gee",
+     "relation": "Head",
+     "sex": "M",
+     "age": 67,
+     "marital": "Married",
+     "occupation": "Private means; retired hosiery manufacturer",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Clara Gee",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 61,
+     "marital": "Married",
+     "occupation": null,
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Lizzie Kennell [?]",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 34,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Upwood, Huntingdonshire"
+    },
+    {
+     "name": "Annie Elizth Coulson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Parlourmaid, domestic",
+     "born": "Hibaldstow, Lincolnshire"
+    },
+    {
+     "name": "Fanny Charlotte Loder",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Nottingham, Nottinghamshire",
+     "note": "Almost certainly the daughter of Charles and Charlotte Loder at the back of this same house - schedule 17."
+    },
+    {
+     "name": "Ivy Croft",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "Kitchenmaid, domestic",
+     "born": "Whittington Moor, Derbyshire"
+    }
+   ],
+   "marriage": {
+    "person": "Clara Gee",
+    "years_married": 40,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "totals": {
+    "males": 1,
+    "females": 5,
+    "persons": 6
+   },
+   "signed_by": "Henry Gee",
+   "note": "Closes the 1911 half of the gap at 5 Newcastle Drive. The record holds **Thomas Hill**, hosiery manufacturer, there in 1891 and again in 1901 at 78 and widowed - and **Henry Gee** there in 1921. This puts Gee in the house by 1911, so the handover happened in that decade, and one hosiery manufacturer followed another into it.\n\nClara married about 1871 and bore two children, both living in 1911. Neither is in the house.\n\nThe cover gives the district numbers for the whole round: registration district 430, sub-district 1, **enumeration district 11** - which is the district to ask for if the rest of this 1911 round is wanted."
   }
  ]
 }
