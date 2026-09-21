@@ -1,5 +1,5 @@
 {
- "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.\n\n**Thomas J. Page was left out of the first version of this file by mistake.** My check matched him to #3275 'Thomas Page', who carries no birth year at all - so the age test never ran and a name alone made the match. #3275 is a different man: his 1901 row sits at 12 Cavendish Crescent North and his occupation field holds *Parish of Nottingham Guardian. Jonathan Page. Small ? Keeper*, which is notes written into the wrong column. Thomas J. Page, 26, trooper in South Africa, is new to the record and is here.",
  "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
  "people": [
   {
@@ -254,6 +254,27 @@
      "occupation_at_census": "Haberdasher | Employer",
      "birth_place": "Bulwell, Nottinghamshire",
      "age_at_census": 30,
+     "census_household_num": 108,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 108"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas J.",
+   "last_name": "Page",
+   "sex": "M",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Bulwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 222,
+     "relationship": "Son",
+     "marital_status": "S",
+     "age_at_census": 26,
+     "occupation_at_census": "Trooper, South Africa",
+     "birth_place": "Bulwell, Nottinghamshire",
      "census_household_num": 108,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 108"
     }
