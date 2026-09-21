@@ -23,7 +23,7 @@ Usage:
   railway run python3 census_gaps.py --xlsx          # also write it to the Desktop
 """
 
-import os, sys, json, argparse
+import os, re, sys, json, argparse
 import psycopg2
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -119,6 +119,26 @@ if args.year:
 if args.street:
     rows = [r for r in rows if args.street.lower() in (r['street'] or '').lower()]
 rows.sort(key=lambda r: (r['missing'], r['street'] or '', r['pid']))
+
+# A gap on one house is a job; the same gap on a whole street is a ROUND that
+# was never transcribed, and that is the thing worth targeting. Group them.
+blocks = {}
+for r in rows:
+    blocks.setdefault((r['street'] or '(no street)', r['before_year'], r['after_year']), []).append(r)
+big = sorted((k, v) for k, v in blocks.items() if len(v) >= 3)
+if big and not args.street:
+    print('WHOLE STRETCHES OF ONE STREET, MISSING THE SAME ROUND')
+    print('   These are enumerator rounds nobody has transcribed, not houses that went quiet.\n')
+    for (street, b, a), v in sorted(big, key=lambda t: -len(t[1])):
+        def housekey(n):
+            m = re.match(r'(\d+)(.*)', n or '')
+            return (0, int(m.group(1)), m.group(2)) if m else (1, 0, n or '')
+        nums = ', '.join(sorted(((props.get(r['pid'], {}) or {}).get('no')
+                                 or (props.get(r['pid'], {}) or {}).get('name') or '?'
+                                 for r in v), key=housekey))
+        print(f'   {street:<26} {len(v):>3} houses   last seen {b} -> next seen {a}')
+        print(f'   {"":<26}     {nums}')
+    print()
 
 print(f'Houses with a hole in their census record: {len(rows)}'
       + (f"  (missing {args.year})" if args.year else '')
