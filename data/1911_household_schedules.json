@@ -1,0 +1,95 @@
+{
+ "note": "1911 household schedules supplied by A. Hagues, filling the second half of the gaps the census-gap report found - the streets the record holds in 1891 and again in 1921 but not in 1901 or 1911.\n\n**These are the householder's own schedules, not the enumerator's book.** The hand is the head of the household's, the signature at the foot is his, and the 1911 return asks a woman three questions no earlier census did: how long she has been married, how many children she has borne, and how many are still living. Those answers are kept here because nothing else in the record can supply them.\n\n**Not named people_*.json on purpose**, so the importer never reads it. A reading I am unsure of carries [?].",
+ "source": "1911 census household schedules - transcribed by Claude from images supplied by A. Hagues",
+ "not_imported": true,
+ "households": [
+  {
+   "schedule": 18,
+   "street": "Newcastle Drive",
+   "house": "9",
+   "property_id": 212,
+   "rooms": null,
+   "marriage": {
+    "person": "Jessie Kentish Wright",
+    "years_married": 33,
+    "children_born_alive": 4,
+    "children_still_living": 4,
+    "children_died": 0,
+    "note": "Married about 1878. The four are Harold (1879), Oswald (1882), Dorothea (1884) and Ursula (1891), and in 1911 all four were alive."
+   },
+   "people": [
+    {
+     "name": "John Kentish Wright",
+     "relation": "Head",
+     "sex": "M",
+     "age": 63,
+     "marital": "Married",
+     "occupation": "Solicitor",
+     "employment": "Employer",
+     "born": "Manchester, Lancashire"
+    },
+    {
+     "name": "Jessie Kentish Wright",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 59,
+     "marital": "Married",
+     "occupation": null,
+     "born": "Highgate, Middlesex"
+    },
+    {
+     "name": "Ursula Kentish Wright",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": null,
+     "born": "City of Nottingham"
+    },
+    {
+     "name": "John Kenneth Varvill",
+     "relation": "Visitor",
+     "sex": "M",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Student",
+     "born": "York, Yorkshire",
+     "note": "Entered first as NEPHEW, struck through and altered to Visitor in the same hand."
+    },
+    {
+     "name": "Emma Louisa Kemp",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Parlourmaid, domestic",
+     "born": "Shelford [?], Nottinghamshire"
+    },
+    {
+     "name": "Frances Polly Emmerson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Willoughby on the Wolds, Nottinghamshire"
+    },
+    {
+     "name": "Elizabeth Baker",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Denton, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 5,
+    "persons": 7
+   },
+   "note": "Fills the 1911 half of the gap at 9 Newcastle Drive. The record holds John (#2128), Jessie (#2129) and Ursula in 1891 and again in 1921, so this is the middle of a run of at least thirty years in one house - the longest single tenure the gap report turned up on that street."
+  }
+ ]
+}
