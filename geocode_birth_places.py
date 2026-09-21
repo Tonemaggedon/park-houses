@@ -1,11 +1,24 @@
 #!/usr/bin/env python3
 """
-Geocode distinct birth_place values using Google Maps Geocoding API.
-Caches results in geocode_cache table.
-Prints a list of places it couldn't resolve so you can look them up manually.
+Look up every birth place the record has never looked up before.
+
+It asks Nominatim, OpenStreetMap's geocoder, which needs no key and allows one
+request a second - so this takes about a second per NEW place and nothing at
+all for the rest. Answers are kept in geocode_cache so no place is ever looked
+up twice, and the coordinates are copied onto the census rows at the end.
+
+It has no dry run: it writes as it goes. That is safe, because it only touches
+places with no answer yet and never overwrites one.
+
+Run apply_geocode_cache.py FIRST - it costs nothing and needs no network, and
+it clears out every row this would otherwise have to ask about.
+
+Then run check_geocode_sanity.py AFTER, because Nominatim answers with the best
+match in the world: Lincoln in Nebraska, Boston in Massachusetts, Wellington in
+New Zealand.
 
 Usage:
-  DATABASE_URL='...' GOOGLE_MAPS_KEY='...' python3 geocode_birth_places.py
+  railway run python3 geocode_birth_places.py
 """
 
 import os, time, urllib.request, urllib.parse, json, ssl
