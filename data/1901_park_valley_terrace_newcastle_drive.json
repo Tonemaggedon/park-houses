@@ -114,13 +114,13 @@
   {
    "schedule": 50,
    "street": "Clare Valley",
-   "house": null,
+   "house": "Elmsdale",
    "people": [
     {
      "name": "Arthur Lewis",
      "relation": "Head",
      "condition": "M",
-     "age": 44,
+     "age": 41,
      "occupation": "Iron merchant | Employer",
      "born": "Nottingham"
     },
@@ -172,7 +172,8 @@
      "occupation": "Housemaid, domestic | Worker",
      "born": "Ashby de la Zouch"
     }
-   ]
+   ],
+   "note": "The record already holds this household in full and knows the house: Elmsdale, placed on Clare Valley / Tattershall Drive by Wright's Directory. Arthur Lewis (#3359) and Margaret (#3360) carry 1891 there as well."
   },
   {
    "schedule": 51,
