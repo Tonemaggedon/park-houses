@@ -10,6 +10,40 @@ nothing.
 
 ---
 
+## Where everything is
+
+Every page carries the same green bar at the top. The row of links along it —
+Map, People, Notable, Architects, Census, Family trees, Insights, Origins,
+Estate history, Archive, Open questions, Dashboard — is the public site, and it
+never changes.
+
+Two menus sit **above that row, at the right**, and only appear when you are
+signed in:
+
+- **Research** — the eighteen working pages. Everything in this checklist that is
+  not an admin tool is in here: The working list, Unfiled records, Occupations to
+  sort, Unresolved census, Split a house's census, Duplicate people, Crowded
+  houses, Positions vs OpenStreetMap, Listed buildings, Gazette by person,
+  Wikidata review, Dougal's map, Directories by street, Directories by surname,
+  Architects & lace makers, Medal cards, Forename sex, Names to check.
+- **Admin** — three entries: **Admin tools**, Users, and **Birthplaces**.
+
+**Admin tools** is one long page with five chips across the top that jump to its
+sections: *Bring files in*, *Move records*, *Fill gaps from the census*, *Clean
+up after imports*, *The Gazette*. **Medal index cards has no chip** — it is the
+last section, below The Gazette.
+
+**Sign in on the Map first.** The Research and Admin menus are not drawn at all
+until you do, so a bookmarked page will bounce you.
+
+So a step written here as *Admin tools → Clean up after imports → Find rows that
+are not people → `Check`* means: green bar → **Admin** → **Admin tools** → the
+**Clean up after imports** chip → that tool's **Check** button. And one written
+as *Occupations to sort* means: green bar → **Research** → **Occupations to
+sort**.
+
+---
+
 ## 0. Before you press Import
 
 **Map → sign in as admin → Admin tools → Bring files in → Import people → `Preview`**
