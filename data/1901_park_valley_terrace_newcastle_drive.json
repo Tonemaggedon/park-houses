@@ -1,5 +1,5 @@
 {
- "note": "The 1901 census round for Clare Valley, Park Valley, Huntingdon Drive, Park Row, Park Terrace and Newcastle Drive - Brewhouse Yard & Standard Hill, Castle ward, pages 9 to 17, schedules 47 to 103.\n\n**This closes three of the six blocks the gap report found**: Park Valley, Park Terrace and Newcastle Drive, each of which the record held in 1891 and again in 1911 or 1921 but not in between.\n\n**It is NOT named people_*.json on purpose**, so the importer never reads it. It is a transcription waiting to be checked. A reading I am unsure of carries [?].\n\nPark Valley and Park Terrace are numbered on the page, so those households can be filed to houses rather than left on the unfiled queue. Huntingdon Drive and Park Row are not numbered and cannot be.",
+ "note": "The 1901 census round for Clare Valley, Park Valley, Huntingdon Drive, Park Row, Park Terrace and Newcastle Drive - Brewhouse Yard & Standard Hill, Castle ward, pages 9 to 17, schedules 47 to 103.\n\n**This closes three of the six blocks the gap report found**: Park Valley, Park Terrace and Newcastle Drive, each of which the record held in 1891 and again in 1911 or 1921 but not in between.\n\n**It is NOT named people_*.json on purpose**, so the importer never reads it. It is a transcription waiting to be checked. A reading I am unsure of carries [?].\n\nPark Valley and Park Terrace are numbered on the page, so those households can be filed to houses rather than left on the unfiled queue. Huntingdon Drive and Park Row are not numbered and cannot be.\n\n**PELHAM TERRACE IS NEWCASTLE DRIVE.** Pages 18 and 19 are headed Pelham Terrace, which is the upper end of the same street under its older name. A. Hagues's rule applies: **Newcastle Drive number = 39 minus the Pelham Terrace number**, fixed by the Fosters at 12 Pelham Terrace = 27 Newcastle Drive. Each converted number is given as newcastle_drive_number. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**And it puts the Fosters back where they belong.** William Foster, cabinet maker, is at 12 Pelham Terrace in 1901 - which is 27 Newcastle Drive, the house the record already holds him at in 1891 and his widow Mary at in 1921. They never moved. That fills the gap at #221 with the same family on both sides of it.",
  "source": "1901 census - transcribed by Claude from the enumerator's pages supplied by A. Hagues",
  "not_imported": true,
  "households": [
@@ -2691,6 +2691,1080 @@
      "age": 18,
      "occupation": "Nurse, domestic",
      "born": "Clay Cross, Derbyshire"
+    }
+   ]
+  },
+  {
+   "schedule": 104,
+   "street": "Newcastle Drive",
+   "house": "19",
+   "people": [
+    {
+     "name": "Frank W. Martin",
+     "relation": "Head",
+     "condition": "M",
+     "age": 40,
+     "occupation": "Solicitor | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Emma M. Martin",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 38,
+     "occupation": "",
+     "born": "Sunderland, Durham"
+    },
+    {
+     "name": "John Martin",
+     "relation": "Son",
+     "condition": "S",
+     "age": 2,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frederick Martin",
+     "relation": "Son",
+     "condition": "S",
+     "age": "8 months",
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Warner",
+     "relation": "Mother-in-law",
+     "condition": "Wid",
+     "age": 63,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Margaret A. Smith",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 24,
+     "occupation": "Nurse, domestic",
+     "born": "Calais, France"
+    },
+    {
+     "name": "Ida Skinner",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 16,
+     "occupation": "Under nurse, domestic",
+     "born": "Worksop, Nottinghamshire"
+    },
+    {
+     "name": "Annie E. Eaton",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Cook, domestic",
+     "born": "(not known)"
+    },
+    {
+     "name": "Mary Peach",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 20,
+     "occupation": "Housemaid, domestic",
+     "born": "Upper Broughton, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "schedule": 105,
+   "street": "Newcastle Drive",
+   "house": "21",
+   "people": [
+    {
+     "name": "William H. Carey",
+     "relation": "Head",
+     "condition": "M",
+     "age": 46,
+     "occupation": "Managing director, lace curtain finishing | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Jane G. Carey",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 41,
+     "occupation": "",
+     "born": "Colchester, Essex"
+    },
+    {
+     "name": "Henry P. Carey",
+     "relation": "Son",
+     "condition": "S",
+     "age": 4,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Susan Knight",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 32,
+     "occupation": "Nurse, domestic | Worker",
+     "born": "Crewe, Cheshire"
+    },
+    {
+     "name": "Florence Parrott",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 33,
+     "occupation": "Nurse at hospital | Worker",
+     "born": "Grantham, Lincolnshire"
+    },
+    {
+     "name": "Mary A. Howard",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 28,
+     "occupation": "Parlour housemaid, domestic | Worker",
+     "born": "Radcliffe on Trent, Nottinghamshire"
+    },
+    {
+     "name": "Mary A. Richardson",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Grantham, Lincolnshire"
+    },
+    {
+     "name": "Lucy Watson",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 36,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Derby"
+    }
+   ]
+  },
+  {
+   "schedule": 106,
+   "street": "Pelham Terrace",
+   "house": "(no number on the page)",
+   "newcastle_drive_number": "23 [inferred from its place in the run]",
+   "people": [
+    {
+     "name": "Job E. Danby",
+     "relation": "Head",
+     "condition": "M",
+     "age": 48,
+     "occupation": "Lace traveller [?] | Worker",
+     "born": "Pinchbeck, Lincolnshire"
+    },
+    {
+     "name": "Kate C. Danby",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 37,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Frances E. Danby",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 19,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Alice Reynolds",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 24,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Birmingham"
+    },
+    {
+     "name": "Ada Keek",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Worksop, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "schedule": null,
+   "street": "Pelham Terrace",
+   "house": "14",
+   "newcastle_drive_number": "25",
+   "uninhabited": true,
+   "people": []
+  },
+  {
+   "schedule": 107,
+   "street": "Pelham Terrace",
+   "house": "12",
+   "newcastle_drive_number": "27",
+   "people": [
+    {
+     "name": "William Foster",
+     "relation": "Head",
+     "condition": "M",
+     "age": 61,
+     "occupation": "Cabinet maker | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Foster",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 55,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Gertrude Sharpe",
+     "relation": "[relation blank]",
+     "condition": "S",
+     "age": 32,
+     "occupation": "Companion",
+     "born": "Dalby, Lincolnshire"
+    },
+    {
+     "name": "Agnes E. Ison",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 26,
+     "occupation": "Parlourmaid, domestic | Worker",
+     "born": "Oakthorpe, Leicestershire"
+    },
+    {
+     "name": "Rose Burman",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 24,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Boston, Lincolnshire"
+    },
+    {
+     "name": "Annie M. Bennett",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 22,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Eastwood, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "schedule": 108,
+   "street": "Pelham Terrace",
+   "house": "10",
+   "newcastle_drive_number": "29",
+   "people": [
+    {
+     "name": "Alfred Page",
+     "relation": "Head",
+     "condition": "M",
+     "age": 65,
+     "occupation": "Haberdasher | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Elizabeth Page",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 62,
+     "occupation": "",
+     "born": "Windsor, Berkshire"
+    },
+    {
+     "name": "William Page",
+     "relation": "Son",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Haberdasher | Employer",
+     "born": "Bulwell, Nottinghamshire"
+    },
+    {
+     "name": "Thomas J. Page",
+     "relation": "Son",
+     "condition": "S",
+     "age": 26,
+     "occupation": "Trooper, South Africa",
+     "born": "Bulwell, Nottinghamshire"
+    },
+    {
+     "name": "Lena M. Page",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 23,
+     "occupation": "No occupation",
+     "born": "Bulwell, Nottinghamshire"
+    },
+    {
+     "name": "Maggie Hayward",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 25,
+     "occupation": "Cook, domestic",
+     "born": "Long Eaton, Derbyshire"
+    },
+    {
+     "name": "Lizzie Massey",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 18,
+     "occupation": "Housemaid, domestic",
+     "born": "Stoke Rochford, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "schedule": null,
+   "street": "Pelham Terrace",
+   "house": "8",
+   "newcastle_drive_number": "31",
+   "uninhabited": true,
+   "people": []
+  },
+  {
+   "schedule": 109,
+   "street": "Pelham Terrace",
+   "house": "6",
+   "newcastle_drive_number": "33",
+   "people": [
+    {
+     "name": "William Allan",
+     "relation": "Head",
+     "condition": "M",
+     "age": 62,
+     "occupation": "Manager of company | Employer; Justice of the Peace",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Sarah A. Allan",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 60,
+     "occupation": "",
+     "born": "Elm, Cambridgeshire"
+    },
+    {
+     "name": "Beatrice Allan",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 36,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Lancelot Allan",
+     "relation": "Son",
+     "condition": "S",
+     "age": 27,
+     "occupation": "Lithographic printer | Worker",
+     "born": "Kegworth, Leicestershire"
+    },
+    {
+     "name": "Bertram Allan",
+     "relation": "Son",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Lithographic printer | Worker",
+     "born": "Kegworth, Leicestershire"
+    },
+    {
+     "name": "Muriel Moore",
+     "relation": "Niece",
+     "condition": "S",
+     "age": 27,
+     "occupation": "Photographic operator | Worker",
+     "born": "Elm, Cambridgeshire"
+    },
+    {
+     "name": "Florence Brooks",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 19,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Anwick, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "schedule": 110,
+   "street": "Pelham Terrace",
+   "house": "4",
+   "newcastle_drive_number": "35",
+   "people": [
+    {
+     "name": "John H. Bradwell",
+     "relation": "Head",
+     "condition": "M",
+     "age": 59,
+     "occupation": "Auctioneer and valuer | Employer",
+     "born": "Southwell, Nottinghamshire"
+    },
+    {
+     "name": "Elizth Bradwell",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 54,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Herbert Bradwell",
+     "relation": "Son",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Law student",
+     "born": "Southwell, Nottinghamshire"
+    },
+    {
+     "name": "Frank Bradwell",
+     "relation": "Son",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Auctioneer | Worker",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Hannah Bate",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 30,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Lincolnshire"
+    },
+    {
+     "name": "Kate Churchley",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Bideford [?], Warwickshire"
+    },
+    {
+     "name": "John H. Lovett",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 13,
+     "occupation": "Page boy, domestic | Worker",
+     "born": "Lowdham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "schedule": 111,
+   "street": "Pelham Terrace",
+   "house": "2",
+   "newcastle_drive_number": "37",
+   "people": [
+    {
+     "name": "John A. H. Green",
+     "relation": "Head",
+     "condition": "Widr",
+     "age": 39,
+     "occupation": "Solicitor | Own account",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Dorothy Green",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 13,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Norton",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 28,
+     "occupation": "Servant, domestic | Worker",
+     "born": "Lincolnshire"
+    },
+    {
+     "name": "Bessie Shrimm [?]",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Servant, domestic | Worker",
+     "born": "Cumberland"
+    }
+   ]
+  },
+  {
+   "schedule": 112,
+   "street": "Tattershall Corner",
+   "house": null,
+   "note": "The page gives no head - the schedule begins with a daughter, so the head is on the page before",
+   "people": [
+    {
+     "name": "Edith B. Lewis",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 39,
+     "occupation": "No occupation",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Jane Cullen Reed",
+     "relation": "Visitor",
+     "condition": "S",
+     "age": 41,
+     "occupation": "Sick nurse | Own account",
+     "born": "London"
+    },
+    {
+     "name": "Florence Simmins",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Wollaton, Nottinghamshire"
+    },
+    {
+     "name": "Judith Simmins",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 34,
+     "occupation": "Sick nurse | Own account",
+     "born": "Wollaton, Nottinghamshire"
+    },
+    {
+     "name": "Caroline Goodwin",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 18,
+     "occupation": "Parlourmaid, domestic | Worker",
+     "born": "Aslockton, Nottinghamshire"
+    },
+    {
+     "name": "Emma Cox",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 15,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Linby"
+    }
+   ]
+  },
+  {
+   "schedule": 113,
+   "street": "Clinton Terrace",
+   "house": null,
+   "people": [
+    {
+     "name": "Charles Goater",
+     "relation": "Head",
+     "condition": "M",
+     "age": 56,
+     "occupation": "Printer and stationer | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Sarah Goater",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 48,
+     "occupation": "",
+     "born": "Wolston, Warwickshire"
+    },
+    {
+     "name": "Norah M. Goater",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 19,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Lionel Ray Goater",
+     "relation": "Son",
+     "condition": "S",
+     "age": 15,
+     "occupation": "",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "schedule": 114,
+   "street": "Clinton Terrace",
+   "house": "5",
+   "people": [
+    {
+     "name": "Henry Spencer",
+     "relation": "Head",
+     "condition": "M",
+     "age": 54,
+     "occupation": "Cafe proprietor | Employer",
+     "born": "Hickling, Nottinghamshire"
+    },
+    {
+     "name": "Annie Spencer",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 50,
+     "occupation": "",
+     "born": "London"
+    },
+    {
+     "name": "Annie Spencer",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Teacher of music | At home",
+     "born": "Nottingham"
+    },
+    {
+     "name": "William H. Spencer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 22,
+     "occupation": "Grocer | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Herbert Spencer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Grocer | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Joseph E. Spencer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 20,
+     "occupation": "Draper's apprentice | Worker",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Harold C. Spencer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 18,
+     "occupation": "Draper's apprentice | Worker",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Sydney Spencer",
+     "relation": "Son",
+     "condition": "S",
+     "age": 12,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "May Spencer",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 8,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Jane Sumner",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 28,
+     "occupation": "Servant, domestic | Worker",
+     "born": "Rauceby, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "schedule": 115,
+   "street": "Clinton Terrace",
+   "house": "4",
+   "people": [
+    {
+     "name": "Robert J. Jackson",
+     "relation": "Head",
+     "condition": "M",
+     "age": 49,
+     "occupation": "Smallware dealer (shop) | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Louisa A. Jackson",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 45,
+     "occupation": "",
+     "born": "Bourne, Lincolnshire"
+    },
+    {
+     "name": "Frederick Jackson",
+     "relation": "Brother",
+     "condition": "S",
+     "age": 43,
+     "occupation": "Smallware dealer (shop) | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Louisa Jackson",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 19,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Walter E. Jackson",
+     "relation": "Son",
+     "condition": "S",
+     "age": 16,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Edith W. Jackson",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 14,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ada L. Webb",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 24,
+     "occupation": "Cook, domestic",
+     "born": "Oxhill, Warwickshire"
+    }
+   ]
+  },
+  {
+   "schedule": 116,
+   "street": "Derby Road [?]",
+   "house": "131",
+   "people": [
+    {
+     "name": "Elizabeth J. Butt",
+     "relation": "Head",
+     "condition": "Wid",
+     "age": 73,
+     "occupation": "Living on own means",
+     "born": "Thoresby [?], Lincolnshire"
+    },
+    {
+     "name": "Eleanor Butt",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 40,
+     "occupation": "Living on own means",
+     "born": "Chesterfield, Derbyshire"
+    },
+    {
+     "name": "Mabel T. Tavener",
+     "relation": "Daur",
+     "condition": "Wid",
+     "age": 37,
+     "occupation": "Living on own means",
+     "born": "Chesterfield, Derbyshire"
+    },
+    {
+     "name": "Eric S. Tavener",
+     "relation": "Grandson",
+     "condition": "",
+     "age": 8,
+     "occupation": "",
+     "born": "St Leonards, Kent"
+    },
+    {
+     "name": "Emma Mountain",
+     "relation": "Visitor",
+     "condition": "S",
+     "age": 51,
+     "occupation": "Living on own means",
+     "born": "Humberstone, Lincolnshire"
+    },
+    {
+     "name": "Isabel Tomlinson",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 34,
+     "occupation": "Parlourmaid, domestic | Worker",
+     "born": "Unstone, Derbyshire"
+    },
+    {
+     "name": "Beatrice Hummikin [?]",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 24,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Brentwood, Essex"
+    },
+    {
+     "name": "Annie Cummington",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 25,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Lincolnshire"
+    },
+    {
+     "name": "Gertrude Warrington",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 21,
+     "occupation": "Nurse, domestic | Worker",
+     "born": "Burton on Trent, Staffordshire"
+    }
+   ]
+  },
+  {
+   "schedule": null,
+   "street": "Derby Road [?]",
+   "house": "129",
+   "uninhabited": true,
+   "people": []
+  },
+  {
+   "schedule": null,
+   "street": "Derby Road [?]",
+   "house": "127",
+   "uninhabited": true,
+   "people": []
+  },
+  {
+   "schedule": 117,
+   "street": "Derby Road [?]",
+   "house": "125",
+   "people": [
+    {
+     "name": "Frank B. Norris",
+     "relation": "Head",
+     "condition": "M",
+     "age": 48,
+     "occupation": "Solicitor",
+     "born": "Faversham, Kent"
+    },
+    {
+     "name": "Louisa Norris",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 54,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Leslie Norris",
+     "relation": "Son",
+     "condition": "S",
+     "age": 12,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ellen Lee",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "schedule": null,
+   "street": "Derby Road",
+   "house": "123",
+   "uninhabited": true,
+   "people": []
+  },
+  {
+   "schedule": 118,
+   "street": "Derby Road",
+   "house": "121",
+   "people": [
+    {
+     "name": "John Towle",
+     "relation": "Head",
+     "condition": "Widr",
+     "age": 62,
+     "occupation": "Lace warehouseman | Worker",
+     "born": "Stapleford, Nottinghamshire"
+    },
+    {
+     "name": "John H. Towle",
+     "relation": "Son",
+     "condition": "S",
+     "age": 22,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ernest Towle",
+     "relation": "Son",
+     "condition": "S",
+     "age": 19,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Florence Cherry",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 25,
+     "occupation": "General domestic | Worker",
+     "born": "Annesley, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "schedule": 119,
+   "street": "Derby Road",
+   "house": "119",
+   "people": [
+    {
+     "name": "John W. Robertson",
+     "relation": "Head",
+     "condition": "M",
+     "age": 41,
+     "occupation": "Physician and surgeon",
+     "born": "Lanarkshire, Scotland"
+    },
+    {
+     "name": "Mary J. Robertson",
+     "relation": "Wife",
+     "condition": "M",
+     "age": 37,
+     "occupation": "",
+     "born": "Lanarkshire, Scotland"
+    },
+    {
+     "name": "Maud E. Robertson",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 6,
+     "occupation": "",
+     "born": "Nova Scotia, Canada"
+    },
+    {
+     "name": "Mabel J. Robertson",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 5,
+     "occupation": "",
+     "born": "Nova Scotia, Canada"
+    },
+    {
+     "name": "John B. Robertson",
+     "relation": "Son",
+     "condition": "S",
+     "age": 3,
+     "occupation": "",
+     "born": "Nova Scotia, Canada"
+    },
+    {
+     "name": "Ellen D. Robertson",
+     "relation": "Daur",
+     "condition": "S",
+     "age": "11 months",
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ada Towers",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 22,
+     "occupation": "Cook, domestic | Worker",
+     "born": "Annesley, Nottinghamshire"
+    },
+    {
+     "name": "Kate Lee",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 23,
+     "occupation": "Nurse, domestic | Worker",
+     "born": "London"
+    },
+    {
+     "name": "Edith Taylor",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 17,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Doncaster, Yorkshire"
+    }
+   ]
+  },
+  {
+   "schedule": 120,
+   "street": "Derby Road",
+   "house": "117",
+   "people": [
+    {
+     "name": "John E. Berrey",
+     "relation": "Head",
+     "condition": "Widr",
+     "age": 57,
+     "occupation": "Lace manufacturer | Employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Arthur Berrey",
+     "relation": "Son",
+     "condition": "S",
+     "age": 22,
+     "occupation": "Manager, lace manufacturing | Worker",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mabel Berrey",
+     "relation": "Daur",
+     "condition": "S",
+     "age": 15,
+     "occupation": "",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Letitia Dexter",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 50,
+     "occupation": "Domestic | Worker",
+     "born": "Nottingham"
+    }
+   ]
+  },
+  {
+   "schedule": 121,
+   "street": "Newcastle Terrace",
+   "house": null,
+   "people": [
+    {
+     "name": "Henry Hersch [?]",
+     "relation": "Head",
+     "condition": "S",
+     "age": 54,
+     "occupation": "Lace merchant | Employer",
+     "born": "Germany (British subject)"
+    },
+    {
+     "name": "Rosa Meyn",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 29,
+     "occupation": "Housekeeper, domestic | Worker",
+     "born": "Germany (German subject)"
+    },
+    {
+     "name": "Martha Brosamle",
+     "relation": "Serv",
+     "condition": "S",
+     "age": 28,
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Germany"
     }
    ]
   }
