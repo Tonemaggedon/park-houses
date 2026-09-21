@@ -90,6 +90,28 @@ def same_forename(a, b):
     return difflib.SequenceMatcher(None, x, y).ratio() >= 0.8
 
 
+def later_forenames_conflict(a, b):
+    """The trap in this report: William EDWARD Radford beside William HENRY
+    Radford, Samuel WAITE Johnson beside Samuel GEORGE Johnson. The surname is
+    identical and the first forename agrees, so everything else about the pair
+    looks perfect - and they are two different men.
+
+    Only full words count. An initial standing where a name is written is the
+    ordinary way a census abbreviates, and proves nothing either way."""
+    fa, fb = forenames(a)[1:], forenames(b)[1:]
+    for x, y in zip(fa, fb):
+        if len(x) == 1 or len(y) == 1:
+            if x[0] != y[0]:
+                return True
+            continue
+        if x == y or x.startswith(y) or y.startswith(x):
+            continue
+        if difflib.SequenceMatcher(None, x, y).ratio() >= 0.8:
+            continue
+        return True
+    return False
+
+
 INITIAL = re.compile(r'^[A-Z]\.?$')
 
 ap = argparse.ArgumentParser(add_help=False)
@@ -106,7 +128,9 @@ cur.execute("""
            (SELECT string_agg(DISTINCT c.census_year::text, ',' ORDER BY c.census_year::text)
               FROM census_entries c WHERE c.person_id = p.id),
            (SELECT string_agg(DISTINCT COALESCE(NULLIF(TRIM(c.unresolved_address), ''), ''), ' | ')
-              FROM census_entries c WHERE c.person_id = p.id)
+              FROM census_entries c WHERE c.person_id = p.id),
+           (SELECT string_agg(DISTINCT c.property_id::text, ',')
+              FROM census_entries c WHERE c.person_id = p.id AND c.property_id IS NOT NULL)
       FROM people p""")
 everyone = cur.fetchall()
 
@@ -146,6 +170,21 @@ for a in left:
         if not same_forename(a[1], b[1]):
             continue
         seen.add(key)
+        notes = []
+        if not a[3] or not b[3]:
+            notes.append('NO BIRTH YEAR on one side - this rests on the name alone')
+        if later_forenames_conflict(a[1], b[1]):
+            notes.append('SECOND FORENAME DIFFERS - very likely two people')
+        # The same house on both sides is about as good as this gets: either
+        # the same unresolved address off the page, or the same property once
+        # somebody has filed them.
+        def houses(p):
+            txt = {x.strip() for x in (p[5] or '').split('|') if x.strip()}
+            ids = {x for x in (p[6] or '').split(',') if x}
+            return txt, ids
+        at, ai = houses(a); bt, bi = houses(b)
+        if (at & bt) or (ai & bi):
+            notes.append('SAME HOUSE on both sides - near proof')
         # Keep the record that carries more of the person's life - more census
         # years first, and where those are equal, the fuller spelling of the
         # name: Charles Edward Townroe over Chas. E. Tomnroe.
@@ -153,19 +192,21 @@ for a in left:
             years = len((p[4] or '').split(',')) if p[4] else 0
             return (years, len(norm(p[1]) + norm(p[2])))
         keep, drop = (a, b) if weight(a) >= weight(b) else (b, a)
-        pairs.append((round(ratio, 2), keep, drop))
+        pairs.append((round(ratio, 2), keep, drop, '; '.join(notes)))
 
 pairs.sort(key=lambda t: (-t[0], norm(t[1][2])))
 
 scope = f'the {args.year} round' if args.year else 'the whole record'
 print(f'Variant-spelling duplicates in {scope}: {len(pairs)} pair(s)')
 print('Compared against every person in the record, not only against each other.\n')
-for ratio, keep, drop in pairs:
+for ratio, keep, drop, notes in pairs:
     print(f'  [{ratio}]  keep #{keep[0]:<5} {keep[1]} {keep[2]}  b.{keep[3]}   ({keep[4] or "no census"})')
     print(f'          join #{drop[0]:<5} {drop[1]} {drop[2]}  b.{drop[3]}   ({drop[4] or "no census"})')
     where = (keep[5] or drop[5] or '').strip(' |')
     if where:
         print(f'          {where[:88]}')
+    if notes:
+        print(f'          ** {notes}')
 
 if args.xlsx and pairs:
     from openpyxl import Workbook
@@ -173,15 +214,16 @@ if args.xlsx and pairs:
     from openpyxl.utils import get_column_letter
     wb = Workbook(); ws = wb.active; ws.title = 'Variant spellings'
     ws.append(['likeness', 'keep id', 'keep', 'born', 'its censuses',
-               'join id', 'joined', 'born', 'its censuses', 'address', 'same person? (y/n)'])
+               'join id', 'joined', 'born', 'its censuses', 'address',
+               'worth knowing', 'same person? (y/n)'])
     for c in ws[1]:
         c.font = Font(bold=True, color='FFFFFF')
         c.fill = PatternFill('solid', fgColor='2F4858')
-    for ratio, keep, drop in pairs:
+    for ratio, keep, drop, notes in pairs:
         ws.append([ratio, f'#{keep[0]}', f'{keep[1]} {keep[2]}', keep[3], keep[4] or '',
                    f'#{drop[0]}', f'{drop[1]} {drop[2]}', drop[3], drop[4] or '',
-                   (keep[5] or drop[5] or '').strip(' |')[:60], ''])
-    for i, w in enumerate([9, 9, 28, 7, 17, 9, 28, 7, 17, 38, 17], 1):
+                   (keep[5] or drop[5] or '').strip(' |')[:60], notes, ''])
+    for i, w in enumerate([9, 9, 28, 7, 17, 9, 28, 7, 17, 34, 40, 17], 1):
         ws.column_dimensions[get_column_letter(i)].width = w
     for row in ws.iter_rows(min_row=2):
         for c in row:
@@ -190,6 +232,13 @@ if args.xlsx and pairs:
     out = os.path.expanduser(f'~/Desktop/Variant spellings{" " + str(args.year) if args.year else ""}.xlsx')
     wb.save(out)
     print(f'\nWritten: {out}')
+
+flagged = [p for p in pairs if 'two people' in p[3]]
+thin = [p for p in pairs if 'name alone' in p[3]]
+solid = [p for p in pairs if 'near proof' in p[3]]
+print(f'\n  {len(solid)} carry the same address on both sides - near proof.')
+print(f'  {len(flagged)} have a SECOND FORENAME that differs - very likely two people, not one.')
+print(f'  {len(thin)} rest on the name alone, one side having no birth year.')
 
 cur.close()
 conn.close()
