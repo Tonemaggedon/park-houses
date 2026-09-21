@@ -1,0 +1,476 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 2128,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Manchester, Lancashire",
+     "age_at_census": 63,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "id": 2129,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "birth_place": "Highgate, Middlesex",
+     "age_at_census": 59,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "id": 2131,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "birth_place": "City of Nottingham",
+     "age_at_census": 20,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "first_name": "John Kenneth",
+   "last_name": "Varvill",
+   "sex": "M",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "York, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "occupation_at_census": "Student",
+     "birth_place": "York, Yorkshire",
+     "age_at_census": 19,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma Louisa",
+   "last_name": "Kemp",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Shelford [?], Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Shelford [?], Nottinghamshire",
+     "age_at_census": 25,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances Polly",
+   "last_name": "Emmerson",
+   "sex": "F",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Willoughby on the Wolds, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Willoughby on the Wolds, Nottinghamshire",
+     "age_at_census": 21,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Baker",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Denton, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 212,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Denton, Lincolnshire",
+     "age_at_census": 19,
+     "census_household_num": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 18"
+    }
+   ]
+  },
+  {
+   "id": 2151,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Loughborough, Leicestershire",
+     "age_at_census": 60,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "id": 2152,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "occupation_at_census": "None",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 35,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "id": 1781,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Son",
+     "marital_status": "Single",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 28,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "id": 2153,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "occupation_at_census": "None",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 25,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Rownee",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Oulton, Norfolk",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Oulton, Norfolk",
+     "age_at_census": 29,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth Ann",
+   "last_name": "Dawson",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Old Leake, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Old Leake, Lincolnshire",
+     "age_at_census": 24,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie Elizabeth",
+   "last_name": "Williams",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Shirebrook, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Shirebrook, Derbyshire",
+     "age_at_census": 22,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "first_name": "Adelaide Orton",
+   "last_name": "Gamble",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "Great Plumstead, Norfolk",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 211,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Kitchenmaid, domestic",
+     "birth_place": "Great Plumstead, Norfolk",
+     "age_at_census": 20,
+     "census_household_num": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 14"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles",
+   "last_name": "Loder",
+   "sex": "M",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "near Ashford [?], Kent",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Back of 5 Newcastle Drive (the page gives \"Back of 5\")",
+     "marital_status": "Married",
+     "occupation_at_census": "Coachman, domestic",
+     "birth_place": "near Ashford [?], Kent",
+     "age_at_census": 54,
+     "census_household_num": 17,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 17"
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Loder",
+   "sex": "F",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Lydd, Kent",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Back of 5 Newcastle Drive (the page gives \"Back of 5\")",
+     "marital_status": "Married",
+     "birth_place": "Lydd, Kent",
+     "age_at_census": 54,
+     "census_household_num": 17,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 17"
+    }
+   ]
+  },
+  {
+   "first_name": "Stanley",
+   "last_name": "Loder",
+   "sex": "M",
+   "born_year": 1911,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Back of 5 Newcastle Drive (the page gives \"Back of 5\")",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 17,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 17"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles Wood",
+   "last_name": "Loder",
+   "sex": "M",
+   "born_year": 1895,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Back of 5 Newcastle Drive (the page gives \"Back of 5\")",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "occupation_at_census": "Assistant silk stocking machine minder",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 16,
+     "census_household_num": 17,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 17"
+    }
+   ]
+  },
+  {
+   "id": 2143,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Head",
+     "marital_status": "Married",
+     "occupation_at_census": "Private means; retired hosiery manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 67,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  },
+  {
+   "id": 2144,
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 61,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Kennell",
+   "sex": "F",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Upwood, Huntingdonshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Upwood, Huntingdonshire",
+     "age_at_census": 34,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie Elizth",
+   "last_name": "Coulson",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Hibaldstow, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Hibaldstow, Lincolnshire",
+     "age_at_census": 22,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny Charlotte",
+   "last_name": "Loder",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "age_at_census": 24,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  },
+  {
+   "first_name": "Ivy",
+   "last_name": "Croft",
+   "sex": "F",
+   "born_year": 1896,
+   "match_born_year": true,
+   "born_place": "Whittington Moor, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 210,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "occupation_at_census": "Kitchenmaid, domestic",
+     "birth_place": "Whittington Moor, Derbyshire",
+     "age_at_census": 15,
+     "census_household_num": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues, schedule 11"
+    }
+   ]
+  }
+ ]
+}

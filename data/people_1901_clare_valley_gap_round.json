@@ -1,0 +1,164 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "Margaret",
+   "last_name": "Lewis",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Elmsdale Clare Valley (the page gives \"Elmsdale\")",
+     "relationship": "Wife",
+     "birth_place": "Staffordshire",
+     "age_at_census": 37,
+     "census_household_num": 50,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 50"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Ranson",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Ivy Dene [?] Clare Valley (the page gives \"Ivy Dene [?]\")",
+     "relationship": "Head",
+     "occupation_at_census": "Grocer | Employer",
+     "birth_place": "Nottingham",
+     "age_at_census": 39,
+     "census_household_num": 53,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 53"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily",
+   "last_name": "Ranson",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Ivy Dene [?] Clare Valley (the page gives \"Ivy Dene [?]\")",
+     "relationship": "Wife",
+     "birth_place": "Nottingham",
+     "age_at_census": 42,
+     "census_household_num": 53,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 53"
+    }
+   ]
+  },
+  {
+   "first_name": "George E.",
+   "last_name": "Ranson",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Ivy Dene [?] Clare Valley (the page gives \"Ivy Dene [?]\")",
+     "relationship": "Son",
+     "birth_place": "Nottingham",
+     "age_at_census": 12,
+     "census_household_num": 53,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 53"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Lichfield",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Chesea [?], Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Ivy Dene [?] Clare Valley (the page gives \"Ivy Dene [?]\")",
+     "relationship": "Serv",
+     "occupation_at_census": "General servant, domestic | Worker",
+     "birth_place": "Chesea [?], Derbyshire",
+     "age_at_census": 23,
+     "census_household_num": 53,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 53"
+    }
+   ]
+  },
+  {
+   "id": 2308,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clare Valley",
+     "relationship": "Head",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "age_at_census": 24,
+     "census_household_num": 54,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 54"
+    }
+   ]
+  },
+  {
+   "id": 3251,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clare Valley",
+     "relationship": "Wife",
+     "birth_place": "Nottingham",
+     "age_at_census": 25,
+     "census_household_num": 54,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 54"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Saunders",
+   "born_year": 1864,
+   "match_born_year": true,
+   "born_place": "Stanley, Liverpool",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clare Valley",
+     "occupation_at_census": "Private nurse | Own account",
+     "birth_place": "Stanley, Liverpool",
+     "age_at_census": 37,
+     "census_household_num": 54,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 54"
+    }
+   ]
+  },
+  {
+   "first_name": "Lettie",
+   "last_name": "Pearson",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Clare Valley",
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Derbyshire",
+     "age_at_census": 21,
+     "census_household_num": 54,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 54"
+    }
+   ]
+  }
+ ]
+}

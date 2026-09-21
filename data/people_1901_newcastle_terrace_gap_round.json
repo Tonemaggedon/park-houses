@@ -1,0 +1,63 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "Henry",
+   "last_name": "Hersch",
+   "born_year": 1847,
+   "match_born_year": true,
+   "born_place": "Germany (British subject)",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Terrace",
+     "relationship": "Head",
+     "occupation_at_census": "Lace merchant | Employer",
+     "birth_place": "Germany (British subject)",
+     "age_at_census": 54,
+     "census_household_num": 121,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 121"
+    }
+   ]
+  },
+  {
+   "first_name": "Rosa",
+   "last_name": "Meyn",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Germany (German subject)",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Terrace",
+     "relationship": "Serv",
+     "occupation_at_census": "Housekeeper, domestic | Worker",
+     "birth_place": "Germany (German subject)",
+     "age_at_census": 29,
+     "census_household_num": 121,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 121"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Brosamle",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Germany",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Newcastle Terrace",
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Germany",
+     "age_at_census": 28,
+     "census_household_num": 121,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 121"
+    }
+   ]
+  }
+ ]
+}

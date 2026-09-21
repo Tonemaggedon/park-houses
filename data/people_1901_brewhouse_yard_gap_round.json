@@ -1,0 +1,134 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "Dorothy",
+   "last_name": "Webster",
+   "born_year": 1897,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "(continued from page 8) Brewhouse Yard (the page gives \"(continued from page 8)\")",
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 4,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jos.",
+   "last_name": "Bosworth",
+   "born_year": 1824,
+   "match_born_year": true,
+   "born_place": "Mansfield",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "(continued from page 8) Brewhouse Yard (the page gives \"(continued from page 8)\")",
+     "relationship": "Father-in-law [?]",
+     "occupation_at_census": "Hosiery Needle Builder | Worker",
+     "birth_place": "Mansfield",
+     "age_at_census": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "S. G.",
+   "last_name": "Kirk",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "9 Brewhouse Yard (the page gives \"9\")",
+     "relationship": "Head",
+     "occupation_at_census": "Brewer | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 33,
+     "census_household_num": 47,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 47"
+    }
+   ]
+  },
+  {
+   "first_name": "M. A.",
+   "last_name": "Kirk",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Ilkeston",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "9 Brewhouse Yard (the page gives \"9\")",
+     "relationship": "Wife",
+     "occupation_at_census": "Charring | Worker, at home",
+     "birth_place": "Ilkeston",
+     "age_at_census": 34,
+     "census_household_num": 47,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 47"
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Kirk",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "9 Brewhouse Yard (the page gives \"9\")",
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 11,
+     "census_household_num": 47,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 47"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Gallamore",
+   "born_year": 1845,
+   "match_born_year": true,
+   "born_place": "Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "10 Brewhouse Yard (the page gives \"10\")",
+     "relationship": "Head",
+     "occupation_at_census": "Bleacher's labourer | Worker",
+     "birth_place": "Staffordshire",
+     "age_at_census": 56,
+     "census_household_num": 48,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 48"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Gallamore",
+   "born_year": 1846,
+   "match_born_year": true,
+   "born_place": "Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "10 Brewhouse Yard (the page gives \"10\")",
+     "relationship": "Wife",
+     "birth_place": "Staffordshire",
+     "age_at_census": 55,
+     "census_household_num": 48,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 48"
+    }
+   ]
+  }
+ ]
+}

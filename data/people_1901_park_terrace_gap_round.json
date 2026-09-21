@@ -1,0 +1,1194 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "id": 3504,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Head",
+     "occupation_at_census": "Retired cotton doubler",
+     "birth_place": "Nottingham",
+     "age_at_census": 56,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "id": 1817,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Niece",
+     "birth_place": "Nottingham",
+     "age_at_census": 28,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "first_name": "Caarine M.",
+   "last_name": "Brady",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Beeston, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Niece",
+     "birth_place": "Beeston, Nottinghamshire",
+     "age_at_census": 18,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Heath",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Leek, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Leek, Staffordshire",
+     "age_at_census": 32,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara",
+   "last_name": "Merlt",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Normanby, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Serv",
+     "occupation_at_census": "General servant, domestic | Worker",
+     "birth_place": "Normanby, Lincolnshire",
+     "age_at_census": 24,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Ingram",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Willaston [?]",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 406,
+     "relationship": "Serv",
+     "occupation_at_census": "General servant, domestic | Worker",
+     "birth_place": "Willaston [?]",
+     "age_at_census": 26,
+     "census_household_num": 79,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 79"
+    }
+   ]
+  },
+  {
+   "id": 3584,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 241,
+     "relationship": "Head",
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Derby",
+     "age_at_census": 72,
+     "census_household_num": 80,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 80"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Jarvis",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Bourne, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 241,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Bourne, Lincolnshire",
+     "age_at_census": 46,
+     "census_household_num": 80,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 80"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Gent",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Peterborough, Northamptonshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 241,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Peterborough, Northamptonshire",
+     "age_at_census": 30,
+     "census_household_num": 80,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 80"
+    }
+   ]
+  },
+  {
+   "id": 3995,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 242,
+     "relationship": "Head",
+     "occupation_at_census": "Hosiery manufacturer | Employer",
+     "birth_place": "Nottingham",
+     "age_at_census": 66,
+     "census_household_num": 81,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 81"
+    }
+   ]
+  },
+  {
+   "id": 3996,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 242,
+     "relationship": "Wife",
+     "birth_place": "High Wycombe, Buckinghamshire",
+     "age_at_census": 58,
+     "census_household_num": 81,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 81"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances",
+   "last_name": "Delaney",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 242,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "London",
+     "age_at_census": 27,
+     "census_household_num": 81,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 81"
+    }
+   ]
+  },
+  {
+   "id": 3654,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 242,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Rickworth [?], Lincolnshire",
+     "age_at_census": 35,
+     "census_household_num": 81,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 81"
+    }
+   ]
+  },
+  {
+   "id": 1796,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 243,
+     "relationship": "Head",
+     "occupation_at_census": "Retired mechanical engineer",
+     "birth_place": "Nottingham",
+     "age_at_census": 53,
+     "census_household_num": 82,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 82"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Saxby",
+   "born_year": 1856,
+   "match_born_year": true,
+   "born_place": "Somercotes, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 243,
+     "relationship": "Serv",
+     "occupation_at_census": "Housekeeper, domestic | Worker",
+     "birth_place": "Somercotes, Derbyshire",
+     "age_at_census": 45,
+     "census_household_num": 82,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 82"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Wood",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Edwinstowe, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 243,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Edwinstowe, Nottinghamshire",
+     "age_at_census": 28,
+     "census_household_num": 82,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 82"
+    }
+   ]
+  },
+  {
+   "id": 2550,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 244,
+     "relationship": "Head",
+     "occupation_at_census": "Hosiery manufacturer | Employer",
+     "birth_place": "Nottingham",
+     "age_at_census": 64,
+     "census_household_num": 83,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 83"
+    }
+   ]
+  },
+  {
+   "first_name": "Grace",
+   "last_name": "Metcalfe",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Holland [?], Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 244,
+     "relationship": "Serv",
+     "occupation_at_census": "Housekeeper, domestic | Worker",
+     "birth_place": "Holland [?], Derbyshire",
+     "age_at_census": 47,
+     "census_household_num": 83,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 83"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizth",
+   "last_name": "Gordon",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Humby Moor [?], York",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 245,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Humby Moor [?], York",
+     "age_at_census": 36,
+     "census_household_num": 84,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 84"
+    }
+   ]
+  },
+  {
+   "first_name": "Pirlie",
+   "last_name": "Foster",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "New Zealand",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 246,
+     "relationship": "Wife",
+     "birth_place": "New Zealand",
+     "age_at_census": 30,
+     "census_household_num": 85,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 85"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate E.",
+   "last_name": "Reis",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "New Zealand",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 246,
+     "relationship": "Sister-in-law",
+     "birth_place": "New Zealand",
+     "age_at_census": 34,
+     "census_household_num": 85,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 85"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Lancashire",
+   "born_year": 1839,
+   "match_born_year": true,
+   "born_place": "Sandiacre, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 248,
+     "relationship": "Head",
+     "occupation_at_census": "Hosiery manufacturer | Employer",
+     "birth_place": "Sandiacre, Derbyshire",
+     "age_at_census": 62,
+     "census_household_num": 87,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 87"
+    }
+   ]
+  },
+  {
+   "first_name": "Walter H.",
+   "last_name": "Lancashire",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 248,
+     "relationship": "Son",
+     "occupation_at_census": "Mechanical engineer | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 26,
+     "census_household_num": 87,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 87"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizth",
+   "last_name": "Lancashire",
+   "born_year": 1848,
+   "match_born_year": true,
+   "born_place": "Osmaston, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 248,
+     "relationship": "Sister",
+     "occupation_at_census": "No occupation",
+     "birth_place": "Osmaston, Derbyshire",
+     "age_at_census": 53,
+     "census_household_num": 87,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 87"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna",
+   "last_name": "Smith",
+   "born_year": 1862,
+   "match_born_year": true,
+   "born_place": "Burton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 248,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Burton, Nottinghamshire",
+     "age_at_census": 39,
+     "census_household_num": 87,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 87"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Hollis",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Chilwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 248,
+     "relationship": "Serv",
+     "occupation_at_census": "Housekeeper [?], domestic | Worker",
+     "birth_place": "Chilwell, Nottinghamshire",
+     "age_at_census": 17,
+     "census_household_num": 87,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 87"
+    }
+   ]
+  },
+  {
+   "first_name": "Ernest",
+   "last_name": "Goddard",
+   "born_year": 1870,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 250,
+     "relationship": "Head",
+     "occupation_at_census": "Dental surgeon | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 31,
+     "census_household_num": 88,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 88"
+    }
+   ]
+  },
+  {
+   "id": 2227,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 250,
+     "relationship": "Wife",
+     "birth_place": "Nottingham",
+     "age_at_census": 39,
+     "census_household_num": 88,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 88"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Cook",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Claxby, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 250,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Claxby, Lincolnshire",
+     "age_at_census": 25,
+     "census_household_num": 88,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 88"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizth",
+   "last_name": "Cannon",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Dunston, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 250,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Dunston, Lincolnshire",
+     "age_at_census": 24,
+     "census_household_num": 88,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 88"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Clarke",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Head",
+     "occupation_at_census": "Timber and slate merchant | Employer",
+     "birth_place": "Nottingham",
+     "age_at_census": 44,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "first_name": "Elise",
+   "last_name": "Clarke",
+   "born_year": 1859,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Wife",
+     "birth_place": "Nottingham",
+     "age_at_census": 42,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary M.",
+   "last_name": "Clarke",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 18,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "first_name": "Gracie C.",
+   "last_name": "Clarke",
+   "born_year": 1888,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 13,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "id": 2770,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Lichfield, Staffordshire",
+     "age_at_census": 39,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Adcock",
+   "born_year": 1877,
+   "match_born_year": true,
+   "born_place": "Ropsley, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 251,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Ropsley, Lincolnshire",
+     "age_at_census": 24,
+     "census_household_num": 89,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 89"
+    }
+   ]
+  },
+  {
+   "id": 3648,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Head",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Newark, Nottinghamshire",
+     "age_at_census": 70,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance",
+   "last_name": "Thornley",
+   "born_year": 1865,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 36,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "id": 3649,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 36,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "first_name": "Hellen",
+   "last_name": "Perrons",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Serv",
+     "occupation_at_census": "Nurse, domestic | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 35,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "South",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Nottinghamshire (not known)",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Nottinghamshire (not known)",
+     "age_at_census": 20,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Towers",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Smalley, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 252,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Smalley, Derbyshire",
+     "age_at_census": 20,
+     "census_household_num": 90,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 90"
+    }
+   ]
+  },
+  {
+   "first_name": "Richard",
+   "last_name": "Beaumont",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "East Bridgford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 378,
+     "relationship": "Head",
+     "occupation_at_census": "Solicitor | Employer",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "age_at_census": 35,
+     "census_household_num": 91,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 91"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Barlow",
+   "born_year": 1857,
+   "match_born_year": true,
+   "born_place": "Ripley, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 378,
+     "relationship": "Serv",
+     "occupation_at_census": "Housekeeper, domestic | Worker",
+     "birth_place": "Ripley, Derbyshire",
+     "age_at_census": 44,
+     "census_household_num": 91,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 91"
+    }
+   ]
+  },
+  {
+   "id": 1819,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Head",
+     "occupation_at_census": "Barrister at law",
+     "birth_place": "Nottingham",
+     "age_at_census": 35,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance",
+   "last_name": "Lindley",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Wife",
+     "birth_place": "London",
+     "age_at_census": 35,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "first_name": "Victoria",
+   "last_name": "Lindley",
+   "born_year": 1897,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "age_at_census": 4,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Smith",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Castle Gresley, Derbyshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Castle Gresley, Derbyshire",
+     "age_at_census": 21,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Hind",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 25,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "first_name": "Maggie",
+   "last_name": "Young",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 253,
+     "relationship": "Serv",
+     "occupation_at_census": "Nurse, domestic | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 18,
+     "census_household_num": 92,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 92"
+    }
+   ]
+  },
+  {
+   "id": 3662,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 254,
+     "relationship": "Head",
+     "occupation_at_census": "Bank manager | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 50,
+     "census_household_num": 93,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 93"
+    }
+   ]
+  },
+  {
+   "id": 3663,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 254,
+     "relationship": "Sister",
+     "birth_place": "Nottingham",
+     "age_at_census": 52,
+     "census_household_num": 93,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 93"
+    }
+   ]
+  },
+  {
+   "first_name": "Lydia",
+   "last_name": "Ball",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "Burton on Trent, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 254,
+     "relationship": "Serv",
+     "occupation_at_census": "General domestic | Worker",
+     "birth_place": "Burton on Trent, Staffordshire",
+     "age_at_census": 28,
+     "census_household_num": 93,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 93"
+    }
+   ]
+  },
+  {
+   "id": 3514,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 255,
+     "relationship": "Head",
+     "occupation_at_census": "Stock and share broker (agent) | Employer",
+     "birth_place": "Stafford",
+     "age_at_census": 56,
+     "census_household_num": 94,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 94"
+    }
+   ]
+  },
+  {
+   "first_name": "Maria O.",
+   "last_name": "Bromley",
+   "born_year": 1832,
+   "match_born_year": true,
+   "born_place": "Bombay, India",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 255,
+     "relationship": "Wife",
+     "birth_place": "Bombay, India",
+     "age_at_census": 69,
+     "census_household_num": 94,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 94"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Wooder",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Peterborough, Northamptonshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 255,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Peterborough, Northamptonshire",
+     "age_at_census": 26,
+     "census_household_num": 94,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 94"
+    }
+   ]
+  },
+  {
+   "id": 3510,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 256,
+     "relationship": "Head",
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "age_at_census": 72,
+     "census_household_num": 95,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 95"
+    }
+   ]
+  },
+  {
+   "id": 3511,
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 256,
+     "relationship": "Wife",
+     "birth_place": "Belgium (British subject)",
+     "age_at_census": 66,
+     "census_household_num": 95,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 95"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Allsebrook",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Branston, Staffordshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 256,
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Branston, Staffordshire",
+     "age_at_census": 25,
+     "census_household_num": 95,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 95"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Ellender",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Chislehurst, Kent",
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 256,
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Chislehurst, Kent",
+     "age_at_census": 20,
+     "census_household_num": 95,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 95"
+    }
+   ]
+  },
+  {
+   "id": 427,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Head",
+     "occupation_at_census": "Professor of mathematics and physics",
+     "birth_place": "Bolton, Lancashire",
+     "age_at_census": 44,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "first_name": "Anny S.",
+   "last_name": "Heaton",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Ipswich, Suffolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Wife",
+     "birth_place": "Ipswich, Suffolk",
+     "age_at_census": 35,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "id": 852,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Son",
+     "birth_place": "Nottingham",
+     "age_at_census": 2,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "id": 429,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Daur",
+     "birth_place": "Nottingham",
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Durrant",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Suffolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Serv",
+     "occupation_at_census": "Nurse, domestic | Worker",
+     "birth_place": "Suffolk",
+     "age_at_census": 25,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Heaps",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Ibstock, Leicestershire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Ibstock, Leicestershire",
+     "age_at_census": 29,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "first_name": "Mable",
+   "last_name": "Corby",
+   "born_year": 1885,
+   "match_born_year": true,
+   "born_place": "Shotley, Suffolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Shotley, Suffolk",
+     "age_at_census": 16,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  },
+  {
+   "first_name": "Lillie",
+   "last_name": "Dyball",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Carshalton, Surrey",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "18 Park Terrace (the page gives \"18\")",
+     "relationship": "Serv",
+     "occupation_at_census": "Under nurse, domestic | Worker",
+     "birth_place": "Carshalton, Surrey",
+     "age_at_census": 14,
+     "census_household_num": 96,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 96"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "William",
+   "last_name": "Hall",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Bramcote, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "1 [Lenton Rd Drive on the page] Lenton Road (the page gives \"1 [Lenton Rd Drive on the page]\")",
+     "occupation_at_census": "Caretaker | Worker",
+     "birth_place": "Bramcote, Nottinghamshire",
+     "age_at_census": 60,
+     "census_household_num": 73,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 73"
+    }
+   ]
+  }
+ ]
+}

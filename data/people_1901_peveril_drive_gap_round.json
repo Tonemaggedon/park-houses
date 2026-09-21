@@ -1,0 +1,59 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "id": 2501,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "over stables Peveril Drive (the page gives \"over stables\")",
+     "relationship": "Head",
+     "occupation_at_census": "Coachman | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 47,
+     "census_household_num": 49,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 49"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry",
+   "last_name": "Langsdale",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "over stables Peveril Drive (the page gives \"over stables\")",
+     "relationship": "Son",
+     "occupation_at_census": "Machine minder [?] | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 21,
+     "census_household_num": 49,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 49"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Langsdale",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "over stables Peveril Drive (the page gives \"over stables\")",
+     "relationship": "Son",
+     "occupation_at_census": "Page boy | Worker",
+     "birth_place": "Nottingham",
+     "age_at_census": 15,
+     "census_household_num": 49,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 49"
+    }
+   ]
+  }
+ ]
+}

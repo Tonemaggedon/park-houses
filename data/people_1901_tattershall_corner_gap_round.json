@@ -1,0 +1,116 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "id": 3564,
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Daur",
+     "occupation_at_census": "No occupation",
+     "birth_place": "Nottingham",
+     "age_at_census": 39,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane Cullen",
+   "last_name": "Reed",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Visitor",
+     "occupation_at_census": "Sick nurse | Own account",
+     "birth_place": "London",
+     "age_at_census": 41,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Simmins",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Wollaton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Serv",
+     "occupation_at_census": "Cook, domestic | Worker",
+     "birth_place": "Wollaton, Nottinghamshire",
+     "age_at_census": 21,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  },
+  {
+   "first_name": "Judith",
+   "last_name": "Simmins",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Wollaton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Serv",
+     "occupation_at_census": "Sick nurse | Own account",
+     "birth_place": "Wollaton, Nottinghamshire",
+     "age_at_census": 34,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline",
+   "last_name": "Goodwin",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Aslockton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Serv",
+     "occupation_at_census": "Parlourmaid, domestic | Worker",
+     "birth_place": "Aslockton, Nottinghamshire",
+     "age_at_census": 18,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Cox",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Linby",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Tattershall Corner",
+     "relationship": "Serv",
+     "occupation_at_census": "Housemaid, domestic | Worker",
+     "birth_place": "Linby",
+     "age_at_census": 15,
+     "census_household_num": 112,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 112"
+    }
+   ]
+  }
+ ]
+}

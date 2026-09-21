@@ -1,0 +1,117 @@
+{
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "Frederick",
+   "last_name": "Woods",
+   "born_year": 1860,
+   "match_born_year": true,
+   "born_place": "Swaffham, Norfolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Head",
+     "occupation_at_census": "Assistant secretary | Worker",
+     "birth_place": "Swaffham, Norfolk",
+     "age_at_census": 41,
+     "census_household_num": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 77"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Woods",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Wife",
+     "birth_place": "Nottingham",
+     "age_at_census": 38,
+     "census_household_num": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 77"
+    }
+   ]
+  },
+  {
+   "first_name": "Amy",
+   "last_name": "Rainbow",
+   "born_year": 1863,
+   "match_born_year": true,
+   "born_place": "Barton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Visitor",
+     "birth_place": "Barton, Nottinghamshire",
+     "age_at_census": 38,
+     "census_household_num": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 77"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Rainbow",
+   "born_year": 1895,
+   "match_born_year": true,
+   "born_place": "Yarmouth, Norfolk",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Visitor",
+     "birth_place": "Yarmouth, Norfolk",
+     "age_at_census": 6,
+     "census_household_num": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 77"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Jephson",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Woodborough, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Serv",
+     "occupation_at_census": "General domestic | Worker",
+     "birth_place": "Woodborough, Nottinghamshire",
+     "age_at_census": 33,
+     "census_household_num": 77,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 77"
+    }
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Stubbins",
+   "born_year": 1854,
+   "match_born_year": true,
+   "born_place": "Cuckney, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1901,
+     "unresolved_address": "Park Row",
+     "relationship": "Head",
+     "occupation_at_census": "Corporation porter | Worker",
+     "birth_place": "Cuckney, Nottinghamshire",
+     "age_at_census": 47,
+     "census_household_num": 78,
+     "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 78"
+    }
+   ]
+  }
+ ]
+}
