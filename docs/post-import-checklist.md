@@ -148,6 +148,37 @@ That is what happened on the 1901 gap round. The record held **Clark**, **Lindey
 fuzzed, census short forms expanded - or the import manufactures the very duplicates the next
 stage then has to find.
 
+**5.5b - the two faults that made twenty duplicates on the 1911 round.** Both are properties of the
+*file*, not of the record, so both are preventable before you press Import.
+
+**The file holds a short form the record no longer holds.** The record was expanded to full
+forenames; the files were not. *Elizth Burrows* in the file never meets *Elizabeth Burrows* in the
+record, and a second woman is made. Eight came this way in one run.
+
+`python3 tools_expand_import_files.py` reports every short form still sitting in a file, and
+`--write` expands the ones it is safe to expand. **It deliberately holds back any name where the
+record itself holds only the short form** - expanding the file there would cause the duplicate
+rather than prevent it. Those want the record expanded first, from **Research -> Forename sex
+review -> Expand short forms**, and the checker run again afterwards.
+
+**The file carries `match_born_year` and the year is a year out.** `match_born_year: true` requires
+the birth year to agree **exactly**, and a birth year worked back from a census age moves by a year
+or two between returns - a man 42 in one April and 44 in the next gives 1869 and 1867. The record
+said Herbert Bradley was born 1848 and the file said 1849, so the import made a second Herbert
+Bradley **in the same house in the same year**. Same for William Henry Foster, Margaret Lewis and
+William Bowers.
+
+**The fix is to bind by number.** Where the record already holds somebody, put their `id` in the
+file instead of leaning on `match_born_year`; an id survives both a wobbling birth year and a
+spelling the record is about to correct. Check the household against the record *before* writing
+the file, and bind every person it already has - the four 1911 files written this way produced
+**no duplicates at all**, against twenty from the three written without.
+
+**And check the binding both ways.** Binding on a name alone is how the wrong person gets a
+stranger's census row: the record's **Robert Hutchinson** was born 1831, not 1879, and its **Emma
+Holmes** is ten years from the wife of the house that named her. A name match with no birth-year
+check would have hung a 1911 household on both of them.
+
 **5.6 — the ones no tool can see.** Both the tools above bucket on the surname *letter for letter*,
 so a duplicate created by two spellings of a surname — Crendson beside Crewdson, Flersheim beside
 Hersheim, Throsheim beside Frosheim, Slack beside Black — is invisible to them. Ask Claude to run
