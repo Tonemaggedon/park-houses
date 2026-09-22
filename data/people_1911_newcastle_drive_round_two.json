@@ -1,5 +1,5 @@
 {
- "note": "1911 household schedules for Newcastle Drive, read from the images supplied by A. Hagues. Houses: 17 (7), 15 (4), 13 (4), 11 (4). These are the gap-report houses: the record held 1901 and 1921 for each and nothing between. Nine people are bound by number because the record already holds them, three of those under a different spelling - Albert V. Bromley is Albert Nelson, William P. Payne is William Percy, Ann Thurman signs as Annie.",
+ "note": "1911 household schedules for Newcastle Drive, read from the images supplied by A. Hagues. Houses: 17 (7), 15 (4), 13 (4), 11 (4), 21 (4). These are the gap-report houses: the record held 1901 and 1921 for each and nothing between. Nine people are bound by number because the record already holds them, three of those under a different spelling - Albert V. Bromley is Albert Nelson, William P. Payne is William Percy, Ann Thurman signs as Annie.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -348,6 +348,85 @@
      "marital_status": "Single",
      "occupation_at_census": "Housemaid, domestic",
      "birth_place": "Gainsborough, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Stuart",
+   "last_name": "Hawthorn",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1868,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 218,
+     "relationship": "Head",
+     "age_at_census": 43,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Lace manufacturer | employer",
+     "birth_place": "Nottingham"
+    }
+   ]
+  },
+  {
+   "first_name": "Ida",
+   "last_name": "Hawthorn",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1874,
+   "born_place": "Leicester",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 218,
+     "relationship": "Wife",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Leicester"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Kate",
+   "last_name": "Champney",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1875,
+   "born_place": "Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 218,
+     "relationship": "Servant",
+     "age_at_census": 36,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Rose",
+   "last_name": "Turpin",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1891,
+   "born_place": "Staffordshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 218,
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Staffordshire"
     }
    ]
   }
