@@ -88,6 +88,30 @@ numbers, the head's name and the postal address. **Always look at the cover.** T
 household behind 5 Newcastle Drive could not be placed at all from the form itself; the cover said
 *Back of 5 Newcastle Drive*, written over a struck-through *Huntingdon Drive*.
 
+### Always write down the schedule number
+
+It is printed in the **top right corner of every schedule**, and it is the only thing that puts the
+households of a piece in the order the enumerator walked them. **Write it down every time**, even
+when the address is perfectly clear - it costs nothing at the time and cannot be recovered later
+without opening every image again.
+
+**Why it matters:** a household whose cover gives no number, or names a house the property list
+does not hold, can still be placed by its *neighbours*. Schedule 71 and schedule 73 are the houses
+either side of schedule 72 on the ground. Without the numbers, an unplaceable household stays
+unplaceable; with them, it is boxed in between two known addresses.
+
+The order the images are worked in is **not** a substitute. It records backtracking - going back
+for a house that was skipped, or fetching one out of turn - and in the Park Valley and Tattershall
+Drive rounds it did exactly that.
+
+### And the enumerator's summary book places everything at once
+
+The schedules are the return; the **summary book** for the same piece lists every schedule in order
+with its address. One document places every household the covers could not - which on the 1911
+round so far means Goddards Lodge, three unnumbered Tattershall Drive houses, a Park Valley house
+given as 12 or 13, Clare Valley Lodge, Elmsdale and 5 North Road. **Fetch the summary book before
+transcribing a long run**, not after.
+
 ---
 
 ## Reading an enumerator's book, 1841-1901
