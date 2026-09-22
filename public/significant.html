@@ -271,6 +271,7 @@ async function loadThin() {
     return `<div style="padding:8px 0;border-bottom:1px solid var(--rule)">
       <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
         <a href="/people/${r.id}" style="font-weight:600">${esc(r.name || 'unnamed')}</a>
+        ${r.also ? `<span class="dates">${esc(r.also)}</span>` : ''}
         <span class="dates">${esc(life)}</span>
         ${r.significant ? '<span class="dates" style="color:#2a6a4a">★ featured</span>' : ''}
         <span style="margin-left:auto;font-size:.8rem">${state}</span>

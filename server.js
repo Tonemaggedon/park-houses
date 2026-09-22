@@ -2766,7 +2766,7 @@ const SIGNAL_SQL = `
   CASE WHEN COALESCE(p.title,'') <> '' THEN 1 ELSE 0 END
 + CASE WHEN COALESCE(p.postnominals,'') <> '' THEN 1 ELSE 0 END
 + CASE WHEN COALESCE(p.wikipedia_url,'') <> '' THEN 1 ELSE 0 END
-+ CASE WHEN p.bio ~* '(knight|baronet|lord mayor|high sheriff|deputy lieutenant|\\mM\\.?P\\.?\\M|O\\.?B\\.?E|M\\.?B\\.?E|C\\.?B\\.?E|K\\.?B\\.?E|C\\.?M\\.?G|D\\.?S\\.?O|alderman|mayor of)' THEN 1 ELSE 0 END
++ CASE WHEN p.bio ~* '(knight|baronet|lord mayor|high sheriff|deputy lieutenant|\\mM\\.?P\\.?\\M|\\mO\\.?B\\.?E\\M|\\mM\\.?B\\.?E\\M|\\mC\\.?B\\.?E\\M|\\mK\\.?B\\.?E\\M|\\mC\\.?M\\.?G\\M|\\mD\\.?S\\.?O\\M|alderman|mayor of)' THEN 1 ELSE 0 END
 + CASE WHEN COALESCE(p.known_as,'') ~* '(^|\\s)(sir|dame|lord|lady|rev|col|capt|major|hon)\\M' THEN 1 ELSE 0 END`;
 
 function signalsOf(p) {
@@ -2775,7 +2775,10 @@ function signalsOf(p) {
   if ((p.postnominals || '').trim()) out.push('has post-nominals');
   if ((p.wikipedia_url || '').trim()) out.push('has a Wikipedia article');
   const bio = p.bio || '';
-  const m = bio.match(/(knight\w*|baronet|Lord Mayor|High Sheriff|Deputy Lieutenant|O\.?B\.?E|M\.?B\.?E|C\.?B\.?E|K\.?B\.?E|C\.?M\.?G|D\.?S\.?O|alderman|Mayor of)/i);
+  // The acronyms need word boundaries. Without them O\.?B\.?E matches the "obe"
+  // in October and in Robert, and M\.?B\.?E the "embe" in November, September and
+  // December - which put an honour against 80 people who never had one.
+  const m = bio.match(/(knight\w*|baronet|Lord Mayor|High Sheriff|Deputy Lieutenant|\b(?:O\.?B\.?E|M\.?B\.?E|C\.?B\.?E|K\.?B\.?E|C\.?M\.?G|D\.?S\.?O)\b|alderman|Mayor of)/i);
   if (m) out.push('biography mentions “' + m[1] + '”');
   if (/(^|\s)(Sir|Dame|Lord|Lady|Rev|Col|Capt|Major|Hon)\b/.test(p.known_as || '')) out.push('honorific in the name');
   if (p.property_count >= 3) out.push('linked to ' + p.property_count + ' properties');
@@ -2850,8 +2853,13 @@ app.get('/api/significant/thin', async (req, res) => {
        LIMIT 120`, [FULL]);
     res.json(r.rows.map(p => ({
       id: p.id,
-      name: [p.title, p.known_as || `${p.first_name || ''} ${p.last_name || ''}`.trim(), p.postnominals]
-              .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(),
+      name: (p.known_as && p.known_as.trim())
+              ? p.known_as.trim()
+              : [p.title, `${p.first_name || ''} ${p.last_name || ''}`.trim(), p.postnominals]
+                  .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(),
+      also: (p.known_as && p.known_as.trim()
+             && p.known_as.trim() !== `${p.first_name || ''} ${p.last_name || ''}`.trim())
+              ? `${p.first_name || ''} ${p.last_name || ''}`.trim() : null,
       born_year: p.born_year, died_year: p.died_year,
       bio_len: Number(p.bio_len), significant: !!p.significant,
       note: p.significance_note || null,
