@@ -6139,6 +6139,18 @@ app.post('/api/census-unoccupied', requireAdmin, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// DELETE /api/census-unoccupied — take the mark off again, for when a return
+// turns up after all. Without this the mark is one-way and a mistake is stuck.
+app.delete('/api/census-unoccupied', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'DB not available' });
+  try {
+    const { property_id, census_year } = req.body;
+    await db.query('DELETE FROM census_unoccupied WHERE property_id=$1 AND census_year=$2',
+                   [property_id, census_year]);
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /census page
 app.get('/census', (req, res) => res.sendFile(path.join(__dirname,'public','census.html')));
 app.get('/census/unresolved', (req, res) => res.sendFile(path.join(__dirname,'public','census-unresolved.html')));

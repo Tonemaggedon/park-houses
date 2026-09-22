@@ -1113,6 +1113,208 @@
     "persons": 5
    },
    "note": "Thirteen rooms, five people, and a bachelor of 66 keeping house with his unmarried niece and three servants - the same arrangement the record holds here in 1891 and 1901.\n\n**The Bradleys of Park Terrace are worth seeing together.** Charles at number 3 in 1891, Herbert a boarder at number 10 in 1891 and head of number 3 from 1901 to 1921, Alfred here at Broxtowe House across three censuses. Three men born 1842, 1846 and 1848, all in Nottingham, all on one short street. Almost certainly brothers, and nothing in the record says so.\n\nNone of the three servants is in the record, and none was born within forty miles."
+  },
+  {
+   "street": "Park Valley",
+   "house": "1",
+   "property_id": 258,
+   "rooms": 13,
+   "postal_address_on_cover": "1 Park Valley, Nottingham",
+   "signed_by": "Arundel Preston",
+   "people": [
+    {
+     "name": "Arundel Preston",
+     "relation": "Head",
+     "sex": "F [see note]",
+     "age": 73,
+     "marital": "Widow",
+     "occupation": "None",
+     "born": "Tisbury, Wiltshire",
+     "record_id": 4027,
+     "note": "**The sex on this schedule contradicts the record.** The age 73 is written in the FEMALES column and the condition is *widow*. But #4027 Arundel Preston is a man - head of this same house in 1901 at 63, a widower, \"Gentleman\" - and 63 to 73 is an exact ten years. Either the age went into the wrong column and *widow* is loose for widower, or his widow of the same name heads the house and he died in the decade. The family uses Arundel for a woman as well: his daughter is Arundel Aplin. Not resolved here."
+    },
+    {
+     "name": "Arundel Aplin",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 42,
+     "marital": "Widow",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Bracher Preston",
+     "relation": "Son",
+     "sex": "M",
+     "age": 41,
+     "marital": "Single",
+     "occupation": "Private estate agent | Worker",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4030
+    },
+    {
+     "name": "Alys Arundel Aplin",
+     "relation": "Granddaughter",
+     "sex": "F",
+     "age": 11,
+     "marital": "Single",
+     "occupation": "School",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Alfreda Althea Aplin",
+     "relation": "Granddaughter",
+     "sex": "F",
+     "age": 9,
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Sarah Jane Franklin",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 43,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Fenton, Lincolnshire"
+    },
+    {
+     "name": "Lucy Hall",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Scarrington, Nottinghamshire"
+    },
+    {
+     "name": "Elizabeth Reynolds",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Norwell, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 7,
+    "persons": 8
+   },
+   "note": "**Tisbury, Wiltshire** - the 1901 round gave only *Wiltshire*, so the town is new.\n\n**And a generation the record has never held.** Arundel Aplin, a widowed daughter of 42, is here with two granddaughters, Alys Arundel and Alfreda Althea, 11 and 9. No Aplin is in the record at all. A widowed daughter come home with her children, in a house of thirteen rooms holding one man and seven women."
+  },
+  {
+   "street": "Park Valley",
+   "house": "3",
+   "property_id": 259,
+   "rooms": 13,
+   "postal_address_on_cover": "3 Park Valley, Nottingham",
+   "signed_by": "Walter Wadsworth",
+   "marriage": {
+    "person": "Elizabeth Christiana Wadsworth",
+    "years_married": 39,
+    "children_born_alive": 3,
+    "children_still_living": 2,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "Walter Wadsworth",
+     "relation": "Head",
+     "sex": "M",
+     "age": 69,
+     "marital": "Married",
+     "occupation": "Lace merchant | Employer",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 2041
+    },
+    {
+     "name": "Elizabeth Christiana Wadsworth",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 61,
+     "marital": "Married",
+     "born": "Daybrook, Nottinghamshire",
+     "record_id": 2042,
+     "note": "**The record spells her Christine**; her husband writes **Christiana** here in his own hand. Her birthplace is Daybrook in the record and on this schedule; my reading of the 1901 round gave Basford, a mile or so away."
+    },
+    {
+     "name": "Hope Wadsworth",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 33,
+     "marital": "Single",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4058
+    },
+    {
+     "name": "Florence Ann Steel",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 29,
+     "marital": "Married",
+     "occupation": "Housemaid, domestic",
+     "born": "Kirton Holme, Lincolnshire"
+    },
+    {
+     "name": "Annie Blackbourne",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 31,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Anwick, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 4,
+    "persons": 5
+   },
+   "note": "**Three children born, two still living, one died.** The record holds two - Hope, here at 33, and John, a mechanical engineer of 25 on the 1901 round and not at home now. The third never reached the record at all, and nothing but this return would have said there was one.\n\nMarried thirty-nine years, so about 1872. The Wadsworths are at 31 Cavendish Road East by 1921, so this is the middle of three addresses."
+  },
+  {
+   "street": "Park Valley",
+   "house": "4",
+   "property_id": 260,
+   "rooms": 8,
+   "postal_address_on_cover": "4 Park Valley, Nottingham",
+   "signed_by": "J. Meyrick",
+   "people": [
+    {
+     "name": "Julius Meyrick",
+     "relation": "Head",
+     "sex": "M",
+     "age": 70,
+     "marital": "Widower",
+     "occupation": "Retired merchant, commission",
+     "born": "Saxony",
+     "note": "**Born in Saxony and a naturalised British subject**, the year given but only partly legible - it reads as about 18-something. A third German-born householder on the estate in 1911, beside Runge at 10 Park Terrace and the Flersheims on Pelham Crescent."
+    },
+    {
+     "name": "Eleanor Mary Chapman",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 45,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Steeple, Essex"
+    },
+    {
+     "name": "Louisa Hucknall",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 35,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Woodborough, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "A widower of 70 alone with a cook and a housemaid in eight rooms. Nobody of this name is in the record. By 1921 the house is Charles Henry Vickers's, a lace manufacturer."
   }
  ]
 }

@@ -422,7 +422,8 @@ async function openCensus(propId, address) {
       <div class="unoccupied-notice">
         <span class="icon">🏠</span>
         This property was <strong>unoccupied</strong> at the time of the ${currentYear} census.
-        ${prop.unoccupied_notes ? `<br><br><em>${prop.unoccupied_notes}</em>` : ''}
+        ${prop.unoccupied_notes ? `<br><br><em>${esc(prop.unoccupied_notes)}</em>` : ''}
+        ${_isAdmin ? `<br><br><button onclick="setUnoccupied(${propId}, false)" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:6px 14px;cursor:pointer;font-size:0.8rem;font-family:inherit;color:#4a3a1a">Not unoccupied after all</button>` : ''}
       </div>`;
     return;
   }
@@ -433,6 +434,8 @@ async function openCensus(propId, address) {
       <div class="unoccupied-notice">
         <span class="icon">📋</span>
         No census record has been added for this property yet.
+        ${_isAdmin ? `<br><br><button onclick="setUnoccupied(${propId}, true)" style="background:#2f4d27;border:1px solid #2f4d27;border-radius:5px;padding:7px 16px;cursor:pointer;font-size:0.82rem;font-family:inherit;color:#f2ecd8">Nobody here on census night</button>
+        <div style="margin-top:8px;font-size:0.78rem;color:#8a7a5a">Use this only where the return itself says the house was empty — it is a different fact from not having looked yet.</div>` : ''}
       </div>`;
     return;
   }
@@ -491,8 +494,31 @@ fetch('/api/me').then(r=>r.json()).then(me => {
     document.getElementById('normFab').style.display = 'flex';
     _canImport = true;
   }
+  // Marking a house unoccupied is an admin action, so the button only appears
+  // for one. The endpoint checks again; this only decides what is drawn.
+  if (me && me.isAdmin) _isAdmin = true;
 }).catch(()=>{});
 let _canImport = false;
+let _isAdmin = false;
+
+// A house with no census record is not the same as a house with nobody in it,
+// and until now the record could not tell them apart: both showed as "no data".
+// An empty house on census night is a fact the return states, and it deserves
+// to be recorded as one.
+async function setUnoccupied(propId, unoccupied) {
+  const notes = unoccupied
+    ? (prompt('A note about why it was empty, if the return says (optional):', '') ?? '')
+    : '';
+  if (unoccupied === false && !confirm('Take the unoccupied mark off this house?')) return;
+  const r = await fetch('/api/census-unoccupied', {
+    method: unoccupied ? 'POST' : 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ property_id: propId, census_year: currentYear, notes })
+  }).then(x => x.json()).catch(e => ({ error: String(e) }));
+  if (r && r.error) { alert('Could not save: ' + r.error); return; }
+  closeModal();
+  loadYear(currentYear);
+}
 </script>
 
 <!-- Import census FAB buttons -->

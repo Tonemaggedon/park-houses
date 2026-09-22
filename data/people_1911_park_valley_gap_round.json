@@ -1,0 +1,306 @@
+{
+ "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 4027,
+   "first_name": "Arundel",
+   "last_name": "Preston",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Head",
+     "age_at_census": 73,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "occupation_at_census": "None",
+     "birth_place": "Tisbury, Wiltshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Arundel",
+   "last_name": "Aplin",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Daughter",
+     "age_at_census": 42,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4030,
+   "first_name": "Bracher",
+   "last_name": "Preston",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Son",
+     "age_at_census": 41,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Private estate agent",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Alys Arundel",
+   "last_name": "Aplin",
+   "sex": "F",
+   "born_year": 1900,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Granddaughter",
+     "age_at_census": 11,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "School",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Alfreda Althea",
+   "last_name": "Aplin",
+   "sex": "F",
+   "born_year": 1902,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Granddaughter",
+     "age_at_census": 9,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Jane",
+   "last_name": "Franklin",
+   "sex": "F",
+   "born_year": 1868,
+   "match_born_year": true,
+   "born_place": "Fenton, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Servant",
+     "age_at_census": 43,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Fenton, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Hall",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Scarrington, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Scarrington, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Reynolds",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Norwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 258,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Norwell, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 2041,
+   "first_name": "Walter",
+   "last_name": "Wadsworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 259,
+     "relationship": "Head",
+     "age_at_census": 69,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Lace merchant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 2042,
+   "first_name": "Elizabeth Christine",
+   "last_name": "Wadsworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 259,
+     "relationship": "Wife",
+     "age_at_census": 61,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Daybrook, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4058,
+   "first_name": "Hope",
+   "last_name": "Wadsworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 259,
+     "relationship": "Daughter",
+     "age_at_census": 33,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence Ann",
+   "last_name": "Steel",
+   "sex": "F",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Kirton Holme, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 259,
+     "relationship": "Servant",
+     "age_at_census": 29,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Kirton Holme, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Blackbourne",
+   "sex": "F",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Anwick, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 259,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Anwick, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Julius",
+   "last_name": "Meyrick",
+   "sex": "M",
+   "born_year": 1841,
+   "match_born_year": true,
+   "born_place": "Saxony",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 260,
+     "relationship": "Head",
+     "age_at_census": 70,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widower",
+     "occupation_at_census": "Retired merchant, commission",
+     "birth_place": "Saxony"
+    }
+   ]
+  },
+  {
+   "first_name": "Eleanor Mary",
+   "last_name": "Chapman",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Steeple, Essex",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 260,
+     "relationship": "Servant",
+     "age_at_census": 45,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Steeple, Essex"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Hucknall",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Woodborough, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 260,
+     "relationship": "Servant",
+     "age_at_census": 35,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Woodborough, Nottinghamshire"
+    }
+   ]
+  }
+ ]
+}
