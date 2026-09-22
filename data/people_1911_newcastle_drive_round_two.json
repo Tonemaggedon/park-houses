@@ -1,0 +1,355 @@
+{
+ "note": "1911 household schedules for Newcastle Drive, read from the images supplied by A. Hagues. Houses: 17 (7), 15 (4), 13 (4), 11 (4). These are the gap-report houses: the record held 1901 and 1921 for each and nothing between. Nine people are bound by number because the record already holds them, three of those under a different spelling - Albert V. Bromley is Albert Nelson, William P. Payne is William Percy, Ann Thurman signs as Annie.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 4722,
+   "first_name": "William P.",
+   "last_name": "Payne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Head",
+     "age_at_census": 70,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widower",
+     "occupation_at_census": "Retired rating surveyor",
+     "birth_place": "St Helier, Jersey"
+    }
+   ]
+  },
+  {
+   "id": 2174,
+   "first_name": "Percy Marriott",
+   "last_name": "Payne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Son",
+     "age_at_census": 41,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Rating surveyor and civil engineer | railway company",
+     "birth_place": "Hammersmith, London"
+    }
+   ]
+  },
+  {
+   "id": 2175,
+   "first_name": "Maud Madeline",
+   "last_name": "Payne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Son's wife",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Westminster, London"
+    }
+   ]
+  },
+  {
+   "id": 4725,
+   "first_name": "Percy C. L.",
+   "last_name": "Payne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Grandchild",
+     "age_at_census": 10,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "occupation_at_census": "School",
+     "birth_place": "Nottingham"
+    }
+   ]
+  },
+  {
+   "first_name": "Sonie Elizabeth",
+   "last_name": "Campbell",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1855,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Servant",
+     "age_at_census": 56,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "London"
+    }
+   ]
+  },
+  {
+   "first_name": "Lily",
+   "last_name": "Stevenson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1886,
+   "born_place": "Castle Gresley, Burton on Trent",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Castle Gresley, Burton on Trent"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriet Selina",
+   "last_name": "Hiscock",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1874,
+   "born_place": "Aldermaston, Berkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 216,
+     "relationship": "Servant",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Aldermaston, Berkshire"
+    }
+   ]
+  },
+  {
+   "id": 4717,
+   "first_name": "Albert V.",
+   "last_name": "Bromley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 215,
+     "relationship": "Head",
+     "age_at_census": 60,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Architect and surveyor | own account",
+     "birth_place": "Stafford"
+    }
+   ]
+  },
+  {
+   "id": 4718,
+   "first_name": "Elizabeth",
+   "last_name": "Bromley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 215,
+     "relationship": "Wife",
+     "age_at_census": 58,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Lincoln"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Hawkes",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1878,
+   "born_place": "Apley, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 215,
+     "relationship": "Servant",
+     "age_at_census": 33,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Apley, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Hilda Jane",
+   "last_name": "Pitchen",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Carlton, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 215,
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Carlton, Leicestershire"
+    }
+   ]
+  },
+  {
+   "id": 3558,
+   "first_name": "George Balderston",
+   "last_name": "Kidd",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 214,
+     "relationship": "Head",
+     "age_at_census": 73,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widower",
+     "occupation_at_census": "Auditor of railway companies | own account",
+     "birth_place": "Sheffield, Yorkshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel",
+   "last_name": "Durand",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1871,
+   "born_place": "Chilwell, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 214,
+     "relationship": "Visitor",
+     "age_at_census": 40,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "birth_place": "Chilwell, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances May",
+   "last_name": "Genth",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1890,
+   "born_place": "Pinxton, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 214,
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Pinxton, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ellen",
+   "last_name": "Else",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1890,
+   "born_place": "Barnby on Trent, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 214,
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Barnby on Trent, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 2164,
+   "first_name": "Joseph Roland",
+   "last_name": "Topham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 213,
+     "relationship": "Head",
+     "age_at_census": 43,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Lace and plain net manufacturer | employer",
+     "birth_place": "Nottingham"
+    }
+   ]
+  },
+  {
+   "first_name": "Rosalie",
+   "last_name": "Cunninghame",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 213,
+     "relationship": "Housekeeper",
+     "age_at_census": 42,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housekeeper, domestic | worker",
+     "birth_place": "Derbyshire"
+    }
+   ]
+  },
+  {
+   "id": 4715,
+   "first_name": "Ann",
+   "last_name": "Thurman",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 213,
+     "relationship": "Servant",
+     "age_at_census": 40,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Wilford, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Brett",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1880,
+   "born_place": "Gainsborough, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 213,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Gainsborough, Lincolnshire"
+    }
+   ]
+  }
+ ]
+}
