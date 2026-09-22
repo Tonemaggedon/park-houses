@@ -2541,8 +2541,8 @@
   },
   {
    "street": "Tattershall Drive",
-   "house": "St Ives",
-   "property_id": null,
+   "house": "4 (St Ives)",
+   "property_id": 309,
    "rooms": 11,
    "postal_address_on_cover": "St Ives, Tattershall Drive, Nottingham",
    "signed_by": "W. V. Harnett",
@@ -2612,7 +2612,338 @@
     "females": 5,
     "persons": 6
    },
-   "note": "**THE POSTMASTER OF NOTTINGHAM.** William Vincent Harnett, 62, gives his occupation in those words and his employer as the Post Office - a public office of real standing in the town, and nobody of the name is in the record.\n\n**His career is written in his children's birthplaces.** Born at Blackfriars, married at 29 years to a woman born in St John's Wood; eldest daughter born at Richmond in Surrey, second at Hammersmith, and the family in Nottingham by 1911. A Post Office man moved where the service sent him, and the moves are datable from the girls' ages.\n\n**Three children born, two still living.** The one who died is not otherwise traceable.\n\n**ST IVES IS NOT IN THE PROPERTY LIST EITHER.** The record's Tattershall Drive holds 1 to 5, 17a, Carnoustie Lodge and Ellington House. No St Ives. **This is the third house named on a 1911 cover that the property record does not have** - after Clare Valley Lodge and Elmsdale, and beside Melbrook House, which turned out to be number 7 Park Valley under a name. Not filed. See [[clare-valley-missing-houses]]."
+   "note": "**THE POSTMASTER OF NOTTINGHAM.** William Vincent Harnett, 62, gives his occupation in those words and his employer as the Post Office - a public office of real standing in the town, and nobody of the name is in the record.\n\n**His career is written in his children's birthplaces.** Born at Blackfriars, married at 29 years to a woman born in St John's Wood; eldest daughter born at Richmond in Surrey, second at Hammersmith, and the family in Nottingham by 1911. A Post Office man moved where the service sent him, and the moves are datable from the girls' ages.\n\n**Three children born, two still living.** The one who died is not otherwise traceable.\n\n**St Ives is 4 Tattershall Drive** - #309, confirmed by A. Hagues. The record holds the name already, in the property's history text, and Dougal de Havilland's Park Map labels the plot **4StIves**, which is how T C Hine was accepted as its architect. See [[house-names-live-in-prose]]."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "2 (Lynwood)",
+   "property_id": 307,
+   "rooms": 9,
+   "postal_address_on_cover": "\"Lynwood\" Tattershall Drive",
+   "signed_by": "Janet Griggs",
+   "people": [
+    {
+     "name": "Janet Griggs",
+     "relation": "Head",
+     "sex": "F",
+     "age": 67,
+     "marital": "Widow",
+     "occupation": "Private means",
+     "born": "Dulwich, Surrey"
+    },
+    {
+     "name": "Martha Stubbs",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 30,
+     "marital": "Single",
+     "occupation": "Parlourmaid, domestic",
+     "born": "Shottle, Derbyshire",
+     "note": "surname hard to read - Stubbs or Stubber"
+    },
+    {
+     "name": "Fanny Johnson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Beverley, Yorkshire"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 3,
+    "persons": 3
+   },
+   "note": "**A house of three women and no men at all** - a widow of 67 on private means and her two servants. One of very few all-female households in the 1911 round.\n\n**Lynwood is 2 Tattershall Drive** - #307, confirmed by A. Hagues, and the record already carries the name in the property's history text. The same entry suggests **Lawrence Bright, the architect of much of Huntingdon Drive, may himself have lived here c1900-1910** - and this schedule says he did not, or at least not in April 1911. Janet Griggs is not in the record.\n\nSee [[house-names-live-in-prose]]."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "3",
+   "property_id": 308,
+   "rooms": 10,
+   "postal_address_on_cover": "3 Tattershall Drive",
+   "signed_by": "Robt Hutchinson",
+   "marriage": {
+    "person": "Joyce Hutchinson",
+    "years_married": "under one",
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Robert Hutchinson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 32,
+     "marital": "Married",
+     "occupation": "Corn miller | employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Joyce Hutchinson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 22,
+     "marital": "Married",
+     "born": "Reading, Berkshire"
+    },
+    {
+     "name": "Ellen Capps",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 41,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Kineton, Warwickshire"
+    },
+    {
+     "name": "Sarah Capps",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 37,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Kineton, Warwickshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**Newly married** - the marriage column reads *under one year*, so Robert Hutchinson, a corn miller employing others, and Joyce, ten years his junior and born at Reading, had been married a matter of months on census night.\n\n**The two servants are sisters.** Ellen Capps, 41, cook, and Sarah Capps, 37, housemaid, both born at Kineton in Warwickshire - a village 60 miles off, which two sisters reached together. **No Capps of any kind is in the record**, and a pair arriving in service as a pair is worth noticing: it usually means a place got through family rather than an agency.\n\n**Twelve Hutchinsons are already in the record and none of them is this Robert** - the one Robert Hutchinson held, #3172, was born 1831."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "5",
+   "property_id": 310,
+   "rooms": 11,
+   "postal_address_on_cover": "5 Tattershall Drive, Nottingham",
+   "signed_by": "A. R. Henderson",
+   "marriage": {
+    "person": "Jean Boyd Henderson",
+    "years_married": 19,
+    "children_born_alive": 4,
+    "children_still_living": 4,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Alexander Roy Henderson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 48,
+     "marital": "Married",
+     "occupation": "Congregational church minister",
+     "born": "King Edward, Aberdeenshire"
+    },
+    {
+     "name": "Jean Boyd Henderson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 43,
+     "marital": "Married",
+     "born": "Campbeltown, Argyll"
+    },
+    {
+     "name": "Muriel Henderson",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 17,
+     "marital": "Single",
+     "occupation": "Student",
+     "born": "Montrose, Forfarshire"
+    },
+    {
+     "name": "Dorothy Henderson",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "School",
+     "born": "Edinburgh"
+    },
+    {
+     "name": "Roy Galbraith Henderson",
+     "relation": "Son",
+     "sex": "M",
+     "age": 11,
+     "marital": "Single",
+     "occupation": "School",
+     "born": "Edinburgh"
+    },
+    {
+     "name": "Kenneth Harvey Henderson",
+     "relation": "Son",
+     "sex": "M",
+     "age": 4,
+     "marital": "Single",
+     "born": "Nottingham"
+    }
+   ],
+   "totals": {
+    "males": 3,
+    "females": 3,
+    "persons": 6
+   },
+   "note": "**ROY HENDERSON THE BARITONE, AGED 11, AT HOME.** The record's own description of #310 already says the house *was once occupied by Roy Henderson (1899-2000), popular English baritone in the 1920s, 30s and 40s* - but held no evidence for it and not one member of the family. **This schedule is that evidence**: Roy Galbraith Henderson, son, 11, at school, born Edinburgh, in his father's own hand. See [[roy-henderson-baritone-at-5-tattershall]].\n\n**His father is the reason the family is in Nottingham.** Alexander Roy Henderson, 48, Congregational church minister, born at King Edward in Aberdeenshire.\n\n**The children's birthplaces date every move.** Married 19 years; eldest born Montrose, the next two Edinburgh, the youngest Nottingham - so the family came south between Roy's birth in 1899 and Kenneth's in 1906 or 1907.\n\n**Four children born, four living** - no loss in this house, which is uncommon in the round.\n\n**The whole household is new.** The record holds one Henderson, Caroline Hannah, and she is not of this family."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "Goddards Lodge",
+   "property_id": null,
+   "rooms": 5,
+   "schedule_number": 72,
+   "postal_address_on_cover": "Goddards Lodge, Tattershall Drive, The Park",
+   "signed_by": "John Newham",
+   "marriage": {
+    "person": "Mary Jane Newham",
+    "years_married": 22,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Newham",
+     "relation": "Head",
+     "sex": "M",
+     "age": 44,
+     "marital": "Married",
+     "occupation": "Coachman, domestic | worker",
+     "born": "Castle Donington, Leicestershire"
+    },
+    {
+     "name": "Mary Jane Newham",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 39,
+     "marital": "Married",
+     "born": "New Basford, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 1,
+    "persons": 2
+   },
+   "note": "**A COACHMAN'S LODGE, AND IT NAMES THE FAMILY IT SERVED.** John Newham, 44, coachman, and his wife, in five rooms. The house is *Goddards Lodge* - and three weeks of transcription earlier in this round put **Emma Elizabeth Goddard, 65, at Elmsdale on Clare Valley**.\n\n**That pairing looks like the answer to a long-standing problem.** Arthur Lewis and his family sit unfiled for both 1891 and 1901 under *Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory)* - and nobody could tell which street the house was on, because the directory gave both. **If the house stands on Clare Valley and its lodge on Tattershall Drive, the directory was right twice.** The grounds run between the two roads, as they do at 2 and 4 Tattershall Drive, whose gardens reach Huntingdon Drive. Not proved, but it fits the ground.\n\n**Emma Elizabeth Goddard is already in the record**, #1951, born 1845, filed at property 63 in 1921 - so she is traceable, and the 1921 return may name the house.\n\n**Married 22 years and no children born at all** - unusual enough in this round to be worth a note.\n\n**Not filed.** See [[house-names-live-in-prose]]."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "(no number given)",
+   "property_id": null,
+   "rooms": 6,
+   "postal_address_on_cover": "Tattershall Drive, The Park, Nottingham",
+   "signed_by": "W. H. Holmes",
+   "marriage": {
+    "person": "Emma Holmes",
+    "years_married": 5,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "William Henry Holmes",
+     "relation": "Head",
+     "sex": "M",
+     "age": 41,
+     "marital": "Married",
+     "occupation": "Representative, maltsters, malt extract manufacturers and yeast merchants | worker",
+     "born": "Radford, Nottinghamshire"
+    },
+    {
+     "name": "Emma Holmes",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 34,
+     "marital": "Married",
+     "born": "Radford, Nottinghamshire"
+    },
+    {
+     "name": "William Holmes",
+     "relation": "Father",
+     "sex": "M",
+     "age": 68,
+     "marital": "Married",
+     "occupation": "Retired licensed victualler",
+     "born": "Radford, Nottinghamshire"
+    },
+    {
+     "name": "Sarah Ann Holmes",
+     "relation": "Mother",
+     "sex": "F",
+     "age": 70,
+     "marital": "Married",
+     "born": "Radford, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 2,
+    "persons": 4
+   },
+   "note": "**THE COVER GIVES NO NUMBER** - just *Tattershall Drive, The Park, Nottingham*. This one cannot be filed from the schedule alone, and wants the enumerator's address column. **Do not guess it**; the neighbours on either side in the enumerator's running order will settle it.\n\n**Two generations and the smallest house on the street so far** - six rooms, against nine, ten and eleven at Lynwood, 3 and 5. A man of 41 keeping his elderly parents, rather than a household with servants; there are none here.\n\n**All four were born at Radford**, and the family has not moved far.\n\n**Married 49 years, one child born alive, one still living** - and that one child is the head of the house. William and Sarah Ann Holmes had a single son in half a century of marriage, and were living with him at the end of it.\n\n**William Henry's trade is worth a look.** *Representative* to maltsters, malt extract manufacturers and yeast merchants - a commercial traveller in the brewing supply trade, and his father a retired licensed victualler. **The son sold to the trade his father had worked in.**\n\n**Not filed** - needs the number."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "(no number given)",
+   "property_id": null,
+   "rooms": 4,
+   "postal_address_on_cover": "Tattershall Drive, Nottingham",
+   "signed_by": "W. Jackson",
+   "marriage": {
+    "person": "Alice Mary Jackson",
+    "years_married": 7,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Walter William Jackson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 33,
+     "marital": "Married",
+     "occupation": "Barman, public house | worker",
+     "born": "Basford, Nottingham"
+    },
+    {
+     "name": "Alice Mary Jackson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 31,
+     "marital": "Married",
+     "born": "Ruddington, Nottingham"
+    },
+    {
+     "name": "Gladys Maud Jackson",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 5,
+     "born": "Ruddington, Nottingham"
+    },
+    {
+     "name": "George William Knott",
+     "relation": "Boarder",
+     "sex": "M",
+     "age": 57,
+     "marital": "Widower",
+     "occupation": "Piano maker | worker",
+     "born": "London"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 2,
+    "persons": 4
+   },
+   "note": "**FOUR ROOMS, A BARMAN AND A LODGER** - and nothing else in the 1911 round looks like it. Walter William Jackson works behind the bar of a public house; his wife and small daughter are with him; and they let a room to **George William Knott, 57, a widowed piano maker from London**.\n\n**This is a working household on a wealthy estate.** Every other Tattershall Drive schedule so far has nine, ten or eleven rooms and servants living in. This one has four rooms and takes in a boarder to help pay for them. **The Park held both, side by side, and the record should show that.**\n\n**A piano maker is an unusual trade for the record** and worth its own look - Nottingham had the trade, and a London-trained man of 57 boarding here had a working life behind him.\n\n**The cover gives no number** - the second Tattershall Drive schedule in a row that does not. See [[tattershall-drive-unnumbered-households]]. **Not filed.**"
   }
  ]
 }
