@@ -2339,6 +2339,280 @@
     "persons": 5
    },
    "note": "**A curate of St Mary's keeping house for his widowed mother and his younger brother.** Christopher Harold Weller is 31 and in holy orders at the town's principal church; his brother Frank Gilbert, 21, is a **colliery manager's pupil with the Butterley Company** - an apprenticeship into the Derbyshire coal and iron trade, and about as far from the pulpit as two brothers can get.\n\n**Their mother bore twelve children and buried two.** Edith Weller, widow, 59, born at Chesham: twelve born alive, ten still living. Two of her sons are in this house and the other eight children are elsewhere. Nothing but a 1911 return states a family of that size.\n\n**And the servant has eight children of her own, all living.** Annie Worthington, a widow of 50, in general service. Her marriage columns are filled in beside her mistress's, which is rare - a servant's answers are usually left blank - and the two women's lives sit side by side on the page: twelve children and a house of nine rooms, eight children and a place in it.\n\n**The visitor is a retired high school mistress** of Notting Hill High School, one of the Girls' Public Day School Trust's foundations, born at Camden Town. **She is not the novelist Rose Macaulay**, who was born in 1881 and would be thirty here; this Rose Adelaide was born about 1849. The names are close enough that somebody will one day assume otherwise, which is why it is written down.\n\n**The whole household is new to the record.** 2 Clare Valley holds nothing before 1921, when it is the Shepherds'."
+  },
+  {
+   "street": "Clare Valley",
+   "house": "4",
+   "property_id": 62,
+   "rooms": 9,
+   "postal_address_on_cover": "4 Clare Valley, The Park",
+   "signed_by": "Jessie Wilkins",
+   "already_in_the_record": true,
+   "marriage": {
+    "person": "Jessie Wilkins",
+    "children_born_alive": 4,
+    "children_still_living": 4,
+    "children_died": 0,
+    "note": "A widow, so the years-married column is left blank."
+   },
+   "people": [
+    {
+     "name": "Jessie Wilkins",
+     "relation": "Head",
+     "sex": "F",
+     "age": 41,
+     "marital": "Widow",
+     "occupation": "Private means",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1948
+    },
+    {
+     "name": "Joyce Wilkins",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "School",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 3344
+    },
+    {
+     "name": "Mary Wilkins",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 14,
+     "occupation": "School",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 3345
+    },
+    {
+     "name": "Margaret Wilkins",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 9,
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 3346
+    },
+    {
+     "name": "Ellen Mansfield",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 27,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Woodville, Staffordshire",
+     "record_id": 3347
+    },
+    {
+     "name": "Edith Mansfield",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Woodville, Staffordshire",
+     "record_id": 3348
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 6,
+    "persons": 6
+   },
+   "note": "**ALREADY IN THE RECORD** from the 1911 spreadsheet, and nothing here is new - but the schedule raises a question about the record's own Wilkins girls.\n\n**LAWRENCE WILKINS HAS DIED.** The record holds him here in 1901 as a clergyman of 39; his widow heads the house at 41. He died between 1901 and 1911.\n\n**Four children born, four still living** - and three are here. The fourth is **L. A. Wilkins, a son of 6 in 1901**, who would be 16 and is absent. Away at school is the likeliest reason.\n\n**But the two elder daughters may be in the record twice under different names.** 1901 gives **Eleanor born 1896** and **Jessie born 1897**; 1911 gives **Joyce born 1896** and **Mary born 1897**. Same house, same mother, same birth years, four separate records. Either the girls have forenames the two sources chose differently between, or one reading is wrong. The 1911 names are in their mother's own hand, which is the better authority. See [[wilkins-girls-named-twice]].\n\n**The two servants are sisters**, Ellen and Edith Mansfield, both from Woodville in Staffordshire - the second pair of sisters in service the 1911 round has turned up, after the Wharmbys at 16 Park Terrace."
+  },
+  {
+   "street": "Clare Valley",
+   "house": "Clare Valley Lodge",
+   "property_id": null,
+   "rooms": 14,
+   "postal_address_on_cover": "Clare Valley Lodge, The Park, Nottingham",
+   "signed_by": "Alfred James Cooper",
+   "marriage": {
+    "person": "Fanny Mabel Cooper",
+    "years_married": 29,
+    "children_born_alive": 3,
+    "children_still_living": 3,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Alfred James Cooper",
+     "relation": "Head",
+     "sex": "M",
+     "age": 59,
+     "marital": "Married",
+     "occupation": "Retired lace manufacturer",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Fanny Mabel Cooper",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 60,
+     "marital": "Married",
+     "born": "Dodderhope [?], Lincolnshire"
+    },
+    {
+     "name": "Constance Mary Cooper",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 28,
+     "marital": "Single",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "John Alfred Cooper",
+     "relation": "Son",
+     "sex": "M",
+     "age": 27,
+     "marital": "Single",
+     "occupation": "Bank clerk",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Cecil Davy Cooper",
+     "relation": "Son",
+     "sex": "M",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Chartered accountant",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Ellen Smedley",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 42,
+     "marital": "Married",
+     "occupation": "Cook, domestic",
+     "born": "Fiskerton, Nottinghamshire"
+    },
+    {
+     "name": "Ada Richardson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Nottingham, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 3,
+    "females": 4,
+    "persons": 7
+   },
+   "note": "**CLARE VALLEY LODGE IS NOT IN THE PROPERTY LIST, AND IT EXPLAINS AN UNFILED 1901 HOUSEHOLD.** The record's Clare Valley holds 1 to 5, 15, Grove House, Ribble Lodge, Springdale and The Spinney. There is no Lodge.\n\n**But the 1901 round already found one.** George Hill, a Baptist minister of 53, with his wife and six children, is parked unfiled under *Lodge, Clare Valley (no house of that name in the record)*. This schedule names the house outright, from the householder's own hand, ten years later. **The Lodge is real and the Hill household belongs to it.**\n\n**The house is not filed here either**, because naming a house is not the same as knowing which property it is - and the record has no property to file it to. It wants creating. See [[clare-valley-missing-houses]].\n\nFourteen rooms, seven people: a retired lace manufacturer, his wife, a daughter of 28 and two sons - a bank clerk and a chartered accountant, both still at home at 27 and 22. Twenty-nine years married, three children born, three living, and all three under this roof."
+  },
+  {
+   "street": "Clare Valley",
+   "house": "Elmsdale",
+   "property_id": null,
+   "rooms": 10,
+   "postal_address_on_cover": "Elmsdale, Clare Valley, Nottingham",
+   "signed_by": "Emma Elizabeth Goddard",
+   "people": [
+    {
+     "name": "Emma Elizabeth Goddard",
+     "relation": "Head",
+     "sex": "F",
+     "age": 65,
+     "marital": "Single",
+     "occupation": "Private means",
+     "born": "Andover, Hampshire"
+    },
+    {
+     "name": "Mary Brailsford",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Alderwasley [?], Derbyshire"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 2,
+    "persons": 2
+   },
+   "note": "**ELMSDALE IS NAMED ON THE COVER, AND THE RECORD HAS BEEN LOOKING FOR IT.** Arthur Lewis the iron merchant and his family sit unfiled in the record for both 1891 and 1901 under the address *Elmsdale (Clare Valley / Tattershall Drive, by Wright's Directory)* - a house the directory named and the property list does not hold. **This schedule puts Elmsdale on Clare Valley beyond argument**, in the householder's own hand.\n\n**By 1911 the Lewises have gone.** Emma Elizabeth Goddard, 65, single, on private means, keeps the house with one servant of 20 - two women in ten rooms, where a family of seven had been.\n\n**Not filed, because there is no property to file it to.** Elmsdale wants creating, and when it is, the Lewis households of 1891 and 1901 go to it as well. See [[clare-valley-missing-houses]]."
+  },
+  {
+   "street": "Tattershall Drive",
+   "house": "St Ives",
+   "property_id": null,
+   "rooms": 11,
+   "postal_address_on_cover": "St Ives, Tattershall Drive, Nottingham",
+   "signed_by": "W. V. Harnett",
+   "marriage": {
+    "person": "Frances Elizabeth Harnett",
+    "years_married": 29,
+    "children_born_alive": 3,
+    "children_still_living": 2,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "William Vincent Harnett",
+     "relation": "Head",
+     "sex": "M",
+     "age": 62,
+     "marital": "Married",
+     "occupation": "**Postmaster of Nottingham** | Post Office",
+     "born": "Blackfriars, London"
+    },
+    {
+     "name": "Frances Elizabeth Harnett",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 51,
+     "marital": "Married",
+     "born": "St John's Wood, London"
+    },
+    {
+     "name": "Dorothy Frances Harnett",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "born": "Richmond, Surrey"
+    },
+    {
+     "name": "Muriel Kathleen Harnett",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 23,
+     "marital": "Single",
+     "occupation": "Student",
+     "born": "Hammersmith, London"
+    },
+    {
+     "name": "Minnie Bates",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 45,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Hastings"
+    },
+    {
+     "name": "Frances Lizzie Keech",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Fosdyke, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 5,
+    "persons": 6
+   },
+   "note": "**THE POSTMASTER OF NOTTINGHAM.** William Vincent Harnett, 62, gives his occupation in those words and his employer as the Post Office - a public office of real standing in the town, and nobody of the name is in the record.\n\n**His career is written in his children's birthplaces.** Born at Blackfriars, married at 29 years to a woman born in St John's Wood; eldest daughter born at Richmond in Surrey, second at Hammersmith, and the family in Nottingham by 1911. A Post Office man moved where the service sent him, and the moves are datable from the girls' ages.\n\n**Three children born, two still living.** The one who died is not otherwise traceable.\n\n**ST IVES IS NOT IN THE PROPERTY LIST EITHER.** The record's Tattershall Drive holds 1 to 5, 17a, Carnoustie Lodge and Ellington House. No St Ives. **This is the third house named on a 1911 cover that the property record does not have** - after Clare Valley Lodge and Elmsdale, and beside Melbrook House, which turned out to be number 7 Park Valley under a name. Not filed. See [[clare-valley-missing-houses]]."
   }
  ]
 }
