@@ -1,5 +1,5 @@
 {
- "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.\n\n**Mary Enfield is bound to #1871, not #4853.** She is in the record twice - #1871 born 1842 from 1921, and #4853 born 1832, created by the 1901 gap round because I read her age there as 69. She is 69 on THIS schedule, ten years later, which agrees with #1871 and makes the 1901 reading almost certainly 59. The pair wants merging on the site.",
+ "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.\n\n**Mary Enfield is bound to #1871, not #4853.** She is in the record twice - #1871 born 1842 from 1921, and #4853 born 1832, created by the 1901 gap round because I read her age there as 69. She is 69 on THIS schedule, ten years later, which agrees with #1871 and makes the 1901 reading almost certainly 59. The pair wants merging on the site.\n\n**The Kohn household is NOT in this file.** Its schedule gives a Park Valley number the record has no property for - the street runs 1 to 11 and then 15, with no 12, 13 or 14. It is in the transcription only, until the house is settled.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -703,6 +703,243 @@
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
      "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4546,
+   "first_name": "Fredk J.",
+   "last_name": "Ashworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Head",
+     "age_at_census": 38,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Timber importer",
+     "birth_place": "Beeston, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4547,
+   "first_name": "Blanche I.",
+   "last_name": "Ashworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Wife",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Harold John Vincent",
+   "last_name": "Ashworth",
+   "sex": "M",
+   "born_year": 1903,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Son",
+     "age_at_census": 8,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4549,
+   "first_name": "Edith B. W.",
+   "last_name": "Ashworth",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Elaine Isabel",
+   "last_name": "Ashworth",
+   "sex": "F",
+   "born_year": 1906,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Margaret",
+   "last_name": "Langridge",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Codnor Park, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Servant, domestic",
+     "birth_place": "Codnor Park, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Agnes",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_year": 1869,
+   "match_born_year": true,
+   "born_place": "Pinxton, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Cook",
+     "age_at_census": 42,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Pinxton, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Jean",
+   "last_name": "Band",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Geneva, Switzerland",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 265,
+     "relationship": "Governess",
+     "age_at_census": 19,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Governess",
+     "birth_place": "Geneva, Switzerland"
+    }
+   ]
+  },
+  {
+   "id": 4055,
+   "first_name": "Sarah",
+   "last_name": "Dawson",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 267,
+     "relationship": "Head",
+     "age_at_census": 91,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 4828,
+   "first_name": "Arthur",
+   "last_name": "Dawson",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 267,
+     "relationship": "Grandson",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Manager, warp lace factory",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Leonard Leslie",
+   "last_name": "Dawson",
+   "sex": "M",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 267,
+     "relationship": "Grandson",
+     "age_at_census": 19,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Clerk to a chartered accountant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Eva May",
+   "last_name": "Roach",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "Leicester",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 267,
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Leicester"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha Annie",
+   "last_name": "Sheldon",
+   "sex": "F",
+   "born_year": 1888,
+   "match_born_year": true,
+   "born_place": "Cossall, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 267,
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Cossall, Nottinghamshire"
     }
    ]
   }

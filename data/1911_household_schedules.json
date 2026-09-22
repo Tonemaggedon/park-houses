@@ -1617,6 +1617,213 @@
    },
    "note": "**7 PARK VALLEY IS MELBROOK HOUSE.** The householder wrote *Melbrook House, Park* on the cover and A. Hagues has checked the enumerator's address section, which gives **7 Park Valley**. Both are the same house: the number is the official address, the name is what the family called it.\n\n**The name is not in the record, and neither is any other on this street.** Not one of Park Valley's eighteen properties has an entry in the house-names table, where Peveril Drive has Parkdale and Peveril House and Hamilton Drive has Ferndene. This is the first, and it is worth adding to #263.\n\n**And the same surname holds the house across the gap.** 1901 gives **Alfred Wilson, 81**, living on means with his widowed daughter Alice Lynam; 1911 gives **John Croshaw Wilson, 35**, a hosiery manufacturer. Forty-six years apart and the same name in the same house - grandfather and grandson would fit, and nothing here proves it.\n\n**The children are entered after the servants**, which is the wrong order for a schedule and suggests they were remembered late. Marjorie and Vera both carry **Croshaw** as a middle name, which makes them unusually easy to trace.",
    "house_name": "Melbrook House"
+  },
+  {
+   "street": "Park Valley",
+   "house": "9",
+   "property_id": 265,
+   "rooms": 11,
+   "postal_address_on_cover": "Park Valley, Nottingham",
+   "signed_by": "Frederick John Ashworth",
+   "marriage": {
+    "person": "Blanche Isabel Ashworth",
+    "years_married": 13,
+    "children_born_alive": 4,
+    "children_still_living": 3,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "Frederick John Ashworth",
+     "relation": "Head",
+     "sex": "M",
+     "age": 38,
+     "marital": "Married",
+     "occupation": "Timber importer | Employer",
+     "born": "Beeston, Nottinghamshire",
+     "record_id": 4546
+    },
+    {
+     "name": "Blanche Isabel Ashworth",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 37,
+     "marital": "Married",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4547
+    },
+    {
+     "name": "Harold John Vincent Ashworth",
+     "relation": "Son",
+     "sex": "M",
+     "age": 8,
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Edna Blanche Wilson Ashworth",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 10,
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4549,
+     "note": "**The record has her as Edith B. W. Ashworth, born 1901**, from the 1901 round at Park Ravine. Same initials, same year: Edna read as Edith."
+    },
+    {
+     "name": "Elaine Isabel Ashworth",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 5,
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Mary Margaret Langridge",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Servant, domestic",
+     "born": "Codnor Park, Derbyshire"
+    },
+    {
+     "name": "Agnes Evans",
+     "relation": "Cook",
+     "sex": "F",
+     "age": 42,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Pinxton, Derbyshire"
+    },
+    {
+     "name": "Jean Band",
+     "relation": "Governess",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Governess | Worker",
+     "born": "Geneva, Switzerland"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 6,
+    "persons": 8
+   },
+   "note": "**A Swiss governess.** Jean Band, 19, born at Geneva and returned as a Swiss subject - brought in for three children under eleven. The word was first written *Gouterness*, struck out and written again.\n\n**And the fourth child is accounted for.** Four born alive, three still living, one died. The record holds **Leslie F. H. Ashworth, born 1900**, from the 1901 round; he is not in this house and not anywhere else in the record after it. He is very probably the one who died, and nothing but the 1911 marriage questions would have said there was a fourth child at all.\n\n**Frederick John Ashworth is #4546** - the record has him at Park Ravine in 1901, where the variant check paired him wrongly with the Wadsworths. He is a timber importer of 38, and 9 Park Valley held Charles Cullen, a retired druggist of 89, ten years earlier."
+  },
+  {
+   "street": "Park Valley",
+   "house": "11",
+   "property_id": 267,
+   "rooms": 13,
+   "postal_address_on_cover": "11 Park Valley, Nottingham",
+   "signed_by": "A. H. Dawson",
+   "marriage": {
+    "person": "Sarah Dawson",
+    "years_married": null,
+    "children_born_alive": 1,
+    "children_still_living": 0,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "Sarah Dawson",
+     "relation": "Head",
+     "sex": "F",
+     "age": 91,
+     "marital": "Widow",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4055,
+     "note": "**Ninety-one, and exactly ten years older than the record has her in 1901.** Her age is the most consistent in this whole round."
+    },
+    {
+     "name": "Arthur Harold Dawson",
+     "relation": "Grandson",
+     "sex": "M",
+     "age": 31,
+     "marital": "Single",
+     "occupation": "Manager, warp lace factory | Worker",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4828
+    },
+    {
+     "name": "Leonard Leslie Dawson",
+     "relation": "Grandson",
+     "sex": "M",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Clerk to a chartered accountant | Worker",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Eva May Roach",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Leicester"
+    },
+    {
+     "name": "Martha Annie Sheldon",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 23,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Cossall, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 3,
+    "persons": 5
+   },
+   "note": "**A widow of 91 keeping house with two grandsons.** The record holds her here in 1891 beside her husband Alfred and in 1901 already widowed with grandsons Arthur and Percy. Percy has gone and a third grandson, Leonard Leslie of 19, has appeared.\n\n**One child born alive and none still living** - so the grandsons' parent predeceased her, and the boys were raised by their grandmother. That is why they are in her house and not their own, and no other return says it."
+  },
+  {
+   "street": "Park Valley",
+   "house": "12 or 13 - SEE THE NOTE",
+   "property_id": null,
+   "rooms": 12,
+   "postal_address_on_cover": "Park Valley, Nottingham [the number reads as 12 or 13]",
+   "signed_by": "George Benedict Kohn",
+   "people": [
+    {
+     "name": "George Benedict Kohn",
+     "relation": "Head",
+     "sex": "M",
+     "age": 53,
+     "marital": "Single",
+     "occupation": "Lace merchant; export merchant; managing director",
+     "born": "Beeston, Nottinghamshire",
+     "record_id": 3017,
+     "note": "**Very probably #3017 Benedict Kohn, born 1858** - the son of the Kohn household at 11 Pelham Crescent on the 1901 round, whose head I read as *Richard* and who the record holds as Rocha, a widow. Fifty-three here gives 1858 exactly."
+    },
+    {
+     "name": "Ethel Mary Carter",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Alwalton, Huntingdonshire"
+    },
+    {
+     "name": "Ellen Lawton",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Turner Wood, Yorkshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**THIS HOUSEHOLD CANNOT BE FILED, BECAUSE THE RECORD HAS NO SUCH HOUSE.** Park Valley's properties run 1 to 11, then jump to 15, 17, 19, 21, 23, 25 and Valley House. **There is no 12, 13 or 14.** A. Hagues read this as number 12; the postal address line reads as 12 or 13 and I cannot tell which.\n\nEither the street once had houses the property list does not, or these numbers were later absorbed. Nothing is filed until that is settled, and the household is here rather than in the import file.\n\n**The head is a Kohn, and the Kohns are already in the record.** George Benedict Kohn, 53, single, a lace and export merchant and a managing director, born at Beeston. The 1901 round puts a Kohn household at 11 Pelham Crescent - a widow of 67 born in Germany, a German subject, with sons Benedict, Herman and Charles and a daughter Fanny. Charles is a lecturer on chemistry. This is Benedict, ten years on and keeping his own house."
   }
  ]
 }
