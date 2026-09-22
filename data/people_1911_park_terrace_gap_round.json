@@ -611,6 +611,176 @@
      "birth_place": "Barnby, Nottinghamshire"
     }
    ]
+  },
+  {
+   "id": 1819,
+   "first_name": "Tinsley",
+   "last_name": "Lindley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 253,
+     "relationship": "Head",
+     "age_at_census": 45,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Barrister at law",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1820,
+   "first_name": "Constance Agnes",
+   "last_name": "Lindey",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 253,
+     "relationship": "Wife",
+     "age_at_census": 46,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "London"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Cherry",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Annesley, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 253,
+     "relationship": "Servant",
+     "age_at_census": 33,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Annesley, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Elsie",
+   "last_name": "Shaw",
+   "sex": "F",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Fiskerton, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 253,
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "House parlourmaid, domestic",
+     "birth_place": "Fiskerton, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "James H.",
+   "last_name": "Soames",
+   "sex": "M",
+   "born_year": 1882,
+   "match_born_year": true,
+   "born_place": "Cambridge",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 254,
+     "relationship": "Head",
+     "age_at_census": 29,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Box manufacturer",
+     "birth_place": "Cambridge"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary M.",
+   "last_name": "Soames",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 254,
+     "relationship": "Wife",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lawrence F. W.",
+   "last_name": "Soames",
+   "sex": "M",
+   "born_year": 1910,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 254,
+     "relationship": "Son",
+     "age_at_census": null,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Goodwin",
+   "sex": "F",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Whaley Bridge, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 254,
+     "relationship": "Servant",
+     "age_at_census": 27,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Whaley Bridge, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Dunn",
+   "sex": "F",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Pittenweem, Fife, Scotland",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 254,
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Nurse, domestic",
+     "birth_place": "Pittenweem, Fife, Scotland"
+    }
+   ]
   }
  ]
 }

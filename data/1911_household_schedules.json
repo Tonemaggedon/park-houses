@@ -789,6 +789,133 @@
     "persons": 3
    },
    "note": "**An organist and teacher of music**, working on his own account - the second musical household the record has found on the estate, after the Horners, father and son, both professors of music at Oakleigh on Hamilton Drive in 1901.\n\nNewly married, under a year, and no children. 1901 held Richard Beaumont, solicitor, with one housekeeper."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "14",
+   "property_id": 253,
+   "rooms": 11,
+   "postal_address_on_cover": "14 Park Terrace, Nottingham",
+   "signed_by": "Tinsley Lindley",
+   "marriage": {
+    "person": "Constance A. Lindley",
+    "years_married": 15,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Tinsley Lindley",
+     "relation": "Head",
+     "sex": "M",
+     "age": 45,
+     "marital": "Married",
+     "occupation": "Barrister at law",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1819,
+     "note": "**#1819.** The record holds him at this house in 1901 and 1921 and as **Tinster Lindey** in the 1921 transcription. He signs this schedule himself: **Tinsley Lindley**."
+    },
+    {
+     "name": "Constance A. Lindley",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 46,
+     "marital": "Married",
+     "born": "London",
+     "record_id": 1820,
+     "note": "**The record holds her twice and neither is right.** #1820 *Constance Agnes Lindey* from 1921 has the forename but not the surname; #4785 *Constance Lindley* from the 1901 round has the surname but not the forename. Her age here agrees with #1820."
+    },
+    {
+     "name": "Annie Cherry",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 33,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Annesley, Nottinghamshire"
+    },
+    {
+     "name": "Elsie Shaw",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "House parlourmaid, domestic",
+     "born": "Fiskerton, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**Tinsley Lindley in his own hand.** He is in the record at this house across three censuses and is not marked as a notable resident, which on the face of the record is reasonable - a barrister of 45. He was also an England footballer, and worth looking into before the record settles on calling him a lawyer.\n\n**And the marriage answers close his family.** Married fifteen years, so about 1896: **one child born alive, one still living**. That is Victoria, four years old on the 1901 round and the only child they ever had."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "15",
+   "property_id": 254,
+   "rooms": 6,
+   "postal_address_on_cover": "15 Park Terrace, Nottingham",
+   "signed_by": "James H. Soames",
+   "marriage": {
+    "person": "Mary M. Soames",
+    "years_married": 2,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "James H. Soames",
+     "relation": "Head",
+     "sex": "M",
+     "age": 29,
+     "marital": "Married",
+     "occupation": "Box manufacturer | Worker",
+     "born": "Cambridge"
+    },
+    {
+     "name": "Mary M. Soames",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 28,
+     "marital": "Married",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Lawrence F. W. Soames",
+     "relation": "Son",
+     "sex": "M",
+     "age": "9 months",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Sarah Goodwin",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 27,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Whaley Bridge, Derbyshire"
+    },
+    {
+     "name": "Margaret Dunn",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "Nurse, domestic",
+     "born": "Pittenweem, Scotland"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 3,
+    "persons": 5
+   },
+   "note": "A young household entirely new to the record: a box manufacturer of 29, his wife, a baby of nine months, and two servants - a cook and a nurse for the one child. Married two years, one child born and living.\n\n**Margaret Dunn was born at Pittenweem in Fife** and is marked *Resident* rather than visitor, so she had come south for the work. 1901 held Joseph Youngman, a bank manager of 50, with his sister."
   }
  ]
 }
