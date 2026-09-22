@@ -916,6 +916,138 @@
     "persons": 5
    },
    "note": "A young household entirely new to the record: a box manufacturer of 29, his wife, a baby of nine months, and two servants - a cook and a nurse for the one child. Married two years, one child born and living.\n\n**Margaret Dunn was born at Pittenweem in Fife** and is marked *Resident* rather than visitor, so she had come south for the work. 1901 held Joseph Youngman, a bank manager of 50, with his sister."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "16",
+   "property_id": 255,
+   "rooms": 9,
+   "postal_address_on_cover": "16 Park Terrace, Nottingham",
+   "signed_by": "Albert Eberlin",
+   "marriage": {
+    "person": "Annie Charlotte Eberlin",
+    "years_married": 17,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Albert Eberlin",
+     "relation": "Head",
+     "sex": "M",
+     "age": 48,
+     "marital": "Married",
+     "occupation": "Pharmacist and optician | Employer",
+     "born": "Sheffield, Yorkshire",
+     "record_id": 1827
+    },
+    {
+     "name": "Annie Charlotte Eberlin",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 50,
+     "marital": "Married",
+     "born": "Macclesfield, Cheshire",
+     "record_id": 1828
+    },
+    {
+     "name": "Fredk Harold Maden Eberlin",
+     "relation": "Son",
+     "sex": "M",
+     "age": 14,
+     "occupation": "School",
+     "born": "Nottingham, Nottinghamshire",
+     "note": "New to the record. It holds his brother **Albert Edgar (#1829), born 1895**, from the 1921 return - and the marriage answers here give two children born and two living, so the pair of them are the whole family."
+    },
+    {
+     "name": "Louisa Wharmby",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 23,
+     "marital": "Single",
+     "occupation": "Cook, domestic | Worker",
+     "born": "Underwood, Nottinghamshire"
+    },
+    {
+     "name": "Nellie Wharmby",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic | Worker",
+     "born": "Underwood, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 3,
+    "persons": 5
+   },
+   "note": "**The two servants are sisters.** Louisa and Nellie Wharmby, 23 and 18, both born at Underwood - a mining village north-west of the city - in service together in the same house. Neither is in the record.\n\nThe Eberlins are held at this house from the 1921 return; this puts them there ten years earlier. 1901 held William F. Bromley, stockbroker."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "17",
+   "property_id": 256,
+   "rooms": 11,
+   "postal_address_on_cover": "17 Park Terrace [address partly unread]",
+   "signed_by": "Elizabeth Helen Brewster",
+   "marriage": {
+    "person": "Elizabeth Helen Brewster",
+    "years_married": 29,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Elizabeth Helen Brewster",
+     "relation": "Head",
+     "sex": "F",
+     "age": 76,
+     "marital": "Widow",
+     "occupation": "None",
+     "born": "Ostend, Belgium",
+     "record_id": 3511,
+     "note": "**British subject by parentage**, which the schedule states. The record already has her birthplace as Ostend from the 1891 return; the 1901 round I read gives only \"Belgium\"."
+    },
+    {
+     "name": "Mary Allsebrook",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 38,
+     "marital": "Single",
+     "occupation": "Lady's maid, domestic",
+     "born": "Branston, Staffordshire",
+     "record_id": 4793,
+     "note": "**Still with her after ten years.** She is a cook in this house in 1901 at 25 and a lady's maid here at 38 - thirteen years of drift in ten, which is why the duplicate checks cannot pair the two rows."
+    },
+    {
+     "name": "Ada Peggin",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 36,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "New Basford, Nottingham"
+    },
+    {
+     "name": "Ellen Foulds",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 26,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Old Radford, Nottingham"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 4,
+    "persons": 4
+   },
+   "note": "**John T. Brewster died between 1901 and 1911.** The record holds him at this house as a solicitor of 72 in 1901; here his widow keeps it alone at 76, with three servants and no family. Married twenty-nine years and **no children born to the marriage at all**, which the 1911 return states and nothing else could.\n\nFour women in eleven rooms, one of them Belgian-born, and not one of them related to another."
   }
  ]
 }
