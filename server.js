@@ -798,8 +798,13 @@ async function dbInit() {
       answered_at TIMESTAMPTZ,
       created_by TEXT,
       created_at TIMESTAMPTZ DEFAULT NOW(),
-      edited_at TIMESTAMPTZ
+      edited_at TIMESTAMPTZ,
+      priority INTEGER
     )`);
+    // Ordering by id puts the questions in the order they were thought of, which
+    // is not the order they are worth doing in. A priority is set in the seed
+    // file; anything without one falls in behind, still by id.
+    await db.query(`ALTER TABLE research_questions ADD COLUMN IF NOT EXISTS priority INTEGER`);
     await db.query(`CREATE TABLE IF NOT EXISTS research_claims (
       id SERIAL PRIMARY KEY,
       question_id INTEGER REFERENCES research_questions(id) ON DELETE CASCADE,
@@ -8321,23 +8326,25 @@ async function seedResearchQuestions() {
     if (!q.slug || !q.title) continue;
     try {
       const r = await db.query(
-        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, created_by)
-         VALUES ($1,$2,$3,$4,$5,$6,'seed')
+        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, priority, created_by)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,'seed')
          ON CONFLICT (slug) DO NOTHING RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
-         q.property_id || null, q.person_id || null]);
+         q.property_id || null, q.person_id || null,
+         Number.isInteger(q.priority) ? q.priority : null]);
       if (r.rows.length) { added++; continue; }
       // Already there. Refresh the wording only while nobody has touched it by
       // hand — an edit or an answer in the site is worth more than the file.
       const upd = await db.query(
         `UPDATE research_questions
-            SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6
+            SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6, priority=$7
           WHERE slug=$1 AND edited_at IS NULL AND status='open'
             AND (title IS DISTINCT FROM $2 OR detail IS DISTINCT FROM $3
                  OR kind IS DISTINCT FROM $4 OR property_id IS DISTINCT FROM $5
-                 OR person_id IS DISTINCT FROM $6) RETURNING id`,
+                 OR person_id IS DISTINCT FROM $6 OR priority IS DISTINCT FROM $7) RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
-         q.property_id || null, q.person_id || null]);
+         q.property_id || null, q.person_id || null,
+         Number.isInteger(q.priority) ? q.priority : null]);
       if (upd.rows.length) refreshed++;
     } catch (e) { console.warn('research question', q.slug, e.message); }
   }
@@ -8349,9 +8356,9 @@ app.get('/api/research-questions', async (req, res) => {
   try {
     const qs = await db.query(
       `SELECT id, slug, title, detail, kind, property_id, person_id, status,
-              answer, answered_by, answered_at, created_by, created_at
+              answer, answered_by, answered_at, created_by, created_at, priority
          FROM research_questions
-        ORDER BY (status = 'answered'), id`);
+        ORDER BY (status = 'answered'), priority NULLS LAST, id`);
     const cl = await db.query(
       `SELECT question_id, username, note, started_at FROM research_claims ORDER BY started_at`);
     const by = {};
