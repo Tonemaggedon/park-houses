@@ -1536,7 +1536,7 @@
   },
   {
    "street": "Park Valley",
-   "house": "7 [but the cover says MELBROOK HOUSE - see the note]",
+   "house": "7",
    "property_id": 263,
    "rooms": 11,
    "postal_address_on_cover": "Melbrook House [?], Park, Nottingham",
@@ -1615,7 +1615,8 @@
     "females": 6,
     "persons": 7
    },
-   "note": "**THE COVER GIVES A HOUSE NAME, NOT A NUMBER: *Melbrook House, Park*.** A. Hagues spotted it. No property in the record carries that name, on Park Valley or any street, and **Park Valley has no house names recorded at all** - not one of its eighteen properties has an entry in the house-names table.\n\n**It is filed at 7 Park Valley (#263) on the strength of the sequence**, this schedule having come between numbers 6 and 8 in a run being worked in order. That is position, not evidence, and the number should be confirmed before the name is added to the property. See [[melbrook-house-park-valley]].\n\n**And the same surname holds the house across the gap.** 1901 gives **Alfred Wilson, 81**, living on means, with his widowed daughter Alice Lynam; 1911 gives **John Croshaw Wilson, 35**, a hosiery manufacturer. Forty-six years apart and the same name in the same house - grandfather and grandson would fit, and nothing here proves it.\n\n**The children are entered after the servants**, which is the wrong order for a schedule and suggests they were remembered late and added at the foot. Marjorie and Vera both carry **Croshaw** as a middle name, which makes them unusually easy to trace."
+   "note": "**7 PARK VALLEY IS MELBROOK HOUSE.** The householder wrote *Melbrook House, Park* on the cover and A. Hagues has checked the enumerator's address section, which gives **7 Park Valley**. Both are the same house: the number is the official address, the name is what the family called it.\n\n**The name is not in the record, and neither is any other on this street.** Not one of Park Valley's eighteen properties has an entry in the house-names table, where Peveril Drive has Parkdale and Peveril House and Hamilton Drive has Ferndene. This is the first, and it is worth adding to #263.\n\n**And the same surname holds the house across the gap.** 1901 gives **Alfred Wilson, 81**, living on means with his widowed daughter Alice Lynam; 1911 gives **John Croshaw Wilson, 35**, a hosiery manufacturer. Forty-six years apart and the same name in the same house - grandfather and grandson would fit, and nothing here proves it.\n\n**The children are entered after the servants**, which is the wrong order for a schedule and suggests they were remembered late. Marjorie and Vera both carry **Croshaw** as a middle name, which makes them unusually easy to trace.",
+   "house_name": "Melbrook House"
   }
  ]
 }
