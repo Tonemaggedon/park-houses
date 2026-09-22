@@ -2,17 +2,18 @@
  "note": "Birth places the automatic geocoder could not place, positioned by hand so they appear on the Origins map. Loaded into geocode_cache at start-up with status 'manual'. Never overwrites a place the geocoder found, or one somebody placed by hand in the database; a place from this file is refreshed if its entry here changes. Positions are the town or village centre as it stands now. Where the census text is ambiguous the note says which place was chosen.",
  "places": [
   {
-   "place_text": "Nottingham",
-   "lat": 52.9548,
-   "lng": -1.1581,
-   "label": "Nottingham, England"
+   "place_text": "Acton, Middlesex",
+   "lat": 51.5087,
+   "lng": -0.273,
+   "label": "Acton, London",
+   "note": "It answered Acton, Massachusetts."
   },
   {
-   "place_text": "Kirklington",
-   "lat": 53.1043,
-   "lng": -0.9937,
-   "label": "Kirklington, Nottinghamshire",
-   "note": "Taken as the Nottinghamshire village near Southwell; there are others of the name in Yorkshire and Cumberland."
+   "place_text": "Appleton, Cheshire",
+   "lat": 53.355,
+   "lng": -2.57,
+   "label": "Appleton, Cheshire",
+   "note": "It answered Cheshire County, New Hampshire."
   },
   {
    "place_text": "Bangkok, Siam",
@@ -21,22 +22,38 @@
    "label": "Bangkok, Thailand"
   },
   {
+   "place_text": "Barnack, Northamptonshire",
+   "lat": 52.6297,
+   "lng": -0.409,
+   "label": "Barnack, Cambridgeshire",
+   "note": "A real place the geocoder could not find. In Northamptonshire when the census was taken, Cambridgeshire since 1965."
+  },
+  {
+   "place_text": "Bedford",
+   "lat": 52.135,
+   "lng": -0.4667,
+   "label": "Bedford, Bedfordshire",
+   "note": "It answered Bedford County, Pennsylvania."
+  },
+  {
+   "place_text": "Belgium (British subject)",
+   "lat": 50.5039,
+   "lng": 4.4699,
+   "label": "Belgium",
+   "note": "Born in Belgium but a British subject. Positioned on Belgium."
+  },
+  {
    "place_text": "Beverley, Yorkshire",
    "lat": 53.8458,
    "lng": -0.4264,
    "label": "Beverley, East Riding of Yorkshire"
   },
   {
-   "place_text": "Knutsford, Cheshire",
-   "lat": 53.3025,
-   "lng": -2.3708,
-   "label": "Knutsford, Cheshire"
-  },
-  {
-   "place_text": "New Lenton, Nottingham",
-   "lat": 52.9468,
-   "lng": -1.1768,
-   "label": "New Lenton, Nottingham"
+   "place_text": "Brighton, Sussex",
+   "lat": 50.8225,
+   "lng": -0.1372,
+   "label": "Brighton, East Sussex",
+   "note": "It answered Brighton, New Jersey."
   },
   {
    "place_text": "Brinsley, Nottinghamshire",
@@ -49,6 +66,13 @@
    "lat": 53.0009,
    "lng": -1.1975,
    "label": "Bulwell, Nottingham"
+  },
+  {
+   "place_text": "Burnfoot, Stirling",
+   "lat": 55.415,
+   "lng": -2.87,
+   "label": "Burnfoot, by Roberton, Scottish Borders (approximate)",
+   "note": "Identified by A. Hagues as the hamlet on the Borthwick Water near Roberton, west of Hawick, though the census gives Stirling. Placed to within a mile or two."
   },
   {
    "place_text": "Carlton le Moorland",
@@ -69,6 +93,20 @@
    "label": "Cherry Willingham, Lincolnshire"
   },
   {
+   "place_text": "Chester, Cheshire",
+   "lat": 53.1906,
+   "lng": -2.8916,
+   "label": "Chester, Cheshire",
+   "note": "It answered Chesterfield County, Virginia."
+  },
+  {
+   "place_text": "Churchtown, Lancashire",
+   "lat": 53.663,
+   "lng": -2.965,
+   "label": "Churchtown, Southport, Merseyside",
+   "note": "The Churchtown in Southport, Lancashire at the time and Merseyside now — identified by A. Hagues, not the Churchtown by Garstang."
+  },
+  {
    "place_text": "Collingham, Nottinghamshire",
    "lat": 53.1437,
    "lng": -0.7588,
@@ -87,6 +125,20 @@
    "label": "Croxton Kerrial, Leicestershire"
   },
   {
+   "place_text": "Cumberland",
+   "lat": 54.6,
+   "lng": -3.0,
+   "label": "Cumberland (county only)",
+   "note": "No town given. It answered Cumberland County, Pennsylvania."
+  },
+  {
+   "place_text": "Darlington, Durham",
+   "lat": 54.5235,
+   "lng": -1.5597,
+   "label": "Darlington, County Durham",
+   "note": "It answered Darlington, Ontario."
+  },
+  {
    "place_text": "Didsbury, Cheshire",
    "lat": 53.4166,
    "lng": -2.2313,
@@ -94,10 +146,66 @@
    "note": "Recorded as Cheshire; Didsbury was in Lancashire, and is now in Manchester."
   },
   {
+   "place_text": "Dudley, Staffordshire",
+   "lat": 52.5111,
+   "lng": -2.0817,
+   "label": "Dudley, West Midlands",
+   "note": "The 1901 return gives Staffordshire. Dudley was surrounded by Staffordshire but was not in it - it was a detached part of Worcestershire. Asked for \"Dudley, Staffordshire\" the geocoder answered a nature reserve at Himley, six kilometres west."
+  },
+  {
+   "place_text": "Dudley, Worcestershire",
+   "lat": 52.5111,
+   "lng": -2.0817,
+   "label": "Dudley, West Midlands",
+   "note": "Dudley was a detached part of Worcestershire until 1966 and is in the West Midlands now. Asked for \"Dudley, Worcestershire\" the geocoder answered a spot in the COTSWOLDS, fifty-five kilometres south, having matched \"Worcestershire (detached)\" and ignored Dudley altogether. The 1901 enumerator wrote Staffordshire, which is where it looks on a map but not where it was."
+  },
+  {
+   "place_text": "Dundee, Forfarshire (Angus), Scotland",
+   "lat": 56.462,
+   "lng": -2.9707,
+   "label": "Dundee, Scotland",
+   "note": "Forfarshire is the old name for Angus; the census gives both. Positioned on Dundee."
+  },
+  {
+   "place_text": "Durham, Durham",
+   "lat": 54.7761,
+   "lng": -1.5733,
+   "label": "Durham, County Durham",
+   "note": "It answered Durham, North Carolina."
+  },
+  {
    "place_text": "Ely, Cambridgeshire",
    "lat": 52.399,
    "lng": 0.262,
    "label": "Ely, Cambridgeshire"
+  },
+  {
+   "place_text": "Enfield, Middlesex",
+   "lat": 51.6522,
+   "lng": -0.0808,
+   "label": "Enfield, London",
+   "note": "It answered a road in New Jersey."
+  },
+  {
+   "place_text": "Essex, Essex",
+   "lat": 51.75,
+   "lng": 0.47,
+   "label": "Essex (county only)",
+   "note": "It answered Essex County, New York."
+  },
+  {
+   "place_text": "France (British subject)",
+   "lat": 46.2276,
+   "lng": 2.2137,
+   "label": "France",
+   "note": "Born in France but a British subject. Positioned on France."
+  },
+  {
+   "place_text": "France (French subject)",
+   "lat": 46.2276,
+   "lng": 2.2137,
+   "label": "France",
+   "note": "Nationality note kept as written; positioned on France."
   },
   {
    "place_text": "Geldeston, Norfolk",
@@ -107,10 +215,38 @@
    "note": "A small parish near Loddon; placed to within a few miles."
   },
   {
+   "place_text": "Germany (British subject)",
+   "lat": 51.1657,
+   "lng": 10.4515,
+   "label": "Germany",
+   "note": "The bracket records that the person was a naturalised or British subject, not part of the place name. Kept because the distinction matters among the German lace merchants of The Park; positioned on Germany."
+  },
+  {
+   "place_text": "Germany (German subject)",
+   "lat": 51.1657,
+   "lng": 10.4515,
+   "label": "Germany",
+   "note": "As above: a nationality note the record keeps on purpose. Positioned on Germany."
+  },
+  {
+   "place_text": "Germany (foreign subject)",
+   "lat": 51.1657,
+   "lng": 10.4515,
+   "label": "Germany",
+   "note": "As above: a nationality note the record keeps on purpose. Positioned on Germany."
+  },
+  {
    "place_text": "Glasgow, Scotland",
    "lat": 55.8642,
    "lng": -4.2518,
    "label": "Glasgow, Scotland"
+  },
+  {
+   "place_text": "Gresham",
+   "lat": 52.89,
+   "lng": 1.245,
+   "label": "Gresham, Norfolk",
+   "note": "It answered Gresham, Oregon."
   },
   {
    "place_text": "Heanor, Derbyshire",
@@ -123,6 +259,13 @@
    "lat": 52.979,
    "lng": -0.303,
    "label": "Heckington, Lincolnshire"
+  },
+  {
+   "place_text": "Highgate, Middlesex",
+   "lat": 51.5716,
+   "lng": -0.145,
+   "label": "Highgate, London",
+   "note": "It answered Highgate, Jamaica."
   },
   {
    "place_text": "Hillsborough, Yorkshire",
@@ -150,10 +293,65 @@
    "label": "Insch, Aberdeenshire"
   },
   {
+   "place_text": "Jersey",
+   "lat": 49.2144,
+   "lng": -2.1313,
+   "label": "Jersey, Channel Islands",
+   "note": "It answered Jersey County, Illinois."
+  },
+  {
+   "place_text": "Kew, Surrey",
+   "lat": 51.483,
+   "lng": -0.288,
+   "label": "Kew, London",
+   "note": "It answered Kew, British Columbia."
+  },
+  {
+   "place_text": "Kirklington",
+   "lat": 53.1043,
+   "lng": -0.9937,
+   "label": "Kirklington, Nottinghamshire",
+   "note": "Taken as the Nottinghamshire village near Southwell; there are others of the name in Yorkshire and Cumberland."
+  },
+  {
+   "place_text": "Knutsford, Cheshire",
+   "lat": 53.3025,
+   "lng": -2.3708,
+   "label": "Knutsford, Cheshire"
+  },
+  {
    "place_text": "Lichfield",
    "lat": 52.6816,
    "lng": -1.8317,
    "label": "Lichfield, Staffordshire"
+  },
+  {
+   "place_text": "Lincoln",
+   "lat": 53.2307,
+   "lng": -0.5406,
+   "label": "Lincoln, Lincolnshire",
+   "note": "The geocoder answered Lincoln, Nebraska."
+  },
+  {
+   "place_text": "Liverpool, Lancashire",
+   "lat": 53.4084,
+   "lng": -2.9916,
+   "label": "Liverpool",
+   "note": "Liverpool was in Lancashire until 1974 and is in Merseyside now. Asked for \"Liverpool, Lancashire\" the geocoder answered the Leeds and Liverpool Canal at Rufford, twenty-five kilometres away - a canal in the modern county beating the city that has left it."
+  },
+  {
+   "place_text": "London City",
+   "lat": 51.5155,
+   "lng": -0.0922,
+   "label": "City of London",
+   "note": "It answered London, Ontario."
+  },
+  {
+   "place_text": "London S.E.",
+   "lat": 51.48,
+   "lng": -0.05,
+   "label": "South-east London",
+   "note": "It answered a street in Topeka, Kansas."
   },
   {
    "place_text": "Magdalen, Norfolk",
@@ -163,16 +361,42 @@
    "note": "Taken as Wiggenhall St Mary Magdalen, the Norfolk parish usually shortened to Magdalen."
   },
   {
+   "place_text": "Mitcham, Surrey",
+   "lat": 51.4058,
+   "lng": -0.1641,
+   "label": "Mitcham, Merton, London",
+   "note": "Mitcham was in Surrey until 1965 and is in Greater London now, so the historic county no longer contains the town. Asked for \"Mitcham, Surrey\" the geocoder answered Mitcham ROAD in Bagshot, thirty-five kilometres west - a road in the modern county beating a town that has left it."
+  },
+  {
    "place_text": "Much Wenlock, Shropshire",
    "lat": 52.596,
    "lng": -2.557,
    "label": "Much Wenlock, Shropshire"
   },
   {
+   "place_text": "New Lenton, Nottingham",
+   "lat": 52.9468,
+   "lng": -1.1768,
+   "label": "New Lenton, Nottingham"
+  },
+  {
+   "place_text": "Nottingham",
+   "lat": 52.9548,
+   "lng": -1.1581,
+   "label": "Nottingham, England"
+  },
+  {
    "place_text": "Ollerton, Nottinghamshire",
    "lat": 53.2,
    "lng": -1.007,
    "label": "Ollerton, Nottinghamshire"
+  },
+  {
+   "place_text": "Penrith, Cumberland",
+   "lat": 54.664,
+   "lng": -2.753,
+   "label": "Penrith, Cumbria",
+   "note": "It answered a road in Portland, Maine."
   },
   {
    "place_text": "Plumtree, Nottinghamshire",
@@ -187,228 +411,11 @@
    "label": "Prestbury, Cheshire"
   },
   {
-   "place_text": "Strasbourg, Germany",
-   "lat": 48.5734,
-   "lng": 7.7521,
-   "label": "Strasbourg, France",
-   "note": "German between 1871 and 1918, when the census recorded it; French now."
-  },
-  {
-   "place_text": "Wales",
-   "lat": 52.3,
-   "lng": -3.7,
-   "label": "Wales (country only)",
-   "note": "No town given; placed in the middle of Wales."
-  },
-  {
-   "place_text": "Churchtown, Lancashire",
-   "lat": 53.663,
-   "lng": -2.965,
-   "label": "Churchtown, Southport, Merseyside",
-   "note": "The Churchtown in Southport, Lancashire at the time and Merseyside now — identified by A. Hagues, not the Churchtown by Garstang."
-  },
-  {
-   "place_text": "Burnfoot, Stirling",
-   "lat": 55.415,
-   "lng": -2.87,
-   "label": "Burnfoot, by Roberton, Scottish Borders (approximate)",
-   "note": "Identified by A. Hagues as the hamlet on the Borthwick Water near Roberton, west of Hawick, though the census gives Stirling. Placed to within a mile or two."
-  },
-  {
-   "place_text": "Germany (British subject)",
-   "lat": 51.1657,
-   "lng": 10.4515,
-   "label": "Germany",
-   "note": "The bracket records that the person was a naturalised or British subject, not part of the place name. Kept because the distinction matters among the German lace merchants of The Park; positioned on Germany."
-  },
-  {
-   "place_text": "Germany (foreign subject)",
-   "lat": 51.1657,
-   "lng": 10.4515,
-   "label": "Germany",
-   "note": "As above: a nationality note the record keeps on purpose. Positioned on Germany."
-  },
-  {
-   "place_text": "Germany (German subject)",
-   "lat": 51.1657,
-   "lng": 10.4515,
-   "label": "Germany",
-   "note": "As above: a nationality note the record keeps on purpose. Positioned on Germany."
-  },
-  {
-   "place_text": "France (French subject)",
-   "lat": 46.2276,
-   "lng": 2.2137,
-   "label": "France",
-   "note": "Nationality note kept as written; positioned on France."
-  },
-  {
-   "place_text": "France (British subject)",
-   "lat": 46.2276,
-   "lng": 2.2137,
-   "label": "France",
-   "note": "Born in France but a British subject. Positioned on France."
-  },
-  {
-   "place_text": "Belgium (British subject)",
-   "lat": 50.5039,
-   "lng": 4.4699,
-   "label": "Belgium",
-   "note": "Born in Belgium but a British subject. Positioned on Belgium."
-  },
-  {
    "place_text": "Schleswig-Holstein (naturalised British subject)",
    "lat": 54.2194,
    "lng": 9.6961,
    "label": "Schleswig-Holstein, Germany",
    "note": "Positioned on Schleswig-Holstein. The naturalisation note is kept because it is the fact worth having."
-  },
-  {
-   "place_text": "Dundee, Forfarshire (Angus), Scotland",
-   "lat": 56.462,
-   "lng": -2.9707,
-   "label": "Dundee, Scotland",
-   "note": "Forfarshire is the old name for Angus; the census gives both. Positioned on Dundee."
-  },
-  {
-   "place_text": "Lincoln",
-   "lat": 53.2307,
-   "lng": -0.5406,
-   "label": "Lincoln, Lincolnshire",
-   "note": "The geocoder answered Lincoln, Nebraska."
-  },
-  {
-   "place_text": "Brighton, Sussex",
-   "lat": 50.8225,
-   "lng": -0.1372,
-   "label": "Brighton, East Sussex",
-   "note": "It answered Brighton, New Jersey."
-  },
-  {
-   "place_text": "Chester, Cheshire",
-   "lat": 53.1906,
-   "lng": -2.8916,
-   "label": "Chester, Cheshire",
-   "note": "It answered Chesterfield County, Virginia."
-  },
-  {
-   "place_text": "Walpole, Norfolk",
-   "lat": 52.7167,
-   "lng": 0.2333,
-   "label": "Walpole, Norfolk",
-   "note": "It answered Walpole, Massachusetts."
-  },
-  {
-   "place_text": "Worcester",
-   "lat": 52.192,
-   "lng": -2.22,
-   "label": "Worcester, Worcestershire",
-   "note": "It answered Worcester, Massachusetts."
-  },
-  {
-   "place_text": "Acton, Middlesex",
-   "lat": 51.5087,
-   "lng": -0.273,
-   "label": "Acton, London",
-   "note": "It answered Acton, Massachusetts."
-  },
-  {
-   "place_text": "Cumberland",
-   "lat": 54.6,
-   "lng": -3.0,
-   "label": "Cumberland (county only)",
-   "note": "No town given. It answered Cumberland County, Pennsylvania."
-  },
-  {
-   "place_text": "Jersey",
-   "lat": 49.2144,
-   "lng": -2.1313,
-   "label": "Jersey, Channel Islands",
-   "note": "It answered Jersey County, Illinois."
-  },
-  {
-   "place_text": "London S.E.",
-   "lat": 51.48,
-   "lng": -0.05,
-   "label": "South-east London",
-   "note": "It answered a street in Topeka, Kansas."
-  },
-  {
-   "place_text": "Appleton, Cheshire",
-   "lat": 53.355,
-   "lng": -2.57,
-   "label": "Appleton, Cheshire",
-   "note": "It answered Cheshire County, New Hampshire."
-  },
-  {
-   "place_text": "Bedford",
-   "lat": 52.135,
-   "lng": -0.4667,
-   "label": "Bedford, Bedfordshire",
-   "note": "It answered Bedford County, Pennsylvania."
-  },
-  {
-   "place_text": "Darlington, Durham",
-   "lat": 54.5235,
-   "lng": -1.5597,
-   "label": "Darlington, County Durham",
-   "note": "It answered Darlington, Ontario."
-  },
-  {
-   "place_text": "Durham, Durham",
-   "lat": 54.7761,
-   "lng": -1.5733,
-   "label": "Durham, County Durham",
-   "note": "It answered Durham, North Carolina."
-  },
-  {
-   "place_text": "Enfield, Middlesex",
-   "lat": 51.6522,
-   "lng": -0.0808,
-   "label": "Enfield, London",
-   "note": "It answered a road in New Jersey."
-  },
-  {
-   "place_text": "Essex, Essex",
-   "lat": 51.75,
-   "lng": 0.47,
-   "label": "Essex (county only)",
-   "note": "It answered Essex County, New York."
-  },
-  {
-   "place_text": "Gresham",
-   "lat": 52.89,
-   "lng": 1.245,
-   "label": "Gresham, Norfolk",
-   "note": "It answered Gresham, Oregon."
-  },
-  {
-   "place_text": "Highgate, Middlesex",
-   "lat": 51.5716,
-   "lng": -0.145,
-   "label": "Highgate, London",
-   "note": "It answered Highgate, Jamaica."
-  },
-  {
-   "place_text": "Kew, Surrey",
-   "lat": 51.483,
-   "lng": -0.288,
-   "label": "Kew, London",
-   "note": "It answered Kew, British Columbia."
-  },
-  {
-   "place_text": "London City",
-   "lat": 51.5155,
-   "lng": -0.0922,
-   "label": "City of London",
-   "note": "It answered London, Ontario."
-  },
-  {
-   "place_text": "Penrith, Cumberland",
-   "lat": 54.664,
-   "lng": -2.753,
-   "label": "Penrith, Cumbria",
-   "note": "It answered a road in Portland, Maine."
   },
   {
    "place_text": "Shirland",
@@ -432,6 +439,13 @@
    "note": "It answered Stockton Park, Ontario."
   },
   {
+   "place_text": "Strasbourg, Germany",
+   "lat": 48.5734,
+   "lng": 7.7521,
+   "label": "Strasbourg, France",
+   "note": "German between 1871 and 1918, when the census recorded it; French now."
+  },
+  {
    "place_text": "Sunderland, Durham",
    "lat": 54.906,
    "lng": -1.381,
@@ -444,6 +458,13 @@
    "lng": -0.3,
    "label": "Sussex (county only)",
    "note": "No town given. It answered Sussex County, Virginia."
+  },
+  {
+   "place_text": "Upper Hackney, Derbyshire",
+   "lat": 53.1478,
+   "lng": -1.5647,
+   "label": "Upper Hackney, Darley Dale, Derbyshire",
+   "note": "A hamlet above Darley Dale near Matlock, too small for the geocoder to find. Nothing to do with Hackney in London."
   },
   {
    "place_text": "Upton, Cheshire",
@@ -460,18 +481,25 @@
    "note": "It answered a street in Lowell, Massachusetts."
   },
   {
-   "place_text": "Barnack, Northamptonshire",
-   "lat": 52.6297,
-   "lng": -0.409,
-   "label": "Barnack, Cambridgeshire",
-   "note": "A real place the geocoder could not find. In Northamptonshire when the census was taken, Cambridgeshire since 1965."
+   "place_text": "Wales",
+   "lat": 52.3,
+   "lng": -3.7,
+   "label": "Wales (country only)",
+   "note": "No town given; placed in the middle of Wales."
   },
   {
-   "place_text": "Upper Hackney, Derbyshire",
-   "lat": 53.1478,
-   "lng": -1.5647,
-   "label": "Upper Hackney, Darley Dale, Derbyshire",
-   "note": "A hamlet above Darley Dale near Matlock, too small for the geocoder to find. Nothing to do with Hackney in London."
+   "place_text": "Walpole, Norfolk",
+   "lat": 52.7167,
+   "lng": 0.2333,
+   "label": "Walpole, Norfolk",
+   "note": "It answered Walpole, Massachusetts."
+  },
+  {
+   "place_text": "Worcester",
+   "lat": 52.192,
+   "lng": -2.22,
+   "label": "Worcester, Worcestershire",
+   "note": "It answered Worcester, Massachusetts."
   },
   {
    "place_text": "Yelden, Bedfordshire",

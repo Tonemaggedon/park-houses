@@ -11,7 +11,21 @@ Two of them are not that shape and are corrections of fact:
 
   Mildred Jacklin   1891 reads "Denby, LINCOLNSHIRE". Denby is in Derbyshire.
   Elizabeth Phillips  the record disagrees with itself - 1901 says Dudley,
-                      Staffordshire and 1921 says Dudley, Worcestershire.
+                      Staffordshire and 1921 says Dudley, Worcestershire. It is
+                      Worcestershire: Dudley was a detached part of it until
+                      1966, surrounded by Staffordshire but not in it.
+
+A. Hagues asked whether Worcestershire would still be found, Dudley being in the
+West Midlands now. It is not: the geocoder answers a spot in the COTSWOLDS,
+having matched "Worcestershire (detached)" and ignored the town. Nor is Mitcham
+found under Surrey, nor Liverpool under Lancashire - a road in Bagshot and a
+canal at Rufford respectively. Where a town has left its historic county the
+modern county wins, and it wins with something confidently wrong rather than
+with nothing.
+
+The record keeps the county the census wrote. The position comes from
+data/geocode_manual.json, which is what that file is for - Acton, Middlesex has
+been pinned there since it answered Acton, Massachusetts.
 
 Keyed on person number, so no name matching can go wrong. It writes only where
 the value differs, fills a blank people.born_place, and clears the coordinates
@@ -40,7 +54,7 @@ FIXES = {
      645: 'Liverpool, Lancashire',        # Edward Evans Lloyd
      598: 'Clackmannanshire, Scotland',   # Edward Palmer
      928: 'Birstall, Yorkshire',          # Samuel Walker Pemberton
-    2255: 'Dudley, West Midlands',        # Elizabeth Phillips - see note
+    2255: 'Dudley, Worcestershire',       # Elizabeth Phillips - see note
     1277: 'Acton, Middlesex',             # Edwin Arthur Polley
 }
 
