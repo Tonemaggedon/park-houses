@@ -2537,6 +2537,132 @@ app.post('/api/names/sex', requireContributor, async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Every forename the census has already answered, done in one pass.
+//
+// The queue page shows the evidence beside each name - "census: 115 female, 0
+// male" for Mary - and then asks a person to confirm it. Where that evidence is
+// UNANIMOUS there is nothing to confirm: the record is not asking a question,
+// it is stating a fact about its own rows, and a human clicking Female 115
+// times learns nothing the query did not already know.
+//
+// Unanimous is the whole of the rule. George reads 2 female, 26 male - which is
+// two misread sex columns rather than a genuinely ambiguous name, but a rule
+// that quietly overrode those two would also override a real Evelyn or Francis.
+// Anything with a single vote on the other side stays for a person to settle.
+//
+// MIN_EVIDENCE guards against a name resting on one or two relationship words.
+// It defaults to 4 and is worth raising rather than lowering.
+app.post('/api/names/sex-obvious', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = !(req.body && req.body.apply === true);
+  const minEvidence = Math.max(1, parseInt((req.body && req.body.minEvidence) || 4, 10));
+  try {
+    const q = await db.query(`
+      WITH forename AS (
+        SELECT p.id, INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name, p.sex
+          FROM people p WHERE COALESCE(TRIM(p.first_name),'') <> ''
+      ), rel AS (
+        SELECT INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name,
+               LOWER(TRIM(COALESCE(ce.relationship,''))) AS r
+          FROM census_entries ce JOIN people p ON p.id = ce.person_id
+      ), evidence AS (
+        SELECT name,
+               COUNT(*) FILTER (WHERE r IN ('wife','daughter','mother','sister','widow','niece',
+                 'aunt','granddaughter','housekeeper','maid','housemaid','parlourmaid',
+                 'kitchenmaid','cook','nurse','governess')) AS female,
+               COUNT(*) FILTER (WHERE r IN ('son','father','brother','nephew','uncle','grandson',
+                 'husband','butler','footman','groom','coachman','gardener')) AS male
+          FROM rel GROUP BY name
+      )
+      SELECT f.name,
+             COUNT(*) FILTER (WHERE f.sex IS NULL) AS unset,
+             COALESCE(e.female,0) AS female, COALESCE(e.male,0) AS male
+        FROM forename f LEFT JOIN evidence e ON e.name = f.name
+       WHERE LENGTH(f.name) > 1
+       GROUP BY f.name, e.female, e.male
+      HAVING COUNT(*) FILTER (WHERE f.sex IS NULL) > 0
+         AND ((COALESCE(e.female,0) >= $1 AND COALESCE(e.male,0) = 0)
+           OR (COALESCE(e.male,0)   >= $1 AND COALESCE(e.female,0) = 0))
+       ORDER BY COUNT(*) FILTER (WHERE f.sex IS NULL) DESC, f.name`, [minEvidence]);
+
+    const decided = q.rows.map(r => ({
+      name: r.name, sex: Number(r.female) > 0 ? 'F' : 'M',
+      people: Number(r.unset), evidence: Number(r.female) + Number(r.male),
+    }));
+    let updated = 0;
+    if (!dryRun) {
+      const who = 'forename review by ' + (req.session.username || 'contributor')
+                + ' (unanimous census evidence)';
+      for (const d of decided) {
+        const u = await db.query(
+          `UPDATE people SET sex=$2, sex_source=$3
+            WHERE INITCAP(SPLIT_PART(TRIM(first_name), ' ', 1)) = INITCAP($1)
+              AND sex IS NULL`, [d.name, d.sex, who]);
+        updated += u.rowCount;
+      }
+      await logChange('person', 0, req, 'set-sex-obvious', 'forenames', null,
+        `${decided.length} names, ${updated} people, unanimous census evidence`);
+    }
+    res.json({ ok: true, dryRun, minEvidence, names: decided.length, people: updated
+               || decided.reduce((t, d) => t + d.people, 0), decided });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// The people who contradict their own name.
+//
+// The queue shows George as "2 female, 26 male". Those two are not evidence
+// that George is sometimes a woman's name - they are two rows where either the
+// sex is wrong or the relationship is, and nothing else in the record will ever
+// point at them. Twenty-six agreeing rows drown them.
+//
+// This finds them by person rather than by name: every census row whose
+// relationship word sits on the MINORITY side of its own forename, where the
+// majority is at least four to one. It reports; it changes nothing.
+app.get('/api/names/sex-contradictions', async (req, res) => {
+  if (!db) return res.json({ people: [] });
+  try {
+    const r = await db.query(`
+      WITH rel AS (
+        SELECT p.id AS person_id, p.first_name, p.last_name, p.sex,
+               INITCAP(SPLIT_PART(TRIM(p.first_name), ' ', 1)) AS name,
+               ce.id AS row_id, ce.census_year, ce.property_id,
+               LOWER(TRIM(COALESCE(ce.relationship,''))) AS r
+          FROM census_entries ce JOIN people p ON p.id = ce.person_id
+         WHERE COALESCE(TRIM(p.first_name),'') <> ''
+      ), tagged AS (
+        SELECT *, CASE
+            WHEN r IN ('wife','daughter','mother','sister','widow','niece','aunt',
+                       'granddaughter','housekeeper','maid','housemaid','parlourmaid',
+                       'kitchenmaid','cook','nurse','governess') THEN 'F'
+            WHEN r IN ('son','father','brother','nephew','uncle','grandson','husband',
+                       'butler','footman','groom','coachman','gardener') THEN 'M'
+          END AS says
+          FROM rel
+      ), tally AS (
+        SELECT name,
+               COUNT(*) FILTER (WHERE says='F') AS female,
+               COUNT(*) FILTER (WHERE says='M') AS male
+          FROM tagged WHERE says IS NOT NULL GROUP BY name
+      )
+      SELECT t.person_id, t.first_name, t.last_name, t.sex, t.name, t.row_id,
+             t.census_year, t.property_id, t.r AS relationship, t.says,
+             y.female, y.male,
+             CASE WHEN y.female > y.male THEN 'F' ELSE 'M' END AS majority
+        FROM tagged t JOIN tally y ON y.name = t.name
+       WHERE t.says IS NOT NULL
+         AND ((y.female > y.male AND t.says = 'M' AND y.female >= y.male * 4 AND y.female >= 4)
+           OR (y.male > y.female AND t.says = 'F' AND y.male >= y.female * 4 AND y.male >= 4))
+       ORDER BY (y.female + y.male) DESC, t.name, t.person_id`);
+    res.json({ people: r.rows.map(x => ({
+      personId: x.person_id, name: `${x.first_name} ${x.last_name}`.trim(),
+      forename: x.name, sexOnRecord: x.sex, censusYear: x.census_year,
+      propertyId: x.property_id, relationship: x.relationship,
+      relationshipSays: x.says, forenameSays: x.majority,
+      evidence: { female: Number(x.female), male: Number(x.male) },
+    })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // Forenames already classified, for putting a mistake right.
 app.get('/api/names/sex-set', async (req, res) => {
   if (!db) return res.json([]);

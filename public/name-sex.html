@@ -106,13 +106,14 @@ async function load() {
     }
     bar.textContent = `${d.remaining} names left · ${d.peopleRemaining} people`
       + (donePeople ? ` · ${donePeople} people done this session` : '');
+    if (canEdit) showObviousOffer();
 
     if (!canEdit) {
       box.innerHTML = `<div class="empty">Sign in as a contributor to set these.</div>`;
       return;
     }
 
-    box.innerHTML = '<div class="grid">' + d.names.map(n => {
+    box.innerHTML = '<div id="obvious"></div><div class="grid">' + d.names.map(n => {
       const ev = n.evidence.female || n.evidence.male
         ? `<div class="ev">census: ${n.evidence.female} female, ${n.evidence.male} male</div>` : '';
       return `<div class="row" data-name="${esc(n.name)}">
@@ -128,11 +129,69 @@ async function load() {
             title="Male">♂</button>
         </div>
       </div>`;
-    }).join('') + '</div>';
+    }).join('') + '</div><div id="contra"></div>';
+    if (canEdit) showContradictions();
   } catch (e) {
     bar.textContent = '';
     box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
   }
+
+// The people who contradict their own name - a George returned as a daughter.
+// Not a name to classify but a row to look at, so it sits below the queue.
+async function showContradictions() {
+  const slot = document.getElementById('contra');
+  if (!slot) return;
+  const d = await fetch('/api/names/sex-contradictions').then(r => r.json()).catch(() => null);
+  if (!d || !d.people || !d.people.length) return;
+  const rows = d.people.map(x => `
+    <div style="display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid #f0e8d0;font-size:0.85rem">
+      <a href="/people?person=${x.personId}" style="color:#1a4a2a;font-weight:600;min-width:170px">${esc(x.name)}</a>
+      <span style="color:#6a5c44">returned as <strong>${esc(x.relationship)}</strong> in ${x.censusYear}</span>
+      <span style="color:#8a7a5a;margin-left:auto">${esc(x.forename)} is ${x.evidence.female > x.evidence.male
+        ? `${x.evidence.female} female to ${x.evidence.male}` : `${x.evidence.male} male to ${x.evidence.female}`} elsewhere</span>
+    </div>`).join('');
+  slot.innerHTML = `<div style="margin-top:34px;border-top:1px solid #e0d8c4;padding-top:18px">
+    <h3 style="font-size:1rem;margin:0 0 4px">${d.people.length} ${d.people.length === 1 ? 'person contradicts' : 'people contradict'} their own name</h3>
+    <p class="lede" style="margin:0 0 12px">A George returned as a daughter, a Mary as a son. Either the sex is wrong or the
+      relationship is, and nothing else in the record points at these — the agreeing rows drown them.
+      Nothing here has been changed.</p>
+    ${rows}</div>`;
+}
+
+// Names the census has already answered without a dissenting vote. Offered as a
+// count first, because a sweep that sets several hundred people at once should
+// say what it is about to do before it does it.
+async function showObviousOffer() {
+  const slot = document.getElementById('obvious');
+  if (!slot) return;
+  const d = await fetch('/api/names/sex-obvious', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}'
+  }).then(r => r.json()).catch(() => null);
+  if (!d || !d.names) return;
+  slot.innerHTML = `<div style="border:1px solid #c8b87a;background:#f6f2e6;border-radius:7px;
+      padding:13px 16px;margin-bottom:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <strong style="font-size:0.95rem">${d.names} names the census already answers</strong>
+      <div style="font-size:0.82rem;color:#6a5c44;margin-top:3px">
+        ${d.people} people. Every one of these is borne by daughters and wives only, or by sons and
+        brothers only — not a single return on the other side. The mixed ones stay below for you.
+      </div>
+    </div>
+    <button id="obviousGo" style="background:#2f4d27;border:1px solid #2f4d27;border-radius:5px;
+      padding:8px 18px;cursor:pointer;font-size:0.85rem;color:#f2ecd8;font-family:inherit">
+      Set all ${d.names}</button>
+  </div>`;
+  const btn = document.getElementById('obviousGo');
+  if (btn) btn.onclick = async () => {
+    btn.disabled = true; btn.textContent = 'Setting…';
+    const r = await fetch('/api/names/sex-obvious', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ apply: true })
+    }).then(x => x.json());
+    donePeople += (r.people || 0);
+    load();
+  };
+}
 }
 
 document.addEventListener('click', async e => {
