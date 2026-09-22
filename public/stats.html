@@ -40,10 +40,13 @@ body { font-family:'Segoe UI', Arial, sans-serif; background:#0f1923; color:#e8e
 .bar-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; font-size:0.8rem; }
 .bar-row .lbl { width:150px; color:#a8b8a8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
 .bar-row .lbl a { color:#5b9bd5; text-decoration:none; }
+.bar-row .track { flex:1; min-width:0; }
 .bar-row .bar { height:14px; border-radius:3px; background:linear-gradient(90deg,#2a6a4a,#4caf82); min-width:2px; }
+.bar-row .cnt { width:46px; text-align:right; flex-shrink:0; }
 .bar-row .bar.gold { background:linear-gradient(90deg,#8a6a2a,#c8b87a); }
 .bar-row .bar.blue { background:linear-gradient(90deg,#2a4a8a,#5b9bd5); }
 .bar-row .cnt { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+.bar-row .extra { color:#7a8a7a; font-size:0.72rem; width:74px; text-align:right; flex-shrink:0; }
 canvas { max-height:270px; }
 #moveMap { height:520px; border-radius:8px; border:1px solid #243424; }
 .leaflet-container { background:#0b1410; }
@@ -76,15 +79,22 @@ const person = p => `<a href="/people/${p.id}">${nm(p)}</a>`;
 const house = (id, label) => id ? `<a href="/property/${id}">${esc(label || ('property ' + id))}</a>` : '<span style="color:#7a8a7a">a house not yet placed</span>';
 const n = v => (v === null || v === undefined) ? '—' : Number(v).toLocaleString();
 
+// The bar is a share of its own track, not of the row, so a list whose values sit
+// close together still reads as a list that falls. Scaling from zero would make
+// 39 and 29 look alike; scaling from a floor a little below the smallest value
+// shows the difference without pretending it is bigger than it is.
 function bars(items, colour) {
   if (!items.length) return '<div style="font-size:0.82rem;color:#5a7a5a">Nothing recorded yet.</div>';
-  const max = Math.max(...items.map(i => i.cnt)) || 1;
-  return items.map(({lbl, cnt, href}) => {
-    const w = Math.round(cnt / max * 100);
+  const vals = items.map(i => Number(i.cnt));
+  const max = Math.max(...vals) || 1, min = Math.min(...vals);
+  const floor = (max - min) / max < 0.45 ? Math.max(0, min - (max - min) * 0.7 - 1) : 0;
+  return items.map(({lbl, cnt, href, extra}) => {
+    const w = Math.max(3, Math.round((Number(cnt) - floor) / (max - floor || 1) * 100));
     const label = href ? `<a href="${href}">${esc(lbl)}</a>` : esc(lbl);
     return `<div class="bar-row"><div class="lbl" title="${esc(lbl)}">${label}</div>`
-         + `<div class="bar ${colour}" style="width:${w}%;max-width:calc(100% - 215px)"></div>`
-         + `<div class="cnt">${cnt}</div></div>`;
+         + `<div class="track"><div class="bar ${colour}" style="width:${w}%"></div></div>`
+         + `<div class="cnt">${cnt}</div>`
+         + (extra ? `<div class="extra">${esc(extra)}</div>` : '') + `</div>`;
   }).join('');
 }
 
@@ -102,11 +112,21 @@ async function load() {
   document.getElementById('main').innerHTML = `
   <div class="stat-row">
     <div class="stat-card"><div class="val">${n(h.people)}</div><div class="label">People</div></div>
-    <div class="stat-card"><div class="val">${n(h.rows)}</div><div class="label">Census records</div></div>
+    <div class="stat-card" title="${n(h.seen)} of them appear in at least one census, and ${n(h.repeat_seen)} appear in more than one - which is why there are more records than people."><div class="val">${n(h.rows)}</div><div class="label">Census appearances</div></div>
     <div class="stat-card"><div class="val">${n(h.housed)}</div><div class="label">Houses with residents</div></div>
     <div class="stat-card"><div class="val">${n(h.places)}</div><div class="label">Birthplaces named</div></div>
     <div class="stat-card"><div class="val">${spanTxt}</div><div class="label">Census rounds held</div></div>
     <div class="stat-card"><div class="val">${n(h.linked)}</div><div class="label">With a life beyond the estate</div></div>
+  </div>
+
+  <div class="panel" style="padding:1rem 1.4rem;margin-bottom:1.5rem">
+    <div style="font-size:0.78rem;color:#8a9a7a;line-height:1.6">
+      <b style="color:#c8b87a">More appearances than people, and that is right.</b>
+      ${n(h.people)} people, ${n(h.rows)} census appearances — because
+      <b style="color:#e8e0d0">${n(h.repeat_seen)} people were found in more than one round</b>,
+      one of them in ${h.most_rounds || '—'}. ${n(Number(h.people) - Number(h.seen))} people are here
+      from other sources and have no census entry at all.
+    </div>
   </div>
 
   <div class="panel">
@@ -133,9 +153,13 @@ async function load() {
     <div class="sub">Every line is one person, drawn between the houses the record places them in. ${d.moves.length} people moved and stayed on The Park — and a move is the hardest thing for a record like this to see, because it looks like two different people until somebody proves otherwise.</div>
     <div class="map-controls">
       <label>Show <select id="moveFilter"></select></label>
+      <label>Trade <select id="occFilter"></select></label>
+      <label>Person <select id="personFilter"></select></label>
       <button id="fitBtn">Fit to the estate</button>
+      <button id="clearBtn">Clear</button>
       <span id="moveCount"></span>
     </div>
+    <div id="personCard" style="display:none"></div>
     <div id="moveMap"></div>
     <div class="note">Only moves between two houses the map can place are drawn. A person whose earlier address is still unfiled does not appear here — which means this map grows every time something comes off the unfiled page.</div>
   </div>
@@ -159,13 +183,15 @@ async function load() {
       <div class="sub">People the record finds in the same house across four rounds or more.</div>
       ${(d.houses.stayers||[]).length ? (d.houses.stayers||[]).map(s =>
         `<div class="bar-row"><div class="lbl" style="width:auto;flex:1">${person(s)} <span style="color:#6a7a6a">at ${house(s.id, s.label)}</span></div>`
-        + `<div class="cnt">${s.a}–${s.b}</div></div>`).join('')
+        + `<div class="cnt" style="width:auto">${s.a}–${s.b}</div>`
+        + `<div class="extra" style="width:92px">${s.b - s.a} years · ${s.yrs} rounds</div></div>`).join('')
         : '<div style="font-size:0.82rem;color:#5a7a5a">Nothing yet.</div>'}
     </div>
     <div class="panel">
       <h2>🌍 The furthest anyone was born</h2>
       <div class="sub">Straight-line distance from the estate.</div>
-      ${bars((d.origins.furthest||[]).map(r => ({lbl:r.place, cnt:Number(r.n)})), 'blue')}
+      ${bars((d.origins.furthest||[]).map(r => ({lbl:r.place, cnt:Number(r.n),
+              extra: r.miles ? Number(r.miles).toLocaleString() + ' mi' : ''})), 'blue')}
       <div class="note">Counted from census birthplaces that have been given a position. See the <a href="/origins" style="color:#5b9bd5">Origins map</a> for all of them.</div>
     </div>
   </div>
@@ -216,7 +242,8 @@ function records(L, d) {
     house(big.id, big.label), 'on census night ' + big.yr));
   const far = (d.origins.furthest || [])[0];
   if (far) out.push(card('blue','Furthest birthplace', esc(far.place), '',
-    far.n + (Number(far.n) === 1 ? ' person' : ' people') + ' born there'));
+    (far.miles ? Number(far.miles).toLocaleString() + ' miles away · ' : '')
+    + far.n + (Number(far.n) === 1 ? ' person' : ' people') + ' born there'));
   if (d.moves.length) out.push(card('green','People who moved house here', d.moves.length, '',
     'and stayed on the estate'));
   return out.join('');
@@ -268,7 +295,29 @@ function buildMap(d) {
   sel.innerHTML = '<option value="all">everyone who moved</option>'
     + '<option value="2">people with exactly two houses</option>'
     + '<option value="3">people with three or more</option>';
-  sel.onchange = () => draw(sel.value);
+
+  // Trades, commonest first, so the list opens on the ones worth picking.
+  const counts = {};
+  d.moves.forEach(m => { if (m.occ) counts[m.occ] = (counts[m.occ] || 0) + 1; });
+  const occs = Object.entries(counts).sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  document.getElementById('occFilter').innerHTML =
+    '<option value="">any trade</option>'
+    + occs.map(([o,c]) => `<option value="${esc(o)}">${esc(o)} (${c})</option>`).join('');
+
+  // Everyone who moved, by name, so a single life can be pulled out of the tangle.
+  const people = d.moves.slice().sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  document.getElementById('personFilter').innerHTML =
+    '<option value="">anyone</option>'
+    + people.map(m => `<option value="${m.id}">${esc(m.name || 'unnamed')} (${m.from}–${m.to})</option>`).join('');
+
+  ['moveFilter','occFilter','personFilter'].forEach(id =>
+    document.getElementById(id).onchange = () => draw());
+  document.getElementById('clearBtn').onclick = () => {
+    sel.value = 'all';
+    document.getElementById('occFilter').value = '';
+    document.getElementById('personFilter').value = '';
+    draw();
+  };
   map = L.map('moveMap', { scrollWheelZoom:false });
   // A dark base so the coloured threads read. Esri's dark canvas is free to use
   // with attribution; CARTO's looks the same but now bakes "API KEY REQUIRED"
@@ -278,21 +327,33 @@ function buildMap(d) {
     maxZoom: 16,
     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap contributors'
   }).addTo(map);
-  document.getElementById('fitBtn').onclick = () => fit();
-  draw('all');
+  document.getElementById('fitBtn').onclick = () => fit(null);
+  draw();
 }
-function draw(mode) {
+function draw() {
+  const mode = document.getElementById('moveFilter').value;
+  const occ  = document.getElementById('occFilter').value;
+  const who  = document.getElementById('personFilter').value;
   if (layer) layer.remove();
   layer = L.layerGroup().addTo(map);
-  const moves = DATA.moves.filter(m =>
-    mode === 'all' ? true : mode === '2' ? m.points.length === 2 : m.points.length >= 3);
+  // A named person beats the other two filters: if you have asked for one life,
+  // you want that life whatever trade or number of houses it had.
+  const moves = who
+    ? DATA.moves.filter(m => String(m.id) === who)
+    : DATA.moves.filter(m =>
+        (mode === 'all' || (mode === '2' ? m.points.length === 2 : m.points.length >= 3))
+        && (!occ || m.occ === occ));
+  showPerson(who ? moves[0] : null);
   const seen = new Map();
   moves.forEach((m, i) => {
     const hue = (i * 47) % 360;
+    const only = moves.length === 1;
     L.polyline(m.points.map(p => [p.lat, p.lng]), {
-      color: `hsl(${hue},65%,60%)`, weight: 2, opacity: 0.55
+      color: only ? '#ffd76a' : `hsl(${hue},65%,60%)`,
+      weight: only ? 4 : 2, opacity: only ? 0.95 : 0.55
     }).bindPopup(
-      `<b>${esc(m.name)}</b><br>${m.from}–${m.to}<br>`
+      `<b>${esc(m.name)}</b><br>${m.from}–${m.to}`
+      + (m.occ ? `<br>${esc(m.occ)}` : '') + '<br>'
       + m.points.map(p => esc(p.label)).join(' → ')
       + `<br><a href="/people/${m.id}">open the record</a>`
     ).addTo(layer);
@@ -304,12 +365,31 @@ function draw(mode) {
   });
   document.getElementById('moveCount').textContent =
     `${moves.length} ${moves.length === 1 ? 'person' : 'people'}, ${seen.size} houses`;
-  fit();
+  fit(moves);
 }
-function fit() {
+
+// One person selected: say who, in words, above the map. The line is easy to
+// lose among a hundred others even when it is the only one drawn.
+function showPerson(m) {
+  const box = document.getElementById('personCard');
+  if (!m) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  box.style.display = 'block';
+  box.innerHTML = `<div class="rec blue" style="margin-bottom:0.8rem">
+      <div class="cap">Following one person</div>
+      <div class="big" style="font-size:1.1rem">${person(m)}</div>
+      <div class="meta">${m.occ ? esc(m.occ) + ' · ' : ''}${m.from}–${m.to} ·
+        ${m.points.length} houses</div>
+      <div class="meta" style="color:#a8b8a8;margin-top:0.3rem">
+        ${m.points.map(p => house(p.id, p.label)).join(' <span style="color:#6a7a6a">→</span> ')}</div>
+    </div>`;
+}
+
+// Fit to what is drawn, not to everything, so picking one person zooms to them.
+function fit(moves) {
+  const src = (moves && moves.length) ? moves : DATA.moves;
   const pts = [];
-  DATA.moves.forEach(m => m.points.forEach(p => pts.push([p.lat, p.lng])));
-  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [28, 28] });
+  src.forEach(m => m.points.forEach(p => pts.push([p.lat, p.lng])));
+  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 17 });
   else map.setView([52.9522, -1.1613], 16);
 }
 

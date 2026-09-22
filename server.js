@@ -3709,7 +3709,12 @@ app.get('/api/insights', async (req, res) => {
                   (SELECT COUNT(*) FROM census_entries) rows,
                   (SELECT COUNT(DISTINCT property_id) FROM census_entries WHERE property_id IS NOT NULL) housed,
                   (SELECT COUNT(DISTINCT birth_place) FROM census_entries WHERE birth_place IS NOT NULL AND TRIM(birth_place) <> '') places,
-                  (SELECT COUNT(*) FROM people WHERE wikipedia_url IS NOT NULL) linked`),
+                  (SELECT COUNT(*) FROM people WHERE wikipedia_url IS NOT NULL) linked,
+                  (SELECT COUNT(DISTINCT person_id) FROM census_entries) seen,
+                  (SELECT COUNT(*) FROM (SELECT person_id FROM census_entries
+                     GROUP BY person_id HAVING COUNT(*) > 1) t) repeat_seen,
+                  (SELECT MAX(n) FROM (SELECT COUNT(*) n FROM census_entries
+                     GROUP BY person_id) t) most_rounds`),
       one(`SELECT id, first_name, last_name, born_year, born_place FROM people
             WHERE born_year BETWEEN 1700 AND 1999 ORDER BY born_year, id LIMIT 1`),
       one(`SELECT id, first_name, last_name, born_year, born_place FROM people
@@ -3754,12 +3759,12 @@ app.get('/api/insights', async (req, res) => {
             WHERE c.property_id IS NOT NULL GROUP BY 1,2,3,4
            HAVING COUNT(DISTINCT c.census_year) >= 4
             ORDER BY yrs DESC, MAX(c.census_year) - MIN(c.census_year) DESC LIMIT 8`),
-      one(`SELECT birth_place place, birth_lat lat, birth_lng lng, COUNT(*) n
+      one(`SELECT birth_place place, birth_lat lat, birth_lng lng, COUNT(*) n,
+                  ROUND((3959 * ACOS(GREATEST(-1, LEAST(1,
+                     COS(RADIANS(52.9536)) * COS(RADIANS(birth_lat)) * COS(RADIANS(birth_lng) - RADIANS(-1.1505))
+                   + SIN(RADIANS(52.9536)) * SIN(RADIANS(birth_lat))))))::numeric) miles
              FROM census_entries WHERE birth_lat IS NOT NULL
-            GROUP BY 1,2,3
-            ORDER BY (6371 * ACOS(GREATEST(-1, LEAST(1,
-                   COS(RADIANS(52.9536)) * COS(RADIANS(birth_lat)) * COS(RADIANS(birth_lng) - RADIANS(-1.1505))
-                 + SIN(RADIANS(52.9536)) * SIN(RADIANS(birth_lat)))))) DESC LIMIT 8`),
+            GROUP BY 1,2,3 ORDER BY miles DESC LIMIT 10`),
       one(`SELECT birth_place place, COUNT(*) n FROM census_entries
             WHERE birth_place IS NOT NULL AND birth_place !~* 'nottingham'
             GROUP BY 1 ORDER BY n DESC LIMIT 12`),
@@ -3767,12 +3772,19 @@ app.get('/api/insights', async (req, res) => {
             WHERE first_name IS NOT NULL AND TRIM(first_name) <> '' GROUP BY 1 ORDER BY n DESC LIMIT 12`),
       one(`SELECT last_name name, COUNT(*) n FROM people
             WHERE last_name IS NOT NULL AND TRIM(last_name) <> '' GROUP BY 1 ORDER BY n DESC LIMIT 12`),
-      one(`SELECT c.person_id pid, p.first_name, p.last_name,
-                  ARRAY_AGG(DISTINCT c.property_id) props,
-                  MIN(c.census_year) a, MAX(c.census_year) b
-             FROM census_entries c JOIN people p ON p.id = c.person_id
-            WHERE c.property_id IS NOT NULL
-            GROUP BY 1,2,3 HAVING COUNT(DISTINCT c.property_id) > 1`),
+      one(`WITH movers AS (
+             SELECT c.person_id pid, p.first_name, p.last_name,
+                    ARRAY_AGG(DISTINCT c.property_id) props,
+                    MIN(c.census_year) a, MAX(c.census_year) b
+               FROM census_entries c JOIN people p ON p.id = c.person_id
+              WHERE c.property_id IS NOT NULL
+              GROUP BY 1,2,3 HAVING COUNT(DISTINCT c.property_id) > 1)
+           SELECT m.*, (
+             SELECT ce.occupation_at_census FROM census_entries ce
+              WHERE ce.person_id = m.pid AND ce.occupation_at_census IS NOT NULL
+                AND TRIM(ce.occupation_at_census) <> ''
+              ORDER BY ce.census_year DESC LIMIT 1) occ
+             FROM movers m`),
       one(`SELECT census_year yr, COUNT(*) n FROM census_unoccupied GROUP BY 1 ORDER BY 1`)
     ]);
 
@@ -3786,8 +3798,11 @@ app.get('/api/insights', async (req, res) => {
         .filter(x => x.p && x.p.lat && x.p.lng)
         .map(x => ({ id: x.id, lat: Number(x.p.lat), lng: Number(x.p.lng), label: label(x.id) }));
       if (pts.length > 1) {
+        const raw = String(r.occ || '').split('|')[0].trim();
         moves.push({ id: r.pid, name: `${r.first_name || ''} ${r.last_name || ''}`.trim(),
-                     from: r.a, to: r.b, points: pts });
+                     from: r.a, to: r.b, points: pts,
+                     occ: raw ? (serverNorm(raw) || raw) : null,
+                     group: raw ? (serverOccGroup(raw) || null) : null });
       }
     });
 
@@ -6932,14 +6947,15 @@ app.get('/api/trades', async (req, res) => {
             GROUP BY 1,2`, [SPINE]),
       one(`SELECT occupation occ, COUNT(*) n FROM occupations
             WHERE occupation IS NOT NULL AND TRIM(occupation) <> '' GROUP BY 1`),
-      one(`SELECT p.id, p.first_name, p.last_name, c.occupation_at_census occ, c.census_year yr, c.property_id
+      one(`SELECT p.id, p.first_name, p.last_name, c.occupation_at_census occ, c.census_year yr
              FROM census_entries c JOIN people p ON p.id = c.person_id
-            WHERE c.occupation_at_census IS NOT NULL
-              AND LENGTH(c.occupation_at_census) BETWEEN 6 AND 80
-            ORDER BY RANDOM() LIMIT 400`),
-      one(`SELECT employer, COUNT(*) n FROM occupations
+            WHERE c.occupation_at_census IS NOT NULL AND TRIM(c.occupation_at_census) <> ''
+            ORDER BY c.census_year`),
+      one(`SELECT employer, COUNT(*) n,
+                  ARRAY_AGG(DISTINCT occupation ORDER BY occupation) roles
+             FROM occupations
             WHERE employer IS NOT NULL AND TRIM(employer) <> ''
-            GROUP BY 1 ORDER BY n DESC LIMIT 12`)
+            GROUP BY 1 ORDER BY n DESC LIMIT 14`)
     ]);
 
     // The census column often carries "Cook, domestic | worker" - the trade, then
@@ -6979,20 +6995,25 @@ app.get('/api/trades', async (req, res) => {
     const singleNames = [];
     const seen = new Set();
     rare.forEach(r => {
-      const k = serverNorm(trade(r.occ)) || trade(r.occ);
+      const t = trade(r.occ); if (!t) return;
+      const k = serverNorm(t) || t;
       if (totals[k] === 1 && !seen.has(k)) {
         seen.add(k);
         singleNames.push({ occ: k, id: r.id,
-          name: `${r.first_name || ''} ${r.last_name || ''}`.trim(), yr: r.yr });
+          name: `${r.first_name || ''} ${r.last_name || ''}`.trim(), yr: r.yr,
+          group: serverOccGroup(k) || null });
       }
     });
+    // Longest first: a trade somebody bothered to spell out is usually the more
+    // interesting one, and it reads better than alphabetical.
+    singleNames.sort((a, b) => b.occ.length - a.occ.length);
 
     res.json({
       top,
       byYear,
       groups,
       spine: SPINE,
-      singles: { count: singles.length, examples: singleNames.slice(0, 24) },
+      singles: { count: singles.length, examples: singleNames.slice(0, 30) },
       employers,
       distinct: Object.keys(totals).length
     });
