@@ -114,6 +114,34 @@ for pid, years in houses.items():
                     if same else 'different families either side - somebody moved',
             other=' '.join(str(c) for c in CONTEXT if c in years)))
 
+# A household that walks down its own street reads as two changes of family:
+# the house it left looks abandoned, the house it took looks newly occupied,
+# and neither comparison can see the other. William Thomas Cartwright moved
+# from 1 Newcastle Drive to 7 between 1891 and 1901 and produced exactly that.
+# Match the head before a gap against the heads after every OTHER gap on the
+# same street, and say so.
+by_street = {}
+for r in rows:
+    by_street.setdefault(r['street'] or '', []).append(r)
+
+
+def surname(name):
+    parts = (name or '').split()
+    return parts[-1].lower() if parts else ''
+
+
+for street, group in by_street.items():
+    for r in group:
+        for other in group:
+            # A house missing two rounds appears twice in this list, so without
+            # this every such house 'moves' to itself.
+            if other['pid'] == r['pid'] or not surname(r['before']):
+                continue
+            if surname(r['before']) == surname(other['after']):
+                r['moved'] = (f"{r['before']} may simply have moved to {other['house']} - "
+                              f"the same surname heads it in {other['after_year']}")
+                break
+
 if args.year:
     rows = [r for r in rows if r['missing'] == args.year]
 if args.street:
@@ -158,6 +186,8 @@ for r in rows:
           + f"  — {r['before_n']} in the house")
     print(f"      next seen {r['after_year']}: {r['after']}  — {r['after_n']} in the house")
     print(f"      {r['verdict']}" + (f"   [also holds {r['other']}]" if r['other'] else ''))
+    if r.get('moved'):
+        print(f"      ** {r['moved']}")
 
 if args.xlsx and rows:
     from openpyxl import Workbook
@@ -165,7 +195,7 @@ if args.xlsx and rows:
     from openpyxl.utils import get_column_letter
     wb = Workbook(); ws = wb.active; ws.title = 'Census gaps'
     heads = ['missing', 'house', 'property', 'last seen', 'head then', 'their trade',
-             'size', 'next seen', 'head then', 'size', 'reading']
+             'size', 'next seen', 'head then', 'size', 'reading', 'or did they just move?']
     ws.append(heads)
     for c in ws[1]:
         c.font = Font(bold=True, color='FFFFFF')
@@ -173,8 +203,8 @@ if args.xlsx and rows:
     for r in rows:
         ws.append([r['missing'], r['house'], f"#{r['pid']}", r['before_year'], r['before'],
                    r['before_occ'], r['before_n'], r['after_year'], r['after'], r['after_n'],
-                   r['verdict']])
-    for i, w in enumerate([9, 30, 10, 10, 26, 30, 7, 10, 26, 7, 46], 1):
+                   r['verdict'], r.get('moved', '')])
+    for i, w in enumerate([9, 30, 10, 10, 26, 30, 7, 10, 26, 7, 46, 52], 1):
         ws.column_dimensions[get_column_letter(i)].width = w
     for row in ws.iter_rows(min_row=2):
         for c in row:
