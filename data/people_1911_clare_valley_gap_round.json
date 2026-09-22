@@ -130,6 +130,105 @@
      "birth_place": "Stanley, Derbyshire"
     }
    ]
+  },
+  {
+   "first_name": "Christopher Harold",
+   "last_name": "Weller",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Amersham, Buckinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 60,
+     "relationship": "Head",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Clerk in holy orders, Church of England - St Mary's, Nottingham",
+     "birth_place": "Amersham, Buckinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Weller",
+   "sex": "F",
+   "born_year": 1852,
+   "match_born_year": true,
+   "born_place": "Chesham, Buckinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 60,
+     "relationship": "Mother",
+     "age_at_census": 59,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "birth_place": "Chesham, Buckinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank Gilbert",
+   "last_name": "Weller",
+   "sex": "M",
+   "born_year": 1890,
+   "match_born_year": true,
+   "born_place": "Chesham, Buckinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 60,
+     "relationship": "Brother",
+     "age_at_census": 21,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Colliery manager's pupil, Butterley Company",
+     "birth_place": "Chesham, Buckinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Rose Adelaide",
+   "last_name": "Macaulay",
+   "sex": "F",
+   "born_year": 1849,
+   "match_born_year": true,
+   "born_place": "Camden Town, London",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 60,
+     "relationship": "Visitor",
+     "age_at_census": 62,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "High school mistress (retired), Notting Hill High School",
+     "birth_place": "Camden Town, London"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Worthington",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Kegworth, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 60,
+     "relationship": "Servant",
+     "age_at_census": 50,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "occupation_at_census": "General servant",
+     "birth_place": "Kegworth, Leicestershire"
+    }
+   ]
   }
  ]
 }
