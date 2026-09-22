@@ -1,5 +1,5 @@
 {
- "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.\n\n**Mary Enfield is bound to #1871, not #4853.** She is in the record twice - #1871 born 1842 from 1921, and #4853 born 1832, created by the 1901 gap round because I read her age there as 69. She is 69 on THIS schedule, ten years later, which agrees with #1871 and makes the 1901 reading almost certainly 59. The pair wants merging on the site.\n\n**The Kohn household is NOT in this file.** Its schedule gives a Park Valley number the record has no property for - the street runs 1 to 11 and then 15, with no 12, 13 or 14. It is in the transcription only, until the house is settled.",
+ "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.\n\n**Mary Enfield is bound to #1871, not #4853.** She is in the record twice - #1871 born 1842 from 1921, and #4853 born 1832, created by the 1901 gap round because I read her age there as 69. She is 69 on THIS schedule, ten years later, which agrees with #1871 and makes the 1901 reading almost certainly 59. The pair wants merging on the site.\n\n**The Kohn household is NOT in this file.** Its schedule gives a Park Valley number the record has no property for - the street runs 1 to 11 and then 15, with no 12, 13 or 14. It is in the transcription only, until the house is settled.\n\n**John Langham is bound to #4075, and the record holds him twice.** #4800 was created by the 1901 gap round at born 1841 beside the #4075 the record already had at born 1834. This schedule gives 71, which is 1840. Until the two are joined, every relationship block naming *john langham* is refused by the importer, because the name resolves to two people - which is exactly what the eight skipped links in this street were.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -1129,6 +1129,79 @@
      "marital_status": "Single",
      "occupation_at_census": "Domestic servant",
      "birth_place": "Uppingham, Rutland"
+    }
+   ]
+  },
+  {
+   "id": 4075,
+   "first_name": "John",
+   "last_name": "Langham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 273,
+     "relationship": "Head",
+     "age_at_census": 71,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widower",
+     "occupation_at_census": "Iron merchant",
+     "birth_place": "Husbands Bosworth, Leicestershire"
+    }
+   ]
+  },
+  {
+   "id": 4078,
+   "first_name": "Thomas C",
+   "last_name": "Langham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 273,
+     "relationship": "Son",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "occupation_at_census": "Farmer; master farmer",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Dawson",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Handsworth, near Sheffield",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 273,
+     "relationship": "Servant",
+     "age_at_census": 45,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook and housekeeper, domestic",
+     "birth_place": "Handsworth, near Sheffield"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily Jane",
+   "last_name": "Bursnall",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Wymondham, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 273,
+     "relationship": "Servant",
+     "age_at_census": 30,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Wymondham, Leicestershire"
     }
    ]
   }

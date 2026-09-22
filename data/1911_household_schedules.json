@@ -1978,6 +1978,59 @@
     "persons": 2
    },
    "note": "**Harriett Hackett at 80, exactly ten years on from the 1901 round.** The record holds her here in 1891 and my reading of the 1901 round gives her at 70, living on own means, with two servants. Now 80, single, with one.\n\n**And her middle name, which the record does not have.** The schedule writes **Katherine** above the surname - Harriett Katherine Hackett.\n\nTwo women in nine rooms, neither related to the other, one of them 80 and one 50."
+  },
+  {
+   "street": "Park Valley",
+   "house": "25",
+   "property_id": 273,
+   "rooms": 11,
+   "postal_address_on_cover": "Park Valley, Nottingham",
+   "signed_by": "John Langham",
+   "people": [
+    {
+     "name": "John Langham",
+     "relation": "Head",
+     "sex": "M",
+     "age": 71,
+     "marital": "Widower",
+     "occupation": "Iron merchant | Employer",
+     "born": "Husbands Bosworth, Leicestershire",
+     "record_id": 4075
+    },
+    {
+     "name": "Thomas Cecil Langham",
+     "relation": "Son",
+     "sex": "M",
+     "age": 31,
+     "occupation": "Farmer; master farmer | Employer",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4078
+    },
+    {
+     "name": "Mary Ann Dawson",
+     "relation": "Domestic",
+     "sex": "F",
+     "age": 45,
+     "marital": "Single",
+     "occupation": "Cook and housekeeper, domestic",
+     "born": "Handsworth, near Sheffield"
+    },
+    {
+     "name": "Emily Jane Bursnall",
+     "relation": "Domestic",
+     "sex": "F",
+     "age": 30,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Wymondham, Leicestershire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 2,
+    "persons": 4
+   },
+   "note": "**Martha Langham has died.** The record holds her here in 1891 and my reading of the 1901 round gives her at 58 beside her husband; he is a **widower** on this schedule. She died between 1901 and 1911, and a death registration would date it.\n\n**And his birthplace is now a town.** The 1901 round gave only *Leicestershire*; this gives **Husbands Bosworth**.\n\n**John Langham is in the record twice.** #4075, born 1834, carries his 1891 row; #4800, born 1841, was created by the 1901 gap-round import. Seventy-one here gives 1840, which is #4800's year. The pair wants merging - and it is why eight relationship blocks in the Park Valley file could not be made: *john langham* names two people, so the importer refuses them all.\n\n**The son's birth year disagrees with itself.** The record has **Thomas C Langham born 1874** from 1891. The 1901 round gives him at 21 and this schedule at 31, which both make 1880. Two of three sources say 1880. There is also an elder son in the record, **John A Langham born 1868**, who is not in this house.\n\n**A farmer living on The Park.** Thomas Cecil is a *master farmer* and an employer at 31, in a town house in the middle of Nottingham - so the farm was held at a distance and worked by other hands. His father is an iron merchant and an employer at 71, still trading."
   }
  ]
 }
