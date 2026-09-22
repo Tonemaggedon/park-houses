@@ -1533,6 +1533,89 @@
     "persons": 2
    },
    "note": "A widow and her one servant. Neither is in the record: 1901 held Edmund Dalton, a bank clerk from Lincoln, with his wife, a visitor and a cook.\n\nMarried thirty-five years and widowed by 56, with one child born and living - who is not here."
+  },
+  {
+   "street": "Park Valley",
+   "house": "7 [but the cover says MELBROOK HOUSE - see the note]",
+   "property_id": 263,
+   "rooms": 11,
+   "postal_address_on_cover": "Melbrook House [?], Park, Nottingham",
+   "signed_by": "J. Croshaw Wilson",
+   "marriage": {
+    "person": "Emmie Barbara Wilson",
+    "years_married": 8,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Croshaw Wilson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 35,
+     "marital": "Married",
+     "occupation": "Hosiery manufacturer | Employer",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Emmie Barbara Wilson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 38,
+     "marital": "Married",
+     "born": "Putney, London"
+    },
+    {
+     "name": "Daisy Sarah Clarke",
+     "relation": "Nurse",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Trained nurse | Worker",
+     "born": "Warwickshire"
+    },
+    {
+     "name": "Annie Elizabeth Harrison",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 32,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Retford, Nottinghamshire"
+    },
+    {
+     "name": "Amelia Jane Reason",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Surrey"
+    },
+    {
+     "name": "Marjorie Croshaw Wilson",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 6,
+     "marital": "Single",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Vera Croshaw Wilson",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 2,
+     "marital": "Single",
+     "born": "Nottingham, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 6,
+    "persons": 7
+   },
+   "note": "**THE COVER GIVES A HOUSE NAME, NOT A NUMBER: *Melbrook House, Park*.** A. Hagues spotted it. No property in the record carries that name, on Park Valley or any street, and **Park Valley has no house names recorded at all** - not one of its eighteen properties has an entry in the house-names table.\n\n**It is filed at 7 Park Valley (#263) on the strength of the sequence**, this schedule having come between numbers 6 and 8 in a run being worked in order. That is position, not evidence, and the number should be confirmed before the name is added to the property. See [[melbrook-house-park-valley]].\n\n**And the same surname holds the house across the gap.** 1901 gives **Alfred Wilson, 81**, living on means, with his widowed daughter Alice Lynam; 1911 gives **John Croshaw Wilson, 35**, a hosiery manufacturer. Forty-six years apart and the same name in the same house - grandfather and grandson would fit, and nothing here proves it.\n\n**The children are entered after the servants**, which is the wrong order for a schedule and suggests they were remembered late and added at the foot. Marjorie and Vera both carry **Croshaw** as a middle name, which makes them unusually easy to trace."
   }
  ]
 }
