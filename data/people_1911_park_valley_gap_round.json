@@ -942,6 +942,195 @@
      "birth_place": "Cossall, Nottinghamshire"
     }
    ]
+  },
+  {
+   "first_name": "John Holland",
+   "last_name": "Walker",
+   "sex": "M",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Leeds, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 268,
+     "relationship": "Head",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Department manager, wholesale clothing factory",
+     "birth_place": "Leeds, Yorkshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy Mabel",
+   "last_name": "Walker",
+   "sex": "F",
+   "born_year": 1875,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 268,
+     "relationship": "Wife",
+     "age_at_census": 36,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Gilding",
+   "sex": "F",
+   "born_year": 1874,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 268,
+     "relationship": "Servant",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Grace Emily",
+   "last_name": "Green",
+   "sex": "F",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Felstead, Essex",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 268,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "House parlourmaid, domestic",
+     "birth_place": "Felstead, Essex"
+    }
+   ]
+  },
+  {
+   "id": 1876,
+   "first_name": "George",
+   "last_name": "Pearson",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 271,
+     "relationship": "Head",
+     "age_at_census": 48,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Grocer",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1877,
+   "first_name": "Emily Ann",
+   "last_name": "Pearson",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 271,
+     "relationship": "Wife",
+     "age_at_census": 53,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ernest",
+   "last_name": "Pearson",
+   "sex": "M",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 271,
+     "relationship": "Son",
+     "age_at_census": 22,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Curtain designer",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Lee",
+   "sex": "F",
+   "born_year": 1881,
+   "match_born_year": true,
+   "born_place": "Preston, Lancashire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 271,
+     "relationship": "Servant",
+     "age_at_census": 30,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Preston, Lancashire"
+    }
+   ]
+  },
+  {
+   "id": 4072,
+   "first_name": "Harriett",
+   "last_name": "Hackett",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 272,
+     "relationship": "Head",
+     "age_at_census": 80,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Private means",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel Jane",
+   "last_name": "Cox",
+   "sex": "F",
+   "born_year": 1861,
+   "match_born_year": true,
+   "born_place": "Uppingham, Rutland",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 272,
+     "relationship": "Servant",
+     "age_at_census": 50,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Uppingham, Rutland"
+    }
+   ]
   }
  ]
 }

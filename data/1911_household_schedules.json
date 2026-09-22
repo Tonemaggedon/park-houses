@@ -1824,6 +1824,160 @@
     "persons": 3
    },
    "note": "**THIS HOUSEHOLD CANNOT BE FILED, BECAUSE THE RECORD HAS NO SUCH HOUSE.** Park Valley's properties run 1 to 11, then jump to 15, 17, 19, 21, 23, 25 and Valley House. **There is no 12, 13 or 14.** A. Hagues read this as number 12; the postal address line reads as 12 or 13 and I cannot tell which.\n\nEither the street once had houses the property list does not, or these numbers were later absorbed. Nothing is filed until that is settled, and the household is here rather than in the import file.\n\n**The head is a Kohn, and the Kohns are already in the record.** George Benedict Kohn, 53, single, a lace and export merchant and a managing director, born at Beeston. The 1901 round puts a Kohn household at 11 Pelham Crescent - a widow of 67 born in Germany, a German subject, with sons Benedict, Herman and Charles and a daughter Fanny. Charles is a lecturer on chemistry. This is Benedict, ten years on and keeping his own house."
+  },
+  {
+   "street": "Park Valley",
+   "house": "15",
+   "property_id": 268,
+   "rooms": 11,
+   "postal_address_on_cover": "15 Park Valley, Nottingham",
+   "signed_by": "John Holland Walker",
+   "marriage": {
+    "person": "Lucy Mabel Walker",
+    "years_married": 11,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Holland Walker",
+     "relation": "Head",
+     "sex": "M",
+     "age": 37,
+     "marital": "Married",
+     "occupation": "Department manager, wholesale clothing factory | Worker",
+     "born": "Leeds, Yorkshire"
+    },
+    {
+     "name": "Lucy Mabel Walker",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 36,
+     "marital": "Married",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Ann Gilding",
+     "relation": "Servant (cook)",
+     "sex": "F",
+     "age": 37,
+     "marital": "Single",
+     "occupation": "Cook, domestic service",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Grace Emily Green",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 31,
+     "marital": "Single",
+     "occupation": "House parlourmaid, domestic service",
+     "born": "Felstead, Essex"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**John Holland Walker.** The name is worth stopping on: a J. Holland Walker of Nottingham wrote extensively on the town's history in the early twentieth century, including an itinerary of its streets published by the Thoroton Society. Whether that is this man - a department manager in a wholesale clothing factory, 37, born at Leeds - the record cannot settle on its own, but the name is uncommon enough to be worth the asking. See [[john-holland-walker]].\n\n**Eleven years married and no children born**, which the 1911 return states. 15 Park Valley in 1901 held J. T. McCraith, a yarn agent, who is at 7 Park Terrace by this census."
+  },
+  {
+   "street": "Park Valley",
+   "house": "21",
+   "property_id": 271,
+   "rooms": 9,
+   "postal_address_on_cover": "21 Park Valley, Nottingham",
+   "signed_by": "George Pearson",
+   "marriage": {
+    "person": "Emily Pearson",
+    "years_married": 24,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "George Pearson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 48,
+     "marital": "Married",
+     "occupation": "Grocer | Employer",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1876
+    },
+    {
+     "name": "Emily Pearson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 53,
+     "marital": "Married",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1877
+    },
+    {
+     "name": "Ernest Pearson",
+     "relation": "Son",
+     "sex": "M",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Curtain designer | Employer",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Annie Lee",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 30,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Preston, Lancashire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 2,
+    "persons": 4
+   },
+   "note": "**George Pearson, grocer and employer**, with his wife Emily and a son of 22 who is a **curtain designer** and himself an employer - two trades and two employers under one roof.\n\n**Twenty-four years married, one child born alive, one still living** - and that one is Ernest, here at 22. An only child in a household of four.\n\n**The record holds the couple in 1921 at 7 Park Valley**, where he is a land and property agent rather than a grocer. Fourteen doors and a change of trade, and the ages agree: he is 48 here and the record has him born 1863, she is 53 and the record has her born 1859."
+  },
+  {
+   "street": "Park Valley",
+   "house": "23",
+   "property_id": 272,
+   "rooms": 9,
+   "postal_address_on_cover": "23 Park Valley, Nottingham",
+   "signed_by": "Harriett Katherine Hackett",
+   "people": [
+    {
+     "name": "Harriett Katherine Hackett",
+     "relation": "Head",
+     "sex": "F",
+     "age": 80,
+     "marital": "Single",
+     "occupation": "Private means",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 4072,
+     "note": "**The record has no middle name for her.** The schedule writes Katherine above the surname."
+    },
+    {
+     "name": "Mabel Jane Cox",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 50,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Uppingham, Rutland"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 2,
+    "persons": 2
+   },
+   "note": "**Harriett Hackett at 80, exactly ten years on from the 1901 round.** The record holds her here in 1891 and my reading of the 1901 round gives her at 70, living on own means, with two servants. Now 80, single, with one.\n\n**And her middle name, which the record does not have.** The schedule writes **Katherine** above the surname - Harriett Katherine Hackett.\n\nTwo women in nine rooms, neither related to the other, one of them 80 and one 50."
   }
  ]
 }
