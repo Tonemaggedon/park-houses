@@ -106,7 +106,6 @@ async function load() {
     }
     bar.textContent = `${d.remaining} names left · ${d.peopleRemaining} people`
       + (donePeople ? ` · ${donePeople} people done this session` : '');
-    if (canEdit) showObviousOffer();
 
     if (!canEdit) {
       box.innerHTML = `<div class="empty">Sign in as a contributor to set these.</div>`;
@@ -130,7 +129,11 @@ async function load() {
         </div>
       </div>`;
     }).join('') + '</div><div id="contra"></div>';
-    if (canEdit) showContradictions();
+    // Both of these draw into elements the line above has just created, so they
+    // are called after it and not before. Called before, getElementById returns
+    // null and they return in silence - which is how the sweep button shipped
+    // without ever appearing on the page.
+    if (canEdit) { showObviousOffer(); showContradictions(); }
   } catch (e) {
     bar.textContent = '';
     box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
@@ -140,7 +143,7 @@ async function load() {
 // Not a name to classify but a row to look at, so it sits below the queue.
 async function showContradictions() {
   const slot = document.getElementById('contra');
-  if (!slot) return;
+  if (!slot) { console.warn('name-sex: #contra not in the page yet'); return; }
   const d = await fetch('/api/names/sex-contradictions').then(r => r.json()).catch(() => null);
   if (!d || !d.people || !d.people.length) return;
   const rows = d.people.map(x => `
@@ -164,7 +167,7 @@ async function showContradictions() {
 // say what it is about to do before it does it.
 async function showObviousOffer() {
   const slot = document.getElementById('obvious');
-  if (!slot) return;
+  if (!slot) { console.warn('name-sex: #obvious not in the page yet'); return; }
   const d = await fetch('/api/names/sex-obvious', {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}'
   }).then(r => r.json()).catch(() => null);
