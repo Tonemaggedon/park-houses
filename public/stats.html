@@ -270,11 +270,13 @@ function buildMap(d) {
     + '<option value="3">people with three or more</option>';
   sel.onchange = () => draw(sel.value);
   map = L.map('moveMap', { scrollWheelZoom:false });
-  // A dark base so the coloured threads read. CARTO's dark tiles are free to use
-  // with attribution and are built from OpenStreetMap, which is credited too.
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19, subdomains: 'abcd',
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+  // A dark base so the coloured threads read. Esri's dark canvas is free to use
+  // with attribution; CARTO's looks the same but now bakes "API KEY REQUIRED"
+  // into the tile itself, which is not a thing you find out from the status code.
+  // Note the {z}/{y}/{x} order - Esri is not the usual way round.
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 16,
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap contributors'
   }).addTo(map);
   document.getElementById('fitBtn').onclick = () => fit();
   draw('all');
