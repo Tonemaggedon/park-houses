@@ -138,6 +138,7 @@ async function load() {
     bar.textContent = '';
     box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
   }
+}
 
 // The people who contradict their own name - a George returned as a daughter.
 // Not a name to classify but a row to look at, so it sits below the queue.
@@ -195,7 +196,6 @@ async function showObviousOffer() {
     donePeople += (r.people || 0);
     load();
   };
-}
 }
 
 document.addEventListener('click', async e => {
