@@ -1,0 +1,135 @@
+{
+ "note": "The 1911 household at 1 Clare Valley, from the schedule A. Hagues supplied.\n\n**Richard and Eliza Anne Kirby are bound by NUMBER** - the record holds them at this house from the 1921 return - and each carries their name as well, because the importer skips a record without one. The rest are new.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 1934,
+   "first_name": "Richard",
+   "last_name": "Kirby",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Head",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Manager, wallpaper manufacturer",
+     "birth_place": "London"
+    }
+   ]
+  },
+  {
+   "id": 1935,
+   "first_name": "Eliza Anne",
+   "last_name": "Kirby",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Wife",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "London"
+    }
+   ]
+  },
+  {
+   "first_name": "Richard",
+   "last_name": "Kirby",
+   "sex": "M",
+   "born_year": 1907,
+   "match_born_year": true,
+   "born_place": "Derby",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Son",
+     "age_at_census": 4,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Derby"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry Wilbourn",
+   "last_name": "Gregory",
+   "sex": "M",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "Pinner, Middlesex",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Visitor",
+     "age_at_census": 32,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Manager, wallpaper manufacturer",
+     "birth_place": "Pinner, Middlesex"
+    }
+   ]
+  },
+  {
+   "first_name": "Constance Ellen",
+   "last_name": "Gregory",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Mickleover, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Visitor",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Mickleover, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Williamson",
+   "sex": "F",
+   "born_year": 1893,
+   "match_born_year": true,
+   "born_place": "Longford, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Longford, Derbyshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Rodgers",
+   "sex": "F",
+   "born_year": 1897,
+   "match_born_year": true,
+   "born_place": "Stanley, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 59,
+     "relationship": "Nursemaid",
+     "age_at_census": 14,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "occupation_at_census": "Nursemaid, domestic",
+     "birth_place": "Stanley, Derbyshire"
+    }
+   ]
+  }
+ ]
+}

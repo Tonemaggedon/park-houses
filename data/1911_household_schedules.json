@@ -2176,6 +2176,96 @@
     "persons": 3
    },
    "note": "**ALREADY IN THE RECORD at Ribble Lodge (#65)**, from the 1911 spreadsheet - which is worth noting, because **this schedule gives no house name and no number at all**, only *Clare Valley*. So the record's placement at Ribble Lodge came from some other source, and this return neither confirms nor contradicts it.\n\nMarried two years and no children. A lace manufacturer of 41 and his wife, with one servant of fifteen."
+  },
+  {
+   "street": "Clare Valley",
+   "house": "1",
+   "property_id": 59,
+   "rooms": 9,
+   "postal_address_on_cover": "1 Clare Valley, Nottingham",
+   "signed_by": "R. Kirby",
+   "marriage": {
+    "person": "Eliza Anne Kirby",
+    "years_married": 5,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "second_marriage": {
+    "person": "Constance Ellen Gregory",
+    "years_married": 2,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Richard Kirby",
+     "relation": "Head",
+     "sex": "M",
+     "age": 37,
+     "marital": "Married",
+     "occupation": "Manager, wallpaper manufacturer | Worker",
+     "born": "London",
+     "record_id": 1934
+    },
+    {
+     "name": "Eliza Anne Kirby",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 37,
+     "marital": "Married",
+     "born": "London",
+     "record_id": 1935
+    },
+    {
+     "name": "Richard Kirby",
+     "relation": "Son",
+     "sex": "M",
+     "age": 4,
+     "born": "Derby"
+    },
+    {
+     "name": "Harry Wilbourn Gregory",
+     "relation": "Visitor",
+     "sex": "M",
+     "age": 32,
+     "marital": "Married",
+     "occupation": "Manager, wallpaper manufacturer | Worker",
+     "born": "Pinner, Middlesex"
+    },
+    {
+     "name": "Constance Ellen Gregory",
+     "relation": "Visitor",
+     "sex": "F",
+     "age": 28,
+     "marital": "Married",
+     "born": "Mickleover, Derbyshire"
+    },
+    {
+     "name": "Ada Williamson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "General servant, domestic | Worker",
+     "born": "Longford, Derbyshire"
+    },
+    {
+     "name": "Annie Rodgers",
+     "relation": "Nursemaid",
+     "sex": "F",
+     "age": 14,
+     "occupation": "Nursemaid, domestic | Worker",
+     "born": "Stanley, Derbyshire"
+    }
+   ],
+   "totals": {
+    "males": 3,
+    "females": 4,
+    "persons": 7
+   },
+   "note": "**Two managers of wallpaper manufacturers under one roof** - Richard Kirby, who heads the house, and Harry Wilbourn Gregory, a visitor of 32 with exactly the same trade in exactly the same industry. Colleagues staying the night, on census night, is the likeliest reading, and it is the sort of thing only a return catches.\n\n**The record holds the Kirbys from 1921 and not before.** This puts them at the house ten years earlier, and adds a son, Richard, aged 4 and born at Derby - so the family came from Derby between 1907 and 1911. He is not in the 1921 household, which by then holds a visiting sister instead.\n\n**The nursemaid is fourteen.** Annie Rodgers, in service and returned as a worker, born at Stanley in Derbyshire. Every servant in this house is Derbyshire-born and the family is London-born, which is the pattern the whole estate shows: the households come from anywhere, the people who wait on them come from the next county.\n\n**Two marriages are answered on this schedule**, the Gregorys' as well as the Kirbys' - married two years, no children. That is unusual: a visitor's marriage is normally left blank."
   }
  ]
 }
