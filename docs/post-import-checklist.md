@@ -135,6 +135,19 @@ In this order, because each one makes the next shorter.
 | 5.4 | Admin tools → **Remove duplicate resident links** → `Preview` → `Run` | The same person linked to the same house twice |
 | 5.5 | Admin tools → **This census record is somebody else of the same name** → `Preview` → `Run` | Where an import has hung a servant on somebody who merely shares her name |
 
+**5.5a — the duplicates the import itself made.** An import file binds a person to the record by
+matching their name. If that matcher is stricter than the one on this list at 5.6, the import
+creates a second copy of anybody the record holds under a **variant spelling** - and it does it
+silently, because from the importer's side a name that matches nothing is simply a new person.
+
+That is what happened on the 1901 gap round. The record held **Clark**, **Lindey**, **Stubbing**,
+**Marrion** and **Thomley**; the page gave **Clarke**, **Lindley**, **Stubbins**, **Marriott** and
+**Thornley**; ten new people were created beside the ones already there.
+
+**So whatever matcher builds an import file must be the same one that runs at 5.6** - surname
+fuzzed, census short forms expanded - or the import manufactures the very duplicates the next
+stage then has to find.
+
 **5.6 — the ones no tool can see.** Both the tools above bucket on the surname *letter for letter*,
 so a duplicate created by two spellings of a surname — Crendson beside Crewdson, Flersheim beside
 Hersheim, Throsheim beside Frosheim, Slack beside Black — is invisible to them. Ask Claude to run
