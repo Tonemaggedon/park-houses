@@ -2611,9 +2611,14 @@ app.post('/api/names/sex-obvious', requireContributor, async (req, res) => {
 // The people who contradict their own name.
 //
 // The queue shows George as "2 female, 26 male". Those two are not evidence
-// that George is sometimes a woman's name - they are two rows where either the
-// sex is wrong or the relationship is, and nothing else in the record will ever
-// point at them. Twenty-six agreeing rows drown them.
+// that George is sometimes a woman's name - they are two rows where something
+// is wrong, and nothing else in the record will ever point at them, because
+// twenty-six agreeing rows drown them.
+//
+// Three things can be wrong, not two. The sex, the relationship, or THE NAME:
+// the first of these anybody looked at was a Gladys transcribed as a George,
+// which no check on sex or relationship would ever have found. That is the real
+// value of reading a name against its own household.
 //
 // This finds them by person rather than by name: every census row whose
 // relationship word sits on the MINORITY side of its own forename, where the

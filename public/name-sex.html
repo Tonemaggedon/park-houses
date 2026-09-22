@@ -152,9 +152,10 @@ async function showContradictions() {
     </div>`).join('');
   slot.innerHTML = `<div style="margin-top:34px;border-top:1px solid #e0d8c4;padding-top:18px">
     <h3 style="font-size:1rem;margin:0 0 4px">${d.people.length} ${d.people.length === 1 ? 'person contradicts' : 'people contradict'} their own name</h3>
-    <p class="lede" style="margin:0 0 12px">A George returned as a daughter, a Mary as a son. Either the sex is wrong or the
-      relationship is, and nothing else in the record points at these — the agreeing rows drown them.
-      Nothing here has been changed.</p>
+    <p class="lede" style="margin:0 0 12px">A George returned as a daughter, a Mary as a son. One of three things is wrong:
+      the sex, the relationship, or <strong>the forename itself</strong> — the first of these to be looked at
+      turned out to be a Gladys read as a George. Nothing else in the record points at these, because the
+      agreeing rows drown them. Nothing here has been changed.</p>
     ${rows}</div>`;
 }
 
