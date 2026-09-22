@@ -3356,6 +3356,932 @@
     "persons": 4
    },
    "note": "**A THIRD FAMILY, AND THE RECORD HAD NEITHER END OF THEM.** The gap report said somebody moved here between 1901 and 1921, and it was right twice over: **Stuart Hawthorn is neither the 1901 family nor the 1921 one.** No Hawthorn of any kind is in the record.\n\n**This house turned over completely every ten years.** Samuel Maples, solicitor and under-sheriff, 77, in 1891; William H. Carey, lace curtain finishing, in 1901; Stuart Hawthorn, lace manufacturer, in 1911; Charles Littlewood Hill, a lieutenant of the Sherwood Foresters, in 1921. **Four families, four censuses, no overlap at all** - which is unusual on this estate and says something about the house or its lease.\n\n**Married fifteen years and no children born at all.** Both answers read *none*, so this is not children away from home.\n\n**Every person is marked *British subject* in the nationality column**, which is not required for people born in England and suggests a householder working carefully through every box - the same habit as the Bromleys two doors along at 15.\n\n**Sarah Kate Champney is worth a glance.** The record holds one other Champney - #4826, a cook, **born the same year, 1875**, unfiled at 13 Park Valley in 1901. Same uncommon surname, same trade, same birth year, both in The Park. The birthplaces disagree, so this is not a merge; it may well be a sister."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "37 (2 Pelham Terrace)",
+   "property_id": 226,
+   "rooms": 10,
+   "schedule_number": 186,
+   "postal_address_on_cover": "2 Pelham Terrace, Nottingham",
+   "signed_by": "J. A. H. Green",
+   "marriage": {
+    "person": "Hettie Mary Green",
+    "years_married": 9,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Alfred Henderson Green",
+     "relation": "Head",
+     "sex": "M",
+     "age": 49,
+     "marital": "Married",
+     "occupation": "Solicitor (Town Clerk) | Nottingham Corporation | worker",
+     "born": "Nottingham",
+     "person_id": 4896
+    },
+    {
+     "name": "Hettie Mary Green",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 41,
+     "marital": "Married",
+     "born": "Nottingham",
+     "person_id": 2219
+    },
+    {
+     "name": "Edith Elizabeth Briggs",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 26,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Derby"
+    },
+    {
+     "name": "Sarah Jane Hollingworth",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 32,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Colsterworth, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**THEY NEVER MOVED. THE HOUSE CHANGED ITS ADDRESS.** The gap report put John A. H. Green at 37 Newcastle Drive in 1901 and his wife there in 1921, and said the family was very likely still there in between. The cover says **2 Pelham Terrace** - and by the **Newcastle Drive Rule** already in the record, *Newcastle Drive number = 39 minus the Pelham Terrace number* for the even side, so 39 - 2 = **37**. Same house, older name.\n\n**He is Town Clerk, or in the Town Clerk's office.** In 1901 he was a solicitor on his own account; in 1911 he gives **Solicitor (Town Clerk)** with **Nottingham Corporation** as his employer and answers *worker*. A man in private practice has gone into the Corporation, and which post he held is a matter of public record. See [[john-green-town-clerk]].\n\n**Hettie is a second wife.** Married nine years - so about 1902 - with **no children born to this marriage**. But in 1901 the house held **Dorothy Green, 13**, his daughter, born about 1888. She would be 23 in 1911 and is not here.\n\n**Schedule 186**, the first number captured on this round since Goddards Lodge."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "35 (Pelham House, 4 Pelham Terrace)",
+   "property_id": 225,
+   "rooms": 14,
+   "postal_address_on_cover": "Pelham House, Pelham Terrace, The Park, Nottingham",
+   "signed_by": "E. Laurence Manning",
+   "marriage": {
+    "person": "Alice Lina Manning",
+    "years_married": 12,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Edward Laurence Manning",
+     "relation": "Head",
+     "sex": "M",
+     "age": 46,
+     "marital": "Married",
+     "occupation": "Solicitor | employer",
+     "born": "Nottingham",
+     "person_id": 1426,
+     "note": "the record holds this person from 1921 at 5 Lenton Road"
+    },
+    {
+     "name": "Alice Lina Manning",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 45,
+     "marital": "Married",
+     "born": "Alsace, France",
+     "note": "nationality: British by marriage | the record holds this person from 1921 at 5 Lenton Road",
+     "person_id": 1427
+    },
+    {
+     "name": "Agneta Lina Manning",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 9,
+     "born": "Beeston, Nottinghamshire",
+     "person_id": 1428,
+     "note": "the record holds this person from 1921 at 5 Lenton Road"
+    },
+    {
+     "name": "Geoffrey Frederic Laurence Manning",
+     "relation": "Son",
+     "sex": "M",
+     "age": 7,
+     "born": "Beeston, Nottinghamshire",
+     "person_id": 1429,
+     "note": "the record holds this person from 1921 at 5 Lenton Road"
+    },
+    {
+     "name": "Anna Elizabeth Kuntz",
+     "relation": "Governess",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Governess",
+     "born": "Alsace, Germany",
+     "note": "nationality: German"
+    },
+    {
+     "name": "Minnie Lucy Wilkinson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 34,
+     "marital": "Single",
+     "occupation": "House parlourmaid",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Harriet Johnson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 32,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Fulbeck, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 5,
+    "persons": 7
+   },
+   "note": "**ONE PROVINCE, TWO COUNTRIES, ON THE SAME PAGE.** The wife gives her birthplace as **Alsace, France**. The governess gives hers as **Alsace, Germany**. Both are correct. **Alsace was French until 1871 and German afterwards** - Alice Lina Manning, born about 1866, was born in France; Anna Elizabeth Kuntz, born about 1893, was born in Germany, in the same province.\n\n**The nationality column says the rest.** The wife is **British by marriage**; the governess of 18 is entered simply as **German**. This is April 1911, three years and four months before Britain declared war on Germany. **What became of her is worth knowing** - German nationals in England were registered, interned or repatriated from 1914. See [[alsace-household-pelham-house]].\n\n**Pelham House is 35 Newcastle Drive**, #225, by the Newcastle Drive Rule: 39 - 4 = 35. The record already carries the mapping on this property's 1891 rows, where Edmund Pratt the lace manufacturer is at *4 Pelham Terrace (now 35 Newcastle Drive, Pelham House)*.\n\n**Another gap closed.** 1901 held John Howard Bradwell the auctioneer and 1921 held William H. Hirst, so the Mannings are a third family in between - **but they are in the record already**, all four of them, from **1921 at 5 Lenton Road (Castle Bank, #178)**. They left Pelham House between these two returns. The record spells the wife **Elise Lina** where her husband's hand says Alice, and the son **Geoffrey Lawrence Frederic** against this schedule's Geoffrey Frederic Laurence.\n\n**Both children born at Beeston**, so the family came into The Park after 1904."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "33 (6 Pelham Terrace)",
+   "property_id": 224,
+   "rooms": 10,
+   "postal_address_on_cover": "6 Pelham Terrace, Nottingham",
+   "signed_by": "John Mackie",
+   "marriage": {
+    "person": "Agnes Mackie",
+    "years_married": 26,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Mackie",
+     "relation": "Head",
+     "sex": "M",
+     "age": 55,
+     "marital": "Married",
+     "occupation": "Surgeon | own account | working at home",
+     "born": "Leslie, Aberdeenshire"
+    },
+    {
+     "name": "Agnes Mackie",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 45,
+     "marital": "Married",
+     "born": "Dublin"
+    },
+    {
+     "name": "Margaret Mackie",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "born": "Nottingham"
+    },
+    {
+     "name": "John H. Mackie",
+     "relation": "Son",
+     "sex": "M",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Medical student",
+     "born": "Lowdham, Nottinghamshire"
+    },
+    {
+     "name": "Jessie Pinchbeck",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Grantham, Lincolnshire"
+    },
+    {
+     "name": "Mabel Elizabeth Hollingshead",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Saxilby, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 4,
+    "persons": 6
+   },
+   "note": "**A SURGEON WITH HIS SURGERY IN THE HOUSE.** John Mackie, 55, answers *surgeon*, **own account**, and **working at home** - so this address was his practice as well as his house.\n\n**And his son is following him.** John H. Mackie, 18, **medical student**, with the same occupational code as his father against his entry.\n\n**Aberdeenshire and Dublin.** He was born at Leslie in Aberdeenshire, she at **Dublin**; they married about 1885 and both children were born in Nottinghamshire, the daughter in the town and the son at Lowdham. Two born, two living, both at home.\n\n**No Mackie of this household is in the record.** The one Mackie it holds, Mary Jamison Mackie of Insch, Aberdeenshire, is not of this family on the evidence here - though Insch and Leslie are ten miles apart, which is worth a second look."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "31 (8 Pelham Terrace)",
+   "property_id": 223,
+   "rooms": 11,
+   "postal_address_on_cover": "8 Pelham Terrace, Nottingham",
+   "signed_by": "Ernest B. Meldrum",
+   "marriage": {
+    "person": "Evelyn N. Meldrum",
+    "years_married": 14,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Ernest B. Meldrum",
+     "relation": "Head",
+     "sex": "M",
+     "age": 46,
+     "marital": "Married",
+     "occupation": "Paper merchant | employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Evelyn N. Meldrum",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 39,
+     "marital": "Married",
+     "born": "Nottingham",
+     "person_id": 1407,
+     "note": "the record holds her as Evelyn M"
+    },
+    {
+     "name": "Barbara Meldrum",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 13,
+     "occupation": "School",
+     "born": "Nottingham",
+     "person_id": 1408
+    },
+    {
+     "name": "Olga Meldrum",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 10,
+     "occupation": "School",
+     "born": "Nottingham",
+     "person_id": 1409
+    },
+    {
+     "name": "Mary Ellen Marson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Ilkeston, Derbyshire"
+    },
+    {
+     "name": "Adah Hannah Bayliss",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 28,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Churchover, Rugby"
+    },
+    {
+     "name": "Sybil Henry",
+     "relation": "Visitor",
+     "sex": "F",
+     "age": 10,
+     "occupation": "School",
+     "born": "Nottingham"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 6,
+    "persons": 7
+   },
+   "note": "**THE WIDOW AND DAUGHTERS ARE IN THE RECORD. THE HUSBAND IS NOT.** Evelyn, Barbara and Olga Meldrum are all held from **1921 at property 127**, where Evelyn is **head** - so **Ernest B. Meldrum died between these two returns**, and the family left this house. He is nowhere in the record at all until now.\n\n**A paper merchant employing others**, 46, born Nottingham, as was his wife and both daughters.\n\n**Olga is an unusual name for a Nottingham girl born in 1901** and worth remembering - it makes her easy to trace.\n\n**Sybil Henry, a visitor of ten**, is the same age as Olga and staying the night; a school friend on the face of it.\n\n**The householder filled the age columns in wrongly at first** - several ages are written in the male column and struck through, then entered again in the female one."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "29 (10 Pelham Terrace)",
+   "property_id": 222,
+   "rooms": null,
+   "postal_address_on_cover": "10 Pelham Terrace, Nottingham",
+   "signed_by": "Max Loewenstein",
+   "marriage": {
+    "person": "Emilie Feilmann",
+    "years_married": null,
+    "children_born_alive": 4,
+    "children_still_living": 4,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Emilie Feilmann",
+     "relation": "Head",
+     "sex": "F",
+     "age": 56,
+     "marital": "Widow",
+     "occupation": "Lace manufacturer (struck through on the form)",
+     "born": "Russia",
+     "note": "nationality: Resident, British by marriage"
+    },
+    {
+     "name": "Gertrude Feilmann",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 35,
+     "marital": "Single",
+     "occupation": "Principal of school | employer | at home",
+     "born": "Nottingham",
+     "note": "nationality: British by parentage"
+    },
+    {
+     "name": "Rose Feilmann",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 34,
+     "marital": "Single",
+     "occupation": "Vocalist | own account",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Lilian Albert",
+     "relation": "Boarder",
+     "sex": "F",
+     "age": 40,
+     "marital": "Widow",
+     "born": "New South Wales",
+     "note": "nationality: Resident"
+    },
+    {
+     "name": "Max Loewenstein",
+     "relation": "Brother",
+     "sex": "M",
+     "age": 58,
+     "marital": "Single",
+     "occupation": "Lace manufacturer | machine-made lace | employer",
+     "born": "Russia",
+     "note": "nationality: naturalised British subject"
+    },
+    {
+     "name": "Selina Kirkland",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 33,
+     "marital": "Single",
+     "occupation": "General servant, cook, domestic",
+     "born": "Church Broughton, Derbyshire"
+    },
+    {
+     "name": "Sarah Kessler",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Papplewick, Nottinghamshire"
+    },
+    {
+     "name": "Gertrude Merriman",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Derby"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 7,
+    "persons": 8
+   },
+   "note": "**THE MOST REMARKABLE HOUSEHOLD OF THE ROUND, AND NOT ONE OF THEM IS IN THE RECORD.** See [[the-feilmann-household]].\n\n**Two Russian-born heads of a Nottingham lace business.** Emilie Feilmann, 56, widow, born **Russia**, entered as *Resident* and **British by marriage**; her brother **Max Loewenstein**, 58, single, born **Russia**, **naturalised British subject**, **lace manufacturer in machine-made lace, employer**. He signs the schedule, not she.\n\n**Two unmarried professional daughters, which is rare anywhere in this record.** **Gertrude Feilmann, 35, Principal of a School and an employer in her own right.** **Rose Feilmann, 34, Vocalist, on her own account** - a professional singer. Neither has married, both work, and one of them runs a business employing people.\n\n**A widowed boarder born in New South Wales.** Lilian Albert, 40, entered as *Resident*.\n\n**Eight people, one man, seven women, three general servants.**\n\n**The head's own occupation is struck through on the form** - *Lace Manufacturer, Employer*, crossed out. Whether she or the enumerator struck it, a widow of a lace family was answering as a manufacturer before somebody thought better of it.\n\n**The record has held exactly one person born in Russia** until now - Julia Meyer, #3225."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "27 (Glendower, 12 Pelham Terrace)",
+   "property_id": 221,
+   "rooms": null,
+   "postal_address_on_cover": "Glendower, 12 Pelham Terrace, The Park, Nottingham",
+   "signed_by": "William Foster",
+   "marriage": {
+    "person": "Mary Foster",
+    "years_married": 46,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "William Foster",
+     "relation": "Head",
+     "sex": "M",
+     "age": 71,
+     "marital": "Married",
+     "occupation": "Cabinet maker and upholsterer | employer",
+     "born": "Nottingham",
+     "person_id": 4873
+    },
+    {
+     "name": "Mary Foster",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 65,
+     "marital": "Married",
+     "born": "Nottingham",
+     "person_id": 2194
+    },
+    {
+     "name": "Jane Wetherell",
+     "relation": "Companion",
+     "sex": "F",
+     "age": 41,
+     "marital": "Single",
+     "occupation": "Lady's companion",
+     "born": "Middlesbrough, Yorkshire",
+     "person_id": 2195
+    },
+    {
+     "name": "Annie Pearce",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 38,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Thame, Oxfordshire",
+     "person_id": 2196
+    },
+    {
+     "name": "Mary Adcock",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 35,
+     "marital": "Single",
+     "occupation": "Parlourmaid, domestic",
+     "born": "Cresswell, Nottinghamshire",
+     "person_id": 2197
+    },
+    {
+     "name": "Nellie Mabeltoft",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Hough on the Hill, Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 5,
+    "persons": 6
+   },
+   "note": "**THE FOURTH PIVOT, AND THE FOURTH TO COME BACK FIRST TIME.** The gap report said the Fosters would still be here, and they are - William at 71, cabinet maker and upholsterer, employing others, married 46 years.\n\n**THREE OF THE FOUR WOMEN WHO SERVE THIS HOUSE ARE STILL SERVING IT TEN YEARS LATER.** Jane Wetherell the companion, Annie Pearce the cook and Mary Adcock the parlourmaid are all in the record at this house for **1921**. That is not one long servant but a whole household staying put, and it is the most striking case of it in the record so far.\n\n**One child in 46 years of marriage.** That is William Henry Foster, #113, born 1865, who was here as a 25-year-old cabinet maker in 1891 and by 1901 had his own house at property 246, where he stays through 1921.\n\n**A probable duplicate, and an old one.** The record holds **#3534 William Foster, born 1834**, head of this house in 1891, *cabinet maker and upholsterer*; and **#4873 William Foster, born 1840**, head of the same house in 1901, *cabinet maker*. **Same house, same trade, six years apart in a birth year worked back from a census age.** They should be one man. Bound to #4873 here because the birth year agrees with this schedule."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "25 (14 Pelham Terrace)",
+   "property_id": 220,
+   "rooms": 8,
+   "postal_address_on_cover": "14 Pelham Terrace, The Park, Nottingham",
+   "signed_by": "Eliza Ellen Patterson",
+   "people": [
+    {
+     "name": "Eliza Ellen Patterson",
+     "relation": "Head",
+     "sex": "F",
+     "age": 67,
+     "marital": "Widow",
+     "occupation": "Private means",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Edith Mellor",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 21,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Nottingham"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 2,
+    "persons": 2
+   },
+   "note": "**A widow of 67 on private means, with one servant, in eight rooms** - the smallest household of this Pelham Terrace run and the only one with a single servant.\n\n**Not the other Patterson.** The record holds **Mary Ely Patterson**, #3584, born 1829, head of **1 Park Terrace** across 1891, 1901 and 1911 - a different woman, and a name already on the correction list as *Mary Elizabeth*. **Eliza Ellen Patterson is new**, and the two should not be allowed to drift together: same surname, both widows, both heads, both on the estate in 1911, born 38 years apart.\n\n**The house was John Jardine's in 1891** and the record has nothing between that and this."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "23 (16 Pelham Terrace)",
+   "property_id": 219,
+   "rooms": null,
+   "postal_address_on_cover": "16 Pelham Terrace, Nottingham",
+   "signed_by": "Herman Keane",
+   "marriage": {
+    "person": "Gwendoline Keane",
+    "years_married": 6,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Herman Keane",
+     "relation": "Head",
+     "sex": "M",
+     "age": 52,
+     "marital": "Married",
+     "occupation": "Lace merchant | own account",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Gwendoline Keane",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 28,
+     "marital": "Married",
+     "born": "Newtown, Montgomeryshire"
+    },
+    {
+     "name": "Eric Keane",
+     "relation": "Son",
+     "sex": "M",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Betty Keane",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": "10 months",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Mary Wayne",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 38,
+     "marital": "Single",
+     "occupation": "Nurse, domestic",
+     "born": "Fritchley, Derbyshire"
+    },
+    {
+     "name": "Beatrice Mellors",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Hucknall, Nottinghamshire"
+    },
+    {
+     "name": "Lily Gazey",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Warsop, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 5,
+    "persons": 7
+   },
+   "note": "**THE COOK AND THE HOUSEMAID ARE BOTH FIFTEEN.** Beatrice Mellors and Lily Gazey, both 15, both single, one keeping the house and the other cooking for seven people. **The youngest servants in the 1911 round**, and a reminder of what domestic service actually was for most of the women in this record.\n\n**A husband of 52 and a wife of 28** - twenty-four years between them, married six years, with a boy of five and a baby of **ten months**. Betty Keane is the youngest person in the round.\n\n**A third family again.** 1901 held Job E. Danby the lace traveller, 1921 held Henry Tayler, and no Keane of this household is in the record - only Amy Gertrude Keane, #1146, who is not obviously of it.\n\n**The wife is Welsh**, born at Newtown in Montgomeryshire."
+  },
+  {
+   "street": "Park Row",
+   "house": "Park Lodge",
+   "property_id": null,
+   "rooms": 2,
+   "postal_address_on_cover": "Park Lodge, Park Row",
+   "signed_by": "John Stubbings",
+   "marriage": {
+    "person": "Maggie Stubbings",
+    "years_married": 29,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "John Stubbings",
+     "relation": "Head",
+     "sex": "M",
+     "age": 57,
+     "marital": "Married",
+     "occupation": "Municipal door attendant, Guildhall | worker",
+     "born": "Holbeck, Nottinghamshire",
+     "person_id": 2239,
+     "note": "the record holds him as John Stubbing, and again as John Stubbins"
+    },
+    {
+     "name": "Maggie Stubbings",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 57,
+     "marital": "Married",
+     "born": "Carlisle"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 1,
+    "persons": 2
+   },
+   "note": "**ONE MAN, THREE SPELLINGS, AND A CAREER THAT READS STRAIGHT THROUGH.** See [[john-stubbings-three-spellings]].\n\n| | | | |\n|---|---|---|---|\n| **1901** | #4752 John **Stubbins**, b.1854 | Corporation porter | **unfiled, Park Row** |\n| **1911** | this schedule, aged 57 | **Municipal door attendant, Guildhall** | Park Lodge, Park Row |\n| **1921** | #2239 John **Stubbing**, b.1855 | Attendant | **East Lodge, Park Row, #413** |\n\n**Same street, same employer, the same job getting a grander name each decade.** The birthplaces differ - Cuckney, Holbeck, Welbeck - and that settles it rather than unsettling it: **all three are villages within a few miles of each other on the Welbeck estate**, which is a man naming the nearest place he thinks you will know.\n\n**NOT FILED, deliberately.** #2239 is at **East Lodge, Park Row** in 1921 and this is *Park Lodge, Park Row* in 1911. They are very probably the same building, but the record holds only one Park Row lodge and the cover gives a different name, **so it wants confirming rather than assuming**. If it is confirmed, this fills 1911 for #413 **and** places the six unfiled 1901 rows sitting under a bare *Park Row*.\n\n**Married 29 years and no children born at all.** Two rooms, the smallest dwelling in the round."
+  },
+  {
+   "street": "Huntingdon Drive",
+   "house": "1 (Barton House)",
+   "property_id": 143,
+   "rooms": 9,
+   "postal_address_on_cover": "1 Huntingdon Drive, Lenton Road, Nottingham",
+   "signed_by": "W. H. Mellor",
+   "marriage": {
+    "person": "Mary Ann Mellor",
+    "years_married": 19,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "William Henry Mellor",
+     "relation": "Head",
+     "sex": "M",
+     "age": 61,
+     "marital": "Married",
+     "occupation": "Factory manager, hosiery | manager",
+     "born": "Oldham, Lancashire",
+     "person_id": 1451
+    },
+    {
+     "name": "Mary Ann Mellor",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 57,
+     "marital": "Married",
+     "born": "Old Lenton, Nottingham",
+     "person_id": 1452
+    },
+    {
+     "name": "Phyllis Mary Mellor",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 18,
+     "marital": "Single",
+     "born": "New Lenton, Nottingham",
+     "person_id": 1453
+    },
+    {
+     "name": "Annie Chambers",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 26,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Newthorpe Common, Greasley, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**All three Mellors are already in the record**, from **1921 at property 177 - 4 Lenton Road**, where he is *retired hosiery manufacturer*. **So they moved next door but one between the two returns**, and this is the earlier address.\n\n**Factory manager, hosiery, and a manager rather than an employer** in 1911; a *retired hosiery manufacturer* by 1921. A man who ran somebody else's factory at 61 and is described as a manufacturer at 71 - worth knowing which he actually was.\n\n**Born at Oldham in Lancashire**, which is cotton country, and he came to Nottingham for hosiery. **Married 19 years with one child**, Phyllis, 18 - so she was born within months of the marriage.\n\n**1 Huntingdon Drive is Barton House** in the property list."
+  },
+  {
+   "street": "Huntingdon Drive",
+   "house": "(no number given)",
+   "property_id": null,
+   "rooms": 9,
+   "postal_address_on_cover": "Huntingdon Drive, The Park",
+   "signed_by": "Robert Dudley Walker",
+   "marriage": {
+    "person": "Helen Marion Walker",
+    "years_married": 2,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Robert Dudley Walker",
+     "relation": "Head",
+     "sex": "M",
+     "age": 28,
+     "marital": "Married",
+     "occupation": "Lace thread manufacturer | employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Helen Marion Walker",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 26,
+     "marital": "Married",
+     "born": "Bestwood, Nottinghamshire",
+     "person_id": 2115,
+     "note": "the record holds her as Helen Main Walker"
+    },
+    {
+     "name": "John Alexander Walker",
+     "relation": "Son",
+     "sex": "M",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Ruth Holland",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Netherfield, Nottinghamshire"
+    },
+    {
+     "name": "Elizabeth Olivers",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Nurse, domestic",
+     "born": "Ruddington, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 3,
+    "persons": 5
+   },
+   "note": "**THE COVER GIVES NO NUMBER, BUT THE WIDOW GIVES THE HOUSE.** Helen Marion Walker is in the record as **Helen Main Walker**, #2115, **head of 2 Huntingdon Drive (#144) in 1921**. She is head because **Robert Dudley Walker died between these two returns**, at some point after his twenty-eighth year.\n\n**So this is very probably 2 Huntingdon Drive** - same street, same woman, ten years apart. **Not filed, because the cover does not say so** and a widow can move as easily as stay. The enumerator's address column settles it.\n\n**Married two years, one child**: John Alexander Walker, aged 1. By 1921 the son in the house is **Robert C Walker, born 1913** - so there were at least two, and **John Alexander is not with his mother in 1921**, which is worth chasing.\n\n**A lace thread manufacturer employing others at twenty-eight.** That is young for it, and suggests he came into a business rather than built one."
+  },
+  {
+   "street": "Lenton Road",
+   "house": "5 (Castle Bank)",
+   "property_id": 178,
+   "rooms": 10,
+   "postal_address_on_cover": "5 Lenton Road, The Park, Nottingham",
+   "signed_by": "J. Arch. Taylor",
+   "marriage": {
+    "person": "Annie Taylor",
+    "years_married": 8,
+    "children_born_alive": 3,
+    "children_still_living": 3,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Maria Grace Sarah Gillard",
+     "relation": "Visitor",
+     "sex": "F",
+     "age": 57,
+     "marital": "Single",
+     "born": "Lambeth, London",
+     "note": "surname hard to read"
+    },
+    {
+     "name": "Annie Taylor",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 34,
+     "marital": "Married",
+     "born": "Nottingham"
+    },
+    {
+     "name": "John Archibald Taylor",
+     "relation": "Head",
+     "sex": "M",
+     "age": 45,
+     "marital": "Married",
+     "occupation": "Managing director | colliery company | employer",
+     "born": "Bakewell, Derbyshire"
+    },
+    {
+     "name": "Katharine Mary Ruth Taylor",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 5,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Betty Winifred Taylor",
+     "relation": "Daughter",
+     "sex": "F",
+     "age": 3,
+     "born": "Nottingham"
+    },
+    {
+     "name": "John William Sidney Taylor",
+     "relation": "Son",
+     "sex": "M",
+     "age": 1,
+     "born": "Nottingham"
+    },
+    {
+     "name": "Fanny Wright",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 28,
+     "marital": "Single",
+     "occupation": "Nurse, domestic",
+     "born": "Hucknall Torkard, Nottinghamshire"
+    },
+    {
+     "name": "Dora Heapath",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "London",
+     "note": "surname hard to read"
+    },
+    {
+     "name": "Rose Thompson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 26,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Lincolnshire"
+    },
+    {
+     "name": "Margaret Mansfield",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 15,
+     "marital": "Single",
+     "occupation": "Under-nurse, domestic",
+     "born": "Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 2,
+    "females": 8,
+    "persons": 10
+   },
+   "note": "**THE MANAGING DIRECTOR OF A COLLIERY COMPANY**, John Archibald Taylor, 45, born at Bakewell in Derbyshire, employing others. **Not in the record.**\n\n**Ten people, eight of them women, and four servants** - a nurse, an under-nurse of **fifteen**, a housemaid and a cook. Three children under six explain the two nurses.\n\n**The householder wrote his household in the wrong order.** A **visitor** heads the page, then the **wife**, then the **head** on the third line. The enumerator has left it, and the relationship column is the only thing that makes it readable.\n\n**Married eight years, three born, three living**, and all three at home.\n\n**The house is Castle Bank**, and the Mannings of Pelham House take it over before 1921 - so this round has now met both families of #178, ten years apart, from opposite ends of the estate."
+  },
+  {
+   "street": "Castle Grove",
+   "house": "(no number given)",
+   "property_id": null,
+   "rooms": 9,
+   "postal_address_on_cover": "Castle Grove, Nottingham",
+   "signed_by": "Frederic W. Dobson",
+   "people": [
+    {
+     "name": "Frederic William Dobson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 53,
+     "marital": "Single",
+     "occupation": "Lace dyeing, dressing and bleaching | employer",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Drucilla Laughton",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 37,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Peterborough, Northamptonshire"
+    },
+    {
+     "name": "Mary Norton",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 39,
+     "marital": "Single",
+     "occupation": "Cook-housekeeper, domestic",
+     "born": "Bassingham, Lincolnshire",
+     "note": "possibly #4898, a domestic servant born 1873 who was at 37 Newcastle Drive in 1901 - not bound, see the note"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**A BACHELOR OF 53 EMPLOYING PEOPLE IN LACE DYEING, DRESSING AND BLEACHING** - the finishing end of the lace trade, and a trade the record holds little of. Frederic William Dobson is not in the record, though **nineteen other Dobsons are**, including the firm covered by `people_1921_dobson_firm.json`. **Whether he belongs to that family is worth establishing** - Dobson is common, but a Nottingham lace Dobson employing men is not.\n\n**The cover gives no number, only *Castle Grove*.** The property list holds 4, 5, 6, 6a and 7, and **this is the same fault the 1921 round hit** - eight rows already sit unfiled under *Castle Grove - no name or house number in 1921 census*. **Whatever places one will place the other.** Not filed.\n\n**Mary Norton may already be here.** #4898, a domestic servant born 1873, was at **37 Newcastle Drive** in 1901 - the Greens' house, two streets away. This Mary Norton is 39, so born about 1872, and is cook-housekeeper. **Deliberately not bound**: Mary Norton is a common name and a wrong binding puts a stranger's census row on a real person, which is worse than a duplicate. **Worth a look by hand.**\n\n**Three people in nine rooms**, and both servants older than is usual - 37 and 39, neither married."
   }
  ]
 }
