@@ -4495,14 +4495,14 @@
    },
    "people": [
     {
-     "name": "Samuel M. Taylor",
+     "name": "Samuel McIntire Taylor",
      "relation": "Head",
      "sex": "M",
      "age": 54,
      "marital": "Married",
      "occupation": "American Consul at Nottingham",
      "born": "United States",
-     "note": "nationality: American"
+     "note": "nationality: American. Identified by A. Hagues"
     },
     {
      "name": "Myrtle A. Taylor",
@@ -4547,7 +4547,7 @@
     "females": 4,
     "persons": 5
    },
-   "note": "**THE AMERICAN CONSUL AT NOTTINGHAM.** Samuel M. Taylor, 54, writes his occupation as **American Consul at Nottingham** and his nationality as **American**. His wife and daughter are American too, all three born in the United States.\n\n**The record holds three consuls and eight people born in the United States, and none of them is this family.** A serving foreign consul resident on the estate is a public office of a different kind from the others this round has found, and **the United States consular lists are published**, so his term at Nottingham should be datable to the year.\n\n**Married 27 years, one child born, one living** - Miriam, 16, born in the United States, so the family came to England after about 1895.\n\n**Eleven rooms, two English servants**, a housemaid from Derbyshire and a cook from Northamptonshire.\n\n**The cover gives no number**, only *Castle Grove, The Park*. Not filed. See [[castle-grove-has-no-low-numbers]] and [[the-american-consul-at-nottingham]]."
+   "note": "**SAMUEL McINTIRE TAYLOR, UNITED STATES CONSUL AT NOTTINGHAM**, identified by A. Hagues: born Urbana, Ohio, **24 July 1856**, died Birmingham **7 December 1916**.\n\n**The census caught the only full year of his Nottingham posting.** He held the office from **1910 to 1911**. Had the count fallen a year either side, he would not be in this record at all.\n\n**A political career before the consular one.** Republican member of the Ohio House of Representatives from 1888, then **Secretary of State of Ohio 1893-1897** under Governor William McKinley - who, as President, appointed him to the consular service. **Glasgow 1897-1906, Callao in Peru 1906-1910, Nottingham 1910-1911, Birmingham from 1913**, where he died of influenza still in post.\n\n**The schedule agrees with all of it.** Aged 54 on 2 April 1911 against a July 1856 birth; **married 27 years**, so about 1884 - the year he finished at the Cincinnati Law School; **one child born, one living**, Miriam, 16, born about 1895 in the United States, when he was Secretary of State in Ohio and before Glasgow. **Nothing on the page contradicts the life.**\n\n**Note the birth year the age gives is wrong.** A man of 54 in April 1911 works back to 1857; he was born in **July 1856** and had not yet had his birthday. This is exactly the fault described in `docs/post-import-checklist.md` at 5.5b, caught here by a real date.\n\n**The cover gives no number**, only *Castle Grove, The Park*. Still not filed - see [[castle-grove-has-no-low-numbers]] and [[the-american-consul-at-nottingham]]."
   },
   {
    "street": "Castle Grove",
