@@ -1,5 +1,5 @@
 {
- "note": "1911 household schedules from the Newcastle Drive gap round and the streets it ran into, read from the images supplied by A. Hagues. Newcastle Drive 3, 11, 13, 15, 17, 21, and 23 to 37 which the covers give as 6 to 16 Pelham Terrace, converted by the rule the record already holds: Newcastle Drive number = 39 minus the Pelham Terrace number, for the even side. Also Park Lodge on Park Row, 1 Huntingdon Drive, an unnumbered Huntingdon Drive household and 5 Lenton Road. Everyone the record already holds is bound by number, several of them under a spelling their own hand disagrees with.",
+ "note": "1911 household schedules from the Newcastle Drive gap round and the streets it ran into, read from the images supplied by A. Hagues. Newcastle Drive 1, 3, 11, 13, 15, 17, 21, and 23 to 37 which the covers give as 6 to 16 Pelham Terrace, converted by the rule the record already holds: Newcastle Drive number = 39 minus the Pelham Terrace number, for the even side. Also Park Lodge on Park Row, 1 Huntingdon Drive, an unnumbered Huntingdon Drive household and 5 Lenton Road. Everyone the record already holds is bound by number, several of them under a spelling their own hand disagrees with.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -1816,6 +1816,103 @@
      "marital_status": "Single",
      "occupation_at_census": "General servant, domestic",
      "birth_place": "Wirksworth, Derbyshire"
+    }
+   ]
+  },
+  {
+   "id": 4695,
+   "first_name": "George M.",
+   "last_name": "Howard",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 208,
+     "relationship": "Head",
+     "age_at_census": 53,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widower",
+     "occupation_at_census": "Barrister; Clerk to the Nottingham Board of Guardians; Superintendent Registrar | own account",
+     "birth_place": "Preston, Lancashire"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Baron",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1865,
+   "born_place": "Blackburn, Lancashire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 208,
+     "relationship": "Visitor",
+     "age_at_census": 46,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Private means",
+     "birth_place": "Blackburn, Lancashire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Hayes",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1888,
+   "born_place": "Sutton on Trent, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 208,
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Sutton on Trent, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Minnie",
+   "last_name": "Merrills",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1886,
+   "born_place": "Retford, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 208,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Retford, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza Ann",
+   "last_name": "Limb",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1896,
+   "born_place": "Newbold Verdon, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 208,
+     "relationship": "Servant",
+     "age_at_census": 15,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Newbold Verdon, Leicestershire"
     }
    ]
   }
