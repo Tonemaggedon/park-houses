@@ -419,6 +419,198 @@
      "birth_place": "East Leake, Nottinghamshire"
     }
    ]
+  },
+  {
+   "first_name": "Frederick William",
+   "last_name": "Clarke",
+   "sex": "M",
+   "born_year": 1884,
+   "match_born_year": true,
+   "born_place": "Middlewich, Cheshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 251,
+     "relationship": "Boarder",
+     "age_at_census": 27,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Assistant dental surgeon",
+     "birth_place": "Middlewich, Cheshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Amelia Mary",
+   "last_name": "Nicolls",
+   "sex": "F",
+   "born_year": 1867,
+   "match_born_year": true,
+   "born_place": "Bickerstaffe, Lancashire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 251,
+     "relationship": "Head",
+     "age_at_census": 44,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Head mistress",
+     "birth_place": "Bickerstaffe, Lancashire"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Moseley",
+   "sex": "F",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 251,
+     "relationship": "Servant",
+     "age_at_census": 35,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housekeeper, domestic",
+     "birth_place": "Leicestershire"
+    }
+   ]
+  },
+  {
+   "id": 3423,
+   "first_name": "Charles Edward",
+   "last_name": "Townroe",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 252,
+     "relationship": "Head",
+     "age_at_census": 54,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Bank clerk",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 3424,
+   "first_name": "Mary Daykene",
+   "last_name": "Townroe",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 252,
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Bridget",
+   "last_name": "Toole",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Sheffield, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 252,
+     "relationship": "Servant",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Sheffield, Yorkshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lydia Ann",
+   "last_name": "Ledger",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Lenton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 252,
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Lenton, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederic",
+   "last_name": "Dunnill",
+   "sex": "M",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Wakefield, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 378,
+     "relationship": "Head",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Organist and teacher of music",
+     "birth_place": "Wakefield, Yorkshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Marion",
+   "last_name": "Dunnill",
+   "sex": "F",
+   "born_year": 1878,
+   "match_born_year": true,
+   "born_place": "Newark, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 378,
+     "relationship": "Wife",
+     "age_at_census": 33,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Newark, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Vessey",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Barnby, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 378,
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Barnby, Nottinghamshire"
+    }
+   ]
   }
  ]
 }

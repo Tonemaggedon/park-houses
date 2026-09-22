@@ -635,6 +635,160 @@
     "persons": 3
    },
    "note": "**This is the house he moved to, and it closes the Park Valley question.** The record holds John Henry Runge at 17 Park Valley in 1891 and at 10 Park Terrace in 1921; the gap report could only say a Runge had gone from one and arrived at the other. He is here in 1911, so the move happened between 1901 and 1911 - and 17 Park Valley already held William Ranson, physician, by 1901.\n\n**And the 1911 questions say something no other return could.** Married forty years, **one child born alive, none still living, one died**. A marriage of forty years and a single child who did not survive - a fact the record could not have held before, because only the 1911 census asked."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "11",
+   "property_id": 251,
+   "rooms": 8,
+   "postal_address_on_cover": "11 Park Terrace, Nottingham",
+   "signed_by": "Amelia Mary Nicolls",
+   "people": [
+    {
+     "name": "Frederick William Clarke",
+     "relation": "Boarder",
+     "sex": "M",
+     "age": 27,
+     "marital": "Single",
+     "occupation": "Assistant dental surgeon | Worker",
+     "born": "Middlewich, Cheshire"
+    },
+    {
+     "name": "Amelia Mary Nicolls [?]",
+     "relation": "Head",
+     "sex": "F",
+     "age": 44,
+     "marital": "Single",
+     "occupation": "Head mistress, Midland Institute [?] | Worker",
+     "born": "Bickerstaffe, Lancashire"
+    },
+    {
+     "name": "Elizabeth Moseley",
+     "relation": "Housekeeper servant",
+     "sex": "F",
+     "age": 35,
+     "marital": "Single",
+     "occupation": "Housekeeper, domestic | Worker",
+     "born": "Leicestershire [place unread]"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**A woman heads this house and she is a head mistress** - the only one the record holds. She keeps a housekeeper and takes a boarder, a young assistant dental surgeon from Cheshire. Three people, all single, none related to each other.\n\nHer surname is read here as Nicolls and her employer as the Midland Institute; both are uncertain in the hand. 1901 held Richard Beaumont, solicitor, so the house turned over entirely."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "12",
+   "property_id": 252,
+   "rooms": 11,
+   "postal_address_on_cover": "12 Park Terrace, Nottingham",
+   "signed_by": "Charles Edward Townroe",
+   "marriage": {
+    "person": "Mary Dakeyne Townroe",
+    "years_married": 27,
+    "children_born_alive": 3,
+    "children_still_living": 2,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "Charles Edward Townroe",
+     "relation": "Head",
+     "sex": "M",
+     "age": 54,
+     "marital": "Married",
+     "occupation": "Bank clerk",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 3423,
+     "note": "The hand is hard and an index may read the surname as Tannoc. It is Townroe: the same forenames, the same rare middle name in his wife, the same trade and the same town."
+    },
+    {
+     "name": "Mary Dakeyne Townroe",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 60,
+     "marital": "Married",
+     "born": "Nottinghamshire",
+     "record_id": 3424,
+     "note": "**The record spells her Daykene**, from the 1891 return. Her husband writes it **Dakeyne** here in his own hand, which is the better authority."
+    },
+    {
+     "name": "Bridget Toole",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 28,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Sheffield, Yorkshire"
+    },
+    {
+     "name": "Lydia Ann Ledger",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Lenton, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**THE TOWNROES, AND THIS IS WHERE THEY WENT.** The record holds Charles Edward and Mary at **2 Lenton Road** in 1891, and A. Hagues's reading of the 1901 round put them still there under the hand's *Tomnroe*. Here they are at 12 Park Terrace in 1911 - the same couple, the bank clerk and his wife, one street over.\n\n**And the marriage questions account for the children.** Married twenty-seven years, so about 1884: **three born alive, two still living, one died**. The record holds Bernard Stephen (1885) and Sybil Mary (1889) from 1891 and Geoffrey C. (1895) from 1901 - three children, and one of them did not live."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "13",
+   "property_id": 378,
+   "rooms": 6,
+   "postal_address_on_cover": "13 Park Terrace, Nottingham",
+   "signed_by": "Frederic Dunnill",
+   "marriage": {
+    "person": "Marion Dunnill",
+    "years_married": "under one",
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Frederic Dunnill",
+     "relation": "Head",
+     "sex": "M",
+     "age": 31,
+     "marital": "Married",
+     "occupation": "Organist and teacher of music | Own account",
+     "born": "Wakefield, Yorkshire"
+    },
+    {
+     "name": "Marion Dunnill",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 33,
+     "marital": "Married",
+     "born": "Newark, Nottinghamshire"
+    },
+    {
+     "name": "Edith Vessey",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 22,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Barnby, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**An organist and teacher of music**, working on his own account - the second musical household the record has found on the estate, after the Horners, father and son, both professors of music at Oakleigh on Hamilton Drive in 1901.\n\nNewly married, under a year, and no children. 1901 held Richard Beaumont, solicitor, with one housekeeper."
   }
  ]
 }
