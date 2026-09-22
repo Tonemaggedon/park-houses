@@ -1,0 +1,63 @@
+{
+ "note": "1911 household schedules for Park Valley, read from the images supplied by A. Hagues. Houses: 12 or 13 - SEE THE NOTE (3). Rows with no property_id carry an unresolved_address and land on the unfiled page - the cover gave no number, or the house is not in the property list.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 3017,
+   "first_name": "Benedict",
+   "last_name": "Kohn",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "12 or 13 Park Valley (the house is not in the record)",
+     "relationship": "Head",
+     "age_at_census": 53,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Lace merchant; export merchant; managing director",
+     "birth_place": "Beeston, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel Mary",
+   "last_name": "Carter",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1887,
+   "born_place": "Alwalton, Huntingdonshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "12 or 13 Park Valley (the house is not in the record)",
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Alwalton, Huntingdonshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Lawton",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1891,
+   "born_place": "Turner Wood, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "12 or 13 Park Valley (the house is not in the record)",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Turner Wood, Yorkshire"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "note": "1911 household schedules for Clare Valley, read from the images supplied by A. Hagues. Houses: Clare Valley Lodge (7), Elmsdale (2). Rows with no property_id carry an unresolved_address and land on the unfiled page - the cover gave no number, or the house is not in the property list.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "id": 1422,
+   "first_name": "Alfred James",
+   "last_name": "Cooper",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Head",
+     "age_at_census": 59,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Retired lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny Mabel",
+   "last_name": "Cooper",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1851,
+   "born_place": "Dodderhope [?], Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Dodderhope [?], Lincolnshire"
+    }
+   ]
+  },
+  {
+   "id": 1423,
+   "first_name": "Constance Mary",
+   "last_name": "Cooper",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Daughter",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1424,
+   "first_name": "John Alfred",
+   "last_name": "Cooper",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Son",
+     "age_at_census": 27,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Bank clerk",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Cecil Davy",
+   "last_name": "Cooper",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1889,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Son",
+     "age_at_census": 22,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Chartered accountant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Smedley",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Fiskerton, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Servant",
+     "age_at_census": 42,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Fiskerton, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Richardson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1893,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Clare Valley Lodge (not in the property list)",
+     "relationship": "Servant",
+     "age_at_census": 18,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1951,
+   "first_name": "Emma Elizabeth",
+   "last_name": "Goddard",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Elmsdale, Clare Valley (not in the property list)",
+     "relationship": "Head",
+     "age_at_census": 65,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Private means",
+     "birth_place": "Andover, Hampshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Brailsford",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1891,
+   "born_place": "Alderwasley [?], Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "Elmsdale, Clare Valley (not in the property list)",
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Alderwasley [?], Derbyshire"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "note": "1911 household schedules for North Road, read from the images supplied by A. Hagues. Houses: 5 (2). Rows with no property_id carry an unresolved_address and land on the unfiled page - the cover gave no number, or the house is not in the property list.",
+ "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+ "people": [
+  {
+   "first_name": "Alice",
+   "last_name": "Marron",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1873,
+   "born_place": "Poplar, London",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "5 North Road (not in the property list)",
+     "relationship": "Head",
+     "age_at_census": 38,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "occupation_at_census": "Cardboard box manufacturer | employer",
+     "birth_place": "Poplar, London"
+    }
+   ]
+  },
+  {
+   "first_name": "John L.",
+   "last_name": "Marron",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1901,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1911,
+     "unresolved_address": "5 North Road (not in the property list)",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "occupation_at_census": "School",
+     "birth_place": "Nottingham"
+    }
+   ]
+  }
+ ]
+}
