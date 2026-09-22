@@ -1,0 +1,347 @@
+{
+ "note": "The household of Robert Evans, architect, surveyor and justice of the peace, on the 1891 return, transcribed by A. Hagues.\n\n**THE ADDRESS ON THE PAGE IS SOUTH ROAD AND THE HOUSE IS 11 CAVENDISH CRESCENT SOUTH (#43).** A. Hagues has settled it: this is a corner plot, and the enumerator wrote the road the door faces rather than the crescent the house is numbered on. The record's own listing description for #43 says so without meaning to - it notes the *later alteration and enlargement of main entrance porch adjacent to South Road*. The porch is on South Road; the number is on Cavendish Crescent South.\n\n**Wright's Directory is not wrong either.** It prints *Robt. Evans, Esq, J.P., of Evans & Jolley* on South Road in 1894-95 and 1898-99, because that is the address the family gave. A corner house answers to both, and two sources agreeing on South Road is not evidence against the crescent - it is evidence that the family used the road their door opens onto.\n\n**An earlier version of this file filed all twelve at 2 South Road (#381)**, on the stated ground that the record already held Robert Evans Sr there in 1911. That ground was false: his 1911 row is at **11 Cavendish Crescent South**, with another Evans, and Addis and Bellamy beside them. Twelve rows were created at #381 as a result and want deleting; this file now points at #43, so they will not come back.\n\n**This is the same fault as Thorndale** - a corner house written under one street and numbered on another. It is worth suspecting wherever a household's address and its number disagree.\n\nThe family was already in the record without 1891, and each is bound by number: Robert Evans Sr (#405), and his children Edith Mary (#422), Alice (#423, 'Alice Ann'), Robert (#406, Robert Evans Jr, architect), Ethel (#424, 'Ethel Frances'), Mary (#425) and Dorothy (#426). The four servants and the visitor, Beatrice Elizabeth Clay, are new. The record also holds a second Robert Evans Jr, 'Robert Junior Evans' (#856, born 1863, at Ravine House in 1911), who is the same man and wants merging into #406.",
+ "source": "1891 census, South Road as the page has it - the house is 11 Cavendish Crescent South, a corner plot. Transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 136 (Leicester Special Collections id 164642); 1898-99, page 146 (id 165322).",
+ "people": [
+  {
+   "id": 405,
+   "first_name": "Robert",
+   "last_name": "Evans Sr",
+   "sex": "M",
+   "born_place": "West Hallam, Derbyshire",
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 58,
+     "occupation_at_census": "Architect and surveyor, justice of the peace",
+     "birth_place": "West Hallam, Derbyshire",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 422,
+   "first_name": "Edith Mary",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 423,
+   "first_name": "Alice Ann",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_place": "Nottingham",
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues as Alice Evans"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 406,
+   "first_name": "Robert",
+   "last_name": "Evans Jr",
+   "sex": "M",
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "Architect and surveyor",
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 424,
+   "first_name": "Ethel Frances",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues as Ethel Evans"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 425,
+   "first_name": "Mary",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_place": "Nottingham",
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "id": 426,
+   "first_name": "Dorothy",
+   "last_name": "Evans",
+   "sex": "F",
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 405
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Eminson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1855,
+   "born_place": "Lincolnshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 36,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Lincolnshire",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy",
+   "last_name": "Counsell",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1868,
+   "born_place": "Worcester",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Worcester",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Eliza",
+   "last_name": "Elwick",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1869,
+   "born_place": "Grosmont, Yorkshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Grosmont, Yorkshire",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Ross",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1860,
+   "born_place": "Nottingham",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    43
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 31,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Nottingham",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Beatrice Elizabeth",
+   "last_name": "Clay",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1865,
+   "born_place": "Kensington, London",
+   "occupations": [
+    {
+     "occupation": "Assistant schoolmistress (B.A.)",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
+     "relationship": "Visitor",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "B.A., assistant schoolmistress",
+     "birth_place": "Kensington, London",
+     "source": "1891 census, South Road — transcribed by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
