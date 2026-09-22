@@ -358,6 +358,104 @@
     }
    ],
    "note": "Closes the 1911 half of the gap at 1 Park Terrace. The record holds Mary Patterson there in 1891 and 1901 and a different family, the Cockburns, by 1921 - so this is the last census of her tenancy, at 82 and still keeping two servants.\n\n**Emma Jarvis has been with her at least twenty years.** She is a servant in this house in 1891 at 31, in 1901 at 46 and here in 1911 at 51 - one woman across three returns, with the ages drifting as census ages do.\n\n**And she is in the record twice because of that drift.** #3585 carries her 1891 row at born 1860; #4757 was created by the 1901 gap-round import at born 1855, because the page gave her age as 46. Five years apart, so neither the duplicates page nor variant_duplicates.py can see them - both test born years within two. This return gives 51, which agrees with #3585, so #3585 is the one to keep."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "2",
+   "property_id": 242,
+   "rooms": null,
+   "postal_address_on_cover": "2 Park Terrace, Nottingham",
+   "signed_by": "Kate Reid",
+   "marriage": {
+    "person": "Kate Reid",
+    "years_married": 20,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Kate Reid",
+     "relation": "Head",
+     "sex": "F",
+     "age": 43,
+     "marital": "Widow",
+     "occupation": "Private means",
+     "born": "Wellington, New Zealand",
+     "record_id": 1789,
+     "note": "**Kate Elizabeth Reid (#1789).** The record has her at 6 Park Terrace in 1901 as the sister-in-law of William H. Foster - I transcribed that page as *Kate E. Reis* - and back at 2 Park Terrace as head in 1921. Married twenty years and widowed by 1911, with no children born to the marriage."
+    },
+    {
+     "name": "Frances Mary Wing",
+     "relation": "Joint Tenant",
+     "sex": "F",
+     "age": 45,
+     "marital": "Spinster",
+     "occupation": "Private means",
+     "born": "Nottingham",
+     "note": "**Almost certainly Frances May KING (#1790) of the 1921 return** - same house, same birth year, same birthplace, and a second Head beside Kate Reid there in 1921 just as she is Joint Tenant here. King for Wing and May for Mary: two single-letter misreadings in one name. She is also very likely the Frances Wing, 36, who is Henry Wing's daughter at 12 Park Terrace on the 1901 round."
+    },
+    {
+     "name": "Jessie Price",
+     "relation": "Housemaid",
+     "sex": "F",
+     "age": 25,
+     "marital": "Spinster",
+     "occupation": "Housemaid, domestic",
+     "born": "Willenhall, Staffordshire"
+    },
+    {
+     "name": "Rebecca Jordan",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 22,
+     "marital": "Spinster",
+     "occupation": "Cook, domestic",
+     "born": "Pinxton, Derbyshire"
+    }
+   ],
+   "note": "Closes the 1911 half of the gap at 2 Park Terrace, and it is not a family at all: two women of independent means keeping house together, one a widow and one a spinster, entered as **Head and Joint Tenant**. The record has the same pair there in 1921, where the transcription made them two Heads.\n\n**\"Joint Tenant\" is a relationship the record has nowhere else.** It is worth keeping as the page wrote it rather than flattening it to lodger or boarder, because it says something the other words do not: neither woman was the other's dependant.\n\n**And it settles the Wellington question.** Kate Reid was genuinely born at Wellington, New Zealand, so the record's two rows under that place are right. The record also holds one *Wellington, Somerset*, which is a different place and a different person."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "3",
+   "property_id": 243,
+   "rooms": 8,
+   "postal_address_on_cover": "3 Park Terrace, Nottingham",
+   "signed_by": "Herbert Bradley",
+   "people": [
+    {
+     "name": "Herbert Bradley",
+     "relation": "Head",
+     "sex": "M",
+     "age": 63,
+     "marital": "Single",
+     "occupation": "None; private means",
+     "born": "Nottingham",
+     "record_id": 1796,
+     "note": "**#1796.** This is the fourth census of him the record now holds: a boarder at 10 Park Terrace in 1891, head of number 3 in 1901, here in 1911, still there in 1921. He was the anchor picked for searching this street and he has turned out to span it."
+    },
+    {
+     "name": "Mary Saxby",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 45,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Derby",
+     "note": "**Recorded as 45 in 1901 AND 45 here, ten years apart**, and the record holds two Mary Saxbys at this house - #4760 born 1856 from the 1901 round and #1797 Mary E Saxby born 1861 from 1921. Three birth years and three birthplaces (Somercotes, Derby, Southwell) for one servant in one house. Almost certainly one woman; not bound to either number here, because which is the keeper is not something this page can settle."
+    },
+    {
+     "name": "Ethel Bonser",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 25,
+     "marital": "Single",
+     "occupation": "Domestic servant",
+     "born": "Willoughby, Nottinghamshire"
+    }
+   ],
+   "note": "Closes the 1911 half of the gap at 3 Park Terrace. Eight rooms, three people, and the householder's own signature at the foot."
   }
  ]
 }

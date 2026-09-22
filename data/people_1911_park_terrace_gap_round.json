@@ -1,5 +1,5 @@
 {
- "note": "The 1911 household at 1 Park Terrace.\n\n**Two of the three are bound by number** - Mary Patterson (#3584) and Emma Jarvis (#3585) - so no second person is created whatever the spelling, and each carries their name as well because the importer skips a record without one.\n\n**The rename is not here and cannot be.** The record holds Mary ELY Patterson and the return says Elizabeth; an import never renames anybody, so that is a job on her own page.\n\n**Emma Jarvis is bound to #3585, not #4757.** She is in the record twice - see the transcription file - and #3585 is the one this return's age agrees with.",
+ "note": "The 1911 household at 1 Park Terrace.\n\n**Two of the three are bound by number** - Mary Patterson (#3584) and Emma Jarvis (#3585) - so no second person is created whatever the spelling, and each carries their name as well because the importer skips a record without one.\n\n**The rename is not here and cannot be.** The record holds Mary ELY Patterson and the return says Elizabeth; an import never renames anybody, so that is a job on her own page.\n\n**Emma Jarvis is bound to #3585, not #4757.** She is in the record twice - see the transcription file - and #3585 is the one this return's age agrees with.\n\n**Mary Saxby is deliberately not in this file.** She is a servant at 3 Park Terrace on this return at 45, and the record holds two Mary Saxbys at that house - #4760 born 1856 and #1797 born 1861 - with three birthplaces between them and her age recorded as 45 in 1901 as well as here. Importing her would make a third. She wants settling on the site first.\n\n**Frances Mary Wing goes in as a new person, not bound to #1790 Frances May King**, for the same reason: the two are very probably one woman, but joining them is a merge and a merge is not an import's to make.",
  "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues",
  "people": [
   {
@@ -53,6 +53,120 @@
      "occupation_at_census": "Servant, domestic",
      "birth_place": "Manea, Cambridgeshire",
      "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 1789,
+   "first_name": "Kate Elizabeth",
+   "last_name": "Reid",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 242,
+     "relationship": "Head",
+     "marital_status": "Widow",
+     "age_at_census": 43,
+     "occupation_at_census": "Private means",
+     "birth_place": "Wellington, New Zealand",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances Mary",
+   "last_name": "Wing",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 242,
+     "relationship": "Joint Tenant",
+     "marital_status": "Spinster",
+     "age_at_census": 45,
+     "occupation_at_census": "Private means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jessie",
+   "last_name": "Price",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Willenhall, Staffordshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 242,
+     "relationship": "Housemaid",
+     "marital_status": "Spinster",
+     "age_at_census": 25,
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Willenhall, Staffordshire",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Jordan",
+   "sex": "F",
+   "born_year": 1889,
+   "match_born_year": true,
+   "born_place": "Pinxton, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 242,
+     "relationship": "Servant",
+     "marital_status": "Spinster",
+     "age_at_census": 22,
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Pinxton, Derbyshire",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 1796,
+   "first_name": "Herbert",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 243,
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 63,
+     "occupation_at_census": "Private means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel",
+   "last_name": "Bonser",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Willoughby, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 243,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Willoughby, Nottinghamshire",
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues"
     }
    ]
   }
