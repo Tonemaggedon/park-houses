@@ -3675,6 +3675,145 @@ app.get('/api/stats', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Estate insights API ──────────────────────────────────────────────────────
+// The figures behind /stats. Every query is independent and wrapped, so one
+// failure leaves a gap on the page rather than an empty page.
+//
+// SPINE is the five full rounds. 1861, 1871 and the 1939 Register are held for
+// a handful of houses only, so counting them in a trend line would show a
+// collapse where there is really just less transcription.
+app.get('/api/insights', async (req, res) => {
+  if (!db) return res.json({ error: 'no database' });
+  const SPINE = [1881, 1891, 1901, 1911, 1921];
+  const one = async (sql, params = []) => {
+    try { return (await db.query(sql, params)).rows; } catch (e) { return []; }
+  };
+  try {
+    const allProps = JSON.parse(fs.readFileSync(ALL_PROPS_FILE, 'utf8'));
+    const propById = {};
+    allProps.forEach(p => { propById[String(p.id)] = p; });
+    const label = id => {
+      const p = propById[String(id)];
+      if (!p) return `property ${id}`;
+      return p.address || [p.no, p.street].filter(Boolean).join(' ') || `property ${id}`;
+    };
+
+    const [
+      headline, earliest, latest, oldestAtCensus, longestLife, youngestHead,
+      byYear, womenHeads, servantYear, foreignYear,
+      bigHouses, longRecord, bigHousehold, stayers,
+      furthest, topOrigins, nameF, nameL, moveRows, unoccupied
+    ] = await Promise.all([
+      one(`SELECT (SELECT COUNT(*) FROM people) people,
+                  (SELECT COUNT(*) FROM census_entries) rows,
+                  (SELECT COUNT(DISTINCT property_id) FROM census_entries WHERE property_id IS NOT NULL) housed,
+                  (SELECT COUNT(DISTINCT birth_place) FROM census_entries WHERE birth_place IS NOT NULL AND TRIM(birth_place) <> '') places,
+                  (SELECT COUNT(*) FROM people WHERE wikipedia_url IS NOT NULL) linked`),
+      one(`SELECT id, first_name, last_name, born_year, born_place FROM people
+            WHERE born_year BETWEEN 1700 AND 1999 ORDER BY born_year, id LIMIT 1`),
+      one(`SELECT id, first_name, last_name, born_year, born_place FROM people
+            WHERE born_year BETWEEN 1700 AND 1999 ORDER BY born_year DESC, id LIMIT 1`),
+      one(`SELECT p.id, p.first_name, p.last_name, c.age_at_census age, c.census_year, c.property_id
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE c.age_at_census BETWEEN 1 AND 115 ORDER BY c.age_at_census DESC, p.id LIMIT 1`),
+      one(`SELECT id, first_name, last_name, born_year, died_year, died_year - born_year age
+             FROM people WHERE born_year BETWEEN 1700 AND 1999 AND died_year IS NOT NULL
+              AND died_year - born_year BETWEEN 0 AND 115 ORDER BY age DESC, id LIMIT 1`),
+      one(`SELECT p.id, p.first_name, p.last_name, c.age_at_census age, c.census_year, c.property_id
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE LOWER(c.relationship) = 'head' AND c.age_at_census BETWEEN 12 AND 99
+            ORDER BY c.age_at_census, p.id LIMIT 1`),
+      one(`SELECT census_year yr, COUNT(*) people, COUNT(DISTINCT property_id) houses
+             FROM census_entries WHERE census_year = ANY($1) GROUP BY 1 ORDER BY 1`, [SPINE]),
+      one(`SELECT c.census_year yr,
+                  COUNT(*) FILTER (WHERE p.sex = 'F') women,
+                  COUNT(*) FILTER (WHERE p.sex = 'M') men
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE LOWER(c.relationship) = 'head' AND c.census_year = ANY($1)
+            GROUP BY 1 ORDER BY 1`, [SPINE]),
+      one(`SELECT census_year yr,
+                  COUNT(*) FILTER (WHERE LOWER(relationship) LIKE '%serv%'
+                                      OR LOWER(relationship) IN ('cook','housemaid','parlourmaid','nurse','governess','maid','housekeeper','coachman','groom','butler')) servants,
+                  COUNT(*) total
+             FROM census_entries WHERE census_year = ANY($1) GROUP BY 1 ORDER BY 1`, [SPINE]),
+      one(`SELECT census_year yr, COUNT(*) n FROM census_entries
+            WHERE census_year = ANY($1) AND birth_place IS NOT NULL
+              AND birth_place !~* '(nottingham|derby|leicester|lincoln|york|stafford|warwick|northampton|rutland|england|london|middlesex|surrey|kent|essex|norfolk|suffolk|sussex|hampshire|dorset|devon|cornwall|somerset|gloucester|wiltshire|berkshire|oxford|bucking|hertford|bedford|cambridge|huntingdon|shrops|hereford|worcester|chesh|lancash|westmor|cumber|durham|northumber|wales|monmouth)'
+            GROUP BY 1 ORDER BY 1`, [SPINE]),
+      one(`SELECT property_id id, COUNT(DISTINCT person_id) n FROM census_entries
+            WHERE property_id IS NOT NULL GROUP BY 1 ORDER BY n DESC LIMIT 8`),
+      one(`SELECT property_id id, COUNT(DISTINCT census_year) yrs, MIN(census_year) a, MAX(census_year) b
+             FROM census_entries WHERE property_id IS NOT NULL GROUP BY 1
+            ORDER BY yrs DESC, MAX(census_year) - MIN(census_year) DESC LIMIT 8`),
+      one(`SELECT property_id id, census_year yr, COUNT(*) n FROM census_entries
+            WHERE property_id IS NOT NULL GROUP BY 1,2 ORDER BY n DESC LIMIT 8`),
+      one(`SELECT p.id, p.first_name, p.last_name, c.property_id id,
+                  COUNT(DISTINCT c.census_year) yrs, MIN(c.census_year) a, MAX(c.census_year) b
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE c.property_id IS NOT NULL GROUP BY 1,2,3,4
+           HAVING COUNT(DISTINCT c.census_year) >= 4
+            ORDER BY yrs DESC, MAX(c.census_year) - MIN(c.census_year) DESC LIMIT 8`),
+      one(`SELECT birth_place place, birth_lat lat, birth_lng lng, COUNT(*) n
+             FROM census_entries WHERE birth_lat IS NOT NULL
+            GROUP BY 1,2,3
+            ORDER BY (6371 * ACOS(GREATEST(-1, LEAST(1,
+                   COS(RADIANS(52.9536)) * COS(RADIANS(birth_lat)) * COS(RADIANS(birth_lng) - RADIANS(-1.1505))
+                 + SIN(RADIANS(52.9536)) * SIN(RADIANS(birth_lat)))))) DESC LIMIT 8`),
+      one(`SELECT birth_place place, COUNT(*) n FROM census_entries
+            WHERE birth_place IS NOT NULL AND birth_place !~* 'nottingham'
+            GROUP BY 1 ORDER BY n DESC LIMIT 12`),
+      one(`SELECT SPLIT_PART(first_name, ' ', 1) name, COUNT(*) n FROM people
+            WHERE first_name IS NOT NULL AND TRIM(first_name) <> '' GROUP BY 1 ORDER BY n DESC LIMIT 12`),
+      one(`SELECT last_name name, COUNT(*) n FROM people
+            WHERE last_name IS NOT NULL AND TRIM(last_name) <> '' GROUP BY 1 ORDER BY n DESC LIMIT 12`),
+      one(`SELECT c.person_id pid, p.first_name, p.last_name,
+                  ARRAY_AGG(DISTINCT c.property_id) props,
+                  MIN(c.census_year) a, MAX(c.census_year) b
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE c.property_id IS NOT NULL
+            GROUP BY 1,2,3 HAVING COUNT(DISTINCT c.property_id) > 1`),
+      one(`SELECT census_year yr, COUNT(*) n FROM census_unoccupied GROUP BY 1 ORDER BY 1`)
+    ]);
+
+    // Movement: one line per person, house to house, in the order they were
+    // lived in. Only properties the map can place are kept - a line needs two
+    // ends - and a person whose houses are all unplaceable drops out here.
+    const moves = [];
+    moveRows.forEach(r => {
+      const pts = (r.props || [])
+        .map(id => ({ id, p: propById[String(id)] }))
+        .filter(x => x.p && x.p.lat && x.p.lng)
+        .map(x => ({ id: x.id, lat: Number(x.p.lat), lng: Number(x.p.lng), label: label(x.id) }));
+      if (pts.length > 1) {
+        moves.push({ id: r.pid, name: `${r.first_name || ''} ${r.last_name || ''}`.trim(),
+                     from: r.a, to: r.b, points: pts });
+      }
+    });
+
+    const withLabel = rows => rows.map(r => ({ ...r, label: label(r.id) }));
+    res.json({
+      headline: headline[0] || {},
+      lives: {
+        earliest: earliest[0] || null,
+        latest: latest[0] || null,
+        oldest: oldestAtCensus[0] ? { ...oldestAtCensus[0], label: label(oldestAtCensus[0].property_id) } : null,
+        longest: longestLife[0] || null,
+        youngestHead: youngestHead[0] ? { ...youngestHead[0], label: label(youngestHead[0].property_id) } : null
+      },
+      overTime: { byYear, womenHeads, servants: servantYear, foreign: foreignYear, unoccupied },
+      houses: {
+        mostResidents: withLabel(bigHouses),
+        longestRecord: withLabel(longRecord),
+        largestHousehold: withLabel(bigHousehold),
+        stayers: stayers.map(r => ({ ...r, label: label(r.id) }))
+      },
+      origins: { furthest, top: topOrigins },
+      names: { forenames: nameF, surnames: nameL },
+      moves
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Census coverage API (for map slider) ─────────────────────────────────────
 // Returns {propId: [years...]} for all properties with any census/resident record
 app.get('/api/census-coverage', async (req, res) => {
@@ -6769,6 +6908,96 @@ function serverOccGroup(raw) {
   return OCC_GROUP_DB[n] || OCC_GROUP_SERVER[n] || null;
 }
 
+// ── Trades API ───────────────────────────────────────────────────────────────
+// Everything the Occupations page draws. Occupations live in two places - the
+// census column, which is what a household wrote on the night, and the
+// occupations table, which is what research has since established - so both are
+// read and the census is preferred where they disagree about a year.
+//
+// Grouping runs through the same normaliser the clean-up tools use, so a page
+// and a tool never disagree about what counts as the Lace Industry.
+app.get('/api/trades', async (req, res) => {
+  if (!db) return res.json({ error: 'no database' });
+  const SPINE = [1881, 1891, 1901, 1911, 1921];
+  const one = async (sql, params = []) => {
+    try { return (await db.query(sql, params)).rows; } catch (e) { return []; }
+  };
+  try {
+    const [censusRows, held, rare, employers] = await Promise.all([
+      one(`SELECT census_year yr, occupation_at_census occ, COUNT(*) n
+             FROM census_entries
+            WHERE occupation_at_census IS NOT NULL AND TRIM(occupation_at_census) <> ''
+              AND census_year = ANY($1)
+            GROUP BY 1,2`, [SPINE]),
+      one(`SELECT occupation occ, COUNT(*) n FROM occupations
+            WHERE occupation IS NOT NULL AND TRIM(occupation) <> '' GROUP BY 1`),
+      one(`SELECT p.id, p.first_name, p.last_name, c.occupation_at_census occ, c.census_year yr, c.property_id
+             FROM census_entries c JOIN people p ON p.id = c.person_id
+            WHERE c.occupation_at_census IS NOT NULL
+              AND LENGTH(c.occupation_at_census) BETWEEN 6 AND 80
+            ORDER BY RANDOM() LIMIT 400`),
+      one(`SELECT employer, COUNT(*) n FROM occupations
+            WHERE employer IS NOT NULL AND TRIM(employer) <> ''
+            GROUP BY 1 ORDER BY n DESC LIMIT 12`)
+    ]);
+
+    // The census column often carries "Cook, domestic | worker" - the trade, then
+    // the industry, then the employment status. Only the first part is the trade.
+    const trade = s => String(s || '').split('|')[0].trim();
+
+    const byYear = {}, totals = {}, groupYear = {};
+    SPINE.forEach(y => { byYear[y] = {}; groupYear[y] = {}; });
+    censusRows.forEach(r => {
+      const t = trade(r.occ); if (!t) return;
+      const g = serverOccGroup(t) || 'Not yet grouped';
+      const k = serverNorm(t) || t;
+      const n = Number(r.n);
+      byYear[r.yr][k] = (byYear[r.yr][k] || 0) + n;
+      groupYear[r.yr][g] = (groupYear[r.yr][g] || 0) + n;
+      totals[k] = (totals[k] || 0) + n;
+    });
+    held.forEach(r => {
+      const k = serverNorm(trade(r.occ)) || trade(r.occ);
+      if (k) totals[k] = (totals[k] || 0) + Number(r.n);
+    });
+
+    const top = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 25)
+      .map(([occ, n]) => ({ occ, n, group: serverOccGroup(occ) || null }));
+
+    const groups = {};
+    Object.entries(groupYear).forEach(([yr, gs]) =>
+      Object.entries(gs).forEach(([g, n]) => {
+        if (!groups[g]) groups[g] = {};
+        groups[g][yr] = n;
+      }));
+
+    // One-offs: a trade only one person in the whole record ever gave. These are
+    // the interesting ones - a Postmaster, a vocalist, a cycle manufacturer -
+    // and they are exactly what a "top occupations" chart hides.
+    const singles = Object.entries(totals).filter(([, n]) => n === 1).map(([occ]) => occ);
+    const singleNames = [];
+    const seen = new Set();
+    rare.forEach(r => {
+      const k = serverNorm(trade(r.occ)) || trade(r.occ);
+      if (totals[k] === 1 && !seen.has(k)) {
+        seen.add(k);
+        singleNames.push({ occ: k, id: r.id,
+          name: `${r.first_name || ''} ${r.last_name || ''}`.trim(), yr: r.yr });
+      }
+    });
+
+    res.json({
+      top,
+      byYear,
+      groups,
+      spine: SPINE,
+      singles: { count: singles.length, examples: singleNames.slice(0, 24) },
+      employers,
+      distinct: Object.keys(totals).length
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Occupations to sort ──────────────────────────────────────────────────────
 // Every spelling in the record that normalisation cannot place: either nothing
 // maps it, or what it maps to has no group. Counted across both the census rows
@@ -7468,6 +7697,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/people', (req, res) => res.sendFile(path.join(__dirname, 'public', 'people.html')));
 app.get('/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'public', 'dashboard.html')));
 app.get('/stats', (req, res) => res.sendFile(path.join(__dirname, 'public', 'stats.html')));
+app.get('/trades', (req, res) => res.sendFile(path.join(__dirname, 'public', 'trades.html')));
 app.get('/my-contributions', (req, res) => res.sendFile(path.join(__dirname, 'public', 'my-contributions.html')));
 app.get('/watchlist', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watchlist.html')));
 app.get('/admin/users', (req, res) => {

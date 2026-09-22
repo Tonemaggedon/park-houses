@@ -18,6 +18,7 @@
     ['/census', '📜', 'Census'],
     ['/family-tree', '🌳', 'Family trees'],
     ['/stats', '📈', 'Insights'],
+    ['/trades', '⚒', 'Occupations'],
     ['/origins', '🌍', 'Origins'],
     ['/history', '⏳', 'Estate history'],
     ['/archive', '🗄', 'Archive'],

@@ -7,15 +7,12 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #e8e0d0; min-height: 100vh; }
-.header { background: linear-gradient(135deg,#1a2a1a 0%,#0f1923 50%,#1a1a2e 100%); border-bottom:1px solid #2a3a2a; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; flex-wrap:wrap; gap:0.5rem; }
-.header-title { font-size:1.1rem; font-weight:700; color:#c8b87a; letter-spacing:0.05em; }
-.nav-links { display:flex; gap:0.4rem; flex-wrap:wrap; }
-.nav-links a { color:#8a9a7a; text-decoration:none; font-size:0.82rem; padding:0.3rem 0.7rem; border-radius:4px; transition:all 0.2s; }
-.nav-links a:hover, .nav-links a.active { color:#c8b87a; background:rgba(200,184,122,0.1); }
+body { font-family:'Segoe UI', Arial, sans-serif; background:#0f1923; color:#e8e0d0; min-height:100vh; }
 .hero { background:linear-gradient(135deg,#1a2a1a 0%,#1a1a2e 100%); padding:2rem 2rem 1.5rem; text-align:center; border-bottom:1px solid #2a2a3a; }
 .hero h1 { font-size:1.8rem; color:#c8b87a; font-weight:300; letter-spacing:0.08em; }
 .hero p { color:#8a9a7a; margin-top:0.4rem; font-size:0.88rem; }
@@ -25,117 +22,291 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 .stat-card .val { font-size:2rem; font-weight:700; color:#c8b87a; }
 .stat-card .label { font-size:0.7rem; color:#8a9a7a; margin-top:0.3rem; text-transform:uppercase; letter-spacing:0.05em; }
 .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
-.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
-@media(max-width:900px){ .grid2,.grid3 { grid-template-columns:1fr; } }
-.panel { background:#141e14; border:1px solid #2a3a2a; border-radius:12px; padding:1.4rem; }
-.panel h2 { font-size:0.95rem; font-weight:600; color:#c8b87a; margin-bottom:1rem; padding-bottom:0.6rem; border-bottom:1px solid #2a3a2a; display:flex; align-items:center; gap:0.5rem; }
+@media(max-width:900px){ .grid2 { grid-template-columns:1fr; } }
+.panel { background:#141e14; border:1px solid #2a3a2a; border-radius:12px; padding:1.4rem; margin-bottom:1.5rem; }
+.panel h2 { font-size:0.95rem; font-weight:600; color:#c8b87a; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.5rem; }
+.panel .sub { font-size:0.75rem; color:#6a7a6a; margin-bottom:1rem; padding-bottom:0.7rem; border-bottom:1px solid #2a3a2a; line-height:1.5; }
+.records { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:0.9rem; }
+.rec { background:#101a10; border:1px solid #243424; border-left:3px solid #c8b87a; border-radius:8px; padding:0.9rem 1rem; }
+.rec .cap { font-size:0.64rem; text-transform:uppercase; letter-spacing:0.08em; color:#8a9a7a; }
+.rec .big { font-size:1.45rem; font-weight:700; color:#c8b87a; margin:0.25rem 0 0.15rem; line-height:1.1; }
+.rec .who { font-size:0.84rem; color:#e8e0d0; }
+.rec .who a { color:#5b9bd5; text-decoration:none; }
+.rec .who a:hover { text-decoration:underline; }
+.rec .meta { font-size:0.72rem; color:#7a8a7a; margin-top:0.25rem; line-height:1.45; }
+.rec.blue { border-left-color:#5b9bd5; } .rec.blue .big { color:#5b9bd5; }
+.rec.green { border-left-color:#4caf82; } .rec.green .big { color:#4caf82; }
+.rec.orange { border-left-color:#e07b39; } .rec.orange .big { color:#e07b39; }
 .bar-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; font-size:0.8rem; }
-.bar-row .lbl { width:120px; color:#a8b8a8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
-.bar-row .bar { height:14px; border-radius:3px; background:linear-gradient(90deg,#2a6a4a,#4caf82); min-width:2px; transition:width 0.8s ease; }
-.bar-row .cnt { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+.bar-row .lbl { width:150px; color:#a8b8a8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
+.bar-row .lbl a { color:#5b9bd5; text-decoration:none; }
+.bar-row .bar { height:14px; border-radius:3px; background:linear-gradient(90deg,#2a6a4a,#4caf82); min-width:2px; }
 .bar-row .bar.gold { background:linear-gradient(90deg,#8a6a2a,#c8b87a); }
 .bar-row .bar.blue { background:linear-gradient(90deg,#2a4a8a,#5b9bd5); }
-.bar-row .bar.orange { background:linear-gradient(90deg,#8a4a2a,#e07b39); }
-canvas { max-height:260px; }
-.arch-item { display:flex; align-items:center; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #1e2e1e; font-size:0.82rem; }
-.arch-item a { color:#5b9bd5; text-decoration:none; }
-.arch-item a:hover { text-decoration:underline; }
-.arch-item .works { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+.bar-row .cnt { color:#c8b87a; font-weight:600; font-size:0.75rem; }
+canvas { max-height:270px; }
+#moveMap { height:520px; border-radius:8px; border:1px solid #243424; }
+.leaflet-container { background:#0b1410; }
+.map-controls { display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap; margin-bottom:0.8rem; font-size:0.78rem; color:#8a9a7a; }
+.map-controls select, .map-controls button { background:#1a2a1a; color:#e8e0d0; border:1px solid #2a3a2a; border-radius:5px; padding:0.35rem 0.6rem; font-size:0.78rem; font-family:inherit; }
+.map-controls button { cursor:pointer; }
+.map-controls button:hover { border-color:#c8b87a; }
 .spinner { text-align:center; padding:3rem; color:#5a7a5a; }
+.tag { display:inline-block; background:#1a2a1a; border:1px solid #2a3a2a; border-radius:20px; padding:0.2rem 0.65rem; margin:0.15rem; font-size:0.74rem; color:#a8b8a8; }
+.tag b { color:#c8b87a; }
+.note { font-size:0.74rem; color:#6a7a6a; line-height:1.55; margin-top:0.8rem; padding-top:0.7rem; border-top:1px solid #1e2a1e; }
 </style>
 </head>
 <body>
 <script src="/site-nav.js"></script>
 <div class="hero">
   <h1>Estate Insights</h1>
-  <p>Patterns and statistics across 350 properties and their residents</p>
+  <p>What the record can say once it is read all at once</p>
 </div>
-<div class="main" id="main"><div class="spinner">Loading…</div></div>
+<div class="main" id="main"><div class="spinner">Reading the record…</div></div>
 
 <script>
-// Escape text before it goes into innerHTML. Contributor-supplied fields (names,
-// bios, notes, descriptions) would otherwise execute as markup.
 function esc(v) {
   if (v === null || v === undefined) return '';
-  return String(v)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+const nm = p => esc([p.first_name, p.last_name].filter(Boolean).join(' ')) || 'unnamed';
+const person = p => `<a href="/people/${p.id}">${nm(p)}</a>`;
+const house = (id, label) => id ? `<a href="/property/${id}">${esc(label || ('property ' + id))}</a>` : esc(label || 'not yet placed');
+const n = v => (v === null || v === undefined) ? '—' : Number(v).toLocaleString();
+
+function bars(items, colour) {
+  if (!items.length) return '<div style="font-size:0.82rem;color:#5a7a5a">Nothing recorded yet.</div>';
+  const max = Math.max(...items.map(i => i.cnt)) || 1;
+  return items.map(({lbl, cnt, href}) => {
+    const w = Math.round(cnt / max * 100);
+    const label = href ? `<a href="${href}">${esc(lbl)}</a>` : esc(lbl);
+    return `<div class="bar-row"><div class="lbl" title="${esc(lbl)}">${label}</div>`
+         + `<div class="bar ${colour}" style="width:${w}%;max-width:calc(100% - 215px)"></div>`
+         + `<div class="cnt">${cnt}</div></div>`;
+  }).join('');
 }
 
+let DATA = null, map = null, layer = null;
+
 async function load() {
-  const s = await fetch('/api/stats').then(r=>r.json());
-  const main = document.getElementById('main');
+  const d = await fetch('/api/insights').then(r => r.json());
+  DATA = d;
+  if (d.error) { document.getElementById('main').innerHTML = `<div class="spinner">${esc(d.error)}</div>`; return; }
+  const h = d.headline || {}, L = d.lives || {};
 
-  const pct = (n,t) => t ? Math.round(n/t*100) : 0;
-  const P = s.properties, Pe = s.people;
+  const yrs = (d.overTime.byYear || []).map(r => r.yr);
+  const spanTxt = yrs.length ? `${yrs[0]}–${yrs[yrs.length-1]}` : '—';
 
-  // Top number card row
-  main.innerHTML = `
+  document.getElementById('main').innerHTML = `
   <div class="stat-row">
-    <div class="stat-card"><div class="val">${P.total}</div><div class="label">Properties</div></div>
-    <div class="stat-card"><div class="val">${Pe.total.toLocaleString()}</div><div class="label">Known People</div></div>
-    <div class="stat-card"><div class="val">${Pe.occupations.toLocaleString()}</div><div class="label">Occupation Records</div></div>
-    <div class="stat-card"><div class="val">${P.withPhotos}</div><div class="label">With Photos</div></div>
-    <div class="stat-card"><div class="val">${pct(P.withDesc,P.total)}%</div><div class="label">With Description</div></div>
-    <div class="stat-card"><div class="val">${pct(P.withPeople,P.total)}%</div><div class="label">With Census Data</div></div>
+    <div class="stat-card"><div class="val">${n(h.people)}</div><div class="label">People</div></div>
+    <div class="stat-card"><div class="val">${n(h.rows)}</div><div class="label">Census records</div></div>
+    <div class="stat-card"><div class="val">${n(h.housed)}</div><div class="label">Houses with residents</div></div>
+    <div class="stat-card"><div class="val">${n(h.places)}</div><div class="label">Birthplaces named</div></div>
+    <div class="stat-card"><div class="val">${spanTxt}</div><div class="label">Census rounds held</div></div>
+    <div class="stat-card"><div class="val">${n(h.linked)}</div><div class="label">With a life beyond the estate</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>📌 The far ends of the record</h2>
+    <div class="sub">The oldest, the youngest, the longest-lived and the furthest travelled. Every one of these is a real person on a real page.</div>
+    <div class="records">${records(L, d)}</div>
   </div>
 
   <div class="grid2">
     <div class="panel">
-      <h2>🗓️ When Was The Estate Built?</h2>
-      <canvas id="decadesChart"></canvas>
+      <h2>👥 Who headed the houses</h2>
+      <div class="sub">Heads of household by sex, across the five full rounds. The change is the point.</div>
+      <canvas id="headsChart"></canvas>
     </div>
     <div class="panel">
-      <h2>💼 Top Occupations (All Census Years)</h2>
-      <canvas id="jobsChart"></canvas>
+      <h2>🧹 How much of the estate was staff</h2>
+      <div class="sub">Servants as a share of everyone recorded that year.</div>
+      <canvas id="servChart"></canvas>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>🧭 People who moved house on the estate</h2>
+    <div class="sub">Every line is one person, drawn between the houses the record places them in. ${d.moves.length} people moved and stayed on The Park — and a move is the hardest thing for a record like this to see, because it looks like two different people until somebody proves otherwise.</div>
+    <div class="map-controls">
+      <label>Show <select id="moveFilter"></select></label>
+      <button id="fitBtn">Fit to the estate</button>
+      <span id="moveCount"></span>
+    </div>
+    <div id="moveMap"></div>
+    <div class="note">Only moves between two houses the map can place are drawn. A person whose earlier address is still unfiled does not appear here — which means this map grows every time something comes off the unfiled page.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>🏠 The most lived-in houses</h2>
+      <div class="sub">Different people recorded at one address, across every round.</div>
+      ${bars((d.houses.mostResidents||[]).map(r => ({lbl:r.label, cnt:Number(r.n), href:'/property/'+r.id})), 'gold')}
+    </div>
+    <div class="panel">
+      <h2>📖 The longest unbroken records</h2>
+      <div class="sub">Houses the record can follow across the most census rounds.</div>
+      ${bars((d.houses.longestRecord||[]).map(r => ({lbl:`${r.label} (${r.a}–${r.b})`, cnt:Number(r.yrs), href:'/property/'+r.id})), 'blue')}
     </div>
   </div>
 
   <div class="grid2">
-    <div class="panel" id="archPanel">
-      <h2>🏗️ Most Prolific Architects</h2>
-      ${(s.topArchitects||[]).length
-        ? buildBars(s.topArchitects.map(a=>({lbl:a.name,cnt:a.works,href:'/architects/'+a.id})), 'blue', s.topArchitects[0]?.works||1)
-        : '<div style="font-size:0.82rem;color:#5a7a5a;padding:0.5rem 0">No architect data recorded yet.</div>'}
+    <div class="panel">
+      <h2>⚓ Who stayed put</h2>
+      <div class="sub">People the record finds in the same house across four rounds or more.</div>
+      ${(d.houses.stayers||[]).length ? (d.houses.stayers||[]).map(s =>
+        `<div class="bar-row"><div class="lbl" style="width:auto;flex:1">${person(s)} <span style="color:#6a7a6a">at ${house(s.id, s.label)}</span></div>`
+        + `<div class="cnt">${s.a}–${s.b}</div></div>`).join('')
+        : '<div style="font-size:0.82rem;color:#5a7a5a">Nothing yet.</div>'}
     </div>
     <div class="panel">
-      <h2>🏘️ Properties by Street</h2>
-      ${buildBars((s.topStreets||[]).slice(0,15).map(t=>({lbl:t.street,cnt:t.count})), 'gold', (s.topStreets||[{count:1}])[0].count)}
+      <h2>🌍 The furthest anyone was born</h2>
+      <div class="sub">Straight-line distance from the estate.</div>
+      ${bars((d.origins.furthest||[]).map(r => ({lbl:r.place, cnt:Number(r.n)})), 'blue')}
+      <div class="note">Counted from census birthplaces that have been given a position. See the <a href="/origins" style="color:#5b9bd5">Origins map</a> for all of them.</div>
     </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>✍️ The commonest names</h2>
+      <div class="sub">First forename, and surname, across everybody the record holds.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div><div style="font-size:0.72rem;color:#8a9a7a;margin-bottom:0.4rem">FORENAMES</div>
+          ${(d.names.forenames||[]).slice(0,10).map(r=>`<span class="tag">${esc(r.name)} <b>${r.n}</b></span>`).join('')}</div>
+        <div><div style="font-size:0.72rem;color:#8a9a7a;margin-bottom:0.4rem">SURNAMES</div>
+          ${(d.names.surnames||[]).slice(0,10).map(r=>`<span class="tag">${esc(r.name)} <b>${r.n}</b></span>`).join('')}</div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>🚪 Where people came from</h2>
+      <div class="sub">The commonest birthplaces outside Nottingham.</div>
+      ${bars((d.origins.top||[]).slice(0,10).map(r => ({lbl:r.place, cnt:Number(r.n)})), 'green')}
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>📈 The estate, round by round</h2>
+    <div class="sub">People recorded, houses they were recorded in, and how many were born outside England and Wales.</div>
+    <canvas id="yearChart"></canvas>
   </div>
   `;
 
-  // Building decades chart
-  const decades = s.decades || {};
-  const decKeys = Object.keys(decades).map(Number).sort();
-  new Chart(document.getElementById('decadesChart'), {
-    type: 'bar',
-    data: {
-      labels: decKeys.map(d => d+'s'),
-      datasets: [{ data: decKeys.map(d=>decades[d]), backgroundColor: '#c8b87a99', borderColor:'#c8b87a', borderWidth:1, borderRadius:3 }]
-    },
-    options: { plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}},y:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}}}, responsive:true, maintainAspectRatio:true }
-  });
+  drawCharts(d);
+  buildMap(d);
+}
 
-  // Jobs chart
-  const jobs = (s.jobs?.topJobs||[]).slice(0,12);
-  new Chart(document.getElementById('jobsChart'), {
+function records(L, d) {
+  const out = [];
+  if (L.earliest) out.push(card('gold','Earliest birth', L.earliest.born_year,
+    person(L.earliest), L.earliest.born_place ? 'born ' + esc(L.earliest.born_place) : ''));
+  if (L.oldest) out.push(card('orange','Oldest at a census', L.oldest.age + ' years',
+    person(L.oldest), `in ${L.oldest.census_year}, at ${house(L.oldest.property_id, L.oldest.label)}`));
+  if (L.longest) out.push(card('green','Longest life recorded', L.longest.age + ' years',
+    person(L.longest), `${L.longest.born_year}–${L.longest.died_year}`));
+  if (L.youngestHead) out.push(card('blue','Youngest head of a house', L.youngestHead.age + ' years',
+    person(L.youngestHead), `in ${L.youngestHead.census_year}, at ${house(L.youngestHead.property_id, L.youngestHead.label)}`));
+  if (L.latest) out.push(card('gold','Latest birth', L.latest.born_year,
+    person(L.latest), L.latest.born_place ? 'born ' + esc(L.latest.born_place) : ''));
+  const big = (d.houses.largestHousehold || [])[0];
+  if (big) out.push(card('orange','Largest household', big.n + ' people',
+    house(big.id, big.label), 'on census night ' + big.yr));
+  const far = (d.origins.furthest || [])[0];
+  if (far) out.push(card('blue','Furthest birthplace', esc(far.place), '',
+    far.n + (Number(far.n) === 1 ? ' person' : ' people') + ' born there'));
+  if (d.moves.length) out.push(card('green','People who moved house here', d.moves.length, '',
+    'and stayed on the estate'));
+  return out.join('');
+}
+function card(cls, cap, big, who, meta) {
+  return `<div class="rec ${cls}"><div class="cap">${esc(cap)}</div><div class="big">${big}</div>`
+       + (who ? `<div class="who">${who}</div>` : '')
+       + (meta ? `<div class="meta">${meta}</div>` : '') + '</div>';
+}
+
+const AXIS = { ticks:{color:'#8a9a7a'}, grid:{color:'#1a2a1a'} };
+function drawCharts(d) {
+  const ot = d.overTime;
+  const wh = ot.womenHeads || [];
+  new Chart(document.getElementById('headsChart'), {
     type: 'bar',
-    data: {
-      labels: jobs.map(j=>j.job.replace(/\b\w/g,c=>c.toUpperCase())),
-      datasets: [{ data: jobs.map(j=>j.count), backgroundColor:'#4caf8299', borderColor:'#4caf82', borderWidth:1, borderRadius:3 }]
-    },
-    options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1a2a1a'}},y:{ticks:{color:'#8a9a7a',font:{size:10}},grid:{color:'#1a2a1a'}}}, responsive:true, maintainAspectRatio:true }
+    data: { labels: wh.map(r=>r.yr), datasets: [
+      { label:'Men', data: wh.map(r=>Number(r.men)), backgroundColor:'#5b9bd599', borderColor:'#5b9bd5', borderWidth:1, borderRadius:3 },
+      { label:'Women', data: wh.map(r=>Number(r.women)), backgroundColor:'#e07b3999', borderColor:'#e07b39', borderWidth:1, borderRadius:3 } ]},
+    options: { plugins:{legend:{labels:{color:'#8a9a7a',boxWidth:12}}}, scales:{x:AXIS,y:AXIS}, responsive:true }
+  });
+  const sv = ot.servants || [];
+  new Chart(document.getElementById('servChart'), {
+    type: 'line',
+    data: { labels: sv.map(r=>r.yr), datasets: [{
+      label:'% of people recorded who were staff',
+      data: sv.map(r => Number(r.total) ? Math.round(Number(r.servants)/Number(r.total)*100) : 0),
+      borderColor:'#4caf82', backgroundColor:'#4caf8233', fill:true, tension:0.3, pointRadius:4 }]},
+    options: { plugins:{legend:{labels:{color:'#8a9a7a',boxWidth:12}}},
+      scales:{x:AXIS, y:{...AXIS, suggestedMin:0, suggestedMax:60, ticks:{color:'#8a9a7a',callback:v=>v+'%'}}}, responsive:true }
+  });
+  const by = ot.byYear || [], fo = Object.fromEntries((ot.foreign||[]).map(r=>[r.yr, Number(r.n)]));
+  new Chart(document.getElementById('yearChart'), {
+    type:'bar',
+    data:{ labels: by.map(r=>r.yr), datasets:[
+      { label:'People recorded', data: by.map(r=>Number(r.people)), backgroundColor:'#c8b87a99', borderColor:'#c8b87a', borderWidth:1, borderRadius:3 },
+      { label:'Houses', data: by.map(r=>Number(r.houses)), backgroundColor:'#4caf8299', borderColor:'#4caf82', borderWidth:1, borderRadius:3 },
+      { label:'Born outside England & Wales', data: by.map(r=>fo[r.yr]||0), type:'line', borderColor:'#e07b39', backgroundColor:'#e07b3933', tension:0.3, pointRadius:4 } ]},
+    options:{ plugins:{legend:{labels:{color:'#8a9a7a',boxWidth:12}}}, scales:{x:AXIS,y:AXIS}, responsive:true }
   });
 }
 
-function buildBars(items, colour, max) {
-  if (!items.length) return '<div style="font-size:0.82rem;color:#5a7a5a">No data</div>';
-  return items.map(({lbl,cnt,href}) => {
-    const w = Math.round(cnt/max*100);
-    const label = href ? `<a href="${href}" style="color:#5b9bd5;text-decoration:none">${lbl}</a>` : lbl;
-    return `<div class="bar-row"><div class="lbl" title="${lbl}">${label}</div><div class="bar ${colour}" style="width:${w}%;max-width:calc(100% - 185px)"></div><div class="cnt">${cnt}</div></div>`;
-  }).join('');
+// ── The movement map ────────────────────────────────────────────────────────
+// One polyline per person, house to house. Houses are drawn once each, however
+// many lines touch them, so a house everybody passed through reads as one dot
+// with many threads rather than a blob.
+function buildMap(d) {
+  const sel = document.getElementById('moveFilter');
+  sel.innerHTML = '<option value="all">everyone who moved</option>'
+    + '<option value="2">people with exactly two houses</option>'
+    + '<option value="3">people with three or more</option>';
+  sel.onchange = () => draw(sel.value);
+  map = L.map('moveMap', { scrollWheelZoom:false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, opacity: 0.55,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  document.getElementById('fitBtn').onclick = () => fit();
+  draw('all');
+}
+function draw(mode) {
+  if (layer) layer.remove();
+  layer = L.layerGroup().addTo(map);
+  const moves = DATA.moves.filter(m =>
+    mode === 'all' ? true : mode === '2' ? m.points.length === 2 : m.points.length >= 3);
+  const seen = new Map();
+  moves.forEach((m, i) => {
+    const hue = (i * 47) % 360;
+    L.polyline(m.points.map(p => [p.lat, p.lng]), {
+      color: `hsl(${hue},65%,60%)`, weight: 2, opacity: 0.55
+    }).bindPopup(
+      `<b>${esc(m.name)}</b><br>${m.from}–${m.to}<br>`
+      + m.points.map(p => esc(p.label)).join(' → ')
+      + `<br><a href="/people/${m.id}">open the record</a>`
+    ).addTo(layer);
+    m.points.forEach(p => { if (!seen.has(p.id)) seen.set(p.id, p); });
+  });
+  seen.forEach(p => {
+    L.circleMarker([p.lat, p.lng], { radius:4, color:'#c8b87a', weight:1, fillColor:'#c8b87a', fillOpacity:0.85 })
+      .bindPopup(`<b>${esc(p.label)}</b><br><a href="/property/${p.id}">open the house</a>`).addTo(layer);
+  });
+  document.getElementById('moveCount').textContent =
+    `${moves.length} ${moves.length === 1 ? 'person' : 'people'}, ${seen.size} houses`;
+  fit();
+}
+function fit() {
+  const pts = [];
+  DATA.moves.forEach(m => m.points.forEach(p => pts.push([p.lat, p.lng])));
+  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [28, 28] });
+  else map.setView([52.9522, -1.1613], 16);
 }
 
 load();

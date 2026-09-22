@@ -81,15 +81,6 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
 .ab-label { font-size:0.7rem; color:#5a7a5a; margin-top:1px; }
 .jobs-full { grid-column:1 / -1; }
 .chart-container { position:relative; height:280px; }
-.jobs-top { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
-#jobsTable th { background:#1e2d1e; color:#c8b87a; padding:0.4rem 0.7rem; text-align:right; border-bottom:1px solid #2a3a2a; white-space:nowrap; font-weight:600; }
-#jobsTable th:first-child { text-align:left; }
-#jobsTable td { padding:0.35rem 0.7rem; text-align:right; border-bottom:1px solid #1e2a1e; color:#a8b8a8; }
-#jobsTable td:first-child { text-align:left; color:#e8e0d0; font-weight:500; }
-#jobsTable tr:hover td { background:rgba(200,184,122,0.05); }
-.occ-cb { display:flex; align-items:center; gap:0.3rem; background:#1e2d1e; border:1px solid #2a3a2a; border-radius:4px; padding:0.2rem 0.5rem; cursor:pointer; font-size:0.7rem; color:#a8b8a8; transition:border-color 0.15s; }
-.occ-cb.active { border-color:#c8b87a; color:#e8e0d0; }
-.occ-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 .job-tag { background:#1e2d1e; border:1px solid #2a3a2a; border-radius:20px; padding:0.25rem 0.7rem; font-size:0.72rem; color:#a8b8a8; display:flex; align-items:center; gap:0.4rem; }
 .job-tag .jt-count { color:#c8b87a; font-weight:700; }
 .loading { color:#5a7a5a; font-size:0.82rem; text-align:center; padding:0.8rem; }
@@ -175,30 +166,13 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f1923; color: #
     </div>
 
     <div class="panel jobs-full">
-      <div class="section-header"><span class="icon">⚒️</span><h2>Occupations &amp; Social History</h2><span class="count" id="j-count"></span></div>
-      <!-- Occupation selector -->
-      <div id="occSelector" style="display:none;margin-bottom:0.8rem;">
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.75rem;color:#8a9a7a;">Show:</span>
-          <button class="filter-btn active" id="selAllBtn" onclick="toggleSelectAll()">Select all</button>
-          <span style="font-size:0.72rem;color:#5a7a5a;margin-left:auto" id="occSelectedCount"></span>
-        </div>
-        <div id="occCheckboxes" style="display:flex;flex-wrap:wrap;gap:0.4rem;max-height:80px;overflow-y:auto;"></div>
-      </div>
-      <div class="chart-container" style="height:280px;"><canvas id="jobsChart"></canvas></div>
-      <!-- Data table -->
-      <div style="margin-top:0.8rem;">
-        <button id="tableToggleBtn" onclick="toggleOccTable()" style="background:#1e2d1e;border:1px solid #2a3a2a;border-radius:6px;padding:0.3rem 0.8rem;font-size:0.75rem;color:#8a9a7a;cursor:pointer;display:flex;align-items:center;gap:0.4rem;">
-          <span id="tableToggleIcon">▶</span> Show data table
-        </button>
-        <div id="tableWrap" style="display:none;margin-top:0.6rem;overflow-x:auto;">
-          <table id="jobsTable" style="width:100%;border-collapse:collapse;font-size:0.75rem;">
-            <thead id="jobsTableHead"></thead>
-            <tbody id="jobsTableBody"></tbody>
-          </table>
-        </div>
-      </div>
-      <div class="jobs-top" id="jobTags" style="margin-top:0.8rem;"><div class="loading">Connect database to see occupation data</div></div>
+      <div class="section-header"><span class="icon">⚒️</span><h2>Occupations &amp; Social History</h2></div>
+      <p style="font-size:0.82rem;color:#8a9a7a;line-height:1.6;margin:0.2rem 0 0.9rem">
+        Trades now have a page of their own, with every occupation sorted into groups and drawn
+        round by round, the commonest trades, the ones only a single person ever gave, and the
+        employers research has established.
+      </p>
+      <a href="/trades" class="action-btn" style="max-width:340px"><span class="ab-icon">⚒</span><div><div class="ab-title">Occupations</div><div class="ab-label">What people did, and how it changed</div></div></a>
     </div>
 
   </div>
@@ -270,7 +244,7 @@ function esc(v) {
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
-let allProps=[], stats={}, jobsChart=null, researchFilter='all', researchMap={}, currentUser=null;
+let allProps=[], stats={}, researchFilter='all', researchMap={}, currentUser=null;
 let peopleCounts={};
 
 async function init(){
@@ -296,7 +270,7 @@ async function init(){
   allProps=Array.isArray(p)?p:[]; stats=s||{};
   fetch('/api/people-counts').then(r=>r.json()).then(d=>{peopleCounts=d||{};renderResearchGrid();}).catch(()=>{});
   fetch('/api/property-research').then(r=>r.json()).then(d=>{researchMap=d;renderResearchGrid();}).catch(()=>{});
-  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderJobs(); renderLeagueTable(); renderArchitects(); renderBuilders();
+  renderStats(); renderHouseProgress(); renderResearchGrid(); renderPeopleProgress(); renderLeagueTable(); renderArchitects(); renderBuilders();
 }
 
 function renderStats(){
@@ -310,7 +284,6 @@ function renderStats(){
   const linked=p.withPeople||0;
   set('s-linked',linked); set('s-linked-pct',total&&linked?Math.round(linked/total*100)+'% of houses':'');
   set('h-count',total+' properties'); set('p-count',(pe.total||0)+' people');
-  set('j-count',(pe.occupations||0)+' recorded');
 }
 
 function renderHouseProgress(){
@@ -390,146 +363,6 @@ function renderPeopleProgress(){
   document.getElementById('peopleProgress').innerHTML=`
     <div class="progress-item"><div class="progress-label"><span>Houses with people data</span><span>${linked} / ${total} (${pct}%)</span></div><div class="progress-bar"><div class="progress-fill fill-green" style="width:${pct}%"></div></div></div>
     <div class="progress-item"><div class="progress-label"><span>Research completion</span><span>${pct}%</span></div><div class="progress-bar"><div class="progress-fill fill-gold" style="width:${pct}%"></div></div></div>`;
-}
-
-function renderJobs(){
-  const jobs=stats.jobs||{}, byCensusYear=jobs.byCensusYear||{}, topJobs=jobs.topJobs||[];
-  const years=Object.keys(byCensusYear).sort();
-
-  // Top occupation tags
-  document.getElementById('jobTags').innerHTML=topJobs.length
-    ? topJobs.map(j=>`<div class="job-tag"><span>${j.job}</span><span class="jt-count">${j.count}</span></div>`).join('')
-    : '<div class="loading" style="color:#5a7a5a">Connect a database to see occupation data</div>';
-
-  if(!years.length){ buildEmptyChart(); return; }
-
-  const allJobNames=[...new Set(years.flatMap(y=>Object.keys(byCensusYear[y])))];
-  // Sort by total count
-  allJobNames.sort((a,b)=>{
-    const ta=years.reduce((s,y)=>s+(byCensusYear[y][a]||0),0);
-    const tb=years.reduce((s,y)=>s+(byCensusYear[y][b]||0),0);
-    return tb-ta;
-  });
-
-  // Build occupation selector checkboxes
-  const selector=document.getElementById('occSelector');
-  const cbContainer=document.getElementById('occCheckboxes');
-  selector.style.display='block';
-  const colours=['#c8b87a','#4caf82','#5b9bd5','#e07b39','#9b7fd4','#e05a8a','#4ab8c8','#a8c84a','#c86a5a','#7ab87a','#d4a85a','#6ab87a','#b87a9a','#7a9ab8','#b8a87a'];
-
-  cbContainer.innerHTML=allJobNames.map((job,i)=>`
-    <div class="occ-cb active" id="cb-${i}" onclick="toggleOcc(${i})" data-idx="${i}">
-      <div class="occ-dot" style="background:${colours[i%colours.length]}"></div>
-      <span>${job}</span>
-    </div>`).join('');
-  updateOccCount();
-
-  window._jobsData={years,allJobNames,byCensusYear,colours};
-  buildChart();
-  buildTable();
-}
-
-function getActiveJobs(){
-  if(!window._jobsData) return [];
-  return window._jobsData.allJobNames.filter((_,i)=>document.getElementById('cb-'+i)?.classList.contains('active'));
-}
-
-function toggleOcc(i){
-  const el=document.getElementById('cb-'+i);
-  if(el) el.classList.toggle('active');
-  updateOccCount();
-  buildChart();
-  buildTable();
-}
-
-function toggleSelectAll(){
-  const cbs=document.querySelectorAll('.occ-cb');
-  const anyInactive=[...cbs].some(c=>!c.classList.contains('active'));
-  cbs.forEach(c=>{ if(anyInactive) c.classList.add('active'); else c.classList.remove('active'); });
-  document.getElementById('selAllBtn').textContent=anyInactive?'Deselect all':'Select all';
-  updateOccCount();
-  buildChart();
-  buildTable();
-}
-
-function updateOccCount(){
-  const total=document.querySelectorAll('.occ-cb').length;
-  const active=document.querySelectorAll('.occ-cb.active').length;
-  document.getElementById('occSelectedCount').textContent=active+' of '+total+' shown';
-}
-
-function buildChart(){
-  const {years,allJobNames,byCensusYear,colours}=window._jobsData;
-  const activeJobs=getActiveJobs();
-  const ctx=document.getElementById('jobsChart').getContext('2d');
-  if(jobsChart) jobsChart.destroy();
-  jobsChart=new Chart(ctx,{
-    type:'line',
-    data:{
-      labels:years,
-      datasets:activeJobs.map(job=>{
-        const i=allJobNames.indexOf(job);
-        return {
-          label:job,
-          data:years.map(y=>byCensusYear[y][job]||null),
-          borderColor:colours[i%colours.length],
-          backgroundColor:colours[i%colours.length]+'22',
-          borderWidth:2,
-          pointRadius:5,
-          pointHoverRadius:7,
-          tension:0.3,
-          spanGaps:true,
-          fill:false
-        };
-      })
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{
-        legend:{labels:{color:'#8a9a7a',font:{size:10},boxWidth:12},position:'bottom'},
-        tooltip:{
-          backgroundColor:'#141e14',borderColor:'#2a3a2a',borderWidth:1,
-          titleColor:'#c8b87a',bodyColor:'#e8e0d0',
-          callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y||0}`}
-        }
-      },
-      scales:{
-        x:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'},title:{display:true,text:'Census Year',color:'#5a7a5a',font:{size:11}}},
-        y:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'},beginAtZero:true,title:{display:true,text:'Number of People',color:'#5a7a5a',font:{size:11}}}
-      }
-    }
-  });
-}
-
-function toggleOccTable(){
-  const wrap=document.getElementById('tableWrap');
-  const icon=document.getElementById('tableToggleIcon');
-  const btn=document.getElementById('tableToggleBtn');
-  const open=wrap.style.display==='none';
-  wrap.style.display=open?'block':'none';
-  icon.textContent=open?'▼':'▶';
-  btn.querySelector('span+*') || (btn.lastChild.textContent=open?' Hide data table':' Show data table');
-  btn.childNodes[1].textContent=open?' Hide data table':' Show data table';
-}
-function buildTable(){
-  const {years,byCensusYear}=window._jobsData;
-  const activeJobs=getActiveJobs();
-  const thead=document.getElementById('jobsTableHead');
-  const tbody=document.getElementById('jobsTableBody');
-  if(!activeJobs.length){ return; }
-  thead.innerHTML=`<tr><th>Occupation</th>${years.map(y=>`<th>${y}</th>`).join('')}<th>Total</th></tr>`;
-  tbody.innerHTML=activeJobs.map(job=>{
-    const vals=years.map(y=>byCensusYear[y][job]||0);
-    const total=vals.reduce((a,b)=>a+b,0);
-    return `<tr><td>${job}</td>${vals.map(v=>`<td>${v||'—'}</td>`).join('')}<td style="color:#c8b87a;font-weight:600">${total}</td></tr>`;
-  }).join('');
-}
-
-function buildEmptyChart(){
-  const ctx=document.getElementById('jobsChart').getContext('2d');
-  if(jobsChart) jobsChart.destroy();
-  jobsChart=new Chart(ctx,{type:'line',data:{labels:['1841','1851','1861','1871','1881','1891','1901','1911'],datasets:[{label:'No data — connect database',data:[],borderColor:'rgba(200,184,122,0.2)',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8a9a7a'}}},scales:{x:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}},y:{ticks:{color:'#8a9a7a'},grid:{color:'#1e2d1e'}}}}});
 }
 
 async function renderLeagueTable(){
