@@ -1,837 +1,845 @@
 {
-  "note": "The working list. Seeded from this file so a deploy carries it; ticked off on the site. A slug keys each task, so a redeploy neither duplicates one nor un-ticks it.",
-  "tasks": [
-    {
-      "slug": "ada-jessop-25-ccs",
-      "area": "Do these first",
-      "title": "Ada Jessop's household to 25 Cavendish Crescent South",
-      "detail": "Three records under \"Cavendish Crescent South\" on the unfiled page — Ada Jessop, 60, Head, with Anne Draw and Ellen Annie Bess. #49 is the Jessop house and holds nothing in 1921.",
-      "size": "one click",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "mather-talbot-19-ccs",
-      "area": "Do these first",
-      "title": "The Mather and Talbot households to 19 Cavendish Crescent South",
-      "detail": "Seven people, two Heads on one schedule — Charles Talbot manages the glove fabric department for George Mather and lives in his house. The page splits them into two blocks; send both to 46. #46 is free for 1921 now the Brownswords have moved to 15.",
-      "size": "two clicks",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "dowsons-felixstowe",
-      "area": "Do these first",
-      "title": "The Dowson household to Felixstowe",
-      "detail": "Six records in the group \"Felixstowe see 1911 Clumber rd W\" — William Enfield Dowson, Helena (Town Councillor and JP), and four servants. To #394.",
-      "size": "one click",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "hombergers-lindens",
-      "area": "Do these first",
-      "title": "The Homberger household to The Lindens",
-      "detail": "The other six in the same group, headed by Kate A Homberger with no head on the return. To #87, Linden House, on the note \"Otto Homberger, Of The Lindens, Clumber Road West\".",
-      "size": "one click",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "dexters-thorsmore",
-      "area": "Do these first",
-      "title": "Move the four Dexter brothers from Overdale to Thorsmore",
-      "detail": "They are already filed — eight records at #58, 58 Cavendish Road East (Overdale): the four brothers, Emma Savage the housekeeper and three maids, entries 2656 to 2663. But their schedule header reads Thorsmore, which is #36, 22 and 24 Cavendish Crescent North. So this is a move, not a filing: /reassign?prop=58&year=1921, the Dexter block, send all to 36. Overdale also holds the Dobbs household, which stays.",
-      "size": "two clicks",
-      "link": "/reassign?prop=58&year=1921"
-    },
-    {
-      "slug": "dobsons-where",
-      "area": "Do these first",
-      "title": "Settle where the Dobson household belongs",
-      "detail": "Eight records: John George Dobson, retired cotton doubler, his family and two servants. 5 Cavendish Crescent North already holds the Henderson household for 1921, so one of the two is wrong. Check the Dobson schedule header.",
-      "size": "a look at the return",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "wrights-where",
-      "area": "Do these first",
-      "title": "Settle where the Wright household belongs",
-      "detail": "The four who sit after the Dobsons on the same page — Bernard Swanwick Wright, a solicitor of 45, Kathleen Florence Wright, Mary Jovan and Minnie Creswell. A household of their own, not Dobsons.",
-      "size": "a look at the return",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "lloyds-6-peveril",
-      "area": "Do these first",
-      "title": "The Lloyd household to 6 Peveril Drive",
-      "detail": "Three records in \"PeD1 Peveril Drive\": Edward Evans Lloyd, 68, Hannah Stanger Lloyd and Ida Maud Gill. Hannah is already filed at #292 as a widow in 1921, on the same person record — that is what places them.",
-      "size": "one click",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "peveril-set-aside",
-      "area": "Do these first",
-      "title": "Set aside the rest of Peveril Drive",
-      "detail": "Once the Lloyds are out, the other six 1911 households and the five 1921 ones gave no house name and no number. Nothing more the census can do with them.",
-      "size": "two clicks",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "merge-goodliffe",
-      "area": "Merges the page cannot find",
-      "title": "Merge Johanne Goodliffe / Johanna Goodcliffe",
-      "detail": "One woman born 1837, ten years apart on Peveril Drive. Different surname spellings, so they never sit in the same group. Keep #639, merge in #1271.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-agnes-taylor",
-      "area": "Merges the page cannot find",
-      "title": "Merge Florence / Florance Agnes Taylor",
-      "detail": "Both born 1893, a servant on Peveril Drive in 1911 and back on it in 1921. Florence against Florance. Keep #638, merge in #1268.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-catherine-slack",
-      "area": "Merges the page cannot find",
-      "title": "Merge Catherine Charlotte Slack / Black",
-      "detail": "Both born 1892, both housemaids of 19 in the same house. The surname itself is mis-transcribed. Keep #263, merge in #774.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-ernest-jardine",
-      "area": "Merges the page cannot find",
-      "title": "Merge Ernest / Earnest Jardine",
-      "detail": "Born 1859 and 1860, the same lace machine builder, one record unfiled and one at 9 Clumber Crescent South. Keep #1315, merge in #2573.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-edna-jardine",
-      "area": "Merges the page cannot find",
-      "title": "Merge Edna Winifred / Edna Jardine",
-      "detail": "His daughter, the same double import. Keep #2387, merge in #2574.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-iris-jardine",
-      "area": "Merges the page cannot find",
-      "title": "Merge Iris Gwendoline / Iris Jardine",
-      "detail": "His other daughter, the same double import. Keep #2391, merge in #2575.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-jessop-four",
-      "area": "Merges the page cannot find",
-      "title": "Merge the four Jessop pairs",
-      "detail": "Ada, Effie, Florence and Rose — one household at 25 Cavendish Crescent South entered twice from two transcriptions. These four now show on the duplicates page under \"one household entered twice\". Blanche Gertrude Fagan appears only in the second import, so she is a real person, not a duplicate.",
-      "size": "four clicks",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-mouring-bouring",
-      "area": "Merges the page cannot find",
-      "title": "Merge Robert and Mary Mouring / Bouring",
-      "detail": "The same double import at 9 Clumber Crescent South, with the surname mangled. And Beatrice Fanny Perkins, who came through the second time as \"Beatrice Fanny Beatrice\".",
-      "size": "three clicks",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "unfiled-ccn-remaining",
-      "area": "Unfiled census — the rest",
-      "title": "Place the rest of the Cavendish Crescent North group",
-      "detail": "After the Dexters, the Dobsons and the Wrights there are four households left: William Wing's and William Bradshaw's from 1911, and Thomas Berridge Cox's and Henry Holford's from 1921. Free on the crescent in 1921: 9, 15, 18a and Haddon House.",
-      "size": "research",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "wing-bradshaw-1911",
-      "area": "Unfiled census — the rest",
-      "title": "Which house was Kentmere, Cavendish Crescent North? (William Wing, 1911)",
-      "detail": "William Wing's 1911 schedule gives Kentmere, Cavendish Crescent North — so the Wings were on the crescent, not on Peveril Drive as this task used to guess. Kentmere is in the record under no name, nor on OpenStreetMap or Dougal's map. The round runs 4 Peveril Drive, then the Wings, then William Bradshaw, then 3 Cavendish Crescent North — so Kentmere is one of the first two houses on the crescent. 1 Cavendish Crescent North (Carisbrooke House) is empty in 1911 and is the obvious candidate: names on this crescent changed, and 10 was formerly Charnwood. That leaves Bradshaw needing a house too — and every other house before No. 3 is either full in 1911 or not in the record. If the schedule gives a number, that settles it.",
-      "size": "a look at the return",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "allchurch-household",
-      "area": "Unfiled census — the rest",
-      "title": "Place the Allchurch household",
-      "detail": "Nine people — William J Allchurch, 37, his wife Mabel, two small children and five servants including a sick nurse — unfiled under \"Felixstowe see 1911 Clumber Rd West\". Nothing confirms them at Felixstowe in 1921, so take that label off: Change label on the group, leave it empty, Save. The surname is Allchurch for him and Achurch for the rest and will need reconciling.",
-      "size": "research",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "sr1-duke-william",
-      "area": "Unfiled census — the rest",
-      "title": "Check whether Duke William Mount can be set aside",
-      "detail": "14 records with the shape of the Peveril Drive groups. SR1 South Rd was listed here too, but part of it turns out to be a double import of 3 South Road — see that task instead.",
-      "size": "a look at the return",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "unfiled-remainder",
-      "area": "Unfiled census — the rest",
-      "title": "Work the rest of the unresolved queue down",
-      "detail": "Whatever is left after the named groups above. The page gathers them by address, so most of it is a handful of decisions rather than a record at a time.",
-      "size": "ongoing",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "crowding-39-newcastle",
-      "area": "Crowded houses",
-      "title": "39 Newcastle Drive, 1921 — 27 people under 22 surnames",
-      "detail": "The worst on the list. Almost certainly several households filed against one address.",
-      "size": "research",
-      "link": "/crowding"
-    },
-    {
-      "slug": "crowding-5-tattershall",
-      "area": "Crowded houses",
-      "title": "5 Tattershall Drive, 1921 — 26 people under 16 surnames",
-      "detail": null,
-      "size": "research",
-      "link": "/crowding"
-    },
-    {
-      "slug": "crowding-19-park-terrace",
-      "area": "Crowded houses",
-      "title": "19 Park Terrace, 1921 — send the Kneebone block to Broxtowe House",
-      "detail": "Three schedules under one address: the Clarks at 19, the nine resident doctors at Broxtowe House (#406), and the Carr household. The doctors are the clear one.",
-      "size": "one click",
-      "link": "/reassign?prop=379&year=1921"
-    },
-    {
-      "slug": "crowding-9-cavendish",
-      "area": "Crowded houses",
-      "title": "9 Cavendish Crescent North, 1911 — split the three schedules",
-      "detail": "Four servants with no head belong to Peveril House; the Weinberg and Smith households do not. 10 and 11 Gleadthorpe hold no 1911 record.",
-      "size": "research",
-      "link": "/reassign?prop=25&year=1911"
-    },
-    {
-      "slug": "crowding-barrack-yard",
-      "area": "Crowded houses",
-      "title": "10 Barrack Lane, 1911 — three households to Barrack Yard",
-      "detail": "Twelve of the seventeen were at Barrack Yard (#410). Only the Derrys belong at number 10.",
-      "size": "three clicks",
-      "link": "/reassign?prop=7&year=1911"
-    },
-    {
-      "slug": "crowding-penrhyn",
-      "area": "Crowded houses",
-      "title": "Penrhyn House, 1921 — the Houltons and the Radfords",
-      "detail": "Two of the four schedules are placed. Penrhyn House was divided into flats so one or both may genuinely belong, but it is worth looking.",
-      "size": "research",
-      "link": "/reassign?prop=84&year=1921"
-    },
-    {
-      "slug": "crowding-rest",
-      "area": "Crowded houses",
-      "title": "Work the remaining flagged property-years",
-      "detail": "The page recalculates as you go. Surnames is the stronger signal: a real household is rarely more than two or three families.",
-      "size": "ongoing",
-      "link": "/crowding"
-    },
-    {
-      "slug": "greendale",
-      "area": "Houses and names",
-      "title": "File the Spray household to Greendale, 4 Huntingdon Drive",
-      "detail": "Settled: Joseph Spray's biography gives Greendale, Huntingdon Drive, and Companies House puts Greendale at number 4. 4 Huntingdon Drive (#146) now carries the name. On /unfiled, send the four records under \"Huntingdon Drive (Greendale)\" to 146. On /research, record the answer against \"Which house on Huntingdon Drive is Greendale?\".",
-      "size": "two clicks",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "huntingdon-far-side",
-      "area": "Houses and names",
-      "title": "Decide whether the far side of Huntingdon Drive should be in the record",
-      "detail": "11 Burnham House, 13 The Magpies, 15 The Coach House, The Hunting Lodge, 17, 18 The Round House and Birchwood are on Dougal's map and none are in the record. HM Land Registry now confirms The Hunting Lodge, The Round House, Birchwood and Swan House on Huntingdon Drive, and The Cottage at 14. Only create them where a census household turns up — that is the rule.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "ccn-18",
-      "area": "Houses and names",
-      "title": "18 Cavendish Crescent North",
-      "detail": "The record holds 18a but not 18, though the descriptions of all four houses in that group name it. Nothing has been found living at it yet.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "haddon-hardwicke-numbers",
-      "area": "Houses and names",
-      "title": "Confirm the numbers for Haddon House and Hardwicke House",
-      "detail": "The walk offers 4 and 2 on Cavendish Crescent North, with a query against both. Neither number is used. Say the word and they go in.",
-      "size": "one decision",
-      "link": "/research"
-    },
-    {
-      "slug": "barrack-yard-where",
-      "area": "Houses and names",
-      "title": "Find where Barrack Yard was",
-      "detail": "Three households, twelve people, 1911. Dougal's map notes \"Allegedly known as Barrack Yard\" at the southern end of the lane, around Pelham Cottages and Reveille.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "broxtowe-where",
-      "area": "Houses and names",
-      "title": "Settle where Broxtowe House was",
-      "detail": "Two households were returned at the name, 230 metres apart in one round. Either two houses carried it or one schedule is out of position.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "gees-lodge-which",
-      "area": "Houses and names",
-      "title": "Which of the two buildings by the tunnel is Gees Lodge",
-      "detail": "Penrhyn Cottage is the northern, Tunnel Lodge the southern. Gees Lodge is recorded on the southern as the likelier, which is a judgement and not evidence.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "the-stables",
-      "area": "Houses and names",
-      "title": "Which house's stables is The Stables, Lenton Road",
-      "detail": "21 Lenton Road's coach house is recorded as separately owned, which is what gives a building its own address. 17 Oakhyrst also has one.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "yorke-mews",
-      "area": "Houses and names",
-      "title": "Was Yorke Mews ever its own address",
-      "detail": "A mews of Yorke House, 6 North Road. Yorke Cottage is the older name and probably the one to search a census on.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "dougal-unmatched",
-      "area": "Houses and names",
-      "title": "Work down the 115 unmatched names on Dougal's map",
-      "detail": "House-shaped names with nothing behind them. There are 115, not the 171 this task used to claim — the file was rebuilt after it was written. They now have a page of their own: the Dougal's map review, under Research, which splits them into 69 house names, 33 coach houses and flats, and 13 notes, and lets each be accepted, rejected, or renamed where the map's PDF layer mangled it. Renaming matters more than it sounds: the text arrives with apostrophes turned into other characters and words glued together, so \"QUEENANNEÕSBOWLINGGREENColin Hannay\" wants reading before it is believed. The house names hold the real seam — \"Arlington House Formerly Holmedale\" is exactly the kind of former name that has answered two address questions already. But several are tennis courts, a bowling green, or a note the map draws in the same style, so they want judging one at a time. Still the largest single source of new house names available, and still mostly armchair work.",
-      "size": "ongoing",
-      "link": "/research"
-    },
-    {
-      "slug": "dougal-colours",
-      "area": "Houses and names",
-      "title": "Judge the 40 architect suggestions read off Dougal's map",
-      "detail": "The colour key was found: light blue is Peter Robinson, pale green T C Hine, pink Fothergill Watson, yellow about 1940–70, and white with a magenta border after 1970. Forty houses were read off it, and they are now on the Dougal's map review page under Research, sorted by what they are worth. Twenty-two would add an architect the record names nowhere — the only rows that can tell us anything. Ten contradict an architect the record already names, weakest evidence first, which puts 6 and 9 Huntingdon Drive at the top disagreeing with a named Lawrence Bright & Son on twenty pixels of colour. Five are a Hine against a Hine firm, where the map has one green and cannot tell T C Hine from Hine & Son or Hine & Evans. Three simply agree. Accepting one records it as the map's reading, cited to the map and never over the top of the record's own architect, and it then shows on the property beneath it. Treat every row as a prompt to check the house: the file's own note warns that double yellow lines beside Felixstowe were read as the 1940–70 yellow, and Felixstowe is Victorian.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "western-house-pupils",
-      "area": "People and records",
-      "title": "Add the boarding pupils at Western House School, 1891",
-      "detail": "The page totals 5 males and 26 females. Four of the women are in; the rest are the pupils. The school ran from 1874 to 1937 and the record holds two nights of it.",
-      "size": "transcription",
-      "link": "/research"
-    },
-    {
-      "slug": "felixstowe-servant-places",
-      "area": "People and records",
-      "title": "Check nothing else on the Felixstowe 1901 page was missed",
-      "detail": "The eleven Dowsons are in, with the servants' birthplaces read off the original. Benjamin Dowson's biography could take more — he was a Nottingham solicitor with a practice from 1870.",
-      "size": "research",
-      "link": "/people"
-    },
-    {
-      "slug": "lost-portraits",
-      "area": "People and records",
-      "title": "Re-upload the six portraits lost before Cloudinary",
-      "detail": "Albert Ball (#469), Watson Fothergill (#467), Jane Fraser (#471), Samuel Waite Johnson (#24), Herbert Durrant Snook (#351), Marriott Ogle Tarbotton (#201). Uploads survive a deploy now.",
-      "size": "six uploads",
-      "link": "/people"
-    },
-    {
-      "slug": "archive-dougal-map",
-      "area": "People and records",
-      "title": "Put Dougal de Havilland's map in the archive",
-      "detail": "The PDF itself, with credit, so the record holds the source and not only what was mined from it.",
-      "size": "one upload",
-      "link": "/archive"
-    },
-    {
-      "slug": "1911-birthplaces",
-      "area": "People and records",
-      "title": "The 1911 birth places",
-      "detail": "330 of 902 people in the 1911 census have a birth place against 1,272 of 1,289 for 1921. This is the hole in the origins map.",
-      "size": "ongoing",
-      "link": "/people"
-    },
-    {
-      "slug": "name-sex-queue",
-      "area": "People and records",
-      "title": "Work the forename sex queue down",
-      "detail": "Setting a name once covers everyone who shares it, so this goes faster than it looks.",
-      "size": "ongoing",
-      "link": "/name-sex"
-    },
-    {
-      "slug": "wikidata-review",
-      "area": "People and records",
-      "title": "Confirm or throw out the Wikidata suggestions",
-      "detail": null,
-      "size": "ongoing",
-      "link": "/wikidata-review"
-    },
-    {
-      "slug": "gazette-review",
-      "area": "People and records",
-      "title": "Confirm or throw out the Gazette notices",
-      "detail": "The links now go to the notice page rather than the PDF. Tell me if they still give a 403 from America.",
-      "size": "ongoing",
-      "link": "/gazette-review"
-    },
-    {
-      "slug": "domain-dkim",
-      "area": "The site itself",
-      "title": "Add the null DKIM record",
-      "detail": "TXT at *._domainkey with v=DKIM1; p= — says no DKIM signature is valid for the domain and clears the last of Cloudflare's recommendation.",
-      "size": "one record",
-      "link": null
-    },
-    {
-      "slug": "domain-canonical",
-      "area": "The site itself",
-      "title": "Pick one canonical host and redirect the other",
-      "detail": "www or the apex, 301 in Cloudflare's redirect rules. Sessions are per hostname, so signing in on one leaves you signed out on the other.",
-      "size": "one rule",
-      "link": null
-    },
-    {
-      "slug": "ssl-strict",
-      "area": "The site itself",
-      "title": "Check Cloudflare's SSL mode says Full (strict)",
-      "detail": "It is already Full or it would be looping. Strict validates the origin certificate and costs nothing.",
-      "size": "one setting",
-      "link": null
-    },
-    {
-      "slug": "maps-key-restrict",
-      "area": "The site itself",
-      "title": "Restrict the Google Maps key to the new domain",
-      "detail": "The key is handed to every visitor's browser. Add nottinghamparkhouses.com and www, and keep the Railway address until everything has moved.",
-      "size": "one setting",
-      "link": null
-    },
-    {
-      "slug": "join-page-contact",
-      "area": "The site itself",
-      "title": "Decide whether /join should carry an email address",
-      "detail": "It says an administrator approves accounts. If you would rather people wrote to you first, that needs an address on it.",
-      "size": "one decision",
-      "link": "/join"
-    },
-    {
-      "slug": "bayley-hospital",
-      "area": "Houses and names",
-      "title": "Find which building on Derby Road was the Bayley Hospital",
-      "detail": "An auxiliary hospital from October 1914 under Lilian Birkin, among the first three in England to take military patients and more than 1,600 casualties in four years. Derby Road is this record's northern edge and it holds 117 to 173 and Rocky Mount. If the building is one of ours it is the most significant wartime use in the record.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "import-1901-lenton-avenue",
-      "area": "Do these first",
-      "title": "Run Import people for the 1901 Lenton Avenue households",
-      "detail": "Twenty-three records at 2, 4, 6 and 8 Lenton Avenue: the Thompsons, the Blythes with a boarder, the Sims with a boarder, and the Elmores with a boarder. Fourteen new people; the Blythes and the Sims join their existing 1911 records. The preview should say 14 would be added, 9 already present and 23 census records.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "parker-woodward-49",
-      "area": "People and records",
-      "title": "Check Parker Woodward's 1901 record at 25 Cavendish Crescent South",
-      "detail": "Entry 562 files him at #49 in 1901 with no relationship and no age, but he is not on the Jessop schedule — the page runs Zebedee Jessop, his four children and three servants, and ends. Probably misfiled from another address.",
-      "size": "a look at the return",
-      "link": "/reassign?prop=49&year=1901"
-    },
-    {
-      "slug": "import-weinberg-4-north-road",
-      "area": "Do these first",
-      "title": "Run Import people for Harry Judah Weinberg of 4 North Road",
-      "detail": "From the 1929 Gazette notice of his estate. One new person, linked to the new property 4 North Road (#412), with his date of death, his occupation and the notice written into his story. The preview should say 1 would be added, 1 property link, 1 occupation.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "place-4-north-road",
-      "area": "Houses and names",
-      "title": "Place 4 North Road by hand",
-      "detail": "Created from the Weinberg Gazette notice and put provisionally between 2 North Road (the Walton Hotel) and 8. OpenStreetMap has no 4 at all, so it may have been absorbed into a neighbour or renumbered.",
-      "size": "one drag",
-      "link": "/?id=412"
-    },
-    {
-      "slug": "sr1-south-rd-is-a-double-import",
-      "area": "Merges the page cannot find",
-      "title": "Don't set aside \"SR1 South Rd\" — part of it is 3 South Road entered twice",
-      "detail": "Four of its seventeen records are the McCraith household already filed at 3 South Road in 1911, imported a second time with the surname spelt McCaith. Douglas McCraith (#186) is in both, so he has two 1911 records — remove entry 889. Then merge by number: keep 185, merge in 728 (Maria Elizabeth); keep 189, merge in 731 (Kenneth York); keep 1343, merge in 732 (Violet Muriel). The other households in the group — Frederick Brewster, and Joseph and Sarah Walker — are not at 3 South Road and still need a house.",
-      "size": "five clicks",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "import-mccraith-family",
-      "area": "Do these first",
-      "title": "Run Import people for the McCraith family",
-      "detail": "Bernard McCraith's death on 26 January 1919 as a Major in the Royal Engineers; Lady McCraith's maiden name, Dickinson; and from the report of his will, Sir James's death at Ellenborough House in 1928, his estate, his story and his directorships. Fills blanks only — nothing entered by hand is touched.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "mccraith-1911-widow",
-      "area": "People and records",
-      "title": "Correct Lady McCraith's 1911 relationship — \"Head (widow)\" should be \"Head\"",
-      "detail": "Settled: Sir James signed the 1911 schedule for Ellenborough House, 3 South Road, but was not there on census night, so Lady McCraith was returned as head and he has no 1911 record. She was not a widow — he lived until 1928. On her page, edit the 1911 census record (entry 271) and change the relationship to Head. His story says why when the McCraith import runs.",
-      "size": "one edit",
-      "link": "/people?person=185"
-    },
-    {
-      "slug": "malcolm-mccraith",
-      "area": "People and records",
-      "title": "Is Malcolm McCraith really Sir James's son?",
-      "detail": "The record already links Malcolm (#188), a steam engineer born about 1882, as a son of Sir James and Lady McCraith, and he is at 3 South Road with them in 1891 and 1901. But Wikipedia names their children as Douglas, Bernard, Kenneth York and Violet Muriel only. Either the article misses him or he is a nephew, and the link wants checking.",
-      "size": "research",
-      "link": "/people?person=188"
-    },
-    {
-      "slug": "import-1921-mccraith-clumber",
-      "area": "Do these first",
-      "title": "Run Import people for Sir James McCraith's 1921 household",
-      "detail": "Eleven people on Clumber Crescent South, none with a 1921 record before: Sir James, Lady McCraith, Kenneth York and Violet Muriel, their old nurse Isabella Richardson, two visitors and four servants. Ten are already in the record and are joined by number; only the visitor Catherine Wood is new. They arrive unplaced under \"Clumber Crescent South\". The preview should say 1 would be added, 10 already present, 11 census records.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "mccraith-1921-house",
-      "area": "Unfiled census — the rest",
-      "title": "Which house on Clumber Crescent South were the McCraiths in, in 1921?",
-      "detail": "Sir James McCraith's household of eleven is on Clumber Crescent South in 1921 but the number is not known. Every property on the crescent — 3, 5, 7, 9 (Gwedon) and Clumber Court — is empty in 1921, so all five are candidates; the Jardines held 9 in 1911. It was not permanent: the report of his will has him back at Ellenborough House, 3 South Road, when he died in July 1928.",
-      "size": "research",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "merge-isabella-richardson",
-      "area": "Merges the page cannot find",
-      "title": "Merge Isabella / Isabelle Richardson, the McCraiths' nurse",
-      "detail": "One woman, born in Ireland about 1854, with the McCraiths at 3 South Road from 1891 and on Clumber Crescent South in 1921. Held twice — Isabella (#193) for 1891 and 1901, Isabelle (#733) for 1911. Keep 193, merge in 733.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "south-road-3-1911-two-heads",
-      "area": "Crowded houses",
-      "title": "3 South Road in 1911 now holds the Brewster household too",
-      "detail": "Frederick Brewster, 77, and his three servants were filed to 3 South Road along with the McCraiths, so the house has two heads that year. Brewster's schedule came in the same run but was a household of its own; worth checking it belongs there.",
-      "size": "a look at the return",
-      "link": "/reassign?prop=302&year=1911"
-    },
-    {
-      "slug": "tower-house-file-maccolls",
-      "area": "Do these first",
-      "title": "File the Maccoll household to Tower House, 53 Park Row",
-      "detail": "Tower House (#395) was already in the record but had no position, so it never appeared on the map. It is now placed from OpenStreetMap and marked Grade II. On /unfiled, the group \"tower house park row Park Row\" holds Peter Morrison Maccoll, his wife, daughter and a servant — send that household to 395 (the Stubbing household in the same group goes to East Lodge, #413). On the property's Historic England panel, \"This is the one\" on TOWER HOUSE links its list entry.",
-      "size": "two clicks",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "east-lodge-stubbing",
-      "area": "Houses and names",
-      "title": "(Settled) John Stubbing's return says Park Lodge; the building is East Lodge",
-      "detail": "Settled: the lodge is East Lodge on Historic England's list (1270628) and on OpenStreetMap, and Park Lodge is the name the 1921 census gave it. Both names are now on #413. Tick this off.",
-      "size": "a look at the return",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "merge-louisa-pacey",
-      "area": "Merges the page cannot find",
-      "title": "Merge Louisa Pacey / Paecy, the Sprays' servant for twenty years",
-      "detail": "Both born 1872. Louisa Pacey (#2432) is the Spray household's servant at 14 Cavendish Crescent North in 1901; Louisa Paecy (#2101) is still with them at Greendale in 1921. Keep 2432, merge in 2101.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "merge-sissie-jessie-spray",
-      "area": "Merges the page cannot find",
-      "title": "Merge Sissie and Jessie Spray",
-      "detail": "Both born 1874, both the Sprays' daughter: \"Sissie\" (#2431) at 14 Cavendish Crescent North in 1901, Jessie (#2100) at Greendale in 1921. Sissie is a pet name for Jessie. Keep 2100, merge in 2431.",
-      "size": "one click",
-      "link": "/duplicates"
-    },
-    {
-      "slug": "park-lodge-stubbing",
-      "area": "Houses and names",
-      "title": "File John Stubbing and Elizabeth Gunn to East Lodge, Park Row",
-      "detail": "Their 1921 return reads Park Lodge, Park Row. The building is East Lodge: Historic England's entry 1270628 stands three metres from it and OpenStreetMap names it the same, so it is in the record as East Lodge, Park Row (#413), with Park Lodge kept as the name the census gave it. On /unfiled, in the group \"tower house park row Park Row\", send the Stubbing household to 413 and the Maccolls to 395.",
-      "size": "one click",
-      "link": "/unfiled"
-    },
-    {
-      "slug": "land-registry-names",
-      "area": "Houses and names",
-      "title": "Work through the house names from Land Registry",
-      "detail": "A sweep of HM Land Registry's price paid data across all 44 streets found 797 addresses with a name. Three attached to houses already in the record and are now recorded: Arundel Lodge (1 Park Valley), Castle House (13 Pelham Crescent), and Hardwick House as a second spelling of Hardwicke House. The rest are on /research as nine questions, grouped by street. Belwood is on Tattershall Drive.",
-      "size": "research",
-      "link": "/research"
-    },
-    {
-      "slug": "import-birkin-edale",
-      "area": "People",
-      "title": "Run Import people for Richard Leslie Birkin at Edale House",
-      "detail": "A brother of Charles Wilfred Birkin of Newcastle Court, living at Edale House, Clumber Road East in 1911 — from the family account, not a census return, so he is linked to the house as a resident rather than given a census entry. The preview should say 1 would be added, 1 property link, 1 relationship.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "import-st-hellier-boots",
-      "area": "People",
-      "title": "Run Import people for the Boot households at St Hellier, 1911 and 1921",
-      "detail": "Two files, and the order matters: people_1911_st_hellier.json first, then people_1921_st_hellier.json. The 1911 file creates all thirteen — Sir Jesse Boot, his wife Florence, their three grown children, a visiting barrister from Jersey and seven servants — and files every entry at #402. The 1921 file matches the three Boots by name and adds eight more: John Campbell Boot is head by then, with his parents as visitors. Both run from Import people; preview each first.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "import-broadgate-churley",
-      "area": "People",
-      "title": "Run Import people for Ada Churley of Broadgate School",
-      "detail": "Fills her story and gives her occupation its full form — the 1921 return breaks off at \"Principal Of Schoo\". She is already in the record at 1 Western Terrace, so the preview should say nothing added, 1 filled out, 1 occupation. Her forename stays \"A Marion\" as the census has it; if you want \"Ada\" on the record, change it on her person page.",
-      "size": "one click",
-      "link": "/admin"
-    },
-    {
-      "slug": "file-birkin-lincoln-house",
-      "area": "Census",
-      "size": "one click",
-      "link": "/unfiled",
-      "title": "Decide whether Lincoln Circus 3 is Lincoln House, and file the Birkins",
-      "detail": "On /unfiled, the group \"Lincoln Circus 3\" holds Harry Laurence Birkin, his wife Olive and six servants — eight records, 1921. The Birkin family account puts Major Harry Birkin at Lincoln House, Lincoln Circus (#403), which stands empty in the record. If you are satisfied that is the same house, file the household to 403; the identification rests on the account, not on the return, which gives only a number."
-    },
-    {
-      "slug": "palmer-lincoln-circus-duplicates",
-      "area": "People",
-      "size": "a few minutes",
-      "link": "/unfiled",
-      "title": "Work out whether Lincoln Circus 2 is Gladstone House or a cottage beside it",
-      "detail": "Correcting an earlier note of mine: these are **not** duplicates. Edward and Alice Palmer hold one census entry each for 1911, filed at Gladstone House, and one for 1921, unfiled under \"Lincoln Circus 2\" — ten years apart, not the same record twice. He is a gardener in both.\n\nThe decision is what number 2 means. Gladstone House's 1921 household is a different family altogether, so the likeliest reading is that the Palmers were in a separate dwelling on the same ground. If you settle it, file the two records accordingly; if not, leave them unfiled rather than putting a gardener's household into the big house."
-    },
-    {
-      "slug": "import-fisher-duke-william-mount",
-      "area": "People",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for the Fishers of 1 Duke William Mount",
-      "detail": "The family the house was built for, from the family account: Horace Arthur Fisher, Sarah Kate née Thackeray, and their six children. The house holds nobody at all in the record, so these are its first people. The preview should say 8 added, 8 property links, 1 marriage and twelve parent links. No census entries are created — there is no return behind this."
-    },
-    {
-      "slug": "import-andrews-lenton-avenue",
-      "area": "People",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Fix Henry Andrews's birth year, then run Import people for the Andrews family",
-      "detail": "His record says 1884, taken from his age in 1911; the family account gives 18 November 1883. Change the year on his person page first — the importer will not accept a birth date that contradicts a year already held — then run the import. It fills all three: his South African birth, his engineering posts at Bournemouth and at Goddard, Massey and Warner, his service and his death in November 1918; Dorothy as an artist; Joan's birth year and the family links."
-    },
-    {
-      "slug": "lenton-avenue-1901",
-      "area": "Census",
-      "size": "an afternoon",
-      "link": "/census",
-      "title": "Find the 1901 census for Lenton Avenue — twenty of twenty-four houses have none",
-      "detail": "The record holds 1901 for four houses on the street, all on the even side: 2, 4, 6 and 8. Every odd-numbered house from 1 to 33, and 10, 12 and 14 besides, has nothing for that year. Several hold a single year only — 1 and 19 and 25 and 27 and 29 have 1911 alone, while 5 and 17 have 1921 alone. 17 is Dundee House, and 15 is where the Andrews family were living from 1908, so 1901 there would name whoever preceded them."
-    },
-    {
-      "slug": "carver-daughters-29-lenton-road",
-      "area": "Census",
-      "size": "a few minutes",
-      "link": "/census",
-      "title": "Two Carver daughters are missing from 29 Lenton Road",
-      "detail": "An account of the family names Frederick and Annie Carver with three daughters — Gertrude, Mary and Annie. The record holds the parents and Annie Florence from the 1911 census, but no Gertrude and no Mary. Either they had left home by 1911 or they were missed in transcription, so the return is worth re-reading; the 1901 page would show all three while they were still at home. Frederick directed Adams, Page and Cullen in the Lace Market and represented the trade abroad, at Brussels in 1891 and the Paris Exhibition of 1900."
-    },
-    {
-      "slug": "import-carver-wills-wright",
-      "area": "People",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for Carver, Wills and Wright",
-      "detail": "Fills out Frederick Carver, who is already at 29 Lenton Road from the 1911 census — his directorship of Adams, Page and Cullen and his trade missions to Brussels and Paris — and creates two men the record does not hold: Stephen Wills, whom Arundel House was built for in 1870, and William Wright, first occupant of 29 Lenton Road. Neither gets a census entry; both are linked to their house as residents, since the evidence is an account. Preview should say 2 added, 2 property links, 1 filled out, 4 occupations."
-    },
-    {
-      "slug": "import-1901-lenton-avenue-odd",
-      "area": "Census",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for the 1901 census of Lenton Avenue",
-      "detail": "Seventeen households from numbers 5 to 31 and 10 to 14 — about ninety people — filed straight to their houses. This is the street that had 1901 for only four of its twenty-four houses. Numbers 2, 4, 6 and 8 are left out because they went in earlier. Two households are entered by house name and will land on /unfiled for you to place: Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which follows 31."
-    },
-    {
-      "slug": "import-1901-named-houses",
-      "area": "Census",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for the 1901 census of Lenton Road, the crescents and Western Terrace",
-      "detail": "Nineteen households — 126 people — for houses the record can already name, filed straight to their properties with nothing left over on /unfiled: Cliff House, Fern Lodge, 13, 15, Oakhurst, 25, 29 and Rock House on Lenton Road; 9, 11, 15, 17 and 19 Pelham Crescent; 10 Western Terrace and Lincoln Villa; and Carisbrooke House, Cavendish Lodge, Hardwicke House and Haddon House on Cavendish Crescent North. Houses that already hold a 1901 household are deliberately left out, so nothing doubles up. Two of these answer questions already on this list: Carisbrooke House gives William Bradshaw a 1901 to set beside his 1911, and 29 Lenton Road gives the Carvers the year their family account claimed and the record lacked — though only Annie F. is at home of the three daughters it names. Worth a look at /duplicates afterwards, for her and for Sarah Spray. The households whose house name the record cannot place stay out of the database, parked in data/1901_unnumbered_houses.json."
-    },
-    {
-      "slug": "remove-reimported-census-rows",
-      "area": "Do these first",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Clear the thirteen census records the second Lenton Avenue import left behind",
-      "detail": "Running the 1901 Lenton Avenue file a second time entered Clumber Lodge and Newlands all over again, because it looked for a match under the house name it could not find rather than under the person and the year — and by then you had placed both households. Thirteen people now hold two records for 1901: the filed one, and a houseless copy back on the unfiled page. The five at Clumber Lodge are filed at property 166, the eight at Newlands at property 173. Admin now has “Remove census rows a second import left behind” — preview it, then run it. It only takes the houseless copy, and only where the same person already holds a record for that year with a house on it, so anyone genuinely waiting to be placed is left alone. The importer itself no longer does this."
-    },
-    {
-      "slug": "ethel-johnson-two-houses-1901",
-      "area": "Census",
-      "size": "a few minutes",
-      "link": "/person/26",
-      "title": "Ethel Johnson is in two houses on the same census night",
-      "detail": "Ethel Johnson (#26) holds two filed records for 1901: one at Lenton House, property 193, which the record has had for a long while, and one at Newlands, property 173, which the 1901 Lenton Avenue import added. She cannot have been in both on the night. The likelihood is that they are two women of the same name and the import hung the Newlands servant on the Ethel Johnson already in the record, in which case the Newlands record wants lifting onto a new person of her own. Worth reading both returns before deciding which is which. Removing the houseless copies does not touch this — both of these have a house on them."
-    },
-    {
-      "slug": "census-39-newcastle-drive",
-      "area": "Census",
-      "size": "a few minutes",
-      "link": "/property/227",
-      "title": "39 Newcastle Drive holds no census at all",
-      "detail": "The house at the corner — built as Tattershall Corner, then Waveney House, then Walton House, and Priests House now — carries a full description, a Grade II listing covering the house, the lychgate and the boundary wall, and not one census record in any year. Newcastle Drive is numbered throughout, so the returns should be findable by number rather than by name. Number 37 next door is empty too, so a single page of the enumerator's round would likely answer for both."
-    },
-    {
-      "slug": "census-tattershall-drive",
-      "area": "Census",
-      "size": "an afternoon",
-      "link": "/street/tattershall-drive",
-      "title": "Not one house on Tattershall Drive holds a census household",
-      "detail": "All eight properties the record keeps on Tattershall Drive — numbers 1 to 5, Carnoustie Lodge, Ellington House and Gartree Lodge — have no census entry in any year. The residents they do carry, the Bonds at Lynwood, Arthur Hanish at number 5, the Hills at Ellington, the Hattons at Gartree Lodge, all come from accounts rather than returns, with no year attached to any of them. The street is numbered, so the returns should be findable. This also bears on Belwood, now placed at the Tennis Drive corner by the name on its door and by sharing Ellington's postcode: it stays a name rather than a property until a household is found in it, and the enumerator's round along this street is where that would show up."
-    },
-    {
-      "slug": "import-murchie-father",
-      "area": "People",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for James Murchie, father of the Bangkok girls",
-      "detail": "Creates one person: James Murchie, 1865 to 1929, the engineer who managed Howarth Erskine's Bangkok works and later traded on his own account from Victoria Street. He gets no census record and no house — he never lived in The Park — and is linked as parent to the three Murchie sisters boarding at the school on The Ropewalk in 1911. Preview should say 1 added, 4 occupations, 3 relationships, and no census. Worth knowing that the fatherhood is an inference rather than a proven fact: two of the girls were born at Bangkok in the years he was running the works there, and the third at Much Wenlock between them, but nothing in the record names him as their father. The bio says so in as many words."
-    },
-    {
-      "slug": "reimport-dropped-relationships",
-      "area": "Do these first",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Twenty-four family links never went in — run Import people again",
-      "detail": "The importer reads the key \"type\" on a relationship block, and four files were written with the more obvious word, \"relationship\". Those blocks were skipped without a murmur, and because a skipped link counts as no work, the report said each of those files had nothing left to do. Jesse and Florence Boot, Henry Godfrey Andrews and his family, the Birkins and the Fishers of 1 Duke William Mount all show no relationships at all in the record as a result. The four files now use the key the importer reads, and the importer now takes either word and reports a block that names neither, so it cannot happen quietly again. Running Import people puts the twenty-four links in — the same run also brings in James Murchie. Preview first: it should report the relationships rather than nothing."
-    },
-    {
-      "slug": "import-handford-hardwicke",
-      "area": "People",
-      "size": "one click",
-      "link": "/admin",
-      "title": "Run Import people for the Handfords, and change the doctor’s birth year by hand",
-      "detail": "Fills out Dr Henry Handford at Hardwicke House from Munk's Roll — physician to the Nottingham General Hospital to 1906, then medical officer of health and chief tuberculosis officer for the county to 1926, F.R.C.P. 1899, a major in the sanitary branch of the R.A.M.C., died 24 June 1928 — and adds what became of his family. Both his sons were killed in the same attack on the Hohenzollern Redoubt on 15 October 1915, serving in the same battalion of the Sherwood Foresters: Captain Basil at twenty-one and Lieutenant Everard at twenty, neither body recovered, both named on the Loos Memorial. His step-daughter Gertrude Gale is given her married name, and her husband Major John Pickard Becher D.S.O., mortally wounded in that same attack, is created. So is Edward Strutt, first Baron Belper, his wife's father. Two people created, five filled out, nine occupations and thirteen relationships, with no census records at all. THE ONE THING IT CANNOT DO: Munk's Roll dates the doctor's birth to 1855 and the record holds 1856 from his age on census night. The importer fills blanks and never writes over what is there, so change that year on his person page if you want the authority's."
-    },
-    {
-      "slug": "work-through-names-to-check",
-      "area": "People",
-      "size": "half an hour",
-      "link": "/name-review",
-      "title": "Twenty-six names in the record do not look right",
-      "detail": "A new page, Names to check, gathers them in three groups. Eight people have no forename at all — six carrying a question mark where the enumerator could not read it, and two entered as [Unknown]; those want the census page itself. Fifteen have only an initial, and most of those are probably right, because the return gave no more than an initial: pass them as right and they will not be raised again. Three read like a slip of the pen: Suganne Richardson at Grove House is almost certainly Suzanne, and Margaret Mand Marion Cooper is almost certainly Maud, a u read as an n. The third, Christine Nona Parr, is offered as Nora but Nona is a real name in its own right, given to a ninth child, so that one is likely a false alarm and worth passing as right. Nothing is ever changed for you — each row is a person to open and judge."
-    },
-    {
-      "slug": "duplicates-from-the-abbreviated-names",
-      "area": "Do these first",
-      "size": "half an hour",
-      "link": "/duplicates",
-      "title": "Forty duplicate people to merge, and why they appeared",
-      "detail": "My fault, twice over. The 1901 files were written with the forenames as the enumerator abbreviated them — Geo. Parr, Constance M. Smith, Ada M. Read — and the importer matches names letter for letter, so it made a second record of everybody the record already held under a fuller spelling. That happened on the first run, and the twenty-two it produced sat inside a count I read as new arrivals. Then merging the abbreviated spellings away meant the files could no longer find their own people, so the next run created ten of them again with fresh numbers. The record went from 2755 to 2798; three of those forty-three are real — Edward Strutt, John Pickard Becher and James Murchie. The rest want merging on this page, keeping the fuller, older record each time. Both 1901 files now address those people by number instead of by name, so no later run can repeat it, and a merge now leaves an alias behind so a spelling merged away still finds the person it belongs to. One is deliberately left alone: Annie F. Carver, born 1871 on this return, against Annie Florence Carver born 1865 — six years apart, too far for the record to join them on its own. That one wants deciding by eye."
-    },
-    {
-      "slug": "newcastle-circus-empty-properties",
-      "area": "Census",
-      "size": "two houses to account for",
-      "title": "Two Newcastle Circus houses hold no census records at all",
-      "detail": "2 Newcastle Circus (#203) and Mevell House, 7 Newcastle Circus (#204) carry no census household in any year — not 1881, 1891, 1901, 1911, 1921 or 1939. Every other house on the Circus holds something: Burton House (#205) has 1911 and 1921, Castlethorpe (#206) runs from 1881 to 1939, and Newcastle Court (#207) from 1881 to 1921. Two empty houses in a row on one short street is more likely a filing gap than six decades of genuinely empty buildings. There are two unplaced 1891 households from the pages A. Hagues sent that were headed Newcastle Circus and cannot be matched to a property: Hannah Wilkins at \"Fairland\", and the Francis Newman Ellis household — a colliery owner with four children, two visiting Hoyles and three servants — headed with no house name at all. Either could belong at #203 or #204. What would settle it is knowing whether Fairland is a former name of either house, and whether Mevell House went by another name in 1891. Nothing is filed there on a guess.",
-      "link": "/research"
-    },
-    {
-      "slug": "history-truncated-entries",
-      "area": "Research",
-      "size": "done — ready to tick",
-      "link": "/history",
-      "title": "The estate history is whole, and he is Dougal",
-      "detail": "Both halves of this are settled by A. Hagues. The thirteen truncated entries are closed: he read the rest off the printed map, and all 34 are now whole — the royal hunting ground at 1068, the civil war and Charles's execution at 1642, the Cavalry Barracks at the Park's north-west corner at 1792, Hine's appointment and his rival Fothergill Watson at 1851, and the roll of residents at 1887. And the spelling is Dougal, not Douglas: the data filenames were right, and it was the history page's credit that was wrong. That is now corrected, so nothing here is outstanding — the task is left only so it can be ticked by the person who answered it rather than closed on his behalf."
-    },
-    {
-      "slug": "hine-link-man-to-buildings",
-      "area": "People and records",
-      "size": "a decision, then a job",
-      "link": "/architects",
-      "title": "T. C. Hine is person #468 and is attached to nothing",
-      "detail": "The record names a Hine as architect on 112 properties — 50 T.C. Hine, 42 Hine & Evans, 18 Hine & Son, 2 George Hine — but every one of those is a line of text on a property, not a link to a person. Thomas C Hine is #468, born 1814, occupation Architect, with no properties against him at all and one unresolved 1891 census row. The architects page lists \"T.C. Hine\" and \"Hine & Son\" side by side as though both were people.\n\nTwo ways to mend it, and they are different jobs. Populate architect_works for #468, as was done by hand for Robert Evans Sr (43 works) and Jr (21) — that gives him a works list on his own page but repeats what the property text already says. Or wire the architect text on each property to a person, with Hine & Evans and Hine & Son as firms: there is an architect_firms table and a firm_members table already in the schema for exactly that, and both are unused.\n\nWorth knowing before starting: nothing in server.js reads data/seed-architect-works-*.json. The two Evans files were loaded through POST /api/architect-works by hand. A seed file written now would sit there unread unless a seeder is built."
-    },
-    {
-      "slug": "hine-where-he-lived",
-      "area": "People and records",
-      "size": "one edit, and a question",
-      "link": "/people",
-      "title": "T. C. Hine lived at 25 Regent Street — it is only in an unfiled census row",
-      "detail": "His own 1891 return gives **25 Regent Street, St Mary, Nottingham** — Head, aged 77, Architect. It sits on the unfiled page because the address is outside The Park, so nobody has seen it. The Gazette corroborates it independently: patent notices of 1854 and 1857 name \"Thomas Chambers Hine, of Regent-street\". Two sources, three decades apart.\n\nIt should be on his record properly rather than only in a census row nothing can file.\n\nAlso found, and worth having: the London Gazette of 2 October 1855 records the dissolution of **Edward Gripper and Co., Brick and Tile Makers at Mapperley in the parish of Basford** — John Green Hine, Edward Gripper the younger and Thomas Chambers Hine — as regards Hine, from 10 September 1855. Signed Thomas C. Hine. An architect with a stake in a brickworks.\n\nNot found: the 1849 dissolution. The 1848-51 window holds 45 Hine notices and not one pairs him with Nottingham; \"T. C. Hine\" returns nothing at all. If the 1849 date comes from a source naming the firm or the partner, that would give something searchable.\n\nA trade directory confirms it for 1864. White's History, Gazetteer and Directory of Nottinghamshire (1864) lists \"Hine Thos. C., architect, h. Regent street\" — h. being the house he lived in, as against an office — and his practice, Hine & Evans, architects, also at Regent Street. So Regent Street was his home in 1864 as well as in 1891. The directory gives no house number.\n\nThe same directory holds three leads worth following: Samuel D. Hine, surgeon, also of Regent Street; Benjamin Hine, hosiery manufacturer, living at Mapperley — where the brickworks he left in 1855 stood; and Hine, Mundella & Co., hosiery manufacturers of Station Street, the firm that carried A. J. Mundella's name. The directory is on the Internet Archive as nottinghamshire00cogoog, catalogued there as 1853 though its own metadata and contents are 1864.\n\nConfirmed again for 1894-95. Wright's Directory of Nottingham lists \"25 Mr. Thomas C. Hine\" in its Regent Street entries (page 122). So the house number is the same in 1894 as in his 1891 return, and four separate sources — the Gazette in 1854 and 1857, White's in 1864, the census in 1891 and Wright's in 1894 — all put him on Regent Street."
-    },
-    {
-      "slug": "george-hine-1871-park-valley",
-      "area": "Census",
-      "size": "one import",
-      "link": "/unfiled",
-      "title": "George T. Hine, architect, is in the 1871 census and not in the record",
-      "detail": "Park Valley, schedule 55 in 1871: **George T. Hine, Head, married, 29, Architect and Surveyor**, born Nottingham, with his wife Florence A., 29, born Bristol, and Ann Marriott, general servant, 20, of Hose in Leicestershire. He is T. C. Hine's son — the \"helped by son George\" that Dougal's own key names — and the record holds no George Hine at all, though two properties name him as their architect.\n\n1871 schedule numbers are the enumerator's, not house numbers, so this cannot be filed to a property without more work: Park Valley has no number 55. It wants importing unfiled, like the Cavendish Crescent households."
-    },
-    {
-      "slug": "medal-card-confirmed-twice",
-      "area": "The site itself",
-      "size": "a fix and a decision",
-      "link": "/medals-review",
-      "title": "One medal card is confirmed against two different men",
-      "detail": "WO 372/8/242563 is confirmed against **both** Henry Handford (#3060) and his son Henry Basil Strutt Handford (#3065). A medal index card belongs to one man, so one of those two confirmations is wrong.\n\nThe sweep offers a card to every person whose name it fits, which is right for suggesting — father and son share a forename — but nothing warns when the same reference is offered twice, and nothing stops both being confirmed. The card gives a rank of Lieutenant, which fits the son, who was a Captain in the 1/8th Sherwood Foresters and died in 1915; the father was a Major in the Royal Army Medical Corps.\n\nTwo things wanted: the page should flag a reference already confirmed elsewhere, and this particular pair needs settling by hand."
-    },
-    {
-      "slug": "reupload-dougals-map",
-      "area": "People and records",
-      "size": "one upload",
-      "link": "/archive",
-      "title": "Re-upload Dougal's map so the archive link opens the PDF",
-      "detail": "The map is in the archive but the link does nothing. Cloudinary filed it under its image type, which the account will not deliver as a PDF — the URL returns 401 with an empty GIF. That is now fixed for future uploads: anything that is not an image goes up as a raw file. But the delivery type of an asset already in Cloudinary cannot be changed, so this one needs uploading again.\n\nMeanwhile the archive card shows page one rendered as an image, and a \"View page\" link at 2400px, so the map is at least visible. The same fault affected documents attached to a person — .pdf, .doc, .docx, .txt — though only this one document exists so far."
-    },
-    {
-      "slug": "castle-grove-1871-page",
-      "area": "Census",
-      "size": "one page",
-      "link": "/census",
-      "title": "The 1871 Castle Grove page is missing from what was sent",
-      "detail": "Four 1871 pages came through and are transcribable — Lenton Road 31-33, and Park Valley 42-48, 49-53 and 53-58. The Castle Grove run, schedules 34 to 39, appeared in an earlier message and is not among them, so the 1871 sequence has a hole in it between Lenton Road 33 and Park Valley 42.\n\nWhat is on the missing page, from the earlier sighting: Castle Grove Lodge with Thomas Marriott, coachman; John Brown, town councillor and wine merchant; 2 Castle Grove with Frederic Dobson, lace dresser; Henry Carey, lace manufacturer; Hannah Simons; and a further household at 39. None of it should be entered from that sighting alone."
-    },
-    {
-      "slug": "bayleys-to-9-cavendish-crescent-north",
-      "area": "Do these first",
-      "size": "a move on the reassign page",
-      "link": "/reassign?prop=9&year=1891",
-      "title": "The Bayley household belongs at 9 Cavendish Crescent North, not 14 Barrack Lane",
-      "detail": "Thomas Bayley's 1891 household is filed at property #9, which is 14 Barrack Lane — almost certainly \"9 Cavendish\" read as property number 9. Two of its servants, Emma Annie Simpson and Alice Stevenson, already sit at the right house, 9 Cavendish Crescent North (#25), so the household is split across two properties.\n\nThe census page (L16848_4) puts him at 9 Cavendish Crescent, and Wright's Directory of Nottingham, 1894-95, settles which side: its Cavendish Crescent north runs Cavendish Lodge, Henry Edward Hunt, 7 H. A. Cursham, then Mr Thomas Bayley. So the move is #9 to #25 for 1891, the whole household. Worth checking #9's other years at the same time — 14 Barrack Lane may hold nothing that is really its own."
-    },
-    {
-      "slug": "park-valley-names-1894",
-      "area": "Houses and names",
-      "size": "three names, and two households placed",
-      "link": "/",
-      "title": "Three Park Valley house names, and two 1871 households placed, from the 1894 directory",
-      "detail": "Wright's Directory of Nottingham, 1894-95 (page 107) lists Park Valley house by house. Three names are new to the record: 3 is Claxby House (#259), 8 is Ivy House (#264) and 17 is Brooklyn House (#269). It also confirms names the record already holds — Arundel House at 1, Holly Hyrst (the record spells it Hollyhurst) at 4, and Stuart Cottage at 6.\n\nThat last one places an 1871 household. The 1871 census heads John Place's household \"Stuart Cottage, Park Valley\" with no number; the directory makes Stuart Cottage number 6 (#262).\n\nTwo leads that are not yet proof. Mr Alfred Wilson is at 7 Park Valley (#263) in 1894, and an Alfred Wilson, hosier, heads an 1871 Park Valley household — the same man twenty-three years on, or his son. And Mrs A. Baily-Browne is at 13 Park Terrace in 1894; in 1871 Walter Browne, solicitor, and his wife Ann Baily were on Lenton Road. The Brownes moved, or she did once widowed."
-    },
-    {
-      "slug": "trade-directories-source",
-      "area": "Research",
-      "size": "a tool worth building",
-      "link": "/research",
-      "title": "The Nottingham trade directories can place households the census left unnumbered",
-      "detail": "Leicester University's Historical Directories of England & Wales holds Nottingham directories page by page, each page with its own OCR text: Wright's Directory of Nottingham for 1894-95, 1898-99, 1910-11, 1913-14 and 1915-16, the Post Office directories of 1855 and 1876, White's of 1885, and Kelly's of 1891 and 1904. A street section lists every house in order with its number, its name if it had one, and its occupant — which is exactly what a census without house numbers lacks.\n\nIt has already settled two things. Cavendish Crescent's two image sets are north and south, confirmed house for house, so the 1891 households are now filed. And T. C. Hine's 25 Regent Street is confirmed for 1894.\n\nThe text is reachable without scraping: CONTENTdm's dmGetItemInfo returns each page's OCR in a field called fulla. For the 1894-95 volume the record number is 164506 plus the page number, and its street directory runs from about page 20 to 160, alphabetical by street. A lookup that pulls a Park street's entries from each directory year would turn every unnumbered census household into a candidate address.\n\nTwo cautions. The OCR interleaves the page's two columns, so a street's entries are mixed with a neighbouring street's and have to be read with care. And a directory records the householder a year or two after its survey, so it confirms a census; it does not replace one. Also useful: the Internet Archive's copy of White's 1864, catalogued there as 1853."
-    }
-  ]
+ "note": "The working list. Seeded from this file so a deploy carries it; ticked off on the site. A slug keys each task, so a redeploy neither duplicates one nor un-ticks it.",
+ "tasks": [
+  {
+   "slug": "ada-jessop-25-ccs",
+   "area": "Do these first",
+   "title": "Ada Jessop's household to 25 Cavendish Crescent South",
+   "detail": "Three records under \"Cavendish Crescent South\" on the unfiled page — Ada Jessop, 60, Head, with Anne Draw and Ellen Annie Bess. #49 is the Jessop house and holds nothing in 1921.",
+   "size": "one click",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "mather-talbot-19-ccs",
+   "area": "Do these first",
+   "title": "The Mather and Talbot households to 19 Cavendish Crescent South",
+   "detail": "Seven people, two Heads on one schedule — Charles Talbot manages the glove fabric department for George Mather and lives in his house. The page splits them into two blocks; send both to 46. #46 is free for 1921 now the Brownswords have moved to 15.",
+   "size": "two clicks",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "dowsons-felixstowe",
+   "area": "Do these first",
+   "title": "The Dowson household to Felixstowe",
+   "detail": "Six records in the group \"Felixstowe see 1911 Clumber rd W\" — William Enfield Dowson, Helena (Town Councillor and JP), and four servants. To #394.",
+   "size": "one click",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "hombergers-lindens",
+   "area": "Do these first",
+   "title": "The Homberger household to The Lindens",
+   "detail": "The other six in the same group, headed by Kate A Homberger with no head on the return. To #87, Linden House, on the note \"Otto Homberger, Of The Lindens, Clumber Road West\".",
+   "size": "one click",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "dexters-thorsmore",
+   "area": "Do these first",
+   "title": "Move the four Dexter brothers from Overdale to Thorsmore",
+   "detail": "They are already filed — eight records at #58, 58 Cavendish Road East (Overdale): the four brothers, Emma Savage the housekeeper and three maids, entries 2656 to 2663. But their schedule header reads Thorsmore, which is #36, 22 and 24 Cavendish Crescent North. So this is a move, not a filing: /reassign?prop=58&year=1921, the Dexter block, send all to 36. Overdale also holds the Dobbs household, which stays.",
+   "size": "two clicks",
+   "link": "/reassign?prop=58&year=1921"
+  },
+  {
+   "slug": "dobsons-where",
+   "area": "Do these first",
+   "title": "Settle where the Dobson household belongs",
+   "detail": "Eight records: John George Dobson, retired cotton doubler, his family and two servants. 5 Cavendish Crescent North already holds the Henderson household for 1921, so one of the two is wrong. Check the Dobson schedule header.",
+   "size": "a look at the return",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "wrights-where",
+   "area": "Do these first",
+   "title": "Settle where the Wright household belongs",
+   "detail": "The four who sit after the Dobsons on the same page — Bernard Swanwick Wright, a solicitor of 45, Kathleen Florence Wright, Mary Jovan and Minnie Creswell. A household of their own, not Dobsons.",
+   "size": "a look at the return",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "lloyds-6-peveril",
+   "area": "Do these first",
+   "title": "The Lloyd household to 6 Peveril Drive",
+   "detail": "Three records in \"PeD1 Peveril Drive\": Edward Evans Lloyd, 68, Hannah Stanger Lloyd and Ida Maud Gill. Hannah is already filed at #292 as a widow in 1921, on the same person record — that is what places them.",
+   "size": "one click",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "peveril-set-aside",
+   "area": "Do these first",
+   "title": "Set aside the rest of Peveril Drive",
+   "detail": "Once the Lloyds are out, the other six 1911 households and the five 1921 ones gave no house name and no number. Nothing more the census can do with them.",
+   "size": "two clicks",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "merge-goodliffe",
+   "area": "Merges the page cannot find",
+   "title": "Merge Johanne Goodliffe / Johanna Goodcliffe",
+   "detail": "One woman born 1837, ten years apart on Peveril Drive. Different surname spellings, so they never sit in the same group. Keep #639, merge in #1271.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-agnes-taylor",
+   "area": "Merges the page cannot find",
+   "title": "Merge Florence / Florance Agnes Taylor",
+   "detail": "Both born 1893, a servant on Peveril Drive in 1911 and back on it in 1921. Florence against Florance. Keep #638, merge in #1268.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-catherine-slack",
+   "area": "Merges the page cannot find",
+   "title": "Merge Catherine Charlotte Slack / Black",
+   "detail": "Both born 1892, both housemaids of 19 in the same house. The surname itself is mis-transcribed. Keep #263, merge in #774.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-ernest-jardine",
+   "area": "Merges the page cannot find",
+   "title": "Merge Ernest / Earnest Jardine",
+   "detail": "Born 1859 and 1860, the same lace machine builder, one record unfiled and one at 9 Clumber Crescent South. Keep #1315, merge in #2573.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-edna-jardine",
+   "area": "Merges the page cannot find",
+   "title": "Merge Edna Winifred / Edna Jardine",
+   "detail": "His daughter, the same double import. Keep #2387, merge in #2574.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-iris-jardine",
+   "area": "Merges the page cannot find",
+   "title": "Merge Iris Gwendoline / Iris Jardine",
+   "detail": "His other daughter, the same double import. Keep #2391, merge in #2575.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-jessop-four",
+   "area": "Merges the page cannot find",
+   "title": "Merge the four Jessop pairs",
+   "detail": "Ada, Effie, Florence and Rose — one household at 25 Cavendish Crescent South entered twice from two transcriptions. These four now show on the duplicates page under \"one household entered twice\". Blanche Gertrude Fagan appears only in the second import, so she is a real person, not a duplicate.",
+   "size": "four clicks",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-mouring-bouring",
+   "area": "Merges the page cannot find",
+   "title": "Merge Robert and Mary Mouring / Bouring",
+   "detail": "The same double import at 9 Clumber Crescent South, with the surname mangled. And Beatrice Fanny Perkins, who came through the second time as \"Beatrice Fanny Beatrice\".",
+   "size": "three clicks",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "unfiled-ccn-remaining",
+   "area": "Unfiled census — the rest",
+   "title": "Place the rest of the Cavendish Crescent North group",
+   "detail": "After the Dexters, the Dobsons and the Wrights there are four households left: William Wing's and William Bradshaw's from 1911, and Thomas Berridge Cox's and Henry Holford's from 1921. Free on the crescent in 1921: 9, 15, 18a and Haddon House.",
+   "size": "research",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "wing-bradshaw-1911",
+   "area": "Unfiled census — the rest",
+   "title": "Which house was Kentmere, Cavendish Crescent North? (William Wing, 1911)",
+   "detail": "William Wing's 1911 schedule gives Kentmere, Cavendish Crescent North — so the Wings were on the crescent, not on Peveril Drive as this task used to guess. Kentmere is in the record under no name, nor on OpenStreetMap or Dougal's map. The round runs 4 Peveril Drive, then the Wings, then William Bradshaw, then 3 Cavendish Crescent North — so Kentmere is one of the first two houses on the crescent. 1 Cavendish Crescent North (Carisbrooke House) is empty in 1911 and is the obvious candidate: names on this crescent changed, and 10 was formerly Charnwood. That leaves Bradshaw needing a house too — and every other house before No. 3 is either full in 1911 or not in the record. If the schedule gives a number, that settles it.",
+   "size": "a look at the return",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "allchurch-household",
+   "area": "Unfiled census — the rest",
+   "title": "Place the Allchurch household",
+   "detail": "Nine people — William J Allchurch, 37, his wife Mabel, two small children and five servants including a sick nurse — unfiled under \"Felixstowe see 1911 Clumber Rd West\". Nothing confirms them at Felixstowe in 1921, so take that label off: Change label on the group, leave it empty, Save. The surname is Allchurch for him and Achurch for the rest and will need reconciling.",
+   "size": "research",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "sr1-duke-william",
+   "area": "Unfiled census — the rest",
+   "title": "Check whether Duke William Mount can be set aside",
+   "detail": "14 records with the shape of the Peveril Drive groups. SR1 South Rd was listed here too, but part of it turns out to be a double import of 3 South Road — see that task instead.",
+   "size": "a look at the return",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "unfiled-remainder",
+   "area": "Unfiled census — the rest",
+   "title": "Work the rest of the unresolved queue down",
+   "detail": "Whatever is left after the named groups above. The page gathers them by address, so most of it is a handful of decisions rather than a record at a time.",
+   "size": "ongoing",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "crowding-39-newcastle",
+   "area": "Crowded houses",
+   "title": "39 Newcastle Drive, 1921 — 27 people under 22 surnames",
+   "detail": "The worst on the list. Almost certainly several households filed against one address.",
+   "size": "research",
+   "link": "/crowding"
+  },
+  {
+   "slug": "crowding-5-tattershall",
+   "area": "Crowded houses",
+   "title": "5 Tattershall Drive, 1921 — 26 people under 16 surnames",
+   "detail": null,
+   "size": "research",
+   "link": "/crowding"
+  },
+  {
+   "slug": "crowding-19-park-terrace",
+   "area": "Crowded houses",
+   "title": "19 Park Terrace, 1921 — send the Kneebone block to Broxtowe House",
+   "detail": "Three schedules under one address: the Clarks at 19, the nine resident doctors at Broxtowe House (#406), and the Carr household. The doctors are the clear one.",
+   "size": "one click",
+   "link": "/reassign?prop=379&year=1921"
+  },
+  {
+   "slug": "crowding-9-cavendish",
+   "area": "Crowded houses",
+   "title": "9 Cavendish Crescent North, 1911 — split the three schedules",
+   "detail": "Four servants with no head belong to Peveril House; the Weinberg and Smith households do not. 10 and 11 Gleadthorpe hold no 1911 record.",
+   "size": "research",
+   "link": "/reassign?prop=25&year=1911"
+  },
+  {
+   "slug": "crowding-barrack-yard",
+   "area": "Crowded houses",
+   "title": "10 Barrack Lane, 1911 — three households to Barrack Yard",
+   "detail": "Twelve of the seventeen were at Barrack Yard (#410). Only the Derrys belong at number 10.",
+   "size": "three clicks",
+   "link": "/reassign?prop=7&year=1911"
+  },
+  {
+   "slug": "crowding-penrhyn",
+   "area": "Crowded houses",
+   "title": "Penrhyn House, 1921 — the Houltons and the Radfords",
+   "detail": "Two of the four schedules are placed. Penrhyn House was divided into flats so one or both may genuinely belong, but it is worth looking.",
+   "size": "research",
+   "link": "/reassign?prop=84&year=1921"
+  },
+  {
+   "slug": "crowding-rest",
+   "area": "Crowded houses",
+   "title": "Work the remaining flagged property-years",
+   "detail": "The page recalculates as you go. Surnames is the stronger signal: a real household is rarely more than two or three families.",
+   "size": "ongoing",
+   "link": "/crowding"
+  },
+  {
+   "slug": "greendale",
+   "area": "Houses and names",
+   "title": "File the Spray household to Greendale, 4 Huntingdon Drive",
+   "detail": "Settled: Joseph Spray's biography gives Greendale, Huntingdon Drive, and Companies House puts Greendale at number 4. 4 Huntingdon Drive (#146) now carries the name. On /unfiled, send the four records under \"Huntingdon Drive (Greendale)\" to 146. On /research, record the answer against \"Which house on Huntingdon Drive is Greendale?\".",
+   "size": "two clicks",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "huntingdon-far-side",
+   "area": "Houses and names",
+   "title": "Decide whether the far side of Huntingdon Drive should be in the record",
+   "detail": "11 Burnham House, 13 The Magpies, 15 The Coach House, The Hunting Lodge, 17, 18 The Round House and Birchwood are on Dougal's map and none are in the record. HM Land Registry now confirms The Hunting Lodge, The Round House, Birchwood and Swan House on Huntingdon Drive, and The Cottage at 14. Only create them where a census household turns up — that is the rule.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "ccn-18",
+   "area": "Houses and names",
+   "title": "18 Cavendish Crescent North",
+   "detail": "The record holds 18a but not 18, though the descriptions of all four houses in that group name it. Nothing has been found living at it yet.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "haddon-hardwicke-numbers",
+   "area": "Houses and names",
+   "title": "Confirm the numbers for Haddon House and Hardwicke House",
+   "detail": "The walk offers 4 and 2 on Cavendish Crescent North, with a query against both. Neither number is used. Say the word and they go in.",
+   "size": "one decision",
+   "link": "/research"
+  },
+  {
+   "slug": "barrack-yard-where",
+   "area": "Houses and names",
+   "title": "Find where Barrack Yard was",
+   "detail": "Three households, twelve people, 1911. Dougal's map notes \"Allegedly known as Barrack Yard\" at the southern end of the lane, around Pelham Cottages and Reveille.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "broxtowe-where",
+   "area": "Houses and names",
+   "title": "Settle where Broxtowe House was",
+   "detail": "Two households were returned at the name, 230 metres apart in one round. Either two houses carried it or one schedule is out of position.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "gees-lodge-which",
+   "area": "Houses and names",
+   "title": "Which of the two buildings by the tunnel is Gees Lodge",
+   "detail": "Penrhyn Cottage is the northern, Tunnel Lodge the southern. Gees Lodge is recorded on the southern as the likelier, which is a judgement and not evidence.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "the-stables",
+   "area": "Houses and names",
+   "title": "Which house's stables is The Stables, Lenton Road",
+   "detail": "21 Lenton Road's coach house is recorded as separately owned, which is what gives a building its own address. 17 Oakhyrst also has one.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "yorke-mews",
+   "area": "Houses and names",
+   "title": "Was Yorke Mews ever its own address",
+   "detail": "A mews of Yorke House, 6 North Road. Yorke Cottage is the older name and probably the one to search a census on.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "dougal-unmatched",
+   "area": "Houses and names",
+   "title": "Work down the 115 unmatched names on Dougal's map",
+   "detail": "House-shaped names with nothing behind them. There are 115, not the 171 this task used to claim — the file was rebuilt after it was written. They now have a page of their own: the Dougal's map review, under Research, which splits them into 69 house names, 33 coach houses and flats, and 13 notes, and lets each be accepted, rejected, or renamed where the map's PDF layer mangled it. Renaming matters more than it sounds: the text arrives with apostrophes turned into other characters and words glued together, so \"QUEENANNEÕSBOWLINGGREENColin Hannay\" wants reading before it is believed. The house names hold the real seam — \"Arlington House Formerly Holmedale\" is exactly the kind of former name that has answered two address questions already. But several are tennis courts, a bowling green, or a note the map draws in the same style, so they want judging one at a time. Still the largest single source of new house names available, and still mostly armchair work.",
+   "size": "ongoing",
+   "link": "/research"
+  },
+  {
+   "slug": "dougal-colours",
+   "area": "Houses and names",
+   "title": "Judge the 40 architect suggestions read off Dougal's map",
+   "detail": "The colour key was found: light blue is Peter Robinson, pale green T C Hine, pink Fothergill Watson, yellow about 1940–70, and white with a magenta border after 1970. Forty houses were read off it, and they are now on the Dougal's map review page under Research, sorted by what they are worth. Twenty-two would add an architect the record names nowhere — the only rows that can tell us anything. Ten contradict an architect the record already names, weakest evidence first, which puts 6 and 9 Huntingdon Drive at the top disagreeing with a named Lawrence Bright & Son on twenty pixels of colour. Five are a Hine against a Hine firm, where the map has one green and cannot tell T C Hine from Hine & Son or Hine & Evans. Three simply agree. Accepting one records it as the map's reading, cited to the map and never over the top of the record's own architect, and it then shows on the property beneath it. Treat every row as a prompt to check the house: the file's own note warns that double yellow lines beside Felixstowe were read as the 1940–70 yellow, and Felixstowe is Victorian.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "western-house-pupils",
+   "area": "People and records",
+   "title": "Add the boarding pupils at Western House School, 1891",
+   "detail": "The page totals 5 males and 26 females. Four of the women are in; the rest are the pupils. The school ran from 1874 to 1937 and the record holds two nights of it.",
+   "size": "transcription",
+   "link": "/research"
+  },
+  {
+   "slug": "felixstowe-servant-places",
+   "area": "People and records",
+   "title": "Check nothing else on the Felixstowe 1901 page was missed",
+   "detail": "The eleven Dowsons are in, with the servants' birthplaces read off the original. Benjamin Dowson's biography could take more — he was a Nottingham solicitor with a practice from 1870.",
+   "size": "research",
+   "link": "/people"
+  },
+  {
+   "slug": "lost-portraits",
+   "area": "People and records",
+   "title": "Re-upload the six portraits lost before Cloudinary",
+   "detail": "Albert Ball (#469), Watson Fothergill (#467), Jane Fraser (#471), Samuel Waite Johnson (#24), Herbert Durrant Snook (#351), Marriott Ogle Tarbotton (#201). Uploads survive a deploy now.",
+   "size": "six uploads",
+   "link": "/people"
+  },
+  {
+   "slug": "archive-dougal-map",
+   "area": "People and records",
+   "title": "Put Dougal de Havilland's map in the archive",
+   "detail": "The PDF itself, with credit, so the record holds the source and not only what was mined from it.",
+   "size": "one upload",
+   "link": "/archive"
+  },
+  {
+   "slug": "1911-birthplaces",
+   "area": "People and records",
+   "title": "The 1911 birth places",
+   "detail": "330 of 902 people in the 1911 census have a birth place against 1,272 of 1,289 for 1921. This is the hole in the origins map.",
+   "size": "ongoing",
+   "link": "/people"
+  },
+  {
+   "slug": "name-sex-queue",
+   "area": "People and records",
+   "title": "Work the forename sex queue down",
+   "detail": "Setting a name once covers everyone who shares it, so this goes faster than it looks.",
+   "size": "ongoing",
+   "link": "/name-sex"
+  },
+  {
+   "slug": "wikidata-review",
+   "area": "People and records",
+   "title": "Confirm or throw out the Wikidata suggestions",
+   "detail": null,
+   "size": "ongoing",
+   "link": "/wikidata-review"
+  },
+  {
+   "slug": "gazette-review",
+   "area": "People and records",
+   "title": "Confirm or throw out the Gazette notices",
+   "detail": "The links now go to the notice page rather than the PDF. Tell me if they still give a 403 from America.",
+   "size": "ongoing",
+   "link": "/gazette-review"
+  },
+  {
+   "slug": "domain-dkim",
+   "area": "The site itself",
+   "title": "Add the null DKIM record",
+   "detail": "TXT at *._domainkey with v=DKIM1; p= — says no DKIM signature is valid for the domain and clears the last of Cloudflare's recommendation.",
+   "size": "one record",
+   "link": null
+  },
+  {
+   "slug": "domain-canonical",
+   "area": "The site itself",
+   "title": "Pick one canonical host and redirect the other",
+   "detail": "www or the apex, 301 in Cloudflare's redirect rules. Sessions are per hostname, so signing in on one leaves you signed out on the other.",
+   "size": "one rule",
+   "link": null
+  },
+  {
+   "slug": "ssl-strict",
+   "area": "The site itself",
+   "title": "Check Cloudflare's SSL mode says Full (strict)",
+   "detail": "It is already Full or it would be looping. Strict validates the origin certificate and costs nothing.",
+   "size": "one setting",
+   "link": null
+  },
+  {
+   "slug": "maps-key-restrict",
+   "area": "The site itself",
+   "title": "Restrict the Google Maps key to the new domain",
+   "detail": "The key is handed to every visitor's browser. Add nottinghamparkhouses.com and www, and keep the Railway address until everything has moved.",
+   "size": "one setting",
+   "link": null
+  },
+  {
+   "slug": "join-page-contact",
+   "area": "The site itself",
+   "title": "Decide whether /join should carry an email address",
+   "detail": "It says an administrator approves accounts. If you would rather people wrote to you first, that needs an address on it.",
+   "size": "one decision",
+   "link": "/join"
+  },
+  {
+   "slug": "bayley-hospital",
+   "area": "Houses and names",
+   "title": "Find which building on Derby Road was the Bayley Hospital",
+   "detail": "An auxiliary hospital from October 1914 under Lilian Birkin, among the first three in England to take military patients and more than 1,600 casualties in four years. Derby Road is this record's northern edge and it holds 117 to 173 and Rocky Mount. If the building is one of ours it is the most significant wartime use in the record.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "import-1901-lenton-avenue",
+   "area": "Do these first",
+   "title": "Run Import people for the 1901 Lenton Avenue households",
+   "detail": "Twenty-three records at 2, 4, 6 and 8 Lenton Avenue: the Thompsons, the Blythes with a boarder, the Sims with a boarder, and the Elmores with a boarder. Fourteen new people; the Blythes and the Sims join their existing 1911 records. The preview should say 14 would be added, 9 already present and 23 census records.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "parker-woodward-49",
+   "area": "People and records",
+   "title": "Check Parker Woodward's 1901 record at 25 Cavendish Crescent South",
+   "detail": "Entry 562 files him at #49 in 1901 with no relationship and no age, but he is not on the Jessop schedule — the page runs Zebedee Jessop, his four children and three servants, and ends. Probably misfiled from another address.",
+   "size": "a look at the return",
+   "link": "/reassign?prop=49&year=1901"
+  },
+  {
+   "slug": "import-weinberg-4-north-road",
+   "area": "Do these first",
+   "title": "Run Import people for Harry Judah Weinberg of 4 North Road",
+   "detail": "From the 1929 Gazette notice of his estate. One new person, linked to the new property 4 North Road (#412), with his date of death, his occupation and the notice written into his story. The preview should say 1 would be added, 1 property link, 1 occupation.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "place-4-north-road",
+   "area": "Houses and names",
+   "title": "Place 4 North Road by hand",
+   "detail": "Created from the Weinberg Gazette notice and put provisionally between 2 North Road (the Walton Hotel) and 8. OpenStreetMap has no 4 at all, so it may have been absorbed into a neighbour or renumbered.",
+   "size": "one drag",
+   "link": "/?id=412"
+  },
+  {
+   "slug": "sr1-south-rd-is-a-double-import",
+   "area": "Merges the page cannot find",
+   "title": "Don't set aside \"SR1 South Rd\" — part of it is 3 South Road entered twice",
+   "detail": "Four of its seventeen records are the McCraith household already filed at 3 South Road in 1911, imported a second time with the surname spelt McCaith. Douglas McCraith (#186) is in both, so he has two 1911 records — remove entry 889. Then merge by number: keep 185, merge in 728 (Maria Elizabeth); keep 189, merge in 731 (Kenneth York); keep 1343, merge in 732 (Violet Muriel). The other households in the group — Frederick Brewster, and Joseph and Sarah Walker — are not at 3 South Road and still need a house.",
+   "size": "five clicks",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "import-mccraith-family",
+   "area": "Do these first",
+   "title": "Run Import people for the McCraith family",
+   "detail": "Bernard McCraith's death on 26 January 1919 as a Major in the Royal Engineers; Lady McCraith's maiden name, Dickinson; and from the report of his will, Sir James's death at Ellenborough House in 1928, his estate, his story and his directorships. Fills blanks only — nothing entered by hand is touched.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "mccraith-1911-widow",
+   "area": "People and records",
+   "title": "Correct Lady McCraith's 1911 relationship — \"Head (widow)\" should be \"Head\"",
+   "detail": "Settled: Sir James signed the 1911 schedule for Ellenborough House, 3 South Road, but was not there on census night, so Lady McCraith was returned as head and he has no 1911 record. She was not a widow — he lived until 1928. On her page, edit the 1911 census record (entry 271) and change the relationship to Head. His story says why when the McCraith import runs.",
+   "size": "one edit",
+   "link": "/people?person=185"
+  },
+  {
+   "slug": "malcolm-mccraith",
+   "area": "People and records",
+   "title": "Is Malcolm McCraith really Sir James's son?",
+   "detail": "The record already links Malcolm (#188), a steam engineer born about 1882, as a son of Sir James and Lady McCraith, and he is at 3 South Road with them in 1891 and 1901. But Wikipedia names their children as Douglas, Bernard, Kenneth York and Violet Muriel only. Either the article misses him or he is a nephew, and the link wants checking.",
+   "size": "research",
+   "link": "/people?person=188"
+  },
+  {
+   "slug": "import-1921-mccraith-clumber",
+   "area": "Do these first",
+   "title": "Run Import people for Sir James McCraith's 1921 household",
+   "detail": "Eleven people on Clumber Crescent South, none with a 1921 record before: Sir James, Lady McCraith, Kenneth York and Violet Muriel, their old nurse Isabella Richardson, two visitors and four servants. Ten are already in the record and are joined by number; only the visitor Catherine Wood is new. They arrive unplaced under \"Clumber Crescent South\". The preview should say 1 would be added, 10 already present, 11 census records.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "mccraith-1921-house",
+   "area": "Unfiled census — the rest",
+   "title": "Which house on Clumber Crescent South were the McCraiths in, in 1921?",
+   "detail": "Sir James McCraith's household of eleven is on Clumber Crescent South in 1921 but the number is not known. Every property on the crescent — 3, 5, 7, 9 (Gwedon) and Clumber Court — is empty in 1921, so all five are candidates; the Jardines held 9 in 1911. It was not permanent: the report of his will has him back at Ellenborough House, 3 South Road, when he died in July 1928.",
+   "size": "research",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "merge-isabella-richardson",
+   "area": "Merges the page cannot find",
+   "title": "Merge Isabella / Isabelle Richardson, the McCraiths' nurse",
+   "detail": "One woman, born in Ireland about 1854, with the McCraiths at 3 South Road from 1891 and on Clumber Crescent South in 1921. Held twice — Isabella (#193) for 1891 and 1901, Isabelle (#733) for 1911. Keep 193, merge in 733.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "south-road-3-1911-two-heads",
+   "area": "Crowded houses",
+   "title": "3 South Road in 1911 now holds the Brewster household too",
+   "detail": "Frederick Brewster, 77, and his three servants were filed to 3 South Road along with the McCraiths, so the house has two heads that year. Brewster's schedule came in the same run but was a household of its own; worth checking it belongs there.",
+   "size": "a look at the return",
+   "link": "/reassign?prop=302&year=1911"
+  },
+  {
+   "slug": "tower-house-file-maccolls",
+   "area": "Do these first",
+   "title": "File the Maccoll household to Tower House, 53 Park Row",
+   "detail": "Tower House (#395) was already in the record but had no position, so it never appeared on the map. It is now placed from OpenStreetMap and marked Grade II. On /unfiled, the group \"tower house park row Park Row\" holds Peter Morrison Maccoll, his wife, daughter and a servant — send that household to 395 (the Stubbing household in the same group goes to East Lodge, #413). On the property's Historic England panel, \"This is the one\" on TOWER HOUSE links its list entry.",
+   "size": "two clicks",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "east-lodge-stubbing",
+   "area": "Houses and names",
+   "title": "(Settled) John Stubbing's return says Park Lodge; the building is East Lodge",
+   "detail": "Settled: the lodge is East Lodge on Historic England's list (1270628) and on OpenStreetMap, and Park Lodge is the name the 1921 census gave it. Both names are now on #413. Tick this off.",
+   "size": "a look at the return",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "merge-louisa-pacey",
+   "area": "Merges the page cannot find",
+   "title": "Merge Louisa Pacey / Paecy, the Sprays' servant for twenty years",
+   "detail": "Both born 1872. Louisa Pacey (#2432) is the Spray household's servant at 14 Cavendish Crescent North in 1901; Louisa Paecy (#2101) is still with them at Greendale in 1921. Keep 2432, merge in 2101.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "merge-sissie-jessie-spray",
+   "area": "Merges the page cannot find",
+   "title": "Merge Sissie and Jessie Spray",
+   "detail": "Both born 1874, both the Sprays' daughter: \"Sissie\" (#2431) at 14 Cavendish Crescent North in 1901, Jessie (#2100) at Greendale in 1921. Sissie is a pet name for Jessie. Keep 2100, merge in 2431.",
+   "size": "one click",
+   "link": "/duplicates"
+  },
+  {
+   "slug": "park-lodge-stubbing",
+   "area": "Houses and names",
+   "title": "File John Stubbing and Elizabeth Gunn to East Lodge, Park Row",
+   "detail": "Their 1921 return reads Park Lodge, Park Row. The building is East Lodge: Historic England's entry 1270628 stands three metres from it and OpenStreetMap names it the same, so it is in the record as East Lodge, Park Row (#413), with Park Lodge kept as the name the census gave it. On /unfiled, in the group \"tower house park row Park Row\", send the Stubbing household to 413 and the Maccolls to 395.",
+   "size": "one click",
+   "link": "/unfiled"
+  },
+  {
+   "slug": "land-registry-names",
+   "area": "Houses and names",
+   "title": "Work through the house names from Land Registry",
+   "detail": "A sweep of HM Land Registry's price paid data across all 44 streets found 797 addresses with a name. Three attached to houses already in the record and are now recorded: Arundel Lodge (1 Park Valley), Castle House (13 Pelham Crescent), and Hardwick House as a second spelling of Hardwicke House. The rest are on /research as nine questions, grouped by street. Belwood is on Tattershall Drive.",
+   "size": "research",
+   "link": "/research"
+  },
+  {
+   "slug": "import-birkin-edale",
+   "area": "People",
+   "title": "Run Import people for Richard Leslie Birkin at Edale House",
+   "detail": "A brother of Charles Wilfred Birkin of Newcastle Court, living at Edale House, Clumber Road East in 1911 — from the family account, not a census return, so he is linked to the house as a resident rather than given a census entry. The preview should say 1 would be added, 1 property link, 1 relationship.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "import-st-hellier-boots",
+   "area": "People",
+   "title": "Run Import people for the Boot households at St Hellier, 1911 and 1921",
+   "detail": "Two files, and the order matters: people_1911_st_hellier.json first, then people_1921_st_hellier.json. The 1911 file creates all thirteen — Sir Jesse Boot, his wife Florence, their three grown children, a visiting barrister from Jersey and seven servants — and files every entry at #402. The 1921 file matches the three Boots by name and adds eight more: John Campbell Boot is head by then, with his parents as visitors. Both run from Import people; preview each first.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "import-broadgate-churley",
+   "area": "People",
+   "title": "Run Import people for Ada Churley of Broadgate School",
+   "detail": "Fills her story and gives her occupation its full form — the 1921 return breaks off at \"Principal Of Schoo\". She is already in the record at 1 Western Terrace, so the preview should say nothing added, 1 filled out, 1 occupation. Her forename stays \"A Marion\" as the census has it; if you want \"Ada\" on the record, change it on her person page.",
+   "size": "one click",
+   "link": "/admin"
+  },
+  {
+   "slug": "file-birkin-lincoln-house",
+   "area": "Census",
+   "size": "one click",
+   "link": "/unfiled",
+   "title": "Decide whether Lincoln Circus 3 is Lincoln House, and file the Birkins",
+   "detail": "On /unfiled, the group \"Lincoln Circus 3\" holds Harry Laurence Birkin, his wife Olive and six servants — eight records, 1921. The Birkin family account puts Major Harry Birkin at Lincoln House, Lincoln Circus (#403), which stands empty in the record. If you are satisfied that is the same house, file the household to 403; the identification rests on the account, not on the return, which gives only a number."
+  },
+  {
+   "slug": "palmer-lincoln-circus-duplicates",
+   "area": "People",
+   "size": "a few minutes",
+   "link": "/unfiled",
+   "title": "Work out whether Lincoln Circus 2 is Gladstone House or a cottage beside it",
+   "detail": "Correcting an earlier note of mine: these are **not** duplicates. Edward and Alice Palmer hold one census entry each for 1911, filed at Gladstone House, and one for 1921, unfiled under \"Lincoln Circus 2\" — ten years apart, not the same record twice. He is a gardener in both.\n\nThe decision is what number 2 means. Gladstone House's 1921 household is a different family altogether, so the likeliest reading is that the Palmers were in a separate dwelling on the same ground. If you settle it, file the two records accordingly; if not, leave them unfiled rather than putting a gardener's household into the big house."
+  },
+  {
+   "slug": "import-fisher-duke-william-mount",
+   "area": "People",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for the Fishers of 1 Duke William Mount",
+   "detail": "The family the house was built for, from the family account: Horace Arthur Fisher, Sarah Kate née Thackeray, and their six children. The house holds nobody at all in the record, so these are its first people. The preview should say 8 added, 8 property links, 1 marriage and twelve parent links. No census entries are created — there is no return behind this."
+  },
+  {
+   "slug": "import-andrews-lenton-avenue",
+   "area": "People",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Fix Henry Andrews's birth year, then run Import people for the Andrews family",
+   "detail": "His record says 1884, taken from his age in 1911; the family account gives 18 November 1883. Change the year on his person page first — the importer will not accept a birth date that contradicts a year already held — then run the import. It fills all three: his South African birth, his engineering posts at Bournemouth and at Goddard, Massey and Warner, his service and his death in November 1918; Dorothy as an artist; Joan's birth year and the family links."
+  },
+  {
+   "slug": "lenton-avenue-1901",
+   "area": "Census",
+   "size": "an afternoon",
+   "link": "/census",
+   "title": "Find the 1901 census for Lenton Avenue — twenty of twenty-four houses have none",
+   "detail": "The record holds 1901 for four houses on the street, all on the even side: 2, 4, 6 and 8. Every odd-numbered house from 1 to 33, and 10, 12 and 14 besides, has nothing for that year. Several hold a single year only — 1 and 19 and 25 and 27 and 29 have 1911 alone, while 5 and 17 have 1921 alone. 17 is Dundee House, and 15 is where the Andrews family were living from 1908, so 1901 there would name whoever preceded them."
+  },
+  {
+   "slug": "carver-daughters-29-lenton-road",
+   "area": "Census",
+   "size": "a few minutes",
+   "link": "/census",
+   "title": "Two Carver daughters are missing from 29 Lenton Road",
+   "detail": "An account of the family names Frederick and Annie Carver with three daughters — Gertrude, Mary and Annie. The record holds the parents and Annie Florence from the 1911 census, but no Gertrude and no Mary. Either they had left home by 1911 or they were missed in transcription, so the return is worth re-reading; the 1901 page would show all three while they were still at home. Frederick directed Adams, Page and Cullen in the Lace Market and represented the trade abroad, at Brussels in 1891 and the Paris Exhibition of 1900."
+  },
+  {
+   "slug": "import-carver-wills-wright",
+   "area": "People",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for Carver, Wills and Wright",
+   "detail": "Fills out Frederick Carver, who is already at 29 Lenton Road from the 1911 census — his directorship of Adams, Page and Cullen and his trade missions to Brussels and Paris — and creates two men the record does not hold: Stephen Wills, whom Arundel House was built for in 1870, and William Wright, first occupant of 29 Lenton Road. Neither gets a census entry; both are linked to their house as residents, since the evidence is an account. Preview should say 2 added, 2 property links, 1 filled out, 4 occupations."
+  },
+  {
+   "slug": "import-1901-lenton-avenue-odd",
+   "area": "Census",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for the 1901 census of Lenton Avenue",
+   "detail": "Seventeen households from numbers 5 to 31 and 10 to 14 — about ninety people — filed straight to their houses. This is the street that had 1901 for only four of its twenty-four houses. Numbers 2, 4, 6 and 8 are left out because they went in earlier. Two households are entered by house name and will land on /unfiled for you to place: Clumber Lodge, which falls between 17 and 21 in the enumerator's round, and Newlands, which follows 31."
+  },
+  {
+   "slug": "import-1901-named-houses",
+   "area": "Census",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for the 1901 census of Lenton Road, the crescents and Western Terrace",
+   "detail": "Nineteen households — 126 people — for houses the record can already name, filed straight to their properties with nothing left over on /unfiled: Cliff House, Fern Lodge, 13, 15, Oakhurst, 25, 29 and Rock House on Lenton Road; 9, 11, 15, 17 and 19 Pelham Crescent; 10 Western Terrace and Lincoln Villa; and Carisbrooke House, Cavendish Lodge, Hardwicke House and Haddon House on Cavendish Crescent North. Houses that already hold a 1901 household are deliberately left out, so nothing doubles up. Two of these answer questions already on this list: Carisbrooke House gives William Bradshaw a 1901 to set beside his 1911, and 29 Lenton Road gives the Carvers the year their family account claimed and the record lacked — though only Annie F. is at home of the three daughters it names. Worth a look at /duplicates afterwards, for her and for Sarah Spray. The households whose house name the record cannot place stay out of the database, parked in data/1901_unnumbered_houses.json."
+  },
+  {
+   "slug": "remove-reimported-census-rows",
+   "area": "Do these first",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Clear the thirteen census records the second Lenton Avenue import left behind",
+   "detail": "Running the 1901 Lenton Avenue file a second time entered Clumber Lodge and Newlands all over again, because it looked for a match under the house name it could not find rather than under the person and the year — and by then you had placed both households. Thirteen people now hold two records for 1901: the filed one, and a houseless copy back on the unfiled page. The five at Clumber Lodge are filed at property 166, the eight at Newlands at property 173. Admin now has “Remove census rows a second import left behind” — preview it, then run it. It only takes the houseless copy, and only where the same person already holds a record for that year with a house on it, so anyone genuinely waiting to be placed is left alone. The importer itself no longer does this."
+  },
+  {
+   "slug": "ethel-johnson-two-houses-1901",
+   "area": "Census",
+   "size": "a few minutes",
+   "link": "/person/26",
+   "title": "Ethel Johnson is in two houses on the same census night",
+   "detail": "Ethel Johnson (#26) holds two filed records for 1901: one at Lenton House, property 193, which the record has had for a long while, and one at Newlands, property 173, which the 1901 Lenton Avenue import added. She cannot have been in both on the night. The likelihood is that they are two women of the same name and the import hung the Newlands servant on the Ethel Johnson already in the record, in which case the Newlands record wants lifting onto a new person of her own. Worth reading both returns before deciding which is which. Removing the houseless copies does not touch this — both of these have a house on them."
+  },
+  {
+   "slug": "census-39-newcastle-drive",
+   "area": "Census",
+   "size": "a few minutes",
+   "link": "/property/227",
+   "title": "39 Newcastle Drive holds no census at all",
+   "detail": "The house at the corner — built as Tattershall Corner, then Waveney House, then Walton House, and Priests House now — carries a full description, a Grade II listing covering the house, the lychgate and the boundary wall, and not one census record in any year. Newcastle Drive is numbered throughout, so the returns should be findable by number rather than by name. Number 37 next door is empty too, so a single page of the enumerator's round would likely answer for both."
+  },
+  {
+   "slug": "census-tattershall-drive",
+   "area": "Census",
+   "size": "an afternoon",
+   "link": "/street/tattershall-drive",
+   "title": "Not one house on Tattershall Drive holds a census household",
+   "detail": "All eight properties the record keeps on Tattershall Drive — numbers 1 to 5, Carnoustie Lodge, Ellington House and Gartree Lodge — have no census entry in any year. The residents they do carry, the Bonds at Lynwood, Arthur Hanish at number 5, the Hills at Ellington, the Hattons at Gartree Lodge, all come from accounts rather than returns, with no year attached to any of them. The street is numbered, so the returns should be findable. This also bears on Belwood, now placed at the Tennis Drive corner by the name on its door and by sharing Ellington's postcode: it stays a name rather than a property until a household is found in it, and the enumerator's round along this street is where that would show up."
+  },
+  {
+   "slug": "import-murchie-father",
+   "area": "People",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for James Murchie, father of the Bangkok girls",
+   "detail": "Creates one person: James Murchie, 1865 to 1929, the engineer who managed Howarth Erskine's Bangkok works and later traded on his own account from Victoria Street. He gets no census record and no house — he never lived in The Park — and is linked as parent to the three Murchie sisters boarding at the school on The Ropewalk in 1911. Preview should say 1 added, 4 occupations, 3 relationships, and no census. Worth knowing that the fatherhood is an inference rather than a proven fact: two of the girls were born at Bangkok in the years he was running the works there, and the third at Much Wenlock between them, but nothing in the record names him as their father. The bio says so in as many words."
+  },
+  {
+   "slug": "reimport-dropped-relationships",
+   "area": "Do these first",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Twenty-four family links never went in — run Import people again",
+   "detail": "The importer reads the key \"type\" on a relationship block, and four files were written with the more obvious word, \"relationship\". Those blocks were skipped without a murmur, and because a skipped link counts as no work, the report said each of those files had nothing left to do. Jesse and Florence Boot, Henry Godfrey Andrews and his family, the Birkins and the Fishers of 1 Duke William Mount all show no relationships at all in the record as a result. The four files now use the key the importer reads, and the importer now takes either word and reports a block that names neither, so it cannot happen quietly again. Running Import people puts the twenty-four links in — the same run also brings in James Murchie. Preview first: it should report the relationships rather than nothing."
+  },
+  {
+   "slug": "import-handford-hardwicke",
+   "area": "People",
+   "size": "one click",
+   "link": "/admin",
+   "title": "Run Import people for the Handfords, and change the doctor’s birth year by hand",
+   "detail": "Fills out Dr Henry Handford at Hardwicke House from Munk's Roll — physician to the Nottingham General Hospital to 1906, then medical officer of health and chief tuberculosis officer for the county to 1926, F.R.C.P. 1899, a major in the sanitary branch of the R.A.M.C., died 24 June 1928 — and adds what became of his family. Both his sons were killed in the same attack on the Hohenzollern Redoubt on 15 October 1915, serving in the same battalion of the Sherwood Foresters: Captain Basil at twenty-one and Lieutenant Everard at twenty, neither body recovered, both named on the Loos Memorial. His step-daughter Gertrude Gale is given her married name, and her husband Major John Pickard Becher D.S.O., mortally wounded in that same attack, is created. So is Edward Strutt, first Baron Belper, his wife's father. Two people created, five filled out, nine occupations and thirteen relationships, with no census records at all. THE ONE THING IT CANNOT DO: Munk's Roll dates the doctor's birth to 1855 and the record holds 1856 from his age on census night. The importer fills blanks and never writes over what is there, so change that year on his person page if you want the authority's."
+  },
+  {
+   "slug": "work-through-names-to-check",
+   "area": "People",
+   "size": "half an hour",
+   "link": "/name-review",
+   "title": "Twenty-six names in the record do not look right",
+   "detail": "A new page, Names to check, gathers them in three groups. Eight people have no forename at all — six carrying a question mark where the enumerator could not read it, and two entered as [Unknown]; those want the census page itself. Fifteen have only an initial, and most of those are probably right, because the return gave no more than an initial: pass them as right and they will not be raised again. Three read like a slip of the pen: Suganne Richardson at Grove House is almost certainly Suzanne, and Margaret Mand Marion Cooper is almost certainly Maud, a u read as an n. The third, Christine Nona Parr, is offered as Nora but Nona is a real name in its own right, given to a ninth child, so that one is likely a false alarm and worth passing as right. Nothing is ever changed for you — each row is a person to open and judge."
+  },
+  {
+   "slug": "duplicates-from-the-abbreviated-names",
+   "area": "Do these first",
+   "size": "half an hour",
+   "link": "/duplicates",
+   "title": "Forty duplicate people to merge, and why they appeared",
+   "detail": "My fault, twice over. The 1901 files were written with the forenames as the enumerator abbreviated them — Geo. Parr, Constance M. Smith, Ada M. Read — and the importer matches names letter for letter, so it made a second record of everybody the record already held under a fuller spelling. That happened on the first run, and the twenty-two it produced sat inside a count I read as new arrivals. Then merging the abbreviated spellings away meant the files could no longer find their own people, so the next run created ten of them again with fresh numbers. The record went from 2755 to 2798; three of those forty-three are real — Edward Strutt, John Pickard Becher and James Murchie. The rest want merging on this page, keeping the fuller, older record each time. Both 1901 files now address those people by number instead of by name, so no later run can repeat it, and a merge now leaves an alias behind so a spelling merged away still finds the person it belongs to. One is deliberately left alone: Annie F. Carver, born 1871 on this return, against Annie Florence Carver born 1865 — six years apart, too far for the record to join them on its own. That one wants deciding by eye."
+  },
+  {
+   "slug": "newcastle-circus-empty-properties",
+   "area": "Census",
+   "size": "two houses to account for",
+   "title": "Two Newcastle Circus houses hold no census records at all",
+   "detail": "2 Newcastle Circus (#203) and Mevell House, 7 Newcastle Circus (#204) carry no census household in any year — not 1881, 1891, 1901, 1911, 1921 or 1939. Every other house on the Circus holds something: Burton House (#205) has 1911 and 1921, Castlethorpe (#206) runs from 1881 to 1939, and Newcastle Court (#207) from 1881 to 1921. Two empty houses in a row on one short street is more likely a filing gap than six decades of genuinely empty buildings. There are two unplaced 1891 households from the pages A. Hagues sent that were headed Newcastle Circus and cannot be matched to a property: Hannah Wilkins at \"Fairland\", and the Francis Newman Ellis household — a colliery owner with four children, two visiting Hoyles and three servants — headed with no house name at all. Either could belong at #203 or #204. What would settle it is knowing whether Fairland is a former name of either house, and whether Mevell House went by another name in 1891. Nothing is filed there on a guess.",
+   "link": "/research"
+  },
+  {
+   "slug": "history-truncated-entries",
+   "area": "Research",
+   "size": "done — ready to tick",
+   "link": "/history",
+   "title": "The estate history is whole, and he is Dougal",
+   "detail": "Both halves of this are settled by A. Hagues. The thirteen truncated entries are closed: he read the rest off the printed map, and all 34 are now whole — the royal hunting ground at 1068, the civil war and Charles's execution at 1642, the Cavalry Barracks at the Park's north-west corner at 1792, Hine's appointment and his rival Fothergill Watson at 1851, and the roll of residents at 1887. And the spelling is Dougal, not Douglas: the data filenames were right, and it was the history page's credit that was wrong. That is now corrected, so nothing here is outstanding — the task is left only so it can be ticked by the person who answered it rather than closed on his behalf."
+  },
+  {
+   "slug": "hine-link-man-to-buildings",
+   "area": "People and records",
+   "size": "a decision, then a job",
+   "link": "/architects",
+   "title": "T. C. Hine is person #468 and is attached to nothing",
+   "detail": "The record names a Hine as architect on 112 properties — 50 T.C. Hine, 42 Hine & Evans, 18 Hine & Son, 2 George Hine — but every one of those is a line of text on a property, not a link to a person. Thomas C Hine is #468, born 1814, occupation Architect, with no properties against him at all and one unresolved 1891 census row. The architects page lists \"T.C. Hine\" and \"Hine & Son\" side by side as though both were people.\n\nTwo ways to mend it, and they are different jobs. Populate architect_works for #468, as was done by hand for Robert Evans Sr (43 works) and Jr (21) — that gives him a works list on his own page but repeats what the property text already says. Or wire the architect text on each property to a person, with Hine & Evans and Hine & Son as firms: there is an architect_firms table and a firm_members table already in the schema for exactly that, and both are unused.\n\nWorth knowing before starting: nothing in server.js reads data/seed-architect-works-*.json. The two Evans files were loaded through POST /api/architect-works by hand. A seed file written now would sit there unread unless a seeder is built."
+  },
+  {
+   "slug": "hine-where-he-lived",
+   "area": "People and records",
+   "size": "one edit, and a question",
+   "link": "/people",
+   "title": "T. C. Hine lived at 25 Regent Street — it is only in an unfiled census row",
+   "detail": "His own 1891 return gives **25 Regent Street, St Mary, Nottingham** — Head, aged 77, Architect. It sits on the unfiled page because the address is outside The Park, so nobody has seen it. The Gazette corroborates it independently: patent notices of 1854 and 1857 name \"Thomas Chambers Hine, of Regent-street\". Two sources, three decades apart.\n\nIt should be on his record properly rather than only in a census row nothing can file.\n\nAlso found, and worth having: the London Gazette of 2 October 1855 records the dissolution of **Edward Gripper and Co., Brick and Tile Makers at Mapperley in the parish of Basford** — John Green Hine, Edward Gripper the younger and Thomas Chambers Hine — as regards Hine, from 10 September 1855. Signed Thomas C. Hine. An architect with a stake in a brickworks.\n\nNot found: the 1849 dissolution. The 1848-51 window holds 45 Hine notices and not one pairs him with Nottingham; \"T. C. Hine\" returns nothing at all. If the 1849 date comes from a source naming the firm or the partner, that would give something searchable.\n\nA trade directory confirms it for 1864. White's History, Gazetteer and Directory of Nottinghamshire (1864) lists \"Hine Thos. C., architect, h. Regent street\" — h. being the house he lived in, as against an office — and his practice, Hine & Evans, architects, also at Regent Street. So Regent Street was his home in 1864 as well as in 1891. The directory gives no house number.\n\nThe same directory holds three leads worth following: Samuel D. Hine, surgeon, also of Regent Street; Benjamin Hine, hosiery manufacturer, living at Mapperley — where the brickworks he left in 1855 stood; and Hine, Mundella & Co., hosiery manufacturers of Station Street, the firm that carried A. J. Mundella's name. The directory is on the Internet Archive as nottinghamshire00cogoog, catalogued there as 1853 though its own metadata and contents are 1864.\n\nConfirmed again for 1894-95. Wright's Directory of Nottingham lists \"25 Mr. Thomas C. Hine\" in its Regent Street entries (page 122). So the house number is the same in 1894 as in his 1891 return, and four separate sources — the Gazette in 1854 and 1857, White's in 1864, the census in 1891 and Wright's in 1894 — all put him on Regent Street."
+  },
+  {
+   "slug": "george-hine-1871-park-valley",
+   "area": "Census",
+   "size": "one import",
+   "link": "/unfiled",
+   "title": "George T. Hine, architect, is in the 1871 census and not in the record",
+   "detail": "Park Valley, schedule 55 in 1871: **George T. Hine, Head, married, 29, Architect and Surveyor**, born Nottingham, with his wife Florence A., 29, born Bristol, and Ann Marriott, general servant, 20, of Hose in Leicestershire. He is T. C. Hine's son — the \"helped by son George\" that Dougal's own key names — and the record holds no George Hine at all, though two properties name him as their architect.\n\n1871 schedule numbers are the enumerator's, not house numbers, so this cannot be filed to a property without more work: Park Valley has no number 55. It wants importing unfiled, like the Cavendish Crescent households."
+  },
+  {
+   "slug": "medal-card-confirmed-twice",
+   "area": "The site itself",
+   "size": "a fix and a decision",
+   "link": "/medals-review",
+   "title": "One medal card is confirmed against two different men",
+   "detail": "WO 372/8/242563 is confirmed against **both** Henry Handford (#3060) and his son Henry Basil Strutt Handford (#3065). A medal index card belongs to one man, so one of those two confirmations is wrong.\n\nThe sweep offers a card to every person whose name it fits, which is right for suggesting — father and son share a forename — but nothing warns when the same reference is offered twice, and nothing stops both being confirmed. The card gives a rank of Lieutenant, which fits the son, who was a Captain in the 1/8th Sherwood Foresters and died in 1915; the father was a Major in the Royal Army Medical Corps.\n\nTwo things wanted: the page should flag a reference already confirmed elsewhere, and this particular pair needs settling by hand."
+  },
+  {
+   "slug": "reupload-dougals-map",
+   "area": "People and records",
+   "size": "one upload",
+   "link": "/archive",
+   "title": "Re-upload Dougal's map so the archive link opens the PDF",
+   "detail": "The map is in the archive but the link does nothing. Cloudinary filed it under its image type, which the account will not deliver as a PDF — the URL returns 401 with an empty GIF. That is now fixed for future uploads: anything that is not an image goes up as a raw file. But the delivery type of an asset already in Cloudinary cannot be changed, so this one needs uploading again.\n\nMeanwhile the archive card shows page one rendered as an image, and a \"View page\" link at 2400px, so the map is at least visible. The same fault affected documents attached to a person — .pdf, .doc, .docx, .txt — though only this one document exists so far."
+  },
+  {
+   "slug": "castle-grove-1871-page",
+   "area": "Census",
+   "size": "one page",
+   "link": "/census",
+   "title": "The 1871 Castle Grove page is missing from what was sent",
+   "detail": "Four 1871 pages came through and are transcribable — Lenton Road 31-33, and Park Valley 42-48, 49-53 and 53-58. The Castle Grove run, schedules 34 to 39, appeared in an earlier message and is not among them, so the 1871 sequence has a hole in it between Lenton Road 33 and Park Valley 42.\n\nWhat is on the missing page, from the earlier sighting: Castle Grove Lodge with Thomas Marriott, coachman; John Brown, town councillor and wine merchant; 2 Castle Grove with Frederic Dobson, lace dresser; Henry Carey, lace manufacturer; Hannah Simons; and a further household at 39. None of it should be entered from that sighting alone."
+  },
+  {
+   "slug": "bayleys-to-9-cavendish-crescent-north",
+   "area": "Do these first",
+   "size": "a move on the reassign page",
+   "link": "/reassign?prop=9&year=1891",
+   "title": "The Bayley household belongs at 9 Cavendish Crescent North, not 14 Barrack Lane",
+   "detail": "Thomas Bayley's 1891 household is filed at property #9, which is 14 Barrack Lane — almost certainly \"9 Cavendish\" read as property number 9. Two of its servants, Emma Annie Simpson and Alice Stevenson, already sit at the right house, 9 Cavendish Crescent North (#25), so the household is split across two properties.\n\nThe census page (L16848_4) puts him at 9 Cavendish Crescent, and Wright's Directory of Nottingham, 1894-95, settles which side: its Cavendish Crescent north runs Cavendish Lodge, Henry Edward Hunt, 7 H. A. Cursham, then Mr Thomas Bayley. So the move is #9 to #25 for 1891, the whole household. Worth checking #9's other years at the same time — 14 Barrack Lane may hold nothing that is really its own."
+  },
+  {
+   "slug": "park-valley-names-1894",
+   "area": "Houses and names",
+   "size": "three names, and two households placed",
+   "link": "/",
+   "title": "Three Park Valley house names, and two 1871 households placed, from the 1894 directory",
+   "detail": "Wright's Directory of Nottingham, 1894-95 (page 107) lists Park Valley house by house. Three names are new to the record: 3 is Claxby House (#259), 8 is Ivy House (#264) and 17 is Brooklyn House (#269). It also confirms names the record already holds — Arundel House at 1, Holly Hyrst (the record spells it Hollyhurst) at 4, and Stuart Cottage at 6.\n\nThat last one places an 1871 household. The 1871 census heads John Place's household \"Stuart Cottage, Park Valley\" with no number; the directory makes Stuart Cottage number 6 (#262).\n\nTwo leads that are not yet proof. Mr Alfred Wilson is at 7 Park Valley (#263) in 1894, and an Alfred Wilson, hosier, heads an 1871 Park Valley household — the same man twenty-three years on, or his son. And Mrs A. Baily-Browne is at 13 Park Terrace in 1894; in 1871 Walter Browne, solicitor, and his wife Ann Baily were on Lenton Road. The Brownes moved, or she did once widowed."
+  },
+  {
+   "slug": "trade-directories-source",
+   "area": "Research",
+   "size": "a tool worth building",
+   "link": "/research",
+   "title": "The Nottingham trade directories can place households the census left unnumbered",
+   "detail": "Leicester University's Historical Directories of England & Wales holds Nottingham directories page by page, each page with its own OCR text: Wright's Directory of Nottingham for 1894-95, 1898-99, 1910-11, 1913-14 and 1915-16, the Post Office directories of 1855 and 1876, White's of 1885, and Kelly's of 1891 and 1904. A street section lists every house in order with its number, its name if it had one, and its occupant — which is exactly what a census without house numbers lacks.\n\nIt has already settled two things. Cavendish Crescent's two image sets are north and south, confirmed house for house, so the 1891 households are now filed. And T. C. Hine's 25 Regent Street is confirmed for 1894.\n\nThe text is reachable without scraping: CONTENTdm's dmGetItemInfo returns each page's OCR in a field called fulla. For the 1894-95 volume the record number is 164506 plus the page number, and its street directory runs from about page 20 to 160, alphabetical by street. A lookup that pulls a Park street's entries from each directory year would turn every unnumbered census household into a candidate address.\n\nTwo cautions. The OCR interleaves the page's two columns, so a street's entries are mixed with a neighbouring street's and have to be read with care. And a directory records the householder a year or two after its survey, so it confirms a census; it does not replace one. Also useful: the Internet Archive's copy of White's 1864, catalogued there as 1853."
+  },
+  {
+   "slug": "duplicate-sweep-keyed-on-house",
+   "area": "The site itself",
+   "title": "A duplicate sweep keyed on the house, not the census year",
+   "detail": "Every matcher on the site pairs people who appear in the **same census year**. So it cannot see a duplicate whose two halves sit in **different decades** - and those are exactly the ones a household transcription makes.\n\n**Kate Reynolds is the proof.** #4999 Kate Reynolds has one row, 1911 at 5 Park Valley. #1869 Kate Raynolds has one row, 1921 at the same house. Same woman, surname spelt two ways, ten years apart - and no tool on the site can pair them, because they share no year. She was found by reading the house, not by any sweep.\n\n**What the tool would do:** for each property, take everyone the record ever puts in it, expand the census short forms, fuzz the surname, and report pairs who never appear in the same year - because two people of nearly the same name in one house in different decades is either one person, or a mother and daughter worth knowing about either way.\n\n**It would want the born-year test loosened**, since a birth year worked back from a census age moves by a year or two between returns - which is the second fault in `docs/post-import-checklist.md` at 5.5b.\n\n**Cheap to write**: `variant_duplicates.py` already has the surname fuzzing and the short-form expansion. This is the same comparison with the house as the key instead of the year.",
+   "size": "a tool worth building",
+   "link": "/duplicates"
+  }
+ ]
 }
