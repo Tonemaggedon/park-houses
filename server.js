@@ -3693,6 +3693,7 @@ app.get('/api/insights', async (req, res) => {
     const propById = {};
     allProps.forEach(p => { propById[String(p.id)] = p; });
     const label = id => {
+      if (id === null || id === undefined) return null;
       const p = propById[String(id)];
       if (!p) return `property ${id}`;
       return p.address || [p.no, p.street].filter(Boolean).join(' ') || `property ${id}`;

@@ -65,8 +65,7 @@ async function load(){
   DATA = d;
   if (d.error){ document.getElementById('main').innerHTML = `<div class="spinner">${esc(d.error)}</div>`; return; }
 
-  const names = Object.keys(d.groups).sort((a,b)=>
-    Object.values(d.groups[b]).reduce((x,y)=>x+y,0) - Object.values(d.groups[a]).reduce((x,y)=>x+y,0));
+  const names = groupOrder(d);
   const totalMentions = d.top.reduce((a,t)=>a+Number(t.n),0);
 
   document.getElementById('main').innerHTML = `
@@ -82,7 +81,9 @@ async function load(){
     <div class="sub">Every occupation the census recorded, sorted into groups. Click a group to take it out of the chart. This is the shape of a Nottingham suburb: the lace trade rising and falling, domestic service dominating throughout, and the professions holding steady underneath.</div>
     <div class="chips" id="chips"></div>
     <canvas id="groupChart"></canvas>
-    <div class="note">Counted from the occupation column of the census, across the five full rounds. Where a household wrote a trade, an industry and an employment status in one line, only the trade is counted. Spellings are normalised by the same table the <a href="/occupations">Occupations to sort</a> tool uses, so the page and the tool always agree.</div>
+    <div class="note"><b>Not yet grouped</b> is drawn last and in grey because it is not a trade: it is what the
+      <a href="/occupations">Occupations to sort</a> tool has left to do. Watching that band shrink is the point of it.
+      Counted from the occupation column of the census, across the five full rounds. Where a household wrote a trade, an industry and an employment status in one line, only the trade is counted. Spellings are normalised by the same table the <a href="/occupations">Occupations to sort</a> tool uses, so the page and the tool always agree.</div>
   </div>
 
   <div class="grid2">
@@ -126,8 +127,8 @@ function bars(items){
 }
 
 function buildChips(names){
-  document.getElementById('chips').innerHTML = names.map((g,i)=>
-    `<div class="chip on" data-g="${esc(g)}"><span class="dot" style="background:${COLOURS[i%COLOURS.length]}"></span>${esc(g)}</div>`
+  document.getElementById('chips').innerHTML = names.map(g=>
+    `<div class="chip on" data-g="${esc(g)}"><span class="dot" style="background:${colourOf(g)}"></span>${esc(g)}</div>`
   ).join('');
   document.querySelectorAll('.chip').forEach(el => el.onclick = () => {
     const g = el.dataset.g;
@@ -137,15 +138,26 @@ function buildChips(names){
   });
 }
 
+// Biggest first, but the ungrouped bucket always last however large it is. It is
+// not a trade - it is how much the Occupations to sort tool has left to do - and
+// putting it in the middle of the real categories reads as though it were one.
+const UNGROUPED = 'Not yet grouped';
+function groupOrder(d){
+  const size = g => Object.values(d.groups[g]).reduce((x,y)=>x+y,0);
+  return Object.keys(d.groups)
+    .sort((a,b)=> (a===UNGROUPED) - (b===UNGROUPED) || size(b) - size(a));
+}
+function colourOf(g){
+  if (g === UNGROUPED) return '#5a6a5a';
+  return COLOURS[groupOrder(DATA).filter(x=>x!==UNGROUPED).indexOf(g) % COLOURS.length];
+}
 function drawChart(){
-  const names = Object.keys(DATA.groups)
-    .sort((a,b)=> Object.values(DATA.groups[b]).reduce((x,y)=>x+y,0) - Object.values(DATA.groups[a]).reduce((x,y)=>x+y,0))
-    .filter(g => !off.has(g));
+  const names = groupOrder(DATA).filter(g => !off.has(g));
   const ds = names.map((g,i)=>({
     label: g,
     data: DATA.spine.map(y => DATA.groups[g][y] || 0),
-    backgroundColor: COLOURS[Object.keys(DATA.groups).indexOf(g) % COLOURS.length] + 'cc',
-    borderColor: COLOURS[Object.keys(DATA.groups).indexOf(g) % COLOURS.length],
+    backgroundColor: colourOf(g) + 'cc',
+    borderColor: colourOf(g),
     borderWidth: 1
   }));
   if (chart) chart.destroy();

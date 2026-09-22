@@ -73,7 +73,7 @@ function esc(v) {
 }
 const nm = p => esc([p.first_name, p.last_name].filter(Boolean).join(' ')) || 'unnamed';
 const person = p => `<a href="/people/${p.id}">${nm(p)}</a>`;
-const house = (id, label) => id ? `<a href="/property/${id}">${esc(label || ('property ' + id))}</a>` : esc(label || 'not yet placed');
+const house = (id, label) => id ? `<a href="/property/${id}">${esc(label || ('property ' + id))}</a>` : '<span style="color:#7a8a7a">a house not yet placed</span>';
 const n = v => (v === null || v === undefined) ? '—' : Number(v).toLocaleString();
 
 function bars(items, colour) {
@@ -270,9 +270,11 @@ function buildMap(d) {
     + '<option value="3">people with three or more</option>';
   sel.onchange = () => draw(sel.value);
   map = L.map('moveMap', { scrollWheelZoom:false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19, opacity: 0.55,
-    attribution: '&copy; OpenStreetMap contributors'
+  // A dark base so the coloured threads read. CARTO's dark tiles are free to use
+  // with attribution and are built from OpenStreetMap, which is credited too.
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19, subdomains: 'abcd',
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
   }).addTo(map);
   document.getElementById('fitBtn').onclick = () => fit();
   draw('all');
