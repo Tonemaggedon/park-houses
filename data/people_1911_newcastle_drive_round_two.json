@@ -2769,13 +2769,13 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Head",
      "age_at_census": 42,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Married",
      "occupation_at_census": "Lace manufacturer | employer",
-     "birth_place": "Milford, Derbyshire"
+     "birth_place": "Milford, Derbyshire",
+     "property_id": 152
     }
    ]
   },
@@ -2786,12 +2786,12 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Wife",
      "age_at_census": 34,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Married",
-     "birth_place": "Lincoln"
+     "birth_place": "Lincoln",
+     "property_id": 152
     }
    ]
   },
@@ -2802,12 +2802,12 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Daughter",
      "age_at_census": 2,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
-     "birth_place": "Risley, Derbyshire"
+     "birth_place": "Risley, Derbyshire",
+     "property_id": 152
     }
    ]
   },
@@ -2818,12 +2818,12 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Son",
      "age_at_census": "9 months",
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
-     "birth_place": "Risley, Derbyshire"
+     "birth_place": "Risley, Derbyshire",
+     "property_id": 152
     }
    ]
   },
@@ -2837,13 +2837,13 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Servant",
      "age_at_census": 21,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
      "occupation_at_census": "Children's nurse",
-     "birth_place": "Ripley, Derbyshire"
+     "birth_place": "Ripley, Derbyshire",
+     "property_id": 152
     }
    ]
   },
@@ -2857,13 +2857,13 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Kenmore, Huntingdon Drive (probably 10 Huntingdon Drive, #152 - wants confirming)",
      "relationship": "Servant",
      "age_at_census": 20,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
      "occupation_at_census": "General servant, domestic",
-     "birth_place": "Littleover, Derbyshire"
+     "birth_place": "Littleover, Derbyshire",
+     "property_id": 152
     }
    ]
   },
