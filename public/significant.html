@@ -88,6 +88,15 @@
     received, or the lives they led. Each is here because someone decided they should be.</p>
   <div id="featured" class="grid"><div class="empty">Loading…</div></div>
 
+  <details class="cand" id="thinBlock" hidden open>
+    <summary>Lives still to write <span id="thinCount" class="dates"></span></summary>
+    <p class="lede">Notable people the record knows of and has not yet said anything about.
+      Thinnest first, because somebody with nothing written is a better hour's work than
+      somebody with a paragraph. The signal beside each name is why the record thinks
+      they matter.</p>
+    <div id="thin"></div>
+  </details>
+
   <details class="cand" id="candBlock" hidden>
     <summary>Suggestions <span id="candCount" class="dates"></span></summary>
     <p class="lede">Residents carrying a signal worth a second look. Nothing here is featured
@@ -239,9 +248,47 @@ function renderFeatured(rows) {
   watchPortraits(el);
 }
 
+// The research list. A person can be notable here and have nothing said about
+// them: Albert Ball VC and Watson Fothergill both sat in this record with a
+// Wikipedia link, no biography and no mark against them.
+async function loadThin() {
+  const box = document.getElementById('thin');
+  const block = document.getElementById('thinBlock');
+  if (!box) return;
+  let rows = [];
+  try { rows = await fetch('/api/significant/thin').then(r => r.json()); } catch (e) { return; }
+  if (!Array.isArray(rows) || !rows.length) return;
+  block.hidden = false;
+  const empty = rows.filter(r => !r.bio_len).length;
+  document.getElementById('thinCount').textContent =
+    `${rows.length} — ${empty} with nothing written at all`;
+  box.innerHTML = rows.map(r => {
+    const life = [r.born_year, r.died_year].filter(Boolean).join('–')
+      || (r.first_seen ? `seen ${r.first_seen}${r.last_seen !== r.first_seen ? '–' + r.last_seen : ''}` : '');
+    const state = r.bio_len
+      ? `<span style="color:#8a7a3a">${r.bio_len} characters</span>`
+      : `<b style="color:#a3432a">nothing written</b>`;
+    return `<div style="padding:8px 0;border-bottom:1px solid var(--rule)">
+      <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+        <a href="/people/${r.id}" style="font-weight:600">${esc(r.name || 'unnamed')}</a>
+        <span class="dates">${esc(life)}</span>
+        ${r.significant ? '<span class="dates" style="color:#2a6a4a">★ featured</span>' : ''}
+        <span style="margin-left:auto;font-size:.8rem">${state}</span>
+      </div>
+      ${r.note ? `<div class="lede" style="margin:2px 0 0">${esc(r.note)}</div>` : ''}
+      <div class="dates" style="margin-top:2px">
+        ${(r.signals || []).map(esc).join(' · ')}
+        ${r.properties ? ` · ${r.properties} ${r.properties === 1 ? 'house' : 'houses'}` : ''}
+        ${r.wikipedia_url ? ` · <a href="${esc(r.wikipedia_url)}" target="_blank" rel="noopener">Wikipedia</a>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
 async function loadCandidates() {
   const block = document.getElementById('candBlock');
   block.hidden = false;
+  loadThin();
   const box = document.getElementById('candidates');
   box.innerHTML = '<div class="empty">Loading…</div>';
   try {

@@ -2820,6 +2820,49 @@ app.get('/api/significant', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Notable people whose life is not written down yet. A person can be notable in
+// the record and still have nothing said about them - Albert Ball VC and Watson
+// Fothergill both sat here with a Wikipedia link, no biography and no mark - and
+// that is a research list rather than a fault. Thinnest first, because a person
+// with nothing at all is the better hour's work than one with a paragraph.
+app.get('/api/significant/thin', async (req, res) => {
+  if (!db) return res.json([]);
+  const FULL = 400;   // characters. Below this a life is a caption, not an account.
+  try {
+    const r = await db.query(`
+      SELECT p.*, COALESCE(LENGTH(p.bio), 0) AS bio_len,
+             (SELECT COUNT(*) FROM (
+                SELECT ce.property_id AS pid FROM census_entries ce
+                 WHERE ce.person_id = p.id AND ce.property_id IS NOT NULL
+                UNION
+                SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id = p.id
+              ) linked) AS property_count,
+             (${SIGNAL_SQL}) AS signal_count,
+             (SELECT MIN(ce.census_year) FROM census_entries ce WHERE ce.person_id = p.id) AS first_seen,
+             (SELECT MAX(ce.census_year) FROM census_entries ce WHERE ce.person_id = p.id) AS last_seen
+        FROM people p
+       WHERE COALESCE(LENGTH(p.bio), 0) < $1
+         AND (p.significant = TRUE OR (${SIGNAL_SQL}) > 0)
+       ORDER BY p.significant DESC NULLS LAST,
+                COALESCE(LENGTH(p.bio), 0),
+                (${SIGNAL_SQL}) DESC,
+                COALESCE(p.last_name, '')
+       LIMIT 120`, [FULL]);
+    res.json(r.rows.map(p => ({
+      id: p.id,
+      name: [p.title, p.known_as || `${p.first_name || ''} ${p.last_name || ''}`.trim(), p.postnominals]
+              .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(),
+      born_year: p.born_year, died_year: p.died_year,
+      bio_len: Number(p.bio_len), significant: !!p.significant,
+      note: p.significance_note || null,
+      wikipedia_url: p.wikipedia_url || null,
+      properties: Number(p.property_count),
+      first_seen: p.first_seen, last_seen: p.last_seen,
+      signals: signalsOf({ ...p, property_count: Number(p.property_count) })
+    })));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // Suggestions for the curator: a signal, but not yet chosen
 app.get('/api/significant/candidates', async (req, res) => {
   if (!db) return res.json([]);
