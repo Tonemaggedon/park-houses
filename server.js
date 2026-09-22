@@ -7004,9 +7004,21 @@ app.get('/api/trades', async (req, res) => {
           group: serverOccGroup(k) || null });
       }
     });
-    // Longest first: a trade somebody bothered to spell out is usually the more
-    // interesting one, and it reads better than alphabetical.
-    singleNames.sort((a, b) => b.occ.length - a.occ.length);
+    // Longest first within a year, because a trade somebody bothered to spell out
+    // is usually the better one - but then taken a year at a time in turn, or the
+    // whole panel fills with 1939, whose register describes a job in more words
+    // than a census ever did. The record is five rounds and should look like it.
+    const byYr = {};
+    singleNames.forEach(x => (byYr[x.yr] = byYr[x.yr] || []).push(x));
+    Object.values(byYr).forEach(list => list.sort((a, b) => b.occ.length - a.occ.length));
+    const years = Object.keys(byYr).sort();
+    const spread = [];
+    for (let i = 0; spread.length < singleNames.length; i++) {
+      let added = false;
+      years.forEach(y => { if (byYr[y][i]) { spread.push(byYr[y][i]); added = true; } });
+      if (!added) break;
+    }
+    singleNames.length = 0; singleNames.push(...spread);
 
     res.json({
       top,
