@@ -169,6 +169,256 @@
      "source": "1911 census household schedule - read from the image supplied by A. Hagues"
     }
    ]
+  },
+  {
+   "first_name": "William Hendy",
+   "last_name": "Thomas",
+   "sex": "M",
+   "born_year": 1876,
+   "match_born_year": true,
+   "born_place": "St Michael's Mount, Cornwall",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Head",
+     "age_at_census": 35,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Surgeon dentist",
+     "birth_place": "St Michael's Mount, Cornwall"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Thomas",
+   "sex": "F",
+   "born_year": 1845,
+   "match_born_year": true,
+   "born_place": "Cornwall",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Mother",
+     "age_at_census": 66,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "birth_place": "Cornwall"
+    }
+   ]
+  },
+  {
+   "first_name": "Grace",
+   "last_name": "Thomas",
+   "sex": "F",
+   "born_year": 1873,
+   "match_born_year": true,
+   "born_place": "St Michael's Mount, Cornwall",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Sister",
+     "age_at_census": 38,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "No occupation",
+     "birth_place": "St Michael's Mount, Cornwall"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Hendy",
+   "last_name": "Thomas",
+   "sex": "F",
+   "born_year": 1879,
+   "match_born_year": true,
+   "born_place": "St Michael's Mount, Cornwall",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Sister",
+     "age_at_census": 32,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "No occupation",
+     "birth_place": "St Michael's Mount, Cornwall"
+    }
+   ]
+  },
+  {
+   "first_name": "Julia",
+   "last_name": "Thomas",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "St Michael's Mount, Cornwall",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Sister",
+     "age_at_census": 24,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "No occupation",
+     "birth_place": "St Michael's Mount, Cornwall"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Stimson",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Middlesbrough, Yorkshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 248,
+     "relationship": "Servant",
+     "age_at_census": 24,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Middlesbrough, Yorkshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard Orme",
+   "last_name": "Halford",
+   "sex": "M",
+   "born_year": 1871,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 249,
+     "relationship": "Head",
+     "age_at_census": 40,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "House and estate agent",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel Maude",
+   "last_name": "Halford",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "London",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 249,
+     "relationship": "Wife",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "London"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "May",
+   "sex": "F",
+   "born_year": 1866,
+   "match_born_year": true,
+   "born_place": "Brighton, Sussex",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 249,
+     "relationship": "Servant",
+     "age_at_census": 45,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Brighton, Sussex"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Chapman",
+   "sex": "F",
+   "born_year": 1891,
+   "match_born_year": true,
+   "born_place": "Newark, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 249,
+     "relationship": "Servant",
+     "age_at_census": 20,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Newark, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1811,
+   "first_name": "John Henry",
+   "last_name": "Runge",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 250,
+     "relationship": "Head",
+     "age_at_census": 70,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Secretary in a limited liability company, lace",
+     "birth_place": "Germany"
+    }
+   ]
+  },
+  {
+   "id": 4063,
+   "first_name": "Kate",
+   "last_name": "Runge",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 250,
+     "relationship": "Wife",
+     "age_at_census": 60,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lily",
+   "last_name": "Swain",
+   "sex": "F",
+   "born_year": 1895,
+   "match_born_year": true,
+   "born_place": "East Leake, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 250,
+     "relationship": "Servant",
+     "age_at_census": 16,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "East Leake, Nottinghamshire"
+    }
+   ]
   }
  ]
 }

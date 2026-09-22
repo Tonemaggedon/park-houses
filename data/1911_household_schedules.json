@@ -456,6 +456,185 @@
     }
    ],
    "note": "Closes the 1911 half of the gap at 3 Park Terrace. Eight rooms, three people, and the householder's own signature at the foot."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "8",
+   "property_id": 248,
+   "rooms": 9,
+   "postal_address_on_cover": "8 Park Terrace, Nottingham",
+   "signed_by": "W. Hendy Thomas",
+   "people": [
+    {
+     "name": "William Hendy Thomas",
+     "relation": "Head",
+     "sex": "M",
+     "age": 35,
+     "marital": "Single",
+     "occupation": "Surgeon dentist",
+     "born": "St Michael's Mount, Cornwall"
+    },
+    {
+     "name": "Mary Thomas",
+     "relation": "Mother",
+     "sex": "F",
+     "age": 66,
+     "marital": "Widow",
+     "born": "Bury [?], Cornwall"
+    },
+    {
+     "name": "Grace Thomas",
+     "relation": "Sister",
+     "sex": "F",
+     "age": 38,
+     "marital": "Single",
+     "occupation": "No occupation",
+     "born": "St Michael's Mount, Cornwall"
+    },
+    {
+     "name": "Mary Hendy Thomas",
+     "relation": "Sister",
+     "sex": "F",
+     "age": 32,
+     "marital": "Single",
+     "occupation": "No occupation",
+     "born": "St Michael's Mount, Cornwall"
+    },
+    {
+     "name": "Julia Thomas",
+     "relation": "Sister",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "No occupation",
+     "born": "St Michael's Mount, Cornwall"
+    },
+    {
+     "name": "Annie Stimson",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Middlesbrough, Yorkshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 5,
+    "persons": 6
+   },
+   "note": "A household entirely new to the record, and entirely Cornish. **Four of the five Thomases were born at St Michael's Mount** - a tidal island of a few dozen souls - and their widowed mother a little inland. A dentist of 35 keeping house with his mother and three unmarried sisters, three hundred miles from where all of them were born.\n\n1901 held Herbert Lancashire, hosiery manufacturer, so the house changed hands entirely in the decade."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "9",
+   "property_id": 249,
+   "rooms": 6,
+   "postal_address_on_cover": "9 Park Terrace, Nottingham",
+   "signed_by": "Bernard Orme Halford",
+   "marriage": {
+    "person": "Ethel Maude Halford",
+    "years_married": "under one",
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Bernard Orme Halford",
+     "relation": "Head",
+     "sex": "M",
+     "age": 40,
+     "marital": "Married",
+     "occupation": "House and estate agent | Employer",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Ethel Maude Halford",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 28,
+     "marital": "Married",
+     "born": "London"
+    },
+    {
+     "name": "Annie May",
+     "relation": "Cook servant",
+     "sex": "F",
+     "age": 45,
+     "marital": "Single",
+     "occupation": "Cook, domestic",
+     "born": "Brighton, Sussex",
+     "note": "Entered as Single with \"Widow\" struck through - the householder changed his mind about her."
+    },
+    {
+     "name": "Mary Chapman",
+     "relation": "Housemaid",
+     "sex": "F",
+     "age": 20,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Newark, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 3,
+    "persons": 4
+   },
+   "note": "**9 Park Terrace is usually empty, and this is the only household the record will hold for it.** It was returned uninhabited in 1901, holds two people in 1891 and nobody at all in 1921. Here a newly married couple - the marriage under a year old and no children - with a cook and a housemaid."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "10",
+   "property_id": 250,
+   "rooms": null,
+   "postal_address_on_cover": "10 Park Terrace, Nottingham",
+   "signed_by": "J. H. Runge",
+   "marriage": {
+    "person": "Kate Runge",
+    "years_married": 40,
+    "children_born_alive": 1,
+    "children_still_living": 0,
+    "children_died": 1
+   },
+   "people": [
+    {
+     "name": "John Henry Runge",
+     "relation": "Head",
+     "sex": "M",
+     "age": 70,
+     "marital": "Married",
+     "occupation": "Secretary in a limited liability company, lace",
+     "born": "Germany",
+     "record_id": 1811,
+     "note": "**Born in Germany and naturalised in 1875**, which the schedule states outright. The record has him as a naturalised British subject from the 1891 return but not the year."
+    },
+    {
+     "name": "Kate Runge",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 60,
+     "marital": "Married",
+     "born": "Nottingham",
+     "record_id": 4063
+    },
+    {
+     "name": "Lily Swain",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 16,
+     "occupation": "Domestic servant",
+     "born": "East Leake, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**This is the house he moved to, and it closes the Park Valley question.** The record holds John Henry Runge at 17 Park Valley in 1891 and at 10 Park Terrace in 1921; the gap report could only say a Runge had gone from one and arrived at the other. He is here in 1911, so the move happened between 1901 and 1911 - and 17 Park Valley already held William Ranson, physician, by 1901.\n\n**And the 1911 questions say something no other return could.** Married forty years, **one child born alive, none still living, one died**. A marriage of forty years and a single child who did not survive - a fact the record could not have held before, because only the 1911 census asked."
   }
  ]
 }
