@@ -1315,6 +1315,224 @@
     "persons": 3
    },
    "note": "A widower of 70 alone with a cook and a housemaid in eight rooms. Nobody of this name is in the record. By 1921 the house is Charles Henry Vickers's, a lace manufacturer."
+  },
+  {
+   "street": "Park Valley",
+   "house": "5",
+   "property_id": 261,
+   "rooms": 10,
+   "postal_address_on_cover": "5 Park Valley, Nottingham",
+   "signed_by": "John Hammersley",
+   "people": [
+    {
+     "name": "John Hammersley",
+     "relation": "Head",
+     "sex": "M",
+     "age": 43,
+     "marital": "Single",
+     "occupation": "Timber merchant | Employer",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1865
+    },
+    {
+     "name": "Frederick Hammersley",
+     "relation": "Brother",
+     "sex": "M",
+     "age": 56,
+     "marital": "Single",
+     "occupation": "Timber merchant | Worker",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1866
+    },
+    {
+     "name": "Edward Hammersley",
+     "relation": "Brother",
+     "sex": "M",
+     "age": 37,
+     "marital": "Single",
+     "occupation": "Timber merchant | Worker",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1867
+    },
+    {
+     "name": "William James Reynolds",
+     "relation": "Butler",
+     "sex": "M",
+     "age": 39,
+     "marital": "Married",
+     "occupation": "Butler, domestic | Worker",
+     "born": "Holbeach, Lincolnshire"
+    },
+    {
+     "name": "Kate Reynolds",
+     "relation": "Housekeeper",
+     "sex": "F",
+     "age": 39,
+     "marital": "Married",
+     "occupation": "Housekeeper, domestic | Worker",
+     "born": "Stanton le Vale [?], Lincolnshire"
+    }
+   ],
+   "totals": {
+    "males": 4,
+    "females": 1,
+    "persons": 5
+   },
+   "note": "**Three unmarried brothers, all timber merchants, keeping house together** - the youngest the employer and the two elder his workers, which is the household's whole shape in one line. The record holds all three from the 1921 return and nothing earlier.\n\nTheir two servants are a married couple, a butler and a housekeeper, both from Lincolnshire and both 39. Four men and one woman in ten rooms."
+  },
+  {
+   "street": "Park Valley",
+   "house": "6",
+   "property_id": 262,
+   "rooms": 7,
+   "postal_address_on_cover": "6 Park Valley, Nottingham",
+   "signed_by": "Mary Enfield",
+   "people": [
+    {
+     "name": "Mary Enfield",
+     "relation": "Head",
+     "sex": "F",
+     "age": 69,
+     "marital": "Single",
+     "born": "Hampstead, London",
+     "record_id": 1871,
+     "note": "**She is in the record twice and my import made the second.** #1871 (born 1842) carries her 1921 row; #4853 (born 1832) was created by the 1901 gap round, because I read her age there as 69. She is 69 HERE, ten years later - so one of the two readings is wrong, and the 1911 one agrees with the record. The 1901 age was very likely 59."
+    },
+    {
+     "name": "Jane Chaffer",
+     "relation": "Companion",
+     "sex": "F",
+     "age": 68,
+     "marital": "Single",
+     "occupation": "Lady's companion (paid)",
+     "born": "Burnley, Lancashire",
+     "record_id": 1873,
+     "note": "**Entered as a VISITOR in 1901 and as a paid companion here.** Thirteen years in the same house, and the word for what she was changed rather than the arrangement."
+    },
+    {
+     "name": "Lois Sharpe",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 23,
+     "marital": "Single",
+     "occupation": "Housemaid, domestic",
+     "born": "Eastwood, Nottinghamshire"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 3,
+    "persons": 3
+   },
+   "note": "Three women, none related, in seven rooms - a spinster of 69, her paid companion of 68, and a housemaid of 23."
+  },
+  {
+   "street": "Park Valley",
+   "house": "8",
+   "property_id": 264,
+   "rooms": 11,
+   "postal_address_on_cover": "8 Park Valley, Nottingham",
+   "signed_by": "C. Shelbourne",
+   "marriage": {
+    "person": "Florence Shelbourne",
+    "years_married": 10,
+    "children_born_alive": 2,
+    "children_still_living": 2,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Cyril Shelbourne",
+     "relation": "Head",
+     "sex": "M",
+     "age": 36,
+     "marital": "Married",
+     "occupation": "Tutor (private) | Own account, at home",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1903
+    },
+    {
+     "name": "Florence Shelbourne",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 33,
+     "marital": "Married",
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1904
+    },
+    {
+     "name": "Cyril Arthur Shelbourne",
+     "relation": "Son",
+     "sex": "M",
+     "age": 7,
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1905
+    },
+    {
+     "name": "Geoffrey James Shelbourne",
+     "relation": "Son",
+     "sex": "M",
+     "age": 5,
+     "born": "Nottingham, Nottinghamshire",
+     "record_id": 1906
+    },
+    {
+     "name": "Nellie Smith",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 19,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Manchester"
+    }
+   ],
+   "totals": {
+    "males": 3,
+    "females": 2,
+    "persons": 5
+   },
+   "note": "The whole family is in the record from the 1921 return and nothing earlier; this gives them ten years sooner, with both boys at 7 and 5. He is a private tutor working **at home**, which the 1921 return calls tutor and examination coach."
+  },
+  {
+   "street": "Park Valley",
+   "house": "10",
+   "property_id": 266,
+   "rooms": 7,
+   "postal_address_on_cover": "10 Park Valley, Nottingham",
+   "signed_by": "Gertrude Wilson",
+   "marriage": {
+    "person": "Gertrude Wilson",
+    "years_married": 35,
+    "children_born_alive": 1,
+    "children_still_living": 1,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Gertrude Wilson",
+     "relation": "Head",
+     "sex": "F",
+     "age": 56,
+     "marital": "Widow",
+     "occupation": "Lady, independent means",
+     "born": "Nottingham, Nottinghamshire"
+    },
+    {
+     "name": "Daisy Annie Woolley",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 26,
+     "marital": "Single",
+     "occupation": "General domestic servant",
+     "born": "Lenton, Nottingham"
+    }
+   ],
+   "totals": {
+    "males": 0,
+    "females": 2,
+    "persons": 2
+   },
+   "note": "A widow and her one servant. Neither is in the record: 1901 held Edmund Dalton, a bank clerk from Lincoln, with his wife, a visitor and a cook.\n\nMarried thirty-five years and widowed by 56, with one child born and living - who is not here."
   }
  ]
 }

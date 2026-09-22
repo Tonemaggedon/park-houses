@@ -1,5 +1,5 @@
 {
- "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.",
+ "note": "The 1911 households on Park Valley, from the schedules A. Hagues supplied.\n\n**Anyone the record already holds is bound by NUMBER and carries their name as well**, because the importer skips a record without one.\n\n**Arundel Preston's sex is not settled and is deliberately not written here.** The schedule puts the age in the females column and says widow; the record has a man of the same name heading the same house ten years earlier. The row is bound to #4027 by number, which is safe either way, and nothing about sex is sent.\n\n**Mary Enfield is bound to #1871, not #4853.** She is in the record twice - #1871 born 1842 from 1921, and #4853 born 1832, created by the 1901 gap round because I read her age there as 69. She is 69 on THIS schedule, ten years later, which agrees with #1871 and makes the 1901 reading almost certainly 59. The pair wants merging on the site.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -299,6 +299,273 @@
      "marital_status": "Single",
      "occupation_at_census": "Housemaid, domestic",
      "birth_place": "Woodborough, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1865,
+   "first_name": "John",
+   "last_name": "Hammersley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 261,
+     "relationship": "Head",
+     "age_at_census": 43,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1866,
+   "first_name": "Fredrick",
+   "last_name": "Hammersley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 261,
+     "relationship": "Brother",
+     "age_at_census": 56,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1867,
+   "first_name": "Edward",
+   "last_name": "Hammersley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 261,
+     "relationship": "Brother",
+     "age_at_census": 37,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Timber merchant",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "William James",
+   "last_name": "Reynolds",
+   "sex": "M",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Holbeach, Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 261,
+     "relationship": "Butler",
+     "age_at_census": 39,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Butler, domestic",
+     "birth_place": "Holbeach, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Reynolds",
+   "sex": "F",
+   "born_year": 1872,
+   "match_born_year": true,
+   "born_place": "Lincolnshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 261,
+     "relationship": "Housekeeper",
+     "age_at_census": 39,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Housekeeper, domestic",
+     "birth_place": "Lincolnshire"
+    }
+   ]
+  },
+  {
+   "id": 1871,
+   "first_name": "Mary",
+   "last_name": "Enfield",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 262,
+     "relationship": "Head",
+     "age_at_census": 69,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "birth_place": "Hampstead, London"
+    }
+   ]
+  },
+  {
+   "id": 1873,
+   "first_name": "Jane",
+   "last_name": "Chaffer",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 262,
+     "relationship": "Companion",
+     "age_at_census": 68,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Lady's companion (paid)",
+     "birth_place": "Burnley, Lancashire"
+    }
+   ]
+  },
+  {
+   "first_name": "Lois",
+   "last_name": "Sharpe",
+   "sex": "F",
+   "born_year": 1888,
+   "match_born_year": true,
+   "born_place": "Eastwood, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 262,
+     "relationship": "Servant",
+     "age_at_census": 23,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Eastwood, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1903,
+   "first_name": "Cyril",
+   "last_name": "Shelbourne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 264,
+     "relationship": "Head",
+     "age_at_census": 36,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Tutor (private)",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1904,
+   "first_name": "Florence",
+   "last_name": "Shelbourne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 264,
+     "relationship": "Wife",
+     "age_at_census": 33,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1905,
+   "first_name": "Cyril Arthur",
+   "last_name": "Shelbourne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 264,
+     "relationship": "Son",
+     "age_at_census": 7,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1906,
+   "first_name": "Geoffrey James",
+   "last_name": "Shelbourne",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 264,
+     "relationship": "Son",
+     "age_at_census": 5,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Nellie",
+   "last_name": "Smith",
+   "sex": "F",
+   "born_year": 1892,
+   "match_born_year": true,
+   "born_place": "Manchester",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 264,
+     "relationship": "Servant",
+     "age_at_census": 19,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Manchester"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Wilson",
+   "sex": "F",
+   "born_year": 1855,
+   "match_born_year": true,
+   "born_place": "Nottingham, Nottinghamshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 266,
+     "relationship": "Head",
+     "age_at_census": 56,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Widow",
+     "occupation_at_census": "Lady, independent means",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Daisy Annie",
+   "last_name": "Woolley",
+   "sex": "F",
+   "born_year": 1885,
+   "match_born_year": true,
+   "born_place": "Lenton, Nottingham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 266,
+     "relationship": "Servant",
+     "age_at_census": 26,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Lenton, Nottingham"
     }
    ]
   }
