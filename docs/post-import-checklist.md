@@ -148,6 +148,29 @@ That is what happened on the 1901 gap round. The record held **Clark**, **Lindey
 fuzzed, census short forms expanded - or the import manufactures the very duplicates the next
 stage then has to find.
 
+**5.0 - check the column types before you press Import, not after.** `age_at_census` is an
+**integer**. A 1911 schedule writes an infant's age as *10 months*, *9 months*, *1 month*, and a
+file that carries those words **fails the whole import** with `invalid input syntax for type
+integer`. Nothing goes in - not the bad row, not the good ones.
+
+Put **0** in `age_at_census` for anyone under a year, and keep the real age in the `source`
+sentence, where it is not lost. The same applies to `census_year`, `property_id` and `born_year`.
+
+```bash
+python3 - <<'EOF'
+import json, glob
+for f in glob.glob('data/people_*.json'):
+    d = json.load(open(f)); ppl = d.get('people', d if isinstance(d, list) else [])
+    for p in ppl:
+        if not isinstance(p, dict): continue
+        for ce in p.get('census', p.get('census_entries', [])):
+            for k in ('age_at_census', 'census_year', 'property_id'):
+                v = ce.get(k)
+                if v is not None and not isinstance(v, int):
+                    print(f, p.get('first_name'), p.get('last_name'), k, repr(v))
+EOF
+```
+
 **5.5b - the two faults that made twenty duplicates on the 1911 round.** Both are properties of the
 *file*, not of the record, so both are preventable before you press Import.
 

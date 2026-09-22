@@ -1251,8 +1251,8 @@
     {
      "census_year": 1911,
      "relationship": "Daughter",
-     "age_at_census": "10 months",
-     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "age_at_census": 0,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues The schedule gives the age as 10 months.",
      "property_id": 219,
      "birth_place": "Nottingham"
     }
@@ -1994,8 +1994,8 @@
      "census_year": 1911,
      "unresolved_address": "1 Castle Grove (not in the property list) - Borden household",
      "relationship": "Daughter",
-     "age_at_census": "1 month",
-     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "age_at_census": 0,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues The schedule gives the age as 1 month.",
      "birth_place": "Nottingham"
     }
    ]
@@ -2842,8 +2842,8 @@
     {
      "census_year": 1911,
      "relationship": "Son",
-     "age_at_census": "9 months",
-     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "age_at_census": 0,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues The schedule gives the age as 9 months.",
      "marital_status": "Single",
      "birth_place": "Risley, Derbyshire",
      "property_id": 152
