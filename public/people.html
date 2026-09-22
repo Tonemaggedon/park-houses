@@ -1256,19 +1256,78 @@ async function savePerson(personId) {
   } catch(e) { status.textContent = '✗ ' + e.message; status.style.color='#c04040'; }
 }
 
-async function showAddRelationship(personId) {
-  const name = prompt('Person name to link to:');
-  if (!name) return;
-  // Search for the person
-  const matches = allPeople.filter(p => (p.first_name+' '+p.last_name).toLowerCase().includes(name.toLowerCase()));
-  if (!matches.length) { alert('Person not found — try their exact name'); return; }
-  let chosen = matches[0];
-  if (matches.length > 1) {
-    const choice = prompt('Multiple matches:\n' + matches.map((m,i)=>`${i+1}. ${m.first_name} ${m.last_name} (${m.born_year||'?'})`).join('\n') + '\n\nEnter number:');
-    chosen = matches[parseInt(choice)-1] || matches[0];
-  }
-  const relType = prompt(`Relationship type for ${chosen.first_name} ${chosen.last_name}:\n(e.g. spouse_of, parent_of, child_of, sibling_of, cousin_of)`, 'spouse_of');
-  if (!relType) return;
+// The relationship type used to be typed into a prompt box, which is how the
+// record came to hold a link typed "child)of" - a bracket where an underscore
+// belonged, invisible everywhere because it grouped with nothing. It is a
+// picker now, and the server refuses anything outside the same list.
+const REL_TYPES = [
+  ['spouse_of',      'Spouse of'],
+  ['parent_of',      'Parent of'],
+  ['child_of',       'Child of'],
+  ['sibling_of',     'Sibling of'],
+  ['grandparent_of', 'Grandparent of'],
+  ['grandchild_of',  'Grandchild of'],
+  ['aunt_of',        'Aunt of'],
+  ['uncle_of',       'Uncle of'],
+  ['niece_of',       'Niece of'],
+  ['nephew_of',      'Nephew of'],
+  ['cousin_of',      'Cousin of'],
+  ['in_law_of',      'In-law of'],
+  ['employer_of',    'Employer of'],
+  ['employee_of',    'Employee of'],
+];
+
+let _relCurrentPersonId = null, _relChosen = null;
+
+function showAddRelationship(personId) {
+  _relCurrentPersonId = personId; _relChosen = null;
+  const sel = document.getElementById('relType');
+  sel.innerHTML = REL_TYPES.map(([v, label]) => `<option value="${v}">${label}</option>`).join('');
+  document.getElementById('relSearch').value = '';
+  document.getElementById('relResults').innerHTML = '';
+  document.getElementById('relChosen').innerHTML = '';
+  document.getElementById('relSave').disabled = true;
+  document.getElementById('relOverlay').style.display = 'flex';
+  document.getElementById('relSearch').focus();
+}
+
+function closeRelModal() { document.getElementById('relOverlay').style.display = 'none'; }
+
+function relPeopleSearch() {
+  const q = document.getElementById('relSearch').value.toLowerCase().trim();
+  const results = document.getElementById('relResults');
+  if (!q) { results.innerHTML = ''; return; }
+  const matches = allPeople.filter(p => p.id !== _relCurrentPersonId &&
+    (p.first_name + ' ' + p.last_name + ' ' + (p.known_as || '')).toLowerCase().includes(q)
+  ).slice(0, 10);
+  if (!matches.length) { results.innerHTML = '<div style="color:#8a7a5a;font-size:0.82rem;padding:6px 0">No matches</div>'; return; }
+  results.innerHTML = matches.map(m => {
+    const years = [m.born_year, m.died_year].filter(Boolean).join('–');
+    return `<div onclick="selectRelTarget(${m.id})" style="padding:7px 10px;border-radius:5px;cursor:pointer;border:1px solid #e8d8b0;margin-bottom:4px;background:#f5f0e8" onmouseover="this.style.background='#ede8d8'" onmouseout="this.style.background='#f5f0e8'">
+      <strong style="font-size:0.9rem">${esc(m.first_name)} ${esc(m.last_name)}</strong>${m.known_as ? ` <em style="font-size:0.78rem;color:#8a7a5a">(${esc(m.known_as)})</em>` : ''}
+      ${years ? `<span style="font-size:0.78rem;color:#8a7a5a;margin-left:8px">${years}</span>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function selectRelTarget(id) {
+  _relChosen = allPeople.find(p => p.id === id) || null;
+  if (!_relChosen) return;
+  const years = [_relChosen.born_year, _relChosen.died_year].filter(Boolean).join('–');
+  document.getElementById('relResults').innerHTML = '';
+  document.getElementById('relSearch').value = '';
+  document.getElementById('relChosen').innerHTML =
+    `<div style="padding:8px 11px;border:1px solid #8ab87a;background:#eef5ea;border-radius:5px;font-size:0.88rem">
+       <strong>${esc(_relChosen.first_name)} ${esc(_relChosen.last_name)}</strong>${years ? ` <span style="color:#6a5a3a">${years}</span>` : ''}
+     </div>`;
+  document.getElementById('relSave').disabled = false;
+}
+
+async function saveRelationship() {
+  const personId = _relCurrentPersonId, chosen = _relChosen;
+  if (!personId || !chosen) return;
+  const relType = document.getElementById('relType').value;
+  closeRelModal();
   const res = await fetch(`/api/person/${personId}/relationship`, {
     method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({ other_person_id: chosen.id, relationship_type: relType })
@@ -1799,6 +1858,24 @@ async function submitOccupation(personId) {
 </script>
 
 <!-- Merge People Modal -->
+<div id="relOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:700;align-items:center;justify-content:center">
+  <div style="background:#faf8f2;border-radius:10px;padding:28px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="closeRelModal()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#8a7a5a">✕</button>
+    <h2 style="font-size:1.1rem;color:#1a3a2a;font-weight:600;margin-bottom:4px">Add a relationship</h2>
+    <p style="font-size:0.8rem;color:#8a7a5a;margin-bottom:16px">The person whose profile is open is the <strong>subject</strong>. Choose who they are related to, then how.</p>
+    <label style="font-size:0.74rem;letter-spacing:.08em;text-transform:uppercase;color:#8a7a5a">Related to</label>
+    <input id="relSearch" type="search" oninput="relPeopleSearch()" placeholder="Search by name…" style="width:100%;padding:8px 12px;border:1px solid #d0c090;border-radius:5px;font-size:0.88rem;font-family:Georgia,serif;margin:4px 0 8px">
+    <div id="relResults" style="margin-bottom:8px"></div>
+    <div id="relChosen" style="margin-bottom:16px"></div>
+    <label style="font-size:0.74rem;letter-spacing:.08em;text-transform:uppercase;color:#8a7a5a">This person is the…</label>
+    <select id="relType" style="width:100%;padding:8px 12px;border:1px solid #d0c090;border-radius:5px;font-size:0.88rem;font-family:Georgia,serif;margin:4px 0 18px;background:#fff"></select>
+    <div style="display:flex;gap:9px;justify-content:flex-end">
+      <button onclick="closeRelModal()" style="background:#f0ead8;border:1px solid #c8b87a;border-radius:5px;padding:8px 18px;cursor:pointer;font-size:0.85rem;color:#4a3a1a">Cancel</button>
+      <button id="relSave" onclick="saveRelationship()" disabled style="background:#2f4d27;border:1px solid #2f4d27;border-radius:5px;padding:8px 18px;cursor:pointer;font-size:0.85rem;color:#f2ecd8">Add relationship</button>
+    </div>
+  </div>
+</div>
+
 <div id="mergeOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:700;align-items:center;justify-content:center">
   <div style="background:#faf8f2;border-radius:10px;padding:28px;width:600px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative">
     <button onclick="closeMergeModal()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#8a7a5a">✕</button>

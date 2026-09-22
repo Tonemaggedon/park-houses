@@ -1825,8 +1825,13 @@ app.post('/api/admin/import-people', requireAdmin, async (req, res) => {
           `INSERT INTO people_relationships (person_a_id, person_b_id, relationship, notes)
                 VALUES ($1,$2,$3,$4) ON CONFLICT DO NOTHING`, [a, b, relType, rel.notes || null]);
         if (rel.reciprocal !== false) {
+          // Aunt and uncle are deliberately absent: their opposite is niece or
+          // nephew depending on the other person's sex, which a map cannot know,
+          // and the People page reads a link from both ends anyway.
           const back = { spouse_of:'spouse_of', sibling_of:'sibling_of', cousin_of:'cousin_of',
                          parent_of:'child_of', child_of:'parent_of',
+                         grandparent_of:'grandchild_of', grandchild_of:'grandparent_of',
+                         in_law_of:'in_law_of',
                          employer_of:'employee_of', employee_of:'employer_of' }[relType];
           if (back) {
             await db.query(
@@ -6777,11 +6782,29 @@ async function inferFamilyRelationships(db, personId, otherId, relType) {
   }
 }
 
+// Every relationship the record recognises. Anything outside this list groups
+// with nothing, appears on no family tree and is reported by nothing - which is
+// how a link typed "child)of" sat in the table unnoticed. The picker on the
+// People page offers exactly these, and this refuses anything else, so a typo
+// cannot reach the table by either route.
+const REL_TYPES = new Set([
+  'spouse_of', 'parent_of', 'child_of', 'sibling_of',
+  'grandparent_of', 'grandchild_of',
+  'aunt_of', 'uncle_of', 'niece_of', 'nephew_of',
+  'cousin_of', 'in_law_of',
+  'employer_of', 'employee_of',
+]);
+
 app.post('/api/person/:id/relationship', requireContributor, async (req, res) => {
   // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'No DB' });
   const { other_person_id, relationship_type } = req.body;
   if (!other_person_id || !relationship_type) return res.status(400).json({ error: 'other_person_id and relationship_type required' });
+  if (!REL_TYPES.has(relationship_type)) {
+    return res.status(400).json({
+      error: `"${relationship_type}" is not a relationship this record keeps. One of: `
+             + [...REL_TYPES].join(', ') });
+  }
   try {
     const r = await db.query(
       `INSERT INTO people_relationships (person_a_id, person_b_id, relationship) VALUES ($1,$2,$3)
