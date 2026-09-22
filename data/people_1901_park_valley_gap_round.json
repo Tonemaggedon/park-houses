@@ -1,5 +1,5 @@
 {
- "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.\n\n**The people bound by number in this file carry their name as well, and must.** The importer skips any record without both names before it ever looks at the number (`if (!person.first_name || !person.last_name) continue`). A first version of this file bound seventy-three people by number alone and every one was passed over in silence, so the households they head went in without their heads. The names here are the record's own, read back by id, so no variant spelling is introduced.",
  "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
  "people": [
   {
@@ -33,7 +33,9 @@
      "census_household_num": 55,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 55"
     }
-   ]
+   ],
+   "first_name": "Martha",
+   "last_name": "Langham"
   },
   {
    "first_name": "Thomas",
@@ -123,7 +125,9 @@
      "census_household_num": 56,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 56"
     }
-   ]
+   ],
+   "first_name": "Harriett",
+   "last_name": "Hackett"
   },
   {
    "first_name": "Eliz.",
@@ -566,7 +570,9 @@
      "census_household_num": 62,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 62"
     }
-   ]
+   ],
+   "first_name": "Sarah",
+   "last_name": "Dawson"
   },
   {
    "first_name": "Arthur",
@@ -657,7 +663,9 @@
      "census_household_num": 63,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 63"
     }
-   ]
+   ],
+   "first_name": "Charles",
+   "last_name": "Cullen"
   },
   {
    "first_name": "Annie",
@@ -729,7 +737,9 @@
      "census_household_num": 64,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 64"
     }
-   ]
+   ],
+   "first_name": "Alfred",
+   "last_name": "Wilson"
   },
   {
    "id": 4047,
@@ -743,7 +753,9 @@
      "census_household_num": 64,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 64"
     }
-   ]
+   ],
+   "first_name": "Alice M",
+   "last_name": "Lynam"
   },
   {
    "first_name": "Mary",
@@ -796,7 +808,9 @@
      "census_household_num": 65,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 65"
     }
-   ]
+   ],
+   "first_name": "Frederick",
+   "last_name": "Pearson"
   },
   {
    "id": 3853,
@@ -811,7 +825,9 @@
      "census_household_num": 65,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 65"
     }
-   ]
+   ],
+   "first_name": "Rose",
+   "last_name": "Morris"
   },
   {
    "first_name": "Annie",
@@ -845,7 +861,9 @@
      "census_household_num": 66,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 66"
     }
-   ]
+   ],
+   "first_name": "Walter",
+   "last_name": "Wadsworth"
   },
   {
    "id": 2042,
@@ -859,7 +877,9 @@
      "census_household_num": 66,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 66"
     }
-   ]
+   ],
+   "first_name": "Elizabeth Christine",
+   "last_name": "Wadsworth"
   },
   {
    "first_name": "John",
@@ -892,7 +912,9 @@
      "census_household_num": 66,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 66"
     }
-   ]
+   ],
+   "first_name": "Hope",
+   "last_name": "Wadsworth"
   },
   {
    "first_name": "Sarah",
@@ -945,7 +967,9 @@
      "census_household_num": 67,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 67"
     }
-   ]
+   ],
+   "first_name": "Arundel",
+   "last_name": "Preston"
   },
   {
    "id": 4030,
@@ -960,7 +984,9 @@
      "census_household_num": 67,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 67"
     }
-   ]
+   ],
+   "first_name": "Bracher",
+   "last_name": "Preston"
   },
   {
    "first_name": "Ada",
@@ -1218,7 +1244,9 @@
      "census_household_num": 70,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 70"
     }
-   ]
+   ],
+   "first_name": "Jane",
+   "last_name": "Chaffer"
   },
   {
    "first_name": "Jane",

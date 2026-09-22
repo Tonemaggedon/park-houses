@@ -1,5 +1,5 @@
 {
- "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.",
+ "note": "Built from the checked transcription in data/1901_park_valley_terrace_newcastle_drive.json and data/1911_household_schedules.json.\n\n**Anybody the record already holds a row for in this year is LEFT OUT**, because the importer would make a second row rather than mend the first. Those are on the 'Already in the record' sheet of the checking book and want doing on the site.\n\n**Anybody the record already holds under another year is bound by NUMBER**, so no second person is created whatever the spelling.\n\n**A household is filed to a house only where the page gives a number the record holds.** Everything else is unfiled on purpose - the record must not be told a house it was not told.\n\n**The people bound by number in this file carry their name as well, and must.** The importer skips any record without both names before it ever looks at the number (`if (!person.first_name || !person.last_name) continue`). A first version of this file bound seventy-three people by number alone and every one was passed over in silence, so the households they head went in without their heads. The names here are the record's own, read back by id, so no variant spelling is introduced.",
  "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues",
  "people": [
   {
@@ -535,7 +535,9 @@
      "census_household_num": 120,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 120"
     }
-   ]
+   ],
+   "first_name": "Mabel",
+   "last_name": "Berrey"
   },
   {
    "id": 1307,
@@ -550,7 +552,9 @@
      "census_household_num": 120,
      "source": "1901 census, Brewhouse Yard and Standard Hill, Castle ward - read from the enumerator's pages supplied by A. Hagues, schedule 120"
     }
-   ]
+   ],
+   "first_name": "Lettia",
+   "last_name": "Dexter"
   }
  ]
 }

@@ -54,6 +54,22 @@ moment to catch a problem there will ever be.
 
 Then `Import`. Note what it says it added — you will want that figure again at stage 9.
 
+**0.1 — count the preview against the files.** The importer **skips, in silence, any record
+without both a first name and a last name**, even when that record carries a person number:
+
+```js
+if (!person.first_name || !person.last_name) continue;   // server.js
+```
+
+A person bound by number alone is therefore passed over without a word, and the household they
+head goes in without its head. It happened on the 1901 gap round: seventy-three people bound by
+number, every one skipped, and the only sign of it was that the files held 384 people and the
+preview reported 311.
+
+So: **add up what the files hold, and make the preview account for all of it.** Added, already
+present and skipped should sum to the number in the files. If they do not, some record is being
+passed over.
+
 ---
 
 ## 1. Damage the spreadsheet did on the way in
