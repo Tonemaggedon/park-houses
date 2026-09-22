@@ -947,6 +947,100 @@
      "birth_place": "Old Radford, Nottingham"
     }
    ]
+  },
+  {
+   "id": 3504,
+   "first_name": "Alfred",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 406,
+     "relationship": "Head",
+     "age_at_census": 66,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Retired cotton yarn manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "id": 1817,
+   "first_name": "Alice Margaret",
+   "last_name": "Gill",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 406,
+     "relationship": "Niece",
+     "age_at_census": 38,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Private means",
+     "birth_place": "Nottingham, Nottinghamshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Marlow",
+   "sex": "F",
+   "born_year": 1880,
+   "match_born_year": true,
+   "born_place": "Blaston, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 406,
+     "relationship": "Servant",
+     "age_at_census": 31,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Cook, domestic",
+     "birth_place": "Blaston, Leicestershire"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Perkins",
+   "sex": "F",
+   "born_year": 1886,
+   "match_born_year": true,
+   "born_place": "Ellistown, Leicestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 406,
+     "relationship": "Servant",
+     "age_at_census": 25,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Parlourmaid, domestic",
+     "birth_place": "Ellistown, Leicestershire"
+    }
+   ]
+  },
+  {
+   "first_name": "Millie",
+   "last_name": "Hanks",
+   "sex": "F",
+   "born_year": 1883,
+   "match_born_year": true,
+   "born_place": "Compton Abdale, Gloucestershire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 406,
+     "relationship": "Servant",
+     "age_at_census": 28,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "Housemaid, domestic",
+     "birth_place": "Compton Abdale, Gloucestershire"
+    }
+   ]
   }
  ]
 }
