@@ -249,6 +249,20 @@
    "note": "It answered Gresham, Oregon."
   },
   {
+   "place_text": "Hammersmith, Middlesex",
+   "lat": 51.4927,
+   "lng": -0.224,
+   "label": "Hammersmith, London",
+   "note": "Hammersmith was in Middlesex until 1889. A. Hagues gives it as London."
+  },
+  {
+   "place_text": "Handsworth, near Sheffield",
+   "lat": 53.372,
+   "lng": -1.386,
+   "label": "Handsworth, Sheffield",
+   "note": "Two Handsworths: this is the Yorkshire one east of Sheffield, not the Birmingham one. A. Hagues confirms Sheffield."
+  },
+  {
    "place_text": "Heanor, Derbyshire",
    "lat": 53.0138,
    "lng": -1.354,
@@ -366,6 +380,13 @@
    "lng": -0.1641,
    "label": "Mitcham, Merton, London",
    "note": "Mitcham was in Surrey until 1965 and is in Greater London now, so the historic county no longer contains the town. Asked for \"Mitcham, Surrey\" the geocoder answered Mitcham ROAD in Bagshot, thirty-five kilometres west - a road in the modern county beating a town that has left it."
+  },
+  {
+   "place_text": "Montrose, Forfarshire",
+   "lat": 56.708,
+   "lng": -2.467,
+   "label": "Montrose, Angus",
+   "note": "Forfarshire is what the schedule wrote; the county has been Angus since 1928. A. Hagues gives it as Angus."
   },
   {
    "place_text": "Much Wenlock, Shropshire",
