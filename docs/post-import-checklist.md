@@ -158,8 +158,15 @@ record, and a second woman is made. Eight came this way in one run.
 `python3 tools_expand_import_files.py` reports every short form still sitting in a file, and
 `--write` expands the ones it is safe to expand. **It deliberately holds back any name where the
 record itself holds only the short form** - expanding the file there would cause the duplicate
-rather than prevent it. Those want the record expanded first, from **Research -> Forename sex
-review -> Expand short forms**, and the checker run again afterwards.
+rather than prevent it. Those want the record expanded first, from **Admin tools -> Clean up after
+imports -> Write out the census short forms -> `Preview` -> `Write them out`**, and the checker run
+again afterwards.
+
+**The tool immediately below it does half of 5.5b's cleaning up for you.** *Join up people entered
+under a census short form* -> `Preview` -> `Run` pairs *Elizth Wareham* with *Elizabeth Wareham*
+where both are in the record, keeps the fuller of the two, and respects anything already dismissed
+on the duplicates page. **Run it after every import**, because that is exactly the duplicate the
+first fault makes.
 
 **The file carries `match_born_year` and the year is a year out.** `match_born_year: true` requires
 the birth year to agree **exactly**, and a birth year worked back from a census age moves by a year
