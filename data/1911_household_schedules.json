@@ -317,6 +317,47 @@
    },
    "signed_by": "Henry Gee",
    "note": "Closes the 1911 half of the gap at 5 Newcastle Drive. The record holds **Thomas Hill**, hosiery manufacturer, there in 1891 and again in 1901 at 78 and widowed - and **Henry Gee** there in 1921. This puts Gee in the house by 1911, so the handover happened in that decade, and one hosiery manufacturer followed another into it.\n\nClara married about 1871 and bore two children, both living in 1911. Neither is in the house.\n\nThe cover gives the district numbers for the whole round: registration district 430, sub-district 1, **enumeration district 11** - which is the district to ask for if the rest of this 1911 round is wanted."
+  },
+  {
+   "street": "Park Terrace",
+   "house": "1",
+   "property_id": 241,
+   "schedule": null,
+   "people": [
+    {
+     "name": "Mary Elizabeth Patterson",
+     "relation": "Head",
+     "sex": "F",
+     "age": 82,
+     "marital": "Single",
+     "occupation": "Private means",
+     "born": "Derby, Derbyshire",
+     "record_id": 3584,
+     "note": "The record holds her as **Mary ELY Patterson**. This return writes it out as Elizabeth, and A. Hagues confirms it. Ely is a misreading of an abbreviated Elizth."
+    },
+    {
+     "name": "Emma Jarvis",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 51,
+     "marital": "Single",
+     "occupation": "Servant, domestic",
+     "born": "Bourne, Lincolnshire",
+     "record_id": 3585,
+     "note": "The index reads the birthplace as \"Bowns\"; the record has Bourne from both 1891 and 1901, so Bourne it is."
+    },
+    {
+     "name": "Dora Muffel",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 24,
+     "marital": "Single",
+     "occupation": "Servant, domestic",
+     "born": "Manea [?], Cambridgeshire",
+     "note": "The index reads \"Manla Cambs\". Manea is a Cambridgeshire village and the likeliest reading, but it is a guess at one letter and is marked as one."
+    }
+   ],
+   "note": "Closes the 1911 half of the gap at 1 Park Terrace. The record holds Mary Patterson there in 1891 and 1901 and a different family, the Cockburns, by 1921 - so this is the last census of her tenancy, at 82 and still keeping two servants.\n\n**Emma Jarvis has been with her at least twenty years.** She is a servant in this house in 1891 at 31, in 1901 at 46 and here in 1911 at 51 - one woman across three returns, with the ages drifting as census ages do.\n\n**And she is in the record twice because of that drift.** #3585 carries her 1891 row at born 1860; #4757 was created by the 1901 gap-round import at born 1855, because the page gave her age as 46. Five years apart, so neither the duplicates page nor variant_duplicates.py can see them - both test born years within two. This return gives 51, which agrees with #3585, so #3585 is the one to keep."
   }
  ]
 }

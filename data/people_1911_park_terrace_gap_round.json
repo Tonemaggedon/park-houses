@@ -1,0 +1,60 @@
+{
+ "note": "The 1911 household at 1 Park Terrace.\n\n**Two of the three are bound by number** - Mary Patterson (#3584) and Emma Jarvis (#3585) - so no second person is created whatever the spelling, and each carries their name as well because the importer skips a record without one.\n\n**The rename is not here and cannot be.** The record holds Mary ELY Patterson and the return says Elizabeth; an import never renames anybody, so that is a job on her own page.\n\n**Emma Jarvis is bound to #3585, not #4757.** She is in the record twice - see the transcription file - and #3585 is the one this return's age agrees with.",
+ "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues",
+ "people": [
+  {
+   "id": 3584,
+   "first_name": "Mary Ely",
+   "last_name": "Patterson",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 241,
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 82,
+     "occupation_at_census": "Private means",
+     "birth_place": "Derby, Derbyshire",
+     "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "id": 3585,
+   "first_name": "Emma",
+   "last_name": "Jarvis",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 241,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 51,
+     "occupation_at_census": "Servant, domestic",
+     "birth_place": "Bourne, Lincolnshire",
+     "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Dora",
+   "last_name": "Muffel",
+   "sex": "F",
+   "born_year": 1887,
+   "match_born_year": true,
+   "born_place": "Manea, Cambridgeshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 241,
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Servant, domestic",
+     "birth_place": "Manea, Cambridgeshire",
+     "source": "1911 census household schedule, 1 Park Terrace - read from the index supplied by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
