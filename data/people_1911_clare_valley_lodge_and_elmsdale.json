@@ -138,13 +138,13 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Elmsdale, Clare Valley (not in the property list)",
      "relationship": "Head",
      "age_at_census": 65,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
      "occupation_at_census": "Private means",
-     "birth_place": "Andover, Hampshire"
+     "birth_place": "Andover, Hampshire",
+     "property_id": 63
     }
    ]
   },
@@ -158,13 +158,13 @@
    "census": [
     {
      "census_year": 1911,
-     "unresolved_address": "Elmsdale, Clare Valley (not in the property list)",
      "relationship": "Servant",
      "age_at_census": 20,
      "source": "1911 census household schedule - read from the image supplied by A. Hagues",
      "marital_status": "Single",
      "occupation_at_census": "General servant, domestic",
-     "birth_place": "Alderwasley [?], Derbyshire"
+     "birth_place": "Alderwasley [?], Derbyshire",
+     "property_id": 63
     }
    ]
   }
