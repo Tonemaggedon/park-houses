@@ -1,5 +1,5 @@
 {
- "note": "1911 household schedules from the Newcastle Drive gap round and the streets it ran into, read from the images supplied by A. Hagues. Newcastle Drive 11, 13, 15, 17, 21, and 23 to 37 which the covers give as 6 to 16 Pelham Terrace, converted by the rule the record already holds: Newcastle Drive number = 39 minus the Pelham Terrace number, for the even side. Also Park Lodge on Park Row, 1 Huntingdon Drive, an unnumbered Huntingdon Drive household and 5 Lenton Road. Everyone the record already holds is bound by number, several of them under a spelling their own hand disagrees with.",
+ "note": "1911 household schedules from the Newcastle Drive gap round and the streets it ran into, read from the images supplied by A. Hagues. Newcastle Drive 3, 11, 13, 15, 17, 21, and 23 to 37 which the covers give as 6 to 16 Pelham Terrace, converted by the rule the record already holds: Newcastle Drive number = 39 minus the Pelham Terrace number, for the even side. Also Park Lodge on Park Row, 1 Huntingdon Drive, an unnumbered Huntingdon Drive household and 5 Lenton Road. Everyone the record already holds is bound by number, several of them under a spelling their own hand disagrees with.",
  "source": "1911 census household schedule - read from the image supplied by A. Hagues",
  "people": [
   {
@@ -1757,6 +1757,65 @@
      "marital_status": "Single",
      "occupation_at_census": "Cook-housekeeper, domestic",
      "birth_place": "Bassingham, Lincolnshire"
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Wesson",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1840,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 209,
+     "relationship": "Head",
+     "age_at_census": 71,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "occupation_at_census": "Manufacturer of aprons and pinafores | own account | working at home",
+     "birth_place": "Nottingham"
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte",
+   "last_name": "Wesson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1841,
+   "born_place": "Nottingham",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 209,
+     "relationship": "Wife",
+     "age_at_census": 70,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Married",
+     "birth_place": "Nottingham"
+    }
+   ]
+  },
+  {
+   "first_name": "Jinnie",
+   "last_name": "Hutchines",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1873,
+   "born_place": "Wirksworth, Derbyshire",
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 209,
+     "relationship": "Servant",
+     "age_at_census": 38,
+     "source": "1911 census household schedule - read from the image supplied by A. Hagues",
+     "marital_status": "Single",
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Wirksworth, Derbyshire"
     }
    ]
   }

@@ -4282,6 +4282,57 @@
     "persons": 3
    },
    "note": "**A BACHELOR OF 53 EMPLOYING PEOPLE IN LACE DYEING, DRESSING AND BLEACHING** - the finishing end of the lace trade, and a trade the record holds little of. Frederic William Dobson is not in the record, though **nineteen other Dobsons are**, including the firm covered by `people_1921_dobson_firm.json`. **Whether he belongs to that family is worth establishing** - Dobson is common, but a Nottingham lace Dobson employing men is not.\n\n**The cover gives no number, only *Castle Grove*.** The property list holds 4, 5, 6, 6a and 7, and **this is the same fault the 1921 round hit** - eight rows already sit unfiled under *Castle Grove - no name or house number in 1921 census*. **Whatever places one will place the other.** Not filed.\n\n**Mary Norton may already be here.** #4898, a domestic servant born 1873, was at **37 Newcastle Drive** in 1901 - the Greens' house, two streets away. This Mary Norton is 39, so born about 1872, and is cook-housekeeper. **Deliberately not bound**: Mary Norton is a common name and a wrong binding puts a stranger's census row on a real person, which is worse than a duplicate. **Worth a look by hand.**\n\n**Three people in nine rooms**, and both servants older than is usual - 37 and 39, neither married."
+  },
+  {
+   "street": "Newcastle Drive",
+   "house": "3",
+   "property_id": 209,
+   "rooms": 10,
+   "postal_address_on_cover": "Newcastle Drive, Nottingham",
+   "signed_by": "Joseph Wesson",
+   "marriage": {
+    "person": "Charlotte Wesson",
+    "years_married": 12,
+    "children_born_alive": 0,
+    "children_still_living": 0,
+    "children_died": 0
+   },
+   "people": [
+    {
+     "name": "Joseph Wesson",
+     "relation": "Head",
+     "sex": "M",
+     "age": 71,
+     "marital": "Married",
+     "occupation": "Manufacturer of aprons and pinafores | own account | working at home",
+     "born": "Nottingham"
+    },
+    {
+     "name": "Charlotte Wesson",
+     "relation": "Wife",
+     "sex": "F",
+     "age": 70,
+     "marital": "Married",
+     "born": "Nottingham",
+     "note": "an occupation was written on her line and struck out; it reads General Servant"
+    },
+    {
+     "name": "Jinnie Hutchines",
+     "relation": "Servant",
+     "sex": "F",
+     "age": 38,
+     "marital": "Single",
+     "occupation": "General servant, domestic",
+     "born": "Wirksworth, Derbyshire",
+     "note": "forename hard to read - Jinnie, Tinnie or Linnie; surname may be Hutchins"
+    }
+   ],
+   "totals": {
+    "males": 1,
+    "females": 2,
+    "persons": 3
+   },
+   "note": "**MARRIED AT SIXTY.** Joseph Wesson is 71 and Charlotte 70, and they have been married **twelve years** with **no children born** - so they married about 1899, in their **sixtieth year or thereabouts**. A first marriage that late is unusual enough to be worth establishing; a second for one or both is the likelier reading, and a marriage registration would say.\n\n**A manufacturer of aprons and pinafores, on his own account, working at home.** That is a trade the record has nothing else like, and *at home* means this house was the workshop. At 71 he was still at it.\n\n**The wife's occupation is written and struck out, and it reads *General Servant*.** The servant on the line below is also a general servant, so **the likeliest explanation is a slip of the pen** - the householder starting the wrong line and correcting himself. **But the other reading is there too**, that a man of sixty married his servant, and it would explain both the late marriage and the crossing out. **Nothing here settles it** and the note is only to stop the struck-through word being read as fact either way.\n\n**Neither Wesson is in the record**, and the house is a gap on both sides: the record last saw it in **1891** with Henry Stevens, a local government inspector with **thirteen people** in it, and next sees it in 1921 with Charles Wood. **1901 is still missing.**\n\n**Ten rooms for three people**, where twenty years earlier it had held thirteen."
   }
  ]
 }
