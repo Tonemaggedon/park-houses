@@ -279,6 +279,27 @@
 
     <article class="tool">
       <div>
+        <h4>Write out the census short forms</h4>
+        <p>“Elizth” and “Eliz” become Elizabeth, “Geo.” George, “Wm” William — the
+           first forename only, and only where the whole word is a known short
+           form. A middle name or initial is left exactly as the page gave it.
+           The tool below joins a short form to a full name where <em>both</em>
+           are in the record; this is for the ones with nobody to be joined to,
+           which otherwise stay abbreviated for ever. Preview names every change.</p>
+        <p><strong>Catharine, Chris, Jos and Phil are deliberately left alone.</strong> Catharine is
+           a real Victorian spelling rather than a short form; the other three stand for more than
+           one name — Christine as well as Christopher, Josephine as well as Joseph, Philippa as
+           well as Philip. They still help the merge tool below find two spellings of one person.</p>
+      </div>
+      <div class="tool-btns">
+        <button class="btn ghost" id="btnExpandPreview">Preview</button>
+        <button class="btn" id="btnExpandRun">Write them out</button>
+      </div>
+      <div class="result" hidden></div>
+    </article>
+
+    <article class="tool">
+      <div>
         <h4>Join up people entered under a census short form</h4>
         <p>“Geo. Parr” beside George Parr, “Elizth Wareham” beside Elizabeth —
            one person entered twice because a transcription kept the
@@ -603,6 +624,19 @@ const describeSplit = d => {
 };
 on('btnSplitPreview', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(true), describeSplit));
 on('btnSplitRun', e => runAdminJob(e.target, '/api/admin/split-census-row', _splitBody(false), describeSplit));
+
+const describeExpand = d => {
+  const names = d.names || [];
+  if (!names.length) return 'No forename in the record is a short form the table knows.';
+  return (d.dryRun ? 'Preview — nothing changed.\n' : 'Done.\n')
+    + `${d.count} ${d.count === 1 ? 'person' : 'people'} `
+    + (d.dryRun ? 'would have their forename written out' : 'had their forename written out') + '.\n'
+    + names.map(n => `  ${n.change}  ×${n.people}`).join('\n')
+    + (d.dryRun ? '' : '\n\nA short form written out may now stand beside the full name it '
+        + 'matches. Those pairs are on /duplicates, which could not see them before.');
+};
+on('btnExpandPreview', e => runAdminJob(e.target, '/api/admin/expand-forenames', {}, describeExpand));
+on('btnExpandRun', e => runAdminJob(e.target, '/api/admin/expand-forenames', { apply: true }, describeExpand));
 
 const describeAbbrev = d => {
   const pairs = d.pairs || [];

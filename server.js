@@ -6293,6 +6293,81 @@ const FORENAME_ABBR = {
 };
 const expandForename = w => FORENAME_ABBR[w] || w;
 
+// Write out the census short forms: Elizth and Eliz become Elizabeth.
+//
+// The merge tool below joins a short form to the full name where BOTH are in
+// the record. This is the other half of the same problem - a short form with
+// nobody to be joined to, which simply stays abbreviated for ever. Ten Elizths
+// with no Elizabeth beside them are not duplicates; they are ten women whose
+// name the record never wrote out.
+//
+// It changes the FIRST forename only, and only where the whole word is in the
+// table above. A middle name is left alone: "Elizth" as a first name is a
+// transcription of a full name, but a middle initial or short form may be all
+// the page ever gave. Anything after the first word is carried through
+// untouched, so "Elizth A." becomes "Elizabeth A.".
+//
+// Expanding may reveal duplicates - an Elizth who turns out to stand beside an
+// Elizabeth of the same household. That is a gain, not a cost: it puts the pair
+// in front of the ordinary duplicates page, which buckets on the surname and
+// the forename letter for letter and could never have seen them before.
+// A table that is right for MATCHING is not automatically right for RENAMING.
+// The merge tool can afford to be generous, because a wrong guess is caught by
+// the birth-year test and by a person reading the preview. A rename overwrites
+// what the page actually said, so these four are held back:
+//
+//   catharine  a real Victorian spelling, not a short form. Rewriting it to
+//              Catherine corrects a name nobody got wrong.
+//   chris      Christopher, but also Christine and Christiana.
+//   jos        Joseph, but also Josiah and Josephine.
+//   phil       Philip, but also Philippa.
+//
+// They stay in FORENAME_ABBR, where they help two spellings of one person find
+// each other, and out of here, where they would put a name in the record that
+// the enumerator never wrote.
+const RENAME_UNSAFE = new Set(['catharine', 'chris', 'jos', 'phil']);
+
+app.post('/api/admin/expand-forenames', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const dryRun = !(req.body && req.body.apply === true);
+  try {
+    const r = await db.query(
+      `SELECT id, first_name, last_name, born_year FROM people
+        WHERE COALESCE(TRIM(first_name),'') <> ''
+        ORDER BY last_name, first_name`);
+    const changes = [];
+    for (const row of r.rows) {
+      const name = String(row.first_name).trim();
+      const parts = name.split(/\s+/);
+      const head = parts[0].replace(/\.$/, '').toLowerCase();
+      if (RENAME_UNSAFE.has(head)) continue;
+      const full = FORENAME_ABBR[head];
+      if (!full) continue;
+      const cap = full.charAt(0).toUpperCase() + full.slice(1);
+      const next = [cap, ...parts.slice(1)].join(' ');
+      if (next === name) continue;
+      changes.push({ id: row.id, from: name, to: next,
+                     surname: row.last_name, born: row.born_year });
+    }
+    if (!dryRun) {
+      for (const c of changes) {
+        await db.query('UPDATE people SET first_name=$2 WHERE id=$1', [c.id, c.to]);
+      }
+      await logChange('person', 0, req, 'expand-forenames', 'first_name', null,
+        `${changes.length} short forms written out`);
+    }
+    const byName = {};
+    for (const c of changes) {
+      const k = c.from + ' \u2192 ' + c.to;
+      byName[k] = (byName[k] || 0) + 1;
+    }
+    res.json({ ok: true, dryRun, count: changes.length,
+               names: Object.entries(byName).sort((a, b) => b[1] - a[1])
+                        .map(([k, n]) => ({ change: k, people: n })),
+               changes: changes.slice(0, 200) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // The body of a merge, so the one-pair route and the bulk tool below run the
 // same proven steps rather than two drifting copies of them. Caller owns the
 // transaction.
