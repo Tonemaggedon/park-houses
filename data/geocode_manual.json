@@ -75,6 +75,13 @@
    "note": "Identified by A. Hagues as the hamlet on the Borthwick Water near Roberton, west of Hawick, though the census gives Stirling. Placed to within a mile or two."
   },
   {
+   "place_text": "Camberwell, Middlesex",
+   "lat": 51.4744,
+   "lng": -0.0927,
+   "label": "Camberwell, London",
+   "note": "It answered Middlesex Road, Camberwell, Melbourne."
+  },
+  {
    "place_text": "Carlton le Moorland",
    "lat": 53.1117,
    "lng": -0.6446,
@@ -85,6 +92,13 @@
    "lat": 52.9752,
    "lng": -1.1512,
    "label": "Carrington, Nottingham"
+  },
+  {
+   "place_text": "Chatham, Kent",
+   "lat": 51.3791,
+   "lng": 0.522,
+   "label": "Chatham, Kent",
+   "note": "It answered Chatham, Ontario."
   },
   {
    "place_text": "Cherry Willingham, Lincolnshire",
@@ -98,6 +112,13 @@
    "lng": -2.8916,
    "label": "Chester, Cheshire",
    "note": "It answered Chesterfield County, Virginia."
+  },
+  {
+   "place_text": "Chesterfield",
+   "lat": 53.235,
+   "lng": -1.421,
+   "label": "Chesterfield, Derbyshire",
+   "note": "It answered Chesterfield County, Virginia. The county is not given on the return; Derbyshire is the only Chesterfield the rest of this household's places sit near."
   },
   {
    "place_text": "Churchtown, Lancashire",
@@ -249,6 +270,13 @@
    "note": "It answered Gresham, Oregon."
   },
   {
+   "place_text": "Hackney, Middlesex",
+   "lat": 51.545,
+   "lng": -0.0553,
+   "label": "Hackney, London",
+   "note": "It answered Hackney Pond, Connecticut."
+  },
+  {
    "place_text": "Hammersmith, Middlesex",
    "lat": 51.4927,
    "lng": -0.224,
@@ -314,6 +342,13 @@
    "note": "It answered Jersey County, Illinois."
   },
   {
+   "place_text": "Kensington, Middlesex",
+   "lat": 51.4991,
+   "lng": -0.1938,
+   "label": "Kensington, London",
+   "note": "It answered Kensington Apartments, Massachusetts."
+  },
+  {
    "place_text": "Kew, Surrey",
    "lat": 51.483,
    "lng": -0.288,
@@ -375,6 +410,13 @@
    "note": "Taken as Wiggenhall St Mary Magdalen, the Norfolk parish usually shortened to Magdalen."
   },
   {
+   "place_text": "Mansfield",
+   "lat": 53.1435,
+   "lng": -1.1976,
+   "label": "Mansfield, Nottinghamshire",
+   "note": "It answered Mansfield, Ohio. No county on the return, but every other place in the household is Nottinghamshire."
+  },
+  {
    "place_text": "Mitcham, Surrey",
    "lat": 51.4058,
    "lng": -0.1641,
@@ -399,6 +441,20 @@
    "lat": 52.9468,
    "lng": -1.1768,
    "label": "New Lenton, Nottingham"
+  },
+  {
+   "place_text": "Newcastle, Northumberland",
+   "lat": 54.9783,
+   "lng": -1.6178,
+   "label": "Newcastle upon Tyne, Northumberland",
+   "note": "It answered Newcastle, New Brunswick."
+  },
+  {
+   "place_text": "Newington, Surrey",
+   "lat": 51.494,
+   "lng": -0.098,
+   "label": "Newington, Southwark, London",
+   "note": "It answered Surrey Drive, Connecticut. Newington was in Surrey when the census was taken and is in Southwark now."
   },
   {
    "place_text": "Nottingham",
@@ -432,6 +488,13 @@
    "label": "Prestbury, Cheshire"
   },
   {
+   "place_text": "Rutlandshire",
+   "lat": 52.6583,
+   "lng": -0.6329,
+   "label": "Rutland",
+   "note": "It answered Rutlandshire Drive, Virginia."
+  },
+  {
    "place_text": "Schleswig-Holstein (naturalised British subject)",
    "lat": 54.2194,
    "lng": 9.6961,
@@ -444,6 +507,20 @@
    "lng": -1.403,
    "label": "Shirland, Derbyshire",
    "note": "It answered Shirland, Illinois."
+  },
+  {
+   "place_text": "St James, Middlesex",
+   "lat": 51.5074,
+   "lng": -0.136,
+   "label": "St James's, Westminster, London",
+   "note": "It answered a church in Woodbridge, New Jersey."
+  },
+  {
+   "place_text": "St Pauls, Lincoln",
+   "lat": 53.2307,
+   "lng": -0.5406,
+   "label": "Lincoln, Lincolnshire",
+   "note": "It answered a Lutheran cemetery in Oklahoma. St Paul's is a parish of Lincoln, so the city centre is used."
   },
   {
    "place_text": "Stafford",
@@ -514,6 +591,13 @@
    "lng": 0.2333,
    "label": "Walpole, Norfolk",
    "note": "It answered Walpole, Massachusetts."
+  },
+  {
+   "place_text": "Windsor, Berkshire",
+   "lat": 51.4817,
+   "lng": -0.6139,
+   "label": "Windsor, Berkshire",
+   "note": "It answered Windsor, Massachusetts."
   },
   {
    "place_text": "Worcester",
