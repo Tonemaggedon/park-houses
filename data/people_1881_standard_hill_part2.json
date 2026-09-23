@@ -1,5 +1,5 @@
 {
- "note": "**The 1881 round, schedules 212 to 248 - Park Valley, Castle Grove, Lenton Road.** Transcribed by A. Hagues as the images came in. Part of the round; see [[1881-standard-hill-part1]] for schedules 1 to 50.\n\n**Park Valley is numbered all the way down - 25 to 1 - and Castle Grove is not.** The enumerator walks Park Valley by number and then turns into Castle Grove and writes nothing but the street, house after house, seven of them. **That is the same fault as 1911**, thirty years earlier, and it is the reason [[castle-grove-has-no-low-numbers]] cannot be settled from the census alone. Only one Castle Grove house is named at all: **The Lodge**, the coachman's.\n\n**13 Park Valley is not in the property list.** Walter Wadsworth's household is there on the page, between 15 and 11, and there is no number 13 among the properties. Left unfiled rather than forced onto a neighbour.\n\n**One number cannot be right.** Schedule 228 reads 21 Park Valley, but schedule 216 is already 21 and 228 sits between what the page calls 3 and 1. It is probably 2. It is left unfiled, because a number that contradicts itself is not evidence.\n\n**Three of the largest manufacturers in Nottingham are on these pages.**\n\n- **John Player**, 40, tobacco manufacturer employing 80 persons, at **9 Park Valley**, with his wife Ann and his son **William G Player, 15, tobacco manufacturer's assistant** - the firm that became John Player & Sons, in the house, ten years before the sons took it on. See [[john-player-at-9-park-valley]].\n- **Thomas Forman**, 62, newspaper proprietor and Justice of the Peace, on **Castle Grove**, with three grown sons, two of them newspaper proprietors beside him. See [[thomas-forman-on-castle-grove]].\n- **Frederic Dobson**, lace manufacturer on Castle Grove, **employing 1,140 men, women, boys and girls** - the largest figure anywhere in the round.\n\n**Other lives worth the record's attention.** **Ellis Hyam**, clothier and outfitter, at 3 Lenton Road with a wife born in Malta and eight children born in London. **Fred Bell**, \"Pastor of the Church of the People\", at Brooklyn House, 21 Park Valley - and his wife **Annie J Bell**, entered in the occupation column as **Authoress**, one of very few women on these pages given a profession of her own. **Harry Wyles**, a law student in Samuel Johnson's house on Western Terrace in 1871, is head of Holly Hurst in Park Valley in 1881, a solicitor at 32.\n\n**A child with no name.** At 19 Park Valley the Bells' month-old son is entered as **\"No name\"**. He is recorded exactly as written rather than left out, because a household of six is not a household of five.\n\n**House names on these pages**: Clinton House, Brooklyn House, Stewart Cottage, Holly Hurst and Arundel House on Park Valley; The Lodge on Castle Grove; Oakhurst at 17 Lenton Road. Castle Bank at 5 Lenton Road and The Chestnuts at 5 Kenilworth Road the record already holds. **Arundel House is worth a second look**: the solicitor's wife is Arundel Preston and so is his daughter.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source. Repeated names carry a birth year and are matched on it.",
+ "note": "PLACEHOLDER",
  "source": "1881 census enumerator's book, Standard Hill and Limits of the Castle of Nottingham, schedules 212 to 248, transcribed by A. Hagues.",
  "people": [
   {
@@ -1994,134 +1994,166 @@
   {
    "first_name": "Henry A",
    "last_name": "Norman",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 60,
      "occupation_at_census": "Fund holder",
      "birth_place": "Melton Mowbray, Leicestershire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; the age is struck through and hard to read"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues; the age is struck through and hard to read; the page numbers this house 21, which is already taken, and it is filed at 2 on A. Hagues' reading of the enumerator's run"
     }
    ]
   },
   {
    "first_name": "Letitia B",
    "last_name": "Norman",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 59,
      "birth_place": "Castle Field, Derbyshire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Helen J",
    "last_name": "Norman",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 36,
      "birth_place": "Wirksworth, Derbyshire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Catherine",
    "last_name": "Gate",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Visitor",
      "marital_status": "Married",
      "age_at_census": 75,
      "occupation_at_census": "Domestic housekeeper",
      "birth_place": "Theberton, Suffolk",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ellen",
    "last_name": "Gold",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 43,
      "occupation_at_census": "Domestic maid",
      "birth_place": "Bridgwater, Somerset",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Agnes",
    "last_name": "Mason",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 19,
      "occupation_at_census": "Domestic cook",
      "birth_place": "Shottlegate, Derbyshire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Elizabeth",
    "last_name": "Parnham",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 30,
      "occupation_at_census": "Domestic housemaid",
      "birth_place": "Aslockton, Nottinghamshire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Robert",
    "last_name": "Padgate",
+   "properties": [
+    387
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Park Valley - the number reads 21 but 21 is taken; it may be 2",
+     "property_id": 387,
+     "address": "2 Park Valley",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 15,
      "occupation_at_census": "Domestic footman",
      "birth_place": "Newark, Nottinghamshire",
      "census_household_num": 228,
-     "source": "1881 census, Park Valley - the number reads 21 but 21 is taken; it may be 2, schedule 228 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 2 Park Valley, schedule 228 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
