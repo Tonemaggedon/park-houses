@@ -19,6 +19,13 @@
   .lede { color:var(--soft); font-size:.88rem; margin:0 0 6px; max-width:74ch; }
   .bar { font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--faint);
     margin:14px 0 18px; }
+  .rounds { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:14px 0 0; }
+  .rounds b { font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--faint); font-weight:400; margin-right:2px; }
+  .rounds button { font-family:inherit; font-size:.8rem; border:1px solid var(--rule);
+    background:#f8f5ec; color:var(--soft); border-radius:14px; padding:3px 12px; cursor:pointer; }
+  .rounds button:hover { border-color:var(--accent); }
+  .rounds button.on { background:var(--accent); border-color:var(--accent); color:#f5efdd; font-weight:700; }
 
   .grp { background:var(--card); border:1px solid var(--rule); border-radius:7px;
     padding:13px 15px; margin-bottom:11px; }
@@ -111,6 +118,7 @@
   <p class="lede"><strong>Each household can be filed on its own.</strong> Every block below has
     its own box and button, so a street holding six different houses is six decisions rather
     than one wrong one. "File all" is only right when the group really is one household.</p>
+  <div class="rounds" id="rounds"></div>
   <div class="bar" id="bar">Loading…</div>
   <div id="list"><div class="empty">Loading…</div></div>
 
@@ -203,14 +211,69 @@ async function init() {
   load();
 }
 
+// The backlog is worked one round at a time. A round being read now — 1871, where
+// the enumerator wrote "The Park" and no house — would otherwise bury the years
+// that can actually be filed, because it is the largest and the least placeable.
+let RAW = null, ROUND = 'all';
+
 async function load() {
   const bar = document.getElementById('bar'), box = document.getElementById('list');
   try {
-    const d = await fetch('/api/census/unfiled-groups').then(r => r.json());
-    if (d.error) throw new Error(d.error);
+    RAW = await fetch('/api/census/unfiled-groups').then(r => r.json());
+    if (RAW.error) throw new Error(RAW.error);
+    paintRounds();
+    paint();
+  } catch (e) {
+    bar.textContent = '';
+    box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
+  }
+}
+
+function paintRounds() {
+  const box = document.getElementById('rounds');
+  const n = {};
+  for (const g of RAW.groups) for (const e of g.entries) n[e.year] = (n[e.year] || 0) + 1;
+  const years = Object.keys(n).sort();
+  if (years.length < 2) { box.innerHTML = ''; return; }
+  box.innerHTML = '<b>Round</b>'
+    + `<button data-round="all" class="${ROUND === 'all' ? 'on' : ''}">All ${RAW.total}</button>`
+    + years.map(y => `<button data-round="${y}" class="${String(ROUND) === y ? 'on' : ''}">${y} · ${n[y]}</button>`).join('');
+  box.querySelectorAll('[data-round]').forEach(b => b.onclick = () => {
+    ROUND = b.dataset.round; paintRounds(); paint();
+  });
+}
+
+// Narrow every group to the chosen round. The filtered groups become the ones the
+// buttons act on, so "File all" files that round and not the years beside it.
+function forRound(raw) {
+  if (ROUND === 'all') return raw;
+  const groups = [];
+  for (const g of raw.groups) {
+    const entries = g.entries.filter(e => String(e.year) === String(ROUND));
+    if (!entries.length) continue;
+    const rel = e => (e.relationship || '').trim();
+    const heads = entries.filter(e => /^head$/i.test(rel(e)) || /^\d+$/.test(rel(e))).length;
+    const wives = entries.filter(e => /^wife$/i.test(rel(e))).length;
+    const households = Math.max(1, heads, wives);
+    const asideCount = entries.filter(e => e.setAside).length;
+    groups.push({ ...g, entries, count: entries.length, years: [Number(ROUND)],
+                  households, asideCount, setAside: asideCount === entries.length,
+                  confident: g.confident && households === 1 });
+  }
+  groups.sort((a, b) => b.count - a.count);
+  return { total: groups.reduce((n, g) => n + g.count, 0), groups };
+}
+
+function paint() {
+  const bar = document.getElementById('bar'), box = document.getElementById('list');
+  {
+    const d = forRound(RAW);
     if (!d.total) {
       bar.textContent = '';
-      box.innerHTML = '<div class="empty">Nothing unfiled. Every census record sits against a property.</div>';
+      box.innerHTML = ROUND === 'all'
+        ? '<div class="empty">Nothing unfiled. Every census record sits against a property.</div>'
+        : `<div class="empty">Nothing unfiled in ${esc(String(ROUND))}.</div>`;
+      document.getElementById('asideWrap').hidden = true;
       return;
     }
     const sure = d.groups.filter(g => g.confident).reduce((n, g) => n + g.count, 0);
@@ -316,9 +379,6 @@ async function load() {
       : '<div class="empty">Nothing left in the queue — everything else is set aside below.</div>';
     document.getElementById('asideWrap').hidden = !aside.length;
     document.getElementById('asideList').innerHTML = aside.map(([g, i]) => render(g, i)).join('');
-  } catch (e) {
-    bar.textContent = '';
-    box.innerHTML = `<div class="empty err">Could not load: ${esc(e.message)}</div>`;
   }
 }
 
