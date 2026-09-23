@@ -1,0 +1,4839 @@
+{
+ "note": "**The 1881 round, schedules 1 to 50 - the first block.** Standard Hill and Limits of the Castle of Nottingham, transcribed by A. Hagues as the images came in. Further blocks follow; this file is not the whole round.\n\n**This is the round that numbers the houses.** The 1871 enumerator gave up numbering after 10 Park Terrace; this one numbers everything, which is why [[every-census-gap-and-where-to-start]] puts 1881 next after 1871. Sixteen of the 1871 households have already been placed off these pages, each on the test that **every age advances by ten** - see the note on the 1871 file.\n\n**Three houses on these pages are not in the property list: 46, 58 and 60 The Ropewalk.** Their households are left unfiled with the number written out rather than pushed onto a neighbour. The record holds The Ropewalk from 2 to 56 with no 46, and nothing above 56.\n\n**House names the covers give that the record does not hold as names**, each worth adding to the house-names panel ([[house-names-live-in-prose]]): **Clyde House** on Park Terrace, **The Lodge** on Park Terrace, and **Ventnor House** at 12 The Ropewalk.\n\n**One visitor on these pages is a figure of national standing.** At 13 Park Terrace on census night, staying with Catherine Turner, is **Ann J Clough, 61, Principal of Newnham College, Cambridge** - Anne Jemima Clough, Newnham's first Principal. She is a visitor, not a resident, and is entered as the page has her.\n\n**Two households on Park Terrace cannot be numbered.** Schedules 2 and 3 - the Bromleys and the Rev William Pope, Rector of St Nicholas - carry the street and nothing else, as does schedule 5, the Bradleys, whose cook Alice Pycroft was with them in 1871 as well. No number is guessed for any of them.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source. Where a name occurs twice in the file it carries a birth year and is matched on it, so the importer does not fold two people into one.",
+ "source": "1881 census enumerator's book, Standard Hill and Limits of the Castle of Nottingham, schedules 1 to 50, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Thomas W",
+   "last_name": "Keyworth",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Clyde House, Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "General clerk",
+     "birth_place": "Aslockton, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1881 census, Clyde House, Park Terrace, schedule 1 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Keyworth",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Clyde House, Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "birth_place": "Aslockton, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1881 census, Clyde House, Park Terrace, schedule 1 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Caroline B",
+   "last_name": "Keyworth",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Clyde House, Park Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1881 census, Clyde House, Park Terrace, schedule 1 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maria",
+   "last_name": "Bramley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Clyde House, Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Swallow Vale, Lincolnshire",
+     "census_household_num": 1,
+     "source": "1881 census, Clyde House, Park Terrace, schedule 1 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William F",
+   "last_name": "Bromley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 36,
+     "occupation_at_census": "Stock broker",
+     "birth_place": "Staffordshire",
+     "census_household_num": 2,
+     "source": "1881 census, Park Terrace (no number given), schedule 2 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Maria O",
+   "last_name": "Bromley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "birth_place": "Marylebone, London",
+     "census_household_num": 2,
+     "source": "1881 census, Park Terrace (no number given), schedule 2 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E",
+   "last_name": "Edwards",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 46,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Treuddyn, Flintshire",
+     "census_household_num": 2,
+     "source": "1881 census, Park Terrace (no number given), schedule 2 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 40,
+     "occupation_at_census": "Rector of St Nicholas, Nottingham, MA",
+     "birth_place": "Rochester, Kent",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth E",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "birth_place": "Newport, Monmouthshire",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence C",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Daughter",
+     "age_at_census": 11,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Laura C",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Daughter",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Evelyn M",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Daughter",
+     "age_at_census": 9,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mabel F",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Daughter",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William H C",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Son",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Cossington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur W",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Nottingham",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Grace T",
+   "last_name": "Pope",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; 6 months"
+    }
+   ]
+  },
+  {
+   "first_name": "Cessie",
+   "last_name": "Seaborne",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Vowchurch, Herefordshire",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Ash",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Woolavington, Somerset",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Cessie M",
+   "last_name": "Chambers",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Sapperton, Gloucestershire",
+     "census_household_num": 3,
+     "source": "1881 census, Park Terrace (no number given), schedule 3 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Henson",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "The Lodge, Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 74,
+     "occupation_at_census": "Retired constable",
+     "birth_place": "Jersey",
+     "census_household_num": 4,
+     "source": "1881 census, The Lodge, Park Terrace, schedule 4 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 73,
+     "birth_place": "Nottingham",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 39,
+     "occupation_at_census": "Surgeon, London University",
+     "birth_place": "Nottingham",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Alfred",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 36,
+     "occupation_at_census": "Cotton doubler",
+     "birth_place": "Nottingham",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Herbert",
+   "last_name": "Bradley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 33,
+     "occupation_at_census": "Retired mechanical engineer",
+     "birth_place": "Nottingham",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie E",
+   "last_name": "Lees",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Companion",
+     "marital_status": "Unmarried",
+     "age_at_census": 34,
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Pycroft",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Servant",
+     "age_at_census": 34,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Edwalton, Nottinghamshire",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Jessie",
+   "last_name": "Sargeant",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Norton, Northamptonshire",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henrietta",
+   "last_name": "Wagstaffe",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "Park Terrace (no number given) - the Bradley household",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Callington, Cornwall",
+     "census_household_num": 5,
+     "source": "1881 census, Park Terrace (no number given) - the Bradley household, schedule 5 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Clarke",
+   "properties": [
+    241
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 241,
+     "address": "1 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 55,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Walesby, Nottinghamshire",
+     "census_household_num": 6,
+     "source": "1881 census, 1 Park Terrace, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Comrie",
+   "properties": [
+    241
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 241,
+     "address": "1 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 6,
+     "source": "1881 census, 1 Park Terrace, schedule 6 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Cutler",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "occupation_at_census": "Hosiery manufacturer employing 21 men, 16 women and 2 boys",
+     "birth_place": "Mansfield, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine",
+   "last_name": "Cutler",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "birth_place": "Hardwick, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Maude E",
+   "last_name": "Cutler",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 14,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Forest Hill, Kent",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur H",
+   "last_name": "Cutler",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Son",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Forest Hill, Kent",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Edgar Henry",
+   "last_name": "Cutler",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Husbands",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 37,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Bertha",
+   "last_name": "Longbottom",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Claypole, Lincolnshire",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Husbands",
+   "properties": [
+    242
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 242,
+     "address": "2 Park Terrace",
+     "relationship": "Visitor",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "Dressmaker",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "census_household_num": 7,
+     "source": "1881 census, 2 Park Terrace, schedule 7 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Sevick",
+   "properties": [
+    243
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 243,
+     "address": "3 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 71,
+     "birth_place": "Camden Fort, Ireland",
+     "census_household_num": 8,
+     "source": "1881 census, 3 Park Terrace, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Christie",
+   "properties": [
+    243
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 243,
+     "address": "3 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 60,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Grantham, Lincolnshire",
+     "census_household_num": 8,
+     "source": "1881 census, 3 Park Terrace, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Hawley",
+   "properties": [
+    243
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 243,
+     "address": "3 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 44,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Codnor Park, Derbyshire",
+     "census_household_num": 8,
+     "source": "1881 census, 3 Park Terrace, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles H",
+   "last_name": "Cross",
+   "properties": [
+    243
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 243,
+     "address": "3 Park Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Unmarried",
+     "age_at_census": 22,
+     "occupation_at_census": "Shopman to an ironmonger",
+     "birth_place": "East Retford, Nottinghamshire",
+     "census_household_num": 8,
+     "source": "1881 census, 3 Park Terrace, schedule 8 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John M",
+   "last_name": "Pott",
+   "properties": [
+    244
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 244,
+     "address": "4 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 68,
+     "occupation_at_census": "Retired estate auctioneer and borough magistrate",
+     "birth_place": "Ash, Kent",
+     "census_household_num": 9,
+     "source": "1881 census, 4 Park Terrace, schedule 9 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "White",
+   "properties": [
+    244
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 244,
+     "address": "4 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 44,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Wakerley, Northamptonshire",
+     "census_household_num": 9,
+     "source": "1881 census, 4 Park Terrace, schedule 9 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "King",
+   "properties": [
+    244
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 244,
+     "address": "4 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 45,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "North Hykeham, Lincolnshire",
+     "census_household_num": 9,
+     "source": "1881 census, 4 Park Terrace, schedule 9 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Fitzpatrick",
+   "properties": [
+    245
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 245,
+     "address": "5 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 43,
+     "occupation_at_census": "Schoolmistress and governess",
+     "birth_place": "Dublin",
+     "census_household_num": 10,
+     "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eleanor I",
+   "last_name": "Gill",
+   "properties": [
+    245
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 245,
+     "address": "5 Park Terrace",
+     "relationship": "Orphan",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 10,
+     "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice M",
+   "last_name": "Gill",
+   "properties": [
+    245
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 245,
+     "address": "5 Park Terrace",
+     "relationship": "Orphan",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 10,
+     "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Campbell",
+   "properties": [
+    245
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 245,
+     "address": "5 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 36,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Ilkeston, Derbyshire",
+     "census_household_num": 10,
+     "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary S",
+   "last_name": "Patchett",
+   "properties": [
+    245
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 245,
+     "address": "5 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Grantham, Lincolnshire",
+     "census_household_num": 10,
+     "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry M",
+   "last_name": "Wing",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Solicitor's articled clerk",
+     "birth_place": "Nottingham",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Wing",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Solicitor's articled clerk",
+     "birth_place": "Nottingham",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah A",
+   "last_name": "Morris",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Sister-in-law",
+     "marital_status": "Unmarried",
+     "age_at_census": 53,
+     "birth_place": "Nottingham",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Morris",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Brother-in-law",
+     "marital_status": "Unmarried",
+     "age_at_census": 58,
+     "birth_place": "Chilwell, Nottinghamshire",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Saunders",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Lichfield, Staffordshire",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Whitehead",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 16,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Bottesford, Leicestershire",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine",
+   "last_name": "Turner",
+   "properties": [
+    378
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 378,
+     "address": "13 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 84,
+     "birth_place": "Newcastle upon Tyne, Northumberland",
+     "census_household_num": 19,
+     "source": "1881 census, 13 Park Terrace, schedule 19 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ruth",
+   "last_name": "Hunter",
+   "properties": [
+    378
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 378,
+     "address": "13 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 74,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Nottingham",
+     "census_household_num": 19,
+     "source": "1881 census, 13 Park Terrace, schedule 19 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Leighton",
+   "properties": [
+    378
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 378,
+     "address": "13 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 58,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Bollington, Lancashire",
+     "census_household_num": 19,
+     "source": "1881 census, 13 Park Terrace, schedule 19 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charlotte E",
+   "last_name": "Belfield",
+   "properties": [
+    378
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 378,
+     "address": "13 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 19,
+     "source": "1881 census, 13 Park Terrace, schedule 19 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann J",
+   "last_name": "Clough",
+   "properties": [
+    378
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 378,
+     "address": "13 Park Terrace",
+     "relationship": "Visitor",
+     "marital_status": "Unmarried",
+     "age_at_census": 61,
+     "occupation_at_census": "Principal of Newnham College, Cambridge",
+     "birth_place": "Liverpool",
+     "census_household_num": 19,
+     "source": "1881 census, 13 Park Terrace, schedule 19 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Gibson",
+   "properties": [
+    253
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 253,
+     "address": "14 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 69,
+     "occupation_at_census": "Manufacturer of hosiery",
+     "birth_place": "Nottingham",
+     "census_household_num": 20,
+     "source": "1881 census, 14 Park Terrace, schedule 20 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "born_year": 1812,
+   "match_born_year": true
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Burton",
+   "properties": [
+    253
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 253,
+     "address": "14 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 50,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Scothern, Lincolnshire",
+     "census_household_num": 20,
+     "source": "1881 census, 14 Park Terrace, schedule 20 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Cartledge",
+   "properties": [
+    253
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 253,
+     "address": "14 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Long Whatton, Leicestershire",
+     "census_household_num": 20,
+     "source": "1881 census, 14 Park Terrace, schedule 20 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Rosanna",
+   "last_name": "Hudson",
+   "properties": [
+    253
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 253,
+     "address": "14 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Staffordshire",
+     "census_household_num": 20,
+     "source": "1881 census, 14 Park Terrace, schedule 20 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Chester",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "60 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 46,
+     "occupation_at_census": "Annuitant",
+     "birth_place": "Nottingham",
+     "census_household_num": 21,
+     "source": "1881 census, 60 The Ropewalk, schedule 21 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Sophia",
+   "last_name": "Bird",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "60 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Carlton, Nottinghamshire",
+     "census_household_num": 21,
+     "source": "1881 census, 60 The Ropewalk, schedule 21 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry E",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Bank manager",
+     "birth_place": "Wendover, Buckinghamshire",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine C",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "birth_place": "Paddington, Middlesex",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Nina K",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Daughter",
+     "age_at_census": 9,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry G",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan T",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Pascoe S",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 4,
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Claude C",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Godfrey F L",
+   "last_name": "Thornton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 0,
+     "birth_place": "Nottingham",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; 1 month"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie I",
+   "last_name": "Hearn",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Cwmamman, Carmarthenshire",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Thomas",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Swansea, Glamorgan",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Pickering",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic parlourmaid",
+     "birth_place": "Stickney, Lincolnshire",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Burton",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Codnor, Derbyshire",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Marples",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 16,
+     "occupation_at_census": "Domestic nursemaid",
+     "birth_place": "Old Brampton, Derbyshire",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances C",
+   "last_name": "Jeffreys",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "58 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 42,
+     "occupation_at_census": "Monthly nurse",
+     "birth_place": "Maidstone, Kent",
+     "census_household_num": 22,
+     "source": "1881 census, 58 The Ropewalk, schedule 22 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Smith",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 81,
+     "occupation_at_census": "Retired corn merchant",
+     "birth_place": "Tydd St Giles, Cambridgeshire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary A M",
+   "last_name": "Smith",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Granddaughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "birth_place": "Prince Edward Island, Canada",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E",
+   "last_name": "Felkin",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Niece",
+     "marital_status": "Unmarried",
+     "age_at_census": 50,
+     "occupation_at_census": "Housekeeper",
+     "birth_place": "March, Cambridgeshire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Gilliver",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 57,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Castle Gresley, Derbyshire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Gadsby",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Ashby-de-la-Zouch, Leicestershire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Matilda",
+   "last_name": "Smith",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Stanton, Derbyshire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Smith",
+   "properties": [
+    339
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 339,
+     "address": "56 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 16,
+     "occupation_at_census": "Domestic under nursemaid",
+     "birth_place": "Stanton, Derbyshire",
+     "census_household_num": 23,
+     "source": "1881 census, 56 The Ropewalk, schedule 23 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "occupation_at_census": "Principal of a school",
+     "birth_place": "Leadenham, Lincolnshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues; surname may be Thacker"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "birth_place": "Nottingham",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Walter T",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Student",
+     "birth_place": "Nottingham",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Horace C",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Student",
+     "birth_place": "Nottingham",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence E",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 14,
+     "occupation_at_census": "Student",
+     "birth_place": "Nottingham",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett A",
+   "last_name": "Theker",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Niece",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "occupation_at_census": "Student",
+     "birth_place": "Leadenham, Lincolnshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Ravenhill",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Tutor",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Assistant master",
+     "birth_place": "London",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Hopkinson",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "marital_status": "Unmarried",
+     "age_at_census": 15,
+     "occupation_at_census": "Pupil",
+     "birth_place": "East Stoke, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James",
+   "last_name": "Lamin",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 14,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Bestwood Park, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Truzzell",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 14,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Gotham, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Edward",
+   "last_name": "Peach",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 14,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Northampton",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur A",
+   "last_name": "Dickens",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 13,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Hale Fen, Lincolnshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Maclain",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 13,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Papplewick, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Porter",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 13,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Northampton",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank",
+   "last_name": "Wilkinson",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 12,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry W",
+   "last_name": "Gilbert",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 11,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Little Carlton, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Edward F",
+   "last_name": "Gilbert",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Pupil",
+     "age_at_census": 10,
+     "occupation_at_census": "Pupil",
+     "birth_place": "Little Carlton, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Ward",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 44,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Upwell Fen, Cambridgeshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Stanley",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Wilford, Nottinghamshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues; birthplace hard to read"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Maltby",
+   "properties": [
+    338
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 338,
+     "address": "54 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 13,
+     "occupation_at_census": "Domestic page boy",
+     "birth_place": "Bletchingdon, Oxfordshire",
+     "census_household_num": 24,
+     "source": "1881 census, 54 The Ropewalk, schedule 24 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert I",
+   "last_name": "Sykes",
+   "properties": [
+    337
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 337,
+     "address": "52 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 64,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "census_household_num": 25,
+     "source": "1881 census, 52 The Ropewalk, schedule 25 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sophia",
+   "last_name": "Sykes",
+   "properties": [
+    337
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 337,
+     "address": "52 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 65,
+     "birth_place": "Nottingham",
+     "census_household_num": 25,
+     "source": "1881 census, 52 The Ropewalk, schedule 25 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Blackwell",
+   "properties": [
+    337
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 337,
+     "address": "52 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 46,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Bexley, Kent",
+     "census_household_num": 25,
+     "source": "1881 census, 52 The Ropewalk, schedule 25 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Heath",
+   "properties": [
+    337
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 337,
+     "address": "52 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Eakring, Nottinghamshire",
+     "census_household_num": 25,
+     "source": "1881 census, 52 The Ropewalk, schedule 25 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 66,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Catherine",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 62,
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy A",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 35,
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny C",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 31,
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henrietta",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 29,
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William H",
+   "last_name": "Carey",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Plummer",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 23,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Hemington, Leicestershire",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary A",
+   "last_name": "Morton",
+   "properties": [
+    336
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Nottinghamshire",
+     "census_household_num": 26,
+     "source": "1881 census, 48 The Ropewalk, schedule 26 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Watson",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "46 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 55,
+     "occupation_at_census": "Groom and gardener",
+     "birth_place": "Yorkshire",
+     "census_household_num": 27,
+     "source": "1881 census, 46 The Ropewalk, schedule 27 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Watson",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "46 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 55,
+     "birth_place": "Sawley, Yorkshire",
+     "census_household_num": 27,
+     "source": "1881 census, 46 The Ropewalk, schedule 27 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Watson",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "46 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Dressmaker",
+     "birth_place": "Doncaster, Yorkshire",
+     "census_household_num": 27,
+     "source": "1881 census, 46 The Ropewalk, schedule 27 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert H",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 58,
+     "occupation_at_census": "Solicitor and Registrar of the County Court, Nottingham",
+     "birth_place": "Nottingham",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "birth_place": "Chilwell, Nottinghamshire",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Walter H",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 17,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ethel",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Daughter",
+     "age_at_census": 14,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George H",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sybil",
+   "last_name": "Speed",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Daughter",
+     "age_at_census": 7,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Marshall",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Gunthorpe, Nottinghamshire",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Grundy",
+   "properties": [
+    335
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 335,
+     "address": "44 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Lenton, Nottinghamshire",
+     "census_household_num": 28,
+     "source": "1881 census, 44 The Ropewalk, schedule 28 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James T",
+   "last_name": "Ward",
+   "properties": [
+    334
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 334,
+     "address": "42 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 34,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Tollerton, Nottinghamshire",
+     "census_household_num": 29,
+     "source": "1881 census, 42 The Ropewalk, schedule 29 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William S",
+   "last_name": "Ward",
+   "properties": [
+    334
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 334,
+     "address": "42 The Ropewalk",
+     "relationship": "Brother",
+     "marital_status": "Unmarried",
+     "age_at_census": 31,
+     "occupation_at_census": "Banker's clerk",
+     "birth_place": "Worksop, Nottinghamshire",
+     "census_household_num": 29,
+     "source": "1881 census, 42 The Ropewalk, schedule 29 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Sprowell",
+   "properties": [
+    334
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 334,
+     "address": "42 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Worksop, Nottinghamshire",
+     "census_household_num": 29,
+     "source": "1881 census, 42 The Ropewalk, schedule 29 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Burt",
+   "properties": [
+    334
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 334,
+     "address": "42 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "occupation_at_census": "Domestic footman",
+     "birth_place": "New Forest, Hampshire",
+     "census_household_num": 29,
+     "source": "1881 census, 42 The Ropewalk, schedule 29 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Wadsworth",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 64,
+     "birth_place": "France (British subject)",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Josephine",
+   "last_name": "Wadsworth",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "birth_place": "Nottingham",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude",
+   "last_name": "Wadsworth",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "birth_place": "Nottingham",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lucy B",
+   "last_name": "Stevens",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 30,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Aslockton, Nottinghamshire",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Riley",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Brinsley, Nottinghamshire",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah J",
+   "last_name": "Simpson",
+   "properties": [
+    332
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 332,
+     "address": "38 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 12,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Cotgrave, Nottinghamshire",
+     "census_household_num": 30,
+     "source": "1881 census, 38 The Ropewalk, schedule 30 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George H",
+   "last_name": "Berry",
+   "properties": [
+    331
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 331,
+     "address": "36 and 36a The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "No occupation, income derived from dividends",
+     "birth_place": "Nottingham",
+     "census_household_num": 31,
+     "source": "1881 census, 36 and 36a The Ropewalk, schedule 31 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Harrison",
+   "properties": [
+    331
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 331,
+     "address": "36 and 36a The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 40,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Nottingham",
+     "census_household_num": 31,
+     "source": "1881 census, 36 and 36a The Ropewalk, schedule 31 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Chapman",
+   "properties": [
+    331
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 331,
+     "address": "36 and 36a The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 33,
+     "occupation_at_census": "Groom",
+     "birth_place": "Kilby, Leicestershire",
+     "census_household_num": 31,
+     "source": "1881 census, 36 and 36a The Ropewalk, schedule 31 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Upton",
+   "properties": [
+    331
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 331,
+     "address": "36 and 36a The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 32,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "census_household_num": 31,
+     "source": "1881 census, 36 and 36a The Ropewalk, schedule 31 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizza",
+   "last_name": "Upton",
+   "properties": [
+    331
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 331,
+     "address": "36 and 36a The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "East Bridgford, Nottinghamshire",
+     "census_household_num": 31,
+     "source": "1881 census, 36 and 36a The Ropewalk, schedule 31 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Edward",
+   "last_name": "Woolley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "The Ropewalk (no number given)",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Gardener",
+     "birth_place": "Newthorpe, Nottinghamshire",
+     "census_household_num": 32,
+     "source": "1881 census, The Ropewalk (no number given), schedule 32 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances",
+   "last_name": "Woolley",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "The Ropewalk (no number given)",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 65,
+     "birth_place": "Newthorpe, Nottinghamshire",
+     "census_household_num": 32,
+     "source": "1881 census, The Ropewalk (no number given), schedule 32 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Jemima",
+   "last_name": "Herbert",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 82,
+     "occupation_at_census": "Annuitant",
+     "birth_place": "Colchester, Essex",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Rosa",
+   "last_name": "Taylor",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Niece",
+     "marital_status": "Unmarried",
+     "age_at_census": 44,
+     "birth_place": "Stanford Rivers, Essex",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Euphemia",
+   "last_name": "Taylor",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Niece",
+     "marital_status": "Unmarried",
+     "age_at_census": 33,
+     "birth_place": "Stanford Rivers, Essex",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Gent",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 53,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Southwell, Nottinghamshire",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary L",
+   "last_name": "Dale",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Newborough, Northamptonshire",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett",
+   "last_name": "Newton",
+   "properties": [
+    330
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 330,
+     "address": "34 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 16,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Nottinghamshire",
+     "census_household_num": 33,
+     "source": "1881 census, 34 The Ropewalk, schedule 33 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Hart",
+   "properties": [
+    328
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 328,
+     "address": "32 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 46,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Bingham, Nottinghamshire",
+     "census_household_num": 34,
+     "source": "1881 census, 32 The Ropewalk, schedule 34 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Bishop",
+   "properties": [
+    328
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 328,
+     "address": "32 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic parlourmaid",
+     "birth_place": "Freemanston",
+     "census_household_num": 34,
+     "source": "1881 census, 32 The Ropewalk, schedule 34 - read from the enumerator's page by A. Hagues; birthplace hard to read"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Denham",
+   "properties": [
+    328
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 328,
+     "address": "32 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 33,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Mansfield, Nottinghamshire",
+     "census_household_num": 34,
+     "source": "1881 census, 32 The Ropewalk, schedule 34 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Benjamin F",
+   "last_name": "Popham",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Physician and surgeon",
+     "birth_place": "Cork, Ireland",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret L",
+   "last_name": "Popham",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 53,
+     "birth_place": "Pitsford, Northamptonshire",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Bradshaw G",
+   "last_name": "Popham",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 15,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Mahony",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 38,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Swansea, Wales",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "May",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 29,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Mansfield Woodhouse, Nottinghamshire",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriett M",
+   "last_name": "Burrows",
+   "properties": [
+    326
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 326,
+     "address": "28 The Ropewalk",
+     "relationship": "Visitor",
+     "marital_status": "Unmarried",
+     "age_at_census": 35,
+     "birth_place": "Bucknell, Oxfordshire",
+     "census_household_num": 35,
+     "source": "1881 census, 28 The Ropewalk, schedule 35 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "occupation_at_census": "Solicitor in practice",
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann E",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John R",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Solicitor's articled clerk",
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary I",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Maud",
+   "last_name": "Everall",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 14,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Clara E",
+   "last_name": "Barrowcliff",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Loughborough, Leicestershire",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen L",
+   "last_name": "King",
+   "properties": [
+    325
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 325,
+     "address": "26 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Gloucestershire",
+     "census_household_num": 36,
+     "source": "1881 census, 26 The Ropewalk, schedule 36 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James B",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Hosiery manufacturer employing 316 work people, and Magistrate for the Borough of Nottingham",
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "born_year": 1843,
+   "match_born_year": true
+  },
+  {
+   "first_name": "Emily S",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie R",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "James B",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "born_year": 1878,
+   "match_born_year": true
+  },
+  {
+   "first_name": "William",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 1,
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ],
+   "born_year": 1880,
+   "match_born_year": true
+  },
+  {
+   "first_name": "George M",
+   "last_name": "Gibson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 0,
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues; 4 months"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Simpson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Edwalton, Nottinghamshire",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza E",
+   "last_name": "Cochrane",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Widowed",
+     "age_at_census": 47,
+     "occupation_at_census": "Sub-monthly nurse",
+     "birth_place": "Markfield, Leicestershire",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Foster",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "occupation_at_census": "Maternity nurse",
+     "birth_place": "Nottingham",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emily S",
+   "last_name": "Hudson",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Widowed",
+     "age_at_census": 44,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha W",
+   "last_name": "Bates",
+   "properties": [
+    324
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 324,
+     "address": "24 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 12,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Ruddington, Nottinghamshire",
+     "census_household_num": 37,
+     "source": "1881 census, 24 The Ropewalk, schedule 37 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John T",
+   "last_name": "Brewster",
+   "properties": [
+    256
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 256,
+     "address": "17 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 52,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "census_household_num": 38,
+     "source": "1881 census, 17 Park Terrace, schedule 38 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth H",
+   "last_name": "Brewster",
+   "properties": [
+    256
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 256,
+     "address": "17 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "birth_place": "Ostend, Belgium",
+     "census_household_num": 38,
+     "source": "1881 census, 17 Park Terrace, schedule 38 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick",
+   "last_name": "Brewster",
+   "properties": [
+    256
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 256,
+     "address": "17 Park Terrace",
+     "relationship": "Brother",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Retired surveyor of taxes",
+     "birth_place": "Nottingham",
+     "census_household_num": 38,
+     "source": "1881 census, 17 Park Terrace, schedule 38 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Bish",
+   "properties": [
+    256
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 256,
+     "address": "17 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 46,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Woodborough, Nottinghamshire",
+     "census_household_num": 38,
+     "source": "1881 census, 17 Park Terrace, schedule 38 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur",
+   "last_name": "Wigley",
+   "properties": [
+    255
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 255,
+     "address": "16 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Yarn merchant",
+     "birth_place": "Ilkeston, Derbyshire",
+     "census_household_num": 39,
+     "source": "1881 census, 16 Park Terrace, schedule 39 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Wigley",
+   "properties": [
+    255
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 255,
+     "address": "16 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "birth_place": "Sneinton, Nottinghamshire",
+     "census_household_num": 39,
+     "source": "1881 census, 16 Park Terrace, schedule 39 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry A A",
+   "last_name": "Wigley",
+   "properties": [
+    255
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 255,
+     "address": "16 Park Terrace",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Merchant's assistant",
+     "birth_place": "Nottingham",
+     "census_household_num": 39,
+     "source": "1881 census, 16 Park Terrace, schedule 39 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Helen A",
+   "last_name": "Wigley",
+   "properties": [
+    255
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 255,
+     "address": "16 Park Terrace",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "birth_place": "Nottingham",
+     "census_household_num": 39,
+     "source": "1881 census, 16 Park Terrace, schedule 39 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Cope",
+   "properties": [
+    255
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 255,
+     "address": "16 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 28,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Staffordshire",
+     "census_household_num": 39,
+     "source": "1881 census, 16 Park Terrace, schedule 39 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles W",
+   "last_name": "Welby",
+   "properties": [
+    254
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 254,
+     "address": "15 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "census_household_num": 40,
+     "source": "1881 census, 15 Park Terrace, schedule 40 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Welby",
+   "properties": [
+    254
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 254,
+     "address": "15 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "birth_place": "Sheffield, Yorkshire",
+     "census_household_num": 40,
+     "source": "1881 census, 15 Park Terrace, schedule 40 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence M",
+   "last_name": "Welby",
+   "properties": [
+    254
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 254,
+     "address": "15 Park Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 2,
+     "birth_place": "Nottingham",
+     "census_household_num": 40,
+     "source": "1881 census, 15 Park Terrace, schedule 40 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Anne",
+   "last_name": "Amos",
+   "properties": [
+    254
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 254,
+     "address": "15 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 44,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "New Bolingbroke, Lincolnshire",
+     "census_household_num": 40,
+     "source": "1881 census, 15 Park Terrace, schedule 40 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Parker",
+   "properties": [
+    254
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 254,
+     "address": "15 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Skirbeck, Lincolnshire",
+     "census_household_num": 40,
+     "source": "1881 census, 15 Park Terrace, schedule 40 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Braithwaite",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 73,
+     "birth_place": "Manchester",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Egleston",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 51,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Keyworth, Nottinghamshire",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah A",
+   "last_name": "Allsop",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Wymeswold, Leicestershire",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Grainger",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic kitchenmaid",
+     "birth_place": "Brinsley, Nottinghamshire",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur",
+   "last_name": "Diggins",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 22,
+     "occupation_at_census": "Domestic footman",
+     "birth_place": "Great Waldingfield, Suffolk",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Wilson",
+   "properties": [
+    323
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 323,
+     "address": "22 The Ropewalk",
+     "relationship": "Visitor",
+     "marital_status": "Unmarried",
+     "age_at_census": 45,
+     "birth_place": "Costock, Nottinghamshire",
+     "census_household_num": 41,
+     "source": "1881 census, 22 The Ropewalk, schedule 41 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary M",
+   "last_name": "Whitty",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 62,
+     "birth_place": "Boston, Lincolnshire",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E",
+   "last_name": "Whitty",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "birth_place": "Nottingham",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis B",
+   "last_name": "Whitty",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Son",
+     "marital_status": "Unmarried",
+     "age_at_census": 23,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sara L",
+   "last_name": "Whitty",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "birth_place": "Nottingham",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriet",
+   "last_name": "Ward",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Smalley, Derbyshire",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Walters",
+   "properties": [
+    322
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 322,
+     "address": "20 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Clay Cross, Derbyshire",
+     "census_household_num": 42,
+     "source": "1881 census, 20 The Ropewalk, schedule 42 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Eames",
+   "properties": [
+    321
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 321,
+     "address": "18 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 69,
+     "occupation_at_census": "Holder of house property",
+     "birth_place": "Ruddington, Nottinghamshire",
+     "census_household_num": 43,
+     "source": "1881 census, 18 The Ropewalk, schedule 43 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada S",
+   "last_name": "Eames",
+   "properties": [
+    321
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 321,
+     "address": "18 The Ropewalk",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 32,
+     "birth_place": "Nottingham",
+     "census_household_num": 43,
+     "source": "1881 census, 18 The Ropewalk, schedule 43 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Talbot",
+   "properties": [
+    321
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 321,
+     "address": "18 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 40,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Bothamsall, Nottinghamshire",
+     "census_household_num": 43,
+     "source": "1881 census, 18 The Ropewalk, schedule 43 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Wagstaffe",
+   "properties": [
+    321
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 321,
+     "address": "18 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Bilborough, Nottinghamshire",
+     "census_household_num": 43,
+     "source": "1881 census, 18 The Ropewalk, schedule 43 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles",
+   "last_name": "Buttery",
+   "properties": [
+    320
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 320,
+     "address": "16 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 75,
+     "occupation_at_census": "Retired chemist",
+     "birth_place": "Sutton on Trent, Nottinghamshire",
+     "census_household_num": 44,
+     "source": "1881 census, 16 The Ropewalk, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Turner",
+   "properties": [
+    320
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 320,
+     "address": "16 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 45,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Duffield, Derbyshire",
+     "census_household_num": 44,
+     "source": "1881 census, 16 The Ropewalk, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Cooper",
+   "properties": [
+    320
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 320,
+     "address": "16 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 16,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Duffield, Derbyshire",
+     "census_household_num": 44,
+     "source": "1881 census, 16 The Ropewalk, schedule 44 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George P",
+   "last_name": "Renshaw",
+   "properties": [
+    319
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 319,
+     "address": "14 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 53,
+     "occupation_at_census": "Retired civil engineer",
+     "birth_place": "Nottingham",
+     "census_household_num": 45,
+     "source": "1881 census, 14 The Ropewalk, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna M",
+   "last_name": "Renshaw",
+   "properties": [
+    319
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 319,
+     "address": "14 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 53,
+     "birth_place": "Stockport, Lancashire",
+     "census_household_num": 45,
+     "source": "1881 census, 14 The Ropewalk, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Anna M",
+   "last_name": "Digby",
+   "properties": [
+    319
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 319,
+     "address": "14 The Ropewalk",
+     "relationship": "Niece",
+     "marital_status": "Widowed",
+     "age_at_census": 21,
+     "birth_place": "Manchester",
+     "census_household_num": 45,
+     "source": "1881 census, 14 The Ropewalk, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harry A",
+   "last_name": "Digby",
+   "properties": [
+    319
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 319,
+     "address": "14 The Ropewalk",
+     "relationship": "Nephew",
+     "age_at_census": 4,
+     "birth_place": "Beeston, Nottinghamshire",
+     "census_household_num": 45,
+     "source": "1881 census, 14 The Ropewalk, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Blackband",
+   "properties": [
+    319
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 319,
+     "address": "14 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Sedgebrook, Lincolnshire",
+     "census_household_num": 45,
+     "source": "1881 census, 14 The Ropewalk, schedule 45 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Hirschs",
+   "properties": [
+    318
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 318,
+     "address": "12 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 33,
+     "occupation_at_census": "Merchant",
+     "birth_place": "Germany",
+     "census_household_num": 46,
+     "source": "1881 census, 12 The Ropewalk, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Louisa",
+   "last_name": "Ellis",
+   "properties": [
+    318
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 318,
+     "address": "12 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "General servant",
+     "birth_place": "Langley Mill, Derbyshire",
+     "census_household_num": 46,
+     "source": "1881 census, 12 The Ropewalk, schedule 46 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Benjamin",
+   "last_name": "Brooke",
+   "properties": [
+    317
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 317,
+     "address": "10 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 59,
+     "occupation_at_census": "Bank director",
+     "birth_place": "Kirkstead, Lincolnshire",
+     "census_household_num": 47,
+     "source": "1881 census, 10 The Ropewalk, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Brooke",
+   "properties": [
+    317
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 317,
+     "address": "10 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Sandiacre, Derbyshire",
+     "census_household_num": 47,
+     "source": "1881 census, 10 The Ropewalk, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Betsey",
+   "last_name": "Granger",
+   "properties": [
+    317
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 317,
+     "address": "10 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 18,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Eastwood, Nottinghamshire",
+     "census_household_num": 47,
+     "source": "1881 census, 10 The Ropewalk, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Hallam",
+   "properties": [
+    317
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 317,
+     "address": "10 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Selston, Nottinghamshire",
+     "census_household_num": 47,
+     "source": "1881 census, 10 The Ropewalk, schedule 47 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis L",
+   "last_name": "Guilford",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Engineer (mechanical)",
+     "birth_place": "Nottingham",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada M A",
+   "last_name": "Guilford",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "birth_place": "Nottingham",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis C",
+   "last_name": "Guilford",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry C",
+   "last_name": "Guilford",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 8,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Swain",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 30,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Belper, Derbyshire",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Coy",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 21,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Bottesford, Leicestershire",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Porter",
+   "properties": [
+    316
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 316,
+     "address": "8 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Peterborough, Northamptonshire",
+     "census_household_num": 48,
+     "source": "1881 census, 8 The Ropewalk, schedule 48 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "John",
+   "last_name": "Langham",
+   "properties": [
+    315
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 315,
+     "address": "6 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 41,
+     "occupation_at_census": "Iron merchant employing 150 men",
+     "birth_place": "Newton, Leicestershire",
+     "census_household_num": 49,
+     "source": "1881 census, 6 The Ropewalk, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Langham",
+   "properties": [
+    315
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 315,
+     "address": "6 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 38,
+     "birth_place": "Nottingham",
+     "census_household_num": 49,
+     "source": "1881 census, 6 The Ropewalk, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas C",
+   "last_name": "Langham",
+   "properties": [
+    315
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 315,
+     "address": "6 The Ropewalk",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham",
+     "census_household_num": 49,
+     "source": "1881 census, 6 The Ropewalk, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Ann",
+   "last_name": "Savidge",
+   "properties": [
+    315
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 315,
+     "address": "6 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Loughborough, Leicestershire",
+     "census_household_num": 49,
+     "source": "1881 census, 6 The Ropewalk, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Wheatcroft",
+   "properties": [
+    315
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 315,
+     "address": "6 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Barlow, Derbyshire",
+     "census_household_num": 49,
+     "source": "1881 census, 6 The Ropewalk, schedule 49 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William A",
+   "last_name": "Patterson",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Retired silk merchant",
+     "birth_place": "Nottingham",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny G",
+   "last_name": "Patterson",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 41,
+     "birth_place": "Nottingham",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen M",
+   "last_name": "Sandy",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Niece",
+     "age_at_census": 11,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Holme Pierrepont, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Bransby",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Aslockton, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Shelson",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Wymeswold, Leicestershire",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Robert",
+   "last_name": "Simpson",
+   "properties": [
+    314
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 314,
+     "address": "4 The Ropewalk",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic page",
+     "birth_place": "Cotgrave, Nottinghamshire",
+     "census_household_num": 50,
+     "source": "1881 census, 4 The Ropewalk, schedule 50 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}
