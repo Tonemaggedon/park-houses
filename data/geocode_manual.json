@@ -383,6 +383,20 @@
    "note": "The East Prussian district of Mohrungen. Its town is Morag, in Poland since 1945."
   },
   {
+   "place_text": "Leaven Heath, Suffolk",
+   "lat": 51.9917,
+   "lng": 0.8333,
+   "label": "Leavenheath, Suffolk",
+   "note": "The page separates the words. It is one: Leavenheath."
+  },
+  {
+   "place_text": "Lenton Fields, Nottinghamshire",
+   "lat": 52.9432,
+   "lng": -1.1789,
+   "label": "Lenton, Nottingham",
+   "note": "Lenton Fields was a house and its grounds, not a settlement. Positioned on Lenton."
+  },
+  {
    "place_text": "Lichfield",
    "lat": 52.6816,
    "lng": -1.8317,
@@ -457,6 +471,20 @@
    "label": "New Lenton, Nottingham"
   },
   {
+   "place_text": "Newbold Moor, Derbyshire",
+   "lat": 53.2589,
+   "lng": -1.4283,
+   "label": "Newbold Moor, Chesterfield",
+   "note": "A district of Chesterfield the geocoder would not return."
+  },
+  {
+   "place_text": "Newborough, Northamptonshire",
+   "lat": 52.6497,
+   "lng": -0.2286,
+   "label": "Newborough, Cambridgeshire",
+   "note": "In Northamptonshire when the census was taken, Cambridgeshire since 1965."
+  },
+  {
    "place_text": "Newcastle, Northumberland",
    "lat": 54.9783,
    "lng": -1.6178,
@@ -469,6 +497,13 @@
    "lng": -0.098,
    "label": "Newington, Southwark, London",
    "note": "It answered Surrey Drive, Connecticut. Newington was in Surrey when the census was taken and is in Southwark now."
+  },
+  {
+   "place_text": "Normanton on Soar, Leicestershire",
+   "lat": 52.7889,
+   "lng": -1.2725,
+   "label": "Normanton on Soar, Nottinghamshire",
+   "note": "The village is in Nottinghamshire; the river it stands on is the county boundary, which is how the enumerator came to write Leicestershire."
   },
   {
    "place_text": "Nottingham",
@@ -523,11 +558,25 @@
    "note": "Positioned on Schleswig-Holstein. The naturalisation note is kept because it is the fact worth having."
   },
   {
+   "place_text": "Sheepshead, Leicestershire",
+   "lat": 52.7686,
+   "lng": -1.2936,
+   "label": "Shepshed, Leicestershire",
+   "note": "Sheepshead is the old spelling of Shepshed and was still in use in 1881."
+  },
+  {
    "place_text": "Shirland",
    "lat": 53.114,
    "lng": -1.403,
    "label": "Shirland, Derbyshire",
    "note": "It answered Shirland, Illinois."
+  },
+  {
+   "place_text": "Somers Town, Middlesex",
+   "lat": 51.5305,
+   "lng": -0.13,
+   "label": "Somers Town, London",
+   "note": "The district behind Euston, not a place the geocoder knows by that name."
   },
   {
    "place_text": "St James, Middlesex",
@@ -577,6 +626,13 @@
    "lng": -0.3,
    "label": "Sussex (county only)",
    "note": "No town given. It answered Sussex County, Virginia."
+  },
+  {
+   "place_text": "Tickhill, Derbyshire",
+   "lat": 53.4353,
+   "lng": -1.1088,
+   "label": "Tickhill, Yorkshire",
+   "note": "Tickhill is in Yorkshire, close enough to the Derbyshire border for the enumerator to put it the wrong side."
   },
   {
    "place_text": "Upper Hackney, Derbyshire",
