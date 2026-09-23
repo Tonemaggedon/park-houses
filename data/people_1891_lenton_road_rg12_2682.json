@@ -1,0 +1,931 @@
+{
+ "note": "**The 1891 round, Lenton Road and Holles Crescent - schedules 170 to 177.** RG12/2682, transcribed by A. Hagues. **Read to close the 1891 holes**, which [[every-census-gap-and-where-to-start]] now puts ahead of everything else.\n\n**Five holes closed outright**, each a house the record held in 1881 and again in 1901 or 1911 but not in between:\n\n| schedule | house | who |\n|---|---|---|\n| 170 | **25 Lenton Road** | Hannah Maria Hopkins, her brother and two sisters - the household [[every-census-gap-and-where-to-start]] named as one of the six with the same family on both sides |\n| 171a | **29 Lenton Road** | Frederick Carver, lace manufacturer |\n| 172 | **31 Lenton Road** | Henry Clarke, lace manufacturer, at 48 in 1881 and 58 here |\n| 174 | **Cliff House** | George Parr, solicitor, with **eight children, two nieces and five servants** - seventeen in the house |\n| 175 | **Rock House, 37 Lenton Road** | Charles Shaw, 75, living on own means, who was 65 here in 1881 |\n\n**The numbers at the top of the page are hard to read** - 25, 27 and 29 could each be taken for 75, 77 and 79. They are settled by the households themselves: the Hopkins are at 25 in 1881 and 1901, Samuel Waite Johnson is at Lenton House, 27, in every other round, and the run is continuous.\n\n**Three households on these pages are deliberately left out**, because the record already holds them for 1891: Samuel Waite Johnson at **Lenton House (27 Lenton Road)**, James Bennett Gayton at **1 Holles Crescent**, and William Barrett at **1 Park Drive**.\n\n**One cannot be filed.** Schedule 180 gives **5 Park Drive** and the record has no number 5 - Park Drive runs 1, 2, 3, 4, 6, 7, 9. The household is Margaret King Allen, widow, whom the 1881 round puts at **3** Park Drive with the same daughter ten years younger. Left for now rather than moved on a guess.\n\n**Joseph Newbold the coachman** carries a street and no number, so he is unfiled. He was a coachman in The Park in 1871 too, in John Adams's household.",
+ "source": "1891 census enumerator's book RG12/2682, Lenton Road and Holles Crescent, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Hannah Maria",
+   "last_name": "Hopkins",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 56,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Joshua Scale",
+   "last_name": "Hopkins",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Brother",
+     "marital_status": "Unmarried",
+     "age_at_census": 58,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Rebecca",
+   "last_name": "Hopkins",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Sister",
+     "marital_status": "Unmarried",
+     "age_at_census": 55,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary Jane",
+   "last_name": "Hopkins",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Visitor",
+     "marital_status": "Unmarried",
+     "age_at_census": 49,
+     "birth_place": "Malton, Yorkshire",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ellen",
+   "last_name": "Batty",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 40,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Skipsea, Yorkshire",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Ara C",
+   "last_name": "Blomfield",
+   "properties": [
+    192
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 192,
+     "address": "25 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 34,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Colchester, Essex",
+     "census_household_num": 170,
+     "source": "1891 census, 25 Lenton Road, schedule 170, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick",
+   "last_name": "Carver",
+   "properties": [
+    194
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 194,
+     "address": "29 Lenton Road",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 54,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 171,
+     "source": "1891 census, 29 Lenton Road, schedule 171a, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Carver",
+   "properties": [
+    194
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 194,
+     "address": "29 Lenton Road",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 53,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 171,
+     "source": "1891 census, 29 Lenton Road, schedule 171a, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Gertrude Mary",
+   "last_name": "Carver",
+   "properties": [
+    194
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 194,
+     "address": "29 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 171,
+     "source": "1891 census, 29 Lenton Road, schedule 171a, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie Florence",
+   "last_name": "Carver",
+   "properties": [
+    194
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 194,
+     "address": "29 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 171,
+     "source": "1891 census, 29 Lenton Road, schedule 171a, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Woodcock",
+   "properties": [
+    194
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 194,
+     "address": "29 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 17,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Riddings, Derbyshire",
+     "census_household_num": 171,
+     "source": "1891 census, 29 Lenton Road, schedule 171a, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Clarke",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 58,
+     "occupation_at_census": "Lace manufacturer",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth Martha",
+   "last_name": "Clarke",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Fanny",
+   "last_name": "Clarke",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 30,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence",
+   "last_name": "Clarke",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 25,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eleanor",
+   "last_name": "Clarke",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Lissie",
+   "last_name": "Walton",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 20,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Wolsingham, Durham",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Alexander",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "General servant",
+     "birth_place": "Fishtoft, Lincolnshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Ann",
+   "last_name": "Kinch",
+   "properties": [
+    195
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 195,
+     "address": "31 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 22,
+     "occupation_at_census": "General servant",
+     "birth_place": "Burton Latimer, Northamptonshire",
+     "census_household_num": 172,
+     "source": "1891 census, 31 Lenton Road, schedule 172, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 45,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Gotham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice Mary",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "birth_place": "Harlaxton, Lincolnshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George Henry",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Son",
+     "age_at_census": 12,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Dora Alice",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Daughter",
+     "age_at_census": 11,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William Noel",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Son",
+     "age_at_census": 10,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles Evelyn",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Son",
+     "age_at_census": 7,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Cecil Gordon",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Son",
+     "age_at_census": 6,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Zoe Violet",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Claude Ivan",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Christine Rosa",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues; 3 months"
+    }
+   ]
+  },
+  {
+   "first_name": "Francis Marian",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Niece",
+     "age_at_census": 12,
+     "birth_place": "Cropwell Butler, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Winifred Violet",
+   "last_name": "Parr",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Niece",
+     "age_at_census": 7,
+     "birth_place": "Cropwell Butler, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Harriet",
+   "last_name": "Smith",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Servant",
+     "marital_status": "Widowed",
+     "age_at_census": 39,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Armagh, Ireland",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Hester Ann",
+   "last_name": "Shipsides",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Gretton, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah Ann",
+   "last_name": "Skennett",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Heckington, Lincolnshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Clark",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Thurlby, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Marriott",
+   "properties": [
+    196
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 196,
+     "address": "Cliff House, Lenton Road (32, 33, 33a, 33b)",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Cropwell Butler, Nottinghamshire",
+     "census_household_num": 174,
+     "source": "1891 census, Cliff House, Lenton Road (32, 33, 33a, 33b), schedule 174, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Charles",
+   "last_name": "Shaw",
+   "properties": [
+    197
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 197,
+     "address": "Rock House, 37 Lenton Road",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 75,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 175,
+     "source": "1891 census, Rock House, 37 Lenton Road, schedule 175, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Shaw",
+   "properties": [
+    197
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 197,
+     "address": "Rock House, 37 Lenton Road",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 75,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 175,
+     "source": "1891 census, Rock House, 37 Lenton Road, schedule 175, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret S",
+   "last_name": "Shaw",
+   "properties": [
+    197
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 197,
+     "address": "Rock House, 37 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 30,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 175,
+     "source": "1891 census, Rock House, 37 Lenton Road, schedule 175, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Shaw",
+   "properties": [
+    197
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 197,
+     "address": "Rock House, 37 Lenton Road",
+     "relationship": "Daughter",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 175,
+     "source": "1891 census, Rock House, 37 Lenton Road, schedule 175, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Needham",
+   "properties": [
+    197
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 197,
+     "address": "Rock House, 37 Lenton Road",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 32,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Spilsby, Lincolnshire",
+     "census_household_num": 175,
+     "source": "1891 census, Rock House, 37 Lenton Road, schedule 175, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Joseph",
+   "last_name": "Newbold",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Road (no number given)",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "occupation_at_census": "Coachman, domestic servant",
+     "birth_place": "Swarkestone, Derbyshire",
+     "census_household_num": 176,
+     "source": "1891 census, Lenton Road (no number given), schedule 176, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Lizetta",
+   "last_name": "Newbold",
+   "census": [
+    {
+     "census_year": 1891,
+     "unresolved_address": "Lenton Road (no number given)",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 34,
+     "birth_place": "Melbourne, Derbyshire",
+     "census_household_num": 176,
+     "source": "1891 census, Lenton Road (no number given), schedule 176, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+    }
+   ]
+  },
+  {
+   "first_name": "Edward",
+   "last_name": "Smith",
+   "properties": [
+    129
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 129,
+     "address": "5 Holles Crescent",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 72,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 177,
+     "source": "1891 census, 5 Holles Crescent, schedule 177, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Harby",
+   "properties": [
+    129
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 129,
+     "address": "5 Holles Crescent",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 40,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Long Clawson, Leicestershire",
+     "census_household_num": 177,
+     "source": "1891 census, 5 Holles Crescent, schedule 177, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Evers",
+   "properties": [
+    129
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 129,
+     "address": "5 Holles Crescent",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Holbeck, Nottinghamshire",
+     "census_household_num": 177,
+     "source": "1891 census, 5 Holles Crescent, schedule 177, RG12/2682 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  }
+ ]
+}

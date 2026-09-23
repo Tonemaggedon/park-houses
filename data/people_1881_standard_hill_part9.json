@@ -1,5 +1,5 @@
 {
- "note": "**The 1881 round, schedules 154 to 165 - Newcastle Circus, South Road, Park Drive, Clumber Crescent South and Cavendish Road South.** Transcribed by A. Hagues.\n\n**Robert Evans, architect and Justice of the Peace**, is on South Road at 48 with his son Robert, 15, already an **architect's pupil**, and four daughters - Edith M, Mary, Ethel F and Dorothy. **The record already knows those four daughters as names without a house.** The page gives no number, so the household is unfiled. See [[robert-evans-architect-on-south-road]].\n\n**Three households are placed on the record's own earlier evidence rather than on the page**, and each source line says so: **Marriott Ogle Tarbotton** to 6 South Road, **John H Brownsword** to Castlethorpe, and **John Watson** to Burton House - though the page puts Burton House on **Maxtoke Road** and the record has it on Newcastle Circus, which adjoins.\n\n**One is deliberately not placed.** Schedule 162 is **James W McCraith**, solicitor, 28, and the page says Clumber Crescent South; the record holds a James William McCraith at **3 South Road** in 1881. Two different streets for one man on one night. Left unfiled until somebody settles it.\n\n**House names the record does not hold**: **Garden House** on Newcastle Circus. And **Cavendish Road South** is a street the record has no properties on at all, though the page gives two households on it - including **Ernest W Enfield, banker, BA Oxon**, whose family name the record already knows.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source.",
+ "note": "**The 1881 round, schedules 154 to 165 - Newcastle Circus, South Road, Park Drive, Clumber Crescent South and Cavendish Road South.** Transcribed by A. Hagues.\n\n**Robert Evans, architect and Justice of the Peace**, at **11 Cavendish Crescent South**, with his son Robert, 15, already an **architect's pupil**, and four daughters - Edith M, Mary, Ethel F and Dorothy. **The record already knew those four daughters as names without a house.** The page says *South Road*; it is the corner house, and A. Hagues places it on Cavendish. The record holds Robert Evans Sr at 11 Cavendish Crescent South in 1891 and 1911, which agrees. See [[robert-evans-architect-on-south-road]].\n\n**Three households are placed on the record's own earlier evidence rather than on the page**, and each source line says so: **Marriott Ogle Tarbotton** to 6 South Road, **John H Brownsword** to Castlethorpe, and **John Watson** to Burton House - though the page puts Burton House on **Maxtoke Road** and the record has it on Newcastle Circus, which adjoins.\n\n**One is deliberately not placed.** Schedule 162 is **James W McCraith**, solicitor, 28, and the page says Clumber Crescent South; the record holds a James William McCraith at **3 South Road** in 1881. Two different streets for one man on one night. Left unfiled until somebody settles it.\n\n**House names the record does not hold**: **Garden House** on Newcastle Circus. And **Cavendish Road South** is a street the record has no properties on at all, though the page gives two households on it - including **Ernest W Enfield, banker, BA Oxon**, whose family name the record already knows.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source.",
  "source": "1881 census enumerator's book RG11/3367, Standard Hill and Limits of the Castle of Nottingham, schedules 154 to 165, transcribed by A. Hagues.",
  "people": [
   {
@@ -1357,17 +1357,21 @@
   {
    "first_name": "Robert",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 48,
      "occupation_at_census": "Architect, Justice of the Peace",
      "birth_place": "West Hallam, Derbyshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the page says South Road; it is the corner house, and A. Hagues places it at 11 Cavendish Crescent South, where the record holds Robert Evans Sr in 1891 and 1911"
     }
    ],
    "born_year": 1833,
@@ -1376,81 +1380,101 @@
   {
    "first_name": "Sarah A",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 46,
      "birth_place": "Stamford, Lincolnshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Edith M",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 21,
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Mary",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Daughter",
      "age_at_census": 18,
      "occupation_at_census": "Scholar",
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ethel F",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Daughter",
      "age_at_census": 16,
      "occupation_at_census": "Scholar",
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Robert",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Son",
      "marital_status": "Unmarried",
      "age_at_census": 15,
      "occupation_at_census": "Architect's pupil",
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ],
    "born_year": 1866,
@@ -1459,82 +1483,102 @@
   {
    "first_name": "Dorothy",
    "last_name": "Evans",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Daughter",
      "age_at_census": 6,
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Alice M",
    "last_name": "Caparn",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Visitor",
      "marital_status": "Unmarried",
      "age_at_census": 22,
      "birth_place": "Newark on Trent, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ann",
    "last_name": "Smith",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 37,
      "occupation_at_census": "Domestic nurse",
      "birth_place": "Cropwell, Nottinghamshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Mary A",
    "last_name": "Wood",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 23,
      "occupation_at_census": "Domestic housemaid",
      "birth_place": "Linton, Derbyshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Sarah",
    "last_name": "Armson",
+   "properties": [
+    43
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "South Road (no number given)",
+     "property_id": 43,
+     "address": "11 Cavendish Crescent South",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 22,
      "occupation_at_census": "Domestic cook",
      "birth_place": "Ticknall, Derbyshire",
      "census_household_num": 163,
-     "source": "1881 census, South Road (no number given), schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 11 Cavendish Crescent South, schedule 163, RG11/3367 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
