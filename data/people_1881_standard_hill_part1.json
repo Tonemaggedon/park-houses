@@ -1,5 +1,5 @@
 {
- "note": "**The 1881 round, schedules 1 to 50 - the first block.** Standard Hill and Limits of the Castle of Nottingham, transcribed by A. Hagues as the images came in. Further blocks follow; this file is not the whole round.\n\n**This is the round that numbers the houses.** The 1871 enumerator gave up numbering after 10 Park Terrace; this one numbers everything, which is why [[every-census-gap-and-where-to-start]] puts 1881 next after 1871. Sixteen of the 1871 households have already been placed off these pages, each on the test that **every age advances by ten** - see the note on the 1871 file.\n\n**Three houses on these pages are not in the property list: 46, 58 and 60 The Ropewalk.** Their households are left unfiled with the number written out rather than pushed onto a neighbour. The record holds The Ropewalk from 2 to 56 with no 46, and nothing above 56.\n\n**House names the covers give that the record does not hold as names**, each worth adding to the house-names panel ([[house-names-live-in-prose]]): **Clyde House** on Park Terrace, **The Lodge** on Park Terrace, and **Ventnor House** at 12 The Ropewalk.\n\n**One visitor on these pages is a figure of national standing.** At 13 Park Terrace on census night, staying with Catherine Turner, is **Ann J Clough, 61, Principal of Newnham College, Cambridge** - Anne Jemima Clough, Newnham's first Principal. She is a visitor, not a resident, and is entered as the page has her.\n\n**Two households on Park Terrace cannot be numbered.** Schedules 2 and 3 - the Bromleys and the Rev William Pope, Rector of St Nicholas - carry the street and nothing else, as does schedule 5, the Bradleys, whose cook Alice Pycroft was with them in 1871 as well. No number is guessed for any of them.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source. Where a name occurs twice in the file it carries a birth year and is matched on it, so the importer does not fold two people into one.",
+ "note": "**The 1881 round, schedules 1 to 50, complete.** Standard Hill and Limits of the Castle of Nottingham, transcribed by A. Hagues as the images came in. Further blocks follow; this file is not the whole round.\n\n**This is the round that numbers the houses.** The 1871 enumerator gave up numbering after 10 Park Terrace; this one numbers everything, which is why [[every-census-gap-and-where-to-start]] puts 1881 next after 1871. Sixteen of the 1871 households have already been placed off these pages, each on the test that **every age advances by ten** - see the note on the 1871 file.\n\n**Three houses on these pages are not in the property list: 46, 58 and 60 The Ropewalk.** Their households are left unfiled with the number written out rather than pushed onto a neighbour. The record holds The Ropewalk from 2 to 56 with no 46, and nothing above 56.\n\n**House names the covers give that the record does not hold as names**, each worth adding to the house-names panel ([[house-names-live-in-prose]]): **Clyde House** on Park Terrace, **The Lodge** on Park Terrace, and **Ventnor House** at 12 The Ropewalk.\n\n**One visitor on these pages is a figure of national standing.** At 13 Park Terrace on census night, staying with Catherine Turner, is **Ann J Clough, 61, Principal of Newnham College, Cambridge** - Anne Jemima Clough, Newnham's first Principal. She is a visitor, not a resident, and is entered as the page has her.\n\n**Schedule 18 gives Henry Wing himself**, 50, solicitor, born Newark - and the 1871 book has him at 40, solicitor, born Newark, with the same two sons ten years younger. **That settles 1871 schedule 124 at 12 Park Terrace beyond argument** and confirms the surname, which the 1871 hand left in doubt.\n\n**Schedule 14 has no address at all.** Mary E Bradshaw, 67, living alone, and the address column is simply blank. She is left unfiled.\n\n**Two households on Park Terrace cannot be numbered.** Schedules 2 and 3 - the Bromleys and the Rev William Pope, Rector of St Nicholas - carry the street and nothing else, as does schedule 5, the Bradleys, whose cook Alice Pycroft was with them in 1871 as well. No number is guessed for any of them.\n\n**Readings that could go either way are flagged in the source line.** Infants are entered as age 0 with the real age kept in the source. Where a name occurs twice in the file it carries a birth year and is matched on it, so the importer does not fold two people into one.",
  "source": "1881 census enumerator's book, Standard Hill and Limits of the Castle of Nottingham, schedules 1 to 50, transcribed by A. Hagues.",
  "people": [
   {
@@ -914,6 +914,515 @@
      "birth_place": "Grantham, Lincolnshire",
      "census_household_num": 10,
      "source": "1881 census, 5 Park Terrace, schedule 10 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Ann",
+   "last_name": "Mallett",
+   "properties": [
+    246
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 246,
+     "address": "6 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 70,
+     "birth_place": "Arnold, Nottinghamshire",
+     "census_household_num": 11,
+     "source": "1881 census, 6 Park Terrace, schedule 11 - read from the enumerator's page by A. Hagues; the occupation is struck through and cannot be read"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah",
+   "last_name": "Sharratt",
+   "properties": [
+    246
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 246,
+     "address": "6 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 19,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Newbold Moor, Derbyshire",
+     "census_household_num": 11,
+     "source": "1881 census, 6 Park Terrace, schedule 11 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frederick R",
+   "last_name": "Ensor",
+   "properties": [
+    247
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 247,
+     "address": "7 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 73,
+     "occupation_at_census": "Retired lace manufacturer, holding public funds",
+     "birth_place": "Somers Town, Middlesex",
+     "census_household_num": 12,
+     "source": "1881 census, 7 Park Terrace, schedule 12 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomasine",
+   "last_name": "Ensor",
+   "properties": [
+    247
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 247,
+     "address": "7 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 62,
+     "occupation_at_census": "Holding public funds",
+     "birth_place": "Finchley, Middlesex",
+     "census_household_num": 12,
+     "source": "1881 census, 7 Park Terrace, schedule 12 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Tilson",
+   "properties": [
+    247
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 247,
+     "address": "7 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 39,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Youlgrave, Derbyshire",
+     "census_household_num": 12,
+     "source": "1881 census, 7 Park Terrace, schedule 12 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Martha",
+   "last_name": "Clarke",
+   "properties": [
+    248
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 248,
+     "address": "8 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 66,
+     "occupation_at_census": "Boarding house keeper",
+     "birth_place": "Nottingham",
+     "census_household_num": 13,
+     "source": "1881 census, 8 Park Terrace, schedule 13 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Hill",
+   "properties": [
+    248
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 248,
+     "address": "8 Park Terrace",
+     "relationship": "Visitor",
+     "marital_status": "Widowed",
+     "age_at_census": 51,
+     "occupation_at_census": "Housekeeper",
+     "birth_place": "Nottingham",
+     "census_household_num": 13,
+     "source": "1881 census, 8 Park Terrace, schedule 13 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Potter",
+   "properties": [
+    248
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 248,
+     "address": "8 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 15,
+     "occupation_at_census": "Domestic servant",
+     "birth_place": "Longton, Staffordshire",
+     "census_household_num": 13,
+     "source": "1881 census, 8 Park Terrace, schedule 13 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E",
+   "last_name": "Bradshaw",
+   "census": [
+    {
+     "census_year": 1881,
+     "unresolved_address": "no address given on the page",
+     "relationship": "Head",
+     "marital_status": "Unmarried",
+     "age_at_census": 67,
+     "birth_place": "Bradburton, Yorkshire",
+     "census_household_num": 14,
+     "source": "1881 census, no address given on the page, schedule 14 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; the address column is blank for this schedule"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry R",
+   "last_name": "Thorpe",
+   "properties": [
+    249
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 249,
+     "address": "9 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Widowed",
+     "age_at_census": 46,
+     "birth_place": "Nottingham",
+     "census_household_num": 15,
+     "source": "1881 census, 9 Park Terrace, schedule 15 - read from the enumerator's page by A. Hagues; the occupation is lost under an ink blot"
+    }
+   ]
+  },
+  {
+   "first_name": "Jane",
+   "last_name": "Barker",
+   "properties": [
+    249
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 249,
+     "address": "9 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 46,
+     "occupation_at_census": "Domestic housekeeper",
+     "birth_place": "Normanton on Soar, Nottinghamshire",
+     "census_household_num": 15,
+     "source": "1881 census, 9 Park Terrace, schedule 15 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William T",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 30,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Loughborough, Leicestershire",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary J",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "birth_place": "St James, Middlesex",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith M",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 5,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Daughter",
+     "age_at_census": 4,
+     "occupation_at_census": "Scholar",
+     "birth_place": "Nottingham",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Thomas W",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Son",
+     "age_at_census": 2,
+     "birth_place": "Nottingham",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "George A",
+   "last_name": "Cartwright",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Son",
+     "age_at_census": 1,
+     "birth_place": "Nottingham",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary E",
+   "last_name": "Fountain",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "birth_place": "South, Lincolnshire",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues; the occupation is struck through and reads as a whitesmith's wife"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Bramley",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Hoton, Leicestershire",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Eliza",
+   "last_name": "Rowlston",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 15,
+     "occupation_at_census": "Domestic nurse",
+     "birth_place": "Cotgrave, Nottinghamshire",
+     "census_household_num": 16,
+     "source": "1881 census, 10 Park Terrace, schedule 16 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "William",
+   "last_name": "Major",
+   "properties": [
+    251
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 251,
+     "address": "11 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "occupation_at_census": "Civil engineer",
+     "birth_place": "Flamborough, Yorkshire",
+     "census_household_num": 17,
+     "source": "1881 census, 11 Park Terrace, schedule 17 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Frances C",
+   "last_name": "Major",
+   "properties": [
+    251
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 251,
+     "address": "11 Park Terrace",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 51,
+     "birth_place": "Widcombe, Somerset",
+     "census_household_num": 17,
+     "source": "1881 census, 11 Park Terrace, schedule 17 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Emma",
+   "last_name": "Hunt",
+   "properties": [
+    251
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 251,
+     "address": "11 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 26,
+     "occupation_at_census": "Domestic cook",
+     "birth_place": "Burmington, Warwickshire",
+     "census_household_num": 17,
+     "source": "1881 census, 11 Park Terrace, schedule 17 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Vernon",
+   "properties": [
+    251
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 251,
+     "address": "11 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Unmarried",
+     "age_at_census": 27,
+     "occupation_at_census": "Domestic housemaid",
+     "birth_place": "Hanbury, Staffordshire",
+     "census_household_num": 17,
+     "source": "1881 census, 11 Park Terrace, schedule 17 - read from the enumerator's page by A. Hagues"
+    }
+   ]
+  },
+  {
+   "first_name": "Henry",
+   "last_name": "Wing",
+   "properties": [
+    252
+   ],
+   "census": [
+    {
+     "census_year": 1881,
+     "property_id": 252,
+     "address": "12 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 50,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Newark, Nottinghamshire",
+     "census_household_num": 18,
+     "source": "1881 census, 12 Park Terrace, schedule 18 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
