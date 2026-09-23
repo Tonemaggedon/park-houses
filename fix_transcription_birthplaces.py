@@ -12,8 +12,9 @@ rows. Every change is an exact, whole-value match: "Nottingham" becomes
 Nottingham" are left alone, because they are not the same value.
 
 Two places are deliberately NOT in the list. "At sea" and "(not known)" name
-nowhere, and the geocoder's answers for them - a street in Bonaire and an
-island in the Solomons - want deleting rather than correcting.
+nowhere. Their cache rows are marked 'nowhere' rather than deleted, because a
+deleted row is simply looked up again - which is how they came back as a
+street in Bonaire and an island in the Solomons.
 
 Usage:
   railway run python3 fix_transcription_birthplaces.py          # show what would change
@@ -142,11 +143,19 @@ if APPLY:
     # more, and several of them hold a wrong position. Drop exactly those, and
     # the two that name nowhere at all.
     dead = 0
-    for p in sorted(touched) + NOWHERE:
+    for p in sorted(touched):
         cur.execute("DELETE FROM geocode_cache WHERE place_text=%s", (p,))
         dead += cur.rowcount
+    # These two name nowhere. Deleting the row only invites the geocoder to look
+    # them up again and answer with the best match in the world, so mark them
+    # instead and strip any position they already carry.
+    for p in NOWHERE:
+        cur.execute("""UPDATE geocode_cache SET lat=NULL, lng=NULL, status='nowhere',
+                              formatted_address='names nowhere - never to be positioned'
+                        WHERE place_text=%s""", (p,))
+        cur.execute("UPDATE census_entries SET birth_lat=NULL, birth_lng=NULL WHERE TRIM(birth_place)=%s", (p,))
     conn.commit()
-    print(f'Removed {dead} stale geocode_cache entries.')
+    print(f'Removed {dead} stale geocode_cache entries, and marked {len(NOWHERE)} that name nowhere.')
     print('\nNow run, in this order:')
     print('   railway run python3 apply_geocode_cache.py --apply   # positions rows from places already known')
     print('   railway run python3 geocode_birth_places.py          # looks up what is left')

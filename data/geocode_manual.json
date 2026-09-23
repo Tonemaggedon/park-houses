@@ -134,6 +134,13 @@
    "label": "Collingham, Nottinghamshire"
   },
   {
+   "place_text": "Cooper's Bank, Staffordshire",
+   "lat": 52.5083,
+   "lng": -2.1361,
+   "label": "Cooper's Bank, near Gornal",
+   "note": "A hamlet on the Staffordshire and Worcestershire border, in the West Midlands since 1974. Positioned on Cooper's Bank Road."
+  },
+  {
    "place_text": "Cossall, Nottinghamshire",
    "lat": 52.9785,
    "lng": -1.2757,
@@ -369,6 +376,13 @@
    "label": "Knutsford, Cheshire"
   },
   {
+   "place_text": "Kreis Mohrungen, East Prussia",
+   "lat": 53.9139,
+   "lng": 19.9289,
+   "label": "Morag, Poland",
+   "note": "The East Prussian district of Mohrungen. Its town is Morag, in Poland since 1945."
+  },
+  {
    "place_text": "Lichfield",
    "lat": 52.6816,
    "lng": -1.8317,
@@ -480,6 +494,13 @@
    "lat": 52.8865,
    "lng": -1.0935,
    "label": "Plumtree, Nottinghamshire"
+  },
+  {
+   "place_text": "Pooley Bridge, Cumbria",
+   "lat": 54.6135,
+   "lng": -2.8215,
+   "label": "Pooley Bridge, Cumbria",
+   "note": "A real village at the foot of Ullswater that Nominatim would not return."
   },
   {
    "place_text": "Prestbury, Cheshire",
