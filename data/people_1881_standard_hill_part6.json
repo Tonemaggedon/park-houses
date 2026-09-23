@@ -1,6 +1,6 @@
 {
- "note": "**The 1881 round, schedules 52 to 74 - The Ropewalk, Derby Road, Clinton Terrace and Derby Terrace.** Transcribed by A. Hagues as the images came in.\n\n**Clinton Terrace maps cleanly onto the record.** The page numbers these houses on **Derby Road** - 127, 129, 131, 133, 135, 137 - and the record holds them as **1 to 6 Clinton Terrace** with the Derby Road number in the address. Six households are filed on that correspondence, and each source line says so. **139 Derby Road, which is 7 Clinton Terrace, stood empty.** The houses below 127 - 119, 121, 123, 125, which the page also calls Clinton Terrace - are not in the record and stay unfiled.\n\n**Derby Terrace runs to 159 on the page and to one house in the record.** Schedules 66 to 75 walk 141, 143, 145, 147, 149, 151, 153, 155, 157 and 159 Derby Terrace. The record holds **Derby House (1 Derby Terrace)** and nothing else, so nine of those ten households are unfiled. See [[derby-terrace-is-ten-houses-and-the-record-holds-one]].\n\n**Three 1871 households are identified here even though they cannot be filed.** **William Redfern** at 149, with **Ann Moore** still cooking for him - she was his general servant in 1871 and both ages advance ten years. **George B Trueman** at 155, with his wife and five daughters, every one +10. And **Henry G B Lasalle** at 153 - the man the 1871 hand appeared to call **de Lascelle** - with Cecilia and Blanche, +10 each. **That settles the surname**, and the 1871 file is corrected.\n\n**Two households have no head on the page.** Schedules 61 and 62, at 2 and 3 Clinton Terrace, begin with a daughter and with servants; whoever headed them is not entered. They are filed to the house because the number is plain, and the absence is written into the source line.\n\n**A second girls' school.** Lucy B Adcock, who kept a school on The Ropewalk in 1871, is at **115 Derby Road** in 1881 with two governesses - one of them a Frenchwoman entered as a \"foreign governess, British subject\" - and eight pupils.\n\n**Richard Hardy, architect, 30**, is living with his sister's family at 4 Clinton Terrace - one for the architect side of the record.\n\n**One age cannot be right.** Henry Young at 2 The Ropewalk is entered at 26 beside a wife of 50 and a daughter of 18. It is recorded as 56 with the page's own figure kept in the source line.",
- "source": "1881 census enumerator's book, Standard Hill and Limits of the Castle of Nottingham, schedules 52 to 74, transcribed by A. Hagues.",
+ "note": "PLACEHOLDER",
+ "source": "1881 census enumerator's book, Standard Hill and Limits of the Castle of Nottingham, schedules 52 to 68, transcribed by A. Hagues.",
  "people": [
   {
    "first_name": "Henry",
@@ -404,378 +404,470 @@
   {
    "first_name": "Annie J",
    "last_name": "Cooper",
+   "properties": [
+    88
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Clinton Villa, 117 Derby Road",
+     "property_id": 88,
+     "address": "117 Derby Road",
      "relationship": "Head",
      "marital_status": "Widowed",
      "age_at_census": 40,
      "birth_place": "Wreningham, Norfolk",
      "census_household_num": 55,
-     "source": "1881 census, Clinton Villa, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Charles A",
    "last_name": "Cooper",
+   "properties": [
+    88
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Clinton Villa, 117 Derby Road",
+     "property_id": 88,
+     "address": "117 Derby Road",
      "relationship": "Son",
      "marital_status": "Unmarried",
      "age_at_census": 19,
      "occupation_at_census": "Apprentice to a mechanical engineer",
      "birth_place": "Norwich, Norfolk",
      "census_household_num": 55,
-     "source": "1881 census, Clinton Villa, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ada",
    "last_name": "Cooper",
+   "properties": [
+    88
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Clinton Villa, 117 Derby Road",
+     "property_id": 88,
+     "address": "117 Derby Road",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 16,
      "birth_place": "Norwich, Norfolk",
      "census_household_num": 55,
-     "source": "1881 census, Clinton Villa, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Sarah",
    "last_name": "Clifton",
+   "properties": [
+    88
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "Clinton Villa, 117 Derby Road",
+     "property_id": 88,
+     "address": "117 Derby Road",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 24,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Worksop, Nottinghamshire",
      "census_household_num": 55,
-     "source": "1881 census, Clinton Villa, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 117 Derby Road, schedule 55 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Henry",
    "last_name": "Godber",
+   "properties": [
+    89
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "119 Clinton Terrace, as the page writes it",
+     "property_id": 89,
+     "address": "119 Derby Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 25,
      "occupation_at_census": "Manufacturing hosier",
      "birth_place": "Nottingham",
      "census_household_num": 56,
-     "source": "1881 census, 119 Clinton Terrace, as the page writes it, schedule 56 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 119 Derby Road, schedule 56 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Florence",
    "last_name": "Godber",
+   "properties": [
+    89
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "119 Clinton Terrace, as the page writes it",
+     "property_id": 89,
+     "address": "119 Derby Road",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 21,
      "birth_place": "Nottingham",
      "census_household_num": 56,
-     "source": "1881 census, 119 Clinton Terrace, as the page writes it, schedule 56 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 119 Derby Road, schedule 56 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Agnes S",
    "last_name": "Rae",
+   "properties": [
+    89
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "119 Clinton Terrace, as the page writes it",
+     "property_id": 89,
+     "address": "119 Derby Road",
      "relationship": "Visitor",
      "marital_status": "Unmarried",
      "age_at_census": 20,
      "birth_place": "Strathaven, Scotland",
      "census_household_num": 56,
-     "source": "1881 census, 119 Clinton Terrace, as the page writes it, schedule 56 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 119 Derby Road, schedule 56 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ann",
    "last_name": "Annis",
+   "properties": [
+    89
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "119 Clinton Terrace, as the page writes it",
+     "property_id": 89,
+     "address": "119 Derby Road",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 19,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Folkingham, Lincolnshire",
      "census_household_num": 56,
-     "source": "1881 census, 119 Clinton Terrace, as the page writes it, schedule 56 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 119 Derby Road, schedule 56 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Anne",
    "last_name": "Billand",
+   "properties": [
+    90
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "121 Clinton Terrace, as the page writes it",
+     "property_id": 90,
+     "address": "121 Derby Road",
      "relationship": "Head",
      "marital_status": "Widowed",
      "age_at_census": 52,
      "birth_place": "Derby",
      "census_household_num": 57,
-     "source": "1881 census, 121 Clinton Terrace, as the page writes it, schedule 57 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; surname hard to read"
+     "source": "1881 census, 121 Derby Road, schedule 57 - read from the enumerator's page by A. Hagues; surname hard to read"
     }
    ]
   },
   {
    "first_name": "Edwin",
    "last_name": "Billand",
+   "properties": [
+    90
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "121 Clinton Terrace, as the page writes it",
+     "property_id": 90,
+     "address": "121 Derby Road",
      "relationship": "Son",
      "marital_status": "Unmarried",
      "age_at_census": 24,
      "occupation_at_census": "Lace warehouseman",
      "birth_place": "Bilborough, Nottinghamshire",
      "census_household_num": 57,
-     "source": "1881 census, 121 Clinton Terrace, as the page writes it, schedule 57 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 121 Derby Road, schedule 57 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "May",
    "last_name": "Billand",
+   "properties": [
+    90
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "121 Clinton Terrace, as the page writes it",
+     "property_id": 90,
+     "address": "121 Derby Road",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 21,
      "birth_place": "Bilborough, Nottinghamshire",
      "census_household_num": 57,
-     "source": "1881 census, 121 Clinton Terrace, as the page writes it, schedule 57 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 121 Derby Road, schedule 57 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Sarah",
    "last_name": "Bates",
+   "properties": [
+    90
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "121 Clinton Terrace, as the page writes it",
+     "property_id": 90,
+     "address": "121 Derby Road",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 18,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Ruddington, Nottinghamshire",
      "census_household_num": 57,
-     "source": "1881 census, 121 Clinton Terrace, as the page writes it, schedule 57 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 121 Derby Road, schedule 57 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Herbert",
    "last_name": "Taylor",
+   "properties": [
+    91
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "123 Clinton Terrace, as the page writes it",
+     "property_id": 91,
+     "address": "123 Derby Road",
      "relationship": "Head",
      "marital_status": "Unmarried",
      "age_at_census": 36,
      "occupation_at_census": "Lace merchant",
      "birth_place": "Nottingham",
      "census_household_num": 58,
-     "source": "1881 census, 123 Clinton Terrace, as the page writes it, schedule 58 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 123 Derby Road, schedule 58 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ellen G",
    "last_name": "Taylor",
+   "properties": [
+    91
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "123 Clinton Terrace, as the page writes it",
+     "property_id": 91,
+     "address": "123 Derby Road",
      "relationship": "Sister",
      "marital_status": "Unmarried",
      "age_at_census": 49,
      "birth_place": "Nottingham",
      "census_household_num": 58,
-     "source": "1881 census, 123 Clinton Terrace, as the page writes it, schedule 58 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 123 Derby Road, schedule 58 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Jane",
    "last_name": "Taylor",
+   "properties": [
+    91
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "123 Clinton Terrace, as the page writes it",
+     "property_id": 91,
+     "address": "123 Derby Road",
      "relationship": "Sister",
      "marital_status": "Unmarried",
      "age_at_census": 40,
      "birth_place": "Nottingham",
      "census_household_num": 58,
-     "source": "1881 census, 123 Clinton Terrace, as the page writes it, schedule 58 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 123 Derby Road, schedule 58 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Frances A",
    "last_name": "Smedley",
+   "properties": [
+    91
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "123 Clinton Terrace, as the page writes it",
+     "property_id": 91,
+     "address": "123 Derby Road",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 24,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Bulcote, Nottinghamshire",
      "census_household_num": 58,
-     "source": "1881 census, 123 Clinton Terrace, as the page writes it, schedule 58 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 123 Derby Road, schedule 58 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Frank",
    "last_name": "Gill",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 32,
      "occupation_at_census": "Drysalter",
      "birth_place": "Philadelphia, USA",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Esther",
    "last_name": "Gill",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 29,
      "birth_place": "Lenton, Nottinghamshire",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Eleanor K",
    "last_name": "Gill",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Daughter",
      "age_at_census": 7,
      "occupation_at_census": "Scholar",
      "birth_place": "Nottingham",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Harry",
    "last_name": "Gill",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Son",
      "age_at_census": 6,
      "occupation_at_census": "Scholar",
      "birth_place": "Nottingham",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Archibald",
    "last_name": "Gill",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Son",
      "age_at_census": 3,
      "birth_place": "Nottingham",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Caroline",
    "last_name": "Davy",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 29,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Halstead, Essex",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ann",
    "last_name": "Cabell",
+   "properties": [
+    92
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "125 Clinton Terrace, as the page writes it",
+     "property_id": 92,
+     "address": "125 Derby Road",
      "relationship": "Visitor",
      "marital_status": "Widowed",
      "age_at_census": 40,
      "occupation_at_census": "Monthly nurse",
      "birth_place": "Nottingham",
      "census_household_num": 59,
-     "source": "1881 census, 125 Clinton Terrace, as the page writes it, schedule 59 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 125 Derby Road, schedule 59 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
@@ -1774,450 +1866,558 @@
   {
    "first_name": "John",
    "last_name": "Armitage",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 54,
      "occupation_at_census": "Corn and seed merchant",
      "birth_place": "Nottingham",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Maria",
    "last_name": "Armitage",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 56,
      "birth_place": "Summer Hill, Derbyshire",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Emily",
    "last_name": "Armitage",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 28,
      "birth_place": "Nottingham",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Henry B",
    "last_name": "Armitage",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Son",
      "marital_status": "Unmarried",
      "age_at_census": 25,
      "occupation_at_census": "Corn dealer",
      "birth_place": "Nottingham",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "William",
    "last_name": "Armitage",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Son",
      "marital_status": "Unmarried",
      "age_at_census": 23,
      "occupation_at_census": "Wood and corn dealer",
      "birth_place": "Nottingham",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Emma",
    "last_name": "Flint",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 28,
      "occupation_at_census": "Domestic cook",
      "birth_place": "Smallford, Staffordshire",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Mary E",
    "last_name": "Berresford",
+   "properties": [
+    105
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "145 Derby Terrace, as the page writes it",
+     "property_id": 105,
+     "address": "145 Derby Road (9 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 27,
      "occupation_at_census": "Domestic housemaid",
      "birth_place": "Chesterfield, Derbyshire",
      "census_household_num": 68,
-     "source": "1881 census, 145 Derby Terrace, as the page writes it, schedule 68 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 145 Derby Road (9 Derby Terrace), schedule 68 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Thomas B",
    "last_name": "Howard",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 52,
      "occupation_at_census": "Surveyor of Taxes",
      "birth_place": "Hemel Hempstead, Hertfordshire",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Alfred D",
    "last_name": "Howard",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Brother",
      "marital_status": "Unmarried",
      "age_at_census": 39,
      "occupation_at_census": "Clerk to the Surveyor of Taxes",
      "birth_place": "Hemel Hempstead, Hertfordshire",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "George T",
    "last_name": "Howard",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Son",
      "age_at_census": 14,
      "occupation_at_census": "Scholar",
      "birth_place": "Waltham Abbey, Essex",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Percy Hy",
    "last_name": "Howard",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Son",
      "age_at_census": 11,
      "occupation_at_census": "Scholar",
      "birth_place": "Chester",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Eliza",
    "last_name": "Leonard",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 19,
      "occupation_at_census": "Domestic cook",
      "birth_place": "Ilkeston, Derbyshire",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Anne",
    "last_name": "Waddenholme",
+   "properties": [
+    104
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "147 Derby Terrace, as the page writes it",
+     "property_id": 104,
+     "address": "147 Derby Road (8 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 18,
      "occupation_at_census": "Domestic housemaid",
      "birth_place": "Fritchley, Derbyshire",
      "census_household_num": 69,
-     "source": "1881 census, 147 Derby Terrace, as the page writes it, schedule 69 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 147 Derby Road (8 Derby Terrace), schedule 69 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "William",
    "last_name": "Redfern",
+   "properties": [
+    103
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "149 Derby Terrace, as the page writes it",
+     "property_id": 103,
+     "address": "149 Derby Road (7 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Widowed",
      "age_at_census": 68,
      "occupation_at_census": "Retired wine merchant",
      "birth_place": "Stokesley, Yorkshire",
      "census_household_num": 70,
-     "source": "1881 census, 149 Derby Terrace, as the page writes it, schedule 70 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 149 Derby Road (7 Derby Terrace), schedule 70 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Ann",
    "last_name": "Moore",
+   "properties": [
+    103
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "149 Derby Terrace, as the page writes it",
+     "property_id": 103,
+     "address": "149 Derby Road (7 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 38,
      "occupation_at_census": "Domestic cook",
      "birth_place": "East Leake, Nottinghamshire",
      "census_household_num": 70,
-     "source": "1881 census, 149 Derby Terrace, as the page writes it, schedule 70 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 149 Derby Road (7 Derby Terrace), schedule 70 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Jemima",
    "last_name": "Rogers",
+   "properties": [
+    103
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "149 Derby Terrace, as the page writes it",
+     "property_id": 103,
+     "address": "149 Derby Road (7 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 20,
      "occupation_at_census": "General servant",
      "birth_place": "Wollaton, Nottinghamshire",
      "census_household_num": 70,
-     "source": "1881 census, 149 Derby Terrace, as the page writes it, schedule 70 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 149 Derby Road (7 Derby Terrace), schedule 70 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Frederick",
    "last_name": "Hill",
+   "properties": [
+    102
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "151 Derby Terrace, as the page writes it",
+     "property_id": 102,
+     "address": "151 Derby Road (6 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 39,
      "occupation_at_census": "Lace manufacturer",
      "birth_place": "Nottingham",
      "census_household_num": 71,
-     "source": "1881 census, 151 Derby Terrace, as the page writes it, schedule 71 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 151 Derby Road (6 Derby Terrace), schedule 71 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Mary J",
    "last_name": "Hill",
+   "properties": [
+    102
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "151 Derby Terrace, as the page writes it",
+     "property_id": 102,
+     "address": "151 Derby Road (6 Derby Terrace)",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 30,
      "birth_place": "London",
      "census_household_num": 71,
-     "source": "1881 census, 151 Derby Terrace, as the page writes it, schedule 71 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 151 Derby Road (6 Derby Terrace), schedule 71 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Maria",
    "last_name": "Stocks",
+   "properties": [
+    102
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "151 Derby Terrace, as the page writes it",
+     "property_id": 102,
+     "address": "151 Derby Road (6 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 22,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Sutton in Ashfield, Nottinghamshire",
      "census_household_num": 71,
-     "source": "1881 census, 151 Derby Terrace, as the page writes it, schedule 71 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 151 Derby Road (6 Derby Terrace), schedule 71 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Henry G B",
    "last_name": "Lasalle",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Widowed",
      "age_at_census": 64,
      "occupation_at_census": "Secretary to a railway company",
      "birth_place": "Chesterfield, Derbyshire",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Cecilia B",
    "last_name": "Lasalle",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 26,
      "birth_place": "Nottingham",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Blanche B",
    "last_name": "Lasalle",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 24,
      "birth_place": "Nottingham",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Dorothy B",
    "last_name": "Lasalle",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Mother",
      "marital_status": "Widowed",
      "age_at_census": 86,
      "birth_place": "Epperstone, Nottinghamshire",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Emily",
    "last_name": "Wildbore",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 26,
      "occupation_at_census": "Domestic cook",
      "birth_place": "Epperstone, Nottinghamshire",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Fanny E",
    "last_name": "Wildbore",
+   "properties": [
+    101
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "153 Derby Terrace, as the page writes it",
+     "property_id": 101,
+     "address": "153 Derby Road (5 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 24,
      "occupation_at_census": "Domestic housemaid",
      "birth_place": "Epperstone, Nottinghamshire",
      "census_household_num": 72,
-     "source": "1881 census, 153 Derby Terrace, as the page writes it, schedule 72 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 153 Derby Road (5 Derby Terrace), schedule 72 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "George B",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 65,
      "occupation_at_census": "Lace manufacturer employing 21 men, 6 boys and 178 girls",
      "birth_place": "Hickerstone, Lincolnshire",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; the 1871 page gives his birthplace as Odstone, Leicestershire"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues; the 1871 page gives his birthplace as Odstone, Leicestershire"
     }
    ]
   },
   {
    "first_name": "Maria",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 67,
      "birth_place": "Loughborough, Leicestershire",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ],
    "born_year": 1814,
@@ -2226,16 +2426,20 @@
   {
    "first_name": "Maria",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 41,
      "birth_place": "Loughborough, Leicestershire",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ],
    "born_year": 1840,
@@ -2244,212 +2448,264 @@
   {
    "first_name": "Helen",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 33,
      "birth_place": "Nottingham",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Fanny",
    "last_name": "Renals",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Married",
      "age_at_census": 31,
      "birth_place": "Nottingham",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Alice",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 28,
      "birth_place": "Nottingham",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Emily A",
    "last_name": "Trueman",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Daughter",
      "marital_status": "Unmarried",
      "age_at_census": 23,
      "birth_place": "Nottingham",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Frederick",
    "last_name": "Renals",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Son-in-law",
      "marital_status": "Married",
      "age_at_census": 30,
      "occupation_at_census": "Lace dresser",
      "birth_place": "Lenton, Nottinghamshire",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Frederick W T",
    "last_name": "Renals",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Grandson",
      "age_at_census": 2,
      "birth_place": "Paddington, London",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Maria",
    "last_name": "Samson",
+   "properties": [
+    100
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "155 Derby Terrace, as the page writes it",
+     "property_id": 100,
+     "address": "155 Derby Road (4 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 23,
      "occupation_at_census": "Domestic servant",
      "birth_place": "Newark, Nottinghamshire",
      "census_household_num": 73,
-     "source": "1881 census, 155 Derby Terrace, as the page writes it, schedule 73 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 155 Derby Road (4 Derby Terrace), schedule 73 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Richard",
    "last_name": "Simon",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 41,
      "occupation_at_census": "Manager of printing ink works",
      "birth_place": "Germany",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Annie",
    "last_name": "Simon",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 27,
      "birth_place": "Nottingham (British subject)",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Helen A",
    "last_name": "Simon",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Daughter",
      "age_at_census": 0,
      "birth_place": "Nottingham",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; 9 months"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues; 9 months"
     }
    ]
   },
   {
    "first_name": "Charles P",
    "last_name": "Johnson",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Boarder",
      "marital_status": "Unmarried",
      "age_at_census": 17,
      "occupation_at_census": "Apprentice to a lace manufacturer",
      "birth_place": "Stockport, Cheshire",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Sarah",
    "last_name": "Hunt",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 20,
      "occupation_at_census": "General servant",
      "birth_place": "Greasley, Nottinghamshire",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues"
     }
    ]
   },
   {
    "first_name": "Eliza",
    "last_name": "Hunt",
+   "properties": [
+    99
+   ],
    "census": [
     {
      "census_year": 1881,
-     "unresolved_address": "157 Derby Terrace, as the page writes it",
+     "property_id": 99,
+     "address": "157 Derby Road (3 Derby Terrace)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 16,
      "occupation_at_census": "Nursemaid",
      "birth_place": "Greasley, Nottinghamshire",
      "census_household_num": 74,
-     "source": "1881 census, 157 Derby Terrace, as the page writes it, schedule 74 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1881 census, 157 Derby Road (3 Derby Terrace), schedule 74 - read from the enumerator's page by A. Hagues"
     }
    ]
   }
