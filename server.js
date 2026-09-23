@@ -2856,15 +2856,21 @@ app.get('/api/significant/thin', async (req, res) => {
                 (${SIGNAL_SQL}) DESC,
                 COALESCE(p.last_name, '')
        LIMIT 120`, [FULL]);
+    // Lead with the name the person is filed under, not the title they were
+    // given. "Lady Trent" and "1st Baron Trent" read as strangers beside the
+    // Florence Anne Boot and Jesse Boot already on the Notable Residents page,
+    // and somebody looking down two lists cannot tell they are the same four
+    // people. The title follows in brackets, where it identifies rather than
+    // replaces.
+    const realName = p => [p.title, `${p.first_name || ''} ${p.last_name || ''}`.trim(), p.postnominals]
+                            .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
     res.json(r.rows.map(p => ({
       id: p.id,
-      name: (p.known_as && p.known_as.trim())
-              ? p.known_as.trim()
-              : [p.title, `${p.first_name || ''} ${p.last_name || ''}`.trim(), p.postnominals]
-                  .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(),
+      name: realName(p) || (p.known_as || '').trim(),
       also: (p.known_as && p.known_as.trim()
-             && p.known_as.trim() !== `${p.first_name || ''} ${p.last_name || ''}`.trim())
-              ? `${p.first_name || ''} ${p.last_name || ''}`.trim() : null,
+             && p.known_as.trim() !== `${p.first_name || ''} ${p.last_name || ''}`.trim()
+             && p.known_as.trim() !== realName(p))
+              ? p.known_as.trim() : null,
       born_year: p.born_year, died_year: p.died_year,
       bio_len: Number(p.bio_len), significant: !!p.significant,
       note: p.significance_note || null,
