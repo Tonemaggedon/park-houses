@@ -17,6 +17,8 @@ Usage:
   railway run python3 tools_collapse_duplicate_rows.py --apply  # do it
 """
 
+import os, json, sys, re
+import psycopg2
 
 APPLY = '--apply' in sys.argv
 cn = psycopg2.connect(os.environ.get('DATABASE_PUBLIC_URL') or os.environ['DATABASE_URL'])
