@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Birth places the 1871 and 1881 transcriptions carried in with the wrong
-spelling or the wrong county, rewritten to the forms A. Hagues supplied.
+Birth places the transcriptions carried in with the wrong spelling or the wrong
+county, rewritten to the forms A. Hagues supplied. Sixty came from the 1871 and
+1881 rounds; seven more from the 1891 and 1939 rounds, which the geocoder either
+could not place at all or placed in the wrong county.
 
 The importer fills blanks and never overwrites, so a second import cannot mend
 these - the value is already there. This is the only way to change them.
@@ -27,6 +29,16 @@ import psycopg2
 APPLY = '--apply' in sys.argv
 
 REWRITE = {
+    # ── the 1891 and 1939 rounds ──────────────────────────────────────────────
+    # Bolnhurst, Bedfordshire was checked with these and is right as it stands.
+    "Baston, Norfolk": "Bacton, Norfolk",                     # Baston is in Lincolnshire
+    "Braceby, Leicestershire": "Braceby, Lincolnshire",
+    "Clyro, Radnorshire": "Clyro, Powys",
+    "Kimpton, Leicestershire": "Knipton, Leicestershire",
+    "Newball, Staffordshire": "Newhall, Staffordshire",
+    "Stapleton near Darlington, Durham": "Stapleton, Yorkshire",
+    "Yaxley, Lincolnshire": "Yaxley, Cambridgeshire",
+    # ── the 1871 and 1881 rounds ──────────────────────────────────────────────
     "Appleknowle, Derbyshire": "Apperknowle, Derbyshire",
     "Appleton, Bolton Percy, Yorkshire": "Bolton Percy, Yorkshire",
     "Arlaston": "Arleston, Derbyshire",
@@ -133,6 +145,13 @@ for table, column in (('census_entries', 'birth_place'), ('people', 'born_place'
         total += n
         touched.add(old)
         if APPLY:
+            # Clear the position first. A row renamed from "Baston, Norfolk" to
+            # "Bacton, Norfolk" otherwise keeps the coordinates Baston was given,
+            # and apply_geocode_cache fills blanks rather than overwriting, so a
+            # wrong position would sit there for good.
+            if table == 'census_entries':
+                cur.execute("UPDATE census_entries SET birth_lat=NULL, birth_lng=NULL "
+                            "WHERE TRIM(birth_place)=%s", (old,))
             cur.execute(f"UPDATE {table} SET {column}=%s WHERE TRIM({column})=%s", (new, old))
 
 print()

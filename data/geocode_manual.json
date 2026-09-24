@@ -49,6 +49,13 @@
    "label": "Beverley, East Riding of Yorkshire"
   },
   {
+   "place_text": "Bolnhurst, Bedfordshire",
+   "lat": 52.2253,
+   "lng": -0.4098,
+   "label": "Bolnhurst, Bedfordshire",
+   "note": "A real village north of Bedford, but the geocoder returns nothing for it with the old county name appended. It answers at once to 'Bolnhurst, Bedford, England', which is where this position comes from."
+  },
+  {
    "place_text": "Brighton, Sussex",
    "lat": 50.8225,
    "lng": -0.1372,
@@ -490,6 +497,13 @@
    "lng": -1.6178,
    "label": "Newcastle upon Tyne, Northumberland",
    "note": "It answered Newcastle, New Brunswick."
+  },
+  {
+   "place_text": "Newhall, Staffordshire",
+   "lat": 52.7752,
+   "lng": -1.5669,
+   "label": "Newhall, near Swadlincote",
+   "note": "It answered Newhall Crescent, a street in Heath Hayes near Cannock. The village stands on the Derbyshire side of the border below Burton upon Trent; the record gives it as Staffordshire, which is how the page has it."
   },
   {
    "place_text": "Newington, Surrey",
