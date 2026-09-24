@@ -1,49 +1,150 @@
 {
-  "note": "Martha Clarke, 76, and her sister Sarah, 68, both living on their own means, with a boarder, a lodger and one young servant at 10 Park Terrace (#250) on the 1891 return, transcribed by A. Hagues. 10 Park Terrace held only 1921 (John Henry Runge), so 1891 is free.\n\nWright's Directory prints '10. Miss M. Clarke; Henry G. Jalland, of Jalland & Co.' in 1894-95 - two householders at the number, which fits a house taking boarders and lodgers as this return shows. By 1898-99 number 10 has passed to Henry Ernest Goddard, dental surgeon.\n\n**Frederick Brewster is already in the record and is bound by number.** #720 is Frederick Brewster, born 1834, 'Retired Clark to commissioner', at 3 South Road (Ellenborough House) on the 1911 return - the same name, the same birth year exactly, and the same post. The directory settles what the post was: 'Fdk. Brewster, clk to tax comsnrs' at 21 Park Valley in 1894-95, and 'Brewster Frederick' on South Road in 1910-11. So he was clerk to the tax commissioners, which is what this return's 'clerk to commissioners of manufacturer' is reaching for, and he moved 10 Park Terrace to 21 Park Valley to South Road across twenty years. He is returned here as married with his wife absent from the schedule.\n\n**Herbert Bradley is very probably the man already in the record, but he is not bound.** #1796 is Herbert Bradley, born 1848, at 3 Park Terrace on the 1921 return, and the directory has 'Bradley Herbert' at number 3 from 1910-11 to 1915-16. This boarder is Herbert Bradley, 42, living on his own means, born about 1849 - one year out, on the same street. That is close enough to be worth merging and not close enough to bind on: the born years differ, so **/duplicates will not offer them and the merge has to be done by hand**. If they are one man, he was boarding at number 10 in 1891 and holding number 3 himself twenty years later, while Charles Bradley had number 3 in 1891 and Alfred Bradley was at Broxtowe House - three Bradleys on one short street in one year, which strengthens the case that they were brothers without proving it.\n\nSarah Werdon's surname is entered as transcribed; it is not a Nottinghamshire name in that form and may be an index rendering. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, 10 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291); Brewster at 21 Park Valley 1894-95, page 107 (id 164613).",
-  "people": [
+ "note": "Martha Clarke, 76, and her sister Sarah, 68, both living on their own means, with a boarder, a lodger and one young servant at 10 Park Terrace (#250) on the 1891 return, transcribed by A. Hagues. 10 Park Terrace held only 1921 (John Henry Runge), so 1891 is free.\n\nWright's Directory prints '10. Miss M. Clarke; Henry G. Jalland, of Jalland & Co.' in 1894-95 - two householders at the number, which fits a house taking boarders and lodgers as this return shows. By 1898-99 number 10 has passed to Henry Ernest Goddard, dental surgeon.\n\n**Frederick Brewster is already in the record and is bound by number.** #720 is Frederick Brewster, born 1834, 'Retired Clark to commissioner', at 3 South Road (Ellenborough House) on the 1911 return - the same name, the same birth year exactly, and the same post. The directory settles what the post was: 'Fdk. Brewster, clk to tax comsnrs' at 21 Park Valley in 1894-95, and 'Brewster Frederick' on South Road in 1910-11. So he was clerk to the tax commissioners, which is what this return's 'clerk to commissioners of manufacturer' is reaching for, and he moved 10 Park Terrace to 21 Park Valley to South Road across twenty years. He is returned here as married with his wife absent from the schedule.\n\n**Herbert Bradley is very probably the man already in the record, but he is not bound.** #1796 is Herbert Bradley, born 1848, at 3 Park Terrace on the 1921 return, and the directory has 'Bradley Herbert' at number 3 from 1910-11 to 1915-16. This boarder is Herbert Bradley, 42, living on his own means, born about 1849 - one year out, on the same street. That is close enough to be worth merging and not close enough to bind on: the born years differ, so **/duplicates will not offer them and the merge has to be done by hand**. If they are one man, he was boarding at number 10 in 1891 and holding number 3 himself twenty years later, while Charles Bradley had number 3 in 1891 and Alfred Bradley was at Broxtowe House - three Bradleys on one short street in one year, which strengthens the case that they were brothers without proving it.\n\nSarah Werdon's surname is entered as transcribed; it is not a Nottinghamshire name in that form and may be an index rendering. Ages are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1891 census, 10 Park Terrace, transcribed by A. Hagues. Directory evidence: Wright's Directory of Nottingham 1894-95, page 107 (Leicester Special Collections id 164613); 1898-99, page 115 (id 165291); Brewster at 21 Park Valley 1894-95, page 107 (id 164613).",
+ "people": [
+  {
+   "first_name": "Martha",
+   "last_name": "Clarke",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1815,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    250
+   ],
+   "census": [
     {
-      "first_name": "Martha", "last_name": "Clarke", "match_born_year": true, "sex": "F", "born_year": 1815, "born_place": "Nottinghamshire",
-      "properties": [250],
-      "census": [{ "census_year": 1891, "property_id": 250, "address": "10 Park Terrace",
-                   "relationship": "Head", "marital_status": "Single", "age_at_census": 76,
-                   "occupation_at_census": "Living on own means", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; printed as Miss M. Clarke at the same house in Wright's Directory 1894-95" }]
-    },
-    {
-      "first_name": "Sarah", "last_name": "Clarke", "match_born_year": true, "sex": "F", "born_year": 1823, "born_place": "Nottinghamshire",
-      "properties": [250],
-      "census": [{ "census_year": 1891, "property_id": 250, "address": "10 Park Terrace",
-                   "relationship": "Sister", "marital_status": "Single", "age_at_census": 68,
-                   "occupation_at_census": "Living on own means", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues" }],
-      "relationships": [{ "to": { "first_name": "Martha", "last_name": "Clarke" }, "type": "sibling_of" }]
-    },
-    {
-      "first_name": "Herbert", "last_name": "Bradley", "match_born_year": true, "sex": "M", "born_year": 1849, "born_place": "Nottinghamshire",
-      "properties": [250],
-      "census": [{ "census_year": 1891, "property_id": 250, "address": "10 Park Terrace",
-                   "relationship": "Boarder", "marital_status": "Single", "age_at_census": 42,
-                   "occupation_at_census": "Living on own means", "birth_place": "Nottinghamshire",
-                   "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; very probably the Herbert Bradley of 3 Park Terrace (#1796, born 1848), to be merged by hand" }]
-    },
-    {
-      "id": 720, "first_name": "Frederick", "last_name": "Brewster", "sex": "M", "born_year": 1834, "born_place": "St Nicholas, Nottingham",
-      "occupations": [{ "occupation": "Clerk to the tax commissioners", "from_year": 1891, "to_year": 1895, "notes": "1891 census, as clerk to commissioners; Wright's Directory 1894-95, at 21 Park Valley, as clerk to the tax commissioners" }],
-      "properties": [250],
-      "census": [{ "census_year": 1891, "property_id": 250, "address": "10 Park Terrace",
-                   "relationship": "Lodger", "marital_status": "Married", "age_at_census": 57,
-                   "occupation_at_census": "Clerk to commissioners", "birth_place": "St Nicholas, Nottingham",
-                   "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; wife not on the schedule" }]
-    },
-    {
-      "first_name": "Sarah", "last_name": "Werdon", "match_born_year": true, "sex": "F", "born_year": 1875, "born_place": "Plumtree, Nottinghamshire",
-      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [250],
-      "census": [{ "census_year": 1891, "property_id": 250, "address": "10 Park Terrace",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 16,
-                   "occupation_at_census": "General servant, domestic", "birth_place": "Plumtree, Nottinghamshire",
-                   "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; surname as transcribed" }]
+     "census_year": 1891,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Head",
+     "marital_status": "Single",
+     "age_at_census": 76,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; printed as Miss M. Clarke at the same house in Wright's Directory 1894-95"
     }
-  ]
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Clarke",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1823,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Sister",
+     "marital_status": "Single",
+     "age_at_census": 68,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Martha",
+      "last_name": "Clarke"
+     },
+     "type": "sibling_of"
+    }
+   ]
+  },
+  {
+   "id": 1796,
+   "first_name": "Herbert",
+   "last_name": "Bradley",
+   "sex": "M",
+   "born_year": 1849,
+   "born_place": "Nottinghamshire",
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Boarder",
+     "marital_status": "Single",
+     "age_at_census": 42,
+     "occupation_at_census": "Living on own means",
+     "birth_place": "Nottinghamshire",
+     "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; very probably the Herbert Bradley of 3 Park Terrace (#1796, born 1848), to be merged by hand"
+    }
+   ]
+  },
+  {
+   "id": 720,
+   "first_name": "Frederick",
+   "last_name": "Brewster",
+   "sex": "M",
+   "born_year": 1834,
+   "born_place": "St Nicholas, Nottingham",
+   "occupations": [
+    {
+     "occupation": "Clerk to the tax commissioners",
+     "from_year": 1891,
+     "to_year": 1895,
+     "notes": "1891 census, as clerk to commissioners; Wright's Directory 1894-95, at 21 Park Valley, as clerk to the tax commissioners"
+    }
+   ],
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Lodger",
+     "marital_status": "Married",
+     "age_at_census": 57,
+     "occupation_at_census": "Clerk to commissioners",
+     "birth_place": "St Nicholas, Nottingham",
+     "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; wife not on the schedule"
+    }
+   ]
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Werdon",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1875,
+   "born_place": "Plumtree, Nottinghamshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    250
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 250,
+     "address": "10 Park Terrace",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Plumtree, Nottinghamshire",
+     "source": "1891 census, 10 Park Terrace - transcribed by A. Hagues; surname as transcribed"
+    }
+   ]
+  }
+ ]
 }
