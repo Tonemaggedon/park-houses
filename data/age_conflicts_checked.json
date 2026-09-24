@@ -1,0 +1,13 @@
+{
+ "note": "People whose census rounds disagree about their age by more than the calendar allows - and who, on looking at the household around them, are plainly ONE person with a mistranscribed or misremembered age rather than two people welded together. tools_split_by_birth_year.py skips anyone listed here.\n\nThe record keeps the age the page gives. It is not corrected, because the page says what it says; the conflict is noted in the source line instead. What is recorded here is only that somebody has looked.",
+ "checked": [
+  { "person_id": 4075, "who": "John Langham, iron merchant", "why": "1881 at 6 The Ropewalk and 1891 and 1911 at 25 Park Valley - with his wife Martha and his son Thomas C in every round. One man; the 1891 age of 57 should be 51." },
+  { "person_id": 4078, "who": "Thomas C Langham", "why": "Son in all three rounds, beside John and Martha each time. One man; the 1891 age of 17 should be 12." },
+  { "person_id": 3599, "who": "George Shepperley, chemist and druggist", "why": "Western Terrace in 1881 and 5 Western Terrace in 1891, a pharmaceutical chemist both times, with his son George Jos and Margaret beside him. One man; 40 then 59 cannot both be right." },
+  { "person_id": 3725, "who": "Henry Hill, lace manufacturer", "why": "Son of the house on Pelham Crescent in 1881 and at 12 Pelham Crescent in 1891, the same trade. One man." },
+  { "person_id": 3431, "who": "Hannah E Heath, cook", "why": "Servant and domestic cook at 5 Lenton Road in both rounds - Castle Bank in 1881, Castle Rising as the 1891 page writes it. One woman." },
+  { "person_id": 3571, "who": "Samuel Maples, solicitor", "why": "1 Park Terrace in 1871 and 21 Newcastle Drive in 1891, a solicitor both times. A distinctive name and trade; one man who moved, whose 1891 age of 77 runs seven years ahead of itself." },
+  { "person_id": 4247, "who": "Florence A. Wilkinson", "why": "Daughter of the house in every round, with Sarah Wilkinson beside her, at Beechwood then Derby House. One woman; 26 in 1901 and 30 in 1911 cannot both be right." },
+  { "person_id": 154, "who": "Katherine Elizabeth Flersheim", "why": "Hermann Flersheim's wife in every round - 5 Pelham Crescent from 1881, and the same household in 1871 before the house was identified. One woman; 34 in 1871 and 48 in 1881 cannot both be right." }
+ ]
+}
