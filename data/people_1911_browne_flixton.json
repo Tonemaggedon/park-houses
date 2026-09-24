@@ -1,0 +1,191 @@
+{
+ "note": "**Flixton, 15 Cavendish Crescent North, in 1911** - supplied by A. Hagues from the census index.\n\n**The record held the head and nothing else.** Harry Middleton Browne was there with no relationship, no age, no occupation and no birthplace - a name against a house. The other six are new, and his own row is filled out.\n\nHe is bound by number (#2837) so the import fills his row rather than making a second Harry Browne beside the first.\n\n**Ruth Winifred was under a year old** and is entered as 0, with the real age in the source line, because the age column is a whole number.\n\n**One reading corrected:** the index gives Annie Brand's birthplace as *Gosterton, Lincs*. **Gosberton** is the Lincolnshire village.",
+ "source": "1911 census, Flixton, 15 Cavendish Crescent North, transcribed by A. Hagues.",
+ "people": [
+  {
+   "first_name": "Harry Middleton",
+   "last_name": "Browne",
+   "born_year": 1865,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 46,
+     "occupation_at_census": "Paper merchant",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index; the record already held this man at this house with no relationship, age, occupation or birthplace against his name"
+    }
+   ],
+   "id": 2837
+  },
+  {
+   "first_name": "Martha Fanny",
+   "last_name": "Browne",
+   "born_year": 1869,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Harry Middleton",
+      "last_name": "Browne"
+     },
+     "type": "spouse_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Doris Mary",
+   "last_name": "Browne",
+   "born_year": 1905,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Daughter",
+     "age_at_census": 6,
+     "occupation_at_census": "School",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Harry Middleton",
+      "last_name": "Browne"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Arthur Middleton",
+   "last_name": "Browne",
+   "born_year": 1908,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Son",
+     "age_at_census": 3,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Harry Middleton",
+      "last_name": "Browne"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Ruth Winifred",
+   "last_name": "Browne",
+   "born_year": 1911,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Daughter",
+     "age_at_census": 0,
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index; under one year old"
+    }
+   ],
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Harry Middleton",
+      "last_name": "Browne"
+     },
+     "type": "child_of"
+    }
+   ]
+  },
+  {
+   "first_name": "Annie",
+   "last_name": "Brand",
+   "born_year": 1875,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 36,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Gosberton, Lincolnshire",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index; the index reads Gosterton; Gosberton is the Lincolnshire village"
+    }
+   ]
+  },
+  {
+   "first_name": "Hannah Lily",
+   "last_name": "Markwell",
+   "born_year": 1892,
+   "properties": [
+    30
+   ],
+   "census": [
+    {
+     "census_year": 1911,
+     "property_id": 30,
+     "address": "15 Cavendish Crescent North",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 19,
+     "occupation_at_census": "Nurse, domestic",
+     "birth_place": "Plymouth, Devon",
+     "census_household_num": 1,
+     "source": "1911 census, Flixton, 15 Cavendish Crescent North, schedule 1 - supplied by A. Hagues from the census index"
+    }
+   ]
+  }
+ ]
+}
