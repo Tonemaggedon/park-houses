@@ -6,7 +6,7 @@ cur.execute("select lower(trim(first_name)), lower(trim(last_name)) from people"
 HELD=set(cur.fetchall())
 ABBR={'elizth':'Elizabeth','eliz':'Elizabeth','wm':'William','chas':'Charles','thos':'Thomas',
  'jno':'John','geo':'George','robt':'Robert','fredk':'Frederick','edwd':'Edward','margt':'Margaret',
- 'saml':'Samuel','jas':'James','gert':'Gertrude','carol':'Caroline','adelade':'Adelaide',
+ 'saml':'Samuel','jas':'James','gert':'Gertrude','adelade':'Adelaide',
  'caarine':'Catharine','benj':'Benjamin','danl':'Daniel','alexr':'Alexander','richd':'Richard',
  'matw':'Matthew','hy':'Henry'}
 def fix(fn):
