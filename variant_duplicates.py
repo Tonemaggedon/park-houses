@@ -183,8 +183,20 @@ for a in left:
             ids = {x for x in (p[6] or '').split(',') if x}
             return txt, ids
         at, ai = houses(a); bt, bi = houses(b)
-        if (at & bt) or (ai & bi):
+        # A filed row names a house outright, so a shared property id is proof.
+        # An UNFILED row carries only what the enumerator wrote in the address
+        # column, and that is very often a bare street - "Pelham Crescent" with
+        # no number. Two strangers on one street shared it, and this graded them
+        # near proof: John Scott Wells was matched to John R Ellis that way.
+        # So text only counts where it names a particular house - a number in it,
+        # or a house name set off by a comma.
+        def names_a_house(t):
+            return bool(re.search(r'\d', t)) or ',' in t
+        shared_txt = {t for t in (at & bt) if names_a_house(t)}
+        if (ai & bi) or shared_txt:
             notes.append('SAME HOUSE on both sides - near proof')
+        elif at & bt:
+            notes.append('same street, no number either side - weak')
         # Keep the record that carries more of the person's life - more census
         # years first, and where those are equal, the fuller spelling of the
         # name: Charles Edward Townroe over Chas. E. Tomnroe.
