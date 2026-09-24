@@ -1,0 +1,212 @@
+{
+ "note": "Pairs the record holds twice: the same house, and a name a letter or two apart. The one kept is the one carrying a birth year, which is the older record. Merged by tools_merge_duplicates.js, which calls the same mergePeopleInto the site's own merge button calls - so a merge from here and a merge from the Duplicate People page leave the record identical, alias and all.\n\nA pair goes in 'held_back' when a letter or two is not enough: two different surnames that happen to be close, or a father and son with the same name in the same house. Those want an eye, not a script.",
+ "merges": [
+  {
+   "keep": 3530,
+   "drop": 5252,
+   "why": "Martha Clarke and Martha Clark at 8 Park Terrace - surname differs"
+  },
+  {
+   "keep": 2461,
+   "drop": 2923,
+   "why": "Henry Crewdson and Henry Crendson at 25 Lenton Avenue - surname differs"
+  },
+  {
+   "keep": 4054,
+   "drop": 6233,
+   "why": "Alfred Dawson and Alfred Cawson at 11 Park Valley - surname differs"
+  },
+  {
+   "keep": 4055,
+   "drop": 6234,
+   "why": "Sarah Dawson and Sarah Cawson at 11 Park Valley - surname differs"
+  },
+  {
+   "keep": 854,
+   "drop": 1468,
+   "why": "Minnie Kate Durant and Minnie Kate Durrand at 19 Lenton Road - surname differs"
+  },
+  {
+   "keep": 837,
+   "drop": 1461,
+   "why": "Amy Marguerite Forman and Amy Marguerite Foreman at 13 Lenton Road - surname differs"
+  },
+  {
+   "keep": 5234,
+   "drop": 5901,
+   "why": "Annie Husband and Annie Husbands at 2 Park Terrace - surname differs"
+  },
+  {
+   "keep": 5233,
+   "drop": 5899,
+   "why": "Harriett Husband and Harriett Husbands at 2 Park Terrace - surname differs"
+  },
+  {
+   "keep": 35,
+   "drop": 1480,
+   "why": "Agnes Marriott and Agnes Marriatt at Lenton House, 27 Lenton Road - surname differs"
+  },
+  {
+   "keep": 833,
+   "drop": 1445,
+   "why": "Lydia Swain Skelchley and Lydia Swain Sketchley at 11 Lenton Road - surname differs"
+  },
+  {
+   "keep": 3650,
+   "drop": 4779,
+   "why": "Constance Thomley and Constance Thornley at 12 Park Terrace - surname differs"
+  },
+  {
+   "keep": 779,
+   "drop": 1386,
+   "why": "Carrie Sarah Bradwell and Carine Sarah Bradwell at 7 Cavendish Crescent South - forename differs"
+  },
+  {
+   "keep": 5230,
+   "drop": 5897,
+   "why": "Maud E Cutler and Maude E Cutler at 2 Park Terrace - forename differs"
+  },
+  {
+   "keep": 1307,
+   "drop": 2557,
+   "why": "Lettia Dexter and Letitia Dexter at Holly Lodge, Clumber Road West - forename differs"
+  },
+  {
+   "keep": 5305,
+   "drop": 6663,
+   "why": "Cecelia Hamel and Cacilia Hamel at 3 Newcastle Drive - forename differs"
+  },
+  {
+   "keep": 520,
+   "drop": 3016,
+   "why": "Recha Kohn and Rocha Kohn at 11 Pelham Crescent - forename differs"
+  },
+  {
+   "keep": 5868,
+   "drop": 6858,
+   "why": "Blanche Lasalle and Blanche B Lasalle at 153 Derby Road (5 Derby Terrace) - forename differs"
+  },
+  {
+   "keep": 5867,
+   "drop": 6857,
+   "why": "Cecilia Lasalle and Cecilia B Lasalle at 153 Derby Road (5 Derby Terrace) - forename differs"
+  },
+  {
+   "keep": 5865,
+   "drop": 6856,
+   "why": "Henry G Lasalle and Henry G B Lasalle at 153 Derby Road (5 Derby Terrace) - forename differs"
+  },
+  {
+   "keep": 3795,
+   "drop": 5455,
+   "why": "Annie R Lewis and Anna R Lewis at 3 Pelham Crescent - forename differs"
+  },
+  {
+   "keep": 3652,
+   "drop": 5930,
+   "why": "Sarah Ann Morris and Sarah A Morris at 12 Park Terrace - forename differs"
+  },
+  {
+   "keep": 2902,
+   "drop": 3989,
+   "why": "Jean Paton and Jane Paton at Dundee House, 17 Lenton Avenue - forename differs"
+  },
+  {
+   "keep": 2449,
+   "drop": 2939,
+   "why": "Peray Sampson and Percy Sampson at 29 Lenton Avenue - forename differs"
+  },
+  {
+   "keep": 999,
+   "drop": 1693,
+   "why": "Rose Sherwin and Rosa Sherwin at 15 Hope Drive - forename differs"
+  },
+  {
+   "keep": 5783,
+   "drop": 5990,
+   "why": "Robert A Speed and Robert H Speed at 44 The Ropewalk - forename differs"
+  },
+  {
+   "keep": 5806,
+   "drop": 5960,
+   "why": "Eliza C Theker and Eliza Theker at 54 The Ropewalk - forename differs"
+  },
+  {
+   "keep": 5809,
+   "drop": 5961,
+   "why": "Florence C Theker and Florence E Theker at 54 The Ropewalk - forename differs"
+  },
+  {
+   "keep": 2872,
+   "drop": 5919,
+   "why": "Henry R. Thorpe and Henry R Thorpe at 9 Park Terrace - forename differs"
+  },
+  {
+   "keep": 5541,
+   "drop": 6863,
+   "why": "Emily Ada Trueman and Emily A Trueman at 155 Derby Road (4 Derby Terrace) - forename differs"
+  },
+  {
+   "keep": 5756,
+   "drop": 5994,
+   "why": "Anne Wadsworth and Annie Wadsworth at 38 The Ropewalk - forename differs"
+  },
+  {
+   "keep": 1596,
+   "drop": 2440,
+   "why": "Frederick Wadsworth and Frederic Wadsworth at 33 Lenton Avenue - forename differs"
+  },
+  {
+   "keep": 2733,
+   "drop": 3890,
+   "why": "Frederick A Wadsworth and Frederic A Wadsworth at 33 Lenton Avenue - forename differs"
+  }
+ ],
+ "held_back": [
+  {
+   "keep": 480,
+   "drop": 6466,
+   "why": "George Derry and George Perry at 10 Barrack Lane - surname differs -- HELD BACK: two George Derrys live at 10 Barrack Lane, father and son, and only one of them is George Perry"
+  },
+  {
+   "keep": 2773,
+   "drop": 6466,
+   "why": "George Derry and George Perry at 10 Barrack Lane - surname differs -- HELD BACK: the same, from the other side"
+  },
+  {
+   "keep": 1560,
+   "drop": 2530,
+   "why": "Elizabeth Skelton and Elizabeth Shelton at 7 Lenton Avenue - surname differs -- HELD BACK: Skelton and Shelton are both real surnames, and one letter apart is not evidence"
+  },
+  {
+   "keep": 166,
+   "drop": 168,
+   "why": "Emma Ward and Emma Wood at 5 Pelham Crescent - surname differs -- HELD BACK: Ward and Wood are two letters apart and two different surnames"
+  },
+  {
+   "keep": 4593,
+   "drop": 4600,
+   "why": "William Wiss and William Moss at Derby House (1 Derby Terrace) - surname differs -- HELD BACK: Wiss and Moss likewise"
+  },
+  {
+   "keep": 6024,
+   "drop": 5717,
+   "why": "James B Gibson and James R Gibson at 24 The Ropewalk - forename differs -- HELD BACK: two James B Gibsons at 24 The Ropewalk, born 1843 and 1878 - father and son, and only the elder can be James R"
+  },
+  {
+   "keep": 6021,
+   "drop": 5717,
+   "why": "James B Gibson and James R Gibson at 24 The Ropewalk - forename differs -- HELD BACK: the same, from the other side"
+  },
+  {
+   "keep": 428,
+   "drop": 1465,
+   "why": "Anne S Heaton and Anna L Heaton at 19 Lenton Road - forename differs -- HELD BACK: Anne S and Anna L Heaton, born a year apart - as likely two sisters as one woman"
+  },
+  {
+   "keep": 3648,
+   "drop": 5265,
+   "why": "Henry Wing and Henry M Wing at 12 Park Terrace - forename differs -- HELD BACK: Henry Wing and Henry M Wing at 12 Park Terrace are father and son - the son is 9 in 1871 and 19 in 1881"
+  }
+ ]
+}
