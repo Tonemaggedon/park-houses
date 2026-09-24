@@ -1,10 +1,35 @@
 {
  "note": "Houses the enumerator wrote down as standing empty on census night. A house here is NOT a gap in the record - it is an answer, and the gap tools should stop offering it. Every one is taken from the 'Uninhabited' column of the enumerator's page, which is why the round and the property are both fixed. Loaded into census_unoccupied by tools_load_unoccupied.py.",
  "houses": [
-  { "property_id": 77,  "census_year": 1881, "notes": "139 Derby Road, which the record holds as 7 Clinton Terrace. The 1881 enumerator marks it uninhabited between 137 and 141." },
-  { "property_id": 327, "census_year": 1881, "notes": "30 The Ropewalk, marked uninhabited between schedules 34 and 35 as the enumerator walked down from 32 to 28." },
-  { "property_id": 333, "census_year": 1881, "notes": "40 The Ropewalk, marked uninhabited between schedules 29 and 30, between 42 and 38." },
-  { "property_id": 128, "census_year": 1891, "notes": "3 Holles Crescent, marked uninhabited between 5 and 1." },
-  { "property_id": 164, "census_year": 1891, "notes": "15 Lenton Avenue, marked uninhabited between 17 and 13. It was on the 1891 gap list; it is not a gap, it is an empty house." }
+  {
+   "property_id": 77,
+   "census_year": 1881,
+   "notes": "139 Derby Road, which the record holds as 7 Clinton Terrace. The 1881 enumerator marks it uninhabited between 137 and 141."
+  },
+  {
+   "property_id": 327,
+   "census_year": 1881,
+   "notes": "30 The Ropewalk, marked uninhabited between schedules 34 and 35 as the enumerator walked down from 32 to 28."
+  },
+  {
+   "property_id": 333,
+   "census_year": 1881,
+   "notes": "40 The Ropewalk, marked uninhabited between schedules 29 and 30, between 42 and 38."
+  },
+  {
+   "property_id": 24,
+   "census_year": 1891,
+   "notes": "7 Cavendish Crescent North stood empty. A. Hagues read the 1891 page. The record holds the house in 1911 and 1921 and nothing before, so this was showing as a gap and is not one."
+  },
+  {
+   "property_id": 128,
+   "census_year": 1891,
+   "notes": "3 Holles Crescent, marked uninhabited between 5 and 1."
+  },
+  {
+   "property_id": 164,
+   "census_year": 1891,
+   "notes": "15 Lenton Avenue, marked uninhabited between 17 and 13. It was on the 1891 gap list; it is not a gap, it is an empty house."
+  }
  ]
 }
