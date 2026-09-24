@@ -6483,8 +6483,12 @@ app.post('/api/admin/deduplicate-relationships', requireAdmin, async (req, res) 
 // ── Delete a person entirely (admin only) ────────────────────────────────────
 app.delete('/api/person/:id', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
-  const personId = parseInt(req.params.id);
-  if (!personId) return res.status(400).json({ error: 'Invalid person id' });
+  const personId = parseInt(req.params.id, 10);
+  // "Invalid person id" used to cover both a missing number and a bad one, so a
+  // page that had lost the id looked like a broken person.
+  if (!Number.isInteger(personId) || personId <= 0) {
+    return res.status(400).json({ error: `No person number was sent (the page asked for "${req.params.id}")` });
+  }
   const client = await db.connect();
   try {
     await client.query('BEGIN');

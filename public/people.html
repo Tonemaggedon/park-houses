@@ -1692,6 +1692,15 @@ function showAddOccupation(personId) {
 
 // ── Delete a person (admin only) ─────────────────────────────────────────────
 async function deletePerson(personId, name) {
+  // The button is drawn from whatever list opened the profile, and not every
+  // list carries the person number. Without it the fetch asks for
+  // /api/person/undefined, and the server answers "Invalid person id", which
+  // sounds like the person is broken rather than the page.
+  if (!Number.isInteger(Number(personId)) || Number(personId) <= 0) {
+    alert(`This page does not know the person number for "${name}", so it cannot delete them.\n\n`
+        + `Open them from the People page and try again.`);
+    return;
+  }
   if (!confirm(`Permanently delete "${name}" and ALL their census records, relationships, and media?\n\nThis cannot be undone.`)) return;
   if (!confirm(`Second confirmation: delete "${name}" (ID #${personId})?`)) return;
   try {
@@ -1701,6 +1710,13 @@ async function deletePerson(personId, name) {
       const idx = allPeople.findIndex(p => p.id === personId);
       if (idx >= 0) allPeople.splice(idx, 1);
       renderGrid(allPeople);
+    } else if (res.error === 'Person not found') {
+      // Already gone - usually a second click on a stale grid. Tidy the grid
+      // rather than telling somebody off for it.
+      closeProfile();
+      const idx = allPeople.findIndex(p => p.id === personId);
+      if (idx >= 0) { allPeople.splice(idx, 1); renderGrid(allPeople); }
+      alert(`"${name}" (#${personId}) is already gone. The list has been refreshed.`);
     } else {
       alert('Delete failed: ' + (res.error || 'unknown error'));
     }
