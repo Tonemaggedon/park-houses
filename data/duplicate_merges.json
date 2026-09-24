@@ -1,5 +1,5 @@
 {
- "note": "Pairs the record holds twice: the same house, and a name a letter or two apart. The one kept is the one carrying a birth year, which is the older record. Merged by tools_merge_duplicates.js, which calls the same mergePeopleInto the site's own merge button calls - so a merge from here and a merge from the Duplicate People page leave the record identical, alias and all.\n\nA pair goes in 'held_back' when a letter or two is not enough: two different surnames that happen to be close, or a father and son with the same name in the same house. Those want an eye, not a script.",
+ "note": "Pairs the record held twice: the same house, and a name a letter or two apart. Merged by tools_merge_duplicates.js, which calls the same mergePeopleInto the site's own merge button calls, so a merge from here and one from the Duplicate People page leave the record identical, alias and all.\n\n**All 32 in `merges` have been run.** They are kept rather than emptied, because the list is the evidence for what happened.\n\n**`held_back` is settled too.** A. Hagues read each on the page: Anne/Anna Heaton were one woman and are merged; Elizabeth Skelton and Shelton likewise; George Perry turned out not to be in the census at all. The rest are genuinely different people and are now in `duplicate_dismissed`, so no tool offers them again.",
  "merges": [
   {
    "keep": 3530,
