@@ -5204,16 +5204,19 @@
   "id": 331,
   "name": "",
   "street": "The Ropewalk",
-  "no": "36a",
-  "address": "36 and 36a The Ropewalk",
+  "no": "36",
+  "address": "36 The Ropewalk",
   "desc": "Three storeys plus basement. Painted stucco facades with artificial slate roofs. Mid 19c and late 20c alterations and additions. Rusticated lower floors to rear elevation facing The Ropewalk plus sill band, eaves cornice and blocking course. Moulded surrounds to original glazing bar sash windows at first and second floor level. Staircase plus single storey square and canted window bays added mid 19c with 20c rectangular bay at basement level. Outbuilding in yard area also altered and converted. Rusticated ground floor to main front facing Park Terrace with sill band, cornices, eaves cornice and blocking course. Three storey bow window bay with tripartite sash on ground and first floor level. Original second floor windows replaced. Side bay to left has renewed French window with hood and above, glazing bar sash with 20c wrought iron balcony. Above again, smaller glazing bar sash. Two side wall, coped chimney stacks, others altered. Car parking in yard area adjacent to The Ropewalk with 20c flat roofed garage building and alterations to boundary wall.\n\n",
-  "history": "One of a pair of houses c1831-34. (With No.38). Now converted into flats. Grade II Listed. Part of a group of houses on The Ropewalk which were amongst the first to be built in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace (now named Park Terrace) and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select ‘residential plan’ in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned at impending loss of The Park as an area of common recreational use. ",
+  "history": "One of a pair of houses c1831-34. (With No.38). Now converted into flats. Grade II Listed. Part of a group of houses on The Ropewalk which were amongst the first to be built in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace (now named Park Terrace) and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select ‘residential plan’ in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned at impending loss of The Park as an area of common recreational use.\n\nOne building of two dwellings, held by the record as a single property until 25 September 2026. Historic England lists 36 and 36a together, and parkhouses.co.uk carries them together. They were separated so that each could hold its own households; the description and the history below are the building's and stand the same on both. Edward Woolley is at 36 in 1871 and again in 1881, which is what fixed which of the two is which - the 1871 enumerator walks up the street (34, 36, 36a, 38) and the 1881 one walks down it (38, 36a, 36, 34).",
   "converted": "Flats",
   "listed_grade": "II",
   "date_built": "1831",
   "listed": "Yes",
   "lat": 52.9546018,
-  "lng": -1.1597749
+  "lng": -1.1597749,
+  "sources": {
+   "address": "One building of two dwellings, held by the record as a single property until 25 September 2026. Historic England lists 36 and 36a together, and parkhouses.co.uk carries them together. They were separated so that each could hold its own households; the description and the history below are the building's and stand the same on both. Edward Woolley is at 36 in 1871 and again in 1881, which is what fixed which of the two is which - the 1871 enumerator walks up the street (34, 36, 36a, 38) and the 1881 one walks down it (38, 36a, 36, 34)."
+  }
  },
  {
   "id": 332,
@@ -6629,6 +6632,24 @@
   "history": "Held by the record from the census alone. The 1881 enumerator writes 46 The Ropewalk against schedule 27 and walks 48, 46, 44, 42 in order, so the house is named by the page itself and stands between two the record already has.",
   "sources": {
    "position": "Interpolated between 48 and 44 The Ropewalk. Approximate, and open to correction on Positions vs OpenStreetMap."
+  }
+ },
+ {
+  "id": 418,
+  "name": "",
+  "street": "The Ropewalk",
+  "desc": "Three storeys plus basement. Painted stucco facades with artificial slate roofs. Mid 19c and late 20c alterations and additions. Rusticated lower floors to rear elevation facing The Ropewalk plus sill band, eaves cornice and blocking course. Moulded surrounds to original glazing bar sash windows at first and second floor level. Staircase plus single storey square and canted window bays added mid 19c with 20c rectangular bay at basement level. Outbuilding in yard area also altered and converted. Rusticated ground floor to main front facing Park Terrace with sill band, cornices, eaves cornice and blocking course. Three storey bow window bay with tripartite sash on ground and first floor level. Original second floor windows replaced. Side bay to left has renewed French window with hood and above, glazing bar sash with 20c wrought iron balcony. Above again, smaller glazing bar sash. Two side wall, coped chimney stacks, others altered. Car parking in yard area adjacent to The Ropewalk with 20c flat roofed garage building and alterations to boundary wall.\n\n",
+  "history": "One of a pair of houses c1831-34. (With No.38). Now converted into flats. Grade II Listed. Part of a group of houses on The Ropewalk which were amongst the first to be built in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace (now named Park Terrace) and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select ‘residential plan’ in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned at impending loss of The Park as an area of common recreational use.\n\nOne building of two dwellings, held by the record as a single property until 25 September 2026. Historic England lists 36 and 36a together, and parkhouses.co.uk carries them together. They were separated so that each could hold its own households; the description and the history below are the building's and stand the same on both. Edward Woolley is at 36 in 1871 and again in 1881, which is what fixed which of the two is which - the 1871 enumerator walks up the street (34, 36, 36a, 38) and the 1881 one walks down it (38, 36a, 36, 34).",
+  "date_built": "1831",
+  "listed": "Yes",
+  "listed_grade": "II",
+  "converted": "Flats",
+  "no": "36a",
+  "address": "36a The Ropewalk",
+  "lat": 52.9546018,
+  "lng": -1.1597749,
+  "sources": {
+   "address": "One building of two dwellings, held by the record as a single property until 25 September 2026. Historic England lists 36 and 36a together, and parkhouses.co.uk carries them together. They were separated so that each could hold its own households; the description and the history below are the building's and stand the same on both. Edward Woolley is at 36 in 1871 and again in 1881, which is what fixed which of the two is which - the 1871 enumerator walks up the street (34, 36, 36a, 38) and the 1881 one walks down it (38, 36a, 36, 34)."
   }
  }
 ]
