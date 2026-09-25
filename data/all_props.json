@@ -6613,5 +6613,22 @@
   "sources": {
    "address": "One building of three dwellings. Historic England lists it as a single entry - NUMBERS 18, 19 AND 20 AND ATTACHED RAILINGS AND RETAINING WALL TO PARK TUNNEL, list entry 1344948, grade II - and parkhouses.co.uk carries it as 18, 19 and 20 Park Terrace. The record held all three as one property until 25 September 2026, when they were separated so that each could hold its own households. The description and the history below are the building's, and stand the same on all three."
   }
+ },
+ {
+  "id": 417,
+  "name": "",
+  "street": "The Ropewalk",
+  "no": "46",
+  "address": "46 The Ropewalk",
+  "desc": "",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9534,
+  "lng": -1.1607,
+  "history": "Held by the record from the census alone. The 1881 enumerator writes 46 The Ropewalk against schedule 27 and walks 48, 46, 44, 42 in order, so the house is named by the page itself and stands between two the record already has.",
+  "sources": {
+   "position": "Interpolated between 48 and 44 The Ropewalk. Approximate, and open to correction on Positions vs OpenStreetMap."
+  }
  }
 ]

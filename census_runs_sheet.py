@@ -128,9 +128,11 @@ for (yr, sched, pid, unres, rel, fn, ln, occ, src, cid) in rows:
         grp = ('A', (unres or '').strip().lower() or f'row{cid}')
     key = (yr, grp)
     h = houses.setdefault(key, dict(year=yr, dist='', sched=sched, pid=None,
-                                    unres='', people=0, head=None,
-                                    head_occ=None, head_rank=99))
+                                    unres='', people=0, head=None, head_pid=None,
+                                    head_occ=None, head_rank=99, filed=0))
     h['people'] += 1
+    if pid:
+        h['filed'] += 1
     if dist_for(yr, pid, src) and not h['dist']:
         h['dist'] = dist_for(yr, pid, src)
     if sched is not None and h['sched'] is None:
@@ -146,6 +148,7 @@ for (yr, sched, pid, unres, rel, fn, ln, occ, src, cid) in rows:
         h['head_rank'] = rank
         h['head'] = f"{fn} {ln}".strip()
         h['head_occ'] = occ or ''
+        h['head_pid'] = pid
 
 # Schedule numbers actually read, per year. A number missing from the whole
 # year is a sheet nobody has transcribed; a number missing from one district
@@ -163,7 +166,8 @@ from openpyxl.utils import get_column_letter
 HEAD = ['Schedule', 'District', 'Status', 'Head of the house', 'In the house',
         'No.', 'House name', 'Street', 'Property', 'As the page writes it', 'Head’s occupation']
 WID  = [9, 30, 11, 28, 12, 7, 24, 26, 9, 40, 34]
-FILL = {'UNFILED':  'FCE4D6', 'UNOCCUPIED': 'E2EFDA', 'NOT READ': 'FFF2CC'}
+FILL = {'UNFILED': 'FCE4D6', 'UNOCCUPIED': 'E2EFDA', 'NOT READ': 'FFF2CC',
+        'PART FILED': 'FFD6D6'}
 
 wb = Workbook(); wb.remove(wb.active)
 summary = []
@@ -216,11 +220,14 @@ for yr in YEARS:
         if kind == 'HOUSE' and item['dist']:
             dist_now = item['dist']
         if kind == 'HOUSE':
-            h = item; p = PROPS.get(h['pid'], {})
-            status = 'filed' if h['pid'] else 'UNFILED'
+            h = item
+            shown = h['head_pid'] or (h['pid'] if h['filed'] == h['people'] else None)
+            p = PROPS.get(shown, {})
+            status = ('filed' if h['filed'] == h['people'] else
+                      'PART FILED' if h['filed'] else 'UNFILED')
             vals = [h['sched'], h['dist'], status, h['head'] or '', h['people'],
                     p.get('no', ''), p.get('name', '') or p.get('prev_house_name', '').split('\n')[0],
-                    p.get('street', ''), h['pid'] or '', h['unres'], h['head_occ'] or '']
+                    p.get('street', ''), shown or '', h['unres'], h['head_occ'] or '']
         elif kind == 'EMPTY':
             s, pid, notes = item; p = PROPS.get(pid, {})
             vals = [s or '', '', 'UNOCCUPIED', '- nobody in the house -', 0,
@@ -260,20 +267,20 @@ for yr in YEARS:
     hs = sorted([h for k, h in houses.items() if h['year'] == yr and h['sched'] is not None],
                 key=lambda h: (h['dist'], h['sched']))
     for i, h in enumerate(hs):
-        if h['pid']:
+        if h['head_pid']:
             continue
-        before = next((x for x in reversed(hs[:i]) if x['pid'] and x['dist'] == h['dist']), None)
-        after  = next((x for x in hs[i+1:]      if x['pid'] and x['dist'] == h['dist']), None)
+        before = next((x for x in reversed(hs[:i]) if x['head_pid'] and x['dist'] == h['dist']), None)
+        after  = next((x for x in hs[i+1:]      if x['head_pid'] and x['dist'] == h['dist']), None)
         if not (before and after):
             continue
-        pb, pa = PROPS.get(before['pid'], {}), PROPS.get(after['pid'], {})
+        pb, pa = PROPS.get(before['head_pid'], {}), PROPS.get(after['head_pid'], {})
         if not pb.get('street') or pb.get('street') != pa.get('street'):
             continue
         nb, na = num(pb), num(pa)
         # How many unfiled households sit between this same pair of houses? If
         # more than one, no single number can be offered for any of them.
         crowd = sum(1 for x in hs
-                    if not x['pid'] and x['dist'] == h['dist']
+                    if not x['head_pid'] and x['dist'] == h['dist']
                     and before['sched'] < x['sched'] < after['sched'])
         guess = ''
         if nb is not None and na is not None:
@@ -287,10 +294,10 @@ for yr in YEARS:
             # A number already standing in this very round belongs to somebody
             # else, so it cannot be this house. Ruling those out is often what
             # turns two candidates into one.
-            taken = {num(PROPS.get(x['pid'], {}))
+            taken = {num(PROPS.get(x['head_pid'], {}))
                      for x in hs
-                     if x['pid'] and x['dist'] == h['dist']
-                     and (PROPS.get(x['pid'], {}).get('street') == pb.get('street'))}
+                     if x['head_pid'] and x['dist'] == h['dist']
+                     and (PROPS.get(x['head_pid'], {}).get('street') == pb.get('street'))}
             between = [n for n in between if n not in taken]
             if len(between) == 1 and crowd == 1:
                 guess = f"{between[0]} {pb['street']}"
