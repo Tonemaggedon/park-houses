@@ -32,6 +32,10 @@ REWRITE = {
     # ── the 1891 and 1939 rounds ──────────────────────────────────────────────
     # Bolnhurst, Bedfordshire was checked with these and is right as it stands.
     "Baston, Norfolk": "Bacton, Norfolk",                     # Baston is in Lincolnshire
+    # Not England. The same enumerator wrote "London, Middlesex" against this
+    # man's wife on the line above. Confirmed by A. Hagues as East London in the
+    # Eastern Cape - the port, not the hamlet in Mpumalanga the geocoder chose.
+    "London, South Africa": "East London, South Africa",
     "Braceby, Leicestershire": "Braceby, Lincolnshire",
     "Clyro, Radnorshire": "Clyro, Powys",
     "Kimpton, Leicestershire": "Knipton, Leicestershire",
