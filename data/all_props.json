@@ -6133,18 +6133,20 @@
   "no": "Sunnyside",
   "address": "Sunnyside, Park Terrace",
   "desc": "",
-  "history": "",
+  "history": "**A large house on the cliff, and for a while the record held it twice.** Park Terrace runs along the top of the drop and Park Valley along the foot, with Sun Drive on the other side, and Sunnyside was reached from more than one of them. That is why the rounds disagree about its address, and why it was entered as two properties - Sunnyside on Park Terrace and Sunny Side at 12 Park Valley - before being made one on 26 September 2026.\n\n**What each round calls it.** The 1891 enumerator writes *Sunny Side, Park Valley* and finds **fifteen people in the house** under John Howard Bradwell, auctioneer and valuer - the largest household on that street. In 1921 the walk reaches it from above, Dr Kneebone's household falling between 19 Park Terrace and Sunnyside, while the two householders' own cover sheets give the postal address as *Sunnyside, Park Valley*. The 1939 Register has it again from below, between 25 and 10 Park Valley, run by then as a guest house of nine.\n\n**In 1921 it held two separate households at once** - Lewis and Julia Ord with their three children, and Clarence and Gertrude Parker - each making its own return from the one address.\n\n**It carried no number.** The 12 it was briefly given was never on any page: in 1891 and 1939 alike the enumerator climbs the odd side of Park Valley to 25, takes Sunnyside at the turn, and comes back down 10, 8, 6, 4, 2. The house sits on the turn, and 12 was inferred from that. The inference is withdrawn.\n\nOn the Ordnance Survey sheet the plot is the ground of **Clinton House**.",
   "date_built": "",
   "listed": "No",
   "census_only": true,
   "demolished": true,
-  "demolished_notes": "House demolished.",
+  "demolished_notes": "House demolished. The cliff-hugging twentieth-century houses on Park Terrace stand on its ground.",
   "lat": 52.952471,
   "lng": -1.159465,
   "sources": {
-   "street": "Owner knowledge (A. Hagues) — recorded as Fish Pond Drive in error; a different property of that name exists there",
-   "position": "Placed by owner, 8 Sep 2026 — 28m from 9 Park Terrace"
-  }
+   "street": "Owner knowledge (A. Hagues) and the label on Dougal de Havilland's Park Map. First recorded as Fish Pond Drive in error; a different property of that name stands there. The census rounds give Park Valley, which is the foot of the same cliff.",
+   "position": "Placed by owner, 8 Sep 2026 - 28m from 9 Park Terrace",
+   "merge": "#415, Sunny Side at 12 Park Valley, folded in here 26 September 2026 on A. Hagues's identification of the site from the Ordnance Survey and modern maps. There would not be two houses of that name so close together. 24 census rows from 1891 and 1939 came with it."
+  },
+  "prev_house_name": "Sunny Side"
  },
  {
   "id": 391,
@@ -6590,24 +6592,6 @@
   },
   "demolished": true,
   "demolished_notes": "Demolished, with Lincoln House itself (#403). Reported by A. Hagues. The cottage stood in the grounds on the Clumber Crescent North frontage and is drawn on the OS 1:1250 sheet surveyed September 1953, so it was standing then."
- },
- {
-  "id": 415,
-  "name": "Sunny Side",
-  "street": "Park Valley",
-  "no": "12",
-  "address": "12 Park Valley",
-  "prev_house_name": "Sunny Side\nSunnyside",
-  "desc": "",
-  "history": "Held by the record from the census alone. The 1891 enumerator writes Sunny Side, Park Valley, where John Howard Bradwell the auctioneer and valuer had fifteen in the house; the 1939 Register writes 12 Park Valley (Sunnyside) over a nine-person guest house. The record separately holds a Sunnyside on Park Terrace, and which of the two is the right street is not yet settled.",
-  "date_built": "",
-  "listed": "No",
-  "census_only": true,
-  "lat": 52.9512974,
-  "lng": -1.1563512,
-  "sources": {
-   "position": "Extrapolated one house beyond 10 Park Valley along the line from 8 to 10, the enumerator's own walk being 12, 10, 8, 6, 4, 2. Approximate, and open to correction on Positions vs OpenStreetMap."
-  }
  },
  {
   "id": 416,
