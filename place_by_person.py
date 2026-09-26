@@ -54,9 +54,21 @@ for (cid,yr,sched,pid,unres,rel,age,per,fn,ln,src,occ) in rows:
     if (rel or '').lower()=='head': h['head']=(per,fn,ln,age,occ)
     if unres and not h['unres']: h['unres']=unres
 
+# A household with no schedule number can only be grouped by the address it
+# carries, and a bare street name is not an address: "Pelham Crescent" gathers
+# every schedule-less household on it into one imaginary household of thirteen,
+# which then matches whatever any of them matches. A real household has exactly
+# one head, so anything with two or none is not one.
+REJECTED = {
+    (1871, 196): "matches 4 The Ropewalk from 1881, but the 1871 walk has 18 The "
+                 "Ropewalk two doors along, which puts him nearer 22 - he moved",
+}
 out=[]
 for key,h in H.items():
     if h['filed'] or not h['people']: continue
+    heads = sum(1 for x in h['people'] if (x[3] or '').lower()=='head')
+    if h['sched'] is None and heads != 1: continue
+    if (h['yr'], h['sched']) in REJECTED: continue
     votes=defaultdict(list)
     for (per,fn,ln,rel,age,occ) in h['people']:
         for (kyr,kpid,kage) in known.get(per,[]):
@@ -83,11 +95,16 @@ for key,h in H.items():
 # name-matching alone will happily move a household across the estate. The test
 # that separates a real placement from a coincidence is whether the STREET the
 # page itself gives agrees with the street of the candidate house.
+ABBREV = {'rd':'road','st':'street','ter':'terrace','terr':'terrace','cres':'crescent',
+          'dr':'drive','ave':'avenue','av':'avenue','sq':'square','pl':'place','gdns':'gardens'}
 def street_of(t):
     t=re.sub(r'\([^)]*\)',' ',t or '')
     t=re.sub(r'^\s*\d+[a-z]?\s+','',t.strip(),flags=re.I)
     t=re.split(r'\s*[-,]\s*',t)[0]
-    return re.sub(r'[^a-z ]','',t.lower()).strip()
+    t=re.sub(r'[^a-z ]','',t.lower()).strip()
+    # "Lenton Rd" and "Lenton Road" are the same street, and the record writes
+    # one while the enumerator writes the other.
+    return ' '.join(ABBREV.get(w, w) for w in t.split())
 for o in out:
     ps=(PROPS.get(o['pid'],{}).get('street') or '').lower().strip()
     us=street_of(o['unres'])
@@ -95,11 +112,20 @@ for o in out:
     o['street_said'] = us or '(none given)'
 strong=[o for o in out if o['headmatch'] and not o['taken'] and o['others']==0 and o['street_ok']]
 weak=[o for o in out if o not in strong]
-print(f"UNFILED HOUSEHOLDS WHOSE PEOPLE APPEAR AT A KNOWN HOUSE ELSEWHERE: {len(out)}\n")
+print(f"UNFILED HOUSEHOLDS WHOSE PEOPLE APPEAR AT A KNOWN HOUSE ELSEWHERE: {len(out)}")
+for (yr,sc),why in REJECTED.items():
+    print(f"  held back on the evidence: {yr} schedule {sc} - {why}")
+print()
 print(f"── DEFINITE: head at that house in another round, house free, nothing competing, AND the page's own street agrees ({len(strong)}) ──")
 for o in sorted(strong,key=lambda x:(x['yr'],x['sched'] or 0)):
     print(f"  {o['yr']} sched {str(o['sched']):>4} {o['head'][:24]:24} n={o['n']:>2} -> #{o['pid']:<4} {o['addr'][:34]:34} via {o['rounds']}")
     print(f"        page says: {o['unres'][:60]}")
+near=[o for o in weak if o['headmatch'] and o['street_ok'] and not o['taken']]
+print(f"\n── THE STREET AGREES AND THE HEAD MATCHES, but another house is also in play ({len(near)}) ──")
+for o in sorted(near,key=lambda x:-x['nmatch']):
+    print(f"  {o['yr']} sched {str(o['sched']):>4} {o['head'][:24]:24} n={o['n']:>2} -> #{o['pid']:<4} {o['addr'][:32]:32} via {o['rounds']}, {o['others']} rival")
+    print(f"        page says: {o['unres'][:62]}")
+weak=[o for o in weak if o not in near]
 print(f"\n── WORTH A LOOK ({len(weak)}) ──")
 weak=[o for o in weak if o['headmatch'] and o['nmatch']>=2]
 for o in sorted(weak,key=lambda x:(-x['nmatch'],x['yr']))[:20]:
