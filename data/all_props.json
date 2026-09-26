@@ -6651,5 +6651,42 @@
   "sources": {
    "address": "One building of two dwellings, held by the record as a single property until 25 September 2026. Historic England lists 36 and 36a together, and parkhouses.co.uk carries them together. They were separated so that each could hold its own households; the description and the history below are the building's and stand the same on both. Edward Woolley is at 36 in 1871 and again in 1881, which is what fixed which of the two is which - the 1871 enumerator walks up the street (34, 36, 36a, 38) and the 1881 one walks down it (38, 36a, 36, 34)."
   }
+ },
+ {
+  "id": 419,
+  "name": "Bowling Green",
+  "street": "Lenton Road",
+  "no": "35",
+  "address": "35 Lenton Road",
+  "desc": "",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "demolished": true,
+  "lat": 52.9474846,
+  "lng": -1.165354,
+  "history": "A lost house, held by the record from the census alone. The 1881 enumerator names it outright - **Bowling Green, 35 Lenton Road** - at schedule 133, walking 37 (Rock House), 35, the stables, then 33. It appears in no later round and has gone by the Ordnance Survey of 1953, which shows a bowling green, tennis courts and a pavilion over this ground.",
+  "sources": {
+   "position": "Placed at the midpoint of 33 Lenton Road and Rock House at 37, between which the enumerator walks it. Approximate.",
+   "name": "The house name comes from the 1881 enumerator, who writes Bowling Green against the number."
+  }
+ },
+ {
+  "id": 420,
+  "name": "The Stables",
+  "street": "Lenton Road",
+  "no": "",
+  "address": "The Stables, Lenton Road",
+  "desc": "",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9475474,
+  "lng": -1.1654175,
+  "history": "A coachman's dwelling over or beside the stables, held by the record from the census alone and named differently in every round that holds it: **rooms attached to the stables** in 1881, no number at all in 1891, and **The Stables, Lenton Road** by 1911. It stands between 35 and 33 in the 1881 walk, which puts it in the ground behind 33 Lenton Road. Three rounds, and a coachman in every one of them.",
+  "sources": {
+   "position": "Placed between 35 and 33 Lenton Road, where the 1881 enumerator walks it. Approximate.",
+   "name": "The 1911 round names it The Stables, Lenton Road; the earlier rounds describe it rather than name it."
+  }
  }
 ]
