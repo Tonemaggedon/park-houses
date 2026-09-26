@@ -484,14 +484,17 @@
   "id": 33,
   "name": "",
   "street": "Cavendish Crescent North",
-  "no": "18a",
-  "address": "18 and 18a Cavendish Crescent North",
+  "no": "18",
+  "address": "18 Cavendish Crescent North",
   "desc": "The building fabric remains predominantly intact and in good condition. There are no significant external alterations or extensions apart from the replacement of a window with a ‘patio door’ on No.18a and the building of a flat roofed garage c.1948 which has resulted in the loss of part of the original boundary wall to Cavendish Crescent North. Plain tile ridged, bonnet hipped and gable roofs. Prominent brick corbelled chimney stacks with attractive brick relief patterning. One of the stacks has been removed. The majority of original ‘crown’ chimney pots remain. Red brick facades with corbelled and moulded brick detail at eaves, gable verges, string courses and bay roofs. Projecting section of front facade with two storey canted brick and stone window bay. Two projecting three storey sections on rear facade, including two storey canted brick and stone window bay. Prominent unpainted stone main entrance portico with Corinthian column capitals, entablature and balustrading. Stone lintels, sills and surrounds to door and window openings, all unpainted apart from front facade of No.18. Stone hood mould detailing to second floor windows on front facade. Alterations to some external doors and attic window openings. Large distinctive leaded light landing window on side elevation with stone mullions and transom. Circular motif on gable above. Much of the original cast iron gutters and downpipes have been replaced with black plastic. Original vertical sliding sash windows generally intact. Original brick boundary wall and gate piers on Cavendish Crescent North remain apart from sections lost to garage adjacent to No.16. The remnant of the original garden area now subdivided to suit new separate household situation. Original brick garden walls between No.18a and No.16 and No.18 and No.20 remain.",
-  "history": "Built c.1885 this substantial house, now split into two separate households, is one of four similar houses built adjacent to each other. (Nos.16, 18, 20 and 22/24). Three of the four houses have been subdivided in a similar manner with the main part of the house occupied by one household and the former kitchen, butler’s and maids’ accommodation now converted into a separate dwelling. Part of the original garden adjacent to Tattershall Drive has been lost to residential development c.1970-80. ",
+  "history": "Built c.1885 this substantial house, now split into two separate households, is one of four similar houses built adjacent to each other. (Nos.16, 18, 20 and 22/24). Three of the four houses have been subdivided in a similar manner with the main part of the house occupied by one household and the former kitchen, butler’s and maids’ accommodation now converted into a separate dwelling. Part of the original garden adjacent to Tattershall Drive has been lost to residential development c.1970-80.\n\n**One building of two dwellings**, held by the record as a single property until 26 September 2026. The 1901 round has them occupied at once - James Forman heading one and Florence Margaret Allen in the other - which is what proves there are two. **18** is given to the Forman household: the 1921 schedule counts it **thirteen rooms** with four servants, and the street directories of 1894, 1898, 1910, 1913 and 1915 all print James Forman on Cavendish Crescent North without a suffix, which is how a directory prints a main house. **18a** is given to the Allens. The description and history are the building's and stand the same on both.",
   "date_built": "1885",
   "listed": "No",
   "lat": 52.9534245,
-  "lng": -1.1664322
+  "lng": -1.1664322,
+  "sources": {
+   "address": "**One building of two dwellings**, held by the record as a single property until 26 September 2026. The 1901 round has them occupied at once - James Forman heading one and Florence Margaret Allen in the other - which is what proves there are two. **18** is given to the Forman household: the 1921 schedule counts it **thirteen rooms** with four servants, and the street directories of 1894, 1898, 1910, 1913 and 1915 all print James Forman on Cavendish Crescent North without a suffix, which is how a directory prints a main house. **18a** is given to the Allens. The description and history are the building's and stand the same on both."
+  }
  },
  {
   "id": 34,
@@ -6791,6 +6794,22 @@
   "lng": -1.16529,
   "sources": {
    "address": "**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four."
+  }
+ },
+ {
+  "id": 428,
+  "street": "Cavendish Crescent North",
+  "name": "",
+  "desc": "The building fabric remains predominantly intact and in good condition. There are no significant external alterations or extensions apart from the replacement of a window with a ‘patio door’ on No.18a and the building of a flat roofed garage c.1948 which has resulted in the loss of part of the original boundary wall to Cavendish Crescent North. Plain tile ridged, bonnet hipped and gable roofs. Prominent brick corbelled chimney stacks with attractive brick relief patterning. One of the stacks has been removed. The majority of original ‘crown’ chimney pots remain. Red brick facades with corbelled and moulded brick detail at eaves, gable verges, string courses and bay roofs. Projecting section of front facade with two storey canted brick and stone window bay. Two projecting three storey sections on rear facade, including two storey canted brick and stone window bay. Prominent unpainted stone main entrance portico with Corinthian column capitals, entablature and balustrading. Stone lintels, sills and surrounds to door and window openings, all unpainted apart from front facade of No.18. Stone hood mould detailing to second floor windows on front facade. Alterations to some external doors and attic window openings. Large distinctive leaded light landing window on side elevation with stone mullions and transom. Circular motif on gable above. Much of the original cast iron gutters and downpipes have been replaced with black plastic. Original vertical sliding sash windows generally intact. Original brick boundary wall and gate piers on Cavendish Crescent North remain apart from sections lost to garage adjacent to No.16. The remnant of the original garden area now subdivided to suit new separate household situation. Original brick garden walls between No.18a and No.16 and No.18 and No.20 remain.",
+  "history": "Built c.1885 this substantial house, now split into two separate households, is one of four similar houses built adjacent to each other. (Nos.16, 18, 20 and 22/24). Three of the four houses have been subdivided in a similar manner with the main part of the house occupied by one household and the former kitchen, butler’s and maids’ accommodation now converted into a separate dwelling. Part of the original garden adjacent to Tattershall Drive has been lost to residential development c.1970-80.\n\n**One building of two dwellings**, held by the record as a single property until 26 September 2026. The 1901 round has them occupied at once - James Forman heading one and Florence Margaret Allen in the other - which is what proves there are two. **18** is given to the Forman household: the 1921 schedule counts it **thirteen rooms** with four servants, and the street directories of 1894, 1898, 1910, 1913 and 1915 all print James Forman on Cavendish Crescent North without a suffix, which is how a directory prints a main house. **18a** is given to the Allens. The description and history are the building's and stand the same on both.",
+  "date_built": "1885",
+  "listed": "No",
+  "no": "18a",
+  "address": "18a Cavendish Crescent North",
+  "lat": 52.953464499999995,
+  "lng": -1.1663922,
+  "sources": {
+   "address": "**One building of two dwellings**, held by the record as a single property until 26 September 2026. The 1901 round has them occupied at once - James Forman heading one and Florence Margaret Allen in the other - which is what proves there are two. **18** is given to the Forman household: the 1921 schedule counts it **thirteen rooms** with four servants, and the street directories of 1894, 1898, 1910, 1913 and 1915 all print James Forman on Cavendish Crescent North without a suffix, which is how a directory prints a main house. **18a** is given to the Allens. The description and history are the building's and stand the same on both."
   }
  }
 ]
