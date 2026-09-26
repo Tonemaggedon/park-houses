@@ -29,6 +29,9 @@ APPLY = '--apply' in sys.argv
 
 # (person_id, [census row ids to move away], why)
 SPLITS = [
+    (7163, [5764, 828], "Henry Wing the automobile engineer, son at Kentmere - 11 in 1901 and 21 in 1911. "
+                        "The rows he was welded to are his grandfather's: the solicitor of 12 Park Terrace, "
+                        "head of the house at 30, 40 and 50 across 1861, 1871 and 1881"),
     (6170, [8867], "a cook of 22 at 15 Cavendish Crescent South, born Kimberley - not Charles Shaw's wife of 65"),
     (6170, [7900], "a cook of 36 at 4 Park Drive, born Rowsley - a third woman again"),
     (4124, [8095], "Henry Lewis's wife at The Chestnuts, 38, born Nottingham"),
