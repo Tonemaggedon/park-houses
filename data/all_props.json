@@ -3,14 +3,17 @@
   "id": 1,
   "name": "",
   "street": "Albury Square",
-  "no": "1 and 2",
-  "address": "1 and 2 Albury Square / 3 and 5 North Road",
+  "no": "1",
+  "address": "1 Albury Square",
   "desc": "The stables were converted c1919 for garaging and finally replaced with new build dwellings c 1976. The lower two storeys of the four storey building are accessed from Albury Square (Nos.1 and 2) and the upper storeys from North Road (Nos. 3 and 5). Nos. 1 and 2 Albury Square and No.5 North Road are in single household use, No.3 North Road has been divided into two flats. The original building envelope remains predominantly intact and in reasonable condition. Apart from the missing chimney stacks at roof level there have been no significant external alterations or additions. Gabled natural slate roof with clay ridge tiles, lead valleys plus brick corbelled eaves and gable verges with prominent brick modillion courses, generally similar in style to Carnoustie Lodge and outbuildings to  Ellington House. Original cast iron gutters and downpipes have been replaced with black plastic. Red brick walls with  ornamental brick and stone string courses, shallow rectangular window bays on each facade and stone surrounds to door and window openings. Much of the stonework has now been over painted. Venetian windows at third floor level and Italianate styling to a number of the smaller existing and blind window openings. Stone shaft mullions to bay window openings. Some weathering problems to stone cornices particularly on the bays. Vertical sliding sash windows generally. External areas are limited to a small yard and lawn adjacent to the north facing facade, small entrance areas adjacent to North Road and a shared paved area in part of Albury Square. Part of the original boundary wall adjacent to the entry to Albury Square has been rebuilt but the section of original brick boundary wall on North Road and abutting the public planted area at the junction of North Road and Tattershall Drive remains.",
-  "history": "A large building made up of a number of dwellings, constructed c1878-80, probably in conjunction with the stables in Albury Square and Carnoustie Lodge, a former coach house. ",
+  "history": "A large building made up of a number of dwellings, constructed c1878-80, probably in conjunction with the stables in Albury Square and Carnoustie Lodge, a former coach house.\n\n**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four.",
   "date_built": "1878",
   "listed": "No",
   "lat": 52.9533371,
-  "lng": -1.165329
+  "lng": -1.165329,
+  "sources": {
+   "address": "**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four."
+  }
  },
  {
   "id": 2,
@@ -256,19 +259,19 @@
  },
  {
   "id": 20,
-  "name": "",
+  "name": "Castle Lodge",
   "street": "Castle Grove",
   "no": "7",
   "address": "7 Castle Grove",
   "desc": "Conspicuous octagonal form to part of original building with attached archway. Grade II Listed. In single household use. Large rear extension in former yard area c1970. Brick / stone chimney stack reduced in height and previously prominent iron cresting now missing from top of truncated spire. Three storeys including attic. Buff brick facades to original building with stone dressings. Red brick to plinth at base of octagonal tower and to flanking walls of three dormer windows in spire. Stone base to remaining original wing. Prominent red brick eaves string courses and diaper patterning at storey height level on facades. Buff brick and with stone dressings to attached archway including segmental stone arch over opening, carved date stone and stone crowstep copings with ball finial. Stone surrounds to doors and windows, some with carved stone heads and mullions. Stone cappings to plinth on tower plus segmental pediments with ball finials to dormer windows. Stonework now painted. Slate roof coverings to truncated spire, pitched roof to side wing and dormer windows, all with lead flashings. Sash windows originally, some now partly altered. Combined oriel / dormer window with twin supporting timber brackets, segmental pediment and slate roof coverings and cladding. Large, unsightly two storey flat roofed rear extension. Original garden to No.6 subdivided and larger part now used by No.7 with access through original brick boundary wall adjacent to garages (c1970) on Castle Grove. Garage building adjacent to garden access gate belongs to No.7.",
-  "history": "Built c 1856 together with group of other houses on Castle Grove by T.C. Hine architect. Former Lodge.\n\n**Castle Lodge.** The modern Ordnance Survey labels number 7 as Castle Lodge, and the record had no house of that name. Whether it is also the *The Lodge, Castle Grove* of the 1881 and 1911 rounds is not settled - see the open questions.",
+  "history": "**Castle Lodge**, the gate lodge of Castle Grove, built into the wall beside the arch at the entrance to the close - and a house in its own right, lived in to this day.\n\nThe record holds it in four rounds under two names. The **1881** and **1911** enumerators write **The Lodge, Castle Grove** - Thomas Marriott with four children in 1881, William Hall and his family in 1911. The **1921** and **1939** rounds give it as **7 Castle Grove** - Sidney James and his wife, then Herbert W Fletcher, a head waiter living alone. The two names were held as two properties until 26 September 2026, when they were brought together.",
   "architect": "T.C. Hine",
   "listed_grade": "II",
   "date_built": "1970",
   "listed": "Yes",
   "lat": 52.9494645,
   "lng": -1.1563832,
-  "prev_house_name": "Castle Lodge"
+  "prev_house_name": "The Lodge"
  },
  {
   "id": 21,
@@ -6746,20 +6749,48 @@
   }
  },
  {
-  "id": 424,
-  "name": "The Lodge",
-  "street": "Castle Grove",
-  "no": "The Lodge",
-  "address": "The Lodge, Castle Grove",
-  "desc": "",
-  "date_built": "",
+  "id": 425,
+  "desc": "The stables were converted c1919 for garaging and finally replaced with new build dwellings c 1976. The lower two storeys of the four storey building are accessed from Albury Square (Nos.1 and 2) and the upper storeys from North Road (Nos. 3 and 5). Nos. 1 and 2 Albury Square and No.5 North Road are in single household use, No.3 North Road has been divided into two flats. The original building envelope remains predominantly intact and in reasonable condition. Apart from the missing chimney stacks at roof level there have been no significant external alterations or additions. Gabled natural slate roof with clay ridge tiles, lead valleys plus brick corbelled eaves and gable verges with prominent brick modillion courses, generally similar in style to Carnoustie Lodge and outbuildings to  Ellington House. Original cast iron gutters and downpipes have been replaced with black plastic. Red brick walls with  ornamental brick and stone string courses, shallow rectangular window bays on each facade and stone surrounds to door and window openings. Much of the stonework has now been over painted. Venetian windows at third floor level and Italianate styling to a number of the smaller existing and blind window openings. Stone shaft mullions to bay window openings. Some weathering problems to stone cornices particularly on the bays. Vertical sliding sash windows generally. External areas are limited to a small yard and lawn adjacent to the north facing facade, small entrance areas adjacent to North Road and a shared paved area in part of Albury Square. Part of the original boundary wall adjacent to the entry to Albury Square has been rebuilt but the section of original brick boundary wall on North Road and abutting the public planted area at the junction of North Road and Tattershall Drive remains.",
+  "history": "A large building made up of a number of dwellings, constructed c1878-80, probably in conjunction with the stables in Albury Square and Carnoustie Lodge, a former coach house.\n\n**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four.",
+  "date_built": "1878",
   "listed": "No",
-  "census_only": true,
-  "lat": 52.9496,
-  "lng": -1.1566,
-  "history": "Named outright in two rounds - the 1881 enumerator writes **The Lodge, Castle Grove** for Thomas Marriott's household, and the 1911 cover gives it again. A lodge at the entrance to the close.\n\nHeld by the record from the census alone. Castle Grove runs 1 to 7 and the property list has only 4 to 7; these four are attested outright by the enumerators. The position is a placeholder near the houses the record does hold, because Castle Grove is a close of houses round a green and its numbers cannot be extrapolated along a line - it is open to correction on Positions vs OpenStreetMap.",
+  "no": "2",
+  "street": "Albury Square",
+  "address": "2 Albury Square",
+  "lat": 52.9533371,
+  "lng": -1.16529,
   "sources": {
-   "position": "A placeholder beside 4 to 7 Castle Grove. Approximate."
+   "address": "**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four."
+  }
+ },
+ {
+  "id": 426,
+  "desc": "The stables were converted c1919 for garaging and finally replaced with new build dwellings c 1976. The lower two storeys of the four storey building are accessed from Albury Square (Nos.1 and 2) and the upper storeys from North Road (Nos. 3 and 5). Nos. 1 and 2 Albury Square and No.5 North Road are in single household use, No.3 North Road has been divided into two flats. The original building envelope remains predominantly intact and in reasonable condition. Apart from the missing chimney stacks at roof level there have been no significant external alterations or additions. Gabled natural slate roof with clay ridge tiles, lead valleys plus brick corbelled eaves and gable verges with prominent brick modillion courses, generally similar in style to Carnoustie Lodge and outbuildings to  Ellington House. Original cast iron gutters and downpipes have been replaced with black plastic. Red brick walls with  ornamental brick and stone string courses, shallow rectangular window bays on each facade and stone surrounds to door and window openings. Much of the stonework has now been over painted. Venetian windows at third floor level and Italianate styling to a number of the smaller existing and blind window openings. Stone shaft mullions to bay window openings. Some weathering problems to stone cornices particularly on the bays. Vertical sliding sash windows generally. External areas are limited to a small yard and lawn adjacent to the north facing facade, small entrance areas adjacent to North Road and a shared paved area in part of Albury Square. Part of the original boundary wall adjacent to the entry to Albury Square has been rebuilt but the section of original brick boundary wall on North Road and abutting the public planted area at the junction of North Road and Tattershall Drive remains.",
+  "history": "A large building made up of a number of dwellings, constructed c1878-80, probably in conjunction with the stables in Albury Square and Carnoustie Lodge, a former coach house.\n\n**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four.",
+  "date_built": "1878",
+  "listed": "No",
+  "no": "3",
+  "street": "North Road",
+  "address": "3 North Road",
+  "lat": 52.95337,
+  "lng": -1.165329,
+  "sources": {
+   "address": "**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four."
+  }
+ },
+ {
+  "id": 427,
+  "desc": "The stables were converted c1919 for garaging and finally replaced with new build dwellings c 1976. The lower two storeys of the four storey building are accessed from Albury Square (Nos.1 and 2) and the upper storeys from North Road (Nos. 3 and 5). Nos. 1 and 2 Albury Square and No.5 North Road are in single household use, No.3 North Road has been divided into two flats. The original building envelope remains predominantly intact and in reasonable condition. Apart from the missing chimney stacks at roof level there have been no significant external alterations or additions. Gabled natural slate roof with clay ridge tiles, lead valleys plus brick corbelled eaves and gable verges with prominent brick modillion courses, generally similar in style to Carnoustie Lodge and outbuildings to  Ellington House. Original cast iron gutters and downpipes have been replaced with black plastic. Red brick walls with  ornamental brick and stone string courses, shallow rectangular window bays on each facade and stone surrounds to door and window openings. Much of the stonework has now been over painted. Venetian windows at third floor level and Italianate styling to a number of the smaller existing and blind window openings. Stone shaft mullions to bay window openings. Some weathering problems to stone cornices particularly on the bays. Vertical sliding sash windows generally. External areas are limited to a small yard and lawn adjacent to the north facing facade, small entrance areas adjacent to North Road and a shared paved area in part of Albury Square. Part of the original boundary wall adjacent to the entry to Albury Square has been rebuilt but the section of original brick boundary wall on North Road and abutting the public planted area at the junction of North Road and Tattershall Drive remains.",
+  "history": "A large building made up of a number of dwellings, constructed c1878-80, probably in conjunction with the stables in Albury Square and Carnoustie Lodge, a former coach house.\n\n**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four.",
+  "date_built": "1878",
+  "listed": "No",
+  "no": "5",
+  "street": "North Road",
+  "address": "5 North Road",
+  "lat": 52.95337,
+  "lng": -1.16529,
+  "sources": {
+   "address": "**One building of four storeys, holding four dwellings.** Its two lower storeys are entered from **Albury Square**, where they are numbers **1 and 2**; its two upper storeys are entered from **North Road**, where they are numbers **3 and 5**. The record held all four as a single property until 26 September 2026, when they were separated so that each could hold its own households. The description and the history are the building's and stand the same on all four."
   }
  }
 ]
