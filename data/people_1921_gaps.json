@@ -1,6 +1,6 @@
 {
  "note": "**The 1921 census - Barrack Lane, Allenfield Lodge and 9 Cavendish Crescent South.** Schedules 75 and 212 to 221, read from the householders' own schedules by A. Hagues. **Nine houses the record held nothing for in 1921.**\n\n**The run places itself at both ends.** The 1921 schedule asks for each person's **place of work**, and a domestic servant's place of work is the house she lives in. Schedule 212 gives **16 Barrack Lane** against Florence Taylor, and schedule 216 gives **26 Barrack Lane** against Alice Richmond. With both ends fixed by the page itself, the three between them follow in schedule order at 18, 20 and 22 - and 24, which the record holds for 1911, is passed over.\n\n| schedule | house | head | in the house |\n|---|---|---|---|\n| 212 | **16 Barrack Lane** | Ernest William Topham, lace manufacturer | 3 |\n| 213 | **18 Barrack Lane** | Frederick W Pare, lace manufacturer | 8 |\n| 214 | **20 Barrack Lane** | Alfred Pike, hosiery underwear manufacturer | 6 |\n| 215 | **22 Barrack Lane** | Joseph T Darby, china and glass dealer, retired | 4 |\n| 216 | **26 Barrack Lane** | Elizabeth Bradwell, widow of 74 | 3 |\n| 217 | **28 Barrack Lane** | Margaret Hannah Johnson, widow | 4 |\n| 218 | **30 Barrack Lane** | Alfred Harwood, insurance district manager | 6 |\n| 221 | **Allenfield Lodge** | Maurice Mee, machinist and driller | 6 |\n| **75** | **9 Cavendish Crescent South** | **Stephen Cecil Armitage**, solicitor and employer | 3 |\n\n**Schedule 75 places itself too.** Lilian Ivy Cross, the maid, gives her place of work as **9 Cavendish Crescent South, The Park**. The house held only 1911 before this. Her master is **thirty-one and already an employer**; his wife Ellen Louisa Alexander Armitage was born at Pontypool and is **twenty-three**, and the schedule records no children.\n\n**Schedule 218 places itself the same way** - Maggie Quincey's place of work is written **30 Barrack Lane**. With 212 at 16, 218 at 30 and 216 at 26, three points of the run are fixed by the page and the rest follow the schedule numbers.\n\n**Allenfield Lodge is filed to Barrack Yard.** The record has no property of that name and the Yard is what stands at that end of the lane; the page's own words are kept in every source line and in a `source_address` on every row, so nothing is lost if the two turn out to be different places.\n\n**32 and 34 Barrack Lane are in the run and not in the record.** Schedules 219 and 220 sit between 30 and Allenfield Lodge, and the property list stops at 30. Those two houses want creating when the schedules are read.\n\nEvery enumerator's total checks - persons, males and females alike.\n\n## What the 1921 columns give that no earlier round does\n\n**Ages in years and months**, so every one of these forty people has their birth month as well as their year. The record holds the years; the months are in the source lines.\n\n**Employer and place of work by name.** Ernest William Topham works at **Sellarts Factory, Beeston** and **Holland Street**. Frederick W Pare and his son John run **John Pare & Son, lace manufacturers, Russell Street** - the son, at twenty, is already assistant manager. Alfred Pike employs two of his own children at **Argyle Street Works**: Ernest Henry as a hosiery mechanic and Gladys Winifred as a clerk. Herbert Bradwell practises as a solicitor on his own account at **10 Park Row**.\n\n**Elizabeth Pare, sister to Frederick, was born at Calais** and is entered as British born - the schedule has a column for it.\n\n**Margaret Johnson of 28 Barrack Lane is a riding mistress**, twenty-seven, and an **employer**, with her place of work at Edwalton. **Alfred Harwood** manages insurance districts for the County Fire Office and the Alliance Assurance Company from Exchange Walk, and his son audits for Leman Hill & Hilton. **Maurice Mee** is a machinist and driller at the **Raleigh Cycle Works**, with a daughter machining hosiery and a son clerking for Moore & Morell.\n\n## Two readings left as they stand\n\nFlorence Taylor at 16 Barrack Lane is **seventeen years and ten months old and entered as Married**. It may be the enumerator's slip and it may not. The record keeps what the page says and says so here.\n\nThe head of schedule 221 is entered as **Father**, not Head, and the schedule carries no signature. Maurice Mee is plainly the man keeping the house, and the record treats him as the head, but the column says what it says.\n",
- "source": "1921 census - Barrack Lane, Allenfield Lodge and 9 Cavendish Crescent South, transcribed by A. Hagues.",
+ "source": "1921 census - Barrack Lane, Allenfield Lodge, Cavendish Crescent South and the cul-de-sac end of Clare Valley, transcribed by A. Hagues.",
  "people": [
   {
    "first_name": "Ernest William",
@@ -935,6 +935,225 @@
      "birth_place": "Kirton, Suffolk",
      "census_household_num": 75,
      "source": "1921 census, 9 Cavendish Crescent South, schedule 75 - read from the householder's schedule by A. Hagues; aged 17 years 9 months; employer or status: Private; place of work: 9 Cavendish Crescent South, The Park, Nottingham; entered as British born; her place of work is the house itself, which is how the household is placed"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank William",
+   "last_name": "Martin",
+   "sex": "M",
+   "properties": [
+    39
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 39,
+     "address": "3 Cavendish Crescent South",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 60,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "census_household_num": 77,
+     "source": "1921 census, 3 Cavendish Crescent South, schedule 77 - read from the householder's schedule by A. Hagues; aged 60 years 7 months; place of work: Low Pavement, Nottingham; entered as married, but no wife appears on the schedule; his wife Emma Mary Martin was with him at the same house in 1911"
+    }
+   ]
+  },
+  {
+   "first_name": "Mildred",
+   "last_name": "Musgrave",
+   "sex": "F",
+   "properties": [
+    39
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 39,
+     "address": "3 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 35,
+     "occupation_at_census": "Cook and housekeeper",
+     "birth_place": "Budby, Nottinghamshire",
+     "census_household_num": 77,
+     "source": "1921 census, 3 Cavendish Crescent South, schedule 77 - read from the householder's schedule by A. Hagues; aged 35 years 3 months; employer or status: Private"
+    }
+   ]
+  },
+  {
+   "first_name": "Elizabeth",
+   "last_name": "Williamson",
+   "sex": "F",
+   "properties": [
+    39
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 39,
+     "address": "3 Cavendish Crescent South",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Shirebrook, Derbyshire",
+     "census_household_num": 77,
+     "source": "1921 census, 3 Cavendish Crescent South, schedule 77 - read from the householder's schedule by A. Hagues; aged 14 years 4 months; employer or status: Private"
+    }
+   ],
+   "born_year": 1907,
+   "match_born_year": true
+  },
+  {
+   "first_name": "James Henry",
+   "last_name": "Soames",
+   "sex": "M",
+   "properties": [
+    67
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 67,
+     "address": "The Spinney, Clare Valley",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Timber merchant",
+     "birth_place": "Cambridge, Cambridgeshire",
+     "census_household_num": 126,
+     "source": "1921 census, The Spinney, Clare Valley, schedule 126 - read from the householder's schedule by A. Hagues; aged 39 years 7 months; employer or status: Employer; place of work: Canal Street, Nottingham; the occupation column names his firm as the Nottingham Mills Co., timber merchants; he is the James H. Soames who was at 15 Park Terrace in 1911"
+    }
+   ],
+   "id": 4974
+  },
+  {
+   "first_name": "Lizzie",
+   "last_name": "Bramley",
+   "sex": "F",
+   "properties": [
+    67
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 67,
+     "address": "The Spinney, Clare Valley",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "birth_place": "Newton, Derbyshire",
+     "census_household_num": 126,
+     "source": "1921 census, The Spinney, Clare Valley, schedule 126 - read from the householder's schedule by A. Hagues; aged 27 years 3 months; employer or status: Private; place of work: The Spinney, Clare Valley; the occupation column was left blank; her place of work is the house itself, which is how the household is placed; the surname is hard to read and may be Barnsley"
+    }
+   ]
+  },
+  {
+   "first_name": "James Colvert",
+   "last_name": "Wilson",
+   "sex": "M",
+   "properties": [
+    66
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 66,
+     "address": "Springdale, Clare Valley",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 59,
+     "occupation_at_census": "Land surveyor",
+     "birth_place": "Huddersfield, Yorkshire",
+     "source": "1921 census, Springdale, Clare Valley - read from the householder's schedule by A. Hagues; aged 59 years 4 months; the schedule number is cut off on the image; employer or status: Duke of Newcastle; place of work: Newcastle Estate Office, The Park, Nottingham; the schedule writes him James C. Wilson with Calvert added beside it; the record's 1911 and 1939 rows both spell the middle name Colvert"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith",
+   "last_name": "Wilson",
+   "sex": "F",
+   "properties": [
+    66
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 66,
+     "address": "Springdale, Clare Valley",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 59,
+     "occupation_at_census": "Home duties",
+     "birth_place": "Huddersfield, Yorkshire",
+     "source": "1921 census, Springdale, Clare Valley - read from the householder's schedule by A. Hagues; aged 59 years 7 months; the schedule number is cut off on the image"
+    }
+   ]
+  },
+  {
+   "first_name": "Edith Annie",
+   "last_name": "Kirk",
+   "sex": "F",
+   "properties": [
+    66
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 66,
+     "address": "Springdale, Clare Valley",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 23,
+     "occupation_at_census": "General domestic servant",
+     "birth_place": "Newark, Nottinghamshire",
+     "source": "1921 census, Springdale, Clare Valley - read from the householder's schedule by A. Hagues; aged 23 years 11 months; the schedule number is cut off on the image; employer or status: Private; place of work: Springdale, Clare Valley; entered as E. A. Kirk with Edith Annie added beside it; her place of work is the house itself, which is how the household is placed"
+    }
+   ]
+  },
+  {
+   "first_name": "Frank",
+   "last_name": "Hodson",
+   "sex": "M",
+   "properties": [
+    65
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 65,
+     "address": "Ribble Lodge, Clare Valley",
+     "source_address": "The Bungalow, Clare Valley",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Managing director of building, public works and landscape contracting companies, and quarry owner",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, The Bungalow, Clare Valley - read from the householder's schedule by A. Hagues; aged 39 years 9 months; the schedule number is cut off on the image; employer or status: Employer; place of work: 58 Castlegate, Nottingham; the house was built as The Bungalow to plans by Jeffries & North, c1908, for Frank Hodson (Junior), and he is living in it here"
+    }
+   ]
+  },
+  {
+   "first_name": "Clarice Winifred",
+   "last_name": "Hodson",
+   "sex": "F",
+   "properties": [
+    65
+   ],
+   "census": [
+    {
+     "census_year": 1921,
+     "property_id": 65,
+     "address": "Ribble Lodge, Clare Valley",
+     "source_address": "The Bungalow, Clare Valley",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Home duties",
+     "birth_place": "Nottingham, Nottinghamshire",
+     "source": "1921 census, The Bungalow, Clare Valley - read from the householder's schedule by A. Hagues; aged 39 years 3 months; the schedule number is cut off on the image; place of work: The Bungalow, Clare Valley; her place of work is given as the house itself, which is how the household is placed"
     }
    ]
   }
