@@ -69,7 +69,7 @@ def sub_no(src):
     return int(m.group(1)) if m else None
 
 
-YEARS = [args.year] if args.year else [1871, 1881, 1891, 1901, 1911, 1921, 1939]
+YEARS = [args.year] if args.year else [1861, 1871, 1881, 1891, 1901, 1911, 1921, 1939]
 
 cur.execute("""SELECT c.census_year, c.census_household_num, c.property_id,
                       COALESCE(c.unresolved_address,'') , c.relationship,
