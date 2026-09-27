@@ -4508,16 +4508,18 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Head",
      "marital_status": "Married",
      "age_at_census": 31,
      "occupation_at_census": "Lace merchant",
      "birth_place": "St Mary, Nottingham",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3359
   },
   {
    "first_name": "Margaret",
@@ -4525,15 +4527,17 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Wife",
      "marital_status": "Married",
      "age_at_census": 30,
      "birth_place": "West Bromwich, Staffordshire",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3360
   },
   {
    "first_name": "Cyril",
@@ -4541,29 +4545,33 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Son",
      "age_at_census": 5,
      "birth_place": "St Mary, Nottingham",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3361
   },
   {
-   "first_name": "Iuna Holen",
+   "first_name": "Gwendolen",
    "last_name": "Lewis",
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Daughter",
      "age_at_census": 4,
      "birth_place": "Standard Hill, Nottingham",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; forename hard to read"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901; entered with the forename hard to read and read once as Iuna Holen; the 1901 round has her at the same house as Gwendolen",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3362
   },
   {
    "first_name": "Kathleen",
@@ -4571,14 +4579,16 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Daughter",
      "age_at_census": 2,
      "birth_place": "Standard Hill, Nottingham",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3363
   },
   {
    "first_name": "Emma",
@@ -4586,16 +4596,18 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 26,
      "occupation_at_census": "Nurse, domestic servant",
      "birth_place": "Milford, Derbyshire",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3365
   },
   {
    "first_name": "Julia",
@@ -4603,16 +4615,18 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Servant",
      "marital_status": "Unmarried",
      "age_at_census": 22,
      "occupation_at_census": "General servant, domestic",
      "birth_place": "Cambridge",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3366
   },
   {
    "first_name": "Susan",
@@ -4620,16 +4634,18 @@
    "census": [
     {
      "census_year": 1891,
-     "unresolved_address": "Clare Valley (no number given)",
      "relationship": "Visitor",
      "marital_status": "Unmarried",
      "age_at_census": 13,
      "occupation_at_census": "Scholar",
      "birth_place": "Awsworth, Nottinghamshire",
      "census_household_num": 146,
-     "source": "1891 census, Clare Valley (no number given), schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled"
+     "source": "1891 census, 5 Clare Valley, schedule 146 in the Tattershall Drive and Cavendish Road East district, RG12/2682 - read from the enumerator's page by A. Hagues; filed at 5 Clare Valley, where the family also stands in 1901",
+     "property_id": 63,
+     "address": "5 Clare Valley"
     }
-   ]
+   ],
+   "id": 3367
   },
   {
    "first_name": "William",

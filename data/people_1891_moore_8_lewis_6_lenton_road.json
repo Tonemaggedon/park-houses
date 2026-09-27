@@ -175,7 +175,7 @@
    ]
   },
   {
-   "id": 3794,
+   "id": 8404,
    "first_name": "William W",
    "last_name": "Lewis",
    "sex": "M",
@@ -206,7 +206,6 @@
   {
    "first_name": "Elizabeth",
    "last_name": "Lewis",
-   "match_born_year": true,
    "sex": "F",
    "born_year": 1830,
    "born_place": "Tewkesbury, Gloucestershire",
@@ -232,7 +231,8 @@
      },
      "type": "spouse_of"
     }
-   ]
+   ],
+   "id": 8403
   },
   {
    "id": 814,
