@@ -2179,6 +2179,30 @@
      "source": "1921 census, 123 Derby Road, schedule 43 - read from the householder's schedule by A. Hagues; aged 36 years 3 months; employer or status: Ministry of Health; place of work: 116 Raleigh Street, Nottingham; living alone in seven rooms"
     }
    ]
+  },
+  {
+   "first_name": "Compton",
+   "last_name": "Mackenzie",
+   "known_as": "Sir Compton Mackenzie",
+   "title": "Sir",
+   "postnominals": "OBE",
+   "sex": "M",
+   "born_date": "17 January 1883",
+   "born_year": 1883,
+   "died_date": "30 November 1972",
+   "died_year": 1972,
+   "wikipedia_url": "https://en.wikipedia.org/wiki/Compton_Mackenzie",
+   "bio": "**Sir Compton Mackenzie**, novelist - in this record as the son of [[Virginia Compton]], who was boarding at Edgemont House on Derby Road in April 1921 while she ran the Grand Theatre in Nottingham. **He was not a resident of The Park himself.**\n\nEdward Montague Compton Mackenzie was born on 17 January 1883, eldest of the five children of the actor-manager Edward Compton and Virginia Frances Bateman. He wrote novels, biography, history and a memoir that ran to ten volumes, and was as well known in his lifetime as a broadcaster and talker as for the books.\n\nTwo of his novels are still read and both were filmed: **Whisky Galore**, about a Hebridean island that helps itself to a wrecked cargo, and **The Monarch of the Glen**.\n\nHe was a Scottish nationalist all his life, and in 1928 was one of the founders of the **National Party of Scotland** with Hugh MacDiarmid, R. B. Cunninghame Graham and John MacCormick. He was appointed OBE and knighted in the Birthday Honours of 1952. He died on 30 November 1972.",
+   "relationships": [
+    {
+     "to": {
+      "first_name": "Virginia",
+      "last_name": "Compton"
+     },
+     "type": "child_of",
+     "notes": "Her eldest child. She is at Edgemont House, 143 Derby Road, in 1921."
+    }
+   ]
   }
  ]
 }
