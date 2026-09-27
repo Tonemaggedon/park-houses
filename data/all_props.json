@@ -6795,5 +6795,41 @@
   "sources": {
    "address": "**One building of two dwellings**, held by the record as a single property until 26 September 2026. The 1901 round has them occupied at once - James Forman heading one and Florence Margaret Allen in the other - which is what proves there are two. **18** is given to the Forman household: the 1921 schedule counts it **thirteen rooms** with four servants, and the street directories of 1894, 1898, 1910, 1913 and 1915 all print James Forman on Cavendish Crescent North without a suffix, which is how a directory prints a main house. **18a** is given to the Allens. The description and history are the building's and stand the same on both."
   }
+ },
+ {
+  "id": 429,
+  "name": "",
+  "street": "The Ropewalk",
+  "no": "2a",
+  "address": "2a The Ropewalk",
+  "desc": "",
+  "history": "**The second of the pair at number 2.** The listing for 2 The Ropewalk records it as *formerly 2no. townhouses c1835-40*, later offices and flats and now two houses and a flat. The 1861 enumerator walks them as two households - John Scott Wells with ten in the house at 2, and **Sarah Wise, schoolmistress**, with ten more at 2a, the last schedule on the street before the walk turns into Derby Road.\n\nSeparated out on 27 September 2026 on A. Hagues's reading of the 1861 run against the listing.",
+  "date_built": "1835",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9544352,
+  "lng": -1.1591118,
+  "sources": {
+   "position": "Approximate - set beside 2 The Ropewalk, which it was built with. Open to correction on the map.",
+   "street": "The 1861 enumerator's walk, which ends the Ropewalk at 2 and 2a before turning into Derby Road."
+  }
+ },
+ {
+  "id": 430,
+  "name": "",
+  "street": "The Ropewalk",
+  "no": "",
+  "address": "The Ropewalk (unnumbered, between 4 and 2)",
+  "desc": "",
+  "history": "**A small building at the corner, unnumbered in 1861 and still standing.** The enumerator takes it between 4 and 2 The Ropewalk, and it holds **William Hurst, solicitor**, with four in the house.\n\nA. Hagues identifies it on the map as a small building at the corner of the Ropewalk that survives, and reads it as a coach house - which sits oddly with a solicitor living in it. It has no number on the 1861 page and none in the record, so it is held here unnumbered until one is found.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9542893,
+  "lng": -1.1593156,
+  "sources": {
+   "position": "Approximate - the midpoint of 4 and 2 The Ropewalk, where the 1861 walk puts it. Open to correction on the map.",
+   "street": "The 1861 enumerator's walk, which takes it between 4 and 2."
+  }
  }
 ]
