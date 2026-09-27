@@ -49,6 +49,13 @@
    "label": "Beverley, East Riding of Yorkshire"
   },
   {
+   "place_text": "Blackheath, Kent",
+   "lat": 51.4662,
+   "lng": 0.0098,
+   "label": "Blackheath, London",
+   "note": "It answered Blackheath Court in Dover, Delaware. Blackheath was in Kent when the census was taken and is in south-east London now."
+  },
+  {
    "place_text": "Bolnhurst, Bedfordshire",
    "lat": 52.2253,
    "lng": -0.4098,
@@ -67,6 +74,13 @@
    "lat": 53.0296,
    "lng": -1.3102,
    "label": "Brinsley, Nottinghamshire"
+  },
+  {
+   "place_text": "Buckingham",
+   "lat": 51.9995,
+   "lng": -0.9875,
+   "label": "Buckingham, Buckinghamshire",
+   "note": "No county on the return. It answered Buckingham County, Virginia."
   },
   {
    "place_text": "Bulwell, Nottinghamshire",
@@ -257,14 +271,14 @@
    "note": "The bracket records that the person was a naturalised or British subject, not part of the place name. Kept because the distinction matters among the German lace merchants of The Park; positioned on Germany."
   },
   {
-   "place_text": "Germany (German subject)",
+   "place_text": "Germany (foreign subject)",
    "lat": 51.1657,
    "lng": 10.4515,
    "label": "Germany",
    "note": "As above: a nationality note the record keeps on purpose. Positioned on Germany."
   },
   {
-   "place_text": "Germany (foreign subject)",
+   "place_text": "Germany (German subject)",
    "lat": 51.1657,
    "lng": 10.4515,
    "label": "Germany",
@@ -334,6 +348,13 @@
    "lat": 53.745,
    "lng": -0.868,
    "label": "Howden, East Riding of Yorkshire"
+  },
+  {
+   "place_text": "Huntingdon",
+   "lat": 52.33,
+   "lng": -0.1833,
+   "label": "Huntingdon, Cambridgeshire",
+   "note": "No county on the return. It answered Huntingdon County, Pennsylvania. The town was in Huntingdonshire when the census was taken and is in Cambridgeshire now."
   },
   {
    "place_text": "Ilkeston, Nottinghamshire",
@@ -626,6 +647,13 @@
    "lng": 7.7521,
    "label": "Strasbourg, France",
    "note": "German between 1871 and 1918, when the census recorded it; French now."
+  },
+  {
+   "place_text": "Stratford, Essex",
+   "lat": 51.5423,
+   "lng": -0.0026,
+   "label": "Stratford, London",
+   "note": "It answered a street in Newark, New Jersey. Stratford was in Essex when the census was taken and is in east London now."
   },
   {
    "place_text": "Sunderland, Durham",

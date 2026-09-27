@@ -29,6 +29,24 @@ import psycopg2
 APPLY = '--apply' in sys.argv
 
 REWRITE = {
+    # ── the 1861 and 1891 rounds, read back against the pages by A. Hagues ────
+    # Bottesford sits on the Leicestershire side of the Vale of Belvoir, close
+    # enough to the border for a Nottingham enumerator to write Nottinghamshire.
+    "Bottesham, Nottinghamshire": "Bottesford, Leicestershire",
+    "Brawnby, Lincolnshire": "Brumby, Lincolnshire",
+    "Cuisthorpe, Lincolnshire": "Aisthorpe, Lincolnshire",
+    "Egberton, Warwickshire": "Edgbaston, Warwickshire",
+    # the castle grounds were extra-parochial; the place is Nottingham.
+    "Extra Parochial Limits of the Castle, Nottingham": "Nottingham, Nottinghamshire",
+    "Finchley, near London": "Finchley, London",
+    "Hainby, Lincolnshire": "Hanby, Lincolnshire",
+    "Hawksley, Northumberland": "Hauxley, Northumberland",
+    "Hindley, Worcestershire": "Hindlip, Worcestershire",
+    # the spelling is right and the county is not - Hollingwood is in Derbyshire.
+    "Hollingwood, Staffordshire": "Hollingwood, Derbyshire",
+    "Ingby, Leicestershire": "Ingarsby, Leicestershire",
+    "Ison Green, Nottinghamshire": "Hyson Green, Nottinghamshire",
+
     # ── the 1891 and 1939 rounds ──────────────────────────────────────────────
     # Bolnhurst, Bedfordshire was checked with these and is right as it stands.
     "Baston, Norfolk": "Bacton, Norfolk",                     # Baston is in Lincolnshire
