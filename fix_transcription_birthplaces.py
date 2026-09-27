@@ -46,6 +46,16 @@ REWRITE = {
     "Hollingwood, Staffordshire": "Hollingwood, Derbyshire",
     "Ingby, Leicestershire": "Ingarsby, Leicestershire",
     "Ison Green, Nottinghamshire": "Hyson Green, Nottinghamshire",
+    "Middlethorpe, Nottinghamshire": "Middlethorpe, Yorkshire",   # it is a village south of York
+    "Nauton, Norfolk": "Naunton, Norfolk",
+    # the parish, collapsed to the town. Note that "St Mary, Nottingham" - the
+    # same parish written the other way round, and 45 rows of it - is left as it
+    # stands, which the record should settle one way or the other.
+    "Nottingham St Mary's, Nottinghamshire": "Nottingham, Nottinghamshire",
+    "Penbenant, Montgomeryshire": "Pennant, Powys",
+    "Salford, near Manchester": "Salford, Manchester",
+    "Searington, Nottinghamshire": "Scarrington, Nottinghamshire",
+    "Shaston Parva, Leicestershire": "Wigston Parva, Leicestershire",
 
     # ── the 1891 and 1939 rounds ──────────────────────────────────────────────
     # Bolnhurst, Bedfordshire was checked with these and is right as it stands.
