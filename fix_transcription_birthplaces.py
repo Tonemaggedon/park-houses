@@ -46,6 +46,14 @@ REWRITE = {
     "Hollingwood, Staffordshire": "Hollingwood, Derbyshire",
     "Ingby, Leicestershire": "Ingarsby, Leicestershire",
     "Ison Green, Nottinghamshire": "Hyson Green, Nottinghamshire",
+    # There is no Wellington in Lincolnshire. Wellingore is a real village south
+    # of Lincoln and one stroke away; the geocoder had answered New Zealand.
+    "Wellington, Lincolnshire": "Wellingore, Lincolnshire",
+    # The same parish written the other way round. "Nottingham St Mary's" was
+    # collapsed to the town on 27 September and this is its other half - 45 rows
+    # that had been left alone on the grounds that they were not the same value.
+    # A. Hagues: collapse them too, so the record makes one distinction not two.
+    "St Mary, Nottingham": "Nottingham, Nottinghamshire",
     "Middlethorpe, Nottinghamshire": "Middlethorpe, Yorkshire",   # it is a village south of York
     "Nauton, Norfolk": "Naunton, Norfolk",
     # the parish, collapsed to the town. Note that "St Mary, Nottingham" - the

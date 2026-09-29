@@ -461,7 +461,12 @@
   "date_built": "1885",
   "listed": "No",
   "lat": 52.9531679,
-  "lng": -1.165724
+  "lng": -1.165724,
+  "prev_house_name": "16 Cavendish Crescent North",
+  "census_only": false,
+  "sources": {
+   "merge": "#411, 16 Cavendish Crescent North, folded in here 29 September 2026 on A. Hagues's word that they are one house. It was census-only and held every household; this record had the description and no census at all."
+  }
  },
  {
   "id": 32,
@@ -2708,7 +2713,12 @@
   "date_built": "1856",
   "listed": "Yes",
   "lat": 52.9495806,
-  "lng": -1.1567371
+  "lng": -1.1567371,
+  "prev_house_name": "6 Castle Grove",
+  "census_only": false,
+  "sources": {
+   "merge": "#382, 6 Castle Grove, folded in here 29 September 2026 on A. Hagues's word that they are one house. It was census-only and held every household; this record had the description and no census at all."
+  }
  },
  {
   "id": 175,
@@ -6016,20 +6026,6 @@
   "lng": -1.1631505
  },
  {
-  "id": 382,
-  "name": "",
-  "street": "Castle Grove",
-  "no": "6",
-  "address": "6 Castle Grove",
-  "desc": "",
-  "history": "",
-  "date_built": "",
-  "listed": "No",
-  "census_only": true,
-  "lat": 52.9495749,
-  "lng": -1.1562509
- },
- {
   "id": 383,
   "name": "Gwedon",
   "street": "Clumber Crescent South",
@@ -6509,26 +6505,6 @@
    "existence": "1911 census, three households returned at \"Barrack Yard, Barrack Lane, Nottingham\" — found because all three had been filed at 10 Barrack Lane.",
    "position": "Provisional. Placed at the foot of Barrack Lane, about 19 m beyond number 30 and set back off the frontage — 15 m from 17 and 18 Pelham Crescent, in the gap between the end of the lane and the crescent. Dougal de Havilland's map puts its \"Allegedly known as Barrack Yard\" note at this end, around Pelham Cottages and Reveille, but that map is out by a median of 60 m and cannot place anything; the anchor here is Barrack Lane's own numbering. Wants placing by hand, or by somebody who can walk it.",
    "residents": "1911 census, 12 people in three households"
-  }
- },
- {
-  "id": 411,
-  "name": "",
-  "prev_house_name": "Crescent Lodge",
-  "street": "Cavendish Crescent North",
-  "no": "16",
-  "address": "16 Cavendish Crescent North",
-  "desc": "",
-  "history": "Crescent Lodge. Built c.1885, one of four substantial houses put up adjacent to each other — **16, 18, 20 and 22/24** — three of which were later subdivided, the main part of the house kept as one household and the former kitchen and butler's quarters made into a flat.\n\n**This is the main part; 16a (#31) is the flat.** They are one building. The record has held 16a and 18a since the beginning but neither 16 nor 18, even though the listed-building descriptions of all four houses name 16 and 18 outright. Number 16 is created here because a census household is recorded at Crescent Lodge; 18 still has nothing behind it and so is still only a question.",
-  "date_built": "1885",
-  "listed": "No",
-  "census_only": true,
-  "lat": 52.9533119,
-  "lng": -1.164107,
-  "sources": {
-   "existence": "Named on the walk of the crescent of 10 Sep 2026 as \"16 Crescent Lodge\", and evidenced by a census household returned at Crescent Lodge. The building descriptions of 16a, 18a, 20 and 22/24 all name \"Nos. 16, 18, 20 and 22/24\" as the group of four, so 16 has been in the record's own text all along without being a property.",
-   "position": "Provisional. 16 and 16a are the same building, so this sits a few metres along the frontage from 16a (#31) to keep both clickable on the map rather than to claim a separate plot. Wants placing by hand if the two parts front differently.",
-   "relationship": "16a (#31) is the flat made from the former kitchen and butler's quarters of this house."
   }
  },
  {
