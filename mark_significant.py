@@ -20,7 +20,7 @@ MARK = [
   "Actress and theatre manager, lessee of the Grand Theatre, Nottingham, from 1920"),
  (("Compton", "Mackenzie", 1883),
   "Novelist, author of Whisky Galore and The Monarch of the Glen. Not a resident of The Park - "
-  "he is here as the son of Virginia Compton, who was"),
+  "he is here as the son of Virginia Compton, who was at Edgemont House in 1921"),
 ]
 
 def main():
