@@ -16,6 +16,13 @@
    "note": "It answered Cheshire County, New Hampshire."
   },
   {
+   "place_text": "Ashton-under-Lyne, Lancashire",
+   "lat": 53.4865,
+   "lng": -2.0987,
+   "label": "Ashton-under-Lyne, Greater Manchester",
+   "note": "The geocoder returns nothing for the hyphenated form with the old county appended. Ashton-under-Lyne was in Lancashire when the census was taken and has been in Greater Manchester since 1974."
+  },
+  {
    "place_text": "Bangkok, Siam",
    "lat": 13.7563,
    "lng": 100.5018,
@@ -61,6 +68,13 @@
    "lng": -0.4098,
    "label": "Bolnhurst, Bedfordshire",
    "note": "A real village north of Bedford, but the geocoder returns nothing for it with the old county name appended. It answers at once to 'Bolnhurst, Bedford, England', which is where this position comes from."
+  },
+  {
+   "place_text": "Bramcote, Derbyshire",
+   "lat": 52.9354,
+   "lng": -1.2458,
+   "label": "Bramcote, Nottinghamshire",
+   "note": "The 1921 schedule gives Derbyshire and the geocoder returns nothing for that pairing. Positioned on Bramcote by Beeston, which the record's other seventeen rows give as Nottinghamshire - the village sits close enough to the border for either county to be written."
   },
   {
    "place_text": "Brighton, Sussex",
