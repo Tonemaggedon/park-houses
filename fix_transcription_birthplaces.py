@@ -55,7 +55,10 @@ REWRITE = {
     # A. Hagues: collapse them too, so the record makes one distinction not two.
     "St Mary, Nottingham": "Nottingham, Nottinghamshire",
     "Middlethorpe, Nottinghamshire": "Middlethorpe, Yorkshire",   # it is a village south of York
-    "Nauton, Norfolk": "Naunton, Norfolk",
+    # A. Hagues reads it as Starston, the village near Harleston - which is in
+    # Norfolk, as the page says, and which no Naunton is.
+    "Nauton, Norfolk": "Starston, Norfolk",
+    "Naunton, Norfolk": "Starston, Norfolk",
     # the parish, collapsed to the town. Note that "St Mary, Nottingham" - the
     # same parish written the other way round, and 45 rows of it - is left as it
     # stands, which the record should settle one way or the other.
