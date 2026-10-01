@@ -30,6 +30,13 @@ HOUSES = [
   "house at the **north** end of the drive and nowhere near the 1 to 5 run. Carnoustie Lodge "
   "stands there too, but it is separately enumerated at schedule 8, so this is a second lodge "
   "at that end"),
+ (437, "Cedar Lodge", "Tunnel Road", 56, 52.95205, -1.16455,
+  "schedule 56 comes immediately before The Cottage on the same street, and the book then runs "
+  "on to Allendale and out to Penrhyn Cottage on Cavendish Road East - so Cedar Lodge is the "
+  "house west of The Cottage, at the far end of the walk"),
+ (438, "Allendale", "Tunnel Road", 58, 52.95235, -1.16380,
+  "schedule 58 falls between The Cottage and Penrhyn Cottage on Cavendish Road East, so "
+  "Allendale stands east of The Cottage, between it and Gees Lodge"),
 ]
 
 
@@ -49,9 +56,13 @@ def history(name, street, rows, why):
         age_s = f", {age}" if age is not None else ""
         body += f"| **{fn} {ln}**{age_s} | {occ or 'no trade given'} |\n"
     body += (f"\n**The position is provisional.** {why.capitalize()}. Nothing in the record fixes "
-             f"it, and the house may well be one the list holds under a number: {street} runs 1 "
-             f"to 5 and then jumps to 17a, which leaves exactly the room the three named houses "
-             f"would need. See [[named-houses-on-tattershall-drive-and-where-they-sit]].")
+             f"it. See [[house-names-live-in-prose]].")
+    if street == 'Tattershall Drive':
+        body = body.replace("See [[house-names-live-in-prose]].",
+                            "The house may well be one the list holds under a number: Tattershall "
+                            "Drive runs 1 to 5 and then jumps to 17a, which leaves exactly the "
+                            "room the three named houses would need. See "
+                            "[[named-houses-on-tattershall-drive-and-where-they-sit]].")
     return body
 
 
