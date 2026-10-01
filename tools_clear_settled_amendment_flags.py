@@ -17,7 +17,7 @@ APPLY = '--apply' in sys.argv
 # spelled out. A person counts as settled once they carry any alias at all - a
 # 1939 amendment, or an earlier reading where the "amendment" turned out to be a
 # misreading of the name itself.
-STALE = ("; the name written under the amendment cannot be read"
+STALE = ("; the name(s)? (written )?under the amendments? cannot be read"
          "( - NOTE: the surname here is the amendment.*?are women)?")
 
 c = psycopg2.connect(os.environ.get('DATABASE_PUBLIC_URL') or os.environ['DATABASE_URL'])
