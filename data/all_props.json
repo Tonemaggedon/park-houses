@@ -6931,5 +6931,35 @@
   "house_name": "Allendale",
   "lat": 52.95235,
   "lng": -1.1638
+ },
+ {
+  "id": 439,
+  "name": "Brampton",
+  "street": "Huntingdon Drive",
+  "no": "",
+  "address": "Brampton, Huntingdon Drive",
+  "desc": "",
+  "history": "**Brampton is named by the 1939 Register and by nothing else in the record.** Its household on 29 September 1939:\n\n| | |\n|---|---|\n| **Leslie Fleetwood Bates**, 42 | Professor of physics |\n| **Winifred Frances Furze Bates**, 39 | Unpaid domestic duties |\n\n**The record first read this name as *Brankston*.** A. Hagues settles it as **Brampton**, and the earlier reading is kept on the census rows so nobody takes it for a second house.\n\n**Leslie Fleetwood Bates** held the chair of physics at Nottingham for twenty-eight years and made the place a centre for the study of magnetism. He is 42 here, with Winifred Frances Furze Bates, and the record marks him significant.\n\n**The position is provisional.** The enumerator comes down huntingdon drive - the cottage at 14 is schedule 85, then brampton, then ravenswood, and then 5, 4, 3 and 2 in order - so brampton stands between number 14 and the 6 to 10 run. the record's huntingdon drive has no 11, 12 or 13. Nothing in the record fixes it. See [[house-names-live-in-prose]].",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "house_name": "Brampton",
+  "lat": 52.95088,
+  "lng": -1.15872
+ },
+ {
+  "id": 440,
+  "name": "Ravenswood",
+  "street": "Huntingdon Drive",
+  "no": "",
+  "address": "Ravenswood, Huntingdon Drive",
+  "desc": "",
+  "history": "**Ravenswood is named by the 1939 Register and by nothing else in the record.** Its household on 29 September 1939:\n\n| | |\n|---|---|\n| **Fred Noble Smith**, 56 | Civil engineer, water department |\n| **Violet Amy B Smith**, 57 | Domestic duties at home |\n\n**The position is provisional.** The enumerator comes down huntingdon drive - the cottage at 14, then brampton, then ravenswood, then 5, 4, 3 and 2 in order - so ravenswood is the next door below brampton and the last before the numbered run begins. Nothing in the record fixes it. See [[house-names-live-in-prose]].",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "house_name": "Ravenswood",
+  "lat": 52.95095,
+  "lng": -1.159
  }
 ]

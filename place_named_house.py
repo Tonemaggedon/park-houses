@@ -37,6 +37,14 @@ HOUSES = [
  (438, "Allendale", "Tunnel Road", 58, 52.95235, -1.16380,
   "schedule 58 falls between The Cottage and Penrhyn Cottage on Cavendish Road East, so "
   "Allendale stands east of The Cottage, between it and Gees Lodge"),
+ (439, "Brampton", "Huntingdon Drive", 87, 52.95088, -1.15872,
+  "the enumerator comes down Huntingdon Drive - The Cottage at 14 is schedule 85, then Brampton, "
+  "then Ravenswood, and then 5, 4, 3 and 2 in order - so Brampton stands between number 14 and "
+  "the 6 to 10 run. The record's Huntingdon Drive has no 11, 12 or 13"),
+ (440, "Ravenswood", "Huntingdon Drive", 89, 52.95095, -1.15900,
+  "the enumerator comes down Huntingdon Drive - The Cottage at 14, then Brampton, then "
+  "Ravenswood, then 5, 4, 3 and 2 in order - so Ravenswood is the next door below Brampton and "
+  "the last before the numbered run begins"),
 ]
 
 
