@@ -210,8 +210,8 @@
    ]
   },
   {
-   "first_name": "Hilda L",
-   "last_name": "Robinson",
+   "first_name": "Grace L",
+   "last_name": "Greaves",
    "sex": "F",
    "born_year": 1909,
    "born_date": "1909-08-26",
@@ -442,8 +442,8 @@
    ]
   },
   {
-   "first_name": "Peggy R",
-   "last_name": "Lewandowski",
+   "first_name": "Peggy",
+   "last_name": "Holmes",
    "sex": "F",
    "born_year": 1924,
    "born_date": "1924-02-07",
@@ -1172,7 +1172,7 @@
    ]
   },
   {
-   "first_name": "Greta H F R",
+   "first_name": "Shiela L F R",
    "last_name": "Wright",
    "sex": "F",
    "born_year": 1912,
@@ -1312,8 +1312,8 @@
    ]
   },
   {
-   "first_name": "Olive",
-   "last_name": "Maclean",
+   "first_name": "Kathleen Olive",
+   "last_name": "West",
    "sex": "F",
    "born_year": 1915,
    "born_date": "1915-05-28",
@@ -1774,7 +1774,7 @@
   },
   {
    "first_name": "Annie Gertrude",
-   "last_name": "Perry",
+   "last_name": "Marriott",
    "sex": "F",
    "born_year": 1892,
    "born_date": "1892-02-21",
@@ -2266,7 +2266,7 @@
   },
   {
    "first_name": "Albert Edward",
-   "last_name": "Kay",
+   "last_name": "Kaye",
    "sex": "M",
    "born_year": 1870,
    "born_date": "1870-12-09",
@@ -2278,7 +2278,7 @@
      "age_at_census": 68,
      "occupation_at_census": "Fowl dealer, retired",
      "census_household_num": 35,
-     "source": "1939 Register, schedule 35, Elmsdale, Tattershall Drive, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 3; the house is Elmsdale, Tattershall Drive, which the record now holds; the surname could be Kay or Ray",
+     "source": "1939 Register, schedule 35, Elmsdale, Tattershall Drive, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 3; the house is Elmsdale, Tattershall Drive, which the record now holds; the surname could be Kay or Ray; entered as Albert Edward Kaye, which is the name on the night, read again from the page - read by A. Hagues from the 1939 sheet",
      "property_id": 435,
      "address": "Elmsdale, Tattershall Drive"
     }
@@ -2287,7 +2287,7 @@
   },
   {
    "first_name": "Ethel Margaret",
-   "last_name": "Roper",
+   "last_name": "Kaye",
    "sex": "F",
    "born_year": 1880,
    "born_date": "1880-08-07",
@@ -2299,7 +2299,7 @@
      "age_at_census": 59,
      "occupation_at_census": "Unpaid domestic duties",
      "census_household_num": 35,
-     "source": "1939 Register, schedule 35, Elmsdale, Tattershall Drive, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; the house is Elmsdale, Tattershall Drive, which the record now holds",
+     "source": "1939 Register, schedule 35, Elmsdale, Tattershall Drive, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; the house is Elmsdale, Tattershall Drive, which the record now holds; entered as Ethel Margaret Kaye, which is the name on the night, read again from the page - read by A. Hagues from the 1939 sheet",
      "property_id": 435,
      "address": "Elmsdale, Tattershall Drive"
     }
@@ -3332,7 +3332,7 @@
   },
   {
    "first_name": "Sarah Isabella",
-   "last_name": "Godfrey",
+   "last_name": "Godney",
    "sex": "F",
    "born_year": 1885,
    "born_date": "1885-05-28",
@@ -3344,7 +3344,7 @@
      "age_at_census": 54,
      "occupation_at_census": "Domestic servant",
      "census_household_num": 56,
-     "source": "1939 Register, schedule 56, Cedar Lodge, Tunnel Road, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 5; the house is Cedar Lodge, Tunnel Road, which the record now holds",
+     "source": "1939 Register, schedule 56, Cedar Lodge, Tunnel Road, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 5; the house is Cedar Lodge, Tunnel Road, which the record now holds; entered as Sarah Isabella Godney, which is the name on the night, read again from the page - read by A. Hagues from the 1939 sheet",
      "property_id": 437,
      "address": "Cedar Lodge, Tunnel Road"
     }
@@ -4055,6 +4055,25 @@
    ]
   },
   {
+   "first_name": "Paul M",
+   "last_name": "Houlton",
+   "sex": "M",
+   "born_year": 1939,
+   "born_date": "1939-09-28",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "age_at_census": 0,
+     "occupation_at_census": null,
+     "census_household_num": 69,
+     "source": "1939 Register, schedule 69, The Cottage, Clumber Road East, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; the page enters him only as Baby, born the day before the register was taken, so the forename is not on it. A. Hagues names him from the birth registrations: no Houlton birth is registered in Nottingham in the last quarter of 1939 and exactly one Gough is, Paul M - and Betty Irene Houlton of this household, 17 here, afterwards married a Gough, which is the amendment written over her own name. He is entered under the household's surname, as the page has it, with Gough kept as the name he was registered under. This is an identification from the indexes, not a reading of the page",
+     "unresolved_address": "The Cottage, Clumber Road East"
+    }
+   ],
+   "id": 8581
+  },
+  {
    "first_name": "Annie",
    "last_name": "Houlton",
    "sex": "F",
@@ -4555,7 +4574,7 @@
   },
   {
    "first_name": "Lily",
-   "last_name": "Hatton",
+   "last_name": "Halton",
    "sex": "F",
    "born_year": 1919,
    "born_date": "1919-07-03",
@@ -7124,7 +7143,7 @@
   },
   {
    "first_name": "Edith Ann",
-   "last_name": "Lewis",
+   "last_name": "Louis",
    "sex": "F",
    "born_year": 1918,
    "born_date": "1918-06-20",
@@ -7597,7 +7616,7 @@
   },
   {
    "first_name": "Elizabeth Ann",
-   "last_name": "Rostron",
+   "last_name": "Roslem",
    "sex": "F",
    "born_year": 1927,
    "born_date": "1927-04-03",
@@ -8011,8 +8030,8 @@
    ]
   },
   {
-   "first_name": "C Lily",
-   "last_name": "Pestell",
+   "first_name": "Lily",
+   "last_name": "Peshell",
    "sex": "F",
    "born_year": 1914,
    "born_date": "1914-10-05",
@@ -10886,7 +10905,7 @@
    ]
   },
   {
-   "first_name": "Rachel Ann",
+   "first_name": "Rose",
    "last_name": "Hobbs",
    "sex": "F",
    "born_year": 1895,

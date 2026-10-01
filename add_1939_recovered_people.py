@@ -29,6 +29,15 @@ PEOPLE = [
   "why this record carried a cook with a birth date and no name. Entered as Lucy Fox, which is "
   "her name on the night; Harbord is written over it in a later hand, and was first read here "
   "as Hargood"),
+ (69, 4, "Paul M", "Houlton", None, "M", "1939-09-28", 1939, 0,
+  None, None, "The Cottage, Clumber Road East",
+  "the page enters him only as Baby, born the day before the register was taken, so the forename "
+  "is not on it. A. Hagues names him from the birth registrations: no Houlton birth is registered "
+  "in Nottingham in the last quarter of 1939 and exactly one Gough is, Paul M - and Betty Irene "
+  "Houlton of this household, 17 here, afterwards married a Gough, which is the amendment written "
+  "over her own name. He is entered under the household's surname, as the page has it, with Gough "
+  "kept as the name he was registered under. This is an identification from the indexes, not a "
+  "reading of the page"),
 ]
 
 
@@ -52,20 +61,26 @@ def main():
         if later:
             cur.execute("""INSERT INTO person_alias (person_id, first_name, last_name, born_year, made_by)
                            VALUES (%s,%s,%s,%s,'1939 amendment')""", (pid, fn, later, by))
+        if pid and fn == 'Paul M':
+            cur.execute("""INSERT INTO person_alias (person_id, first_name, last_name, born_year, made_by)
+                           VALUES (%s,'Paul M','Gough',1939,'birth registration')""", (pid,))
         src = (f"1939 Register, schedule {sched}, {addr}, ED letter code RMGC, Nottingham "
                f"registration sub-district 3 - read from the page by A. Hagues; sub number {sub}; "
                + note)
         cur.execute("""INSERT INTO census_entries
-                       (person_id, property_id, census_year, address, age_at_census,
-                        occupation_at_census, census_household_num, source)
-                       VALUES (%s,%s,1939,%s,%s,%s,%s,%s)""",
-                    (pid, prop, addr, age, occ, sched, src))
+                       (person_id, property_id, census_year, address, unresolved_address,
+                        age_at_census, occupation_at_census, census_household_num, source)
+                       VALUES (%s,%s,1939,%s,%s,%s,%s,%s,%s)""",
+                    (pid, prop, addr if prop else None, None if prop else addr,
+                     age, occ, sched, src))
+        ce = {"census_year": 1939, "age_at_census": age,
+              "occupation_at_census": occ, "census_household_num": sched, "source": src}
+        if prop:
+            ce["property_id"] = prop; ce["address"] = addr
+        else:
+            ce["unresolved_address"] = addr
         rec = {"first_name": fn, "last_name": was, "sex": sex, "born_year": by,
-               "born_date": bd, "match_born_year": True,
-               "census": [{"census_year": 1939, "property_id": prop, "address": addr,
-                           "age_at_census": age, "occupation_at_census": occ,
-                           "census_household_num": sched, "source": src}],
-               "id": pid}
+               "born_date": bd, "match_born_year": True, "census": [ce], "id": pid}
         at = next((i for i, x in enumerate(d['people'])
                    if any(ce.get('census_household_num') == sched for ce in x['census'])), None)
         d['people'].insert(at + 1 if at is not None else len(d['people']), rec)

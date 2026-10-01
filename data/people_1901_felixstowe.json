@@ -1,266 +1,266 @@
 {
-  "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. **The surname is Dowson.** It is written with a looped capital that can be read as Morrison, but the head is Benjamin Dowson, solicitor, born at Geldeston in Norfolk on 11 September 1836 and living at Felixstowe in The Park — which matches the age, the profession, the birthplace and the house on this schedule. The record already holds William Enfield Dowson and Helena Brownsword Dowson at the same house in 1911, so this is the same family ten years earlier. The servants' names and birthplaces were read off the original by A. Hagues after a first pass from a photograph got the column alignment wrong.",
-  "source": "1901 census, schedule 178, Felixstowe",
-  "people": [
+ "note": "The 1901 household at Felixstowe, Clumber Road West (#394) — eleven people, none in the record. **The surname is Dowson.** It is written with a looped capital that can be read as Morrison, but the head is Benjamin Dowson, solicitor, born at Geldeston in Norfolk on 11 September 1836 and living at Felixstowe in The Park — which matches the age, the profession, the birthplace and the house on this schedule. The record already holds William Enfield Dowson and Helena Brownsword Dowson at the same house in 1911, so this is the same family ten years earlier. The servants' names and birthplaces were read off the original by A. Hagues after a first pass from a photograph got the column alignment wrong.",
+ "source": "1901 census, schedule 178, Felixstowe",
+ "people": [
+  {
+   "first_name": "Benjamin",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1836,
+   "born_place": "Geldeston, Norfolk",
+   "properties": [
+    394
+   ],
+   "census": [
     {
-      "first_name": "Benjamin",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "M",
-      "born_year": 1836,
-      "born_place": "Geldeston, Norfolk",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Head",
-          "marital_status": "Married",
-          "age_at_census": 64,
-          "occupation_at_census": "Solicitor",
-          "birth_place": "Geldeston, Norfolk",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page. The surname is written with a looped capital and can be read as Morrison; it is recorded as Dowson because the 1901 Contemporary Biographies of Nottinghamshire gives Benjamin Dowson, solicitor, born at Geldeston, Norfolk on 11 September 1836 — sixty-four at this census — with his residence at Felixstowe, The Park. Employer."
-        }
-      ],
-      "born_date": "11 September 1836",
-      "known_as": "Benjamin Dowson",
-      "bio": "Solicitor, of Felixstowe in The Park. Born at Geldeston in Norfolk on 11 September 1836, the son of Septimus Dowson of Geldeston. He set up in practice on his own account in 1870, and from 1874 the firm was Dowson and Wright. He also kept a house at Overbank, Upper Broughton, near Melton Mowbray."
-    },
-    {
-      "first_name": "Alice",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1845,
-      "born_place": "Prestbury, Cheshire",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Wife",
-          "marital_status": "Married",
-          "age_at_census": 56,
-          "birth_place": "Prestbury, Cheshire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
-        }
-      ]
-    },
-    {
-      "first_name": "Alice M",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1871,
-      "born_place": "Nottingham",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Daughter",
-          "marital_status": "Single",
-          "age_at_census": 30,
-          "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
-        }
-      ]
-    },
-    {
-      "first_name": "Bernard W",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "M",
-      "born_year": 1874,
-      "born_place": "Nottingham",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Son",
-          "marital_status": "Single",
-          "age_at_census": 27,
-          "occupation_at_census": "Solicitor",
-          "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Alexander are both returned as 27."
-        }
-      ]
-    },
-    {
-      "first_name": "Alexander",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "M",
-      "born_year": 1874,
-      "born_place": "Nottingham",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Son",
-          "marital_status": "Single",
-          "age_at_census": 27,
-          "occupation_at_census": "Cotton spinner",
-          "birth_place": "Nottingham",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Bernard W are both returned as 27."
-        }
-      ]
-    },
-    {
-      "first_name": "Gerard S",
-      "last_name": "Dowson",
-      "match_born_year": true,
-      "sex": "M",
-      "born_year": 1875,
-      "born_place": "Knutsford, Cheshire",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Son",
-          "marital_status": "Single",
-          "age_at_census": 26,
-          "occupation_at_census": "Clerk, corn merchant",
-          "birth_place": "Knutsford, Cheshire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — Worker. His birthplace is Cheshire where his elder siblings' is Nottingham — read as written."
-        }
-      ]
-    },
-    {
-      "first_name": "Emily J",
-      "last_name": "Drinkwater",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1849,
-      "born_place": "Knutsford, Cheshire",
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Servant",
-          "age_at_census": 52,
-          "occupation_at_census": "Nurse (domestic), certified",
-          "birth_place": "Knutsford, Cheshire",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Surname read off the original as Drinkwater; first transcribed here as Dunstwater and corrected by A. Hagues. Born at Knutsford, the same Cheshire town as Gerard S Dowson — she may have come to Nottingham with the family."
-        }
-      ]
-    },
-    {
-      "first_name": "Mary",
-      "last_name": "Rook",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1862,
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Servant",
-          "age_at_census": 39,
-          "occupation_at_census": "Cook (domestic)",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Croxton Kerrial is a Leicestershire village a couple of miles from the Lincolnshire border, and the page gives the county as Leics.",
-          "birth_place": "Croxton Kerrial, Leicestershire"
-        }
-      ],
-      "born_place": "Croxton Kerrial, Leicestershire"
-    },
-    {
-      "first_name": "Kate",
-      "last_name": "Towers",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1869,
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Servant",
-          "age_at_census": 32,
-          "occupation_at_census": "Parlourmaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
-          "birth_place": "Dry Doddington, Lincolnshire"
-        }
-      ],
-      "born_place": "Dry Doddington, Lincolnshire"
-    },
-    {
-      "first_name": "Florrie",
-      "last_name": "Butler",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1880,
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Servant",
-          "age_at_census": 21,
-          "occupation_at_census": "Housemaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Forename read off the original as Florrie; first transcribed here as Harrie and corrected by A. Hagues.",
-          "birth_place": "Wollaton, Nottinghamshire"
-        }
-      ],
-      "born_place": "Wollaton, Nottinghamshire"
-    },
-    {
-      "first_name": "Sarah",
-      "last_name": "Grayson",
-      "match_born_year": true,
-      "sex": "F",
-      "born_year": 1879,
-      "properties": [
-        394
-      ],
-      "census": [
-        {
-          "census_year": 1901,
-          "property_id": 394,
-          "address": "Felixstowe, Clumber Road West",
-          "relationship": "Servant",
-          "age_at_census": 22,
-          "occupation_at_census": "Housemaid",
-          "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
-          "birth_place": "Cossall, Nottinghamshire"
-        }
-      ],
-      "born_place": "Cossall, Nottinghamshire"
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Head",
+     "marital_status": "Married",
+     "age_at_census": 64,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Geldeston, Norfolk",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page. The surname is written with a looped capital and can be read as Morrison; it is recorded as Dowson because the 1901 Contemporary Biographies of Nottinghamshire gives Benjamin Dowson, solicitor, born at Geldeston, Norfolk on 11 September 1836 — sixty-four at this census — with his residence at Felixstowe, The Park. Employer."
     }
-  ]
+   ],
+   "born_date": "11 September 1836",
+   "known_as": "Benjamin Dowson",
+   "bio": "Solicitor, of Felixstowe in The Park. Born at Geldeston in Norfolk on 11 September 1836, the son of Septimus Dowson of Geldeston. He set up in practice on his own account in 1870, and from 1874 the firm was Dowson and Wright. He also kept a house at Overbank, Upper Broughton, near Melton Mowbray."
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1845,
+   "born_place": "Prestbury, Cheshire",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Wife",
+     "marital_status": "Married",
+     "age_at_census": 56,
+     "birth_place": "Prestbury, Cheshire",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
+    }
+   ]
+  },
+  {
+   "first_name": "Alice M",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1871,
+   "born_place": "Nottingham",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Daughter",
+     "marital_status": "Single",
+     "age_at_census": 30,
+     "birth_place": "Nottingham",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household"
+    }
+   ]
+  },
+  {
+   "first_name": "Bernard W",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1874,
+   "born_place": "Nottingham",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Solicitor",
+     "birth_place": "Nottingham",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Alexander are both returned as 27."
+    }
+   ]
+  },
+  {
+   "first_name": "Alexander",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1874,
+   "born_place": "Nottingham",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 27,
+     "occupation_at_census": "Cotton spinner",
+     "birth_place": "Nottingham",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — He and Bernard W are both returned as 27."
+    }
+   ]
+  },
+  {
+   "first_name": "Gerard S",
+   "last_name": "Dowson",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1875,
+   "born_place": "Knutsford, Cheshire",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Son",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Clerk, corn merchant",
+     "birth_place": "Knutsford, Cheshire",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page; surname recorded as Dowson, see the head of the household — Worker. His birthplace is Cheshire where his elder siblings' is Nottingham — read as written."
+    }
+   ]
+  },
+  {
+   "first_name": "Emily J",
+   "last_name": "Drinkwater",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1849,
+   "born_place": "Knutsford, Cheshire",
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Servant",
+     "age_at_census": 52,
+     "occupation_at_census": "Nurse (domestic), certified",
+     "birth_place": "Knutsford, Cheshire",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Surname read off the original as Drinkwater; first transcribed here as Dunstwater and corrected by A. Hagues. Born at Knutsford, the same Cheshire town as Gerard S Dowson — she may have come to Nottingham with the family."
+    }
+   ]
+  },
+  {
+   "first_name": "Mary",
+   "last_name": "Rook",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1862,
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Servant",
+     "age_at_census": 39,
+     "occupation_at_census": "Cook (domestic)",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Croxton Kerrial is a Leicestershire village a couple of miles from the Lincolnshire border, and the page gives the county as Leics.",
+     "birth_place": "Croxton Kerrial, Leicestershire"
+    }
+   ],
+   "born_place": "Croxton Kerrial, Leicestershire"
+  },
+  {
+   "first_name": "Kate",
+   "last_name": "Towers",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1869,
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Servant",
+     "age_at_census": 32,
+     "occupation_at_census": "Parlourmaid",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
+     "birth_place": "Dry Doddington, Lincolnshire"
+    }
+   ],
+   "born_place": "Dry Doddington, Lincolnshire"
+  },
+  {
+   "first_name": "Florrie",
+   "last_name": "Butler",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1880,
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Servant",
+     "age_at_census": 21,
+     "occupation_at_census": "Housemaid",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page — Forename read off the original as Florrie; first transcribed here as Harrie and corrected by A. Hagues.",
+     "birth_place": "Wollaton, Nottinghamshire"
+    }
+   ],
+   "born_place": "Wollaton, Nottinghamshire"
+  },
+  {
+   "first_name": "Sarah",
+   "last_name": "Grayson",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1879,
+   "properties": [
+    394
+   ],
+   "census": [
+    {
+     "census_year": 1901,
+     "property_id": 394,
+     "address": "Felixstowe, Clumber Road West",
+     "relationship": "Servant",
+     "age_at_census": 22,
+     "occupation_at_census": "Housemaid",
+     "source": "1901 census, schedule 178, Felixstowe — transcribed by A. Hagues and Claude from the enumerator's page",
+     "birth_place": "Cossall, Nottinghamshire"
+    }
+   ],
+   "born_place": "Cossall, Nottinghamshire"
+  }
+ ]
 }

@@ -83,6 +83,8 @@ def from_sheet(path):
             recorded = str(row[col['name as recorded']] or '').strip()
             first = was.rsplit(' ', 1)[0] if ' ' in was else recorded.rsplit(' ', 1)[0]
             surname = was.rsplit(' ', 1)[-1]
+            if first.startswith('[Unknown]'):
+                first = first.replace('[Unknown]', '').strip()
             names = split_later(later)
             if not names:
                 note = 'read again from the page'
