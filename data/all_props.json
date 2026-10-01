@@ -6222,7 +6222,7 @@
   "no": "53",
   "address": "53 Park Row",
   "desc": "",
-  "history": "A Grade II listed house at the Park Row entrance to The Park, beside East Lodge, which is listed with it. In 1921 it held Peter Morrison Maccoll, a house governess and secretary of 47, with his wife Ada Eleanor, their daughter Nancy Mary and a servant.",
+  "history": "A Grade II listed house at the Park Row entrance to The Park, beside East Lodge, which is listed with it. In 1921 it held Peter Morrison Maccoll, a house governess and secretary of 47, with his wife Ada Eleanor, their daughter Nancy Mary and a servant. In 1939 the register writes the street as **Park Terrace** and the house holds **Henry M Stanley**, 46, hospital house governor and secretary, with Millicent A Stanley - the same office Peter Morrison Maccoll held here eighteen years before, which is what settles the two street names on one house.",
   "date_built": "",
   "listed": "Yes",
   "census_only": true,
@@ -6233,7 +6233,8 @@
    "existence": "In the record from the 1921 census, address \"Tower House, Park Row\".",
    "listing": "Historic England list entry 1254871, TOWER HOUSE, Grade II, listed 30 November 1995 — 2 metres from the position below.",
    "position": "OpenStreetMap building way/168974350, tagged Tower House, 53 Park Row, Grade II. A survey, not a guess."
-  }
+  },
+  "prev_house_name": "Tower House, Park Terrace"
  },
  {
   "id": 396,
@@ -6961,5 +6962,20 @@
   "house_name": "Ravenswood",
   "lat": 52.95095,
   "lng": -1.159
+ },
+ {
+  "id": 441,
+  "name": "The Lodge",
+  "house_name": "The Lodge",
+  "street": "Park Terrace",
+  "no": "",
+  "address": "The Lodge, Park Terrace",
+  "desc": "",
+  "history": "**Named by the 1939 Register and by nothing else in the record.** Schedule 134 holds **Bert Geddes**, 47, chauffeur, and **Hannah Geddes**, 48 - a service household, which is what a lodge is for.\n\n**It may be East Lodge on Park Row (#413), and the record does not say so.** The enumerator takes the General Hospital's own Lodge, then this house, then **Tower House** - and Tower House is 53 Park Row, which the same page calls Park Terrace. East Lodge stands beside Tower House, is listed with it, and has no household in this round. That is a good deal of smoke; it is not the fire. See [[the-lodge-on-park-terrace-is-probably-east-lodge]].\n\n**The position is provisional**, set beside Tower House because that is where the book puts it.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9516,
+  "lng": -1.15655
  }
 ]
