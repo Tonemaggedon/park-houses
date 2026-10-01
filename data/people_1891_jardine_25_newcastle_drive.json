@@ -1,27 +1,83 @@
 {
-  "note": "John Jardine, manufacturer of lace machinery, a widower of 66 living with one general servant at **14 Pelham Terrace** on the 1891 return - the house now numbered **25 Newcastle Drive** (#220). Transcribed from the census image by Claude at A. Hagues's request. 25 Newcastle Drive holds no census record at all, so nothing is displaced, and neither person was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 14 = 25. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**Confirmed as the founder of the firm, and as Ernest Jardine's father.** A published account supplied by A. Hagues gives John Jardine 1825-1895 of the company John Jardine, and puts him on the 1881 census at this same house with his wife Elizabeth, his son **Ernest**, then 21 and an assistant machine maker, his father-in-law William Key and a granddaughter. Ernest Jardine (#1315) is in the record at 19 Park Valley in 1891, and Wright's Directory prints 'Jardine Ernest, (John Jardine)' on Clumber Crescent South from 1910-11. The father and son link is therefore evidenced and is made here. By 1891 John is a widower, so Elizabeth died between the two returns.\n\n**The 1881 address settles the street question.** That account gives his 1881 address as **14 Newcastle drive** - the same number the 1891 enumerator writes as 14 Pelham Terrace. The record holds no even numbers at all on Newcastle Drive, so an 1881 'number 14' cannot be a modern address: the street had taken the name Newcastle Drive by 1881 while still carrying the old Pelham Terrace numbers, and the renumbering came later. That is why the 1891 return uses both namings on one page, and it leaves the conversion of 39 minus the old number intact. See [[newcastle-drive-pelham-terrace-numbers]].\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
-  "source": "1891 census, 14 Pelham Terrace (now 25 Newcastle Drive), read from the census image supplied by A. Hagues.",
-  "people": [
+ "note": "John Jardine, manufacturer of lace machinery, a widower of 66 living with one general servant at **14 Pelham Terrace** on the 1891 return - the house now numbered **25 Newcastle Drive** (#220). Transcribed from the census image by Claude at A. Hagues's request. 25 Newcastle Drive holds no census record at all, so nothing is displaced, and neither person was in the record.\n\n**The placement is by the conversion rule**, 39 minus the Pelham Terrace number, fixed by two confirmed pairs - 12 to 27 (Glendower, the Fosters) and 24 to 15. 39 - 14 = 25. See [[newcastle-drive-pelham-terrace-numbers]].\n\n**Confirmed as the founder of the firm, and as Ernest Jardine's father.** A published account supplied by A. Hagues gives John Jardine 1825-1895 of the company John Jardine, and puts him on the 1881 census at this same house with his wife Elizabeth, his son **Ernest**, then 21 and an assistant machine maker, his father-in-law William Key and a granddaughter. Ernest Jardine (#1315) is in the record at 19 Park Valley in 1891, and Wright's Directory prints 'Jardine Ernest, (John Jardine)' on Clumber Crescent South from 1910-11. The father and son link is therefore evidenced and is made here. By 1891 John is a widower, so Elizabeth died between the two returns.\n\n**The 1881 address settles the street question.** That account gives his 1881 address as **14 Newcastle drive** - the same number the 1891 enumerator writes as 14 Pelham Terrace. The record holds no even numbers at all on Newcastle Drive, so an 1881 'number 14' cannot be a modern address: the street had taken the name Newcastle Drive by 1881 while still carrying the old Pelham Terrace numbers, and the renumbering came later. That is why the 1891 return uses both namings on one page, and it leaves the conversion of 39 minus the old number intact. See [[newcastle-drive-pelham-terrace-numbers]].\n\nAges are as the enumerator wrote them, so a birth year worked back from one may be a year out either way.",
+ "source": "1891 census, 14 Pelham Terrace (now 25 Newcastle Drive), read from the census image supplied by A. Hagues.",
+ "people": [
+  {
+   "first_name": "John",
+   "last_name": "Jardine",
+   "match_born_year": true,
+   "sex": "M",
+   "born_year": 1825,
+   "born_place": "Hull, Yorkshire",
+   "died_date": "1895-01-24",
+   "died_year": 1895,
+   "bio": "Lace machine maker, born at Hull in 1825 and brought to Nottingham at the age of nine. He was apprenticed to a clockmaker, then worked for a bobbin and carriage maker, took a partnership with Stephen Bates, and after it was dissolved built machines on his own account as John Jardine. He carried out heavy contracts, traded extensively with the United States, and devised the tools needed to make the inner parts of lace machinery; he employed 162 hands in 1881 and was elected a member of the Institution of Mechanical Engineers in 1882. He lived on this street from at least 1881, when the house was numbered 14, until his death on 24 January 1895 in his seventieth year. His son Ernest carried on the firm.",
+   "occupations": [
     {
-      "first_name": "John", "last_name": "Jardine", "match_born_year": true, "sex": "M", "born_year": 1825, "born_place": "Hull, Yorkshire",
-      "died_date": "1895-01-24", "died_year": 1895,
-      "bio": "Lace machine maker, born at Hull in 1825 and brought to Nottingham at the age of nine. He was apprenticed to a clockmaker, then worked for a bobbin and carriage maker, took a partnership with Stephen Bates, and after it was dissolved built machines on his own account as John Jardine. He carried out heavy contracts, traded extensively with the United States, and devised the tools needed to make the inner parts of lace machinery; he employed 162 hands in 1881 and was elected a member of the Institution of Mechanical Engineers in 1882. He lived on this street from at least 1881, when the house was numbered 14, until his death on 24 January 1895 in his seventieth year. His son Ernest carried on the firm.",
-      "occupations": [{ "occupation": "Manufacturer of lace machinery", "from_year": 1881, "to_year": 1895, "employer": "John Jardine", "notes": "1881 and 1891 censuses; employing 162 hands in 1881" }],
-      "relationships": [{ "to": { "id": 1315 }, "type": "parent_of" }],
-      "properties": [220],
-      "census": [{ "census_year": 1891, "property_id": 220, "address": "14 Pelham Terrace (now 25 Newcastle Drive)",
-                   "relationship": "Head", "marital_status": "Widower", "age_at_census": 66,
-                   "occupation_at_census": "Manufacturer of lace machinery", "birth_place": "Hull, Yorkshire",
-                   "source": "1891 census, 14 Pelham Terrace - read from the image by Claude; returned as an employer" }]
-    },
-    {
-      "first_name": "Phoebe", "last_name": "Hadley", "match_born_year": true, "sex": "F", "born_year": 1863, "born_place": "Little London, Staffordshire",
-      "occupations": [{ "occupation": "General servant, domestic", "from_year": 1891, "to_year": 1891 }],
-      "properties": [220],
-      "census": [{ "census_year": 1891, "property_id": 220, "address": "14 Pelham Terrace (now 25 Newcastle Drive)",
-                   "relationship": "Servant", "marital_status": "Single", "age_at_census": 28,
-                   "occupation_at_census": "General servant, domestic", "birth_place": "Little London, Staffordshire",
-                   "source": "1891 census, 14 Pelham Terrace - read from the image by Claude" }]
+     "occupation": "Manufacturer of lace machinery",
+     "from_year": 1881,
+     "to_year": 1895,
+     "employer": "John Jardine",
+     "notes": "1881 and 1891 censuses; employing 162 hands in 1881"
     }
-  ]
+   ],
+   "relationships": [
+    {
+     "to": {
+      "id": 1315
+     },
+     "type": "parent_of"
+    }
+   ],
+   "properties": [
+    220
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 220,
+     "address": "14 Pelham Terrace (now 25 Newcastle Drive)",
+     "relationship": "Head",
+     "marital_status": "Widower",
+     "age_at_census": 66,
+     "occupation_at_census": "Manufacturer of lace machinery",
+     "birth_place": "Hull, Yorkshire",
+     "source": "1891 census, 14 Pelham Terrace - read from the image by Claude; returned as an employer"
+    }
+   ],
+   "id": 8629
+  },
+  {
+   "first_name": "Phoebe",
+   "last_name": "Hadley",
+   "match_born_year": true,
+   "sex": "F",
+   "born_year": 1863,
+   "born_place": "Little London, Staffordshire",
+   "occupations": [
+    {
+     "occupation": "General servant, domestic",
+     "from_year": 1891,
+     "to_year": 1891
+    }
+   ],
+   "properties": [
+    220
+   ],
+   "census": [
+    {
+     "census_year": 1891,
+     "property_id": 220,
+     "address": "14 Pelham Terrace (now 25 Newcastle Drive)",
+     "relationship": "Servant",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "General servant, domestic",
+     "birth_place": "Little London, Staffordshire",
+     "source": "1891 census, 14 Pelham Terrace - read from the image by Claude"
+    }
+   ],
+   "id": 3551
+  }
+ ]
 }
