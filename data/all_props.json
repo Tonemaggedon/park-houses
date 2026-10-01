@@ -271,7 +271,8 @@
   "listed": "Yes",
   "lat": 52.9494645,
   "lng": -1.1563832,
-  "prev_house_name": "The Lodge"
+  "prev_house_name": "The Lodge",
+  "house_name": "Castle Lodge"
  },
  {
   "id": 21,
@@ -431,7 +432,8 @@
   ],
   "sources": {
    "nhle_also": "The gateway and boundary wall to number 14 Park House is listed in its own right (entry 1246776, Grade II, 1995), separately from the house (entry 1247106). Both belong to this property; the house's own description says so."
-  }
+  },
+  "house_name": "Park House"
  },
  {
   "id": 30,
@@ -6144,7 +6146,8 @@
    "position": "Placed by owner (A. Hagues), 8 Sep 2026 - 28m from 9 Park Terrace - and **confirmed** by the Ordnance Survey National Grid sheet SK5639, revised 1953 and published 1955, which labels **Sunnyside** on exactly that ground, in its own grounds west of Park Terrace with the Clare Valley houses beyond it and allotment gardens below.",
    "merge": "#415, Sunny Side at 12 Park Valley, folded in here 26 September 2026 on A. Hagues's identification of the site from the Ordnance Survey and modern maps. There would not be two houses of that name so close together. 24 census rows from 1891 and 1939 came with it."
   },
-  "prev_house_name": "Sunny Side"
+  "prev_house_name": "Sunny Side",
+  "house_name": "Sunnyside"
  },
  {
   "id": 391,
@@ -6158,7 +6161,8 @@
   "listed": "No",
   "census_only": true,
   "lat": 52.950259,
-  "lng": -1.1605417
+  "lng": -1.1605417,
+  "house_name": "Glenmaye"
  },
  {
   "id": 392,
@@ -6177,7 +6181,8 @@
   "sources": {
    "position": "OS 1:1250, Hermitage Walk / Fishpond Drive sheet — approximate, west end of Hermitage Walk above Rock Holes"
   },
-  "demolished": true
+  "demolished": true,
+  "house_name": "The Hermitage"
  },
  {
   "id": 393,
@@ -6196,7 +6201,8 @@
   "lng": -1.1644901,
   "sources": {
    "demolished": "Present on OS 1:1250 SK 5639 NW, surveyed Sept 1953, absent from OS 1:1250 SK 5639 NW, revised Dec 1967 — demolished 1953-1967"
-  }
+  },
+  "house_name": "Fairlawn"
  },
  {
   "id": 394,
@@ -6214,7 +6220,8 @@
   "demolished_notes": "House demolished. Approximate position shown.",
   "sources": {
    "name": "The 1901 schedule writes the surname with a looped capital that can be read as Morrison. Recorded as Dowson on the strength of the 1901 Contemporary Biographies of Nottinghamshire, which gives Benjamin Dowson, solicitor, born Geldeston, Norfolk, 11 September 1836, resident at Felixstowe, The Park — matching the age, profession, birthplace and house on the schedule — and of the Dowsons already recorded here in 1911."
-  }
+  },
+  "house_name": "Felixstowe"
  },
  {
   "id": 395,
@@ -6235,7 +6242,8 @@
    "listing": "Historic England list entry 1254871, TOWER HOUSE, Grade II, listed 30 November 1995 — 2 metres from the position below.",
    "position": "OpenStreetMap building way/168974350, tagged Tower House, 53 Park Row, Grade II. A survey, not a guess."
   },
-  "prev_house_name": "Tower House, Park Terrace"
+  "prev_house_name": "Tower House, Park Terrace",
+  "house_name": "Tower House"
  },
  {
   "id": 396,
@@ -6295,7 +6303,8 @@
   "sources": {
    "position": "OpenStreetMap: the private drive named Clumber Court (Nottingham Park Estate Ltd), 22m off Clumber Crescent South",
    "demolished": "Owner knowledge (A. Hagues) — a villa, replaced by flats. London Gazette 1952 records a resident at \"Clumber Court, Clumber Crescent South, The Park\"; by 1969 it was numbered flats (\"27 Clumber Court\")"
-  }
+  },
+  "house_name": "Clumber Court"
  },
  {
   "id": 400,
@@ -6315,7 +6324,8 @@
   "sources": {
    "position": "OpenStreetMap building footprint, corroborated by OS 1:1250 SK 5539 NE",
    "demolished": "Owner knowledge (A. Hagues) — replaced by a block of flats"
-  }
+  },
+  "house_name": "Cedar Lodge"
  },
  {
   "id": 401,
@@ -6331,7 +6341,8 @@
   "demolished": true,
   "demolished_notes": "House demolished. Approximate position shown.",
   "lat": 52.9506,
-  "lng": -1.1608
+  "lng": -1.1608,
+  "house_name": "Valley House"
  },
  {
   "id": 402,
@@ -6351,7 +6362,8 @@
   "prev_house_name": "St Hellier",
   "sources": {
    "house_name": "St Helier, after the Jersey town — Florence Boot was from Jersey, and a Jersey barrister was staying in the house on census night 1911. Corrected from St Hellier by A. Hagues; the old spelling is kept as a former name so a census address written that way still matches. The 1921 return writes it \"St Heliers\" in one employer column and \"St Helens\" in two others."
-  }
+  },
+  "house_name": "St Helier"
  },
  {
   "id": 403,
@@ -6367,7 +6379,8 @@
   "demolished": true,
   "demolished_notes": "House demolished. Approximate position shown.",
   "lat": 52.95,
-  "lng": -1.1648
+  "lng": -1.1648,
+  "house_name": "Lincoln House"
  },
  {
   "id": 404,
@@ -6408,7 +6421,8 @@
    "existence": "1921 census, address \"Huntingdon Drive (The Cottage)\". The number 14 was given by A. Hagues and is confirmed by Dougal de Havilland's map of The Park, which labels the house \"14 The Cottage\".",
    "position": "Provisional. Dougal's map is a diagram rather than a survey — checked against 70 houses whose positions are known, it is out by a median of about 60 metres, so it settles which house and in what order but not where. Placed instead by the road itself: opposite number 6, on the north-east side, 25 metres off the line between 1 and 10. Wants placing by hand.",
    "residents": "1921 census, 2 people"
-  }
+  },
+  "house_name": "The Cottage"
  },
  {
   "id": 406,
@@ -6429,7 +6443,8 @@
    "position": "**Provisional and now in doubt.** Placed on the enumerator's Park Terrace round, between 19 Park Terrace and Sunnyside, which is where Dr Kneebone's household sits. But the Enfield household, also returned at Broxtowe House, sits 230 m away in the same round, between 5 and 7 Park Valley — and 6 Park Valley is not it: that house is Stuart Cottage, built c1835-45, with a description of its own. So either two houses in The Park carried the name, or one of the two households is out of position in the book. Until that is settled this position is one of two candidates, not a placement.",
    "residents": "1921 census, 9 people — first filed at 19 Park Terrace with two other schedules under the same address",
    "caution": "Findmypast's index gives the Enfield household as 6 Park Valley; the original record says Broxtowe House. The index is wrong here, which is worth remembering wherever an address in this record came from a transcription rather than from the page."
-  }
+  },
+  "house_name": "Broxtowe House"
  },
  {
   "id": 407,
@@ -6448,7 +6463,8 @@
    "existence": "Named as Penrhyn Cottage on the modern map and drawn as a separate footprint on the OS 1:1250 sheet SK 5539 NE; cited on Cedar Lodge (#400) as \"beside Penrhyn Cottage at the Tunnel Road end of the crescent\". Labelled \"Penrhyn Cott\" on Dougal de Havilland's map.",
    "relationship": "Owner knowledge (A. Hagues): at the bottom of the garden of Penrhyn House, sitting on Cavendish Road East.",
    "position": "Read off the modern map against eight houses in the same frame whose positions are already known — Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel, so the placement is as good as the reading of the building outline, not a guess at the end of a street. Unlike Dougal's map, which is a diagram and cannot place anything. Placed on the northern of the two buildings, the one the modern map labels Penrhyn Cottage. My first placement was 26 m east of this and has been corrected."
-  }
+  },
+  "house_name": "Penrhyn Cottage"
  },
  {
   "id": 408,
@@ -6468,7 +6484,8 @@
    "name": "The reading of the first word is not certain — the hand's capitals are loose enough that Gees could be taken for Cees or Lees. Recorded as Gees.",
    "position": "Read off the modern map against eight houses in the same frame whose positions are already known — Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel, so the placement is as good as the reading of the building outline, not a guess at the end of a street. Unlike Dougal's map, which is a diagram and cannot place anything. Placed on the southern of the two buildings, the one the modern map labels Tunnel Lodge. Owner's judgement (A. Hagues) that this pair is the only place it can be.",
    "residents": "1921 census, 3 people — first filed at Penrhyn House with three other schedules under the same address"
-  }
+  },
+  "house_name": "Gees Lodge"
  },
  {
   "id": 409,
@@ -6488,7 +6505,8 @@
    "position": "Read off the modern map against eight houses in the same frame whose positions are already known — Gladstone House, Penrhyn House, Edale House and 25 to 33 Cavendish Road East. Those eight fit to within a fifth of a metre at 0.18 m per pixel. Placed on the building the modern map labels The Cottage.",
    "residents": "1921 census, 2 people — first filed at Penrhyn House with three other schedules under the same address",
    "caution": "There are two houses called The Cottage in The Park: this one and #405 at 14 Huntingdon Drive. Automatic matching on Dougal's map put both of that map's \"Cottage\" labels against #405, which was wrong for this one."
-  }
+  },
+  "house_name": "The Cottage"
  },
  {
   "id": 410,
@@ -6507,7 +6525,8 @@
    "existence": "1911 census, three households returned at \"Barrack Yard, Barrack Lane, Nottingham\" — found because all three had been filed at 10 Barrack Lane.",
    "position": "Provisional. Placed at the foot of Barrack Lane, about 19 m beyond number 30 and set back off the frontage — 15 m from 17 and 18 Pelham Crescent, in the gap between the end of the lane and the crescent. Dougal de Havilland's map puts its \"Allegedly known as Barrack Yard\" note at this end, around Pelham Cottages and Reveille, but that map is out by a median of 60 m and cannot place anything; the anchor here is Barrack Lane's own numbering. Wants placing by hand, or by somebody who can walk it.",
    "residents": "1911 census, 12 people in three households"
-  }
+  },
+  "house_name": "Barrack Yard"
  },
  {
   "id": 412,
@@ -6547,7 +6566,8 @@
    "listed": "Grade II, list entry 1270628, listed 30 November 1995."
   },
   "prev_house_name": "Park Lodge",
-  "listedGrade": "II"
+  "listedGrade": "II",
+  "house_name": "East Lodge"
  },
  {
   "id": 414,
@@ -6570,7 +6590,8 @@
    "demolished": "Owner knowledge (A. Hagues) — gone, as Lincoln House is."
   },
   "demolished": true,
-  "demolished_notes": "Demolished, with Lincoln House itself (#403). Reported by A. Hagues. The cottage stood in the grounds on the Clumber Crescent North frontage and is drawn on the OS 1:1250 sheet surveyed September 1953, so it was standing then."
+  "demolished_notes": "Demolished, with Lincoln House itself (#403). Reported by A. Hagues. The cottage stood in the grounds on the Clumber Crescent North frontage and is drawn on the OS 1:1250 sheet surveyed September 1953, so it was standing then.",
+  "house_name": "The Cottage"
  },
  {
   "id": 416,
@@ -6643,7 +6664,8 @@
   "sources": {
    "position": "Placed at the midpoint of 33 Lenton Road and Rock House at 37, between which the enumerator walks it. Approximate.",
    "name": "The house name comes from the 1881 enumerator, who writes Bowling Green against the number."
-  }
+  },
+  "house_name": "Bowling Green"
  },
  {
   "id": 420,
@@ -6661,7 +6683,8 @@
   "sources": {
    "position": "Placed between 35 and 33 Lenton Road, where the 1881 enumerator walks it. Approximate.",
    "name": "The 1911 round names it The Stables, Lenton Road; the earlier rounds describe it rather than name it."
-  }
+  },
+  "house_name": "The Stables"
  },
  {
   "id": 421,
@@ -6828,7 +6851,8 @@
   "sources": {
    "position": "Approximate - one house beyond 145 Derby Road along the line from 147. Open to correction on the map.",
    "street": "The 1921 servants' place of work, 'Edgmont, 143 Derby Rd', and the 1939 Register's '143a Derby Road'."
-  }
+  },
+  "house_name": "Edgemont House"
  },
  {
   "id": 432,
