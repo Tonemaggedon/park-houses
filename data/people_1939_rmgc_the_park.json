@@ -8613,6 +8613,27 @@
    ]
   },
   {
+   "first_name": "Elvina",
+   "last_name": "Lowe",
+   "sex": "F",
+   "born_year": 1923,
+   "born_date": "1923-12-29",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 336,
+     "address": "48 The Ropewalk",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "Kitchen maid",
+     "census_household_num": 160,
+     "source": "1939 Register, schedule 160, 48 The Ropewalk, ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; entered as Elvina Lowe, which is her name on the night; Ward is written over it in a later hand. She is the sub number the record was missing from this household"
+    }
+   ],
+   "id": 8577
+  },
+  {
    "first_name": "Isabel W",
    "last_name": "Hogarth",
    "sex": "F",
@@ -8714,14 +8735,16 @@
    "census": [
     {
      "census_year": 1939,
-     "unresolved_address": "The Ropewalk, between 48 and 42 (no number given)",
      "marital_status": "Married",
      "age_at_census": 36,
      "occupation_at_census": "Surgeon",
      "census_household_num": 161,
-     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 1; the house is not identified in the record, so this row is left unfiled"
+     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 1; the house is 44 The Ropewalk - the page gives no number, and A. Hagues reads it from the sheet; the walk agrees, schedule 160 being 48 and 162 being 42",
+     "property_id": 335,
+     "address": "44 The Ropewalk"
     }
-   ]
+   ],
+   "id": 7742
   },
   {
    "first_name": "Ivy",
@@ -8733,14 +8756,16 @@
    "census": [
     {
      "census_year": 1939,
-     "unresolved_address": "The Ropewalk, between 48 and 42 (no number given)",
      "marital_status": "Married",
      "age_at_census": 29,
      "occupation_at_census": "Unpaid domestic duties",
      "census_household_num": 161,
-     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 2; the house is not identified in the record, so this row is left unfiled"
+     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 2; the house is 44 The Ropewalk - the page gives no number, and A. Hagues reads it from the sheet; the walk agrees, schedule 160 being 48 and 162 being 42",
+     "property_id": 335,
+     "address": "44 The Ropewalk"
     }
-   ]
+   ],
+   "id": 7743
   },
   {
    "first_name": "Leonard",
@@ -8752,14 +8777,16 @@
    "census": [
     {
      "census_year": 1939,
-     "unresolved_address": "The Ropewalk, between 48 and 42 (no number given)",
      "marital_status": "Married",
      "age_at_census": 27,
      "occupation_at_census": "House servant",
      "census_household_num": 161,
-     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; the house is not identified in the record, so this row is left unfiled"
+     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 4; the house is 44 The Ropewalk - the page gives no number, and A. Hagues reads it from the sheet; the walk agrees, schedule 160 being 48 and 162 being 42",
+     "property_id": 335,
+     "address": "44 The Ropewalk"
     }
-   ]
+   ],
+   "id": 7744
   },
   {
    "first_name": "Doris",
@@ -8771,14 +8798,16 @@
    "census": [
     {
      "census_year": 1939,
-     "unresolved_address": "The Ropewalk, between 48 and 42 (no number given)",
      "marital_status": "Married",
      "age_at_census": 29,
      "occupation_at_census": "House servant",
      "census_household_num": 161,
-     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 5; the house is not identified in the record, so this row is left unfiled"
+     "source": "1939 Register, schedule 161, The Ropewalk, between 48 and 42 (no number given), ED letter code RMGC, Nottingham registration sub-district 3 - read from the page by A. Hagues; sub number 5; the house is 44 The Ropewalk - the page gives no number, and A. Hagues reads it from the sheet; the walk agrees, schedule 160 being 48 and 162 being 42",
+     "property_id": 335,
+     "address": "44 The Ropewalk"
     }
-   ]
+   ],
+   "id": 7745
   },
   {
    "first_name": "Rupert A C",
