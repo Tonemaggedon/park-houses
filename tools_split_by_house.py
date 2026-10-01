@@ -41,6 +41,11 @@ SPLITS = [
  (7109, [(1881, 235)], "a domestic cook of 36 born Rowsley, Derbyshire at 4 Park Drive - not the cook of 22 born Kimberley at 15 Cavendish Crescent South"),
  (7109, [(1881, 197), (1891, 197)], "the wife of Rock House, 37 Lenton Road, 65 in 1881 and 75 in 1891, born Nottingham - the two rounds are one woman and she is neither of the servants"),
  (7118, [(1881, 278)], "a lady's maid of 44 born Bramcote at 9 Pelham Crescent - not the domestic servant of 18 born Southwell at 4 Western Terrace"),
+ # Folding two people of one name back together re-makes the weld wherever one
+ # of them also held a row belonging to the other. These three came back that way.
+ (871,  [(1881, 188)], "Samuel Parr's son of 21, a clerk in a soda factory at 17 Lenton Road - not George Parr the solicitor of 35 at 33 Lenton Road"),
+ (2386, [(1891, 220)], "the head of 25 Newcastle Drive, 66 and a manufacturer of lace machinery - not the Jardine son of 6 at 19 Park Valley"),
+ (5226, [(1881, 393)], "the daughter of 22 at Fairlawn, Duke William Mount - not the domestic housekeeper of 55 at 1 Park Terrace"),
 ]
 
 def main():
