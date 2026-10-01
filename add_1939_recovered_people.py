@@ -23,6 +23,12 @@ PEOPLE = [
   "why this record carried a servant with a birth date and no name. Entered as Annie Holland "
   "Hatton, which is her name on the night; Longsdale is written over it in a later hand, and "
   "was first read here as Lonsdale"),
+ (125, 3, "Lucy", "Fox", "Harbord", "F", "1904-07-10", 1904, 35,
+  "Cook general", 260, "4 Park Valley",
+  "the forename is from the Register's index; the page has it under a repair strip, which is "
+  "why this record carried a cook with a birth date and no name. Entered as Lucy Fox, which is "
+  "her name on the night; Harbord is written over it in a later hand, and was first read here "
+  "as Hargood"),
 ]
 
 
