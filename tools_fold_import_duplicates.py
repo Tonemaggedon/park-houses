@@ -56,9 +56,20 @@ def main():
             # the alias is the point: it is what the importer looks at next time
             cur.execute("""INSERT INTO person_alias (person_id, first_name, last_name, born_year, made_by)
                            SELECT %s,%s,%s,%s,'merge' FROM (SELECT 1) t WHERE NOT EXISTS
-                           (SELECT 1 FROM person_alias a WHERE a.person_id=%s AND a.first_name=%s
-                                                           AND a.last_name=%s AND a.born_year IS NOT DISTINCT FROM %s)""",
-                        (oid, nfn, nln, nby, oid, nfn, nln, nby))
+                           (SELECT 1 FROM person_alias a
+                             WHERE LOWER(TRIM(a.first_name))=LOWER(TRIM(%s))
+                               AND LOWER(TRIM(a.last_name))=LOWER(TRIM(%s)))""",
+                        (oid, nfn, nln, nby, nfn, nln))
+            # Move the rows the keeper has not got, and only then drop the rest.
+            # Deleting outright loses a row whenever the duplicate is holding the
+            # only copy of it - which is exactly the case after a split has just
+            # handed a new person their own household.
+            cur.execute("""UPDATE census_entries n SET person_id=%s
+                            WHERE n.person_id=%s AND NOT EXISTS
+                              (SELECT 1 FROM census_entries o
+                                WHERE o.person_id=%s AND o.census_year=n.census_year
+                                  AND o.property_id IS NOT DISTINCT FROM n.property_id)""",
+                        (oid, nid, oid))
             cur.execute("DELETE FROM census_entries WHERE person_id=%s", (nid,))
             cur.execute("DELETE FROM property_residents WHERE person_id=%s", (nid,))
             cur.execute("DELETE FROM people WHERE id=%s", (nid,))

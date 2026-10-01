@@ -35,6 +35,12 @@ SPLITS = [
  (6808, [(1881, 43)],  "a housemaid of 23 born Linton at 11 Cavendish Crescent South - not the housemaid of 22 born Nottingham at 4 Clinton Terrace"),
  (7116, [(1881, 241)], "a domestic housekeeper of 55 born Walesby at 1 Park Terrace - not the daughter of 22 at Fairlawn"),
  (7119, [(1881, 175)], "a servant and cook of 28 born Tipton at 2 Lenton Road - not the servant of 18 born Ruddington at 121 Derby Road, whose birth year #7119 already carries"),
+ # Three Mary Shaws, welded again by the import. #7109 keeps the cook of 22 born
+ # Kimberley; the other two are a cook of 36 born Rowsley and a wife of 65 born
+ # Nottingham who is in the record across two rounds at the same house.
+ (7109, [(1881, 235)], "a domestic cook of 36 born Rowsley, Derbyshire at 4 Park Drive - not the cook of 22 born Kimberley at 15 Cavendish Crescent South"),
+ (7109, [(1881, 197), (1891, 197)], "the wife of Rock House, 37 Lenton Road, 65 in 1881 and 75 in 1891, born Nottingham - the two rounds are one woman and she is neither of the servants"),
+ (7118, [(1881, 278)], "a lady's maid of 44 born Bramcote at 9 Pelham Crescent - not the domestic servant of 18 born Southwell at 4 Western Terrace"),
 ]
 
 def main():
