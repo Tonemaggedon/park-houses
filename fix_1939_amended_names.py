@@ -18,10 +18,17 @@ and the census row says what the page does.
 Usage:
   railway run python3 fix_1939_amended_names.py          # show
   railway run python3 fix_1939_amended_names.py --apply  # do it
+
+Or take the names from the filled-in sheet (amended_names_worksheet.py writes it):
+  railway run python3 fix_1939_amended_names.py --sheet "~/Desktop/1939 names - fill in.xlsx"
 """
 import os, sys, psycopg2
 
 APPLY = '--apply' in sys.argv
+SHEET = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--sheet=')), None)
+if not SHEET and '--sheet' in sys.argv:
+    i = sys.argv.index('--sheet')
+    SHEET = sys.argv[i + 1] if i + 1 < len(sys.argv) else None
 
 # person, name on the night, the name written over it, and where
 AMENDED = [
@@ -29,10 +36,45 @@ AMENDED = [
   "the Register is amended to LUKE in a later hand, struck through Burton"),
 ]
 
+def from_sheet(path):
+    """Read the two filled-in columns off the worksheet.
+
+    Only rows where both NAME ON THE NIGHT and AMENDED TO have been written are
+    taken; everything left blank is simply a row nobody has looked at yet.
+    """
+    import openpyxl
+    wb = openpyxl.load_workbook(os.path.expanduser(path), data_only=True)
+    out, seen = [], set()
+    for ws in wb.worksheets:
+        head = [str(c.value or '').strip().lower() for c in ws[1]]
+        try:
+            col = {k: head.index(k) for k in
+                   ('person', 'name as recorded', 'house', 'name on the night', 'amended to')}
+        except ValueError:
+            continue
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            was = str(row[col['name on the night']] or '').strip()
+            later = str(row[col['amended to']] or '').strip()
+            pid = row[col['person']]
+            if not (was and later and pid) or pid in seen:
+                continue
+            seen.add(pid)
+            recorded = str(row[col['name as recorded']] or '').strip()
+            first = was.rsplit(' ', 1)[0] if ' ' in was else recorded.rsplit(' ', 1)[0]
+            surname = was.rsplit(' ', 1)[-1]
+            out.append((int(pid), first, surname, later.rsplit(' ', 1)[-1],
+                        str(row[col['house']] or '').strip(),
+                        'the Register is amended in a later hand, struck through ' + surname))
+    return out
+
+
 def main():
     c = psycopg2.connect(os.environ.get('DATABASE_PUBLIC_URL') or os.environ['DATABASE_URL'])
     cur = c.cursor()
-    for pid, fn, was, later, where, note in AMENDED:
+    work = from_sheet(SHEET) if SHEET else AMENDED
+    if SHEET:
+        print(f"  {len(work)} rows filled in on {SHEET}\n")
+    for pid, fn, was, later, where, note in work:
         cur.execute("SELECT first_name, last_name, maiden_name FROM people WHERE id=%s", (pid,))
         row = cur.fetchone()
         if not row: print(f"  #{pid}: no such person"); continue
