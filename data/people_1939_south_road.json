@@ -1,0 +1,69 @@
+{
+ "note": "**2 South Road, schedule 235 of the 1939 Register.** The property had stood in the list with no census in any round. A. Hagues reads the household off the page: three women, no head, and one name the index gives two ways.",
+ "source": "1939 Register, South Road run, schedules 229 to 237",
+ "people": [
+  {
+   "first_name": "Agnes L",
+   "last_name": "Foster",
+   "sex": "F",
+   "born_year": 1901,
+   "born_date": "1901-11-23",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 381,
+     "address": "2 South Road",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 235,
+     "source": "1939 Register, schedule 235, 2 South Road - read from the page by A. Hagues; sub number 1; this schedule belongs to the South Road and Cavendish Crescent South run, numbered 229 to 237, and not to the RMGC book; sub number 1 and married, with a parlourmaid and a cook under her - her husband is not on the page"
+    }
+   ],
+   "id": 8578
+  },
+  {
+   "first_name": "Ethel",
+   "last_name": "Coke",
+   "sex": "F",
+   "born_year": 1905,
+   "born_date": "1905-11-29",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 381,
+     "address": "2 South Road",
+     "marital_status": "Single",
+     "age_at_census": 33,
+     "occupation_at_census": "Parlour maid",
+     "census_household_num": 235,
+     "source": "1939 Register, schedule 235, 2 South Road - read from the page by A. Hagues; sub number 2; this schedule belongs to the South Road and Cavendish Crescent South run, numbered 229 to 237, and not to the RMGC book"
+    }
+   ],
+   "id": 8579
+  },
+  {
+   "first_name": "Victoria",
+   "last_name": "Richardson",
+   "sex": "F",
+   "born_year": 1897,
+   "born_date": "1897-09-17",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 381,
+     "address": "2 South Road",
+     "marital_status": "Single",
+     "age_at_census": 42,
+     "occupation_at_census": "Cook",
+     "census_household_num": 235,
+     "source": "1939 Register, schedule 235, 2 South Road - read from the page by A. Hagues; sub number 3; this schedule belongs to the South Road and Cavendish Crescent South run, numbered 229 to 237, and not to the RMGC book; the index gives her as Acho (Victoria) Wright (Richardson). She is entered under the bracketed names as her names on the night, which is how this record reads that bracket elsewhere in the round - the direction comes from the pattern, not from this page, and Acho Wright is kept as a name she can be found under"
+    }
+   ],
+   "id": 8580
+  }
+ ]
+}
