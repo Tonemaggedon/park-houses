@@ -9565,21 +9565,23 @@
   },
   {
    "first_name": "Thomas",
-   "last_name": "Spam",
+   "last_name": "Shaw",
    "census": [
     {
      "census_year": 1871,
-     "unresolved_address": "The Ropewalk (no number given)",
      "relationship": "Head",
      "marital_status": "Widowed",
      "age_at_census": 43,
      "occupation_at_census": "Lace manufacturer",
      "birth_place": "Nottingham, Nottinghamshire",
      "census_household_num": 201,
-     "source": "1871 census, The Ropewalk (no number given), schedule 201, RG10/3449 - read from the enumerator's page by A. Hagues; the house is not identified in the record, so this row is left unfiled; surname hard to read; it may be Swann"
+     "source": "1871 census, The Ropewalk (no number given), schedule 201, RG10/3449 - read from the enumerator's page by A. Hagues; the house is 14 The Ropewalk, which he also heads in 1861; the surname is hard to read and was first taken here as Spam and then as Swann - A. Hagues reads it Shaw, and the same man heads the same house ten years earlier",
+     "property_id": 319,
+     "address": "14 The Ropewalk"
     }
    ],
-   "id": 5697
+   "id": 7144,
+   "born_year": 1827
   },
   {
    "first_name": "Ann",
