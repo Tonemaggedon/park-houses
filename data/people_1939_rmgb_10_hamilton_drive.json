@@ -1,0 +1,132 @@
+{
+ "note": "**10 Hamilton Drive, schedule 80 of the 1939 Register, ED letter code RMGB.** A hotel proprietor and his household; sub number 4 is behind the closed band.",
+ "source": "1939 Register, ED letter code RMGB, district 430-3, sub-district 26",
+ "people": [
+  {
+   "first_name": "Mary",
+   "last_name": "Slack",
+   "sex": "F",
+   "born_year": 1924,
+   "born_date": "1924-11-06",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Single",
+     "age_at_census": 14,
+     "occupation_at_census": "Clerk, advertising office",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8648
+  },
+  {
+   "first_name": "Arthur",
+   "last_name": "Hawley",
+   "sex": "M",
+   "born_year": 1874,
+   "born_date": "1874-06-11",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 65,
+     "occupation_at_census": "Hotel proprietor",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8649
+  },
+  {
+   "first_name": "Georgina",
+   "last_name": "Hawley",
+   "sex": "F",
+   "born_year": 1876,
+   "born_date": "1876-08-03",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 63,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8650
+  },
+  {
+   "first_name": "Gwendolen",
+   "last_name": "Hawley",
+   "sex": "F",
+   "born_year": 1915,
+   "born_date": "1915-01-04",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Single",
+     "age_at_census": 24,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 5; the index gives the forename as Gwendoline E as well as Gwendolen; sub number 4 is behind the closed band"
+    }
+   ],
+   "id": 8651
+  },
+  {
+   "first_name": "Alice",
+   "last_name": "Jones",
+   "sex": "F",
+   "born_year": 1907,
+   "born_date": "1907-03-13",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 32,
+     "occupation_at_census": "Waitress cum domestic",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 6; she is married already on the night, so Scragg is a second marriage rather than a first"
+    }
+   ],
+   "id": 8652
+  },
+  {
+   "first_name": "Leonard",
+   "last_name": "Pickard",
+   "sex": "M",
+   "born_year": 1908,
+   "born_date": "1908-09-12",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 123,
+     "address": "10 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "occupation_at_census": "Bank inspector",
+     "census_household_num": 80,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 7"
+    }
+   ],
+   "id": 8653
+  }
+ ]
+}
