@@ -109,11 +109,11 @@ def main():
     if APPLY:
         cur.execute("""UPDATE people SET born_year=1827, born_place='Nottingham, Nottinghamshire'
                         WHERE id=%s""", (KEEP,))
+        note = ("; the lace manufacturer of 14 The Ropewalk, born Nottingham - the record held "
+                "him, a general agent and a brush maker as one man until A. Hagues read them apart")
         cur.execute("""UPDATE census_entries SET source = COALESCE(source,'') || %s
-                        WHERE person_id=%s AND COALESCE(source,'') NOT LIKE %s""",
-                    ("; the lace manufacturer of 14 The Ropewalk, born Nottingham - the record "
-                     "held him, a general agent and a brush maker as one man until A. Hagues "
-                     "read them apart", KEEP, '%three Thomas Shaws%'))
+                        WHERE person_id=%s AND POSITION(%s IN COALESCE(source,'')) = 0""",
+                    (note, KEEP, note))     # guard on the note itself, or a second run doubles it
         c.commit()
         print("\n  committed")
     else:
