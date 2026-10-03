@@ -38,6 +38,11 @@ SELECT n.id, n.first_name, n.last_name, n.born_year,
    AND LOWER(LEFT(n.first_name,4)) = LOWER(LEFT(o.first_name,4))
    AND (SELECT COUNT(*) FROM census_entries x WHERE x.person_id = n.id) = 1
    AND n.bio IS NULL
+   -- A duplicate made by an import differs from its twin by a wobbling birth year,
+   -- a year or two at most. Two people fifty years apart are two people: this guard
+   -- is what stops the fold undoing a split, which it did to Thomas Shaw - folding
+   -- a brush maker born 1877 into a lace manufacturer born 1827.
+   AND (n.born_year IS NULL OR o.born_year IS NULL OR ABS(n.born_year - o.born_year) <= 3)
  ORDER BY n.id
 """
 
