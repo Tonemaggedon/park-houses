@@ -54,6 +54,21 @@ moment to catch a problem there will ever be.
 
 Then `Import`. Note what it says it added — you will want that figure again at stage 9.
 
+**0.0 — wait for the deploy before you press Import.** The importer reads the files **from the
+deployed build on Railway**, not from the working copy. A push takes a minute or two to go live, so
+a file bound by `id` seconds before the import is still the *unbound* file as far as the server is
+concerned — and the import then makes exactly the duplicates the binding was written to prevent.
+
+That is what happened on the 1939 RMGB round of 3 October 2026. The ids went in at 15:02 and the
+import ran about a minute later; **Margaret Lewis, William Bowers and Emma Radford** were each
+created a second time, all three bound by number in the working copy and by none on the server. They
+are the same three people the `match_born_year` note at 5.5b names, duplicated for the same reason
+a second time.
+
+**So: push, wait for Railway to report the deploy live, and only then press Import.** If in doubt,
+press `Preview` first — a preview that names somebody the record already holds is the deploy
+telling you it has not caught up.
+
 **0.1 — count the preview against the files.** The importer **skips, in silence, any record
 without both a first name and a last name**, even when that record carries a person number:
 
