@@ -50,6 +50,14 @@ HOUSES = [
    (1, "Florence", "Jennison", None, "F", "1876-09-16", 63, "Private means", "Single", None),
    (2, "Alice", "Mayfield", None, "F", "1881-03-10", 58, "Domestic servant", "Single", None),
  ]),
+ (127, [
+   (1, "Edwin E", "Shaw", None, "M", "1886-04-14", 53, "Bank accountant", "Single", None),
+   (2, "Minnie", "Shaw", None, "F", "1872-03-07", 67, "Nurse; private means", "Single", None),
+   (3, "Florence Ada", "Shaw", None, "F", "1876-09-21", 63, "Domestic duties", "Single", None),
+   (4, "Annie E", "Brown", None, "F", "1893-06-21", 46, "Domestic duties", "Single",
+    "three Shaws of the house are all returned single, so they are most likely brother and sisters "
+    "keeping house together"),
+ ]),
 ]
 
 
