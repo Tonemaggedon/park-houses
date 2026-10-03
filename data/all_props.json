@@ -2400,12 +2400,12 @@
  },
  {
   "id": 153,
-  "name": "",
+  "name": "Iveston",
   "street": "Kenilworth Road",
   "no": "1",
-  "address": "1 Kenilworth Road",
+  "address": "Iveston, 1 Kenilworth Road",
   "desc": "Two storeys on Kenilworth Road elevation and three storeys on garden front plus attic storey and cellars. Original lean-to main entrance porch at the junction of side and garden elevations has been replaced and first floor open balcony with balustrading, which originally spanned the width of the house overlooking the garden, has been largely removed. Single storey pitched roof extension added to form garage adjacent to Kenilworth Road. Red brick facades and tile hung gables. Moulded brick/terracotta and decorative tile string courses and sills with elaborate shaped brick lintel voussoirs and under sill panels. Plain and moulded stone surrounds, now painted, to a number of openings particularly the canted window bays on the garden facade. Plain tile pitched roof with prominent tile hung gables. Clay ridge tiles with iron finials. Projecting painted wood bargeboards to gables, some with wood ties and carved brackets.Projecting wood eaves, fascia and soffit. Gables on garden elevation jettied over canted window bays below on painted moulded wooden beam supported by prominent carved wooden brackets. Red brick chimney stacks with moulded string course and corbelled caps. A number of the original chimney pots remain. Cast iron rainwater fittings. Mainly casement windows with small pane upper panels. Small pane casement panels replaced by single pane casements to one of the bay windows. Sash windows on ground floor bay. Original curved brick base and steps down from main entrance level to upper garden area with further steps down to lower garden area. Original garden area survives. Original brick garden wall boundary adjacent to ‘Parkdale’ and recent fence separating garden from 3 Kenilworth Road. Original brick garden wall and gate piers with steps to Hamilton Drive. The original brick boundary wall adjacent to Kenilworth Road has been replaced with garage doors, a gated entrance to a yard drive and a pedestrian gate.\n\n",
-  "history": "‘Iveston’ is one half of a prominent pair of houses built c1888 in an area previously used as garden allotments known as Fishpond Gardens. House is again in single household use after previously being tenanted and used as bed-sits. Characteristic fusion of late Victorian domestic revival architectural styles. ",
+  "history": "‘Iveston’ is one half of a prominent pair of houses built c1888 in an area previously used as garden allotments known as Fishpond Gardens. House is again in single household use after previously being tenanted and used as bed-sits. Characteristic fusion of late Victorian domestic revival architectural styles. \n\n**The 1939 Register names this house Iveston**, which the record already carried, and gives it a household at last - **Frederick Alfred Norton-Hill**, government clerk in ordnance, with five others including a gymnastic and games mistress and a chief clerk to a solicitor.",
   "style": "Late Victorian domestic revical architetural style",
   "date_built": "1888",
   "listed": "No",
@@ -6992,5 +6992,20 @@
   "census_only": true,
   "lat": 52.94858,
   "lng": -1.15612
+ },
+ {
+  "id": 445,
+  "name": "Eskdale",
+  "house_name": "Eskdale",
+  "street": "Peveril Drive",
+  "no": "",
+  "address": "Eskdale, Peveril Drive",
+  "desc": "",
+  "history": "**Named by the 1939 Register and by nothing else in the record.** Schedule 128 of ED letter code RMGB holds **Edwin A Polley**, 63, imported meat salesman, with **Janet Polley**.\n\n**They have been on this street since at least 1911.** The record holds Edwin Arthur Polley and Janey Polley on Peveril Drive in 1911, he 35 and a manager, and him again in 1921 at 43 - both unfiled, because the house had no name the record knew. The birth years agree across all three rounds, so the house gains a 1911 and a 1921 round with its 1939 one.\n\n**The position is provisional**, set among the other houses on the drive. This property has no hand position on the map, so the one written here is what the map will draw.",
+  "date_built": "",
+  "listed": "No",
+  "census_only": true,
+  "lat": 52.9492,
+  "lng": -1.1569
  }
 ]
