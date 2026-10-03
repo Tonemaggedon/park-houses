@@ -1,0 +1,69 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Ethel L",
+   "last_name": "Wheatley",
+   "sex": "F",
+   "born_year": 1876,
+   "born_date": "1876-01-15",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 446,
+     "address": "4 Park Ravine",
+     "marital_status": "Widowed",
+     "age_at_census": 63,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 146,
+     "source": "1939 Register, schedule 146, 4 Park Ravine, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8834
+  },
+  {
+   "first_name": "Douglas G",
+   "last_name": "Wheatley",
+   "sex": "M",
+   "born_year": 1913,
+   "born_date": "1913-08-31",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 446,
+     "address": "4 Park Ravine",
+     "marital_status": "Married",
+     "age_at_census": 26,
+     "occupation_at_census": "Agent and collector, N.T.A.",
+     "census_household_num": 146,
+     "source": "1939 Register, schedule 146, 4 Park Ravine, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; N.T.A. is written as initials and the page does not say what they stand for"
+    }
+   ],
+   "id": 8835
+  },
+  {
+   "first_name": "Sybil",
+   "last_name": "Wheatley",
+   "sex": "F",
+   "born_year": 1912,
+   "born_date": "1912-05-12",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 446,
+     "address": "4 Park Ravine",
+     "marital_status": "Married",
+     "age_at_census": 27,
+     "occupation_at_census": "Clerk, N.T.A.",
+     "census_household_num": 146,
+     "source": "1939 Register, schedule 146, 4 Park Ravine, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8836
+  }
+ ]
+}
