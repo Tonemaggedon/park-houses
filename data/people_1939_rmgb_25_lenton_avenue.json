@@ -1,0 +1,48 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Hilda M",
+   "last_name": "Perkins",
+   "sex": "F",
+   "born_year": 1905,
+   "born_date": "1905-09-26",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 169,
+     "address": "25 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 34,
+     "occupation_at_census": "Domestic",
+     "census_household_num": 180,
+     "source": "1939 Register, schedule 180, 25 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; **the schedule gives two domestics and nobody they work for** - the household they serve is either away on the night or behind the closed band"
+    }
+   ],
+   "id": 8898
+  },
+  {
+   "first_name": "Gladys M",
+   "last_name": "Chapman",
+   "sex": "F",
+   "born_year": 1910,
+   "born_date": "1910-11-04",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 169,
+     "address": "25 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 28,
+     "occupation_at_census": "Domestic",
+     "census_household_num": 180,
+     "source": "1939 Register, schedule 180, 25 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; the index writes her Gladys M Clarke (Chapman) and A. Hagues confirms **Chapman is the maiden name**, so Chapman is the name she had on the night and Clarke what was written over it"
+    }
+   ],
+   "id": 8899
+  }
+ ]
+}
