@@ -1,0 +1,90 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Frederick",
+   "last_name": "May",
+   "sex": "M",
+   "born_year": 1890,
+   "born_date": "1890-11-29",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 298,
+     "address": "Ferndene, Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Electrical engineer, accumulators",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, Ferndene, Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; the trade is written Electrical Engineer Accuma- and is cut short; accumulators is the likeliest word"
+    }
+   ],
+   "id": 8787
+  },
+  {
+   "first_name": "Eunice",
+   "last_name": "May",
+   "sex": "F",
+   "born_year": 1896,
+   "born_date": "1896-10-21",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 298,
+     "address": "Ferndene, Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, Ferndene, Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8788
+  },
+  {
+   "first_name": "Geoffrey",
+   "last_name": "May",
+   "sex": "M",
+   "born_year": 1922,
+   "born_date": "1922-11-13",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 298,
+     "address": "Ferndene, Hamilton Drive",
+     "marital_status": "Single",
+     "age_at_census": 16,
+     "occupation_at_census": "Assistant gardener",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, Ferndene, Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8789
+  },
+  {
+   "first_name": "David",
+   "last_name": "May",
+   "sex": "M",
+   "born_year": 1928,
+   "born_date": "1928-11-04",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 298,
+     "address": "Ferndene, Hamilton Drive",
+     "marital_status": "Single",
+     "age_at_census": 10,
+     "occupation_at_census": "At school",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, Ferndene, Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 4"
+    }
+   ],
+   "id": 8790
+  }
+ ]
+}
