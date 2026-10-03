@@ -16,14 +16,18 @@ SRC = ("1939 Register, schedule {sched}, {addr}, ED letter code RMGB, Nottingham
        "by A. Hagues; sub number {sub}")
 
 HOUSES = [
- (447, 145, "1 Park Ravine", [
-   (1, "Horace B E", "Stevens", None, "M", "1872-12-19", 66, "Secretary, Grand Lodge", "Married",
-    "the trade is written Sectary Grand Lodge"),
-   (2, "Edith M", "Stevens", None, "F", "1872-07-06", 67, "Unpaid domestic duties", "Married", None),
-   (3, "Margaret A", "Ollerenshaw", None, "F", "1871-08-26", 68, "Unpaid domestic duties", "Single", None),
-   (4, "Maud", "Gittings", "Rigden", "F", "1918-07-01", 21, "Domestic duties", "Single",
-    "the index writes her Maud Rigden (Gittings), and A. Hagues confirms **Gittings is the maiden "
-    "name** - so Gittings is the name on the night and Rigden what was written over it"),
+ (448, 147, "3 Park Ravine", [
+   (1, "Henry O", "Hodgson", None, "M", "1876-11-06", 62, "Church organist", "Married", None),
+   (2, "Rosamond I O", "Hodgson", None, "F", "1894-04-15", 45, "Unpaid domestic duties", "Married",
+    "she is eighteen years younger than the man at sub number 1 and the children are hers or his"),
+   (3, "Susetta M", "Hodgson", "Allinson,Dunnery", "F", "1917-02-26", 22, "School teacher", "Single",
+    "**the married name is in the brackets on this schedule**, as A. Hagues reads it, and she "
+    "carries two - Allinson first and Dunnery after it"),
+   (4, "Rita O C", "Hodgson", "McLean", "F", "1918-09-27", 21, "Student", "Single", None),
+   (5, "Robert E C", "Hodgson", None, "M", "1925-05-20", 14, "At school", "Single", None),
+   (6, "Leslie M", "Hodgson", None, "F", "1917-01-14", 22, "Student, BA", "Single",
+    "Leslie here is a woman's name; she and Susetta are born a month apart in 1917"),
+   (7, "Gladys M", "Holmes", "Marshall", "F", "1916-04-15", 23, "Domestic servant", "Single", None),
  ]),
 ]
 
@@ -79,7 +83,7 @@ def main():
                            "code RMGB.** A street of gun and aero workers six days after the "
                            "register was taken.",
                    "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
-                   "people": out}, open('data/people_1939_rmgb_1_park_ravine.json', 'w'),
+                   "people": out}, open('data/people_1939_rmgb_3_park_ravine.json', 'w'),
                   indent=1, ensure_ascii=False)
         c.commit(); print("\n  committed")
     else:
