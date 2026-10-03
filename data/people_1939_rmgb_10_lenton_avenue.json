@@ -1,0 +1,69 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Herbert A",
+   "last_name": "Swift",
+   "sex": "M",
+   "born_year": 1891,
+   "born_date": "1891-03-14",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 48,
+     "occupation_at_census": "Chauffeur and mechanic",
+     "census_household_num": 178,
+     "source": "1939 Register, schedule 178, 10 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8895
+  },
+  {
+   "first_name": "Dora V",
+   "last_name": "Swift",
+   "sex": "F",
+   "born_year": 1897,
+   "born_date": "1897-09-05",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 42,
+     "occupation_at_census": "Private school teacher",
+     "census_household_num": 178,
+     "source": "1939 Register, schedule 178, 10 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8896
+  },
+  {
+   "first_name": "Geffrey H",
+   "last_name": "Swift",
+   "sex": "M",
+   "born_year": 1924,
+   "born_date": "1924-02-04",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 370,
+     "address": "10 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 15,
+     "occupation_at_census": "Printer's improver",
+     "census_household_num": 178,
+     "source": "1939 Register, schedule 178, 10 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3; the forename is written Geffrey and is likely Geoffrey; a printer's improver is an apprentice out of his first years and not yet a journeyman"
+    }
+   ],
+   "id": 8897
+  }
+ ]
+}
