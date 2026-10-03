@@ -1,0 +1,48 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "John V",
+   "last_name": "Whitaker",
+   "sex": "M",
+   "born_year": 1908,
+   "born_date": "1908-04-15",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 31,
+     "occupation_at_census": "Chief tuberculosis officer and assistant medical officer of health",
+     "census_household_num": 164,
+     "source": "1939 Register, schedule 164, 3 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; **a public health office**, written on the page as Chief T B Officer Assistant Med Officer Health. He is 31 and holds it in the autumn of 1939"
+    }
+   ],
+   "id": 8867
+  },
+  {
+   "first_name": "Rosamond",
+   "last_name": "Whitaker",
+   "sex": "F",
+   "born_year": 1902,
+   "born_date": "1902-02-22",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 158,
+     "address": "3 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 37,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 164,
+     "source": "1939 Register, schedule 164, 3 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; the forename cannot be read beyond its ending and is taken as Rosamond; the index gives the surname as Whiteker on this line and Whitaker on her husband's"
+    }
+   ],
+   "id": 8868
+  }
+ ]
+}
