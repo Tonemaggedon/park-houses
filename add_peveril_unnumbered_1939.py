@@ -40,6 +40,16 @@ HOUSES = [
    (1, "James", "McCoy", None, "M", "1897-04-05", 42, "Inspector of armaments", "Married", None),
    (2, "Margaret", "McCoy", None, "F", "1902-04-06", 37, "Domestic duties", "Married", None),
  ]),
+ (125, [
+   (1, "John R", "Jacques", None, "M", "1904-06-23", 35,
+    "Incorporated accountant in practice", "Married", None),
+   (2, "Winifred", "Jacques", None, "F", "1911-10-27", 27,
+    "State registered nurse, consultant specialist", "Married", None),
+ ]),
+ (126, [
+   (1, "Florence", "Jennison", None, "F", "1876-09-16", 63, "Private means", "Single", None),
+   (2, "Alice", "Mayfield", None, "F", "1881-03-10", 58, "Domestic servant", "Single", None),
+ ]),
 ]
 
 
