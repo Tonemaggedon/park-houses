@@ -1,0 +1,48 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "James",
+   "last_name": "Templeton",
+   "sex": "M",
+   "born_year": 1906,
+   "born_date": "1906-03-16",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 444,
+     "address": "8b Hope Drive",
+     "marital_status": "Married",
+     "age_at_census": 33,
+     "occupation_at_census": "Chief inspector of armaments",
+     "census_household_num": 108,
+     "source": "1939 Register, schedule 108, 8b Hope Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8746
+  },
+  {
+   "first_name": "Helen A",
+   "last_name": "Templeton",
+   "sex": "F",
+   "born_year": 1911,
+   "born_date": "1911-04-07",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 444,
+     "address": "8b Hope Drive",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 108,
+     "source": "1939 Register, schedule 108, 8b Hope Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; an index reads the forename Godfer N and gives Helen A beside it. Godfer N is not a name this record holds anywhere and is not a woman's name at all, so Helen A is taken - which is the one case where the plainer reading is preferred to the index's first"
+    }
+   ],
+   "id": 8747
+  }
+ ]
+}
