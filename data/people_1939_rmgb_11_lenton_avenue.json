@@ -1,0 +1,90 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "John T Fraser",
+   "last_name": "Ashby",
+   "sex": "M",
+   "born_year": 1896,
+   "born_date": "1896-07-21",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 43,
+     "occupation_at_census": "Hosiery machine and fabric designer; textile engineer",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, 11 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; **this schedule number is already used in this book.** Ferndene on Hamilton Drive was entered as schedule 123 of ED letter code RMGB from an earlier reading. Two households cannot share one schedule number in one district, so one of the two numbers is wrong and this needs settling - the people and the house here are not in doubt"
+    }
+   ],
+   "id": 8881
+  },
+  {
+   "first_name": "Margaret",
+   "last_name": "Ashby",
+   "sex": "F",
+   "born_year": 1892,
+   "born_date": "1892-02-07",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 47,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, 11 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8882
+  },
+  {
+   "first_name": "Edward M",
+   "last_name": "Ashby",
+   "sex": "M",
+   "born_year": 1921,
+   "born_date": "1921-03-02",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 18,
+     "occupation_at_census": "Junior analyst, textiles",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, 11 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8883
+  },
+  {
+   "first_name": "Louie",
+   "last_name": "Ashby",
+   "sex": "F",
+   "born_year": 1922,
+   "born_date": "1922-05-09",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 162,
+     "address": "11 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 17,
+     "occupation_at_census": "Adding machine operator",
+     "census_household_num": 123,
+     "source": "1939 Register, schedule 123, 11 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 4"
+    }
+   ],
+   "id": 8884
+  }
+ ]
+}

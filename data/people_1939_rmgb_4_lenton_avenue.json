@@ -1,0 +1,69 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Arthur E",
+   "last_name": "Chappell",
+   "sex": "M",
+   "born_year": 1880,
+   "born_date": "1880-11-08",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 58,
+     "occupation_at_census": "Chauffeur",
+     "census_household_num": 173,
+     "source": "1939 Register, schedule 173, 4 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8885
+  },
+  {
+   "first_name": "Jessie",
+   "last_name": "Chappell",
+   "sex": "F",
+   "born_year": 1888,
+   "born_date": "1888-03-15",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "marital_status": "Married",
+     "age_at_census": 51,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 173,
+     "source": "1939 Register, schedule 173, 4 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8886
+  },
+  {
+   "first_name": "Walter W",
+   "last_name": "Chappell",
+   "sex": "M",
+   "born_year": 1913,
+   "born_date": "1913-04-27",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 367,
+     "address": "4 Lenton Avenue",
+     "marital_status": "Single",
+     "age_at_census": 26,
+     "occupation_at_census": "Electrical maintenance, Royal Ordnance Factory",
+     "census_household_num": 173,
+     "source": "1939 Register, schedule 173, 4 Lenton Avenue, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8887
+  }
+ ]
+}
