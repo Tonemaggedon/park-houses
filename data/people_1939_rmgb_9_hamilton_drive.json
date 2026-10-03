@@ -1,0 +1,90 @@
+{
+ "note": "**9 Hamilton Drive, schedule 81 of the 1939 Register, ED letter code RMGB.** Two widows and a young married couple - and nobody on this schedule was amended.",
+ "source": "1939 Register, ED letter code RMGB, district 430-3, sub-district 26",
+ "people": [
+  {
+   "first_name": "Florence A",
+   "last_name": "Messom",
+   "sex": "F",
+   "born_year": 1883,
+   "born_date": "1883-02-20",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 122,
+     "address": "9 Hamilton Drive",
+     "marital_status": "Widowed",
+     "age_at_census": 56,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 81,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8655
+  },
+  {
+   "first_name": "Elizabeth A",
+   "last_name": "Taylor",
+   "sex": "F",
+   "born_year": 1852,
+   "born_date": "1852-02-21",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 122,
+     "address": "9 Hamilton Drive",
+     "marital_status": "Widowed",
+     "age_at_census": 87,
+     "occupation_at_census": "Invalid",
+     "census_household_num": 81,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8656
+  },
+  {
+   "first_name": "Fredrick J",
+   "last_name": "Messom",
+   "sex": "M",
+   "born_year": 1910,
+   "born_date": "1910-10-02",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 122,
+     "address": "9 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 28,
+     "occupation_at_census": "Tobacconist's clerk",
+     "census_household_num": 81,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 3"
+    }
+   ],
+   "id": 8657
+  },
+  {
+   "first_name": "Nora M",
+   "last_name": "Messom",
+   "sex": "F",
+   "born_year": 1913,
+   "born_date": "1913-11-11",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 122,
+     "address": "9 Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 25,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 81,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26 - read from the page by A. Hagues; sub number 4"
+    }
+   ],
+   "id": 8658
+  }
+ ]
+}
