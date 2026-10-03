@@ -1,0 +1,48 @@
+{
+ "note": "**1b Hamilton Drive, schedule 90 of the 1939 Register, ED letter code RMGB.** The first household this property has ever held in the record.",
+ "source": "1939 Register, ED letter code RMGB, district 430-3, sub-district 26",
+ "people": [
+  {
+   "first_name": "Samuel E",
+   "last_name": "Marriott",
+   "sex": "M",
+   "born_year": 1900,
+   "born_date": "1900-05-17",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 113,
+     "address": "1b Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Motor driver, grocery and provisions",
+     "census_household_num": 90,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1"
+    }
+   ],
+   "id": 8704
+  },
+  {
+   "first_name": "Gladys A",
+   "last_name": "Marriott",
+   "sex": "F",
+   "born_year": 1900,
+   "born_date": "1900-02-25",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 113,
+     "address": "1b Hamilton Drive",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Domestic duties",
+     "census_household_num": 90,
+     "source": "1939 Register, schedule 83, 7 Hamilton Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; sub number 3 of this schedule is officially closed and cannot be read at all"
+    }
+   ],
+   "id": 8705
+  }
+ ]
+}
