@@ -23,16 +23,18 @@ SRC = ("1939 Register, schedule {sched}, Kenilworth Road, ED letter code RMGB, N
        "Road stops at 5, with Yew Tree House at 2 on the other side. Left unfiled{note}")
 
 HOUSES = [
- (134, [
-   (1, "Everard L", "Guilford", None, "M", "1882-11-17", 56, None, "Married",
-    "the trade cannot be read. **He is almost certainly a Guilford of this estate**: the record "
-    "holds Francis Leavers Guilford, engineer and ironfounder, at 15 Park Terrace in 1871 and at "
-    "8 The Ropewalk in 1881 with sons of 10 and 8 - and a son born 1882 fits that family exactly. "
-    "Leavers is the name he carries as a middle initial"),
-   (2, "Margaret M", "Guilford", None, "F", "1886-07-21", 53, "Unpaid domestic duties", "Married", None),
-   (3, "Phillip A", "Guilford", None, "M", "1919-01-21", 20,
-    "Undergraduate, Emmanuel College, Cambridge", "Single",
-    "the college is written Emnuell on the page"),
+ (135, [
+   (1, "Aaron", "Miller", None, "M", "1882-12-23", 56, "Minister of religion", "Married", None),
+   (2, "Buline", "Miller", None, "F", "1882-12-01", 56, "Domestic duties", "Married",
+    "the index leaves the sex unknown; she is married to the man at sub number 1, so female is "
+    "taken. The forename is written Buline, which the record holds nowhere and may be Pauline"),
+ ]),
+ (137, [
+   (1, "Lomax R B", "Palmer", None, "M", "1881-07-15", 58, "Architect and surveyor", "Married",
+    "**an architect living in The Park and not in the record's architects.** No Palmer appears in "
+    "the architect firms or works, and no other Palmer in the census is an architect"),
+   (2, "Emilie", "Palmer", None, "F", "1879-08-24", 60, "Unpaid domestic duties", "Married", None),
+   (3, "Connie", "Wooton", None, "F", "1909-05-11", 30, "Paid domestic duties", "Single", None),
  ]),
 ]
 
