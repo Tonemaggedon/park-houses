@@ -1,0 +1,69 @@
+{
+ "note": "**Hope Drive, schedules 100 and 101 of the 1939 Register, ED letter code RMGB.** A street of gun and aero workers six days after the register was taken.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Samuel",
+   "last_name": "Keetley",
+   "sex": "M",
+   "born_year": 1900,
+   "born_date": "1900-03-14",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 156,
+     "address": "The Chestnuts, 5 Kenilworth Road",
+     "marital_status": "Married",
+     "age_at_census": 39,
+     "occupation_at_census": "Coslettizer at a cycle works",
+     "census_household_num": 133,
+     "source": "1939 Register, schedule 133, The Chestnuts, 5 Kenilworth Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; **coslettising is a rust-proofing process for steel**, named after Thomas Coslett who patented it, and a cycle works in Nottingham in 1939 means Raleigh. It is the only trade of its kind in the record"
+    }
+   ],
+   "id": 8809
+  },
+  {
+   "first_name": "Carrie",
+   "last_name": "Keetley",
+   "sex": "F",
+   "born_year": 1904,
+   "born_date": "1904-07-31",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 156,
+     "address": "The Chestnuts, 5 Kenilworth Road",
+     "marital_status": "Married",
+     "age_at_census": 35,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 133,
+     "source": "1939 Register, schedule 133, The Chestnuts, 5 Kenilworth Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ],
+   "id": 8810
+  },
+  {
+   "first_name": "Samuel",
+   "last_name": "Storefield",
+   "sex": "M",
+   "born_year": 1903,
+   "born_date": "1903-03-22",
+   "match_born_year": true,
+   "census": [
+    {
+     "census_year": 1939,
+     "property_id": 156,
+     "address": "The Chestnuts, 5 Kenilworth Road",
+     "marital_status": "Single",
+     "age_at_census": 36,
+     "occupation_at_census": "Bullion broker",
+     "census_household_num": 133,
+     "source": "1939 Register, schedule 133, The Chestnuts, 5 Kenilworth Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3; the surname is written Storefield and the record holds no such name elsewhere"
+    }
+   ],
+   "id": 8811
+  }
+ ]
+}
