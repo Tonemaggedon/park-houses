@@ -4,12 +4,11 @@
 **The record holds no house called Bancroft**, on Barrack Lane or anywhere, so
 the household goes in unfiled.
 
-And the walk does not help as it usually does. Schedule 24 sits between **8 Park
-Drive** at s23 and **4 Park Drive** at s25, with 2 Park Drive at s21 and
-Castle Rising, 3 Lenton Road at s26 - so this stretch of the RMGC book is
-working Park Drive and Lenton Road, not Barrack Lane. A. Hagues reads the street
-off the page as Barrack Lane, which is what the record follows; the walk is
-noted because it disagrees.
+**It was first entered under the wrong book.** Schedule 24 was read against the
+RMGC walk, where 23 is 8 Park Drive and 25 is 4 Park Drive, and the street
+therefore looked wrong. It is **RMGA**: schedule 20 of that book is 4 Barrack
+Lane and 25 is Rockville, Barrack Lane, so 24 falls between them and the walk
+agrees with A. Hagues's street after all. Corrected 4 October 2026.
 
 Two single women in their fifties and sixties, both teachers - one of them
 **formerly** a music teacher, which is the Register's way of saying retired.
@@ -19,8 +18,8 @@ Two single women in their fifties and sixties, both teachers - one of them
 import os, sys, json, psycopg2
 
 APPLY = '--apply' in sys.argv
-SRC = ("1939 Register, schedule {sched}, {addr}, ED letter code RMGC, Nottingham registration "
-       "district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page "
+SRC = ("1939 Register, schedule {sched}, {addr}, ED letter code RMGA, Nottingham registration "
+       "district 430-3, sub-district 26, The National Archives RG101/6177J - read from the page "
        "by A. Hagues; sub number {sub}")
 
 HOUSES = [
@@ -48,7 +47,7 @@ def main():
             cur.execute("""SELECT 1 FROM census_entries ce JOIN people p ON p.id=ce.person_id
                             WHERE ce.census_year=1939 AND ce.census_household_num=%s
                               AND ce.source ILIKE %s AND LOWER(p.first_name)=LOWER(%s)
-                              AND LOWER(p.last_name)=LOWER(%s)""", (sched, '%RMGC%', fn, ln))
+                              AND LOWER(p.last_name)=LOWER(%s)""", (sched, '%RMGA%', fn, ln))
             if cur.fetchone():
                 print(f"  sub {sub} {fn} {ln}: already in the record"); continue
             src = SRC.format(sched=sched, addr=addr, sub=sub) + (('; ' + note) if note else '')
@@ -86,10 +85,10 @@ def main():
     if APPLY:
         json.dump({"note": "**Bancroft, Barrack Lane, schedule 24 of the 1939 Register, ED letter "
                            "code RMGC.** Two single schoolmistresses. UNFILED: the record holds no "
-                           "house called Bancroft, and the walk puts schedule 24 among Park Drive "
-                           "houses rather than on Barrack Lane.",
-                   "source": "1939 Register, ED letter code RMGC, The National Archives RG101/6178A",
-                   "people": out}, open('data/people_1939_rmgc_bancroft.json', 'w'),
+                           "house called Bancroft, and schedule 24 falls between 4 Barrack Lane "
+                           "and Rockville in the RMGA walk.",
+                   "source": "1939 Register, ED letter code RMGA, The National Archives RG101/6177J",
+                   "people": out}, open('data/people_1939_rmga_bancroft.json', 'w'),
                   indent=1, ensure_ascii=False)
         c.commit(); print("\n  committed")
     else:
