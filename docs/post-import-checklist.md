@@ -97,6 +97,29 @@ passed over.
 | 1.2 | **Recover the slipped source column** → `Preview` → `Run` | "Married, Female" sitting in the source field. Fills the sex, moves the marital status to its own column |
 | 1.3 | **Clear occupations that are not occupations** → `Preview` → `Clear` | A sex, a relationship or a dash in the occupation field, skewing every count on the site |
 
+**1.4 — a house cannot be empty and full in the same round.** An import files people into a
+house the record may already have marked unoccupied, and nothing complains:
+
+```sql
+SELECT cu.property_id, cu.census_year
+  FROM census_unoccupied cu
+ WHERE EXISTS (SELECT 1 FROM census_entries ce
+                WHERE ce.property_id = cu.property_id
+                  AND ce.census_year = cu.census_year);
+```
+
+It should come back empty. On 4 October 2026 it came back with two, and **both empty marks were
+the wrong one**: *21 Lenton Avenue* in 1939 against schedule 176, Wilfred H Wilson's household of
+five with a butler; and *151 Derby Road* in 1921 against schedule 55, the Meakins, five more. Each
+mark rested on a note that gave no evidence — one said `1939 Census records show`, the other said
+nothing at all.
+
+**So read the note before trusting the mark.** A sound unoccupied note cites the page — *"20 Hope
+Drive, schedule 103 — the Register marks it empty"* — because **an empty house is not missing from
+a census: it is written in and ticked, with a schedule number of its own.** Seventeen marks across
+1871, 1921 and 1939 still rest on a stub, and they are listed in the *Marked empty* sheet of
+`gaps_1939.py`.
+
 Do these three before anything else. They move values into the right columns, and the stages below
 read those columns.
 
