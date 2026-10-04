@@ -13,6 +13,11 @@ Four sheets, each a different kind of gap:
   Unfiled 1939 rows     - people transcribed but not yet put in a house.
   Rows naming no book   - 1939 rows whose source does not say RMGB or RMGC, so
                           the schedule-gap lists cannot see them.
+  Marked empty in 1939  - houses the record says nobody was in. These are NOT
+                          counted as gaps. Nine of them rest on a stub note
+                          saying only "1939 census", and one such mark was
+                          found wrong: 21 Lenton Avenue was marked empty and
+                          holds schedule 176, five people, properly sourced.
 
   railway run python3 gaps_1939.py
 """
@@ -51,13 +56,16 @@ def main():
     held = {}
     for pid, yr, n in cur.fetchall():
         held.setdefault(pid, {})[yr] = n
+    # a house the Register marks EMPTY is not a gap - it is an answer
+    cur.execute("SELECT property_id, notes FROM census_unoccupied WHERE census_year=1939")
+    empty = {pid: (notes or '') for pid, notes in cur.fetchall()}
 
     def street(a):
         return re.sub(r'^[\d/a-zA-Z]+\s+', '', a).split(',')[-1].strip()
 
     gap_rows = []
     for pid, years in held.items():
-        if 1939 in years:
+        if 1939 in years or pid in empty:
             continue
         last = max(years)
         if last < 1891:
@@ -117,6 +125,17 @@ def main():
     sheet(wb, 'Rows naming no book',
           ['Schedule', 'Person', 'Name', 'House', 'What the source says'],
           [list(r) for r in cur.fetchall()])
+
+    cur.execute("""SELECT property_id, notes FROM census_unoccupied WHERE census_year=1939
+                    ORDER BY property_id""")
+    emp = []
+    for pid, notes in cur.fetchall():
+        notes = notes or ''
+        emp.append([props.get(pid, {}).get('address', f'property {pid}'), pid,
+                    'cites the page' if len(notes) > 60 else 'STUB - no evidence given',
+                    notes[:200]])
+    sheet(wb, 'Marked empty in 1939',
+          ['House', 'Property', 'How well evidenced', 'What the note says'], emp)
 
     out = os.path.expanduser('~/Desktop/1939 - what is left.xlsx')
     wb.save(out)
