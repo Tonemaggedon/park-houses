@@ -13,6 +13,11 @@ Four sheets, each a different kind of gap:
   Unfiled 1939 rows     - people transcribed but not yet put in a house.
   Rows naming no book   - 1939 rows whose source does not say RMGB or RMGC, so
                           the schedule-gap lists cannot see them.
+  Houses the Register
+  names                 - an address the 1939 Register gives that the property
+                          list does not hold. These are houses to ADD, not
+                          households to find: the people are already in the
+                          record, waiting on a house.
   Marked empty in 1939  - houses the record says nobody was in. These are NOT
                           counted as gaps. Nine of them rest on a stub note
                           saying only "1939 census", and one such mark was
@@ -136,6 +141,31 @@ def main():
                     notes[:200]])
     sheet(wb, 'Marked empty in 1939',
           ['House', 'Property', 'How well evidenced', 'What the note says'], emp)
+
+    # houses the Register names that the property list does not hold
+    cur.execute("""SELECT ce.unresolved_address, COUNT(*), MIN(ce.census_household_num),
+                          STRING_AGG(DISTINCT CASE WHEN ce.source ILIKE '%RMGA%' THEN 'RMGA'
+                                                   WHEN ce.source ILIKE '%RMGB%' THEN 'RMGB'
+                                                   WHEN ce.source ILIKE '%RMGC%' THEN 'RMGC'
+                                                   ELSE '?' END, '/'),
+                          STRING_AGG(DISTINCT p.first_name || ' ' || p.last_name, ', ')
+                     FROM census_entries ce JOIN people p ON p.id=ce.person_id
+                    WHERE ce.census_year=1939 AND ce.property_id IS NULL
+                      AND ce.unresolved_address IS NOT NULL
+                    GROUP BY 1 ORDER BY 1""")
+    known = [str(p.get('address', '')).lower() for p in ps]
+    nothouse = []
+    for a, n, schednum, book, who in cur.fetchall():
+        core = re.sub(r'\s*\(.*?\)\s*', ' ', a).strip().rstrip(',')
+        # the first distinctive word - a house name, or a number
+        word = next((w for w in re.split(r'[ ,]+', core) if len(w) > 3), core).lower()
+        seen = any(word in k for k in known)
+        nothouse.append([a, schednum, book or '?', n,
+                         'the list has something like it' if seen else 'NOT IN THE PROPERTY LIST',
+                         (who or '')[:120]])
+    sheet(wb, 'Houses the Register names',
+          ['Address as the page gives it', 'Schedule', 'Book', 'People',
+           'In the property list?', 'Who is in it'], nothouse)
 
     out = os.path.expanduser('~/Desktop/1939 - what is left.xlsx')
     wb.save(out)
