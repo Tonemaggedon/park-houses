@@ -1,0 +1,63 @@
+{
+ "note": "**Peveril Drive, schedules 124 and 129 of the 1939 Register, ED letter code RMGB.** The last two households of the run. 124 is officially closed but for Lilian A Butler; 129 is Ada Vaugham, 83, the one head in A. Hagues's index of the street the record did not hold. Schedule 119 is marked ABSENT and has no household at all.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Lilian A",
+   "last_name": "Butler",
+   "sex": "F",
+   "born_year": null,
+   "born_date": null,
+   "id": 9205,
+   "census": [
+    {
+     "census_year": 1939,
+     "unresolved_address": "Peveril Drive (no number given)",
+     "age_at_census": null,
+     "occupation_at_census": null,
+     "census_household_num": 124,
+     "marital_status": null,
+     "source": "1939 Register, schedule 124, Peveril Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; SCHEDULE 124 IS OFFICIALLY CLOSED BUT FOR THIS ONE LINE - the rest of the household are records the register will not open, so the record cannot say how many were in the house or who headed it. The index gives her no birth date and no trade either. She is not in A. Hagues's index of Peveril Drive heads, which is consistent with her not being the head. The schedule falls between Ferndene at 123 and 125, so the house is on this drive"
+    }
+   ]
+  },
+  {
+   "first_name": "Ada",
+   "last_name": "Vaugham",
+   "sex": "F",
+   "born_year": 1856,
+   "born_date": "1856-04-03",
+   "id": 9206,
+   "census": [
+    {
+     "census_year": 1939,
+     "unresolved_address": "Peveril Drive (no number given)",
+     "age_at_census": 83,
+     "occupation_at_census": "Unpaid domestic duties",
+     "census_household_num": 129,
+     "marital_status": "Widowed",
+     "source": "1939 Register, schedule 129, Peveril Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; the one head in A. Hagues's index of Peveril Drive that the record did not hold. At 83 she is among the oldest people in this round. Her schedule sits between Eskdale at 128 and Parkdale at 130, so her house is one of their neighbours"
+    }
+   ]
+  },
+  {
+   "first_name": "Florence A",
+   "last_name": "Taylor",
+   "sex": "F",
+   "born_year": 1892,
+   "born_date": "1892-08-31",
+   "id": 9207,
+   "census": [
+    {
+     "census_year": 1939,
+     "unresolved_address": "Peveril Drive (no number given)",
+     "age_at_census": 47,
+     "occupation_at_census": "Housekeeper",
+     "census_household_num": 129,
+     "marital_status": "Single",
+     "source": "1939 Register, schedule 129, Peveril Drive, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2; thirty-six years younger than Ada Vaugham and of a different name, so she is keeping house for her rather than kin"
+    }
+   ]
+  }
+ ]
+}
