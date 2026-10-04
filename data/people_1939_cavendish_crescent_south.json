@@ -126,7 +126,7 @@
     }
    ],
    "known_as": "recorded as Florence E Verner; the entry was later annotated",
-   "id": 8586
+   "id": 2738
   },
   {
    "first_name": "June",
@@ -156,16 +156,17 @@
    "born_date": "15 June 1900",
    "born_year": 1900,
    "properties": [
-    46
+    38
    ],
    "census": [
     {
      "census_year": 1939,
-     "property_id": 46,
-     "address": "19 Cavendish Crescent South",
+     "property_id": 38,
+     "address": "1 Cavendish Crescent South",
      "age_at_census": 39,
      "occupation_at_census": "Taxi Driver",
-     "source": "1939 Register, schedule 229 sub 1 — married"
+     "source": "1939 Register, schedule 229 sub 1 — married",
+     "census_household_num": 229
     }
    ],
    "id": 2740
@@ -177,16 +178,17 @@
    "born_date": "11 March 1902",
    "born_year": 1902,
    "properties": [
-    46
+    38
    ],
    "census": [
     {
      "census_year": 1939,
-     "property_id": 46,
-     "address": "19 Cavendish Crescent South",
+     "property_id": 38,
+     "address": "1 Cavendish Crescent South",
      "age_at_census": 37,
      "occupation_at_census": "House Furnisher Secretary",
-     "source": "1939 Register, schedule 229 sub 2 — married"
+     "source": "1939 Register, schedule 229 sub 2 — married",
+     "census_household_num": 229
     }
    ],
    "id": 2741
