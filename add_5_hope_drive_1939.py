@@ -1,19 +1,27 @@
 # -*- coding: utf-8 -*-
-"""Hope Drive, 1939 - three households, and the street is split between two books.
+"""5 Hope Drive, 1939 - schedule 65, and five working daughters.
 
-**1 and 3 Hope Drive are schedules 63 and 64 of the RMGC book; 4 Hope Drive is
-schedule 112 of RMGB.** The odd side of the street was enumerated in one book
-and the even side in the other, which is why the record's Hope Drive has looked
-so lopsided: ten even-numbered houses and nothing odd.
+**Harry Leavesley, garage foreman, and his wife Grace Dorothy, with five
+daughters, every one of them earning except the youngest.** Nothing else in this
+round looks like it.
 
-These are working households, and they read differently from the rest of the
-estate. A transport manager who drives; a **foreman for Pickfords, the household
-removers**; a garage attendant whose wife keeps house and pulls pints; a woman
-packing and cleaning cycles; a railway fireman of twenty. And at number 3,
-Florence E Marshall, 20, whose entry in the occupation column is the single
-word **Invalid**.
+    Irene,     24  tobacco stripper
+    Constance, 20  embroidery machinist
+    Ivy,       17  cigarette packer
+    Violet,    15  printing machinist
+    Dorothy,   13  at school
 
-  railway run python3 add_hope_drive_1939.py --apply
+Three of the five are in Nottingham's own trades - tobacco twice over and
+embroidery once - and Violet is fifteen and already at a printing machine. A
+nurse, Gertrude Norton, 62, lodges with them, and **two further lines the
+register will not open**, so the house held at least ten.
+
+The index prints sub number 4 twice, the second time as *Constance D Wright
+(Jeavesley)* - a J for an L - which is what supplies her middle initial. All
+four bracketed daughters were **Leavesley** on the night: they are in their
+parents' house and single.
+
+  railway run python3 add_5_hope_drive_1939.py --apply
 """
 import os, sys, json, psycopg2
 
@@ -24,40 +32,32 @@ SRC = ("1939 Register, schedule {sched}, {addr}, ED letter code {book}, Nottingh
 
 # property, schedule, address, book, people
 HOUSES = [
- (351, 63, "1 Hope Drive", [
-  (1, None, "John C", "Harper", None, "M", "1900-08-17", 39,
-   "Driver mechanic and transport manager", "Married",
-   "the page gives Driver Mechanic Transport Manager Heavy Worker, the last two words being the "
-   "Register's own note that his was heavy work"),
-  (2, None, "Hilda", "Harper", None, "F", "1898-02-06", 41, "Unpaid domestic duties", "Married",
-   "two years older than John C and sharing his surname, so his wife"),
-  (3, None, "Paul J", "Harper", None, "M", "1931-04-27", 8, "At school", "Single",
-   "the youngest person the record holds from this book"),
- ]),
- (352, 64, "3 Hope Drive", [
-  (1, None, "Arthur S", "Marshall", None, "M", "1876-03-17", 63,
-   "Foreman, Pickfords household removers", "Married",
-   "PICKFORDS appears once before in this round, as the employer of a transport manager on "
-   "Lenton Avenue, where an index had read it Pipe Ford"),
-  (2, None, "Kate", "Marshall", None, "F", "1876-02-06", 63, "Unpaid domestic duties", "Married",
-   "five weeks older than Arthur S and sharing his surname, so his wife"),
-  (3, None, "Florence E", "Marshall", None, "F", "1919-01-24", 20, "Invalid", "Single",
-   "her entry in the occupation column is the single word Invalid, which is what the Register "
-   "wrote for a person unable to work. She is twenty"),
- ]),
- (131, 112, "4 Hope Drive", [
-  (1, None, "Sidney", "Edson", None, "M", "1891-03-16", 48, "Garage attendant", "Married", None),
-  (2, None, "Grace A", "Edson", None, "F", "1892-08-22", 47,
-   "Unpaid domestic duties; barmaid", "Married",
-   "the page gives House Duties & Barmaid, so she kept the house and worked a bar as well - one "
-   "of very few married women in this round with paid work beside the house"),
-  (3, None, "Hannah M", "Edson", None, "F", "1883-05-29", 56, "Cycle packer and cleaner", "Single",
-   "eight years older than Sidney and sharing his surname, so most likely his sister; packing "
-   "and cleaning cycles is a Nottingham trade - Raleigh was a mile away"),
-  (4, None, "Harold", "Smith", None, "M", "1918-10-30", 20, "Railway fireman", "Single", None),
+ (353, 65, "5 Hope Drive", [
+  (1, None, "Harry", "Leavesley", None, "M", "1889-01-21", 50, "Garage foreman", "Married",
+   "the page gives Garage Forman. The garage attendant at number 4, Sidney Edson, is two doors "
+   "away, though the record cannot say they worked at the same one"),
+  (2, None, "Grace Dorothy", "Leavesley", None, "F", "1891-01-15", 48,
+   "Unpaid domestic duties", "Married",
+   "the index gives her as G D (Grace Dorothy); her daughter at sub number 7 carries her name"),
+  (3, None, "Irene", "Leavesley", "Pass", "F", "1915-03-29", 24, "Tobacco stripper", "Single",
+   "stripping tobacco leaf, a Nottingham trade; she is single in her parents' house, so "
+   "Leavesley on the night and Pass the name she came to later"),
+  (4, None, "Constance D", "Leavesley", "Wright", "F", "1919-06-15", 20,
+   "Embroidery machinist", "Single",
+   "the index prints her twice, the second time as Constance D Wright (JEAVESLEY) - a J read "
+   "for an L - which is what supplies her middle initial"),
+  (5, None, "Ivy", "Leavesley", None, "F", "1922-03-04", 17, "Cigarette packer", "Single",
+   "the second of the daughters in tobacco"),
+  (6, None, "Violet", "Leavesley", "Davis", "F", "1924-03-07", 15, "Printing machinist", "Single",
+   "FIFTEEN and already at a printing machine"),
+  (7, None, "Dorothy", "Leavesley", "Rumph", "F", "1926-05-28", 13, "At school", "Single",
+   "the index gives her as Dorothy (Mary); the only one of the five daughters not earning"),
+  (9, None, "Gertrude", "Norton", None, "F", "1877-07-17", 62, "Nurse", "Single",
+   "a lodger rather than family. Sub numbers 8 and 10 are lines the register keeps closed, so "
+   "the house held at least ten people"),
  ]),
 ]
-BOOK = {63: 'RMGC', 64: 'RMGC', 112: 'RMGB'}
+BOOK = {65: 'RMGC'}
 
 
 def main():
@@ -135,7 +135,7 @@ def main():
                            "domestics who are most likely sisters. None of the five was in the "
                            "record.",
                    "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
-                   "people": out}, open('data/people_1939_hope_drive_63_64_112.json', 'w'),
+                   "people": out}, open('data/people_1939_rmgc_5_hope_drive.json', 'w'),
                   indent=1, ensure_ascii=False)
         c.commit(); print("\n  committed")
     else:
