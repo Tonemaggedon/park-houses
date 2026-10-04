@@ -247,6 +247,27 @@ stranger's census row: the record's **Robert Hutchinson** was born 1831, not 187
 Holmes** is ten years from the wife of the house that named her. A name match with no birth-year
 check would have hung a 1911 household on both of them.
 
+**5.7 — does the source sentence cite the row it is on?** A source line is the record's evidence,
+and a batch written with **one source string copied across every household** gives every row but
+one a citation to a house it did not come from. That is worse than no citation, because it looks
+like evidence.
+
+```sql
+SELECT id, census_year, census_household_num,
+       substring(source from 'schedule ([0-9]+)') AS sentence_says
+  FROM census_entries
+ WHERE census_household_num IS NOT NULL
+   AND source ~* 'schedule [0-9]+'
+   AND substring(source from 'schedule ([0-9]+)')::int <> census_household_num;
+```
+
+On 4 October 2026 this returned **sixty-nine 1939 rows carrying the identical sentence** *"schedule
+83, 7 Hamilton Drive"* — the whole Hamilton Drive and Lenton Road run, where the schedule column and
+the property were right on every one and only the citation was copied. `fix_source_citations.py`
+re-writes the opening citation to match the row, and it only ever swaps an address for an address:
+the text the sentence names after the schedule must itself be a house the property list holds, or
+the row is left alone.
+
 **5.6 — the ones no tool can see.** Both the tools above bucket on the surname *letter for letter*,
 so a duplicate created by two spellings of a surname — Crendson beside Crewdson, Flersheim beside
 Hersheim, Throsheim beside Frosheim, Slack beside Black — is invisible to them. Ask Claude to run
