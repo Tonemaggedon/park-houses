@@ -1,0 +1,66 @@
+{
+ "note": "**2 Lenton Road, schedule 265 of the 1939 Register, ED letter code RMGB.** Agnes Lymbery, 89 and widowed, in the house the 1921 census found her in with her husband Richard Henry, with a housekeeper and a domestic servant.",
+ "source": "1939 Register, ED letter code RMGB, The National Archives RG101/6178A",
+ "people": [
+  {
+   "first_name": "Agnes",
+   "last_name": "Lymbery",
+   "sex": "F",
+   "born_year": 1850,
+   "born_date": "1850-04-04",
+   "id": 1450,
+   "census": [
+    {
+     "census_year": 1939,
+     "age_at_census": 89,
+     "address": "2 Lenton Road",
+     "property_id": 175,
+     "occupation_at_census": "Retired",
+     "census_household_num": 265,
+     "marital_status": "Widowed",
+     "source": "1939 Register, schedule 265, 2 Lenton Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 1; the index prints Lymbury, a misreading. The 1921 census has Agnes Lymbery born 1850 in this same house with her husband Richard Henry, born 1846, so he died between the two rounds"
+    }
+   ]
+  },
+  {
+   "first_name": "Susan M",
+   "last_name": "Hurt",
+   "sex": "F",
+   "born_year": 1880,
+   "born_date": "1880-02-09",
+   "id": 9239,
+   "census": [
+    {
+     "census_year": 1939,
+     "age_at_census": 59,
+     "address": "2 Lenton Road",
+     "property_id": 175,
+     "occupation_at_census": "Housekeeper",
+     "census_household_num": 265,
+     "marital_status": "Single",
+     "source": "1939 Register, schedule 265, 2 Lenton Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 2"
+    }
+   ]
+  },
+  {
+   "first_name": "Marjorie S",
+   "last_name": "Allfree",
+   "sex": "F",
+   "born_year": 1920,
+   "born_date": "1920-05-26",
+   "id": 9240,
+   "census": [
+    {
+     "census_year": 1939,
+     "age_at_census": 19,
+     "address": "2 Lenton Road",
+     "property_id": 175,
+     "occupation_at_census": "Domestic servant",
+     "census_household_num": 265,
+     "marital_status": "Single",
+     "source": "1939 Register, schedule 265, 2 Lenton Road, ED letter code RMGB, Nottingham registration district 430-3, sub-district 26, The National Archives RG101/6178A - read from the page by A. Hagues; sub number 3"
+    }
+   ]
+  }
+ ]
+}
