@@ -4294,7 +4294,16 @@ app.get('/api/people', async (req, res) => {
     }
     if (q) {
       params.push(`%${q.toLowerCase()}%`);
-      wheres.push(`(LOWER(p.first_name) LIKE $${params.length} OR LOWER(p.last_name) LIKE $${params.length} OR LOWER(COALESCE(p.known_as,'')) LIKE $${params.length} OR LOWER(p.first_name || ' ' || COALESCE(p.last_name,'')) LIKE $${params.length})`);
+      // Also search the names a person is held under but not filed under: a
+      // maiden name, a married name written into the 1939 Register afterwards,
+      // or an index reading that differs from the page. Without this a search
+      // for "John Anther Howitt" finds nobody, because the record files him as
+      // John Arthur Howitt and keeps Anther only as a variant.
+      wheres.push(`(LOWER(p.first_name) LIKE $${params.length} OR LOWER(p.last_name) LIKE $${params.length} OR LOWER(COALESCE(p.known_as,'')) LIKE $${params.length} OR LOWER(COALESCE(p.maiden_name,'')) LIKE $${params.length} OR LOWER(p.first_name || ' ' || COALESCE(p.last_name,'')) LIKE $${params.length}
+        OR EXISTS (SELECT 1 FROM person_alias ax WHERE ax.person_id=p.id
+                     AND (LOWER(ax.first_name) LIKE $${params.length}
+                       OR LOWER(ax.last_name) LIKE $${params.length}
+                       OR LOWER(TRIM(ax.first_name) || ' ' || TRIM(ax.last_name)) LIKE $${params.length})))`);
     }
     if (wheres.length) query += ' WHERE ' + wheres.join(' AND ');
     query += ' ORDER BY p.last_name, p.first_name';
