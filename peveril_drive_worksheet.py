@@ -12,7 +12,11 @@ props = {p['id']: (p.get('address') or p.get('name')) for p in P}
 c = psycopg2.connect(os.environ.get('DATABASE_PUBLIC_URL') or os.environ['DATABASE_URL'])
 cur = c.cursor()
 
-cur.execute("""SELECT ce.census_household_num, MIN(ce.property_id),
+# One schedule number can carry more than one household, in one book or several.
+# Grouping by the number alone collapsed them and showed whichever property id
+# happened to be lowest - which is how 123 came out as 11 Lenton Avenue when the
+# page says Ferndene. Group by the house as well, and print every line.
+cur.execute("""SELECT ce.census_household_num, COALESCE(ce.property_id,-1),
                       MIN(COALESCE(NULLIF(ce.address,''),ce.unresolved_address)),
                       STRING_AGG(p.first_name||' '||p.last_name||' ('||COALESCE(ce.age_at_census::text,'?')||')',
                                  '; ' ORDER BY ce.id),
@@ -20,8 +24,9 @@ cur.execute("""SELECT ce.census_household_num, MIN(ce.property_id),
                  FROM census_entries ce JOIN people p ON p.id=ce.person_id
                 WHERE ce.census_year=1939 AND ce.source ILIKE '%RMGB%'
                   AND ce.census_household_num BETWEEN 114 AND 130
-                GROUP BY 1 ORDER BY 1""")
-run = {r[0]: r for r in cur.fetchall()}
+                GROUP BY 1,2 ORDER BY 1,2""")
+run = {}
+for r in cur.fetchall(): run.setdefault(r[0], []).append(r)
 
 cur.execute("SELECT DISTINCT property_id FROM census_entries WHERE census_year=1939 AND property_id IS NOT NULL")
 has = {r[0] for r in cur.fetchall()}
@@ -37,13 +42,16 @@ for col in ws[1]:
     col.font = Font(bold=True, color="FFFFFF")
     col.fill = PatternFill("solid", fgColor="1F4E46")
 for s in range(114, 131):
-    r = run.get(s)
-    if not r:
-        ws.append([s, "— no household in the record —", "", ""]); continue
-    house = props.get(r[1]) or r[2] or ''
-    if not r[1]:
-        house = "*** NO HOUSE *** " + (r[2] or '')
-    ws.append([s, house, r[3], (r[4] or '').strip(' /')])
+    rs = run.get(s)
+    if not rs:
+        ws.append([s, "— no household in this book —", "", ""]); continue
+    for i, r in enumerate(rs):
+        house = props.get(r[1]) if r[1] > 0 else None
+        if not house:
+            house = "*** NO HOUSE *** " + (r[2] or '')
+        if len(rs) > 1:
+            house = f"[{i+1} of {len(rs)} on this number] " + house
+        ws.append([s, house, r[3], (r[4] or '').strip(' /')])
 ws.append([]); ws.append(["Houses on Peveril Drive with nothing at all for 1939"])
 ws.cell(ws.max_row, 1).font = Font(bold=True)
 for p in sorted(free, key=lambda x: x['id']):
@@ -66,6 +74,7 @@ for row in ws.iter_rows(min_row=2):
     for cell in row: cell.alignment = Alignment(vertical='top', wrap_text=True)
 out = os.path.expanduser('~/Desktop/Peveril Drive - the run.xlsx')
 wb.save(out)
-print(f"{len([s for s in range(114,131) if run.get(s) and not run[s][1]])} households with no house")
+nohouse = sum(1 for rs in run.values() for r in rs if r[1] <= 0)
+print(f"{nohouse} households with no house")
 print(f"{len(free)} houses with nothing")
 print(out)
