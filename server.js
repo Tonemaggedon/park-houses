@@ -5503,9 +5503,23 @@ app.get('/api/census/unfiled-groups', requireContributor, async (req, res) => {
       }
       const households = Math.max(1,
         ...[...perYear.values()].map(t => Math.max(t.heads, t.wives)));
+      // A house name alone scores 10 and was enough to call a suggestion
+      // confident, even when the street flatly contradicted it. That is how
+      // "Rock House, Barrack Lane" came up green against Rock Cottage on
+      // Peveril Drive, and "Sunnyside, Peveril Drive" against Sunnyside on
+      // Park Terrace. Four houses on the estate carry Rock in the name and
+      // three are called The Cottage, so a name on its own proves nothing.
+      // If the return names a street the record also knows, and it is not this
+      // property's street, the suggestion still shows - it is just no longer
+      // called confident, so nobody files it on the strength of the colour.
+      const knownStreets = [...new Set(props.map(pr => addrNorm(pr.street)).filter(Boolean))];
+      const addrStreet = knownStreets.find(st => addrNorm(addr).includes(st));
+      const topStreetAgrees = !addrStreet
+        || (s.length && addrNorm(s[0].street) === addrStreet);
       const strong = s.length && s[0].score >= 10
                      && (s.length === 1 || s[0].score > s[1].score)
-                     && households === 1;
+                     && households === 1
+                     && topStreetAgrees;
       const asideCount = entries.filter(e => aside.has(e.id)).length;
       return {
         address: addr === '\u0000none' ? null : addr,
