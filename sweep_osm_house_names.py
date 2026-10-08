@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 """Ask OpenStreetMap for every named building in The Park, and match it against the record.
 
+**The match has to look inside the address.** Many properties carry their name only in
+`address` - *Castle Bank, 5 Lenton Road* - with `house_name` empty, so a match on the
+name fields alone reports them as names the record has not got. It also has to allow a
+trailing s: Albert Villa and Albert Villas are one house.
+
 This replaces the hand-read list taken off six map screenshots. One Overpass
 query round the middle of the estate returns every building carrying an
 addr:housename, with its street, number and position, which is the sweep
@@ -54,9 +59,13 @@ for r in rows:
     n = norm(r['name'])
     match = None
     for p in P:
-        names = {norm(x) for k in ('name', 'house_name', 'prev_house_name')
+        names = {norm(x) for k in ('name', 'house_name', 'prev_house_name', 'address')
                  for x in str(p.get(k) or '').split('\n') if x.strip()}
-        if n in names or n in {norm(x.replace('The ', '')) for x in names}:
+        # the address carries the name for many properties, so match the name inside it too,
+        # and let a trailing s differ - Albert Villa and Albert Villas are one house
+        hit = (n in names or n+'s' in names or n.rstrip('s') in names
+               or any(n in a or n+'s' in a for a in names))
+        if hit:
             match = p
             if norm(p.get('street')) == norm(r['street']):
                 break

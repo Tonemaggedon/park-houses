@@ -4,8 +4,8 @@
  "read_on": "2026-10-08",
  "counts": {
   "named_buildings_in_the_park": 217,
-  "matched": 86,
-  "leads": 131
+  "matched": 99,
+  "leads": 118
  },
  "leads": [
   {
@@ -65,14 +65,6 @@
    "postcode": "NG7 1AY"
   },
   {
-   "name": "Peveril Towers",
-   "number": "9",
-   "street": "Cavendish Crescent North",
-   "lat": 52.9521714,
-   "lng": -1.1671365,
-   "postcode": "NG7 1AY"
-  },
-  {
    "name": "Courtyard House",
    "number": "",
    "street": "Cavendish Crescent South",
@@ -121,14 +113,6 @@
    "postcode": "NG7 1ED"
   },
   {
-   "name": "Albert Villa",
-   "number": "21",
-   "street": "Cavendish Crescent South",
-   "lat": 52.9488689,
-   "lng": -1.164623,
-   "postcode": "NG7 1ED"
-  },
-  {
    "name": "Sutherland House",
    "number": "25",
    "street": "Cavendish Crescent South",
@@ -169,22 +153,6 @@
    "postcode": "NG7 1BB"
   },
   {
-   "name": "Bishop's House",
-   "number": "27",
-   "street": "Cavendish Road East",
-   "lat": 52.952292,
-   "lng": -1.1626318,
-   "postcode": "NG7 1BB"
-  },
-  {
-   "name": "Redcliffe",
-   "number": "33",
-   "street": "Cavendish Road East",
-   "lat": 52.9517769,
-   "lng": -1.1620239,
-   "postcode": "NG7 1BB"
-  },
-  {
    "name": "Ashley Mews",
    "number": "43",
    "street": "Cavendish Road East",
@@ -214,14 +182,6 @@
    "street": "Clare Valley",
    "lat": 52.9522223,
    "lng": -1.1597133,
-   "postcode": "NG7 1BU"
-  },
-  {
-   "name": "The Chestnuts",
-   "number": "",
-   "street": "Clare Valley",
-   "lat": 52.9524735,
-   "lng": -1.1600151,
    "postcode": "NG7 1BU"
   },
   {
@@ -425,14 +385,6 @@
    "postcode": "NG7 1DD"
   },
   {
-   "name": "The Chestnuts",
-   "number": "5",
-   "street": "Kenilworth Road",
-   "lat": 52.948973,
-   "lng": -1.1583303,
-   "postcode": "NG7 1DD"
-  },
-  {
    "name": "Park Stables",
    "number": "",
    "street": "Lenton Avenue",
@@ -481,14 +433,6 @@
    "postcode": "NG7 1DX"
   },
   {
-   "name": "Castle Bank",
-   "number": "",
-   "street": "Lenton Road",
-   "lat": 52.9500862,
-   "lng": -1.1572414,
-   "postcode": "NG7 1DP"
-  },
-  {
    "name": "East Park Lodge",
    "number": "",
    "street": "Lenton Road",
@@ -513,30 +457,6 @@
    "postcode": "NG7 1DW"
   },
   {
-   "name": "Ravine House",
-   "number": "21",
-   "street": "Lenton Road",
-   "lat": 52.9489336,
-   "lng": -1.1610283,
-   "postcode": "NG7 1DT"
-  },
-  {
-   "name": "Lenton House",
-   "number": "27",
-   "street": "Lenton Road",
-   "lat": 52.9486429,
-   "lng": -1.1619656,
-   "postcode": "NG7 1DS"
-  },
-  {
-   "name": "Castle Rising",
-   "number": "3",
-   "street": "Lenton Road",
-   "lat": 52.9501769,
-   "lng": -1.1570331,
-   "postcode": "NG7 1DP"
-  },
-  {
    "name": "The Point",
    "number": "40",
    "street": "Lenton Road",
@@ -559,14 +479,6 @@
    "lat": 52.9496058,
    "lng": -1.1658415,
    "postcode": "NG7 1EG"
-  },
-  {
-   "name": "Mevell House",
-   "number": "7",
-   "street": "Newcastle Circus",
-   "lat": 52.9509897,
-   "lng": -1.1634546,
-   "postcode": "NG7 1BJ"
   },
   {
    "name": "Glendower",
@@ -734,14 +646,6 @@
    "street": "Tattershall Drive",
    "lat": 52.9536484,
    "lng": -1.164582,
-   "postcode": "NG7 1AD"
-  },
-  {
-   "name": "Ellington",
-   "number": "",
-   "street": "Tattershall Drive",
-   "lat": 52.9534557,
-   "lng": -1.1651831,
    "postcode": "NG7 1AD"
   },
   {
@@ -1001,14 +905,6 @@
    "postcode": "NG7 1BN"
   },
   {
-   "name": "1° West",
-   "number": "",
-   "street": "Western Terrace",
-   "lat": 52.9545585,
-   "lng": -1.1651255,
-   "postcode": "NG7 1AF"
-  },
-  {
    "name": "Corner House",
    "number": "",
    "street": "Western Terrace",
@@ -1158,6 +1054,17 @@
    "same_street": true
   },
   {
+   "name": "Peveril Towers",
+   "number": "9",
+   "street": "Cavendish Crescent North",
+   "lat": 52.9521714,
+   "lng": -1.1671365,
+   "postcode": "NG7 1AY",
+   "property_id": 25,
+   "property": "9 Cavendish Crescent North",
+   "same_street": true
+  },
+  {
    "name": "Amelia House",
    "number": "19",
    "street": "Cavendish Crescent South",
@@ -1169,6 +1076,17 @@
    "same_street": true
   },
   {
+   "name": "Albert Villa",
+   "number": "21",
+   "street": "Cavendish Crescent South",
+   "lat": 52.9488689,
+   "lng": -1.164623,
+   "postcode": "NG7 1ED",
+   "property_id": 47,
+   "property": "Albert Villas, 21 Cavendish Crescent South",
+   "same_street": true
+  },
+  {
    "name": "Holyrood House",
    "number": "23",
    "street": "Cavendish Crescent South",
@@ -1177,6 +1095,17 @@
    "postcode": "NG7 1ED",
    "property_id": 48,
    "property": "Holyrood House, 23 Cavendish Crescent South",
+   "same_street": true
+  },
+  {
+   "name": "Bishop's House",
+   "number": "27",
+   "street": "Cavendish Road East",
+   "lat": 52.952292,
+   "lng": -1.1626318,
+   "postcode": "NG7 1BB",
+   "property_id": 52,
+   "property": "Bishop's House, 27 Cavendish Road East",
    "same_street": true
   },
   {
@@ -1199,6 +1128,17 @@
    "postcode": "NG7 1BB",
    "property_id": 54,
    "property": "31 Cavendish Road East",
+   "same_street": true
+  },
+  {
+   "name": "Redcliffe",
+   "number": "33",
+   "street": "Cavendish Road East",
+   "lat": 52.9517769,
+   "lng": -1.1620239,
+   "postcode": "NG7 1BB",
+   "property_id": 55,
+   "property": "33 Cavendish Road East",
    "same_street": true
   },
   {
@@ -1266,6 +1206,17 @@
    "property_id": 66,
    "property": "Springdale, Clare Valley",
    "same_street": true
+  },
+  {
+   "name": "The Chestnuts",
+   "number": "",
+   "street": "Clare Valley",
+   "lat": 52.9524735,
+   "lng": -1.1600151,
+   "postcode": "NG7 1BU",
+   "property_id": 156,
+   "property": "The Chestnuts, 5 Kenilworth Road",
+   "same_street": false
   },
   {
    "name": "The Spinney",
@@ -1466,6 +1417,17 @@
    "same_street": true
   },
   {
+   "name": "The Chestnuts",
+   "number": "5",
+   "street": "Kenilworth Road",
+   "lat": 52.948973,
+   "lng": -1.1583303,
+   "postcode": "NG7 1DD",
+   "property_id": 156,
+   "property": "The Chestnuts, 5 Kenilworth Road",
+   "same_street": true
+  },
+  {
    "name": "Fernleigh",
    "number": "11",
    "street": "Lenton Avenue",
@@ -1532,6 +1494,17 @@
    "same_street": false
   },
   {
+   "name": "Castle Bank",
+   "number": "",
+   "street": "Lenton Road",
+   "lat": 52.9500862,
+   "lng": -1.1572414,
+   "postcode": "NG7 1DP",
+   "property_id": 178,
+   "property": "Castle Bank, 5 Lenton Road",
+   "same_street": true
+  },
+  {
    "name": "Fairholme",
    "number": "13",
    "street": "Lenton Road",
@@ -1554,6 +1527,17 @@
    "same_street": true
   },
   {
+   "name": "Ravine House",
+   "number": "21",
+   "street": "Lenton Road",
+   "lat": 52.9489336,
+   "lng": -1.1610283,
+   "postcode": "NG7 1DT",
+   "property_id": 190,
+   "property": "Ravine House, 21 Lenton Road",
+   "same_street": true
+  },
+  {
    "name": "Rutland House",
    "number": "23",
    "street": "Lenton Road",
@@ -1562,6 +1546,28 @@
    "postcode": "NG7 1DT",
    "property_id": 191,
    "property": "Rutland House, 23 Lenton Road",
+   "same_street": true
+  },
+  {
+   "name": "Lenton House",
+   "number": "27",
+   "street": "Lenton Road",
+   "lat": 52.9486429,
+   "lng": -1.1619656,
+   "postcode": "NG7 1DS",
+   "property_id": 193,
+   "property": "Lenton House, 27 Lenton Road",
+   "same_street": true
+  },
+  {
+   "name": "Castle Rising",
+   "number": "3",
+   "street": "Lenton Road",
+   "lat": 52.9501769,
+   "lng": -1.1570331,
+   "postcode": "NG7 1DP",
+   "property_id": 176,
+   "property": "Castle Rising, 3 Lenton Road",
    "same_street": true
   },
   {
@@ -1650,6 +1656,17 @@
    "postcode": "NG7 1BL",
    "property_id": 207,
    "property": "Newcastle Court, Newcastle Circus",
+   "same_street": true
+  },
+  {
+   "name": "Mevell House",
+   "number": "7",
+   "street": "Newcastle Circus",
+   "lat": 52.9509897,
+   "lng": -1.1634546,
+   "postcode": "NG7 1BJ",
+   "property_id": 204,
+   "property": "Mevell House, 7 Newcastle Circus",
    "same_street": true
   },
   {
@@ -1928,6 +1945,17 @@
    "same_street": true
   },
   {
+   "name": "Ellington",
+   "number": "",
+   "street": "Tattershall Drive",
+   "lat": 52.9534557,
+   "lng": -1.1651831,
+   "postcode": "NG7 1AD",
+   "property_id": 312,
+   "property": "Ellington House, Tattershall Drive",
+   "same_street": true
+  },
+  {
    "name": "Park Lodge",
    "number": "",
    "street": "Tattershall Drive",
@@ -1980,6 +2008,17 @@
    "postcode": "NG7 1BP",
    "property_id": 437,
    "property": "Cedar Lodge, Tunnel Road",
+   "same_street": true
+  },
+  {
+   "name": "1° West",
+   "number": "",
+   "street": "Western Terrace",
+   "lat": 52.9545585,
+   "lng": -1.1651255,
+   "postcode": "NG7 1AF",
+   "property_id": 340,
+   "property": "1 Western Terrace",
    "same_street": true
   },
   {
