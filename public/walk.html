@@ -298,7 +298,7 @@ function drawIntro() {
 }
 function drawTally() {
   const c = STOPS.reduce((a, s) => (a[s.kind] = (a[s.kind]||0) + 1, a), {});
-  const houses = new Set(STOPS.map(s => s.property_id)).size;
+  const houses = new Set(STOPS.map(s => s.property_id).filter(Boolean)).size;
   document.getElementById('tally').innerHTML =
     `<div><b>${houses}</b>houses on the route</div>`
     + `<div><b>${c.question || 0}</b>questions open</div>`
@@ -842,8 +842,21 @@ fetch('/api/walk/stops').then(r => r.json()).then(d => {
     '<span style="color:#b4542a">The record could not be reached. Try again in a moment.</span>';
 });
 
-if ('serviceWorker' in navigator)
-  navigator.serviceWorker.register('/walk-sw.js').catch(() => {});
+// Register, then ask it to check for a newer worker straight away. Without the
+// update() a phone that has the app on its home screen can sit on an old worker
+// for a day at a time.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/walk-sw.js')
+    .then(reg => { reg.update().catch(() => {}); })
+    .catch(() => {});
+  // A new worker has taken over: the page it replaced is the stale one.
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloaded) return;
+    reloaded = true;
+    location.reload();
+  });
+}
 </script>
 </body>
 </html>
