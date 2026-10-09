@@ -911,6 +911,53 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS guard_alerts_at_idx ON guard_alerts(at DESC)`);
 
+    // ── Badges, and telling people things ────────────────────────────────────
+    // What somebody has earned. The definitions live in code; this is only the
+    // award, so a badge's wording can be improved without anybody losing one.
+    await db.query(`CREATE TABLE IF NOT EXISTS user_badges (
+      id SERIAL PRIMARY KEY,
+      who TEXT NOT NULL,
+      badge TEXT NOT NULL,
+      tier INTEGER DEFAULT 1,
+      awarded_at TIMESTAMPTZ DEFAULT NOW(),
+      note TEXT
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_user_badge
+                      ON user_badges(who, badge, tier)`);
+
+    // Everything anybody might want to be told about, kept whether or not they
+    // have push turned on - so the page has a history and a phone is only one
+    // way of hearing about it.
+    await db.query(`CREATE TABLE IF NOT EXISTS notifications (
+      id SERIAL PRIMARY KEY,
+      at TIMESTAMPTZ DEFAULT NOW(),
+      kind TEXT NOT NULL,        -- discussion | reply | badge | weekly | feature | walk
+      title TEXT NOT NULL,
+      body TEXT,
+      url TEXT,
+      for_who TEXT,              -- null = everybody
+      made_by TEXT
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS notifications_at_idx ON notifications(at DESC)`);
+    await db.query(`CREATE TABLE IF NOT EXISTS notification_reads (
+      who TEXT NOT NULL, last_read_at TIMESTAMPTZ DEFAULT NOW(),
+      PRIMARY KEY (who)
+    )`);
+
+    // A phone that has said yes. One row per browser, not per person.
+    await db.query(`CREATE TABLE IF NOT EXISTS push_subscriptions (
+      id SERIAL PRIMARY KEY,
+      who TEXT NOT NULL,
+      endpoint TEXT NOT NULL UNIQUE,
+      p256dh TEXT NOT NULL,
+      auth TEXT NOT NULL,
+      kinds JSONB DEFAULT '["discussion","reply","badge","weekly","feature"]'::jsonb,
+      made_at TIMESTAMPTZ DEFAULT NOW(),
+      last_ok TIMESTAMPTZ,
+      failures INTEGER DEFAULT 0
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS push_subs_who_idx ON push_subscriptions(who)`);
+
     // The thresholds, in the database rather than in the code, because the right
     // numbers are not knowable in advance. Somebody filing a census round really
     // can make twenty changes in a few minutes; a bot makes five in a second.
@@ -920,10 +967,19 @@ async function dbInit() {
     await db.query(`INSERT INTO guard_settings (key, value, set_by) VALUES ('limits', $1, 'default')
                     ON CONFLICT (key) DO NOTHING`,
       [JSON.stringify({
+        // What a contributor doing manual entry can reach. Generous for a person,
+        // impossible for a script.
         burst_writes: 5,   burst_seconds: 2,    // five in two seconds is not a person
         minute_writes: 40,                      // a fast but real worker
         hour_writes: 400,
-        flag_writes: 15, flag_minutes: 10       // worth a look, not worth blocking
+        flag_writes: 15, flag_minutes: 10,      // worth a look, not worth blocking
+        // Admin is not a vandal. A. Hagues and this assistant genuinely do push
+        // hundreds of changes through in minutes - a census round, a fold, a
+        // reposition - and a limit built for manual entry would stop the only
+        // work that moves at that speed. Still logged, every one of it.
+        admin_minute_writes: 2000, admin_hour_writes: 40000,
+        // Nobody signed in should be writing at all beyond the walk's answers.
+        anon_minute_writes: 10, anon_hour_writes: 60
       })]);
 
     // ── Discussion ───────────────────────────────────────────────────────────
@@ -1447,6 +1503,278 @@ async function turnstileOk(req) {
   }
 }
 
+// ── Telling people things ────────────────────────────────────────────────────
+// Every notification is written down whether or not anybody has push turned on,
+// so /me has a history and a phone is only one way of hearing about it.
+//
+// Push itself is **off until the keys are set**, the same arrangement as
+// Turnstile. Generate a pair once with:
+//     node -e "console.log(require('web-push').generateVAPIDKeys())"
+// and put them in Railway as VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY, with
+// VAPID_SUBJECT set to a mailto: address.
+let webpush = null;
+const VAPID_PUBLIC = process.env.VAPID_PUBLIC_KEY || '';
+const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || '';
+try {
+  if (VAPID_PUBLIC && VAPID_PRIVATE) {
+    webpush = require('web-push');
+    webpush.setVapidDetails(
+      process.env.VAPID_SUBJECT || 'mailto:admin@nottinghamparkhouses.com',
+      VAPID_PUBLIC, VAPID_PRIVATE);
+    console.log('Push notifications are on');
+  } else if (VAPID_PUBLIC || VAPID_PRIVATE) {
+    console.warn('Only one VAPID key is set — push stays off');
+  }
+} catch (e) { console.warn('web-push not available:', e.message); webpush = null; }
+
+app.get('/api/push/key', (req, res) =>
+  res.json({ enabled: !!webpush, key: webpush ? VAPID_PUBLIC : null }));
+
+// Write it down, then send it to whoever has asked to hear.
+async function notify({ kind, title, body, url, for_who = null, made_by = null }) {
+  if (!db) return;
+  try {
+    await db.query(
+      `INSERT INTO notifications (kind, title, body, url, for_who, made_by)
+       VALUES ($1,$2,$3,$4,$5,$6)`, [kind, title, body || null, url || null, for_who, made_by]);
+  } catch (e) { return; }
+  if (!webpush) return;
+  try {
+    const subs = await db.query(
+      for_who
+        ? `SELECT * FROM push_subscriptions WHERE who=$1 AND kinds ? $2`
+        : `SELECT * FROM push_subscriptions WHERE kinds ? $2 AND ($1::text IS NULL OR who <> $1)`,
+      [for_who || made_by || null, kind]);
+    const payload = JSON.stringify({ title, body: body || '', url: url || '/me', kind });
+    await Promise.all(subs.rows.map(async sub => {
+      try {
+        await webpush.sendNotification({ endpoint: sub.endpoint,
+          keys: { p256dh: sub.p256dh, auth: sub.auth } }, payload);
+        await db.query(`UPDATE push_subscriptions SET last_ok=NOW(), failures=0 WHERE id=$1`, [sub.id]);
+      } catch (err) {
+        // 404 and 410 mean the browser has thrown the subscription away.
+        const code = err && err.statusCode;
+        if (code === 404 || code === 410) {
+          await db.query(`DELETE FROM push_subscriptions WHERE id=$1`, [sub.id]);
+        } else {
+          await db.query(`UPDATE push_subscriptions SET failures=failures+1 WHERE id=$1`, [sub.id]);
+        }
+      }
+    }));
+  } catch (e) { /* a notification that fails to send must never fail the thing that caused it */ }
+}
+
+app.post('/api/push/subscribe', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const who = await getResearchKey(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  const ep = b.endpoint, k = b.keys || {};
+  if (!ep || !k.p256dh || !k.auth) return res.status(400).json({ error: 'That is not a subscription' });
+  try {
+    await db.query(
+      `INSERT INTO push_subscriptions (who, endpoint, p256dh, auth, kinds)
+       VALUES ($1,$2,$3,$4,COALESCE($5::jsonb,'["discussion","reply","badge","weekly","feature"]'::jsonb))
+       ON CONFLICT (endpoint) DO UPDATE SET who=$1, p256dh=$3, auth=$4,
+         kinds=COALESCE($5::jsonb, push_subscriptions.kinds), failures=0`,
+      [who, ep, k.p256dh, k.auth, b.kinds ? JSON.stringify(b.kinds) : null]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/push/unsubscribe', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query(`DELETE FROM push_subscriptions WHERE endpoint=$1`, [(req.body || {}).endpoint]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// What to be told about. Stored per browser, because a phone and a laptop may
+// reasonably want different things.
+app.post('/api/push/kinds', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  if (!Array.isArray(b.kinds)) return res.status(400).json({ error: 'kinds must be a list' });
+  try {
+    await db.query(`UPDATE push_subscriptions SET kinds=$2 WHERE endpoint=$1`,
+      [b.endpoint, JSON.stringify(b.kinds)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/notifications', async (req, res) => {
+  if (!db) return res.json({ items: [] });
+  const who = await getResearchKey(req.session || {});
+  try {
+    const r = await db.query(
+      `SELECT * FROM notifications
+        WHERE for_who IS NULL OR for_who = $1
+        ORDER BY at DESC LIMIT 80`, [who]);
+    const seen = who ? await db.query(
+      `SELECT last_read_at FROM notification_reads WHERE who=$1`, [who]) : { rows: [] };
+    const since = seen.rows[0] ? new Date(seen.rows[0].last_read_at) : null;
+    res.json({ who, items: r.rows,
+      unread: since ? r.rows.filter(x => new Date(x.at) > since).length : r.rows.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/notifications/read', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const who = await getResearchKey(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  try {
+    await db.query(`INSERT INTO notification_reads (who, last_read_at) VALUES ($1, NOW())
+                    ON CONFLICT (who) DO UPDATE SET last_read_at=NOW()`, [who]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Something worth telling everybody - a new feature, a milestone. Admin's to send.
+app.post('/api/notifications/announce', requireAdmin, async (req, res) => {
+  const b = req.body || {};
+  if (!b.title) return res.status(400).json({ error: 'It needs a title' });
+  await notify({ kind: b.kind === 'weekly' ? 'weekly' : 'feature',
+    title: String(b.title).slice(0, 140), body: String(b.body || '').slice(0, 400),
+    url: b.url || '/', made_by: (await getResearchKey(req.session)) || 'admin' });
+  res.json({ ok: true });
+});
+
+// ── Badges ───────────────────────────────────────────────────────────────────
+// Counts of real things, not points. Every one of these is "you did this many of
+// a thing the record needed", and the wording says what the thing was - a badge
+// nobody can explain is worth nothing.
+//
+// Tiers are thresholds on one count. The definitions live here rather than in
+// the database so the wording can be improved without anybody losing a badge.
+const BADGES = [
+  { key: 'first',      name: 'First light',       icon: '🕯',
+    blurb: 'Your first change to the record.', tiers: [1],
+    tierName: () => 'earned',
+    count: c => c.edits },
+  { key: 'photographer', name: 'Photographer',    icon: '📷',
+    blurb: 'Houses you have photographed from the pavement.', tiers: [1, 10, 50],
+    count: c => c.photos },
+  { key: 'onfoot',     name: 'On the ground',     icon: '🚶',
+    blurb: 'Questions you answered standing in front of the house.', tiers: [1, 5, 20],
+    count: c => c.walk_answers },
+  { key: 'postbox',    name: 'Post box hunter',   icon: '✉️',
+    blurb: 'Post boxes you found and read the cypher on.', tiers: [1, 5, 15],
+    count: c => c.postboxes },
+  { key: 'filing',     name: 'Filing clerk',      icon: '📥',
+    blurb: 'Households you found a house for.', tiers: [1, 10, 50],
+    count: c => c.census_edits },
+  { key: 'people',     name: 'Person updater',    icon: '👤',
+    blurb: 'People whose record you have improved.', tiers: [5, 25, 100],
+    count: c => c.person_edits },
+  { key: 'houses',     name: 'House historian',   icon: '🏛',
+    blurb: 'Houses you have written up.', tiers: [1, 10, 40],
+    count: c => c.property_edits },
+  { key: 'asking',     name: 'Good question',     icon: '❓',
+    blurb: 'Discussions you have opened.', tiers: [1, 5, 20],
+    count: c => c.discussions },
+  { key: 'answering',  name: 'Chipped in',        icon: '💬',
+    blurb: 'Replies you have written to somebody else.', tiers: [1, 10, 50],
+    count: c => c.replies },
+  { key: 'settled',    name: 'Settled it',        icon: '✅',
+    blurb: 'Questions answered because of a discussion you opened.', tiers: [1, 3, 10],
+    count: c => c.settled },
+  { key: 'claiming',   name: 'Picked it up',      icon: '🔧',
+    blurb: 'Jobs from the Needs work list you saw through.', tiers: [1, 5, 20],
+    count: c => c.claims_done },
+];
+const TIER_WORD = ['', 'bronze', 'silver', 'gold'];
+
+async function tallyFor(who) {
+  const one = async (sql, params) => {
+    try { const r = await db.query(sql, params); return Number(r.rows[0] ? r.rows[0].n : 0); }
+    catch (e) { return 0; }
+  };
+  const [edits, property_edits, person_edits, census_edits, photos, postboxes,
+         discussions, replies, settled, claims_done, walk_answers] = await Promise.all([
+    one(`SELECT COUNT(*) n FROM edit_log WHERE who=$1`, [who]),
+    one(`SELECT COUNT(DISTINCT target_id) n FROM edit_log WHERE who=$1 AND kind='property'`, [who]),
+    one(`SELECT COUNT(DISTINCT target_id) n FROM edit_log WHERE who=$1 AND kind='person'`, [who]),
+    one(`SELECT COUNT(*) n FROM edit_log WHERE who=$1 AND kind='census'`, [who]),
+    one(`SELECT COUNT(*) n FROM property_data pd, LATERAL jsonb_array_elements(
+           COALESCE(pd.data->'photos','[]'::jsonb)) e
+          WHERE e->>'source'='walk' AND e->>'by'=$1`, [who]),
+    one(`SELECT COUNT(*) n FROM postboxes WHERE found_by=$1 OR checked_by=$1`, [who]),
+    one(`SELECT COUNT(*) n FROM discussions WHERE author=$1 AND NOT hidden`, [who]),
+    one(`SELECT COUNT(*) n FROM discussion_replies WHERE author=$1 AND NOT hidden`, [who]),
+    one(`SELECT COUNT(*) n FROM discussions WHERE author=$1 AND settled_at IS NOT NULL
+           AND question_id IS NOT NULL`, [who]),
+    one(`SELECT COUNT(*) n FROM work_claims WHERE username=$1 AND closed_at IS NOT NULL`, [who]),
+    one(`SELECT COUNT(*) n FROM work_claims WHERE username=$1 AND kind='question'
+           AND outcome IS NOT NULL`, [who]),
+  ]);
+  return { edits, property_edits, person_edits, census_edits, photos, postboxes,
+           discussions, replies, settled, claims_done, walk_answers };
+}
+
+// Work out what somebody has earned and award anything new. Returns the badges
+// that were new this time, so they can be told about them.
+async function awardBadges(who) {
+  if (!db || !who || who === 'anonymous') return [];
+  const c = await tallyFor(who);
+  const had = new Set((await db.query(
+    `SELECT badge || ':' || tier AS k FROM user_badges WHERE who=$1`, [who]
+  )).rows.map(r => r.k));
+  const fresh = [];
+  for (const b of BADGES) {
+    const n = b.count(c) || 0;
+    b.tiers.forEach((need, i) => {
+      if (n < need) return;
+      const tier = i + 1;
+      if (had.has(b.key + ':' + tier)) return;
+      fresh.push({ ...b, tier, n, need });
+    });
+  }
+  for (const f of fresh) {
+    try {
+      await db.query(`INSERT INTO user_badges (who, badge, tier, note) VALUES ($1,$2,$3,$4)
+                      ON CONFLICT DO NOTHING`,
+        [who, f.key, f.tier, `${f.n} — ${f.blurb}`]);
+      await notify({ kind: 'badge', for_who: who,
+        title: `${f.icon} ${f.name}${f.tiers.length > 1 ? ' · ' + TIER_WORD[f.tier] : ''}`,
+        body: f.blurb, url: '/me' });
+    } catch (e) {}
+  }
+  return fresh;
+}
+
+app.get('/api/badges', async (req, res) => {
+  if (!db) return res.json({ badges: [] });
+  const who = String(req.query.who || '') || (await getResearchKey(req.session || {}));
+  try {
+    const defs = BADGES.map(b => ({ key: b.key, name: b.name, icon: b.icon,
+      blurb: b.blurb, tiers: b.tiers }));
+    if (!who) return res.json({ who: null, badges: defs, earned: [], tally: null });
+    const [earned, tally] = await Promise.all([
+      db.query(`SELECT badge, tier, awarded_at, note FROM user_badges WHERE who=$1
+                 ORDER BY awarded_at`, [who]),
+      tallyFor(who)
+    ]);
+    res.json({ who, badges: defs, earned: earned.rows, tally, tierWords: TIER_WORD });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// A board of who has done the most, which is the only comparative one and is
+// deliberately about volume of work rather than about being right.
+app.get('/api/badges/board', async (req, res) => {
+  if (!db) return res.json({ board: [] });
+  try {
+    const r = await db.query(
+      `SELECT who, COUNT(*) AS edits, MAX(at) AS last_at
+         FROM edit_log WHERE who <> 'anonymous' AND at > NOW() - INTERVAL '30 days'
+        GROUP BY who ORDER BY COUNT(*) DESC LIMIT 20`);
+    const b = await db.query(
+      `SELECT who, COUNT(*) AS badges FROM user_badges GROUP BY who`);
+    const byWho = Object.fromEntries(b.rows.map(x => [x.who, Number(x.badges)]));
+    res.json({ board: r.rows.map(x => ({ ...x, badges: byWho[x.who] || 0 })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Who changed what ─────────────────────────────────────────────────────────
 // The admin's view of the record being edited: recent changes, who is making
 // them, anything the guard raised, and an undo on every one.
@@ -1559,7 +1887,9 @@ app.post('/api/admin/guard-limits', requireAdmin, async (req, res) => {
 // real evening's work looks like. Somebody filing a census round genuinely does
 // make twenty changes in a few minutes.
 let GUARD = { burst_writes: 5, burst_seconds: 2, minute_writes: 40,
-              hour_writes: 400, flag_writes: 15, flag_minutes: 10 };
+              hour_writes: 400, flag_writes: 15, flag_minutes: 10,
+              admin_minute_writes: 2000, admin_hour_writes: 40000,
+              anon_minute_writes: 10, anon_hour_writes: 60 };
 async function loadGuard() {
   if (!db) return;
   try {
@@ -1592,6 +1922,16 @@ async function guard(req, res, next) {
   if (/^\/api\/(login|logout|user\/login|user\/logout|user\/register)$/.test(req.path)) return next();
 
   const who = guardKey(req);
+  // Three kinds of writer, three sets of numbers. The limits are about what a
+  // person can physically do, and an admin running a script is a different
+  // physics from somebody typing a census household into a form.
+  const tier = (req.session && req.session.isAdmin) ? 'admin'
+             : who.startsWith('ip:') ? 'anon' : 'user';
+  const lim = tier === 'admin'
+    ? { burst: Infinity, minute: GUARD.admin_minute_writes, hour: GUARD.admin_hour_writes }
+    : tier === 'anon'
+    ? { burst: GUARD.burst_writes, minute: GUARD.anon_minute_writes, hour: GUARD.anon_hour_writes }
+    : { burst: GUARD.burst_writes, minute: GUARD.minute_writes, hour: GUARD.hour_writes };
   const now = Date.now();
   const times = (writeTimes.get(who) || []).filter(t => now - t < 3600000);
   times.push(now);
@@ -1602,22 +1942,24 @@ async function guard(req, res, next) {
   const inHour  = times.length;
   const inFlag  = times.filter(t => now - t < GUARD.flag_minutes * 60000).length;
 
-  const detail = { path: req.path, inBurst, inMin, inHour,
+  const detail = { path: req.path, tier, inBurst, inMin, inHour,
                    agent: String(req.headers['user-agent'] || '').slice(0, 200) };
 
-  if (inBurst >= GUARD.burst_writes) {
+  if (inBurst >= lim.burst) {
     await raiseAlert(who, 'blocked', `${inBurst} writes in ${GUARD.burst_seconds}s`, detail);
     return res.status(429).json({ error: 'That is faster than anybody types. Slow down and try again.' });
   }
-  if (inMin > GUARD.minute_writes) {
+  if (inMin > lim.minute) {
     await raiseAlert(who, 'blocked', `${inMin} writes in a minute`, detail);
     return res.status(429).json({ error: 'Too many changes in a minute. Give it a moment.' });
   }
-  if (inHour > GUARD.hour_writes) {
+  if (inHour > lim.hour) {
     await raiseAlert(who, 'blocked', `${inHour} writes in an hour`, detail);
     return res.status(429).json({ error: 'Too many changes in an hour. Come back shortly.' });
   }
-  if (inFlag >= GUARD.flag_writes && (now - (flagged.get(who) || 0)) > GUARD.flag_minutes * 60000) {
+  // An admin working fast is the point, not a worry.
+  if (tier !== 'admin'
+      && inFlag >= GUARD.flag_writes && (now - (flagged.get(who) || 0)) > GUARD.flag_minutes * 60000) {
     flagged.set(who, now);
     await raiseAlert(who, 'flagged', `${inFlag} changes in ${GUARD.flag_minutes} minutes`, detail);
   }
@@ -4531,6 +4873,7 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
         by: req.session.username || null
       }];
       await saveProp(id, { ...current, photos }, req.session.username, req);
+      awardBadges(await getResearchKey(req.session));
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
@@ -6768,7 +7111,11 @@ app.delete('/api/admin/geocode-place', requireAdmin, async (req, res) => {
 });
 
 // POST /api/admin/normalise-occupations — apply OCC_NORM_SERVER to census_entries + occupations
-app.post('/api/admin/normalise-occupations', requireContributor, async (req, res) => {
+// Rewrites every matching occupation in two tables in one call. That is a
+// bulk tool and belongs to the admin, not to anybody who has signed up -
+// and a second copy of this route further down was already written
+// requireAdmin, where Express could never reach it, shadowed by this one.
+app.post('/api/admin/normalise-occupations', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
     let totalUpdated = 0;
@@ -7220,7 +7567,8 @@ app.post('/api/admin/merge-abbreviated-names', requireAdmin, async (req, res) =>
 });
 
 // ── Merge two people (contributors+): keep one, absorb all data from the other ──
-app.post('/api/admin/merge-people', requireContributor, async (req, res) => {
+// Merging deletes one of the two people. Admin only.
+app.post('/api/admin/merge-people', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const { keep_id, delete_id } = req.body;
   if (!keep_id || !delete_id) return res.status(400).json({ error: 'keep_id and delete_id required' });
@@ -7277,7 +7625,9 @@ app.delete('/api/admin/users/:id', requireAdmin, async (req, res) => {
 });
 
 // ── One-time occupation normalisation (admin only) ────────────────────────────
-app.post('/api/admin/normalise-occupations', requireAdmin, async (req, res) => {
+// A different job from the one above: three hand-written groupings rather than
+// the whole normalisation table. It had the same path and never ran.
+app.post('/api/admin/merge-occupation-groups', requireAdmin, async (req, res) => {
   if (!db) return res.status(503).json({ error: 'No DB' });
   const merges = [
     { targets: ['servant','general servant','domestic servant','general domestic servant','household servant','house servant'], canonical: 'Domestic servant' },
@@ -8581,6 +8931,7 @@ app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/moves', (req, res) => res.sendFile(path.join(__dirname, 'public', 'moves.html')));
 app.get('/photo-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'photo-review.html')));
 app.get('/activity', (req, res) => res.sendFile(path.join(__dirname, 'public', 'activity.html')));
+app.get('/me', (req, res) => res.sendFile(path.join(__dirname, 'public', 'me.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8914,6 +9265,10 @@ app.post('/api/discussions', requireContributor, async (req, res) => {
       [title, String(b.body || '').slice(0, MAX_BODY) || null, who,
        parseInt(b.property_id, 10) || null, parseInt(b.person_id, 10) || null,
        parseInt(b.question_id, 10) || null]);
+    notify({ kind: 'discussion', made_by: who,
+      title: `${who} opened a discussion`, body: title,
+      url: '/discussion#' + r.rows[0].id });
+    awardBadges(who);
     res.json({ ok: true, id: r.rows[0].id });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -8940,6 +9295,16 @@ app.post('/api/discussions/:id/reply', requireContributor, async (req, res) => {
       `INSERT INTO discussion_replies (discussion_id, parent_id, body, author)
        VALUES ($1,$2,$3,$4) RETURNING id`, [id, parent, body.slice(0, MAX_BODY), who]);
     await db.query(`UPDATE discussions SET last_at = NOW() WHERE id = $1`, [id]);
+    try {
+      const t = await db.query(`SELECT title, author FROM discussions WHERE id=$1`, [id]);
+      if (t.rows[0]) {
+        notify({ kind: 'reply', made_by: who,
+          title: `${who} answered a discussion`, body: t.rows[0].title,
+          url: '/discussion#' + id,
+          for_who: t.rows[0].author === who ? null : t.rows[0].author });
+      }
+    } catch (e) {}
+    awardBadges(who);
     res.json({ ok: true, id: r.rows[0].id });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -8997,6 +9362,9 @@ app.post('/api/discussions/:id/settle', requireContributor, async (req, res) => 
         [t.rows[0].question_id, note, who]);
       answered = !!q.rowCount;
     }
+    awardBadges(who);
+    if (answered) notify({ kind: 'discussion', made_by: who,
+      title: `${who} settled a question`, body: note, url: '/discussion#' + id });
     res.json({ ok: true, settled: true, question_answered: answered });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -9283,6 +9651,7 @@ app.post('/api/postboxes', (req, res) => {
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id`,
         [lat, lng, cypher, b.box_type || null, b.maker || null, b.inscription || null,
          b.where_note || null, url, parseInt(b.property_id, 10) || null, who]);
+      awardBadges(who);
       res.json({ ok: true, id: r.rows[0].id, reign: REIGNS[cypher] || null });
     } catch (e) { res.status(500).json({ error: e.message }); }
   });
@@ -9406,6 +9775,7 @@ app.post('/api/walk/answer', async (req, res) => {
        VALUES ('question', $1, $2, $3, $4, NOW(), $4)`,
       [qid, (b.title || '').slice(0, 200) || null, who,
        text + (b.lat && b.lng ? ` [sent from ${(+b.lat).toFixed(5)}, ${(+b.lng).toFixed(5)}]` : '')]);
+    awardBadges(who);
     res.json({ ok: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -9684,6 +10054,7 @@ app.post('/api/claims/:id/done', requireContributor, async (req, res) => {
       [id, who, !!(req.session && req.session.isAdmin),
        String((req.body && req.body.outcome) || '').trim() || null]);
     if (!r.rowCount) return res.status(403).json({ error: 'That is not yours to close' });
+    awardBadges(who);
     res.json({ ok: true, claim: r.rows[0] });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });

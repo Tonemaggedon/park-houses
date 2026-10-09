@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your part in it — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --gold:#9a7320; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:940px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 4px; }
+  h3 { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);
+    font-weight:400; margin:30px 0 10px; }
+  .lede { color:var(--soft); font-size:.9rem; max-width:72ch; margin:0; }
+  .lede strong { color:var(--ink); }
+
+  .tally { display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:10px;
+    margin-top:18px; }
+  .t { background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:11px 13px; }
+  .t b { display:block; font-family:ui-monospace,Menlo,monospace; font-size:1.5rem;
+    font-weight:400; color:var(--gold); line-height:1.1; }
+  .t span { font-size:.76rem; color:var(--faint); }
+
+  .badges { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:11px; }
+  .b { background:var(--card); border:1px solid var(--rule); border-radius:9px; padding:12px 13px; }
+  .b.got { border-color:#b9cba8; background:#fbfdf8; }
+  .b .ic { font-size:1.5rem; line-height:1; }
+  .b h4 { margin:5px 0 2px; font-size:.95rem; font-weight:600; }
+  .b .bl { font-size:.79rem; color:var(--soft); }
+  .b .pr { margin-top:7px; height:4px; background:#eee7d6; border-radius:2px; overflow:hidden; }
+  .b .pr i { display:block; height:100%; background:var(--green); }
+  .b .at { font-size:.72rem; color:var(--faint); margin-top:5px; font-family:ui-monospace,Menlo,monospace; }
+  .b.locked { opacity:.72; }
+  .tiers { display:flex; gap:4px; margin-top:6px; }
+  .tier { font-size:.63rem; letter-spacing:.07em; text-transform:uppercase; border-radius:9px;
+    padding:1px 7px; border:1px solid var(--rule); color:var(--faint); }
+  .tier.on { background:var(--green); border-color:var(--green); color:#f2ecd8; }
+
+  .feed { border-left:2px solid var(--rule); padding-left:14px; }
+  .n { padding:8px 0; border-bottom:1px solid #efe9da; }
+  .n:last-child { border-bottom:0; }
+  .n b { font-weight:600; }
+  .n .m { font-size:.75rem; color:var(--faint); font-family:ui-monospace,Menlo,monospace; }
+  .n a { color:#2a5a8a; text-decoration:none; }
+  .n a:hover { text-decoration:underline; }
+
+  .box { background:var(--card); border:1px solid var(--rule); border-radius:9px;
+    padding:14px 16px; margin-top:10px; }
+  .box.on { border-color:#9ab88a; background:#f8fbf4; }
+  .box p { margin:0 0 8px; font-size:.87rem; color:var(--soft); }
+  label.ck { display:block; font-size:.86rem; margin:5px 0; cursor:pointer; }
+  label.ck input { margin-right:7px; }
+  button { font-family:inherit; font-size:.82rem; border-radius:6px; padding:7px 14px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button.go { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+  button:disabled { opacity:.45; cursor:default; }
+  ol.how { font-size:.86rem; color:var(--soft); padding-left:20px; margin:6px 0 0; }
+  ol.how li { margin:4px 0; }
+  .signin { background:#fff8e8; border:1px solid #d8c08a; border-radius:8px;
+    padding:12px 15px; font-size:.88rem; color:var(--soft); margin-top:16px; }
+  .msg { font-size:.82rem; color:var(--red); margin-top:7px; }
+  .ok { font-size:.82rem; color:var(--green); margin-top:7px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Your part in it</h2>
+  <p class="lede">What you have added, what it has earned you, and what you would like to be told
+    about. <strong>Every badge is a count of real things</strong> — none of them are points.</p>
+  <div id="body"><p class="lede" style="margin-top:20px">Loading…</p></div>
+</div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const when = t => t ? new Date(t).toLocaleDateString('en-GB',
+  { day:'numeric', month:'short', year:'numeric' }) : '';
+const ago = t => {
+  const m = (Date.now() - new Date(t)) / 60000;
+  if (m < 60) return Math.max(1, Math.round(m)) + ' min ago';
+  if (m < 1440) return Math.round(m / 60) + ' h ago';
+  return Math.round(m / 1440) + ' days ago';
+};
+
+let B = null, N = null, PUSH = null, sub = null;
+
+async function load() {
+  const [b, n, p] = await Promise.all([
+    fetch('/api/badges', { credentials:'same-origin' }).then(r => r.json()),
+    fetch('/api/notifications', { credentials:'same-origin' }).then(r => r.json()),
+    fetch('/api/push/key').then(r => r.json()).catch(() => ({ enabled:false }))
+  ]);
+  B = b; N = n; PUSH = p;
+  if ('serviceWorker' in navigator && PUSH.enabled) {
+    try {
+      const reg = await navigator.serviceWorker.register('/push-sw.js', { scope: '/' });
+      sub = await reg.pushManager.getSubscription();
+    } catch (e) {}
+  }
+  draw();
+  if (B.who) fetch('/api/notifications/read', { method:'POST', credentials:'same-origin' });
+}
+
+function tierBits(def, earnedTiers, count) {
+  if (def.tiers.length === 1) return '';
+  return '<div class="tiers">' + def.tiers.map((need, i) =>
+    `<span class="tier${earnedTiers.has(i+1) ? ' on' : ''}">${B.tierWords[i+1] || ''} ${need}</span>`
+  ).join('') + '</div>';
+}
+
+function draw() {
+  const el = document.getElementById('body');
+  if (!B.who) {
+    el.innerHTML = `<div class="signin">Sign in to see what you have added and what you have
+      earned. <a href="/join">Join the record</a> if you have not yet.</div>
+      ${feedHtml()}`;
+    return;
+  }
+  const t = B.tally || {};
+  const earned = {};
+  (B.earned || []).forEach(e => {
+    (earned[e.badge] = earned[e.badge] || { tiers:new Set(), at:e.awarded_at }).tiers.add(e.tier);
+  });
+
+  el.innerHTML = `
+    <div class="tally">
+      ${[['edits','changes in all'],['property_edits','houses'],['person_edits','people'],
+         ['photos','photographs'],['postboxes','post boxes'],['discussions','discussions'],
+         ['replies','replies'],['claims_done','jobs finished']]
+        .filter(([k]) => t[k]).map(([k, l]) =>
+        `<div class="t"><b>${t[k]}</b><span>${l}</span></div>`).join('')
+        || '<div class="t"><b>0</b><span>nothing yet — that is what the walk is for</span></div>'}
+    </div>
+
+    <h3>Badges</h3>
+    <div class="badges">
+      ${B.badges.map(d => {
+        const got = earned[d.key];
+        const n = countFor(d.key, t);
+        const next = d.tiers.find(x => n < x);
+        const pct = next ? Math.min(100, Math.round(n / next * 100)) : 100;
+        return `<div class="b ${got ? 'got' : 'locked'}">
+          <div class="ic">${d.icon}</div>
+          <h4>${esc(d.name)}</h4>
+          <div class="bl">${esc(d.blurb)}</div>
+          ${tierBits(d, got ? got.tiers : new Set(), n)}
+          ${next ? `<div class="pr"><i style="width:${pct}%"></i></div>
+                    <div class="at">${n} of ${next}</div>`
+                 : `<div class="at">${n} — all of it</div>`}
+        </div>`; }).join('')}
+    </div>
+
+    <h3>Being told about things</h3>
+    ${pushHtml()}
+
+    <h3>Put it on your phone</h3>
+    <div class="box">
+      <p>The walk works far better as an app on your home screen: it opens full screen, it keeps
+        the screen awake, and <strong>notifications only reach an iPhone once it is installed</strong>.</p>
+      <ol class="how">
+        <li><b>iPhone</b> — open <a href="/walk">the walk</a> in Safari, tap the share button,
+          then <i>Add to Home Screen</i>.</li>
+        <li><b>Android</b> — open it in Chrome, tap the three dots, then <i>Install app</i> or
+          <i>Add to Home screen</i>.</li>
+        <li>Open it from the home screen once, and allow notifications when it asks.</li>
+      </ol>
+    </div>
+
+    <h3>What has been happening</h3>
+    ${feedHtml()}`;
+  wire();
+}
+
+function countFor(key, t) {
+  return ({ first:t.edits, photographer:t.photos, onfoot:t.walk_answers, postbox:t.postboxes,
+    filing:t.census_edits, people:t.person_edits, houses:t.property_edits,
+    asking:t.discussions, answering:t.replies, settled:t.settled, claiming:t.claims_done
+  })[key] || 0;
+}
+
+const KINDS = [
+  ['discussion', 'Somebody opens a discussion'],
+  ['reply',      'Somebody answers one'],
+  ['badge',      'You earn a badge'],
+  ['weekly',     'A weekly note on what has changed'],
+  ['feature',    'Something new on the site'],
+];
+
+function pushHtml() {
+  if (!PUSH.enabled) return `<div class="box"><p>Push notifications are not switched on for this
+    site yet. Everything below still appears on this page.</p></div>`;
+  if (!('Notification' in window) || !('serviceWorker' in navigator))
+    return `<div class="box"><p>This browser cannot do notifications. On an iPhone they work once
+      the site is on your home screen — see below.</p></div>`;
+  if (sub) return `<div class="box on">
+      <p><b>On.</b> This browser will be told about:</p>
+      ${KINDS.map(([k, l]) =>
+        `<label class="ck"><input type="checkbox" data-kind="${k}" checked> ${esc(l)}</label>`).join('')}
+      <div style="margin-top:10px"><button id="saveKinds">Save</button>
+        <button id="offBtn">Turn them off</button></div>
+      <div id="pmsg"></div></div>`;
+  return `<div class="box">
+      <p>Be told when something happens, without having to come and look.</p>
+      ${KINDS.map(([k, l]) =>
+        `<label class="ck"><input type="checkbox" data-kind="${k}" checked> ${esc(l)}</label>`).join('')}
+      <div style="margin-top:10px"><button class="go" id="onBtn">Turn notifications on</button></div>
+      <div id="pmsg"></div></div>`;
+}
+
+function feedHtml() {
+  const items = (N.items || []).slice(0, 25);
+  if (!items.length) return '<div class="box"><p>Nothing yet.</p></div>';
+  return '<div class="feed">' + items.map(i => `<div class="n">
+      <b>${esc(i.title)}</b>${i.body ? ' — ' + esc(i.body) : ''}
+      <div class="m">${esc(ago(i.at))}${i.url ? ` · <a href="${esc(i.url)}">open</a>` : ''}</div>
+    </div>`).join('') + '</div>';
+}
+
+function chosenKinds() {
+  return [...document.querySelectorAll('[data-kind]')].filter(c => c.checked).map(c => c.dataset.kind);
+}
+function b64(s) {
+  const pad = '='.repeat((4 - s.length % 4) % 4);
+  const raw = atob((s + pad).replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+}
+
+function wire() {
+  const on = document.getElementById('onBtn');
+  if (on) on.onclick = async () => {
+    const msg = document.getElementById('pmsg');
+    on.disabled = true;
+    try {
+      const perm = await Notification.requestPermission();
+      if (perm !== 'granted') throw new Error('Your browser said no. You can change that in its settings.');
+      const reg = await navigator.serviceWorker.register('/push-sw.js', { scope: '/' });
+      await navigator.serviceWorker.ready;
+      sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true, applicationServerKey: b64(PUSH.key) });
+      const r = await fetch('/api/push/subscribe', { method:'POST', credentials:'same-origin',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ ...sub.toJSON(), kinds: chosenKinds() }) });
+      if (!r.ok) throw new Error((await r.json()).error || 'Would not save');
+      msg.innerHTML = '<div class="ok">On. You will be told.</div>';
+      setTimeout(load, 900);
+    } catch (e) { msg.innerHTML = '<div class="msg">' + esc(e.message) + '</div>'; on.disabled = false; }
+  };
+  const off = document.getElementById('offBtn');
+  if (off) off.onclick = async () => {
+    off.disabled = true;
+    try {
+      const ep = sub.endpoint;
+      await sub.unsubscribe();
+      await fetch('/api/push/unsubscribe', { method:'POST', credentials:'same-origin',
+        headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ endpoint: ep }) });
+      sub = null; load();
+    } catch (e) { off.disabled = false; }
+  };
+  const sk = document.getElementById('saveKinds');
+  if (sk) sk.onclick = async () => {
+    sk.disabled = true;
+    await fetch('/api/push/kinds', { method:'POST', credentials:'same-origin',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ endpoint: sub.endpoint, kinds: chosenKinds() }) });
+    document.getElementById('pmsg').innerHTML = '<div class="ok">Saved.</div>';
+    sk.disabled = false;
+  };
+}
+
+load().catch(e => { document.getElementById('body').innerHTML =
+  '<p class="msg">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>

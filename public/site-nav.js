@@ -52,6 +52,7 @@
     ['/name-review', '✎', 'Names to check'],
   ];
   const MINE = [
+    ['/me', '🎖', 'Your part in it'],
     ['/watchlist', '⭐', 'My watchlist'],
     ['/my-contributions', '✏', 'My contributions'],
   ];
