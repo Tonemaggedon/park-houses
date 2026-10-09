@@ -2860,6 +2860,15 @@
    "property_id": 31,
    "title": "Does the split show from the street at 16 and 16a Cavendish Crescent North?",
    "detail": "A. Hagues confirms it is **one house of about 1885 now split into two households**. Does that show from the pavement — two doors, two bells, two numbers?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "the-positions-page-matches-pelham-cottages-to-the-wrong-barrack-lane",
+   "area": "The record itself",
+   "kind": "data",
+   "priority": 8,
+   "status": "open",
+   "title": "The positions page flags the Pelham Cottages as 200m wrong. They are not",
+   "detail": "**#449, #450 and #451 show on the OpenStreetMap positions page as 228m, and 187m out. They are where they should be.**\n\nThe page matches a property to a building on **number and street** before it tries the house name. The record holds the cottages as **1, 2 and 3 Barrack Lane**, because that is what the 1939 enumerator wrote. OpenStreetMap also has a **1 and 3 Barrack Lane** — *at the top of the lane, two hundred metres north*. Different houses, same address, which is the ordinary thing [[two-houses-can-share-a-name-in-different-eras]] is about.\n\n**The cottages' own positions came from OpenStreetMap footprints** — their own, on the street OSM calls **Pelham Cottages** — so the page is comparing a surveyed point against a building it should never have matched.\n\n## What to do about it\n\n1. **Nothing to the positions.** Pressing *Use this position* on either row would move the cottages two hundred metres up the lane. A warning is now in all three histories.\n2. **The page could be cleverer.** When a property already has a position and a *name* match sits far closer than the *address* match, the nearer one is almost certainly the building. That would fix this without hiding real errors.\n3. **Or simpler: let a row be dismissed**, the way an orphan building already can be, so a judgement that *the match is wrong, not the position* can be recorded once and stay recorded.\n\n**Thirteen rows are at or above 20 m and three of them are this.** The two worst - **13 Park Valley at 653 m** and **The Stables, Lenton Road at 587 m** - are a different matter: both sit well east of the estate toward the city, which is not a wobble but a position nothing ever placed.\n\nLinks: [[all-props-json-positions-are-not-what-the-map-shows]], [[a-guessed-position-is-indistinguishable-from-a-surveyed-one]]."
   }
  ]
 }
