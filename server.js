@@ -806,6 +806,11 @@ async function dbInit() {
     // is not the order they are worth doing in. A priority is set in the seed
     // file; anything without one falls in behind, still by id.
     await db.query(`ALTER TABLE research_questions ADD COLUMN IF NOT EXISTS priority INTEGER`);
+    // Can somebody standing in front of the house settle it? Most questions
+    // cannot be - they want a register, a directory or a deed - and the walk
+    // was offering all of them, which wastes an evening and makes the walk look
+    // silly. Only on_foot questions become stops.
+    await db.query(`ALTER TABLE research_questions ADD COLUMN IF NOT EXISTS on_foot BOOLEAN DEFAULT false`);
     await db.query(`CREATE TABLE IF NOT EXISTS research_claims (
       id SERIAL PRIMARY KEY,
       question_id INTEGER REFERENCES research_questions(id) ON DELETE CASCADE,
@@ -4257,11 +4262,17 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
       const filename = `prop-${id}_${Date.now()}_${cd.replace(/[^a-z0-9._-]/gi, '_')}`;
       const url = await uploadPhoto(buf, filename, req.headers["content-type"]);
       const current = await loadProp(id);
+      // Where a photograph came from matters, because "has a photograph" and
+      // "has a photograph somebody took this year" are different questions. A
+      // shot sent from the walk says so, and can be asked for again without
+      // being thrown away.
       const photos = [...(current.photos || []), {
         url,
         caption: '',
         addedAt: new Date().toISOString(),
-        uploadedBy: req.session.userId || null
+        uploadedBy: req.session.userId || null,
+        source: req.headers['x-source'] === 'walk' ? 'walk' : 'upload',
+        by: req.session.username || null
       }];
       await saveProp(id, { ...current, photos }, req.session.username);
       res.json({ ok: true, url });
@@ -8312,6 +8323,7 @@ app.get('/needs-work', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/walk', (req, res) => res.sendFile(path.join(__dirname, 'public', 'walk.html')));
 app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public', 'discussion.html')));
 app.get('/moves', (req, res) => res.sendFile(path.join(__dirname, 'public', 'moves.html')));
+app.get('/photo-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'photo-review.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8459,29 +8471,29 @@ async function seedResearchQuestions() {
     if (!q.slug || !q.title) continue;
     try {
       const r = await db.query(
-        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, priority, status, created_by)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'seed')
+        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, priority, status, on_foot, created_by)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'seed')
          ON CONFLICT (slug) DO NOTHING RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
          q.property_id || null, q.person_id || null,
          Number.isInteger(q.priority) ? q.priority : null,
-         q.status === 'answered' ? 'answered' : 'open']);
+         q.status === 'answered' ? 'answered' : 'open', !!q.on_foot]);
       if (r.rows.length) { added++; continue; }
       // Already there. Refresh the wording only while nobody has touched it by
       // hand — an edit or an answer in the site is worth more than the file.
       const upd = await db.query(
         `UPDATE research_questions
             SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6, priority=$7,
-                status=$8
+                status=$8, on_foot=$9
           WHERE slug=$1 AND edited_at IS NULL AND answer IS NULL
             AND (title IS DISTINCT FROM $2 OR detail IS DISTINCT FROM $3
                  OR kind IS DISTINCT FROM $4 OR property_id IS DISTINCT FROM $5
                  OR person_id IS DISTINCT FROM $6 OR priority IS DISTINCT FROM $7
-                 OR status IS DISTINCT FROM $8) RETURNING id`,
+                 OR status IS DISTINCT FROM $8 OR on_foot IS DISTINCT FROM $9) RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
          q.property_id || null, q.person_id || null,
          Number.isInteger(q.priority) ? q.priority : null,
-         q.status === 'answered' ? 'answered' : 'open']);
+         q.status === 'answered' ? 'answered' : 'open', !!q.on_foot]);
       if (upd.rows.length) refreshed++;
     } catch (e) { console.warn('research question', q.slug, e.message); }
   }
@@ -8758,6 +8770,54 @@ app.delete('/api/discussions/reply/:id', requireContributor, async (req, res) =>
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Photographs sent in from the walk ────────────────────────────────────────
+// A. Hagues wants to see what people send so a poor one can be asked for again.
+// **The photograph is never deleted.** It is marked `wantsBetter`, which puts
+// the house back in the walk's list and leaves the picture exactly where the
+// person who took it put it. Somebody who walked out in the rain to photograph
+// a wall should not find their photograph gone.
+app.get('/api/walk/photos', requireAdmin, async (req, res) => {
+  if (!db) return res.json({ photos: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const nameOf = id => { const p = props.find(x => x.id === id);
+      return p ? (p.address || p.name) : ('Property ' + id); };
+    const r = await db.query(
+      `SELECT pd.id AS property_id, e.value AS photo, e.ordinality - 1 AS idx
+         FROM property_data pd,
+              LATERAL jsonb_array_elements(COALESCE(pd.data->'photos','[]'::jsonb))
+                WITH ORDINALITY AS e(value, ordinality)
+        WHERE e.value->>'source' = 'walk'
+        ORDER BY e.value->>'addedAt' DESC`);
+    res.json({ photos: r.rows.map(x => ({
+      property_id: x.property_id, property: nameOf(x.property_id), index: x.idx,
+      url: x.photo.url, addedAt: x.photo.addedAt, by: x.photo.by || null,
+      caption: x.photo.caption || '',
+      wantsBetter: !!x.photo.wantsBetter, note: x.photo.reviewNote || null })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/walk/photos/verdict { property_id, index, wantsBetter, note }
+app.post('/api/walk/photos/verdict', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const pid = parseInt(b.property_id, 10);
+  const idx = parseInt(b.index, 10);
+  if (!Number.isInteger(pid) || !Number.isInteger(idx))
+    return res.status(400).json({ error: 'Which photograph?' });
+  try {
+    const cur = await loadProp(pid);
+    const photos = [...(cur.photos || [])];
+    if (!photos[idx]) return res.status(404).json({ error: 'No photograph there' });
+    photos[idx] = { ...photos[idx],
+      wantsBetter: !!b.wantsBetter,
+      reviewNote: String(b.note || '').trim() || null,
+      reviewedAt: new Date().toISOString() };
+    await saveProp(pid, { ...cur, photos }, req.session.username);
+    res.json({ ok: true, wantsBetter: !!b.wantsBetter });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── The Park Walk ────────────────────────────────────────────────────────────
 // Stops for the walking app: every reason to stand still in The Park and look at
 // something. A stop is a position, a kind, a line to read, and sometimes a job.
@@ -8778,9 +8838,11 @@ app.get('/api/walk/stops', async (req, res) => {
     for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
 
     const [questions, notable, households] = await Promise.all([
+      // Only what a pair of eyes can settle. See the on_foot column.
       db.query(`SELECT id, slug, title, kind, priority, property_id
                   FROM research_questions
                  WHERE status <> 'answered' AND property_id IS NOT NULL
+                   AND on_foot = true
                    AND title !~* '^(ANSWERED|SUPERSEDED)'
                  ORDER BY priority NULLS LAST, id`),
       db.query(`SELECT p.id, p.first_name, p.last_name, p.title, p.born_year, p.died_year,
@@ -8857,14 +8919,26 @@ app.get('/api/walk/stops', async (req, res) => {
     // odd side of Hope Drive is one afternoon's work.
     try {
       const shot = await db.query(
-        `SELECT id FROM property_data
-          WHERE jsonb_array_length(COALESCE(data->'photos','[]'::jsonb)) > 0`);
-      const havePhoto = new Set(shot.rows.map(r => r.id));
+        `SELECT id,
+                jsonb_array_length(COALESCE(data->'photos','[]'::jsonb)) AS n,
+                -- a photograph taken on a walk and not sent back for a better one
+                (SELECT COUNT(*) FROM jsonb_array_elements(COALESCE(data->'photos','[]'::jsonb)) e
+                  WHERE e->>'source' = 'walk' AND COALESCE((e->>'wantsBetter')::boolean,false) = false) AS fresh
+           FROM property_data`);
+      const have = new Map(shot.rows.map(r => [r.id, r]));
       for (const p of props) {
-        if (havePhoto.has(p.id) || p.demolished) continue;
-        push(p, { id: 'ph' + p.id, kind: 'needs-photo',
-          title: p.address || p.name,
-          line: 'No photograph of this house in the record. One from the pavement is enough.' });
+        if (p.demolished) continue;
+        const r = have.get(p.id);
+        if (!r || !Number(r.n)) {
+          push(p, { id: 'ph' + p.id, kind: 'needs-photo',
+            title: p.address || p.name,
+            line: 'No photograph of this house in the record at all. One from the pavement is enough.' });
+        } else if (!Number(r.fresh)) {
+          push(p, { id: 'fp' + p.id, kind: 'needs-fresh',
+            title: p.address || p.name,
+            line: 'The only photographs of this house came in with the original import. '
+                + 'Nobody has stood in front of it with a phone.' });
+        }
       }
     } catch (e) { /* older deploys */ }
 

@@ -95,6 +95,7 @@
   .tag.postbox{background:#f2d9d6;color:#8a2b22}
   .tag.hunt{background:#efe4d0;color:#6b4e22}
   .tag.needs-photo{background:#d6ecea;color:#1d5a56}
+  .tag.needs-fresh{background:#e2eddb;color:#2f5120}
   #sheet h3{margin:9px 0 3px;font-size:1.26rem;font-weight:400;line-height:1.22}
   .addr{color:var(--soft);font-size:.84rem}
   .body{margin-top:11px;font-size:.98rem;color:#33402a}
@@ -151,6 +152,7 @@
   .pin.postbox{background:#b03b32}
   .pin.hunt{background:#8a6a3a}
   .pin\.needs-photo,.pin.needs-photo{background:#3f8f8a}
+  .pin.needs-fresh{background:#6e9a52}
   .pin.done{background:#54604a;opacity:.6}
   .me{width:16px;height:16px;border-radius:50%;background:#6fd0ff;
     box-shadow:0 0 0 4px rgba(111,208,255,.25),0 0 14px rgba(111,208,255,.7)}
@@ -243,7 +245,8 @@ const THEMES = [
   { k: 'architect', label: 'Who built it',        sub: 'Hine, Fothergill and the rest' },
   { k: 'lost',      label: 'What is gone',        sub: 'houses that no longer stand' },
   { k: 'household', label: 'Full houses',         sub: 'twelve or more under one roof' },
-  { k: 'needs-photo', label: 'Take some photographs', sub: 'houses the record has never seen' },
+  { k: 'needs-photo', label: 'Take some photographs', sub: 'houses with no picture at all' },
+  { k: 'needs-fresh', label: 'Bring them up to date',  sub: 'only the old imported pictures' },
   { k: 'postbox',   label: 'Read the post boxes',  sub: 'six drawn on the map, none read' }
 ];
 
@@ -500,7 +503,8 @@ function toast(s) {
 const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
   lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
   round: 'He knocked here', postbox: 'A dated thing in the street',
-  hunt: 'Look along here', 'needs-photo': 'This one has never been photographed' };
+  hunt: 'Look along here', 'needs-photo': 'This one has never been photographed',
+  'needs-fresh': 'This one wants a photograph taken now' };
 
 // A household written out the way the page has it: in his order, down the lines.
 function householdHtml(s) {
@@ -543,9 +547,9 @@ function openStop(i, manual) {
         </div>
         <div id="ansMsg"></div>
       </div>` : ''}
-    ${s.kind === 'needs-photo' ? `
+    ${(s.kind === 'needs-photo' || s.kind === 'needs-fresh') ? `
       <label class="shot" id="propShot">
-        <span>Tap to photograph the house</span>
+        <span>${s.kind === 'needs-fresh' ? 'Tap to photograph it as it is now' : 'Tap to photograph the house'}</span>
         <input type="file" accept="image/*" capture="environment" id="propFile" hidden>
       </label>
       <div id="propMsg"></div>` : ''}
@@ -571,14 +575,20 @@ function openStop(i, manual) {
       try {
         const r = await fetch('/api/property/' + s.property_id + '/photo', {
           method: 'POST', credentials: 'same-origin',
-          headers: { 'Content-Type': f.type || 'image/jpeg', 'X-Filename': f.name || 'walk.jpg' },
+          headers: { 'Content-Type': f.type || 'image/jpeg', 'X-Filename': f.name || 'walk.jpg',
+                     'X-Source': 'walk' },
           body: await f.arrayBuffer()
         });
         const d = await r.json();
         if (!r.ok) throw new Error(d.error === 'Contributor access required'
           ? 'Sign in on the site first — photographs are kept under a name.' : (d.error || 'It would not send'));
-        msg.innerHTML = '<div class="got">That house has a photograph now. Thank you.</div>';
+        msg.innerHTML = '<div class="got">That house has a photograph now. Thank you — '
+          + 'it comes off the list as you walk.</div>';
         shot.innerHTML = `<img src="${d.url}" alt="">`;
+        // Off the route, and off the pin, so the walk shortens behind you.
+        STOPS = STOPS.filter(x => x.id !== s.id);
+        if (markers[s.id]) markers[s.id].setIcon(pinIcon(s.kind, true));
+        arrived.add(s.id); remember(s.id); hud();
       } catch (err) { msg.innerHTML = '<div class="err">' + esc(err.message) + '</div>'; }
     };
   }

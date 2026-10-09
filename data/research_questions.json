@@ -255,7 +255,8 @@
    "detail": "Recorded as demolished, with no residents linked to it and no census year at all. Either the links have gone missing or the record was never more than a stub. What stood there, when did it go, and did anyone in the record live in it?",
    "priority": 110,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "betsy-williamson-place-of-work-cavendish-road-south",
@@ -293,7 +294,8 @@
    "detail": "**Found.** Pelham Cottages is a street of its own: three cottages in a row off Pelham Crescent, postcode **NG7 1AQ**, reached by the 1939 enumerator on his Barrack Lane round. The record holds all three (#449, #450, #451), and their positions are now the buildings' own footprints rather than the arithmetic they were created with.\n\n| | 1881 | 1891 | 1939 |\n|---|---|---|---|\n| **1** | ? | ? | **Florence M Onion**, 40, widowed certified teacher, with two daughters |\n| **2** | ? | ? | **Arthur William Smith**, 70, joiner |\n| **3** | ? | ? | **Edith Annie Hind**, 60, hosiery shirt machinist |\n\n**The 1881 and 1891 households are still unfiled**, and the obstacle is that neither round gives a number:\n\n| 1881 | schedule 92 | **Fletcher Hind**, 32, *gardener*, Sarah 32, Fred 3, **Edith Annie 2** |\n| 1881 | schedule 93 | **Johnson Marriott**, 26, *waiter*, and Matilda E, 27 |\n| 1881 | schedule 94 | **Charles Sidney Hill**, 37, *cook*, alone |\n| 1891 | schedule 3 | **Ethel Matilda Pitts**, 5, Arthur Clayton 3, Winifred Josephine 1 |\n| 1891 | schedule 4 | **Sarah Warriner**, 47, three children, and a dressmaker lodging |\n\n## The Hind temptation, and why the record should resist it\n\n**Edith Annie Hind, aged 2 at Pelham Cottage in 1881, is Edith Annie Hind, aged 60 at 3 Pelham Cottage in 1939.** Born 20 January 1879, so the ages agree exactly, and the 1881 household is her parents. It is tempting to read schedule 92 as number 3 and file four people on the strength of it.\n\n**The intervening rounds say no.** The same woman is at **Barrack Yard** in 1911, aged 32, still with Fletcher and Sarah; and at **3 Barrack Lane** in 1921, aged 42, as head of her own house. She moved about this corner for sixty years and came back. So her being at number 3 in 1939 says nothing about which cottage she was born in, and schedules 93 and 94 cannot be assigned by working outward from a cottage that is not fixed either.\n\n**This is the Tattershall Drive error in a new coat** - a schedule run read as a street order, with a name match to make it feel settled. See [[the-lodge-on-tattershall-drive-is-not-gartree-lodge]].\n\n**What would settle it:** a directory of the 1880s or 1890s listing the cottages by number against a name; or the 1891 and 1901 pages, where an enumerator may have numbered what the 1881 man did not. Failing that, nine people stay unfiled at a group of houses the record now has.\n\n**And there is a fourth name on this little street.** OpenStreetMap holds **Reveille** on Pelham Cottages, NG7 1AQ, with no number, a few metres south of number 2. Whether it is a fourth cottage or a renamed one of the three is not known.\n\nLinks: [[lr-cavendish-crescent-north]], [[barrack-yard-where]], [[a-guessed-position-is-indistinguishable-from-a-surveyed-one]].",
    "priority": 10,
    "area": "Houses to find",
-   "status": "answered"
+   "status": "answered",
+   "on_foot": true
   },
   {
    "slug": "radford-engineer-gleadthorpe-1901",
@@ -351,7 +353,8 @@
    "property_id": 410,
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "broxtowe-house-where",
@@ -400,7 +403,8 @@
    "detail": "Albert Drinkwater, a police constable, lived at \"Gees Lodge, Tunnel Rd\" in 1921 with his wife Ada and their son Harold. Two small buildings stand between Penrhyn House's garden and the road at the mouth of the Park Tunnel: the northern is still called Penrhyn Cottage, the southern is now called Tunnel Lodge. Gees Lodge is recorded on the southern one, since a lodge on Tunnel Road by the tunnel is the likelier of the two, but that is a judgement and not evidence. Is either still known by the older name? And is the reading Gees at all — the hand is loose enough that Cees or Lees are possible.",
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "hermitage-position",
@@ -410,7 +414,8 @@
    "detail": "Two positions are held for The Hermitage and they are 48 metres apart — one placed by hand, one derived. Nothing turns on it except the map, but on a site this small 48 metres is the difference between one building and its neighbour.",
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "lincoln-circus-numbers",
@@ -449,7 +454,8 @@
    "detail": "The record holds Penrhyn House on Clumber Road East. Penrhyn Cottage turns up separately. Is the cottage the same building under an earlier or a smaller name, a lodge or coach house in its grounds, or a different building altogether? The Park has a number of coach houses turned into cottages and given their own name — Gartree Lodge is one — so a second building is entirely plausible.",
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "the-cottage-huntingdon-drive",
@@ -459,7 +465,8 @@
    "detail": "The 1921 census records Sidney Richard Tann, a chiropodist of 42, and his wife Daisy at \"Huntingdon Drive (The Cottage)\". The road is otherwise recorded only as far as number 10, so the number 14 is a guess and the house may no longer stand. Does anything of it survive, and where was it?",
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "the-stables-lenton-road",
@@ -468,7 +475,8 @@
    "detail": "No census record in the record carries the address, so this comes from outside it. Two Lenton Road houses have a stables or coach house at the bottom of the garden, and both of those gardens back onto Clifton Terrace — the Gartree Lodge arrangement, where the outbuilding takes its address from the road behind.\n\n**21 Lenton Road (#190)** is the stronger: its own listed description reads \"Former coach house / stables building at bottom of garden facing Clifton Terrace now separately owned and converted for residential use\" — separately owned is what gives a building its own address. **17 Lenton Road, Oakhyrst (#188)** has \"Coach house and small outbuilding, now semi-derelict, added in garden area adjacent to Clifton Terrace c1900-1914\". Cliff House (#196) has two flats in its converted coach house, but that is a 1959 conversion.\n\nDougal de Havilland's map carries three stables labels — \"The Stables\" beside The Chestnuts and 1 Kenilworth Road, and \"The Stables 2a\" with \"Park Stables\" over by Parkside and Lenton Avenue — but none of them on Lenton Road, so they are probably other buildings entirely.\n\nWhich house did it belong to, is it addressed on Lenton Road or Clifton Terrace, and was anyone ever returned as living there? 15, 17, 25 and 31 Lenton Road all hold people in 1911 and nobody at all in 1921, so there is room in the record for a household that has been filed somewhere else.",
    "priority": 130,
    "area": "Houses to find",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "war-hospital-in-the-park",
@@ -531,7 +539,8 @@
    "title": "Park Terrace runs 1 to 20, and the 1939 page writes 38",
    "detail": "**A. Hagues has read the enumerator's address column along the run, and it goes 12, 13, 38, 15.** So **38 Park Terrace** is on the page, between 13 and 15, and it is not a misreading of 14 - 14 Park Terrace is separately enumerated at **schedule 204**, the Lindley household.\n\nThe record's Park Terrace runs **1 to 20** and has no 38 in any round. The house is now #442, holding **Edwin M Ratcliffe**, 48, commercial engineer, **Audrey Ratcliffe**, 32, and **William B Callow**, 53, commercial manager, at sub numbers 1, 2 and 4 - so a fourth person is behind the closed band.\n\n## What a 38 could be\n\n1. **A dead numbering.** The record has met this before: the 1891 round heads **Clumber House** as *15 Clumber Road*, a numbering since gone out of use, and the house is on Park Drive. A terrace renumbered at some point would leave exactly this - one house still carrying the old number in an official book.\n2. **A different Park Terrace.** Nottingham has more than one, and an enumerator working to a boundary could write the number he was given.\n3. **A house divided.** The register visits Park Terrace twice - schedules 143 to 151, then 204 - and **four separate returns stand at 19 Park Terrace**. A subdivided house gets several numbers in practice.\n\n**Against the renumbering reading:** if the terrace had been renumbered, more than one house would show it, and the other fifteen on these pages are all in the 1-to-20 run.\n\n## What would settle it\n\nA street directory for Park Terrace in the 1930s, which would show whether any house carried a number above 20. Or the deeds of whatever stands between 13 and 15 today.\n\n**The position is provisional**, set between 13 and 15 because that is where the walk puts it.\n\nLinks: [[properties-carrying-two-house-numbers]], [[questions-for-a-walk-round-the-park]], [[park-drive-missing-numbers-5-8-and-10]].",
    "area": "Street numbering",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "huntingdon-drive-has-no-11-12-or-13",
@@ -549,7 +558,8 @@
    "detail": "Land Registry pairs a name with a number for houses whose number is not in the record: Beech Lodge, 8 Clumber Crescent South; The Mews House, 1, and Ashdown, 7, Clumber Road West; Hardwick View, 11 Hardwick Road; Lenton View, 11a, and Cedar Mews, 1b, Lenton Avenue; West Park Lodge, 36 Lenton Road, with East Park Lodge beside it; and Park View House, 58, and Carrick House, 64, The Ropewalk. Most will be later infill or subdivisions. From HM Land Registry's price paid data, which records a house name beside the number for every sale since 1995. These are the names in use now, or recently — they may not be the historic ones, and a house name here is a lead, not a record. Under the rule for this record, none becomes a property until a census household is found at it.",
    "priority": 9,
    "area": "Street numbering",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "newcastle-drive-rule-name-before-number",
@@ -567,7 +577,8 @@
    "title": "Park Drive has no 5 or 10 - 8 is Ashley House, and the 1881 page still writes a 10",
    "detail": "**Corrected 8 October 2026. Number 8 is settled and the question is now about 5 and 10.**\n\n**8 Park Drive is Ashley House.** A. Hagues settled it: there are no houses between 6 and Ashley House, so the *8 Park Drive* the 1939 enumerator writes at schedule 23 is the house the record names. #432 was created for it and is folded in and gone; the Howitt household of seven sits at **#238**.\n\n**Park Drive now reads 1, 2, 3, 4, 6, 7, 9, with Ashley House as 8 and Clumber House unnumbered.** 5 and 10 are the gaps.\n\n## 10 is the live one, and it holds fifteen people\n\nThe 1881 page heads schedule 185 **10 Park Drive** - **Richard J Dexter**, cigar manufacturer employing 200 girls, his wife, **nine sons**, two sisters and two servants. **A. Hagues has checked the run and says the walk works and there does not look to have been a number 10.** That household now has a question of its own: [[richard-j-dexter-and-the-number-ten-that-never-existed]].\n\n## 5 has nothing at all\n\nNo page in any round heads a household at 5 Park Drive, and no name is waiting for the number. It may simply never have been used - 1, 2, 3, 4, 6, 7, 9 is a sequence round a triangle rather than a run down one side, and such sequences skip.\n\n## What would settle either\n\nA street directory for Park Drive in the 1880s or the 1930s, giving the numbered run against the house names in one column. Failing that, the rate books.\n\nLinks: [[richard-j-dexter-and-the-number-ten-that-never-existed]], [[properties-carrying-two-house-numbers]], [[questions-for-a-walk-round-the-park]].",
    "area": "Street numbering",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "clumber-road-numbers-are-named-houses",
@@ -677,7 +688,8 @@
    "detail": "The record runs 1, 3, 5, 7, 9 on the odd side and 10, 12, 14 upward on the even, with no 8 and no 6. A walk of the crescent found no house numbered 8, but **an old door with 8 on it at the back of the house below**. So the number was in use and the house has since been absorbed, renumbered or demolished. Which house does that door belong to now, and was 8 a separate dwelling?",
    "priority": 130,
    "area": "Street numbering",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "dougal-map-unmatched-names",
@@ -795,7 +807,8 @@
    "detail": "The record holds Huntingdon Drive as numbers 1 to 10. Dougal de Havilland's map draws a second run on the north-east side, numbered up the other way: 11 Burnham House, 13 The Magpies, 14 The Cottage, 15 The Coach House, The Hunting Lodge, 17, and 18 The Round House, formerly The Spiral, with Birchwood beyond. Only The Cottage is in the record, and only because a census household carried its name. Are these separate houses with their own numbers, or flats and coach houses belonging to houses already held? If they are houses, the record is missing half a street.",
    "priority": 20,
    "area": "House names",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "ccn-16-and-18",
@@ -805,7 +818,8 @@
    "property_id": 411,
    "priority": 23,
    "area": "House names",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "what-is-clinton-house",
@@ -929,7 +943,8 @@
    "detail": "A walk of the crescent turned up Yorke Mews, with the thought that it belongs to North Road rather than Cavendish Crescent North — made from an extension of the big house on the corner. The map agrees: Dougal de Havilland draws \"Yorke Mews — The Lodge\" and \"formerly Yorke Cottage\" immediately beside Yorke House, 6 North Road (#229), with The Coach House just beyond. So it is a mews of Yorke House. What is not known is whether it was ever a separate address with people returned at it, which is what it would take to give it a record of its own. Yorke Cottage is the older name and may be the one to search.",
    "priority": 120,
    "area": "House names",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "spalding-or-walding-at-9-park-valley",
@@ -2496,7 +2511,8 @@
    "priority": 7,
    "title": "Dougal's map puts Castle Lodge at 2 Castle Grove, and the record has it at 7",
    "detail": "**The record holds *Castle Lodge, 7 Castle Grove*, with *The Lodge* as a former name. Dougal de Havilland's map gives Castle Lodge as **2 Castle Grove**. Castle Grove is a short street and two houses of the same name on it would be odd.**\n\n**The name has not been applied to number 2**, and nothing has been changed, because writing it in would leave the record with two Castle Lodges and no way to tell which a later source meant.\n\n**Three ways it could go.**\n\n- **The map is right and the record is wrong.** Number 7's name may have been taken from a source that did not give a number, and attached to the wrong house. Its former name, *The Lodge*, is generic enough to have been the whole of what was known.\n- **The record is right and the map has the number out by a house.** The other twenty-five names on the same list all landed cleanly, which argues the map is careful - but a lodge is exactly the kind of building to be numbered loosely.\n- **Both are right at different dates.** A name can move, and the record already holds one case of it: *Parkdale* is the name of one Peveril Drive house and the former name of another.\n\n**What would settle it:** a directory of the late nineteenth or early twentieth century listing Castle Grove by number, or a census cover sheet for either house naming it.",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "margaret-stote-glen-bott",
@@ -2667,7 +2683,8 @@
    "priority": 5,
    "title": "118 house names on the map have no property in the record, and seven of them are Coach Houses",
    "detail": "**A. Hagues read the names off the site's own map and asked whether the record had them all.** One Overpass query over the whole estate - rather than reading labels off pictures - gives **217 named buildings** on the record's streets. **99 are held. 118 are not.** They are in `data/map_osm_unmatched.json` with street, number, postcode and position for each.\n\n**The matcher had to be fixed first.** It looked at `name`, `house_name` and `prev_house_name` and not at `address` - and many properties carry their name only in the address, *Castle Bank, 5 Lenton Road*, with `house_name` empty. It also had to allow a trailing s, because Albert Villa and Albert Villas are one house. That alone moved thirteen names out of the leads.\n\n## Two that a census page already names\n\n| | |\n|---|---|\n| **Bancroft, Barrack Lane** | **1939, schedule 24, two people - unfiled.** The household is in the record, the name is on the ground, and there is no property. This one can be made. |\n| **Clumber Lodge** | **1901, schedule 139, one person - unfiled**, written *Clumber Lodge, Lenton Avenue*. OpenStreetMap puts Clumber Lodge on **Maxtoke Road**, which is the corner the two streets make. |\n\n## Seven Coach Houses\n\n**Cavendish Road East, Clumber Road West** (Holly Lodge's), **Fiennes Crescent, 15 Huntingdon Drive, Ogle Drive, Tennis Drive and Tunnel Road.** Each is the Gartree Lodge kind of building - an outbuilding sold as a house - and each is worth checking for a household filed at the big house it belonged to. [[lr-coach-houses]] had five of these from Land Registry; this adds Fiennes Crescent, Ogle Drive and Tennis Drive, and takes away North Road, which is in West Bridgford.\n\n## The lodges, mews and stables\n\n**East Park Lodge** and **West Park Lodge** (Lenton Road), **Edale Lodge** (Clumber Road East), **Tunnel Lodge**, **Kirkstall Lodge** (3 Clumber Crescent South), **Clumber Lodge**, **South Lodge** (2a South Road), **Ashley Lodge** - and **Park Stables**, **Cedar Mews** (1a and 1b Lenton Avenue), **Hamilton Mews**, **Yorke Mews**, **Ashley Mews** (43 Cavendish Road East), **Garden Mews**, **The Gazebo**.\n\n## Named houses\n\n**Alexander House** · **Annexe** (4 CCN) · **Courtyard House** · **Cavendish Place** · **The Studio** (13 CCS) · **Sutherland House** (25 CCS) · **Kingston House** (23 Cavendish Road East) · **Cavendish Cottage** (25C) · **Orchard House** (3a Clumber Crescent South) · **Park Hall** (5) · **Willoughby House** · **Netherhouse** (1A Clumber Road East) · **Westwood House** (3) · **Hardwick View** (11 Hardwick Road) · **The Corner House** and **Holles House** (5 Holles Crescent) · **Birchwood**, **Swan House**, **The Hunting House**, **Burnham House** (11), **The Magpies** (13) - all Huntingdon Drive · **The Propatulum** and **Lenton View** (11a) and **Graylands** (31), Lenton Avenue · **The Point** (40) and **Fothergill House** (7), Lenton Road · **Glendower** and **The Priest's House** (39), Newcastle Drive · **Terrace House** and **Iveston House** (4), Park Ravine · **Abbot House**, **Whitehouse**, **The Studio Terrace** (14), **The Garden House** (14A), **Richmond House** (14D), **Oakhill House** (32A), Park Terrace · **Sun Drive** (12 Park Valley) · **Reveille** · **Khera House** (20 Pelham Crescent) · **Castle Rock** and **Castleview Flat**, Peveril Drive · **Belwood**, **Greenmantle**, **2 Clinton Mews**, Tattershall Drive · **Fantasque House**, **The Rubicon**, **The Art House** (7), Tennis Drive · **Cavendish Court** and **The Blue House**, Tunnel Road · **Corner House**, **Park View**, **The Atrium**, **Regis House** (2a), Western Terrace · **Evergreen**, **Idle Rocks**, **Maredo**, **Tree Tops**, Clare Valley - the last three dated 1967-8 by Dougal's map.\n\n**Burnham House and The Magpies are the find.** [[huntingdon-drive-past-ten]] asked whether the second run on Huntingdon Drive is separate houses or flats of houses already held. **The map numbers them 11 and 13**, which Dougal's drawing did not.\n\n## Modern blocks and conversions\n\nGladstone Court, Parkdale Court, Hamilton Court, Maria Court, Westcliffe Court, The Park Octagon, Broadgate, The Courtyard, Saco House, Ropewalk House, Park Heights, Regency House East and West and the four numbered Regency Houses, The Old Pumphouse, Park View House, The Town House, Oak Hill House, Suite 2. The Ropewalk is largely offices now and its share of this list is mostly firms' premises.\n\n**The rule stands:** a name in use now is a lead, not a record. None becomes a property until a census household is found at it - which is why Bancroft, with a household already in hand, is the one to do first.\n\nLinks: [[osm-house-names-are-a-source-the-record-has-not-mined]], [[two-houses-can-share-a-name-in-different-eras]], [[lr-coach-houses]], [[huntingdon-drive-past-ten]], [[dougal-map-unmatched-names]].",
-   "status": "open"
+   "status": "open",
+   "on_foot": true
   },
   {
    "slug": "barrack-yard-is-the-pelham-cottages-and-two-families-prove-it",
@@ -2721,7 +2738,8 @@
    "priority": 12,
    "status": "open",
    "title": "Seventy-four standing houses have no photograph, and they come in runs",
-   "detail": "**351 of the record's properties carry at least one photograph. Seventy-four standing houses carry none** - and they are not scattered, they run in sequences, because whoever photographed the estate worked street by street and stopped.\n\nThe whole odd side of **Hope Drive** is one. Fourteen houses on **Lenton Avenue** is another: 14, 12, 10, 8, 6 and down, about a kilometre end to end.\n\n**That is what makes it a walk rather than a list.** The Park Walk now has a *Take some photographs* route that puts the unphotographed houses in the order you would pass them and lets you send one straight from the pavement. See [[the-park-walk]].\n\n**A photograph from the street is enough.** It is not architectural record photography; it is so that somebody reading about 8 Lenton Avenue in 1891 can see the building it happened in."
+   "detail": "**351 of the record's properties carry at least one photograph. Seventy-four standing houses carry none** - and they are not scattered, they run in sequences, because whoever photographed the estate worked street by street and stopped.\n\nThe whole odd side of **Hope Drive** is one. Fourteen houses on **Lenton Avenue** is another: 14, 12, 10, 8, 6 and down, about a kilometre end to end.\n\n**That is what makes it a walk rather than a list.** The Park Walk now has a *Take some photographs* route that puts the unphotographed houses in the order you would pass them and lets you send one straight from the pavement. See [[the-park-walk]].\n\n**A photograph from the street is enough.** It is not architectural record photography; it is so that somebody reading about 8 Lenton Avenue in 1891 can see the building it happened in.",
+   "on_foot": true
   },
   {
    "slug": "not-one-post-box-in-the-park-has-been-recorded",
@@ -2730,7 +2748,118 @@
    "priority": 14,
    "status": "open",
    "title": "Six post boxes are drawn on Dougal's map and nobody has read one",
-   "detail": "**Every post box carries the cypher of the monarch reigning when it was cast.** A wall box with **VR** on it has stood in that wall since before 1901; a **GVIR** since before 1952. They are the only dated objects in these streets that anybody can read without a key.\n\n**All six are drawn on Dougal de Havilland's map**, which A. Hagues read off on 9 October 2026:\n\n| | |\n|---|---|\n| outside **9 Lenton Road** | placed |\n| outside **27 Lenton Road** (Lenton House) | placed |\n| **Newcastle Circus**, opposite Burton House | placed on Burton House; the box is across the road |\n| **22a The Ropewalk** | placed on number 22; the record has no 22a |\n| **opposite Barrack Lane** | placed at the Derby Road end; which end is not certain from the map |\n| **68 The Ropewalk** | placed on **Tower House**, opposite - the record's Ropewalk stops at 56, so there is no house at 68 to hang a point on |\n\n**The map shows where a box is, not what is cast into it.** So all six go in with no cypher, and the job is the good half: go and read them. Every position is the position of the *house*, not of the box, which is a few metres out by definition and will be replaced by the first person to stand in front of one.\n\nThe gas lamps are done - [Park Lamps](https://parklamps.mczhang.net) has every one, built by two residents. **Nobody has done the post boxes.**\n\n## What is being collected\n\n| | |\n|---|---|\n| **the cypher** | VR, EVIIR, GR, EVIIIR, GVIR, EIIR, CIIIR, or none |\n| **the kind** | pillar, wall, lamp or Ludlow |\n| **the founder** | the name cast into it, which dates and places the casting |\n| **where exactly** | in the wall by the gate of which house |\n| **a photograph** | |\n\n**An EVIIIR would be the find.** Edward VIII reigned for eleven months and only about 160 boxes in the whole country carry his cypher. The odds are against one being here, but nobody has looked.\n\n**The walk hunts them**, because there is no list to follow: a route of points a long way apart across the estate, each standing for a stretch of street rather than for a thing, with a recorder on every card. See [[the-park-walk]].\n\n## And then the documentary half\n\nOnce the boxes are on the map, when they came is a question for paper: the Post Office's own records, the estate's papers, and the OS 25-inch sheets, which mark some street furniture. Links: [[park-lamps-and-when-the-gaslights-came]]."
+   "detail": "**Every post box carries the cypher of the monarch reigning when it was cast.** A wall box with **VR** on it has stood in that wall since before 1901; a **GVIR** since before 1952. They are the only dated objects in these streets that anybody can read without a key.\n\n**All six are drawn on Dougal de Havilland's map**, which A. Hagues read off on 9 October 2026:\n\n| | |\n|---|---|\n| outside **9 Lenton Road** | placed |\n| outside **27 Lenton Road** (Lenton House) | placed |\n| **Newcastle Circus**, opposite Burton House | placed on Burton House; the box is across the road |\n| **22a The Ropewalk** | placed on number 22; the record has no 22a |\n| **opposite Barrack Lane** | placed at the Derby Road end; which end is not certain from the map |\n| **68 The Ropewalk** | placed on **Tower House**, opposite - the record's Ropewalk stops at 56, so there is no house at 68 to hang a point on |\n\n**The map shows where a box is, not what is cast into it.** So all six go in with no cypher, and the job is the good half: go and read them. Every position is the position of the *house*, not of the box, which is a few metres out by definition and will be replaced by the first person to stand in front of one.\n\nThe gas lamps are done - [Park Lamps](https://parklamps.mczhang.net) has every one, built by two residents. **Nobody has done the post boxes.**\n\n## What is being collected\n\n| | |\n|---|---|\n| **the cypher** | VR, EVIIR, GR, EVIIIR, GVIR, EIIR, CIIIR, or none |\n| **the kind** | pillar, wall, lamp or Ludlow |\n| **the founder** | the name cast into it, which dates and places the casting |\n| **where exactly** | in the wall by the gate of which house |\n| **a photograph** | |\n\n**An EVIIIR would be the find.** Edward VIII reigned for eleven months and only about 160 boxes in the whole country carry his cypher. The odds are against one being here, but nobody has looked.\n\n**The walk hunts them**, because there is no list to follow: a route of points a long way apart across the estate, each standing for a stretch of street rather than for a thing, with a recorder on every card. See [[the-park-walk]].\n\n## And then the documentary half\n\nOnce the boxes are on the map, when they came is a question for paper: the Post Office's own records, the estate's papers, and the OS 25-inch sheets, which mark some street furniture. Links: [[park-lamps-and-when-the-gaslights-came]].",
+   "on_foot": true
+  },
+  {
+   "slug": "the-small-building-between-4-and-2-ropewalk",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 430,
+   "title": "Does the small building between 4 and 2 The Ropewalk have a number or a name now?",
+   "detail": "It held **William Hurst, solicitor**, and three others in 1861. The page gives it no number and the record has none. **It still stands.** Is there a number or a name on it today — and is it a coach house, which is what it looks like?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "is-2-the-ropewalk-visibly-two-houses",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 313,
+   "title": "Is 2 The Ropewalk visibly two houses?",
+   "detail": "The listing calls it *formerly 2no. townhouses c1835-40*, and the 1861 enumerator walks it as **2 and 2a with ten people in each**. From the street: one front door or two?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "thirty-and-thirty-two-ropewalk-doors",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 327,
+   "title": "Do 30, 32 and 32a The Ropewalk have separate front doors?",
+   "detail": "They hold a household in 1861 and nothing in any other round, which is odd for three houses. **Count the doors.**\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "four-clinton-terrace-one-dwelling-or-two",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 74,
+   "title": "Is 4 Clinton Terrace one dwelling or two?",
+   "detail": "The Sampsons' 1921 schedule is written over — 129 on top of what looks like 133 — and the Essexes are already at 133. **If the house is two dwellings the difficulty disappears.** Is there one front door or two?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "clinton-terrace-door-numbers",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 71,
+   "title": "Do the Clinton Terrace doors run one-to-one with the odd Derby Road numbers?",
+   "detail": "The record says 1 to 7 Clinton Terrace are 127 to 139 Derby Road, and a servant in 1921 confirms 5 = 135 by writing both. **Walk the row and read the doors.**\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "what-stands-on-sunnysides-ground",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 390,
+   "title": "What stands on Sunnyside's ground now?",
+   "detail": "Sunnyside was still there and still named on the 1953 Ordnance Survey, so it came down after 1955. **What is on the plot today?**\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "is-there-anything-on-sun-drive-but-sunnyside",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 390,
+   "title": "Is there anything on Sun Drive but Sunnyside?",
+   "detail": "A. Hagues gives Sun Drive as a real road with **only one property on it**, which is why the record does not hold it as a street. **Worth confirming there is nothing else along it.**\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "how-many-doors-has-cliff-house",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 196,
+   "title": "How many front doors has Cliff House?",
+   "detail": "The record carries it as 32, 33, 33a and 33b in one property, with **52 people across four rounds**. Are there four doors, or fewer?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "twenty-two-and-twenty-four-ccn-doors",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 36,
+   "title": "Are 22 and 24 Cavendish Crescent North one house or two?",
+   "detail": "Two numbers in one record, two rounds of people, and no evidence either way. **Count the doors.**\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
+  },
+  {
+   "slug": "does-the-split-show-at-16-ccn",
+   "area": "On foot",
+   "kind": "address",
+   "priority": 20,
+   "status": "open",
+   "on_foot": true,
+   "property_id": 31,
+   "title": "Does the split show from the street at 16 and 16a Cavendish Crescent North?",
+   "detail": "A. Hagues confirms it is **one house of about 1885 now split into two households**. Does that show from the pavement — two doors, two bells, two numbers?\n\nOne of the things the record cannot settle from paper. From [[questions-for-a-walk-round-the-park]]."
   }
  ]
 }

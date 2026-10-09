@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photographs from the walk — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --red:#a3341f; --amber:#8a5a12; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:1060px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 6px; max-width:74ch; }
+  .lede strong { color:var(--ink); }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint);
+    margin:14px 0 12px; }
+  .tabs { display:flex; gap:6px; margin:4px 0 16px; flex-wrap:wrap; }
+  .tab { border:1px solid var(--rule); background:#fff; border-radius:999px; padding:5px 13px;
+    font-size:.8rem; cursor:pointer; color:var(--soft); font-family:inherit; }
+  .tab.on { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(248px,1fr)); gap:14px; }
+  .ph { background:var(--card); border:1px solid var(--rule); border-radius:9px; overflow:hidden;
+    display:flex; flex-direction:column; }
+  .ph.again { border-color:#d9b98a; background:#fffdf5; }
+  .ph img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:#eee6d6;
+    cursor:zoom-in; }
+  .ph .b { padding:9px 11px 11px; flex:1; display:flex; flex-direction:column; }
+  .ph h3 { margin:0; font-size:.93rem; font-weight:600; }
+  .ph h3 a { color:var(--ink); text-decoration:none; }
+  .ph .meta { font-size:.74rem; color:var(--faint); margin-top:2px; }
+  .ph .verdict { font-size:.78rem; margin-top:6px; color:var(--amber); }
+  .ph .verdict.ok { color:var(--green); }
+  .acts { margin-top:auto; padding-top:9px; display:flex; gap:6px; flex-wrap:wrap; }
+  button { font-family:inherit; font-size:.76rem; border-radius:5px; padding:5px 10px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button:hover { border-color:#5a3a1a; }
+  button.good { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+  button.again { color:var(--amber); border-color:#d9b98a; }
+  button:disabled { opacity:.45; cursor:default; }
+  .empty { color:var(--faint); font-style:italic; padding:34px 0; }
+  .note { margin-top:22px; font-size:.82rem; color:var(--faint); max-width:72ch; }
+
+  .big { position:fixed; inset:0; background:rgba(20,16,8,.92); z-index:900; display:none;
+    align-items:center; justify-content:center; padding:24px; }
+  .big.on { display:flex; }
+  .big img { max-width:100%; max-height:100%; border-radius:6px; }
+  .big .x { position:absolute; top:14px; right:20px; color:#f2ecd8; font-size:1.6rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Photographs from the walk</h2>
+  <p class="lede">What people have sent in standing in front of the houses. If one is no good,
+    <strong>ask for a better one</strong> — the house goes back on the walk's list and
+    <strong>the photograph stays exactly where it is</strong>. Nobody who walked out in the rain to
+    photograph a wall should find their picture gone.</p>
+  <div class="bar" id="bar">Loading…</div>
+  <div class="tabs" id="tabs"></div>
+  <div id="grid" class="grid"></div>
+  <p class="note">A house with no photograph at all appears on the walk as <i>Take some
+    photographs</i>. A house whose only pictures came in with the original import appears as
+    <i>Bring them up to date</i>. Asking for a better one puts it back into the second of those.</p>
+</div>
+<div class="big" id="big"><span class="x" onclick="shut()">✕</span><img id="bigImg" alt=""></div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const when = t => t ? new Date(t).toLocaleDateString('en-GB',
+  { day:'numeric', month:'short', year:'numeric' }) : '';
+
+let PHOTOS = [], filter = 'all';
+
+async function load() {
+  const r = await fetch('/api/walk/photos', { credentials:'same-origin' });
+  if (r.status === 401 || r.status === 403) {
+    document.getElementById('bar').textContent = '';
+    document.getElementById('grid').innerHTML =
+      '<p class="empty">Sign in as admin to see these.</p>';
+    return;
+  }
+  const d = await r.json();
+  PHOTOS = d.photos || [];
+  draw();
+}
+
+function draw() {
+  const again = PHOTOS.filter(p => p.wantsBetter).length;
+  document.getElementById('bar').innerHTML =
+    `${PHOTOS.length} sent in · ${again} asked for again`;
+  document.getElementById('tabs').innerHTML = [
+    ['all', 'Everything', PHOTOS.length],
+    ['new', 'Not looked at yet', PHOTOS.filter(p => !p.wantsBetter && !p.note).length],
+    ['again', 'Asked for again', again]
+  ].map(([k, l, n]) =>
+    `<button class="tab${filter === k ? ' on' : ''}" data-k="${k}">${l} (${n})</button>`).join('');
+  document.querySelectorAll('.tab').forEach(t => t.onclick = () => { filter = t.dataset.k; draw(); });
+
+  const list = PHOTOS.filter(p =>
+    filter === 'again' ? p.wantsBetter :
+    filter === 'new'   ? (!p.wantsBetter && !p.note) : true);
+
+  document.getElementById('grid').innerHTML = list.length ? list.map(p => `
+    <div class="ph${p.wantsBetter ? ' again' : ''}">
+      <img src="${esc(p.url)}" alt="${esc(p.property)}" loading="lazy"
+           onclick="zoom('${esc(p.url)}')">
+      <div class="b">
+        <h3><a href="/?property=${p.property_id}">${esc(p.property)}</a></h3>
+        <div class="meta">${esc(when(p.addedAt))}${p.by ? ' · ' + esc(p.by) : ''}</div>
+        ${p.wantsBetter
+          ? `<div class="verdict">Back on the list for a better one${p.note ? ' — ' + esc(p.note) : ''}</div>`
+          : (p.note ? `<div class="verdict ok">Kept — ${esc(p.note)}</div>` : '')}
+        <div class="acts">
+          ${p.wantsBetter
+            ? `<button class="good" data-pid="${p.property_id}" data-i="${p.index}" data-w="0">That one will do</button>`
+            : `<button class="again" data-pid="${p.property_id}" data-i="${p.index}" data-w="1">Ask for a better one</button>`}
+          <a class="btn" href="/?property=${p.property_id}"><button>The house</button></a>
+        </div>
+      </div>
+    </div>`).join('') : '<p class="empty">Nothing here.</p>';
+
+  document.querySelectorAll('[data-pid]').forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    const wantsBetter = b.dataset.w === '1';
+    let note = null;
+    if (wantsBetter) {
+      note = prompt('What is wrong with it? (optional — nobody but you sees this)') || null;
+    }
+    try {
+      const r = await fetch('/api/walk/photos/verdict', {
+        method:'POST', credentials:'same-origin',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ property_id:+b.dataset.pid, index:+b.dataset.i, wantsBetter, note })
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'Would not save');
+      const p = PHOTOS.find(x => x.property_id === +b.dataset.pid && x.index === +b.dataset.i);
+      if (p) { p.wantsBetter = wantsBetter; p.note = note; }
+      draw();
+    } catch (e) { alert(e.message); b.disabled = false; }
+  });
+}
+
+function zoom(u) { document.getElementById('bigImg').src = u;
+  document.getElementById('big').classList.add('on'); }
+function shut() { document.getElementById('big').classList.remove('on'); }
+document.getElementById('big').onclick = e => { if (e.target.id === 'big') shut(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
+
+load().catch(e => { document.getElementById('grid').innerHTML =
+  '<p class="empty">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>

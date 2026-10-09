@@ -59,6 +59,7 @@
     ['/admin', '🛠', 'Admin tools'],
     ['/admin/users', '👤', 'Users'],
     ['/admin/birthplaces', '🌍', 'Birthplaces'],
+    ['/photo-review', '📷', 'Photos from the walk'],
   ];
 
   // The page you are on: an exact match, else the longest link it sits under
