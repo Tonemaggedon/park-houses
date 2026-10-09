@@ -16,6 +16,13 @@
    "note": "It answered Cheshire County, New Hampshire."
   },
   {
+   "place_text": "Ashton",
+   "lat": 53.48654,
+   "lng": -2.098691,
+   "label": "Ashton-under-Lyne, Greater Manchester",
+   "note": "A. Hagues reads it as Ashton-under-Lyne. The geocoder answered Ashton, Osceola County, Iowa."
+  },
+  {
    "place_text": "Ashton-under-Lyne, Lancashire",
    "lat": 53.4865,
    "lng": -2.0987,
@@ -36,6 +43,13 @@
    "note": "A real place the geocoder could not find. In Northamptonshire when the census was taken, Cambridgeshire since 1965."
   },
   {
+   "place_text": "Baston, Market Deeping, Lincolnshire",
+   "lat": 52.67537,
+   "lng": -0.31747,
+   "label": "Market Deeping, Lincolnshire",
+   "note": "A. Hagues reads it as Market Deeping. The page names Baston with it, a village three miles off, but the place given is Market Deeping."
+  },
+  {
    "place_text": "Bedford",
    "lat": 52.135,
    "lng": -0.4667,
@@ -48,6 +62,13 @@
    "lng": 4.4699,
    "label": "Belgium",
    "note": "Born in Belgium but a British subject. Positioned on Belgium."
+  },
+  {
+   "place_text": "Benbrook near Market Rasen, Lincolnshire",
+   "lat": 53.418883,
+   "lng": -0.163625,
+   "label": "Binbrook, Lincolnshire",
+   "note": "Benbrook is Binbrook misheard or miswritten. It is the village near Market Rasen the page means."
   },
   {
    "place_text": "Beverley, Yorkshire",
@@ -75,6 +96,13 @@
    "lng": -1.2458,
    "label": "Bramcote, Nottinghamshire",
    "note": "The 1921 schedule gives Derbyshire and the geocoder returns nothing for that pairing. Positioned on Bramcote by Beeston, which the record's other seventeen rows give as Nottinghamshire - the village sits close enough to the border for either county to be written."
+  },
+  {
+   "place_text": "Breaston Lodge, Leicestershire",
+   "lat": 52.89808,
+   "lng": -1.31895,
+   "label": "Breaston, Derbyshire",
+   "note": "Breaston is in Derbyshire, not Leicestershire — close to the county line, which is how the enumerator came to put it on the wrong side."
   },
   {
    "place_text": "Brighton, Sussex",
@@ -237,6 +265,13 @@
    "note": "It answered Durham, North Carolina."
   },
   {
+   "place_text": "East Leake near Loughborough, Nottinghamshire",
+   "lat": 52.829887,
+   "lng": -1.180083,
+   "label": "East Leake, Nottinghamshire",
+   "note": "Loughborough is the nearest town and is in Leicestershire; East Leake itself is Nottinghamshire, as the page says."
+  },
+  {
    "place_text": "Ely, Cambridgeshire",
    "lat": 52.399,
    "lng": 0.262,
@@ -343,6 +378,13 @@
    "lat": 52.979,
    "lng": -0.303,
    "label": "Heckington, Lincolnshire"
+  },
+  {
+   "place_text": "Hemmingham, Norfolk",
+   "lat": 52.746788,
+   "lng": 1.2448496,
+   "label": "Hevingham, Norfolk",
+   "note": "Hemmingham is Hevingham misread — the v taken for an m."
   },
   {
    "place_text": "Highgate, Middlesex",
@@ -514,6 +556,13 @@
    "label": "Much Wenlock, Shropshire"
   },
   {
+   "place_text": "Mumby Chapel, Lincolnshire",
+   "lat": 53.228557,
+   "lng": 0.3310343,
+   "label": "Chapel St Leonards, Lincolnshire",
+   "note": "Mumby Chapel is the old name. The village has been Chapel St Leonards since the chapel of ease at Mumby gave the settlement its own name."
+  },
+  {
    "place_text": "New Lenton, Nottingham",
    "lat": 52.9468,
    "lng": -1.1768,
@@ -555,6 +604,13 @@
    "note": "It answered Surrey Drive, Connecticut. Newington was in Surrey when the census was taken and is in Southwark now."
   },
   {
+   "place_text": "Newton",
+   "lat": 52.3985,
+   "lng": -1.222015,
+   "label": "Newton, Warwickshire",
+   "note": "A. Hagues reads it as Newton, Warwickshire — the village by Rugby. The geocoder answered Newton County, Texas."
+  },
+  {
    "place_text": "Normanton on Soar, Leicestershire",
    "lat": 52.7889,
    "lng": -1.2725,
@@ -572,6 +628,13 @@
    "lat": 53.2,
    "lng": -1.007,
    "label": "Ollerton, Nottinghamshire"
+  },
+  {
+   "place_text": "Paston near Peterborough, Northamptonshire",
+   "lat": 52.606706,
+   "lng": -0.244394,
+   "label": "Paston, Peterborough",
+   "note": "Paston is a suburb of Peterborough. Peterborough was in Northamptonshire when the page was written and is in Cambridgeshire now, which is why the county looks wrong."
   },
   {
    "place_text": "Penrith, Cumberland",
@@ -598,6 +661,13 @@
    "lat": 53.289,
    "lng": -2.15,
    "label": "Prestbury, Cheshire"
+  },
+  {
+   "place_text": "Radburn, Wales",
+   "lat": 52.240703,
+   "lng": -3.152062,
+   "label": "Radnor, Radnorshire (Powys)",
+   "note": "Radburn is Radnor misheard. Radnorshire is a historic Welsh county, now part of Powys; the point is New Radnor. The geocoder answered Radburn Road in Sydney."
   },
   {
    "place_text": "Rutlandshire",
@@ -633,6 +703,13 @@
    "lng": -0.13,
    "label": "Somers Town, London",
    "note": "The district behind Euston, not a place the geocoder knows by that name."
+  },
+  {
+   "place_text": "South, Lincolnshire",
+   "lat": 53.367516,
+   "lng": -0.002238,
+   "label": "Louth, Lincolnshire",
+   "note": "South is Louth misread. The geocoder answered Lincolnshire, South Carolina — it had taken the county for the town."
   },
   {
    "place_text": "St James, Middlesex",

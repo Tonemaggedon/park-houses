@@ -8965,11 +8965,14 @@ async function seedGeocodeManual() {
          ON CONFLICT (place_text) DO UPDATE
            SET lat=EXCLUDED.lat, lng=EXCLUDED.lng, formatted_address=EXCLUDED.formatted_address,
                status='manual', corrected_from=EXCLUDED.corrected_from, queried_at=NOW()
-         WHERE geocode_cache.status NOT IN ('found','manual')
-            OR (geocode_cache.corrected_from = EXCLUDED.corrected_from
-                AND (geocode_cache.lat IS DISTINCT FROM EXCLUDED.lat
-                     OR geocode_cache.lng IS DISTINCT FROM EXCLUDED.lng
-                     OR geocode_cache.formatted_address IS DISTINCT FROM EXCLUDED.formatted_address))
+         -- A hand correction beats a geocoder's answer, including a confident
+         -- wrong one. "Ashton" was found in Osceola County, Iowa and the file
+         -- could not displace it, because status 'found' was being treated as
+         -- settled. A person who has read the page outranks a search box.
+         WHERE geocode_cache.status <> 'manual'
+            OR geocode_cache.lat IS DISTINCT FROM EXCLUDED.lat
+            OR geocode_cache.lng IS DISTINCT FROM EXCLUDED.lng
+            OR geocode_cache.formatted_address IS DISTINCT FROM EXCLUDED.formatted_address
          RETURNING place_text`,
         [p.place_text.trim(), lat, lng, p.label || null, SRC]);
       if (r.rows.length) placed++;
