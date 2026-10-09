@@ -7076,5 +7076,22 @@
   "history": "**Named by Dougal de Havilland's map of the Park**, which has **Sam Roper** living here about 1930. The record had never held the house under either its name or its number.\n\nIts absence had been doing damage. Peveril Drive stood at **nine 1939 households with no house against eight houses with no household**, which cannot close - and a ninth house makes the two sides equal. Which household belongs here is not yet known; the candidates are schedules 118, 120, 121, 122, 124, 125, 126, 127 and 129, all of which the Register writes as Peveril Drive with no number.\n\n**It was formerly Rock House**, on A. Hagues' word - so the house has carried both names, and the record should expect either in a directory or a census cover. **Not to be confused with Rock House, 37 Lenton Road**, which is a different building the record already holds; nor with Rockville and Rock House on Barrack Lane, both of which came into the record from the 1939 Register earlier this round.",
   "sources": [],
   "prev_house_name": "Rock House"
+ },
+ {
+  "id": 455,
+  "address": "141 Derby Road (Derby Terrace)",
+  "name": "",
+  "street": "Derby Road",
+  "no": "141",
+  "lat": 52.95506,
+  "lng": -1.15582,
+  "census_only": true,
+  "listed": "No",
+  "desc": "",
+  "history": "**A house the record never had.** The 1881 enumerator writes *141 Derby Terrace* outright and puts eleven people in it - King, Parker, Underwood and Wride - between 143 and 145, which the record keeps as Edgemont House and 9 Derby Terrace.\n\n**It is gone by 1921.** That year the enumerator takes Hampden House at schedule 51 and Edgemont at 52, one after the other with nothing between them, and 1939 does the same at 196 and 197. So the house stood in 1871 and 1881 and had been pulled down or absorbed into a neighbour within forty years.\n\n**Found because A. Hagues put the 1880s survey under the modern map** and saw more buildings on the terrace than the record had markers for.",
+  "sources": {
+   "existence": "1881 census, schedule 66, headed \"141 Derby Terrace\" on the page.",
+   "position": "**A placeholder, and known to be wrong.** It is Edgemont House's point, because 141 should sit beside 143 - but the record's Derby Terrace positions are seeded rather than surveyed and disagree with each other by hundreds of metres, so there was nothing honest to interpolate between. The whole row wants placing."
+  }
  }
 ]
