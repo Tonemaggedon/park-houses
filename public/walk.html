@@ -91,6 +91,7 @@
   .tag.lost{background:#f0dcd3;color:#8b3d1c}
   .tag.architect{background:#dde5ee;color:#27486b}
   .tag.household{background:#e8e2ef;color:#4a3668}
+  .tag.round{background:#f3e0cc;color:#7c4414}
   #sheet h3{margin:9px 0 3px;font-size:1.26rem;font-weight:400;line-height:1.22}
   .addr{color:var(--soft);font-size:.84rem}
   .body{margin-top:11px;font-size:.98rem;color:#33402a}
@@ -110,6 +111,13 @@
   .err{color:#9b3318;font-size:.84rem;margin-top:8px}
   .deeper{margin-top:13px;font-size:.84rem}
   .deeper a{color:#2a5a8a}
+  .sched{float:right;font-family:ui-monospace,Menlo,monospace;font-size:.72rem;color:var(--faint);
+    margin-top:4px}
+  .hh{margin-top:12px;border-top:1px solid #e4dcc4}
+  .pers{padding:8px 0;border-bottom:1px solid #ece5d2;font-size:.95rem;color:#33402a}
+  .pers b{font-weight:600;color:var(--ink)}
+  .pers .rel{color:var(--faint);font-size:.8rem;margin-left:5px}
+  .pers .trade{display:block;font-size:.82rem;color:var(--soft);font-style:italic}
 
   /* ── a passing remark, shown without stopping you ───────────────────────── */
   #toast{position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));
@@ -124,6 +132,7 @@
   .pin.question{background:#e8c05f}.pin.notable{background:#7fa862}
   .pin.lost{background:#c0603a}.pin.architect{background:#6d8fb8}
   .pin.household{background:#9b86bd}
+  .pin.round{background:#d8893f}
   .pin.done{background:#54604a;opacity:.6}
   .me{width:16px;height:16px;border-radius:50%;background:#6fd0ff;
     box-shadow:0 0 0 4px rgba(111,208,255,.25),0 0 14px rgba(111,208,255,.7)}
@@ -137,6 +146,8 @@
   <div class="hudbar">
     <div class="next"><b id="hudLabel">Next</b><span id="hudNext">—</span></div>
     <div class="dist" id="hudDist">—</div>
+    <span id="awake" title="The screen stays on while you walk"
+      style="opacity:.3;font-size:.9rem">&#9728;</span>
     <button id="btnList">Route</button>
     <button id="btnEnd">End</button>
   </div>
@@ -162,6 +173,12 @@
     <div class="step">
       <h2>What are you in the mood for?</h2>
       <div class="chips" id="themeChips"></div>
+      <div id="roundPick" hidden>
+        <p class="mini" style="margin:13px 0 9px">On an evening in each of these years a man walked
+          The Park with a book, door by door, doubling back where the houses made him. Pick his
+          round and you walk it in his order, with each household as he met it.</p>
+        <div class="chips" id="roundChips"></div>
+      </div>
     </div>
 
     <button class="go" id="btnStart">Plot me a walk</button>
@@ -201,6 +218,7 @@ const LENGTHS = [
 const STOP_COUNT = { 15: 7, 30: 13, 60: 22, 0: 40 };
 const THEMES = [
   { k: 'mixed',     label: 'A bit of everything', sub: 'the default' },
+  { k: 'round',     label: "An enumerator's round", sub: 'walk it as he walked it' },
   { k: 'question',  label: 'Be useful',           sub: 'questions only I can answer' },
   { k: 'notable',   label: 'Who lived here',      sub: 'the notable residents' },
   { k: 'architect', label: 'Who built it',        sub: 'Hine, Fothergill and the rest' },
@@ -215,6 +233,7 @@ const remember = id => { seen.add(id); try {
 
 let STOPS = [], route = [], at = 0, map, meMarker, markers = {}, line, watchId = null;
 let routeMetres = 0;
+let ROUNDS = [], chosenRound = null, ROUND_STOPS = [], wakeLock = null;
 let chosenLen = 30, chosenTheme = 'mixed', lastPos = null, arrived = new Set();
 const ARRIVE_M = 32;        // close enough to be outside the house
 const WALK_M_PER_MIN = 72;  // an unhurried pace, allowing for stopping and looking
@@ -240,6 +259,18 @@ function chips(el, list, cur, pick) {
 function drawIntro() {
   chips(document.getElementById('lenChips'), LENGTHS, chosenLen, v => { chosenLen = v; drawIntro(); });
   chips(document.getElementById('themeChips'), THEMES, chosenTheme, v => { chosenTheme = v; drawIntro(); });
+  const box = document.getElementById('roundPick');
+  box.hidden = chosenTheme !== 'round';
+  if (chosenTheme === 'round') {
+    if (!ROUNDS.length) { document.getElementById('roundChips').innerHTML =
+      '<span class="mini">Looking for the books…</span>'; return; }
+    if (!chosenRound) chosenRound = ROUNDS[0].year + '|' + ROUNDS[0].book;
+    chips(document.getElementById('roundChips'),
+      ROUNDS.map(r => ({ k: r.year + '|' + r.book,
+        label: String(r.year),
+        sub: `${r.houses} doors${r.book === 'unmarked' ? '' : ' · ' + r.book}` })),
+      chosenRound, v => { chosenRound = v; ROUND_STOPS = []; drawIntro(); });
+  }
 }
 function drawTally() {
   const c = STOPS.reduce((a, s) => (a[s.kind] = (a[s.kind]||0) + 1, a), {});
@@ -257,6 +288,7 @@ function drawTally() {
 // as long as you said. It is not the shortest possible route. It is a route a
 // person would actually take, which matters more.
 function buildRoute(from) {
+  if (chosenTheme === 'round') return buildRound(from);
   let pool = STOPS.slice();
   if (chosenTheme !== 'mixed') pool = pool.filter(s => s.kind === chosenTheme);
   const fresh = pool.filter(s => !seen.has(s.id));
@@ -305,6 +337,19 @@ function buildRoute(from) {
     pool.forEach((s, i) => { const d = walkMetres(from, s); if (d < bd) { bd = d; bi = i; } });
     out.push(pool[bi]);
   }
+  return out;
+}
+
+// A round is not chosen, it is followed. You join it at the door nearest you and
+// go on in the order he wrote them, which is the whole point - the doubling back
+// is his, not the app's.
+function buildRound(from) {
+  if (!ROUND_STOPS.length) return [];
+  const maxStops = STOP_COUNT[chosenLen] || 20;
+  let bi = 0, bd = Infinity;
+  ROUND_STOPS.forEach((s, i) => { const d = metres(from, s); if (d < bd) { bd = d; bi = i; } });
+  const out = ROUND_STOPS.slice(bi, bi + maxStops);
+  routeMetres = out.reduce((m, s, i) => i ? m + walkMetres(out[i-1], s) : m, 0);
   return out;
 }
 
@@ -368,7 +413,8 @@ function arrive(i) {
   if (markers[s.id]) markers[s.id].setIcon(pinIcon(s.kind, true));
   while (at < route.length && arrived.has(route[at].id)) at++;
   buzz(s);
-  if (s.kind === 'question' || s.kind === 'notable' || s.kind === 'lost') openStop(i);
+  if (s.kind === 'question' || s.kind === 'notable' || s.kind === 'lost' || s.kind === 'round')
+    openStop(i);
   else toast(s);
   hud();
 }
@@ -390,7 +436,23 @@ function toast(s) {
 
 // ── a stop, opened ───────────────────────────────────────────────────────────
 const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
-  lost: 'No longer standing', architect: 'Who built it', household: 'A full house' };
+  lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
+  round: 'He knocked here' };
+
+// A household written out the way the page has it: in his order, down the lines.
+function householdHtml(s) {
+  if (s.empty_note && !s.people.length)
+    return '<div class="body">He wrote the house in and ticked it. <b>Nobody was here.</b></div>';
+  const line = p => `<div class="pers"><b>${esc(p.name)}</b>`
+    + (p.age != null ? `, ${esc(p.age)}` : '')
+    + (p.rel ? ` <span class="rel">${esc(p.rel)}</span>` : '')
+    + (p.trade ? `<span class="trade">${esc(p.trade)}</span>` : '')
+    + (p.born ? `<span class="trade">b. ${esc(p.born)}</span>` : '')
+    + '</div>';
+  return `<div class="hh">${s.people.map(line).join('')}</div>`
+    + (s.empty_note ? '' : `<div class="addr" style="margin-top:9px">`
+        + `${s.people.length} ${s.people.length === 1 ? 'person' : 'people'} at this door</div>`);
+}
 
 function openStop(i, manual) {
   const s = route[i];
@@ -401,9 +463,11 @@ function openStop(i, manual) {
   const far = lastPos ? Math.round(metres(lastPos, s)) : null;
   body.innerHTML = `
     <span class="tag ${esc(s.kind)}">${esc(KIND_WORD[s.kind] || s.kind)}</span>
+    ${s.kind === 'round' ? `<span class="sched">schedule ${esc(s.schedule)}</span>` : ''}
     <h3>${esc(plain(s.title))}</h3>
     <div class="addr">${esc(s.address || '')}${s.street && s.address !== s.street ? '' : ''}
       ${far !== null ? ` · ${far} m away` : ''}</div>
+    ${s.kind === 'round' ? householdHtml(s) : ''}
     ${s.line ? `<div class="body big">${esc(plain(s.line))}</div>` : ''}
     ${s.kind === 'question' ? `
       <div class="ask">
@@ -470,6 +534,21 @@ async function start() {
   try { if ('Notification' in window && Notification.permission === 'default')
     await Notification.requestPermission(); } catch (e) {}
 
+  if (chosenTheme === 'round' && chosenRound) {
+    btn.textContent = 'Opening his book…';
+    const [y, b] = chosenRound.split('|');
+    try {
+      const d = await fetch(`/api/walk/round?year=${encodeURIComponent(y)}&book=${encodeURIComponent(b)}`)
+        .then(r => r.json());
+      ROUND_STOPS = (d.stops || []).filter(s => s.lat && s.lng);
+    } catch (e) { ROUND_STOPS = []; }
+    if (!ROUND_STOPS.length) {
+      btn.disabled = false; btn.textContent = 'Plot me a walk';
+      document.getElementById('startNote').innerHTML =
+        '<span style="color:#b4542a">That round would not load. Try another year.</span>';
+      return;
+    }
+  }
   route = buildRoute(me); at = 0; arrived.clear();
   document.getElementById('intro').remove();
   document.getElementById('hud').hidden = false;
@@ -486,11 +565,34 @@ async function start() {
   if (navigator.geolocation)
     watchId = navigator.geolocation.watchPosition(onPos, () => {},
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 20000 });
+  keepAwake();
 }
+
+// ── the screen stays on ──────────────────────────────────────────────────────
+// Nobody wants to unlock a phone with cold hands every thirty seconds. The lock
+// is dropped by the browser whenever the page is hidden - a call, the home
+// button - so it is taken again every time the page comes back.
+async function keepAwake() {
+  if (!('wakeLock' in navigator)) return;
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    wakeLock.addEventListener('release', () => { wakeLock = null; awakeBadge(); });
+    awakeBadge();
+  } catch (e) { wakeLock = null; awakeBadge(); }
+}
+function awakeBadge() {
+  const el = document.getElementById('awake');
+  if (el) el.style.opacity = wakeLock ? '1' : '.3';
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !wakeLock && !document.getElementById('intro'))
+    keepAwake();
+});
 
 document.getElementById('btnStart').onclick = () => start();
 document.getElementById('btnEnd').onclick = () => {
   if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+  if (wakeLock) { try { wakeLock.release(); } catch (e) {} wakeLock = null; }
   location.reload();
 };
 document.getElementById('btnList').onclick = () => {
@@ -509,6 +611,10 @@ document.getElementById('btnList').onclick = () => {
 document.getElementById('sheet').addEventListener('click', e => {
   if (e.target.classList.contains('grab')) closeSheet();
 });
+
+fetch('/api/walk/rounds').then(r => r.json()).then(d => {
+  ROUNDS = d.rounds || []; drawIntro();
+}).catch(() => {});
 
 fetch('/api/walk/stops').then(r => r.json()).then(d => {
   STOPS = (d.stops || []).filter(s => s.lat && s.lng);

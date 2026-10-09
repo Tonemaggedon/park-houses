@@ -8464,6 +8464,107 @@ app.get('/api/walk/stops', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// GET /api/walk/rounds        — which enumerators' rounds can be walked
+// GET /api/walk/round?year=&book=  — one round, in the order he walked it
+//
+// This is the one thing the walk can do that nothing else can. On an evening in
+// 1939 a man walked The Park with a book, and the record holds the order he did
+// it in: schedule 1, then 2, then 3, doubling back where he doubled back and
+// crossing the road where he crossed it. Put that order on a phone and you are
+// walking his round, with each household as he met it.
+//
+// Schedule numbers repeat between books in the same year - 1939 has three - so a
+// round is a year AND a book, and the book comes out of the source line.
+function walkBookKey(source) {
+  const s = String(source || '');
+  let m = s.match(/ED letter code (\w+)/);           if (m) return m[1];
+  m = s.match(/\b(RMG[A-Z])\b/);                     if (m) return m[1];
+  m = s.match(/\b(RG\d+\/\d+)/);                     if (m) return m[1];
+  return 'unmarked';
+}
+
+app.get('/api/walk/rounds', async (req, res) => {
+  if (!db) return res.json({ rounds: [] });
+  try {
+    const r = await db.query(
+      `SELECT census_year, COALESCE(source,'') AS source, census_household_num AS sched, property_id
+         FROM census_entries
+        WHERE property_id IS NOT NULL AND census_household_num IS NOT NULL`);
+    const seen = new Map();
+    for (const row of r.rows) {
+      const key = row.census_year + '|' + walkBookKey(row.source);
+      let g = seen.get(key);
+      if (!g) seen.set(key, g = { year: row.census_year, book: walkBookKey(row.source),
+        houses: new Set(), lo: Infinity, hi: -Infinity });
+      g.houses.add(row.property_id);
+      g.lo = Math.min(g.lo, row.sched); g.hi = Math.max(g.hi, row.sched);
+    }
+    const rounds = [...seen.values()]
+      .map(g => ({ year: g.year, book: g.book, houses: g.houses.size, from: g.lo, to: g.hi }))
+      .filter(g => g.houses >= 20)
+      .sort((a, b) => b.houses - a.houses);
+    res.json({ rounds });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/walk/round', async (req, res) => {
+  if (!db) return res.json({ stops: [] });
+  const year = parseInt(req.query.year, 10);
+  const book = String(req.query.book || '');
+  if (!Number.isInteger(year)) return res.status(400).json({ error: 'Which year?' });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const byId = new Map(props.map(p => [p.id, p]));
+    const co = await db.query('SELECT id, lat, lng FROM coords');
+    for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
+
+    const r = await db.query(
+      `SELECT ce.census_household_num AS sched, ce.property_id, ce.id AS row_id,
+              COALESCE(ce.source,'') AS source,
+              COALESCE(NULLIF(ce.address,''), ce.unresolved_address) AS addr,
+              p.first_name, p.last_name, ce.age_at_census AS age,
+              ce.relationship, ce.occupation_at_census AS trade, ce.marital_status AS marital,
+              ce.birth_place AS born
+         FROM census_entries ce JOIN people p ON p.id = ce.person_id
+        WHERE ce.census_year = $1 AND ce.property_id IS NOT NULL
+          AND ce.census_household_num IS NOT NULL
+        ORDER BY ce.census_household_num, ce.id`, [year]);
+
+    const byStop = new Map();
+    for (const row of r.rows) {
+      if (book && walkBookKey(row.source) !== book) continue;
+      const key = row.sched + ':' + row.property_id;
+      let st = byStop.get(key);
+      if (!st) {
+        const p = byId.get(row.property_id);
+        if (!p || !p.lat || !p.lng) continue;
+        byStop.set(key, st = {
+          id: 'r' + year + '-' + row.sched + '-' + row.property_id,
+          kind: 'round', schedule: row.sched, property_id: row.property_id,
+          lat: +p.lat, lng: +p.lng,
+          title: row.addr || p.address || p.name, address: p.address || p.name,
+          street: p.street || '', people: []
+        });
+      }
+      st.people.push({ name: [row.first_name, row.last_name].filter(Boolean).join(' '),
+        age: row.age, rel: row.relationship, trade: row.trade,
+        marital: row.marital, born: row.born });
+    }
+    const stops = [...byStop.values()].sort((a, b) => a.schedule - b.schedule);
+
+    // Houses the enumerator wrote in and ticked: empty on the night, and part of
+    // the walk. He still knocked.
+    const empties = await db.query(
+      `SELECT property_id, notes FROM census_unoccupied WHERE census_year = $1`, [year]);
+    const emptyBy = new Map(empties.rows.map(e => [e.property_id, e.notes]));
+    for (const s of stops) if (emptyBy.has(s.property_id)) s.empty_note = emptyBy.get(s.property_id);
+
+    res.json({ year, book, stops,
+      houses: stops.length,
+      people: stops.reduce((n, s) => n + s.people.length, 0) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // An answer sent in from the pavement. It does not change the record on its own -
 // it lands as a note on the question for somebody to read, which is the same
 // standing as anything else somebody offers.
