@@ -679,15 +679,14 @@ function applyFilters() {
   renderGrid(list);
 }
 
-function renderGrid(list) {
-  document.getElementById('loading').style.display = 'none';
-  const grid = document.getElementById('grid');
-  const empty = document.getElementById('empty');
-  document.getElementById('countInfo').textContent = `${list.length} ${list.length === 1 ? 'person' : 'people'}`;
-  if (!list.length) { grid.style.display = 'none'; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  grid.style.display = 'grid';
-  grid.innerHTML = list.map(p => {
+// ── The grid draws in batches ────────────────────────────────────────────────
+// Eight and a half thousand cards built into one innerHTML locked the page for
+// seconds before anything appeared. The first batch is on screen immediately
+// and the rest follow as you scroll, so the page is usable while it fills.
+const GRID_BATCH = 120;
+let _gridList = [], _gridDrawn = 0, _gridObserver = null;
+
+function personCardHtml(p) {
     const occs = (p.occupations || []).slice(0, 4);
     const propIds = p.property_ids || [];
     const _wikiUrl = (p.wikipedia_url||'').trim();
@@ -714,7 +713,45 @@ function renderGrid(list) {
       ${(p.property_ids||[]).length ? `<div class="card-props">📍 ${(p.property_ids||[]).map(id=>(window._propNameLookup&&window._propNameLookup[id])||((p.property_names||[])[0])||'Property '+id).join(' · ')}</div>` : ''}
       ${unresolvedBadge}
     </div>`;
-  }).join('');
+}
+
+function drawNextBatch() {
+  const grid = document.getElementById('grid');
+  const slice = _gridList.slice(_gridDrawn, _gridDrawn + GRID_BATCH);
+  if (!slice.length) return;
+  grid.insertAdjacentHTML('beforeend', slice.map(personCardHtml).join(''));
+  _gridDrawn += slice.length;
+  const sentinel = document.getElementById('gridSentinel');
+  if (sentinel) sentinel.style.display = _gridDrawn < _gridList.length ? 'block' : 'none';
+}
+
+function renderGrid(list) {
+  document.getElementById('loading').style.display = 'none';
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  document.getElementById('countInfo').textContent = `${list.length} ${list.length === 1 ? 'person' : 'people'}`;
+  _gridList = list; _gridDrawn = 0; grid.innerHTML = '';
+  if (!list.length) { grid.style.display = 'none'; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  grid.style.display = 'grid';
+
+  let sentinel = document.getElementById('gridSentinel');
+  if (!sentinel) {
+    sentinel = document.createElement('div');
+    sentinel.id = 'gridSentinel';
+    sentinel.style.cssText = 'height:1px;grid-column:1/-1';
+    grid.parentNode.insertBefore(sentinel, grid.nextSibling);
+  }
+  drawNextBatch();
+  if (!_gridObserver && 'IntersectionObserver' in window) {
+    _gridObserver = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) drawNextBatch();
+    }, { rootMargin: '600px' });
+    _gridObserver.observe(sentinel);
+  } else if (!('IntersectionObserver' in window)) {
+    // no observer: draw the lot, slowly is better than not at all
+    while (_gridDrawn < _gridList.length) drawNextBatch();
+  }
 }
 
 // ── Person profile ───────────────────────────────────────────────────────────

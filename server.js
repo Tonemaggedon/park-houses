@@ -814,6 +814,35 @@ async function dbInit() {
       started_at TIMESTAMPTZ DEFAULT NOW()
     )`);
     await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_research_claim ON research_claims(question_id, username)`);
+
+    // ── Checking a job out ───────────────────────────────────────────────────
+    // A research question could already be claimed. A house and a person could
+    // not, so two people could spend an evening on the same thing without ever
+    // knowing. One table covers all three kinds: 'property', 'person' and
+    // 'question', keyed on what is being worked on rather than on which page it
+    // was claimed from.
+    //
+    // A claim is not a lock. It says somebody is looking, it shows their name
+    // and when they started, and anybody can still work on the same thing - the
+    // point is that they can see first. Claims are released, or closed with a
+    // note saying what was found, and a closed claim stays as the record of who
+    // did it.
+    await db.query(`CREATE TABLE IF NOT EXISTS work_claims (
+      id SERIAL PRIMARY KEY,
+      kind TEXT NOT NULL CHECK (kind IN ('property','person','question','household')),
+      target_id INTEGER NOT NULL,
+      target_label TEXT,
+      username TEXT NOT NULL,
+      note TEXT,
+      started_at TIMESTAMPTZ DEFAULT NOW(),
+      closed_at TIMESTAMPTZ,
+      outcome TEXT
+    )`);
+    // One open claim per person per thing. Closed claims are history and may repeat.
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_open_work_claim
+                      ON work_claims(kind, target_id, username) WHERE closed_at IS NULL`);
+    await db.query(`CREATE INDEX IF NOT EXISTS work_claims_target_idx ON work_claims(kind, target_id)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS work_claims_open_idx ON work_claims(closed_at) WHERE closed_at IS NULL`);
     // Addresses the census itself cannot resolve — the return gave no house
     // name and no number, so no amount of census review will place them. They
     // are set aside rather than left in the queue looking like work.
@@ -1139,6 +1168,31 @@ function publicUser(u) {
 }
 
 // ── Middleware ────────────────────────────────────────────────────────────────
+// ── gzip for JSON responses ──────────────────────────────────────────────────
+// /api/people is a 3 MB payload. Over gzip it is nearer 400 KB, which is most of
+// a second back on a phone. Hand-rolled on zlib rather than adding a dependency
+// days before launch; small bodies are passed straight through.
+const zlib = require('zlib');
+app.use((req, res, next) => {
+  if (!/\bgzip\b/.test(req.headers['accept-encoding'] || '')) return next();
+  const sendJson = res.json.bind(res);
+  res.json = (body) => {
+    let buf;
+    try { buf = Buffer.from(JSON.stringify(body)); } catch (e) { return sendJson(body); }
+    if (buf.length < 2048) return sendJson(body);
+    zlib.gzip(buf, (err, out) => {
+      if (err || res.headersSent) return sendJson(body);
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      res.setHeader('Content-Encoding', 'gzip');
+      res.setHeader('Vary', 'Accept-Encoding');
+      res.setHeader('Content-Length', out.length);
+      res.end(out);
+    });
+    return res;
+  };
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -4265,19 +4319,35 @@ app.get('/api/people', async (req, res) => {
   try {
     const { occupation, property, q } = req.query;
     // Use subqueries to avoid cartesian product of occupations × census_entries
+    // One pass over each child table, grouped by person, rather than four
+    // correlated subqueries per person. With 8,352 people that was roughly
+    // 33,000 scans and 7.5 million buffer hits for a single page load.
     let query = `
+      WITH occ AS (
+        SELECT person_id, ARRAY_AGG(DISTINCT occupation) AS a
+          FROM occupations WHERE occupation IS NOT NULL GROUP BY person_id),
+      props AS (
+        SELECT person_id, ARRAY_AGG(DISTINCT pid) AS a FROM (
+          SELECT person_id, property_id AS pid FROM census_entries WHERE property_id IS NOT NULL
+          UNION
+          SELECT person_id, property_id AS pid FROM property_residents WHERE property_id IS NOT NULL
+        ) z GROUP BY person_id),
+      cens AS (
+        SELECT person_id,
+               ARRAY_AGG(DISTINCT census_year) FILTER (WHERE census_year IS NOT NULL) AS yrs,
+               BOOL_OR(property_id IS NULL) AS unres
+          FROM census_entries GROUP BY person_id)
       SELECT p.id, p.first_name, p.last_name, p.known_as, p.maiden_name, p.title, p.postnominals,
              p.born_year, p.born_place, p.died_year, p.died_place,
              p.wikipedia_url, p.photo_url,
-             (SELECT ARRAY_AGG(DISTINCT o.occupation) FROM occupations o WHERE o.person_id=p.id AND o.occupation IS NOT NULL) AS occupations,
-             (SELECT ARRAY_AGG(DISTINCT pid) FROM (
-               SELECT ce.property_id AS pid FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NOT NULL
-               UNION
-               SELECT pr.property_id AS pid FROM property_residents pr WHERE pr.person_id=p.id
-             ) all_props) AS property_ids,
-             (SELECT ARRAY_AGG(DISTINCT ce.census_year) FROM census_entries ce WHERE ce.person_id=p.id AND ce.census_year IS NOT NULL) AS census_years,
-             EXISTS(SELECT 1 FROM census_entries ce WHERE ce.person_id=p.id AND ce.property_id IS NULL) AS has_unresolved_census
-      FROM people p
+             occ.a AS occupations,
+             props.a AS property_ids,
+             cens.yrs AS census_years,
+             COALESCE(cens.unres, false) AS has_unresolved_census
+        FROM people p
+        LEFT JOIN occ   ON occ.person_id   = p.id
+        LEFT JOIN props ON props.person_id = p.id
+        LEFT JOIN cens  ON cens.person_id  = p.id
     `;
     const params = [];
     const wheres = [];
@@ -8112,6 +8182,8 @@ app.get('/unfiled', (req, res) => res.sendFile(path.join(__dirname, 'public', 'u
 app.get('/duplicates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'duplicates.html')));
 app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'archive.html')));
 app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
+app.get('/needs-work', (req, res) => res.sendFile(path.join(__dirname, 'public', 'needs-work.html')));
+app.get('/walk', (req, res) => res.sendFile(path.join(__dirname, 'public', 'walk.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8259,25 +8331,29 @@ async function seedResearchQuestions() {
     if (!q.slug || !q.title) continue;
     try {
       const r = await db.query(
-        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, priority, created_by)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,'seed')
+        `INSERT INTO research_questions (slug, title, detail, kind, property_id, person_id, priority, status, created_by)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'seed')
          ON CONFLICT (slug) DO NOTHING RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
          q.property_id || null, q.person_id || null,
-         Number.isInteger(q.priority) ? q.priority : null]);
+         Number.isInteger(q.priority) ? q.priority : null,
+         q.status === 'answered' ? 'answered' : 'open']);
       if (r.rows.length) { added++; continue; }
       // Already there. Refresh the wording only while nobody has touched it by
       // hand — an edit or an answer in the site is worth more than the file.
       const upd = await db.query(
         `UPDATE research_questions
-            SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6, priority=$7
-          WHERE slug=$1 AND edited_at IS NULL AND status='open'
+            SET title=$2, detail=$3, kind=$4, property_id=$5, person_id=$6, priority=$7,
+                status=$8
+          WHERE slug=$1 AND edited_at IS NULL AND answer IS NULL
             AND (title IS DISTINCT FROM $2 OR detail IS DISTINCT FROM $3
                  OR kind IS DISTINCT FROM $4 OR property_id IS DISTINCT FROM $5
-                 OR person_id IS DISTINCT FROM $6 OR priority IS DISTINCT FROM $7) RETURNING id`,
+                 OR person_id IS DISTINCT FROM $6 OR priority IS DISTINCT FROM $7
+                 OR status IS DISTINCT FROM $8) RETURNING id`,
         [q.slug, q.title, q.detail || null, q.kind || null,
          q.property_id || null, q.person_id || null,
-         Number.isInteger(q.priority) ? q.priority : null]);
+         Number.isInteger(q.priority) ? q.priority : null,
+         q.status === 'answered' ? 'answered' : 'open']);
       if (upd.rows.length) refreshed++;
     } catch (e) { console.warn('research question', q.slug, e.message); }
   }
@@ -8297,6 +8373,393 @@ app.get('/api/research-questions', async (req, res) => {
     const by = {};
     for (const c of cl.rows) (by[c.question_id] = by[c.question_id] || []).push(c);
     res.json({ questions: qs.rows.map(q => ({ ...q, claims: by[q.id] || [] })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── The Park Walk ────────────────────────────────────────────────────────────
+// Stops for the walking app: every reason to stand still in The Park and look at
+// something. A stop is a position, a kind, a line to read, and sometimes a job.
+//
+// Nothing here is invented for the app. Every stop is a fact the record already
+// holds - a question it cannot answer from paper, a person it knows lived there,
+// an architect, a house that has gone. The app's whole trick is that it knows
+// where you are standing.
+app.get('/api/walk/stops', async (req, res) => {
+  if (!db) return res.json({ stops: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const byId = new Map(props.map(p => [p.id, p]));
+    const pos = p => (p && p.lat && p.lng) ? { lat: +p.lat, lng: +p.lng } : null;
+
+    // Hand-placed positions win over the seed file, exactly as the map does.
+    const co = await db.query('SELECT id, lat, lng FROM coords');
+    for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
+
+    const [questions, notable, households] = await Promise.all([
+      db.query(`SELECT id, slug, title, kind, priority, property_id
+                  FROM research_questions
+                 WHERE status <> 'answered' AND property_id IS NOT NULL
+                   AND title !~* '^(ANSWERED|SUPERSEDED)'
+                 ORDER BY priority NULLS LAST, id`),
+      db.query(`SELECT p.id, p.first_name, p.last_name, p.title, p.born_year, p.died_year,
+                       p.significance_note, p.wikipedia_url, p.photo_url,
+                       (SELECT STRING_AGG(DISTINCT o.occupation, ', ') FROM occupations o
+                         WHERE o.person_id = p.id) AS trade,
+                       ARRAY(SELECT DISTINCT ce.property_id FROM census_entries ce
+                              WHERE ce.person_id = p.id AND ce.property_id IS NOT NULL
+                              UNION SELECT pr.property_id FROM property_residents pr
+                              WHERE pr.person_id = p.id) AS props
+                  FROM people p WHERE p.significant = true`),
+      // The household that says the most about a house: the biggest one it ever held
+      db.query(`SELECT DISTINCT ON (property_id) property_id, census_year, n, heads
+                  FROM (SELECT ce.property_id, ce.census_year, COUNT(*) AS n,
+                               STRING_AGG(DISTINCT p.last_name, ', ') AS heads
+                          FROM census_entries ce JOIN people p ON p.id = ce.person_id
+                         WHERE ce.property_id IS NOT NULL
+                         GROUP BY ce.property_id, ce.census_year) z
+                 ORDER BY property_id, n DESC`)
+    ]);
+
+    const stops = [];
+    const push = (p, s) => { const w = pos(p); if (w) stops.push({ ...s, ...w, property_id: p.id,
+      address: p.address || p.name, street: p.street || '' }); };
+
+    for (const q of questions.rows) {
+      const p = byId.get(q.property_id); if (!p) continue;
+      push(p, { id: 'q' + q.id, kind: 'question', question_id: q.id,
+        title: q.title, ask: 'Can you settle this standing here?' });
+    }
+    for (const n of notable.rows) {
+      const who = [n.title, n.first_name, n.last_name].filter(Boolean).join(' ');
+      const life = (n.born_year || n.died_year) ? `${n.born_year || '?'}–${n.died_year || '?'}` : '';
+      for (const pid of (n.props || []).slice(0, 3)) {
+        const p = byId.get(pid); if (!p) continue;
+        push(p, { id: 'n' + n.id + '-' + pid, kind: 'notable', person_id: n.id,
+          title: who, line: [life, n.significance_note || n.trade].filter(Boolean).join(' · '),
+          photo: n.photo_url || null, url: n.wikipedia_url || null });
+      }
+    }
+    for (const p of props) {
+      if (p.demolished) push(p, { id: 'd' + p.id, kind: 'lost',
+        title: p.name || p.address,
+        line: (p.demolished_notes || 'Gone. The record keeps it because people lived in it.') });
+      else if (p.architect) push(p, { id: 'a' + p.id, kind: 'architect',
+        title: p.address || p.name,
+        line: [p.date_built ? 'Built ' + p.date_built : null, 'by ' + p.architect,
+               p.built_for ? 'for ' + p.built_for : null].filter(Boolean).join(' '),
+        listed: p.listed_grade || null });
+    }
+    const big = new Map(households.rows.map(r => [r.property_id, r]));
+    for (const p of props) {
+      const h = big.get(p.id);
+      if (!h || h.n < 12) continue;
+      push(p, { id: 'h' + p.id, kind: 'household', title: p.address || p.name,
+        line: `${h.n} people under this roof in ${h.census_year} — ${h.heads}` });
+    }
+
+    res.json({
+      stops,
+      counts: stops.reduce((a, s) => (a[s.kind] = (a[s.kind] || 0) + 1, a), {})
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// An answer sent in from the pavement. It does not change the record on its own -
+// it lands as a note on the question for somebody to read, which is the same
+// standing as anything else somebody offers.
+app.post('/api/walk/answer', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const qid = parseInt(b.question_id, 10);
+  const text = String(b.answer || '').trim();
+  if (!Number.isInteger(qid)) return res.status(400).json({ error: 'Which question?' });
+  if (!text) return res.status(400).json({ error: 'Nothing to send' });
+  const who = (await getResearchKey(req.session || {})) || 'somebody on the walk';
+  try {
+    await db.query(
+      `INSERT INTO work_claims (kind, target_id, target_label, username, note, closed_at, outcome)
+       VALUES ('question', $1, $2, $3, $4, NOW(), $4)`,
+      [qid, (b.title || '').slice(0, 200) || null, who,
+       text + (b.lat && b.lng ? ` [sent from ${(+b.lat).toFixed(5)}, ${(+b.lng).toFixed(5)}]` : '')]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Needs work ───────────────────────────────────────────────────────────────
+// A short, honest list of jobs somebody could actually finish in an evening.
+// Not every gap in the record - the gaps that are clear, bounded, and worth
+// doing. Each item says what is missing, why it matters and what finishing
+// looks like, and carries whoever has picked it up.
+app.get('/api/needs-work', async (req, res) => {
+  if (!db) return res.json({ groups: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const byId = new Map(props.map(p => [p.id, p]));
+    const nameOf = id => { const p = byId.get(id); return p ? (p.address || p.name || ('Property ' + id)) : ('Property ' + id); };
+
+    const [notable, wiki, titled, housed, h1939, unfiled, questions, claims] = await Promise.all([
+      // Notable people the record marks but barely describes
+      db.query(`SELECT p.id, p.first_name, p.last_name, p.title, p.born_year, p.died_year,
+                       p.significance_note, p.wikipedia_url,
+                       (SELECT COUNT(*) FROM census_entries ce WHERE ce.person_id=p.id) AS rounds,
+                       (SELECT STRING_AGG(DISTINCT o.occupation, ', ') FROM occupations o WHERE o.person_id=p.id) AS trade
+                  FROM people p
+                 WHERE p.significant = true AND COALESCE(p.bio,'') = ''
+                 ORDER BY (p.died_year IS NULL), p.last_name LIMIT 60`),
+      db.query(`SELECT id, first_name, last_name, wikipedia_url, born_year, died_year
+                  FROM people WHERE COALESCE(wikipedia_url,'') <> '' AND COALESCE(bio,'') = ''
+                 ORDER BY last_name LIMIT 60`),
+      db.query(`SELECT p.id, p.first_name, p.last_name, p.title, p.born_year, p.died_year,
+                       (SELECT STRING_AGG(DISTINCT o.occupation, ', ') FROM occupations o WHERE o.person_id=p.id) AS trade
+                  FROM people p
+                 WHERE COALESCE(p.title,'') <> '' AND COALESCE(p.bio,'') = ''
+                   AND COALESCE(p.wikipedia_url,'') = '' AND p.significant IS NOT TRUE
+                 ORDER BY p.last_name LIMIT 60`),
+      db.query(`SELECT DISTINCT property_id FROM census_entries WHERE property_id IS NOT NULL`),
+      db.query(`SELECT property_id FROM census_entries WHERE census_year=1939 AND property_id IS NOT NULL
+                 UNION SELECT property_id FROM census_unoccupied WHERE census_year=1939`),
+      // One row per unfiled household, biggest first - a household is a job, a row is not
+      // A household is a schedule number. Where the round gives none, the written
+      // address is what separates one household from the next - group on the
+      // schedule alone and fifty-four people from a dozen houses arrive as one job.
+      db.query(`SELECT MIN(ce.id) AS id, ce.census_year, ce.census_household_num AS sched,
+                       COUNT(*) AS people,
+                       MIN(COALESCE(NULLIF(ce.address,''), ce.unresolved_address)) AS addr,
+                       MIN(LEFT(COALESCE(ce.source,''), 90)) AS source,
+                       STRING_AGG(DISTINCT p.last_name, ', ') AS surnames
+                  FROM census_entries ce JOIN people p ON p.id = ce.person_id
+                 WHERE ce.property_id IS NULL
+                 GROUP BY ce.census_year,
+                          COALESCE(ce.census_household_num::text,
+                                   LOWER(COALESCE(NULLIF(ce.address,''), ce.unresolved_address, 'unknown'))),
+                          ce.census_household_num,
+                          LEFT(COALESCE(ce.source,''), 90)
+                HAVING COUNT(*) BETWEEN 1 AND 25
+                 ORDER BY COUNT(*) DESC, ce.census_year LIMIT 60`),
+      db.query(`SELECT id, slug, title, kind, priority, property_id, person_id
+                  FROM research_questions
+                 WHERE status <> 'answered'
+                   AND title !~* '^(ANSWERED|SUPERSEDED)'
+                   AND kind IN ('address','schedule','house','property','street')
+                 ORDER BY priority NULLS LAST, id LIMIT 60`),
+      db.query(`SELECT kind, target_id, username, note, started_at, closed_at, outcome
+                  FROM work_claims ORDER BY started_at`)
+    ]);
+
+    const claimsFor = {};
+    for (const c of claims.rows) {
+      const k = c.kind + ':' + c.target_id;
+      (claimsFor[k] = claimsFor[k] || []).push(c);
+    }
+    const withClaims = (kind, items) => items.map(i => ({ ...i, claims: claimsFor[kind + ':' + i.id] || [] }));
+
+    const hasCensus = new Set(housed.rows.map(r => r.property_id));
+    const has1939 = new Set(h1939.rows.map(r => r.property_id));
+    const fullName = p => [p.title, p.first_name, p.last_name].filter(Boolean).join(' ');
+    const years = p => (p.born_year || p.died_year) ? `${p.born_year || '?'}–${p.died_year || '?'}` : '';
+
+    const groups = [
+      {
+        key: 'notable-people',
+        title: 'Notable people with no account written',
+        blurb: 'The record marks them as notable and then says nothing about them. A paragraph, '
+             + 'properly sourced, is the whole job.',
+        done: 'A biography on the person, with where it came from.',
+        kind: 'person',
+        items: withClaims('person', notable.rows.map(p => ({
+          id: p.id, title: fullName(p), sub: [years(p), p.trade].filter(Boolean).join(' · '),
+          why: p.significance_note || 'Marked notable, with no reason recorded.',
+          link: '/people?person=' + p.id
+        })))
+      },
+      {
+        key: 'wikipedia-no-bio',
+        title: 'People with a Wikipedia article and nothing in the record',
+        blurb: 'Somebody has already done the research. It needs reading, and the part that '
+             + 'belongs to The Park putting in the person\'s own words here.',
+        done: 'A biography, and the article cited.',
+        kind: 'person',
+        items: withClaims('person', wiki.rows.map(p => ({
+          id: p.id, title: fullName(p), sub: years(p),
+          why: 'A Wikipedia article exists for them.', url: p.wikipedia_url,
+          link: '/people?person=' + p.id
+        })))
+      },
+      {
+        key: 'titled-no-bio',
+        title: 'A title, and nothing else',
+        blurb: 'A Sir, a Dame, a Colonel or a Reverend in the record with no account and no '
+             + 'article. Titles are the easiest thing in the world to trace.',
+        done: 'Who they were, and why the title.',
+        kind: 'person',
+        items: withClaims('person', titled.rows.map(p => ({
+          id: p.id, title: fullName(p), sub: [years(p), p.trade].filter(Boolean).join(' · '),
+          why: 'Carries the title ' + p.title + ' and nothing more.',
+          link: '/people?person=' + p.id
+        })))
+      },
+      {
+        key: 'houses-never-lived-in',
+        title: 'Houses nobody has ever been found living in',
+        blurb: 'The property exists and no census round has ever put a household in it. Either '
+             + 'the households are filed under another name for the same house, or the rounds '
+             + 'have not been read yet.',
+        done: 'A household filed here, or a note saying why there can never be one.',
+        kind: 'property',
+        items: withClaims('property', props.filter(p => !hasCensus.has(p.id)).slice(0, 60).map(p => ({
+          id: p.id, title: p.address || p.name, sub: p.street || '',
+          why: p.demolished ? 'Recorded as demolished.' : 'No household in any round.',
+          link: '/?property=' + p.id
+        })))
+      },
+      {
+        key: 'no-1939',
+        title: 'Houses with nothing for 1939',
+        blurb: 'The 1939 Register covers the whole estate, so a house with no 1939 household '
+             + 'and no empty mark is a gap in the reading rather than a gap in the past.',
+        done: 'The household transcribed, or the house ticked as empty on the night.',
+        kind: 'property',
+        items: withClaims('property', props.filter(p => !has1939.has(p.id) && !p.demolished)
+          .slice(0, 60).map(p => ({
+            id: p.id, title: p.address || p.name, sub: p.street || '',
+            why: 'No 1939 household and no empty mark.',
+            link: '/?property=' + p.id
+          })))
+      },
+      {
+        key: 'no-history',
+        title: 'Houses with no history written',
+        blurb: 'The building is described and its people are filed, and nothing tells you what '
+             + 'the house is. The households are already on the page to write from.',
+        done: 'A few sentences on what the house is and who it has held.',
+        kind: 'property',
+        items: withClaims('property', props.filter(p => !(p.history || '').trim() && hasCensus.has(p.id))
+          .slice(0, 60).map(p => ({
+            id: p.id, title: p.address || p.name, sub: p.street || '',
+            why: 'Households filed, nothing written.',
+            link: '/?property=' + p.id
+          })))
+      },
+      {
+        key: 'unfiled-households',
+        title: 'Households with no house',
+        blurb: 'A whole household read off a page the enumerator never numbered. Finding the '
+             + 'house puts all of them on it at once - this is the job that moves the most people.',
+        done: 'The household filed against a property.',
+        kind: 'household',
+        items: withClaims('household', unfiled.rows.map(r => ({
+          id: r.id,
+          title: `${r.people} ${r.people === 1 ? 'person' : 'people'} — ${r.surnames || 'unnamed'}`,
+          sub: `${r.census_year}${r.sched ? ', schedule ' + r.sched : ''}${r.addr ? ' · ' + r.addr : ''}`,
+          why: r.source || '', link: '/unfiled'
+        })))
+      },
+      {
+        key: 'address-questions',
+        title: 'Open questions about where a house is',
+        blurb: 'Questions the record has written down and cannot answer from paper. Most want a '
+             + 'directory, a rate book, or somebody who knows the street.',
+        done: 'An answer on the question, with the source.',
+        kind: 'question',
+        items: withClaims('question', questions.rows.map(q => ({
+          id: q.id, title: q.title,
+          sub: [q.kind, q.property_id ? nameOf(q.property_id) : null].filter(Boolean).join(' · '),
+          why: '', link: '/research#q' + q.id
+        })))
+      }
+    ].filter(g => g.items.length);
+
+    res.json({
+      groups,
+      counts: Object.fromEntries(groups.map(g => [g.key, g.items.length])),
+      open_claims: claims.rows.filter(c => !c.closed_at).length
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Work claims ──────────────────────────────────────────────────────────────
+// Who is looking at what, across houses, people and questions. A claim is a
+// signal, not a lock: it never stops anybody else working, it only lets them
+// see first. See the work_claims table for why.
+
+// GET /api/claims
+//   ?kind=property&ids=12,13   claims on those things
+//   ?open=1                    every open claim, newest first
+//   ?mine=1                    this person's own
+app.get('/api/claims', async (req, res) => {
+  if (!db) return res.json({ claims: [] });
+  try {
+    const wheres = [], params = [];
+    if (req.query.kind) { params.push(String(req.query.kind)); wheres.push(`kind = $${params.length}`); }
+    if (req.query.ids) {
+      const ids = String(req.query.ids).split(',').map(n => parseInt(n, 10)).filter(Number.isInteger);
+      if (!ids.length) return res.json({ claims: [] });
+      params.push(ids); wheres.push(`target_id = ANY($${params.length})`);
+    }
+    if (req.query.open === '1') wheres.push('closed_at IS NULL');
+    if (req.query.mine === '1') {
+      const who = await getResearchKey(req.session || {});
+      if (!who) return res.json({ claims: [] });
+      params.push(who); wheres.push(`username = $${params.length}`);
+    }
+    const r = await db.query(
+      `SELECT id, kind, target_id, target_label, username, note, started_at, closed_at, outcome
+         FROM work_claims ${wheres.length ? 'WHERE ' + wheres.join(' AND ') : ''}
+        ORDER BY closed_at NULLS FIRST, started_at DESC LIMIT 2000`, params);
+    res.json({ claims: r.rows });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/claims  { kind, target_id, target_label, note }
+app.post('/api/claims', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const kind = String(b.kind || '');
+  const targetId = parseInt(b.target_id, 10);
+  if (!['property', 'person', 'question', 'household'].includes(kind))
+    return res.status(400).json({ error: 'kind must be property, person, question or household' });
+  if (!Number.isInteger(targetId)) return res.status(400).json({ error: 'target_id must be a number' });
+  const who = await getResearchKey(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in to pick something up' });
+  try {
+    const r = await db.query(
+      `INSERT INTO work_claims (kind, target_id, target_label, username, note)
+       VALUES ($1,$2,$3,$4,$5)
+       ON CONFLICT (kind, target_id, username) WHERE closed_at IS NULL
+       DO UPDATE SET note = COALESCE(EXCLUDED.note, work_claims.note)
+       RETURNING *`,
+      [kind, targetId, (b.target_label || '').trim() || null, who, (b.note || '').trim() || null]);
+    res.json({ ok: true, claim: r.rows[0] });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// DELETE /api/claims/:id — put it back. Only your own, unless you are admin.
+app.delete('/api/claims/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const who = await getResearchKey(req.session);
+  try {
+    const r = await db.query(
+      `DELETE FROM work_claims WHERE id=$1 AND (username=$2 OR $3) RETURNING id`,
+      [id, who, !!(req.session && req.session.isAdmin)]);
+    if (!r.rowCount) return res.status(403).json({ error: 'That is not yours to release' });
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/claims/:id/done  { outcome } — closed, and kept as the record of who did it
+app.post('/api/claims/:id/done', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const who = await getResearchKey(req.session);
+  try {
+    const r = await db.query(
+      `UPDATE work_claims SET closed_at=NOW(), outcome=$4
+        WHERE id=$1 AND closed_at IS NULL AND (username=$2 OR $3) RETURNING *`,
+      [id, who, !!(req.session && req.session.isAdmin),
+       String((req.body && req.body.outcome) || '').trim() || null]);
+    if (!r.rowCount) return res.status(403).json({ error: 'That is not yours to close' });
+    res.json({ ok: true, claim: r.rows[0] });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

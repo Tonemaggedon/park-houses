@@ -1,6 +1,15 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "park-houses", "runtimeExecutable": "npm", "runtimeArgs": ["start"], "port": 3000, "autoPort": true }
+    {
+      "name": "park-houses",
+      "runtimeExecutable": "railway",
+      "runtimeArgs": [
+        "run",
+        "./devserver.sh"
+      ],
+      "port": 3000,
+      "autoPort": true
+    }
   ]
 }

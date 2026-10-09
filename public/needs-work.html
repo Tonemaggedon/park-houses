@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Needs work — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f;
+          --claim:#7a5a2a; --mine:#2f4d27; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:1000px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 4px; max-width:72ch; }
+  .lede strong { color:var(--ink); }
+
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin:18px 0 6px; }
+  .tab { border:1px solid var(--rule); background:#fff; border-radius:999px;
+    padding:5px 13px; font-size:.8rem; cursor:pointer; color:var(--soft);
+    font-family:inherit; display:inline-flex; gap:7px; align-items:center; }
+  .tab:hover { border-color:var(--accent); }
+  .tab.on { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+  .tab .n { font-family:ui-monospace,Menlo,monospace; font-size:.72rem; opacity:.75; }
+
+  .groupnote { background:#f3efe2; border:1px solid var(--rule); border-left:4px solid var(--green);
+    border-radius:0 7px 7px 0; padding:11px 14px; margin:14px 0 16px; font-size:.87rem;
+    color:var(--soft); max-width:74ch; }
+  .groupnote .done { display:block; margin-top:5px; color:var(--ink); }
+  .groupnote .done b { font-variant:small-caps; letter-spacing:.05em; color:var(--green); }
+
+  .item { background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:12px 14px; margin-bottom:9px; }
+  .item.taken { border-color:#cbb98e; background:#fffdf6; }
+  .item.mine  { border-color:#9ab88a; background:#f8fbf4; }
+  .item h3 { margin:0; font-size:1rem; font-weight:600; }
+  .item h3 a { color:var(--ink); text-decoration:none; }
+  .item h3 a:hover { text-decoration:underline; }
+  .sub { font-size:.8rem; color:var(--faint); margin-top:2px; }
+  .why { font-size:.84rem; color:var(--soft); margin-top:5px; max-width:70ch; }
+  .why.src { font-family:ui-monospace,Menlo,monospace; font-size:.72rem; }
+
+  .who { margin-top:8px; font-size:.81rem; color:var(--claim); }
+  .who b { color:var(--ink); font-weight:600; }
+  .who .none { color:var(--faint); font-style:italic; }
+
+  .acts { margin-top:9px; display:flex; gap:7px; flex-wrap:wrap; align-items:center; }
+  button, .btn { font-family:inherit; font-size:.79rem; border-radius:5px; padding:5px 12px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft);
+    text-decoration:none; display:inline-block; }
+  button:hover, .btn:hover { border-color:var(--accent); }
+  button.go { background:var(--green); color:#f2ecd8; border-color:var(--green); font-weight:600; }
+  button.warn { color:var(--red); }
+  button:disabled { opacity:.45; cursor:default; }
+  .note-in { margin-top:8px; display:none; }
+  .note-in.open { display:block; }
+  .note-in input { width:100%; max-width:46ch; padding:6px 9px; border:1px solid var(--rule);
+    border-radius:4px; font-family:inherit; font-size:.84rem; }
+
+  .mineboard { background:#f8fbf4; border:1px solid #9ab88a; border-radius:8px;
+    padding:12px 15px; margin:14px 0 4px; font-size:.87rem; }
+  .mineboard h3 { margin:0 0 6px; font-size:.95rem; color:var(--green); }
+  .mineboard ul { margin:0; padding-left:19px; }
+  .mineboard li { margin:3px 0; }
+  .signin { background:#fff8e8; border:1px solid #d8c08a; border-radius:8px;
+    padding:11px 14px; margin:14px 0; font-size:.87rem; color:var(--soft); }
+  .msg { font-size:.82rem; color:var(--red); margin-top:6px; }
+  .loading { color:var(--faint); font-style:italic; padding:30px 0; }
+  .more { margin:10px 0 0; }
+  @media (max-width:700px){ .wrap{ padding:16px 13px 70px; } }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Needs work</h2>
+  <p class="lede">Jobs somebody could finish in an evening. Each one says what is missing and what
+    finishing looks like. <strong>Pick one up</strong> and your name shows against it, so nobody
+    else spends their evening on the same thing.</p>
+  <p class="lede" style="font-size:.84rem">Picking something up is not a lock. Anyone can still work
+    on it — the point is that they can see you got there first.</p>
+
+  <div id="mineBox"></div>
+  <div id="signinBox"></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="body" class="loading">Loading…</div>
+</div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+let DATA = null, ME = null, active = null, shown = {};
+const PAGE = 15;
+
+async function load() {
+  const [nw, me] = await Promise.all([
+    fetch('/api/needs-work').then(r => r.json()),
+    fetch('/api/me', { credentials:'same-origin' }).then(r => r.json()).catch(() => ({}))
+  ]);
+  DATA = nw; ME = me;
+  if (DATA.error) { document.getElementById('body').innerHTML =
+    '<p class="msg">' + esc(DATA.error) + '</p>'; return; }
+  active = active || (DATA.groups[0] && DATA.groups[0].key);
+  drawTabs(); drawMine(); drawSignin(); draw();
+}
+
+function canClaim() {
+  return !!(ME && (ME.isAdmin || (ME.user && ME.user.approved &&
+    (ME.user.role === 'contributor' || ME.user.role === 'admin'))));
+}
+function myName() {
+  if (!ME) return null;
+  if (ME.isAdmin) return 'admin';
+  if (ME.user) return ((ME.user.first_name||'') + ' ' + (ME.user.last_name||'')).trim() || ME.user.email;
+  return null;
+}
+
+function drawSignin() {
+  document.getElementById('signinBox').innerHTML = canClaim() ? '' :
+    '<div class="signin">You can read every job here. To <b>pick one up</b> so others can see you are '
+    + 'on it, <a href="/join">join the record</a> or sign in.</div>';
+}
+
+function drawMine() {
+  const me = myName();
+  const box = document.getElementById('mineBox');
+  if (!me) { box.innerHTML = ''; return; }
+  const mine = [];
+  for (const g of DATA.groups)
+    for (const it of g.items)
+      for (const c of (it.claims || []))
+        if (c.username === me && !c.closed_at) mine.push({ g, it, c });
+  box.innerHTML = !mine.length ? '' :
+    '<div class="mineboard"><h3>You have ' + mine.length + ' '
+    + (mine.length === 1 ? 'thing' : 'things') + ' in hand</h3><ul>'
+    + mine.map(m => '<li>' + esc(m.it.title) + ' <span style="color:var(--faint)">— '
+        + esc(m.g.title.toLowerCase()) + '</span></li>').join('')
+    + '</ul></div>';
+}
+
+function drawTabs() {
+  document.getElementById('tabs').innerHTML = DATA.groups.map(g =>
+    `<button class="tab${g.key === active ? ' on' : ''}" data-k="${esc(g.key)}">`
+    + esc(g.title) + ` <span class="n">${g.items.length}</span></button>`).join('');
+  document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+    active = t.dataset.k; drawTabs(); draw();
+  });
+}
+
+function itemHtml(g, it) {
+  const me = myName();
+  const open = (it.claims || []).filter(c => !c.closed_at);
+  const done = (it.claims || []).filter(c => c.closed_at);
+  const mine = open.find(c => c.username === me);
+  const cls = mine ? ' mine' : (open.length ? ' taken' : '');
+  let who = '';
+  if (open.length) {
+    who = '<div class="who">' + open.map(c =>
+      (c.username === me ? 'You are' : '<b>' + esc(c.username) + '</b> is') + ' looking at this'
+      + (c.started_at ? ' <span style="color:var(--faint)">since ' + esc(String(c.started_at).slice(0,10)) + '</span>' : '')
+      + (c.note ? ' — <i>' + esc(c.note) + '</i>' : '')).join('<br>') + '</div>';
+  } else if (done.length) {
+    const last = done[done.length - 1];
+    who = '<div class="who"><b>' + esc(last.username) + '</b> finished with this'
+      + (last.outcome ? ' — <i>' + esc(last.outcome) + '</i>' : '') + '</div>';
+  } else {
+    who = '<div class="who none">Nobody on this yet.</div>';
+  }
+  const acts = [];
+  if (it.link) acts.push('<a class="btn" href="' + esc(it.link) + '">Open</a>');
+  if (it.url) acts.push('<a class="btn" href="' + esc(it.url) + '" target="_blank" rel="noopener">Wikipedia ↗</a>');
+  if (canClaim()) {
+    if (mine) {
+      acts.push('<button data-act="done" data-id="' + mine.id + '" class="go">Mark finished</button>');
+      acts.push('<button data-act="drop" data-id="' + mine.id + '" class="warn">Put it back</button>');
+    } else {
+      acts.push('<button data-act="claim" data-kind="' + esc(g.kind) + '" data-target="' + it.id
+        + '" data-label="' + esc(it.title) + '" class="go">Pick this up</button>');
+    }
+  }
+  return `<div class="item${cls}" id="it-${esc(g.kind)}-${it.id}">
+    <h3>${it.link ? '<a href="' + esc(it.link) + '">' + esc(it.title) + '</a>' : esc(it.title)}</h3>
+    ${it.sub ? '<div class="sub">' + esc(it.sub) + '</div>' : ''}
+    ${it.why ? '<div class="why' + (g.key === 'unfiled-households' ? ' src' : '') + '">' + esc(it.why) + '</div>' : ''}
+    ${who}
+    <div class="acts">${acts.join('')}</div>
+    <div class="note-in"><input placeholder="A note for the others — optional" maxlength="160"></div>
+  </div>`;
+}
+
+function draw() {
+  const g = DATA.groups.find(x => x.key === active);
+  const body = document.getElementById('body');
+  if (!g) { body.innerHTML = ''; return; }
+  body.classList.remove('loading');
+  const n = shown[g.key] || PAGE;
+  const slice = g.items.slice(0, n);
+  body.innerHTML =
+    `<div class="groupnote">${esc(g.blurb)}<span class="done"><b>Finished when</b> — ${esc(g.done)}</span></div>`
+    + slice.map(it => itemHtml(g, it)).join('')
+    + (g.items.length > n
+        ? `<div class="more"><button id="moreBtn">Show ${Math.min(PAGE, g.items.length - n)} more of ${g.items.length}</button></div>`
+        : '');
+  const more = document.getElementById('moreBtn');
+  if (more) more.onclick = () => { shown[g.key] = n + PAGE; draw(); };
+  body.querySelectorAll('button[data-act]').forEach(b => b.onclick = () => act(b));
+}
+
+async function act(btn) {
+  const a = btn.dataset.act;
+  btn.disabled = true;
+  try {
+    if (a === 'claim') {
+      const box = btn.closest('.item').querySelector('.note-in');
+      if (!box.classList.contains('open')) {
+        box.classList.add('open');
+        btn.disabled = false;
+        btn.textContent = 'Confirm';
+        box.querySelector('input').focus();
+        return;
+      }
+      const note = box.querySelector('input').value.trim();
+      await post('/api/claims', { kind: btn.dataset.kind, target_id: +btn.dataset.target,
+                                  target_label: btn.dataset.label, note });
+    } else if (a === 'drop') {
+      await req('/api/claims/' + btn.dataset.id, 'DELETE');
+    } else if (a === 'done') {
+      const box = btn.closest('.item').querySelector('.note-in');
+      if (!box.classList.contains('open')) {
+        box.classList.add('open');
+        box.querySelector('input').placeholder = 'What did you find? — optional';
+        btn.disabled = false; btn.textContent = 'Confirm finished';
+        box.querySelector('input').focus();
+        return;
+      }
+      await post('/api/claims/' + btn.dataset.id + '/done',
+                 { outcome: box.querySelector('input').value.trim() });
+    }
+    await load();
+  } catch (e) {
+    const m = document.createElement('div');
+    m.className = 'msg'; m.textContent = e.message;
+    btn.closest('.item').appendChild(m);
+    btn.disabled = false;
+  }
+}
+
+async function post(url, body) { return req(url, 'POST', body); }
+async function req(url, method, body) {
+  const r = await fetch(url, {
+    method, credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || ('Request failed (' + r.status + ')'));
+  return d;
+}
+
+load().catch(e => { document.getElementById('body').innerHTML = '<p class="msg">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>

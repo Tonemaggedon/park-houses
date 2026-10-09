@@ -16,16 +16,20 @@
     ['/significant', '★', 'Notable'],
     ['/architects', '🏛', 'Architects'],
     ['/census', '📜', 'Census'],
-    ['/family-tree', '🌳', 'Family trees'],
     ['/stats', '📈', 'Insights'],
     ['/trades', '⚒', 'Occupations'],
     ['/origins', '🌍', 'Origins'],
     ['/history', '⏳', 'Estate history'],
     ['/archive', '🗄', 'Archive'],
-    ['/research', '❓', 'Open questions'],
+    ['/walk', '🚶', 'Walk it'],
     ['/dashboard', '📊', 'Dashboard'],
   ];
+  // Family trees is off the public row until it works, and Open questions has
+  // moved in here with the rest of the contributor's workbench - it is a list of
+  // jobs, not a thing to read.
   const WORK = [
+    ['/needs-work', '🔧', 'Needs work'],
+    ['/research', '❓', 'Open questions'],
     ['/tasks', '✔', 'The working list'],
     ['/unfiled', '📥', 'Unfiled records'],
     ['/occupations', '🏷', 'Occupations to sort'],
