@@ -103,14 +103,36 @@ Thirteen houses in the record are gone. The app should say so plainly when you r
 *Broxtowe House stood here. Harts Hotel is on it now.* The Hermitage, Barrack Yard, Clumber Court,
 Sunnyside. **A walk made only of absences** would be an extraordinary half hour.
 
-### 5. The gas lamps at dusk
+### 5. The gas lamps at dusk — and the neighbours who have already done the hard part
 
-The Park has the largest surviving gas lamp network in the country and it is the first thing anyone
-says about the place. The record does not hold the lamps.
+**Struck out, and replaced with something better. [Park Lamps](https://parklamps.mczhang.net) already
+exists.** A. Hagues pointed me at it: **Bethan and Weiran, two residents of The Park**, built it so
+that reporting a faulty gaslight is simpler — you find the lamp you are standing next to, report the
+fault, and see which lamps have already been reported. It is a proper app with a map, a search and a
+home-screen install, and the lamps are all on it.
 
-**So the first lamp walk should be the one that collects them.** The app drops you on a street at
-dusk, you tap each lamp as you pass it, and by the end of a fortnight the record has every lamp in
-The Park with a position. Then the dusk walk becomes the thing the lamps deserve.
+**So the record should not collect the lamps.** The idea here was a dusk walk that gathered them one
+tap at a time over a fortnight; that work is done, by people who live on the street, and doing it
+again would be both wasteful and rude.
+
+**What to do instead, in order of how much it asks of anybody:**
+
+1. **Link to them.** A dusk walk in this app should say, at the first lamp, that Park Lamps exists
+   and that a broken one can be reported there in about fifteen seconds. That is the civic act the
+   walk can offer that the record cannot.
+2. **Ask before anything else.** Their data is theirs. There is no licence on the site, so the only
+   correct next step is a conversation, not a scrape — and it is A. Hagues' conversation to have,
+   as the Trust and as a neighbour, not something to arrange from a terminal at four in the morning.
+3. **If they are willing**, the fit is almost too neat. Their lamps become stops on the walk, with
+   the fault-reporting link in the card. The record's houses become the context on theirs — *this
+   lamp stands outside Gartree Lodge, where a chauffeur lived over the stables in 1921.* Neither
+   project has to hand over a database for that to work; a link each way would do most of it.
+4. **And Weiran is a software developer in The Park who has already built a PWA for it**, which is
+   a more useful fact than any amount of lamp data.
+
+**What the record would still want from a lamp walk** is the thing Park Lamps has no reason to
+carry: *when* the lamps came, who put them up, which are original and which are replacements. That
+is a documentary question, and it is ours.
 
 ### 6. Read me a gatepost
 
@@ -168,6 +190,8 @@ nobody there. **A month into the war.** Walk those, and only those.
 - **No photographs.** A stop with a picture of the house in 1900 is worth three with none.
 - **An answer sent from the pavement lands as a closed claim on the question**, which is honest but
   crude. It should become a proper contribution with the walker's name on it.
+- **A link to [Park Lamps](https://parklamps.mczhang.net) is not in the app yet**, deliberately. It
+  points at a neighbour's project and it should be their call as well as ours.
 
 ---
 
