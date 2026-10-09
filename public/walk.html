@@ -92,6 +92,7 @@
   .tag.architect{background:#dde5ee;color:#27486b}
   .tag.household{background:#e8e2ef;color:#4a3668}
   .tag.round{background:#f3e0cc;color:#7c4414}
+  .tag.postbox{background:#f2d9d6;color:#8a2b22}
   #sheet h3{margin:9px 0 3px;font-size:1.26rem;font-weight:400;line-height:1.22}
   .addr{color:var(--soft);font-size:.84rem}
   .body{margin-top:11px;font-size:.98rem;color:#33402a}
@@ -118,6 +119,18 @@
   .pers b{font-weight:600;color:var(--ink)}
   .pers .rel{color:var(--faint);font-size:.8rem;margin-left:5px}
   .pers .trade{display:block;font-size:.82rem;color:var(--soft);font-style:italic}
+  .cyphers{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:7px;margin-top:9px}
+  .cy{border:1px solid #ddd2b4;background:#fff;border-radius:9px;padding:9px 7px;text-align:center;
+    color:#4a4130;font-size:.76rem;line-height:1.25}
+  .cy b{display:block;font-size:1.08rem;font-family:ui-monospace,Menlo,monospace;letter-spacing:.04em}
+  .cy.on{background:var(--moss);border-color:var(--moss);color:#0f1a0b;font-weight:600}
+  .shot{display:block;margin-top:10px;border:1px dashed #cdbf9c;border-radius:10px;padding:16px;
+    text-align:center;color:var(--soft);font-size:.9rem;background:#fffdf4}
+  .shot img{max-width:100%;border-radius:8px;display:block;margin:0 auto}
+  .fld{margin-top:10px}
+  .fld label{display:block;font-size:.76rem;color:var(--soft);margin-bottom:4px}
+  .fld input{width:100%;padding:8px 9px;border:1px solid #ddd2b4;border-radius:7px;
+    font-family:inherit;font-size:.9rem;background:#fff;color:var(--ink)}
 
   /* ── a passing remark, shown without stopping you ───────────────────────── */
   #toast{position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));
@@ -133,6 +146,7 @@
   .pin.lost{background:#c0603a}.pin.architect{background:#6d8fb8}
   .pin.household{background:#9b86bd}
   .pin.round{background:#d8893f}
+  .pin.postbox{background:#b03b32}
   .pin.done{background:#54604a;opacity:.6}
   .me{width:16px;height:16px;border-radius:50%;background:#6fd0ff;
     box-shadow:0 0 0 4px rgba(111,208,255,.25),0 0 14px rgba(111,208,255,.7)}
@@ -148,6 +162,7 @@
     <div class="dist" id="hudDist">—</div>
     <span id="awake" title="The screen stays on while you walk"
       style="opacity:.3;font-size:.9rem">&#9728;</span>
+    <button id="btnBox" title="Record a post box you have just passed">&#9993;</button>
     <button id="btnList">Route</button>
     <button id="btnEnd">End</button>
   </div>
@@ -437,7 +452,7 @@ function toast(s) {
 // ── a stop, opened ───────────────────────────────────────────────────────────
 const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
   lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
-  round: 'He knocked here' };
+  round: 'He knocked here', postbox: 'A dated thing in the street' };
 
 // A household written out the way the page has it: in his order, down the lines.
 function householdHtml(s) {
@@ -515,6 +530,118 @@ function openStop(i, manual) {
   }
 }
 function closeSheet() { document.getElementById('sheet').classList.remove('up'); }
+
+// ── recording a post box ─────────────────────────────────────────────────────
+// Every box carries the cypher of the monarch reigning when it was cast, so a
+// photograph and one tap dates a thing standing in the street. The Park's have
+// never been written down.
+const CYPHERS = [
+  ['VR',     'Victoria',     '1837–1901',  1901],
+  ['EVIIR',  'Edward VII',   '1901–10',    1910],
+  ['GR',     'George V',     '1910–36',    1936],
+  ['EVIIIR', 'Edward VIII',  '1936 only',  1936],
+  ['GVIR',   'George VI',    '1936–52',    1952],
+  ['EIIR',   'Elizabeth II', '1952–2022',  2022],
+  ['CIIIR',  'Charles III',  '2022–',      null],
+  ['none',   'No cypher',    'usually early', null]
+];
+const BOX_TYPES = [['pillar','Pillar'],['wall','Wall'],['lamp','Lamp'],['ludlow','Ludlow']];
+let boxPhoto = null, boxCypher = null, boxType = null;
+
+function openBoxSheet() {
+  boxPhoto = null; boxCypher = null; boxType = null;
+  const body = document.getElementById('sheetBody');
+  body.innerHTML = `
+    <span class="tag postbox">A post box</span>
+    <h3>What does it say on it?</h3>
+    <div class="addr">${lastPos ? 'Recorded where you are standing now' : 'Waiting for your position…'}</div>
+
+    <label class="shot" id="shotBox">
+      <span id="shotText">Tap to photograph it</span>
+      <input type="file" accept="image/*" capture="environment" id="boxFile" hidden>
+    </label>
+
+    <div class="fld"><label>The cypher — the monarch's initials cast into it</label>
+      <div class="cyphers" id="cyBox"></div></div>
+
+    <div class="fld"><label>What kind of box</label>
+      <div class="chips" id="btBox" style="gap:6px"></div></div>
+
+    <div class="fld"><label>Where exactly</label>
+      <input id="boxWhere" placeholder="in the wall by the gate of 12 Pelham Crescent"></div>
+    <div class="fld"><label>The founder's name, if you can read it</label>
+      <input id="boxMaker" placeholder="McDowall Steven &amp; Co, Falkirk"></div>
+
+    <div class="row">
+      <button class="primary" id="boxSend">Record it</button>
+      <button class="ghost" id="btnClose">Not now</button>
+    </div>
+    <div id="boxMsg"></div>`;
+  document.getElementById('sheet').classList.add('up');
+  document.getElementById('btnClose').onclick = closeSheet;
+
+  const cy = document.getElementById('cyBox');
+  const drawCy = () => { cy.innerHTML = CYPHERS.map(([k, who, when]) =>
+    `<button class="cy${k === boxCypher ? ' on' : ''}" data-k="${k}"><b>${k === 'none' ? '—' : k}</b>`
+    + `${esc(who)}<br>${esc(when)}</button>`).join('');
+    cy.querySelectorAll('.cy').forEach(b => b.onclick = () => { boxCypher = b.dataset.k; drawCy(); }); };
+  drawCy();
+
+  const bt = document.getElementById('btBox');
+  const drawBt = () => { bt.innerHTML = BOX_TYPES.map(([k, l]) =>
+    `<button class="chip${k === boxType ? ' on' : ''}" data-k="${k}" style="padding:7px 13px">${l}</button>`).join('');
+    bt.querySelectorAll('.chip').forEach(b => b.onclick = () => { boxType = b.dataset.k; drawBt(); }); };
+  drawBt();
+
+  document.getElementById('shotBox').onclick = () => document.getElementById('boxFile').click();
+  document.getElementById('boxFile').onchange = (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    boxPhoto = f;
+    const r = new FileReader();
+    r.onload = () => { document.getElementById('shotBox').innerHTML =
+      `<img src="${r.result}" alt=""><span style="display:block;margin-top:7px;font-size:.78rem">Tap to take another</span>`
+      + '<input type="file" accept="image/*" capture="environment" id="boxFile" hidden>';
+      document.getElementById('shotBox').onclick = () => document.getElementById('boxFile').click();
+      document.getElementById('boxFile').onchange = document.getElementById('boxFile').onchange; };
+    r.readAsDataURL(f);
+  };
+
+  document.getElementById('boxSend').onclick = async () => {
+    const msg = document.getElementById('boxMsg');
+    if (!lastPos) { msg.innerHTML = '<div class="err">No position yet — give the phone a moment.</div>'; return; }
+    if (!boxCypher && !boxPhoto) {
+      msg.innerHTML = '<div class="err">A photograph or a cypher, at least one.</div>'; return; }
+    const btn = document.getElementById('boxSend');
+    btn.disabled = true; btn.textContent = 'Recording…';
+    try {
+      const fd = new FormData();
+      fd.append('lat', lastPos.lat); fd.append('lng', lastPos.lng);
+      if (boxCypher) fd.append('cypher', boxCypher);
+      if (boxType) fd.append('box_type', boxType);
+      fd.append('where_note', document.getElementById('boxWhere').value.trim());
+      fd.append('maker', document.getElementById('boxMaker').value.trim());
+      if (boxPhoto) fd.append('photo', boxPhoto);
+      const r = await fetch('/api/postboxes', { method: 'POST', credentials: 'same-origin', body: fd });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'It would not send');
+      const c = CYPHERS.find(x => x[0] === boxCypher);
+      msg.innerHTML = '<div class="got">' + (d.already
+        ? 'That one was already recorded — what you added has been put with it.'
+        : 'Recorded.')
+        + (c && boxCypher !== 'none'
+            ? ` <b>${esc(c[0])}</b> — ${esc(c[1])}. ` + (c[3]
+                ? `That box has stood there since <b>${c[3]}</b> at the latest.`
+                : 'A new one, then.')
+            : '')
+        + '</div>';
+      setTimeout(closeSheet, 3200);
+    } catch (e) {
+      msg.innerHTML = '<div class="err">' + esc(e.message) + '</div>';
+      btn.disabled = false; btn.textContent = 'Record it';
+    }
+  };
+}
 
 // ── starting ─────────────────────────────────────────────────────────────────
 const PARK_CENTRE = { lat: 52.9520, lng: -1.1660 };
@@ -595,6 +722,7 @@ document.getElementById('btnEnd').onclick = () => {
   if (wakeLock) { try { wakeLock.release(); } catch (e) {} wakeLock = null; }
   location.reload();
 };
+document.getElementById('btnBox').onclick = openBoxSheet;
 document.getElementById('btnList').onclick = () => {
   const body = document.getElementById('sheetBody');
   body.innerHTML = '<span class="tag notable">Your route</span><h3>'

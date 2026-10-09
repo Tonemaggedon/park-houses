@@ -843,6 +843,28 @@ async function dbInit() {
                       ON work_claims(kind, target_id, username) WHERE closed_at IS NULL`);
     await db.query(`CREATE INDEX IF NOT EXISTS work_claims_target_idx ON work_claims(kind, target_id)`);
     await db.query(`CREATE INDEX IF NOT EXISTS work_claims_open_idx ON work_claims(closed_at) WHERE closed_at IS NULL`);
+
+    // ── Post boxes ───────────────────────────────────────────────────────────
+    // A post box carries the cypher of the monarch reigning when it was cast, so
+    // every one of them is a dated object standing in the street. The Park has
+    // never had them recorded. They are collected on foot, from the walk.
+    await db.query(`CREATE TABLE IF NOT EXISTS postboxes (
+      id SERIAL PRIMARY KEY,
+      lat DOUBLE PRECISION NOT NULL,
+      lng DOUBLE PRECISION NOT NULL,
+      cypher TEXT,              -- VR, EVIIR, GR, EVIIIR, GVIR, EIIR, CIIIR, none
+      box_type TEXT,            -- pillar, wall, lamp, ludlow
+      maker TEXT,               -- the founder's name cast into it
+      inscription TEXT,         -- anything else readable on it
+      where_note TEXT,          -- "in the wall beside the gate of 12 Pelham Crescent"
+      photo_url TEXT,
+      property_id INTEGER,      -- the house it stands outside, where there is one
+      found_by TEXT,
+      found_at TIMESTAMPTZ DEFAULT NOW(),
+      checked_by TEXT,
+      checked_at TIMESTAMPTZ
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS postboxes_pos_idx ON postboxes(lat, lng)`);
     // Addresses the census itself cannot resolve — the return gave no house
     // name and no number, so no amount of census review will place them. They
     // are set aside rather than left in the queue looking like work.
@@ -8449,6 +8471,24 @@ app.get('/api/walk/stops', async (req, res) => {
                p.built_for ? 'for ' + p.built_for : null].filter(Boolean).join(' '),
         listed: p.listed_grade || null });
     }
+    // Boxes already found are stops of their own, so you can see what is left.
+    try {
+      const boxes = await db.query(`SELECT id, lat, lng, cypher, box_type, where_note, photo_url
+                                      FROM postboxes`);
+      for (const b of boxes.rows) {
+        const reign = REIGNS[b.cypher];
+        stops.push({ id: 'pb' + b.id, kind: 'postbox', lat: +b.lat, lng: +b.lng,
+          property_id: null, address: b.where_note || 'In the street', street: '',
+          title: (b.box_type ? b.box_type[0].toUpperCase() + b.box_type.slice(1) + ' box' : 'Post box')
+                 + (b.cypher && b.cypher !== 'none' ? ' — ' + b.cypher : ''),
+          line: reign && reign.monarch
+            ? `Cast in the reign of ${reign.monarch}, so it has stood here since `
+              + `${reign.to ? 'before ' + reign.to : reign.from} at the latest.`
+            : 'No cypher on it, which usually means an early one.',
+          photo: b.photo_url || null });
+      }
+    } catch (e) { /* the table may not exist yet on an old deploy */ }
+
     const big = new Map(households.rows.map(r => [r.property_id, r]));
     for (const p of props) {
       const h = big.get(p.id);
@@ -8462,6 +8502,80 @@ app.get('/api/walk/stops', async (req, res) => {
       counts: stops.reduce((a, s) => (a[s.kind] = (a[s.kind] || 0) + 1, a), {})
     });
   } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Post boxes ───────────────────────────────────────────────────────────────
+// Every post box carries the cypher of the monarch reigning when it was cast, so
+// a wall box with VR on it has stood in that wall since before 1901 and a GVIR
+// since before 1952. They are the only dated objects in the street that anybody
+// can read without a key, and The Park's have never been written down.
+const REIGNS = {
+  VR:     { monarch: 'Victoria',    from: 1837, to: 1901 },
+  EVIIR:  { monarch: 'Edward VII',  from: 1901, to: 1910 },
+  GR:     { monarch: 'George V',    from: 1910, to: 1936 },
+  EVIIIR: { monarch: 'Edward VIII', from: 1936, to: 1936 },
+  GVIR:   { monarch: 'George VI',   from: 1936, to: 1952 },
+  EIIR:   { monarch: 'Elizabeth II',from: 1952, to: 2022 },
+  CIIIR:  { monarch: 'Charles III', from: 2022, to: null },
+  none:   { monarch: null,          from: null, to: null }
+};
+app.get('/api/postboxes/reigns', (req, res) => res.json({ reigns: REIGNS }));
+
+app.get('/api/postboxes', async (req, res) => {
+  if (!db) return res.json({ postboxes: [] });
+  try {
+    const r = await db.query(
+      `SELECT id, lat, lng, cypher, box_type, maker, inscription, where_note,
+              photo_url, property_id, found_by, found_at, checked_by
+         FROM postboxes ORDER BY found_at`);
+    res.json({ postboxes: r.rows.map(b => ({ ...b, reign: REIGNS[b.cypher] || null })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Anybody out walking can record one. It is a photograph of a thing in a public
+// street, and the alternative is that nobody ever does it.
+app.post('/api/postboxes', (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  multer({ storage: multer.memoryStorage(), limits: { fileSize: 8 * 1024 * 1024 } })
+    .single('photo')(req, res, async (err) => {
+    if (err) return res.status(400).json({ error: err.message });
+    const b = req.body || {};
+    const lat = parseFloat(b.lat), lng = parseFloat(b.lng);
+    if (!isFinite(lat) || !isFinite(lng))
+      return res.status(400).json({ error: 'No position — the phone has to know where you are' });
+    const cypher = Object.keys(REIGNS).includes(b.cypher) ? b.cypher : null;
+    try {
+      let url = null;
+      if (req.file) {
+        const fn = `postbox-${Date.now()}${path.extname(req.file.originalname || '.jpg')}`;
+        try { url = await uploadPhoto(req.file.buffer, fn, req.file.mimetype); }
+        catch (e) { url = null; }    // a box with no photograph still beats no box
+      }
+      const who = (await getResearchKey(req.session || {})) || 'somebody on the walk';
+      // The same box photographed twice from either side of the gate is one box.
+      const near = await db.query(
+        `SELECT id FROM postboxes
+          WHERE ABS(lat - $1) < 0.00018 AND ABS(lng - $2) < 0.0003 LIMIT 1`, [lat, lng]);
+      if (near.rows.length) {
+        await db.query(
+          `UPDATE postboxes SET cypher = COALESCE($2, cypher), box_type = COALESCE($3, box_type),
+                  maker = COALESCE(NULLIF($4,''), maker), inscription = COALESCE(NULLIF($5,''), inscription),
+                  where_note = COALESCE(NULLIF($6,''), where_note), photo_url = COALESCE($7, photo_url),
+                  checked_by = $8, checked_at = NOW()
+            WHERE id = $1`,
+          [near.rows[0].id, cypher, b.box_type || null, b.maker || '', b.inscription || '',
+           b.where_note || '', url, who]);
+        return res.json({ ok: true, id: near.rows[0].id, already: true });
+      }
+      const r = await db.query(
+        `INSERT INTO postboxes (lat, lng, cypher, box_type, maker, inscription, where_note,
+                                photo_url, property_id, found_by)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id`,
+        [lat, lng, cypher, b.box_type || null, b.maker || null, b.inscription || null,
+         b.where_note || null, url, parseInt(b.property_id, 10) || null, who]);
+      res.json({ ok: true, id: r.rows[0].id, reign: REIGNS[cypher] || null });
+    } catch (e) { res.status(500).json({ error: e.message }); }
+  });
 });
 
 // GET /api/walk/rounds        — which enumerators' rounds can be walked
