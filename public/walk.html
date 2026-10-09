@@ -94,6 +94,8 @@
   .tag.round{background:#f3e0cc;color:#7c4414}
   .tag.postbox{background:#f2d9d6;color:#8a2b22}
   .tag.hunt{background:#efe4d0;color:#6b4e22}
+  .tag.run-edge{background:#dde5f1;color:#24456e}
+  .tag.run-gap{background:#f6dad6;color:#8e2a1c}
   .tag.needs-photo{background:#d6ecea;color:#1d5a56}
   .tag.needs-fresh{background:#e2eddb;color:#2f5120}
   #sheet h3{margin:9px 0 3px;font-size:1.26rem;font-weight:400;line-height:1.22}
@@ -151,6 +153,8 @@
   .pin.round{background:#d8893f}
   .pin.postbox{background:#b03b32}
   .pin.hunt{background:#8a6a3a}
+  .pin\.run-edge,.pin.run-edge{background:#4a6fa5}
+  .pin\.run-gap,.pin.run-gap{background:#c0392b}
   .pin\.needs-photo,.pin.needs-photo{background:#3f8f8a}
   .pin.needs-fresh{background:#6e9a52}
   .pin.done{background:#54604a;opacity:.6}
@@ -194,6 +198,14 @@
     <div class="step">
       <h2>What are you in the mood for?</h2>
       <div class="chips" id="themeChips"></div>
+      <div id="runPick" hidden>
+        <p class="mini" style="margin:13px 0 9px">Every so often he stopped writing house numbers —
+          a run of households headed only <i>Park Terrace</i>, one after another, with nothing to
+          hang them on. <b>But the run is bounded.</b> There is a numbered house before he stopped
+          and a numbered house after he started again, and in between they are in the order he met
+          them. Walk from one end to the other, count the doors, and the order does the rest.</p>
+        <div class="chips" id="runChips"></div>
+      </div>
       <div id="roundPick" hidden>
         <p class="mini" style="margin:13px 0 9px">On an evening in each of these years a man walked
           The Park with a book, door by door, doubling back where the houses made him. Pick his
@@ -237,9 +249,16 @@ const LENGTHS = [
 // dense enough that a distance budget alone gives you forty stops in half an
 // hour, which is forty-five seconds apiece and no pleasure at all.
 const STOP_COUNT = { 15: 7, 30: 13, 60: 22, 0: 40 };
+// A round is different. The point of walking an enumerator's evening is the
+// shape of it - the doubling back, the crossing over - and thirteen doors out
+// of a hundred and ninety gives you none of that. So a round takes the whole
+// book, and the time you picked only decides where you stop, not how much of it
+// exists. The HUD says "stop 4 of 191" so the scale is plain from the start.
+const ROUND_COUNT = { 15: 25, 30: 55, 60: 110, 0: 400 };
 const THEMES = [
   { k: 'mixed',     label: 'A bit of everything', sub: 'the default' },
   { k: 'round',     label: "An enumerator's round", sub: 'walk it as he walked it' },
+  { k: 'run',       label: 'Fix an unnumbered run', sub: 'he stopped writing numbers' },
   { k: 'question',  label: 'Be useful',           sub: 'questions only I can answer' },
   { k: 'notable',   label: 'Who lived here',      sub: 'the notable residents' },
   { k: 'architect', label: 'Who built it',        sub: 'Hine, Fothergill and the rest' },
@@ -258,6 +277,7 @@ const remember = id => { seen.add(id); try {
 let STOPS = [], route = [], at = 0, map, meMarker, markers = {}, line, watchId = null;
 let routeMetres = 0;
 let ROUNDS = [], chosenRound = null, ROUND_STOPS = [], wakeLock = null;
+let RUNS = [], chosenRun = null;
 let chosenLen = 30, chosenTheme = 'mixed', lastPos = null, arrived = new Set();
 const ARRIVE_M = 32;        // close enough to be outside the house
 const WALK_M_PER_MIN = 72;  // an unhurried pace, allowing for stopping and looking
@@ -283,6 +303,20 @@ function chips(el, list, cur, pick) {
 function drawIntro() {
   chips(document.getElementById('lenChips'), LENGTHS, chosenLen, v => { chosenLen = v; drawIntro(); });
   chips(document.getElementById('themeChips'), THEMES, chosenTheme, v => { chosenTheme = v; drawIntro(); });
+  const runBox = document.getElementById('runPick');
+  runBox.hidden = chosenTheme !== 'run';
+  if (chosenTheme === 'run') {
+    if (!RUNS.length) { document.getElementById('runChips').innerHTML =
+      '<span class="mini">Looking for the gaps…</span>'; }
+    else {
+      if (!chosenRun) chosenRun = RUNS[0].id;
+      chips(document.getElementById('runChips'),
+        RUNS.slice(0, 12).map(r => ({ k: r.id,
+          label: `${r.households} households`,
+          sub: `${r.year} · ${String(r.written_as || '').replace(/\(.*/, '').trim().slice(0, 26)}` })),
+        chosenRun, v => { chosenRun = v; drawIntro(); });
+    }
+  }
   const box = document.getElementById('roundPick');
   box.hidden = chosenTheme !== 'round';
   if (chosenTheme === 'round') {
@@ -314,6 +348,7 @@ function drawTally() {
 function buildRoute(from) {
   if (chosenTheme === 'round') return buildRound(from);
   if (chosenTheme === 'postbox') return buildHunt(from);
+  if (chosenTheme === 'run') return buildRun(from);
   let pool = STOPS.slice();
   if (chosenTheme !== 'mixed') pool = pool.filter(s => s.kind === chosenTheme);
   const fresh = pool.filter(s => !seen.has(s.id));
@@ -370,7 +405,7 @@ function buildRoute(from) {
 // is his, not the app's.
 function buildRound(from) {
   if (!ROUND_STOPS.length) return [];
-  const maxStops = STOP_COUNT[chosenLen] || 20;
+  const maxStops = ROUND_COUNT[chosenLen] || 55;
   let bi = 0, bd = Infinity;
   ROUND_STOPS.forEach((s, i) => { const d = metres(from, s); if (d < bd) { bd = d; bi = i; } });
   const out = ROUND_STOPS.slice(bi, bi + maxStops);
@@ -416,6 +451,32 @@ function buildHunt(from) {
     used += step; here = pick;
   }
   routeMetres = used;
+  return out;
+}
+
+// A run has four places you can stand and a hole in the middle. The households
+// in the hole have no position - that is the whole problem - so they are not
+// stops. They are the work, carried on the last known house before the gap,
+// which is where you start counting.
+function buildRun(from) {
+  const r = RUNS.find(x => x.id === chosenRun) || RUNS[0];
+  if (!r) return [];
+  const mk = (s, kind, extra) => ({
+    id: `${r.id}-${kind}-${s.schedule}`, kind, lat: s.lat, lng: s.lng,
+    property_id: s.property_id, address: s.label, street: '',
+    schedule: s.schedule, title: s.label, run: r, ...extra });
+  const out = [];
+  r.before.forEach((s, i) => out.push(mk(s, 'run-edge', {
+    line: i === r.before.length - 1
+      ? `The last house he numbered. From here on he wrote only "${r.written_as}".`
+      : 'Numbered, and two doors before he stopped.' })));
+  // the gap sits on the last known house before it
+  if (out.length) { out[out.length - 1].kind = 'run-gap'; out[out.length - 1].gap = r.gap; }
+  r.after.forEach((s, i) => out.push(mk(s, 'run-edge', {
+    line: i === 0
+      ? 'And here he starts numbering again. Everything between is in order.'
+      : 'Numbered, two doors after.' })));
+  routeMetres = out.reduce((m, s, i) => i ? m + walkMetres(out[i-1], s) : m, 0);
   return out;
 }
 
@@ -504,7 +565,8 @@ const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
   lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
   round: 'He knocked here', postbox: 'A dated thing in the street',
   hunt: 'Look along here', 'needs-photo': 'This one has never been photographed',
-  'needs-fresh': 'This one wants a photograph taken now' };
+  'needs-fresh': 'This one wants a photograph taken now',
+  'run-edge': 'A house he did number', 'run-gap': 'Here the numbers stop' };
 
 // A household written out the way the page has it: in his order, down the lines.
 function householdHtml(s) {
@@ -555,6 +617,7 @@ function openStop(i, manual) {
       <div id="propMsg"></div>` : ''}
     ${s.kind === 'hunt' ? `
       <div class="row"><button class="primary" onclick="openBoxSheet()">I can see one — record it</button></div>` : ''}
+    ${s.kind === 'run-gap' && s.gap ? runGapHtml(s) : ''}
     ${s.kind === 'postbox' && s.needs_cypher ? `
       <div class="row"><button class="primary" onclick="openBoxSheet()">Read it and record it</button></div>` : ''}
     <div class="row" style="margin-top:14px">
@@ -592,6 +655,30 @@ function openStop(i, manual) {
       } catch (err) { msg.innerHTML = '<div class="err">' + esc(err.message) + '</div>'; }
     };
   }
+  const runSend = document.getElementById('runSend');
+  if (runSend) runSend.onclick = async () => {
+    const msg = document.getElementById('runMsg');
+    const lines = [...document.querySelectorAll('.runline')]
+      .map(i => ({ schedule: +i.dataset.sched, house: i.value.trim() }))
+      .filter(l => l.house);
+    if (!lines.length) { msg.innerHTML = '<div class="err">Nothing filled in yet.</div>'; return; }
+    runSend.disabled = true;
+    try {
+      const rr = await fetch('/api/walk/run-answer', {
+        method: 'POST', credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ run_id: s.run.id, lines,
+          note: (document.getElementById('runNote') || {}).value || '' })
+      });
+      const dd = await rr.json();
+      if (!rr.ok) throw new Error(dd.error || 'It would not send');
+      msg.innerHTML = `<div class="got">${dd.placed} sent. Nothing is filed on this alone —
+        it goes to somebody to read against the page, which is how it should be. Thank you.</div>`;
+    } catch (e) {
+      msg.innerHTML = '<div class="err">' + esc(e.message) + '</div>';
+      runSend.disabled = false;
+    }
+  };
   const send = document.getElementById('btnSend');
   if (send) {
     document.getElementById('btnSkip').onclick = closeSheet;
@@ -620,6 +707,40 @@ function openStop(i, manual) {
   }
 }
 function closeSheet() { document.getElementById('sheet').classList.remove('up'); }
+
+// The work of a run, written out where you are standing. Each household in the
+// order he met them, with a box to say which house it is.
+function runGapHtml(s) {
+  const r = s.run;
+  return `
+    <div class="ask" style="margin-top:12px">
+      <label style="font-size:.86rem;color:#33402a;line-height:1.45">
+        From here he wrote <b>${esc(r.households)} households</b> — ${esc(r.people)} people — with
+        no house numbers at all, headed only <b>${esc(plain(r.written_as))}</b>. He picks the
+        numbers up again at <b>${esc(r.after[0] ? r.after[0].label : '')}</b>.
+        <br><br><b>They are in the order he met them.</b> Walk from here to there, count the front
+        doors, and write what you think each one is. You do not have to get them all.
+      </label>
+    </div>
+    <div class="hh" style="border-top:1px solid #e4dcc4;margin-top:12px">
+      ${r.gap.map((g, i) => `
+        <div class="pers" style="display:flex;gap:9px;align-items:flex-start">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:.74rem;color:var(--faint);
+            min-width:2.4em;padding-top:7px">${i + 1}</span>
+          <span style="flex:1">
+            <b>${esc(g.surnames || 'unnamed')}</b>
+            <span class="rel">${g.people} ${g.people === 1 ? 'person' : 'people'} · schedule ${g.schedule}</span>
+            <input class="runline" data-sched="${g.schedule}"
+              placeholder="which house?" style="width:100%;margin-top:5px;padding:7px 9px;
+              border:1px solid #ddd2b4;border-radius:7px;font-family:inherit;font-size:.9rem">
+          </span>
+        </div>`).join('')}
+    </div>
+    <div class="fld"><label>Anything else worth saying</label>
+      <input id="runNote" placeholder="the doors run 3, 5, 7 and then a gap where a house has gone"></div>
+    <div class="row"><button class="primary" id="runSend">Send what you worked out</button></div>
+    <div id="runMsg"></div>`;
+}
 
 // ── recording a post box ─────────────────────────────────────────────────────
 // Every box carries the cypher of the monarch reigning when it was cast, so a
@@ -832,6 +953,10 @@ document.getElementById('sheet').addEventListener('click', e => {
 
 fetch('/api/walk/rounds').then(r => r.json()).then(d => {
   ROUNDS = d.rounds || []; drawIntro();
+}).catch(() => {});
+
+fetch('/api/walk/runs').then(r => r.json()).then(d => {
+  RUNS = d.runs || []; drawIntro();
 }).catch(() => {});
 
 fetch('/api/walk/stops').then(r => r.json()).then(d => {

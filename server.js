@@ -9657,6 +9657,117 @@ app.post('/api/postboxes', (req, res) => {
   });
 });
 
+// What somebody worked out on the pavement. **It does not file anything.** A run
+// of nine households placed by counting doors is a very good lead and still a
+// lead; it lands as a note for an admin to read against the page.
+app.post('/api/walk/run-answer', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const run = String(b.run_id || '').slice(0, 80);
+  const lines = Array.isArray(b.lines) ? b.lines : [];
+  if (!run || !lines.length) return res.status(400).json({ error: 'Nothing to send' });
+  const who = (await getResearchKey(req.session || {})) || 'somebody on the walk';
+  const text = lines
+    .filter(l => l && l.schedule && String(l.house || '').trim())
+    .map(l => `schedule ${l.schedule} = ${String(l.house).trim()}`)
+    .join('; ');
+  if (!text) return res.status(400).json({ error: 'No houses given' });
+  try {
+    await db.query(
+      `INSERT INTO work_claims (kind, target_id, target_label, username, note, closed_at, outcome)
+       VALUES ('household', 0, $1, $2, $3, NOW(), $3)`,
+      [`Unnumbered run ${run}`, who,
+       text + (b.note ? ` — ${String(b.note).slice(0, 400)}` : '')]);
+    await notify({ kind: 'discussion', made_by: who,
+      title: `${who} walked an unnumbered run`,
+      body: `${lines.length} households placed on ${run}`, url: '/needs-work' });
+    res.json({ ok: true, placed: lines.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/walk/runs — the stretches where he stopped writing numbers
+//
+// **This is the walk the record most needs and could not ask for.** Every so
+// often an enumerator stops giving house numbers: a run of schedules headed only
+// *Park Terrace* or *Clinton Terrace*, households written one after another with
+// nothing to hang them on. The record cannot place them from paper, and they sit
+// unfiled for ever.
+//
+// But the run is **bounded**. There is a numbered house before he stopped and a
+// numbered house after he started again, and in between the households are in
+// the order he met them. Stand at the first, walk to the last, count the doors,
+// and the order does the rest.
+//
+// A run is only worth walking if both ends are houses the map can place, so that
+// is the filter. Two before and two after, to get the direction into your legs
+// before the gap begins.
+function walkRunBook(source) { return walkBookKey(source); }
+
+app.get('/api/walk/runs', async (req, res) => {
+  if (!db) return res.json({ runs: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const byId = new Map(props.map(p => [p.id, p]));
+    const co = await db.query('SELECT id, lat, lng FROM coords');
+    for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
+
+    const r = await db.query(
+      `SELECT census_year, census_household_num AS sched, property_id,
+              MIN(COALESCE(NULLIF(address,''), unresolved_address)) AS addr,
+              MIN(COALESCE(source,'')) AS source,
+              COUNT(*) AS people,
+              STRING_AGG(DISTINCT p.last_name, ', ') AS surnames
+         FROM census_entries ce JOIN people p ON p.id = ce.person_id
+        WHERE ce.census_household_num IS NOT NULL
+        GROUP BY 1,2,3 ORDER BY 1,2`);
+
+    const byRound = new Map();
+    for (const row of r.rows) {
+      const k = row.census_year + '|' + walkRunBook(row.source);
+      if (!byRound.has(k)) byRound.set(k, []);
+      byRound.get(k).push(row);
+    }
+
+    const runs = [];
+    for (const [key, seqRaw] of byRound) {
+      const seq = seqRaw.slice().sort((a, b) => a.sched - b.sched);
+      const placed = i => {
+        const row = seq[i]; if (!row || !row.property_id) return null;
+        const p = byId.get(row.property_id);
+        return (p && p.lat && p.lng) ? { row, p } : null;
+      };
+      let i = 0;
+      while (i < seq.length) {
+        if (seq[i].property_id) { i++; continue; }
+        let j = i; while (j < seq.length && !seq[j].property_id) j++;
+        const gap = seq.slice(i, j);
+        const before = [placed(i - 2), placed(i - 1)].filter(Boolean);
+        const after  = [placed(j), placed(j + 1)].filter(Boolean);
+        if (gap.length >= 3 && before.length && after.length) {
+          const [year, book] = key.split('|');
+          runs.push({
+            id: `run-${year}-${book}-${gap[0].sched}`,
+            year: Number(year), book,
+            from_sched: gap[0].sched, to_sched: gap[gap.length - 1].sched,
+            households: gap.length,
+            people: gap.reduce((n, g) => n + Number(g.people), 0),
+            written_as: gap[0].addr,
+            before: before.map(b => ({ schedule: b.row.sched, property_id: b.p.id,
+              label: b.p.address || b.p.name, lat: +b.p.lat, lng: +b.p.lng })),
+            after: after.map(a => ({ schedule: a.row.sched, property_id: a.p.id,
+              label: a.p.address || a.p.name, lat: +a.p.lat, lng: +a.p.lng })),
+            gap: gap.map(g => ({ schedule: g.sched, people: Number(g.people),
+              surnames: g.surnames, written_as: g.addr }))
+          });
+        }
+        i = j;
+      }
+    }
+    runs.sort((a, b) => b.households - a.households);
+    res.json({ runs });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // GET /api/walk/rounds        — which enumerators' rounds can be walked
 // GET /api/walk/round?year=&book=  — one round, in the order he walked it
 //
