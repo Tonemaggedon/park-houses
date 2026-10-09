@@ -45,20 +45,22 @@
   .pr .trade { font-size:.74rem; color:var(--faint); font-style:italic; }
 
   .mapwrap { flex:1; position:relative; }
-  #map { position:absolute; inset:0; background:#0d160b; }
-  .leaflet-container { background:#0d160b; }
+  #map { position:absolute; inset:0; background:#e9e4d8; }
+  .leaflet-container { background:#e9e4d8; }
   .legend { position:absolute; left:12px; bottom:12px; z-index:500; background:rgba(16,26,14,.9);
     border:1px solid var(--rule); border-radius:8px; padding:8px 11px; font-size:.76rem;
     color:var(--soft); }
   .legend .k { display:flex; align-items:center; gap:7px; margin:2px 0; }
-  .legend i { width:22px; height:0; border-top:2px solid var(--moss); display:inline-block; }
-  .legend .dot { width:9px; height:9px; border-radius:50%; background:#c8b87a; display:inline-block; }
+  .legend i { width:22px; height:0; border-top:3px solid #2f7d4f; display:inline-block; }
+  .legend .dot { width:9px; height:9px; border-radius:50%; background:#3a2d12;
+    border:1.5px solid #fff; display:inline-block; }
 
-  .chev { color:var(--gold); font-size:15px; line-height:1; text-shadow:0 0 3px #000;
-    pointer-events:none; }
-  .chev.one { color:#ffd76a; font-size:19px; }
+  .chev { color:#2a2418; font-size:15px; line-height:1; pointer-events:none;
+    text-shadow:0 0 3px #fff, 0 0 2px #fff; }
+  .chev.one { color:#9a2f12; font-size:20px; }
 
-  .card { position:absolute; right:12px; top:12px; z-index:500; width:290px; max-width:calc(100% - 24px);
+  /* Clear of the layer control, which Leaflet puts in the same corner. */
+  .card { position:absolute; right:12px; top:104px; z-index:500; width:290px; max-width:calc(100% - 24px);
     background:rgba(16,26,14,.95); border:1px solid var(--rule); border-radius:9px;
     padding:11px 13px; font-size:.85rem; display:none; }
   .card.on { display:block; }
@@ -68,6 +70,14 @@
   .card li { margin:3px 0; }
   .card li b { color:var(--ink); font-weight:600; }
   .card .close { float:right; cursor:pointer; color:var(--faint); }
+  .hist-control { background:rgba(255,255,255,.94); border:1px solid #c8b87a; border-radius:5px;
+    padding:7px 10px; font-family:Georgia,serif; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+  .hist-control label { display:block; font-size:.72rem; color:#5a4a2a; margin:4px 0; white-space:nowrap; }
+  .hist-control select { width:100%; font-family:Georgia,serif; font-size:.74rem; color:#5a4a2a;
+    background:#fff; border:1px solid #c8b87a; border-radius:4px; padding:3px 5px; cursor:pointer; }
+  .hist-control.on label { color:#8a4a1a; font-weight:600; }
+  .hist-control #histPct { color:#8a7a5a; font-variant-numeric:tabular-nums; }
+  .hist-control input[type=range] { width:118px; accent-color:#8a6a3a; display:block; cursor:pointer; }
   .loading { padding:40px 20px; color:var(--faint); font-style:italic; }
   .note { padding:10px 20px; color:var(--faint); font-size:.78rem; border-top:1px solid var(--rule); }
 
@@ -76,7 +86,7 @@
     .side { width:100%; border-right:0; border-bottom:1px solid var(--rule); }
     .list { max-height:230px; }
     .mapwrap { height:62vh; }
-    .card { width:auto; left:12px; }
+    .card { width:auto; left:12px; top:96px; }
   }
 </style>
 </head>
@@ -118,6 +128,7 @@
       <div class="k"><i></i> one person's move</div>
       <div class="k"><span class="dot"></span> a house they lived in</div>
       <div class="k" style="color:var(--gold)">➤ the way they went</div>
+      <div class="k" style="color:var(--faint);margin-top:4px">Fade in an old survey, top right</div>
     </div>
     <div class="card" id="card"></div>
   </div>
@@ -131,6 +142,64 @@ const esc = s => String(s == null ? '' : s)
   .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 let MOVES = [], map, layer, selected = null, shown = [];
+
+// ── the historic sheets ──────────────────────────────────────────────────────
+// The same three the map page offers, drawn under the lines and faded in with a
+// slider. Watching somebody move house across the 1880s survey is the whole
+// point of having both on one screen.
+const OVERLAYS = {
+  os25: { label: 'OS 25-inch · 1880s–1910s',
+    url: 'https://mapseries-tilesets.s3.amazonaws.com/25_inch/nottinghamshire/{z}/{x}/{y}.png',
+    attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
+    maxNativeZoom: 18 },
+  os1inch: { label: 'OS 1-inch · 1885–1900',
+    url: 'https://mapseries-tilesets.s3.amazonaws.com/1inch_2nd_ed/{z}/{x}/{y}.png',
+    attribution: 'Historic maps © <a href="https://maps.nls.uk/">National Library of Scotland</a>',
+    maxNativeZoom: 15 },
+  aerial: { label: 'Aerial photography · recent',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
+    maxNativeZoom: 19 },
+};
+let overlayLayer = null, overlayKey = 'os25', overlayOpacity = 0;
+
+function buildOverlay(key) {
+  if (overlayLayer) { map.removeLayer(overlayLayer); overlayLayer = null; }
+  const cfg = OVERLAYS[key];
+  if (!cfg) return;
+  overlayLayer = L.tileLayer(cfg.url, { attribution: cfg.attribution,
+    maxNativeZoom: cfg.maxNativeZoom, maxZoom: 19, opacity: overlayOpacity, zIndex: 350 }).addTo(map);
+}
+function setOverlayOpacity(v) {
+  overlayOpacity = Math.max(0, Math.min(1, Number(v) || 0));
+  if (overlayLayer) overlayLayer.setOpacity(overlayOpacity);
+  const out = document.getElementById('histPct');
+  if (out) out.textContent = Math.round(overlayOpacity * 100) + '%';
+  const box = document.getElementById('histControl');
+  if (box) box.classList.toggle('on', overlayOpacity > 0.05);
+}
+function addOverlays() {
+  const c = L.control({ position: 'topright' });
+  c.onAdd = () => {
+    const d = L.DomUtil.create('div', 'hist-control');
+    d.id = 'histControl';
+    d.innerHTML = '<select id="overlayPick" aria-label="Historic map layer">'
+      + Object.entries(OVERLAYS).map(([k, v]) =>
+          `<option value="${k}"${k === overlayKey ? ' selected' : ''}>${v.label}</option>`).join('')
+      + '</select><label for="histSlider">Fade in <span id="histPct">0%</span></label>'
+      + '<input id="histSlider" type="range" min="0" max="1" step="0.05" value="0" '
+      + 'aria-label="Overlay opacity">';
+    L.DomEvent.disableClickPropagation(d);
+    L.DomEvent.disableScrollPropagation(d);
+    d.querySelector('#histSlider').addEventListener('input', e => setOverlayOpacity(e.target.value));
+    d.querySelector('#overlayPick').addEventListener('change', e => {
+      overlayKey = e.target.value; buildOverlay(overlayKey); setOverlayOpacity(overlayOpacity);
+    });
+    return d;
+  };
+  c.addTo(map);
+  buildOverlay(overlayKey);
+}
 
 // The bearing from one point to the next, so a chevron can be turned to face it.
 function bearing(a, b) {
@@ -206,20 +275,24 @@ function paint() {
 
   list.forEach((m, i) => {
     const hue = (m.id * 47) % 360;
-    const colour = one ? '#ffd76a' : `hsl(${hue},62%,58%)`;
+    // Deep enough to read on a light street map, and on a faded 1880s sheet
+    // under it. Each line gets a white casing first, which is what keeps a
+    // hundred of them legible where they cross.
+    const colour = one ? '#9a2f12' : `hsl(${hue},74%,38%)`;
     for (let k = 1; k < m.points.length; k++) {
       const a = m.points[k-1], b = m.points[k];
-      L.polyline([[a.lat,a.lng],[b.lat,b.lng]], {
-        color: colour, weight: one ? 4 : 2, opacity: one ? .95 : .5
-      }).bindPopup(popup(m)).addTo(layer);
+      const ll = [[a.lat,a.lng],[b.lat,b.lng]];
+      L.polyline(ll, { color:'#fff', weight: one ? 7 : 4, opacity: one ? .9 : .45 }).addTo(layer);
+      L.polyline(ll, { color: colour, weight: one ? 4 : 2, opacity: one ? .98 : .8 })
+        .bindPopup(popup(m)).addTo(layer);
       arrow(a, b, one).addTo(layer);
     }
     m.points.forEach(p => { if (!houses.has(p.id)) houses.set(p.id, p); });
   });
 
   houses.forEach(p => {
-    L.circleMarker([p.lat, p.lng], { radius: one ? 6 : 4, color:'#c8b87a', weight:1,
-      fillColor:'#c8b87a', fillOpacity:.85 })
+    L.circleMarker([p.lat, p.lng], { radius: one ? 6 : 4, color:'#fff', weight:1.5,
+      fillColor:'#3a2d12', fillOpacity:.95 })
       .bindPopup(`<b>${esc(p.label)}</b><br><a href="/?property=${p.id}">open the house</a>`)
       .addTo(layer);
   });
@@ -238,7 +311,7 @@ function paint() {
   } else { card.className = 'card'; card.innerHTML = ''; }
 
   const pts = list.flatMap(m => m.points.map(p => [p.lat, p.lng]));
-  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding:[46,46], maxZoom: one ? 17 : 16 });
+  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding:[46,46], maxZoom: one ? 18 : 16 });
 }
 
 function popup(m) {
@@ -259,13 +332,17 @@ async function load() {
         .map(([o,c]) => `<option value="${esc(o)}">${esc(o)} (${c})</option>`).join('');
 
   map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
-  // Esri's dark canvas: free with attribution, and note the {z}/{y}/{x} order,
-  // which is not the usual way round. CARTO's equivalent now bakes
-  // "API KEY REQUIRED" into the tile itself, which a status code will not tell you.
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-    { maxZoom: 17, attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap contributors' }
-  ).addTo(map);
+  // The same base the map page uses, so the estate looks the same wherever you
+  // meet it - and so the historic sheets below line up with what people already
+  // know. The dark Esri canvas this used to carry ran out of tiles at zoom 17,
+  // which is exactly the zoom you land on when you follow one person, so picking
+  // a life out of the tangle filled the screen with "Map data not yet available".
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
   map.setView([52.9522, -1.1613], 15);
+  addOverlays();
 
   ['q','occ','hops','sort'].forEach(id =>
     document.getElementById(id).addEventListener('input', () => { selected = null; draw(); }));
