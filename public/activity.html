@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activity — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --red:#a3341f; --amber:#8a5a12; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:1080px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  h3 { font-size:.98rem; margin:26px 0 8px; }
+  .lede { color:var(--soft); font-size:.9rem; max-width:76ch; margin:0 0 4px; }
+  .lede strong { color:var(--ink); }
+  .bar { font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint);
+    margin:14px 0 6px; }
+  select, input[type=number] { font-family:inherit; font-size:.82rem; padding:5px 8px;
+    border:1px solid var(--rule); border-radius:5px; background:#fff; color:var(--ink); }
+  button { font-family:inherit; font-size:.78rem; border-radius:5px; padding:5px 11px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft); }
+  button:hover { border-color:#5a3a1a; }
+  button.warn { color:var(--red); border-color:#dbb4a8; }
+  button.go { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+  button:disabled { opacity:.45; cursor:default; }
+
+  .alert { background:#fdf3ef; border:1px solid #dbb4a8; border-left:4px solid var(--red);
+    border-radius:0 7px 7px 0; padding:10px 13px; margin-bottom:8px; font-size:.86rem; }
+  .alert.flagged { background:#fdf8ec; border-color:#ddc894; border-left-color:var(--amber); }
+  .alert.seen { opacity:.5; }
+  .alert b { font-family:ui-monospace,Menlo,monospace; }
+  .alert .meta { color:var(--faint); font-size:.76rem; margin-top:2px; }
+
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th { text-align:left; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--faint); font-weight:400; padding:6px 8px; border-bottom:1px solid var(--rule); }
+  td { padding:7px 8px; border-bottom:1px solid #efe9da; vertical-align:top; }
+  tr:hover td { background:#fffdf5; }
+  td.n { font-family:ui-monospace,Menlo,monospace; color:var(--faint); white-space:nowrap; }
+  td.fast { color:var(--red); font-weight:600; }
+  .who { font-weight:600; }
+  .kind { font-size:.68rem; letter-spacing:.07em; text-transform:uppercase; color:var(--soft);
+    background:#f3efe2; border-radius:9px; padding:1px 7px; }
+  .gone { text-decoration:line-through; color:var(--faint); }
+  .limits { background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:13px 15px; margin-top:10px; }
+  .limits .row { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-top:8px; }
+  .limits label { font-size:.74rem; color:var(--faint); display:block; }
+  .limits input { width:84px; }
+  .empty { color:var(--faint); font-style:italic; padding:16px 0; }
+  .diff { position:fixed; inset:0; background:rgba(20,16,8,.6); z-index:800; display:none;
+    align-items:center; justify-content:center; padding:20px; }
+  .diff.on { display:flex; }
+  .diff .box { background:#fff; border-radius:9px; max-width:900px; width:100%; max-height:86vh;
+    overflow:auto; padding:18px 20px; }
+  .diff pre { font-family:ui-monospace,Menlo,monospace; font-size:.74rem; white-space:pre-wrap;
+    background:#faf7ef; border:1px solid var(--rule); border-radius:6px; padding:10px; margin:6px 0 0; }
+  .diff .cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:760px){ .diff .cols{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Activity</h2>
+  <p class="lede">Every change to the record, who made it, and <strong>what it was before</strong>.
+    Anything the guard refused or thought worth a look is at the top.</p>
+  <p class="lede" style="font-size:.84rem">A change can be put back. The undo is itself a change,
+    so the trail never loses a step.</p>
+
+  <div class="bar">
+    Showing <select id="hours">
+      <option value="24">the last day</option>
+      <option value="168" selected>the last week</option>
+      <option value="720">the last month</option>
+    </select>
+    <span id="count"></span>
+  </div>
+
+  <div id="alerts"></div>
+  <h3>Who has been working</h3>
+  <div id="people"></div>
+  <h3>Changes</h3>
+  <div id="edits"></div>
+
+  <h3>What the guard refuses</h3>
+  <p class="lede" style="font-size:.84rem">These are guesses until a month of real use corrects
+    them. <strong>Somebody filing a census round genuinely does make twenty changes in a few
+    minutes</strong> — a script makes five in a second. Move them as you learn.</p>
+  <div class="limits" id="limits"></div>
+</div>
+
+<div class="diff" id="diff"><div class="box" id="diffBox"></div></div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const when = t => t ? new Date(t).toLocaleString('en-GB',
+  { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) : '';
+
+let D = null;
+
+async function load() {
+  const h = document.getElementById('hours').value;
+  const r = await fetch('/api/admin/activity?hours=' + h, { credentials:'same-origin' });
+  if (r.status === 401 || r.status === 403) {
+    document.getElementById('edits').innerHTML = '<p class="empty">Sign in as admin.</p>'; return;
+  }
+  D = await r.json();
+  draw();
+}
+
+function draw() {
+  document.getElementById('count').textContent =
+    `· ${D.edits.length} changes · ${D.people.length} people · ${D.alerts.length} raised`
+    + (D.unseen ? ` · ${D.unseen} not looked at` : '');
+
+  document.getElementById('alerts').innerHTML = D.alerts.length ? D.alerts.map(a => `
+    <div class="alert ${a.level === 'flagged' ? 'flagged' : ''}${a.seen_at ? ' seen' : ''}">
+      <b>${esc(a.who)}</b> — ${esc(a.reason)}
+      ${a.level === 'blocked' ? '<b style="color:var(--red)"> · refused</b>' : ' · allowed, worth a look'}
+      <div class="meta">${esc(when(a.at))}
+        ${a.detail && a.detail.path ? '· ' + esc(a.detail.path) : ''}
+        ${a.detail && a.detail.agent ? '· ' + esc(String(a.detail.agent).slice(0,70)) : ''}</div>
+      ${a.seen_at ? `<div class="meta">seen by ${esc(a.seen_by)}</div>`
+        : `<div style="margin-top:6px"><button data-seen="${a.id}">Looked at it</button>
+             <button data-who="${esc(a.who)}">Only this person's changes</button></div>`}
+    </div>`).join('') : '<p class="empty">Nothing raised.</p>';
+
+  document.getElementById('people').innerHTML = D.people.length
+    ? '<table><thead><tr><th>Who</th><th>Changes</th><th>Per busy minute</th><th>Kinds</th>'
+      + '<th>First</th><th>Last</th></tr></thead><tbody>'
+      + D.people.map(p => `<tr>
+          <td class="who">${esc(p.who)}</td>
+          <td class="n">${p.edits}</td>
+          <td class="n ${p.per_busy_minute >= 8 ? 'fast' : ''}">${p.per_busy_minute ?? '—'}</td>
+          <td class="n">${p.kinds}</td>
+          <td class="n">${esc(when(p.first_at))}</td>
+          <td class="n">${esc(when(p.last_at))}</td></tr>`).join('')
+      + '</tbody></table>'
+    : '<p class="empty">Nobody has changed anything.</p>';
+
+  document.getElementById('edits').innerHTML = D.edits.length
+    ? '<table><thead><tr><th>When</th><th>Who</th><th>What</th><th>Where</th><th></th></tr></thead><tbody>'
+      + D.edits.map(e => `<tr>
+          <td class="n">${esc(when(e.at))}</td>
+          <td class="who">${esc(e.who)}</td>
+          <td><span class="kind">${esc(e.kind)}</span>
+            <span class="${e.reverted_at ? 'gone' : ''}">${esc(e.label || ('#' + e.target_id))}</span>
+            ${e.reverted_at ? `<div class="meta" style="font-size:.74rem;color:var(--faint)">put back by ${esc(e.reverted_by)}</div>` : ''}</td>
+          <td class="n">${esc(e.ip || '')}</td>
+          <td style="white-space:nowrap">
+            <button data-show="${e.id}">What changed</button>
+            ${(e.can_revert && !e.reverted_at && e.kind === 'property')
+              ? `<button class="warn" data-revert="${e.id}">Put it back</button>` : ''}</td>
+        </tr>`).join('') + '</tbody></table>'
+    : '<p class="empty">No changes in this window.</p>';
+
+  const L = D.limits || {};
+  document.getElementById('limits').innerHTML = `
+    <div class="row">
+      <div><label>writes in</label><input type="number" id="burst_writes" value="${L.burst_writes||5}"></div>
+      <div><label>seconds — refuse</label><input type="number" id="burst_seconds" value="${L.burst_seconds||2}"></div>
+      <div><label>per minute — refuse</label><input type="number" id="minute_writes" value="${L.minute_writes||40}"></div>
+      <div><label>per hour — refuse</label><input type="number" id="hour_writes" value="${L.hour_writes||400}"></div>
+      <div><label>changes in</label><input type="number" id="flag_writes" value="${L.flag_writes||15}"></div>
+      <div><label>minutes — raise it</label><input type="number" id="flag_minutes" value="${L.flag_minutes||10}"></div>
+      <div><button class="go" id="saveLimits">Save</button></div>
+    </div>
+    <div class="meta" style="font-size:.76rem;color:var(--faint);margin-top:8px">
+      Signing in and out is never counted — a failed password must not look like vandalism.</div>`;
+  wire();
+}
+
+function wire() {
+  document.querySelectorAll('[data-seen]').forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    await fetch('/api/admin/alerts/' + b.dataset.seen + '/seen',
+      { method:'POST', credentials:'same-origin' });
+    load();
+  });
+  document.querySelectorAll('[data-who]').forEach(b => b.onclick = () => {
+    const w = b.dataset.who;
+    D.edits = D.edits.filter(e => e.who === w);
+    D.people = D.people.filter(p => p.who === w);
+    draw();
+  });
+  document.querySelectorAll('[data-show]').forEach(b => b.onclick = async () => {
+    const d = await fetch('/api/admin/activity/' + b.dataset.show,
+      { credentials:'same-origin' }).then(r => r.json());
+    const e = d.edit || {};
+    document.getElementById('diffBox').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div><b>${esc(e.label || '')}</b>
+          <div class="meta" style="color:var(--faint);font-size:.8rem">${esc(e.who)} ·
+            ${esc(when(e.at))} · ${esc(e.kind)}</div></div>
+        <button onclick="document.getElementById('diff').classList.remove('on')">Close</button>
+      </div>
+      <div class="cols">
+        <div><label style="font-size:.74rem;color:var(--faint)">Before</label>
+          <pre>${esc(JSON.stringify(e.before, null, 1) || 'nothing')}</pre></div>
+        <div><label style="font-size:.74rem;color:var(--faint)">After</label>
+          <pre>${esc(JSON.stringify(e.after, null, 1) || 'nothing')}</pre></div>
+      </div>
+      ${(e.before && !e.reverted_at && e.kind === 'property')
+        ? `<div style="margin-top:12px"><button class="warn" data-revert="${e.id}">Put it back</button></div>` : ''}
+      <div class="meta" style="color:var(--faint);font-size:.74rem;margin-top:10px">
+        ${esc(e.agent || '')}</div>`;
+    document.getElementById('diff').classList.add('on');
+    wire();
+  });
+  document.querySelectorAll('[data-revert]').forEach(b => b.onclick = async () => {
+    if (!confirm('Put this one back to what it was before?')) return;
+    b.disabled = true;
+    try {
+      const r = await fetch('/api/admin/activity/' + b.dataset.revert + '/revert',
+        { method:'POST', credentials:'same-origin' });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'Would not revert');
+      document.getElementById('diff').classList.remove('on');
+      load();
+    } catch (err) { alert(err.message); b.disabled = false; }
+  });
+  const s = document.getElementById('saveLimits');
+  if (s) s.onclick = async () => {
+    const body = {};
+    ['burst_writes','burst_seconds','minute_writes','hour_writes','flag_writes','flag_minutes']
+      .forEach(k => body[k] = +document.getElementById(k).value);
+    s.disabled = true;
+    try {
+      const r = await fetch('/api/admin/guard-limits', { method:'POST', credentials:'same-origin',
+        headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'Would not save');
+      s.textContent = 'Saved';
+      setTimeout(() => { s.textContent = 'Save'; s.disabled = false; }, 1600);
+    } catch (e) { alert(e.message); s.disabled = false; }
+  };
+}
+
+document.getElementById('hours').onchange = load;
+document.getElementById('diff').onclick = e => {
+  if (e.target.id === 'diff') e.target.classList.remove('on');
+};
+load().catch(e => { document.getElementById('edits').innerHTML =
+  '<p class="empty">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>

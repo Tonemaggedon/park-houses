@@ -59,6 +59,7 @@
     ['/admin', '🛠', 'Admin tools'],
     ['/admin/users', '👤', 'Users'],
     ['/admin/birthplaces', '🌍', 'Birthplaces'],
+    ['/activity', '📋', 'Activity and alerts'],
     ['/photo-review', '📷', 'Photos from the walk'],
   ];
 

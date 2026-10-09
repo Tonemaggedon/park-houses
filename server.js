@@ -871,6 +871,61 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS postboxes_pos_idx ON postboxes(lat, lng)`);
 
+    // ── What changed, who changed it, and what it was before ─────────────────
+    // saveProp overwrote the record and kept nothing, so there was no previous
+    // version to go back to - which means a bad edit, malicious or just wrong,
+    // was permanent. Every write now leaves the value it replaced.
+    //
+    // `before` is the whole object as it stood. That is wasteful and it is the
+    // only thing that makes an undo honest: a diff can be applied wrongly, a
+    // snapshot cannot.
+    await db.query(`CREATE TABLE IF NOT EXISTS edit_log (
+      id SERIAL PRIMARY KEY,
+      at TIMESTAMPTZ DEFAULT NOW(),
+      who TEXT,
+      user_id INTEGER,
+      kind TEXT NOT NULL,
+      target_id INTEGER,
+      label TEXT,
+      before JSONB,
+      after JSONB,
+      ip TEXT,
+      agent TEXT,
+      reverted_at TIMESTAMPTZ,
+      reverted_by TEXT
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS edit_log_at_idx ON edit_log(at DESC)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS edit_log_who_idx ON edit_log(who, at DESC)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS edit_log_target_idx ON edit_log(kind, target_id, at DESC)`);
+
+    // Something worth an admin's eye. Raised by the guard below, cleared by hand.
+    await db.query(`CREATE TABLE IF NOT EXISTS guard_alerts (
+      id SERIAL PRIMARY KEY,
+      at TIMESTAMPTZ DEFAULT NOW(),
+      who TEXT,
+      level TEXT,                 -- 'blocked' | 'flagged'
+      reason TEXT,
+      detail JSONB,
+      seen_at TIMESTAMPTZ,
+      seen_by TEXT
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS guard_alerts_at_idx ON guard_alerts(at DESC)`);
+
+    // The thresholds, in the database rather than in the code, because the right
+    // numbers are not knowable in advance. Somebody filing a census round really
+    // can make twenty changes in a few minutes; a bot makes five in a second.
+    await db.query(`CREATE TABLE IF NOT EXISTS guard_settings (
+      key TEXT PRIMARY KEY, value JSONB NOT NULL, set_by TEXT, set_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`INSERT INTO guard_settings (key, value, set_by) VALUES ('limits', $1, 'default')
+                    ON CONFLICT (key) DO NOTHING`,
+      [JSON.stringify({
+        burst_writes: 5,   burst_seconds: 2,    // five in two seconds is not a person
+        minute_writes: 40,                      // a fast but real worker
+        hour_writes: 400,
+        flag_writes: 15, flag_minutes: 10       // worth a look, not worth blocking
+      })]);
+
     // ── Discussion ───────────────────────────────────────────────────────────
     // Somewhere to put a thing you half know. A research question is a finished
     // thought with a slug and a priority; most of what people have is not that
@@ -1149,7 +1204,10 @@ async function loadProp(id) {
   return all[id] || {};
 }
 
-async function saveProp(id, fields, username) {
+// `req` is optional and only used to record who made the change and what it
+// replaced. Every write that comes from a person should pass it; the handful
+// that come from a sync or a scrape need not, and are logged without an author.
+async function saveProp(id, fields, username, req) {
   if (db) {
     const current = await loadProp(id);
     const merged = { ...current, ...fields, updatedBy: username, updatedAt: new Date().toISOString() };
@@ -1158,6 +1216,8 @@ async function saveProp(id, fields, username) {
        ON CONFLICT (id) DO UPDATE SET data=$2, updated_by=$3, updated_at=NOW()`,
       [id, JSON.stringify(merged), username]
     );
+    logEdit(req || { session: { username } }, 'property', id,
+            propName(id) || ('Property ' + id), current, merged);
     return merged;
   }
   const all = JSON.parse(fs.readFileSync(PROPS_FILE, 'utf8') || '{}');
@@ -1387,6 +1447,201 @@ async function turnstileOk(req) {
   }
 }
 
+// ── Who changed what ─────────────────────────────────────────────────────────
+// The admin's view of the record being edited: recent changes, who is making
+// them, anything the guard raised, and an undo on every one.
+app.get('/api/admin/activity', requireAdmin, async (req, res) => {
+  if (!db) return res.json({ edits: [], alerts: [], people: [] });
+  const hours = Math.min(720, Math.max(1, parseInt(req.query.hours, 10) || 168));
+  const who = String(req.query.who || '');
+  try {
+    const wheres = [`at > NOW() - ($1 || ' hours')::interval`];
+    const params = [String(hours)];
+    if (who) { params.push(who); wheres.push(`who = $${params.length}`); }
+    const [edits, alerts, people, limits] = await Promise.all([
+      db.query(`SELECT id, at, who, kind, target_id, label, ip, agent,
+                       reverted_at, reverted_by,
+                       before IS NOT NULL AS can_revert
+                  FROM edit_log WHERE ${wheres.join(' AND ')}
+                 ORDER BY at DESC LIMIT 400`, params),
+      db.query(`SELECT * FROM guard_alerts WHERE at > NOW() - ($1 || ' hours')::interval
+                 ORDER BY at DESC LIMIT 200`, [String(hours)]),
+      // Who has been busy, and how fast - a steady worker and a script look
+      // quite different once you put the two columns side by side.
+      db.query(`SELECT who, COUNT(*) AS edits,
+                       COUNT(DISTINCT kind) AS kinds,
+                       MIN(at) AS first_at, MAX(at) AS last_at,
+                       COUNT(DISTINCT date_trunc('minute', at)) AS busy_minutes
+                  FROM edit_log WHERE at > NOW() - ($1 || ' hours')::interval
+                 GROUP BY who ORDER BY COUNT(*) DESC LIMIT 60`, [String(hours)]),
+      db.query(`SELECT value FROM guard_settings WHERE key='limits'`)
+    ]);
+    res.json({
+      hours, edits: edits.rows, alerts: alerts.rows,
+      people: people.rows.map(p => ({ ...p,
+        per_busy_minute: Number(p.busy_minutes) ? +(p.edits / p.busy_minutes).toFixed(1) : null })),
+      limits: limits.rows[0] ? limits.rows[0].value : GUARD,
+      unseen: alerts.rows.filter(a => !a.seen_at).length
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// One change, with what it replaced, so it can be read before it is undone.
+app.get('/api/admin/activity/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    const r = await db.query(`SELECT * FROM edit_log WHERE id=$1`, [parseInt(req.params.id, 10)]);
+    if (!r.rows[0]) return res.status(404).json({ error: 'No such change' });
+    res.json({ edit: r.rows[0] });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Put it back. The undo is itself an edit, so undoing an undo works and the
+// trail never loses a step.
+app.post('/api/admin/activity/:id/revert', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  try {
+    const r = await db.query(`SELECT * FROM edit_log WHERE id=$1`, [id]);
+    const e = r.rows[0];
+    if (!e) return res.status(404).json({ error: 'No such change' });
+    if (e.reverted_at) return res.status(409).json({ error: 'That one has already been put back' });
+    if (e.kind !== 'property') return res.status(400).json({ error: 'Only property changes can be put back yet' });
+    if (e.before === null) return res.status(400).json({ error: 'Nothing was there before it' });
+    await saveProp(e.target_id, e.before, 'admin (undo)', req);
+    await db.query(`UPDATE edit_log SET reverted_at=NOW(), reverted_by=$2 WHERE id=$1`,
+      [id, (await getResearchKey(req.session)) || 'admin']);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/admin/alerts/:id/seen', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query(`UPDATE guard_alerts SET seen_at=NOW(), seen_by=$2 WHERE id=$1`,
+      [parseInt(req.params.id, 10), (await getResearchKey(req.session)) || 'admin']);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// The thresholds, changeable while it runs, because the right numbers are the
+// ones a month of real use teaches you.
+app.post('/api/admin/guard-limits', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const next = {};
+  for (const k of ['burst_writes','burst_seconds','minute_writes','hour_writes','flag_writes','flag_minutes']) {
+    const v = parseInt(b[k], 10);
+    if (Number.isInteger(v) && v > 0) next[k] = v;
+  }
+  if (!Object.keys(next).length) return res.status(400).json({ error: 'Nothing to change' });
+  try {
+    await db.query(
+      `INSERT INTO guard_settings (key, value, set_by, set_at) VALUES ('limits', $1, $2, NOW())
+       ON CONFLICT (key) DO UPDATE SET value = guard_settings.value || $1, set_by=$2, set_at=NOW()`,
+      [JSON.stringify(next), (await getResearchKey(req.session)) || 'admin']);
+    await loadGuard();
+    res.json({ ok: true, limits: GUARD });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── The guard ────────────────────────────────────────────────────────────────
+// Who is writing, how fast. A sliding window per person held in memory, which is
+// enough: a restart forgets, and forgetting a rate window is the harmless kind
+// of forgetting.
+//
+// Three speeds, because they mean different things:
+//   a burst  - five writes in two seconds - is a script, and is refused
+//   a minute or an hour over the limit is refused and logged
+//   a steady rate above the flag line is allowed and raised for an admin to see
+//
+// The numbers live in guard_settings so they can be moved as we learn what a
+// real evening's work looks like. Somebody filing a census round genuinely does
+// make twenty changes in a few minutes.
+let GUARD = { burst_writes: 5, burst_seconds: 2, minute_writes: 40,
+              hour_writes: 400, flag_writes: 15, flag_minutes: 10 };
+async function loadGuard() {
+  if (!db) return;
+  try {
+    const r = await db.query(`SELECT value FROM guard_settings WHERE key='limits'`);
+    if (r.rows[0]) GUARD = { ...GUARD, ...r.rows[0].value };
+  } catch (e) {}
+}
+const writeTimes = new Map();      // who -> [epoch ms]
+const flagged = new Map();         // who -> last time we raised it, so we do not spam
+
+function guardKey(req) {
+  if (req.session && req.session.isAdmin) return 'admin';
+  if (req.session && req.session.userId) return 'user:' + req.session.userId;
+  return 'ip:' + (req.headers['cf-connecting-ip'] || req.ip || 'unknown');
+}
+async function raiseAlert(who, level, reason, detail) {
+  if (!db) return;
+  try {
+    await db.query(`INSERT INTO guard_alerts (who, level, reason, detail) VALUES ($1,$2,$3,$4)`,
+      [who, level, reason, JSON.stringify(detail || {})]);
+  } catch (e) {}
+}
+
+async function guard(req, res, next) {
+  const m = req.method;
+  if (m === 'GET' || m === 'HEAD' || m === 'OPTIONS') return next();
+  if (!req.path.startsWith('/api/')) return next();
+  // Signing in and out is rate-limited on its own, and a failed login must not
+  // look like vandalism.
+  if (/^\/api\/(login|logout|user\/login|user\/logout|user\/register)$/.test(req.path)) return next();
+
+  const who = guardKey(req);
+  const now = Date.now();
+  const times = (writeTimes.get(who) || []).filter(t => now - t < 3600000);
+  times.push(now);
+  writeTimes.set(who, times);
+
+  const inBurst = times.filter(t => now - t < GUARD.burst_seconds * 1000).length;
+  const inMin   = times.filter(t => now - t < 60000).length;
+  const inHour  = times.length;
+  const inFlag  = times.filter(t => now - t < GUARD.flag_minutes * 60000).length;
+
+  const detail = { path: req.path, inBurst, inMin, inHour,
+                   agent: String(req.headers['user-agent'] || '').slice(0, 200) };
+
+  if (inBurst >= GUARD.burst_writes) {
+    await raiseAlert(who, 'blocked', `${inBurst} writes in ${GUARD.burst_seconds}s`, detail);
+    return res.status(429).json({ error: 'That is faster than anybody types. Slow down and try again.' });
+  }
+  if (inMin > GUARD.minute_writes) {
+    await raiseAlert(who, 'blocked', `${inMin} writes in a minute`, detail);
+    return res.status(429).json({ error: 'Too many changes in a minute. Give it a moment.' });
+  }
+  if (inHour > GUARD.hour_writes) {
+    await raiseAlert(who, 'blocked', `${inHour} writes in an hour`, detail);
+    return res.status(429).json({ error: 'Too many changes in an hour. Come back shortly.' });
+  }
+  if (inFlag >= GUARD.flag_writes && (now - (flagged.get(who) || 0)) > GUARD.flag_minutes * 60000) {
+    flagged.set(who, now);
+    await raiseAlert(who, 'flagged', `${inFlag} changes in ${GUARD.flag_minutes} minutes`, detail);
+  }
+  next();
+}
+
+// What a write replaced, so it can be put back. Called by the save helpers; a
+// failure here must never stop the save itself.
+async function logEdit(req, kind, targetId, label, before, after) {
+  if (!db) return;
+  try {
+    await db.query(
+      `INSERT INTO edit_log (who, user_id, kind, target_id, label, before, after, ip, agent)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      [(await getResearchKey(req.session || {})) || 'anonymous',
+       (req.session && req.session.userId) || null,
+       kind, targetId || null, label || null,
+       before === undefined ? null : JSON.stringify(before),
+       after === undefined ? null : JSON.stringify(after),
+       String(req.headers['cf-connecting-ip'] || req.ip || '').slice(0, 60),
+       String(req.headers['user-agent'] || '').slice(0, 300)]);
+  } catch (e) { console.warn('edit_log:', e.message); }
+}
+
 // ── Auth routes ───────────────────────────────────────────────────────────────
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
@@ -1495,6 +1750,7 @@ app.post('/api/user/photo', async (req, res) => {
   req.on('error', e => res.status(500).json({ error: e.message }));
 });
 
+app.use(guard);
 app.use('/data/photos/profiles', express.static(PROFILE_DIR));
 
 // ── Coords API ────────────────────────────────────────────────────────────────
@@ -4200,7 +4456,7 @@ app.post('/api/property/:id', requireContributor, async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (!id) return res.status(400).json({ error: 'invalid id' });
   try {
-    const data = await saveProp(id, req.body, req.session.username);
+    const data = await saveProp(id, req.body, req.session.username, req);
     res.json({ ok: true, data });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
@@ -4274,7 +4530,7 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
         source: req.headers['x-source'] === 'walk' ? 'walk' : 'upload',
         by: req.session.username || null
       }];
-      await saveProp(id, { ...current, photos }, req.session.username);
+      await saveProp(id, { ...current, photos }, req.session.username, req);
       res.json({ ok: true, url });
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
@@ -4298,7 +4554,7 @@ app.post('/api/property/:id/video/upload', requireContributor, (req, res) => {
       const title = req.headers['x-title'] || origName.replace(/\.[^.]+$/, '').replace(/_/g, ' ');
       const current = await loadProp(id);
       const videos = [...(current.videos || []), { url, title }];
-      await saveProp(id, { ...current, videos }, req.session.username);
+      await saveProp(id, { ...current, videos }, req.session.username, req);
       res.json({ ok: true, url, title });
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
@@ -4327,7 +4583,7 @@ app.post('/api/property/:id/fetch-photo', requireAdmin, async (req, res) => {
         const photos = current.photos || [];
         if (!photos.find(p => p.url === photoUrl)) {
           photos.push({ url: photoUrl, caption: 'Original site photo', addedAt: new Date().toISOString() });
-          await saveProp(id, { ...current, photos }, req.session.username);
+          await saveProp(id, { ...current, photos }, req.session.username, req);
         }
         res.json({ ok: true, url: photoUrl });
       } catch(e) { res.json({ ok: false, reason: e.message }); }
@@ -4349,7 +4605,7 @@ app.delete('/api/property/:id/photo', requireContributor, async (req, res) => {
     const isOwner = photo.uploadedBy && photo.uploadedBy === req.session.userId;
     if (!req.session.isAdmin && !isOwner) return res.status(403).json({ error: 'Not authorised to delete this photo' });
     current.photos = current.photos.filter(p => p.url !== url);
-    await saveProp(id, current, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId);
+    await saveProp(id, current, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId, req);
     try { if (url.startsWith('/data/photos/')) fs.unlinkSync(path.join(PHOTOS_DIR, path.basename(url))); } catch(e) {}
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
@@ -4405,7 +4661,7 @@ app.post('/api/property/:id/submission', async (req, res) => {
       submittedAt: new Date().toISOString()
     };
     submissions.push(entry);
-    await saveProp(propId, { ...current, submissions }, userId ? 'user:' + userId : 'admin');
+    await saveProp(propId, { ...current, submissions }, userId ? 'user:' + userId : 'admin', req);
     res.json({ ok: true, submission: entry });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
@@ -4424,7 +4680,7 @@ app.delete('/api/property/:id/submission/:subId', async (req, res) => {
       }
       return true;
     });
-    await saveProp(propId, { ...current, submissions }, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId);
+    await saveProp(propId, { ...current, submissions }, req.session.isAdmin ? 'admin' : 'user:' + req.session.userId, req);
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
@@ -8324,6 +8580,7 @@ app.get('/walk', (req, res) => res.sendFile(path.join(__dirname, 'public', 'walk
 app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public', 'discussion.html')));
 app.get('/moves', (req, res) => res.sendFile(path.join(__dirname, 'public', 'moves.html')));
 app.get('/photo-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'photo-review.html')));
+app.get('/activity', (req, res) => res.sendFile(path.join(__dirname, 'public', 'activity.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8813,7 +9070,7 @@ app.post('/api/walk/photos/verdict', requireAdmin, async (req, res) => {
       wantsBetter: !!b.wantsBetter,
       reviewNote: String(b.note || '').trim() || null,
       reviewedAt: new Date().toISOString() };
-    await saveProp(pid, { ...cur, photos }, req.session.username);
+    await saveProp(pid, { ...cur, photos }, req.session.username, req);
     res.json({ ok: true, wantsBetter: !!b.wantsBetter });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -9835,6 +10092,7 @@ app.post('/api/save-descs', requireAdmin, express.json({limit: '10mb'}), (req, r
 dbInit().then(loadOccOverrides).then(() => {
   app.listen(PORT, () => {
     console.log(`Park Houses running on port ${PORT}`);
+    loadGuard().then(() => console.log('Guard limits:', JSON.stringify(GUARD)));
     console.log(`Storage: ${db ? 'PostgreSQL' : 'JSON files (local)'}`);
     console.log(`Admin: ${ADMIN_USER} / (set ADMIN_USER + ADMIN_PASS env vars)`);
   });
