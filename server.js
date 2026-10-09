@@ -8776,6 +8776,21 @@ app.get('/api/walk/stops', async (req, res) => {
       }
     } catch (e) { /* the table may not exist yet on an old deploy */ }
 
+    // Houses with no photograph. Seventy-odd of them, and they clump - the whole
+    // odd side of Hope Drive is one afternoon's work.
+    try {
+      const shot = await db.query(
+        `SELECT id FROM property_data
+          WHERE jsonb_array_length(COALESCE(data->'photos','[]'::jsonb)) > 0`);
+      const havePhoto = new Set(shot.rows.map(r => r.id));
+      for (const p of props) {
+        if (havePhoto.has(p.id) || p.demolished) continue;
+        push(p, { id: 'ph' + p.id, kind: 'needs-photo',
+          title: p.address || p.name,
+          line: 'No photograph of this house in the record. One from the pavement is enough.' });
+      }
+    } catch (e) { /* older deploys */ }
+
     const big = new Map(households.rows.map(r => [r.property_id, r]));
     for (const p of props) {
       const h = big.get(p.id);

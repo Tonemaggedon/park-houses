@@ -93,6 +93,8 @@
   .tag.household{background:#e8e2ef;color:#4a3668}
   .tag.round{background:#f3e0cc;color:#7c4414}
   .tag.postbox{background:#f2d9d6;color:#8a2b22}
+  .tag.hunt{background:#efe4d0;color:#6b4e22}
+  .tag.needs-photo{background:#d6ecea;color:#1d5a56}
   #sheet h3{margin:9px 0 3px;font-size:1.26rem;font-weight:400;line-height:1.22}
   .addr{color:var(--soft);font-size:.84rem}
   .body{margin-top:11px;font-size:.98rem;color:#33402a}
@@ -147,6 +149,8 @@
   .pin.household{background:#9b86bd}
   .pin.round{background:#d8893f}
   .pin.postbox{background:#b03b32}
+  .pin.hunt{background:#8a6a3a}
+  .pin\.needs-photo,.pin.needs-photo{background:#3f8f8a}
   .pin.done{background:#54604a;opacity:.6}
   .me{width:16px;height:16px;border-radius:50%;background:#6fd0ff;
     box-shadow:0 0 0 4px rgba(111,208,255,.25),0 0 14px rgba(111,208,255,.7)}
@@ -238,7 +242,9 @@ const THEMES = [
   { k: 'notable',   label: 'Who lived here',      sub: 'the notable residents' },
   { k: 'architect', label: 'Who built it',        sub: 'Hine, Fothergill and the rest' },
   { k: 'lost',      label: 'What is gone',        sub: 'houses that no longer stand' },
-  { k: 'household', label: 'Full houses',         sub: 'twelve or more under one roof' }
+  { k: 'household', label: 'Full houses',         sub: 'twelve or more under one roof' },
+  { k: 'needs-photo', label: 'Take some photographs', sub: 'houses the record has never seen' },
+  { k: 'postbox',   label: 'Hunt the post boxes',  sub: 'nobody has recorded one yet' }
 ];
 
 const SEEN_KEY = 'parkwalk.seen.v1';
@@ -304,6 +310,7 @@ function drawTally() {
 // person would actually take, which matters more.
 function buildRoute(from) {
   if (chosenTheme === 'round') return buildRound(from);
+  if (chosenTheme === 'postbox') return buildHunt(from);
   let pool = STOPS.slice();
   if (chosenTheme !== 'mixed') pool = pool.filter(s => s.kind === chosenTheme);
   const fresh = pool.filter(s => !seen.has(s.id));
@@ -368,6 +375,47 @@ function buildRound(from) {
   return out;
 }
 
+// The post box hunt is the one walk with nothing to walk to. Not one box in The
+// Park has been recorded, so there is no list to follow - the job is to cover
+// ground and look. The route is a spread of points a long way apart, each one
+// standing for a stretch of street rather than for a thing; any box already
+// found is put in as a stop so nobody does it twice.
+const HUNT_GAP = 150;
+function buildHunt(from) {
+  const maxStops = STOP_COUNT[chosenLen] || 20;
+  const known = STOPS.filter(s => s.kind === 'postbox');
+  const ground = STOPS.filter(s => s.kind !== 'postbox');
+  const out = [], usedHouses = new Set();
+  let here = from, used = 0;
+  const budget = chosenLen ? chosenLen * WALK_M_PER_MIN : Infinity;
+  const pool = known.concat(ground);
+  while (out.length < maxStops) {
+    let bi = -1, bd = Infinity;
+    for (let i = 0; i < pool.length; i++) {
+      const s = pool[i];
+      if (usedHouses.has(s.id)) continue;
+      const d = walkMetres(here, s);
+      // A box already found is worth a detour; otherwise keep the points apart.
+      const score = s.kind === 'postbox' ? d * 0.5 : (d < HUNT_GAP ? d + (HUNT_GAP - d) * 4 : d);
+      if (score < bd) { bd = score; bi = i; }
+    }
+    if (bi < 0) break;
+    const pick = pool[bi];
+    const step = walkMetres(here, pick);
+    if (used + step > budget) break;
+    usedHouses.add(pick.id);
+    out.push(pick.kind === 'postbox' ? pick : {
+      ...pick, kind: 'hunt', id: 'hunt-' + pick.id,
+      title: pick.street || pick.address,
+      line: 'Stand here and look along the street — walls, gateposts, the foot of a lamp. '
+          + 'A box on this stretch has never been written down.'
+    });
+    used += step; here = pick;
+  }
+  routeMetres = used;
+  return out;
+}
+
 // ── the map ──────────────────────────────────────────────────────────────────
 function pinIcon(kind, done) {
   return L.divIcon({ className: '', iconSize: [28, 28], iconAnchor: [14, 26],
@@ -428,8 +476,7 @@ function arrive(i) {
   if (markers[s.id]) markers[s.id].setIcon(pinIcon(s.kind, true));
   while (at < route.length && arrived.has(route[at].id)) at++;
   buzz(s);
-  if (s.kind === 'question' || s.kind === 'notable' || s.kind === 'lost' || s.kind === 'round')
-    openStop(i);
+  if (s.kind !== 'architect' && s.kind !== 'household') openStop(i);
   else toast(s);
   hud();
 }
@@ -452,7 +499,8 @@ function toast(s) {
 // ── a stop, opened ───────────────────────────────────────────────────────────
 const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
   lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
-  round: 'He knocked here', postbox: 'A dated thing in the street' };
+  round: 'He knocked here', postbox: 'A dated thing in the street',
+  hunt: 'Look along here', 'needs-photo': 'This one has never been photographed' };
 
 // A household written out the way the page has it: in his order, down the lines.
 function householdHtml(s) {
@@ -495,6 +543,14 @@ function openStop(i, manual) {
         </div>
         <div id="ansMsg"></div>
       </div>` : ''}
+    ${s.kind === 'needs-photo' ? `
+      <label class="shot" id="propShot">
+        <span>Tap to photograph the house</span>
+        <input type="file" accept="image/*" capture="environment" id="propFile" hidden>
+      </label>
+      <div id="propMsg"></div>` : ''}
+    ${s.kind === 'hunt' ? `
+      <div class="row"><button class="primary" onclick="openBoxSheet()">I can see one — record it</button></div>` : ''}
     <div class="row" style="margin-top:14px">
       ${s.url ? `<button onclick="window.open('${esc(s.url)}','_blank')">Read more ↗</button>` : ''}
       ${s.property_id ? `<button onclick="window.open('/?property=${s.property_id}','_blank')">This house in the record</button>` : ''}
@@ -502,6 +558,28 @@ function openStop(i, manual) {
     </div>`;
   document.getElementById('sheet').classList.add('up');
   document.getElementById('btnClose').onclick = closeSheet;
+  const shot = document.getElementById('propShot');
+  if (shot) {
+    shot.onclick = () => document.getElementById('propFile').click();
+    document.getElementById('propFile').onchange = async (e) => {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      const msg = document.getElementById('propMsg');
+      msg.innerHTML = '<div class="addr">Sending…</div>';
+      try {
+        const r = await fetch('/api/property/' + s.property_id + '/photo', {
+          method: 'POST', credentials: 'same-origin',
+          headers: { 'Content-Type': f.type || 'image/jpeg', 'X-Filename': f.name || 'walk.jpg' },
+          body: await f.arrayBuffer()
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error === 'Contributor access required'
+          ? 'Sign in on the site first — photographs are kept under a name.' : (d.error || 'It would not send'));
+        msg.innerHTML = '<div class="got">That house has a photograph now. Thank you.</div>';
+        shot.innerHTML = `<img src="${d.url}" alt="">`;
+      } catch (err) { msg.innerHTML = '<div class="err">' + esc(err.message) + '</div>'; }
+    };
+  }
   const send = document.getElementById('btnSend');
   if (send) {
     document.getElementById('btnSkip').onclick = closeSheet;
