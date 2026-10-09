@@ -1,0 +1,1694 @@
+{
+ "note": "Occupations sorted by hand into the fixed list of groups. `raw` is matched lower-cased. Where the wording was already right, `normalised` is just the raw with a capital letter; where a dozen spellings mean one trade, they all point at the same canonical form.",
+ "groups_added": [
+  "Lodging & Hospitality",
+  "Church & Ministry"
+ ],
+ "occupations": [
+  {
+   "raw": "accountant",
+   "normalised": "Accountant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "alderman and magistrate",
+   "normalised": "Alderman and magistrate",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "american merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "apartment keeper",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "apprentice to architect and surveyor",
+   "normalised": "Apprentice to architect and surveyor",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "articled clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "articled lawyers clerk",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "assistant",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "assistant gardener",
+   "normalised": "Gardener",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "assistant parlourmaid",
+   "normalised": "Parlourmaid",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "assistant secretary",
+   "normalised": "Private Secretary",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "assisting in the business",
+   "normalised": "Assisting in the business",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "attorney & solicitor",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "attorney and solicitor",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "authoress",
+   "normalised": "Authoress",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "baker",
+   "normalised": "Shopkeeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "bank accountant",
+   "normalised": "Accountant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "bank accountant, retired",
+   "normalised": "Accountant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "baptist minister",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "basket manufacturer",
+   "normalised": "BAsket manufacturer",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "blouse machinist",
+   "normalised": "Blouse machinist",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "boarding house keeper",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "boarding house proprietor",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "boarding house proprietress",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "boarding housekeeper",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "book keeper",
+   "normalised": "Book-keeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "book publisher",
+   "normalised": "Book publisher",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "book-keeper",
+   "normalised": "Book-keeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "bookkeeper",
+   "normalised": "Book-keeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "boot repairer",
+   "normalised": "Boot repairer",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "british red cross v.a.d.",
+   "normalised": "British red cross V.A.D.",
+   "group": "Medicine"
+  },
+  {
+   "raw": "butcher",
+   "normalised": "Shopkeeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "cabinet maker",
+   "normalised": "Cabinet Maker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "cabinet maker and upholsterer",
+   "normalised": "Cabinet Maker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "cafe assistant manageress",
+   "normalised": "Café manageress",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "cafe manageress",
+   "normalised": "Café manageress",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "café manageress",
+   "normalised": "Café manageress",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "carpentry traveller",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "cartons foreman",
+   "normalised": "Cartons foreman",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "catholic priest",
+   "normalised": "Priest",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "catholic priest, bishop’s secretary",
+   "normalised": "Priest",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "char woman",
+   "normalised": "Charwoman",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "charring",
+   "normalised": "Charwoman",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "chartered accountant",
+   "normalised": "Accountant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "charwoman",
+   "normalised": "Charwoman",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "chemist",
+   "normalised": "Chemist / Pharmacist",
+   "group": "Medicine"
+  },
+  {
+   "raw": "chief constable",
+   "normalised": "Chief constable",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "chief inspector of armaments",
+   "normalised": "Chief inspector of armaments",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "chiropodist",
+   "normalised": "Chiropodist",
+   "group": "Medicine"
+  },
+  {
+   "raw": "cigar maker",
+   "normalised": "Cigar Manufacturer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "cigar manufacturer",
+   "normalised": "Cigar Manufacturer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "civil servant, clerical",
+   "normalised": "Civil servant, clerical",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "clergyman",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "clergyman (ch of e)",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "clerk in holy orders",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "clerk in holy orders, church of england - st mary's, nottingham",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "clerk in holy orders, retired",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "clerk in lace warehouse",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk to a manufacturer",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk to timber merchant",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk, commercial",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk, local government",
+   "normalised": "Clerk, local government",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "clerk, ministry of mines",
+   "normalised": "Clerk, ministry of mines",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "clerk, tobacco",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk, tobacco manufacturer",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "clerk, war office outstation",
+   "normalised": "Clerk, war office outstation",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "clothier and outfitter",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "coachbuilder",
+   "normalised": "Cabinet Maker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "commercial artist",
+   "normalised": "Commercial artist",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "commercial clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "commercial traveller",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "commercial traveller, retired",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "commission merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "companion help",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "confectioner",
+   "normalised": "Shopkeeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "congregational minister",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "consulting surgeon",
+   "normalised": "Consulting surgeon",
+   "group": "Medicine"
+  },
+  {
+   "raw": "cook and housekeeper",
+   "normalised": "Cook and housekeeper",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "cook housekeeper",
+   "normalised": "Cook and housekeeper",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "cook, boarding house",
+   "normalised": "Boarding house servant",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "cook, house keeper",
+   "normalised": "Cook and housekeeper",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "cork cutter's apprentice",
+   "normalised": "Cork cutter's apprentice",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "corn dealer",
+   "normalised": "Corn merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "corn merchant",
+   "normalised": "Corn merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "corn merchant, retired",
+   "normalised": "Corn merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "corn miller",
+   "normalised": "Corn miller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "county surveyors assist",
+   "normalised": "County surveyors assist",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "curate",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "decorator and painter",
+   "normalised": "Decorator and painter",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "decorator, painter",
+   "normalised": "Decorator, painter",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "dental surgeon",
+   "normalised": "Dental surgeon",
+   "group": "Medicine"
+  },
+  {
+   "raw": "department manager",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "despatch clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "detective service",
+   "normalised": "Detective service",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "dispenser",
+   "normalised": "Chemist / Pharmacist",
+   "group": "Medicine"
+  },
+  {
+   "raw": "district representative",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "domestic duties at home",
+   "normalised": "Domestic duties at home",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "domestic groom",
+   "normalised": "Groom",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "domestic help",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "domestic helper",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "domestic page boy",
+   "normalised": "Page",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "domestic under nurse",
+   "normalised": "Under nurse",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "draper's apprentice",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "draughtsman, structural engineering",
+   "normalised": "Draughtsman, structural engineering",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "dressmaker",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "dressmaker's apprentice",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "electrician",
+   "normalised": "Electrician",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "embroidery manufacturer",
+   "normalised": "Embroidery manufacturer",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "engine driver",
+   "normalised": "Engine driver",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "engineer and tool maker's apprentice",
+   "normalised": "Engineer and tool maker's apprentice",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "engineers apprentice",
+   "normalised": "Engineers apprentice",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "engraver's artist",
+   "normalised": "Engraver's artist",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "errand girl",
+   "normalised": "Errand girl",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "estate agent's shorthand typist",
+   "normalised": "Shorthand typist",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "estate agents clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "estate agent’s shorthand typist",
+   "normalised": "Shorthand typist",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "estate clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "estate surveyor",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "examiner of armaments",
+   "normalised": "Examiner of armaments",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "export despatch clerk, textile",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "factory manager",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "fitter",
+   "normalised": "Fitter",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "fundholder",
+   "normalised": "Private Means",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "funds derived from property",
+   "normalised": "Private Means",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "gardener and groom",
+   "normalised": "Groom and gardener",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "general inspector, local government",
+   "normalised": "General inspector, local government",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "general labourer",
+   "normalised": "General labourer",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "general service",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "grocer, wholesale",
+   "normalised": "Shopkeeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "groom and gardener",
+   "normalised": "Groom and gardener",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "gymnastic and games mistress",
+   "normalised": "Gymnastic and games mistress",
+   "group": "Education"
+  },
+  {
+   "raw": "gynaecological surgeon",
+   "normalised": "Gynaecological surgeon",
+   "group": "Medicine"
+  },
+  {
+   "raw": "haberdasher",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "haberdasher's assistant",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "hairdresser",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "high school mistress (retired)",
+   "normalised": "High school mistress (retired)",
+   "group": "Education"
+  },
+  {
+   "raw": "holder of land and houses",
+   "normalised": "Land owner",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "hop bilter",
+   "normalised": "Hop bilter",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "hosier's assistant",
+   "normalised": "Hosier's assistant",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "hosiery machinist",
+   "normalised": "Hosiery machinist",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "hosiery mechanic",
+   "normalised": "Hosiery mechanic",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "hosiery warehouseman",
+   "normalised": "Hosiery warehouseman",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "hotel cellarman",
+   "normalised": "Hotel staff",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "hotel duties",
+   "normalised": "Hotel staff",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "hotel keeper",
+   "normalised": "Hotel keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "hotel manager",
+   "normalised": "Hotel keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "hotel manager, retired",
+   "normalised": "Hotel keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "hotel proprietor",
+   "normalised": "Hotel keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "house and estate agent",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "house furnisher",
+   "normalised": "House furnisher",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "house furnisher secretary",
+   "normalised": "House furnisher",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "household stores keeper",
+   "normalised": "Housekeeper",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "housemaid, boarding house",
+   "normalised": "Boarding house servant",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "housemaid, private school",
+   "normalised": "Housemaid, private school",
+   "group": "Education"
+  },
+  {
+   "raw": "inspecting engineer",
+   "normalised": "Inspecting engineer",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "inspector of armaments",
+   "normalised": "Inspector of armaments",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "inspector, board of education, retired",
+   "normalised": "Inspector, board of education, retired",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "inspector, ministry of health",
+   "normalised": "Inspector, ministry of health",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "insurance agent",
+   "normalised": "Insurance agent",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "insurance broker",
+   "normalised": "Insurance agent",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "insurance broker (own a/c)",
+   "normalised": "Insurance agent",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "insurance clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "iron merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "ironmonger's assistant",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "jobbing gardener",
+   "normalised": "Gardener",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "junior music teacher",
+   "normalised": "Junior music teacher",
+   "group": "Education"
+  },
+  {
+   "raw": "kitchen maid, boarding house",
+   "normalised": "Boarding house servant",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "labourer",
+   "normalised": "Labourer",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "lace apprentice",
+   "normalised": "Lace apprentice",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace bleacher, retired",
+   "normalised": "Lace bleacher, retired",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace curtain folder",
+   "normalised": "Lace curtain folder",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace curtain mfctr",
+   "normalised": "Lace curtain mfctr",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace exporter",
+   "normalised": "Lace exporter",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace exporter, retired",
+   "normalised": "Lace exporter, retired",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace machine builder",
+   "normalised": "Lace machine builder",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace maker",
+   "normalised": "Lace maker",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace manufacturer and shipping merchant",
+   "normalised": "Lace manufacturer and shipping merchant",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "lace trade",
+   "normalised": "Lace trade",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "ladies' hairdresser",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "lady companion",
+   "normalised": "Lady's companion",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "lady help",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "lady help (domestic)",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "lady help, domestic",
+   "normalised": "Domestic help",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "lady's companion",
+   "normalised": "Lady's companion",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "ladys companion",
+   "normalised": "Lady's companion",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "land & property agent",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "land owner",
+   "normalised": "Land owner",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "land surveyor",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "landed proprietor",
+   "normalised": "Land owner",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "landowner",
+   "normalised": "Land owner",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "law clerk (managing)",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "licensed victualler",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "licensed victualler, unemployed",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "licensee",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "licensee, unemployed",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "lithographic printer",
+   "normalised": "Lithographic printer",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "machinist, men's shirts",
+   "normalised": "Machinist, men's shirts",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "magistrate and solicitor",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "maid servant",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "man servant",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "manager of ironmongery",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "manageress",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "manageress of boarding house",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "manservant",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "manufacturer of hosiery",
+   "normalised": "Manufacturer of hosiery",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "manufacturing chemist",
+   "normalised": "Chemist / Pharmacist",
+   "group": "Medicine"
+  },
+  {
+   "raw": "manufacturing engineer",
+   "normalised": "Manufacturing engineer",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "medical student",
+   "normalised": "Medical student",
+   "group": "Medicine"
+  },
+  {
+   "raw": "merchant and magistrate",
+   "normalised": "Merchant and magistrate",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "merchant's clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "merchant’s clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "merino spinner",
+   "normalised": "Merino spinner",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "methodist minister",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "miller",
+   "normalised": "Corn miller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "milliner",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "minister of religion",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "missionary",
+   "normalised": "Missionary",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "mixture yarn spinner",
+   "normalised": "Mixture yarn spinner",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "motor engineer",
+   "normalised": "Motor engineer",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "net manufacturer",
+   "normalised": "Net manufacturer",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "newspaper proprietor",
+   "normalised": "Newspaper proprietor",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "newspaper proprietor (retired)",
+   "normalised": "Newspaper proprietor (retired)",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "nurse parlourmaid",
+   "normalised": "Parlourmaid",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "nurse; private means",
+   "normalised": "Nurse; private means",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "nursing member, british red cross",
+   "normalised": "Nursing member, british red cross",
+   "group": "Medicine"
+  },
+  {
+   "raw": "nursing sister",
+   "normalised": "Nursing sister",
+   "group": "Medicine"
+  },
+  {
+   "raw": "nursing student",
+   "normalised": "Nursing student",
+   "group": "Medicine"
+  },
+  {
+   "raw": "oil merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "order clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "orthopaedic surgeon",
+   "normalised": "Orthopaedic surgeon",
+   "group": "Medicine"
+  },
+  {
+   "raw": "overlooker, shirt factory",
+   "normalised": "Overlooker, shirt factory",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "page",
+   "normalised": "Page",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "page boy",
+   "normalised": "Page",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "page, domestic",
+   "normalised": "Page",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "paper merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "pawnbroker",
+   "normalised": "Pawnbroker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "pawnbroker and silversmith",
+   "normalised": "Pawnbroker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "physician, consulting",
+   "normalised": "Physician, consulting",
+   "group": "Medicine"
+  },
+  {
+   "raw": "piling winchman",
+   "normalised": "Piling winchman",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "plain net manufacturer",
+   "normalised": "Plain net manufacturer",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "plain net mendar",
+   "normalised": "Plain net mendar",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "plain net mender",
+   "normalised": "Plain net mender",
+   "group": "Lace Industry"
+  },
+  {
+   "raw": "plumber",
+   "normalised": "Plumber",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "plumber's apprentice",
+   "normalised": "Plumber's apprentice",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "police constable",
+   "normalised": "Police constable",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "priest",
+   "normalised": "Priest",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "principal of a private school",
+   "normalised": "Principal of a private school",
+   "group": "Education"
+  },
+  {
+   "raw": "principal of schoo",
+   "normalised": "Principal of schoo",
+   "group": "Education"
+  },
+  {
+   "raw": "principal, private school",
+   "normalised": "Principal, private school",
+   "group": "Education"
+  },
+  {
+   "raw": "printer and lithographer",
+   "normalised": "Printer and lithographer",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "printer's improver",
+   "normalised": "Printer's improver",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "private secretary",
+   "normalised": "Private Secretary",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "professor of chemistry",
+   "normalised": "Professor of chemistry",
+   "group": "Education"
+  },
+  {
+   "raw": "professor of mathematics and physics",
+   "normalised": "Professor of mathematics and physics",
+   "group": "Education"
+  },
+  {
+   "raw": "professor of physics",
+   "normalised": "Professor of physics",
+   "group": "Education"
+  },
+  {
+   "raw": "proprietor of boarding house",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "proprietor of houses",
+   "normalised": "Land owner",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "proprietress, boarding house",
+   "normalised": "Boarding house keeper",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "provision merchant",
+   "normalised": "Provision merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "provision merchant, employer",
+   "normalised": "Provision merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "publican",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "railway clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "railway police inspector",
+   "normalised": "Railway police inspector",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "real estate and landagent",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "rector",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "representative",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "retired civil servant",
+   "normalised": "Retired civil servant",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "retired constable",
+   "normalised": "Retired constable",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "retired from work",
+   "normalised": "Retired from work",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "retired licensed victualler",
+   "normalised": "Licensed victualler",
+   "group": "Lodging & Hospitality"
+  },
+  {
+   "raw": "retired mechanical engineer",
+   "normalised": "Retired mechanical engineer",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "retired silk merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "retired surgeon",
+   "normalised": "Retired surgeon",
+   "group": "Medicine"
+  },
+  {
+   "raw": "retired surveyor of taxes",
+   "normalised": "Retired surveyor of taxes",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "retired wine merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "retired woollen merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "sales engineer",
+   "normalised": "Sales engineer",
+   "group": "Architecture & Engineering"
+  },
+  {
+   "raw": "sales manager",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "sales manager, ladies’ gown factory",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "school teacher",
+   "normalised": "School teacher",
+   "group": "Education"
+  },
+  {
+   "raw": "scullery maid",
+   "normalised": "Scullery maid",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "scullerymaid",
+   "normalised": "Scullery maid",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "senior inspector of taxes",
+   "normalised": "Senior inspector of taxes",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "senior lecturer, university college nottingham",
+   "normalised": "Senior lecturer, university college nottingham",
+   "group": "Education"
+  },
+  {
+   "raw": "service",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "serving maid",
+   "normalised": "Domestic Servant",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "shipping merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "shop assistant",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "shopman to an ironmonger",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "short hand typist",
+   "normalised": "Shorthand typist",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "shorthand typist",
+   "normalised": "Shorthand typist",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "showroom assistant",
+   "normalised": "Shop assistant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "social worker and writer",
+   "normalised": "Social worker and writer",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "solicitor and farmer",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "solicitor articled clerk",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "solicitors articled clerk",
+   "normalised": "Solicitor",
+   "group": "Law"
+  },
+  {
+   "raw": "starch manufacturer",
+   "normalised": "Starch manufacturer",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "student, ba",
+   "normalised": "Student",
+   "group": "Student / Scholar"
+  },
+  {
+   "raw": "student, electrical engineering",
+   "normalised": "Student",
+   "group": "Student / Scholar"
+  },
+  {
+   "raw": "student, radiology",
+   "normalised": "Medical student",
+   "group": "Medicine"
+  },
+  {
+   "raw": "surgeon, retired",
+   "normalised": "Surgeon, retired",
+   "group": "Medicine"
+  },
+  {
+   "raw": "tailor",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "tailor & clotheir",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "tailor's assistant",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "tailor’s salesman",
+   "normalised": "Clothing trade",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "taxi driver",
+   "normalised": "Taxi driver",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "teacher of children",
+   "normalised": "Teacher of children",
+   "group": "Education"
+  },
+  {
+   "raw": "teacher of music",
+   "normalised": "Teacher of music",
+   "group": "Education"
+  },
+  {
+   "raw": "teacher, school",
+   "normalised": "Teacher, school",
+   "group": "Education"
+  },
+  {
+   "raw": "theatrical manageress",
+   "normalised": "Theatrical manageress",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "timber importer",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "timber traveller",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "timber yard foreman",
+   "normalised": "Timber yard foreman",
+   "group": "Other / Miscellaneous"
+  },
+  {
+   "raw": "tobacconist's clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "transport manager",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "traveller",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "traveller, stationery",
+   "normalised": "Commercial traveller",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "under gardener",
+   "normalised": "Gardener",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "under nurse",
+   "normalised": "Under nurse",
+   "group": "Domestic Service"
+  },
+  {
+   "raw": "undergraduate, st john's college, cambridge",
+   "normalised": "Student",
+   "group": "Student / Scholar"
+  },
+  {
+   "raw": "underwear machinist",
+   "normalised": "Underwear machinist",
+   "group": "Hosiery & Textiles"
+  },
+  {
+   "raw": "unpaid domestic duties; medically qualified",
+   "normalised": "Unpaid domestic duties; medically qualified",
+   "group": "Household / Private Means"
+  },
+  {
+   "raw": "upholsterer",
+   "normalised": "Cabinet Maker",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "valuer",
+   "normalised": "Valuer",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "vicar",
+   "normalised": "Clergyman",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "vocalist",
+   "normalised": "Vocalist",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "voluntary social service worker",
+   "normalised": "Voluntary social service worker",
+   "group": "Arts & Culture"
+  },
+  {
+   "raw": "wages clerk",
+   "normalised": "Clerk",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "war office civil servant, clerk",
+   "normalised": "War office civil servant, clerk",
+   "group": "Public Life & Civic"
+  },
+  {
+   "raw": "wesleyan methodist",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "wesleyan methodist minister",
+   "normalised": "Minister of religion",
+   "group": "Church & Ministry"
+  },
+  {
+   "raw": "whole-time engineering student",
+   "normalised": "Student",
+   "group": "Student / Scholar"
+  },
+  {
+   "raw": "wholesale grocer",
+   "normalised": "Shopkeeper",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "wholesale stationer",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "wool merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "woollen merchant",
+   "normalised": "Merchant",
+   "group": "Trade & Commerce"
+  },
+  {
+   "raw": "works manager",
+   "normalised": "Manager",
+   "group": "Trade & Commerce"
+  }
+ ]
+}
