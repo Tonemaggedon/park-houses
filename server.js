@@ -7739,9 +7739,49 @@ function serverNorm(raw) {
   }
   return t;
 }
+// Where a whole string has no group, try the trade it begins with - **and keep
+// the wording**. "Hosiery manufacturer employing 300 hands" is the Hosiery
+// trade; "Magistrate, landowner, lace manufacturer and farmer, employing 500
+// hands" is Public Life. Flattening either to its first two words would throw
+// away the only interesting thing about it, so this touches the group alone and
+// never the text.
+//
+// Longest leading phrase first, so "Lace manufacturer and inventor" is tried
+// whole before it is tried as "Lace manufacturer". A head shorter than four
+// characters is ignored - nothing useful is that short and "A, B" would match on
+// nonsense.
+const OCC_CLAUSE = /[,;(]|\s+employing\s+|\s+and\s+|\s*&\s*|\s*\|\s*|\s+[\u2014\u2013-]\s+|\s+of\s+|\s+to\s+|\s+for\s+|\s+at\s+|\s+in\s+/gi;
+function occGroupOfHead(raw) {
+  const t = (raw || '').trim();
+  if (t.length < 4) return null;
+  const look = h => {
+    const n = serverNorm(h);
+    return OCC_GROUP_DB[n] || OCC_GROUP_SERVER[n] || null;
+  };
+  const cuts = [];
+  OCC_CLAUSE.lastIndex = 0;
+  let m;
+  while ((m = OCC_CLAUSE.exec(t)) !== null) {
+    cuts.push(m.index);
+    if (OCC_CLAUSE.lastIndex === m.index) OCC_CLAUSE.lastIndex++;
+  }
+  cuts.push(t.length);
+  for (let i = cuts.length - 1; i >= 0; i--) {
+    let head = t.slice(0, cuts[i]).trim().replace(/[,;(|&\u2014\u2013-]+$/, '').trim();
+    if (head.length < 4) continue;
+    let g = look(head);
+    if (g) return g;
+    // "Retired contractor" and "Lace Manufacturer Retired" are the same shape
+    // from either end, and neither is a trade of its own.
+    const bare = head.replace(/^retired\s+/i, '').replace(/[,\s]+retired$/i, '').trim();
+    if (bare !== head && bare.length >= 4) { g = look(bare); if (g) return g; }
+  }
+  return null;
+}
+
 function serverOccGroup(raw) {
   const n = serverNorm(raw);
-  return OCC_GROUP_DB[n] || OCC_GROUP_SERVER[n] || null;
+  return OCC_GROUP_DB[n] || OCC_GROUP_SERVER[n] || occGroupOfHead(raw) || null;
 }
 
 // ── Trades API ───────────────────────────────────────────────────────────────
