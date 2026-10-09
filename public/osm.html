@@ -78,9 +78,10 @@
     <input id="min" type="number" min="0" max="500" value="20"> metres</div>
   <div class="bar" id="bar">Asking OpenStreetMap… this can take half a minute the first time.</div>
   <div id="map"></div>
-  <p class="maphint">Click any row below, or any name in the list at the foot of the page, to see
-    it here. <strong>Red</strong> is where the record has it; <strong>green</strong> is the
-    building OpenStreetMap holds.</p>
+  <p class="maphint">Every disagreement is drawn. <strong>Red</strong> is where the record has it,
+    <strong>green</strong> is the building OpenStreetMap holds, and the dashes join the two.
+    Click any row below, or any name at the foot of the page, to zoom to one &mdash; or
+    <button id="showAllBtn" type="button" class="dismiss">show them all again</button>.</p>
   <div id="list"></div>
 
   <div id="orphWrap" hidden>
@@ -139,6 +140,7 @@ function render() {
     const o = r.osm;
     return esc(o.name || [o.number, o.street].filter(Boolean).join(' ') || o.id);
   };
+  showAll(rows);
   document.getElementById('list').innerHTML = rows.length ? '<div class="scroll"><table><thead><tr>'
     + '<th>Apart</th><th>Property</th><th>Matched on</th><th>OpenStreetMap has</th><th></th>'
     + '</tr></thead><tbody>'
@@ -202,6 +204,30 @@ function showPair(r) {
   }
 }
 
+// All of them at once, so the page opens on a map rather than on an empty box.
+// A grey rectangle with a caption telling you to click something reads as
+// broken, and the shape of the disagreements - which streets, which direction -
+// is worth seeing before you pick one.
+function showAll(rows) {
+  ensureMap(); map.invalidateSize(); layer.clearLayers();
+  const pts = [];
+  rows.forEach(r => {
+    if (!r.here || !r.osm) return;
+    const o = r.osm;
+    const oName = o.name || [o.number, o.street].filter(Boolean).join(' ') || 'OpenStreetMap building';
+    L.polyline([[r.here.lat, r.here.lng], [o.lat, o.lng]],
+      { color: '#a3341f', weight: 1.5, opacity: .55, dashArray: '4,4' }).addTo(layer);
+    L.marker([r.here.lat, r.here.lng], { icon: dot('#a3341f', r.label) })
+      .bindPopup(`<b>The record has it here</b><br>${esc(r.label)}<br>${r.distance}m from the building`)
+      .addTo(layer);
+    L.marker([o.lat, o.lng], { icon: dot('#2f7d32', oName) })
+      .bindPopup(`<b>OpenStreetMap</b><br>${esc(oName)}`).addTo(layer);
+    pts.push([r.here.lat, r.here.lng], [o.lat, o.lng]);
+  });
+  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [34, 34], maxZoom: 17 });
+  else map.setView([52.9515, -1.1619], 16);
+}
+
 function showOne(lat, lng, label) {
   ensureMap(); map.invalidateSize(); layer.clearLayers();
   L.marker([lat, lng], { icon: dot('#2f7d32', label) }).bindPopup(`<b>${label}</b>`).addTo(layer);
@@ -215,6 +241,12 @@ document.addEventListener('click', e => {
     row.classList.add('sel');
     const r = (data.rows || []).find(x => String(x.property_id) === row.dataset.row);
     if (r) showPair(r);
+    return;
+  }
+  if (e.target.closest('#showAllBtn')) {
+    document.querySelectorAll('tr.sel').forEach(x => x.classList.remove('sel'));
+    const min = parseInt(document.getElementById('min').value, 10) || 0;
+    showAll((data.rows || []).filter(x => x.distance !== null && x.distance >= min));
     return;
   }
   const nm = e.target.closest('.orph .nm');
