@@ -29,6 +29,7 @@
   // jobs, not a thing to read.
   const WORK = [
     ['/needs-work', '🔧', 'Needs work'],
+    ['/discussion', '💬', 'Discussion'],
     ['/research', '❓', 'Open questions'],
     ['/tasks', '✔', 'The working list'],
     ['/unfiled', '📥', 'Unfiled records'],

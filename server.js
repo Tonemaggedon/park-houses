@@ -865,6 +865,51 @@ async function dbInit() {
       checked_at TIMESTAMPTZ
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS postboxes_pos_idx ON postboxes(lat, lng)`);
+
+    // ── Discussion ───────────────────────────────────────────────────────────
+    // Somewhere to put a thing you half know. A research question is a finished
+    // thought with a slug and a priority; most of what people have is not that
+    // yet - a memory, a photograph of a deed, a suspicion about a wall. This is
+    // where those go, and where a thread that settles something can be turned
+    // into an answer on the question it settles.
+    await db.query(`CREATE TABLE IF NOT EXISTS discussions (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      body TEXT,
+      author TEXT NOT NULL,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      last_at TIMESTAMPTZ DEFAULT NOW(),
+      property_id INTEGER,
+      person_id INTEGER,
+      question_id INTEGER,
+      settled_at TIMESTAMPTZ,
+      settled_by TEXT,
+      settled_note TEXT,
+      pinned BOOLEAN DEFAULT false,
+      hidden BOOLEAN DEFAULT false
+    )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS discussion_replies (
+      id SERIAL PRIMARY KEY,
+      discussion_id INTEGER NOT NULL REFERENCES discussions(id) ON DELETE CASCADE,
+      parent_id INTEGER REFERENCES discussion_replies(id) ON DELETE CASCADE,
+      body TEXT NOT NULL,
+      author TEXT NOT NULL,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      hidden BOOLEAN DEFAULT false
+    )`);
+    // One vote each, on a thread or on a reply. The word on the button is
+    // "useful", not "like" - this is a working board.
+    await db.query(`CREATE TABLE IF NOT EXISTS discussion_votes (
+      id SERIAL PRIMARY KEY,
+      discussion_id INTEGER REFERENCES discussions(id) ON DELETE CASCADE,
+      reply_id INTEGER REFERENCES discussion_replies(id) ON DELETE CASCADE,
+      username TEXT NOT NULL,
+      made_at TIMESTAMPTZ DEFAULT NOW()
+    )`);
+    await db.query(`CREATE UNIQUE INDEX IF NOT EXISTS uniq_disc_vote
+                      ON discussion_votes(COALESCE(discussion_id,0), COALESCE(reply_id,0), username)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS disc_replies_idx ON discussion_replies(discussion_id)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS disc_last_idx ON discussions(last_at DESC)`);
     // Addresses the census itself cannot resolve — the return gave no house
     // name and no number, so no amount of census review will place them. They
     // are set aside rather than left in the queue looking like work.
@@ -8260,6 +8305,7 @@ app.get('/archive', (req, res) => res.sendFile(path.join(__dirname, 'public', 'a
 app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', 'research.html')));
 app.get('/needs-work', (req, res) => res.sendFile(path.join(__dirname, 'public', 'needs-work.html')));
 app.get('/walk', (req, res) => res.sendFile(path.join(__dirname, 'public', 'walk.html')));
+app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public', 'discussion.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8449,6 +8495,193 @@ app.get('/api/research-questions', async (req, res) => {
     const by = {};
     for (const c of cl.rows) (by[c.question_id] = by[c.question_id] || []).push(c);
     res.json({ questions: qs.rows.map(q => ({ ...q, claims: by[q.id] || [] })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Discussion ───────────────────────────────────────────────────────────────
+// A board for the things that are not yet questions. Anybody signed in can read
+// it; contributors can post. A thread can be tied to a house, a person or an
+// open question, and a thread that settles one can be turned into its answer.
+
+const MAX_BODY = 8000;
+function discAuthor(session) { return getResearchKey(session || {}); }
+
+// GET /api/discussions            — the list, most recently active first
+// GET /api/discussions/:id        — one thread with its replies
+app.get('/api/discussions', async (req, res) => {
+  if (!db) return res.json({ threads: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const nameOf = id => { const p = props.find(x => x.id === id);
+      return p ? (p.address || p.name) : null; };
+    const me = await discAuthor(req.session);
+    const r = await db.query(
+      `SELECT d.*,
+              (SELECT COUNT(*) FROM discussion_replies x
+                WHERE x.discussion_id = d.id AND NOT x.hidden) AS replies,
+              (SELECT COUNT(*) FROM discussion_votes v WHERE v.discussion_id = d.id) AS votes,
+              EXISTS(SELECT 1 FROM discussion_votes v
+                      WHERE v.discussion_id = d.id AND v.username = $1) AS voted,
+              (SELECT q.title FROM research_questions q WHERE q.id = d.question_id) AS question_title,
+              (SELECT p.first_name || ' ' || p.last_name FROM people p WHERE p.id = d.person_id) AS person_name
+         FROM discussions d
+        WHERE NOT d.hidden
+        ORDER BY d.pinned DESC, d.last_at DESC
+        LIMIT 200`, [me]);
+    res.json({ threads: r.rows.map(t => ({ ...t, property_name: nameOf(t.property_id) })), me });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/discussions/:id', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  try {
+    const me = await discAuthor(req.session);
+    const [t, rep] = await Promise.all([
+      db.query(`SELECT d.*,
+                  (SELECT COUNT(*) FROM discussion_votes v WHERE v.discussion_id = d.id) AS votes,
+                  EXISTS(SELECT 1 FROM discussion_votes v
+                          WHERE v.discussion_id = d.id AND v.username = $2) AS voted,
+                  (SELECT q.title FROM research_questions q WHERE q.id = d.question_id) AS question_title
+                 FROM discussions d WHERE d.id = $1 AND NOT d.hidden`, [id, me]),
+      db.query(`SELECT r.*,
+                  (SELECT COUNT(*) FROM discussion_votes v WHERE v.reply_id = r.id) AS votes,
+                  EXISTS(SELECT 1 FROM discussion_votes v
+                          WHERE v.reply_id = r.id AND v.username = $2) AS voted
+                 FROM discussion_replies r
+                WHERE r.discussion_id = $1 AND NOT r.hidden
+                ORDER BY r.created_at`, [id, me])
+    ]);
+    if (!t.rows[0]) return res.status(404).json({ error: 'No such thread' });
+    res.json({ thread: t.rows[0], replies: rep.rows, me });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/discussions', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const title = String(b.title || '').trim();
+  if (!title) return res.status(400).json({ error: 'It needs a title' });
+  if (title.length > 200) return res.status(400).json({ error: 'That title is too long' });
+  const who = await discAuthor(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  try {
+    const r = await db.query(
+      `INSERT INTO discussions (title, body, author, property_id, person_id, question_id)
+       VALUES ($1,$2,$3,$4,$5,$6) RETURNING id`,
+      [title, String(b.body || '').slice(0, MAX_BODY) || null, who,
+       parseInt(b.property_id, 10) || null, parseInt(b.person_id, 10) || null,
+       parseInt(b.question_id, 10) || null]);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/discussions/:id/reply', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const body = String((req.body && req.body.body) || '').trim();
+  if (!body) return res.status(400).json({ error: 'Nothing to say?' });
+  const who = await discAuthor(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  try {
+    // Two levels of nesting is enough to follow on a phone; deeper replies are
+    // pinned back to their grandparent rather than marching off the screen.
+    let parent = parseInt((req.body && req.body.parent_id), 10) || null;
+    if (parent) {
+      const p = await db.query(
+        `SELECT id, parent_id, (SELECT parent_id FROM discussion_replies g WHERE g.id = r.parent_id) AS gp
+           FROM discussion_replies r WHERE r.id = $1 AND r.discussion_id = $2`, [parent, id]);
+      if (!p.rows[0]) parent = null;
+      else if (p.rows[0].gp) parent = p.rows[0].parent_id;
+    }
+    const r = await db.query(
+      `INSERT INTO discussion_replies (discussion_id, parent_id, body, author)
+       VALUES ($1,$2,$3,$4) RETURNING id`, [id, parent, body.slice(0, MAX_BODY), who]);
+    await db.query(`UPDATE discussions SET last_at = NOW() WHERE id = $1`, [id]);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Useful, not liked. One each, and tapping again takes it back.
+app.post('/api/discussions/vote', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const b = req.body || {};
+  const did = parseInt(b.discussion_id, 10) || null;
+  const rid = parseInt(b.reply_id, 10) || null;
+  if (!did && !rid) return res.status(400).json({ error: 'Vote on what?' });
+  const who = await discAuthor(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  try {
+    const gone = await db.query(
+      `DELETE FROM discussion_votes
+        WHERE username = $1 AND COALESCE(discussion_id,0) = COALESCE($2::int,0)
+          AND COALESCE(reply_id,0) = COALESCE($3::int,0) RETURNING id`, [who, did, rid]);
+    if (gone.rowCount) return res.json({ ok: true, voted: false });
+    await db.query(
+      `INSERT INTO discussion_votes (discussion_id, reply_id, username) VALUES ($1,$2,$3)`,
+      [did, rid, who]);
+    res.json({ ok: true, voted: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Settling a thread. If it is tied to an open question, this is also how the
+// question gets its answer - which is the whole reason the board is here rather
+// than on somebody else's forum.
+app.post('/api/discussions/:id/settle', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const note = String((req.body && req.body.note) || '').trim();
+  const who = await discAuthor(req.session);
+  if (!who) return res.status(401).json({ error: 'Sign in first' });
+  try {
+    const t = await db.query(`SELECT author, question_id, settled_at FROM discussions WHERE id=$1`, [id]);
+    if (!t.rows[0]) return res.status(404).json({ error: 'No such thread' });
+    const isAdmin = !!(req.session && req.session.isAdmin);
+    if (t.rows[0].author !== who && !isAdmin)
+      return res.status(403).json({ error: 'Only whoever asked, or an admin, can call it settled' });
+    if (t.rows[0].settled_at) {
+      await db.query(`UPDATE discussions SET settled_at=NULL, settled_by=NULL, settled_note=NULL
+                       WHERE id=$1`, [id]);
+      return res.json({ ok: true, settled: false });
+    }
+    if (!note) return res.status(400).json({ error: 'Say what settled it' });
+    await db.query(`UPDATE discussions SET settled_at=NOW(), settled_by=$2, settled_note=$3
+                     WHERE id=$1`, [id, who, note]);
+    let answered = false;
+    if (t.rows[0].question_id) {
+      const q = await db.query(
+        `UPDATE research_questions SET status='answered', answer=$2, answered_by=$3, answered_at=NOW()
+          WHERE id=$1 AND status <> 'answered' RETURNING id`,
+        [t.rows[0].question_id, note, who]);
+      answered = !!q.rowCount;
+    }
+    res.json({ ok: true, settled: true, question_answered: answered });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Taking something down. The author's own, or an admin's call.
+app.delete('/api/discussions/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const who = await discAuthor(req.session);
+  try {
+    const r = await db.query(
+      `UPDATE discussions SET hidden = true WHERE id=$1 AND (author=$2 OR $3) RETURNING id`,
+      [id, who, !!(req.session && req.session.isAdmin)]);
+    if (!r.rowCount) return res.status(403).json({ error: 'Not yours to remove' });
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.delete('/api/discussions/reply/:id', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const who = await discAuthor(req.session);
+  try {
+    const r = await db.query(
+      `UPDATE discussion_replies SET hidden = true WHERE id=$1 AND (author=$2 OR $3) RETURNING id`,
+      [id, who, !!(req.session && req.session.isAdmin)]);
+    if (!r.rowCount) return res.status(403).json({ error: 'Not yours to remove' });
+    res.json({ ok: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

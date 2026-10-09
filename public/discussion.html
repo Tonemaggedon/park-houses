@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discussion — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --accent:#5a3a1a; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:860px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 4px; max-width:70ch; }
+  .lede strong { color:var(--ink); }
+
+  button, .btn { font-family:inherit; font-size:.8rem; border-radius:5px; padding:5px 12px;
+    cursor:pointer; border:1px solid var(--rule); background:#fff; color:var(--soft);
+    text-decoration:none; display:inline-block; }
+  button:hover, .btn:hover { border-color:var(--accent); }
+  button.go { background:var(--green); color:#f2ecd8; border-color:var(--green); font-weight:600; }
+  button.warn { color:var(--red); }
+  button:disabled { opacity:.45; cursor:default; }
+
+  .newbox { background:var(--card); border:1px solid var(--rule); border-radius:9px;
+    padding:14px 16px; margin:16px 0 20px; }
+  .newbox.closed { padding:10px 16px; }
+  .newbox input[type=text], .newbox textarea, .reply textarea, .settle input {
+    width:100%; padding:8px 10px; border:1px solid var(--rule); border-radius:6px;
+    font-family:inherit; font-size:.92rem; background:#fffdf7; color:var(--ink); }
+  .newbox textarea, .reply textarea { min-height:86px; resize:vertical; }
+  .newbox .fld { margin-top:9px; }
+  .newbox label { display:block; font-size:.76rem; color:var(--faint); margin-bottom:3px; }
+  .tie { display:flex; gap:8px; flex-wrap:wrap; margin-top:9px; }
+  .tie select, .tie input { padding:7px 9px; border:1px solid var(--rule); border-radius:6px;
+    font-family:inherit; font-size:.84rem; background:#fffdf7; color:var(--ink); max-width:100%; }
+
+  .th { background:var(--card); border:1px solid var(--rule); border-radius:9px;
+    padding:13px 15px; margin-bottom:10px; display:flex; gap:13px; }
+  .th.settled { background:#f6f8f3; border-color:#b6c9a8; }
+  .th .vote { text-align:center; min-width:40px; }
+  .th .vote button { border:1px solid var(--rule); background:#fff; border-radius:6px;
+    padding:3px 7px; font-size:.9rem; line-height:1; }
+  .th .vote button.on { background:#e4ecdc; border-color:#9ab88a; }
+  .th .vote .n { display:block; font-family:ui-monospace,Menlo,monospace; font-size:.76rem;
+    color:var(--faint); margin-top:3px; }
+  .th .main { flex:1; min-width:0; }
+  .th h3 { margin:0; font-size:1.04rem; font-weight:600; }
+  .th h3 a { color:var(--ink); text-decoration:none; }
+  .th h3 a:hover { text-decoration:underline; }
+  .meta { font-size:.77rem; color:var(--faint); margin-top:3px; }
+  .meta b { color:var(--soft); font-weight:600; }
+  .ties { margin-top:6px; display:flex; gap:6px; flex-wrap:wrap; }
+  .tiechip { font-size:.7rem; border:1px solid var(--rule); background:#f6f2e6; border-radius:9px;
+    padding:1px 8px; color:var(--soft); }
+  .tiechip.q { background:#f3e3c2; border-color:#ddc894; color:#6b4a12; }
+  .snip { font-size:.86rem; color:var(--soft); margin-top:6px;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .settledmark { margin-top:8px; padding:8px 11px; background:#eaf2e3; border:1px solid #9ab88a;
+    border-radius:7px; font-size:.85rem; color:#2c4420; }
+
+  .body { font-size:.95rem; margin:10px 0 0; white-space:pre-wrap; }
+  .reps { margin-top:16px; }
+  .rep { border-left:2px solid var(--rule); padding:9px 0 9px 13px; margin-top:9px; }
+  .rep.child { margin-left:22px; }
+  .rep .meta { margin:0 0 4px; }
+  .rep .body { margin:0; font-size:.92rem; }
+  .rep .acts { margin-top:6px; display:flex; gap:8px; align-items:center; }
+  .reply { margin-top:9px; display:none; }
+  .reply.open { display:block; }
+  .settle { margin-top:12px; display:none; }
+  .settle.open { display:block; }
+  .msg { color:var(--red); font-size:.82rem; margin-top:7px; }
+  .signin { background:#fff8e8; border:1px solid #d8c08a; border-radius:8px;
+    padding:11px 14px; margin:14px 0; font-size:.87rem; color:var(--soft); }
+  .signin a { color:var(--accent); }
+  .loading { color:var(--faint); font-style:italic; padding:26px 0; }
+  .back { font-size:.84rem; color:#2a5a8a; text-decoration:none; display:inline-block; margin-bottom:12px; }
+  @media (max-width:640px){ .wrap{padding:16px 13px 70px} .rep.child{margin-left:11px} }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap" id="wrap"><div class="loading">Loading…</div></div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const when = t => {
+  if (!t) return '';
+  const d = new Date(t), mins = (Date.now() - d) / 60000;
+  if (mins < 1) return 'just now';
+  if (mins < 60) return Math.round(mins) + ' min ago';
+  if (mins < 60 * 24) return Math.round(mins / 60) + ' h ago';
+  if (mins < 60 * 24 * 7) return Math.round(mins / 1440) + ' days ago';
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+};
+
+let ME = null, CAN = false, PROPS = [], QUESTIONS = [];
+
+async function who() {
+  const d = await fetch('/api/me', { credentials:'same-origin' }).then(r => r.json()).catch(() => ({}));
+  CAN = !!(d.isAdmin || (d.user && d.user.approved &&
+    (d.user.role === 'contributor' || d.user.role === 'admin')));
+  return d;
+}
+async function req(url, method, body) {
+  const r = await fetch(url, { method: method || 'GET', credentials:'same-origin',
+    headers: body ? { 'Content-Type':'application/json' } : undefined,
+    body: body ? JSON.stringify(body) : undefined });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || ('Request failed (' + r.status + ')'));
+  return d;
+}
+
+// ── the list ─────────────────────────────────────────────────────────────────
+async function list() {
+  const [d] = await Promise.all([req('/api/discussions'), who()]);
+  ME = d.me;
+  const w = document.getElementById('wrap');
+  w.innerHTML = `
+    <h2>Discussion</h2>
+    <p class="lede">For the things that are not questions yet — a memory, a photograph of a deed,
+      a suspicion about a wall. <strong>Ask, and other people chip in.</strong></p>
+    <p class="lede" style="font-size:.84rem">A thread can be tied to a house, a person or an open
+      question. Tie it to a question and settling the thread answers the question.</p>
+    ${CAN ? newBoxHtml() : '<div class="signin">Anyone can read this. To post, '
+      + '<a href="/join">join the record</a> or sign in.</div>'}
+    <div id="threads">${d.threads.length ? d.threads.map(threadRow).join('')
+      : '<p class="lede" style="margin-top:20px">Nothing here yet. The first one is yours.</p>'}</div>`;
+  if (CAN) wireNew();
+  wireVotes();
+}
+
+function newBoxHtml() {
+  return `<div class="newbox closed" id="newBox">
+    <button id="newOpen">Ask something</button>
+    <div id="newForm" hidden>
+      <div class="fld"><label>What do you want to know?</label>
+        <input type="text" id="nTitle" maxlength="200" placeholder="Is the wall behind 14 Lenton Road older than the house?"></div>
+      <div class="fld"><label>Anything you already have — and where it came from</label>
+        <textarea id="nBody" placeholder="What you know, what you suspect, and what you have looked at already."></textarea></div>
+      <div class="tie">
+        <input type="text" id="nProp" list="propList" placeholder="A house (optional)" style="flex:1;min-width:190px">
+        <input type="text" id="nQ" list="qList" placeholder="An open question (optional)" style="flex:1;min-width:190px">
+      </div>
+      <datalist id="propList"></datalist><datalist id="qList"></datalist>
+      <div class="tie" style="margin-top:11px">
+        <button class="go" id="nSend">Post it</button>
+        <button id="nCancel">Cancel</button>
+      </div>
+      <div id="nMsg"></div>
+    </div></div>`;
+}
+
+function wireNew() {
+  const box = document.getElementById('newBox');
+  document.getElementById('newOpen').onclick = async () => {
+    box.classList.remove('closed');
+    document.getElementById('newOpen').hidden = true;
+    document.getElementById('newForm').hidden = false;
+    document.getElementById('nTitle').focus();
+    if (!PROPS.length) {
+      try {
+        PROPS = await fetch('/api/all-props').then(r => r.json());
+        document.getElementById('propList').innerHTML =
+          PROPS.map(p => `<option value="${esc(p.address || p.name)}">`).join('');
+      } catch (e) {}
+      try {
+        const q = await fetch('/api/research-questions').then(r => r.json());
+        QUESTIONS = (q.questions || []).filter(x => x.status !== 'answered');
+        document.getElementById('qList').innerHTML =
+          QUESTIONS.map(x => `<option value="${esc(x.title)}">`).join('');
+      } catch (e) {}
+    }
+  };
+  document.getElementById('nCancel').onclick = () => {
+    box.classList.add('closed');
+    document.getElementById('newOpen').hidden = false;
+    document.getElementById('newForm').hidden = true;
+  };
+  document.getElementById('nSend').onclick = async () => {
+    const msg = document.getElementById('nMsg');
+    const title = document.getElementById('nTitle').value.trim();
+    if (!title) { msg.innerHTML = '<div class="msg">It needs a title.</div>'; return; }
+    const pv = document.getElementById('nProp').value.trim();
+    const qv = document.getElementById('nQ').value.trim();
+    const prop = PROPS.find(p => (p.address || p.name) === pv);
+    const q = QUESTIONS.find(x => x.title === qv);
+    const btn = document.getElementById('nSend'); btn.disabled = true;
+    try {
+      const d = await req('/api/discussions', 'POST', { title,
+        body: document.getElementById('nBody').value.trim(),
+        property_id: prop ? prop.id : null, question_id: q ? q.id : null });
+      location.hash = '#' + d.id; thread(d.id);
+    } catch (e) { msg.innerHTML = '<div class="msg">' + esc(e.message) + '</div>'; btn.disabled = false; }
+  };
+}
+
+function ties(t) {
+  const out = [];
+  if (t.property_name) out.push(`<span class="tiechip">🏠 ${esc(t.property_name)}</span>`);
+  if (t.person_name) out.push(`<span class="tiechip">👤 ${esc(t.person_name)}</span>`);
+  if (t.question_title) out.push(`<span class="tiechip q">❓ ${esc(t.question_title)}</span>`);
+  return out.length ? `<div class="ties">${out.join('')}</div>` : '';
+}
+
+function threadRow(t) {
+  return `<div class="th${t.settled_at ? ' settled' : ''}">
+    <div class="vote">
+      <button class="v${t.voted ? ' on' : ''}" data-d="${t.id}" title="Useful">▲</button>
+      <span class="n">${t.votes}</span>
+    </div>
+    <div class="main">
+      <h3><a href="#${t.id}">${esc(t.title)}</a></h3>
+      <div class="meta"><b>${esc(t.author)}</b> · ${esc(when(t.created_at))}
+        · ${t.replies} ${t.replies === 1 ? 'reply' : 'replies'}
+        ${t.settled_at ? ' · <b style="color:#2f4d27">settled</b>' : ''}</div>
+      ${ties(t)}
+      ${t.body ? `<div class="snip">${esc(t.body)}</div>` : ''}
+    </div></div>`;
+}
+
+// ── one thread ───────────────────────────────────────────────────────────────
+async function thread(id) {
+  const w = document.getElementById('wrap');
+  w.innerHTML = '<div class="loading">Loading…</div>';
+  let d;
+  try { d = await req('/api/discussions/' + id); }
+  catch (e) { w.innerHTML = '<a class="back" href="#">← Back</a><p class="msg">' + esc(e.message) + '</p>'; return; }
+  await who();
+  ME = d.me;
+  const t = d.thread;
+  const mine = t.author === ME;
+  const byParent = {};
+  for (const r of d.replies) (byParent[r.parent_id || 0] = byParent[r.parent_id || 0] || []).push(r);
+
+  const repHtml = (r, child) => `<div class="rep${child ? ' child' : ''}">
+    <div class="meta"><b>${esc(r.author)}</b> · ${esc(when(r.created_at))}</div>
+    <div class="body">${esc(r.body)}</div>
+    <div class="acts">
+      <button class="v${r.voted ? ' on' : ''}" data-r="${r.id}">▲ <span>${r.votes}</span></button>
+      ${CAN ? `<button data-replyto="${r.id}">Reply</button>` : ''}
+      ${(r.author === ME || CAN) ? `<button class="warn" data-delrep="${r.id}">Remove</button>` : ''}
+    </div>
+    ${CAN ? `<div class="reply" id="rep-${r.id}">
+      <textarea placeholder="…"></textarea>
+      <div style="margin-top:7px"><button class="go" data-send="${r.id}">Post reply</button></div>
+    </div>` : ''}
+    ${(byParent[r.id] || []).map(c => repHtml(c, true)).join('')}
+  </div>`;
+
+  w.innerHTML = `
+    <a class="back" href="#">← All discussions</a>
+    <div class="th${t.settled_at ? ' settled' : ''}" style="display:block">
+      <h3 style="font-size:1.22rem">${esc(t.title)}</h3>
+      <div class="meta"><b>${esc(t.author)}</b> · ${esc(when(t.created_at))}</div>
+      ${ties(t)}
+      ${t.body ? `<div class="body">${esc(t.body)}</div>` : ''}
+      ${t.settled_at ? `<div class="settledmark"><b>Settled</b> by ${esc(t.settled_by)} —
+        ${esc(t.settled_note)}</div>` : ''}
+      <div class="acts" style="margin-top:11px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="v${t.voted ? ' on' : ''}" data-d="${t.id}">▲ <span>${t.votes}</span> useful</button>
+        ${(mine || CAN) ? `<button id="settleBtn">${t.settled_at ? 'Reopen it' : 'Call it settled'}</button>` : ''}
+        ${mine ? `<button class="warn" id="delThread">Remove</button>` : ''}
+      </div>
+      ${(mine || CAN) && !t.settled_at ? `<div class="settle" id="settleBox">
+        <input id="settleNote" placeholder="What settled it — this becomes the answer">
+        <div style="margin-top:7px"><button class="go" id="settleGo">Settle</button></div>
+      </div>` : ''}
+      <div id="tMsg"></div>
+    </div>
+
+    <div class="reps">
+      ${(byParent[0] || []).map(r => repHtml(r, false)).join('')
+        || '<p class="lede" style="margin-top:14px">No replies yet.</p>'}
+    </div>
+
+    ${CAN ? `<div class="newbox" style="margin-top:18px">
+      <label style="display:block;font-size:.76rem;color:var(--faint);margin-bottom:4px">Add to this</label>
+      <textarea id="newRep" placeholder="What do you know?"></textarea>
+      <div style="margin-top:8px"><button class="go" id="repSend">Post</button></div>
+      <div id="rMsg"></div>
+    </div>` : '<div class="signin">To join in, <a href="/join">join the record</a> or sign in.</div>'}`;
+
+  wireVotes();
+  if (CAN) {
+    document.getElementById('repSend').onclick = async () => {
+      const body = document.getElementById('newRep').value.trim();
+      if (!body) return;
+      try { await req('/api/discussions/' + id + '/reply', 'POST', { body }); thread(id); }
+      catch (e) { document.getElementById('rMsg').innerHTML = '<div class="msg">' + esc(e.message) + '</div>'; }
+    };
+    w.querySelectorAll('[data-replyto]').forEach(b => b.onclick = () =>
+      document.getElementById('rep-' + b.dataset.replyto).classList.toggle('open'));
+    w.querySelectorAll('[data-send]').forEach(b => b.onclick = async () => {
+      const box = document.getElementById('rep-' + b.dataset.send);
+      const body = box.querySelector('textarea').value.trim();
+      if (!body) return;
+      try { await req('/api/discussions/' + id + '/reply', 'POST',
+        { body, parent_id: +b.dataset.send }); thread(id); } catch (e) { alert(e.message); }
+    });
+    w.querySelectorAll('[data-delrep]').forEach(b => b.onclick = async () => {
+      try { await req('/api/discussions/reply/' + b.dataset.delrep, 'DELETE'); thread(id); }
+      catch (e) { alert(e.message); }
+    });
+  }
+  const sb = document.getElementById('settleBtn');
+  if (sb) sb.onclick = async () => {
+    if (t.settled_at) {
+      try { await req('/api/discussions/' + id + '/settle', 'POST', {}); thread(id); }
+      catch (e) { document.getElementById('tMsg').innerHTML = '<div class="msg">' + esc(e.message) + '</div>'; }
+      return;
+    }
+    document.getElementById('settleBox').classList.toggle('open');
+    document.getElementById('settleNote').focus();
+  };
+  const sg = document.getElementById('settleGo');
+  if (sg) sg.onclick = async () => {
+    const note = document.getElementById('settleNote').value.trim();
+    try {
+      const d2 = await req('/api/discussions/' + id + '/settle', 'POST', { note });
+      if (d2.question_answered) alert('Settled — and the question it was tied to is now answered.');
+      thread(id);
+    } catch (e) { document.getElementById('tMsg').innerHTML = '<div class="msg">' + esc(e.message) + '</div>'; }
+  };
+  const dt = document.getElementById('delThread');
+  if (dt) dt.onclick = async () => {
+    if (!confirm('Remove this thread?')) return;
+    try { await req('/api/discussions/' + id, 'DELETE'); location.hash = ''; list(); }
+    catch (e) { alert(e.message); }
+  };
+}
+
+function wireVotes() {
+  document.querySelectorAll('.v').forEach(b => b.onclick = async (e) => {
+    e.preventDefault();
+    if (!CAN) return;
+    try {
+      await req('/api/discussions/vote', 'POST',
+        b.dataset.d ? { discussion_id: +b.dataset.d } : { reply_id: +b.dataset.r });
+      route();
+    } catch (err) { alert(err.message); }
+  });
+}
+
+function route() {
+  const id = parseInt(location.hash.replace('#', ''), 10);
+  if (Number.isInteger(id)) thread(id); else list();
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
