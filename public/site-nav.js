@@ -22,6 +22,7 @@
     ['/history', '⏳', 'Estate history'],
     ['/archive', '🗄', 'Archive'],
     ['/walk', '🚶', 'Walk it'],
+    ['/moves', '🧭', 'Who moved'],
     ['/dashboard', '📊', 'Dashboard'],
   ];
   // Family trees is off the public row until it works, and Open questions has

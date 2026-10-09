@@ -3851,7 +3851,12 @@ app.get('/api/stats', async (req, res) => {
         safe('SELECT COUNT(*) as cnt FROM people'),
         safe('SELECT COUNT(*) as cnt FROM occupations'),
         safe('SELECT COUNT(DISTINCT property_id) as cnt FROM census_entries WHERE property_id IS NOT NULL'),
-        safe(`SELECT COUNT(DISTINCT property_id) as cnt FROM property_overrides WHERE photo_url IS NOT NULL AND photo_url != ''`),
+        // Photographs live in property_data.data->'photos', an array, which is
+        // where every upload route puts them. This counted property_overrides
+        // .photo_url instead - a column nothing writes to - so the dashboard
+        // read 0 of 438 while 351 houses had a photograph on them.
+        safe(`SELECT COUNT(*) as cnt FROM property_data
+               WHERE jsonb_array_length(COALESCE(data->'photos','[]'::jsonb)) > 0`),
         db.query(`SELECT LOWER(occupation) as occ, COUNT(*) as cnt FROM occupations GROUP BY LOWER(occupation) ORDER BY cnt DESC LIMIT 15`).catch(() => ({ rows: [] })),
         db.query(`SELECT ce.census_year, LOWER(o.occupation) as occ, COUNT(DISTINCT ce.person_id) as cnt
                   FROM census_entries ce JOIN occupations o ON o.person_id=ce.person_id
@@ -8306,6 +8311,7 @@ app.get('/research', (req, res) => res.sendFile(path.join(__dirname, 'public', '
 app.get('/needs-work', (req, res) => res.sendFile(path.join(__dirname, 'public', 'needs-work.html')));
 app.get('/walk', (req, res) => res.sendFile(path.join(__dirname, 'public', 'walk.html')));
 app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public', 'discussion.html')));
+app.get('/moves', (req, res) => res.sendFile(path.join(__dirname, 'public', 'moves.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
@@ -8495,6 +8501,73 @@ app.get('/api/research-questions', async (req, res) => {
     const by = {};
     for (const c of cl.rows) (by[c.question_id] = by[c.question_id] || []).push(c);
     res.json({ questions: qs.rows.map(q => ({ ...q, claims: by[q.id] || [] })) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── People who moved house on the estate ─────────────────────────────────────
+// One line per person, house to house, **in the order they lived in them**.
+//
+// The version of this on the Insights page builds the house list with
+// ARRAY_AGG(DISTINCT property_id), and DISTINCT sorts by the thing it is
+// de-duplicating - so the houses came out in property-id order, not in the
+// order anybody lived in them. It did not show while the lines had no
+// direction. The moment you draw an arrow on one it matters a great deal, so
+// the order is taken from the census year here, with the year of each hop
+// carried along so the page can label it.
+app.get('/api/moves', async (req, res) => {
+  if (!db) return res.json({ moves: [] });
+  try {
+    const props = JSON.parse(readAllPropsCached().body);
+    const byId = new Map(props.map(p => [p.id, p]));
+    const co = await db.query('SELECT id, lat, lng FROM coords');
+    for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
+
+    const r = await db.query(`
+      WITH firsts AS (
+        SELECT person_id, property_id, MIN(census_year) AS yr
+          FROM census_entries
+         WHERE property_id IS NOT NULL AND census_year IS NOT NULL
+         GROUP BY person_id, property_id),
+      movers AS (
+        SELECT person_id,
+               ARRAY_AGG(property_id ORDER BY yr, property_id) AS props,
+               ARRAY_AGG(yr          ORDER BY yr, property_id) AS years,
+               MIN(yr) AS a, MAX(yr) AS b
+          FROM firsts GROUP BY person_id HAVING COUNT(*) > 1)
+      SELECT m.*, p.first_name, p.last_name, p.known_as,
+             (SELECT ce.occupation_at_census FROM census_entries ce
+               WHERE ce.person_id = m.person_id AND ce.occupation_at_census IS NOT NULL
+                 AND TRIM(ce.occupation_at_census) <> ''
+               ORDER BY ce.census_year DESC LIMIT 1) AS occ
+        FROM movers m JOIN people p ON p.id = m.person_id
+       ORDER BY p.last_name, p.first_name`);
+
+    const moves = [];
+    for (const row of r.rows) {
+      const pts = [];
+      (row.props || []).forEach((pid, i) => {
+        const p = byId.get(pid);
+        if (!p || !p.lat || !p.lng) return;
+        pts.push({ id: pid, lat: +p.lat, lng: +p.lng,
+          label: p.address || p.name || ('Property ' + pid), year: row.years[i] });
+      });
+      if (pts.length < 2) continue;
+      const raw = String(row.occ || '').split('|')[0].trim();
+      moves.push({
+        id: row.person_id,
+        name: [row.first_name, row.last_name].filter(Boolean).join(' ') || 'unnamed',
+        known_as: row.known_as || null,
+        from: row.a, to: row.b, occ: raw || null, points: pts,
+        // How far they actually went, which turns out to be the interesting part.
+        metres: Math.round(pts.slice(1).reduce((m, p, i) => {
+          const q = pts[i], R = 6371000, rd = d => d * Math.PI / 180;
+          const dLat = rd(p.lat - q.lat), dLng = rd(p.lng - q.lng);
+          const h = Math.sin(dLat/2)**2 + Math.cos(rd(q.lat)) * Math.cos(rd(p.lat)) * Math.sin(dLng/2)**2;
+          return m + 2 * R * Math.asin(Math.sqrt(h));
+        }, 0))
+      });
+    }
+    res.json({ moves, houses: new Set(moves.flatMap(m => m.points.map(p => p.id))).size });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -8771,7 +8844,11 @@ app.get('/api/walk/stops', async (req, res) => {
           line: reign && reign.monarch
             ? `Cast in the reign of ${reign.monarch}, so it has stood here since `
               + `${reign.to ? 'before ' + reign.to : reign.from} at the latest.`
-            : 'No cypher on it, which usually means an early one.',
+            : (b.cypher === 'none'
+                ? 'No cypher on it, which usually means an early one.'
+                : 'Drawn on Dougal de Havilland\'s map, and nobody has read it yet. '
+                  + 'Is it still there, and whose initials are on it?'),
+          needs_cypher: !b.cypher,
           photo: b.photo_url || null });
       }
     } catch (e) { /* the table may not exist yet on an old deploy */ }

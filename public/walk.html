@@ -244,7 +244,7 @@ const THEMES = [
   { k: 'lost',      label: 'What is gone',        sub: 'houses that no longer stand' },
   { k: 'household', label: 'Full houses',         sub: 'twelve or more under one roof' },
   { k: 'needs-photo', label: 'Take some photographs', sub: 'houses the record has never seen' },
-  { k: 'postbox',   label: 'Hunt the post boxes',  sub: 'nobody has recorded one yet' }
+  { k: 'postbox',   label: 'Read the post boxes',  sub: 'five drawn on the map, none read' }
 ];
 
 const SEEN_KEY = 'parkwalk.seen.v1';
@@ -551,6 +551,8 @@ function openStop(i, manual) {
       <div id="propMsg"></div>` : ''}
     ${s.kind === 'hunt' ? `
       <div class="row"><button class="primary" onclick="openBoxSheet()">I can see one — record it</button></div>` : ''}
+    ${s.kind === 'postbox' && s.needs_cypher ? `
+      <div class="row"><button class="primary" onclick="openBoxSheet()">Read it and record it</button></div>` : ''}
     <div class="row" style="margin-top:14px">
       ${s.url ? `<button onclick="window.open('${esc(s.url)}','_blank')">Read more ↗</button>` : ''}
       ${s.property_id ? `<button onclick="window.open('/?property=${s.property_id}','_blank')">This house in the record</button>` : ''}

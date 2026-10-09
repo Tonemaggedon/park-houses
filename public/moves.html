@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People who moved — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root { --ink:#e8e2d2; --soft:#a9b49c; --faint:#7d8a74; --rule:#2b3b28;
+          --bg:#101a0e; --panel:#16220f; --gold:#d9b25f; --moss:#8fbb6c; }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.45; }
+  a { color:var(--gold); }
+
+  .head { padding:16px 20px 12px; border-bottom:1px solid var(--rule); }
+  .head h2 { margin:0 0 4px; font-size:1.3rem; font-weight:400; }
+  .head p { margin:0; color:var(--soft); font-size:.88rem; max-width:78ch; }
+  .head .tally { margin-top:7px; font-size:.8rem; color:var(--faint);
+    font-family:ui-monospace,Menlo,monospace; }
+  .head .tally b { color:var(--gold); font-weight:400; }
+
+  .cols { display:flex; height:calc(100vh - var(--site-nav-h,84px) - 108px); min-height:420px; }
+  .side { width:338px; flex-shrink:0; border-right:1px solid var(--rule);
+    display:flex; flex-direction:column; background:var(--panel); }
+  .filters { padding:10px 12px; border-bottom:1px solid var(--rule); display:grid; gap:7px; }
+  .filters input, .filters select { width:100%; padding:7px 9px; background:#0d160b;
+    border:1px solid var(--rule); border-radius:6px; color:var(--ink);
+    font-family:inherit; font-size:.85rem; }
+  .list { overflow-y:auto; flex:1; }
+  .pr { padding:9px 13px; border-bottom:1px solid #1d2b1a; cursor:pointer; }
+  .pr:hover { background:#1b2a16; }
+  .pr.on { background:#24381c; border-left:3px solid var(--gold); padding-left:10px; }
+  .pr .nm { font-size:.93rem; }
+  .pr .nm b { font-weight:600; }
+  .pr .yr { font-family:ui-monospace,Menlo,monospace; font-size:.74rem; color:var(--faint);
+    float:right; }
+  .pr .route { font-size:.78rem; color:var(--soft); margin-top:2px; }
+  .pr .route .arw { color:var(--gold); }
+  .pr .trade { font-size:.74rem; color:var(--faint); font-style:italic; }
+
+  .mapwrap { flex:1; position:relative; }
+  #map { position:absolute; inset:0; background:#0d160b; }
+  .leaflet-container { background:#0d160b; }
+  .legend { position:absolute; left:12px; bottom:12px; z-index:500; background:rgba(16,26,14,.9);
+    border:1px solid var(--rule); border-radius:8px; padding:8px 11px; font-size:.76rem;
+    color:var(--soft); }
+  .legend .k { display:flex; align-items:center; gap:7px; margin:2px 0; }
+  .legend i { width:22px; height:0; border-top:2px solid var(--moss); display:inline-block; }
+  .legend .dot { width:9px; height:9px; border-radius:50%; background:#c8b87a; display:inline-block; }
+
+  .chev { color:var(--gold); font-size:15px; line-height:1; text-shadow:0 0 3px #000;
+    pointer-events:none; }
+  .chev.one { color:#ffd76a; font-size:19px; }
+
+  .card { position:absolute; right:12px; top:12px; z-index:500; width:290px; max-width:calc(100% - 24px);
+    background:rgba(16,26,14,.95); border:1px solid var(--rule); border-radius:9px;
+    padding:11px 13px; font-size:.85rem; display:none; }
+  .card.on { display:block; }
+  .card h3 { margin:0 0 3px; font-size:1.05rem; font-weight:400; }
+  .card .meta { color:var(--faint); font-size:.78rem; }
+  .card ol { margin:8px 0 0; padding-left:17px; color:var(--soft); font-size:.83rem; }
+  .card li { margin:3px 0; }
+  .card li b { color:var(--ink); font-weight:600; }
+  .card .close { float:right; cursor:pointer; color:var(--faint); }
+  .loading { padding:40px 20px; color:var(--faint); font-style:italic; }
+  .note { padding:10px 20px; color:var(--faint); font-size:.78rem; border-top:1px solid var(--rule); }
+
+  @media (max-width:820px) {
+    .cols { flex-direction:column; height:auto; }
+    .side { width:100%; border-right:0; border-bottom:1px solid var(--rule); }
+    .list { max-height:230px; }
+    .mapwrap { height:62vh; }
+    .card { width:auto; left:12px; }
+  }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+
+<div class="head">
+  <h2>People who moved house on the estate</h2>
+  <p>Every line is one person, drawn between the houses the record places them in,
+     <strong>in the order they lived in them</strong>. The arrow shows which way they went.
+     A move is the hardest thing for a record like this to see, because it looks like two
+     different people until somebody proves otherwise.</p>
+  <div class="tally" id="tally">Loading…</div>
+</div>
+
+<div class="cols">
+  <div class="side">
+    <div class="filters">
+      <input type="search" id="q" placeholder="Search a name or a house…">
+      <select id="occ"><option value="">any trade</option></select>
+      <select id="hops">
+        <option value="all">everyone who moved</option>
+        <option value="2">two houses</option>
+        <option value="3">three or more</option>
+      </select>
+      <select id="sort">
+        <option value="name">by name</option>
+        <option value="far">furthest moved first</option>
+        <option value="hops">most houses first</option>
+        <option value="early">earliest first</option>
+      </select>
+    </div>
+    <div class="list" id="list"><div class="loading">Loading…</div></div>
+  </div>
+
+  <div class="mapwrap">
+    <div id="map"></div>
+    <div class="legend">
+      <div class="k"><i></i> one person's move</div>
+      <div class="k"><span class="dot"></span> a house they lived in</div>
+      <div class="k" style="color:var(--gold)">➤ the way they went</div>
+    </div>
+    <div class="card" id="card"></div>
+  </div>
+</div>
+<div class="note">Only moves between two houses the map can place are drawn. Somebody whose earlier
+  address is still unfiled does not appear — which means this map grows every time something comes
+  off the unfiled page.</div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+let MOVES = [], map, layer, selected = null, shown = [];
+
+// The bearing from one point to the next, so a chevron can be turned to face it.
+function bearing(a, b) {
+  const rd = d => d * Math.PI / 180;
+  const y = Math.sin(rd(b.lng - a.lng)) * Math.cos(rd(b.lat));
+  const x = Math.cos(rd(a.lat)) * Math.sin(rd(b.lat))
+          - Math.sin(rd(a.lat)) * Math.cos(rd(b.lat)) * Math.cos(rd(b.lng - a.lng));
+  return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+}
+
+function arrow(a, b, one) {
+  // Two-thirds along rather than halfway: with several lines between the same
+  // pair of houses the arrows would otherwise land on top of one another.
+  const t = 0.62;
+  const at = { lat: a.lat + (b.lat - a.lat) * t, lng: a.lng + (b.lng - a.lng) * t };
+  const deg = bearing(a, b) - 90;   // ➤ points east at 0
+  return L.marker([at.lat, at.lng], { interactive:false, keyboard:false,
+    icon: L.divIcon({ className:'', iconSize:[16,16], iconAnchor:[8,8],
+      html: `<div class="chev${one ? ' one' : ''}" style="transform:rotate(${deg}deg)">➤</div>` }) });
+}
+
+function draw() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const occ = document.getElementById('occ').value;
+  const hops = document.getElementById('hops').value;
+  const sort = document.getElementById('sort').value;
+
+  shown = MOVES.filter(m => {
+    if (occ && m.occ !== occ) return false;
+    if (hops === '2' && m.points.length !== 2) return false;
+    if (hops === '3' && m.points.length < 3) return false;
+    if (q) {
+      const hay = (m.name + ' ' + (m.occ || '') + ' '
+        + m.points.map(p => p.label).join(' ')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  shown.sort(
+    sort === 'far'   ? (a,b) => b.metres - a.metres :
+    sort === 'hops'  ? (a,b) => b.points.length - a.points.length || a.name.localeCompare(b.name) :
+    sort === 'early' ? (a,b) => a.from - b.from || a.name.localeCompare(b.name) :
+                       (a,b) => a.name.localeCompare(b.name));
+
+  document.getElementById('list').innerHTML = shown.length ? shown.map(m => `
+    <div class="pr${selected === m.id ? ' on' : ''}" data-id="${m.id}">
+      <span class="yr">${m.from}–${m.to}</span>
+      <div class="nm"><b>${esc(m.name)}</b></div>
+      <div class="route">${m.points.map(p => esc(p.label)).join(' <span class="arw">→</span> ')}</div>
+      ${m.occ ? `<div class="trade">${esc(m.occ)} · ${m.metres} m</div>`
+              : `<div class="trade">${m.metres} m</div>`}
+    </div>`).join('') : '<div class="loading">Nobody matches that.</div>';
+
+  document.querySelectorAll('.pr').forEach(el => el.onclick = () => {
+    selected = selected === +el.dataset.id ? null : +el.dataset.id;
+    draw();
+  });
+
+  document.getElementById('tally').innerHTML =
+    `<b>${shown.length}</b> ${shown.length === 1 ? 'person' : 'people'} · `
+    + `<b>${new Set(shown.flatMap(m => m.points.map(p => p.id))).size}</b> houses`
+    + (selected ? ' · following one life' : '');
+
+  paint();
+}
+
+function paint() {
+  if (layer) layer.remove();
+  layer = L.layerGroup().addTo(map);
+  const list = selected ? shown.filter(m => m.id === selected) : shown;
+  const one = list.length === 1;
+  const houses = new Map();
+
+  list.forEach((m, i) => {
+    const hue = (m.id * 47) % 360;
+    const colour = one ? '#ffd76a' : `hsl(${hue},62%,58%)`;
+    for (let k = 1; k < m.points.length; k++) {
+      const a = m.points[k-1], b = m.points[k];
+      L.polyline([[a.lat,a.lng],[b.lat,b.lng]], {
+        color: colour, weight: one ? 4 : 2, opacity: one ? .95 : .5
+      }).bindPopup(popup(m)).addTo(layer);
+      arrow(a, b, one).addTo(layer);
+    }
+    m.points.forEach(p => { if (!houses.has(p.id)) houses.set(p.id, p); });
+  });
+
+  houses.forEach(p => {
+    L.circleMarker([p.lat, p.lng], { radius: one ? 6 : 4, color:'#c8b87a', weight:1,
+      fillColor:'#c8b87a', fillOpacity:.85 })
+      .bindPopup(`<b>${esc(p.label)}</b><br><a href="/?property=${p.id}">open the house</a>`)
+      .addTo(layer);
+  });
+
+  const card = document.getElementById('card');
+  if (one) {
+    const m = list[0];
+    card.className = 'card on';
+    card.innerHTML = `<span class="close" onclick="selected=null;draw()">✕</span>
+      <h3>${esc(m.name)}</h3>
+      <div class="meta">${m.occ ? esc(m.occ) + ' · ' : ''}${m.from}–${m.to} ·
+        ${m.points.length} houses · ${m.metres} m in all</div>
+      <ol>${m.points.map(p => `<li><b>${esc(p.label)}</b>
+        <span class="meta">${p.year}</span></li>`).join('')}</ol>
+      <div style="margin-top:9px"><a href="/people?person=${m.id}">open the record →</a></div>`;
+  } else { card.className = 'card'; card.innerHTML = ''; }
+
+  const pts = list.flatMap(m => m.points.map(p => [p.lat, p.lng]));
+  if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding:[46,46], maxZoom: one ? 17 : 16 });
+}
+
+function popup(m) {
+  return `<b>${esc(m.name)}</b><br>${m.from}–${m.to}`
+    + (m.occ ? `<br>${esc(m.occ)}` : '')
+    + '<br>' + m.points.map(p => esc(p.label)).join(' → ')
+    + `<br><a href="/people?person=${m.id}">open the record</a>`;
+}
+
+async function load() {
+  const d = await fetch('/api/moves').then(r => r.json());
+  MOVES = d.moves || [];
+
+  const counts = {};
+  MOVES.forEach(m => { if (m.occ) counts[m.occ] = (counts[m.occ] || 0) + 1; });
+  document.getElementById('occ').innerHTML = '<option value="">any trade</option>'
+    + Object.entries(counts).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
+        .map(([o,c]) => `<option value="${esc(o)}">${esc(o)} (${c})</option>`).join('');
+
+  map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
+  // Esri's dark canvas: free with attribution, and note the {z}/{y}/{x} order,
+  // which is not the usual way round. CARTO's equivalent now bakes
+  // "API KEY REQUIRED" into the tile itself, which a status code will not tell you.
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    { maxZoom: 17, attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap contributors' }
+  ).addTo(map);
+  map.setView([52.9522, -1.1613], 15);
+
+  ['q','occ','hops','sort'].forEach(id =>
+    document.getElementById(id).addEventListener('input', () => { selected = null; draw(); }));
+
+  const want = new URLSearchParams(location.search).get('person');
+  if (want) selected = parseInt(want, 10) || null;
+  draw();
+}
+load().catch(e => {
+  document.getElementById('list').innerHTML = '<div class="loading">' + esc(e.message) + '</div>';
+});
+</script>
+</body>
+</html>
