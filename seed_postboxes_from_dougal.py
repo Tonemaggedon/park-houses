@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 """Six post boxes are drawn on Dougal de Havilland's map. A. Hagues read them off.
 
+All six are placed. The sixth - 68 The Ropewalk - had no house to hang a point on,
+because the record's Ropewalk stops at 56; A. Hagues found it on the map opposite
+Tower House, which does have a point.
+
 So the hunt does not start from nothing after all. These go in with **no cypher**,
 because the map shows where a box is and not what is cast into it - which makes
 the walk's job the good half: go and read it.
@@ -29,9 +33,12 @@ BOXES = [
     (2,   "Opposite the top of Barrack Lane, as Dougal's map draws it. Which end of the "
           "lane is not certain from the map - the point is 1 Barrack Lane, at the Derby "
           "Road end.", None),
+    # Found on a second look: A. Hagues placed it from the map on 9 October.
+    (395, "By number 68 The Ropewalk, opposite Tower House. The record's Ropewalk stops "
+          "at 56, so there is no house at 68 to hang the point on - this is Tower House, "
+          "and the box is across the road from it on the Ropewalk side.", None),
 ]
-MISSING = "68 The Ropewalk - the record's Ropewalk stops at 56, so there is no house to " \
-          "hang the position on and nothing has been placed."
+MISSING = None
 
 c = psycopg2.connect(os.environ.get('DATABASE_PUBLIC_URL') or os.environ['DATABASE_URL'])
 cur = c.cursor()
@@ -39,7 +46,7 @@ for pid, note, own in BOXES:
     p = P[pid]
     print(f"  {p['address']:<42} {p['lat']:.6f}, {p['lng']:.6f}")
     print(f"      {note}")
-print(f"\n  NOT PLACED: {MISSING}")
+if MISSING: print(f"\n  NOT PLACED: {MISSING}")
 
 if not apply:
     print("\n  preview only - pass --apply")
