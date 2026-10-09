@@ -438,6 +438,7 @@
 <body>
 
 <script src="/site-nav.js"></script>
+<script src="/turnstile.js"></script>
 <!-- The map's own controls; site-nav.js moves them into the right of the shared bar. -->
 <div id="navExtra" hidden>
     <button onclick="focusSearch()">🔍 Search</button>
@@ -713,6 +714,7 @@
         </label>
       </div>
 
+      <div id="cfBox" style="margin-bottom:10px"></div>
       <button id="authSubmitBtn" onclick="handleAuthSubmit()" style="width:100%;background:#1a3a2a;color:#e8dfc8;border:none;padding:10px;border-radius:4px;cursor:pointer;font-size:0.9rem;font-family:Georgia,serif;margin-bottom:12px">Sign In</button>
       <div style="text-align:center;font-size:0.8rem;color:#8a7a5a">
         <span id="authSwitchRegister">Don't have an account? <a href="#" onclick="switchAuthMode('register');return false" style="color:#4a7c5a">Create one</a></span>
@@ -1924,6 +1926,9 @@ function updateUserUI() {
 }
 
 function openAuthModal(mode) {
+  // Drawn only if the server says Turnstile is configured; otherwise nothing
+  // appears and the form is exactly as it was.
+  if (window.Turnstile) Turnstile.mount('cfBox').catch(() => {});
   document.getElementById('authOverlay').style.display = 'flex';
   switchAuthMode(mode || 'login');
 }
@@ -1956,19 +1961,22 @@ async function handleAuthSubmit() {
     if (!email.includes('@')) {
       const adminRes = await fetch('/api/login', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: email, password: pw })
+        body: JSON.stringify({ username: email, password: pw,
+          'cf-turnstile-response': window.Turnstile ? Turnstile.token() : '' })
       });
       const adminData = await adminRes.json();
       if (adminData.ok) {
         closeAuthModal();
         await initAdmin(); // re-run admin init to show admin controls
         return;
-      } else { errEl.textContent = 'Invalid credentials.'; return; }
+      } else { errEl.textContent = adminData.error || 'Invalid credentials.';
+               if (window.Turnstile) Turnstile.reset(); return; }
     }
 
     const res = await fetch('/api/user/login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pw })
+      body: JSON.stringify({ email, password: pw,
+        'cf-turnstile-response': window.Turnstile ? Turnstile.token() : '' })
     });
     const data = await res.json();
     if (data.ok) {
@@ -1977,7 +1985,8 @@ async function handleAuthSubmit() {
       loadWatchlist();
       closeAuthModal();
       if (curProp) renderPanel(); // refresh subs tab
-    } else { errEl.textContent = data.error || 'Sign in failed.'; }
+    } else { errEl.textContent = data.error || 'Sign in failed.';
+             if (window.Turnstile) Turnstile.reset(); }
   } else {
     const firstName = document.getElementById('authFirstName').value.trim();
     const lastName = document.getElementById('authLastName').value.trim();
@@ -1986,7 +1995,8 @@ async function handleAuthSubmit() {
     if (!firstName || !lastName || !email || !pw) { errEl.textContent = 'Please fill in all fields.'; return; }
     const res = await fetch('/api/user/register', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pw, firstName, lastName })
+      body: JSON.stringify({ email, password: pw, firstName, lastName,
+        'cf-turnstile-response': window.Turnstile ? Turnstile.token() : '' })
     });
     const data = await res.json();
     if (data.ok) {
@@ -2007,7 +2017,8 @@ async function handleAuthSubmit() {
       loadWatchlist();
       closeAuthModal();
       if (curProp) renderPanel();
-    } else { errEl.textContent = data.error || 'Registration failed.'; }
+    } else { errEl.textContent = data.error || 'Registration failed.';
+             if (window.Turnstile) Turnstile.reset(); }
   }
 }
 

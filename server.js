@@ -1286,9 +1286,61 @@ function isContributor(req) {
   return !!(req.session && (req.session.isAdmin || req.session.userRole === 'contributor' || req.session.userRole === 'admin'));
 }
 
+// ── Cloudflare Turnstile ─────────────────────────────────────────────────────
+// A login form, a registration form and a question answered from the pavement
+// are the three things on this site a machine would want to hammer. Turnstile
+// is Cloudflare's captcha-that-usually-is-not-one: the page shows a widget, the
+// browser gets a token, and the server asks Cloudflare whether the token is
+// good.
+//
+// It is **off until the keys are set**, so nothing breaks on a deploy that has
+// not been configured. Set both in Railway:
+//
+//     TURNSTILE_SITE_KEY     the public one, which the page shows
+//     TURNSTILE_SECRET_KEY   the private one, which only the server ever sees
+//
+// With only one of the two set it stays off and says so in the log, because a
+// half-configured gate that lets everything through is worse than no gate.
+const TURNSTILE_SITE_KEY = process.env.TURNSTILE_SITE_KEY || '';
+const TURNSTILE_SECRET   = process.env.TURNSTILE_SECRET_KEY || '';
+const turnstileOn = !!(TURNSTILE_SITE_KEY && TURNSTILE_SECRET);
+if (TURNSTILE_SITE_KEY && !TURNSTILE_SECRET)
+  console.warn('TURNSTILE_SITE_KEY is set but TURNSTILE_SECRET_KEY is not — Turnstile stays off');
+if (TURNSTILE_SECRET && !TURNSTILE_SITE_KEY)
+  console.warn('TURNSTILE_SECRET_KEY is set but TURNSTILE_SITE_KEY is not — Turnstile stays off');
+if (turnstileOn) console.log('Turnstile is on for login, registration and walk answers');
+
+// The page asks this so it knows whether to draw the widget at all.
+app.get('/api/turnstile', (req, res) =>
+  res.json({ enabled: turnstileOn, sitekey: turnstileOn ? TURNSTILE_SITE_KEY : null }));
+
+async function turnstileOk(req) {
+  if (!turnstileOn) return true;
+  const token = (req.body && (req.body['cf-turnstile-response'] || req.body.turnstile)) || '';
+  if (!token) return false;
+  try {
+    const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET, response: token,
+        remoteip: (req.headers['cf-connecting-ip'] || req.ip || '').toString()
+      })
+    });
+    const d = await r.json();
+    return !!d.success;
+  } catch (e) {
+    // Cloudflare unreachable. Letting people in is the lesser failure for a
+    // local history site; it is logged so it cannot pass unnoticed.
+    console.warn('Turnstile could not be reached, letting the request through:', e.message);
+    return true;
+  }
+}
+
 // ── Auth routes ───────────────────────────────────────────────────────────────
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
+  if (!(await turnstileOk(req))) return res.status(400).json({ error: 'Please complete the check' });
   const wait = loginBlocked(req);
   if (wait) return res.status(429).json({ error: 'Too many failed attempts. Try again in '
     + Math.ceil(wait / 60) + ' minutes.' });
@@ -1332,6 +1384,7 @@ app.get('/api/me', async (req, res) => {
 // ── User auth routes ──────────────────────────────────────────────────────────
 app.post('/api/user/register', async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
+  if (!(await turnstileOk(req))) return res.status(400).json({ error: 'Please complete the check' });
   if (!email || !password || !firstName || !lastName)
     return res.status(400).json({ error: 'email, password, firstName, lastName required' });
   if (password.length < 6)
@@ -1348,6 +1401,7 @@ app.post('/api/user/register', async (req, res) => {
 
 app.post('/api/user/login', async (req, res) => {
   const { email, password } = req.body;
+  if (!(await turnstileOk(req))) return res.status(400).json({ error: 'Please complete the check' });
   const wait = loginBlocked(req);
   if (wait) return res.status(429).json({ error: 'Too many failed attempts. Try again in '
     + Math.ceil(wait / 60) + ' minutes.' });

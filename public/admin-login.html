@@ -110,13 +110,16 @@
     <input type="text" id="username" name="username" autocomplete="username" required>
     <label for="password">Password</label>
     <input type="password" id="password" name="password" autocomplete="current-password" required>
+    <div id="cfBox" style="margin:4px 0 10px"></div>
     <button type="submit" id="submitBtn">Sign in</button>
     <div class="error" id="errorMsg">Invalid username or password.</div>
   </form>
   <a href="/" class="back">← Back to map</a>
 </div>
 
+<script src="/turnstile.js"></script>
 <script>
+Turnstile.mount('cfBox').catch(() => {});
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -130,7 +133,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       username: document.getElementById('username').value,
-      password: document.getElementById('password').value
+      password: document.getElementById('password').value,
+      'cf-turnstile-response': Turnstile.token()
     })
   });
 
@@ -138,6 +142,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     window.location.href = '/';
   } else {
     err.style.display = 'block';
+    Turnstile.reset();
     btn.disabled = false;
     btn.textContent = 'Sign in';
     document.getElementById('password').value = '';
