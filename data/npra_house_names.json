@@ -1,6 +1,6 @@
 {
- "note": "House and building names drawn from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues: names and streets only, no members. These are the ones the record has nowhere at all. **Nothing here becomes a property** - under this record's rule a name in use now is a lead until a census household is found at it, and the instruction with the file was to create nothing. `also_on_openstreetmap` marks the ones a second, independent source agrees about, which makes them the ones to start with.",
- "source": "NPRA membership registry, addresses only, October 2026",
+ "note": "House and building names from the Nottingham Park Residents' Association's own membership records, supplied by A. Hagues: the address each member gave for their own home, names and streets only, no members. **These are the names the present owners use**, which makes them authoritative for what a house is called today and no evidence at all of what it was called before. These are the ones the record has nowhere. **Nothing here becomes a property** — under this record's rule a name becomes a house only when a census household is found at it. `also_on_openstreetmap` marks the ones a second source agrees about.",
+ "source": "NPRA membership records — addresses as given by the occupiers, October 2026",
  "counts": {
   "names_supplied": 104,
   "already_in_the_record": 47,
