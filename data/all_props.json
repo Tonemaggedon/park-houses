@@ -582,17 +582,21 @@
  },
  {
   "id": 38,
-  "name": "",
+  "name": "Gladstone Court",
   "street": "Cavendish Crescent South",
   "no": "1",
-  "address": "1 Cavendish Crescent South",
+  "address": "Gladstone Court, 1 Cavendish Crescent South",
   "desc": "Late 19c single storey slate roof corner extension with lantern light at junction of Cavendish Crescent South and Park Drive. Various 20c additions including first floor hipped roof extension and two storey ridge roofed extension adjacent to south west facing facade. Glazed passageway from original main entrance doorway on Cavendish Crescent South now replaced by flat roofed single storey extension. Red brick facades to original house with ashlar dressings and slate, gabled and hipped roof. Two storeys plus basement and attics. Two storey rectangular window bay and three storey canted window bay overlooking original garden area. Two storey canted window bay facing Park Drive, now partly enclosed by later corner extension. Bull nosed brickwork detail at eaves and gable verges with mouldings and corbelling. Stonework details include bands at first floor and attic levels, moulded door and window surrounds, lintels, sills, gable kneelers and star motif on gabled dormer. Decorative tracery panels to a number of stone window frames on road fronts. Moulded stone surround to original entrance doorway, now partly bricked up to form window. Stonework now painted. Slate roof with hips, gables and gable dormer. Clay ridge tiles and lead flashings. Roof windows added. Red brick chimney stacks with brick relief patterning and corbelled caps. A number of original pots replaced. Side wall chimney stack on entrance front taken down to eaves level. Original rainwater fittings replaced and further pipework added. Sash windows generally. A number of window alterations additions and replacements. Original openings removed or altered during later building work. Large glasshouse, originally adjacent to south west facing facade now replaced by later extensions and tarmac car park. Sections of original stone balustrading at top of bank between house terrace and original garden area. Original brick boundary wall with coursed rubble stone plinth adjacent to Park Drive. Alterations and enlarged openings to original brick boundary wall on entrance front.",
   "history": "Detached house c1875, possibly by architect Hine & Son. Now converted into flats. Substantial part of original garden area lost to separate residential developments including late 20c bungalow, conversion of former carriage house and stables adjacent to Holles Crescent plus a number of garages. ",
   "architect": "Hine & Son",
   "date_built": "1875",
   "listed": "No",
   "lat": 52.9487076,
-  "lng": -1.1640458
+  "lng": -1.1640458,
+  "house_name": "Gladstone Court",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 39,
@@ -2031,10 +2035,10 @@
  },
  {
   "id": 129,
-  "name": "",
+  "name": "Holles House",
   "street": "Holles Crescent",
   "no": "5",
-  "address": "5 Holles Crescent",
+  "address": "Holles House, 5 Holles Crescent",
   "desc": "Three storeys plus basement/cellars. Flat roofed garage/extension added. Also, small flat roofed extension adjacent to dining room window. Red brick facades with stone dressings. Decorative brickwork features include buff brick string courses, bands of small, rectangular buff brick recessed panels and buff brick diaper pattern on entrance facade. Bull nose brick detail at eaves and gable verges. Two storey canted window bays on front and side facades with hipped slate roofs. Projecting brick plinth at base of facades with stone capping. Combination of rectangular openings, some with segmental or semicircular arched heads. Stone surrounds to original doors and windows. Stonework generally plain with splay detail at reveals and lintels plus mouldings to cornice detail on bays and main entrance doorway. Much of the stonework survives in its original, natural and unpainted finish. Double pitched slate roofs at varying levels with gables. Clay ridge tiles and lead valleys. Majority of original red brick and stone chimney stacks rebuilt on original plinths. Original buff ‘crown’ chimney pots replaced. Original c.i. rainwater fittings replaced and further pipes added. Sash windows generally, some with glazing bars. Six panelled, half-glazed main entrance door with semicircular overlight. Original brick and stone boundary wall, (together with boundary wall of No.8 Lenton Road), in prominent position at junction of Lenton Road and Holles Crescent. Original brickwork above stone plinth on boundary wall has now been rendered and painted. Similarly, original brick and stone gate piers also rendered. Original boundary wall gate. Part of original boundary wall lost when garage was added.\n\n",
   "history": "Part of group of similarly styled houses on triangular plot of land enclosed by Lenton Road, Park Drive and Holles Crescent. Built c1865-70, possibly by John Loverseed with architects Hine & Evans. One of a pair of houses (with 8 Lenton Road). In single household use. ",
   "architect": "Hine & Evans",
@@ -2042,7 +2046,11 @@
   "date_built": "1865",
   "listed": "No",
   "lat": 52.9501972,
-  "lng": -1.1609411
+  "lng": -1.1609411,
+  "house_name": "Holles House",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 130,
@@ -2451,7 +2459,7 @@
  },
  {
   "id": 156,
-  "name": "",
+  "name": "The Chestnuts",
   "street": "Kenilworth Road",
   "no": "5",
   "address": "The Chestnuts, 5 Kenilworth Road",
@@ -2462,7 +2470,11 @@
   "date_built": "1865",
   "listed": "No",
   "lat": 52.9495069,
-  "lng": -1.1585945
+  "lng": -1.1585945,
+  "house_name": "The Chestnuts",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 157,
@@ -2755,7 +2767,7 @@
  },
  {
   "id": 176,
-  "name": "",
+  "name": "Castle Rising",
   "street": "Lenton Road",
   "no": "3",
   "address": "Castle Rising, 3 Lenton Road",
@@ -2766,7 +2778,11 @@
   "date_built": "1970",
   "listed": "Yes",
   "lat": 52.9474556,
-  "lng": -1.1654213
+  "lng": -1.1654213,
+  "house_name": "Castle Rising",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 177,
@@ -3007,7 +3023,7 @@
  },
  {
   "id": 193,
-  "name": "",
+  "name": "Lenton House",
   "street": "Lenton Road",
   "no": "27",
   "address": "Lenton House, 27 Lenton Road",
@@ -3018,7 +3034,11 @@
   "date_built": "1858",
   "listed": "No",
   "lat": 52.9474926,
-  "lng": -1.1655137
+  "lng": -1.1655137,
+  "house_name": "Lenton House",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 194,
@@ -3175,7 +3195,7 @@
  },
  {
   "id": 204,
-  "name": "",
+  "name": "Mevell House",
   "street": "Newcastle Circus",
   "no": "7",
   "address": "Mevell House, 7 Newcastle Circus",
@@ -3193,8 +3213,10 @@
    "1270624"
   ],
   "sources": {
-   "nhle_also": "Mevell House holds three list entries: the house and its attached stable block (1254792), the gateway, railing and boundary wall to number 7 (1254830), and the gateway and boundary wall to the rear (1270624). The two walls are recorded here so they stop being offered to the houses behind it on Clumber Road East."
-  }
+   "nhle_also": "Mevell House holds three list entries: the house and its attached stable block (1254792), the gateway, railing and boundary wall to number 7 (1254830), and the gateway and boundary wall to the rear (1270624). The two walls are recorded here so they stop being offered to the houses behind it on Clumber Road East.",
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  },
+  "house_name": "Mevell House"
  },
  {
   "id": 205,
@@ -5240,10 +5262,10 @@
  },
  {
   "id": 330,
-  "name": "",
+  "name": "The Town House",
   "street": "The Ropewalk",
   "no": "34",
-  "address": "34 The Ropewalk",
+  "address": "The Town House, 34 The Ropewalk",
   "desc": "Simple rectangular plan to original house with 19c and 20c alterations and extensions mainly to road front facing The Ropewalk. Grade II Listed. Three storeys plus basement. Painted stucco facades with concrete tile roof and altered side wall chimney stacks. Plinth, modillion eaves and balustrade with Greek Key patterned panels. Symmetrical front to Park Terrace with, to the left, (later?) two storey canted window bay with three sashes. Central 20c glazed door. To the right, later two storey rectangular window bay with tripartite plain sashes. Bay windows have dentillated cornices. Glazing bar sashes to pair of windows with moulded surrounds at second floor level on Park Terrace front. To the left on rear elevation facing The Ropewalk, large three storey rear wing c1870 with two storey canted window bay, three lights at each level. Above canted bay overhanging bow window on brackets with six narrow plain sashes in moulded surrounds. Return to right carried on colonnade. Further to right, gateway with corniced square piers topped with urns plus outbuilding with balustrade. Original house facade on The Ropewalk front set back on right with single window to each floor, upper two with original gazing bar sashes and moulded surrounds. Part of original garden area now used for car parking with vehicular access through enlarged gated opening with piers in boundary wall adjacent to Park Terrace.\n\n",
   "history": "Detached house c1831-34. Now converted into offices. One of a group of houses on The Ropewalk which were amongst the first to be built in The Park c1828-34. Formerly gardens, the site had prominent views over Nottingham Terrace (now named Park Terrace) and across The Park. The 4th Duke of Newcastle had grand aesthetic aspirations for a select ‘residential plan’ in The Park and by identifying these plots and commencing building work he aggravated local feelings concerned at impending loss of The Park as an area of common recreational use. ",
   "converted": "Offices",
@@ -5251,7 +5273,11 @@
   "date_built": "1831",
   "listed": "Yes",
   "lat": 52.9543919,
-  "lng": -1.1596538
+  "lng": -1.1596538,
+  "house_name": "The Town House",
+  "sources": {
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  }
  },
  {
   "id": 331,
@@ -5385,10 +5411,10 @@
  },
  {
   "id": 340,
-  "name": "",
+  "name": "The Quad",
   "street": "Western Terrace",
   "no": "1",
-  "address": "1 Western Terrace",
+  "address": "The Quad, 1 Western Terrace",
   "desc": "Three storeys plus attic storey. Red brick with ashlar dressings and gabled slate roof. Large extension added to south facing facade by architects Marsh & Grochowski, late 20c. Gabled storey added to original two storey flat roofed main entrance bay, late 20c. Also, single storey extension with lean-to slate roof built adjacent to main entrance bay. Large part of original garden area now developed into separate dwelling by architects Marsh & Grochowski c2000. Gabled main entrance bay adjacent to road with rectangular and canted window bays overlooking garden. Stonework features include complete surround to main entrance doorway with moulded label, label stops and decorative relief panel plus head and sill bands to bays and separate lintels and sills to a number of openings. Also, later stone copings and finial to entrance gable plus moulded mullion shaft to pair of round arched window openings above main entrance doorway. Stonework remains unpainted apart from mullion shaft. Decorative brickwork details include splayed voussoirs with hoodmoulds to round arched window heads, corbelled eaves and gable verges, string courses, brackets and ornamental banding. Steeply pitched slate roof with prominent gables on main facades. Ornamental ridge tiles and terracotta finials. Rebuilt red brick sidewall chimney stacks with plinth and string courses plus corbelled caps. Buff crown chimney pots. A number of roof windows added, particularly 2no. large windows to later pitched roof over main entrance bay. Combination of plain and glazing bar sash windows to original openings with a number of alterations or replacements. Surviving section of original red and blue brick boundary wall adjacent to main entrance bay, including square gate piers with moulded stone string courses and caps. Considerable difference in levels between main entrance on Western Terrace and surviving garden area. Coursed rubble stone retaining wall to garden boundary adjacent to Newcastle Drive.\n\n",
   "history": "Detached house c1895, for a time used as a school but now converted into flats. Building located on steeply sloping site. Broadgate School occupied this house and its neighbour — 1 and 2 Western Terrace — from 1921 until 4 March 1997, initially run by Miss Ada Churley.",
   "converted": "Flats",
@@ -5397,8 +5423,10 @@
   "lat": 52.9544621,
   "lng": -1.1658208,
   "sources": {
-   "school": "Broadgate School occupied 1 and 2 Western Terrace from 1921 until 4 March 1997, initially run by Miss Ada Churley — from A. Hagues. The 1921 census bears out the start: A. Marion Churley is returned at 1 Western Terrace as the principal of a school. A photograph supplied by A. Hagues, scanned from a book, shows the school's name board — BROADGATE SCHOOL in raised letters — fixed to the brick flank wall above the side entrance, with the ground falling away steeply to the right, as the description of number 1 has it. The photograph is not reproduced here: it is someone else's to give."
-  }
+   "school": "Broadgate School occupied 1 and 2 Western Terrace from 1921 until 4 March 1997, initially run by Miss Ada Churley — from A. Hagues. The 1921 census bears out the start: A. Marion Churley is returned at 1 Western Terrace as the principal of a school. A photograph supplied by A. Hagues, scanned from a book, shows the school's name board — BROADGATE SCHOOL in raised letters — fixed to the brick flank wall above the side entrance, with the ground falling away steeply to the right, as the description of number 1 has it. The photograph is not reproduced here: it is someone else's to give.",
+   "name": "Name: from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues. A name in use now, so a lead on the house's older name rather than a source for it."
+  },
+  "house_name": "The Quad"
  },
  {
   "id": 341,

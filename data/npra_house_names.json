@@ -1,0 +1,525 @@
+{
+ "note": "House and building names drawn from the Nottingham Park Residents' Association membership addresses, supplied by A. Hagues: names and streets only, no members. These are the ones the record has nowhere at all. **Nothing here becomes a property** - under this record's rule a name in use now is a lead until a census household is found at it, and the instruction with the file was to create nothing. `also_on_openstreetmap` marks the ones a second, independent source agrees about, which makes them the ones to start with.",
+ "source": "NPRA membership registry, addresses only, October 2026",
+ "counts": {
+  "names_supplied": 104,
+  "already_in_the_record": 47,
+  "not_in_the_record": 57,
+  "also_on_openstreetmap": 24
+ },
+ "names": [
+  {
+   "name": "St Helier Court",
+   "number": null,
+   "street": "(street not given)",
+   "postcode": "NG7 1DX",
+   "type": "flat in named building",
+   "confidence": "Medium",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Peveril Mews",
+   "number": null,
+   "street": "Alexander Road",
+   "postcode": "NG7 1FH",
+   "type": "flat in named building (mews)",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Park Rock",
+   "number": null,
+   "street": "Castle Boulevard",
+   "postcode": "NG7 1RU",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Hamilton Mews",
+   "number": null,
+   "street": "Cavendish Crescent North",
+   "postcode": "NG7 1AY",
+   "type": "flat in named building (mews)",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Cavendish Place",
+   "number": null,
+   "street": "Cavendish Crescent South",
+   "postcode": "NG7 1ED",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "The Old Coach House",
+   "number": null,
+   "street": "Cavendish Crescent South",
+   "postcode": "NG7 1EN",
+   "type": "coach house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "The Coach House",
+   "number": null,
+   "street": "Cavendish Road East",
+   "postcode": "NG7 1BB",
+   "type": "coach house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Evergreen",
+   "number": null,
+   "street": "Clare Valley",
+   "postcode": "NG7 1BU",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Idle Rocks",
+   "number": null,
+   "street": "Clare Valley",
+   "postcode": "NG7 1BU",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Edale Court",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1BD",
+   "type": "court (flats)",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Hillside",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1BD",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Mevell Court",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1BD",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Potomac Mews",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1BD",
+   "type": "flat in named building (mews)",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Westwood House",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1BD",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Willoughby House",
+   "number": null,
+   "street": "Clumber Road East",
+   "postcode": "NG7 1EX",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "The Coach House (Holly Lodge)",
+   "number": null,
+   "street": "Clumber Road West",
+   "postcode": "NG7 1EF",
+   "type": "coach house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Yeomans Court",
+   "number": null,
+   "street": "Clumber Road West",
+   "postcode": "NG7 1EU",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Maria Court",
+   "number": null,
+   "street": "Fishpond Drive",
+   "postcode": "NG7 1DH",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Weston House",
+   "number": null,
+   "street": "Hardwick Road",
+   "postcode": "NG7 1EP",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Gallery",
+   "number": null,
+   "street": "Hope Drive",
+   "postcode": "NG7 1BT",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Birchwood",
+   "number": null,
+   "street": "Huntingdon Drive",
+   "postcode": "NG7 1BW",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Swan House",
+   "number": null,
+   "street": "Huntingdon Drive",
+   "postcode": "NG7 1BW",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "The Hunting Lodge",
+   "number": null,
+   "street": "Huntingdon Drive",
+   "postcode": "NG7 1BW",
+   "type": "lodge",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Kenilworth Court",
+   "number": null,
+   "street": "Kenilworth Road",
+   "postcode": "NG7 1FZ",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Coach House",
+   "number": null,
+   "street": "Kenilworth Road",
+   "postcode": "NG7 1DD",
+   "type": "coach house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Lenton Court",
+   "number": null,
+   "street": "Lenton Avenue",
+   "postcode": "NG7 1DZ",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Mews House",
+   "number": "25",
+   "street": "Lenton Avenue",
+   "postcode": "NG7 1DX",
+   "type": "mews house",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Friars Court",
+   "number": null,
+   "street": "Lenton Road",
+   "postcode": "NG7 1EW",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Garden Apartment",
+   "number": "4",
+   "street": "Lenton Road",
+   "postcode": "NG7 1DQ",
+   "type": "flat (descriptive name)",
+   "confidence": "Low",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Clumber Lodge",
+   "number": null,
+   "street": "Maxtoke Road",
+   "postcode": "NG7 1EG",
+   "type": "lodge",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Mia House",
+   "number": null,
+   "street": "North Circus Street",
+   "postcode": "NG1 5AE",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Walton Hotel",
+   "number": "2",
+   "street": "North Road",
+   "postcode": "NG7 1AG",
+   "type": "hotel",
+   "confidence": "Medium",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Ashley Bungalow",
+   "number": null,
+   "street": "Park Drive",
+   "postcode": "NG7 1DB",
+   "type": "bungalow",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Oak Hill House",
+   "number": "32",
+   "street": "Park Terrace",
+   "postcode": "NG1 5DN",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Whitehouse",
+   "number": null,
+   "street": "Park Terrace",
+   "postcode": "NG1 5DN",
+   "type": null,
+   "confidence": "Medium",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Reveille",
+   "number": null,
+   "street": "Pelham Crescent",
+   "postcode": "NG7 1AQ",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Parkdale House",
+   "number": null,
+   "street": "Peveril Drive",
+   "postcode": "NG7 1DE",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "City Point",
+   "number": null,
+   "street": "Standard Hill",
+   "postcode": "NG1 6FX",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Royal Standard House",
+   "number": null,
+   "street": "Standard Hill",
+   "postcode": "NG1 6FX",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Arena",
+   "number": null,
+   "street": "Standard Hill",
+   "postcode": "NG1 6GL",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Belwood",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1AD",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Cavendish Mews",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1BY",
+   "type": "flat in named building (mews)",
+   "confidence": "Low",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Clinton Mews",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1HX",
+   "type": "flat in named building (mews)",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Ellington",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1AD",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Greenmantle",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1AD",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Tennis View",
+   "number": null,
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1AD",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Mews",
+   "number": "13",
+   "street": "Tattershall Drive",
+   "postcode": "NG7 1BX",
+   "type": "mews",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Court View",
+   "number": null,
+   "street": "Tennis Drive",
+   "postcode": "NG7 1GP",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Fantasque House",
+   "number": null,
+   "street": "Tennis Drive",
+   "postcode": "NG7 1AE",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Tennis Mews",
+   "number": null,
+   "street": "Tennis Drive",
+   "postcode": "NG7 1EX",
+   "type": "flat in named building (mews)",
+   "confidence": "Medium",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "The Rubicon",
+   "number": "5",
+   "street": "Tennis Drive",
+   "postcode": "NG7 1AE",
+   "type": null,
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Carrick House",
+   "number": "64",
+   "street": "The Ropewalk",
+   "postcode": "NG1 5DW",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Regency House",
+   "number": "2",
+   "street": "The Ropewalk",
+   "postcode": "NG1 5DT",
+   "type": "house",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Cavendish Court",
+   "number": null,
+   "street": "Tunnel Road",
+   "postcode": "NG7 1BN",
+   "type": "court (flats)",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "Cavendish Mews",
+   "number": null,
+   "street": "Tunnel Road",
+   "postcode": "NG7 1BY",
+   "type": "flat in named building (mews)",
+   "confidence": "Low",
+   "also_on_openstreetmap": false
+  },
+  {
+   "name": "Tunnel Lodge",
+   "number": null,
+   "street": "Tunnel Road",
+   "postcode": "NG7 1BN",
+   "type": "lodge",
+   "confidence": "High",
+   "also_on_openstreetmap": true
+  },
+  {
+   "name": "The Octagon",
+   "number": null,
+   "street": "Western Terrace",
+   "postcode": "NG7 1AF",
+   "type": "flat in named building",
+   "confidence": "High",
+   "also_on_openstreetmap": false
+  }
+ ]
+}
