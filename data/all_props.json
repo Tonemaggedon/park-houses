@@ -3641,12 +3641,12 @@
  },
  {
   "id": 232,
-  "name": "Parkgate House",
+  "name": "",
   "street": "Park Drive",
   "no": "1",
-  "address": "Parkgate House, 1 Park Drive",
+  "address": "1 Park Drive",
   "desc": "Original single storey outbuildings in small yard area at rear of house, now replaced by pair of flat roofed garages c1973. Flat roofed single storey kitchen extension also added at this time. House previously converted into two flats c1972, subsequently altered back into single household use c1975. Central window in bay facing the garden replaced by pair of doors c1975-80. Three storeys plus basement/cellars. Red brick facades with stone dressings. Range of decorative brickwork features including buff brick string courses, bands of small recessed rectangular brick panels plus diaper pattern on entrance facade. Two storey canted window bay on east facing facade with shell shaped lead roof. Similar two storey bay on north facing facade with hipped slate roof. Bull nose brick detail at eaves and gable verges. Projecting brick plinth to facades with stone capping, (now partly coated with paint). Combination of rectangular and semicircular arched openings with stone surrounds to original door and windows. Stonework generally plain with splay reveals but mouldings added to cornice details on bays, main entrance doorway and trefoil shaped small first floor window above entrance doorway. The stonework has been painted. Slate gabled roof with clay ridge tiles and lead valleys. Roof windows added. Originally, red brick chimney stacks with corbelled brick head and stone caps, now partially removed or much altered. Original c.i. rainwater fittings have been replaced and further pipework added. Original sash windows generally, some with glazing bars. Original half glazed, six panelled main entrance door. Original red brick boundary wall and steps to adjacent road with half round copings and stone plinth. New opening formed in boundary wall to provide car access to garages. Original brick garden wall adjacent to rear passageway and garden hedge adjacent to No.2 Lenton Road. No other significant external alterations.\n\n\n\n",
-  "history": "Part of a group of nine similarly styled houses on triangular plot enclosed by Lenton Road, Park Drive and Holles Crescent. Built c1865-70, possibly by John Loverseed with architects Hine & Evans. One of a pair of houses (with 2 Lenton Road) in prominent position at junction of Lenton Road and Park Drive. \n\n**Named Parkgate House on Dougal de Havilland's map of the Park.**",
+  "history": "Part of a group of nine similarly styled houses on triangular plot enclosed by Lenton Road, Park Drive and Holles Crescent. Built c1865-70, possibly by John Loverseed with architects Hine & Evans. One of a pair of houses (with 2 Lenton Road) in prominent position at junction of Lenton Road and Park Drive. \n\n**Named Parkgate House on Dougal de Havilland's map of the Park.**\n\n**The record called this Parkgate House until 11 October 2026.** It is not: Parkgate House is 1 Peveril Drive, which A. Hagues has confirmed. The households below were always filed under the number and are unaffected.",
   "architect": "Hine & Evans",
   "builder": "John Loverseed",
   "converted": "Flats",
@@ -3654,7 +3654,7 @@
   "listed": "No",
   "lat": 52.9498113,
   "lng": -1.1613496,
-  "house_name": "Parkgate House"
+  "house_name": null
  },
  {
   "id": 233,
@@ -4646,16 +4646,20 @@
  },
  {
   "id": 289,
-  "name": "",
+  "name": "Parkgate House",
   "street": "Peveril Drive",
   "no": "1",
-  "address": "1 Peveril Drive",
+  "address": "Parkgate House, 1 Peveril Drive",
   "desc": "Three storeys including attic space with two storey rear wing. Two storey canted bay on Hope Drive facade and two storey shallow box bay facing Peveril Drive. Originally, outbuilding / privy in back garden area. Plain red brick facades with string course and projecting brick headers at first floor storey height level plus stepped brickwork detail at verges on gables. Chamfered brick reveals to some window openings. Stone dressings to main door and window apertures, including Tudor arched head to main entrance doorway, plus chamfered lintels and sills. The stonework has remained unpainted. Gabled roofs, partially hipped on main roof with hipped roofs over rear wing and bays. Clay plain tiles with bonnet hip tiles and ornamental, perforated clay ridge tiles and finials. Projecting, painted wooden eaves and bargeboards at gables. Prominent brick chimney stacks with expressed flues plus single string course, corbelled brick caps and buff fireclay louvred chimney pots. Some original rainwater fittings have been replaced. Original casement windows on main facades with single transom and single or double mullions. Also, sash windows with glazing bars at rear. Original boarded main entrance door and panelled back door. No significant external alterations or extensions. Garage building in rear garden area added c1932. Original brick boundary wall to Hope Drive and Peveril Drive with plinth, saddleback copings and stone caps to gate piers. Rear access to back garden area via communal passageway.\n\n",
   "history": "Prominently located close to southern entrance of The Park, c1886-88. Part of a larger building accommodating three houses (1, 2 and 3). Building is similar in form and scale to adjacent building which also accommodates three houses (6, 7 and ‘Ferndene’). In single household use. Area previously used for garden allotments, known as Fishpond Gardens, since beginning of 19c. ",
   "date_built": "1932",
   "listed": "No",
   "lat": 52.9490561,
-  "lng": -1.1567169
+  "lng": -1.1567169,
+  "house_name": "Parkgate House",
+  "sources": {
+   "name": "Name: Parkgate House, settled by A. Hagues. The record carried it on 1 Park Drive; the Nottingham Park Residents' Association's own addresses put it here, and he confirms it. Only the name moved - both houses keep the households filed under their own numbers."
+  }
  },
  {
   "id": 290,
