@@ -911,6 +911,28 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS guard_alerts_at_idx ON guard_alerts(at DESC)`);
 
+    // ── Who is reading it ────────────────────────────────────────────────────
+    // A page counter, kept here rather than handed to anybody else. No cookie is
+    // set and **no address is stored**: a visitor is a hash of their IP and
+    // browser with a salt that changes at midnight, so two requests on one day
+    // can be told apart and nothing survives to the next. There is nothing in
+    // this table that identifies a person, which is why there is no banner.
+    await db.query(`CREATE TABLE IF NOT EXISTS page_views (
+      id BIGSERIAL PRIMARY KEY,
+      at TIMESTAMPTZ DEFAULT NOW(),
+      path TEXT NOT NULL,
+      ref_host TEXT,          -- where they came from, host only, never the full URL
+      visitor TEXT,           -- salted daily hash, not an address
+      country TEXT,           -- as the CDN reports it, when it does
+      bot BOOLEAN DEFAULT false
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS page_views_at_idx ON page_views(at DESC)`);
+    await db.query(`CREATE INDEX IF NOT EXISTS page_views_path_idx ON page_views(path, at DESC)`);
+    // Three months is plenty to see a pattern and short enough that nothing
+    // accumulates. Trimmed on boot.
+    await db.query(`DELETE FROM page_views WHERE at < NOW() - INTERVAL '120 days'`)
+      .catch(() => {});
+
     // ── Badges, and telling people things ────────────────────────────────────
     // What somebody has earned. The definitions live in code; this is only the
     // award, so a badge's wording can be improved without anybody losing one.
@@ -1874,6 +1896,79 @@ app.post('/api/admin/guard-limits', requireAdmin, async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Counting readers ─────────────────────────────────────────────────────────
+// Deliberately small. It records the page, the site somebody arrived from, and a
+// visitor hash that cannot be turned back into an address — enough to answer
+// "is anybody reading this, and how did they find it", which is the question,
+// and not enough to follow anybody around.
+const crypto = require('crypto');
+let viewSalt = crypto.randomBytes(16).toString('hex'), viewSaltDay = new Date().toDateString();
+function visitorHash(req) {
+  const today = new Date().toDateString();
+  if (today !== viewSaltDay) { viewSalt = crypto.randomBytes(16).toString('hex'); viewSaltDay = today; }
+  return crypto.createHash('sha256').update(viewSalt + '|'
+    + (req.headers['cf-connecting-ip'] || req.ip || '') + '|'
+    + (req.headers['user-agent'] || '')).digest('hex').slice(0, 24);
+}
+const BOT = /bot|crawl|spider|slurp|bingpreview|headless|curl|wget|python-requests|facebookexternalhit|lighthouse|monitor|uptime/i;
+
+function countView(req, res, next) {
+  if (req.method !== 'GET') return next();
+  const p = req.path;
+  // Pages, not the machinery: no api calls, no images, no stylesheets.
+  if (p.startsWith('/api/') || p.startsWith('/data/') || /\.[a-z0-9]{2,5}$/i.test(p)) return next();
+  // Our own reading is not readership. An admin checking a house twenty times
+  // would otherwise be the busiest week the record ever had.
+  if (req.session && req.session.isAdmin) return next();
+  if (!db) return next();
+  let refHost = null;
+  try {
+    const r = req.headers.referer || req.headers.referrer;
+    if (r) {
+      const h = new URL(r).hostname.replace(/^www\./, '');
+      if (h && h !== (req.headers.host || '').replace(/^www\./, '').split(':')[0]) refHost = h;
+    }
+  } catch (e) {}
+  db.query(`INSERT INTO page_views (path, ref_host, visitor, country, bot) VALUES ($1,$2,$3,$4,$5)`,
+    [p.slice(0, 200), refHost, visitorHash(req),
+     (req.headers['cf-ipcountry'] || '').slice(0, 4) || null,
+     BOT.test(req.headers['user-agent'] || '')]).catch(() => {});
+  next();
+}
+
+app.get('/api/admin/traffic', requireAdmin, async (req, res) => {
+  if (!db) return res.json({ days: [] });
+  const days = Math.min(120, Math.max(1, parseInt(req.query.days, 10) || 30));
+  const bots = req.query.bots === '1';
+  const where = bots ? '' : 'AND NOT bot';
+  try {
+    const [daily, pages, refs, countries, totals, recent] = await Promise.all([
+      db.query(`SELECT date_trunc('day', at)::date AS day, COUNT(*)::int AS views,
+                       COUNT(DISTINCT visitor)::int AS people
+                  FROM page_views WHERE at > NOW() - ($1 || ' days')::interval ${where}
+                 GROUP BY 1 ORDER BY 1`, [String(days)]),
+      db.query(`SELECT path, COUNT(*)::int AS views, COUNT(DISTINCT visitor)::int AS people
+                  FROM page_views WHERE at > NOW() - ($1 || ' days')::interval ${where}
+                 GROUP BY 1 ORDER BY 2 DESC LIMIT 40`, [String(days)]),
+      db.query(`SELECT COALESCE(ref_host,'(typed in or a bookmark)') AS ref,
+                       COUNT(*)::int AS views, COUNT(DISTINCT visitor)::int AS people
+                  FROM page_views WHERE at > NOW() - ($1 || ' days')::interval ${where}
+                 GROUP BY 1 ORDER BY 2 DESC LIMIT 30`, [String(days)]),
+      db.query(`SELECT country, COUNT(DISTINCT visitor)::int AS people
+                  FROM page_views WHERE at > NOW() - ($1 || ' days')::interval ${where}
+                    AND country IS NOT NULL GROUP BY 1 ORDER BY 2 DESC LIMIT 20`, [String(days)]),
+      db.query(`SELECT COUNT(*)::int AS views, COUNT(DISTINCT visitor)::int AS people,
+                       COUNT(*) FILTER (WHERE bot)::int AS bot_views
+                  FROM page_views WHERE at > NOW() - ($1 || ' days')::interval`, [String(days)]),
+      db.query(`SELECT at, path, ref_host, country FROM page_views
+                 WHERE at > NOW() - INTERVAL '2 days' ${where}
+                 ORDER BY at DESC LIMIT 60`),
+    ]);
+    res.json({ days, bots, daily: daily.rows, pages: pages.rows, refs: refs.rows,
+               countries: countries.rows, totals: totals.rows[0], recent: recent.rows });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── The guard ────────────────────────────────────────────────────────────────
 // Who is writing, how fast. A sliding window per person held in memory, which is
 // enough: a restart forgets, and forgetting a rate window is the harmless kind
@@ -2094,6 +2189,7 @@ app.post('/api/user/photo', async (req, res) => {
 });
 
 app.use(guard);
+app.use(countView);
 app.use('/data/photos/profiles', express.static(PROFILE_DIR));
 
 // ── Coords API ────────────────────────────────────────────────────────────────
@@ -8989,6 +9085,7 @@ app.get('/discussion', (req, res) => res.sendFile(path.join(__dirname, 'public',
 app.get('/moves', (req, res) => res.sendFile(path.join(__dirname, 'public', 'moves.html')));
 app.get('/photo-review', (req, res) => res.sendFile(path.join(__dirname, 'public', 'photo-review.html')));
 app.get('/activity', (req, res) => res.sendFile(path.join(__dirname, 'public', 'activity.html')));
+app.get('/traffic', (req, res) => res.sendFile(path.join(__dirname, 'public', 'traffic.html')));
 app.get('/me', (req, res) => res.sendFile(path.join(__dirname, 'public', 'me.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));

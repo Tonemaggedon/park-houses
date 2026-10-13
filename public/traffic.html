@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who is reading it — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --amber:#8a5a12; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.5; }
+  .wrap { max-width:1060px; margin:0 auto; padding:24px 20px 90px; }
+  h2 { font-size:1.34rem; margin:0 0 6px; }
+  h3 { font-size:.95rem; margin:0 0 9px; font-weight:600; }
+  .lede { color:var(--soft); font-size:.9rem; margin:0 0 16px; max-width:76ch; }
+  .lede strong { color:var(--ink); }
+  .tabs { display:flex; gap:6px; margin:4px 0 18px; flex-wrap:wrap; align-items:center; }
+  .tab { border:1px solid var(--rule); background:#fff; border-radius:999px; padding:5px 13px;
+    font-size:.8rem; cursor:pointer; color:var(--soft); font-family:inherit; }
+  .tab.on { background:var(--green); border-color:var(--green); color:#f2ecd8; font-weight:600; }
+  .tabs .sep { flex:1; }
+
+  .nums { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;
+    margin-bottom:20px; }
+  .num { background:var(--card); border:1px solid var(--rule); border-radius:9px; padding:12px 14px; }
+  .num b { display:block; font-size:1.5rem; font-variant-numeric:tabular-nums; line-height:1.2; }
+  .num span { font-size:.76rem; color:var(--faint); }
+
+  .chart { background:var(--card); border:1px solid var(--rule); border-radius:9px;
+    padding:14px 16px 10px; margin-bottom:20px; }
+  .bars { display:flex; align-items:flex-end; gap:2px; height:120px; margin-top:8px; }
+  .bars div { flex:1; background:var(--green); min-height:1px; border-radius:2px 2px 0 0;
+    position:relative; opacity:.82; }
+  .bars div:hover { opacity:1; }
+  .bars div i { position:absolute; bottom:100%; left:50%; transform:translateX(-50%);
+    background:var(--ink); color:#f2ecd8; font-size:.7rem; font-style:normal; padding:3px 7px;
+    border-radius:4px; white-space:nowrap; display:none; z-index:5; }
+  .bars div:hover i { display:block; }
+  .xax { display:flex; justify-content:space-between; font-size:.72rem; color:var(--faint);
+    margin-top:6px; }
+
+  .cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:16px; }
+  .panel { background:var(--card); border:1px solid var(--rule); border-radius:9px; padding:14px 16px; }
+  table { width:100%; border-collapse:collapse; font-size:.83rem; }
+  td { padding:4px 0; border-bottom:1px solid #f2ece0; vertical-align:top; }
+  tr:last-child td { border-bottom:0; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; color:var(--soft);
+    white-space:nowrap; padding-left:10px; }
+  td a { color:var(--green); text-decoration:none; }
+  td a:hover { text-decoration:underline; }
+  .empty { color:var(--faint); font-style:italic; font-size:.85rem; }
+  .note { margin-top:24px; font-size:.82rem; color:var(--faint); max-width:76ch; }
+  .note b { color:var(--soft); }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Who is reading it</h2>
+  <p class="lede">Counted here, by us, and <strong>nobody else</strong>. No cookie is set and
+    <strong>no address is kept</strong> — a reader is a scrambled code made from their connection
+    and browser with a number that changes at midnight, so two visits on one day can be told apart
+    and nothing of it lasts into the next. That is why the site asks nobody's permission to count.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="nums" id="nums"></div>
+  <div class="chart" id="chart"></div>
+  <div class="cols">
+    <div class="panel"><h3>Pages they went to</h3><div id="pages"></div></div>
+    <div class="panel"><h3>How they got here</h3><div id="refs"></div></div>
+    <div class="panel"><h3>Where from</h3><div id="countries"></div></div>
+    <div class="panel"><h3>The last couple of days</h3><div id="recent"></div></div>
+  </div>
+  <p class="note">Robots — search engines indexing the record, uptime checks — are
+    <b>left out by default</b>; the Robots button puts them back, and <b>your own visits are never
+    counted</b> while you are signed in as admin. Counting starts the day this
+    goes live, so the first few days will look thin. Nothing older than four months is kept.</p>
+</div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const FLAG = c => c && /^[A-Z]{2}$/.test(c)
+  ? String.fromCodePoint(...[...c].map(x => 0x1f1a5 + x.charCodeAt(0))) + ' ' : '';
+const PRETTY = { '/':'The houses', '/people':'People', '/census':'Census', '/walk':'The Park Walk',
+  '/map':'Map', '/streets':'Streets', '/stories':'Stories', '/occupations':'Occupations',
+  '/discussion':'Discussion', '/moves':'Who moved', '/join':'Join in', '/search':'Search' };
+
+let days = 30, bots = false;
+
+async function load() {
+  const r = await fetch(`/api/admin/traffic?days=${days}&bots=${bots ? 1 : 0}`,
+    { credentials:'same-origin' });
+  if (r.status === 401 || r.status === 403) {
+    ['tabs','nums','chart','cols'].forEach(c => {
+      const el = document.getElementById(c) || document.querySelector('.' + c);
+      if (el) el.remove();
+    });
+    document.querySelector('.lede').insertAdjacentHTML('afterend',
+      '<p class="empty">Sign in as admin to see this.</p>');
+    return;
+  }
+  draw(await r.json());
+}
+
+function draw(d) {
+  document.getElementById('tabs').innerHTML =
+    [[1,'Today'],[7,'This week'],[30,'This month'],[120,'Everything']]
+      .map(([n,l]) => `<button class="tab${days===n?' on':''}" data-d="${n}">${l}</button>`).join('')
+    + '<span class="sep"></span>'
+    + `<button class="tab${bots?' on':''}" data-bots="1">Robots too</button>`;
+  document.querySelectorAll('[data-d]').forEach(b =>
+    b.onclick = () => { days = +b.dataset.d; load(); });
+  document.querySelector('[data-bots]').onclick = () => { bots = !bots; load(); };
+
+  const t = d.totals || {};
+  document.getElementById('nums').innerHTML = `
+    <div class="num"><b>${(t.people||0).toLocaleString()}</b><span>readers</span></div>
+    <div class="num"><b>${(t.views||0).toLocaleString()}</b><span>pages opened</span></div>
+    <div class="num"><b>${t.people ? ((t.views - (t.bot_views||0)) / t.people).toFixed(1) : '0'}</b>
+      <span>pages each</span></div>
+    <div class="num"><b>${(t.bot_views||0).toLocaleString()}</b><span>of them robots</span></div>`;
+
+  const dd = d.daily || [], max = Math.max(1, ...dd.map(x => x.views));
+  document.getElementById('chart').innerHTML = dd.length ? `
+    <h3>Day by day</h3>
+    <div class="bars">${dd.map(x => `<div style="height:${Math.max(1, x.views/max*100)}%"
+      ><i>${new Date(x.day).toLocaleDateString('en-GB',{day:'numeric',month:'short'})} — ${
+      x.views} ${x.views===1?'page':'pages'}, ${x.people} ${x.people===1?'reader':'readers'}</i></div>`).join('')}</div>
+    <div class="xax"><span>${new Date(dd[0].day).toLocaleDateString('en-GB',
+      {day:'numeric',month:'short'})}</span><span>${new Date(dd[dd.length-1].day)
+      .toLocaleDateString('en-GB',{day:'numeric',month:'short'})}</span></div>`
+    : '<h3>Day by day</h3><p class="empty">Nothing counted yet.</p>';
+
+  const tbl = (rows, cell) => rows && rows.length
+    ? `<table>${rows.map(r => `<tr><td>${cell(r)}</td>
+        <td class="n">${(r.views ?? r.people).toLocaleString()}</td></tr>`).join('')}</table>`
+    : '<p class="empty">Nothing yet.</p>';
+
+  document.getElementById('pages').innerHTML = tbl(d.pages, r =>
+    `<a href="${esc(r.path)}">${esc(PRETTY[r.path] || r.path)}</a>`);
+  document.getElementById('refs').innerHTML = tbl(d.refs, r => esc(r.ref));
+  document.getElementById('countries').innerHTML = tbl(d.countries, r =>
+    FLAG(r.country) + esc(r.country));
+  document.getElementById('recent').innerHTML = d.recent && d.recent.length
+    ? `<table>${d.recent.map(r => `<tr>
+        <td>${esc(PRETTY[r.path] || r.path)}${r.ref_host
+          ? ' <span class="empty">from ' + esc(r.ref_host) + '</span>' : ''}</td>
+        <td class="n">${new Date(r.at).toLocaleString('en-GB',
+          { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })}</td>
+      </tr>`).join('')}</table>`
+    : '<p class="empty">Nobody in the last two days.</p>';
+}
+
+load().catch(e => { document.getElementById('nums').innerHTML =
+  '<p class="empty">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>
