@@ -7,28 +7,70 @@ location… think of some other fun additions along the way… go wild."*
 
 ## What is built and working
 
+*Added to considerably since. The list below is what is on the site now, not what was written
+overnight.*
+
 At **`/walk`**. It is a web app, phone-first, and it installs to a home screen.
 
 You say how long you have — fifteen minutes, half an hour, an hour, no limit — and what you are in
 the mood for. It finds you, plots a route from where you are standing, and walks you round. Your
-phone buzzes when you come within thirty metres of a stop and the stop opens.
+phone buzzes when you come within thirty metres of a stop and the stop opens. **The screen does not
+lock while you are walking**, the way a recipe app keeps itself awake, because a phone that sleeps
+between two houses is a phone you have to unlock in the rain.
 
-**It draws on 327 stops, and not one of them was invented for the app:**
+**It draws on 736 stops, and not one of them was invented for the app:**
 
 | | |
 |---|---|
-| **40** | open questions the record cannot answer from paper |
-| **49** | notable residents, at the houses they lived in |
+| **351** | houses whose only pictures came in with the original import |
 | **181** | houses with a named architect |
-| **13** | houses that are gone |
+| **75** | houses with no photograph at all |
+| **49** | notable residents, at the houses they lived in |
 | **44** | houses that once held twelve or more people under one roof |
+| **17** | open questions that can only be answered standing in front of the house |
+| **13** | houses that are gone |
+| **6** | post boxes, none of them read yet |
+
+Separately from the stops it holds **11 enumerators' rounds** and **24 unnumbered runs** — 121
+households and 654 people the enumerator wrote down without a street number.
 
 **The question stops are the point.** You are standing in front of the house. The app asks what it
 cannot find out — a name on a gatepost, a number on a door, whether the building is even still
-there — and what you write goes straight back into the record against that question.
+there — and what you write goes straight back into the record against that question. The questions
+are marked for it: a question that needs a rate book in the Archives does not appear on the walk.
 
-**Six moods**: a bit of everything · be useful (questions only) · who lived here · who built it ·
-what is gone · full houses.
+**Eleven moods**: a bit of everything · an enumerator's round · fix an unnumbered run · be useful
+(questions only) · who lived here · who built it · what is gone · full houses · take some
+photographs · bring them up to date · read the post boxes.
+
+### Walking the enumerator's round
+
+**The one thing here that no other record could do.** On the evening of 29 September 1939 a man
+walked The Park with a book, and the record holds the order he did it in — schedule by schedule,
+door by door. You walk his route, in his order, and at each door you get the household exactly as
+he met it. Eleven rounds are in, from 1871 to 1939.
+
+The walk is not the street order: he doubles back, crosses to the other side, skips the lodge and
+comes to it later. **You are walking a real person's evening.** You get a couple of houses before
+the long stretch and a couple after, with the explanation up front, and the time you chose decides
+where you stop rather than how much of the round exists — the display says *stop 4 of 191*, so the
+scale of it is plain from the start.
+
+### Fixing an unnumbered run
+
+Where the enumerator stopped writing numbers, the record has a terrace it cannot put in order. The
+app gives you the run, the houses either side of it that *are* numbered, and asks you to read the
+doors. Twenty-four of them are waiting, and they are the single largest thing the record can only
+fix on foot.
+
+### Photographs and post boxes
+
+- **Photographs** are taken from the pavement and marked as having come from the walk, so an admin
+  can look at them on *Photos from the walk*. **Nothing sent is ever deleted** — the worst that
+  happens is the house goes back on the list for a better one.
+- **Post boxes** are recorded with the cypher on the door: VR, EVIIR, GR, EVIIIR, GVIR, EIIR,
+  CIIIR, or none at all, which is usually the earliest of the lot. The cypher dates the box to a
+  reign, and the type — pillar, wall, lamp, Ludlow — says what kind of thing it is.
 
 ### Things it does that are worth knowing
 
@@ -39,9 +81,11 @@ what is gone · full houses.
 - **It spreads out.** A stop right beside the last one is penalised, so half an hour is a walk
   rather than a shuffle round one corner.
 - **It remembers what you have seen**, in the phone, and shows you new things next time.
-- **It works in a dead spot.** A service worker keeps the page and the last list of stops.
+- **It works in a dead spot.** A service worker keeps the page and the last list of stops — and it
+  checks the network first, so a deploy reaches the phone instead of being hidden behind a copy
+  saved a fortnight ago.
 - **Nothing about where you have been leaves the phone.** The only thing that is ever sent is an
-  answer you choose to send.
+  answer, a photograph or a post box you choose to send.
 
 ---
 
@@ -70,7 +114,10 @@ when it expires. If the answer is "not this month", the path works perfectly.
 
 ## Where it should go next
 
-### 1. Walk the enumerator's round
+### 1. Walk the enumerator's round — ~~next~~ **built**
+
+*Built. Eleven rounds, 1871 to 1939, under* an enumerator's round *in the mood list. What follows is
+the case for it as it was first written.*
 
 **This is the one.** Nothing else here is unique to this record; this is.
 
@@ -134,7 +181,11 @@ again would be both wasteful and rude.
 carry: *when* the lamps came, who put them up, which are original and which are replacements. That
 is a documentary question, and it is ours.
 
-### 6. Read me a gatepost
+### 6. Read me a gatepost — ~~next~~ **half built**
+
+*The census half of it is built, as* fix an unnumbered run: *24 runs, 121 households, 654 people the
+enumerator never numbered. The map-name half below is still waiting, and is a different question —
+those names have no property to attach to, and a name is a lead until something places the house.*
 
 A walk made entirely of the **118 house names** found on the modern map with no property in the
 record, and the Land Registry names with no number. Each stop asks one question: *what does the
@@ -183,13 +234,17 @@ nobody there. **A month into the war.** Walk those, and only those.
 ## What it does not do yet, and should
 
 - **Notifications with the screen off** work on Android through the service worker; on iPhone they
-  need the app added to the home screen first. The app should say so, once, at the right moment.
+  need the app added to the home screen first. *Your part in it* now says so; the walk itself still
+  does not, and it is the walk where it matters.
 - **Routing is straight lines between stops**, multiplied by 1.32 for the fact that streets bend.
   Good enough to pick a route and badly wrong as a drawn line on the map. Real street geometry would
   fix the drawing.
-- **No photographs.** A stop with a picture of the house in 1900 is worth three with none.
-- **An answer sent from the pavement lands as a closed claim on the question**, which is honest but
-  crude. It should become a proper contribution with the walker's name on it.
+- ~~**No photographs.**~~ **Built** — you can photograph a house from the pavement and send it,
+  and an admin sees it on *Photos from the walk*. What is still missing is the other direction: a
+  stop that *shows* you the house in 1900 is worth three that only ask about it.
+- ~~**An answer sent from the pavement lands as a closed claim on the question.**~~ **Built** — an
+  answer now carries the walker's name, counts towards their badges, and appears in their part in
+  the record.
 - **A link to [Park Lamps](https://parklamps.mczhang.net) is not in the app yet**, deliberately. It
   points at a neighbour's project and it should be their call as well as ours.
 

@@ -210,6 +210,8 @@ with that house already filled in — you only have to type the question.
   a conversation.
 - **Anyone can read it.** To post, join the record or sign in.
 - **Replies can be voted up**, so the useful answer rises.
+- **Without an account**, [the form](/contact?kind=question) takes a question just as well, and
+  somebody writes back.
 
 What belongs here rather than in the record: anything you are not sure of. A guess typed into a
 house's history is indistinguishable from a fact a week later. A guess in a thread is a question
