@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A contributor's guide — Nottingham Park Houses</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --deep:#25401f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.62; }
+  .shell { max-width:1120px; margin:0 auto; padding:26px 20px 90px;
+    display:grid; grid-template-columns:230px minmax(0,1fr); gap:34px; align-items:start; }
+  @media (max-width:860px) { .shell { grid-template-columns:1fr; gap:18px; } }
+
+  /* Contents */
+  .toc { position:sticky; top:16px; font-size:.83rem; }
+  @media (max-width:860px) { .toc { position:static; border-bottom:1px solid var(--rule);
+    padding-bottom:14px; } }
+  .toc b { display:block; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--faint); margin-bottom:8px; font-weight:600; }
+  .toc a { display:block; color:var(--soft); text-decoration:none; padding:3px 9px;
+    border-left:2px solid transparent; border-radius:0 3px 3px 0; }
+  .toc a:hover { background:#f1ebdc; color:var(--ink); }
+  .toc a.on { border-left-color:var(--green); color:var(--ink); background:#eef1e6;
+    font-weight:600; }
+  .toc .tools { margin-top:16px; padding-top:13px; border-top:1px solid var(--rule);
+    display:flex; flex-direction:column; gap:7px; }
+  .toc button, .toc a.btn { font-family:inherit; font-size:.8rem; text-align:left;
+    background:#fff; border:1px solid var(--rule); border-radius:5px; padding:6px 11px;
+    color:var(--soft); cursor:pointer; text-decoration:none; display:block; }
+  .toc button:hover, .toc a.btn:hover { border-color:#5a3a1a; color:var(--ink); }
+
+  /* The guide itself */
+  .doc { max-width:74ch; }
+  .doc h1 { font-size:1.72rem; margin:0 0 4px; text-wrap:balance; }
+  .doc h1 + p em { color:var(--soft); }
+  .doc h2 { font-size:1.16rem; margin:38px 0 10px; padding-top:16px;
+    border-top:1px solid var(--rule); text-wrap:balance; scroll-margin-top:16px; }
+  .doc h3 { font-size:.97rem; margin:24px 0 7px; color:var(--deep); scroll-margin-top:16px; }
+  .doc p { margin:0 0 13px; }
+  .doc ul, .doc ol { margin:0 0 14px; padding-left:22px; }
+  .doc li { margin-bottom:5px; }
+  .doc a { color:var(--green); }
+  .doc code { font-family:ui-monospace,Menlo,monospace; font-size:.82em;
+    background:#f1ece0; padding:1px 5px; border-radius:3px; }
+  .doc strong { color:#1f1a10; }
+  .doc hr { border:0; border-top:1px solid var(--rule); margin:26px 0; }
+  .tw { overflow-x:auto; margin:0 0 18px; border:1px solid var(--rule); border-radius:7px;
+    background:var(--card); }
+  .doc table { width:100%; border-collapse:collapse; font-size:.86rem; }
+  .doc th { text-align:left; background:#f3eee1; padding:8px 12px; font-weight:600;
+    border-bottom:1px solid var(--rule); white-space:nowrap; }
+  .doc td { padding:8px 12px; border-bottom:1px solid #f0ebdd; vertical-align:top; }
+  .doc tr:last-child td { border-bottom:0; }
+  .doc td:first-child { white-space:nowrap; }
+  @media (max-width:620px) { .doc td:first-child { white-space:normal; } }
+
+  .msg { color:var(--faint); font-style:italic; }
+
+  @media print {
+    .pnav, .toc { display:none !important; }
+    .shell { display:block; max-width:none; padding:0; }
+    body { background:#fff; font-size:11pt; }
+    .doc h2 { break-after:avoid; } .tw { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="shell">
+  <nav class="toc" id="toc"></nav>
+  <article class="doc" id="doc"><p class="msg">Loading the guide…</p></article>
+</div>
+
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+// A small renderer for the part of Markdown the guide actually uses: headings,
+// tables, lists, links, bold, italic and code. A library would be a bigger
+// dependency than the document it draws.
+function inline(t) {
+  return esc(t)
+    .replace(/`([^`]+)`/g, (m, c) => '<code>' + c + '</code>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, text, href) =>
+      /^(https?:|\/|#)/.test(href)
+        ? `<a href="${esc(href)}"${/^https?:/.test(href) ? ' target="_blank" rel="noopener"' : ''}>${text}</a>`
+        : `<a href="${esc('https://github.com/Tonemaggedon/park-houses/blob/main/docs/' + href)}" target="_blank" rel="noopener">${text}</a>`)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+}
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+function render(md) {
+  const lines = md.replace(/\r/g, '').split('\n');
+  const out = [], heads = [];
+  let i = 0, list = null;
+  const shutList = () => { if (list) { out.push('</' + list + '>'); list = null; } };
+
+  while (i < lines.length) {
+    const L = lines[i];
+
+    // A table: a header row, a divider of dashes, then the body.
+    if (/^\|/.test(L) && /^\|[\s:|-]+\|$/.test(lines[i + 1] || '')) {
+      shutList();
+      const cells = r => r.replace(/^\||\|$/g, '').split('|').map(c => inline(c.trim()));
+      out.push('<div class="tw"><table><thead><tr>'
+        + cells(L).map(c => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>');
+      i += 2;
+      while (i < lines.length && /^\|/.test(lines[i])) {
+        out.push('<tr>' + cells(lines[i]).map(c => '<td>' + c + '</td>').join('') + '</tr>');
+        i++;
+      }
+      out.push('</tbody></table></div>');
+      continue;
+    }
+
+    const h = L.match(/^(#{1,3})\s+(.*)$/);
+    if (h) {
+      shutList();
+      const level = h[1].length, text = h[2], id = slug(text);
+      if (level === 2) heads.push({ id, text: text.replace(/^\d+\.\s*/, '') });
+      out.push(`<h${level} id="${id}">${inline(text)}</h${level}>`);
+      i++; continue;
+    }
+
+    if (/^(\*\*\*|---|___)\s*$/.test(L)) { shutList(); out.push('<hr>'); i++; continue; }
+
+    const bullet = L.match(/^[-*]\s+(.*)$/);
+    const number = L.match(/^(\d+)\.\s+(.*)$/);
+    if (bullet || number) {
+      const want = bullet ? 'ul' : 'ol';
+      if (list !== want) { shutList(); out.push('<' + want + '>'); list = want; }
+      // A list item may run on over the following indented lines.
+      let text = bullet ? bullet[1] : number[2];
+      while (/^\s{2,}\S/.test(lines[i + 1] || '')) { text += ' ' + lines[i + 1].trim(); i++; }
+      out.push('<li>' + inline(text) + '</li>');
+      i++; continue;
+    }
+
+    if (!L.trim()) { shutList(); i++; continue; }
+
+    let para = L;
+    while (lines[i + 1] && lines[i + 1].trim() && !/^([-*]\s|\d+\.\s|#{1,3}\s|\|)/.test(lines[i + 1])) {
+      para += ' ' + lines[i + 1].trim(); i++;
+    }
+    out.push('<p>' + inline(para.trim()) + '</p>');
+    i++;
+  }
+  shutList();
+  return { html: out.join('\n'), heads };
+}
+
+function contents(heads) {
+  document.getElementById('toc').innerHTML =
+    '<b>What is in it</b>'
+    + heads.map(h => `<a href="#${h.id}">${esc(h.text)}</a>`).join('')
+    + `<div class="tools">
+         <button id="printBtn">Print it, or save a PDF</button>
+         <a class="btn" href="/api/guide" download="contributors-guide.md">Download it as text</a>
+       </div>`;
+  document.getElementById('printBtn').onclick = () => window.print();
+
+  // Mark whichever section you are reading.
+  const links = [...document.querySelectorAll('.toc a[href^="#"]')];
+  const seen = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '0px 0px -72% 0px' });
+  heads.forEach(h => { const el = document.getElementById(h.id); if (el) seen.observe(el); });
+}
+
+fetch('/api/guide')
+  .then(r => { if (!r.ok) throw new Error('The guide could not be loaded.'); return r.text(); })
+  .then(md => {
+    const { html, heads } = render(md);
+    document.getElementById('doc').innerHTML = html;
+    contents(heads);
+    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  })
+  .catch(e => { document.getElementById('doc').innerHTML =
+    '<p class="msg">' + esc(e.message) + '</p>'; });
+</script>
+</body>
+</html>

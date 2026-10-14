@@ -9128,6 +9128,24 @@ app.get('/traffic', (req, res) => res.sendFile(path.join(__dirname, 'public', 't
 app.get('/me', (req, res) => res.sendFile(path.join(__dirname, 'public', 'me.html')));
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
+app.get('/guide', (req, res) => res.sendFile(path.join(__dirname, 'public', 'guide.html')));
+
+// The guide is one file, docs/contributor-guide.md, and the page on the site
+// renders it. Keeping it as the repository's own document rather than a second
+// copy in HTML is the only way the two cannot drift apart.
+let _guideCache = null;
+app.get('/api/guide', (req, res) => {
+  try {
+    const file = path.join(__dirname, 'docs', 'contributor-guide.md');
+    const stat = fs.statSync(file);
+    if (!_guideCache || _guideCache.mtime !== stat.mtimeMs) {
+      _guideCache = { mtime: stat.mtimeMs, text: fs.readFileSync(file, 'utf8') };
+    }
+    res.type('text/plain; charset=utf-8').send(_guideCache.text);
+  } catch (e) {
+    res.status(500).type('text/plain').send('The guide could not be read: ' + e.message);
+  }
+});
 app.get('/osm', (req, res) => res.sendFile(path.join(__dirname, 'public', 'osm.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 app.get('/listings', (req, res) => res.sendFile(path.join(__dirname, 'public', 'listings.html')));

@@ -29,6 +29,7 @@
   // moved in here with the rest of the contributor's workbench - it is a list of
   // jobs, not a thing to read.
   const WORK = [
+    ['/guide', '📖', "A contributor's guide"],
     ['/needs-work', '🔧', 'Needs work'],
     ['/discussion', '💬', 'Discussion'],
     ['/research', '❓', 'Open questions'],
