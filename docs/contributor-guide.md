@@ -2,14 +2,56 @@
 
 *What every page is for, what you can do on it, and the tools built in to help you check a house.*
 
+## What you can and cannot add
+
+> **The record holds people who have died, and everything in it is public.** That is the whole of
+> the rule. Everything below follows from it, and it matters more than anything else in this guide.
+
+**Do not add a living person.** Adding somebody new needs a first name, a surname, a year of birth
+and a place of birth — and **a year of death if they were born in the last hundred years**. The form
+will not accept them without it, and that is deliberate: the law protects the living, and a public
+record of named people is exactly the thing it protects them from. If you cannot show somebody has
+died, they do not go in.
+
+**Do not record who lives in a house now.** Present-day owners and occupiers are not part of the
+record. Where a house carries a name its current owner uses, that is a name on a house — the name
+goes in, the householder does not.
+
+**Do not write about a living person anywhere else either.** Not in a house's history, not in a
+discussion thread, not under a photograph, not in a research question. A living person's name,
+address, job, health, family, movements or anything else about them does not go into a public
+record, however harmless it looks and however freely they told you.
+
+**Photograph the building, from the pavement.** Not people, not through windows, not over walls, not
+inside anybody's house. If somebody walks into the shot, take another one.
+
+**Living people do belong in two places**, and only these. You may name yourself — your own account,
+your own contributions, your own posts on the Discussion board. And you may name somebody as the
+*source* of something, with their permission: "told to me by the owner of number 14" needs no name
+at all and is usually better.
+
+**The census is different.** Everybody in the 1841 to 1921 censuses and the 1939 Register has been
+dead a long time, and the records are published by The National Archives precisely so they can be
+read. They come in as whole documents and none of this applies to them.
+
+**If you are not sure, ask first.** Put it on the Discussion board and leave it out of the record
+until somebody answers. Something left out can be added next week. Something published about a
+living person cannot be unpublished.
+
+**If you think something here should not be here** — about you or about anybody else — say so on
+the Discussion board, or through the Join page if you have no account, and it will be taken out
+while it is looked at.
+
+**If you have a query about a house, the place for it is the Discussion board** — not a guess
+typed into the record. See section 5.
+
+## What the record is
+
 This record covers four hundred houses on The Park Estate and the people who lived in them from the
 1840s to the 1939 Register. Much of it is already here; a good deal is not, and some of what is here
 is wrong. Almost everything a contributor does is one of three things: putting a person in the right
 house, making sure one person is not recorded as two, or attaching an outside source to somebody.
 The pages below are organised around those jobs.
-
-**If you have a query about a house, the place for it is the Discussion board** — not a guess
-typed into the record. See section 5.
 
 ## 1. How the site is arranged
 
@@ -227,8 +269,9 @@ home screen.
 
 ## 8. Adding a person: what the record will not accept
 
-The record is public and holds people who have died, so a new person has to arrive complete enough
-to show they are historical. **+ Add Person** on the People page needs:
+This is the rule at the top of this guide, as the form enforces it. The record is public and holds
+people who have died, so a new person has to arrive complete enough to show they are historical.
+**+ Add Person** on the People page needs:
 
 - First name and surname
 - **Year of birth** — four digits; day and month are optional
@@ -321,3 +364,5 @@ moment before it lets you in.
 6. When you meet something a document cannot answer, **ask on the Discussion board** rather than
    guessing — and if you know which source would settle it, put it in **Open questions**. A guess
    entered as fact costs more to undo than it saved.
+7. And whatever you are doing, keep *What you can and cannot add* at the top of this guide in mind.
+   It is the one part of it that is not a convention but a rule.

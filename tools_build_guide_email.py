@@ -26,7 +26,7 @@ SITE = 'https://nottinghamparkhouses.com'
 INK, SOFT, FAINT, RULE, PAPER, GREEN = '#2a2418', '#6a5c44', '#8a7a5a', '#e0d8c4', '#faf7ef', '#2f4d27'
 SERIF = "Georgia,'Times New Roman',serif"
 
-P   = f'margin:0 0 13px;font-family:{SERIF};font-size:15px;line-height:1.6;color:{INK};word-break:break-word'
+P   = f'margin:0 0 13px;font-family:{SERIF};font-size:15px;line-height:1.6;color:{INK};overflow-wrap:break-word'
 H2  = f'margin:30px 0 10px;font-family:{SERIF};font-size:19px;line-height:1.3;color:{INK};border-top:1px solid {RULE};padding-top:16px'
 H3  = f'margin:22px 0 7px;font-family:{SERIF};font-size:16px;line-height:1.3;color:#25401f'
 LI  = f'margin:0 0 6px;font-family:{SERIF};font-size:15px;line-height:1.55;color:{INK}'
@@ -115,6 +115,25 @@ def convert(md):
             i += 1
             continue
 
+        if line.startswith('>'):
+            shut()
+            quoted = []
+            while i < len(lines) and lines[i].startswith('>'):
+                quoted.append(re.sub(r'^>\s?', '', lines[i]))
+                i += 1
+            paras = [re.sub(r'\s+', ' ', par).strip()
+                     for par in re.split(r'\n\s*\n', '\n'.join(quoted)) if par.strip()]
+            inner = ''.join(
+                f'<p style="{P};font-size:16px;margin:0 0 9px">{inline(par)}</p>' for par in paras)
+            out.append(
+                '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" '
+                'style="border-collapse:collapse;margin:0 0 18px"><tr>'
+                '<td width="5" style="width:5px;background:#a3741f;font-size:0;line-height:0">&nbsp;</td>'
+                '<td style="background:#fdf6e6;border:1px solid #e3cf9e;border-left:0;'
+                f'padding:14px 18px">{inner}</td></tr></table>')
+            txt += ['  ' + plain(par) for par in paras] + ['']
+            continue
+
         if re.match(r'^(\*\*\*|---|___)\s*$', line):
             shut()
             out.append(f'<hr style="border:0;border-top:1px solid {RULE};margin:24px 0">')
@@ -146,7 +165,7 @@ def convert(md):
 
         para = line
         while (i + 1 < len(lines) and lines[i + 1].strip()
-               and not re.match(r'^([-*]\s|\d+\.\s|#{1,3}\s|\|)', lines[i + 1])):
+               and not re.match(r'^([-*]\s|\d+\.\s|#{1,3}\s|\||>)', lines[i + 1])):
             para += ' ' + lines[i + 1].strip()
             i += 1
         out.append(f'<p style="{P}">{inline(para.strip())}</p>')
@@ -161,8 +180,11 @@ def wrap(body, title):
     return f'''<!DOCTYPE html>
 <html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<meta name="format-detection" content="telephone=no,address=no,date=no">
 <title>{html.escape(title)}</title></head>
-<body style="margin:0;padding:0;background:{PAPER};word-break:break-word">
+<body style="margin:0;padding:0;background:{PAPER}">
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
        style="background:{PAPER}"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
@@ -192,10 +214,30 @@ def main():
     body, text = convert(md)
 
     full = wrap(body, "A contributor's guide — Nottingham Park Houses")
+    rule_box = f"""<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
+       style="border-collapse:collapse;margin:0 0 18px"><tr>
+  <td width="5" style="width:5px;background:#a3741f;font-size:0;line-height:0">&nbsp;</td>
+  <td style="background:#fdf6e6;border:1px solid #e3cf9e;border-left:0;padding:15px 18px">
+    <p style="{P};font-size:16px;margin:0 0 9px"><strong>Before anything else: the record holds
+      people who have died, and everything in it is public.</strong></p>
+    <p style="{P};font-size:15px;margin:0 0 9px"><strong>Do not add a living person.</strong>
+      Somebody new needs a name, a year of birth, a place of birth — and a year of death if they
+      were born in the last hundred years. The form will not take them without it.</p>
+    <p style="{P};font-size:15px;margin:0 0 9px"><strong>Do not record who lives in a house
+      now</strong>, and do not write about a living person anywhere else either — not in a house's
+      history, not in a discussion, not under a photograph. Photograph the building, from the
+      pavement, never people or through windows.</p>
+    <p style="{P};font-size:15px;margin:0">The census is different: everybody in it died long ago,
+      and those records are published so they can be read.
+      <a href="{SITE}/guide#what-you-can-and-cannot-add" style="color:{GREEN}">The full rule is at
+      the top of the guide.</a> If you are not sure, ask before you add it.</p>
+  </td></tr></table>"""
+
     invite_body = f'''<h1 style="margin:0 0 6px;font-family:{SERIF};font-size:25px;line-height:1.25;color:{INK}">A guide for contributors</h1>
 <p style="{P}">The record of The Park's four hundred houses and the people who lived in them is
 open to anybody who wants to work on it, and there is now a guide to what every page is for and
 what you can do on it.</p>
+{rule_box}
 <p style="{P}"><a href="{SITE}/guide" style="color:{GREEN};font-weight:bold">Read the guide</a> —
 it covers the working pages, the walk that takes the record out of doors, the discussion board,
 and where to start if you have an hour.</p>
