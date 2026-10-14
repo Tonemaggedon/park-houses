@@ -209,6 +209,165 @@ def wrap(body, title):
 '''
 
 
+
+# ── The letter to everybody who lives here ───────────────────────────────────
+# A different audience from the guide: most people who read this will never
+# edit anything, and the thing they most need told is what the record does
+# *not* hold. So the reassurance comes before the asking, and the asking is one
+# concrete thing — the name on the gatepost — rather than a list of jobs.
+#
+# Figures are from the live site on 14 October 2026. Check them before sending
+# if it has been a while: nottinghamparkhouses.com/api/stats.
+HOUSES, PEOPLE, WITH_PEOPLE, NAMED, PHOTOS = 439, '8,352', 414, 141, 351
+
+
+def button(href, label):
+    return (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" '
+            f'style="margin:0 0 18px"><tr><td style="background:#2f4d27;border-radius:6px">'
+            f'<a href="{href}" style="display:inline-block;padding:11px 22px;font-family:{SERIF};'
+            f'font-size:15px;color:#f2ecd8;text-decoration:none;font-weight:bold">{label}</a>'
+            f'</td></tr></table>')
+
+
+def residents_body():
+    return f"""<h1 style="margin:0 0 6px;font-family:{SERIF};font-size:25px;line-height:1.25;color:{INK}">The Park, house by house</h1>
+<p style="{P}">There is now a record of the estate — <strong>all {HOUSES} houses and the {PEOPLE}
+people who lived in them</strong> between the first census in 1841 and the register taken in the
+first weeks of the war in 1939. It is free, it is open to anybody, and your house is almost certainly
+in it.</p>
+{button(SITE, 'Find your house')}
+<p style="{P}">On a house you will find when it was built and who built it, what the architects did
+to it since, photographs — {PHOTOS} houses have one — and the households who lived there census by
+census: their ages, where they were born, and what they did for a living. {WITH_PEOPLE} of the
+{HOUSES} houses have people in them, and <strong>44 of them held twelve or more under one roof on
+a single census night</strong> — a family, and the people who worked for them.</p>
+
+{rule_box_residents()}
+
+<h2 style="{H2}">Where it is wrong, we would like to know</h2>
+<p style="{P}">A good deal of this was read off census pages written in pencil, in bad light, by a
+man walking door to door in an evening, and then typed up by somebody else a century later. Names
+are misspelt. Houses have been renumbered. Two houses have been made into one, and one house into
+four flats. If the record has your house wrong — or has it on the wrong street — it takes a minute
+to say so.</p>
+
+<h2 style="{H2}">And the thing we most need is on your gatepost</h2>
+<p style="{P}"><strong>Only {NAMED} of the {HOUSES} houses have a name recorded.</strong> The rest
+have numbers and nothing else, though a great many of them carry a name on the gate, the gatepost,
+a fanlight or the first page of the deeds. That is the single largest gap in the record, and it is
+the one gap that cannot be closed in an archive — somebody has to stand in front of the house and
+read it.</p>
+<p style="{P}">If your house has a name, we would be glad of it. The same goes for old photographs,
+deeds, sale particulars, a conveyance with a plan on it, or anything your family remembers about
+who was here before you.</p>
+{button(SITE + '/contact?kind=correction', 'Tell us something')}
+
+<h2 style="{H2}">Or walk it</h2>
+<p style="{P}">The record has a walk built into it. Tell it how long you have — fifteen minutes is
+enough — and it finds you, plots a route from where you are standing, and tells you about the
+houses as you reach them. One of the walks follows <strong>the enumerator's own round of the
+evening of 29 September 1939</strong>, door by door, in the order he knocked. It is not the order
+of the street: he doubles back, crosses over, and comes to the lodge last.</p>
+{button(SITE + '/walk', 'Walk it')}
+
+<h2 style="{H2}">If you would like to work on it properly</h2>
+<p style="{P}">Anybody can. There is a guide to what every page is for, what you can do on it, and
+where to start if you have an hour — and the first thing in it is what can and cannot go in.</p>
+<p style="{P}"><a href="{SITE}/guide" style="color:{GREEN};font-weight:bold">Read the
+contributor's guide</a> &nbsp;·&nbsp; <a href="{SITE}/join" style="color:{GREEN}">Join the
+record</a></p>
+<hr style="border:0;border-top:1px solid {RULE};margin:24px 0">
+<p style="{P};font-size:14px;color:{SOFT}">[Your name]<br>[The Park Conservation Trust]</p>"""
+
+
+def rule_box_residents():
+    return f"""<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
+       style="border-collapse:collapse;margin:0 0 20px"><tr>
+  <td width="5" style="width:5px;background:#a3741f;font-size:0;line-height:0">&nbsp;</td>
+  <td style="background:#fdf6e6;border:1px solid #e3cf9e;border-left:0;padding:15px 18px">
+    <p style="{P};font-size:16px;margin:0 0 9px"><strong>It stops in 1939, and it holds nobody
+      living.</strong></p>
+    <p style="{P};font-size:15px;margin:0 0 9px">The record is of people who have died. Nothing
+      about anybody living is in it and nothing about anybody living will go in it — not who lives
+      in a house now, not who owns one, not who is in a photograph. Where a house carries a name
+      its owner uses today, the name goes in and the householder does not.</p>
+    <p style="{P};font-size:15px;margin:0 0 9px">Photographs are of buildings, taken from the
+      pavement. Never of people, never through a window, never over a wall.</p>
+    <p style="{P};font-size:15px;margin:0"><strong>If you think something on the site should not be
+      there</strong> — about you or about anybody else — say so and it comes down while it is
+      looked at. You do not have to explain why, and you do not need an account.
+      <a href="{SITE}/contact?kind=takedown" style="color:{GREEN}">Ask for something to be taken
+      down.</a></p>
+  </td></tr></table>"""
+
+
+RESIDENTS_TEXT = f"""The Park, house by house
+========================
+
+There is now a record of the estate - all {HOUSES} houses and the {PEOPLE} people who lived in
+them between the first census in 1841 and the register taken in the first weeks of the war in 1939.
+It is free, it is open to anybody, and your house is almost certainly in it.
+
+Find your house: {SITE}
+
+On a house you will find when it was built and who built it, what the architects did to it since,
+photographs - {PHOTOS} houses have one - and the households who lived there census by census:
+their ages, where they were born, and what they did for a living. {WITH_PEOPLE} of the {HOUSES}
+houses have people in them, and 44 of them held twelve or more under one roof on a single census
+night - a family, and the people who worked for them.
+
+
+IT STOPS IN 1939, AND IT HOLDS NOBODY LIVING
+
+The record is of people who have died. Nothing about anybody living is in it and nothing about
+anybody living will go in it - not who lives in a house now, not who owns one, not who is in a
+photograph. Where a house carries a name its owner uses today, the name goes in and the
+householder does not. Photographs are of buildings, taken from the pavement.
+
+If you think something on the site should not be there - about you or about anybody else - say so
+and it comes down while it is looked at. You do not have to explain why, and you do not need an
+account: {SITE}/contact?kind=takedown
+
+
+WHERE IT IS WRONG, WE WOULD LIKE TO KNOW
+
+A good deal of this was read off census pages written in pencil, in bad light, by a man walking
+door to door in an evening, and typed up by somebody else a century later. Names are misspelt.
+Houses have been renumbered. If the record has your house wrong, it takes a minute to say so.
+
+
+AND THE THING WE MOST NEED IS ON YOUR GATEPOST
+
+Only {NAMED} of the {HOUSES} houses have a name recorded. The rest have numbers and nothing else,
+though a great many carry a name on the gate, the gatepost, a fanlight or the first page of the
+deeds. That is the largest gap in the record and the one that cannot be closed in an archive.
+
+If your house has a name, we would be glad of it - and of old photographs, deeds, sale
+particulars, or anything your family remembers about who was here before you.
+
+Tell us something: {SITE}/contact?kind=correction
+
+
+OR WALK IT
+
+Tell it how long you have - fifteen minutes is enough - and it finds you, plots a route from where
+you are standing, and tells you about the houses as you reach them. One walk follows the
+enumerator's own round of the evening of 29 September 1939, door by door, in the order he knocked.
+
+{SITE}/walk
+
+
+IF YOU WOULD LIKE TO WORK ON IT PROPERLY
+
+Anybody can. The guide says what every page is for and where to start:
+{SITE}/guide
+{SITE}/join
+
+[Your name]
+[The Park Conservation Trust]
+"""
+
+
 def main():
     with open(SRC, encoding='utf-8') as fh:
         md = fh.read()
@@ -265,6 +424,8 @@ and where to start if you have an hour.</p>
         'contributor-guide-email.html': full,
         'contributor-guide-email.txt': text.rstrip() + footer,
         'contributor-guide-invite.html': invite,
+        'residents-letter.html': wrap(residents_body(), 'The Park, house by house'),
+        'residents-letter.txt': RESIDENTS_TEXT.strip() + '\n',
     }
     for name, content in files.items():
         path = os.path.join(ROOT, 'docs', name)
