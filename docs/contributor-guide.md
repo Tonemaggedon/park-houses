@@ -38,9 +38,10 @@ read. They come in as whole documents and none of this applies to them.
 until somebody answers. Something left out can be added next week. Something published about a
 living person cannot be unpublished.
 
-**If you think something here should not be here** — about you or about anybody else — write to
-**[ahagues75@icloud.com](mailto:ahagues75@icloud.com)** and it will be taken out while it is looked at. You do not have to
-explain why, and you do not need an account to ask.
+**If you think something here should not be here** — about you or about anybody else — say so on
+**[the form](/contact?kind=takedown)** and it will be taken out while it is looked at. You do not
+have to explain why, and you do not need an account to ask. It raises a notice the moment it
+arrives, so it is seen the same day rather than whenever somebody next looks.
 
 **If you have a query about a house, the place for it is the Discussion board** — not a guess
 typed into the record. See section 5.
@@ -323,6 +324,9 @@ sort occupations in bulk, and look at the photographs coming in from the walk.
 and what it was before — and a change can be put back, the undo itself being recorded as a change.
 *Who is reading it* (`/traffic`) counts visitors, with no cookie and no address stored.
 *Photos from the walk* (`/photo-review`) is where pictures sent in from the pavement are looked at.
+*What people have written in* (`/messages`) is everything sent through the form at
+[`/contact`](/contact) — anything asking for something to be taken down sorts to the top and stays
+there until it is settled.
 
 **Properties are a special case.** The base record of every house lives in `data/all_props.json` in
 the repository, not in the database, and that file is what the map and the property list are served

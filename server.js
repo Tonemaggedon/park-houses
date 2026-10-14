@@ -928,6 +928,28 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS page_views_at_idx ON page_views(at DESC)`);
     await db.query(`CREATE INDEX IF NOT EXISTS page_views_path_idx ON page_views(path, at DESC)`);
+
+    // ── Somebody writing in ──────────────────────────────────────────────────
+    // A public form rather than a published address: the address was collecting
+    // whatever a public mailto collects, and a takedown request is the one
+    // message that must not be lost in it. Anyone can send one, signed in or
+    // not, and the ones asking for something to be taken down sort to the top.
+    await db.query(`CREATE TABLE IF NOT EXISTS messages (
+      id SERIAL PRIMARY KEY,
+      at TIMESTAMPTZ DEFAULT NOW(),
+      kind TEXT NOT NULL,          -- takedown | correction | question | joining | other
+      name TEXT,
+      email TEXT,
+      about TEXT,                  -- the house, the person, the page it concerns
+      body TEXT NOT NULL,
+      from_url TEXT,               -- the page they pressed the link on
+      from_who TEXT,               -- their account, if they were signed in
+      done_at TIMESTAMPTZ,
+      done_by TEXT,
+      note TEXT                    -- what was done about it
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS messages_open_idx
+                      ON messages(done_at NULLS FIRST, at DESC)`);
     // Three months is plenty to see a pattern and short enough that nothing
     // accumulates. Trimmed on boot.
     await db.query(`DELETE FROM page_views WHERE at < NOW() - INTERVAL '120 days'`)
@@ -1893,6 +1915,97 @@ app.post('/api/admin/guard-limits', requireAdmin, async (req, res) => {
       [JSON.stringify(next), (await getResearchKey(req.session)) || 'admin']);
     await loadGuard();
     res.json({ ok: true, limits: GUARD });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Writing in ───────────────────────────────────────────────────────────────
+// The form behind /contact. Open to anybody, with Cloudflare in front of it,
+// and deliberately short: a reason, a way of writing back, and what they want
+// to say. A takedown request raises a notification the moment it lands, because
+// it is the one kind of message where a week's delay is itself the problem.
+const MESSAGE_KINDS = {
+  takedown:   'Asking for something to be taken down',
+  correction: 'A correction to the record',
+  question:   'A question about a house or a person',
+  joining:    'About joining in',
+  other:      'Something else',
+};
+
+app.post('/api/contact', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'The record is not reachable just now' });
+  const b = req.body || {};
+  const kind = String(b.kind || '').trim();
+  const body = String(b.body || '').trim();
+  const email = String(b.email || '').trim();
+  const name = String(b.name || '').trim();
+  const about = String(b.about || '').trim();
+
+  if (!MESSAGE_KINDS[kind]) return res.status(400).json({ error: 'Please say what it is about.' });
+  if (body.length < 10) return res.status(400).json({ error: 'Please say a little more than that.' });
+  if (body.length > 6000) return res.status(400).json({ error: 'That is too long for this form — the first 6,000 characters is plenty to start with.' });
+  // An address is how anybody writes back. It is the only field we insist on
+  // beyond the message, and a takedown is acted on whether or not it is real.
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
+    return res.status(400).json({ error: 'That does not look like an email address — without one nobody can write back.' });
+  if (!(await turnstileOk(req)))
+    return res.status(400).json({ error: 'Please complete the check below and send it again.' });
+
+  try {
+    const who = req.session && (req.session.username || (req.session.isAdmin ? 'admin' : null));
+    const r = await db.query(
+      `INSERT INTO messages (kind, name, email, about, body, from_url, from_who)
+       VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id`,
+      [kind, name.slice(0, 120) || null, email.slice(0, 200), about.slice(0, 300) || null,
+       body, String(b.from_url || '').slice(0, 300) || null, who || null]);
+    const id = r.rows[0].id;
+    if (kind === 'takedown') await tellTheAdmins(id);
+    res.json({ ok: true, id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// A takedown request may itself contain the personal information somebody
+// wants removed, so **none of it goes into the notification**: the notice says
+// one has arrived and nothing else, and it goes only to the admins, who are the
+// only people who can act on it. Notifications are pushed by kind to everybody
+// subscribed, which would otherwise mean a contributor's phone showing a
+// stranger's name and address on the lock screen.
+async function tellTheAdmins(id) {
+  const line = { kind: 'message',
+    title: 'Somebody has asked for something to be taken down',
+    body: 'It is on the Messages page, and nothing of it is repeated here.',
+    url: '/messages#' + id };
+  try {
+    const admins = await db.query(
+      `SELECT TRIM(COALESCE(first_name,'') || ' ' || COALESCE(last_name,'')) AS who, email
+         FROM users WHERE role = 'admin' AND approved`);
+    const names = admins.rows.map(r => r.who || r.email).filter(Boolean);
+    if (!names.includes('admin')) names.push('admin');   // the built-in account
+    for (const who of names) await notify({ ...line, for_who: who });
+  } catch (e) {
+    await notify({ ...line, for_who: 'admin' });
+  }
+}
+
+app.get('/api/admin/messages', requireAdmin, async (req, res) => {
+  if (!db) return res.json({ messages: [], kinds: MESSAGE_KINDS });
+  try {
+    const r = await db.query(
+      `SELECT * FROM messages ORDER BY (done_at IS NOT NULL),
+              (kind <> 'takedown'), at DESC LIMIT 400`);
+    res.json({ messages: r.rows, kinds: MESSAGE_KINDS });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/admin/messages/:id', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const done = !!(req.body && req.body.done);
+  const note = req.body && req.body.note ? String(req.body.note).slice(0, 1000) : null;
+  try {
+    await db.query(
+      `UPDATE messages SET done_at = $2, done_by = $3, note = COALESCE($4, note) WHERE id = $1`,
+      [id, done ? new Date() : null, done ? (req.session.username || 'admin') : null, note]);
+    res.json({ ok: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -9129,6 +9242,8 @@ app.get('/me', (req, res) => res.sendFile(path.join(__dirname, 'public', 'me.htm
 app.get('/join', (req, res) => res.sendFile(path.join(__dirname, 'public', 'join.html')));
 app.get('/tasks', (req, res) => res.sendFile(path.join(__dirname, 'public', 'tasks.html')));
 app.get('/guide', (req, res) => res.sendFile(path.join(__dirname, 'public', 'guide.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'contact.html')));
+app.get('/messages', (req, res) => res.sendFile(path.join(__dirname, 'public', 'messages.html')));
 
 // The guide is one file, docs/contributor-guide.md, and the page on the site
 // renders it. Keeping it as the repository's own document rather than a second

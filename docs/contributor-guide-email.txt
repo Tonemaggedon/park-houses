@@ -23,7 +23,7 @@ The census is different. Everybody in the 1841 to 1921 censuses and the 1939 Reg
 
 If you are not sure, ask first. Put it on the Discussion board and leave it out of the record until somebody answers. Something left out can be added next week. Something published about a living person cannot be unpublished.
 
-If you think something here should not be here — about you or about anybody else — write to ahagues75@icloud.com and it will be taken out while it is looked at. You do not have to explain why, and you do not need an account to ask.
+If you think something here should not be here — about you or about anybody else — say so on the form (/contact?kind=takedown) and it will be taken out while it is looked at. You do not have to explain why, and you do not need an account to ask. It raises a notice the moment it arrives, so it is seen the same day rather than whenever somebody next looks.
 
 If you have a query about a house, the place for it is the Discussion board — not a guess typed into the record. See section 5.
 
@@ -265,7 +265,7 @@ A contributor can file and move census records, merge duplicate people, edit a p
 
 An admin is needed to import people from a data file, set or export coordinates, delete anything, run the bulk tools that change many records at once, manage users, geocode birthplaces, sort occupations in bulk, and look at the photographs coming in from the walk.
 
-The admin pages. Activity and alerts (/activity) is every change to the record, who made it and what it was before — and a change can be put back, the undo itself being recorded as a change. Who is reading it (/traffic) counts visitors, with no cookie and no address stored. Photos from the walk (/photo-review) is where pictures sent in from the pavement are looked at.
+The admin pages. Activity and alerts (/activity) is every change to the record, who made it and what it was before — and a change can be put back, the undo itself being recorded as a change. Who is reading it (/traffic) counts visitors, with no cookie and no address stored. Photos from the walk (/photo-review) is where pictures sent in from the pavement are looked at. What people have written in (/messages) is everything sent through the form at /contact (/contact) — anything asking for something to be taken down sorts to the top and stays there until it is settled.
 
 Properties are a special case. The base record of every house lives in data/all_props.json in the repository, not in the database, and that file is what the map and the property list are served from. Edits made here on the site are kept separately, in an override store keyed by property id. So a new house, or a correction to a base field, can be made in the repository — while the editing you do on a property page is held alongside it rather than replacing it.
 

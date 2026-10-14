@@ -232,8 +232,9 @@ def main():
       and those records are published so they can be read.
       <a href="{SITE}/guide#what-you-can-and-cannot-add" style="color:{GREEN}">The full rule is at
       the top of the guide.</a> If you are not sure, ask before you add it — and if you think
-      something on the site should not be there, about you or anybody else, write to
-      <a href="mailto:ahagues75@icloud.com" style="color:{GREEN}">ahagues75@icloud.com</a>.</p>
+      something on the site should not be there, about you or anybody else,
+      <a href="{SITE}/contact?kind=takedown" style="color:{GREEN}">say so here</a> and it comes
+      down while it is looked at.</p>
   </td></tr></table>"""
 
     invite_body = f'''<h1 style="margin:0 0 6px;font-family:{SERIF};font-size:25px;line-height:1.25;color:{INK}">A guide for contributors</h1>

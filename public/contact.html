@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write to the record — Nottingham Park Houses</title>
+<meta name="description" content="Ask for something to be taken down, send a correction, or ask about a house on The Park Estate.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<style>
+  :root { --ink:#2a2418; --soft:#6a5c44; --faint:#8a7a5a; --rule:#e0d8c4;
+          --paper:#faf7ef; --card:#fff; --green:#2f4d27; --red:#a3341f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
+  .wrap { max-width:660px; margin:0 auto; padding:26px 20px 90px; }
+  h2 { font-size:1.4rem; margin:0 0 8px; }
+  .lede { color:var(--soft); font-size:.95rem; margin:0 0 16px; }
+  .lede strong { color:var(--ink); }
+
+  .rule { background:#fdf6e6; border:1px solid #e3cf9e; border-left:5px solid #a3741f;
+    border-radius:0 7px 7px 0; padding:13px 17px; margin:0 0 22px; font-size:.9rem; }
+  .rule p { margin:0 0 7px; } .rule p:last-child { margin:0; }
+
+  form { background:var(--card); border:1px solid var(--rule); border-radius:9px;
+    padding:18px 20px 20px; }
+  .f { margin-bottom:15px; }
+  label { display:block; font-size:.8rem; color:var(--soft); margin-bottom:4px; }
+  label .req { color:var(--red); }
+  .hint { font-size:.76rem; color:var(--faint); margin-top:3px; }
+  input, select, textarea { width:100%; font-family:inherit; font-size:.92rem; color:var(--ink);
+    padding:8px 10px; border:1px solid #d0c090; border-radius:5px; background:#fffdf8; }
+  textarea { min-height:150px; resize:vertical; line-height:1.55; }
+  input:focus, select:focus, textarea:focus { outline:2px solid #9ab38a; outline-offset:1px; }
+  .bad { border-color:var(--red) !important; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; }
+  .row .f { flex:1; min-width:200px; }
+
+  button { font-family:inherit; font-size:.9rem; background:var(--green); color:#f2ecd8;
+    border:1px solid var(--green); border-radius:6px; padding:9px 20px; cursor:pointer;
+    font-weight:600; }
+  button:hover { background:#25401f; }
+  button:disabled { opacity:.5; cursor:default; }
+  #cfBox { margin:4px 0 14px; }
+  .msg { margin-top:12px; font-size:.88rem; }
+  .msg.err { color:var(--red); }
+  .done { background:var(--card); border:1px solid var(--rule); border-left:5px solid var(--green);
+    border-radius:0 9px 9px 0; padding:20px 22px; }
+  .done h3 { margin:0 0 8px; font-size:1.06rem; }
+  .done p { margin:0 0 9px; } .done p:last-child { margin:0; }
+  .foot { font-size:.8rem; color:var(--faint); margin-top:20px; }
+</style>
+</head>
+<body>
+<script src="/site-nav.js"></script>
+<div class="wrap">
+  <h2>Write to the record</h2>
+  <p class="lede">Anybody can, signed in or not. It goes straight to whoever looks after the
+    record and nowhere else.</p>
+
+  <div class="rule">
+    <p><strong>If you want something taken down, say so here and it comes down while it is looked
+      at.</strong> You do not have to explain why.</p>
+    <p>The record holds people who have died and nothing about anybody living. If something has got
+      in that should not have — about you or about anybody else — this is the quickest way to say
+      so, and it is treated as the first thing of the day.</p>
+  </div>
+
+  <div id="formHolder">
+  <form id="f" novalidate>
+    <div class="f">
+      <label for="kind">What is it about? <span class="req">*</span></label>
+      <select id="kind">
+        <option value="">Choose one…</option>
+        <option value="takedown">Asking for something to be taken down</option>
+        <option value="correction">A correction to the record</option>
+        <option value="question">A question about a house or a person</option>
+        <option value="joining">About joining in</option>
+        <option value="other">Something else</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="f">
+        <label for="name">Your name</label>
+        <input id="name" autocomplete="name" placeholder="Optional">
+      </div>
+      <div class="f">
+        <label for="email">Your email <span class="req">*</span></label>
+        <input id="email" type="email" autocomplete="email" placeholder="So somebody can write back">
+      </div>
+    </div>
+
+    <div class="f">
+      <label for="about">Which house, person or page?</label>
+      <input id="about" placeholder="e.g. 14 Lenton Road, or Thomas Bayley, or the map">
+      <div class="hint">Not needed, but it saves a search.</div>
+    </div>
+
+    <div class="f">
+      <label for="body">What would you like to say? <span class="req">*</span></label>
+      <textarea id="body" maxlength="6000" placeholder="Say as much or as little as you like."></textarea>
+      <div class="hint" id="count"></div>
+    </div>
+
+    <div id="cfBox"></div>
+    <button id="send" type="submit">Send it</button>
+    <div class="msg" id="msg"></div>
+  </form>
+  </div>
+
+  <p class="foot">What you write is kept so that somebody can act on it and write back, and is
+    read only by whoever looks after the record. It is not passed to anybody else and it does not
+    go on the site. <a href="/guide#what-you-can-and-cannot-add">What can and cannot go into the
+    record</a>.</p>
+</div>
+
+<script src="/turnstile.js"></script>
+<script>
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const $ = id => document.getElementById(id);
+
+// Arriving from a house or a person: /contact?about=14%20Lenton%20Road&kind=takedown
+const q = new URLSearchParams(location.search);
+if (q.get('about')) $('about').value = q.get('about').slice(0, 300);
+if (q.get('kind') && [...$('kind').options].some(o => o.value === q.get('kind')))
+  $('kind').value = q.get('kind');
+
+$('body').addEventListener('input', () => {
+  const n = $('body').value.length;
+  $('count').textContent = n > 5200 ? (6000 - n) + ' characters left' : '';
+});
+
+Turnstile.mount('cfBox').catch(() => {});
+
+$('f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = $('msg');
+  ['kind','email','body'].forEach(id => $(id).classList.remove('bad'));
+  msg.className = 'msg'; msg.textContent = '';
+
+  const payload = {
+    kind: $('kind').value, name: $('name').value.trim(), email: $('email').value.trim(),
+    about: $('about').value.trim(), body: $('body').value.trim(),
+    from_url: q.get('from') || document.referrer || null,
+    'cf-turnstile-response': Turnstile.token(),
+  };
+  // Say everything that is wrong at once, rather than one field at a time.
+  const wrong = [];
+  if (!payload.kind) { wrong.push('what it is about'); $('kind').classList.add('bad'); }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(payload.email)) {
+    wrong.push('an email address somebody can write back to'); $('email').classList.add('bad');
+  }
+  if (payload.body.length < 10) { wrong.push('a message'); $('body').classList.add('bad'); }
+  if (wrong.length) {
+    msg.className = 'msg err';
+    msg.textContent = 'It still needs ' + wrong.join(', ').replace(/, ([^,]*)$/, ' and $1') + '.';
+    return;
+  }
+
+  const btn = $('send');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const r = await fetch('/api/contact', { method:'POST', credentials:'same-origin',
+      headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || 'It would not send. Please try again in a moment.');
+    const urgent = payload.kind === 'takedown';
+    $('formHolder').innerHTML = `<div class="done">
+      <h3>Sent — thank you.</h3>
+      <p>${urgent
+        ? 'A note has gone out about it straight away, and somebody will look at it today.'
+        : 'Somebody will read it and write back to ' + esc(payload.email) + '.'}</p>
+      <p>Nothing else is needed from you. <a href="/">Back to the map</a>.</p></div>`;
+  } catch (err) {
+    msg.className = 'msg err'; msg.textContent = err.message;
+    Turnstile.reset();
+    btn.disabled = false; btn.textContent = 'Send it';
+  }
+});
+</script>
+</body>
+</html>
