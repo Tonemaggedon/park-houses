@@ -177,7 +177,8 @@ function contents(heads) {
     '<b>What is in it</b>'
     + heads.map(h => `<a href="#${h.id}">${esc(h.text)}</a>`).join('')
     + `<div class="tools">
-         <button id="printBtn">Print it, or save a PDF</button>
+         <a class="btn" href="/contributors-guide.pdf" download>Download it as a PDF</a>
+         <button id="printBtn">Or print this page</button>
          <a class="btn" href="/api/guide" download="contributors-guide.md">Download it as text</a>
        </div>`;
   document.getElementById('printBtn').onclick = () => window.print();
