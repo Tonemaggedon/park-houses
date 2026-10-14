@@ -42,7 +42,7 @@ def inline(text):
 
     def link(m):
         label, href = m.group(1), m.group(2)
-        if href.startswith(('http://', 'https://')):
+        if href.startswith(('http://', 'https://', 'mailto:')):
             url = href
         elif href.startswith('/'):
             url = SITE + href          # a site path only works as a full address in an email
@@ -62,6 +62,7 @@ def inline(text):
 
 def plain(text):
     t = re.sub(r'`([^`]+)`', r'\1', text)
+    t = re.sub(r'\[([^\]]+)\]\(mailto:[^)\s]+\)', r'\1', t)   # the label is the address
     t = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)', r'\1 (\2)', t)
     t = re.sub(r'\*\*([^*]+)\*\*', r'\1', t)
     t = re.sub(r'(^|[\s(])\*([^*\n]+)\*', r'\1\2', t)
@@ -230,7 +231,9 @@ def main():
     <p style="{P};font-size:15px;margin:0">The census is different: everybody in it died long ago,
       and those records are published so they can be read.
       <a href="{SITE}/guide#what-you-can-and-cannot-add" style="color:{GREEN}">The full rule is at
-      the top of the guide.</a> If you are not sure, ask before you add it.</p>
+      the top of the guide.</a> If you are not sure, ask before you add it — and if you think
+      something on the site should not be there, about you or anybody else, write to
+      <a href="mailto:ahagues75@icloud.com" style="color:{GREEN}">ahagues75@icloud.com</a>.</p>
   </td></tr></table>"""
 
     invite_body = f'''<h1 style="margin:0 0 6px;font-family:{SERIF};font-size:25px;line-height:1.25;color:{INK}">A guide for contributors</h1>

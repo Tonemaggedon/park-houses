@@ -93,7 +93,7 @@ function inline(t) {
   return esc(t)
     .replace(/`([^`]+)`/g, (m, c) => '<code>' + c + '</code>')
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, text, href) =>
-      /^(https?:|\/|#)/.test(href)
+      /^(https?:|mailto:|\/|#)/.test(href)
         ? `<a href="${esc(href)}"${/^https?:/.test(href) ? ' target="_blank" rel="noopener"' : ''}>${text}</a>`
         : `<a href="${esc('https://github.com/Tonemaggedon/park-houses/blob/main/docs/' + href)}" target="_blank" rel="noopener">${text}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')

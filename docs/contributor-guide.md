@@ -38,9 +38,9 @@ read. They come in as whole documents and none of this applies to them.
 until somebody answers. Something left out can be added next week. Something published about a
 living person cannot be unpublished.
 
-**If you think something here should not be here** — about you or about anybody else — say so on
-the Discussion board, or through the Join page if you have no account, and it will be taken out
-while it is looked at.
+**If you think something here should not be here** — about you or about anybody else — write to
+**[ahagues75@icloud.com](mailto:ahagues75@icloud.com)** and it will be taken out while it is looked at. You do not have to
+explain why, and you do not need an account to ask.
 
 **If you have a query about a house, the place for it is the Discussion board** — not a guess
 typed into the record. See section 5.
