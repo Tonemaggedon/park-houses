@@ -157,27 +157,44 @@ function newBoxHtml() {
     </div></div>`;
 }
 
+// The lists of houses and open questions, fetched once and only when wanted.
+async function fillLists() {
+  if (PROPS.length) return;
+  try {
+    PROPS = await fetch('/api/all-props').then(r => r.json());
+    document.getElementById('propList').innerHTML =
+      PROPS.map(p => `<option value="${esc(p.address || p.name)}">`).join('');
+  } catch (e) {}
+  try {
+    const q = await fetch('/api/research-questions').then(r => r.json());
+    QUESTIONS = (q.questions || []).filter(x => x.status !== 'answered');
+    document.getElementById('qList').innerHTML =
+      QUESTIONS.map(x => `<option value="${esc(x.title)}">`).join('');
+  } catch (e) {}
+}
+
 function wireNew() {
   const box = document.getElementById('newBox');
-  document.getElementById('newOpen').onclick = async () => {
+  const open = async () => {
     box.classList.remove('closed');
     document.getElementById('newOpen').hidden = true;
     document.getElementById('newForm').hidden = false;
     document.getElementById('nTitle').focus();
-    if (!PROPS.length) {
-      try {
-        PROPS = await fetch('/api/all-props').then(r => r.json());
-        document.getElementById('propList').innerHTML =
-          PROPS.map(p => `<option value="${esc(p.address || p.name)}">`).join('');
-      } catch (e) {}
-      try {
-        const q = await fetch('/api/research-questions').then(r => r.json());
-        QUESTIONS = (q.questions || []).filter(x => x.status !== 'answered');
-        document.getElementById('qList').innerHTML =
-          QUESTIONS.map(x => `<option value="${esc(x.title)}">`).join('');
-      } catch (e) {}
-    }
+    await fillLists();
   };
+  document.getElementById('newOpen').onclick = open;
+
+  // Arriving from a house: the map's "Ask about this house" sends the property
+  // id, so the form opens with that house already filled in and the cursor in
+  // the question. Nobody should have to go and find the house they just left.
+  const askingAbout = parseInt(new URLSearchParams(location.search).get('property'), 10);
+  if (Number.isInteger(askingAbout)) {
+    open().then(() => {
+      const prop = PROPS.find(p => p.id === askingAbout);
+      if (prop) document.getElementById('nProp').value = prop.address || prop.name;
+      document.getElementById('nTitle').focus();
+    });
+  }
   document.getElementById('nCancel').onclick = () => {
     box.classList.add('closed');
     document.getElementById('newOpen').hidden = false;

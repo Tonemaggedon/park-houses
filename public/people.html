@@ -1673,19 +1673,40 @@ function closeAddPerson() {
   document.getElementById('addPersonOverlay').style.display='none';
   document.getElementById('addPersonForm').reset();
   document.getElementById('apError').textContent='';
+  ['ap_first_name','ap_last_name','ap_born_year','ap_born_place','ap_died_year']
+    .forEach(id => { document.getElementById(id).style.borderColor = '#d0c090'; });
 }
 
+// Same rules as newPersonProblems() in server.js — keep the two in step.
+const AP_LIVING_CUTOFF_YEARS = 100;
 async function submitAddPerson() {
   const get = id => document.getElementById(id).value.trim();
+  const errBox = document.getElementById('apError');
+  const fieldIds = ['ap_first_name','ap_last_name','ap_born_year','ap_born_place','ap_died_year'];
+  fieldIds.forEach(id => { document.getElementById(id).style.borderColor = '#d0c090'; });
+  errBox.innerHTML = '';
   const first_name = get('ap_first_name');
   const last_name = get('ap_last_name');
-  if (!first_name || !last_name) { document.getElementById('apError').textContent='First and last name are required.'; return; }
   const bornDate = buildDateString('ap_born');
   const diedDate = buildDateString('ap_died');
-  const bornYearVal = parseInt(get('ap_born_year'));
-  const diedYearVal = parseInt(get('ap_died_year')) || (diedDate ? parseInt(diedDate.match(/\d{4}/)?.[0]) : null);
-  if (bornYearVal && bornYearVal > new Date().getFullYear() - 100 && !diedYearVal && !diedDate) {
-    document.getElementById('apError').textContent = 'This person may still be living. Add a date of death to confirm they are deceased, or leave date of birth blank.';
+  const thisYear = new Date().getFullYear();
+  const bornYearVal = bornDate ? parseInt(bornDate.match(/\d{4}/)?.[0]) : NaN;
+  const diedYearVal = diedDate ? parseInt(diedDate.match(/\d{4}/)?.[0]) : NaN;
+  const problems = [];
+  const flag = (id, text) => { problems.push(text); document.getElementById(id).style.borderColor = '#c04040'; };
+  if (!first_name) flag('ap_first_name', 'First name');
+  if (!last_name) flag('ap_last_name', 'Surname');
+  if (!get('ap_born_year')) flag('ap_born_year', 'Year of birth');
+  else if (!(bornYearVal >= 1500 && bornYearVal <= thisYear)) flag('ap_born_year', 'Year of birth as four digits, e.g. 1864');
+  if (!get('ap_born_place')) flag('ap_born_place', 'Place of birth');
+  if (get('ap_died_year') && !(diedYearVal <= thisYear && (!bornYearVal || diedYearVal >= bornYearVal))) {
+    flag('ap_died_year', 'Year of death that comes after the year of birth');
+  } else if (bornYearVal && !diedYearVal && bornYearVal > thisYear - AP_LIVING_CUTOFF_YEARS) {
+    flag('ap_died_year', `Year of death — anyone born after ${thisYear - AP_LIVING_CUTOFF_YEARS} may still be living, and the record only holds people who have died`);
+  }
+  if (problems.length) {
+    errBox.innerHTML = '<strong>This person can\'t be added yet.</strong> Please add:<ul style="margin:6px 0 0 18px;padding:0">'
+      + problems.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>';
     return;
   }
   const body = {
@@ -1953,7 +1974,7 @@ async function submitOccupation(personId) {
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Also known as / title</label><br><input id="ap_known_as" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Sir Thomas Bayley"></div>
       <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Honours / postnominals</label><br><input id="ap_postnominals" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. OBE, CBE, MBE"></div>
       <div style="margin-bottom:10px">
-        <label style="font-size:0.75rem;color:#8a7a5a">Date of birth</label>
+        <label style="font-size:0.75rem;color:#8a7a5a">Date of birth * <span style="color:#a09070">(year at least)</span></label>
         <div style="display:flex;gap:5px;margin-top:4px">
           <select id="ap_born_day" style="padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
             <option value="">Day</option>
@@ -1966,9 +1987,9 @@ async function submitOccupation(personId) {
           <input id="ap_born_year" type="text" placeholder="Year" style="width:68px;padding:6px 7px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
         </div>
       </div>
-      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Born place</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
+      <div style="margin-bottom:10px"><label style="font-size:0.75rem;color:#8a7a5a">Born place *</label><br><input id="ap_born_place" style="width:100%;padding:7px 9px;border:1px solid #d0c090;border-radius:4px;font-size:0.85rem;font-family:Georgia,serif;margin-top:3px" placeholder="e.g. Nottingham"></div>
       <div style="margin-bottom:10px">
-        <label style="font-size:0.75rem;color:#8a7a5a">Date of death</label>
+        <label style="font-size:0.75rem;color:#8a7a5a">Date of death <span style="color:#a09070">(required if born in the last 100 years)</span></label>
         <div style="display:flex;gap:5px;margin-top:4px">
           <select id="ap_died_day" style="padding:6px 4px;border:1px solid #d0c090;border-radius:4px;font-size:0.82rem;font-family:Georgia,serif">
             <option value="">Day</option>

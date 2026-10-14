@@ -202,9 +202,9 @@
 
   /* Street View link */
   .view-btns { display: none; margin-top: 5px; }
-  .view-btns.visible { display: block; }
-  .view-btn.sv { background: none; border: none; padding: 0; font-size: 0.68rem; font-family: Georgia, serif; color: #7ab8d8; cursor: pointer; text-decoration: underline; }
-  .view-btn.sv:hover { color: #aad8f8; }
+  .view-btns.visible { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .view-btn.sv, .view-btn.ask { background: none; border: none; padding: 0; font-size: 0.68rem; font-family: Georgia, serif; color: #7ab8d8; cursor: pointer; text-decoration: underline; white-space: nowrap; }
+  .view-btn.sv:hover, .view-btn.ask:hover { color: #aad8f8; }
 
   /* Timeline tab */
   .tl-item { display:flex; gap:12px; margin-bottom:14px; }
@@ -523,6 +523,7 @@
         <div id="demolishedBanner" style="display:none;margin-top:4px;padding:3px 8px;background:#555;color:#fff;border-radius:4px;font-size:0.72rem;font-family:Georgia,serif;width:fit-content">🏚 Lost house — demolished</div>
         <div class="view-btns" id="viewBtns">
           <button class="view-btn sv" onclick="openStreetView()">&#128247; Street View</button>
+          <button class="view-btn ask" onclick="askAboutHouse()" title="Start a thread about this house">&#128172; Ask about this house</button>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
@@ -3072,6 +3073,14 @@ function _propLatLng() {
   if (!curProp) return null;
   // _lat/_lng are set in buildMarkers() and reflect manual drag overrides (/api/coords)
   return { lat: parseFloat(curProp._lat || curProp.lat), lng: parseFloat(curProp._lng || curProp.lng) };
+}
+
+// A query about a house is not a correction and often not yet a research
+// question — it is a thing to ask somebody. This opens the Discussion board
+// with the house already chosen, so nobody has to go and find it in the box.
+function askAboutHouse() {
+  if (!curProp) return;
+  location.href = '/discussion?property=' + curProp.id;
 }
 
 function openStreetView() {

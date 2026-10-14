@@ -8379,12 +8379,51 @@ app.post('/api/person/:id/photo', requireContributor, (req, res, next) => {
   });
 });
 
+// A new person must arrive complete enough to show they are historical. The
+// record is public, so nobody born within the last 100 years goes in without
+// a year of death (UK GDPR covers the living, not the dead). The add-person
+// form runs the same rules, but this is the one that cannot be skipped.
+const LIVING_CUTOFF_YEARS = 100;
+function yearOf(dateText, yearValue) {
+  const fromDate = dateText ? parseInt(String(dateText).match(/\d{4}/)?.[0], 10) : NaN;
+  if (Number.isInteger(fromDate)) return fromDate;
+  const y = parseInt(yearValue, 10);
+  return Number.isInteger(y) ? y : null;
+}
+function newPersonProblems(b) {
+  const thisYear = new Date().getFullYear();
+  const has = v => typeof v === 'string' ? v.trim() !== '' : v != null;
+  const problems = [];
+  if (!has(b.first_name)) problems.push('first name');
+  if (!has(b.last_name)) problems.push('surname');
+  const born = yearOf(b.born_date, b.born_year);
+  const died = yearOf(b.died_date, b.died_year);
+  if (born == null) problems.push('year of birth');
+  else if (born < 1500 || born > thisYear) problems.push('a real year of birth (four digits)');
+  if (!has(b.born_place)) problems.push('place of birth');
+  if (died != null && (died > thisYear || (born != null && died < born))) {
+    problems.push('a year of death that comes after the year of birth');
+  } else if (born != null && died == null && born > thisYear - LIVING_CUTOFF_YEARS) {
+    problems.push(`year of death (anyone born after ${thisYear - LIVING_CUTOFF_YEARS} may still be living, and the record only holds people who have died)`);
+  }
+  return problems;
+}
+
 app.post('/api/person', requireContributor, async (req, res) => {
   // authorization handled by requireContributor in the route signature
   if (!db) return res.status(503).json({ error: 'DB not available' });
   try {
-    const { first_name, last_name, known_as, born_date, born_year, born_place,
-            died_date, died_year, died_place, bio, wikipedia_url, photo_url } = req.body;
+    const problems = newPersonProblems(req.body || {});
+    if (problems.length) {
+      return res.status(400).json({
+        error: 'This person can\'t be added yet. Please add: ' + problems.join('; ') + '.',
+        missing: problems,
+      });
+    }
+    const { first_name, last_name, known_as, born_date, born_place,
+            died_date, died_place, bio, wikipedia_url, photo_url } = req.body;
+    const born_year = yearOf(born_date, req.body.born_year);
+    const died_year = yearOf(died_date, req.body.died_year);
     const r = await db.query(
       `INSERT INTO people (first_name,last_name,known_as,born_date,born_year,born_place,died_date,died_year,died_place,bio,wikipedia_url,photo_url)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING id`,
