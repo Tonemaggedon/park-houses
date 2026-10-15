@@ -1958,22 +1958,25 @@ app.post('/api/contact', async (req, res) => {
       [kind, name.slice(0, 120) || null, email.slice(0, 200), about.slice(0, 300) || null,
        body, String(b.from_url || '').slice(0, 300) || null, who || null]);
     const id = r.rows[0].id;
-    if (kind === 'takedown') await tellTheAdmins(id);
+    if (kind === 'takedown') await tellTheAdmins({ kind: 'message',
+      title: 'Somebody has asked for something to be taken down',
+      body: 'It is on the Messages page, and nothing of it is repeated here.',
+      url: '/messages#' + id });
     res.json({ ok: true, id });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// A takedown request may itself contain the personal information somebody
-// wants removed, so **none of it goes into the notification**: the notice says
-// one has arrived and nothing else, and it goes only to the admins, who are the
-// only people who can act on it. Notifications are pushed by kind to everybody
-// subscribed, which would otherwise mean a contributor's phone showing a
-// stranger's name and address on the lock screen.
-async function tellTheAdmins(id) {
-  const line = { kind: 'message',
-    title: 'Somebody has asked for something to be taken down',
-    body: 'It is on the Messages page, and nothing of it is repeated here.',
-    url: '/messages#' + id };
+// Some things concern the admins and nobody else: a takedown request, which may
+// itself contain the personal information somebody wants removed, and a request
+// for an account, which names a living person who has not been approved yet.
+//
+// **This is why neither goes out through notify() alone.** A notification with
+// no `for_who` is pushed by kind to everybody subscribed to that kind, which
+// would mean a contributor's lock screen showing a stranger's name. Addressing
+// each admin by name keeps it to the people who can act on it, and the notice
+// itself carries only as much as it needs to: for a takedown, nothing at all.
+async function tellTheAdmins(line) {
+  if (!db) return;
   try {
     const admins = await db.query(
       `SELECT TRIM(COALESCE(first_name,'') || ' ' || COALESCE(last_name,'')) AS who, email
@@ -2251,6 +2254,15 @@ app.post('/api/user/register', async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     const user = await createUser(email, hash, firstName.trim(), lastName.trim());
     req.session.userId = user.id;
+    // An account sits unapproved until an admin sets it to contributor, and
+    // nobody is told it is waiting. This tells the admins, and only them: a
+    // request for access names a living person, so it goes to the people who
+    // have to act on it and to nobody else. The name is enough to recognise
+    // somebody by; the address stays on the Users page.
+    await tellTheAdmins({ kind: 'access',
+      title: 'Somebody has asked to join the record',
+      body: `${firstName.trim()} ${lastName.trim()} is waiting to be approved.`,
+      url: '/admin/users' });
     res.json({ ok: true, user: publicUser(user) });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
