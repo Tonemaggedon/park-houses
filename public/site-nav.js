@@ -52,11 +52,19 @@
     ['/name-sex', '⚥', 'Forename sex'],
     ['/name-review', '✎', 'Names to check'],
   ];
-  const MINE = [
+  // Your part in it works for anybody signed in, the built-in admin included:
+  // badges and notifications are keyed on the research name, which is "admin"
+  // for that account. The watchlist and the contributions list are keyed on a
+  // row in the users table, so they are only offered to an account that has
+  // one — the built-in admin would get a 401 and an empty page.
+  const MINE_ANYONE = [
     ['/me', '🎖', 'Your part in it'],
+  ];
+  const MINE_ACCOUNT = [
     ['/watchlist', '⭐', 'My watchlist'],
     ['/my-contributions', '✏', 'My contributions'],
   ];
+  const MINE = [...MINE_ANYONE, ...MINE_ACCOUNT];
   const ADMIN = [
     ['/admin', '🛠', 'Admin tools'],
     ['/admin/users', '👤', 'Users'],
@@ -173,7 +181,8 @@
     const contributor = d.isAdmin || (d.user && (d.user.role === 'contributor' || d.user.role === 'admin') && d.user.approved);
     const signedIn = d.isAdmin || d.user;
     let html = '';
-    if (signedIn) html += menu('Research', [contributor ? WORK : [], d.user ? MINE : []].filter(g => g.length));
+    const mine = d.user ? MINE : MINE_ANYONE;
+    if (signedIn) html += menu('Research', [contributor ? WORK : [], mine].filter(g => g.length));
     if (d.isAdmin) html += menu('Admin', [ADMIN]);
     if (!signedIn && path !== '/join') html += link(['/join', '✍', 'Join the record'], 'pnav-link');
     acct.innerHTML = html;
