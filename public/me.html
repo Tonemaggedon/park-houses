@@ -89,15 +89,16 @@ const ago = t => {
   return Math.round(m / 1440) + ' days ago';
 };
 
-let B = null, N = null, PUSH = null, sub = null;
+let B = null, N = null, PUSH = null, sub = null, ME = null;
 
 async function load() {
-  const [b, n, p] = await Promise.all([
+  const [b, n, p, me] = await Promise.all([
     fetch('/api/badges', { credentials:'same-origin' }).then(r => r.json()),
     fetch('/api/notifications', { credentials:'same-origin' }).then(r => r.json()),
-    fetch('/api/push/key').then(r => r.json()).catch(() => ({ enabled:false }))
+    fetch('/api/push/key').then(r => r.json()).catch(() => ({ enabled:false })),
+    fetch('/api/me', { credentials:'same-origin' }).then(r => r.json()).catch(() => ({}))
   ]);
-  B = b; N = n; PUSH = p;
+  B = b; N = n; PUSH = p; ME = me;
   if ('serviceWorker' in navigator && PUSH.enabled) {
     try {
       const reg = await navigator.serviceWorker.register('/push-sw.js', { scope: '/' });
@@ -173,9 +174,12 @@ function draw() {
       </ol>
     </div>
 
+    ${ME && ME.user ? '<h3>Your password</h3>' + passwordHtml(ME.user) : ''}
+
     <h3>What has been happening</h3>
     ${feedHtml()}`;
   wire();
+  wirePassword();
 }
 
 function countFor(key, t) {
@@ -194,6 +198,52 @@ const KINDS = [
   ['message',    'Somebody asks for something to be taken down'],
   ['access',     'Somebody asks to join the record'],
 ];
+
+
+// Anybody with an account can change their own password here, and anybody who
+// was given a one-time password has to before they can do anything else.
+function passwordHtml(user) {
+  if (!user) return '';            // the built-in admin's password is an env var
+  const forced = user.mustChangePassword;
+  return `<div class="box${forced ? ' on' : ''}" id="pwBox">
+    <h3 style="margin:0 0 8px;font-size:1rem">${forced
+      ? 'Choose a password of your own'
+      : 'Change your password'}</h3>
+    ${forced ? `<p>You were let in with a one-time password. Pick one only you know
+      and the rest of the site opens up.</p>` : ''}
+    <label class="ck" style="display:block">Your current password<br>
+      <input type="password" id="pwCurrent" autocomplete="current-password"
+             style="width:100%;max-width:320px;padding:7px 9px;margin-top:4px"></label>
+    <label class="ck" style="display:block;margin-top:9px">A new one, at least 8 characters<br>
+      <input type="password" id="pwNext" autocomplete="new-password"
+             style="width:100%;max-width:320px;padding:7px 9px;margin-top:4px"></label>
+    <div style="margin-top:11px"><button class="go" id="pwSave">Save it</button></div>
+    <div id="pwMsg" style="margin-top:8px;font-size:.86rem"></div>
+  </div>`;
+}
+
+function wirePassword() {
+  const btn = document.getElementById('pwSave');
+  if (!btn) return;
+  btn.onclick = async () => {
+    const msg = document.getElementById('pwMsg');
+    msg.style.color = ''; msg.textContent = '';
+    btn.disabled = true;
+    try {
+      const r = await fetch('/api/user/password', { method:'POST', credentials:'same-origin',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ current: document.getElementById('pwCurrent').value,
+                               next: document.getElementById('pwNext').value }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || 'It would not save.');
+      msg.style.color = '#2f4d27';
+      msg.textContent = 'Changed. That is the one to use from now on.';
+      document.getElementById('pwCurrent').value = '';
+      document.getElementById('pwNext').value = '';
+    } catch (e) { msg.style.color = '#a3341f'; msg.textContent = e.message; }
+    btn.disabled = false;
+  };
+}
 
 function pushHtml() {
   if (!PUSH.enabled) return `<div class="box"><p>Push notifications are not switched on for this

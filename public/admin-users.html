@@ -48,6 +48,15 @@ select.role-sel { background:#0f1923; border:1px solid #2a3a2a; color:#e8e0d0; b
 .log-time { color:#5a7a5a; }
 .log-user { color:#8a9a7a; font-weight:600; }
 .log-detail { color:#a8b8a8; }
+  .pw { background:#fffdf5; border:1px solid #d9b98a; border-left:5px solid #a3741f;
+    border-radius:0 8px 8px 0; padding:16px 20px; margin:0 0 18px; max-width:62ch;
+    font-family:Georgia,serif; color:#2a2418; }
+  .pw h3 { margin:0 0 10px; font-size:1rem; }
+  .pw p { margin:0 0 9px; font-size:.86rem; line-height:1.5; }
+  .pw-code { font-family:ui-monospace,Menlo,monospace; font-size:1.5rem; letter-spacing:.06em;
+    background:#fff; border:1px solid #e0d8c4; border-radius:6px; padding:10px 14px;
+    user-select:all; display:inline-block; }
+  .pw-acts { display:flex; gap:8px; margin-top:4px; }
 </style>
 </head>
 <body>
@@ -68,6 +77,7 @@ select.role-sel { background:#0f1923; border:1px solid #2a3a2a; color:#e8e0d0; b
     <div id="logEntries"><div class="no-users">Loading...</div></div>
   </div>
 </div>
+<div id="pwBox"></div>
 <script>
 // Escape text before it goes into innerHTML. Contributor-supplied fields (names,
 // bios, notes, descriptions) would otherwise execute as markup.
@@ -104,6 +114,7 @@ async function load() {
       <td style="color:#5a7a5a;font-size:0.75rem">${new Date(u.created_at).toLocaleDateString('en-GB')}</td>
       <td style="display:flex;gap:6px;flex-wrap:wrap">
         ${!u.approved?`<button class="btn approve" onclick="approve(${u.id})">✓ Approve</button>`:''}
+        <button class="btn" onclick="resetPassword(${u.id},'${esc(u.first_name)} ${esc(u.last_name)}')">Reset password</button>
         <button class="btn danger" onclick="deleteUser(${u.id},'${esc(u.first_name)} ${esc(u.last_name)}')">Remove</button>
       </td>
     </tr>`).join('') : '<tr><td colspan="6" class="no-users">No registered users yet</td></tr>';
@@ -117,6 +128,44 @@ async function setRole(id, role) {
 async function approve(id) {
   await fetch(`/api/admin/users/${id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({approved:true})});
   load();
+}
+
+// A one-time password, shown once and never stored anywhere you can read it
+// back. If it is lost before it reaches them, press the button again.
+async function resetPassword(id, name) {
+  if (!confirm(`Give ${name} a new one-time password?\n\n`
+    + `Their current password stops working straight away, and they will have to `
+    + `choose a new one the next time they sign in.`)) return;
+  const r = await fetch(`/api/admin/users/${id}/reset-password`,
+    { method:'POST', credentials:'same-origin' });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) { alert(d.error || 'It would not reset.'); return; }
+  showPassword(d);
+  load();
+}
+
+function showPassword(d) {
+  const box = document.getElementById('pwBox');
+  box.innerHTML = `
+    <div class="pw">
+      <h3>One-time password for ${esc(d.who || d.email)}</h3>
+      <p class="pw-code" id="pwCode">${esc(d.password)}</p>
+      <p>Read it to them, or send it however you normally would.
+        <strong>It is shown once and is not kept anywhere</strong> — if it gets
+        lost, press Reset password again and hand out a new one.</p>
+      <p>Their old password stopped working the moment you pressed the button, and
+        this one only lets them in far enough to choose their own.</p>
+      <div class="pw-acts">
+        <button class="btn" onclick="copyPassword()">Copy it</button>
+        <button class="btn" onclick="document.getElementById('pwBox').innerHTML=''">Done</button>
+      </div>
+    </div>`;
+  box.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function copyPassword() {
+  const t = document.getElementById('pwCode').textContent;
+  navigator.clipboard?.writeText(t).catch(() => {});
 }
 
 async function deleteUser(id, name) {

@@ -707,6 +707,10 @@ async function dbInit() {
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'viewer'`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved BOOLEAN DEFAULT FALSE`);
     await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS approved_by TEXT`);
+    // Set when an admin hands out a one-time password, cleared the moment the
+    // person chooses their own. It is the only thing that makes a reset safe:
+    // without it a temporary password is just a password somebody else knows.
+    await db.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS must_change_password BOOLEAN DEFAULT FALSE`);
     await db.query(`CREATE TABLE IF NOT EXISTS person_links (
       id SERIAL PRIMARY KEY,
       person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
@@ -1363,7 +1367,7 @@ async function findUserByEmail(email) {
 
 async function findUserById(id) {
   if (db) {
-    const r = await db.query('SELECT id,email,first_name,last_name,profile_photo,role,approved,created_at FROM users WHERE id=$1', [id]);
+    const r = await db.query('SELECT id,email,first_name,last_name,profile_photo,role,approved,created_at,must_change_password FROM users WHERE id=$1', [id]);
     return r.rows[0] || null;
   }
   const all = loadUsersFile();
@@ -1373,7 +1377,7 @@ async function findUserById(id) {
 async function createUser(email, passwordHash, firstName, lastName) {
   if (db) {
     const r = await db.query(
-      `INSERT INTO users (email,password_hash,first_name,last_name) VALUES ($1,$2,$3,$4) RETURNING id,email,first_name,last_name,created_at`,
+      `INSERT INTO users (email,password_hash,first_name,last_name) VALUES ($1,$2,$3,$4) RETURNING id,email,first_name,last_name,created_at,must_change_password`,
       [email.toLowerCase(), passwordHash, firstName, lastName]
     );
     return r.rows[0];
@@ -1397,7 +1401,7 @@ async function updateUserPhoto(id, photoUrl) {
 // Public user info (no password hash)
 function publicUser(u) {
   if (!u) return null;
-  return { id: u.id, email: u.email, firstName: u.first_name, lastName: u.last_name, profilePhoto: u.profile_photo, role: u.role||'viewer', approved: u.approved||false, createdAt: u.created_at };
+  return { id: u.id, email: u.email, firstName: u.first_name, lastName: u.last_name, profilePhoto: u.profile_photo, role: u.role||'viewer', approved: u.approved||false, createdAt: u.created_at, mustChangePassword: u.must_change_password||false };
 }
 
 // ── Middleware ────────────────────────────────────────────────────────────────
@@ -2287,6 +2291,58 @@ app.post('/api/user/login', async (req, res) => {
     req.session.userRole = user.role || 'viewer';
     res.json({ ok: true, user: publicUser(user) });
   } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Passwords ────────────────────────────────────────────────────────────────
+// There is no email on this site, so there is no link to send somebody who has
+// forgotten theirs. An admin hands out a one-time password instead, reads it to
+// them, and the account cannot be used for anything else until they have
+// replaced it with one of their own.
+//
+// Characters that are read wrong over a telephone — 0 and O, 1 and l and I —
+// are left out, and it is grouped in fours for the same reason.
+const SAYABLE = 'abcdefghjkmnpqrstuvwxyz23456789';
+function oneTimePassword() {
+  const pick = n => Array.from(crypto.randomBytes(n))
+    .map(b => SAYABLE[b % SAYABLE.length]).join('');
+  return `${pick(4)}-${pick(4)}-${pick(4)}`;
+}
+
+app.post('/api/admin/users/:id/reset-password', requireAdmin, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  try {
+    const u = await db.query('SELECT id, email, first_name, last_name FROM users WHERE id=$1', [id]);
+    if (!u.rows.length) return res.status(404).json({ error: 'No such account' });
+    const password = oneTimePassword();
+    await db.query('UPDATE users SET password_hash=$2, must_change_password=TRUE WHERE id=$1',
+      [id, await bcrypt.hash(password, 10)]);
+    // The change is recorded; the password itself is not, here or anywhere.
+    await logChange('user', id, req, 'update', 'password', null, 'reset to a one-time password');
+    res.json({ ok: true, password, who: `${u.rows[0].first_name} ${u.rows[0].last_name}`.trim(),
+               email: u.rows[0].email });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/user/password', async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  if (!req.session || !req.session.userId)
+    return res.status(401).json({ error: 'Sign in first' });
+  const current = String((req.body || {}).current || '');
+  const next = String((req.body || {}).next || '');
+  if (next.length < 8)
+    return res.status(400).json({ error: 'A new password needs to be at least 8 characters.' });
+  if (next === current)
+    return res.status(400).json({ error: 'That is the password you are already using.' });
+  try {
+    const r = await db.query('SELECT password_hash FROM users WHERE id=$1', [req.session.userId]);
+    if (!r.rows.length) return res.status(404).json({ error: 'No such account' });
+    if (!(await bcrypt.compare(current, r.rows[0].password_hash)))
+      return res.status(403).json({ error: 'That is not your current password.' });
+    await db.query('UPDATE users SET password_hash=$2, must_change_password=FALSE WHERE id=$1',
+      [req.session.userId, await bcrypt.hash(next, 10)]);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 app.post('/api/user/logout', (req, res) => {
