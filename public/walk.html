@@ -90,6 +90,9 @@
   .tag.notable{background:#dfe9d4;color:#33521f}
   .tag.lost{background:#f0dcd3;color:#8b3d1c}
   .tag.architect{background:#dde5ee;color:#27486b}
+  .tag.women{background:#ecd9e4;color:#6d2748}
+  .badge{display:inline-block;margin-left:7px;padding:2px 8px;border-radius:999px;
+    background:#f3eef1;color:#6d2748;font-size:.7rem;font-family:ui-monospace,Menlo,monospace}
   .tag.household{background:#e8e2ef;color:#4a3668}
   .tag.round{background:#f3e0cc;color:#7c4414}
   .tag.postbox{background:#f2d9d6;color:#8a2b22}
@@ -150,6 +153,7 @@
   .pin.question{background:#e8c05f}.pin.notable{background:#7fa862}
   .pin.lost{background:#c0603a}.pin.architect{background:#6d8fb8}
   .pin.household{background:#9b86bd}
+  .pin.women{background:#b06b8e}
   .pin.round{background:#d8893f}
   .pin.postbox{background:#b03b32}
   .pin.hunt{background:#8a6a3a}
@@ -261,6 +265,7 @@ const THEMES = [
   { k: 'run',       label: 'Fix an unnumbered run', sub: 'he stopped writing numbers' },
   { k: 'question',  label: 'Be useful',           sub: 'questions only I can answer' },
   { k: 'notable',   label: 'Who lived here',      sub: 'the notable residents' },
+  { k: 'women',     label: "The women's walk",     sub: 'who they were, and what they did' },
   { k: 'architect', label: 'Who built it',        sub: 'Hine, Fothergill and the rest' },
   { k: 'lost',      label: 'What is gone',        sub: 'houses that no longer stand' },
   { k: 'household', label: 'Full houses',         sub: 'twelve or more under one roof' },
@@ -337,6 +342,7 @@ function drawTally() {
     `<div><b>${houses}</b>houses on the route</div>`
     + `<div><b>${c.question || 0}</b>questions open</div>`
     + `<div><b>${c.notable || 0}</b>notable residents</div>`
+    + `<div><b>${c.women || 0}</b>women with a life recorded</div>`
     + (seen.size ? `<div><b>${seen.size}</b>you have seen</div>` : '');
 }
 
@@ -562,6 +568,7 @@ function toast(s) {
 
 // ── a stop, opened ───────────────────────────────────────────────────────────
 const KIND_WORD = { question: 'A question for you', notable: 'Who lived here',
+  women: 'A woman of this house',
   lost: 'No longer standing', architect: 'Who built it', household: 'A full house',
   round: 'He knocked here', postbox: 'A dated thing in the street',
   hunt: 'Look along here', 'needs-photo': 'This one has never been photographed',
@@ -593,6 +600,7 @@ function openStop(i, manual) {
   body.innerHTML = `
     <span class="tag ${esc(s.kind)}">${esc(KIND_WORD[s.kind] || s.kind)}</span>
     ${s.kind === 'round' ? `<span class="sched">schedule ${esc(s.schedule)}</span>` : ''}
+    ${s.kind === 'women' && s.badge ? `<span class="badge">${esc(s.badge)}</span>` : ''}
     <h3>${esc(plain(s.title))}</h3>
     <div class="addr">${esc(s.address || '')}${s.street && s.address !== s.street ? '' : ''}
       ${far !== null ? ` · ${far} m away` : ''}</div>

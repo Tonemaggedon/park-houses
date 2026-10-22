@@ -9888,7 +9888,7 @@ app.get('/api/walk/stops', async (req, res) => {
     const co = await db.query('SELECT id, lat, lng FROM coords');
     for (const c of co.rows) { const p = byId.get(c.id); if (p) { p.lat = +c.lat; p.lng = +c.lng; } }
 
-    const [questions, notable, households] = await Promise.all([
+    const [questions, notable, women, households] = await Promise.all([
       // Only what a pair of eyes can settle. See the on_foot column.
       db.query(`SELECT id, slug, title, kind, priority, property_id
                   FROM research_questions
@@ -9906,6 +9906,41 @@ app.get('/api/walk/stops', async (req, res) => {
                               WHERE pr.person_id = p.id) AS props
                   FROM people p WHERE p.significant = true`),
       // The household that says the most about a house: the biggest one it ever held
+      // ── The women's walk ──────────────────────────────────────────────────
+      // The record is overwhelmingly a record of householders, and householders
+      // in The Park were overwhelmingly men. The women are in it — heading
+      // houses as widows, teaching, keeping schools, singing, doctoring,
+      // dressmaking on their own account — but they are scattered a line at a
+      // time through other people's households and nothing gathers them.
+      //
+      // This does. Ranked so the walk opens with the ones somebody has already
+      // written up, then the women the census itself marks out: head of the
+      // house, or a trade that is not service.
+      db.query(`
+        WITH w AS (
+          SELECT p.id, p.first_name, p.last_name, p.title, p.known_as,
+                 p.born_year, p.died_year, p.significant, p.significance_note,
+                 p.photo_url, p.wikipedia_url, COALESCE(p.bio,'') <> '' AS has_bio,
+                 (SELECT STRING_AGG(DISTINCT o.occupation, ', ') FROM occupations o
+                   WHERE o.person_id = p.id
+                     AND o.occupation !~* '^(unpaid|none|scholar|at school|attends school)') AS trade,
+                 (SELECT BOOL_OR(ce.relationship ILIKE 'head') FROM census_entries ce
+                   WHERE ce.person_id = p.id) AS heads,
+                 (SELECT MIN(ce.census_year) FROM census_entries ce
+                   WHERE ce.person_id = p.id AND ce.property_id IS NOT NULL) AS first_year,
+                 ARRAY(SELECT DISTINCT ce.property_id FROM census_entries ce
+                        WHERE ce.person_id = p.id AND ce.property_id IS NOT NULL
+                        UNION SELECT pr.property_id FROM property_residents pr
+                        WHERE pr.person_id = p.id) AS props
+            FROM people p
+           WHERE p.sex = 'F'
+        )
+        SELECT * FROM w
+         WHERE CARDINALITY(props) > 0
+           AND (significant OR has_bio OR heads OR (trade IS NOT NULL AND trade !~*
+               'servant|housemaid|parlourmaid|kitchenmaid|nursemaid|laundr|charwom|domestic|housekeeper|cook'))
+         ORDER BY significant DESC, has_bio DESC, heads DESC NULLS LAST, last_name`),
+
       db.query(`SELECT DISTINCT ON (property_id) property_id, census_year, n, heads
                   FROM (SELECT ce.property_id, ce.census_year, COUNT(*) AS n,
                                STRING_AGG(DISTINCT p.last_name, ', ') AS heads
@@ -9932,6 +9967,37 @@ app.get('/api/walk/stops', async (req, res) => {
         push(p, { id: 'n' + n.id + '-' + pid, kind: 'notable', person_id: n.id,
           title: who, line: [life, n.significance_note || n.trade].filter(Boolean).join(' · '),
           photo: n.photo_url || null, url: n.wikipedia_url || null });
+      }
+    }
+    for (const w of women.rows) {
+      const who = [w.title, w.first_name, w.last_name].filter(Boolean).join(' ')
+        + (w.known_as ? ` — ${w.known_as}` : '');
+      const life = (w.born_year || w.died_year) ? `${w.born_year || '?'}–${w.died_year || '?'}` : '';
+      // What marks her out, in the order the walk should say it.
+      // What she did beats the fact that somebody wrote about her: standing on
+      // the pavement, "Principal of a school" is worth more than "there is an
+      // account of her in the record". But "private means" is not a trade and
+      // tells a walker nothing, so a written life beats that.
+      const DULL = /^(private means|no occupation|householder|living on (her|their) own means|annuitant|dividend holder|independent|none)$/i;
+      const realTrade = (w.trade || '').split(',').map(t => t.trim())
+        .filter(t => t && !DULL.test(t)).join(', ') || null;
+      const why = w.significance_note
+        || realTrade
+        || (w.has_bio ? 'There is an account of her in the record.' : null)
+        || (w.trade || null)
+        || (w.heads ? 'Head of this house.' : null);
+      const badge = w.significant ? 'Notable'
+        : w.heads && w.trade ? 'Head of the house, and in work'
+        : w.heads ? 'Head of the house'
+        : w.trade ? 'In work' : null;
+      for (const pid of (w.props || []).slice(0, 2)) {
+        const p = byId.get(pid); if (!p) continue;
+        push(p, { id: 'w' + w.id + '-' + pid, kind: 'women', person_id: w.id,
+          title: who,
+          line: [life, why].filter(Boolean).join(' · '),
+          badge, year: w.first_year || null,
+          photo: w.photo_url || null, url: w.wikipedia_url || null,
+          ask: w.has_bio ? null : 'Nobody has written her up yet.' });
       }
     }
     for (const p of props) {
