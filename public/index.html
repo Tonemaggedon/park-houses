@@ -1982,6 +1982,10 @@ async function handleAuthSubmit() {
     const data = await res.json();
     if (data.ok) {
       currentUser = data.user;
+      // Somebody who has been asked to change their password is taken straight
+      // there on signing in, rather than left to find the page. The bar in the
+      // menu asks again on every page if they navigate away without doing it.
+      if (data.user && data.user.mustChangePassword) { location.href = '/me#pwBox'; return; }
       updateUserUI();
       loadWatchlist();
       closeAuthModal();

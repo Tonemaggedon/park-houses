@@ -128,6 +128,12 @@
 .pnav a.pnav-item:hover{background:#f0ead8}
 .pnav a.pnav-item.is-here{background:#e4ecdc;font-weight:600}
 .pnav-drop hr{border:0;border-top:1px solid #e8dfc8;margin:4px 2px}
+.pnav-ask{background:#f6e2db;color:#6b2412;padding:8px 20px;display:flex;gap:14px;
+  align-items:center;flex-wrap:wrap;font-size:.84rem;border-top:1px solid #d9a08a}
+.pnav-ask b{color:#5a1d0e}
+.pnav a.pnav-ask-link,.pnav-ask a{color:#6b2412;font-weight:600;white-space:nowrap;
+  background:#fff;border:1px solid #c98a72;border-radius:5px;padding:4px 12px;text-decoration:none}
+.pnav-ask a:hover{background:#fff6f3}
 .pnav-i{display:inline-block;min-width:1.1em;text-align:center}
 .pnav-extra button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#e8dfc8;
   padding:5px 13px;border-radius:4px;cursor:pointer;font-size:.8rem}
@@ -186,8 +192,31 @@
     if (d.isAdmin) html += menu('Admin', [ADMIN]);
     if (!signedIn && path !== '/join') html += link(['/join', '✍', 'Join the record'], 'pnav-link');
     acct.innerHTML = html;
+    askForANewPassword(d);
     setHeight();
   }).catch(() => {});
+
+  // ── When somebody has been asked to change their password ──────────────────
+  // Setting the flag on the account does nothing on its own: it only changes a
+  // heading on Your part in it, which is a page most people never open. So the
+  // bar carries the ask on every page until it is done, and says why. It does
+  // not block anything — somebody mid-way through filing a household should not
+  // be stopped — but it cannot be missed either.
+  function askForANewPassword(d) {
+    if (!d.user || !d.user.mustChangePassword) return;
+    if (document.getElementById('pnavPw')) return;
+    if (location.pathname === '/me') return;        // they are already there
+    const bar = document.createElement('div');
+    bar.id = 'pnavPw';
+    bar.className = 'pnav-ask';
+    bar.innerHTML = '<span><b>Please choose a new password.</b> '
+      + 'Our host had a security incident, so every password here is being '
+      + 'changed as a precaution. It takes a moment.</span>'
+      + '<a href="/me#pwBox">Choose one now</a>';
+    const nav = document.querySelector('.pnav');
+    if (nav) nav.appendChild(bar);
+    setHeight();
+  }
 
   // One menu open at a time; a click elsewhere or Escape closes it.
   document.addEventListener('toggle', e => {
