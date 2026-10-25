@@ -261,6 +261,10 @@
     font-family: Georgia, serif; white-space: nowrap;
   }
   .group-chip:hover { filter: brightness(0.92); }
+  /* A classification is not an occupation and should not look like one. */
+  .tag-pill { display:inline-block; background:#ecd9e4; color:#6d2748; border:1px solid #dcc0ce;
+    font-size:0.68rem; padding:2px 8px; border-radius:999px; margin:0 4px 4px 0;
+    font-family:Arial,sans-serif; font-weight:600; letter-spacing:.02em; }
   .group-chip.active { border-color: #1a2a1a !important; box-shadow: 0 0 0 2px rgba(0,0,0,0.18); font-weight: bold; }
   .group-chip-count { font-size: 0.68rem; opacity: 0.75; }
   .groups-clear { font-size: 0.72rem; color: #7a6a4a; cursor: pointer; text-decoration: underline; margin-left: 4px; }
@@ -288,6 +292,15 @@
     <option value="Captain">Captain</option>
     <option value="Lord">Lord</option>
     <option value="Hon">Hon</option>
+  </select>
+  <select id="sexFilter" onchange="applyFilters()" title="Filter by whether the record has them as a woman or a man">
+    <option value="">Women and men</option>
+    <option value="F">Women</option>
+    <option value="M">Men</option>
+    <option value="?">Not recorded</option>
+  </select>
+  <select id="tagFilter" onchange="applyFilters()" title="Filter by classification">
+    <option value="">All classifications</option>
   </select>
   <select id="occFilter" onchange="applyFilters()">
     <option value="">All occupations</option>
@@ -543,6 +556,18 @@ async function loadPeople() {
       propNameLookup[p.id] = addr || ('Property ' + p.id);
     });
 
+    // Populate the classification filter from whatever has actually been used,
+    // so a new classification appears simply by somebody using it.
+    fetch('/api/tags').then(r => r.json()).then(d => {
+      const sel = document.getElementById('tagFilter');
+      (d.tags || []).forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.tag;
+        opt.textContent = `${t.tag} (${t.n})`;
+        sel.appendChild(opt);
+      });
+    }).catch(() => {});
+
     // Populate occupation filter
     const occSel = document.getElementById('occFilter');
     occs.forEach(o => {
@@ -664,8 +689,15 @@ function applyFilters() {
   const occ = document.getElementById('occFilter').value.toLowerCase();
   const prop = parseInt(document.getElementById('propFilter').value) || null;
   const titleF = document.getElementById('titleFilter').value;
+  const sexF = document.getElementById('sexFilter').value;
+  const tagF = document.getElementById('tagFilter').value;
   let list = allPeople;
   if (titleF) list = list.filter(p => (p.title||'').toLowerCase() === titleF.toLowerCase());
+  // "Not recorded" is a real answer and worth being able to ask for: it is the
+  // queue the Forename sex page works through.
+  if (sexF === '?') list = list.filter(p => p.sex !== 'F' && p.sex !== 'M');
+  else if (sexF) list = list.filter(p => p.sex === sexF);
+  if (tagF) list = list.filter(p => (p.tags || []).includes(tagF));
   if (q) list = list.filter(p =>
     displayName(p).toLowerCase().includes(q) ||
     (p.known_as||'').toLowerCase().includes(q) ||
@@ -687,12 +719,14 @@ const GRID_BATCH = 120;
 let _gridList = [], _gridDrawn = 0, _gridObserver = null;
 
 function personCardHtml(p) {
+const tags = p.tags || [];
     const occs = (p.occupations || []).slice(0, 4);
     const propIds = p.property_ids || [];
     const _wikiUrl = (p.wikipedia_url||'').trim();
     const wikiHtml = (_wikiUrl.startsWith('http://') || _wikiUrl.startsWith('https://')) && _wikiUrl.length > 10
       ? `<a class="wiki-badge" href="${_wikiUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Wikipedia ↗</a>` : '';
-    const occHtml = occs.map(o => `<span class="occ-pill${isServant(o) ? ' servant' : ''}">${o}</span>`).join('');
+    const occHtml = tags.map(t => `<span class="tag-pill">${esc(t)}</span>`).join('')
+      + occs.map(o => `<span class="occ-pill${isServant(o) ? ' servant' : ''}">${o}</span>`).join('');
     const avatar = p.photo_url
       ? `<img src="${p.photo_url}" alt="">`
       : initials(p);

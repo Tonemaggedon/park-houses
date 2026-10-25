@@ -954,6 +954,26 @@ async function dbInit() {
     )`);
     await db.query(`CREATE INDEX IF NOT EXISTS messages_open_idx
                       ON messages(done_at NULLS FIRST, at DESC)`);
+
+    // ── Classifications ──────────────────────────────────────────────────────
+    // What somebody was part of, which is not the same as what they did for a
+    // living and does not belong in the occupation column. Suffrage was being
+    // recorded as an occupation in five different spellings - Suffragist,
+    // suffragist, Suffrage, suffrage supporter, Secretary Suffrage - which
+    // meant no two of them grouped and none of them could be counted.
+    //
+    // Open-ended on purpose: the lace trade, the School Board and the
+    // Unitarians are all the same shape of fact and will want the same thing.
+    await db.query(`CREATE TABLE IF NOT EXISTS person_tags (
+      id SERIAL PRIMARY KEY,
+      person_id INTEGER NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+      tag TEXT NOT NULL,
+      note TEXT,
+      added_by TEXT,
+      added_at TIMESTAMPTZ DEFAULT NOW(),
+      UNIQUE (person_id, tag)
+    )`);
+    await db.query(`CREATE INDEX IF NOT EXISTS person_tags_tag_idx ON person_tags(tag)`);
     // Three months is plenty to see a pattern and short enough that nothing
     // accumulates. Trimmed on boot.
     await db.query(`DELETE FROM page_views WHERE at < NOW() - INTERVAL '120 days'`)
@@ -1992,6 +2012,51 @@ async function tellTheAdmins(line) {
     await notify({ ...line, for_who: 'admin' });
   }
 }
+
+// ── Classifications on a person ──────────────────────────────────────────────
+// A contributor may add or remove one. The vocabulary is not fixed in code:
+// whatever has been used is what the list offers, so a new classification is
+// made simply by being the first to use it.
+app.get('/api/tags', async (req, res) => {
+  if (!db) return res.json({ tags: [] });
+  try {
+    const r = await db.query(`SELECT tag, COUNT(*)::int AS n,
+        COUNT(*) FILTER (WHERE p.sex='F')::int AS women,
+        COUNT(*) FILTER (WHERE p.sex='M')::int AS men
+        FROM person_tags t JOIN people p ON p.id = t.person_id
+       GROUP BY tag ORDER BY n DESC, tag`);
+    res.json({ tags: r.rows });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/person/:id/tags', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  const id = parseInt(req.params.id, 10);
+  const tag = String((req.body || {}).tag || '').trim();
+  const note = String((req.body || {}).note || '').trim() || null;
+  if (!tag) return res.status(400).json({ error: 'A classification needs a name.' });
+  if (tag.length > 60) return res.status(400).json({ error: 'That is too long for a classification.' });
+  try {
+    const who = await getResearchKey(req.session || {});
+    await db.query(`INSERT INTO person_tags (person_id, tag, note, added_by)
+                    VALUES ($1,$2,$3,$4) ON CONFLICT (person_id, tag)
+                    DO UPDATE SET note = COALESCE(EXCLUDED.note, person_tags.note)`,
+                   [id, tag, note, who]);
+    await logChange('person', id, req, 'add', 'classification', null, tag);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete('/api/person/:id/tags/:tag', requireContributor, async (req, res) => {
+  if (!db) return res.status(503).json({ error: 'No DB' });
+  try {
+    await db.query('DELETE FROM person_tags WHERE person_id=$1 AND tag=$2',
+                   [parseInt(req.params.id, 10), req.params.tag]);
+    await logChange('person', parseInt(req.params.id, 10), req, 'remove', 'classification',
+                    req.params.tag, null);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 app.get('/api/admin/messages', requireAdmin, async (req, res) => {
   if (!db) return res.json({ messages: [], kinds: MESSAGE_KINDS });
@@ -5331,7 +5396,7 @@ app.post('/api/property/:id/submission-photo', async (req, res) => {
 app.get('/api/people', async (req, res) => {
   if (!db) return res.json([]);
   try {
-    const { occupation, property, q } = req.query;
+    const { occupation, property, q, sex, tag } = req.query;
     // Use subqueries to avoid cartesian product of occupations × census_entries
     // One pass over each child table, grouped by person, rather than four
     // correlated subqueries per person. With 8,352 people that was roughly
@@ -5350,10 +5415,14 @@ app.get('/api/people', async (req, res) => {
         SELECT person_id,
                ARRAY_AGG(DISTINCT census_year) FILTER (WHERE census_year IS NOT NULL) AS yrs,
                BOOL_OR(property_id IS NULL) AS unres
-          FROM census_entries GROUP BY person_id)
+          FROM census_entries GROUP BY person_id),
+      tags AS (
+        SELECT person_id, ARRAY_AGG(DISTINCT tag ORDER BY tag) AS a
+          FROM person_tags GROUP BY person_id)
       SELECT p.id, p.first_name, p.last_name, p.known_as, p.maiden_name, p.title, p.postnominals,
-             p.born_year, p.born_place, p.died_year, p.died_place,
+             p.born_year, p.born_place, p.died_year, p.died_place, p.sex,
              p.wikipedia_url, p.photo_url,
+             tags.a AS tags,
              occ.a AS occupations,
              props.a AS property_ids,
              cens.yrs AS census_years,
@@ -5362,12 +5431,21 @@ app.get('/api/people', async (req, res) => {
         LEFT JOIN occ   ON occ.person_id   = p.id
         LEFT JOIN props ON props.person_id = p.id
         LEFT JOIN cens  ON cens.person_id  = p.id
+        LEFT JOIN tags  ON tags.person_id  = p.id
     `;
     const params = [];
     const wheres = [];
     if (occupation) {
       params.push(`%${occupation.toLowerCase()}%`);
       wheres.push(`EXISTS (SELECT 1 FROM occupations ox WHERE ox.person_id=p.id AND LOWER(ox.occupation) LIKE $${params.length})`);
+    }
+    if (sex === 'F' || sex === 'M') {
+      params.push(sex);
+      wheres.push(`p.sex = $${params.length}`);
+    }
+    if (tag) {
+      params.push(tag);
+      wheres.push(`EXISTS (SELECT 1 FROM person_tags tx WHERE tx.person_id=p.id AND tx.tag=$${params.length})`);
     }
     if (property) {
       params.push(parseInt(property));
