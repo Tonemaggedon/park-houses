@@ -222,7 +222,15 @@ async function uploadMedia(buf, filename, contentType) {
           folder: 'park-houses', public_id: filename.replace(/\.[^.]+$/, ''),
           use_filename: true, unique_filename: false },
         (error, result) => {
-          if (error) return reject(new Error(error.message || JSON.stringify(error)));
+          if (error) {
+            // Keep the status: 401 means the key is wrong, 403 means the key is
+            // right and is not allowed to do this. They want different answers
+            // and the difference was being thrown away.
+            const e = new Error(error.message || JSON.stringify(error));
+            e.http_code = error.http_code;
+            e.resource_type = isImage ? 'image' : 'raw';
+            return reject(e);
+          }
           resolve(result.secure_url);
         });
       stream.end(buf);
@@ -8559,7 +8567,21 @@ app.post('/api/person/:id/media', requireContributor, (req, res, next) => {
     try {
       url = await uploadMedia(req.file.buffer, stamped, req.file.mimetype);
     } catch (e) {
-      return res.status(500).json({ error: 'Upload failed: ' + e.message });
+      // A PDF goes up as a raw asset and an image does not, so an account whose
+      // key may upload images and not files fails on exactly one of the two.
+      // Say so, rather than leaving somebody staring at "server error".
+      if (e.http_code === 403) {
+        return res.status(502).json({ error: e.resource_type === 'raw'
+          ? 'The image library refused this file (403). Photographs are getting through, '
+            + 'so the key is right but is not allowed to store documents. Its role in '
+            + 'Cloudinary needs to permit raw files as well as images.'
+          : 'The image library refused this upload (403). The key is not allowed to do this.' });
+      }
+      if (e.http_code === 401) {
+        return res.status(502).json({ error: 'The image library would not accept the key (401). '
+          + 'CLOUDINARY_API_KEY or CLOUDINARY_API_SECRET is wrong or out of date.' });
+      }
+      return res.status(502).json({ error: 'The upload did not reach the image library: ' + e.message });
     }
     const caption = req.body.caption || '';
     const isDoc = /\.(pdf|doc|docx|txt)$/i.test(req.file.originalname);

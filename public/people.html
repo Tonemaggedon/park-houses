@@ -1610,8 +1610,31 @@ async function uploadMedia(personId, input) {
     const res = await fetch(`/api/person/${personId}/media`, { method:'POST', body:fd });
     const data = await res.json();
     if (data.ok) { label.innerHTML = orig; loadMediaGallery(personId); }
-    else { label.textContent = '✗ ' + (data.error||'Failed'); setTimeout(()=>{label.innerHTML=orig;},2000); }
-  } catch(e) { label.innerHTML = orig; }
+    else {
+      // A label two seconds wide is no place for a reason. Put it where it can
+      // be read, and leave it until the next attempt.
+      label.innerHTML = orig;
+      showUploadProblem(label, data.error || 'The upload failed and gave no reason.');
+    }
+  } catch(e) {
+    label.innerHTML = orig;
+    showUploadProblem(label, 'The upload did not complete. ' + (e.message || ''));
+  }
+}
+
+// Shown beneath the upload button and left there, so it can be read, copied
+// and sent on to whoever can fix it.
+function showUploadProblem(label, text) {
+  const holder = label.parentElement || label;
+  let box = holder.querySelector('.upload-problem');
+  if (!box) {
+    box = document.createElement('div');
+    box.className = 'upload-problem';
+    box.style.cssText = 'margin-top:8px;padding:9px 12px;background:#fdf0ec;color:#8b2d12;'
+      + 'border:1px solid #e0b4a4;border-radius:6px;font-size:.82rem;line-height:1.45;max-width:46ch';
+    holder.appendChild(box);
+  }
+  box.textContent = text;
 }
 
 async function uploadPersonVideo(personId, input) {
