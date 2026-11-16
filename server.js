@@ -5136,13 +5136,37 @@ app.delete('/api/watchlist/:propId', async (req, res) => {
 });
 
 // ── Property overrides API ────────────────────────────────────────────────────
+// A document is withheld from anybody who is not a contributor unless it has
+// been explicitly marked public. This is the gate: it has to run on every way
+// out of the building, so both of these go through it and so does anything
+// added later. The alternative — remembering to filter at each call site — is
+// the kind of thing that works until the day somebody adds a call site.
+function canSeePrivate(req) {
+  return !!(req.session && (req.session.isAdmin
+    || req.session.userRole === 'contributor' || req.session.userRole === 'admin'));
+}
+function hideClosedDocuments(prop, req) {
+  if (!prop || !Array.isArray(prop.documents) || canSeePrivate(req)) return prop;
+  const open = prop.documents.filter(d => d && d.public);
+  const held = prop.documents.length - open.length;
+  return { ...prop, documents: open,
+    documents_held_back: held || undefined };
+}
+
 app.get('/api/properties', async (req, res) => {
-  try { res.json(await loadProps()); } catch(e) { res.status(500).json({ error: e.message }); }
+  try {
+    const all = await loadProps();
+    if (canSeePrivate(req)) return res.json(all);
+    const out = {};
+    for (const [k, v] of Object.entries(all || {})) out[k] = hideClosedDocuments(v, req);
+    res.json(out);
+  } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 app.get('/api/property/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  try { res.json(await loadProp(id)); } catch(e) { res.status(500).json({ error: e.message }); }
+  try { res.json(hideClosedDocuments(await loadProp(id), req)); }
+  catch(e) { res.status(500).json({ error: e.message }); }
 });
 
 app.post('/api/property/:id', requireContributor, async (req, res) => {
@@ -5229,6 +5253,102 @@ app.post('/api/property/:id/photo', requireContributor, (req, res) => {
     } catch(e) { res.status(500).json({ error: e.message }); }
   });
   req.on('error', e => res.status(500).json({ error: e.message }));
+});
+
+// ── Documents on a house ─────────────────────────────────────────────────────
+// A deed, a conveyance, a sale particular, an abstract of title. These were
+// going nowhere: the house takes photographs and the photograph path is images
+// only, so a PDF had to be hung on a person instead — which meant inventing a
+// person for a name on a conveyance with no dates, exactly what the record
+// tries not to do.
+//
+// Stored beside the photographs in property_data, in their own array, and
+// uploaded through uploadMedia, which files anything that is not an image as a
+// raw asset so the link opens the document rather than a broken image.
+//
+// **Visibility is deliberate.** A twentieth-century deed names the people who
+// bought and sold the house, and some of them are alive. A document marked
+// private is held for contributors and never served to the public pages, which
+// is the only honest way to keep a 1957 conveyance in a record whose first
+// rule is that it holds nobody living.
+app.post('/api/property/:id/document', requireContributor, (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (!id) return res.status(400).json({ error: 'invalid id' });
+  const chunks = [];
+  let size = 0;
+  req.on('data', c => {
+    size += c.length;
+    if (size > 25 * 1024 * 1024) req.destroy(new Error('That file is larger than 25MB'));
+    else chunks.push(c);
+  });
+  req.on('end', async () => {
+    try {
+      const buf = Buffer.concat(chunks);
+      const given = (req.headers['x-filename'] || `document_${Date.now()}.pdf`).toString();
+      const safe = given.replace(/[^a-z0-9._-]/gi, '_');
+      const filename = `prop-${id}_doc_${Date.now()}_${safe}`;
+      const url = await uploadMedia(buf, filename, req.headers['content-type']);
+      const current = await loadProp(id);
+      const dec = v => { try { return decodeURIComponent(v || ''); } catch (e) { return v || ''; } };
+      const documents = [...(current.documents || []), {
+        url,
+        filename: given,
+        title: dec(req.headers['x-title']).slice(0, 200) || given,
+        kind: dec(req.headers['x-kind']).slice(0, 60) || 'Document',
+        dated: dec(req.headers['x-dated']).slice(0, 60) || '',
+        note: dec(req.headers['x-note']).slice(0, 600) || '',
+        // Anything not explicitly marked public is held back. A deed is private
+        // until somebody has decided otherwise, not the other way round.
+        public: req.headers['x-public'] === 'yes',
+        addedAt: new Date().toISOString(),
+        by: req.session.username || null,
+        uploadedBy: req.session.userId || null
+      }];
+      await saveProp(id, { ...current, documents }, req.session.username, req);
+      res.json({ ok: true, url, documents: documents.length });
+    } catch (e) {
+      const code = e.http_code;
+      if (code === 403) return res.status(502).json({ error:
+        'The image library refused this file (403). It stores photographs but is not allowed to '
+        + 'store documents — its key needs a role in Cloudinary that permits raw files.' });
+      if (code === 401) return res.status(502).json({ error:
+        'The image library would not accept the key (401).' });
+      res.status(500).json({ error: e.message });
+    }
+  });
+  req.on('error', e => res.status(400).json({ error: e.message }));
+});
+
+app.delete('/api/property/:id/document/:index', requireContributor, async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const i = parseInt(req.params.index, 10);
+  try {
+    const current = await loadProp(id);
+    const docs = current.documents || [];
+    if (!docs[i]) return res.status(404).json({ error: 'No such document' });
+    const mine = req.session.userId && docs[i].uploadedBy === req.session.userId;
+    if (!req.session.isAdmin && !mine)
+      return res.status(403).json({ error: 'Only an admin, or whoever added it, can remove it.' });
+    const kept = docs.filter((_, n) => n !== i);
+    await saveProp(id, { ...current, documents: kept }, req.session.username, req);
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.patch('/api/property/:id/document/:index', requireContributor, async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const i = parseInt(req.params.index, 10);
+  const b = req.body || {};
+  try {
+    const current = await loadProp(id);
+    const docs = [...(current.documents || [])];
+    if (!docs[i]) return res.status(404).json({ error: 'No such document' });
+    for (const k of ['title', 'kind', 'dated', 'note'])
+      if (b[k] !== undefined) docs[i][k] = String(b[k]).slice(0, 600);
+    if (b.public !== undefined) docs[i].public = !!b.public;
+    await saveProp(id, { ...current, documents: docs }, req.session.username, req);
+    res.json({ ok: true, document: docs[i] });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 // Upload a video file for a property

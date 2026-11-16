@@ -533,7 +533,7 @@
     </div>
     <div class="tabs">
       <button class="tab active" onclick="tab('data',this)">Property Info</button>
-      <button class="tab" onclick="tab('photos',this)">Photos</button>
+      <button class="tab" onclick="tab('photos',this)">Photos &amp; papers</button>
       <button class="tab" onclick="tab('people',this)">People <span class="badge" id="peopleBadge" style="display:none">0</span></button>
       <button class="tab" onclick="tab('subs',this)">Submissions <span class="badge" id="subBadge">0</span></button>
       <button class="tab" onclick="tab('timeline',this)">Timeline</button>
@@ -1198,6 +1198,7 @@ function renderPanel() {
     } else if (currentUser) {
       photoHtml += '<p style="font-size:0.8rem;color:#6a5a3a;line-height:1.6;margin-top:10px">Photographs can be contributed via the <strong>Submissions</strong> tab.</p>';
     }
+    photoHtml += documentsHtml(ov, isAdmin, isContrib);
     // Videos section
     const videos = ov.videos || [];
     if (videos.length) {
@@ -2929,6 +2930,98 @@ async function addPhotoFromUrl() {
   propOverrides[curProp.id] = await (await fetch(`/api/property/${curProp.id}`)).json();
   renderPhotoGrid();
   renderPanel();
+}
+
+// ── Deeds, conveyances and the like ──────────────────────────────────────────
+// A house took photographs and nothing else, so a conveyance had to be hung on
+// a person — which meant inventing a person out of a name on a deed. These sit
+// with the photographs instead.
+function documentsHtml(ov, isAdmin, isContrib) {
+  const docs = ov.documents || [];
+  const held = ov.documents_held_back || 0;
+  let h = '<h4 style="margin:18px 0 8px;font-size:0.82rem;letter-spacing:.08em;'
+    + 'text-transform:uppercase;color:#6a5a3a">Deeds and documents</h4>';
+  if (docs.length) {
+    h += '<div style="display:flex;flex-direction:column;gap:7px">' + docs.map((d, i) => {
+      const bits = [d.kind, d.dated].filter(Boolean).join(' \u00b7 ');
+      const canDel = isAdmin || (currentUser && d.uploadedBy && d.uploadedBy === currentUser.id);
+      return '<div style="border:1px solid #d8cfb4;border-radius:6px;padding:9px 11px;background:#fffdf7">'
+        + '<div style="display:flex;gap:8px;align-items:baseline">'
+        + '<a href="' + esc(d.url) + '" target="_blank" rel="noopener" '
+        + 'style="font-weight:600;color:#2a5040;text-decoration:none;flex:1">'
+        + esc(d.title || d.filename) + '</a>'
+        + (d.public ? '' : '<span title="Held for contributors only" style="font-size:0.66rem;'
+            + 'background:#f3e3c2;color:#6b4a12;padding:2px 7px;border-radius:999px;white-space:nowrap">not public</span>')
+        + (canDel ? '<button onclick="deletePropDocument(' + i + ')" title="Remove" '
+            + 'style="background:none;border:none;color:#a3341f;cursor:pointer;font-size:0.9rem">\u2715</button>' : '')
+        + '</div>'
+        + (bits ? '<div style="font-size:0.74rem;color:#8a7a5a;margin-top:2px">' + esc(bits) + '</div>' : '')
+        + (d.note ? '<div style="font-size:0.78rem;color:#4a4034;margin-top:4px">' + esc(d.note) + '</div>' : '')
+        + '</div>';
+    }).join('') + '</div>';
+  } else {
+    h += '<p style="font-size:0.78rem;color:#8a7a5a;margin:0">Nothing on record for this house yet.</p>';
+  }
+  if (held) h += '<p style="font-size:0.74rem;color:#8a7a5a;margin:6px 0 0">' + held
+    + ' document' + (held === 1 ? '' : 's') + ' held for contributors.</p>';
+  if (isAdmin || isContrib) {
+    h += '<div style="margin-top:10px">'
+      + '<input type="file" id="propDocInput" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.tif,.tiff" '
+      + 'style="display:none" onchange="uploadPropDocument(this)">'
+      + '<button onclick="document.getElementById(\'propDocInput\').click()" '
+      + 'style="width:100%;background:#2a5040;color:#e8dfc8;border:none;padding:9px;border-radius:5px;'
+      + 'cursor:pointer;font-size:0.83rem">+ Add a deed or document</button>'
+      + '<div style="font-size:0.7rem;color:#8a7a5a;margin-top:5px;line-height:1.5">'
+      + 'PDF, Word or a scan. A twentieth-century deed names people who may still be living, so a '
+      + 'document is <strong>held back from the public pages</strong> unless you say otherwise.</div>'
+      + '<div id="propDocStatus" style="font-size:0.78rem;color:#6a5a3a;margin-top:7px"></div></div>';
+  }
+  return h;
+}
+
+async function uploadPropDocument(input) {
+  const file = input.files && input.files[0];
+  input.value = '';
+  if (!file || !curProp) return;
+  const status = document.getElementById('propDocStatus');
+  const title = prompt('What is it? (e.g. "Conveyance of Dudley Lodge")', file.name) || file.name;
+  const kind = prompt('What kind of document? (conveyance, deed, sale particular, abstract of title\u2026)', 'Conveyance') || 'Document';
+  const dated = prompt('What is it dated? (e.g. 1957)', '') || '';
+  const note = prompt('Anything worth saying about it? (optional)', '') || '';
+  const open = confirm('May this be shown on the public pages?\n\n'
+    + 'OK = anyone may see it.\n'
+    + 'Cancel = contributors only, which is the safer answer for any deed naming '
+    + 'people who may still be living.');
+  if (status) status.textContent = 'Uploading ' + file.name + '\u2026';
+  try {
+    const res = await fetch('/api/property/' + curProp.id + '/document', {
+      method: 'POST',
+      headers: {
+        'Content-Type': file.type || 'application/octet-stream',
+        'X-Filename': file.name,
+        'X-Title': encodeURIComponent(title),
+        'X-Kind': encodeURIComponent(kind),
+        'X-Dated': encodeURIComponent(dated),
+        'X-Note': encodeURIComponent(note),
+        'X-Public': open ? 'yes' : 'no'
+      },
+      body: file
+    });
+    const d = await res.json().catch(function () { return {}; });
+    if (!res.ok) throw new Error(d.error || 'It would not upload.');
+    if (status) status.textContent = '';
+    await loadPropOverrides();
+    renderPanel();
+  } catch (e) {
+    if (status) status.innerHTML = '<span style="color:#a3341f">' + esc(e.message) + '</span>';
+  }
+}
+
+async function deletePropDocument(i) {
+  if (!curProp || !confirm('Remove this document from the house?')) return;
+  const res = await fetch('/api/property/' + curProp.id + '/document/' + i, { method: 'DELETE' });
+  if (res.ok) { await loadPropOverrides(); renderPanel(); }
+  else { const d = await res.json().catch(function () { return {}; }); alert(d.error || 'Could not remove it.'); }
 }
 
 async function deletePhoto(url) {
