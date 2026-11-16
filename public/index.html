@@ -1014,7 +1014,7 @@ function openProp(id) {
   if (demolishedBanner) demolishedBanner.style.display = p.demolished ? '' : 'none';
   const subCount = ((propOverrides[p.id] || {}).submissions || subs[p.id] || []).length;
   document.getElementById('subBadge').textContent = subCount;
-  document.getElementById('panelAddDataBtn').style.display = currentUser ? '' : 'none';
+  document.getElementById('panelAddDataBtn').style.display = signedIn() ? '' : 'none';
   // Reset people badge until tab is opened
   const pb = document.getElementById('peopleBadge');
   if (pb) pb.style.display = 'none';
@@ -1249,7 +1249,7 @@ function renderPanel() {
       <button onclick="openAuthModal('register')" style="background:none;border:1px solid #8a6a2a;color:#6a4a10;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:0.83rem;font-family:Georgia,serif">Create Account</button>
     </div>`;
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const addForm = currentUser ? `
+    const addForm = signedIn() ? `
       <button class="add-btn" id="addBtn" onclick="toggleForm()">+ Add Historical Information</button>
       <div class="form-wrap" id="addForm">
         <p style="font-size:0.78rem;color:#6a5a3a;margin-bottom:8px">Share family history, oral accounts, photographs, or documentary evidence.</p>
@@ -1586,7 +1586,7 @@ function clearSubPhoto() {
 }
 
 async function submitSub() {
-  if (!currentUser) { openAuthModal('login'); return; }
+  if (!signedIn()) { openAuthModal('login'); return; }
   const tx = document.getElementById('fText').value.trim();
   const tp = document.getElementById('fType').value;
   if (!tx && !window._subPhotoFile) { toast('Please enter some information or attach a photo.'); return; }
@@ -1893,6 +1893,21 @@ function toast(msg) {
 
 // ── USER AUTH STATE ───────────────────────────────────────────────────────────
 let currentUser = null;
+// Declared here rather than down in the admin section: signedIn() reads it,
+// and a `let` read before its declaration is a ReferenceError, not a false.
+let isAdmin = false;
+
+// ── Who counts as signed in ──────────────────────────────────────────────────
+// The built-in admin has no row in the users table, so currentUser is null for
+// it. Anything that tested currentUser alone therefore told the admin — the one
+// person who can do everything — to sign in. Use these instead.
+//
+// The watchlist is deliberately NOT covered: /api/watchlist is keyed on a user
+// id and would answer 401, so offering the star to the built-in admin would be
+// offering a button that fails.
+function signedIn()      { return !!(currentUser || isAdmin); }
+function canContribute() { return !!(isAdmin || (currentUser &&
+  (currentUser.role === 'contributor' || currentUser.role === 'admin'))); }
 
 function updateUserUI() {
   const signInBtn = document.getElementById('signInBtn');
@@ -1915,7 +1930,7 @@ function updateUserUI() {
   }
   // Update Add Data button visibility if panel is open
   const addBtn = document.getElementById('panelAddDataBtn');
-  if (addBtn) addBtn.style.display = currentUser ? '' : 'none';
+  if (addBtn) addBtn.style.display = signedIn() ? '' : 'none';
   // Show user-specific nav links
   const wlLink = document.getElementById('watchlistNavLink');
   if (wlLink) wlLink.style.display = currentUser ? '' : 'none';
@@ -2079,13 +2094,12 @@ async function userLogout() {
 }
 
 function openAddData() {
-  if (!currentUser) { openAuthModal('login'); return; }
+  if (!signedIn()) { openAuthModal('login'); return; }
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===3));
   curTab = 'subs'; renderPanel();
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────────────────────
-let isAdmin = false;
 let dragMode = true;
 let manualCoords = {};      // {id: {lat,lng}} — loaded from server
 let dragState = null;       // {propId, marker, origLat, origLng}
