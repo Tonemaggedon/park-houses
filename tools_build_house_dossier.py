@@ -35,6 +35,7 @@ import subprocess
 import sys
 import tempfile
 from base64 import b64encode
+from io import BytesIO
 from datetime import date
 
 CHROMES = [
@@ -78,13 +79,41 @@ body { margin:0; font-family: Georgia,'Times New Roman',serif; font-size:10.5pt;
 """
 
 
+LONG_EDGE = 1800          # plenty for a printed page; keeps the PDF sendable
+JPEG_QUALITY = 80
+
+
 def data_uri(path):
+    """Embed a page image, downsampled first.
+
+    A phone photograph of a typescript page is 7-9 MB, and sixteen of those
+    embedded whole made a 121 MB PDF that no mail server would carry. At 1800 px
+    on the long edge the typing is still comfortably readable on screen and in
+    print, and the file comes back to a few megabytes.
+    """
     ext = os.path.splitext(path)[1].lower()
-    mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
-            '.gif': 'image/gif', '.webp': 'image/webp', '.tif': 'image/tiff',
-            '.tiff': 'image/tiff'}.get(ext, 'application/octet-stream')
-    with open(path, 'rb') as fh:
-        return f'data:{mime};base64,' + b64encode(fh.read()).decode()
+    try:
+        from PIL import Image, ImageOps
+    except ImportError:
+        mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
+                '.gif': 'image/gif', '.webp': 'image/webp', '.tif': 'image/tiff',
+                '.tiff': 'image/tiff'}.get(ext, 'application/octet-stream')
+        with open(path, 'rb') as fh:
+            return f'data:{mime};base64,' + b64encode(fh.read()).decode()
+
+    with Image.open(path) as im:
+        im = ImageOps.exif_transpose(im)      # honour the camera's rotation flag
+        if im.mode not in ('RGB', 'L'):
+            im = im.convert('RGB')
+        if max(im.size) > LONG_EDGE:
+            scale = LONG_EDGE / max(im.size)
+            im = im.resize((max(1, round(im.width * scale)),
+                            max(1, round(im.height * scale))),
+                           Image.LANCZOS)
+        buf = BytesIO()
+        im.save(buf, 'JPEG', quality=JPEG_QUALITY, optimize=True,
+                progressive=True)
+    return 'data:image/jpeg;base64,' + b64encode(buf.getvalue()).decode()
 
 
 def build(folder):
