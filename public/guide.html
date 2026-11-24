@@ -67,8 +67,24 @@
 
   .msg { color:var(--faint); font-style:italic; }
 
+  /* The invitation at the top. It is shown only to somebody who is not signed
+     in — a contributor reading the guide does not need telling to join, and a
+     page that says "sign in" to somebody already signed in is a bug we have
+     had before. */
+  .joinbar { grid-column:1 / -1; display:flex; align-items:center; gap:18px;
+    flex-wrap:wrap;
+    background:#eef1e6; border:1px solid #cfd9c2; border-left:5px solid var(--green);
+    border-radius:0 8px 8px 0; padding:14px 18px; margin:0 0 6px; }
+  .joinbar p { margin:0; flex:1 1 20rem; font-size:.95rem; color:var(--soft); }
+  .joinbar p strong { color:var(--ink); }
+  .joinbar a { flex:0 0 auto; background:var(--green); color:#fff; text-decoration:none;
+    font-family:inherit; font-size:.95rem; padding:9px 20px; border-radius:6px;
+    border:1px solid var(--deep); white-space:nowrap; }
+  .joinbar a:hover { background:var(--deep); }
+  .joinbar a:focus-visible { outline:2px solid var(--deep); outline-offset:2px; }
+
   @media print {
-    .pnav, .toc { display:none !important; }
+    .pnav, .toc, .joinbar { display:none !important; }
     .shell { display:block; max-width:none; padding:0; }
     body { background:#fff; font-size:11pt; }
     .doc h2 { break-after:avoid; } .tw { break-inside:avoid; }
@@ -78,6 +94,12 @@
 <body>
 <script src="/site-nav.js"></script>
 <div class="shell">
+  <div class="joinbar" id="joinBar" hidden>
+    <p><strong>Anyone can read the record, and anyone can send a correction.</strong>
+       Joining lets you add to it yourself — households out of the census, photographs,
+       papers, and what you know about a house.</p>
+    <a href="/join">Join the record</a>
+  </div>
   <nav class="toc" id="toc"></nav>
   <article class="doc" id="doc"><p class="msg">Loading the guide…</p></article>
 </div>
@@ -193,6 +215,15 @@ function contents(heads) {
   }, { rootMargin: '0px 0px -72% 0px' });
   heads.forEach(h => { const el = document.getElementById(h.id); if (el) seen.observe(el); });
 }
+
+// Show the invitation only to somebody who is not signed in. The test is the one
+// the bar at the top of every page uses: the built-in admin has no row in the
+// users table, so d.user is null for it and d.isAdmin has to be asked as well.
+// If we cannot tell, the bar stays hidden, which is what the nav does too.
+fetch('/api/me', { credentials: 'same-origin' })
+  .then(r => r.json())
+  .then(d => { if (!(d.isAdmin || d.user)) document.getElementById('joinBar').hidden = false; })
+  .catch(() => {});
 
 fetch('/api/guide')
   .then(r => { if (!r.ok) throw new Error('The guide could not be loaded.'); return r.text(); })
